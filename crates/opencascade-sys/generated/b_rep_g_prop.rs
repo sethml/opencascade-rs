@@ -1047,6 +1047,16 @@ impl TFunction {
     pub fn get_state_number(&mut self) -> i32 {
         unsafe { crate::ffi::BRepGProp_TFunction_get_state_number(self as *mut Self) }
     }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe { &*(crate::ffi::BRepGProp_TFunction_as_math_Function(self as *const Self)) }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe { &mut *(crate::ffi::BRepGProp_TFunction_as_math_Function_mut(self as *mut Self)) }
+    }
 }
 
 // ========================
@@ -1095,6 +1105,21 @@ impl UFunction {
     /// Returns a value of the function.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         unsafe { crate::ffi::BRepGProp_UFunction_value(self as *mut Self, X, F) }
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe { &*(crate::ffi::BRepGProp_UFunction_as_math_Function(self as *const Self)) }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe { &mut *(crate::ffi::BRepGProp_UFunction_as_math_Function_mut(self as *mut Self)) }
+    }
+
+    /// Inherited from math_Function: GetStateNumber()
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepGProp_UFunction_inherited_GetStateNumber(self as *mut Self) }
     }
 }
 

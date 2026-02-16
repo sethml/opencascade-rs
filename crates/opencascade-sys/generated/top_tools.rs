@@ -1105,6 +1105,8 @@ pub use crate::ffi::{
     IndexedMapOfShapeIterator, ListOfShapeIterator, MapOfShapeIterator, SequenceOfShapeIterator,
     TopTools_Array1OfListOfShape as Array1OfListOfShape, TopTools_Array1OfShape as Array1OfShape,
     TopTools_Array2OfShape as Array2OfShape,
+    TopTools_DataMapOfIntegerListOfShape as DataMapOfIntegerListOfShape,
+    TopTools_DataMapOfIntegerShape as DataMapOfIntegerShape,
     TopTools_DataMapOfShapeListOfShape as DataMapOfShapeListOfShape,
     TopTools_DataMapOfShapeReal as DataMapOfShapeReal,
 };

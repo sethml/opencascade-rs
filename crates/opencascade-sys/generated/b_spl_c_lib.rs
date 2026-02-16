@@ -10,11 +10,16 @@ pub use crate::ffi::{
     BSplCLib_anti_boor_scheme as anti_boor_scheme, BSplCLib_bohm as bohm,
     BSplCLib_boor_index as boor_index, BSplCLib_boor_scheme as boor_scheme,
     BSplCLib_derivative as derivative, BSplCLib_eval as eval,
+    BSplCLib_factor_banded_matrix as factor_banded_matrix,
     BSplCLib_flat_bezier_knots as flat_bezier_knots, BSplCLib_max_degree as max_degree,
     BSplCLib_poles_coefficients_array1ofpnt2 as poles_coefficients_array1ofpnt2,
     BSplCLib_poles_coefficients_array1ofpnt2d2 as poles_coefficients_array1ofpnt2d2,
     BSplCLib_reverse_array1ofpnt2d_int as reverse_array1ofpnt2d_int,
     BSplCLib_reverse_array1ofpnt_int as reverse_array1ofpnt_int,
+    BSplCLib_solve_banded_system_matrix_int2_array1ofpnt as solve_banded_system_matrix_int2_array1ofpnt,
+    BSplCLib_solve_banded_system_matrix_int2_array1ofpnt2d as solve_banded_system_matrix_int2_array1ofpnt2d,
+    BSplCLib_solve_banded_system_matrix_int2_bool_int_real2 as solve_banded_system_matrix_int2_bool_int_real2,
+    BSplCLib_solve_banded_system_matrix_int3_real as solve_banded_system_matrix_int3_real,
 };
 
 /// This enumeration describes the repartition of the

@@ -6,33 +6,178 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// Errors that can occur at wire construction.
+pub use crate::ffi::{
+    BRepLib_plane_handlegeomplane_2 as plane_handlegeomplane_2, BRepLib_precision_2 as precision_2,
+    BRepLib_precision_real_2 as precision_real_2,
+};
+pub fn plane_2() -> crate::OwnedPtr<crate::ffi::HandleGeomPlane> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_plane_2()) }
+}
+pub use crate::ffi::{
+    BRepLib_check_same_range as check_same_range,
+    BRepLib_same_range_edge_real as same_range_edge_real,
+};
+pub fn build_curve3d_edge_real_shape_int2(
+    E: &crate::ffi::TopoDS_Edge,
+    Tolerance: f64,
+    Continuity: crate::geom_abs::Shape,
+    MaxDegree: i32,
+    MaxSegment: i32,
+) -> bool {
+    unsafe {
+        crate::ffi::BRepLib_build_curve3d_edge_real_shape_int2(
+            E,
+            Tolerance,
+            Continuity.into(),
+            MaxDegree,
+            MaxSegment,
+        )
+    }
+}
+pub fn build_curves3d_shape_real_shape_int2(
+    S: &crate::ffi::TopoDS_Shape,
+    Tolerance: f64,
+    Continuity: crate::geom_abs::Shape,
+    MaxDegree: i32,
+    MaxSegment: i32,
+) -> bool {
+    unsafe {
+        crate::ffi::BRepLib_build_curves3d_shape_real_shape_int2(
+            S,
+            Tolerance,
+            Continuity.into(),
+            MaxDegree,
+            MaxSegment,
+        )
+    }
+}
+pub use crate::ffi::{
+    BRepLib_build_curves3d_shape as build_curves3d_shape,
+    BRepLib_build_p_curve_for_edge_on_plane_edge_face as build_p_curve_for_edge_on_plane_edge_face,
+    BRepLib_build_p_curve_for_edge_on_plane_edge_face_handlegeom2dcurve_bool as build_p_curve_for_edge_on_plane_edge_face_handlegeom2dcurve_bool,
+    BRepLib_same_parameter_edge_real as same_parameter_edge_real,
+    BRepLib_update_edge_tol as update_edge_tol,
+    BRepLib_update_edge_tolerance as update_edge_tolerance,
+};
+pub fn same_parameter_edge_real2_bool(
+    theEdge: &crate::ffi::TopoDS_Edge,
+    theTolerance: f64,
+    theNewTol: &mut f64,
+    IsUseOldEdge: bool,
+) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::BRepLib_same_parameter_edge_real2_bool(
+            theEdge,
+            theTolerance,
+            theNewTol,
+            IsUseOldEdge,
+        ))
+    }
+}
+pub use crate::ffi::{
+    BRepLib_orient_closed_solid as orient_closed_solid,
+    BRepLib_same_parameter_shape_real_bool as same_parameter_shape_real_bool,
+    BRepLib_same_parameter_shape_reshape_real_bool as same_parameter_shape_reshape_real_bool,
+    BRepLib_update_inner_tolerances as update_inner_tolerances,
+    BRepLib_update_tolerances_shape_bool as update_tolerances_shape_bool,
+    BRepLib_update_tolerances_shape_reshape_bool as update_tolerances_shape_reshape_bool,
+};
+pub fn continuity_of_faces(
+    theEdge: &crate::ffi::TopoDS_Edge,
+    theFace1: &crate::ffi::TopoDS_Face,
+    theFace2: &crate::ffi::TopoDS_Face,
+    theAngleTol: f64,
+) -> crate::geom_abs::Shape {
+    unsafe {
+        crate::geom_abs::Shape::try_from(crate::ffi::BRepLib_continuity_of_faces(
+            theEdge,
+            theFace1,
+            theFace2,
+            theAngleTol,
+        ))
+        .unwrap()
+    }
+}
+pub use crate::ffi::{
+    BRepLib_encode_regularity_edge_face2_real as encode_regularity_edge_face2_real,
+    BRepLib_encode_regularity_shape_listofshape_real as encode_regularity_shape_listofshape_real,
+    BRepLib_encode_regularity_shape_real as encode_regularity_shape_real,
+    BRepLib_ensure_normal_consistency as ensure_normal_consistency,
+    BRepLib_extend_face as extend_face,
+    BRepLib_find_valid_range_curve_real2_pnt_real2_pnt_real3 as find_valid_range_curve_real2_pnt_real2_pnt_real3,
+    BRepLib_find_valid_range_edge_real2 as find_valid_range_edge_real2,
+    BRepLib_reverse_sort_faces as reverse_sort_faces, BRepLib_sort_faces as sort_faces,
+    BRepLib_update_deflection as update_deflection,
+};
+
+/// Errors that can occur at edge construction.
 /// no error
-/// C++ enum: `BRepLib_WireError`
+/// C++ enum: `BRepLib_EdgeError`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
-pub enum WireError {
-    Wiredone = 0,
-    Emptywire = 1,
-    Disconnectedwire = 2,
-    Nonmanifoldwire = 3,
+pub enum EdgeError {
+    Edgedone = 0,
+    Pointprojectionfailed = 1,
+    Parameteroutofrange = 2,
+    Differentpointsonclosedcurve = 3,
+    Pointwithinfiniteparameter = 4,
+    Differentspointandparameter = 5,
+    Linethroughidenticpoints = 6,
 }
 
-impl From<WireError> for i32 {
-    fn from(value: WireError) -> Self {
+impl From<EdgeError> for i32 {
+    fn from(value: EdgeError) -> Self {
         value as i32
     }
 }
 
-impl TryFrom<i32> for WireError {
+impl TryFrom<i32> for EdgeError {
     type Error = i32;
 
     fn try_from(value: i32) -> Result<Self, i32> {
         match value {
-            0 => Ok(WireError::Wiredone),
-            1 => Ok(WireError::Emptywire),
-            2 => Ok(WireError::Disconnectedwire),
-            3 => Ok(WireError::Nonmanifoldwire),
+            0 => Ok(EdgeError::Edgedone),
+            1 => Ok(EdgeError::Pointprojectionfailed),
+            2 => Ok(EdgeError::Parameteroutofrange),
+            3 => Ok(EdgeError::Differentpointsonclosedcurve),
+            4 => Ok(EdgeError::Pointwithinfiniteparameter),
+            5 => Ok(EdgeError::Differentspointandparameter),
+            6 => Ok(EdgeError::Linethroughidenticpoints),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Errors that can occur at face construction.
+/// no error
+/// not initialised
+/// C++ enum: `BRepLib_FaceError`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum FaceError {
+    Facedone = 0,
+    Noface = 1,
+    Notplanar = 2,
+    Curveprojectionfailed = 3,
+    Parametersoutofrange = 4,
+}
+
+impl From<FaceError> for i32 {
+    fn from(value: FaceError) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for FaceError {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(FaceError::Facedone),
+            1 => Ok(FaceError::Noface),
+            2 => Ok(FaceError::Notplanar),
+            3 => Ok(FaceError::Curveprojectionfailed),
+            4 => Ok(FaceError::Parametersoutofrange),
             _ => Err(value),
         }
     }
@@ -102,76 +247,116 @@ impl TryFrom<i32> for ShellError {
     }
 }
 
-/// Errors that can occur at face construction.
+/// Errors that can occur at wire construction.
 /// no error
-/// not initialised
-/// C++ enum: `BRepLib_FaceError`
+/// C++ enum: `BRepLib_WireError`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
-pub enum FaceError {
-    Facedone = 0,
-    Noface = 1,
-    Notplanar = 2,
-    Curveprojectionfailed = 3,
-    Parametersoutofrange = 4,
+pub enum WireError {
+    Wiredone = 0,
+    Emptywire = 1,
+    Disconnectedwire = 2,
+    Nonmanifoldwire = 3,
 }
 
-impl From<FaceError> for i32 {
-    fn from(value: FaceError) -> Self {
+impl From<WireError> for i32 {
+    fn from(value: WireError) -> Self {
         value as i32
     }
 }
 
-impl TryFrom<i32> for FaceError {
+impl TryFrom<i32> for WireError {
     type Error = i32;
 
     fn try_from(value: i32) -> Result<Self, i32> {
         match value {
-            0 => Ok(FaceError::Facedone),
-            1 => Ok(FaceError::Noface),
-            2 => Ok(FaceError::Notplanar),
-            3 => Ok(FaceError::Curveprojectionfailed),
-            4 => Ok(FaceError::Parametersoutofrange),
+            0 => Ok(WireError::Wiredone),
+            1 => Ok(WireError::Emptywire),
+            2 => Ok(WireError::Disconnectedwire),
+            3 => Ok(WireError::Nonmanifoldwire),
             _ => Err(value),
         }
     }
 }
 
-/// Errors that can occur at edge construction.
-/// no error
-/// C++ enum: `BRepLib_EdgeError`
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(i32)]
-pub enum EdgeError {
-    Edgedone = 0,
-    Pointprojectionfailed = 1,
-    Parameteroutofrange = 2,
-    Differentpointsonclosedcurve = 3,
-    Pointwithinfiniteparameter = 4,
-    Differentspointandparameter = 5,
-    Linethroughidenticpoints = 6,
-}
+// ========================
+// From BRepLib_CheckCurveOnSurface.hxx
+// ========================
 
-impl From<EdgeError> for i32 {
-    fn from(value: EdgeError) -> Self {
-        value as i32
+/// Computes the max distance between edge and its 2d representation on the face.
+/// This class is not intended to process non-sameparameter edges.
+pub use crate::ffi::BRepLib_CheckCurveOnSurface as CheckCurveOnSurface;
+
+unsafe impl crate::CppDeletable for CheckCurveOnSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepLib_CheckCurveOnSurface_destructor(ptr);
     }
 }
 
-impl TryFrom<i32> for EdgeError {
-    type Error = i32;
+impl CheckCurveOnSurface {
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_CheckCurveOnSurface_ctor()) }
+    }
 
-    fn try_from(value: i32) -> Result<Self, i32> {
-        match value {
-            0 => Ok(EdgeError::Edgedone),
-            1 => Ok(EdgeError::Pointprojectionfailed),
-            2 => Ok(EdgeError::Parameteroutofrange),
-            3 => Ok(EdgeError::Differentpointsonclosedcurve),
-            4 => Ok(EdgeError::Pointwithinfiniteparameter),
-            5 => Ok(EdgeError::Differentspointandparameter),
-            6 => Ok(EdgeError::Linethroughidenticpoints),
-            _ => Err(value),
+    /// Constructor
+    pub fn new_edge_face(
+        theEdge: &crate::ffi::TopoDS_Edge,
+        theFace: &crate::ffi::TopoDS_Face,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepLib_CheckCurveOnSurface_ctor_edge_face(
+                theEdge, theFace,
+            ))
         }
+    }
+
+    /// Sets the data for the algorithm
+    pub fn init(&mut self, theEdge: &crate::ffi::TopoDS_Edge, theFace: &crate::ffi::TopoDS_Face) {
+        unsafe { crate::ffi::BRepLib_CheckCurveOnSurface_init(self as *mut Self, theEdge, theFace) }
+    }
+
+    /// Performs the calculation
+    /// If myIsParallel == Standard_True then computation will be performed in parallel.
+    pub fn perform(&mut self) {
+        unsafe { crate::ffi::BRepLib_CheckCurveOnSurface_perform(self as *mut Self) }
+    }
+
+    /// Returns true if the max distance has been found
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepLib_CheckCurveOnSurface_is_done(self as *const Self) }
+    }
+
+    /// Sets parallel flag
+    pub fn set_parallel(&mut self, theIsParallel: bool) {
+        unsafe {
+            crate::ffi::BRepLib_CheckCurveOnSurface_set_parallel(self as *mut Self, theIsParallel)
+        }
+    }
+
+    /// Returns true if parallel flag is set
+    pub fn is_parallel(&mut self) -> bool {
+        unsafe { crate::ffi::BRepLib_CheckCurveOnSurface_is_parallel(self as *mut Self) }
+    }
+
+    /// Returns error status
+    /// The possible values are:
+    /// 0 - OK;
+    /// 1 - null curve or surface or 2d curve;
+    /// 2 - invalid parametric range;
+    /// 3 - error in calculations.
+    pub fn error_status(&self) -> i32 {
+        unsafe { crate::ffi::BRepLib_CheckCurveOnSurface_error_status(self as *const Self) }
+    }
+
+    /// Returns max distance
+    pub fn max_distance(&self) -> f64 {
+        unsafe { crate::ffi::BRepLib_CheckCurveOnSurface_max_distance(self as *const Self) }
+    }
+
+    /// Returns parameter in which the distance is maximal
+    pub fn max_parameter(&self) -> f64 {
+        unsafe { crate::ffi::BRepLib_CheckCurveOnSurface_max_parameter(self as *const Self) }
     }
 }
 
@@ -204,6 +389,228 @@ impl Command {
     /// Raises NotDone if done is false.
     pub fn check(&self) {
         unsafe { crate::ffi::BRepLib_Command_check(self as *const Self) }
+    }
+}
+
+// ========================
+// From BRepLib_FindSurface.hxx
+// ========================
+
+/// Provides an  algorithm to find  a Surface  through a
+/// set of edges.
+///
+/// The edges  of  the  shape  given  as  argument are
+/// explored if they are not coplanar at  the required
+/// tolerance  the method Found returns false.
+///
+/// If a null tolerance is given the max of the  edges
+/// tolerances is used.
+///
+/// The method Tolerance returns the true distance  of
+/// the edges to the Surface.
+///
+/// The method Surface returns the Surface if found.
+///
+/// The method Existed  returns returns  True  if  the
+/// Surface was already attached to some of the edges.
+///
+/// When Existed  returns True  the  Surface  may have a
+/// location given by the Location method.
+pub use crate::ffi::BRepLib_FindSurface as FindSurface;
+
+unsafe impl crate::CppDeletable for FindSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepLib_FindSurface_destructor(ptr);
+    }
+}
+
+impl FindSurface {
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_FindSurface_ctor()) }
+    }
+
+    /// Computes the Surface from the edges of  <S> with the
+    /// given tolerance.
+    /// if <OnlyPlane> is true, the computed surface will be
+    /// a plane. If it is not possible to find a plane, the
+    /// flag NotDone will be set.
+    /// If <OnlyClosed> is true,  then  S  should be a wire
+    /// and the existing surface,  on  which wire S is not
+    /// closed in 2D, will be ignored.
+    pub fn new_shape_real_bool2(
+        S: &crate::ffi::TopoDS_Shape,
+        Tol: f64,
+        OnlyPlane: bool,
+        OnlyClosed: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepLib_FindSurface_ctor_shape_real_bool2(
+                S, Tol, OnlyPlane, OnlyClosed,
+            ))
+        }
+    }
+
+    /// Computes the Surface from the edges of  <S> with the
+    /// given tolerance.
+    /// if <OnlyPlane> is true, the computed surface will be
+    /// a plane. If it is not possible to find a plane, the
+    /// flag NotDone will be set.
+    /// If <OnlyClosed> is true,  then  S  should be a wire
+    /// and the existing surface,  on  which wire S is not
+    /// closed in 2D, will be ignored.
+    pub fn new_shape_real_bool(
+        S: &crate::ffi::TopoDS_Shape,
+        Tol: f64,
+        OnlyPlane: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_shape_real_bool2(S, Tol, OnlyPlane, false)
+    }
+
+    /// Computes the Surface from the edges of  <S> with the
+    /// given tolerance.
+    /// if <OnlyPlane> is true, the computed surface will be
+    /// a plane. If it is not possible to find a plane, the
+    /// flag NotDone will be set.
+    /// If <OnlyClosed> is true,  then  S  should be a wire
+    /// and the existing surface,  on  which wire S is not
+    /// closed in 2D, will be ignored.
+    pub fn new_shape_real(S: &crate::ffi::TopoDS_Shape, Tol: f64) -> crate::OwnedPtr<Self> {
+        Self::new_shape_real_bool2(S, Tol, false, false)
+    }
+
+    /// Computes the Surface from the edges of  <S> with the
+    /// given tolerance.
+    /// if <OnlyPlane> is true, the computed surface will be
+    /// a plane. If it is not possible to find a plane, the
+    /// flag NotDone will be set.
+    /// If <OnlyClosed> is true,  then  S  should be a wire
+    /// and the existing surface,  on  which wire S is not
+    /// closed in 2D, will be ignored.
+    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+        Self::new_shape_real_bool2(S, -1.0, false, false)
+    }
+
+    /// Computes the Surface from the edges of  <S> with the
+    /// given tolerance.
+    /// if <OnlyPlane> is true, the computed surface will be
+    /// a plane. If it is not possible to find a plane, the
+    /// flag NotDone will be set.
+    /// If <OnlyClosed> is true,  then  S  should be a wire
+    /// and the existing surface,  on  which wire S is not
+    /// closed in 2D, will be ignored.
+    pub fn init(
+        &mut self,
+        S: &crate::ffi::TopoDS_Shape,
+        Tol: f64,
+        OnlyPlane: bool,
+        OnlyClosed: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepLib_FindSurface_init(self as *mut Self, S, Tol, OnlyPlane, OnlyClosed)
+        }
+    }
+
+    pub fn found(&self) -> bool {
+        unsafe { crate::ffi::BRepLib_FindSurface_found(self as *const Self) }
+    }
+
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepLib_FindSurface_surface(self as *const Self))
+        }
+    }
+
+    pub fn tolerance(&self) -> f64 {
+        unsafe { crate::ffi::BRepLib_FindSurface_tolerance(self as *const Self) }
+    }
+
+    pub fn tolerance_reached(&self) -> f64 {
+        unsafe { crate::ffi::BRepLib_FindSurface_tolerance_reached(self as *const Self) }
+    }
+
+    pub fn existed(&self) -> bool {
+        unsafe { crate::ffi::BRepLib_FindSurface_existed(self as *const Self) }
+    }
+
+    pub fn location(&self) -> crate::OwnedPtr<crate::ffi::TopLoc_Location> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepLib_FindSurface_location(self as *const Self))
+        }
+    }
+}
+
+// ========================
+// From BRepLib_FuseEdges.hxx
+// ========================
+
+/// This class can detect  vertices in a face that can
+/// be considered useless and then perform the fuse of
+/// the  edges and remove  the  useless vertices.  By
+/// useles vertices,  we mean :
+/// * vertices that  have  exactly two connex edges
+/// * the edges connex to the vertex must have
+/// exactly the same 2 connex faces .
+/// * The edges connex to the vertex must have the
+/// same geometric support.
+pub use crate::ffi::BRepLib_FuseEdges as FuseEdges;
+
+unsafe impl crate::CppDeletable for FuseEdges {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepLib_FuseEdges_destructor(ptr);
+    }
+}
+
+impl FuseEdges {
+    /// Initialise members  and build  construction of map
+    /// of ancestors.
+    pub fn new_shape_bool(
+        theShape: &crate::ffi::TopoDS_Shape,
+        PerformNow: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepLib_FuseEdges_ctor_shape_bool(
+                theShape, PerformNow,
+            ))
+        }
+    }
+
+    /// Initialise members  and build  construction of map
+    /// of ancestors.
+    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+        Self::new_shape_bool(theShape, false)
+    }
+
+    /// set edges to avoid being fused
+    pub fn avoid_edges(&mut self, theMapEdg: &crate::ffi::TopTools_IndexedMapOfShape) {
+        unsafe { crate::ffi::BRepLib_FuseEdges_avoid_edges(self as *mut Self, theMapEdg) }
+    }
+
+    /// set mode to enable concatenation G1 BSpline edges in one
+    /// End  Modified  by  IFV  19.04.07
+    pub fn set_concat_b_spl(&mut self, theConcatBSpl: bool) {
+        unsafe { crate::ffi::BRepLib_FuseEdges_set_concat_b_spl(self as *mut Self, theConcatBSpl) }
+    }
+
+    /// returns the map of modified faces.
+    pub fn faces(&mut self, theMapFac: &mut crate::ffi::TopTools_DataMapOfShapeShape) {
+        unsafe { crate::ffi::BRepLib_FuseEdges_faces(self as *mut Self, theMapFac) }
+    }
+
+    /// returns myShape modified with the list of internal
+    /// edges removed from it.
+    pub fn shape(&mut self) -> &mut crate::ffi::TopoDS_Shape {
+        unsafe { &mut *(crate::ffi::BRepLib_FuseEdges_shape(self as *mut Self)) }
+    }
+
+    /// returns the number of vertices candidate to be removed
+    pub fn nb_vertices(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepLib_FuseEdges_nb_vertices(self as *mut Self) }
+    }
+
+    /// Using  map of list of connex  edges, fuse each list to
+    /// one edge and then update myShape
+    pub fn perform(&mut self) {
+        unsafe { crate::ffi::BRepLib_FuseEdges_perform(self as *mut Self) }
     }
 }
 
@@ -2870,5 +3277,243 @@ impl MakeWire {
         E: &crate::ffi::TopoDS_Edge,
     ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepLib_MakeWire_inherited_FacesFromEdges(self as *mut Self, E)) }
+    }
+}
+
+// ========================
+// From BRepLib_PointCloudShape.hxx
+// ========================
+
+/// This tool is intended to get points from shape with specified distance from shape along normal.
+/// Can be used to simulation of points obtained in result of laser scan of shape.
+/// There are 2 ways for generation points by shape:
+/// 1. Generation points with specified density
+/// 2. Generation points using triangulation Nodes
+/// Generation of points by density using the GeneratePointsByDensity() function is not thread safe.
+pub use crate::ffi::BRepLib_PointCloudShape as PointCloudShape;
+
+unsafe impl crate::CppDeletable for PointCloudShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepLib_PointCloudShape_destructor(ptr);
+    }
+}
+
+impl PointCloudShape {
+    /// Return loaded shape.
+    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepLib_PointCloudShape_shape(self as *const Self)) }
+    }
+
+    /// Set shape.
+    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepLib_PointCloudShape_set_shape(self as *mut Self, theShape) }
+    }
+
+    /// Return tolerance.
+    pub fn tolerance(&self) -> f64 {
+        unsafe { crate::ffi::BRepLib_PointCloudShape_tolerance(self as *const Self) }
+    }
+
+    /// Set tolerance.
+    pub fn set_tolerance(&mut self, theTol: f64) {
+        unsafe { crate::ffi::BRepLib_PointCloudShape_set_tolerance(self as *mut Self, theTol) }
+    }
+
+    /// Returns value of the distance to define deflection of points from shape along normal to shape;
+    /// 0.0 by default.
+    pub fn get_distance(&self) -> f64 {
+        unsafe { crate::ffi::BRepLib_PointCloudShape_get_distance(self as *const Self) }
+    }
+
+    /// Sets value of the distance to define deflection of points from shape along normal to shape.
+    /// Negative values of theDist parameter are ignored.
+    pub fn set_distance(&mut self, theDist: f64) {
+        unsafe { crate::ffi::BRepLib_PointCloudShape_set_distance(self as *mut Self, theDist) }
+    }
+
+    /// Returns size of the point cloud for specified density.
+    pub fn nb_points_by_density(&mut self, theDensity: f64) -> i32 {
+        unsafe {
+            crate::ffi::BRepLib_PointCloudShape_nb_points_by_density(self as *mut Self, theDensity)
+        }
+    }
+
+    /// Returns size of the point cloud for using triangulation.
+    pub fn nb_points_by_triangulation(&self) -> i32 {
+        unsafe {
+            crate::ffi::BRepLib_PointCloudShape_nb_points_by_triangulation(self as *const Self)
+        }
+    }
+
+    /// Computes points with specified density for initial shape.
+    /// If parameter Density is equal to 0 then density will be computed automatically by criterion:
+    /// - 10 points per minimal unreduced face area.
+    ///
+    /// Note: this function should not be called from concurrent threads without external lock.
+    pub fn generate_points_by_density(&mut self, theDensity: f64) -> bool {
+        unsafe {
+            crate::ffi::BRepLib_PointCloudShape_generate_points_by_density(
+                self as *mut Self,
+                theDensity,
+            )
+        }
+    }
+
+    /// Get points from triangulation existing in the shape.
+    pub fn generate_points_by_triangulation(&mut self) -> bool {
+        unsafe {
+            crate::ffi::BRepLib_PointCloudShape_generate_points_by_triangulation(self as *mut Self)
+        }
+    }
+}
+
+// ========================
+// From BRepLib_ToolTriangulatedShape.hxx
+// ========================
+
+/// Provides methods for calculating normals to Poly_Triangulation of TopoDS_Face.
+pub use crate::ffi::BRepLib_ToolTriangulatedShape as ToolTriangulatedShape;
+
+unsafe impl crate::CppDeletable for ToolTriangulatedShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepLib_ToolTriangulatedShape_destructor(ptr);
+    }
+}
+
+impl ToolTriangulatedShape {
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_ToolTriangulatedShape_ctor()) }
+    }
+
+    /// Computes nodal normals for Poly_Triangulation structure using UV coordinates and surface.
+    /// Does nothing if triangulation already defines normals.
+    /// @param[in] theFace the face
+    /// @param[in] theTris the definition of a face triangulation
+    pub fn compute_normals_face_handlepolytriangulation(
+        theFace: &crate::ffi::TopoDS_Face,
+        theTris: &crate::ffi::HandlePolyTriangulation,
+    ) {
+        unsafe {
+            crate::ffi::BRepLib_ToolTriangulatedShape_compute_normals_face_handlepolytriangulation(
+                theFace, theTris,
+            )
+        }
+    }
+
+    /// Computes nodal normals for Poly_Triangulation structure using UV coordinates and surface.
+    /// Does nothing if triangulation already defines normals.
+    /// @param[in] theFace the face
+    /// @param[in] theTris the definition of a face triangulation
+    /// @param[in,out] thePolyConnect optional, initialized tool for exploring triangulation
+    pub fn compute_normals_face_handlepolytriangulation_connect(
+        theFace: &crate::ffi::TopoDS_Face,
+        theTris: &crate::ffi::HandlePolyTriangulation,
+        thePolyConnect: &mut crate::ffi::Poly_Connect,
+    ) {
+        unsafe {
+            crate::ffi::BRepLib_ToolTriangulatedShape_compute_normals_face_handlepolytriangulation_connect(theFace, theTris, thePolyConnect)
+        }
+    }
+}
+
+// ========================
+// From BRepLib_ValidateEdge.hxx
+// ========================
+
+/// Computes the max distance between 3D-curve and curve on surface.
+/// This class uses 2 methods: approximate using finite
+/// number of points (default) and exact
+pub use crate::ffi::BRepLib_ValidateEdge as ValidateEdge;
+
+unsafe impl crate::CppDeletable for ValidateEdge {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepLib_ValidateEdge_destructor(ptr);
+    }
+}
+
+impl ValidateEdge {
+    /// Sets method to calculate distance: Calculating in finite number of points (if theIsExact
+    /// is false, faster, but possible not correct result) or exact calculating by using
+    /// BRepLib_CheckCurveOnSurface class (if theIsExact is true, slowly, but more correctly).
+    /// Exact method is used only when edge is SameParameter.
+    /// Default method is calculating in finite number of points
+    pub fn set_exact_method(&mut self, theIsExact: bool) {
+        unsafe { crate::ffi::BRepLib_ValidateEdge_set_exact_method(self as *mut Self, theIsExact) }
+    }
+
+    /// Returns true if exact method selected
+    pub fn is_exact_method(&mut self) -> bool {
+        unsafe { crate::ffi::BRepLib_ValidateEdge_is_exact_method(self as *mut Self) }
+    }
+
+    /// Sets parallel flag
+    pub fn set_parallel(&mut self, theIsMultiThread: bool) {
+        unsafe {
+            crate::ffi::BRepLib_ValidateEdge_set_parallel(self as *mut Self, theIsMultiThread)
+        }
+    }
+
+    /// Returns true if parallel flag is set
+    pub fn is_parallel(&mut self) -> bool {
+        unsafe { crate::ffi::BRepLib_ValidateEdge_is_parallel(self as *mut Self) }
+    }
+
+    /// Set control points number (if you need a value other than 22)
+    pub fn set_control_points_number(&mut self, theControlPointsNumber: i32) {
+        unsafe {
+            crate::ffi::BRepLib_ValidateEdge_set_control_points_number(
+                self as *mut Self,
+                theControlPointsNumber,
+            )
+        }
+    }
+
+    /// Sets limit to compute a distance in the Process() function. If the distance greater than
+    /// theToleranceForChecking the Process() function stopped. Use this in case checking of
+    /// tolerance for best performcnce. Has no effect in case using exact method.
+    pub fn set_exit_if_tolerance_exceeded(&mut self, theToleranceForChecking: f64) {
+        unsafe {
+            crate::ffi::BRepLib_ValidateEdge_set_exit_if_tolerance_exceeded(
+                self as *mut Self,
+                theToleranceForChecking,
+            )
+        }
+    }
+
+    /// Computes the max distance for the 3d curve <myReferenceCurve>
+    /// and curve on surface <myOtherCurve>. If the SetExitIfToleranceExceeded()
+    /// function was called before <myCalculatedDistance> contains first
+    /// greater than SetExitIfToleranceExceeded() parameter value. In case
+    /// using exact method always computes real max distance.
+    pub fn process(&mut self) {
+        unsafe { crate::ffi::BRepLib_ValidateEdge_process(self as *mut Self) }
+    }
+
+    /// Returns true if the distance has been found for all points
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepLib_ValidateEdge_is_done(self as *const Self) }
+    }
+
+    /// Returns true if computed distance is less than <theToleranceToCheck>
+    pub fn check_tolerance(&mut self, theToleranceToCheck: f64) -> bool {
+        unsafe {
+            crate::ffi::BRepLib_ValidateEdge_check_tolerance(self as *mut Self, theToleranceToCheck)
+        }
+    }
+
+    /// Returns max distance
+    pub fn get_max_distance(&mut self) -> f64 {
+        unsafe { crate::ffi::BRepLib_ValidateEdge_get_max_distance(self as *mut Self) }
+    }
+
+    /// Increase <theToleranceToUpdate> if max distance is greater than <theToleranceToUpdate>
+    pub fn update_tolerance(&mut self, theToleranceToUpdate: &mut f64) {
+        unsafe {
+            crate::ffi::BRepLib_ValidateEdge_update_tolerance(
+                self as *mut Self,
+                theToleranceToUpdate,
+            )
+        }
     }
 }

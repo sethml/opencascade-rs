@@ -6,6 +6,7 @@
 
 #include <Adaptor2d_Curve2d.hxx>
 #include <Adaptor2d_Line2d.hxx>
+#include <Adaptor2d_OffsetCurve.hxx>
 #include <Adaptor3d_Curve.hxx>
 #include <Adaptor3d_CurveOnSurface.hxx>
 #include <Adaptor3d_HSurfaceTool.hxx>
@@ -120,9 +121,12 @@
 #include <BRepGProp_Vinert.hxx>
 #include <BRepGProp_VinertGK.hxx>
 #include <BRepIntCurveSurface_Inter.hxx>
+#include <BRepLib_CheckCurveOnSurface.hxx>
 #include <BRepLib_Command.hxx>
 #include <BRepLib_EdgeError.hxx>
 #include <BRepLib_FaceError.hxx>
+#include <BRepLib_FindSurface.hxx>
+#include <BRepLib_FuseEdges.hxx>
 #include <BRepLib_MakeEdge.hxx>
 #include <BRepLib_MakeEdge2d.hxx>
 #include <BRepLib_MakeFace.hxx>
@@ -132,8 +136,11 @@
 #include <BRepLib_MakeSolid.hxx>
 #include <BRepLib_MakeVertex.hxx>
 #include <BRepLib_MakeWire.hxx>
+#include <BRepLib_PointCloudShape.hxx>
 #include <BRepLib_ShapeModification.hxx>
 #include <BRepLib_ShellError.hxx>
+#include <BRepLib_ToolTriangulatedShape.hxx>
+#include <BRepLib_ValidateEdge.hxx>
 #include <BRepLib_WireError.hxx>
 #include <BRepMAT2d_BisectingLocus.hxx>
 #include <BRepMAT2d_Explorer.hxx>
@@ -409,6 +416,21 @@
 #include <Extrema_POnSurfParams.hxx>
 #include <Extrema_SequenceOfPOnCurv.hxx>
 #include <Extrema_SequenceOfPOnSurf.hxx>
+#include <GCE2d_MakeArcOfCircle.hxx>
+#include <GCE2d_MakeArcOfEllipse.hxx>
+#include <GCE2d_MakeArcOfHyperbola.hxx>
+#include <GCE2d_MakeArcOfParabola.hxx>
+#include <GCE2d_MakeCircle.hxx>
+#include <GCE2d_MakeEllipse.hxx>
+#include <GCE2d_MakeHyperbola.hxx>
+#include <GCE2d_MakeLine.hxx>
+#include <GCE2d_MakeMirror.hxx>
+#include <GCE2d_MakeParabola.hxx>
+#include <GCE2d_MakeRotation.hxx>
+#include <GCE2d_MakeScale.hxx>
+#include <GCE2d_MakeSegment.hxx>
+#include <GCE2d_MakeTranslation.hxx>
+#include <GCE2d_Root.hxx>
 #include <GCPnts_AbscissaPoint.hxx>
 #include <GCPnts_DistFunction.hxx>
 #include <GCPnts_DistFunction2d.hxx>
@@ -447,13 +469,29 @@
 #include <GProp_VelGProps.hxx>
 #include <Geom2dAdaptor_Curve.hxx>
 #include <Geom2dEvaluator_Curve.hxx>
+#include <Geom2dEvaluator_OffsetCurve.hxx>
+#include <Geom2d_AxisPlacement.hxx>
 #include <Geom2d_BSplineCurve.hxx>
 #include <Geom2d_BezierCurve.hxx>
 #include <Geom2d_BoundedCurve.hxx>
+#include <Geom2d_CartesianPoint.hxx>
+#include <Geom2d_Circle.hxx>
+#include <Geom2d_Conic.hxx>
 #include <Geom2d_Curve.hxx>
+#include <Geom2d_Direction.hxx>
+#include <Geom2d_Ellipse.hxx>
 #include <Geom2d_Geometry.hxx>
+#include <Geom2d_Hyperbola.hxx>
+#include <Geom2d_Line.hxx>
+#include <Geom2d_OffsetCurve.hxx>
+#include <Geom2d_Parabola.hxx>
 #include <Geom2d_Point.hxx>
+#include <Geom2d_Transformation.hxx>
 #include <Geom2d_TrimmedCurve.hxx>
+#include <Geom2d_UndefinedDerivative.hxx>
+#include <Geom2d_UndefinedValue.hxx>
+#include <Geom2d_Vector.hxx>
+#include <Geom2d_VectorWithMagnitude.hxx>
 #include <GeomAPI_ExtremaCurveCurve.hxx>
 #include <GeomAPI_ExtremaCurveSurface.hxx>
 #include <GeomAPI_ExtremaSurfaceSurface.hxx>
@@ -486,6 +524,7 @@
 #include <GeomInt_LineConstructor.hxx>
 #include <GeomInt_VectorOfReal.hxx>
 #include <GeomLProp_SLProps.hxx>
+#include <GeomLib_CheckCurveOnSurface.hxx>
 #include <GeomPlate_Array1OfHCurve.hxx>
 #include <GeomPlate_Array1OfSequenceOfReal.hxx>
 #include <GeomPlate_BuildPlateSurface.hxx>
@@ -780,12 +819,18 @@
 #include <Message_Status.hxx>
 #include <Message_StatusType.hxx>
 #include <MoniTool_SignText.hxx>
+#include <NCollection_AccAllocator.hxx>
+#include <NCollection_AlignedAllocator.hxx>
 #include <NCollection_BaseAllocator.hxx>
 #include <NCollection_BaseList.hxx>
 #include <NCollection_BaseMap.hxx>
 #include <NCollection_BasePointerVector.hxx>
 #include <NCollection_BaseSequence.hxx>
+#include <NCollection_Buffer.hxx>
+#include <NCollection_HeapAllocator.hxx>
 #include <NCollection_IncAllocator.hxx>
+#include <NCollection_SparseArrayBase.hxx>
+#include <NCollection_WinHeapAllocator.hxx>
 #include <OSD_FileSystem.hxx>
 #include <OSD_MemInfo.hxx>
 #include <Plate_Array1OfPinpointConstraint.hxx>
@@ -818,6 +863,9 @@
 #include <Poly_Triangle.hxx>
 #include <Poly_Triangulation.hxx>
 #include <Poly_TriangulationParameters.hxx>
+#include <Quantity_Color.hxx>
+#include <Quantity_NameOfColor.hxx>
+#include <Quantity_TypeOfColor.hxx>
 #include <Resource_FormatType.hxx>
 #include <STEPConstruct_AP203Context.hxx>
 #include <STEPConstruct_Assembly.hxx>
@@ -885,31 +933,53 @@
 #include <ShapeUpgrade_Tool.hxx>
 #include <ShapeUpgrade_UnifySameDomain.hxx>
 #include <ShapeUpgrade_WireDivide.hxx>
+#include <Standard_AbortiveTransaction.hxx>
+#include <Standard_ArrayStreamBuffer.hxx>
+#include <Standard_Byte.hxx>
+#include <Standard_CLocaleSentry.hxx>
 #include <Standard_Character.hxx>
+#include <Standard_Condition.hxx>
 #include <Standard_ConstructionError.hxx>
 #include <Standard_DimensionError.hxx>
 #include <Standard_DimensionMismatch.hxx>
+#include <Standard_DivideByZero.hxx>
 #include <Standard_DomainError.hxx>
 #include <Standard_Dump.hxx>
 #include <Standard_ErrorHandler.hxx>
 #include <Standard_ExtCharacter.hxx>
 #include <Standard_Failure.hxx>
+#include <Standard_GUID.hxx>
 #include <Standard_Handle.hxx>
+#include <Standard_ImmutableObject.hxx>
 #include <Standard_JmpBuf.hxx>
+#include <Standard_LicenseError.hxx>
+#include <Standard_LicenseNotFound.hxx>
+#include <Standard_MMgrOpt.hxx>
+#include <Standard_MMgrRoot.hxx>
+#include <Standard_MultiplyDefined.hxx>
 #include <Standard_Mutex.hxx>
+#include <Standard_NegativeValue.hxx>
+#include <Standard_NoMoreObject.hxx>
 #include <Standard_NoSuchObject.hxx>
 #include <Standard_NotImplemented.hxx>
 #include <Standard_NullObject.hxx>
+#include <Standard_NullValue.hxx>
 #include <Standard_NumericError.hxx>
 #include <Standard_OutOfMemory.hxx>
 #include <Standard_OutOfRange.hxx>
+#include <Standard_Overflow.hxx>
 #include <Standard_PCharacter.hxx>
+#include <Standard_PExtCharacter.hxx>
+#include <Standard_Persistent.hxx>
 #include <Standard_ProgramError.hxx>
 #include <Standard_RangeError.hxx>
+#include <Standard_ReadLineBuffer.hxx>
 #include <Standard_SStream.hxx>
 #include <Standard_Transient.hxx>
 #include <Standard_Type.hxx>
 #include <Standard_TypeMismatch.hxx>
+#include <Standard_UUID.hxx>
+#include <Standard_Underflow.hxx>
 #include <StdFail_NotDone.hxx>
 #include <StepAP203_CcDesignApproval.hxx>
 #include <StepAP203_CcDesignDateAndTimeAssignment.hxx>
@@ -950,20 +1020,37 @@
 #include <TColGeom_HSequenceOfBoundedCurve.hxx>
 #include <TColGeom_SequenceOfBoundedCurve.hxx>
 #include <TColGeom_SequenceOfCurve.hxx>
+#include <TColStd_Array1OfAsciiString.hxx>
 #include <TColStd_Array1OfBoolean.hxx>
+#include <TColStd_Array1OfByte.hxx>
+#include <TColStd_Array1OfCharacter.hxx>
+#include <TColStd_Array1OfExtendedString.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_Array1OfListOfInteger.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_Array1OfTransient.hxx>
+#include <TColStd_Array2OfBoolean.hxx>
+#include <TColStd_Array2OfCharacter.hxx>
+#include <TColStd_Array2OfInteger.hxx>
 #include <TColStd_Array2OfReal.hxx>
+#include <TColStd_Array2OfTransient.hxx>
+#include <TColStd_HArray1OfAsciiString.hxx>
 #include <TColStd_HArray1OfBoolean.hxx>
+#include <TColStd_HArray1OfByte.hxx>
+#include <TColStd_HArray1OfCharacter.hxx>
+#include <TColStd_HArray1OfExtendedString.hxx>
 #include <TColStd_HArray1OfInteger.hxx>
 #include <TColStd_HArray1OfListOfInteger.hxx>
 #include <TColStd_HArray1OfReal.hxx>
 #include <TColStd_HArray1OfTransient.hxx>
+#include <TColStd_HArray2OfBoolean.hxx>
+#include <TColStd_HArray2OfCharacter.hxx>
+#include <TColStd_HArray2OfInteger.hxx>
 #include <TColStd_HArray2OfReal.hxx>
+#include <TColStd_HArray2OfTransient.hxx>
 #include <TColStd_HPackedMapOfInteger.hxx>
 #include <TColStd_HSequenceOfAsciiString.hxx>
+#include <TColStd_HSequenceOfExtendedString.hxx>
 #include <TColStd_HSequenceOfHAsciiString.hxx>
 #include <TColStd_HSequenceOfHExtendedString.hxx>
 #include <TColStd_HSequenceOfInteger.hxx>
@@ -973,6 +1060,7 @@
 #include <TColStd_MapOfAsciiString.hxx>
 #include <TColStd_PackedMapOfInteger.hxx>
 #include <TColStd_SequenceOfAsciiString.hxx>
+#include <TColStd_SequenceOfExtendedString.hxx>
 #include <TColStd_SequenceOfHAsciiString.hxx>
 #include <TColStd_SequenceOfHExtendedString.hxx>
 #include <TColStd_SequenceOfInteger.hxx>
@@ -1053,6 +1141,8 @@
 #include <TopTools_Array1OfListOfShape.hxx>
 #include <TopTools_Array1OfShape.hxx>
 #include <TopTools_Array2OfShape.hxx>
+#include <TopTools_DataMapOfIntegerListOfShape.hxx>
+#include <TopTools_DataMapOfIntegerShape.hxx>
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
 #include <TopTools_DataMapOfShapeReal.hxx>
 #include <TopTools_DataMapOfShapeShape.hxx>
@@ -1152,12 +1242,62 @@
 #include <gp_VectorWithNullMagnitude.hxx>
 #include <gp_XY.hxx>
 #include <gp_XYZ.hxx>
+#include <math_BFGS.hxx>
+#include <math_BissecNewton.hxx>
+#include <math_BracketMinimum.hxx>
+#include <math_BracketedRoot.hxx>
+#include <math_BrentMinimum.hxx>
+#include <math_BullardGenerator.hxx>
+#include <math_ComputeGaussPointsAndWeights.hxx>
+#include <math_ComputeKronrodPointsAndWeights.hxx>
+#include <math_Crout.hxx>
+#include <math_DirectPolynomialRoots.hxx>
+#include <math_DoubleTab.hxx>
+#include <math_EigenValuesSearcher.hxx>
+#include <math_FRPR.hxx>
+#include <math_Function.hxx>
+#include <math_FunctionAllRoots.hxx>
+#include <math_FunctionRoot.hxx>
+#include <math_FunctionRoots.hxx>
+#include <math_FunctionSample.hxx>
+#include <math_FunctionSet.hxx>
+#include <math_FunctionSetRoot.hxx>
+#include <math_FunctionSetWithDerivatives.hxx>
+#include <math_FunctionWithDerivative.hxx>
+#include <math_Gauss.hxx>
+#include <math_GaussLeastSquare.hxx>
+#include <math_GaussMultipleIntegration.hxx>
+#include <math_GaussSetIntegration.hxx>
+#include <math_GaussSingleIntegration.hxx>
+#include <math_GlobOptMin.hxx>
+#include <math_Householder.hxx>
+#include <math_IntegerVector.hxx>
+#include <math_Jacobi.hxx>
+#include <math_KronrodSingleIntegration.hxx>
 #include <math_Matrix.hxx>
+#include <math_MultipleVarFunction.hxx>
+#include <math_MultipleVarFunctionWithGradient.hxx>
+#include <math_MultipleVarFunctionWithHessian.hxx>
+#include <math_NewtonFunctionRoot.hxx>
+#include <math_NewtonFunctionSetRoot.hxx>
+#include <math_NewtonMinimum.hxx>
+#include <math_NotSquare.hxx>
+#include <math_PSO.hxx>
+#include <math_PSOParticlesPool.hxx>
+#include <math_Powell.hxx>
+#include <math_SVD.hxx>
+#include <math_SingularMatrix.hxx>
+#include <math_Status.hxx>
+#include <math_TrigonometricEquationFunction.hxx>
+#include <math_TrigonometricFunctionRoots.hxx>
+#include <math_Uzawa.hxx>
+#include <math_ValueAndWeight.hxx>
 #include <math_Vector.hxx>
 
 // Handle type aliases
 typedef opencascade::handle<Adaptor2d_Curve2d> HandleAdaptor2dCurve2d;
 typedef opencascade::handle<Adaptor3d_Curve> HandleAdaptor3dCurve;
+typedef opencascade::handle<Adaptor3d_CurveOnSurface> HandleAdaptor3dCurveOnSurface;
 typedef opencascade::handle<Adaptor3d_HVertex> HandleAdaptor3dHVertex;
 typedef opencascade::handle<Adaptor3d_Surface> HandleAdaptor3dSurface;
 typedef opencascade::handle<Adaptor3d_TopolTool> HandleAdaptor3dTopolTool;
@@ -1202,14 +1342,30 @@ typedef opencascade::handle<Extrema_HArray2OfPOnCurv> HandleExtremaHArray2OfPOnC
 typedef opencascade::handle<Extrema_HArray2OfPOnCurv2d> HandleExtremaHArray2OfPOnCurv2d;
 typedef opencascade::handle<Extrema_HArray2OfPOnSurf> HandleExtremaHArray2OfPOnSurf;
 typedef opencascade::handle<GProp_UndefinedAxis> HandleGPropUndefinedAxis;
+typedef opencascade::handle<Geom2dAdaptor_Curve> HandleGeom2dAdaptorCurve;
 typedef opencascade::handle<Geom2dEvaluator_Curve> HandleGeom2dEvaluatorCurve;
+typedef opencascade::handle<Geom2d_AxisPlacement> HandleGeom2dAxisPlacement;
 typedef opencascade::handle<Geom2d_BSplineCurve> HandleGeom2dBSplineCurve;
 typedef opencascade::handle<Geom2d_BezierCurve> HandleGeom2dBezierCurve;
 typedef opencascade::handle<Geom2d_BoundedCurve> HandleGeom2dBoundedCurve;
+typedef opencascade::handle<Geom2d_CartesianPoint> HandleGeom2dCartesianPoint;
+typedef opencascade::handle<Geom2d_Circle> HandleGeom2dCircle;
+typedef opencascade::handle<Geom2d_Conic> HandleGeom2dConic;
 typedef opencascade::handle<Geom2d_Curve> HandleGeom2dCurve;
+typedef opencascade::handle<Geom2d_Direction> HandleGeom2dDirection;
+typedef opencascade::handle<Geom2d_Ellipse> HandleGeom2dEllipse;
 typedef opencascade::handle<Geom2d_Geometry> HandleGeom2dGeometry;
+typedef opencascade::handle<Geom2d_Hyperbola> HandleGeom2dHyperbola;
+typedef opencascade::handle<Geom2d_Line> HandleGeom2dLine;
+typedef opencascade::handle<Geom2d_OffsetCurve> HandleGeom2dOffsetCurve;
+typedef opencascade::handle<Geom2d_Parabola> HandleGeom2dParabola;
 typedef opencascade::handle<Geom2d_Point> HandleGeom2dPoint;
+typedef opencascade::handle<Geom2d_Transformation> HandleGeom2dTransformation;
 typedef opencascade::handle<Geom2d_TrimmedCurve> HandleGeom2dTrimmedCurve;
+typedef opencascade::handle<Geom2d_UndefinedDerivative> HandleGeom2dUndefinedDerivative;
+typedef opencascade::handle<Geom2d_UndefinedValue> HandleGeom2dUndefinedValue;
+typedef opencascade::handle<Geom2d_Vector> HandleGeom2dVector;
+typedef opencascade::handle<Geom2d_VectorWithMagnitude> HandleGeom2dVectorWithMagnitude;
 typedef opencascade::handle<GeomAdaptor_Curve> HandleGeomAdaptorCurve;
 typedef opencascade::handle<GeomAdaptor_Surface> HandleGeomAdaptorSurface;
 typedef opencascade::handle<GeomAdaptor_SurfaceOfLinearExtrusion> HandleGeomAdaptorSurfaceOfLinearExtrusion;
@@ -1354,6 +1510,8 @@ typedef opencascade::handle<Message_ProgressIndicator> HandleMessageProgressIndi
 typedef opencascade::handle<Message_Report> HandleMessageReport;
 typedef opencascade::handle<MoniTool_SignText> HandleMoniToolSignText;
 typedef opencascade::handle<NCollection_BaseAllocator> HandleNCollectionBaseAllocator;
+typedef opencascade::handle<NCollection_Buffer> HandleNCollectionBuffer;
+typedef opencascade::handle<NCollection_HeapAllocator> HandleNCollectionHeapAllocator;
 typedef opencascade::handle<NCollection_IncAllocator> HandleNCollectionIncAllocator;
 typedef opencascade::handle<OSD_FileSystem> HandleOSDFileSystem;
 typedef opencascade::handle<Plate_HArray1OfPinpointConstraint> HandlePlateHArray1OfPinpointConstraint;
@@ -1387,22 +1545,34 @@ typedef opencascade::handle<ShapeUpgrade_SplitSurface> HandleShapeUpgradeSplitSu
 typedef opencascade::handle<ShapeUpgrade_Tool> HandleShapeUpgradeTool;
 typedef opencascade::handle<ShapeUpgrade_UnifySameDomain> HandleShapeUpgradeUnifySameDomain;
 typedef opencascade::handle<ShapeUpgrade_WireDivide> HandleShapeUpgradeWireDivide;
+typedef opencascade::handle<Standard_AbortiveTransaction> HandleStandardAbortiveTransaction;
 typedef opencascade::handle<Standard_ConstructionError> HandleStandardConstructionError;
 typedef opencascade::handle<Standard_DimensionError> HandleStandardDimensionError;
 typedef opencascade::handle<Standard_DimensionMismatch> HandleStandardDimensionMismatch;
+typedef opencascade::handle<Standard_DivideByZero> HandleStandardDivideByZero;
 typedef opencascade::handle<Standard_DomainError> HandleStandardDomainError;
 typedef opencascade::handle<Standard_Failure> HandleStandardFailure;
+typedef opencascade::handle<Standard_ImmutableObject> HandleStandardImmutableObject;
+typedef opencascade::handle<Standard_LicenseError> HandleStandardLicenseError;
+typedef opencascade::handle<Standard_LicenseNotFound> HandleStandardLicenseNotFound;
+typedef opencascade::handle<Standard_MultiplyDefined> HandleStandardMultiplyDefined;
+typedef opencascade::handle<Standard_NegativeValue> HandleStandardNegativeValue;
+typedef opencascade::handle<Standard_NoMoreObject> HandleStandardNoMoreObject;
 typedef opencascade::handle<Standard_NoSuchObject> HandleStandardNoSuchObject;
 typedef opencascade::handle<Standard_NotImplemented> HandleStandardNotImplemented;
 typedef opencascade::handle<Standard_NullObject> HandleStandardNullObject;
+typedef opencascade::handle<Standard_NullValue> HandleStandardNullValue;
 typedef opencascade::handle<Standard_NumericError> HandleStandardNumericError;
 typedef opencascade::handle<Standard_OutOfMemory> HandleStandardOutOfMemory;
 typedef opencascade::handle<Standard_OutOfRange> HandleStandardOutOfRange;
+typedef opencascade::handle<Standard_Overflow> HandleStandardOverflow;
+typedef opencascade::handle<Standard_Persistent> HandleStandardPersistent;
 typedef opencascade::handle<Standard_ProgramError> HandleStandardProgramError;
 typedef opencascade::handle<Standard_RangeError> HandleStandardRangeError;
 typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
 typedef opencascade::handle<Standard_Type> HandleStandardType;
 typedef opencascade::handle<Standard_TypeMismatch> HandleStandardTypeMismatch;
+typedef opencascade::handle<Standard_Underflow> HandleStandardUnderflow;
 typedef opencascade::handle<StdFail_NotDone> HandleStdFailNotDone;
 typedef opencascade::handle<StepAP203_CcDesignApproval> HandleStepAP203CcDesignApproval;
 typedef opencascade::handle<StepAP203_CcDesignDateAndTimeAssignment> HandleStepAP203CcDesignDateAndTimeAssignment;
@@ -1430,14 +1600,23 @@ typedef opencascade::handle<TColGeom2d_HArray1OfCurve> HandleTColGeom2dHArray1Of
 typedef opencascade::handle<TColGeom2d_HSequenceOfBoundedCurve> HandleTColGeom2dHSequenceOfBoundedCurve;
 typedef opencascade::handle<TColGeom_HArray1OfCurve> HandleTColGeomHArray1OfCurve;
 typedef opencascade::handle<TColGeom_HSequenceOfBoundedCurve> HandleTColGeomHSequenceOfBoundedCurve;
+typedef opencascade::handle<TColStd_HArray1OfAsciiString> HandleTColStdHArray1OfAsciiString;
 typedef opencascade::handle<TColStd_HArray1OfBoolean> HandleTColStdHArray1OfBoolean;
+typedef opencascade::handle<TColStd_HArray1OfByte> HandleTColStdHArray1OfByte;
+typedef opencascade::handle<TColStd_HArray1OfCharacter> HandleTColStdHArray1OfCharacter;
+typedef opencascade::handle<TColStd_HArray1OfExtendedString> HandleTColStdHArray1OfExtendedString;
 typedef opencascade::handle<TColStd_HArray1OfInteger> HandleTColStdHArray1OfInteger;
 typedef opencascade::handle<TColStd_HArray1OfListOfInteger> HandleTColStdHArray1OfListOfInteger;
 typedef opencascade::handle<TColStd_HArray1OfReal> HandleTColStdHArray1OfReal;
 typedef opencascade::handle<TColStd_HArray1OfTransient> HandleTColStdHArray1OfTransient;
+typedef opencascade::handle<TColStd_HArray2OfBoolean> HandleTColStdHArray2OfBoolean;
+typedef opencascade::handle<TColStd_HArray2OfCharacter> HandleTColStdHArray2OfCharacter;
+typedef opencascade::handle<TColStd_HArray2OfInteger> HandleTColStdHArray2OfInteger;
 typedef opencascade::handle<TColStd_HArray2OfReal> HandleTColStdHArray2OfReal;
+typedef opencascade::handle<TColStd_HArray2OfTransient> HandleTColStdHArray2OfTransient;
 typedef opencascade::handle<TColStd_HPackedMapOfInteger> HandleTColStdHPackedMapOfInteger;
 typedef opencascade::handle<TColStd_HSequenceOfAsciiString> HandleTColStdHSequenceOfAsciiString;
+typedef opencascade::handle<TColStd_HSequenceOfExtendedString> HandleTColStdHSequenceOfExtendedString;
 typedef opencascade::handle<TColStd_HSequenceOfHAsciiString> HandleTColStdHSequenceOfHAsciiString;
 typedef opencascade::handle<TColStd_HSequenceOfHExtendedString> HandleTColStdHSequenceOfHExtendedString;
 typedef opencascade::handle<TColStd_HSequenceOfInteger> HandleTColStdHSequenceOfInteger;
@@ -1500,10 +1679,13 @@ typedef opencascade::handle<Transfer_TransientProcess> HandleTransferTransientPr
 typedef opencascade::handle<XSControl_Controller> HandleXSControlController;
 typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
 typedef opencascade::handle<gp_VectorWithNullMagnitude> HandlegpVectorWithNullMagnitude;
+typedef opencascade::handle<math_NotSquare> HandlemathNotSquare;
+typedef opencascade::handle<math_SingularMatrix> HandlemathSingularMatrix;
 
 // Handle type destructors
 extern "C" void HandleAdaptor2dCurve2d_destructor(HandleAdaptor2dCurve2d* self_) { delete self_; }
 extern "C" void HandleAdaptor3dCurve_destructor(HandleAdaptor3dCurve* self_) { delete self_; }
+extern "C" void HandleAdaptor3dCurveOnSurface_destructor(HandleAdaptor3dCurveOnSurface* self_) { delete self_; }
 extern "C" void HandleAdaptor3dHVertex_destructor(HandleAdaptor3dHVertex* self_) { delete self_; }
 extern "C" void HandleAdaptor3dSurface_destructor(HandleAdaptor3dSurface* self_) { delete self_; }
 extern "C" void HandleAdaptor3dTopolTool_destructor(HandleAdaptor3dTopolTool* self_) { delete self_; }
@@ -1548,14 +1730,30 @@ extern "C" void HandleExtremaHArray2OfPOnCurv_destructor(HandleExtremaHArray2OfP
 extern "C" void HandleExtremaHArray2OfPOnCurv2d_destructor(HandleExtremaHArray2OfPOnCurv2d* self_) { delete self_; }
 extern "C" void HandleExtremaHArray2OfPOnSurf_destructor(HandleExtremaHArray2OfPOnSurf* self_) { delete self_; }
 extern "C" void HandleGPropUndefinedAxis_destructor(HandleGPropUndefinedAxis* self_) { delete self_; }
+extern "C" void HandleGeom2dAdaptorCurve_destructor(HandleGeom2dAdaptorCurve* self_) { delete self_; }
 extern "C" void HandleGeom2dEvaluatorCurve_destructor(HandleGeom2dEvaluatorCurve* self_) { delete self_; }
+extern "C" void HandleGeom2dAxisPlacement_destructor(HandleGeom2dAxisPlacement* self_) { delete self_; }
 extern "C" void HandleGeom2dBSplineCurve_destructor(HandleGeom2dBSplineCurve* self_) { delete self_; }
 extern "C" void HandleGeom2dBezierCurve_destructor(HandleGeom2dBezierCurve* self_) { delete self_; }
 extern "C" void HandleGeom2dBoundedCurve_destructor(HandleGeom2dBoundedCurve* self_) { delete self_; }
+extern "C" void HandleGeom2dCartesianPoint_destructor(HandleGeom2dCartesianPoint* self_) { delete self_; }
+extern "C" void HandleGeom2dCircle_destructor(HandleGeom2dCircle* self_) { delete self_; }
+extern "C" void HandleGeom2dConic_destructor(HandleGeom2dConic* self_) { delete self_; }
 extern "C" void HandleGeom2dCurve_destructor(HandleGeom2dCurve* self_) { delete self_; }
+extern "C" void HandleGeom2dDirection_destructor(HandleGeom2dDirection* self_) { delete self_; }
+extern "C" void HandleGeom2dEllipse_destructor(HandleGeom2dEllipse* self_) { delete self_; }
 extern "C" void HandleGeom2dGeometry_destructor(HandleGeom2dGeometry* self_) { delete self_; }
+extern "C" void HandleGeom2dHyperbola_destructor(HandleGeom2dHyperbola* self_) { delete self_; }
+extern "C" void HandleGeom2dLine_destructor(HandleGeom2dLine* self_) { delete self_; }
+extern "C" void HandleGeom2dOffsetCurve_destructor(HandleGeom2dOffsetCurve* self_) { delete self_; }
+extern "C" void HandleGeom2dParabola_destructor(HandleGeom2dParabola* self_) { delete self_; }
 extern "C" void HandleGeom2dPoint_destructor(HandleGeom2dPoint* self_) { delete self_; }
+extern "C" void HandleGeom2dTransformation_destructor(HandleGeom2dTransformation* self_) { delete self_; }
 extern "C" void HandleGeom2dTrimmedCurve_destructor(HandleGeom2dTrimmedCurve* self_) { delete self_; }
+extern "C" void HandleGeom2dUndefinedDerivative_destructor(HandleGeom2dUndefinedDerivative* self_) { delete self_; }
+extern "C" void HandleGeom2dUndefinedValue_destructor(HandleGeom2dUndefinedValue* self_) { delete self_; }
+extern "C" void HandleGeom2dVector_destructor(HandleGeom2dVector* self_) { delete self_; }
+extern "C" void HandleGeom2dVectorWithMagnitude_destructor(HandleGeom2dVectorWithMagnitude* self_) { delete self_; }
 extern "C" void HandleGeomAdaptorCurve_destructor(HandleGeomAdaptorCurve* self_) { delete self_; }
 extern "C" void HandleGeomAdaptorSurface_destructor(HandleGeomAdaptorSurface* self_) { delete self_; }
 extern "C" void HandleGeomAdaptorSurfaceOfLinearExtrusion_destructor(HandleGeomAdaptorSurfaceOfLinearExtrusion* self_) { delete self_; }
@@ -1700,6 +1898,8 @@ extern "C" void HandleMessageProgressIndicator_destructor(HandleMessageProgressI
 extern "C" void HandleMessageReport_destructor(HandleMessageReport* self_) { delete self_; }
 extern "C" void HandleMoniToolSignText_destructor(HandleMoniToolSignText* self_) { delete self_; }
 extern "C" void HandleNCollectionBaseAllocator_destructor(HandleNCollectionBaseAllocator* self_) { delete self_; }
+extern "C" void HandleNCollectionBuffer_destructor(HandleNCollectionBuffer* self_) { delete self_; }
+extern "C" void HandleNCollectionHeapAllocator_destructor(HandleNCollectionHeapAllocator* self_) { delete self_; }
 extern "C" void HandleNCollectionIncAllocator_destructor(HandleNCollectionIncAllocator* self_) { delete self_; }
 extern "C" void HandleOSDFileSystem_destructor(HandleOSDFileSystem* self_) { delete self_; }
 extern "C" void HandlePlateHArray1OfPinpointConstraint_destructor(HandlePlateHArray1OfPinpointConstraint* self_) { delete self_; }
@@ -1733,22 +1933,34 @@ extern "C" void HandleShapeUpgradeSplitSurface_destructor(HandleShapeUpgradeSpli
 extern "C" void HandleShapeUpgradeTool_destructor(HandleShapeUpgradeTool* self_) { delete self_; }
 extern "C" void HandleShapeUpgradeUnifySameDomain_destructor(HandleShapeUpgradeUnifySameDomain* self_) { delete self_; }
 extern "C" void HandleShapeUpgradeWireDivide_destructor(HandleShapeUpgradeWireDivide* self_) { delete self_; }
+extern "C" void HandleStandardAbortiveTransaction_destructor(HandleStandardAbortiveTransaction* self_) { delete self_; }
 extern "C" void HandleStandardConstructionError_destructor(HandleStandardConstructionError* self_) { delete self_; }
 extern "C" void HandleStandardDimensionError_destructor(HandleStandardDimensionError* self_) { delete self_; }
 extern "C" void HandleStandardDimensionMismatch_destructor(HandleStandardDimensionMismatch* self_) { delete self_; }
+extern "C" void HandleStandardDivideByZero_destructor(HandleStandardDivideByZero* self_) { delete self_; }
 extern "C" void HandleStandardDomainError_destructor(HandleStandardDomainError* self_) { delete self_; }
 extern "C" void HandleStandardFailure_destructor(HandleStandardFailure* self_) { delete self_; }
+extern "C" void HandleStandardImmutableObject_destructor(HandleStandardImmutableObject* self_) { delete self_; }
+extern "C" void HandleStandardLicenseError_destructor(HandleStandardLicenseError* self_) { delete self_; }
+extern "C" void HandleStandardLicenseNotFound_destructor(HandleStandardLicenseNotFound* self_) { delete self_; }
+extern "C" void HandleStandardMultiplyDefined_destructor(HandleStandardMultiplyDefined* self_) { delete self_; }
+extern "C" void HandleStandardNegativeValue_destructor(HandleStandardNegativeValue* self_) { delete self_; }
+extern "C" void HandleStandardNoMoreObject_destructor(HandleStandardNoMoreObject* self_) { delete self_; }
 extern "C" void HandleStandardNoSuchObject_destructor(HandleStandardNoSuchObject* self_) { delete self_; }
 extern "C" void HandleStandardNotImplemented_destructor(HandleStandardNotImplemented* self_) { delete self_; }
 extern "C" void HandleStandardNullObject_destructor(HandleStandardNullObject* self_) { delete self_; }
+extern "C" void HandleStandardNullValue_destructor(HandleStandardNullValue* self_) { delete self_; }
 extern "C" void HandleStandardNumericError_destructor(HandleStandardNumericError* self_) { delete self_; }
 extern "C" void HandleStandardOutOfMemory_destructor(HandleStandardOutOfMemory* self_) { delete self_; }
 extern "C" void HandleStandardOutOfRange_destructor(HandleStandardOutOfRange* self_) { delete self_; }
+extern "C" void HandleStandardOverflow_destructor(HandleStandardOverflow* self_) { delete self_; }
+extern "C" void HandleStandardPersistent_destructor(HandleStandardPersistent* self_) { delete self_; }
 extern "C" void HandleStandardProgramError_destructor(HandleStandardProgramError* self_) { delete self_; }
 extern "C" void HandleStandardRangeError_destructor(HandleStandardRangeError* self_) { delete self_; }
 extern "C" void HandleStandardTransient_destructor(HandleStandardTransient* self_) { delete self_; }
 extern "C" void HandleStandardType_destructor(HandleStandardType* self_) { delete self_; }
 extern "C" void HandleStandardTypeMismatch_destructor(HandleStandardTypeMismatch* self_) { delete self_; }
+extern "C" void HandleStandardUnderflow_destructor(HandleStandardUnderflow* self_) { delete self_; }
 extern "C" void HandleStdFailNotDone_destructor(HandleStdFailNotDone* self_) { delete self_; }
 extern "C" void HandleStepAP203CcDesignApproval_destructor(HandleStepAP203CcDesignApproval* self_) { delete self_; }
 extern "C" void HandleStepAP203CcDesignDateAndTimeAssignment_destructor(HandleStepAP203CcDesignDateAndTimeAssignment* self_) { delete self_; }
@@ -1776,14 +1988,23 @@ extern "C" void HandleTColGeom2dHArray1OfCurve_destructor(HandleTColGeom2dHArray
 extern "C" void HandleTColGeom2dHSequenceOfBoundedCurve_destructor(HandleTColGeom2dHSequenceOfBoundedCurve* self_) { delete self_; }
 extern "C" void HandleTColGeomHArray1OfCurve_destructor(HandleTColGeomHArray1OfCurve* self_) { delete self_; }
 extern "C" void HandleTColGeomHSequenceOfBoundedCurve_destructor(HandleTColGeomHSequenceOfBoundedCurve* self_) { delete self_; }
+extern "C" void HandleTColStdHArray1OfAsciiString_destructor(HandleTColStdHArray1OfAsciiString* self_) { delete self_; }
 extern "C" void HandleTColStdHArray1OfBoolean_destructor(HandleTColStdHArray1OfBoolean* self_) { delete self_; }
+extern "C" void HandleTColStdHArray1OfByte_destructor(HandleTColStdHArray1OfByte* self_) { delete self_; }
+extern "C" void HandleTColStdHArray1OfCharacter_destructor(HandleTColStdHArray1OfCharacter* self_) { delete self_; }
+extern "C" void HandleTColStdHArray1OfExtendedString_destructor(HandleTColStdHArray1OfExtendedString* self_) { delete self_; }
 extern "C" void HandleTColStdHArray1OfInteger_destructor(HandleTColStdHArray1OfInteger* self_) { delete self_; }
 extern "C" void HandleTColStdHArray1OfListOfInteger_destructor(HandleTColStdHArray1OfListOfInteger* self_) { delete self_; }
 extern "C" void HandleTColStdHArray1OfReal_destructor(HandleTColStdHArray1OfReal* self_) { delete self_; }
 extern "C" void HandleTColStdHArray1OfTransient_destructor(HandleTColStdHArray1OfTransient* self_) { delete self_; }
+extern "C" void HandleTColStdHArray2OfBoolean_destructor(HandleTColStdHArray2OfBoolean* self_) { delete self_; }
+extern "C" void HandleTColStdHArray2OfCharacter_destructor(HandleTColStdHArray2OfCharacter* self_) { delete self_; }
+extern "C" void HandleTColStdHArray2OfInteger_destructor(HandleTColStdHArray2OfInteger* self_) { delete self_; }
 extern "C" void HandleTColStdHArray2OfReal_destructor(HandleTColStdHArray2OfReal* self_) { delete self_; }
+extern "C" void HandleTColStdHArray2OfTransient_destructor(HandleTColStdHArray2OfTransient* self_) { delete self_; }
 extern "C" void HandleTColStdHPackedMapOfInteger_destructor(HandleTColStdHPackedMapOfInteger* self_) { delete self_; }
 extern "C" void HandleTColStdHSequenceOfAsciiString_destructor(HandleTColStdHSequenceOfAsciiString* self_) { delete self_; }
+extern "C" void HandleTColStdHSequenceOfExtendedString_destructor(HandleTColStdHSequenceOfExtendedString* self_) { delete self_; }
 extern "C" void HandleTColStdHSequenceOfHAsciiString_destructor(HandleTColStdHSequenceOfHAsciiString* self_) { delete self_; }
 extern "C" void HandleTColStdHSequenceOfHExtendedString_destructor(HandleTColStdHSequenceOfHExtendedString* self_) { delete self_; }
 extern "C" void HandleTColStdHSequenceOfInteger_destructor(HandleTColStdHSequenceOfInteger* self_) { delete self_; }
@@ -1846,6 +2067,365 @@ extern "C" void HandleTransferTransientProcess_destructor(HandleTransferTransien
 extern "C" void HandleXSControlController_destructor(HandleXSControlController* self_) { delete self_; }
 extern "C" void HandleXSControlWorkSession_destructor(HandleXSControlWorkSession* self_) { delete self_; }
 extern "C" void HandlegpVectorWithNullMagnitude_destructor(HandlegpVectorWithNullMagnitude* self_) { delete self_; }
+extern "C" void HandlemathNotSquare_destructor(HandlemathNotSquare* self_) { delete self_; }
+extern "C" void HandlemathSingularMatrix_destructor(HandlemathSingularMatrix* self_) { delete self_; }
+
+// ========================
+// Adaptor2d_Curve2d wrappers
+// ========================
+
+extern "C" Adaptor2d_Curve2d* Adaptor2d_Curve2d_ctor() {
+    return new Adaptor2d_Curve2d();
+}
+extern "C" opencascade::handle<Adaptor2d_Curve2d>* Adaptor2d_Curve2d_shallow_copy(const Adaptor2d_Curve2d* self_) {
+    return new opencascade::handle<Adaptor2d_Curve2d>(self_->ShallowCopy());
+}
+extern "C" opencascade::handle<Adaptor2d_Curve2d>* Adaptor2d_Curve2d_trim(const Adaptor2d_Curve2d* self_, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
+    return new opencascade::handle<Adaptor2d_Curve2d>(self_->Trim(First, Last, Tol));
+}
+extern "C" gp_Pnt2d* Adaptor2d_Curve2d_value(const Adaptor2d_Curve2d* self_, Standard_Real U) {
+    return new gp_Pnt2d(self_->Value(U));
+}
+extern "C" gp_Vec2d* Adaptor2d_Curve2d_dn(const Adaptor2d_Curve2d* self_, Standard_Real U, Standard_Integer N) {
+    return new gp_Vec2d(self_->DN(U, N));
+}
+extern "C" gp_Lin2d* Adaptor2d_Curve2d_line(const Adaptor2d_Curve2d* self_) {
+    return new gp_Lin2d(self_->Line());
+}
+extern "C" gp_Circ2d* Adaptor2d_Curve2d_circle(const Adaptor2d_Curve2d* self_) {
+    return new gp_Circ2d(self_->Circle());
+}
+extern "C" gp_Elips2d* Adaptor2d_Curve2d_ellipse(const Adaptor2d_Curve2d* self_) {
+    return new gp_Elips2d(self_->Ellipse());
+}
+extern "C" gp_Hypr2d* Adaptor2d_Curve2d_hyperbola(const Adaptor2d_Curve2d* self_) {
+    return new gp_Hypr2d(self_->Hyperbola());
+}
+extern "C" gp_Parab2d* Adaptor2d_Curve2d_parabola(const Adaptor2d_Curve2d* self_) {
+    return new gp_Parab2d(self_->Parabola());
+}
+extern "C" opencascade::handle<Geom2d_BezierCurve>* Adaptor2d_Curve2d_bezier(const Adaptor2d_Curve2d* self_) {
+    return new opencascade::handle<Geom2d_BezierCurve>(self_->Bezier());
+}
+extern "C" opencascade::handle<Geom2d_BSplineCurve>* Adaptor2d_Curve2d_b_spline(const Adaptor2d_Curve2d* self_) {
+    return new opencascade::handle<Geom2d_BSplineCurve>(self_->BSpline());
+}
+extern "C" int32_t Adaptor2d_Curve2d_continuity(const Adaptor2d_Curve2d* self_) {
+    return static_cast<int32_t>(self_->Continuity());
+}
+extern "C" Standard_Integer Adaptor2d_Curve2d_nb_intervals(const Adaptor2d_Curve2d* self_, int32_t S) {
+    return self_->NbIntervals(static_cast<GeomAbs_Shape>(S));
+}
+extern "C" int32_t Adaptor2d_Curve2d_get_type(const Adaptor2d_Curve2d* self_) {
+    return static_cast<int32_t>(self_->GetType());
+}
+extern "C" const opencascade::handle<Standard_Type>& Adaptor2d_Curve2d_dynamic_type(const Adaptor2d_Curve2d* self_) {
+    return self_->DynamicType();
+}
+extern "C" Standard_Real Adaptor2d_Curve2d_first_parameter(const Adaptor2d_Curve2d* self_) {
+    return self_->FirstParameter();
+}
+extern "C" Standard_Real Adaptor2d_Curve2d_last_parameter(const Adaptor2d_Curve2d* self_) {
+    return self_->LastParameter();
+}
+extern "C" Standard_Boolean Adaptor2d_Curve2d_is_closed(const Adaptor2d_Curve2d* self_) {
+    return self_->IsClosed();
+}
+extern "C" Standard_Boolean Adaptor2d_Curve2d_is_periodic(const Adaptor2d_Curve2d* self_) {
+    return self_->IsPeriodic();
+}
+extern "C" Standard_Real Adaptor2d_Curve2d_period(const Adaptor2d_Curve2d* self_) {
+    return self_->Period();
+}
+extern "C" void Adaptor2d_Curve2d_d0(const Adaptor2d_Curve2d* self_, Standard_Real U, gp_Pnt2d* P) {
+    self_->D0(U, *P);
+}
+extern "C" void Adaptor2d_Curve2d_d1(const Adaptor2d_Curve2d* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V) {
+    self_->D1(U, *P, *V);
+}
+extern "C" void Adaptor2d_Curve2d_d2(const Adaptor2d_Curve2d* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
+    self_->D2(U, *P, *V1, *V2);
+}
+extern "C" void Adaptor2d_Curve2d_d3(const Adaptor2d_Curve2d* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
+    self_->D3(U, *P, *V1, *V2, *V3);
+}
+extern "C" Standard_Real Adaptor2d_Curve2d_resolution(const Adaptor2d_Curve2d* self_, Standard_Real R3d) {
+    return self_->Resolution(R3d);
+}
+extern "C" Standard_Integer Adaptor2d_Curve2d_degree(const Adaptor2d_Curve2d* self_) {
+    return self_->Degree();
+}
+extern "C" Standard_Boolean Adaptor2d_Curve2d_is_rational(const Adaptor2d_Curve2d* self_) {
+    return self_->IsRational();
+}
+extern "C" Standard_Integer Adaptor2d_Curve2d_nb_poles(const Adaptor2d_Curve2d* self_) {
+    return self_->NbPoles();
+}
+extern "C" Standard_Integer Adaptor2d_Curve2d_nb_knots(const Adaptor2d_Curve2d* self_) {
+    return self_->NbKnots();
+}
+extern "C" Standard_Integer Adaptor2d_Curve2d_nb_samples(const Adaptor2d_Curve2d* self_) {
+    return self_->NbSamples();
+}
+extern "C" const char* Adaptor2d_Curve2d_get_type_name() {
+    return Adaptor2d_Curve2d::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Adaptor2d_Curve2d_get_type_descriptor() {
+    return Adaptor2d_Curve2d::get_type_descriptor();
+}
+extern "C" HandleAdaptor2dCurve2d* Adaptor2d_Curve2d_to_handle(Adaptor2d_Curve2d* obj) {
+    return new HandleAdaptor2dCurve2d(obj);
+}
+extern "C" const Adaptor2d_Curve2d* HandleAdaptor2dCurve2d_get(const HandleAdaptor2dCurve2d* handle) { return (*handle).get(); }
+extern "C" Adaptor2d_Curve2d* HandleAdaptor2dCurve2d_get_mut(HandleAdaptor2dCurve2d* handle) { return (*handle).get(); }
+extern "C" void Adaptor2d_Curve2d_destructor(Adaptor2d_Curve2d* self_) { delete self_; }
+
+// ========================
+// Adaptor2d_Line2d wrappers
+// ========================
+
+extern "C" Adaptor2d_Line2d* Adaptor2d_Line2d_ctor() {
+    return new Adaptor2d_Line2d();
+}
+extern "C" Adaptor2d_Line2d* Adaptor2d_Line2d_ctor_pnt2d_dir2d_real2(const gp_Pnt2d* P, const gp_Dir2d* D, Standard_Real UFirst, Standard_Real ULast) {
+    return new Adaptor2d_Line2d(*P, *D, UFirst, ULast);
+}
+extern "C" opencascade::handle<Adaptor2d_Curve2d>* Adaptor2d_Line2d_shallow_copy(const Adaptor2d_Line2d* self_) {
+    return new opencascade::handle<Adaptor2d_Curve2d>(self_->ShallowCopy());
+}
+extern "C" opencascade::handle<Adaptor2d_Curve2d>* Adaptor2d_Line2d_trim(const Adaptor2d_Line2d* self_, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
+    return new opencascade::handle<Adaptor2d_Curve2d>(self_->Trim(First, Last, Tol));
+}
+extern "C" gp_Pnt2d* Adaptor2d_Line2d_value(const Adaptor2d_Line2d* self_, Standard_Real X) {
+    return new gp_Pnt2d(self_->Value(X));
+}
+extern "C" gp_Vec2d* Adaptor2d_Line2d_dn(const Adaptor2d_Line2d* self_, Standard_Real U, Standard_Integer N) {
+    return new gp_Vec2d(self_->DN(U, N));
+}
+extern "C" gp_Lin2d* Adaptor2d_Line2d_line(const Adaptor2d_Line2d* self_) {
+    return new gp_Lin2d(self_->Line());
+}
+extern "C" gp_Circ2d* Adaptor2d_Line2d_circle(const Adaptor2d_Line2d* self_) {
+    return new gp_Circ2d(self_->Circle());
+}
+extern "C" gp_Elips2d* Adaptor2d_Line2d_ellipse(const Adaptor2d_Line2d* self_) {
+    return new gp_Elips2d(self_->Ellipse());
+}
+extern "C" gp_Hypr2d* Adaptor2d_Line2d_hyperbola(const Adaptor2d_Line2d* self_) {
+    return new gp_Hypr2d(self_->Hyperbola());
+}
+extern "C" gp_Parab2d* Adaptor2d_Line2d_parabola(const Adaptor2d_Line2d* self_) {
+    return new gp_Parab2d(self_->Parabola());
+}
+extern "C" opencascade::handle<Geom2d_BezierCurve>* Adaptor2d_Line2d_bezier(const Adaptor2d_Line2d* self_) {
+    return new opencascade::handle<Geom2d_BezierCurve>(self_->Bezier());
+}
+extern "C" opencascade::handle<Geom2d_BSplineCurve>* Adaptor2d_Line2d_b_spline(const Adaptor2d_Line2d* self_) {
+    return new opencascade::handle<Geom2d_BSplineCurve>(self_->BSpline());
+}
+extern "C" int32_t Adaptor2d_Line2d_continuity(const Adaptor2d_Line2d* self_) {
+    return static_cast<int32_t>(self_->Continuity());
+}
+extern "C" Standard_Integer Adaptor2d_Line2d_nb_intervals(const Adaptor2d_Line2d* self_, int32_t S) {
+    return self_->NbIntervals(static_cast<GeomAbs_Shape>(S));
+}
+extern "C" int32_t Adaptor2d_Line2d_get_type(const Adaptor2d_Line2d* self_) {
+    return static_cast<int32_t>(self_->GetType());
+}
+extern "C" const opencascade::handle<Standard_Type>& Adaptor2d_Line2d_dynamic_type(const Adaptor2d_Line2d* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Adaptor2d_Line2d_load_lin2d(Adaptor2d_Line2d* self_, const gp_Lin2d* L) {
+    self_->Load(*L);
+}
+extern "C" void Adaptor2d_Line2d_load_lin2d_real2(Adaptor2d_Line2d* self_, const gp_Lin2d* L, Standard_Real UFirst, Standard_Real ULast) {
+    self_->Load(*L, UFirst, ULast);
+}
+extern "C" Standard_Real Adaptor2d_Line2d_first_parameter(const Adaptor2d_Line2d* self_) {
+    return self_->FirstParameter();
+}
+extern "C" Standard_Real Adaptor2d_Line2d_last_parameter(const Adaptor2d_Line2d* self_) {
+    return self_->LastParameter();
+}
+extern "C" Standard_Boolean Adaptor2d_Line2d_is_closed(const Adaptor2d_Line2d* self_) {
+    return self_->IsClosed();
+}
+extern "C" Standard_Boolean Adaptor2d_Line2d_is_periodic(const Adaptor2d_Line2d* self_) {
+    return self_->IsPeriodic();
+}
+extern "C" Standard_Real Adaptor2d_Line2d_period(const Adaptor2d_Line2d* self_) {
+    return self_->Period();
+}
+extern "C" void Adaptor2d_Line2d_d0(const Adaptor2d_Line2d* self_, Standard_Real X, gp_Pnt2d* P) {
+    self_->D0(X, *P);
+}
+extern "C" void Adaptor2d_Line2d_d1(const Adaptor2d_Line2d* self_, Standard_Real X, gp_Pnt2d* P, gp_Vec2d* V) {
+    self_->D1(X, *P, *V);
+}
+extern "C" void Adaptor2d_Line2d_d2(const Adaptor2d_Line2d* self_, Standard_Real X, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
+    self_->D2(X, *P, *V1, *V2);
+}
+extern "C" void Adaptor2d_Line2d_d3(const Adaptor2d_Line2d* self_, Standard_Real X, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
+    self_->D3(X, *P, *V1, *V2, *V3);
+}
+extern "C" Standard_Real Adaptor2d_Line2d_resolution(const Adaptor2d_Line2d* self_, Standard_Real R3d) {
+    return self_->Resolution(R3d);
+}
+extern "C" Standard_Integer Adaptor2d_Line2d_degree(const Adaptor2d_Line2d* self_) {
+    return self_->Degree();
+}
+extern "C" Standard_Boolean Adaptor2d_Line2d_is_rational(const Adaptor2d_Line2d* self_) {
+    return self_->IsRational();
+}
+extern "C" Standard_Integer Adaptor2d_Line2d_nb_poles(const Adaptor2d_Line2d* self_) {
+    return self_->NbPoles();
+}
+extern "C" Standard_Integer Adaptor2d_Line2d_nb_knots(const Adaptor2d_Line2d* self_) {
+    return self_->NbKnots();
+}
+extern "C" const char* Adaptor2d_Line2d_get_type_name() {
+    return Adaptor2d_Line2d::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Adaptor2d_Line2d_get_type_descriptor() {
+    return Adaptor2d_Line2d::get_type_descriptor();
+}
+extern "C" const Adaptor2d_Curve2d* Adaptor2d_Line2d_as_Adaptor2d_Curve2d(const Adaptor2d_Line2d* self_) { return static_cast<const Adaptor2d_Curve2d*>(self_); }
+extern "C" Adaptor2d_Curve2d* Adaptor2d_Line2d_as_Adaptor2d_Curve2d_mut(Adaptor2d_Line2d* self_) { return static_cast<Adaptor2d_Curve2d*>(self_); }
+extern "C" Standard_Integer Adaptor2d_Line2d_inherited_NbSamples(const Adaptor2d_Line2d* self) {
+    return self->NbSamples();
+}
+extern "C" void Adaptor2d_Line2d_destructor(Adaptor2d_Line2d* self_) { delete self_; }
+
+// ========================
+// Adaptor2d_OffsetCurve wrappers
+// ========================
+
+extern "C" Adaptor2d_OffsetCurve* Adaptor2d_OffsetCurve_ctor() {
+    return new Adaptor2d_OffsetCurve();
+}
+extern "C" Adaptor2d_OffsetCurve* Adaptor2d_OffsetCurve_ctor_handleadaptor2dcurve2d(const opencascade::handle<Adaptor2d_Curve2d>* C) {
+    return new Adaptor2d_OffsetCurve(*C);
+}
+extern "C" Adaptor2d_OffsetCurve* Adaptor2d_OffsetCurve_ctor_handleadaptor2dcurve2d_real(const opencascade::handle<Adaptor2d_Curve2d>* C, Standard_Real Offset) {
+    return new Adaptor2d_OffsetCurve(*C, Offset);
+}
+extern "C" Adaptor2d_OffsetCurve* Adaptor2d_OffsetCurve_ctor_handleadaptor2dcurve2d_real3(const opencascade::handle<Adaptor2d_Curve2d>* C, Standard_Real Offset, Standard_Real WFirst, Standard_Real WLast) {
+    return new Adaptor2d_OffsetCurve(*C, Offset, WFirst, WLast);
+}
+extern "C" opencascade::handle<Adaptor2d_Curve2d>* Adaptor2d_OffsetCurve_shallow_copy(const Adaptor2d_OffsetCurve* self_) {
+    return new opencascade::handle<Adaptor2d_Curve2d>(self_->ShallowCopy());
+}
+extern "C" opencascade::handle<Adaptor2d_Curve2d>* Adaptor2d_OffsetCurve_trim(const Adaptor2d_OffsetCurve* self_, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
+    return new opencascade::handle<Adaptor2d_Curve2d>(self_->Trim(First, Last, Tol));
+}
+extern "C" gp_Pnt2d* Adaptor2d_OffsetCurve_value(const Adaptor2d_OffsetCurve* self_, Standard_Real U) {
+    return new gp_Pnt2d(self_->Value(U));
+}
+extern "C" gp_Vec2d* Adaptor2d_OffsetCurve_dn(const Adaptor2d_OffsetCurve* self_, Standard_Real U, Standard_Integer N) {
+    return new gp_Vec2d(self_->DN(U, N));
+}
+extern "C" gp_Lin2d* Adaptor2d_OffsetCurve_line(const Adaptor2d_OffsetCurve* self_) {
+    return new gp_Lin2d(self_->Line());
+}
+extern "C" gp_Circ2d* Adaptor2d_OffsetCurve_circle(const Adaptor2d_OffsetCurve* self_) {
+    return new gp_Circ2d(self_->Circle());
+}
+extern "C" gp_Elips2d* Adaptor2d_OffsetCurve_ellipse(const Adaptor2d_OffsetCurve* self_) {
+    return new gp_Elips2d(self_->Ellipse());
+}
+extern "C" gp_Hypr2d* Adaptor2d_OffsetCurve_hyperbola(const Adaptor2d_OffsetCurve* self_) {
+    return new gp_Hypr2d(self_->Hyperbola());
+}
+extern "C" gp_Parab2d* Adaptor2d_OffsetCurve_parabola(const Adaptor2d_OffsetCurve* self_) {
+    return new gp_Parab2d(self_->Parabola());
+}
+extern "C" opencascade::handle<Geom2d_BezierCurve>* Adaptor2d_OffsetCurve_bezier(const Adaptor2d_OffsetCurve* self_) {
+    return new opencascade::handle<Geom2d_BezierCurve>(self_->Bezier());
+}
+extern "C" opencascade::handle<Geom2d_BSplineCurve>* Adaptor2d_OffsetCurve_b_spline(const Adaptor2d_OffsetCurve* self_) {
+    return new opencascade::handle<Geom2d_BSplineCurve>(self_->BSpline());
+}
+extern "C" int32_t Adaptor2d_OffsetCurve_continuity(const Adaptor2d_OffsetCurve* self_) {
+    return static_cast<int32_t>(self_->Continuity());
+}
+extern "C" Standard_Integer Adaptor2d_OffsetCurve_nb_intervals(const Adaptor2d_OffsetCurve* self_, int32_t S) {
+    return self_->NbIntervals(static_cast<GeomAbs_Shape>(S));
+}
+extern "C" int32_t Adaptor2d_OffsetCurve_get_type(const Adaptor2d_OffsetCurve* self_) {
+    return static_cast<int32_t>(self_->GetType());
+}
+extern "C" const opencascade::handle<Standard_Type>& Adaptor2d_OffsetCurve_dynamic_type(const Adaptor2d_OffsetCurve* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Adaptor2d_OffsetCurve_load_handleadaptor2dcurve2d(Adaptor2d_OffsetCurve* self_, const opencascade::handle<Adaptor2d_Curve2d>* S) {
+    self_->Load(*S);
+}
+extern "C" void Adaptor2d_OffsetCurve_load_real(Adaptor2d_OffsetCurve* self_, Standard_Real Offset) {
+    self_->Load(Offset);
+}
+extern "C" void Adaptor2d_OffsetCurve_load_real3(Adaptor2d_OffsetCurve* self_, Standard_Real Offset, Standard_Real WFirst, Standard_Real WLast) {
+    self_->Load(Offset, WFirst, WLast);
+}
+extern "C" const opencascade::handle<Adaptor2d_Curve2d>& Adaptor2d_OffsetCurve_curve(const Adaptor2d_OffsetCurve* self_) {
+    return self_->Curve();
+}
+extern "C" Standard_Real Adaptor2d_OffsetCurve_offset(const Adaptor2d_OffsetCurve* self_) {
+    return self_->Offset();
+}
+extern "C" Standard_Real Adaptor2d_OffsetCurve_first_parameter(const Adaptor2d_OffsetCurve* self_) {
+    return self_->FirstParameter();
+}
+extern "C" Standard_Real Adaptor2d_OffsetCurve_last_parameter(const Adaptor2d_OffsetCurve* self_) {
+    return self_->LastParameter();
+}
+extern "C" Standard_Boolean Adaptor2d_OffsetCurve_is_closed(const Adaptor2d_OffsetCurve* self_) {
+    return self_->IsClosed();
+}
+extern "C" Standard_Boolean Adaptor2d_OffsetCurve_is_periodic(const Adaptor2d_OffsetCurve* self_) {
+    return self_->IsPeriodic();
+}
+extern "C" Standard_Real Adaptor2d_OffsetCurve_period(const Adaptor2d_OffsetCurve* self_) {
+    return self_->Period();
+}
+extern "C" void Adaptor2d_OffsetCurve_d0(const Adaptor2d_OffsetCurve* self_, Standard_Real U, gp_Pnt2d* P) {
+    self_->D0(U, *P);
+}
+extern "C" void Adaptor2d_OffsetCurve_d1(const Adaptor2d_OffsetCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V) {
+    self_->D1(U, *P, *V);
+}
+extern "C" void Adaptor2d_OffsetCurve_d2(const Adaptor2d_OffsetCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
+    self_->D2(U, *P, *V1, *V2);
+}
+extern "C" void Adaptor2d_OffsetCurve_d3(const Adaptor2d_OffsetCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
+    self_->D3(U, *P, *V1, *V2, *V3);
+}
+extern "C" Standard_Real Adaptor2d_OffsetCurve_resolution(const Adaptor2d_OffsetCurve* self_, Standard_Real R3d) {
+    return self_->Resolution(R3d);
+}
+extern "C" Standard_Integer Adaptor2d_OffsetCurve_degree(const Adaptor2d_OffsetCurve* self_) {
+    return self_->Degree();
+}
+extern "C" Standard_Boolean Adaptor2d_OffsetCurve_is_rational(const Adaptor2d_OffsetCurve* self_) {
+    return self_->IsRational();
+}
+extern "C" Standard_Integer Adaptor2d_OffsetCurve_nb_poles(const Adaptor2d_OffsetCurve* self_) {
+    return self_->NbPoles();
+}
+extern "C" Standard_Integer Adaptor2d_OffsetCurve_nb_knots(const Adaptor2d_OffsetCurve* self_) {
+    return self_->NbKnots();
+}
+extern "C" Standard_Integer Adaptor2d_OffsetCurve_nb_samples(const Adaptor2d_OffsetCurve* self_) {
+    return self_->NbSamples();
+}
+extern "C" const char* Adaptor2d_OffsetCurve_get_type_name() {
+    return Adaptor2d_OffsetCurve::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Adaptor2d_OffsetCurve_get_type_descriptor() {
+    return Adaptor2d_OffsetCurve::get_type_descriptor();
+}
+extern "C" const Adaptor2d_Curve2d* Adaptor2d_OffsetCurve_as_Adaptor2d_Curve2d(const Adaptor2d_OffsetCurve* self_) { return static_cast<const Adaptor2d_Curve2d*>(self_); }
+extern "C" Adaptor2d_Curve2d* Adaptor2d_OffsetCurve_as_Adaptor2d_Curve2d_mut(Adaptor2d_OffsetCurve* self_) { return static_cast<Adaptor2d_Curve2d*>(self_); }
+extern "C" void Adaptor2d_OffsetCurve_destructor(Adaptor2d_OffsetCurve* self_) { delete self_; }
 
 // ========================
 // Adaptor3d_Curve wrappers
@@ -2276,6 +2856,13 @@ extern "C" Standard_Boolean Adaptor3d_InterFunc_derivative(Adaptor3d_InterFunc* 
 }
 extern "C" Standard_Boolean Adaptor3d_InterFunc_values(Adaptor3d_InterFunc* self_, Standard_Real X, Standard_Real* F, Standard_Real* D) {
     return self_->Values(X, *F, *D);
+}
+extern "C" const math_Function* Adaptor3d_InterFunc_as_math_Function(const Adaptor3d_InterFunc* self_) { return static_cast<const math_Function*>(self_); }
+extern "C" math_Function* Adaptor3d_InterFunc_as_math_Function_mut(Adaptor3d_InterFunc* self_) { return static_cast<math_Function*>(self_); }
+extern "C" const math_FunctionWithDerivative* Adaptor3d_InterFunc_as_math_FunctionWithDerivative(const Adaptor3d_InterFunc* self_) { return static_cast<const math_FunctionWithDerivative*>(self_); }
+extern "C" math_FunctionWithDerivative* Adaptor3d_InterFunc_as_math_FunctionWithDerivative_mut(Adaptor3d_InterFunc* self_) { return static_cast<math_FunctionWithDerivative*>(self_); }
+extern "C" Standard_Integer Adaptor3d_InterFunc_inherited_GetStateNumber(Adaptor3d_InterFunc* self) {
+    return self->GetStateNumber();
 }
 extern "C" void Adaptor3d_InterFunc_destructor(Adaptor3d_InterFunc* self_) { delete self_; }
 
@@ -10556,6 +11143,8 @@ extern "C" Standard_Boolean BRepGProp_TFunction_value(BRepGProp_TFunction* self_
 extern "C" Standard_Integer BRepGProp_TFunction_get_state_number(BRepGProp_TFunction* self_) {
     return self_->GetStateNumber();
 }
+extern "C" const math_Function* BRepGProp_TFunction_as_math_Function(const BRepGProp_TFunction* self_) { return static_cast<const math_Function*>(self_); }
+extern "C" math_Function* BRepGProp_TFunction_as_math_Function_mut(BRepGProp_TFunction* self_) { return static_cast<math_Function*>(self_); }
 extern "C" void BRepGProp_TFunction_destructor(BRepGProp_TFunction* self_) { delete self_; }
 
 // ========================
@@ -10570,6 +11159,11 @@ extern "C" void BRepGProp_UFunction_set_v_param(BRepGProp_UFunction* self_, Stan
 }
 extern "C" Standard_Boolean BRepGProp_UFunction_value(BRepGProp_UFunction* self_, Standard_Real X, Standard_Real* F) {
     return self_->Value(X, *F);
+}
+extern "C" const math_Function* BRepGProp_UFunction_as_math_Function(const BRepGProp_UFunction* self_) { return static_cast<const math_Function*>(self_); }
+extern "C" math_Function* BRepGProp_UFunction_as_math_Function_mut(BRepGProp_UFunction* self_) { return static_cast<math_Function*>(self_); }
+extern "C" Standard_Integer BRepGProp_UFunction_inherited_GetStateNumber(BRepGProp_UFunction* self) {
+    return self->GetStateNumber();
 }
 extern "C" void BRepGProp_UFunction_destructor(BRepGProp_UFunction* self_) { delete self_; }
 
@@ -10816,6 +11410,1054 @@ extern "C" const TopoDS_Face& BRepIntCurveSurface_Inter_face(const BRepIntCurveS
     return self_->Face();
 }
 extern "C" void BRepIntCurveSurface_Inter_destructor(BRepIntCurveSurface_Inter* self_) { delete self_; }
+
+// ========================
+// BRepLib_CheckCurveOnSurface wrappers
+// ========================
+
+extern "C" BRepLib_CheckCurveOnSurface* BRepLib_CheckCurveOnSurface_ctor() {
+    return new BRepLib_CheckCurveOnSurface();
+}
+extern "C" BRepLib_CheckCurveOnSurface* BRepLib_CheckCurveOnSurface_ctor_edge_face(const TopoDS_Edge* theEdge, const TopoDS_Face* theFace) {
+    return new BRepLib_CheckCurveOnSurface(*theEdge, *theFace);
+}
+extern "C" void BRepLib_CheckCurveOnSurface_init(BRepLib_CheckCurveOnSurface* self_, const TopoDS_Edge* theEdge, const TopoDS_Face* theFace) {
+    self_->Init(*theEdge, *theFace);
+}
+extern "C" void BRepLib_CheckCurveOnSurface_perform(BRepLib_CheckCurveOnSurface* self_) {
+    self_->Perform();
+}
+extern "C" Standard_Boolean BRepLib_CheckCurveOnSurface_is_done(const BRepLib_CheckCurveOnSurface* self_) {
+    return self_->IsDone();
+}
+extern "C" void BRepLib_CheckCurveOnSurface_set_parallel(BRepLib_CheckCurveOnSurface* self_, Standard_Boolean theIsParallel) {
+    self_->SetParallel(theIsParallel);
+}
+extern "C" Standard_Boolean BRepLib_CheckCurveOnSurface_is_parallel(BRepLib_CheckCurveOnSurface* self_) {
+    return self_->IsParallel();
+}
+extern "C" Standard_Integer BRepLib_CheckCurveOnSurface_error_status(const BRepLib_CheckCurveOnSurface* self_) {
+    return self_->ErrorStatus();
+}
+extern "C" Standard_Real BRepLib_CheckCurveOnSurface_max_distance(const BRepLib_CheckCurveOnSurface* self_) {
+    return self_->MaxDistance();
+}
+extern "C" Standard_Real BRepLib_CheckCurveOnSurface_max_parameter(const BRepLib_CheckCurveOnSurface* self_) {
+    return self_->MaxParameter();
+}
+extern "C" void BRepLib_CheckCurveOnSurface_destructor(BRepLib_CheckCurveOnSurface* self_) { delete self_; }
+
+// ========================
+// BRepLib_Command wrappers
+// ========================
+
+extern "C" Standard_Boolean BRepLib_Command_is_done(const BRepLib_Command* self_) {
+    return self_->IsDone();
+}
+extern "C" void BRepLib_Command_check(const BRepLib_Command* self_) {
+    self_->Check();
+}
+extern "C" void BRepLib_Command_destructor(BRepLib_Command* self_) { delete self_; }
+
+// ========================
+// BRepLib_FindSurface wrappers
+// ========================
+
+extern "C" BRepLib_FindSurface* BRepLib_FindSurface_ctor() {
+    return new BRepLib_FindSurface();
+}
+extern "C" BRepLib_FindSurface* BRepLib_FindSurface_ctor_shape_real_bool2(const TopoDS_Shape* S, Standard_Real Tol, Standard_Boolean OnlyPlane, Standard_Boolean OnlyClosed) {
+    return new BRepLib_FindSurface(*S, Tol, OnlyPlane, OnlyClosed);
+}
+extern "C" opencascade::handle<Geom_Surface>* BRepLib_FindSurface_surface(const BRepLib_FindSurface* self_) {
+    return new opencascade::handle<Geom_Surface>(self_->Surface());
+}
+extern "C" TopLoc_Location* BRepLib_FindSurface_location(const BRepLib_FindSurface* self_) {
+    return new TopLoc_Location(self_->Location());
+}
+extern "C" void BRepLib_FindSurface_init(BRepLib_FindSurface* self_, const TopoDS_Shape* S, Standard_Real Tol, Standard_Boolean OnlyPlane, Standard_Boolean OnlyClosed) {
+    self_->Init(*S, Tol, OnlyPlane, OnlyClosed);
+}
+extern "C" Standard_Boolean BRepLib_FindSurface_found(const BRepLib_FindSurface* self_) {
+    return self_->Found();
+}
+extern "C" Standard_Real BRepLib_FindSurface_tolerance(const BRepLib_FindSurface* self_) {
+    return self_->Tolerance();
+}
+extern "C" Standard_Real BRepLib_FindSurface_tolerance_reached(const BRepLib_FindSurface* self_) {
+    return self_->ToleranceReached();
+}
+extern "C" Standard_Boolean BRepLib_FindSurface_existed(const BRepLib_FindSurface* self_) {
+    return self_->Existed();
+}
+extern "C" void BRepLib_FindSurface_destructor(BRepLib_FindSurface* self_) { delete self_; }
+
+// ========================
+// BRepLib_FuseEdges wrappers
+// ========================
+
+extern "C" BRepLib_FuseEdges* BRepLib_FuseEdges_ctor_shape_bool(const TopoDS_Shape* theShape, Standard_Boolean PerformNow) {
+    return new BRepLib_FuseEdges(*theShape, PerformNow);
+}
+extern "C" void BRepLib_FuseEdges_avoid_edges(BRepLib_FuseEdges* self_, const TopTools_IndexedMapOfShape* theMapEdg) {
+    self_->AvoidEdges(*theMapEdg);
+}
+extern "C" void BRepLib_FuseEdges_set_concat_b_spl(BRepLib_FuseEdges* self_, Standard_Boolean theConcatBSpl) {
+    self_->SetConcatBSpl(theConcatBSpl);
+}
+extern "C" void BRepLib_FuseEdges_faces(BRepLib_FuseEdges* self_, TopTools_DataMapOfShapeShape* theMapFac) {
+    self_->Faces(*theMapFac);
+}
+extern "C" TopoDS_Shape& BRepLib_FuseEdges_shape(BRepLib_FuseEdges* self_) {
+    return self_->Shape();
+}
+extern "C" Standard_Integer BRepLib_FuseEdges_nb_vertices(BRepLib_FuseEdges* self_) {
+    return self_->NbVertices();
+}
+extern "C" void BRepLib_FuseEdges_perform(BRepLib_FuseEdges* self_) {
+    self_->Perform();
+}
+extern "C" void BRepLib_FuseEdges_destructor(BRepLib_FuseEdges* self_) { delete self_; }
+
+// ========================
+// BRepLib_MakeEdge wrappers
+// ========================
+
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor() {
+    return new BRepLib_MakeEdge();
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_vertex2(const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
+    return new BRepLib_MakeEdge(*V1, *V2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_pnt2(const gp_Pnt* P1, const gp_Pnt* P2) {
+    return new BRepLib_MakeEdge(*P1, *P2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_lin(const gp_Lin* L) {
+    return new BRepLib_MakeEdge(*L);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_lin_real2(const gp_Lin* L, Standard_Real p1, Standard_Real p2) {
+    return new BRepLib_MakeEdge(*L, p1, p2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_lin_pnt2(const gp_Lin* L, const gp_Pnt* P1, const gp_Pnt* P2) {
+    return new BRepLib_MakeEdge(*L, *P1, *P2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_lin_vertex2(const gp_Lin* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
+    return new BRepLib_MakeEdge(*L, *V1, *V2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_circ(const gp_Circ* L) {
+    return new BRepLib_MakeEdge(*L);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_circ_real2(const gp_Circ* L, Standard_Real p1, Standard_Real p2) {
+    return new BRepLib_MakeEdge(*L, p1, p2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_circ_pnt2(const gp_Circ* L, const gp_Pnt* P1, const gp_Pnt* P2) {
+    return new BRepLib_MakeEdge(*L, *P1, *P2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_circ_vertex2(const gp_Circ* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
+    return new BRepLib_MakeEdge(*L, *V1, *V2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_elips(const gp_Elips* L) {
+    return new BRepLib_MakeEdge(*L);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_elips_real2(const gp_Elips* L, Standard_Real p1, Standard_Real p2) {
+    return new BRepLib_MakeEdge(*L, p1, p2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_elips_pnt2(const gp_Elips* L, const gp_Pnt* P1, const gp_Pnt* P2) {
+    return new BRepLib_MakeEdge(*L, *P1, *P2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_elips_vertex2(const gp_Elips* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
+    return new BRepLib_MakeEdge(*L, *V1, *V2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_hypr(const gp_Hypr* L) {
+    return new BRepLib_MakeEdge(*L);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_hypr_real2(const gp_Hypr* L, Standard_Real p1, Standard_Real p2) {
+    return new BRepLib_MakeEdge(*L, p1, p2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_hypr_pnt2(const gp_Hypr* L, const gp_Pnt* P1, const gp_Pnt* P2) {
+    return new BRepLib_MakeEdge(*L, *P1, *P2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_hypr_vertex2(const gp_Hypr* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
+    return new BRepLib_MakeEdge(*L, *V1, *V2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_parab(const gp_Parab* L) {
+    return new BRepLib_MakeEdge(*L);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_parab_real2(const gp_Parab* L, Standard_Real p1, Standard_Real p2) {
+    return new BRepLib_MakeEdge(*L, p1, p2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_parab_pnt2(const gp_Parab* L, const gp_Pnt* P1, const gp_Pnt* P2) {
+    return new BRepLib_MakeEdge(*L, *P1, *P2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_parab_vertex2(const gp_Parab* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
+    return new BRepLib_MakeEdge(*L, *V1, *V2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeomcurve(const opencascade::handle<Geom_Curve>* L) {
+    return new BRepLib_MakeEdge(*L);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeomcurve_real2(const opencascade::handle<Geom_Curve>* L, Standard_Real p1, Standard_Real p2) {
+    return new BRepLib_MakeEdge(*L, p1, p2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeomcurve_pnt2(const opencascade::handle<Geom_Curve>* L, const gp_Pnt* P1, const gp_Pnt* P2) {
+    return new BRepLib_MakeEdge(*L, *P1, *P2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeomcurve_vertex2(const opencascade::handle<Geom_Curve>* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
+    return new BRepLib_MakeEdge(*L, *V1, *V2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeomcurve_pnt2_real2(const opencascade::handle<Geom_Curve>* L, const gp_Pnt* P1, const gp_Pnt* P2, Standard_Real p1, Standard_Real p2) {
+    return new BRepLib_MakeEdge(*L, *P1, *P2, p1, p2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeomcurve_vertex2_real2(const opencascade::handle<Geom_Curve>* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2, Standard_Real p1, Standard_Real p2) {
+    return new BRepLib_MakeEdge(*L, *V1, *V2, p1, p2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface(const opencascade::handle<Geom2d_Curve>* L, const opencascade::handle<Geom_Surface>* S) {
+    return new BRepLib_MakeEdge(*L, *S);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_real2(const opencascade::handle<Geom2d_Curve>* L, const opencascade::handle<Geom_Surface>* S, Standard_Real p1, Standard_Real p2) {
+    return new BRepLib_MakeEdge(*L, *S, p1, p2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_pnt2(const opencascade::handle<Geom2d_Curve>* L, const opencascade::handle<Geom_Surface>* S, const gp_Pnt* P1, const gp_Pnt* P2) {
+    return new BRepLib_MakeEdge(*L, *S, *P1, *P2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_vertex2(const opencascade::handle<Geom2d_Curve>* L, const opencascade::handle<Geom_Surface>* S, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
+    return new BRepLib_MakeEdge(*L, *S, *V1, *V2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_pnt2_real2(const opencascade::handle<Geom2d_Curve>* L, const opencascade::handle<Geom_Surface>* S, const gp_Pnt* P1, const gp_Pnt* P2, Standard_Real p1, Standard_Real p2) {
+    return new BRepLib_MakeEdge(*L, *S, *P1, *P2, p1, p2);
+}
+extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_vertex2_real2(const opencascade::handle<Geom2d_Curve>* L, const opencascade::handle<Geom_Surface>* S, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2, Standard_Real p1, Standard_Real p2) {
+    return new BRepLib_MakeEdge(*L, *S, *V1, *V2, p1, p2);
+}
+extern "C" int32_t BRepLib_MakeEdge_error(const BRepLib_MakeEdge* self_) {
+    return static_cast<int32_t>(self_->Error());
+}
+extern "C" void BRepLib_MakeEdge_init_handlegeomcurve(BRepLib_MakeEdge* self_, const opencascade::handle<Geom_Curve>* C) {
+    self_->Init(*C);
+}
+extern "C" void BRepLib_MakeEdge_init_handlegeomcurve_real2(BRepLib_MakeEdge* self_, const opencascade::handle<Geom_Curve>* C, Standard_Real p1, Standard_Real p2) {
+    self_->Init(*C, p1, p2);
+}
+extern "C" void BRepLib_MakeEdge_init_handlegeomcurve_pnt2(BRepLib_MakeEdge* self_, const opencascade::handle<Geom_Curve>* C, const gp_Pnt* P1, const gp_Pnt* P2) {
+    self_->Init(*C, *P1, *P2);
+}
+extern "C" void BRepLib_MakeEdge_init_handlegeomcurve_vertex2(BRepLib_MakeEdge* self_, const opencascade::handle<Geom_Curve>* C, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
+    self_->Init(*C, *V1, *V2);
+}
+extern "C" void BRepLib_MakeEdge_init_handlegeomcurve_pnt2_real2(BRepLib_MakeEdge* self_, const opencascade::handle<Geom_Curve>* C, const gp_Pnt* P1, const gp_Pnt* P2, Standard_Real p1, Standard_Real p2) {
+    self_->Init(*C, *P1, *P2, p1, p2);
+}
+extern "C" void BRepLib_MakeEdge_init_handlegeomcurve_vertex2_real2(BRepLib_MakeEdge* self_, const opencascade::handle<Geom_Curve>* C, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2, Standard_Real p1, Standard_Real p2) {
+    self_->Init(*C, *V1, *V2, p1, p2);
+}
+extern "C" void BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface(BRepLib_MakeEdge* self_, const opencascade::handle<Geom2d_Curve>* C, const opencascade::handle<Geom_Surface>* S) {
+    self_->Init(*C, *S);
+}
+extern "C" void BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_real2(BRepLib_MakeEdge* self_, const opencascade::handle<Geom2d_Curve>* C, const opencascade::handle<Geom_Surface>* S, Standard_Real p1, Standard_Real p2) {
+    self_->Init(*C, *S, p1, p2);
+}
+extern "C" void BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_pnt2(BRepLib_MakeEdge* self_, const opencascade::handle<Geom2d_Curve>* C, const opencascade::handle<Geom_Surface>* S, const gp_Pnt* P1, const gp_Pnt* P2) {
+    self_->Init(*C, *S, *P1, *P2);
+}
+extern "C" void BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_vertex2(BRepLib_MakeEdge* self_, const opencascade::handle<Geom2d_Curve>* C, const opencascade::handle<Geom_Surface>* S, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
+    self_->Init(*C, *S, *V1, *V2);
+}
+extern "C" void BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_pnt2_real2(BRepLib_MakeEdge* self_, const opencascade::handle<Geom2d_Curve>* C, const opencascade::handle<Geom_Surface>* S, const gp_Pnt* P1, const gp_Pnt* P2, Standard_Real p1, Standard_Real p2) {
+    self_->Init(*C, *S, *P1, *P2, p1, p2);
+}
+extern "C" void BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_vertex2_real2(BRepLib_MakeEdge* self_, const opencascade::handle<Geom2d_Curve>* C, const opencascade::handle<Geom_Surface>* S, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2, Standard_Real p1, Standard_Real p2) {
+    self_->Init(*C, *S, *V1, *V2, p1, p2);
+}
+extern "C" const TopoDS_Edge& BRepLib_MakeEdge_edge(BRepLib_MakeEdge* self_) {
+    return self_->Edge();
+}
+extern "C" const TopoDS_Vertex& BRepLib_MakeEdge_vertex1(const BRepLib_MakeEdge* self_) {
+    return self_->Vertex1();
+}
+extern "C" const TopoDS_Vertex& BRepLib_MakeEdge_vertex2(const BRepLib_MakeEdge* self_) {
+    return self_->Vertex2();
+}
+extern "C" const BRepLib_Command* BRepLib_MakeEdge_as_BRepLib_Command(const BRepLib_MakeEdge* self_) { return static_cast<const BRepLib_Command*>(self_); }
+extern "C" BRepLib_Command* BRepLib_MakeEdge_as_BRepLib_Command_mut(BRepLib_MakeEdge* self_) { return static_cast<BRepLib_Command*>(self_); }
+extern "C" const BRepLib_MakeShape* BRepLib_MakeEdge_as_BRepLib_MakeShape(const BRepLib_MakeEdge* self_) { return static_cast<const BRepLib_MakeShape*>(self_); }
+extern "C" BRepLib_MakeShape* BRepLib_MakeEdge_as_BRepLib_MakeShape_mut(BRepLib_MakeEdge* self_) { return static_cast<BRepLib_MakeShape*>(self_); }
+extern "C" bool BRepLib_MakeEdge_inherited_IsDone(const BRepLib_MakeEdge* self) {
+    return self->IsDone();
+}
+extern "C" void BRepLib_MakeEdge_inherited_Check(const BRepLib_MakeEdge* self) {
+    self->Check();
+}
+extern "C" void BRepLib_MakeEdge_inherited_Build(BRepLib_MakeEdge* self) {
+    self->Build();
+}
+extern "C" const TopoDS_Shape& BRepLib_MakeEdge_inherited_Shape(BRepLib_MakeEdge* self) {
+    return self->Shape();
+}
+extern "C" int32_t BRepLib_MakeEdge_inherited_FaceStatus(const BRepLib_MakeEdge* self, const TopoDS_Face& F) {
+    return static_cast<int32_t>(self->FaceStatus(F));
+}
+extern "C" bool BRepLib_MakeEdge_inherited_HasDescendants(const BRepLib_MakeEdge* self, const TopoDS_Face& F) {
+    return self->HasDescendants(F);
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeEdge_inherited_DescendantFaces(BRepLib_MakeEdge* self, const TopoDS_Face& F) {
+    return self->DescendantFaces(F);
+}
+extern "C" Standard_Integer BRepLib_MakeEdge_inherited_NbSurfaces(const BRepLib_MakeEdge* self) {
+    return self->NbSurfaces();
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeEdge_inherited_NewFaces(BRepLib_MakeEdge* self, Standard_Integer I) {
+    return self->NewFaces(I);
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeEdge_inherited_FacesFromEdges(BRepLib_MakeEdge* self, const TopoDS_Edge& E) {
+    return self->FacesFromEdges(E);
+}
+extern "C" void BRepLib_MakeEdge_destructor(BRepLib_MakeEdge* self_) { delete self_; }
+
+// ========================
+// BRepLib_MakeEdge2d wrappers
+// ========================
+
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_vertex2(const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
+    return new BRepLib_MakeEdge2d(*V1, *V2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_pnt2d2(const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
+    return new BRepLib_MakeEdge2d(*P1, *P2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_lin2d(const gp_Lin2d* L) {
+    return new BRepLib_MakeEdge2d(*L);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_lin2d_real2(const gp_Lin2d* L, Standard_Real p1, Standard_Real p2) {
+    return new BRepLib_MakeEdge2d(*L, p1, p2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_lin2d_pnt2d2(const gp_Lin2d* L, const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
+    return new BRepLib_MakeEdge2d(*L, *P1, *P2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_lin2d_vertex2(const gp_Lin2d* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
+    return new BRepLib_MakeEdge2d(*L, *V1, *V2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_circ2d(const gp_Circ2d* L) {
+    return new BRepLib_MakeEdge2d(*L);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_circ2d_real2(const gp_Circ2d* L, Standard_Real p1, Standard_Real p2) {
+    return new BRepLib_MakeEdge2d(*L, p1, p2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_circ2d_pnt2d2(const gp_Circ2d* L, const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
+    return new BRepLib_MakeEdge2d(*L, *P1, *P2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_circ2d_vertex2(const gp_Circ2d* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
+    return new BRepLib_MakeEdge2d(*L, *V1, *V2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_elips2d(const gp_Elips2d* L) {
+    return new BRepLib_MakeEdge2d(*L);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_elips2d_real2(const gp_Elips2d* L, Standard_Real p1, Standard_Real p2) {
+    return new BRepLib_MakeEdge2d(*L, p1, p2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_elips2d_pnt2d2(const gp_Elips2d* L, const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
+    return new BRepLib_MakeEdge2d(*L, *P1, *P2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_elips2d_vertex2(const gp_Elips2d* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
+    return new BRepLib_MakeEdge2d(*L, *V1, *V2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_hypr2d(const gp_Hypr2d* L) {
+    return new BRepLib_MakeEdge2d(*L);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_hypr2d_real2(const gp_Hypr2d* L, Standard_Real p1, Standard_Real p2) {
+    return new BRepLib_MakeEdge2d(*L, p1, p2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_hypr2d_pnt2d2(const gp_Hypr2d* L, const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
+    return new BRepLib_MakeEdge2d(*L, *P1, *P2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_hypr2d_vertex2(const gp_Hypr2d* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
+    return new BRepLib_MakeEdge2d(*L, *V1, *V2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_parab2d(const gp_Parab2d* L) {
+    return new BRepLib_MakeEdge2d(*L);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_parab2d_real2(const gp_Parab2d* L, Standard_Real p1, Standard_Real p2) {
+    return new BRepLib_MakeEdge2d(*L, p1, p2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_parab2d_pnt2d2(const gp_Parab2d* L, const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
+    return new BRepLib_MakeEdge2d(*L, *P1, *P2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_parab2d_vertex2(const gp_Parab2d* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
+    return new BRepLib_MakeEdge2d(*L, *V1, *V2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_handlegeom2dcurve(const opencascade::handle<Geom2d_Curve>* L) {
+    return new BRepLib_MakeEdge2d(*L);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_handlegeom2dcurve_real2(const opencascade::handle<Geom2d_Curve>* L, Standard_Real p1, Standard_Real p2) {
+    return new BRepLib_MakeEdge2d(*L, p1, p2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_handlegeom2dcurve_pnt2d2(const opencascade::handle<Geom2d_Curve>* L, const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
+    return new BRepLib_MakeEdge2d(*L, *P1, *P2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_handlegeom2dcurve_vertex2(const opencascade::handle<Geom2d_Curve>* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
+    return new BRepLib_MakeEdge2d(*L, *V1, *V2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_handlegeom2dcurve_pnt2d2_real2(const opencascade::handle<Geom2d_Curve>* L, const gp_Pnt2d* P1, const gp_Pnt2d* P2, Standard_Real p1, Standard_Real p2) {
+    return new BRepLib_MakeEdge2d(*L, *P1, *P2, p1, p2);
+}
+extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_handlegeom2dcurve_vertex2_real2(const opencascade::handle<Geom2d_Curve>* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2, Standard_Real p1, Standard_Real p2) {
+    return new BRepLib_MakeEdge2d(*L, *V1, *V2, p1, p2);
+}
+extern "C" int32_t BRepLib_MakeEdge2d_error(const BRepLib_MakeEdge2d* self_) {
+    return static_cast<int32_t>(self_->Error());
+}
+extern "C" void BRepLib_MakeEdge2d_init_handlegeom2dcurve(BRepLib_MakeEdge2d* self_, const opencascade::handle<Geom2d_Curve>* C) {
+    self_->Init(*C);
+}
+extern "C" void BRepLib_MakeEdge2d_init_handlegeom2dcurve_real2(BRepLib_MakeEdge2d* self_, const opencascade::handle<Geom2d_Curve>* C, Standard_Real p1, Standard_Real p2) {
+    self_->Init(*C, p1, p2);
+}
+extern "C" void BRepLib_MakeEdge2d_init_handlegeom2dcurve_pnt2d2(BRepLib_MakeEdge2d* self_, const opencascade::handle<Geom2d_Curve>* C, const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
+    self_->Init(*C, *P1, *P2);
+}
+extern "C" void BRepLib_MakeEdge2d_init_handlegeom2dcurve_vertex2(BRepLib_MakeEdge2d* self_, const opencascade::handle<Geom2d_Curve>* C, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
+    self_->Init(*C, *V1, *V2);
+}
+extern "C" void BRepLib_MakeEdge2d_init_handlegeom2dcurve_pnt2d2_real2(BRepLib_MakeEdge2d* self_, const opencascade::handle<Geom2d_Curve>* C, const gp_Pnt2d* P1, const gp_Pnt2d* P2, Standard_Real p1, Standard_Real p2) {
+    self_->Init(*C, *P1, *P2, p1, p2);
+}
+extern "C" void BRepLib_MakeEdge2d_init_handlegeom2dcurve_vertex2_real2(BRepLib_MakeEdge2d* self_, const opencascade::handle<Geom2d_Curve>* C, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2, Standard_Real p1, Standard_Real p2) {
+    self_->Init(*C, *V1, *V2, p1, p2);
+}
+extern "C" const TopoDS_Edge& BRepLib_MakeEdge2d_edge(BRepLib_MakeEdge2d* self_) {
+    return self_->Edge();
+}
+extern "C" const TopoDS_Vertex& BRepLib_MakeEdge2d_vertex1(const BRepLib_MakeEdge2d* self_) {
+    return self_->Vertex1();
+}
+extern "C" const TopoDS_Vertex& BRepLib_MakeEdge2d_vertex2(const BRepLib_MakeEdge2d* self_) {
+    return self_->Vertex2();
+}
+extern "C" const BRepLib_Command* BRepLib_MakeEdge2d_as_BRepLib_Command(const BRepLib_MakeEdge2d* self_) { return static_cast<const BRepLib_Command*>(self_); }
+extern "C" BRepLib_Command* BRepLib_MakeEdge2d_as_BRepLib_Command_mut(BRepLib_MakeEdge2d* self_) { return static_cast<BRepLib_Command*>(self_); }
+extern "C" const BRepLib_MakeShape* BRepLib_MakeEdge2d_as_BRepLib_MakeShape(const BRepLib_MakeEdge2d* self_) { return static_cast<const BRepLib_MakeShape*>(self_); }
+extern "C" BRepLib_MakeShape* BRepLib_MakeEdge2d_as_BRepLib_MakeShape_mut(BRepLib_MakeEdge2d* self_) { return static_cast<BRepLib_MakeShape*>(self_); }
+extern "C" bool BRepLib_MakeEdge2d_inherited_IsDone(const BRepLib_MakeEdge2d* self) {
+    return self->IsDone();
+}
+extern "C" void BRepLib_MakeEdge2d_inherited_Check(const BRepLib_MakeEdge2d* self) {
+    self->Check();
+}
+extern "C" void BRepLib_MakeEdge2d_inherited_Build(BRepLib_MakeEdge2d* self) {
+    self->Build();
+}
+extern "C" const TopoDS_Shape& BRepLib_MakeEdge2d_inherited_Shape(BRepLib_MakeEdge2d* self) {
+    return self->Shape();
+}
+extern "C" int32_t BRepLib_MakeEdge2d_inherited_FaceStatus(const BRepLib_MakeEdge2d* self, const TopoDS_Face& F) {
+    return static_cast<int32_t>(self->FaceStatus(F));
+}
+extern "C" bool BRepLib_MakeEdge2d_inherited_HasDescendants(const BRepLib_MakeEdge2d* self, const TopoDS_Face& F) {
+    return self->HasDescendants(F);
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeEdge2d_inherited_DescendantFaces(BRepLib_MakeEdge2d* self, const TopoDS_Face& F) {
+    return self->DescendantFaces(F);
+}
+extern "C" Standard_Integer BRepLib_MakeEdge2d_inherited_NbSurfaces(const BRepLib_MakeEdge2d* self) {
+    return self->NbSurfaces();
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeEdge2d_inherited_NewFaces(BRepLib_MakeEdge2d* self, Standard_Integer I) {
+    return self->NewFaces(I);
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeEdge2d_inherited_FacesFromEdges(BRepLib_MakeEdge2d* self, const TopoDS_Edge& E) {
+    return self->FacesFromEdges(E);
+}
+extern "C" void BRepLib_MakeEdge2d_destructor(BRepLib_MakeEdge2d* self_) { delete self_; }
+
+// ========================
+// BRepLib_MakeFace wrappers
+// ========================
+
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor() {
+    return new BRepLib_MakeFace();
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_face(const TopoDS_Face* F) {
+    return new BRepLib_MakeFace(*F);
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_pln(const gp_Pln* P) {
+    return new BRepLib_MakeFace(*P);
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_cylinder(const gp_Cylinder* C) {
+    return new BRepLib_MakeFace(*C);
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_cone(const gp_Cone* C) {
+    return new BRepLib_MakeFace(*C);
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_sphere(const gp_Sphere* S) {
+    return new BRepLib_MakeFace(*S);
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_torus(const gp_Torus* C) {
+    return new BRepLib_MakeFace(*C);
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_handlegeomsurface_real(const opencascade::handle<Geom_Surface>* S, Standard_Real TolDegen) {
+    return new BRepLib_MakeFace(*S, TolDegen);
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_pln_real4(const gp_Pln* P, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax) {
+    return new BRepLib_MakeFace(*P, UMin, UMax, VMin, VMax);
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_cylinder_real4(const gp_Cylinder* C, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax) {
+    return new BRepLib_MakeFace(*C, UMin, UMax, VMin, VMax);
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_cone_real4(const gp_Cone* C, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax) {
+    return new BRepLib_MakeFace(*C, UMin, UMax, VMin, VMax);
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_sphere_real4(const gp_Sphere* S, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax) {
+    return new BRepLib_MakeFace(*S, UMin, UMax, VMin, VMax);
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_torus_real4(const gp_Torus* C, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax) {
+    return new BRepLib_MakeFace(*C, UMin, UMax, VMin, VMax);
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_handlegeomsurface_real5(const opencascade::handle<Geom_Surface>* S, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax, Standard_Real TolDegen) {
+    return new BRepLib_MakeFace(*S, UMin, UMax, VMin, VMax, TolDegen);
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_wire_bool(const TopoDS_Wire* W, Standard_Boolean OnlyPlane) {
+    return new BRepLib_MakeFace(*W, OnlyPlane);
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_pln_wire_bool(const gp_Pln* P, const TopoDS_Wire* W, Standard_Boolean Inside) {
+    return new BRepLib_MakeFace(*P, *W, Inside);
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_cylinder_wire_bool(const gp_Cylinder* C, const TopoDS_Wire* W, Standard_Boolean Inside) {
+    return new BRepLib_MakeFace(*C, *W, Inside);
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_cone_wire_bool(const gp_Cone* C, const TopoDS_Wire* W, Standard_Boolean Inside) {
+    return new BRepLib_MakeFace(*C, *W, Inside);
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_sphere_wire_bool(const gp_Sphere* S, const TopoDS_Wire* W, Standard_Boolean Inside) {
+    return new BRepLib_MakeFace(*S, *W, Inside);
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_torus_wire_bool(const gp_Torus* C, const TopoDS_Wire* W, Standard_Boolean Inside) {
+    return new BRepLib_MakeFace(*C, *W, Inside);
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_handlegeomsurface_wire_bool(const opencascade::handle<Geom_Surface>* S, const TopoDS_Wire* W, Standard_Boolean Inside) {
+    return new BRepLib_MakeFace(*S, *W, Inside);
+}
+extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_face_wire(const TopoDS_Face* F, const TopoDS_Wire* W) {
+    return new BRepLib_MakeFace(*F, *W);
+}
+extern "C" int32_t BRepLib_MakeFace_error(const BRepLib_MakeFace* self_) {
+    return static_cast<int32_t>(self_->Error());
+}
+extern "C" void BRepLib_MakeFace_init_face(BRepLib_MakeFace* self_, const TopoDS_Face* F) {
+    self_->Init(*F);
+}
+extern "C" void BRepLib_MakeFace_init_handlegeomsurface_bool_real(BRepLib_MakeFace* self_, const opencascade::handle<Geom_Surface>* S, Standard_Boolean Bound, Standard_Real TolDegen) {
+    self_->Init(*S, Bound, TolDegen);
+}
+extern "C" void BRepLib_MakeFace_init_handlegeomsurface_real5(BRepLib_MakeFace* self_, const opencascade::handle<Geom_Surface>* S, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax, Standard_Real TolDegen) {
+    self_->Init(*S, UMin, UMax, VMin, VMax, TolDegen);
+}
+extern "C" void BRepLib_MakeFace_add(BRepLib_MakeFace* self_, const TopoDS_Wire* W) {
+    self_->Add(*W);
+}
+extern "C" const TopoDS_Face& BRepLib_MakeFace_face(const BRepLib_MakeFace* self_) {
+    return self_->Face();
+}
+extern "C" Standard_Boolean BRepLib_MakeFace_is_degenerated(const opencascade::handle<Geom_Curve>* theCurve, Standard_Real theMaxTol, Standard_Real* theActTol) {
+    return BRepLib_MakeFace::IsDegenerated(*theCurve, theMaxTol, *theActTol);
+}
+extern "C" const BRepLib_Command* BRepLib_MakeFace_as_BRepLib_Command(const BRepLib_MakeFace* self_) { return static_cast<const BRepLib_Command*>(self_); }
+extern "C" BRepLib_Command* BRepLib_MakeFace_as_BRepLib_Command_mut(BRepLib_MakeFace* self_) { return static_cast<BRepLib_Command*>(self_); }
+extern "C" const BRepLib_MakeShape* BRepLib_MakeFace_as_BRepLib_MakeShape(const BRepLib_MakeFace* self_) { return static_cast<const BRepLib_MakeShape*>(self_); }
+extern "C" BRepLib_MakeShape* BRepLib_MakeFace_as_BRepLib_MakeShape_mut(BRepLib_MakeFace* self_) { return static_cast<BRepLib_MakeShape*>(self_); }
+extern "C" bool BRepLib_MakeFace_inherited_IsDone(const BRepLib_MakeFace* self) {
+    return self->IsDone();
+}
+extern "C" void BRepLib_MakeFace_inherited_Check(const BRepLib_MakeFace* self) {
+    self->Check();
+}
+extern "C" void BRepLib_MakeFace_inherited_Build(BRepLib_MakeFace* self) {
+    self->Build();
+}
+extern "C" const TopoDS_Shape& BRepLib_MakeFace_inherited_Shape(BRepLib_MakeFace* self) {
+    return self->Shape();
+}
+extern "C" int32_t BRepLib_MakeFace_inherited_FaceStatus(const BRepLib_MakeFace* self, const TopoDS_Face& F) {
+    return static_cast<int32_t>(self->FaceStatus(F));
+}
+extern "C" bool BRepLib_MakeFace_inherited_HasDescendants(const BRepLib_MakeFace* self, const TopoDS_Face& F) {
+    return self->HasDescendants(F);
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeFace_inherited_DescendantFaces(BRepLib_MakeFace* self, const TopoDS_Face& F) {
+    return self->DescendantFaces(F);
+}
+extern "C" Standard_Integer BRepLib_MakeFace_inherited_NbSurfaces(const BRepLib_MakeFace* self) {
+    return self->NbSurfaces();
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeFace_inherited_NewFaces(BRepLib_MakeFace* self, Standard_Integer I) {
+    return self->NewFaces(I);
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeFace_inherited_FacesFromEdges(BRepLib_MakeFace* self, const TopoDS_Edge& E) {
+    return self->FacesFromEdges(E);
+}
+extern "C" void BRepLib_MakeFace_destructor(BRepLib_MakeFace* self_) { delete self_; }
+
+// ========================
+// BRepLib_MakePolygon wrappers
+// ========================
+
+extern "C" BRepLib_MakePolygon* BRepLib_MakePolygon_ctor() {
+    return new BRepLib_MakePolygon();
+}
+extern "C" BRepLib_MakePolygon* BRepLib_MakePolygon_ctor_pnt2(const gp_Pnt* P1, const gp_Pnt* P2) {
+    return new BRepLib_MakePolygon(*P1, *P2);
+}
+extern "C" BRepLib_MakePolygon* BRepLib_MakePolygon_ctor_pnt3_bool(const gp_Pnt* P1, const gp_Pnt* P2, const gp_Pnt* P3, Standard_Boolean Close) {
+    return new BRepLib_MakePolygon(*P1, *P2, *P3, Close);
+}
+extern "C" BRepLib_MakePolygon* BRepLib_MakePolygon_ctor_pnt4_bool(const gp_Pnt* P1, const gp_Pnt* P2, const gp_Pnt* P3, const gp_Pnt* P4, Standard_Boolean Close) {
+    return new BRepLib_MakePolygon(*P1, *P2, *P3, *P4, Close);
+}
+extern "C" BRepLib_MakePolygon* BRepLib_MakePolygon_ctor_vertex2(const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
+    return new BRepLib_MakePolygon(*V1, *V2);
+}
+extern "C" BRepLib_MakePolygon* BRepLib_MakePolygon_ctor_vertex3_bool(const TopoDS_Vertex* V1, const TopoDS_Vertex* V2, const TopoDS_Vertex* V3, Standard_Boolean Close) {
+    return new BRepLib_MakePolygon(*V1, *V2, *V3, Close);
+}
+extern "C" BRepLib_MakePolygon* BRepLib_MakePolygon_ctor_vertex4_bool(const TopoDS_Vertex* V1, const TopoDS_Vertex* V2, const TopoDS_Vertex* V3, const TopoDS_Vertex* V4, Standard_Boolean Close) {
+    return new BRepLib_MakePolygon(*V1, *V2, *V3, *V4, Close);
+}
+extern "C" void BRepLib_MakePolygon_add_pnt(BRepLib_MakePolygon* self_, const gp_Pnt* P) {
+    self_->Add(*P);
+}
+extern "C" void BRepLib_MakePolygon_add_vertex(BRepLib_MakePolygon* self_, const TopoDS_Vertex* V) {
+    self_->Add(*V);
+}
+extern "C" Standard_Boolean BRepLib_MakePolygon_added(const BRepLib_MakePolygon* self_) {
+    return self_->Added();
+}
+extern "C" void BRepLib_MakePolygon_close(BRepLib_MakePolygon* self_) {
+    self_->Close();
+}
+extern "C" const TopoDS_Vertex& BRepLib_MakePolygon_first_vertex(const BRepLib_MakePolygon* self_) {
+    return self_->FirstVertex();
+}
+extern "C" const TopoDS_Vertex& BRepLib_MakePolygon_last_vertex(const BRepLib_MakePolygon* self_) {
+    return self_->LastVertex();
+}
+extern "C" const TopoDS_Edge& BRepLib_MakePolygon_edge(const BRepLib_MakePolygon* self_) {
+    return self_->Edge();
+}
+extern "C" const TopoDS_Wire& BRepLib_MakePolygon_wire(BRepLib_MakePolygon* self_) {
+    return self_->Wire();
+}
+extern "C" const BRepLib_Command* BRepLib_MakePolygon_as_BRepLib_Command(const BRepLib_MakePolygon* self_) { return static_cast<const BRepLib_Command*>(self_); }
+extern "C" BRepLib_Command* BRepLib_MakePolygon_as_BRepLib_Command_mut(BRepLib_MakePolygon* self_) { return static_cast<BRepLib_Command*>(self_); }
+extern "C" const BRepLib_MakeShape* BRepLib_MakePolygon_as_BRepLib_MakeShape(const BRepLib_MakePolygon* self_) { return static_cast<const BRepLib_MakeShape*>(self_); }
+extern "C" BRepLib_MakeShape* BRepLib_MakePolygon_as_BRepLib_MakeShape_mut(BRepLib_MakePolygon* self_) { return static_cast<BRepLib_MakeShape*>(self_); }
+extern "C" bool BRepLib_MakePolygon_inherited_IsDone(const BRepLib_MakePolygon* self) {
+    return self->IsDone();
+}
+extern "C" void BRepLib_MakePolygon_inherited_Check(const BRepLib_MakePolygon* self) {
+    self->Check();
+}
+extern "C" void BRepLib_MakePolygon_inherited_Build(BRepLib_MakePolygon* self) {
+    self->Build();
+}
+extern "C" const TopoDS_Shape& BRepLib_MakePolygon_inherited_Shape(BRepLib_MakePolygon* self) {
+    return self->Shape();
+}
+extern "C" int32_t BRepLib_MakePolygon_inherited_FaceStatus(const BRepLib_MakePolygon* self, const TopoDS_Face& F) {
+    return static_cast<int32_t>(self->FaceStatus(F));
+}
+extern "C" bool BRepLib_MakePolygon_inherited_HasDescendants(const BRepLib_MakePolygon* self, const TopoDS_Face& F) {
+    return self->HasDescendants(F);
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakePolygon_inherited_DescendantFaces(BRepLib_MakePolygon* self, const TopoDS_Face& F) {
+    return self->DescendantFaces(F);
+}
+extern "C" Standard_Integer BRepLib_MakePolygon_inherited_NbSurfaces(const BRepLib_MakePolygon* self) {
+    return self->NbSurfaces();
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakePolygon_inherited_NewFaces(BRepLib_MakePolygon* self, Standard_Integer I) {
+    return self->NewFaces(I);
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakePolygon_inherited_FacesFromEdges(BRepLib_MakePolygon* self, const TopoDS_Edge& E) {
+    return self->FacesFromEdges(E);
+}
+extern "C" void BRepLib_MakePolygon_destructor(BRepLib_MakePolygon* self_) { delete self_; }
+
+// ========================
+// BRepLib_MakeShape wrappers
+// ========================
+
+extern "C" int32_t BRepLib_MakeShape_face_status(const BRepLib_MakeShape* self_, const TopoDS_Face* F) {
+    return static_cast<int32_t>(self_->FaceStatus(*F));
+}
+extern "C" void BRepLib_MakeShape_build(BRepLib_MakeShape* self_) {
+    self_->Build();
+}
+extern "C" const TopoDS_Shape& BRepLib_MakeShape_shape(BRepLib_MakeShape* self_) {
+    return self_->Shape();
+}
+extern "C" Standard_Boolean BRepLib_MakeShape_has_descendants(const BRepLib_MakeShape* self_, const TopoDS_Face* F) {
+    return self_->HasDescendants(*F);
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeShape_descendant_faces(BRepLib_MakeShape* self_, const TopoDS_Face* F) {
+    return self_->DescendantFaces(*F);
+}
+extern "C" Standard_Integer BRepLib_MakeShape_nb_surfaces(const BRepLib_MakeShape* self_) {
+    return self_->NbSurfaces();
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeShape_new_faces(BRepLib_MakeShape* self_, Standard_Integer I) {
+    return self_->NewFaces(I);
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeShape_faces_from_edges(BRepLib_MakeShape* self_, const TopoDS_Edge* E) {
+    return self_->FacesFromEdges(*E);
+}
+extern "C" const BRepLib_Command* BRepLib_MakeShape_as_BRepLib_Command(const BRepLib_MakeShape* self_) { return static_cast<const BRepLib_Command*>(self_); }
+extern "C" BRepLib_Command* BRepLib_MakeShape_as_BRepLib_Command_mut(BRepLib_MakeShape* self_) { return static_cast<BRepLib_Command*>(self_); }
+extern "C" bool BRepLib_MakeShape_inherited_IsDone(const BRepLib_MakeShape* self) {
+    return self->IsDone();
+}
+extern "C" void BRepLib_MakeShape_inherited_Check(const BRepLib_MakeShape* self) {
+    self->Check();
+}
+extern "C" void BRepLib_MakeShape_destructor(BRepLib_MakeShape* self_) { delete self_; }
+
+// ========================
+// BRepLib_MakeShell wrappers
+// ========================
+
+extern "C" BRepLib_MakeShell* BRepLib_MakeShell_ctor() {
+    return new BRepLib_MakeShell();
+}
+extern "C" BRepLib_MakeShell* BRepLib_MakeShell_ctor_handlegeomsurface_bool(const opencascade::handle<Geom_Surface>* S, Standard_Boolean Segment) {
+    return new BRepLib_MakeShell(*S, Segment);
+}
+extern "C" BRepLib_MakeShell* BRepLib_MakeShell_ctor_handlegeomsurface_real4_bool(const opencascade::handle<Geom_Surface>* S, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax, Standard_Boolean Segment) {
+    return new BRepLib_MakeShell(*S, UMin, UMax, VMin, VMax, Segment);
+}
+extern "C" int32_t BRepLib_MakeShell_error(const BRepLib_MakeShell* self_) {
+    return static_cast<int32_t>(self_->Error());
+}
+extern "C" void BRepLib_MakeShell_init(BRepLib_MakeShell* self_, const opencascade::handle<Geom_Surface>* S, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax, Standard_Boolean Segment) {
+    self_->Init(*S, UMin, UMax, VMin, VMax, Segment);
+}
+extern "C" const TopoDS_Shell& BRepLib_MakeShell_shell(const BRepLib_MakeShell* self_) {
+    return self_->Shell();
+}
+extern "C" const BRepLib_Command* BRepLib_MakeShell_as_BRepLib_Command(const BRepLib_MakeShell* self_) { return static_cast<const BRepLib_Command*>(self_); }
+extern "C" BRepLib_Command* BRepLib_MakeShell_as_BRepLib_Command_mut(BRepLib_MakeShell* self_) { return static_cast<BRepLib_Command*>(self_); }
+extern "C" const BRepLib_MakeShape* BRepLib_MakeShell_as_BRepLib_MakeShape(const BRepLib_MakeShell* self_) { return static_cast<const BRepLib_MakeShape*>(self_); }
+extern "C" BRepLib_MakeShape* BRepLib_MakeShell_as_BRepLib_MakeShape_mut(BRepLib_MakeShell* self_) { return static_cast<BRepLib_MakeShape*>(self_); }
+extern "C" bool BRepLib_MakeShell_inherited_IsDone(const BRepLib_MakeShell* self) {
+    return self->IsDone();
+}
+extern "C" void BRepLib_MakeShell_inherited_Check(const BRepLib_MakeShell* self) {
+    self->Check();
+}
+extern "C" void BRepLib_MakeShell_inherited_Build(BRepLib_MakeShell* self) {
+    self->Build();
+}
+extern "C" const TopoDS_Shape& BRepLib_MakeShell_inherited_Shape(BRepLib_MakeShell* self) {
+    return self->Shape();
+}
+extern "C" int32_t BRepLib_MakeShell_inherited_FaceStatus(const BRepLib_MakeShell* self, const TopoDS_Face& F) {
+    return static_cast<int32_t>(self->FaceStatus(F));
+}
+extern "C" bool BRepLib_MakeShell_inherited_HasDescendants(const BRepLib_MakeShell* self, const TopoDS_Face& F) {
+    return self->HasDescendants(F);
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeShell_inherited_DescendantFaces(BRepLib_MakeShell* self, const TopoDS_Face& F) {
+    return self->DescendantFaces(F);
+}
+extern "C" Standard_Integer BRepLib_MakeShell_inherited_NbSurfaces(const BRepLib_MakeShell* self) {
+    return self->NbSurfaces();
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeShell_inherited_NewFaces(BRepLib_MakeShell* self, Standard_Integer I) {
+    return self->NewFaces(I);
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeShell_inherited_FacesFromEdges(BRepLib_MakeShell* self, const TopoDS_Edge& E) {
+    return self->FacesFromEdges(E);
+}
+extern "C" void BRepLib_MakeShell_destructor(BRepLib_MakeShell* self_) { delete self_; }
+
+// ========================
+// BRepLib_MakeSolid wrappers
+// ========================
+
+extern "C" BRepLib_MakeSolid* BRepLib_MakeSolid_ctor() {
+    return new BRepLib_MakeSolid();
+}
+extern "C" BRepLib_MakeSolid* BRepLib_MakeSolid_ctor_compsolid(const TopoDS_CompSolid* S) {
+    return new BRepLib_MakeSolid(*S);
+}
+extern "C" BRepLib_MakeSolid* BRepLib_MakeSolid_ctor_shell(const TopoDS_Shell* S) {
+    return new BRepLib_MakeSolid(*S);
+}
+extern "C" BRepLib_MakeSolid* BRepLib_MakeSolid_ctor_shell2(const TopoDS_Shell* S1, const TopoDS_Shell* S2) {
+    return new BRepLib_MakeSolid(*S1, *S2);
+}
+extern "C" BRepLib_MakeSolid* BRepLib_MakeSolid_ctor_shell3(const TopoDS_Shell* S1, const TopoDS_Shell* S2, const TopoDS_Shell* S3) {
+    return new BRepLib_MakeSolid(*S1, *S2, *S3);
+}
+extern "C" BRepLib_MakeSolid* BRepLib_MakeSolid_ctor_solid(const TopoDS_Solid* So) {
+    return new BRepLib_MakeSolid(*So);
+}
+extern "C" BRepLib_MakeSolid* BRepLib_MakeSolid_ctor_solid_shell(const TopoDS_Solid* So, const TopoDS_Shell* S) {
+    return new BRepLib_MakeSolid(*So, *S);
+}
+extern "C" int32_t BRepLib_MakeSolid_face_status(const BRepLib_MakeSolid* self_, const TopoDS_Face* F) {
+    return static_cast<int32_t>(self_->FaceStatus(*F));
+}
+extern "C" void BRepLib_MakeSolid_add(BRepLib_MakeSolid* self_, const TopoDS_Shell* S) {
+    self_->Add(*S);
+}
+extern "C" const TopoDS_Solid& BRepLib_MakeSolid_solid(BRepLib_MakeSolid* self_) {
+    return self_->Solid();
+}
+extern "C" const BRepLib_Command* BRepLib_MakeSolid_as_BRepLib_Command(const BRepLib_MakeSolid* self_) { return static_cast<const BRepLib_Command*>(self_); }
+extern "C" BRepLib_Command* BRepLib_MakeSolid_as_BRepLib_Command_mut(BRepLib_MakeSolid* self_) { return static_cast<BRepLib_Command*>(self_); }
+extern "C" const BRepLib_MakeShape* BRepLib_MakeSolid_as_BRepLib_MakeShape(const BRepLib_MakeSolid* self_) { return static_cast<const BRepLib_MakeShape*>(self_); }
+extern "C" BRepLib_MakeShape* BRepLib_MakeSolid_as_BRepLib_MakeShape_mut(BRepLib_MakeSolid* self_) { return static_cast<BRepLib_MakeShape*>(self_); }
+extern "C" bool BRepLib_MakeSolid_inherited_IsDone(const BRepLib_MakeSolid* self) {
+    return self->IsDone();
+}
+extern "C" void BRepLib_MakeSolid_inherited_Check(const BRepLib_MakeSolid* self) {
+    self->Check();
+}
+extern "C" void BRepLib_MakeSolid_inherited_Build(BRepLib_MakeSolid* self) {
+    self->Build();
+}
+extern "C" const TopoDS_Shape& BRepLib_MakeSolid_inherited_Shape(BRepLib_MakeSolid* self) {
+    return self->Shape();
+}
+extern "C" bool BRepLib_MakeSolid_inherited_HasDescendants(const BRepLib_MakeSolid* self, const TopoDS_Face& F) {
+    return self->HasDescendants(F);
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeSolid_inherited_DescendantFaces(BRepLib_MakeSolid* self, const TopoDS_Face& F) {
+    return self->DescendantFaces(F);
+}
+extern "C" Standard_Integer BRepLib_MakeSolid_inherited_NbSurfaces(const BRepLib_MakeSolid* self) {
+    return self->NbSurfaces();
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeSolid_inherited_NewFaces(BRepLib_MakeSolid* self, Standard_Integer I) {
+    return self->NewFaces(I);
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeSolid_inherited_FacesFromEdges(BRepLib_MakeSolid* self, const TopoDS_Edge& E) {
+    return self->FacesFromEdges(E);
+}
+extern "C" void BRepLib_MakeSolid_destructor(BRepLib_MakeSolid* self_) { delete self_; }
+
+// ========================
+// BRepLib_MakeVertex wrappers
+// ========================
+
+extern "C" BRepLib_MakeVertex* BRepLib_MakeVertex_ctor_pnt(const gp_Pnt* P) {
+    return new BRepLib_MakeVertex(*P);
+}
+extern "C" const TopoDS_Vertex& BRepLib_MakeVertex_vertex(BRepLib_MakeVertex* self_) {
+    return self_->Vertex();
+}
+extern "C" const BRepLib_Command* BRepLib_MakeVertex_as_BRepLib_Command(const BRepLib_MakeVertex* self_) { return static_cast<const BRepLib_Command*>(self_); }
+extern "C" BRepLib_Command* BRepLib_MakeVertex_as_BRepLib_Command_mut(BRepLib_MakeVertex* self_) { return static_cast<BRepLib_Command*>(self_); }
+extern "C" const BRepLib_MakeShape* BRepLib_MakeVertex_as_BRepLib_MakeShape(const BRepLib_MakeVertex* self_) { return static_cast<const BRepLib_MakeShape*>(self_); }
+extern "C" BRepLib_MakeShape* BRepLib_MakeVertex_as_BRepLib_MakeShape_mut(BRepLib_MakeVertex* self_) { return static_cast<BRepLib_MakeShape*>(self_); }
+extern "C" bool BRepLib_MakeVertex_inherited_IsDone(const BRepLib_MakeVertex* self) {
+    return self->IsDone();
+}
+extern "C" void BRepLib_MakeVertex_inherited_Check(const BRepLib_MakeVertex* self) {
+    self->Check();
+}
+extern "C" void BRepLib_MakeVertex_inherited_Build(BRepLib_MakeVertex* self) {
+    self->Build();
+}
+extern "C" const TopoDS_Shape& BRepLib_MakeVertex_inherited_Shape(BRepLib_MakeVertex* self) {
+    return self->Shape();
+}
+extern "C" int32_t BRepLib_MakeVertex_inherited_FaceStatus(const BRepLib_MakeVertex* self, const TopoDS_Face& F) {
+    return static_cast<int32_t>(self->FaceStatus(F));
+}
+extern "C" bool BRepLib_MakeVertex_inherited_HasDescendants(const BRepLib_MakeVertex* self, const TopoDS_Face& F) {
+    return self->HasDescendants(F);
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeVertex_inherited_DescendantFaces(BRepLib_MakeVertex* self, const TopoDS_Face& F) {
+    return self->DescendantFaces(F);
+}
+extern "C" Standard_Integer BRepLib_MakeVertex_inherited_NbSurfaces(const BRepLib_MakeVertex* self) {
+    return self->NbSurfaces();
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeVertex_inherited_NewFaces(BRepLib_MakeVertex* self, Standard_Integer I) {
+    return self->NewFaces(I);
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeVertex_inherited_FacesFromEdges(BRepLib_MakeVertex* self, const TopoDS_Edge& E) {
+    return self->FacesFromEdges(E);
+}
+extern "C" void BRepLib_MakeVertex_destructor(BRepLib_MakeVertex* self_) { delete self_; }
+
+// ========================
+// BRepLib_MakeWire wrappers
+// ========================
+
+extern "C" BRepLib_MakeWire* BRepLib_MakeWire_ctor() {
+    return new BRepLib_MakeWire();
+}
+extern "C" BRepLib_MakeWire* BRepLib_MakeWire_ctor_edge(const TopoDS_Edge* E) {
+    return new BRepLib_MakeWire(*E);
+}
+extern "C" BRepLib_MakeWire* BRepLib_MakeWire_ctor_edge2(const TopoDS_Edge* E1, const TopoDS_Edge* E2) {
+    return new BRepLib_MakeWire(*E1, *E2);
+}
+extern "C" BRepLib_MakeWire* BRepLib_MakeWire_ctor_edge3(const TopoDS_Edge* E1, const TopoDS_Edge* E2, const TopoDS_Edge* E3) {
+    return new BRepLib_MakeWire(*E1, *E2, *E3);
+}
+extern "C" BRepLib_MakeWire* BRepLib_MakeWire_ctor_edge4(const TopoDS_Edge* E1, const TopoDS_Edge* E2, const TopoDS_Edge* E3, const TopoDS_Edge* E4) {
+    return new BRepLib_MakeWire(*E1, *E2, *E3, *E4);
+}
+extern "C" BRepLib_MakeWire* BRepLib_MakeWire_ctor_wire(const TopoDS_Wire* W) {
+    return new BRepLib_MakeWire(*W);
+}
+extern "C" BRepLib_MakeWire* BRepLib_MakeWire_ctor_wire_edge(const TopoDS_Wire* W, const TopoDS_Edge* E) {
+    return new BRepLib_MakeWire(*W, *E);
+}
+extern "C" int32_t BRepLib_MakeWire_error(const BRepLib_MakeWire* self_) {
+    return static_cast<int32_t>(self_->Error());
+}
+extern "C" void BRepLib_MakeWire_add_edge(BRepLib_MakeWire* self_, const TopoDS_Edge* E) {
+    self_->Add(*E);
+}
+extern "C" void BRepLib_MakeWire_add_wire(BRepLib_MakeWire* self_, const TopoDS_Wire* W) {
+    self_->Add(*W);
+}
+extern "C" void BRepLib_MakeWire_add_listofshape(BRepLib_MakeWire* self_, const TopTools_ListOfShape* L) {
+    self_->Add(*L);
+}
+extern "C" const TopoDS_Wire& BRepLib_MakeWire_wire(BRepLib_MakeWire* self_) {
+    return self_->Wire();
+}
+extern "C" const TopoDS_Edge& BRepLib_MakeWire_edge(const BRepLib_MakeWire* self_) {
+    return self_->Edge();
+}
+extern "C" const TopoDS_Vertex& BRepLib_MakeWire_vertex(const BRepLib_MakeWire* self_) {
+    return self_->Vertex();
+}
+extern "C" const BRepLib_Command* BRepLib_MakeWire_as_BRepLib_Command(const BRepLib_MakeWire* self_) { return static_cast<const BRepLib_Command*>(self_); }
+extern "C" BRepLib_Command* BRepLib_MakeWire_as_BRepLib_Command_mut(BRepLib_MakeWire* self_) { return static_cast<BRepLib_Command*>(self_); }
+extern "C" const BRepLib_MakeShape* BRepLib_MakeWire_as_BRepLib_MakeShape(const BRepLib_MakeWire* self_) { return static_cast<const BRepLib_MakeShape*>(self_); }
+extern "C" BRepLib_MakeShape* BRepLib_MakeWire_as_BRepLib_MakeShape_mut(BRepLib_MakeWire* self_) { return static_cast<BRepLib_MakeShape*>(self_); }
+extern "C" bool BRepLib_MakeWire_inherited_IsDone(const BRepLib_MakeWire* self) {
+    return self->IsDone();
+}
+extern "C" void BRepLib_MakeWire_inherited_Check(const BRepLib_MakeWire* self) {
+    self->Check();
+}
+extern "C" void BRepLib_MakeWire_inherited_Build(BRepLib_MakeWire* self) {
+    self->Build();
+}
+extern "C" const TopoDS_Shape& BRepLib_MakeWire_inherited_Shape(BRepLib_MakeWire* self) {
+    return self->Shape();
+}
+extern "C" int32_t BRepLib_MakeWire_inherited_FaceStatus(const BRepLib_MakeWire* self, const TopoDS_Face& F) {
+    return static_cast<int32_t>(self->FaceStatus(F));
+}
+extern "C" bool BRepLib_MakeWire_inherited_HasDescendants(const BRepLib_MakeWire* self, const TopoDS_Face& F) {
+    return self->HasDescendants(F);
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeWire_inherited_DescendantFaces(BRepLib_MakeWire* self, const TopoDS_Face& F) {
+    return self->DescendantFaces(F);
+}
+extern "C" Standard_Integer BRepLib_MakeWire_inherited_NbSurfaces(const BRepLib_MakeWire* self) {
+    return self->NbSurfaces();
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeWire_inherited_NewFaces(BRepLib_MakeWire* self, Standard_Integer I) {
+    return self->NewFaces(I);
+}
+extern "C" const TopTools_ListOfShape& BRepLib_MakeWire_inherited_FacesFromEdges(BRepLib_MakeWire* self, const TopoDS_Edge& E) {
+    return self->FacesFromEdges(E);
+}
+extern "C" void BRepLib_MakeWire_destructor(BRepLib_MakeWire* self_) { delete self_; }
+
+// ========================
+// BRepLib_PointCloudShape wrappers
+// ========================
+
+extern "C" const TopoDS_Shape& BRepLib_PointCloudShape_shape(const BRepLib_PointCloudShape* self_) {
+    return self_->Shape();
+}
+extern "C" void BRepLib_PointCloudShape_set_shape(BRepLib_PointCloudShape* self_, const TopoDS_Shape* theShape) {
+    self_->SetShape(*theShape);
+}
+extern "C" Standard_Real BRepLib_PointCloudShape_tolerance(const BRepLib_PointCloudShape* self_) {
+    return self_->Tolerance();
+}
+extern "C" void BRepLib_PointCloudShape_set_tolerance(BRepLib_PointCloudShape* self_, Standard_Real theTol) {
+    self_->SetTolerance(theTol);
+}
+extern "C" Standard_Real BRepLib_PointCloudShape_get_distance(const BRepLib_PointCloudShape* self_) {
+    return self_->GetDistance();
+}
+extern "C" void BRepLib_PointCloudShape_set_distance(BRepLib_PointCloudShape* self_, Standard_Real theDist) {
+    self_->SetDistance(theDist);
+}
+extern "C" Standard_Integer BRepLib_PointCloudShape_nb_points_by_density(BRepLib_PointCloudShape* self_, Standard_Real theDensity) {
+    return self_->NbPointsByDensity(theDensity);
+}
+extern "C" Standard_Integer BRepLib_PointCloudShape_nb_points_by_triangulation(const BRepLib_PointCloudShape* self_) {
+    return self_->NbPointsByTriangulation();
+}
+extern "C" Standard_Boolean BRepLib_PointCloudShape_generate_points_by_density(BRepLib_PointCloudShape* self_, Standard_Real theDensity) {
+    return self_->GeneratePointsByDensity(theDensity);
+}
+extern "C" Standard_Boolean BRepLib_PointCloudShape_generate_points_by_triangulation(BRepLib_PointCloudShape* self_) {
+    return self_->GeneratePointsByTriangulation();
+}
+extern "C" void BRepLib_PointCloudShape_destructor(BRepLib_PointCloudShape* self_) { delete self_; }
+
+// ========================
+// BRepLib_ToolTriangulatedShape wrappers
+// ========================
+
+extern "C" BRepLib_ToolTriangulatedShape* BRepLib_ToolTriangulatedShape_ctor() {
+    return new BRepLib_ToolTriangulatedShape();
+}
+extern "C" void BRepLib_ToolTriangulatedShape_compute_normals_face_handlepolytriangulation(const TopoDS_Face* theFace, const opencascade::handle<Poly_Triangulation>* theTris) {
+    return BRepLib_ToolTriangulatedShape::ComputeNormals(*theFace, *theTris);
+}
+extern "C" void BRepLib_ToolTriangulatedShape_compute_normals_face_handlepolytriangulation_connect(const TopoDS_Face* theFace, const opencascade::handle<Poly_Triangulation>* theTris, Poly_Connect* thePolyConnect) {
+    return BRepLib_ToolTriangulatedShape::ComputeNormals(*theFace, *theTris, *thePolyConnect);
+}
+extern "C" void BRepLib_ToolTriangulatedShape_destructor(BRepLib_ToolTriangulatedShape* self_) { delete self_; }
+
+// ========================
+// BRepLib_ValidateEdge wrappers
+// ========================
+
+extern "C" void BRepLib_ValidateEdge_set_exact_method(BRepLib_ValidateEdge* self_, Standard_Boolean theIsExact) {
+    self_->SetExactMethod(theIsExact);
+}
+extern "C" Standard_Boolean BRepLib_ValidateEdge_is_exact_method(BRepLib_ValidateEdge* self_) {
+    return self_->IsExactMethod();
+}
+extern "C" void BRepLib_ValidateEdge_set_parallel(BRepLib_ValidateEdge* self_, Standard_Boolean theIsMultiThread) {
+    self_->SetParallel(theIsMultiThread);
+}
+extern "C" Standard_Boolean BRepLib_ValidateEdge_is_parallel(BRepLib_ValidateEdge* self_) {
+    return self_->IsParallel();
+}
+extern "C" void BRepLib_ValidateEdge_set_control_points_number(BRepLib_ValidateEdge* self_, Standard_Integer theControlPointsNumber) {
+    self_->SetControlPointsNumber(theControlPointsNumber);
+}
+extern "C" void BRepLib_ValidateEdge_set_exit_if_tolerance_exceeded(BRepLib_ValidateEdge* self_, Standard_Real theToleranceForChecking) {
+    self_->SetExitIfToleranceExceeded(theToleranceForChecking);
+}
+extern "C" void BRepLib_ValidateEdge_process(BRepLib_ValidateEdge* self_) {
+    self_->Process();
+}
+extern "C" Standard_Boolean BRepLib_ValidateEdge_is_done(const BRepLib_ValidateEdge* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Boolean BRepLib_ValidateEdge_check_tolerance(BRepLib_ValidateEdge* self_, Standard_Real theToleranceToCheck) {
+    return self_->CheckTolerance(theToleranceToCheck);
+}
+extern "C" Standard_Real BRepLib_ValidateEdge_get_max_distance(BRepLib_ValidateEdge* self_) {
+    return self_->GetMaxDistance();
+}
+extern "C" void BRepLib_ValidateEdge_update_tolerance(BRepLib_ValidateEdge* self_, Standard_Real* theToleranceToUpdate) {
+    self_->UpdateTolerance(*theToleranceToUpdate);
+}
+extern "C" void BRepLib_ValidateEdge_destructor(BRepLib_ValidateEdge* self_) { delete self_; }
 
 // ========================
 // BRepMesh_BaseMeshAlgo wrappers
@@ -11771,6 +13413,9 @@ extern "C" void BRepMesh_ModelBuilder_inherited_SendMessages(const BRepMesh_Mode
 }
 extern "C" void BRepMesh_ModelBuilder_inherited_AddStatus(BRepMesh_ModelBuilder* self, const opencascade::handle<Message_Algorithm>& theOther) {
     self->AddStatus(theOther);
+}
+extern "C" Handle(TColStd_HPackedMapOfInteger)* BRepMesh_ModelBuilder_inherited_GetMessageNumbers(const BRepMesh_ModelBuilder* self, int32_t theStatus) {
+    return new Handle(TColStd_HPackedMapOfInteger)(self->GetMessageNumbers(static_cast<Message_Status>(theStatus)));
 }
 extern "C" Handle(TColStd_HSequenceOfHExtendedString)* BRepMesh_ModelBuilder_inherited_GetMessageStrings(const BRepMesh_ModelBuilder* self, int32_t theStatus) {
     return new Handle(TColStd_HSequenceOfHExtendedString)(self->GetMessageStrings(static_cast<Message_Status>(theStatus)));
@@ -14445,6 +16090,10 @@ extern "C" void Extrema_CCLocFOfLocECC_points(const Extrema_CCLocFOfLocECC* self
 extern "C" Standard_Real Extrema_CCLocFOfLocECC_tolerance(const Extrema_CCLocFOfLocECC* self_) {
     return self_->Tolerance();
 }
+extern "C" const math_FunctionSet* Extrema_CCLocFOfLocECC_as_math_FunctionSet(const Extrema_CCLocFOfLocECC* self_) { return static_cast<const math_FunctionSet*>(self_); }
+extern "C" math_FunctionSet* Extrema_CCLocFOfLocECC_as_math_FunctionSet_mut(Extrema_CCLocFOfLocECC* self_) { return static_cast<math_FunctionSet*>(self_); }
+extern "C" const math_FunctionSetWithDerivatives* Extrema_CCLocFOfLocECC_as_math_FunctionSetWithDerivatives(const Extrema_CCLocFOfLocECC* self_) { return static_cast<const math_FunctionSetWithDerivatives*>(self_); }
+extern "C" math_FunctionSetWithDerivatives* Extrema_CCLocFOfLocECC_as_math_FunctionSetWithDerivatives_mut(Extrema_CCLocFOfLocECC* self_) { return static_cast<math_FunctionSetWithDerivatives*>(self_); }
 extern "C" void Extrema_CCLocFOfLocECC_destructor(Extrema_CCLocFOfLocECC* self_) { delete self_; }
 
 // ========================
@@ -14484,6 +16133,10 @@ extern "C" void Extrema_CCLocFOfLocECC2d_points(const Extrema_CCLocFOfLocECC2d* 
 extern "C" Standard_Real Extrema_CCLocFOfLocECC2d_tolerance(const Extrema_CCLocFOfLocECC2d* self_) {
     return self_->Tolerance();
 }
+extern "C" const math_FunctionSet* Extrema_CCLocFOfLocECC2d_as_math_FunctionSet(const Extrema_CCLocFOfLocECC2d* self_) { return static_cast<const math_FunctionSet*>(self_); }
+extern "C" math_FunctionSet* Extrema_CCLocFOfLocECC2d_as_math_FunctionSet_mut(Extrema_CCLocFOfLocECC2d* self_) { return static_cast<math_FunctionSet*>(self_); }
+extern "C" const math_FunctionSetWithDerivatives* Extrema_CCLocFOfLocECC2d_as_math_FunctionSetWithDerivatives(const Extrema_CCLocFOfLocECC2d* self_) { return static_cast<const math_FunctionSetWithDerivatives*>(self_); }
+extern "C" math_FunctionSetWithDerivatives* Extrema_CCLocFOfLocECC2d_as_math_FunctionSetWithDerivatives_mut(Extrema_CCLocFOfLocECC2d* self_) { return static_cast<math_FunctionSetWithDerivatives*>(self_); }
 extern "C" void Extrema_CCLocFOfLocECC2d_destructor(Extrema_CCLocFOfLocECC2d* self_) { delete self_; }
 
 // ========================
@@ -15823,6 +17476,10 @@ extern "C" const Extrema_POnCurv& Extrema_FuncExtCS_point_on_curve(const Extrema
 extern "C" const Extrema_POnSurf& Extrema_FuncExtCS_point_on_surface(const Extrema_FuncExtCS* self_, Standard_Integer N) {
     return self_->PointOnSurface(N);
 }
+extern "C" const math_FunctionSet* Extrema_FuncExtCS_as_math_FunctionSet(const Extrema_FuncExtCS* self_) { return static_cast<const math_FunctionSet*>(self_); }
+extern "C" math_FunctionSet* Extrema_FuncExtCS_as_math_FunctionSet_mut(Extrema_FuncExtCS* self_) { return static_cast<math_FunctionSet*>(self_); }
+extern "C" const math_FunctionSetWithDerivatives* Extrema_FuncExtCS_as_math_FunctionSetWithDerivatives(const Extrema_FuncExtCS* self_) { return static_cast<const math_FunctionSetWithDerivatives*>(self_); }
+extern "C" math_FunctionSetWithDerivatives* Extrema_FuncExtCS_as_math_FunctionSetWithDerivatives_mut(Extrema_FuncExtCS* self_) { return static_cast<math_FunctionSetWithDerivatives*>(self_); }
 extern "C" void Extrema_FuncExtCS_destructor(Extrema_FuncExtCS* self_) { delete self_; }
 
 // ========================
@@ -15859,6 +17516,10 @@ extern "C" const Extrema_POnSurf& Extrema_FuncExtSS_point_on_s1(const Extrema_Fu
 extern "C" const Extrema_POnSurf& Extrema_FuncExtSS_point_on_s2(const Extrema_FuncExtSS* self_, Standard_Integer N) {
     return self_->PointOnS2(N);
 }
+extern "C" const math_FunctionSet* Extrema_FuncExtSS_as_math_FunctionSet(const Extrema_FuncExtSS* self_) { return static_cast<const math_FunctionSet*>(self_); }
+extern "C" math_FunctionSet* Extrema_FuncExtSS_as_math_FunctionSet_mut(Extrema_FuncExtSS* self_) { return static_cast<math_FunctionSet*>(self_); }
+extern "C" const math_FunctionSetWithDerivatives* Extrema_FuncExtSS_as_math_FunctionSetWithDerivatives(const Extrema_FuncExtSS* self_) { return static_cast<const math_FunctionSetWithDerivatives*>(self_); }
+extern "C" math_FunctionSetWithDerivatives* Extrema_FuncExtSS_as_math_FunctionSetWithDerivatives_mut(Extrema_FuncExtSS* self_) { return static_cast<math_FunctionSetWithDerivatives*>(self_); }
 extern "C" void Extrema_FuncExtSS_destructor(Extrema_FuncExtSS* self_) { delete self_; }
 
 // ========================
@@ -15870,6 +17531,13 @@ extern "C" Extrema_FuncPSDist* Extrema_FuncPSDist_ctor_surface_pnt(const Adaptor
 }
 extern "C" Standard_Integer Extrema_FuncPSDist_nb_variables(const Extrema_FuncPSDist* self_) {
     return self_->NbVariables();
+}
+extern "C" const math_MultipleVarFunction* Extrema_FuncPSDist_as_math_MultipleVarFunction(const Extrema_FuncPSDist* self_) { return static_cast<const math_MultipleVarFunction*>(self_); }
+extern "C" math_MultipleVarFunction* Extrema_FuncPSDist_as_math_MultipleVarFunction_mut(Extrema_FuncPSDist* self_) { return static_cast<math_MultipleVarFunction*>(self_); }
+extern "C" const math_MultipleVarFunctionWithGradient* Extrema_FuncPSDist_as_math_MultipleVarFunctionWithGradient(const Extrema_FuncPSDist* self_) { return static_cast<const math_MultipleVarFunctionWithGradient*>(self_); }
+extern "C" math_MultipleVarFunctionWithGradient* Extrema_FuncPSDist_as_math_MultipleVarFunctionWithGradient_mut(Extrema_FuncPSDist* self_) { return static_cast<math_MultipleVarFunctionWithGradient*>(self_); }
+extern "C" Standard_Integer Extrema_FuncPSDist_inherited_GetStateNumber(Extrema_FuncPSDist* self) {
+    return self->GetStateNumber();
 }
 extern "C" void Extrema_FuncPSDist_destructor(Extrema_FuncPSDist* self_) { delete self_; }
 
@@ -15907,6 +17575,10 @@ extern "C" Standard_Real Extrema_FuncPSNorm_square_distance(const Extrema_FuncPS
 extern "C" const Extrema_POnSurf& Extrema_FuncPSNorm_point(const Extrema_FuncPSNorm* self_, Standard_Integer N) {
     return self_->Point(N);
 }
+extern "C" const math_FunctionSet* Extrema_FuncPSNorm_as_math_FunctionSet(const Extrema_FuncPSNorm* self_) { return static_cast<const math_FunctionSet*>(self_); }
+extern "C" math_FunctionSet* Extrema_FuncPSNorm_as_math_FunctionSet_mut(Extrema_FuncPSNorm* self_) { return static_cast<math_FunctionSet*>(self_); }
+extern "C" const math_FunctionSetWithDerivatives* Extrema_FuncPSNorm_as_math_FunctionSetWithDerivatives(const Extrema_FuncPSNorm* self_) { return static_cast<const math_FunctionSetWithDerivatives*>(self_); }
+extern "C" math_FunctionSetWithDerivatives* Extrema_FuncPSNorm_as_math_FunctionSetWithDerivatives_mut(Extrema_FuncPSNorm* self_) { return static_cast<math_FunctionSetWithDerivatives*>(self_); }
 extern "C" void Extrema_FuncPSNorm_destructor(Extrema_FuncPSNorm* self_) { delete self_; }
 
 // ========================
@@ -16126,6 +17798,11 @@ extern "C" Extrema_GlobOptFuncCCC0* Extrema_GlobOptFuncCCC0_ctor_curve2d2(const 
 extern "C" Standard_Integer Extrema_GlobOptFuncCCC0_nb_variables(const Extrema_GlobOptFuncCCC0* self_) {
     return self_->NbVariables();
 }
+extern "C" const math_MultipleVarFunction* Extrema_GlobOptFuncCCC0_as_math_MultipleVarFunction(const Extrema_GlobOptFuncCCC0* self_) { return static_cast<const math_MultipleVarFunction*>(self_); }
+extern "C" math_MultipleVarFunction* Extrema_GlobOptFuncCCC0_as_math_MultipleVarFunction_mut(Extrema_GlobOptFuncCCC0* self_) { return static_cast<math_MultipleVarFunction*>(self_); }
+extern "C" Standard_Integer Extrema_GlobOptFuncCCC0_inherited_GetStateNumber(Extrema_GlobOptFuncCCC0* self) {
+    return self->GetStateNumber();
+}
 extern "C" void Extrema_GlobOptFuncCCC0_destructor(Extrema_GlobOptFuncCCC0* self_) { delete self_; }
 
 // ========================
@@ -16140,6 +17817,13 @@ extern "C" Extrema_GlobOptFuncCCC1* Extrema_GlobOptFuncCCC1_ctor_curve2d2(const 
 }
 extern "C" Standard_Integer Extrema_GlobOptFuncCCC1_nb_variables(const Extrema_GlobOptFuncCCC1* self_) {
     return self_->NbVariables();
+}
+extern "C" const math_MultipleVarFunction* Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunction(const Extrema_GlobOptFuncCCC1* self_) { return static_cast<const math_MultipleVarFunction*>(self_); }
+extern "C" math_MultipleVarFunction* Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunction_mut(Extrema_GlobOptFuncCCC1* self_) { return static_cast<math_MultipleVarFunction*>(self_); }
+extern "C" const math_MultipleVarFunctionWithGradient* Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunctionWithGradient(const Extrema_GlobOptFuncCCC1* self_) { return static_cast<const math_MultipleVarFunctionWithGradient*>(self_); }
+extern "C" math_MultipleVarFunctionWithGradient* Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunctionWithGradient_mut(Extrema_GlobOptFuncCCC1* self_) { return static_cast<math_MultipleVarFunctionWithGradient*>(self_); }
+extern "C" Standard_Integer Extrema_GlobOptFuncCCC1_inherited_GetStateNumber(Extrema_GlobOptFuncCCC1* self) {
+    return self->GetStateNumber();
 }
 extern "C" void Extrema_GlobOptFuncCCC1_destructor(Extrema_GlobOptFuncCCC1* self_) { delete self_; }
 
@@ -16156,6 +17840,15 @@ extern "C" Extrema_GlobOptFuncCCC2* Extrema_GlobOptFuncCCC2_ctor_curve2d2(const 
 extern "C" Standard_Integer Extrema_GlobOptFuncCCC2_nb_variables(const Extrema_GlobOptFuncCCC2* self_) {
     return self_->NbVariables();
 }
+extern "C" const math_MultipleVarFunction* Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunction(const Extrema_GlobOptFuncCCC2* self_) { return static_cast<const math_MultipleVarFunction*>(self_); }
+extern "C" math_MultipleVarFunction* Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunction_mut(Extrema_GlobOptFuncCCC2* self_) { return static_cast<math_MultipleVarFunction*>(self_); }
+extern "C" const math_MultipleVarFunctionWithGradient* Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithGradient(const Extrema_GlobOptFuncCCC2* self_) { return static_cast<const math_MultipleVarFunctionWithGradient*>(self_); }
+extern "C" math_MultipleVarFunctionWithGradient* Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithGradient_mut(Extrema_GlobOptFuncCCC2* self_) { return static_cast<math_MultipleVarFunctionWithGradient*>(self_); }
+extern "C" const math_MultipleVarFunctionWithHessian* Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithHessian(const Extrema_GlobOptFuncCCC2* self_) { return static_cast<const math_MultipleVarFunctionWithHessian*>(self_); }
+extern "C" math_MultipleVarFunctionWithHessian* Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithHessian_mut(Extrema_GlobOptFuncCCC2* self_) { return static_cast<math_MultipleVarFunctionWithHessian*>(self_); }
+extern "C" Standard_Integer Extrema_GlobOptFuncCCC2_inherited_GetStateNumber(Extrema_GlobOptFuncCCC2* self) {
+    return self->GetStateNumber();
+}
 extern "C" void Extrema_GlobOptFuncCCC2_destructor(Extrema_GlobOptFuncCCC2* self_) { delete self_; }
 
 // ========================
@@ -16164,6 +17857,11 @@ extern "C" void Extrema_GlobOptFuncCCC2_destructor(Extrema_GlobOptFuncCCC2* self
 
 extern "C" Standard_Integer Extrema_GlobOptFuncCQuadric_nb_variables(const Extrema_GlobOptFuncCQuadric* self_) {
     return self_->NbVariables();
+}
+extern "C" const math_MultipleVarFunction* Extrema_GlobOptFuncCQuadric_as_math_MultipleVarFunction(const Extrema_GlobOptFuncCQuadric* self_) { return static_cast<const math_MultipleVarFunction*>(self_); }
+extern "C" math_MultipleVarFunction* Extrema_GlobOptFuncCQuadric_as_math_MultipleVarFunction_mut(Extrema_GlobOptFuncCQuadric* self_) { return static_cast<math_MultipleVarFunction*>(self_); }
+extern "C" Standard_Integer Extrema_GlobOptFuncCQuadric_inherited_GetStateNumber(Extrema_GlobOptFuncCQuadric* self) {
+    return self->GetStateNumber();
 }
 extern "C" void Extrema_GlobOptFuncCQuadric_destructor(Extrema_GlobOptFuncCQuadric* self_) { delete self_; }
 
@@ -16174,6 +17872,15 @@ extern "C" void Extrema_GlobOptFuncCQuadric_destructor(Extrema_GlobOptFuncCQuadr
 extern "C" Standard_Integer Extrema_GlobOptFuncCS_nb_variables(const Extrema_GlobOptFuncCS* self_) {
     return self_->NbVariables();
 }
+extern "C" const math_MultipleVarFunction* Extrema_GlobOptFuncCS_as_math_MultipleVarFunction(const Extrema_GlobOptFuncCS* self_) { return static_cast<const math_MultipleVarFunction*>(self_); }
+extern "C" math_MultipleVarFunction* Extrema_GlobOptFuncCS_as_math_MultipleVarFunction_mut(Extrema_GlobOptFuncCS* self_) { return static_cast<math_MultipleVarFunction*>(self_); }
+extern "C" const math_MultipleVarFunctionWithGradient* Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithGradient(const Extrema_GlobOptFuncCS* self_) { return static_cast<const math_MultipleVarFunctionWithGradient*>(self_); }
+extern "C" math_MultipleVarFunctionWithGradient* Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithGradient_mut(Extrema_GlobOptFuncCS* self_) { return static_cast<math_MultipleVarFunctionWithGradient*>(self_); }
+extern "C" const math_MultipleVarFunctionWithHessian* Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithHessian(const Extrema_GlobOptFuncCS* self_) { return static_cast<const math_MultipleVarFunctionWithHessian*>(self_); }
+extern "C" math_MultipleVarFunctionWithHessian* Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithHessian_mut(Extrema_GlobOptFuncCS* self_) { return static_cast<math_MultipleVarFunctionWithHessian*>(self_); }
+extern "C" Standard_Integer Extrema_GlobOptFuncCS_inherited_GetStateNumber(Extrema_GlobOptFuncCS* self) {
+    return self->GetStateNumber();
+}
 extern "C" void Extrema_GlobOptFuncCS_destructor(Extrema_GlobOptFuncCS* self_) { delete self_; }
 
 // ========================
@@ -16182,6 +17889,11 @@ extern "C" void Extrema_GlobOptFuncCS_destructor(Extrema_GlobOptFuncCS* self_) {
 
 extern "C" Standard_Integer Extrema_GlobOptFuncConicS_nb_variables(const Extrema_GlobOptFuncConicS* self_) {
     return self_->NbVariables();
+}
+extern "C" const math_MultipleVarFunction* Extrema_GlobOptFuncConicS_as_math_MultipleVarFunction(const Extrema_GlobOptFuncConicS* self_) { return static_cast<const math_MultipleVarFunction*>(self_); }
+extern "C" math_MultipleVarFunction* Extrema_GlobOptFuncConicS_as_math_MultipleVarFunction_mut(Extrema_GlobOptFuncConicS* self_) { return static_cast<math_MultipleVarFunction*>(self_); }
+extern "C" Standard_Integer Extrema_GlobOptFuncConicS_inherited_GetStateNumber(Extrema_GlobOptFuncConicS* self) {
+    return self->GetStateNumber();
 }
 extern "C" void Extrema_GlobOptFuncConicS_destructor(Extrema_GlobOptFuncConicS* self_) { delete self_; }
 
@@ -16627,6 +18339,10 @@ extern "C" void Extrema_PCFOfEPCOfELPCOfLocateExtPC_sub_interval_initialize(Extr
 extern "C" Standard_Real Extrema_PCFOfEPCOfELPCOfLocateExtPC_search_of_tolerance(Extrema_PCFOfEPCOfELPCOfLocateExtPC* self_) {
     return self_->SearchOfTolerance();
 }
+extern "C" const math_Function* Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_Function(const Extrema_PCFOfEPCOfELPCOfLocateExtPC* self_) { return static_cast<const math_Function*>(self_); }
+extern "C" math_Function* Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_Function_mut(Extrema_PCFOfEPCOfELPCOfLocateExtPC* self_) { return static_cast<math_Function*>(self_); }
+extern "C" const math_FunctionWithDerivative* Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_FunctionWithDerivative(const Extrema_PCFOfEPCOfELPCOfLocateExtPC* self_) { return static_cast<const math_FunctionWithDerivative*>(self_); }
+extern "C" math_FunctionWithDerivative* Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_FunctionWithDerivative_mut(Extrema_PCFOfEPCOfELPCOfLocateExtPC* self_) { return static_cast<math_FunctionWithDerivative*>(self_); }
 extern "C" void Extrema_PCFOfEPCOfELPCOfLocateExtPC_destructor(Extrema_PCFOfEPCOfELPCOfLocateExtPC* self_) { delete self_; }
 
 // ========================
@@ -16675,6 +18391,10 @@ extern "C" void Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_sub_interval_initialize(Ex
 extern "C" Standard_Real Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_search_of_tolerance(Extrema_PCFOfEPCOfELPCOfLocateExtPC2d* self_) {
     return self_->SearchOfTolerance();
 }
+extern "C" const math_Function* Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_Function(const Extrema_PCFOfEPCOfELPCOfLocateExtPC2d* self_) { return static_cast<const math_Function*>(self_); }
+extern "C" math_Function* Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_Function_mut(Extrema_PCFOfEPCOfELPCOfLocateExtPC2d* self_) { return static_cast<math_Function*>(self_); }
+extern "C" const math_FunctionWithDerivative* Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_FunctionWithDerivative(const Extrema_PCFOfEPCOfELPCOfLocateExtPC2d* self_) { return static_cast<const math_FunctionWithDerivative*>(self_); }
+extern "C" math_FunctionWithDerivative* Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_FunctionWithDerivative_mut(Extrema_PCFOfEPCOfELPCOfLocateExtPC2d* self_) { return static_cast<math_FunctionWithDerivative*>(self_); }
 extern "C" void Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_destructor(Extrema_PCFOfEPCOfELPCOfLocateExtPC2d* self_) { delete self_; }
 
 // ========================
@@ -16723,6 +18443,10 @@ extern "C" void Extrema_PCFOfEPCOfExtPC_sub_interval_initialize(Extrema_PCFOfEPC
 extern "C" Standard_Real Extrema_PCFOfEPCOfExtPC_search_of_tolerance(Extrema_PCFOfEPCOfExtPC* self_) {
     return self_->SearchOfTolerance();
 }
+extern "C" const math_Function* Extrema_PCFOfEPCOfExtPC_as_math_Function(const Extrema_PCFOfEPCOfExtPC* self_) { return static_cast<const math_Function*>(self_); }
+extern "C" math_Function* Extrema_PCFOfEPCOfExtPC_as_math_Function_mut(Extrema_PCFOfEPCOfExtPC* self_) { return static_cast<math_Function*>(self_); }
+extern "C" const math_FunctionWithDerivative* Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative(const Extrema_PCFOfEPCOfExtPC* self_) { return static_cast<const math_FunctionWithDerivative*>(self_); }
+extern "C" math_FunctionWithDerivative* Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative_mut(Extrema_PCFOfEPCOfExtPC* self_) { return static_cast<math_FunctionWithDerivative*>(self_); }
 extern "C" void Extrema_PCFOfEPCOfExtPC_destructor(Extrema_PCFOfEPCOfExtPC* self_) { delete self_; }
 
 // ========================
@@ -16771,6 +18495,10 @@ extern "C" void Extrema_PCFOfEPCOfExtPC2d_sub_interval_initialize(Extrema_PCFOfE
 extern "C" Standard_Real Extrema_PCFOfEPCOfExtPC2d_search_of_tolerance(Extrema_PCFOfEPCOfExtPC2d* self_) {
     return self_->SearchOfTolerance();
 }
+extern "C" const math_Function* Extrema_PCFOfEPCOfExtPC2d_as_math_Function(const Extrema_PCFOfEPCOfExtPC2d* self_) { return static_cast<const math_Function*>(self_); }
+extern "C" math_Function* Extrema_PCFOfEPCOfExtPC2d_as_math_Function_mut(Extrema_PCFOfEPCOfExtPC2d* self_) { return static_cast<math_Function*>(self_); }
+extern "C" const math_FunctionWithDerivative* Extrema_PCFOfEPCOfExtPC2d_as_math_FunctionWithDerivative(const Extrema_PCFOfEPCOfExtPC2d* self_) { return static_cast<const math_FunctionWithDerivative*>(self_); }
+extern "C" math_FunctionWithDerivative* Extrema_PCFOfEPCOfExtPC2d_as_math_FunctionWithDerivative_mut(Extrema_PCFOfEPCOfExtPC2d* self_) { return static_cast<math_FunctionWithDerivative*>(self_); }
 extern "C" void Extrema_PCFOfEPCOfExtPC2d_destructor(Extrema_PCFOfEPCOfExtPC2d* self_) { delete self_; }
 
 // ========================
@@ -16819,6 +18547,10 @@ extern "C" void Extrema_PCLocFOfLocEPCOfLocateExtPC_sub_interval_initialize(Extr
 extern "C" Standard_Real Extrema_PCLocFOfLocEPCOfLocateExtPC_search_of_tolerance(Extrema_PCLocFOfLocEPCOfLocateExtPC* self_) {
     return self_->SearchOfTolerance();
 }
+extern "C" const math_Function* Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_Function(const Extrema_PCLocFOfLocEPCOfLocateExtPC* self_) { return static_cast<const math_Function*>(self_); }
+extern "C" math_Function* Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_Function_mut(Extrema_PCLocFOfLocEPCOfLocateExtPC* self_) { return static_cast<math_Function*>(self_); }
+extern "C" const math_FunctionWithDerivative* Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_FunctionWithDerivative(const Extrema_PCLocFOfLocEPCOfLocateExtPC* self_) { return static_cast<const math_FunctionWithDerivative*>(self_); }
+extern "C" math_FunctionWithDerivative* Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_FunctionWithDerivative_mut(Extrema_PCLocFOfLocEPCOfLocateExtPC* self_) { return static_cast<math_FunctionWithDerivative*>(self_); }
 extern "C" void Extrema_PCLocFOfLocEPCOfLocateExtPC_destructor(Extrema_PCLocFOfLocEPCOfLocateExtPC* self_) { delete self_; }
 
 // ========================
@@ -16867,6 +18599,10 @@ extern "C" void Extrema_PCLocFOfLocEPCOfLocateExtPC2d_sub_interval_initialize(Ex
 extern "C" Standard_Real Extrema_PCLocFOfLocEPCOfLocateExtPC2d_search_of_tolerance(Extrema_PCLocFOfLocEPCOfLocateExtPC2d* self_) {
     return self_->SearchOfTolerance();
 }
+extern "C" const math_Function* Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_Function(const Extrema_PCLocFOfLocEPCOfLocateExtPC2d* self_) { return static_cast<const math_Function*>(self_); }
+extern "C" math_Function* Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_Function_mut(Extrema_PCLocFOfLocEPCOfLocateExtPC2d* self_) { return static_cast<math_Function*>(self_); }
+extern "C" const math_FunctionWithDerivative* Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_FunctionWithDerivative(const Extrema_PCLocFOfLocEPCOfLocateExtPC2d* self_) { return static_cast<const math_FunctionWithDerivative*>(self_); }
+extern "C" math_FunctionWithDerivative* Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_FunctionWithDerivative_mut(Extrema_PCLocFOfLocEPCOfLocateExtPC2d* self_) { return static_cast<math_FunctionWithDerivative*>(self_); }
 extern "C" void Extrema_PCLocFOfLocEPCOfLocateExtPC2d_destructor(Extrema_PCLocFOfLocEPCOfLocateExtPC2d* self_) { delete self_; }
 
 // ========================
@@ -17434,6 +19170,356 @@ extern "C" Standard_Boolean GC_Root_is_done(const GC_Root* self_) {
 extern "C" void GC_Root_destructor(GC_Root* self_) { delete self_; }
 
 // ========================
+// GCE2d_MakeArcOfCircle wrappers
+// ========================
+
+extern "C" GCE2d_MakeArcOfCircle* GCE2d_MakeArcOfCircle_ctor_circ2d_real2_bool(const gp_Circ2d* Circ, Standard_Real Alpha1, Standard_Real Alpha2, Standard_Boolean Sense) {
+    return new GCE2d_MakeArcOfCircle(*Circ, Alpha1, Alpha2, Sense);
+}
+extern "C" GCE2d_MakeArcOfCircle* GCE2d_MakeArcOfCircle_ctor_circ2d_pnt2d_real_bool(const gp_Circ2d* Circ, const gp_Pnt2d* P, Standard_Real Alpha, Standard_Boolean Sense) {
+    return new GCE2d_MakeArcOfCircle(*Circ, *P, Alpha, Sense);
+}
+extern "C" GCE2d_MakeArcOfCircle* GCE2d_MakeArcOfCircle_ctor_circ2d_pnt2d2_bool(const gp_Circ2d* Circ, const gp_Pnt2d* P1, const gp_Pnt2d* P2, Standard_Boolean Sense) {
+    return new GCE2d_MakeArcOfCircle(*Circ, *P1, *P2, Sense);
+}
+extern "C" GCE2d_MakeArcOfCircle* GCE2d_MakeArcOfCircle_ctor_pnt2d3(const gp_Pnt2d* P1, const gp_Pnt2d* P2, const gp_Pnt2d* P3) {
+    return new GCE2d_MakeArcOfCircle(*P1, *P2, *P3);
+}
+extern "C" GCE2d_MakeArcOfCircle* GCE2d_MakeArcOfCircle_ctor_pnt2d_vec2d_pnt2d(const gp_Pnt2d* P1, const gp_Vec2d* V, const gp_Pnt2d* P2) {
+    return new GCE2d_MakeArcOfCircle(*P1, *V, *P2);
+}
+extern "C" const opencascade::handle<Geom2d_TrimmedCurve>& GCE2d_MakeArcOfCircle_value(const GCE2d_MakeArcOfCircle* self_) {
+    return self_->Value();
+}
+extern "C" const GCE2d_Root* GCE2d_MakeArcOfCircle_as_GCE2d_Root(const GCE2d_MakeArcOfCircle* self_) { return static_cast<const GCE2d_Root*>(self_); }
+extern "C" GCE2d_Root* GCE2d_MakeArcOfCircle_as_GCE2d_Root_mut(GCE2d_MakeArcOfCircle* self_) { return static_cast<GCE2d_Root*>(self_); }
+extern "C" bool GCE2d_MakeArcOfCircle_inherited_IsDone(const GCE2d_MakeArcOfCircle* self) {
+    return self->IsDone();
+}
+extern "C" void GCE2d_MakeArcOfCircle_destructor(GCE2d_MakeArcOfCircle* self_) { delete self_; }
+
+// ========================
+// GCE2d_MakeArcOfEllipse wrappers
+// ========================
+
+extern "C" GCE2d_MakeArcOfEllipse* GCE2d_MakeArcOfEllipse_ctor_elips2d_real2_bool(const gp_Elips2d* Elips, Standard_Real Alpha1, Standard_Real Alpha2, Standard_Boolean Sense) {
+    return new GCE2d_MakeArcOfEllipse(*Elips, Alpha1, Alpha2, Sense);
+}
+extern "C" GCE2d_MakeArcOfEllipse* GCE2d_MakeArcOfEllipse_ctor_elips2d_pnt2d_real_bool(const gp_Elips2d* Elips, const gp_Pnt2d* P, Standard_Real Alpha, Standard_Boolean Sense) {
+    return new GCE2d_MakeArcOfEllipse(*Elips, *P, Alpha, Sense);
+}
+extern "C" GCE2d_MakeArcOfEllipse* GCE2d_MakeArcOfEllipse_ctor_elips2d_pnt2d2_bool(const gp_Elips2d* Elips, const gp_Pnt2d* P1, const gp_Pnt2d* P2, Standard_Boolean Sense) {
+    return new GCE2d_MakeArcOfEllipse(*Elips, *P1, *P2, Sense);
+}
+extern "C" const opencascade::handle<Geom2d_TrimmedCurve>& GCE2d_MakeArcOfEllipse_value(const GCE2d_MakeArcOfEllipse* self_) {
+    return self_->Value();
+}
+extern "C" const GCE2d_Root* GCE2d_MakeArcOfEllipse_as_GCE2d_Root(const GCE2d_MakeArcOfEllipse* self_) { return static_cast<const GCE2d_Root*>(self_); }
+extern "C" GCE2d_Root* GCE2d_MakeArcOfEllipse_as_GCE2d_Root_mut(GCE2d_MakeArcOfEllipse* self_) { return static_cast<GCE2d_Root*>(self_); }
+extern "C" bool GCE2d_MakeArcOfEllipse_inherited_IsDone(const GCE2d_MakeArcOfEllipse* self) {
+    return self->IsDone();
+}
+extern "C" void GCE2d_MakeArcOfEllipse_destructor(GCE2d_MakeArcOfEllipse* self_) { delete self_; }
+
+// ========================
+// GCE2d_MakeArcOfHyperbola wrappers
+// ========================
+
+extern "C" GCE2d_MakeArcOfHyperbola* GCE2d_MakeArcOfHyperbola_ctor_hypr2d_real2_bool(const gp_Hypr2d* Hypr, Standard_Real Alpha1, Standard_Real Alpha2, Standard_Boolean Sense) {
+    return new GCE2d_MakeArcOfHyperbola(*Hypr, Alpha1, Alpha2, Sense);
+}
+extern "C" GCE2d_MakeArcOfHyperbola* GCE2d_MakeArcOfHyperbola_ctor_hypr2d_pnt2d_real_bool(const gp_Hypr2d* Hypr, const gp_Pnt2d* P, Standard_Real Alpha, Standard_Boolean Sense) {
+    return new GCE2d_MakeArcOfHyperbola(*Hypr, *P, Alpha, Sense);
+}
+extern "C" GCE2d_MakeArcOfHyperbola* GCE2d_MakeArcOfHyperbola_ctor_hypr2d_pnt2d2_bool(const gp_Hypr2d* Hypr, const gp_Pnt2d* P1, const gp_Pnt2d* P2, Standard_Boolean Sense) {
+    return new GCE2d_MakeArcOfHyperbola(*Hypr, *P1, *P2, Sense);
+}
+extern "C" const opencascade::handle<Geom2d_TrimmedCurve>& GCE2d_MakeArcOfHyperbola_value(const GCE2d_MakeArcOfHyperbola* self_) {
+    return self_->Value();
+}
+extern "C" const GCE2d_Root* GCE2d_MakeArcOfHyperbola_as_GCE2d_Root(const GCE2d_MakeArcOfHyperbola* self_) { return static_cast<const GCE2d_Root*>(self_); }
+extern "C" GCE2d_Root* GCE2d_MakeArcOfHyperbola_as_GCE2d_Root_mut(GCE2d_MakeArcOfHyperbola* self_) { return static_cast<GCE2d_Root*>(self_); }
+extern "C" bool GCE2d_MakeArcOfHyperbola_inherited_IsDone(const GCE2d_MakeArcOfHyperbola* self) {
+    return self->IsDone();
+}
+extern "C" void GCE2d_MakeArcOfHyperbola_destructor(GCE2d_MakeArcOfHyperbola* self_) { delete self_; }
+
+// ========================
+// GCE2d_MakeArcOfParabola wrappers
+// ========================
+
+extern "C" GCE2d_MakeArcOfParabola* GCE2d_MakeArcOfParabola_ctor_parab2d_real2_bool(const gp_Parab2d* Parab, Standard_Real Alpha1, Standard_Real Alpha2, Standard_Boolean Sense) {
+    return new GCE2d_MakeArcOfParabola(*Parab, Alpha1, Alpha2, Sense);
+}
+extern "C" GCE2d_MakeArcOfParabola* GCE2d_MakeArcOfParabola_ctor_parab2d_pnt2d_real_bool(const gp_Parab2d* Parab, const gp_Pnt2d* P, Standard_Real Alpha, Standard_Boolean Sense) {
+    return new GCE2d_MakeArcOfParabola(*Parab, *P, Alpha, Sense);
+}
+extern "C" GCE2d_MakeArcOfParabola* GCE2d_MakeArcOfParabola_ctor_parab2d_pnt2d2_bool(const gp_Parab2d* Parab, const gp_Pnt2d* P1, const gp_Pnt2d* P2, Standard_Boolean Sense) {
+    return new GCE2d_MakeArcOfParabola(*Parab, *P1, *P2, Sense);
+}
+extern "C" const opencascade::handle<Geom2d_TrimmedCurve>& GCE2d_MakeArcOfParabola_value(const GCE2d_MakeArcOfParabola* self_) {
+    return self_->Value();
+}
+extern "C" const GCE2d_Root* GCE2d_MakeArcOfParabola_as_GCE2d_Root(const GCE2d_MakeArcOfParabola* self_) { return static_cast<const GCE2d_Root*>(self_); }
+extern "C" GCE2d_Root* GCE2d_MakeArcOfParabola_as_GCE2d_Root_mut(GCE2d_MakeArcOfParabola* self_) { return static_cast<GCE2d_Root*>(self_); }
+extern "C" bool GCE2d_MakeArcOfParabola_inherited_IsDone(const GCE2d_MakeArcOfParabola* self) {
+    return self->IsDone();
+}
+extern "C" void GCE2d_MakeArcOfParabola_destructor(GCE2d_MakeArcOfParabola* self_) { delete self_; }
+
+// ========================
+// GCE2d_MakeCircle wrappers
+// ========================
+
+extern "C" GCE2d_MakeCircle* GCE2d_MakeCircle_ctor_circ2d(const gp_Circ2d* C) {
+    return new GCE2d_MakeCircle(*C);
+}
+extern "C" GCE2d_MakeCircle* GCE2d_MakeCircle_ctor_ax2d_real_bool(const gp_Ax2d* A, Standard_Real Radius, Standard_Boolean Sense) {
+    return new GCE2d_MakeCircle(*A, Radius, Sense);
+}
+extern "C" GCE2d_MakeCircle* GCE2d_MakeCircle_ctor_ax22d_real(const gp_Ax22d* A, Standard_Real Radius) {
+    return new GCE2d_MakeCircle(*A, Radius);
+}
+extern "C" GCE2d_MakeCircle* GCE2d_MakeCircle_ctor_circ2d_real(const gp_Circ2d* Circ, Standard_Real Dist) {
+    return new GCE2d_MakeCircle(*Circ, Dist);
+}
+extern "C" GCE2d_MakeCircle* GCE2d_MakeCircle_ctor_circ2d_pnt2d(const gp_Circ2d* Circ, const gp_Pnt2d* Point) {
+    return new GCE2d_MakeCircle(*Circ, *Point);
+}
+extern "C" GCE2d_MakeCircle* GCE2d_MakeCircle_ctor_pnt2d3(const gp_Pnt2d* P1, const gp_Pnt2d* P2, const gp_Pnt2d* P3) {
+    return new GCE2d_MakeCircle(*P1, *P2, *P3);
+}
+extern "C" GCE2d_MakeCircle* GCE2d_MakeCircle_ctor_pnt2d_real_bool(const gp_Pnt2d* P, Standard_Real Radius, Standard_Boolean Sense) {
+    return new GCE2d_MakeCircle(*P, Radius, Sense);
+}
+extern "C" GCE2d_MakeCircle* GCE2d_MakeCircle_ctor_pnt2d2_bool(const gp_Pnt2d* Center, const gp_Pnt2d* Point, Standard_Boolean Sense) {
+    return new GCE2d_MakeCircle(*Center, *Point, Sense);
+}
+extern "C" const opencascade::handle<Geom2d_Circle>& GCE2d_MakeCircle_value(const GCE2d_MakeCircle* self_) {
+    return self_->Value();
+}
+extern "C" const GCE2d_Root* GCE2d_MakeCircle_as_GCE2d_Root(const GCE2d_MakeCircle* self_) { return static_cast<const GCE2d_Root*>(self_); }
+extern "C" GCE2d_Root* GCE2d_MakeCircle_as_GCE2d_Root_mut(GCE2d_MakeCircle* self_) { return static_cast<GCE2d_Root*>(self_); }
+extern "C" bool GCE2d_MakeCircle_inherited_IsDone(const GCE2d_MakeCircle* self) {
+    return self->IsDone();
+}
+extern "C" void GCE2d_MakeCircle_destructor(GCE2d_MakeCircle* self_) { delete self_; }
+
+// ========================
+// GCE2d_MakeEllipse wrappers
+// ========================
+
+extern "C" GCE2d_MakeEllipse* GCE2d_MakeEllipse_ctor_elips2d(const gp_Elips2d* E) {
+    return new GCE2d_MakeEllipse(*E);
+}
+extern "C" GCE2d_MakeEllipse* GCE2d_MakeEllipse_ctor_ax2d_real2_bool(const gp_Ax2d* MajorAxis, Standard_Real MajorRadius, Standard_Real MinorRadius, Standard_Boolean Sense) {
+    return new GCE2d_MakeEllipse(*MajorAxis, MajorRadius, MinorRadius, Sense);
+}
+extern "C" GCE2d_MakeEllipse* GCE2d_MakeEllipse_ctor_ax22d_real2(const gp_Ax22d* Axis, Standard_Real MajorRadius, Standard_Real MinorRadius) {
+    return new GCE2d_MakeEllipse(*Axis, MajorRadius, MinorRadius);
+}
+extern "C" GCE2d_MakeEllipse* GCE2d_MakeEllipse_ctor_pnt2d3(const gp_Pnt2d* S1, const gp_Pnt2d* S2, const gp_Pnt2d* Center) {
+    return new GCE2d_MakeEllipse(*S1, *S2, *Center);
+}
+extern "C" const opencascade::handle<Geom2d_Ellipse>& GCE2d_MakeEllipse_value(const GCE2d_MakeEllipse* self_) {
+    return self_->Value();
+}
+extern "C" const GCE2d_Root* GCE2d_MakeEllipse_as_GCE2d_Root(const GCE2d_MakeEllipse* self_) { return static_cast<const GCE2d_Root*>(self_); }
+extern "C" GCE2d_Root* GCE2d_MakeEllipse_as_GCE2d_Root_mut(GCE2d_MakeEllipse* self_) { return static_cast<GCE2d_Root*>(self_); }
+extern "C" bool GCE2d_MakeEllipse_inherited_IsDone(const GCE2d_MakeEllipse* self) {
+    return self->IsDone();
+}
+extern "C" void GCE2d_MakeEllipse_destructor(GCE2d_MakeEllipse* self_) { delete self_; }
+
+// ========================
+// GCE2d_MakeHyperbola wrappers
+// ========================
+
+extern "C" GCE2d_MakeHyperbola* GCE2d_MakeHyperbola_ctor_hypr2d(const gp_Hypr2d* H) {
+    return new GCE2d_MakeHyperbola(*H);
+}
+extern "C" GCE2d_MakeHyperbola* GCE2d_MakeHyperbola_ctor_ax2d_real2_bool(const gp_Ax2d* MajorAxis, Standard_Real MajorRadius, Standard_Real MinorRadius, Standard_Boolean Sense) {
+    return new GCE2d_MakeHyperbola(*MajorAxis, MajorRadius, MinorRadius, Sense);
+}
+extern "C" GCE2d_MakeHyperbola* GCE2d_MakeHyperbola_ctor_ax22d_real2(const gp_Ax22d* Axis, Standard_Real MajorRadius, Standard_Real MinorRadius) {
+    return new GCE2d_MakeHyperbola(*Axis, MajorRadius, MinorRadius);
+}
+extern "C" GCE2d_MakeHyperbola* GCE2d_MakeHyperbola_ctor_pnt2d3(const gp_Pnt2d* S1, const gp_Pnt2d* S2, const gp_Pnt2d* Center) {
+    return new GCE2d_MakeHyperbola(*S1, *S2, *Center);
+}
+extern "C" const opencascade::handle<Geom2d_Hyperbola>& GCE2d_MakeHyperbola_value(const GCE2d_MakeHyperbola* self_) {
+    return self_->Value();
+}
+extern "C" const GCE2d_Root* GCE2d_MakeHyperbola_as_GCE2d_Root(const GCE2d_MakeHyperbola* self_) { return static_cast<const GCE2d_Root*>(self_); }
+extern "C" GCE2d_Root* GCE2d_MakeHyperbola_as_GCE2d_Root_mut(GCE2d_MakeHyperbola* self_) { return static_cast<GCE2d_Root*>(self_); }
+extern "C" bool GCE2d_MakeHyperbola_inherited_IsDone(const GCE2d_MakeHyperbola* self) {
+    return self->IsDone();
+}
+extern "C" void GCE2d_MakeHyperbola_destructor(GCE2d_MakeHyperbola* self_) { delete self_; }
+
+// ========================
+// GCE2d_MakeLine wrappers
+// ========================
+
+extern "C" GCE2d_MakeLine* GCE2d_MakeLine_ctor_ax2d(const gp_Ax2d* A) {
+    return new GCE2d_MakeLine(*A);
+}
+extern "C" GCE2d_MakeLine* GCE2d_MakeLine_ctor_lin2d(const gp_Lin2d* L) {
+    return new GCE2d_MakeLine(*L);
+}
+extern "C" GCE2d_MakeLine* GCE2d_MakeLine_ctor_pnt2d_dir2d(const gp_Pnt2d* P, const gp_Dir2d* V) {
+    return new GCE2d_MakeLine(*P, *V);
+}
+extern "C" GCE2d_MakeLine* GCE2d_MakeLine_ctor_lin2d_pnt2d(const gp_Lin2d* Lin, const gp_Pnt2d* Point) {
+    return new GCE2d_MakeLine(*Lin, *Point);
+}
+extern "C" GCE2d_MakeLine* GCE2d_MakeLine_ctor_lin2d_real(const gp_Lin2d* Lin, Standard_Real Dist) {
+    return new GCE2d_MakeLine(*Lin, Dist);
+}
+extern "C" GCE2d_MakeLine* GCE2d_MakeLine_ctor_pnt2d2(const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
+    return new GCE2d_MakeLine(*P1, *P2);
+}
+extern "C" const opencascade::handle<Geom2d_Line>& GCE2d_MakeLine_value(const GCE2d_MakeLine* self_) {
+    return self_->Value();
+}
+extern "C" const GCE2d_Root* GCE2d_MakeLine_as_GCE2d_Root(const GCE2d_MakeLine* self_) { return static_cast<const GCE2d_Root*>(self_); }
+extern "C" GCE2d_Root* GCE2d_MakeLine_as_GCE2d_Root_mut(GCE2d_MakeLine* self_) { return static_cast<GCE2d_Root*>(self_); }
+extern "C" bool GCE2d_MakeLine_inherited_IsDone(const GCE2d_MakeLine* self) {
+    return self->IsDone();
+}
+extern "C" void GCE2d_MakeLine_destructor(GCE2d_MakeLine* self_) { delete self_; }
+
+// ========================
+// GCE2d_MakeMirror wrappers
+// ========================
+
+extern "C" GCE2d_MakeMirror* GCE2d_MakeMirror_ctor_pnt2d(const gp_Pnt2d* Point) {
+    return new GCE2d_MakeMirror(*Point);
+}
+extern "C" GCE2d_MakeMirror* GCE2d_MakeMirror_ctor_ax2d(const gp_Ax2d* Axis) {
+    return new GCE2d_MakeMirror(*Axis);
+}
+extern "C" GCE2d_MakeMirror* GCE2d_MakeMirror_ctor_lin2d(const gp_Lin2d* Line) {
+    return new GCE2d_MakeMirror(*Line);
+}
+extern "C" GCE2d_MakeMirror* GCE2d_MakeMirror_ctor_pnt2d_dir2d(const gp_Pnt2d* Point, const gp_Dir2d* Direc) {
+    return new GCE2d_MakeMirror(*Point, *Direc);
+}
+extern "C" const opencascade::handle<Geom2d_Transformation>& GCE2d_MakeMirror_value(const GCE2d_MakeMirror* self_) {
+    return self_->Value();
+}
+extern "C" void GCE2d_MakeMirror_destructor(GCE2d_MakeMirror* self_) { delete self_; }
+
+// ========================
+// GCE2d_MakeParabola wrappers
+// ========================
+
+extern "C" GCE2d_MakeParabola* GCE2d_MakeParabola_ctor_parab2d(const gp_Parab2d* Prb) {
+    return new GCE2d_MakeParabola(*Prb);
+}
+extern "C" GCE2d_MakeParabola* GCE2d_MakeParabola_ctor_ax22d_real(const gp_Ax22d* Axis, Standard_Real Focal) {
+    return new GCE2d_MakeParabola(*Axis, Focal);
+}
+extern "C" GCE2d_MakeParabola* GCE2d_MakeParabola_ctor_ax2d_real_bool(const gp_Ax2d* MirrorAxis, Standard_Real Focal, Standard_Boolean Sense) {
+    return new GCE2d_MakeParabola(*MirrorAxis, Focal, Sense);
+}
+extern "C" GCE2d_MakeParabola* GCE2d_MakeParabola_ctor_ax2d_pnt2d_bool(const gp_Ax2d* D, const gp_Pnt2d* F, Standard_Boolean Sense) {
+    return new GCE2d_MakeParabola(*D, *F, Sense);
+}
+extern "C" GCE2d_MakeParabola* GCE2d_MakeParabola_ctor_pnt2d2(const gp_Pnt2d* S1, const gp_Pnt2d* O) {
+    return new GCE2d_MakeParabola(*S1, *O);
+}
+extern "C" const opencascade::handle<Geom2d_Parabola>& GCE2d_MakeParabola_value(const GCE2d_MakeParabola* self_) {
+    return self_->Value();
+}
+extern "C" const GCE2d_Root* GCE2d_MakeParabola_as_GCE2d_Root(const GCE2d_MakeParabola* self_) { return static_cast<const GCE2d_Root*>(self_); }
+extern "C" GCE2d_Root* GCE2d_MakeParabola_as_GCE2d_Root_mut(GCE2d_MakeParabola* self_) { return static_cast<GCE2d_Root*>(self_); }
+extern "C" bool GCE2d_MakeParabola_inherited_IsDone(const GCE2d_MakeParabola* self) {
+    return self->IsDone();
+}
+extern "C" void GCE2d_MakeParabola_destructor(GCE2d_MakeParabola* self_) { delete self_; }
+
+// ========================
+// GCE2d_MakeRotation wrappers
+// ========================
+
+extern "C" GCE2d_MakeRotation* GCE2d_MakeRotation_ctor_pnt2d_real(const gp_Pnt2d* Point, Standard_Real Angle) {
+    return new GCE2d_MakeRotation(*Point, Angle);
+}
+extern "C" const opencascade::handle<Geom2d_Transformation>& GCE2d_MakeRotation_value(const GCE2d_MakeRotation* self_) {
+    return self_->Value();
+}
+extern "C" void GCE2d_MakeRotation_destructor(GCE2d_MakeRotation* self_) { delete self_; }
+
+// ========================
+// GCE2d_MakeScale wrappers
+// ========================
+
+extern "C" GCE2d_MakeScale* GCE2d_MakeScale_ctor_pnt2d_real(const gp_Pnt2d* Point, Standard_Real Scale) {
+    return new GCE2d_MakeScale(*Point, Scale);
+}
+extern "C" const opencascade::handle<Geom2d_Transformation>& GCE2d_MakeScale_value(const GCE2d_MakeScale* self_) {
+    return self_->Value();
+}
+extern "C" void GCE2d_MakeScale_destructor(GCE2d_MakeScale* self_) { delete self_; }
+
+// ========================
+// GCE2d_MakeSegment wrappers
+// ========================
+
+extern "C" GCE2d_MakeSegment* GCE2d_MakeSegment_ctor_pnt2d2(const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
+    return new GCE2d_MakeSegment(*P1, *P2);
+}
+extern "C" GCE2d_MakeSegment* GCE2d_MakeSegment_ctor_pnt2d_dir2d_pnt2d(const gp_Pnt2d* P1, const gp_Dir2d* V, const gp_Pnt2d* P2) {
+    return new GCE2d_MakeSegment(*P1, *V, *P2);
+}
+extern "C" GCE2d_MakeSegment* GCE2d_MakeSegment_ctor_lin2d_real2(const gp_Lin2d* Line, Standard_Real U1, Standard_Real U2) {
+    return new GCE2d_MakeSegment(*Line, U1, U2);
+}
+extern "C" GCE2d_MakeSegment* GCE2d_MakeSegment_ctor_lin2d_pnt2d_real(const gp_Lin2d* Line, const gp_Pnt2d* Point, Standard_Real Ulast) {
+    return new GCE2d_MakeSegment(*Line, *Point, Ulast);
+}
+extern "C" GCE2d_MakeSegment* GCE2d_MakeSegment_ctor_lin2d_pnt2d2(const gp_Lin2d* Line, const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
+    return new GCE2d_MakeSegment(*Line, *P1, *P2);
+}
+extern "C" const opencascade::handle<Geom2d_TrimmedCurve>& GCE2d_MakeSegment_value(const GCE2d_MakeSegment* self_) {
+    return self_->Value();
+}
+extern "C" const GCE2d_Root* GCE2d_MakeSegment_as_GCE2d_Root(const GCE2d_MakeSegment* self_) { return static_cast<const GCE2d_Root*>(self_); }
+extern "C" GCE2d_Root* GCE2d_MakeSegment_as_GCE2d_Root_mut(GCE2d_MakeSegment* self_) { return static_cast<GCE2d_Root*>(self_); }
+extern "C" bool GCE2d_MakeSegment_inherited_IsDone(const GCE2d_MakeSegment* self) {
+    return self->IsDone();
+}
+extern "C" void GCE2d_MakeSegment_destructor(GCE2d_MakeSegment* self_) { delete self_; }
+
+// ========================
+// GCE2d_MakeTranslation wrappers
+// ========================
+
+extern "C" GCE2d_MakeTranslation* GCE2d_MakeTranslation_ctor_vec2d(const gp_Vec2d* Vect) {
+    return new GCE2d_MakeTranslation(*Vect);
+}
+extern "C" GCE2d_MakeTranslation* GCE2d_MakeTranslation_ctor_pnt2d2(const gp_Pnt2d* Point1, const gp_Pnt2d* Point2) {
+    return new GCE2d_MakeTranslation(*Point1, *Point2);
+}
+extern "C" const opencascade::handle<Geom2d_Transformation>& GCE2d_MakeTranslation_value(const GCE2d_MakeTranslation* self_) {
+    return self_->Value();
+}
+extern "C" void GCE2d_MakeTranslation_destructor(GCE2d_MakeTranslation* self_) { delete self_; }
+
+// ========================
+// GCE2d_Root wrappers
+// ========================
+
+extern "C" GCE2d_Root* GCE2d_Root_ctor() {
+    return new GCE2d_Root();
+}
+extern "C" Standard_Boolean GCE2d_Root_is_done(const GCE2d_Root* self_) {
+    return self_->IsDone();
+}
+extern "C" void GCE2d_Root_destructor(GCE2d_Root* self_) { delete self_; }
+
+// ========================
 // GCPnts_AbscissaPoint wrappers
 // ========================
 
@@ -17509,6 +19595,11 @@ extern "C" GCPnts_DistFunction* GCPnts_DistFunction_ctor_distfunction(const GCPn
 extern "C" Standard_Boolean GCPnts_DistFunction_value(GCPnts_DistFunction* self_, Standard_Real X, Standard_Real* F) {
     return self_->Value(X, *F);
 }
+extern "C" const math_Function* GCPnts_DistFunction_as_math_Function(const GCPnts_DistFunction* self_) { return static_cast<const math_Function*>(self_); }
+extern "C" math_Function* GCPnts_DistFunction_as_math_Function_mut(GCPnts_DistFunction* self_) { return static_cast<math_Function*>(self_); }
+extern "C" Standard_Integer GCPnts_DistFunction_inherited_GetStateNumber(GCPnts_DistFunction* self) {
+    return self->GetStateNumber();
+}
 extern "C" void GCPnts_DistFunction_destructor(GCPnts_DistFunction* self_) { delete self_; }
 
 // ========================
@@ -17520,6 +19611,11 @@ extern "C" GCPnts_DistFunctionMV* GCPnts_DistFunctionMV_ctor_distfunction(GCPnts
 }
 extern "C" Standard_Integer GCPnts_DistFunctionMV_nb_variables(const GCPnts_DistFunctionMV* self_) {
     return self_->NbVariables();
+}
+extern "C" const math_MultipleVarFunction* GCPnts_DistFunctionMV_as_math_MultipleVarFunction(const GCPnts_DistFunctionMV* self_) { return static_cast<const math_MultipleVarFunction*>(self_); }
+extern "C" math_MultipleVarFunction* GCPnts_DistFunctionMV_as_math_MultipleVarFunction_mut(GCPnts_DistFunctionMV* self_) { return static_cast<math_MultipleVarFunction*>(self_); }
+extern "C" Standard_Integer GCPnts_DistFunctionMV_inherited_GetStateNumber(GCPnts_DistFunctionMV* self) {
+    return self->GetStateNumber();
 }
 extern "C" void GCPnts_DistFunctionMV_destructor(GCPnts_DistFunctionMV* self_) { delete self_; }
 
@@ -17536,6 +19632,11 @@ extern "C" GCPnts_DistFunction2d* GCPnts_DistFunction2d_ctor_distfunction2d(cons
 extern "C" Standard_Boolean GCPnts_DistFunction2d_value(GCPnts_DistFunction2d* self_, Standard_Real X, Standard_Real* F) {
     return self_->Value(X, *F);
 }
+extern "C" const math_Function* GCPnts_DistFunction2d_as_math_Function(const GCPnts_DistFunction2d* self_) { return static_cast<const math_Function*>(self_); }
+extern "C" math_Function* GCPnts_DistFunction2d_as_math_Function_mut(GCPnts_DistFunction2d* self_) { return static_cast<math_Function*>(self_); }
+extern "C" Standard_Integer GCPnts_DistFunction2d_inherited_GetStateNumber(GCPnts_DistFunction2d* self) {
+    return self->GetStateNumber();
+}
 extern "C" void GCPnts_DistFunction2d_destructor(GCPnts_DistFunction2d* self_) { delete self_; }
 
 // ========================
@@ -17547,6 +19648,11 @@ extern "C" GCPnts_DistFunction2dMV* GCPnts_DistFunction2dMV_ctor_distfunction2d(
 }
 extern "C" Standard_Integer GCPnts_DistFunction2dMV_nb_variables(const GCPnts_DistFunction2dMV* self_) {
     return self_->NbVariables();
+}
+extern "C" const math_MultipleVarFunction* GCPnts_DistFunction2dMV_as_math_MultipleVarFunction(const GCPnts_DistFunction2dMV* self_) { return static_cast<const math_MultipleVarFunction*>(self_); }
+extern "C" math_MultipleVarFunction* GCPnts_DistFunction2dMV_as_math_MultipleVarFunction_mut(GCPnts_DistFunction2dMV* self_) { return static_cast<math_MultipleVarFunction*>(self_); }
+extern "C" Standard_Integer GCPnts_DistFunction2dMV_inherited_GetStateNumber(GCPnts_DistFunction2dMV* self) {
+    return self->GetStateNumber();
 }
 extern "C" void GCPnts_DistFunction2dMV_destructor(GCPnts_DistFunction2dMV* self_) { delete self_; }
 
@@ -23722,6 +25828,2833 @@ extern "C" const gp_Vec& Geom_VectorWithMagnitude_inherited_Vec(const Geom_Vecto
     return self->Vec();
 }
 extern "C" void Geom_VectorWithMagnitude_destructor(Geom_VectorWithMagnitude* self_) { delete self_; }
+
+// ========================
+// Geom2d_AxisPlacement wrappers
+// ========================
+
+extern "C" Geom2d_AxisPlacement* Geom2d_AxisPlacement_ctor_ax2d(const gp_Ax2d* A) {
+    return new Geom2d_AxisPlacement(*A);
+}
+extern "C" Geom2d_AxisPlacement* Geom2d_AxisPlacement_ctor_pnt2d_dir2d(const gp_Pnt2d* P, const gp_Dir2d* V) {
+    return new Geom2d_AxisPlacement(*P, *V);
+}
+extern "C" opencascade::handle<Geom2d_AxisPlacement>* Geom2d_AxisPlacement_reversed(const Geom2d_AxisPlacement* self_) {
+    return new opencascade::handle<Geom2d_AxisPlacement>(self_->Reversed());
+}
+extern "C" gp_Ax2d* Geom2d_AxisPlacement_ax2d(const Geom2d_AxisPlacement* self_) {
+    return new gp_Ax2d(self_->Ax2d());
+}
+extern "C" gp_Dir2d* Geom2d_AxisPlacement_direction(const Geom2d_AxisPlacement* self_) {
+    return new gp_Dir2d(self_->Direction());
+}
+extern "C" gp_Pnt2d* Geom2d_AxisPlacement_location(const Geom2d_AxisPlacement* self_) {
+    return new gp_Pnt2d(self_->Location());
+}
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_AxisPlacement_copy(const Geom2d_AxisPlacement* self_) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Copy());
+}
+extern "C" void Geom2d_AxisPlacement_reverse(Geom2d_AxisPlacement* self_) {
+    self_->Reverse();
+}
+extern "C" void Geom2d_AxisPlacement_set_axis(Geom2d_AxisPlacement* self_, const gp_Ax2d* A) {
+    self_->SetAxis(*A);
+}
+extern "C" void Geom2d_AxisPlacement_set_direction(Geom2d_AxisPlacement* self_, const gp_Dir2d* V) {
+    self_->SetDirection(*V);
+}
+extern "C" void Geom2d_AxisPlacement_set_location(Geom2d_AxisPlacement* self_, const gp_Pnt2d* P) {
+    self_->SetLocation(*P);
+}
+extern "C" Standard_Real Geom2d_AxisPlacement_angle(const Geom2d_AxisPlacement* self_, const opencascade::handle<Geom2d_AxisPlacement>* Other) {
+    return self_->Angle(*Other);
+}
+extern "C" void Geom2d_AxisPlacement_transform(Geom2d_AxisPlacement* self_, const gp_Trsf2d* T) {
+    self_->Transform(*T);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_AxisPlacement_dynamic_type(const Geom2d_AxisPlacement* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Geom2d_AxisPlacement_get_type_name() {
+    return Geom2d_AxisPlacement::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_AxisPlacement_get_type_descriptor() {
+    return Geom2d_AxisPlacement::get_type_descriptor();
+}
+extern "C" const Geom2d_Geometry* Geom2d_AxisPlacement_as_Geom2d_Geometry(const Geom2d_AxisPlacement* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
+extern "C" Geom2d_Geometry* Geom2d_AxisPlacement_as_Geom2d_Geometry_mut(Geom2d_AxisPlacement* self_) { return static_cast<Geom2d_Geometry*>(self_); }
+extern "C" HandleGeom2dAxisPlacement* Geom2d_AxisPlacement_to_handle(Geom2d_AxisPlacement* obj) {
+    return new HandleGeom2dAxisPlacement(obj);
+}
+extern "C" const Geom2d_AxisPlacement* HandleGeom2dAxisPlacement_get(const HandleGeom2dAxisPlacement* handle) { return (*handle).get(); }
+extern "C" Geom2d_AxisPlacement* HandleGeom2dAxisPlacement_get_mut(HandleGeom2dAxisPlacement* handle) { return (*handle).get(); }
+extern "C" HandleGeom2dGeometry* HandleGeom2dAxisPlacement_to_HandleGeom2dGeometry(const HandleGeom2dAxisPlacement* self_) {
+    return new HandleGeom2dGeometry(*self_);
+}
+extern "C" void Geom2d_AxisPlacement_inherited_Mirror(Geom2d_AxisPlacement* self, const gp_Pnt2d& P) {
+    self->Mirror(P);
+}
+extern "C" void Geom2d_AxisPlacement_inherited_Rotate(Geom2d_AxisPlacement* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    self->Rotate(P, Ang);
+}
+extern "C" void Geom2d_AxisPlacement_inherited_Scale(Geom2d_AxisPlacement* self, const gp_Pnt2d& P, Standard_Real S) {
+    self->Scale(P, S);
+}
+extern "C" void Geom2d_AxisPlacement_inherited_Translate(Geom2d_AxisPlacement* self, const gp_Vec2d& V) {
+    self->Translate(V);
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_AxisPlacement_inherited_Mirrored(const Geom2d_AxisPlacement* self, const gp_Pnt2d& P) {
+    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_AxisPlacement_inherited_Rotated(const Geom2d_AxisPlacement* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_AxisPlacement_inherited_Scaled(const Geom2d_AxisPlacement* self, const gp_Pnt2d& P, Standard_Real S) {
+    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_AxisPlacement_inherited_Transformed(const Geom2d_AxisPlacement* self, const gp_Trsf2d& T) {
+    return new Handle(Geom2d_Geometry)(self->Transformed(T));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_AxisPlacement_inherited_Translated(const Geom2d_AxisPlacement* self, const gp_Vec2d& V) {
+    return new Handle(Geom2d_Geometry)(self->Translated(V));
+}
+extern "C" void Geom2d_AxisPlacement_destructor(Geom2d_AxisPlacement* self_) { delete self_; }
+
+// ========================
+// Geom2d_BSplineCurve wrappers
+// ========================
+
+extern "C" Geom2d_BSplineCurve* Geom2d_BSplineCurve_ctor_array1ofpnt2d_array1ofreal_array1ofinteger_int_bool(const TColgp_Array1OfPnt2d* Poles, const TColStd_Array1OfReal* Knots, const TColStd_Array1OfInteger* Multiplicities, Standard_Integer Degree, Standard_Boolean Periodic) {
+    return new Geom2d_BSplineCurve(*Poles, *Knots, *Multiplicities, Degree, Periodic);
+}
+extern "C" Geom2d_BSplineCurve* Geom2d_BSplineCurve_ctor_array1ofpnt2d_array1ofreal2_array1ofinteger_int_bool(const TColgp_Array1OfPnt2d* Poles, const TColStd_Array1OfReal* Weights, const TColStd_Array1OfReal* Knots, const TColStd_Array1OfInteger* Multiplicities, Standard_Integer Degree, Standard_Boolean Periodic) {
+    return new Geom2d_BSplineCurve(*Poles, *Weights, *Knots, *Multiplicities, Degree, Periodic);
+}
+extern "C" gp_Vec2d* Geom2d_BSplineCurve_dn(const Geom2d_BSplineCurve* self_, Standard_Real U, Standard_Integer N) {
+    return new gp_Vec2d(self_->DN(U, N));
+}
+extern "C" gp_Pnt2d* Geom2d_BSplineCurve_local_value(const Geom2d_BSplineCurve* self_, Standard_Real U, Standard_Integer FromK1, Standard_Integer ToK2) {
+    return new gp_Pnt2d(self_->LocalValue(U, FromK1, ToK2));
+}
+extern "C" gp_Vec2d* Geom2d_BSplineCurve_local_dn(const Geom2d_BSplineCurve* self_, Standard_Real U, Standard_Integer FromK1, Standard_Integer ToK2, Standard_Integer N) {
+    return new gp_Vec2d(self_->LocalDN(U, FromK1, ToK2, N));
+}
+extern "C" gp_Pnt2d* Geom2d_BSplineCurve_end_point(const Geom2d_BSplineCurve* self_) {
+    return new gp_Pnt2d(self_->EndPoint());
+}
+extern "C" gp_Pnt2d* Geom2d_BSplineCurve_start_point(const Geom2d_BSplineCurve* self_) {
+    return new gp_Pnt2d(self_->StartPoint());
+}
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_BSplineCurve_copy(const Geom2d_BSplineCurve* self_) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Copy());
+}
+extern "C" int32_t Geom2d_BSplineCurve_continuity(const Geom2d_BSplineCurve* self_) {
+    return static_cast<int32_t>(self_->Continuity());
+}
+extern "C" int32_t Geom2d_BSplineCurve_knot_distribution(const Geom2d_BSplineCurve* self_) {
+    return static_cast<int32_t>(self_->KnotDistribution());
+}
+extern "C" void Geom2d_BSplineCurve_increase_degree(Geom2d_BSplineCurve* self_, Standard_Integer Degree) {
+    self_->IncreaseDegree(Degree);
+}
+extern "C" void Geom2d_BSplineCurve_increase_multiplicity_int2(Geom2d_BSplineCurve* self_, Standard_Integer Index, Standard_Integer M) {
+    self_->IncreaseMultiplicity(Index, M);
+}
+extern "C" void Geom2d_BSplineCurve_increase_multiplicity_int3(Geom2d_BSplineCurve* self_, Standard_Integer I1, Standard_Integer I2, Standard_Integer M) {
+    self_->IncreaseMultiplicity(I1, I2, M);
+}
+extern "C" void Geom2d_BSplineCurve_increment_multiplicity(Geom2d_BSplineCurve* self_, Standard_Integer I1, Standard_Integer I2, Standard_Integer M) {
+    self_->IncrementMultiplicity(I1, I2, M);
+}
+extern "C" void Geom2d_BSplineCurve_insert_knot(Geom2d_BSplineCurve* self_, Standard_Real U, Standard_Integer M, Standard_Real ParametricTolerance) {
+    self_->InsertKnot(U, M, ParametricTolerance);
+}
+extern "C" Standard_Boolean Geom2d_BSplineCurve_remove_knot(Geom2d_BSplineCurve* self_, Standard_Integer Index, Standard_Integer M, Standard_Real Tolerance) {
+    return self_->RemoveKnot(Index, M, Tolerance);
+}
+extern "C" void Geom2d_BSplineCurve_insert_pole_after(Geom2d_BSplineCurve* self_, Standard_Integer Index, const gp_Pnt2d* P, Standard_Real Weight) {
+    self_->InsertPoleAfter(Index, *P, Weight);
+}
+extern "C" void Geom2d_BSplineCurve_insert_pole_before(Geom2d_BSplineCurve* self_, Standard_Integer Index, const gp_Pnt2d* P, Standard_Real Weight) {
+    self_->InsertPoleBefore(Index, *P, Weight);
+}
+extern "C" void Geom2d_BSplineCurve_remove_pole(Geom2d_BSplineCurve* self_, Standard_Integer Index) {
+    self_->RemovePole(Index);
+}
+extern "C" void Geom2d_BSplineCurve_reverse(Geom2d_BSplineCurve* self_) {
+    self_->Reverse();
+}
+extern "C" Standard_Real Geom2d_BSplineCurve_reversed_parameter(const Geom2d_BSplineCurve* self_, Standard_Real U) {
+    return self_->ReversedParameter(U);
+}
+extern "C" void Geom2d_BSplineCurve_segment(Geom2d_BSplineCurve* self_, Standard_Real U1, Standard_Real U2, Standard_Real theTolerance) {
+    self_->Segment(U1, U2, theTolerance);
+}
+extern "C" void Geom2d_BSplineCurve_set_knot_int_real(Geom2d_BSplineCurve* self_, Standard_Integer Index, Standard_Real K) {
+    self_->SetKnot(Index, K);
+}
+extern "C" void Geom2d_BSplineCurve_set_knot_int_real_int(Geom2d_BSplineCurve* self_, Standard_Integer Index, Standard_Real K, Standard_Integer M) {
+    self_->SetKnot(Index, K, M);
+}
+extern "C" void Geom2d_BSplineCurve_periodic_normalization(const Geom2d_BSplineCurve* self_, Standard_Real* U) {
+    self_->PeriodicNormalization(*U);
+}
+extern "C" void Geom2d_BSplineCurve_set_periodic(Geom2d_BSplineCurve* self_) {
+    self_->SetPeriodic();
+}
+extern "C" void Geom2d_BSplineCurve_set_origin(Geom2d_BSplineCurve* self_, Standard_Integer Index) {
+    self_->SetOrigin(Index);
+}
+extern "C" void Geom2d_BSplineCurve_set_not_periodic(Geom2d_BSplineCurve* self_) {
+    self_->SetNotPeriodic();
+}
+extern "C" void Geom2d_BSplineCurve_set_pole_int_pnt2d(Geom2d_BSplineCurve* self_, Standard_Integer Index, const gp_Pnt2d* P) {
+    self_->SetPole(Index, *P);
+}
+extern "C" void Geom2d_BSplineCurve_set_pole_int_pnt2d_real(Geom2d_BSplineCurve* self_, Standard_Integer Index, const gp_Pnt2d* P, Standard_Real Weight) {
+    self_->SetPole(Index, *P, Weight);
+}
+extern "C" void Geom2d_BSplineCurve_set_weight(Geom2d_BSplineCurve* self_, Standard_Integer Index, Standard_Real Weight) {
+    self_->SetWeight(Index, Weight);
+}
+extern "C" void Geom2d_BSplineCurve_move_point(Geom2d_BSplineCurve* self_, Standard_Real U, const gp_Pnt2d* P, Standard_Integer Index1, Standard_Integer Index2, Standard_Integer* FirstModifiedPole, Standard_Integer* LastModifiedPole) {
+    self_->MovePoint(U, *P, Index1, Index2, *FirstModifiedPole, *LastModifiedPole);
+}
+extern "C" void Geom2d_BSplineCurve_move_point_and_tangent(Geom2d_BSplineCurve* self_, Standard_Real U, const gp_Pnt2d* P, const gp_Vec2d* Tangent, Standard_Real Tolerance, Standard_Integer StartingCondition, Standard_Integer EndingCondition, Standard_Integer* ErrorStatus) {
+    self_->MovePointAndTangent(U, *P, *Tangent, Tolerance, StartingCondition, EndingCondition, *ErrorStatus);
+}
+extern "C" Standard_Boolean Geom2d_BSplineCurve_is_cn(const Geom2d_BSplineCurve* self_, Standard_Integer N) {
+    return self_->IsCN(N);
+}
+extern "C" Standard_Boolean Geom2d_BSplineCurve_is_g1(const Geom2d_BSplineCurve* self_, Standard_Real theTf, Standard_Real theTl, Standard_Real theAngTol) {
+    return self_->IsG1(theTf, theTl, theAngTol);
+}
+extern "C" Standard_Boolean Geom2d_BSplineCurve_is_closed(const Geom2d_BSplineCurve* self_) {
+    return self_->IsClosed();
+}
+extern "C" Standard_Boolean Geom2d_BSplineCurve_is_periodic(const Geom2d_BSplineCurve* self_) {
+    return self_->IsPeriodic();
+}
+extern "C" Standard_Boolean Geom2d_BSplineCurve_is_rational(const Geom2d_BSplineCurve* self_) {
+    return self_->IsRational();
+}
+extern "C" Standard_Integer Geom2d_BSplineCurve_degree(const Geom2d_BSplineCurve* self_) {
+    return self_->Degree();
+}
+extern "C" void Geom2d_BSplineCurve_d0(const Geom2d_BSplineCurve* self_, Standard_Real U, gp_Pnt2d* P) {
+    self_->D0(U, *P);
+}
+extern "C" void Geom2d_BSplineCurve_d1(const Geom2d_BSplineCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1) {
+    self_->D1(U, *P, *V1);
+}
+extern "C" void Geom2d_BSplineCurve_d2(const Geom2d_BSplineCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
+    self_->D2(U, *P, *V1, *V2);
+}
+extern "C" void Geom2d_BSplineCurve_d3(const Geom2d_BSplineCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
+    self_->D3(U, *P, *V1, *V2, *V3);
+}
+extern "C" void Geom2d_BSplineCurve_local_d0(const Geom2d_BSplineCurve* self_, Standard_Real U, Standard_Integer FromK1, Standard_Integer ToK2, gp_Pnt2d* P) {
+    self_->LocalD0(U, FromK1, ToK2, *P);
+}
+extern "C" void Geom2d_BSplineCurve_local_d1(const Geom2d_BSplineCurve* self_, Standard_Real U, Standard_Integer FromK1, Standard_Integer ToK2, gp_Pnt2d* P, gp_Vec2d* V1) {
+    self_->LocalD1(U, FromK1, ToK2, *P, *V1);
+}
+extern "C" void Geom2d_BSplineCurve_local_d2(const Geom2d_BSplineCurve* self_, Standard_Real U, Standard_Integer FromK1, Standard_Integer ToK2, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
+    self_->LocalD2(U, FromK1, ToK2, *P, *V1, *V2);
+}
+extern "C" void Geom2d_BSplineCurve_local_d3(const Geom2d_BSplineCurve* self_, Standard_Real U, Standard_Integer FromK1, Standard_Integer ToK2, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
+    self_->LocalD3(U, FromK1, ToK2, *P, *V1, *V2, *V3);
+}
+extern "C" Standard_Integer Geom2d_BSplineCurve_first_u_knot_index(const Geom2d_BSplineCurve* self_) {
+    return self_->FirstUKnotIndex();
+}
+extern "C" Standard_Real Geom2d_BSplineCurve_first_parameter(const Geom2d_BSplineCurve* self_) {
+    return self_->FirstParameter();
+}
+extern "C" Standard_Real Geom2d_BSplineCurve_knot(const Geom2d_BSplineCurve* self_, Standard_Integer Index) {
+    return self_->Knot(Index);
+}
+extern "C" Standard_Integer Geom2d_BSplineCurve_last_u_knot_index(const Geom2d_BSplineCurve* self_) {
+    return self_->LastUKnotIndex();
+}
+extern "C" Standard_Real Geom2d_BSplineCurve_last_parameter(const Geom2d_BSplineCurve* self_) {
+    return self_->LastParameter();
+}
+extern "C" void Geom2d_BSplineCurve_locate_u(const Geom2d_BSplineCurve* self_, Standard_Real U, Standard_Real ParametricTolerance, Standard_Integer* I1, Standard_Integer* I2, Standard_Boolean WithKnotRepetition) {
+    self_->LocateU(U, ParametricTolerance, *I1, *I2, WithKnotRepetition);
+}
+extern "C" Standard_Integer Geom2d_BSplineCurve_multiplicity(const Geom2d_BSplineCurve* self_, Standard_Integer Index) {
+    return self_->Multiplicity(Index);
+}
+extern "C" Standard_Integer Geom2d_BSplineCurve_nb_knots(const Geom2d_BSplineCurve* self_) {
+    return self_->NbKnots();
+}
+extern "C" Standard_Integer Geom2d_BSplineCurve_nb_poles(const Geom2d_BSplineCurve* self_) {
+    return self_->NbPoles();
+}
+extern "C" const gp_Pnt2d& Geom2d_BSplineCurve_pole(const Geom2d_BSplineCurve* self_, Standard_Integer Index) {
+    return self_->Pole(Index);
+}
+extern "C" void Geom2d_BSplineCurve_poles_array1ofpnt2d(const Geom2d_BSplineCurve* self_, TColgp_Array1OfPnt2d* P) {
+    self_->Poles(*P);
+}
+extern "C" const TColgp_Array1OfPnt2d& Geom2d_BSplineCurve_poles(const Geom2d_BSplineCurve* self_) {
+    return self_->Poles();
+}
+extern "C" Standard_Real Geom2d_BSplineCurve_weight(const Geom2d_BSplineCurve* self_, Standard_Integer Index) {
+    return self_->Weight(Index);
+}
+extern "C" void Geom2d_BSplineCurve_transform(Geom2d_BSplineCurve* self_, const gp_Trsf2d* T) {
+    self_->Transform(*T);
+}
+extern "C" void Geom2d_BSplineCurve_resolution(Geom2d_BSplineCurve* self_, Standard_Real ToleranceUV, Standard_Real* UTolerance) {
+    self_->Resolution(ToleranceUV, *UTolerance);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_BSplineCurve_dynamic_type(const Geom2d_BSplineCurve* self_) {
+    return self_->DynamicType();
+}
+extern "C" Standard_Integer Geom2d_BSplineCurve_max_degree() {
+    return Geom2d_BSplineCurve::MaxDegree();
+}
+extern "C" const char* Geom2d_BSplineCurve_get_type_name() {
+    return Geom2d_BSplineCurve::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_BSplineCurve_get_type_descriptor() {
+    return Geom2d_BSplineCurve::get_type_descriptor();
+}
+extern "C" const Geom2d_BoundedCurve* Geom2d_BSplineCurve_as_Geom2d_BoundedCurve(const Geom2d_BSplineCurve* self_) { return static_cast<const Geom2d_BoundedCurve*>(self_); }
+extern "C" Geom2d_BoundedCurve* Geom2d_BSplineCurve_as_Geom2d_BoundedCurve_mut(Geom2d_BSplineCurve* self_) { return static_cast<Geom2d_BoundedCurve*>(self_); }
+extern "C" const Geom2d_Curve* Geom2d_BSplineCurve_as_Geom2d_Curve(const Geom2d_BSplineCurve* self_) { return static_cast<const Geom2d_Curve*>(self_); }
+extern "C" Geom2d_Curve* Geom2d_BSplineCurve_as_Geom2d_Curve_mut(Geom2d_BSplineCurve* self_) { return static_cast<Geom2d_Curve*>(self_); }
+extern "C" const Geom2d_Geometry* Geom2d_BSplineCurve_as_Geom2d_Geometry(const Geom2d_BSplineCurve* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
+extern "C" Geom2d_Geometry* Geom2d_BSplineCurve_as_Geom2d_Geometry_mut(Geom2d_BSplineCurve* self_) { return static_cast<Geom2d_Geometry*>(self_); }
+extern "C" HandleGeom2dBSplineCurve* Geom2d_BSplineCurve_to_handle(Geom2d_BSplineCurve* obj) {
+    return new HandleGeom2dBSplineCurve(obj);
+}
+extern "C" const Geom2d_BSplineCurve* HandleGeom2dBSplineCurve_get(const HandleGeom2dBSplineCurve* handle) { return (*handle).get(); }
+extern "C" Geom2d_BSplineCurve* HandleGeom2dBSplineCurve_get_mut(HandleGeom2dBSplineCurve* handle) { return (*handle).get(); }
+extern "C" HandleGeom2dBoundedCurve* HandleGeom2dBSplineCurve_to_HandleGeom2dBoundedCurve(const HandleGeom2dBSplineCurve* self_) {
+    return new HandleGeom2dBoundedCurve(*self_);
+}
+extern "C" HandleGeom2dCurve* HandleGeom2dBSplineCurve_to_HandleGeom2dCurve(const HandleGeom2dBSplineCurve* self_) {
+    return new HandleGeom2dCurve(*self_);
+}
+extern "C" HandleGeom2dGeometry* HandleGeom2dBSplineCurve_to_HandleGeom2dGeometry(const HandleGeom2dBSplineCurve* self_) {
+    return new HandleGeom2dGeometry(*self_);
+}
+extern "C" Standard_Real Geom2d_BSplineCurve_inherited_TransformedParameter(const Geom2d_BSplineCurve* self, Standard_Real U, const gp_Trsf2d& T) {
+    return self->TransformedParameter(U, T);
+}
+extern "C" Standard_Real Geom2d_BSplineCurve_inherited_ParametricTransformation(const Geom2d_BSplineCurve* self, const gp_Trsf2d& T) {
+    return self->ParametricTransformation(T);
+}
+extern "C" Handle(Geom2d_Curve)* Geom2d_BSplineCurve_inherited_Reversed(const Geom2d_BSplineCurve* self) {
+    return new Handle(Geom2d_Curve)(self->Reversed());
+}
+extern "C" Standard_Real Geom2d_BSplineCurve_inherited_Period(const Geom2d_BSplineCurve* self) {
+    return self->Period();
+}
+extern "C" gp_Pnt2d* Geom2d_BSplineCurve_inherited_Value(const Geom2d_BSplineCurve* self, Standard_Real U) {
+    return new gp_Pnt2d(self->Value(U));
+}
+extern "C" void Geom2d_BSplineCurve_inherited_Mirror(Geom2d_BSplineCurve* self, const gp_Pnt2d& P) {
+    self->Mirror(P);
+}
+extern "C" void Geom2d_BSplineCurve_inherited_Rotate(Geom2d_BSplineCurve* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    self->Rotate(P, Ang);
+}
+extern "C" void Geom2d_BSplineCurve_inherited_Scale(Geom2d_BSplineCurve* self, const gp_Pnt2d& P, Standard_Real S) {
+    self->Scale(P, S);
+}
+extern "C" void Geom2d_BSplineCurve_inherited_Translate(Geom2d_BSplineCurve* self, const gp_Vec2d& V) {
+    self->Translate(V);
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_BSplineCurve_inherited_Mirrored(const Geom2d_BSplineCurve* self, const gp_Pnt2d& P) {
+    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_BSplineCurve_inherited_Rotated(const Geom2d_BSplineCurve* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_BSplineCurve_inherited_Scaled(const Geom2d_BSplineCurve* self, const gp_Pnt2d& P, Standard_Real S) {
+    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_BSplineCurve_inherited_Transformed(const Geom2d_BSplineCurve* self, const gp_Trsf2d& T) {
+    return new Handle(Geom2d_Geometry)(self->Transformed(T));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_BSplineCurve_inherited_Translated(const Geom2d_BSplineCurve* self, const gp_Vec2d& V) {
+    return new Handle(Geom2d_Geometry)(self->Translated(V));
+}
+extern "C" void Geom2d_BSplineCurve_destructor(Geom2d_BSplineCurve* self_) { delete self_; }
+
+// ========================
+// Geom2d_BezierCurve wrappers
+// ========================
+
+extern "C" Geom2d_BezierCurve* Geom2d_BezierCurve_ctor_array1ofpnt2d(const TColgp_Array1OfPnt2d* CurvePoles) {
+    return new Geom2d_BezierCurve(*CurvePoles);
+}
+extern "C" Geom2d_BezierCurve* Geom2d_BezierCurve_ctor_array1ofpnt2d_array1ofreal(const TColgp_Array1OfPnt2d* CurvePoles, const TColStd_Array1OfReal* PoleWeights) {
+    return new Geom2d_BezierCurve(*CurvePoles, *PoleWeights);
+}
+extern "C" gp_Vec2d* Geom2d_BezierCurve_dn(const Geom2d_BezierCurve* self_, Standard_Real U, Standard_Integer N) {
+    return new gp_Vec2d(self_->DN(U, N));
+}
+extern "C" gp_Pnt2d* Geom2d_BezierCurve_end_point(const Geom2d_BezierCurve* self_) {
+    return new gp_Pnt2d(self_->EndPoint());
+}
+extern "C" gp_Pnt2d* Geom2d_BezierCurve_start_point(const Geom2d_BezierCurve* self_) {
+    return new gp_Pnt2d(self_->StartPoint());
+}
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_BezierCurve_copy(const Geom2d_BezierCurve* self_) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Copy());
+}
+extern "C" int32_t Geom2d_BezierCurve_continuity(const Geom2d_BezierCurve* self_) {
+    return static_cast<int32_t>(self_->Continuity());
+}
+extern "C" void Geom2d_BezierCurve_increase(Geom2d_BezierCurve* self_, Standard_Integer Degree) {
+    self_->Increase(Degree);
+}
+extern "C" void Geom2d_BezierCurve_insert_pole_after(Geom2d_BezierCurve* self_, Standard_Integer Index, const gp_Pnt2d* P, Standard_Real Weight) {
+    self_->InsertPoleAfter(Index, *P, Weight);
+}
+extern "C" void Geom2d_BezierCurve_insert_pole_before(Geom2d_BezierCurve* self_, Standard_Integer Index, const gp_Pnt2d* P, Standard_Real Weight) {
+    self_->InsertPoleBefore(Index, *P, Weight);
+}
+extern "C" void Geom2d_BezierCurve_remove_pole(Geom2d_BezierCurve* self_, Standard_Integer Index) {
+    self_->RemovePole(Index);
+}
+extern "C" void Geom2d_BezierCurve_reverse(Geom2d_BezierCurve* self_) {
+    self_->Reverse();
+}
+extern "C" Standard_Real Geom2d_BezierCurve_reversed_parameter(const Geom2d_BezierCurve* self_, Standard_Real U) {
+    return self_->ReversedParameter(U);
+}
+extern "C" void Geom2d_BezierCurve_segment(Geom2d_BezierCurve* self_, Standard_Real U1, Standard_Real U2) {
+    self_->Segment(U1, U2);
+}
+extern "C" void Geom2d_BezierCurve_set_pole_int_pnt2d(Geom2d_BezierCurve* self_, Standard_Integer Index, const gp_Pnt2d* P) {
+    self_->SetPole(Index, *P);
+}
+extern "C" void Geom2d_BezierCurve_set_pole_int_pnt2d_real(Geom2d_BezierCurve* self_, Standard_Integer Index, const gp_Pnt2d* P, Standard_Real Weight) {
+    self_->SetPole(Index, *P, Weight);
+}
+extern "C" void Geom2d_BezierCurve_set_weight(Geom2d_BezierCurve* self_, Standard_Integer Index, Standard_Real Weight) {
+    self_->SetWeight(Index, Weight);
+}
+extern "C" Standard_Boolean Geom2d_BezierCurve_is_closed(const Geom2d_BezierCurve* self_) {
+    return self_->IsClosed();
+}
+extern "C" Standard_Boolean Geom2d_BezierCurve_is_cn(const Geom2d_BezierCurve* self_, Standard_Integer N) {
+    return self_->IsCN(N);
+}
+extern "C" Standard_Boolean Geom2d_BezierCurve_is_periodic(const Geom2d_BezierCurve* self_) {
+    return self_->IsPeriodic();
+}
+extern "C" Standard_Boolean Geom2d_BezierCurve_is_rational(const Geom2d_BezierCurve* self_) {
+    return self_->IsRational();
+}
+extern "C" Standard_Integer Geom2d_BezierCurve_degree(const Geom2d_BezierCurve* self_) {
+    return self_->Degree();
+}
+extern "C" void Geom2d_BezierCurve_d0(const Geom2d_BezierCurve* self_, Standard_Real U, gp_Pnt2d* P) {
+    self_->D0(U, *P);
+}
+extern "C" void Geom2d_BezierCurve_d1(const Geom2d_BezierCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1) {
+    self_->D1(U, *P, *V1);
+}
+extern "C" void Geom2d_BezierCurve_d2(const Geom2d_BezierCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
+    self_->D2(U, *P, *V1, *V2);
+}
+extern "C" void Geom2d_BezierCurve_d3(const Geom2d_BezierCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
+    self_->D3(U, *P, *V1, *V2, *V3);
+}
+extern "C" Standard_Real Geom2d_BezierCurve_first_parameter(const Geom2d_BezierCurve* self_) {
+    return self_->FirstParameter();
+}
+extern "C" Standard_Real Geom2d_BezierCurve_last_parameter(const Geom2d_BezierCurve* self_) {
+    return self_->LastParameter();
+}
+extern "C" Standard_Integer Geom2d_BezierCurve_nb_poles(const Geom2d_BezierCurve* self_) {
+    return self_->NbPoles();
+}
+extern "C" const gp_Pnt2d& Geom2d_BezierCurve_pole(const Geom2d_BezierCurve* self_, Standard_Integer Index) {
+    return self_->Pole(Index);
+}
+extern "C" void Geom2d_BezierCurve_poles_array1ofpnt2d(const Geom2d_BezierCurve* self_, TColgp_Array1OfPnt2d* P) {
+    self_->Poles(*P);
+}
+extern "C" const TColgp_Array1OfPnt2d& Geom2d_BezierCurve_poles(const Geom2d_BezierCurve* self_) {
+    return self_->Poles();
+}
+extern "C" Standard_Real Geom2d_BezierCurve_weight(const Geom2d_BezierCurve* self_, Standard_Integer Index) {
+    return self_->Weight(Index);
+}
+extern "C" void Geom2d_BezierCurve_transform(Geom2d_BezierCurve* self_, const gp_Trsf2d* T) {
+    self_->Transform(*T);
+}
+extern "C" void Geom2d_BezierCurve_resolution(Geom2d_BezierCurve* self_, Standard_Real ToleranceUV, Standard_Real* UTolerance) {
+    self_->Resolution(ToleranceUV, *UTolerance);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_BezierCurve_dynamic_type(const Geom2d_BezierCurve* self_) {
+    return self_->DynamicType();
+}
+extern "C" Standard_Integer Geom2d_BezierCurve_max_degree() {
+    return Geom2d_BezierCurve::MaxDegree();
+}
+extern "C" const char* Geom2d_BezierCurve_get_type_name() {
+    return Geom2d_BezierCurve::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_BezierCurve_get_type_descriptor() {
+    return Geom2d_BezierCurve::get_type_descriptor();
+}
+extern "C" const Geom2d_BoundedCurve* Geom2d_BezierCurve_as_Geom2d_BoundedCurve(const Geom2d_BezierCurve* self_) { return static_cast<const Geom2d_BoundedCurve*>(self_); }
+extern "C" Geom2d_BoundedCurve* Geom2d_BezierCurve_as_Geom2d_BoundedCurve_mut(Geom2d_BezierCurve* self_) { return static_cast<Geom2d_BoundedCurve*>(self_); }
+extern "C" const Geom2d_Curve* Geom2d_BezierCurve_as_Geom2d_Curve(const Geom2d_BezierCurve* self_) { return static_cast<const Geom2d_Curve*>(self_); }
+extern "C" Geom2d_Curve* Geom2d_BezierCurve_as_Geom2d_Curve_mut(Geom2d_BezierCurve* self_) { return static_cast<Geom2d_Curve*>(self_); }
+extern "C" const Geom2d_Geometry* Geom2d_BezierCurve_as_Geom2d_Geometry(const Geom2d_BezierCurve* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
+extern "C" Geom2d_Geometry* Geom2d_BezierCurve_as_Geom2d_Geometry_mut(Geom2d_BezierCurve* self_) { return static_cast<Geom2d_Geometry*>(self_); }
+extern "C" HandleGeom2dBezierCurve* Geom2d_BezierCurve_to_handle(Geom2d_BezierCurve* obj) {
+    return new HandleGeom2dBezierCurve(obj);
+}
+extern "C" const Geom2d_BezierCurve* HandleGeom2dBezierCurve_get(const HandleGeom2dBezierCurve* handle) { return (*handle).get(); }
+extern "C" Geom2d_BezierCurve* HandleGeom2dBezierCurve_get_mut(HandleGeom2dBezierCurve* handle) { return (*handle).get(); }
+extern "C" HandleGeom2dBoundedCurve* HandleGeom2dBezierCurve_to_HandleGeom2dBoundedCurve(const HandleGeom2dBezierCurve* self_) {
+    return new HandleGeom2dBoundedCurve(*self_);
+}
+extern "C" HandleGeom2dCurve* HandleGeom2dBezierCurve_to_HandleGeom2dCurve(const HandleGeom2dBezierCurve* self_) {
+    return new HandleGeom2dCurve(*self_);
+}
+extern "C" HandleGeom2dGeometry* HandleGeom2dBezierCurve_to_HandleGeom2dGeometry(const HandleGeom2dBezierCurve* self_) {
+    return new HandleGeom2dGeometry(*self_);
+}
+extern "C" Standard_Real Geom2d_BezierCurve_inherited_TransformedParameter(const Geom2d_BezierCurve* self, Standard_Real U, const gp_Trsf2d& T) {
+    return self->TransformedParameter(U, T);
+}
+extern "C" Standard_Real Geom2d_BezierCurve_inherited_ParametricTransformation(const Geom2d_BezierCurve* self, const gp_Trsf2d& T) {
+    return self->ParametricTransformation(T);
+}
+extern "C" Handle(Geom2d_Curve)* Geom2d_BezierCurve_inherited_Reversed(const Geom2d_BezierCurve* self) {
+    return new Handle(Geom2d_Curve)(self->Reversed());
+}
+extern "C" Standard_Real Geom2d_BezierCurve_inherited_Period(const Geom2d_BezierCurve* self) {
+    return self->Period();
+}
+extern "C" gp_Pnt2d* Geom2d_BezierCurve_inherited_Value(const Geom2d_BezierCurve* self, Standard_Real U) {
+    return new gp_Pnt2d(self->Value(U));
+}
+extern "C" void Geom2d_BezierCurve_inherited_Mirror(Geom2d_BezierCurve* self, const gp_Pnt2d& P) {
+    self->Mirror(P);
+}
+extern "C" void Geom2d_BezierCurve_inherited_Rotate(Geom2d_BezierCurve* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    self->Rotate(P, Ang);
+}
+extern "C" void Geom2d_BezierCurve_inherited_Scale(Geom2d_BezierCurve* self, const gp_Pnt2d& P, Standard_Real S) {
+    self->Scale(P, S);
+}
+extern "C" void Geom2d_BezierCurve_inherited_Translate(Geom2d_BezierCurve* self, const gp_Vec2d& V) {
+    self->Translate(V);
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_BezierCurve_inherited_Mirrored(const Geom2d_BezierCurve* self, const gp_Pnt2d& P) {
+    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_BezierCurve_inherited_Rotated(const Geom2d_BezierCurve* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_BezierCurve_inherited_Scaled(const Geom2d_BezierCurve* self, const gp_Pnt2d& P, Standard_Real S) {
+    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_BezierCurve_inherited_Transformed(const Geom2d_BezierCurve* self, const gp_Trsf2d& T) {
+    return new Handle(Geom2d_Geometry)(self->Transformed(T));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_BezierCurve_inherited_Translated(const Geom2d_BezierCurve* self, const gp_Vec2d& V) {
+    return new Handle(Geom2d_Geometry)(self->Translated(V));
+}
+extern "C" void Geom2d_BezierCurve_destructor(Geom2d_BezierCurve* self_) { delete self_; }
+
+// ========================
+// Geom2d_BoundedCurve wrappers
+// ========================
+
+extern "C" gp_Pnt2d* Geom2d_BoundedCurve_end_point(const Geom2d_BoundedCurve* self_) {
+    return new gp_Pnt2d(self_->EndPoint());
+}
+extern "C" gp_Pnt2d* Geom2d_BoundedCurve_start_point(const Geom2d_BoundedCurve* self_) {
+    return new gp_Pnt2d(self_->StartPoint());
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_BoundedCurve_dynamic_type(const Geom2d_BoundedCurve* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Geom2d_BoundedCurve_get_type_name() {
+    return Geom2d_BoundedCurve::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_BoundedCurve_get_type_descriptor() {
+    return Geom2d_BoundedCurve::get_type_descriptor();
+}
+extern "C" const Geom2d_Curve* Geom2d_BoundedCurve_as_Geom2d_Curve(const Geom2d_BoundedCurve* self_) { return static_cast<const Geom2d_Curve*>(self_); }
+extern "C" Geom2d_Curve* Geom2d_BoundedCurve_as_Geom2d_Curve_mut(Geom2d_BoundedCurve* self_) { return static_cast<Geom2d_Curve*>(self_); }
+extern "C" const Geom2d_Geometry* Geom2d_BoundedCurve_as_Geom2d_Geometry(const Geom2d_BoundedCurve* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
+extern "C" Geom2d_Geometry* Geom2d_BoundedCurve_as_Geom2d_Geometry_mut(Geom2d_BoundedCurve* self_) { return static_cast<Geom2d_Geometry*>(self_); }
+extern "C" const Geom2d_BoundedCurve* HandleGeom2dBoundedCurve_get(const HandleGeom2dBoundedCurve* handle) { return (*handle).get(); }
+extern "C" Geom2d_BoundedCurve* HandleGeom2dBoundedCurve_get_mut(HandleGeom2dBoundedCurve* handle) { return (*handle).get(); }
+extern "C" HandleGeom2dCurve* HandleGeom2dBoundedCurve_to_HandleGeom2dCurve(const HandleGeom2dBoundedCurve* self_) {
+    return new HandleGeom2dCurve(*self_);
+}
+extern "C" HandleGeom2dGeometry* HandleGeom2dBoundedCurve_to_HandleGeom2dGeometry(const HandleGeom2dBoundedCurve* self_) {
+    return new HandleGeom2dGeometry(*self_);
+}
+extern "C" void Geom2d_BoundedCurve_inherited_Reverse(Geom2d_BoundedCurve* self) {
+    self->Reverse();
+}
+extern "C" Standard_Real Geom2d_BoundedCurve_inherited_ReversedParameter(const Geom2d_BoundedCurve* self, Standard_Real U) {
+    return self->ReversedParameter(U);
+}
+extern "C" Standard_Real Geom2d_BoundedCurve_inherited_TransformedParameter(const Geom2d_BoundedCurve* self, Standard_Real U, const gp_Trsf2d& T) {
+    return self->TransformedParameter(U, T);
+}
+extern "C" Standard_Real Geom2d_BoundedCurve_inherited_ParametricTransformation(const Geom2d_BoundedCurve* self, const gp_Trsf2d& T) {
+    return self->ParametricTransformation(T);
+}
+extern "C" Handle(Geom2d_Curve)* Geom2d_BoundedCurve_inherited_Reversed(const Geom2d_BoundedCurve* self) {
+    return new Handle(Geom2d_Curve)(self->Reversed());
+}
+extern "C" Standard_Real Geom2d_BoundedCurve_inherited_FirstParameter(const Geom2d_BoundedCurve* self) {
+    return self->FirstParameter();
+}
+extern "C" Standard_Real Geom2d_BoundedCurve_inherited_LastParameter(const Geom2d_BoundedCurve* self) {
+    return self->LastParameter();
+}
+extern "C" bool Geom2d_BoundedCurve_inherited_IsClosed(const Geom2d_BoundedCurve* self) {
+    return self->IsClosed();
+}
+extern "C" bool Geom2d_BoundedCurve_inherited_IsPeriodic(const Geom2d_BoundedCurve* self) {
+    return self->IsPeriodic();
+}
+extern "C" Standard_Real Geom2d_BoundedCurve_inherited_Period(const Geom2d_BoundedCurve* self) {
+    return self->Period();
+}
+extern "C" int32_t Geom2d_BoundedCurve_inherited_Continuity(const Geom2d_BoundedCurve* self) {
+    return static_cast<int32_t>(self->Continuity());
+}
+extern "C" bool Geom2d_BoundedCurve_inherited_IsCN(const Geom2d_BoundedCurve* self, Standard_Integer N) {
+    return self->IsCN(N);
+}
+extern "C" void Geom2d_BoundedCurve_inherited_D0(const Geom2d_BoundedCurve* self, Standard_Real U, gp_Pnt2d& P) {
+    self->D0(U, P);
+}
+extern "C" void Geom2d_BoundedCurve_inherited_D1(const Geom2d_BoundedCurve* self, Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1) {
+    self->D1(U, P, V1);
+}
+extern "C" void Geom2d_BoundedCurve_inherited_D2(const Geom2d_BoundedCurve* self, Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
+    self->D2(U, P, V1, V2);
+}
+extern "C" void Geom2d_BoundedCurve_inherited_D3(const Geom2d_BoundedCurve* self, Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
+    self->D3(U, P, V1, V2, V3);
+}
+extern "C" gp_Vec2d* Geom2d_BoundedCurve_inherited_DN(const Geom2d_BoundedCurve* self, Standard_Real U, Standard_Integer N) {
+    return new gp_Vec2d(self->DN(U, N));
+}
+extern "C" gp_Pnt2d* Geom2d_BoundedCurve_inherited_Value(const Geom2d_BoundedCurve* self, Standard_Real U) {
+    return new gp_Pnt2d(self->Value(U));
+}
+extern "C" void Geom2d_BoundedCurve_inherited_Mirror(Geom2d_BoundedCurve* self, const gp_Pnt2d& P) {
+    self->Mirror(P);
+}
+extern "C" void Geom2d_BoundedCurve_inherited_Rotate(Geom2d_BoundedCurve* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    self->Rotate(P, Ang);
+}
+extern "C" void Geom2d_BoundedCurve_inherited_Scale(Geom2d_BoundedCurve* self, const gp_Pnt2d& P, Standard_Real S) {
+    self->Scale(P, S);
+}
+extern "C" void Geom2d_BoundedCurve_inherited_Translate(Geom2d_BoundedCurve* self, const gp_Vec2d& V) {
+    self->Translate(V);
+}
+extern "C" void Geom2d_BoundedCurve_inherited_Transform(Geom2d_BoundedCurve* self, const gp_Trsf2d& T) {
+    self->Transform(T);
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_BoundedCurve_inherited_Mirrored(const Geom2d_BoundedCurve* self, const gp_Pnt2d& P) {
+    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_BoundedCurve_inherited_Rotated(const Geom2d_BoundedCurve* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_BoundedCurve_inherited_Scaled(const Geom2d_BoundedCurve* self, const gp_Pnt2d& P, Standard_Real S) {
+    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_BoundedCurve_inherited_Transformed(const Geom2d_BoundedCurve* self, const gp_Trsf2d& T) {
+    return new Handle(Geom2d_Geometry)(self->Transformed(T));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_BoundedCurve_inherited_Translated(const Geom2d_BoundedCurve* self, const gp_Vec2d& V) {
+    return new Handle(Geom2d_Geometry)(self->Translated(V));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_BoundedCurve_inherited_Copy(const Geom2d_BoundedCurve* self) {
+    return new Handle(Geom2d_Geometry)(self->Copy());
+}
+extern "C" void Geom2d_BoundedCurve_destructor(Geom2d_BoundedCurve* self_) { delete self_; }
+
+// ========================
+// Geom2d_CartesianPoint wrappers
+// ========================
+
+extern "C" Geom2d_CartesianPoint* Geom2d_CartesianPoint_ctor_pnt2d(const gp_Pnt2d* P) {
+    return new Geom2d_CartesianPoint(*P);
+}
+extern "C" Geom2d_CartesianPoint* Geom2d_CartesianPoint_ctor_real2(Standard_Real X, Standard_Real Y) {
+    return new Geom2d_CartesianPoint(X, Y);
+}
+extern "C" gp_Pnt2d* Geom2d_CartesianPoint_pnt2d(const Geom2d_CartesianPoint* self_) {
+    return new gp_Pnt2d(self_->Pnt2d());
+}
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_CartesianPoint_copy(const Geom2d_CartesianPoint* self_) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Copy());
+}
+extern "C" void Geom2d_CartesianPoint_set_coord(Geom2d_CartesianPoint* self_, Standard_Real X, Standard_Real Y) {
+    self_->SetCoord(X, Y);
+}
+extern "C" void Geom2d_CartesianPoint_set_pnt2d(Geom2d_CartesianPoint* self_, const gp_Pnt2d* P) {
+    self_->SetPnt2d(*P);
+}
+extern "C" void Geom2d_CartesianPoint_set_x(Geom2d_CartesianPoint* self_, Standard_Real X) {
+    self_->SetX(X);
+}
+extern "C" void Geom2d_CartesianPoint_set_y(Geom2d_CartesianPoint* self_, Standard_Real Y) {
+    self_->SetY(Y);
+}
+extern "C" void Geom2d_CartesianPoint_coord(const Geom2d_CartesianPoint* self_, Standard_Real* X, Standard_Real* Y) {
+    self_->Coord(*X, *Y);
+}
+extern "C" Standard_Real Geom2d_CartesianPoint_x(const Geom2d_CartesianPoint* self_) {
+    return self_->X();
+}
+extern "C" Standard_Real Geom2d_CartesianPoint_y(const Geom2d_CartesianPoint* self_) {
+    return self_->Y();
+}
+extern "C" void Geom2d_CartesianPoint_transform(Geom2d_CartesianPoint* self_, const gp_Trsf2d* T) {
+    self_->Transform(*T);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_CartesianPoint_dynamic_type(const Geom2d_CartesianPoint* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Geom2d_CartesianPoint_get_type_name() {
+    return Geom2d_CartesianPoint::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_CartesianPoint_get_type_descriptor() {
+    return Geom2d_CartesianPoint::get_type_descriptor();
+}
+extern "C" const Geom2d_Geometry* Geom2d_CartesianPoint_as_Geom2d_Geometry(const Geom2d_CartesianPoint* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
+extern "C" Geom2d_Geometry* Geom2d_CartesianPoint_as_Geom2d_Geometry_mut(Geom2d_CartesianPoint* self_) { return static_cast<Geom2d_Geometry*>(self_); }
+extern "C" const Geom2d_Point* Geom2d_CartesianPoint_as_Geom2d_Point(const Geom2d_CartesianPoint* self_) { return static_cast<const Geom2d_Point*>(self_); }
+extern "C" Geom2d_Point* Geom2d_CartesianPoint_as_Geom2d_Point_mut(Geom2d_CartesianPoint* self_) { return static_cast<Geom2d_Point*>(self_); }
+extern "C" HandleGeom2dCartesianPoint* Geom2d_CartesianPoint_to_handle(Geom2d_CartesianPoint* obj) {
+    return new HandleGeom2dCartesianPoint(obj);
+}
+extern "C" const Geom2d_CartesianPoint* HandleGeom2dCartesianPoint_get(const HandleGeom2dCartesianPoint* handle) { return (*handle).get(); }
+extern "C" Geom2d_CartesianPoint* HandleGeom2dCartesianPoint_get_mut(HandleGeom2dCartesianPoint* handle) { return (*handle).get(); }
+extern "C" HandleGeom2dGeometry* HandleGeom2dCartesianPoint_to_HandleGeom2dGeometry(const HandleGeom2dCartesianPoint* self_) {
+    return new HandleGeom2dGeometry(*self_);
+}
+extern "C" HandleGeom2dPoint* HandleGeom2dCartesianPoint_to_HandleGeom2dPoint(const HandleGeom2dCartesianPoint* self_) {
+    return new HandleGeom2dPoint(*self_);
+}
+extern "C" void Geom2d_CartesianPoint_inherited_Mirror(Geom2d_CartesianPoint* self, const gp_Pnt2d& P) {
+    self->Mirror(P);
+}
+extern "C" void Geom2d_CartesianPoint_inherited_Rotate(Geom2d_CartesianPoint* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    self->Rotate(P, Ang);
+}
+extern "C" void Geom2d_CartesianPoint_inherited_Scale(Geom2d_CartesianPoint* self, const gp_Pnt2d& P, Standard_Real S) {
+    self->Scale(P, S);
+}
+extern "C" void Geom2d_CartesianPoint_inherited_Translate(Geom2d_CartesianPoint* self, const gp_Vec2d& V) {
+    self->Translate(V);
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_CartesianPoint_inherited_Mirrored(const Geom2d_CartesianPoint* self, const gp_Pnt2d& P) {
+    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_CartesianPoint_inherited_Rotated(const Geom2d_CartesianPoint* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_CartesianPoint_inherited_Scaled(const Geom2d_CartesianPoint* self, const gp_Pnt2d& P, Standard_Real S) {
+    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_CartesianPoint_inherited_Transformed(const Geom2d_CartesianPoint* self, const gp_Trsf2d& T) {
+    return new Handle(Geom2d_Geometry)(self->Transformed(T));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_CartesianPoint_inherited_Translated(const Geom2d_CartesianPoint* self, const gp_Vec2d& V) {
+    return new Handle(Geom2d_Geometry)(self->Translated(V));
+}
+extern "C" Standard_Real Geom2d_CartesianPoint_inherited_Distance(const Geom2d_CartesianPoint* self, const opencascade::handle<Geom2d_Point>& Other) {
+    return self->Distance(Other);
+}
+extern "C" Standard_Real Geom2d_CartesianPoint_inherited_SquareDistance(const Geom2d_CartesianPoint* self, const opencascade::handle<Geom2d_Point>& Other) {
+    return self->SquareDistance(Other);
+}
+extern "C" void Geom2d_CartesianPoint_destructor(Geom2d_CartesianPoint* self_) { delete self_; }
+
+// ========================
+// Geom2d_Circle wrappers
+// ========================
+
+extern "C" Geom2d_Circle* Geom2d_Circle_ctor_circ2d(const gp_Circ2d* C) {
+    return new Geom2d_Circle(*C);
+}
+extern "C" Geom2d_Circle* Geom2d_Circle_ctor_ax2d_real_bool(const gp_Ax2d* A, Standard_Real Radius, Standard_Boolean Sense) {
+    return new Geom2d_Circle(*A, Radius, Sense);
+}
+extern "C" Geom2d_Circle* Geom2d_Circle_ctor_ax22d_real(const gp_Ax22d* A, Standard_Real Radius) {
+    return new Geom2d_Circle(*A, Radius);
+}
+extern "C" gp_Circ2d* Geom2d_Circle_circ2d(const Geom2d_Circle* self_) {
+    return new gp_Circ2d(self_->Circ2d());
+}
+extern "C" gp_Vec2d* Geom2d_Circle_dn(const Geom2d_Circle* self_, Standard_Real U, Standard_Integer N) {
+    return new gp_Vec2d(self_->DN(U, N));
+}
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Circle_copy(const Geom2d_Circle* self_) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Copy());
+}
+extern "C" void Geom2d_Circle_set_circ2d(Geom2d_Circle* self_, const gp_Circ2d* C) {
+    self_->SetCirc2d(*C);
+}
+extern "C" void Geom2d_Circle_set_radius(Geom2d_Circle* self_, Standard_Real R) {
+    self_->SetRadius(R);
+}
+extern "C" Standard_Real Geom2d_Circle_radius(const Geom2d_Circle* self_) {
+    return self_->Radius();
+}
+extern "C" Standard_Real Geom2d_Circle_reversed_parameter(const Geom2d_Circle* self_, Standard_Real U) {
+    return self_->ReversedParameter(U);
+}
+extern "C" Standard_Real Geom2d_Circle_eccentricity(const Geom2d_Circle* self_) {
+    return self_->Eccentricity();
+}
+extern "C" Standard_Real Geom2d_Circle_first_parameter(const Geom2d_Circle* self_) {
+    return self_->FirstParameter();
+}
+extern "C" Standard_Real Geom2d_Circle_last_parameter(const Geom2d_Circle* self_) {
+    return self_->LastParameter();
+}
+extern "C" Standard_Boolean Geom2d_Circle_is_closed(const Geom2d_Circle* self_) {
+    return self_->IsClosed();
+}
+extern "C" Standard_Boolean Geom2d_Circle_is_periodic(const Geom2d_Circle* self_) {
+    return self_->IsPeriodic();
+}
+extern "C" void Geom2d_Circle_d0(const Geom2d_Circle* self_, Standard_Real U, gp_Pnt2d* P) {
+    self_->D0(U, *P);
+}
+extern "C" void Geom2d_Circle_d1(const Geom2d_Circle* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1) {
+    self_->D1(U, *P, *V1);
+}
+extern "C" void Geom2d_Circle_d2(const Geom2d_Circle* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
+    self_->D2(U, *P, *V1, *V2);
+}
+extern "C" void Geom2d_Circle_d3(const Geom2d_Circle* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
+    self_->D3(U, *P, *V1, *V2, *V3);
+}
+extern "C" void Geom2d_Circle_transform(Geom2d_Circle* self_, const gp_Trsf2d* T) {
+    self_->Transform(*T);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Circle_dynamic_type(const Geom2d_Circle* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Geom2d_Circle_get_type_name() {
+    return Geom2d_Circle::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Circle_get_type_descriptor() {
+    return Geom2d_Circle::get_type_descriptor();
+}
+extern "C" const Geom2d_Conic* Geom2d_Circle_as_Geom2d_Conic(const Geom2d_Circle* self_) { return static_cast<const Geom2d_Conic*>(self_); }
+extern "C" Geom2d_Conic* Geom2d_Circle_as_Geom2d_Conic_mut(Geom2d_Circle* self_) { return static_cast<Geom2d_Conic*>(self_); }
+extern "C" const Geom2d_Curve* Geom2d_Circle_as_Geom2d_Curve(const Geom2d_Circle* self_) { return static_cast<const Geom2d_Curve*>(self_); }
+extern "C" Geom2d_Curve* Geom2d_Circle_as_Geom2d_Curve_mut(Geom2d_Circle* self_) { return static_cast<Geom2d_Curve*>(self_); }
+extern "C" const Geom2d_Geometry* Geom2d_Circle_as_Geom2d_Geometry(const Geom2d_Circle* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
+extern "C" Geom2d_Geometry* Geom2d_Circle_as_Geom2d_Geometry_mut(Geom2d_Circle* self_) { return static_cast<Geom2d_Geometry*>(self_); }
+extern "C" HandleGeom2dCircle* Geom2d_Circle_to_handle(Geom2d_Circle* obj) {
+    return new HandleGeom2dCircle(obj);
+}
+extern "C" const Geom2d_Circle* HandleGeom2dCircle_get(const HandleGeom2dCircle* handle) { return (*handle).get(); }
+extern "C" Geom2d_Circle* HandleGeom2dCircle_get_mut(HandleGeom2dCircle* handle) { return (*handle).get(); }
+extern "C" HandleGeom2dConic* HandleGeom2dCircle_to_HandleGeom2dConic(const HandleGeom2dCircle* self_) {
+    return new HandleGeom2dConic(*self_);
+}
+extern "C" HandleGeom2dCurve* HandleGeom2dCircle_to_HandleGeom2dCurve(const HandleGeom2dCircle* self_) {
+    return new HandleGeom2dCurve(*self_);
+}
+extern "C" HandleGeom2dGeometry* HandleGeom2dCircle_to_HandleGeom2dGeometry(const HandleGeom2dCircle* self_) {
+    return new HandleGeom2dGeometry(*self_);
+}
+extern "C" void Geom2d_Circle_inherited_SetAxis(Geom2d_Circle* self, const gp_Ax22d& theA) {
+    self->SetAxis(theA);
+}
+extern "C" void Geom2d_Circle_inherited_SetXAxis(Geom2d_Circle* self, const gp_Ax2d& theAX) {
+    self->SetXAxis(theAX);
+}
+extern "C" void Geom2d_Circle_inherited_SetYAxis(Geom2d_Circle* self, const gp_Ax2d& theAY) {
+    self->SetYAxis(theAY);
+}
+extern "C" void Geom2d_Circle_inherited_SetLocation(Geom2d_Circle* self, const gp_Pnt2d& theP) {
+    self->SetLocation(theP);
+}
+extern "C" gp_Ax2d* Geom2d_Circle_inherited_XAxis(const Geom2d_Circle* self) {
+    return new gp_Ax2d(self->XAxis());
+}
+extern "C" gp_Ax2d* Geom2d_Circle_inherited_YAxis(const Geom2d_Circle* self) {
+    return new gp_Ax2d(self->YAxis());
+}
+extern "C" const gp_Pnt2d& Geom2d_Circle_inherited_Location(const Geom2d_Circle* self) {
+    return self->Location();
+}
+extern "C" const gp_Ax22d& Geom2d_Circle_inherited_Position(const Geom2d_Circle* self) {
+    return self->Position();
+}
+extern "C" void Geom2d_Circle_inherited_Reverse(Geom2d_Circle* self) {
+    self->Reverse();
+}
+extern "C" int32_t Geom2d_Circle_inherited_Continuity(const Geom2d_Circle* self) {
+    return static_cast<int32_t>(self->Continuity());
+}
+extern "C" bool Geom2d_Circle_inherited_IsCN(const Geom2d_Circle* self, Standard_Integer N) {
+    return self->IsCN(N);
+}
+extern "C" Standard_Real Geom2d_Circle_inherited_TransformedParameter(const Geom2d_Circle* self, Standard_Real U, const gp_Trsf2d& T) {
+    return self->TransformedParameter(U, T);
+}
+extern "C" Standard_Real Geom2d_Circle_inherited_ParametricTransformation(const Geom2d_Circle* self, const gp_Trsf2d& T) {
+    return self->ParametricTransformation(T);
+}
+extern "C" Handle(Geom2d_Curve)* Geom2d_Circle_inherited_Reversed(const Geom2d_Circle* self) {
+    return new Handle(Geom2d_Curve)(self->Reversed());
+}
+extern "C" Standard_Real Geom2d_Circle_inherited_Period(const Geom2d_Circle* self) {
+    return self->Period();
+}
+extern "C" gp_Pnt2d* Geom2d_Circle_inherited_Value(const Geom2d_Circle* self, Standard_Real U) {
+    return new gp_Pnt2d(self->Value(U));
+}
+extern "C" void Geom2d_Circle_inherited_Mirror(Geom2d_Circle* self, const gp_Pnt2d& P) {
+    self->Mirror(P);
+}
+extern "C" void Geom2d_Circle_inherited_Rotate(Geom2d_Circle* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    self->Rotate(P, Ang);
+}
+extern "C" void Geom2d_Circle_inherited_Scale(Geom2d_Circle* self, const gp_Pnt2d& P, Standard_Real S) {
+    self->Scale(P, S);
+}
+extern "C" void Geom2d_Circle_inherited_Translate(Geom2d_Circle* self, const gp_Vec2d& V) {
+    self->Translate(V);
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Circle_inherited_Mirrored(const Geom2d_Circle* self, const gp_Pnt2d& P) {
+    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Circle_inherited_Rotated(const Geom2d_Circle* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Circle_inherited_Scaled(const Geom2d_Circle* self, const gp_Pnt2d& P, Standard_Real S) {
+    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Circle_inherited_Transformed(const Geom2d_Circle* self, const gp_Trsf2d& T) {
+    return new Handle(Geom2d_Geometry)(self->Transformed(T));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Circle_inherited_Translated(const Geom2d_Circle* self, const gp_Vec2d& V) {
+    return new Handle(Geom2d_Geometry)(self->Translated(V));
+}
+extern "C" void Geom2d_Circle_destructor(Geom2d_Circle* self_) { delete self_; }
+
+// ========================
+// Geom2d_Conic wrappers
+// ========================
+
+extern "C" gp_Ax2d* Geom2d_Conic_x_axis(const Geom2d_Conic* self_) {
+    return new gp_Ax2d(self_->XAxis());
+}
+extern "C" gp_Ax2d* Geom2d_Conic_y_axis(const Geom2d_Conic* self_) {
+    return new gp_Ax2d(self_->YAxis());
+}
+extern "C" int32_t Geom2d_Conic_continuity(const Geom2d_Conic* self_) {
+    return static_cast<int32_t>(self_->Continuity());
+}
+extern "C" void Geom2d_Conic_set_axis(Geom2d_Conic* self_, const gp_Ax22d* theA) {
+    self_->SetAxis(*theA);
+}
+extern "C" void Geom2d_Conic_set_x_axis(Geom2d_Conic* self_, const gp_Ax2d* theAX) {
+    self_->SetXAxis(*theAX);
+}
+extern "C" void Geom2d_Conic_set_y_axis(Geom2d_Conic* self_, const gp_Ax2d* theAY) {
+    self_->SetYAxis(*theAY);
+}
+extern "C" void Geom2d_Conic_set_location(Geom2d_Conic* self_, const gp_Pnt2d* theP) {
+    self_->SetLocation(*theP);
+}
+extern "C" Standard_Real Geom2d_Conic_eccentricity(const Geom2d_Conic* self_) {
+    return self_->Eccentricity();
+}
+extern "C" const gp_Pnt2d& Geom2d_Conic_location(const Geom2d_Conic* self_) {
+    return self_->Location();
+}
+extern "C" const gp_Ax22d& Geom2d_Conic_position(const Geom2d_Conic* self_) {
+    return self_->Position();
+}
+extern "C" void Geom2d_Conic_reverse(Geom2d_Conic* self_) {
+    self_->Reverse();
+}
+extern "C" Standard_Real Geom2d_Conic_reversed_parameter(const Geom2d_Conic* self_, Standard_Real U) {
+    return self_->ReversedParameter(U);
+}
+extern "C" Standard_Boolean Geom2d_Conic_is_cn(const Geom2d_Conic* self_, Standard_Integer N) {
+    return self_->IsCN(N);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Conic_dynamic_type(const Geom2d_Conic* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Geom2d_Conic_get_type_name() {
+    return Geom2d_Conic::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Conic_get_type_descriptor() {
+    return Geom2d_Conic::get_type_descriptor();
+}
+extern "C" const Geom2d_Curve* Geom2d_Conic_as_Geom2d_Curve(const Geom2d_Conic* self_) { return static_cast<const Geom2d_Curve*>(self_); }
+extern "C" Geom2d_Curve* Geom2d_Conic_as_Geom2d_Curve_mut(Geom2d_Conic* self_) { return static_cast<Geom2d_Curve*>(self_); }
+extern "C" const Geom2d_Geometry* Geom2d_Conic_as_Geom2d_Geometry(const Geom2d_Conic* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
+extern "C" Geom2d_Geometry* Geom2d_Conic_as_Geom2d_Geometry_mut(Geom2d_Conic* self_) { return static_cast<Geom2d_Geometry*>(self_); }
+extern "C" const Geom2d_Conic* HandleGeom2dConic_get(const HandleGeom2dConic* handle) { return (*handle).get(); }
+extern "C" Geom2d_Conic* HandleGeom2dConic_get_mut(HandleGeom2dConic* handle) { return (*handle).get(); }
+extern "C" HandleGeom2dCurve* HandleGeom2dConic_to_HandleGeom2dCurve(const HandleGeom2dConic* self_) {
+    return new HandleGeom2dCurve(*self_);
+}
+extern "C" HandleGeom2dGeometry* HandleGeom2dConic_to_HandleGeom2dGeometry(const HandleGeom2dConic* self_) {
+    return new HandleGeom2dGeometry(*self_);
+}
+extern "C" Standard_Real Geom2d_Conic_inherited_TransformedParameter(const Geom2d_Conic* self, Standard_Real U, const gp_Trsf2d& T) {
+    return self->TransformedParameter(U, T);
+}
+extern "C" Standard_Real Geom2d_Conic_inherited_ParametricTransformation(const Geom2d_Conic* self, const gp_Trsf2d& T) {
+    return self->ParametricTransformation(T);
+}
+extern "C" Handle(Geom2d_Curve)* Geom2d_Conic_inherited_Reversed(const Geom2d_Conic* self) {
+    return new Handle(Geom2d_Curve)(self->Reversed());
+}
+extern "C" Standard_Real Geom2d_Conic_inherited_FirstParameter(const Geom2d_Conic* self) {
+    return self->FirstParameter();
+}
+extern "C" Standard_Real Geom2d_Conic_inherited_LastParameter(const Geom2d_Conic* self) {
+    return self->LastParameter();
+}
+extern "C" bool Geom2d_Conic_inherited_IsClosed(const Geom2d_Conic* self) {
+    return self->IsClosed();
+}
+extern "C" bool Geom2d_Conic_inherited_IsPeriodic(const Geom2d_Conic* self) {
+    return self->IsPeriodic();
+}
+extern "C" Standard_Real Geom2d_Conic_inherited_Period(const Geom2d_Conic* self) {
+    return self->Period();
+}
+extern "C" void Geom2d_Conic_inherited_D0(const Geom2d_Conic* self, Standard_Real U, gp_Pnt2d& P) {
+    self->D0(U, P);
+}
+extern "C" void Geom2d_Conic_inherited_D1(const Geom2d_Conic* self, Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1) {
+    self->D1(U, P, V1);
+}
+extern "C" void Geom2d_Conic_inherited_D2(const Geom2d_Conic* self, Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
+    self->D2(U, P, V1, V2);
+}
+extern "C" void Geom2d_Conic_inherited_D3(const Geom2d_Conic* self, Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
+    self->D3(U, P, V1, V2, V3);
+}
+extern "C" gp_Vec2d* Geom2d_Conic_inherited_DN(const Geom2d_Conic* self, Standard_Real U, Standard_Integer N) {
+    return new gp_Vec2d(self->DN(U, N));
+}
+extern "C" gp_Pnt2d* Geom2d_Conic_inherited_Value(const Geom2d_Conic* self, Standard_Real U) {
+    return new gp_Pnt2d(self->Value(U));
+}
+extern "C" void Geom2d_Conic_inherited_Mirror(Geom2d_Conic* self, const gp_Pnt2d& P) {
+    self->Mirror(P);
+}
+extern "C" void Geom2d_Conic_inherited_Rotate(Geom2d_Conic* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    self->Rotate(P, Ang);
+}
+extern "C" void Geom2d_Conic_inherited_Scale(Geom2d_Conic* self, const gp_Pnt2d& P, Standard_Real S) {
+    self->Scale(P, S);
+}
+extern "C" void Geom2d_Conic_inherited_Translate(Geom2d_Conic* self, const gp_Vec2d& V) {
+    self->Translate(V);
+}
+extern "C" void Geom2d_Conic_inherited_Transform(Geom2d_Conic* self, const gp_Trsf2d& T) {
+    self->Transform(T);
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Conic_inherited_Mirrored(const Geom2d_Conic* self, const gp_Pnt2d& P) {
+    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Conic_inherited_Rotated(const Geom2d_Conic* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Conic_inherited_Scaled(const Geom2d_Conic* self, const gp_Pnt2d& P, Standard_Real S) {
+    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Conic_inherited_Transformed(const Geom2d_Conic* self, const gp_Trsf2d& T) {
+    return new Handle(Geom2d_Geometry)(self->Transformed(T));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Conic_inherited_Translated(const Geom2d_Conic* self, const gp_Vec2d& V) {
+    return new Handle(Geom2d_Geometry)(self->Translated(V));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Conic_inherited_Copy(const Geom2d_Conic* self) {
+    return new Handle(Geom2d_Geometry)(self->Copy());
+}
+extern "C" void Geom2d_Conic_destructor(Geom2d_Conic* self_) { delete self_; }
+
+// ========================
+// Geom2d_Curve wrappers
+// ========================
+
+extern "C" opencascade::handle<Geom2d_Curve>* Geom2d_Curve_reversed(const Geom2d_Curve* self_) {
+    return new opencascade::handle<Geom2d_Curve>(self_->Reversed());
+}
+extern "C" gp_Vec2d* Geom2d_Curve_dn(const Geom2d_Curve* self_, Standard_Real U, Standard_Integer N) {
+    return new gp_Vec2d(self_->DN(U, N));
+}
+extern "C" gp_Pnt2d* Geom2d_Curve_value(const Geom2d_Curve* self_, Standard_Real U) {
+    return new gp_Pnt2d(self_->Value(U));
+}
+extern "C" int32_t Geom2d_Curve_continuity(const Geom2d_Curve* self_) {
+    return static_cast<int32_t>(self_->Continuity());
+}
+extern "C" void Geom2d_Curve_reverse(Geom2d_Curve* self_) {
+    self_->Reverse();
+}
+extern "C" Standard_Real Geom2d_Curve_reversed_parameter(const Geom2d_Curve* self_, Standard_Real U) {
+    return self_->ReversedParameter(U);
+}
+extern "C" Standard_Real Geom2d_Curve_transformed_parameter(const Geom2d_Curve* self_, Standard_Real U, const gp_Trsf2d* T) {
+    return self_->TransformedParameter(U, *T);
+}
+extern "C" Standard_Real Geom2d_Curve_parametric_transformation(const Geom2d_Curve* self_, const gp_Trsf2d* T) {
+    return self_->ParametricTransformation(*T);
+}
+extern "C" Standard_Real Geom2d_Curve_first_parameter(const Geom2d_Curve* self_) {
+    return self_->FirstParameter();
+}
+extern "C" Standard_Real Geom2d_Curve_last_parameter(const Geom2d_Curve* self_) {
+    return self_->LastParameter();
+}
+extern "C" Standard_Boolean Geom2d_Curve_is_closed(const Geom2d_Curve* self_) {
+    return self_->IsClosed();
+}
+extern "C" Standard_Boolean Geom2d_Curve_is_periodic(const Geom2d_Curve* self_) {
+    return self_->IsPeriodic();
+}
+extern "C" Standard_Real Geom2d_Curve_period(const Geom2d_Curve* self_) {
+    return self_->Period();
+}
+extern "C" Standard_Boolean Geom2d_Curve_is_cn(const Geom2d_Curve* self_, Standard_Integer N) {
+    return self_->IsCN(N);
+}
+extern "C" void Geom2d_Curve_d0(const Geom2d_Curve* self_, Standard_Real U, gp_Pnt2d* P) {
+    self_->D0(U, *P);
+}
+extern "C" void Geom2d_Curve_d1(const Geom2d_Curve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1) {
+    self_->D1(U, *P, *V1);
+}
+extern "C" void Geom2d_Curve_d2(const Geom2d_Curve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
+    self_->D2(U, *P, *V1, *V2);
+}
+extern "C" void Geom2d_Curve_d3(const Geom2d_Curve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
+    self_->D3(U, *P, *V1, *V2, *V3);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Curve_dynamic_type(const Geom2d_Curve* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Geom2d_Curve_get_type_name() {
+    return Geom2d_Curve::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Curve_get_type_descriptor() {
+    return Geom2d_Curve::get_type_descriptor();
+}
+extern "C" const Geom2d_Geometry* Geom2d_Curve_as_Geom2d_Geometry(const Geom2d_Curve* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
+extern "C" Geom2d_Geometry* Geom2d_Curve_as_Geom2d_Geometry_mut(Geom2d_Curve* self_) { return static_cast<Geom2d_Geometry*>(self_); }
+extern "C" const Geom2d_Curve* HandleGeom2dCurve_get(const HandleGeom2dCurve* handle) { return (*handle).get(); }
+extern "C" Geom2d_Curve* HandleGeom2dCurve_get_mut(HandleGeom2dCurve* handle) { return (*handle).get(); }
+extern "C" HandleGeom2dGeometry* HandleGeom2dCurve_to_HandleGeom2dGeometry(const HandleGeom2dCurve* self_) {
+    return new HandleGeom2dGeometry(*self_);
+}
+extern "C" void Geom2d_Curve_inherited_Mirror(Geom2d_Curve* self, const gp_Pnt2d& P) {
+    self->Mirror(P);
+}
+extern "C" void Geom2d_Curve_inherited_Rotate(Geom2d_Curve* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    self->Rotate(P, Ang);
+}
+extern "C" void Geom2d_Curve_inherited_Scale(Geom2d_Curve* self, const gp_Pnt2d& P, Standard_Real S) {
+    self->Scale(P, S);
+}
+extern "C" void Geom2d_Curve_inherited_Translate(Geom2d_Curve* self, const gp_Vec2d& V) {
+    self->Translate(V);
+}
+extern "C" void Geom2d_Curve_inherited_Transform(Geom2d_Curve* self, const gp_Trsf2d& T) {
+    self->Transform(T);
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Curve_inherited_Mirrored(const Geom2d_Curve* self, const gp_Pnt2d& P) {
+    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Curve_inherited_Rotated(const Geom2d_Curve* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Curve_inherited_Scaled(const Geom2d_Curve* self, const gp_Pnt2d& P, Standard_Real S) {
+    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Curve_inherited_Transformed(const Geom2d_Curve* self, const gp_Trsf2d& T) {
+    return new Handle(Geom2d_Geometry)(self->Transformed(T));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Curve_inherited_Translated(const Geom2d_Curve* self, const gp_Vec2d& V) {
+    return new Handle(Geom2d_Geometry)(self->Translated(V));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Curve_inherited_Copy(const Geom2d_Curve* self) {
+    return new Handle(Geom2d_Geometry)(self->Copy());
+}
+extern "C" void Geom2d_Curve_destructor(Geom2d_Curve* self_) { delete self_; }
+
+// ========================
+// Geom2d_Direction wrappers
+// ========================
+
+extern "C" Geom2d_Direction* Geom2d_Direction_ctor_real2(Standard_Real X, Standard_Real Y) {
+    return new Geom2d_Direction(X, Y);
+}
+extern "C" Geom2d_Direction* Geom2d_Direction_ctor_dir2d(const gp_Dir2d* V) {
+    return new Geom2d_Direction(*V);
+}
+extern "C" gp_Dir2d* Geom2d_Direction_dir2d(const Geom2d_Direction* self_) {
+    return new gp_Dir2d(self_->Dir2d());
+}
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Direction_copy(const Geom2d_Direction* self_) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Copy());
+}
+extern "C" void Geom2d_Direction_set_coord(Geom2d_Direction* self_, Standard_Real X, Standard_Real Y) {
+    self_->SetCoord(X, Y);
+}
+extern "C" void Geom2d_Direction_set_dir2d(Geom2d_Direction* self_, const gp_Dir2d* V) {
+    self_->SetDir2d(*V);
+}
+extern "C" void Geom2d_Direction_set_x(Geom2d_Direction* self_, Standard_Real X) {
+    self_->SetX(X);
+}
+extern "C" void Geom2d_Direction_set_y(Geom2d_Direction* self_, Standard_Real Y) {
+    self_->SetY(Y);
+}
+extern "C" Standard_Real Geom2d_Direction_magnitude(const Geom2d_Direction* self_) {
+    return self_->Magnitude();
+}
+extern "C" Standard_Real Geom2d_Direction_square_magnitude(const Geom2d_Direction* self_) {
+    return self_->SquareMagnitude();
+}
+extern "C" Standard_Real Geom2d_Direction_crossed(const Geom2d_Direction* self_, const opencascade::handle<Geom2d_Vector>* Other) {
+    return self_->Crossed(*Other);
+}
+extern "C" void Geom2d_Direction_transform(Geom2d_Direction* self_, const gp_Trsf2d* T) {
+    self_->Transform(*T);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Direction_dynamic_type(const Geom2d_Direction* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Geom2d_Direction_get_type_name() {
+    return Geom2d_Direction::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Direction_get_type_descriptor() {
+    return Geom2d_Direction::get_type_descriptor();
+}
+extern "C" const Geom2d_Geometry* Geom2d_Direction_as_Geom2d_Geometry(const Geom2d_Direction* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
+extern "C" Geom2d_Geometry* Geom2d_Direction_as_Geom2d_Geometry_mut(Geom2d_Direction* self_) { return static_cast<Geom2d_Geometry*>(self_); }
+extern "C" const Geom2d_Vector* Geom2d_Direction_as_Geom2d_Vector(const Geom2d_Direction* self_) { return static_cast<const Geom2d_Vector*>(self_); }
+extern "C" Geom2d_Vector* Geom2d_Direction_as_Geom2d_Vector_mut(Geom2d_Direction* self_) { return static_cast<Geom2d_Vector*>(self_); }
+extern "C" HandleGeom2dDirection* Geom2d_Direction_to_handle(Geom2d_Direction* obj) {
+    return new HandleGeom2dDirection(obj);
+}
+extern "C" const Geom2d_Direction* HandleGeom2dDirection_get(const HandleGeom2dDirection* handle) { return (*handle).get(); }
+extern "C" Geom2d_Direction* HandleGeom2dDirection_get_mut(HandleGeom2dDirection* handle) { return (*handle).get(); }
+extern "C" HandleGeom2dGeometry* HandleGeom2dDirection_to_HandleGeom2dGeometry(const HandleGeom2dDirection* self_) {
+    return new HandleGeom2dGeometry(*self_);
+}
+extern "C" HandleGeom2dVector* HandleGeom2dDirection_to_HandleGeom2dVector(const HandleGeom2dDirection* self_) {
+    return new HandleGeom2dVector(*self_);
+}
+extern "C" void Geom2d_Direction_inherited_Mirror(Geom2d_Direction* self, const gp_Pnt2d& P) {
+    self->Mirror(P);
+}
+extern "C" void Geom2d_Direction_inherited_Rotate(Geom2d_Direction* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    self->Rotate(P, Ang);
+}
+extern "C" void Geom2d_Direction_inherited_Scale(Geom2d_Direction* self, const gp_Pnt2d& P, Standard_Real S) {
+    self->Scale(P, S);
+}
+extern "C" void Geom2d_Direction_inherited_Translate(Geom2d_Direction* self, const gp_Vec2d& V) {
+    self->Translate(V);
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Direction_inherited_Mirrored(const Geom2d_Direction* self, const gp_Pnt2d& P) {
+    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Direction_inherited_Rotated(const Geom2d_Direction* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Direction_inherited_Scaled(const Geom2d_Direction* self, const gp_Pnt2d& P, Standard_Real S) {
+    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Direction_inherited_Transformed(const Geom2d_Direction* self, const gp_Trsf2d& T) {
+    return new Handle(Geom2d_Geometry)(self->Transformed(T));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Direction_inherited_Translated(const Geom2d_Direction* self, const gp_Vec2d& V) {
+    return new Handle(Geom2d_Geometry)(self->Translated(V));
+}
+extern "C" void Geom2d_Direction_inherited_Reverse(Geom2d_Direction* self) {
+    self->Reverse();
+}
+extern "C" Handle(Geom2d_Vector)* Geom2d_Direction_inherited_Reversed(const Geom2d_Direction* self) {
+    return new Handle(Geom2d_Vector)(self->Reversed());
+}
+extern "C" Standard_Real Geom2d_Direction_inherited_Angle(const Geom2d_Direction* self, const opencascade::handle<Geom2d_Vector>& Other) {
+    return self->Angle(Other);
+}
+extern "C" void Geom2d_Direction_inherited_Coord(const Geom2d_Direction* self, Standard_Real& X, Standard_Real& Y) {
+    self->Coord(X, Y);
+}
+extern "C" Standard_Real Geom2d_Direction_inherited_X(const Geom2d_Direction* self) {
+    return self->X();
+}
+extern "C" Standard_Real Geom2d_Direction_inherited_Y(const Geom2d_Direction* self) {
+    return self->Y();
+}
+extern "C" Standard_Real Geom2d_Direction_inherited_Dot(const Geom2d_Direction* self, const opencascade::handle<Geom2d_Vector>& Other) {
+    return self->Dot(Other);
+}
+extern "C" gp_Vec2d* Geom2d_Direction_inherited_Vec2d(const Geom2d_Direction* self) {
+    return new gp_Vec2d(self->Vec2d());
+}
+extern "C" void Geom2d_Direction_destructor(Geom2d_Direction* self_) { delete self_; }
+
+// ========================
+// Geom2d_Ellipse wrappers
+// ========================
+
+extern "C" Geom2d_Ellipse* Geom2d_Ellipse_ctor_elips2d(const gp_Elips2d* E) {
+    return new Geom2d_Ellipse(*E);
+}
+extern "C" Geom2d_Ellipse* Geom2d_Ellipse_ctor_ax2d_real2_bool(const gp_Ax2d* MajorAxis, Standard_Real MajorRadius, Standard_Real MinorRadius, Standard_Boolean Sense) {
+    return new Geom2d_Ellipse(*MajorAxis, MajorRadius, MinorRadius, Sense);
+}
+extern "C" Geom2d_Ellipse* Geom2d_Ellipse_ctor_ax22d_real2(const gp_Ax22d* Axis, Standard_Real MajorRadius, Standard_Real MinorRadius) {
+    return new Geom2d_Ellipse(*Axis, MajorRadius, MinorRadius);
+}
+extern "C" gp_Elips2d* Geom2d_Ellipse_elips2d(const Geom2d_Ellipse* self_) {
+    return new gp_Elips2d(self_->Elips2d());
+}
+extern "C" gp_Ax2d* Geom2d_Ellipse_directrix1(const Geom2d_Ellipse* self_) {
+    return new gp_Ax2d(self_->Directrix1());
+}
+extern "C" gp_Ax2d* Geom2d_Ellipse_directrix2(const Geom2d_Ellipse* self_) {
+    return new gp_Ax2d(self_->Directrix2());
+}
+extern "C" gp_Pnt2d* Geom2d_Ellipse_focus1(const Geom2d_Ellipse* self_) {
+    return new gp_Pnt2d(self_->Focus1());
+}
+extern "C" gp_Pnt2d* Geom2d_Ellipse_focus2(const Geom2d_Ellipse* self_) {
+    return new gp_Pnt2d(self_->Focus2());
+}
+extern "C" gp_Vec2d* Geom2d_Ellipse_dn(const Geom2d_Ellipse* self_, Standard_Real U, Standard_Integer N) {
+    return new gp_Vec2d(self_->DN(U, N));
+}
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Ellipse_copy(const Geom2d_Ellipse* self_) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Copy());
+}
+extern "C" void Geom2d_Ellipse_set_elips2d(Geom2d_Ellipse* self_, const gp_Elips2d* E) {
+    self_->SetElips2d(*E);
+}
+extern "C" void Geom2d_Ellipse_set_major_radius(Geom2d_Ellipse* self_, Standard_Real MajorRadius) {
+    self_->SetMajorRadius(MajorRadius);
+}
+extern "C" void Geom2d_Ellipse_set_minor_radius(Geom2d_Ellipse* self_, Standard_Real MinorRadius) {
+    self_->SetMinorRadius(MinorRadius);
+}
+extern "C" Standard_Real Geom2d_Ellipse_reversed_parameter(const Geom2d_Ellipse* self_, Standard_Real U) {
+    return self_->ReversedParameter(U);
+}
+extern "C" Standard_Real Geom2d_Ellipse_eccentricity(const Geom2d_Ellipse* self_) {
+    return self_->Eccentricity();
+}
+extern "C" Standard_Real Geom2d_Ellipse_focal(const Geom2d_Ellipse* self_) {
+    return self_->Focal();
+}
+extern "C" Standard_Real Geom2d_Ellipse_major_radius(const Geom2d_Ellipse* self_) {
+    return self_->MajorRadius();
+}
+extern "C" Standard_Real Geom2d_Ellipse_minor_radius(const Geom2d_Ellipse* self_) {
+    return self_->MinorRadius();
+}
+extern "C" Standard_Real Geom2d_Ellipse_parameter(const Geom2d_Ellipse* self_) {
+    return self_->Parameter();
+}
+extern "C" Standard_Real Geom2d_Ellipse_first_parameter(const Geom2d_Ellipse* self_) {
+    return self_->FirstParameter();
+}
+extern "C" Standard_Real Geom2d_Ellipse_last_parameter(const Geom2d_Ellipse* self_) {
+    return self_->LastParameter();
+}
+extern "C" Standard_Boolean Geom2d_Ellipse_is_closed(const Geom2d_Ellipse* self_) {
+    return self_->IsClosed();
+}
+extern "C" Standard_Boolean Geom2d_Ellipse_is_periodic(const Geom2d_Ellipse* self_) {
+    return self_->IsPeriodic();
+}
+extern "C" void Geom2d_Ellipse_d0(const Geom2d_Ellipse* self_, Standard_Real U, gp_Pnt2d* P) {
+    self_->D0(U, *P);
+}
+extern "C" void Geom2d_Ellipse_d1(const Geom2d_Ellipse* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1) {
+    self_->D1(U, *P, *V1);
+}
+extern "C" void Geom2d_Ellipse_d2(const Geom2d_Ellipse* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
+    self_->D2(U, *P, *V1, *V2);
+}
+extern "C" void Geom2d_Ellipse_d3(const Geom2d_Ellipse* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
+    self_->D3(U, *P, *V1, *V2, *V3);
+}
+extern "C" void Geom2d_Ellipse_transform(Geom2d_Ellipse* self_, const gp_Trsf2d* T) {
+    self_->Transform(*T);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Ellipse_dynamic_type(const Geom2d_Ellipse* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Geom2d_Ellipse_get_type_name() {
+    return Geom2d_Ellipse::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Ellipse_get_type_descriptor() {
+    return Geom2d_Ellipse::get_type_descriptor();
+}
+extern "C" const Geom2d_Conic* Geom2d_Ellipse_as_Geom2d_Conic(const Geom2d_Ellipse* self_) { return static_cast<const Geom2d_Conic*>(self_); }
+extern "C" Geom2d_Conic* Geom2d_Ellipse_as_Geom2d_Conic_mut(Geom2d_Ellipse* self_) { return static_cast<Geom2d_Conic*>(self_); }
+extern "C" const Geom2d_Curve* Geom2d_Ellipse_as_Geom2d_Curve(const Geom2d_Ellipse* self_) { return static_cast<const Geom2d_Curve*>(self_); }
+extern "C" Geom2d_Curve* Geom2d_Ellipse_as_Geom2d_Curve_mut(Geom2d_Ellipse* self_) { return static_cast<Geom2d_Curve*>(self_); }
+extern "C" const Geom2d_Geometry* Geom2d_Ellipse_as_Geom2d_Geometry(const Geom2d_Ellipse* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
+extern "C" Geom2d_Geometry* Geom2d_Ellipse_as_Geom2d_Geometry_mut(Geom2d_Ellipse* self_) { return static_cast<Geom2d_Geometry*>(self_); }
+extern "C" HandleGeom2dEllipse* Geom2d_Ellipse_to_handle(Geom2d_Ellipse* obj) {
+    return new HandleGeom2dEllipse(obj);
+}
+extern "C" const Geom2d_Ellipse* HandleGeom2dEllipse_get(const HandleGeom2dEllipse* handle) { return (*handle).get(); }
+extern "C" Geom2d_Ellipse* HandleGeom2dEllipse_get_mut(HandleGeom2dEllipse* handle) { return (*handle).get(); }
+extern "C" HandleGeom2dConic* HandleGeom2dEllipse_to_HandleGeom2dConic(const HandleGeom2dEllipse* self_) {
+    return new HandleGeom2dConic(*self_);
+}
+extern "C" HandleGeom2dCurve* HandleGeom2dEllipse_to_HandleGeom2dCurve(const HandleGeom2dEllipse* self_) {
+    return new HandleGeom2dCurve(*self_);
+}
+extern "C" HandleGeom2dGeometry* HandleGeom2dEllipse_to_HandleGeom2dGeometry(const HandleGeom2dEllipse* self_) {
+    return new HandleGeom2dGeometry(*self_);
+}
+extern "C" void Geom2d_Ellipse_inherited_SetAxis(Geom2d_Ellipse* self, const gp_Ax22d& theA) {
+    self->SetAxis(theA);
+}
+extern "C" void Geom2d_Ellipse_inherited_SetXAxis(Geom2d_Ellipse* self, const gp_Ax2d& theAX) {
+    self->SetXAxis(theAX);
+}
+extern "C" void Geom2d_Ellipse_inherited_SetYAxis(Geom2d_Ellipse* self, const gp_Ax2d& theAY) {
+    self->SetYAxis(theAY);
+}
+extern "C" void Geom2d_Ellipse_inherited_SetLocation(Geom2d_Ellipse* self, const gp_Pnt2d& theP) {
+    self->SetLocation(theP);
+}
+extern "C" gp_Ax2d* Geom2d_Ellipse_inherited_XAxis(const Geom2d_Ellipse* self) {
+    return new gp_Ax2d(self->XAxis());
+}
+extern "C" gp_Ax2d* Geom2d_Ellipse_inherited_YAxis(const Geom2d_Ellipse* self) {
+    return new gp_Ax2d(self->YAxis());
+}
+extern "C" const gp_Pnt2d& Geom2d_Ellipse_inherited_Location(const Geom2d_Ellipse* self) {
+    return self->Location();
+}
+extern "C" const gp_Ax22d& Geom2d_Ellipse_inherited_Position(const Geom2d_Ellipse* self) {
+    return self->Position();
+}
+extern "C" void Geom2d_Ellipse_inherited_Reverse(Geom2d_Ellipse* self) {
+    self->Reverse();
+}
+extern "C" int32_t Geom2d_Ellipse_inherited_Continuity(const Geom2d_Ellipse* self) {
+    return static_cast<int32_t>(self->Continuity());
+}
+extern "C" bool Geom2d_Ellipse_inherited_IsCN(const Geom2d_Ellipse* self, Standard_Integer N) {
+    return self->IsCN(N);
+}
+extern "C" Standard_Real Geom2d_Ellipse_inherited_TransformedParameter(const Geom2d_Ellipse* self, Standard_Real U, const gp_Trsf2d& T) {
+    return self->TransformedParameter(U, T);
+}
+extern "C" Standard_Real Geom2d_Ellipse_inherited_ParametricTransformation(const Geom2d_Ellipse* self, const gp_Trsf2d& T) {
+    return self->ParametricTransformation(T);
+}
+extern "C" Handle(Geom2d_Curve)* Geom2d_Ellipse_inherited_Reversed(const Geom2d_Ellipse* self) {
+    return new Handle(Geom2d_Curve)(self->Reversed());
+}
+extern "C" Standard_Real Geom2d_Ellipse_inherited_Period(const Geom2d_Ellipse* self) {
+    return self->Period();
+}
+extern "C" gp_Pnt2d* Geom2d_Ellipse_inherited_Value(const Geom2d_Ellipse* self, Standard_Real U) {
+    return new gp_Pnt2d(self->Value(U));
+}
+extern "C" void Geom2d_Ellipse_inherited_Mirror(Geom2d_Ellipse* self, const gp_Pnt2d& P) {
+    self->Mirror(P);
+}
+extern "C" void Geom2d_Ellipse_inherited_Rotate(Geom2d_Ellipse* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    self->Rotate(P, Ang);
+}
+extern "C" void Geom2d_Ellipse_inherited_Scale(Geom2d_Ellipse* self, const gp_Pnt2d& P, Standard_Real S) {
+    self->Scale(P, S);
+}
+extern "C" void Geom2d_Ellipse_inherited_Translate(Geom2d_Ellipse* self, const gp_Vec2d& V) {
+    self->Translate(V);
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Ellipse_inherited_Mirrored(const Geom2d_Ellipse* self, const gp_Pnt2d& P) {
+    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Ellipse_inherited_Rotated(const Geom2d_Ellipse* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Ellipse_inherited_Scaled(const Geom2d_Ellipse* self, const gp_Pnt2d& P, Standard_Real S) {
+    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Ellipse_inherited_Transformed(const Geom2d_Ellipse* self, const gp_Trsf2d& T) {
+    return new Handle(Geom2d_Geometry)(self->Transformed(T));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Ellipse_inherited_Translated(const Geom2d_Ellipse* self, const gp_Vec2d& V) {
+    return new Handle(Geom2d_Geometry)(self->Translated(V));
+}
+extern "C" void Geom2d_Ellipse_destructor(Geom2d_Ellipse* self_) { delete self_; }
+
+// ========================
+// Geom2d_Geometry wrappers
+// ========================
+
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Geometry_mirrored_pnt2d(const Geom2d_Geometry* self_, const gp_Pnt2d* P) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Mirrored(*P));
+}
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Geometry_mirrored_ax2d(const Geom2d_Geometry* self_, const gp_Ax2d* A) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Mirrored(*A));
+}
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Geometry_rotated(const Geom2d_Geometry* self_, const gp_Pnt2d* P, Standard_Real Ang) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Rotated(*P, Ang));
+}
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Geometry_scaled(const Geom2d_Geometry* self_, const gp_Pnt2d* P, Standard_Real S) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Scaled(*P, S));
+}
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Geometry_transformed(const Geom2d_Geometry* self_, const gp_Trsf2d* T) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Transformed(*T));
+}
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Geometry_translated_vec2d(const Geom2d_Geometry* self_, const gp_Vec2d* V) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Translated(*V));
+}
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Geometry_translated_pnt2d2(const Geom2d_Geometry* self_, const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Translated(*P1, *P2));
+}
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Geometry_copy(const Geom2d_Geometry* self_) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Copy());
+}
+extern "C" void Geom2d_Geometry_mirror_pnt2d(Geom2d_Geometry* self_, const gp_Pnt2d* P) {
+    self_->Mirror(*P);
+}
+extern "C" void Geom2d_Geometry_mirror_ax2d(Geom2d_Geometry* self_, const gp_Ax2d* A) {
+    self_->Mirror(*A);
+}
+extern "C" void Geom2d_Geometry_rotate(Geom2d_Geometry* self_, const gp_Pnt2d* P, Standard_Real Ang) {
+    self_->Rotate(*P, Ang);
+}
+extern "C" void Geom2d_Geometry_scale(Geom2d_Geometry* self_, const gp_Pnt2d* P, Standard_Real S) {
+    self_->Scale(*P, S);
+}
+extern "C" void Geom2d_Geometry_translate_vec2d(Geom2d_Geometry* self_, const gp_Vec2d* V) {
+    self_->Translate(*V);
+}
+extern "C" void Geom2d_Geometry_translate_pnt2d2(Geom2d_Geometry* self_, const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
+    self_->Translate(*P1, *P2);
+}
+extern "C" void Geom2d_Geometry_transform(Geom2d_Geometry* self_, const gp_Trsf2d* T) {
+    self_->Transform(*T);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Geometry_dynamic_type(const Geom2d_Geometry* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Geom2d_Geometry_get_type_name() {
+    return Geom2d_Geometry::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Geometry_get_type_descriptor() {
+    return Geom2d_Geometry::get_type_descriptor();
+}
+extern "C" const Geom2d_Geometry* HandleGeom2dGeometry_get(const HandleGeom2dGeometry* handle) { return (*handle).get(); }
+extern "C" Geom2d_Geometry* HandleGeom2dGeometry_get_mut(HandleGeom2dGeometry* handle) { return (*handle).get(); }
+extern "C" void Geom2d_Geometry_destructor(Geom2d_Geometry* self_) { delete self_; }
+
+// ========================
+// Geom2d_Hyperbola wrappers
+// ========================
+
+extern "C" Geom2d_Hyperbola* Geom2d_Hyperbola_ctor_hypr2d(const gp_Hypr2d* H) {
+    return new Geom2d_Hyperbola(*H);
+}
+extern "C" Geom2d_Hyperbola* Geom2d_Hyperbola_ctor_ax2d_real2_bool(const gp_Ax2d* MajorAxis, Standard_Real MajorRadius, Standard_Real MinorRadius, Standard_Boolean Sense) {
+    return new Geom2d_Hyperbola(*MajorAxis, MajorRadius, MinorRadius, Sense);
+}
+extern "C" Geom2d_Hyperbola* Geom2d_Hyperbola_ctor_ax22d_real2(const gp_Ax22d* Axis, Standard_Real MajorRadius, Standard_Real MinorRadius) {
+    return new Geom2d_Hyperbola(*Axis, MajorRadius, MinorRadius);
+}
+extern "C" gp_Hypr2d* Geom2d_Hyperbola_hypr2d(const Geom2d_Hyperbola* self_) {
+    return new gp_Hypr2d(self_->Hypr2d());
+}
+extern "C" gp_Ax2d* Geom2d_Hyperbola_asymptote1(const Geom2d_Hyperbola* self_) {
+    return new gp_Ax2d(self_->Asymptote1());
+}
+extern "C" gp_Ax2d* Geom2d_Hyperbola_asymptote2(const Geom2d_Hyperbola* self_) {
+    return new gp_Ax2d(self_->Asymptote2());
+}
+extern "C" gp_Hypr2d* Geom2d_Hyperbola_conjugate_branch1(const Geom2d_Hyperbola* self_) {
+    return new gp_Hypr2d(self_->ConjugateBranch1());
+}
+extern "C" gp_Hypr2d* Geom2d_Hyperbola_conjugate_branch2(const Geom2d_Hyperbola* self_) {
+    return new gp_Hypr2d(self_->ConjugateBranch2());
+}
+extern "C" gp_Ax2d* Geom2d_Hyperbola_directrix1(const Geom2d_Hyperbola* self_) {
+    return new gp_Ax2d(self_->Directrix1());
+}
+extern "C" gp_Ax2d* Geom2d_Hyperbola_directrix2(const Geom2d_Hyperbola* self_) {
+    return new gp_Ax2d(self_->Directrix2());
+}
+extern "C" gp_Pnt2d* Geom2d_Hyperbola_focus1(const Geom2d_Hyperbola* self_) {
+    return new gp_Pnt2d(self_->Focus1());
+}
+extern "C" gp_Pnt2d* Geom2d_Hyperbola_focus2(const Geom2d_Hyperbola* self_) {
+    return new gp_Pnt2d(self_->Focus2());
+}
+extern "C" gp_Hypr2d* Geom2d_Hyperbola_other_branch(const Geom2d_Hyperbola* self_) {
+    return new gp_Hypr2d(self_->OtherBranch());
+}
+extern "C" gp_Vec2d* Geom2d_Hyperbola_dn(const Geom2d_Hyperbola* self_, Standard_Real U, Standard_Integer N) {
+    return new gp_Vec2d(self_->DN(U, N));
+}
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Hyperbola_copy(const Geom2d_Hyperbola* self_) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Copy());
+}
+extern "C" void Geom2d_Hyperbola_set_hypr2d(Geom2d_Hyperbola* self_, const gp_Hypr2d* H) {
+    self_->SetHypr2d(*H);
+}
+extern "C" void Geom2d_Hyperbola_set_major_radius(Geom2d_Hyperbola* self_, Standard_Real MajorRadius) {
+    self_->SetMajorRadius(MajorRadius);
+}
+extern "C" void Geom2d_Hyperbola_set_minor_radius(Geom2d_Hyperbola* self_, Standard_Real MinorRadius) {
+    self_->SetMinorRadius(MinorRadius);
+}
+extern "C" Standard_Real Geom2d_Hyperbola_reversed_parameter(const Geom2d_Hyperbola* self_, Standard_Real U) {
+    return self_->ReversedParameter(U);
+}
+extern "C" Standard_Real Geom2d_Hyperbola_first_parameter(const Geom2d_Hyperbola* self_) {
+    return self_->FirstParameter();
+}
+extern "C" Standard_Real Geom2d_Hyperbola_last_parameter(const Geom2d_Hyperbola* self_) {
+    return self_->LastParameter();
+}
+extern "C" Standard_Boolean Geom2d_Hyperbola_is_closed(const Geom2d_Hyperbola* self_) {
+    return self_->IsClosed();
+}
+extern "C" Standard_Boolean Geom2d_Hyperbola_is_periodic(const Geom2d_Hyperbola* self_) {
+    return self_->IsPeriodic();
+}
+extern "C" Standard_Real Geom2d_Hyperbola_eccentricity(const Geom2d_Hyperbola* self_) {
+    return self_->Eccentricity();
+}
+extern "C" Standard_Real Geom2d_Hyperbola_focal(const Geom2d_Hyperbola* self_) {
+    return self_->Focal();
+}
+extern "C" Standard_Real Geom2d_Hyperbola_major_radius(const Geom2d_Hyperbola* self_) {
+    return self_->MajorRadius();
+}
+extern "C" Standard_Real Geom2d_Hyperbola_minor_radius(const Geom2d_Hyperbola* self_) {
+    return self_->MinorRadius();
+}
+extern "C" Standard_Real Geom2d_Hyperbola_parameter(const Geom2d_Hyperbola* self_) {
+    return self_->Parameter();
+}
+extern "C" void Geom2d_Hyperbola_d0(const Geom2d_Hyperbola* self_, Standard_Real U, gp_Pnt2d* P) {
+    self_->D0(U, *P);
+}
+extern "C" void Geom2d_Hyperbola_d1(const Geom2d_Hyperbola* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1) {
+    self_->D1(U, *P, *V1);
+}
+extern "C" void Geom2d_Hyperbola_d2(const Geom2d_Hyperbola* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
+    self_->D2(U, *P, *V1, *V2);
+}
+extern "C" void Geom2d_Hyperbola_d3(const Geom2d_Hyperbola* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
+    self_->D3(U, *P, *V1, *V2, *V3);
+}
+extern "C" void Geom2d_Hyperbola_transform(Geom2d_Hyperbola* self_, const gp_Trsf2d* T) {
+    self_->Transform(*T);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Hyperbola_dynamic_type(const Geom2d_Hyperbola* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Geom2d_Hyperbola_get_type_name() {
+    return Geom2d_Hyperbola::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Hyperbola_get_type_descriptor() {
+    return Geom2d_Hyperbola::get_type_descriptor();
+}
+extern "C" const Geom2d_Conic* Geom2d_Hyperbola_as_Geom2d_Conic(const Geom2d_Hyperbola* self_) { return static_cast<const Geom2d_Conic*>(self_); }
+extern "C" Geom2d_Conic* Geom2d_Hyperbola_as_Geom2d_Conic_mut(Geom2d_Hyperbola* self_) { return static_cast<Geom2d_Conic*>(self_); }
+extern "C" const Geom2d_Curve* Geom2d_Hyperbola_as_Geom2d_Curve(const Geom2d_Hyperbola* self_) { return static_cast<const Geom2d_Curve*>(self_); }
+extern "C" Geom2d_Curve* Geom2d_Hyperbola_as_Geom2d_Curve_mut(Geom2d_Hyperbola* self_) { return static_cast<Geom2d_Curve*>(self_); }
+extern "C" const Geom2d_Geometry* Geom2d_Hyperbola_as_Geom2d_Geometry(const Geom2d_Hyperbola* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
+extern "C" Geom2d_Geometry* Geom2d_Hyperbola_as_Geom2d_Geometry_mut(Geom2d_Hyperbola* self_) { return static_cast<Geom2d_Geometry*>(self_); }
+extern "C" HandleGeom2dHyperbola* Geom2d_Hyperbola_to_handle(Geom2d_Hyperbola* obj) {
+    return new HandleGeom2dHyperbola(obj);
+}
+extern "C" const Geom2d_Hyperbola* HandleGeom2dHyperbola_get(const HandleGeom2dHyperbola* handle) { return (*handle).get(); }
+extern "C" Geom2d_Hyperbola* HandleGeom2dHyperbola_get_mut(HandleGeom2dHyperbola* handle) { return (*handle).get(); }
+extern "C" HandleGeom2dConic* HandleGeom2dHyperbola_to_HandleGeom2dConic(const HandleGeom2dHyperbola* self_) {
+    return new HandleGeom2dConic(*self_);
+}
+extern "C" HandleGeom2dCurve* HandleGeom2dHyperbola_to_HandleGeom2dCurve(const HandleGeom2dHyperbola* self_) {
+    return new HandleGeom2dCurve(*self_);
+}
+extern "C" HandleGeom2dGeometry* HandleGeom2dHyperbola_to_HandleGeom2dGeometry(const HandleGeom2dHyperbola* self_) {
+    return new HandleGeom2dGeometry(*self_);
+}
+extern "C" void Geom2d_Hyperbola_inherited_SetAxis(Geom2d_Hyperbola* self, const gp_Ax22d& theA) {
+    self->SetAxis(theA);
+}
+extern "C" void Geom2d_Hyperbola_inherited_SetXAxis(Geom2d_Hyperbola* self, const gp_Ax2d& theAX) {
+    self->SetXAxis(theAX);
+}
+extern "C" void Geom2d_Hyperbola_inherited_SetYAxis(Geom2d_Hyperbola* self, const gp_Ax2d& theAY) {
+    self->SetYAxis(theAY);
+}
+extern "C" void Geom2d_Hyperbola_inherited_SetLocation(Geom2d_Hyperbola* self, const gp_Pnt2d& theP) {
+    self->SetLocation(theP);
+}
+extern "C" gp_Ax2d* Geom2d_Hyperbola_inherited_XAxis(const Geom2d_Hyperbola* self) {
+    return new gp_Ax2d(self->XAxis());
+}
+extern "C" gp_Ax2d* Geom2d_Hyperbola_inherited_YAxis(const Geom2d_Hyperbola* self) {
+    return new gp_Ax2d(self->YAxis());
+}
+extern "C" const gp_Pnt2d& Geom2d_Hyperbola_inherited_Location(const Geom2d_Hyperbola* self) {
+    return self->Location();
+}
+extern "C" const gp_Ax22d& Geom2d_Hyperbola_inherited_Position(const Geom2d_Hyperbola* self) {
+    return self->Position();
+}
+extern "C" void Geom2d_Hyperbola_inherited_Reverse(Geom2d_Hyperbola* self) {
+    self->Reverse();
+}
+extern "C" int32_t Geom2d_Hyperbola_inherited_Continuity(const Geom2d_Hyperbola* self) {
+    return static_cast<int32_t>(self->Continuity());
+}
+extern "C" bool Geom2d_Hyperbola_inherited_IsCN(const Geom2d_Hyperbola* self, Standard_Integer N) {
+    return self->IsCN(N);
+}
+extern "C" Standard_Real Geom2d_Hyperbola_inherited_TransformedParameter(const Geom2d_Hyperbola* self, Standard_Real U, const gp_Trsf2d& T) {
+    return self->TransformedParameter(U, T);
+}
+extern "C" Standard_Real Geom2d_Hyperbola_inherited_ParametricTransformation(const Geom2d_Hyperbola* self, const gp_Trsf2d& T) {
+    return self->ParametricTransformation(T);
+}
+extern "C" Handle(Geom2d_Curve)* Geom2d_Hyperbola_inherited_Reversed(const Geom2d_Hyperbola* self) {
+    return new Handle(Geom2d_Curve)(self->Reversed());
+}
+extern "C" Standard_Real Geom2d_Hyperbola_inherited_Period(const Geom2d_Hyperbola* self) {
+    return self->Period();
+}
+extern "C" gp_Pnt2d* Geom2d_Hyperbola_inherited_Value(const Geom2d_Hyperbola* self, Standard_Real U) {
+    return new gp_Pnt2d(self->Value(U));
+}
+extern "C" void Geom2d_Hyperbola_inherited_Mirror(Geom2d_Hyperbola* self, const gp_Pnt2d& P) {
+    self->Mirror(P);
+}
+extern "C" void Geom2d_Hyperbola_inherited_Rotate(Geom2d_Hyperbola* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    self->Rotate(P, Ang);
+}
+extern "C" void Geom2d_Hyperbola_inherited_Scale(Geom2d_Hyperbola* self, const gp_Pnt2d& P, Standard_Real S) {
+    self->Scale(P, S);
+}
+extern "C" void Geom2d_Hyperbola_inherited_Translate(Geom2d_Hyperbola* self, const gp_Vec2d& V) {
+    self->Translate(V);
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Hyperbola_inherited_Mirrored(const Geom2d_Hyperbola* self, const gp_Pnt2d& P) {
+    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Hyperbola_inherited_Rotated(const Geom2d_Hyperbola* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Hyperbola_inherited_Scaled(const Geom2d_Hyperbola* self, const gp_Pnt2d& P, Standard_Real S) {
+    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Hyperbola_inherited_Transformed(const Geom2d_Hyperbola* self, const gp_Trsf2d& T) {
+    return new Handle(Geom2d_Geometry)(self->Transformed(T));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Hyperbola_inherited_Translated(const Geom2d_Hyperbola* self, const gp_Vec2d& V) {
+    return new Handle(Geom2d_Geometry)(self->Translated(V));
+}
+extern "C" void Geom2d_Hyperbola_destructor(Geom2d_Hyperbola* self_) { delete self_; }
+
+// ========================
+// Geom2d_Line wrappers
+// ========================
+
+extern "C" Geom2d_Line* Geom2d_Line_ctor_ax2d(const gp_Ax2d* A) {
+    return new Geom2d_Line(*A);
+}
+extern "C" Geom2d_Line* Geom2d_Line_ctor_lin2d(const gp_Lin2d* L) {
+    return new Geom2d_Line(*L);
+}
+extern "C" Geom2d_Line* Geom2d_Line_ctor_pnt2d_dir2d(const gp_Pnt2d* P, const gp_Dir2d* V) {
+    return new Geom2d_Line(*P, *V);
+}
+extern "C" gp_Lin2d* Geom2d_Line_lin2d(const Geom2d_Line* self_) {
+    return new gp_Lin2d(self_->Lin2d());
+}
+extern "C" gp_Vec2d* Geom2d_Line_dn(const Geom2d_Line* self_, Standard_Real U, Standard_Integer N) {
+    return new gp_Vec2d(self_->DN(U, N));
+}
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Line_copy(const Geom2d_Line* self_) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Copy());
+}
+extern "C" int32_t Geom2d_Line_continuity(const Geom2d_Line* self_) {
+    return static_cast<int32_t>(self_->Continuity());
+}
+extern "C" void Geom2d_Line_set_lin2d(Geom2d_Line* self_, const gp_Lin2d* L) {
+    self_->SetLin2d(*L);
+}
+extern "C" void Geom2d_Line_set_direction(Geom2d_Line* self_, const gp_Dir2d* V) {
+    self_->SetDirection(*V);
+}
+extern "C" const gp_Dir2d& Geom2d_Line_direction(const Geom2d_Line* self_) {
+    return self_->Direction();
+}
+extern "C" void Geom2d_Line_set_location(Geom2d_Line* self_, const gp_Pnt2d* P) {
+    self_->SetLocation(*P);
+}
+extern "C" const gp_Pnt2d& Geom2d_Line_location(const Geom2d_Line* self_) {
+    return self_->Location();
+}
+extern "C" void Geom2d_Line_set_position(Geom2d_Line* self_, const gp_Ax2d* A) {
+    self_->SetPosition(*A);
+}
+extern "C" const gp_Ax2d& Geom2d_Line_position(const Geom2d_Line* self_) {
+    return self_->Position();
+}
+extern "C" void Geom2d_Line_reverse(Geom2d_Line* self_) {
+    self_->Reverse();
+}
+extern "C" Standard_Real Geom2d_Line_reversed_parameter(const Geom2d_Line* self_, Standard_Real U) {
+    return self_->ReversedParameter(U);
+}
+extern "C" Standard_Real Geom2d_Line_first_parameter(const Geom2d_Line* self_) {
+    return self_->FirstParameter();
+}
+extern "C" Standard_Real Geom2d_Line_last_parameter(const Geom2d_Line* self_) {
+    return self_->LastParameter();
+}
+extern "C" Standard_Boolean Geom2d_Line_is_closed(const Geom2d_Line* self_) {
+    return self_->IsClosed();
+}
+extern "C" Standard_Boolean Geom2d_Line_is_periodic(const Geom2d_Line* self_) {
+    return self_->IsPeriodic();
+}
+extern "C" Standard_Real Geom2d_Line_distance(const Geom2d_Line* self_, const gp_Pnt2d* P) {
+    return self_->Distance(*P);
+}
+extern "C" Standard_Boolean Geom2d_Line_is_cn(const Geom2d_Line* self_, Standard_Integer N) {
+    return self_->IsCN(N);
+}
+extern "C" void Geom2d_Line_d0(const Geom2d_Line* self_, Standard_Real U, gp_Pnt2d* P) {
+    self_->D0(U, *P);
+}
+extern "C" void Geom2d_Line_d1(const Geom2d_Line* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1) {
+    self_->D1(U, *P, *V1);
+}
+extern "C" void Geom2d_Line_d2(const Geom2d_Line* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
+    self_->D2(U, *P, *V1, *V2);
+}
+extern "C" void Geom2d_Line_d3(const Geom2d_Line* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
+    self_->D3(U, *P, *V1, *V2, *V3);
+}
+extern "C" void Geom2d_Line_transform(Geom2d_Line* self_, const gp_Trsf2d* T) {
+    self_->Transform(*T);
+}
+extern "C" Standard_Real Geom2d_Line_transformed_parameter(const Geom2d_Line* self_, Standard_Real U, const gp_Trsf2d* T) {
+    return self_->TransformedParameter(U, *T);
+}
+extern "C" Standard_Real Geom2d_Line_parametric_transformation(const Geom2d_Line* self_, const gp_Trsf2d* T) {
+    return self_->ParametricTransformation(*T);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Line_dynamic_type(const Geom2d_Line* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Geom2d_Line_get_type_name() {
+    return Geom2d_Line::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Line_get_type_descriptor() {
+    return Geom2d_Line::get_type_descriptor();
+}
+extern "C" const Geom2d_Curve* Geom2d_Line_as_Geom2d_Curve(const Geom2d_Line* self_) { return static_cast<const Geom2d_Curve*>(self_); }
+extern "C" Geom2d_Curve* Geom2d_Line_as_Geom2d_Curve_mut(Geom2d_Line* self_) { return static_cast<Geom2d_Curve*>(self_); }
+extern "C" const Geom2d_Geometry* Geom2d_Line_as_Geom2d_Geometry(const Geom2d_Line* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
+extern "C" Geom2d_Geometry* Geom2d_Line_as_Geom2d_Geometry_mut(Geom2d_Line* self_) { return static_cast<Geom2d_Geometry*>(self_); }
+extern "C" HandleGeom2dLine* Geom2d_Line_to_handle(Geom2d_Line* obj) {
+    return new HandleGeom2dLine(obj);
+}
+extern "C" const Geom2d_Line* HandleGeom2dLine_get(const HandleGeom2dLine* handle) { return (*handle).get(); }
+extern "C" Geom2d_Line* HandleGeom2dLine_get_mut(HandleGeom2dLine* handle) { return (*handle).get(); }
+extern "C" HandleGeom2dCurve* HandleGeom2dLine_to_HandleGeom2dCurve(const HandleGeom2dLine* self_) {
+    return new HandleGeom2dCurve(*self_);
+}
+extern "C" HandleGeom2dGeometry* HandleGeom2dLine_to_HandleGeom2dGeometry(const HandleGeom2dLine* self_) {
+    return new HandleGeom2dGeometry(*self_);
+}
+extern "C" Handle(Geom2d_Curve)* Geom2d_Line_inherited_Reversed(const Geom2d_Line* self) {
+    return new Handle(Geom2d_Curve)(self->Reversed());
+}
+extern "C" Standard_Real Geom2d_Line_inherited_Period(const Geom2d_Line* self) {
+    return self->Period();
+}
+extern "C" gp_Pnt2d* Geom2d_Line_inherited_Value(const Geom2d_Line* self, Standard_Real U) {
+    return new gp_Pnt2d(self->Value(U));
+}
+extern "C" void Geom2d_Line_inherited_Mirror(Geom2d_Line* self, const gp_Pnt2d& P) {
+    self->Mirror(P);
+}
+extern "C" void Geom2d_Line_inherited_Rotate(Geom2d_Line* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    self->Rotate(P, Ang);
+}
+extern "C" void Geom2d_Line_inherited_Scale(Geom2d_Line* self, const gp_Pnt2d& P, Standard_Real S) {
+    self->Scale(P, S);
+}
+extern "C" void Geom2d_Line_inherited_Translate(Geom2d_Line* self, const gp_Vec2d& V) {
+    self->Translate(V);
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Line_inherited_Mirrored(const Geom2d_Line* self, const gp_Pnt2d& P) {
+    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Line_inherited_Rotated(const Geom2d_Line* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Line_inherited_Scaled(const Geom2d_Line* self, const gp_Pnt2d& P, Standard_Real S) {
+    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Line_inherited_Transformed(const Geom2d_Line* self, const gp_Trsf2d& T) {
+    return new Handle(Geom2d_Geometry)(self->Transformed(T));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Line_inherited_Translated(const Geom2d_Line* self, const gp_Vec2d& V) {
+    return new Handle(Geom2d_Geometry)(self->Translated(V));
+}
+extern "C" void Geom2d_Line_destructor(Geom2d_Line* self_) { delete self_; }
+
+// ========================
+// Geom2d_OffsetCurve wrappers
+// ========================
+
+extern "C" Geom2d_OffsetCurve* Geom2d_OffsetCurve_ctor_handlegeom2dcurve_real_bool(const opencascade::handle<Geom2d_Curve>* C, Standard_Real Offset, Standard_Boolean isNotCheckC0) {
+    return new Geom2d_OffsetCurve(*C, Offset, isNotCheckC0);
+}
+extern "C" opencascade::handle<Geom2d_Curve>* Geom2d_OffsetCurve_basis_curve(const Geom2d_OffsetCurve* self_) {
+    return new opencascade::handle<Geom2d_Curve>(self_->BasisCurve());
+}
+extern "C" gp_Vec2d* Geom2d_OffsetCurve_dn(const Geom2d_OffsetCurve* self_, Standard_Real U, Standard_Integer N) {
+    return new gp_Vec2d(self_->DN(U, N));
+}
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_OffsetCurve_copy(const Geom2d_OffsetCurve* self_) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Copy());
+}
+extern "C" int32_t Geom2d_OffsetCurve_continuity(const Geom2d_OffsetCurve* self_) {
+    return static_cast<int32_t>(self_->Continuity());
+}
+extern "C" int32_t Geom2d_OffsetCurve_get_basis_curve_continuity(const Geom2d_OffsetCurve* self_) {
+    return static_cast<int32_t>(self_->GetBasisCurveContinuity());
+}
+extern "C" void Geom2d_OffsetCurve_reverse(Geom2d_OffsetCurve* self_) {
+    self_->Reverse();
+}
+extern "C" Standard_Real Geom2d_OffsetCurve_reversed_parameter(const Geom2d_OffsetCurve* self_, Standard_Real U) {
+    return self_->ReversedParameter(U);
+}
+extern "C" void Geom2d_OffsetCurve_set_basis_curve(Geom2d_OffsetCurve* self_, const opencascade::handle<Geom2d_Curve>* C, Standard_Boolean isNotCheckC0) {
+    self_->SetBasisCurve(*C, isNotCheckC0);
+}
+extern "C" void Geom2d_OffsetCurve_set_offset_value(Geom2d_OffsetCurve* self_, Standard_Real D) {
+    self_->SetOffsetValue(D);
+}
+extern "C" void Geom2d_OffsetCurve_d0(const Geom2d_OffsetCurve* self_, Standard_Real U, gp_Pnt2d* P) {
+    self_->D0(U, *P);
+}
+extern "C" void Geom2d_OffsetCurve_d1(const Geom2d_OffsetCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1) {
+    self_->D1(U, *P, *V1);
+}
+extern "C" void Geom2d_OffsetCurve_d2(const Geom2d_OffsetCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
+    self_->D2(U, *P, *V1, *V2);
+}
+extern "C" void Geom2d_OffsetCurve_d3(const Geom2d_OffsetCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
+    self_->D3(U, *P, *V1, *V2, *V3);
+}
+extern "C" Standard_Real Geom2d_OffsetCurve_first_parameter(const Geom2d_OffsetCurve* self_) {
+    return self_->FirstParameter();
+}
+extern "C" Standard_Real Geom2d_OffsetCurve_last_parameter(const Geom2d_OffsetCurve* self_) {
+    return self_->LastParameter();
+}
+extern "C" Standard_Real Geom2d_OffsetCurve_offset(const Geom2d_OffsetCurve* self_) {
+    return self_->Offset();
+}
+extern "C" Standard_Boolean Geom2d_OffsetCurve_is_closed(const Geom2d_OffsetCurve* self_) {
+    return self_->IsClosed();
+}
+extern "C" Standard_Boolean Geom2d_OffsetCurve_is_cn(const Geom2d_OffsetCurve* self_, Standard_Integer N) {
+    return self_->IsCN(N);
+}
+extern "C" Standard_Boolean Geom2d_OffsetCurve_is_periodic(const Geom2d_OffsetCurve* self_) {
+    return self_->IsPeriodic();
+}
+extern "C" Standard_Real Geom2d_OffsetCurve_period(const Geom2d_OffsetCurve* self_) {
+    return self_->Period();
+}
+extern "C" void Geom2d_OffsetCurve_transform(Geom2d_OffsetCurve* self_, const gp_Trsf2d* T) {
+    self_->Transform(*T);
+}
+extern "C" Standard_Real Geom2d_OffsetCurve_transformed_parameter(const Geom2d_OffsetCurve* self_, Standard_Real U, const gp_Trsf2d* T) {
+    return self_->TransformedParameter(U, *T);
+}
+extern "C" Standard_Real Geom2d_OffsetCurve_parametric_transformation(const Geom2d_OffsetCurve* self_, const gp_Trsf2d* T) {
+    return self_->ParametricTransformation(*T);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_OffsetCurve_dynamic_type(const Geom2d_OffsetCurve* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Geom2d_OffsetCurve_get_type_name() {
+    return Geom2d_OffsetCurve::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_OffsetCurve_get_type_descriptor() {
+    return Geom2d_OffsetCurve::get_type_descriptor();
+}
+extern "C" const Geom2d_Curve* Geom2d_OffsetCurve_as_Geom2d_Curve(const Geom2d_OffsetCurve* self_) { return static_cast<const Geom2d_Curve*>(self_); }
+extern "C" Geom2d_Curve* Geom2d_OffsetCurve_as_Geom2d_Curve_mut(Geom2d_OffsetCurve* self_) { return static_cast<Geom2d_Curve*>(self_); }
+extern "C" const Geom2d_Geometry* Geom2d_OffsetCurve_as_Geom2d_Geometry(const Geom2d_OffsetCurve* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
+extern "C" Geom2d_Geometry* Geom2d_OffsetCurve_as_Geom2d_Geometry_mut(Geom2d_OffsetCurve* self_) { return static_cast<Geom2d_Geometry*>(self_); }
+extern "C" HandleGeom2dOffsetCurve* Geom2d_OffsetCurve_to_handle(Geom2d_OffsetCurve* obj) {
+    return new HandleGeom2dOffsetCurve(obj);
+}
+extern "C" const Geom2d_OffsetCurve* HandleGeom2dOffsetCurve_get(const HandleGeom2dOffsetCurve* handle) { return (*handle).get(); }
+extern "C" Geom2d_OffsetCurve* HandleGeom2dOffsetCurve_get_mut(HandleGeom2dOffsetCurve* handle) { return (*handle).get(); }
+extern "C" HandleGeom2dCurve* HandleGeom2dOffsetCurve_to_HandleGeom2dCurve(const HandleGeom2dOffsetCurve* self_) {
+    return new HandleGeom2dCurve(*self_);
+}
+extern "C" HandleGeom2dGeometry* HandleGeom2dOffsetCurve_to_HandleGeom2dGeometry(const HandleGeom2dOffsetCurve* self_) {
+    return new HandleGeom2dGeometry(*self_);
+}
+extern "C" Handle(Geom2d_Curve)* Geom2d_OffsetCurve_inherited_Reversed(const Geom2d_OffsetCurve* self) {
+    return new Handle(Geom2d_Curve)(self->Reversed());
+}
+extern "C" gp_Pnt2d* Geom2d_OffsetCurve_inherited_Value(const Geom2d_OffsetCurve* self, Standard_Real U) {
+    return new gp_Pnt2d(self->Value(U));
+}
+extern "C" void Geom2d_OffsetCurve_inherited_Mirror(Geom2d_OffsetCurve* self, const gp_Pnt2d& P) {
+    self->Mirror(P);
+}
+extern "C" void Geom2d_OffsetCurve_inherited_Rotate(Geom2d_OffsetCurve* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    self->Rotate(P, Ang);
+}
+extern "C" void Geom2d_OffsetCurve_inherited_Scale(Geom2d_OffsetCurve* self, const gp_Pnt2d& P, Standard_Real S) {
+    self->Scale(P, S);
+}
+extern "C" void Geom2d_OffsetCurve_inherited_Translate(Geom2d_OffsetCurve* self, const gp_Vec2d& V) {
+    self->Translate(V);
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_OffsetCurve_inherited_Mirrored(const Geom2d_OffsetCurve* self, const gp_Pnt2d& P) {
+    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_OffsetCurve_inherited_Rotated(const Geom2d_OffsetCurve* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_OffsetCurve_inherited_Scaled(const Geom2d_OffsetCurve* self, const gp_Pnt2d& P, Standard_Real S) {
+    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_OffsetCurve_inherited_Transformed(const Geom2d_OffsetCurve* self, const gp_Trsf2d& T) {
+    return new Handle(Geom2d_Geometry)(self->Transformed(T));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_OffsetCurve_inherited_Translated(const Geom2d_OffsetCurve* self, const gp_Vec2d& V) {
+    return new Handle(Geom2d_Geometry)(self->Translated(V));
+}
+extern "C" void Geom2d_OffsetCurve_destructor(Geom2d_OffsetCurve* self_) { delete self_; }
+
+// ========================
+// Geom2d_Parabola wrappers
+// ========================
+
+extern "C" Geom2d_Parabola* Geom2d_Parabola_ctor_parab2d(const gp_Parab2d* Prb) {
+    return new Geom2d_Parabola(*Prb);
+}
+extern "C" Geom2d_Parabola* Geom2d_Parabola_ctor_ax2d_real_bool(const gp_Ax2d* MirrorAxis, Standard_Real Focal, Standard_Boolean Sense) {
+    return new Geom2d_Parabola(*MirrorAxis, Focal, Sense);
+}
+extern "C" Geom2d_Parabola* Geom2d_Parabola_ctor_ax22d_real(const gp_Ax22d* Axis, Standard_Real Focal) {
+    return new Geom2d_Parabola(*Axis, Focal);
+}
+extern "C" Geom2d_Parabola* Geom2d_Parabola_ctor_ax2d_pnt2d(const gp_Ax2d* D, const gp_Pnt2d* F) {
+    return new Geom2d_Parabola(*D, *F);
+}
+extern "C" gp_Parab2d* Geom2d_Parabola_parab2d(const Geom2d_Parabola* self_) {
+    return new gp_Parab2d(self_->Parab2d());
+}
+extern "C" gp_Ax2d* Geom2d_Parabola_directrix(const Geom2d_Parabola* self_) {
+    return new gp_Ax2d(self_->Directrix());
+}
+extern "C" gp_Pnt2d* Geom2d_Parabola_focus(const Geom2d_Parabola* self_) {
+    return new gp_Pnt2d(self_->Focus());
+}
+extern "C" gp_Vec2d* Geom2d_Parabola_dn(const Geom2d_Parabola* self_, Standard_Real U, Standard_Integer N) {
+    return new gp_Vec2d(self_->DN(U, N));
+}
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Parabola_copy(const Geom2d_Parabola* self_) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Copy());
+}
+extern "C" void Geom2d_Parabola_set_focal(Geom2d_Parabola* self_, Standard_Real Focal) {
+    self_->SetFocal(Focal);
+}
+extern "C" void Geom2d_Parabola_set_parab2d(Geom2d_Parabola* self_, const gp_Parab2d* Prb) {
+    self_->SetParab2d(*Prb);
+}
+extern "C" Standard_Real Geom2d_Parabola_reversed_parameter(const Geom2d_Parabola* self_, Standard_Real U) {
+    return self_->ReversedParameter(U);
+}
+extern "C" Standard_Real Geom2d_Parabola_first_parameter(const Geom2d_Parabola* self_) {
+    return self_->FirstParameter();
+}
+extern "C" Standard_Real Geom2d_Parabola_last_parameter(const Geom2d_Parabola* self_) {
+    return self_->LastParameter();
+}
+extern "C" Standard_Boolean Geom2d_Parabola_is_closed(const Geom2d_Parabola* self_) {
+    return self_->IsClosed();
+}
+extern "C" Standard_Boolean Geom2d_Parabola_is_periodic(const Geom2d_Parabola* self_) {
+    return self_->IsPeriodic();
+}
+extern "C" Standard_Real Geom2d_Parabola_eccentricity(const Geom2d_Parabola* self_) {
+    return self_->Eccentricity();
+}
+extern "C" Standard_Real Geom2d_Parabola_focal(const Geom2d_Parabola* self_) {
+    return self_->Focal();
+}
+extern "C" Standard_Real Geom2d_Parabola_parameter(const Geom2d_Parabola* self_) {
+    return self_->Parameter();
+}
+extern "C" void Geom2d_Parabola_d0(const Geom2d_Parabola* self_, Standard_Real U, gp_Pnt2d* P) {
+    self_->D0(U, *P);
+}
+extern "C" void Geom2d_Parabola_d1(const Geom2d_Parabola* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1) {
+    self_->D1(U, *P, *V1);
+}
+extern "C" void Geom2d_Parabola_d2(const Geom2d_Parabola* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
+    self_->D2(U, *P, *V1, *V2);
+}
+extern "C" void Geom2d_Parabola_d3(const Geom2d_Parabola* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
+    self_->D3(U, *P, *V1, *V2, *V3);
+}
+extern "C" void Geom2d_Parabola_transform(Geom2d_Parabola* self_, const gp_Trsf2d* T) {
+    self_->Transform(*T);
+}
+extern "C" Standard_Real Geom2d_Parabola_transformed_parameter(const Geom2d_Parabola* self_, Standard_Real U, const gp_Trsf2d* T) {
+    return self_->TransformedParameter(U, *T);
+}
+extern "C" Standard_Real Geom2d_Parabola_parametric_transformation(const Geom2d_Parabola* self_, const gp_Trsf2d* T) {
+    return self_->ParametricTransformation(*T);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Parabola_dynamic_type(const Geom2d_Parabola* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Geom2d_Parabola_get_type_name() {
+    return Geom2d_Parabola::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Parabola_get_type_descriptor() {
+    return Geom2d_Parabola::get_type_descriptor();
+}
+extern "C" const Geom2d_Conic* Geom2d_Parabola_as_Geom2d_Conic(const Geom2d_Parabola* self_) { return static_cast<const Geom2d_Conic*>(self_); }
+extern "C" Geom2d_Conic* Geom2d_Parabola_as_Geom2d_Conic_mut(Geom2d_Parabola* self_) { return static_cast<Geom2d_Conic*>(self_); }
+extern "C" const Geom2d_Curve* Geom2d_Parabola_as_Geom2d_Curve(const Geom2d_Parabola* self_) { return static_cast<const Geom2d_Curve*>(self_); }
+extern "C" Geom2d_Curve* Geom2d_Parabola_as_Geom2d_Curve_mut(Geom2d_Parabola* self_) { return static_cast<Geom2d_Curve*>(self_); }
+extern "C" const Geom2d_Geometry* Geom2d_Parabola_as_Geom2d_Geometry(const Geom2d_Parabola* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
+extern "C" Geom2d_Geometry* Geom2d_Parabola_as_Geom2d_Geometry_mut(Geom2d_Parabola* self_) { return static_cast<Geom2d_Geometry*>(self_); }
+extern "C" HandleGeom2dParabola* Geom2d_Parabola_to_handle(Geom2d_Parabola* obj) {
+    return new HandleGeom2dParabola(obj);
+}
+extern "C" const Geom2d_Parabola* HandleGeom2dParabola_get(const HandleGeom2dParabola* handle) { return (*handle).get(); }
+extern "C" Geom2d_Parabola* HandleGeom2dParabola_get_mut(HandleGeom2dParabola* handle) { return (*handle).get(); }
+extern "C" HandleGeom2dConic* HandleGeom2dParabola_to_HandleGeom2dConic(const HandleGeom2dParabola* self_) {
+    return new HandleGeom2dConic(*self_);
+}
+extern "C" HandleGeom2dCurve* HandleGeom2dParabola_to_HandleGeom2dCurve(const HandleGeom2dParabola* self_) {
+    return new HandleGeom2dCurve(*self_);
+}
+extern "C" HandleGeom2dGeometry* HandleGeom2dParabola_to_HandleGeom2dGeometry(const HandleGeom2dParabola* self_) {
+    return new HandleGeom2dGeometry(*self_);
+}
+extern "C" void Geom2d_Parabola_inherited_SetAxis(Geom2d_Parabola* self, const gp_Ax22d& theA) {
+    self->SetAxis(theA);
+}
+extern "C" void Geom2d_Parabola_inherited_SetXAxis(Geom2d_Parabola* self, const gp_Ax2d& theAX) {
+    self->SetXAxis(theAX);
+}
+extern "C" void Geom2d_Parabola_inherited_SetYAxis(Geom2d_Parabola* self, const gp_Ax2d& theAY) {
+    self->SetYAxis(theAY);
+}
+extern "C" void Geom2d_Parabola_inherited_SetLocation(Geom2d_Parabola* self, const gp_Pnt2d& theP) {
+    self->SetLocation(theP);
+}
+extern "C" gp_Ax2d* Geom2d_Parabola_inherited_XAxis(const Geom2d_Parabola* self) {
+    return new gp_Ax2d(self->XAxis());
+}
+extern "C" gp_Ax2d* Geom2d_Parabola_inherited_YAxis(const Geom2d_Parabola* self) {
+    return new gp_Ax2d(self->YAxis());
+}
+extern "C" const gp_Pnt2d& Geom2d_Parabola_inherited_Location(const Geom2d_Parabola* self) {
+    return self->Location();
+}
+extern "C" const gp_Ax22d& Geom2d_Parabola_inherited_Position(const Geom2d_Parabola* self) {
+    return self->Position();
+}
+extern "C" void Geom2d_Parabola_inherited_Reverse(Geom2d_Parabola* self) {
+    self->Reverse();
+}
+extern "C" int32_t Geom2d_Parabola_inherited_Continuity(const Geom2d_Parabola* self) {
+    return static_cast<int32_t>(self->Continuity());
+}
+extern "C" bool Geom2d_Parabola_inherited_IsCN(const Geom2d_Parabola* self, Standard_Integer N) {
+    return self->IsCN(N);
+}
+extern "C" Handle(Geom2d_Curve)* Geom2d_Parabola_inherited_Reversed(const Geom2d_Parabola* self) {
+    return new Handle(Geom2d_Curve)(self->Reversed());
+}
+extern "C" Standard_Real Geom2d_Parabola_inherited_Period(const Geom2d_Parabola* self) {
+    return self->Period();
+}
+extern "C" gp_Pnt2d* Geom2d_Parabola_inherited_Value(const Geom2d_Parabola* self, Standard_Real U) {
+    return new gp_Pnt2d(self->Value(U));
+}
+extern "C" void Geom2d_Parabola_inherited_Mirror(Geom2d_Parabola* self, const gp_Pnt2d& P) {
+    self->Mirror(P);
+}
+extern "C" void Geom2d_Parabola_inherited_Rotate(Geom2d_Parabola* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    self->Rotate(P, Ang);
+}
+extern "C" void Geom2d_Parabola_inherited_Scale(Geom2d_Parabola* self, const gp_Pnt2d& P, Standard_Real S) {
+    self->Scale(P, S);
+}
+extern "C" void Geom2d_Parabola_inherited_Translate(Geom2d_Parabola* self, const gp_Vec2d& V) {
+    self->Translate(V);
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Parabola_inherited_Mirrored(const Geom2d_Parabola* self, const gp_Pnt2d& P) {
+    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Parabola_inherited_Rotated(const Geom2d_Parabola* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Parabola_inherited_Scaled(const Geom2d_Parabola* self, const gp_Pnt2d& P, Standard_Real S) {
+    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Parabola_inherited_Transformed(const Geom2d_Parabola* self, const gp_Trsf2d& T) {
+    return new Handle(Geom2d_Geometry)(self->Transformed(T));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Parabola_inherited_Translated(const Geom2d_Parabola* self, const gp_Vec2d& V) {
+    return new Handle(Geom2d_Geometry)(self->Translated(V));
+}
+extern "C" void Geom2d_Parabola_destructor(Geom2d_Parabola* self_) { delete self_; }
+
+// ========================
+// Geom2d_Point wrappers
+// ========================
+
+extern "C" gp_Pnt2d* Geom2d_Point_pnt2d(const Geom2d_Point* self_) {
+    return new gp_Pnt2d(self_->Pnt2d());
+}
+extern "C" void Geom2d_Point_coord(const Geom2d_Point* self_, Standard_Real* X, Standard_Real* Y) {
+    self_->Coord(*X, *Y);
+}
+extern "C" Standard_Real Geom2d_Point_x(const Geom2d_Point* self_) {
+    return self_->X();
+}
+extern "C" Standard_Real Geom2d_Point_y(const Geom2d_Point* self_) {
+    return self_->Y();
+}
+extern "C" Standard_Real Geom2d_Point_distance(const Geom2d_Point* self_, const opencascade::handle<Geom2d_Point>* Other) {
+    return self_->Distance(*Other);
+}
+extern "C" Standard_Real Geom2d_Point_square_distance(const Geom2d_Point* self_, const opencascade::handle<Geom2d_Point>* Other) {
+    return self_->SquareDistance(*Other);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Point_dynamic_type(const Geom2d_Point* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Geom2d_Point_get_type_name() {
+    return Geom2d_Point::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Point_get_type_descriptor() {
+    return Geom2d_Point::get_type_descriptor();
+}
+extern "C" const Geom2d_Geometry* Geom2d_Point_as_Geom2d_Geometry(const Geom2d_Point* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
+extern "C" Geom2d_Geometry* Geom2d_Point_as_Geom2d_Geometry_mut(Geom2d_Point* self_) { return static_cast<Geom2d_Geometry*>(self_); }
+extern "C" const Geom2d_Point* HandleGeom2dPoint_get(const HandleGeom2dPoint* handle) { return (*handle).get(); }
+extern "C" Geom2d_Point* HandleGeom2dPoint_get_mut(HandleGeom2dPoint* handle) { return (*handle).get(); }
+extern "C" HandleGeom2dGeometry* HandleGeom2dPoint_to_HandleGeom2dGeometry(const HandleGeom2dPoint* self_) {
+    return new HandleGeom2dGeometry(*self_);
+}
+extern "C" void Geom2d_Point_inherited_Mirror(Geom2d_Point* self, const gp_Pnt2d& P) {
+    self->Mirror(P);
+}
+extern "C" void Geom2d_Point_inherited_Rotate(Geom2d_Point* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    self->Rotate(P, Ang);
+}
+extern "C" void Geom2d_Point_inherited_Scale(Geom2d_Point* self, const gp_Pnt2d& P, Standard_Real S) {
+    self->Scale(P, S);
+}
+extern "C" void Geom2d_Point_inherited_Translate(Geom2d_Point* self, const gp_Vec2d& V) {
+    self->Translate(V);
+}
+extern "C" void Geom2d_Point_inherited_Transform(Geom2d_Point* self, const gp_Trsf2d& T) {
+    self->Transform(T);
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Point_inherited_Mirrored(const Geom2d_Point* self, const gp_Pnt2d& P) {
+    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Point_inherited_Rotated(const Geom2d_Point* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Point_inherited_Scaled(const Geom2d_Point* self, const gp_Pnt2d& P, Standard_Real S) {
+    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Point_inherited_Transformed(const Geom2d_Point* self, const gp_Trsf2d& T) {
+    return new Handle(Geom2d_Geometry)(self->Transformed(T));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Point_inherited_Translated(const Geom2d_Point* self, const gp_Vec2d& V) {
+    return new Handle(Geom2d_Geometry)(self->Translated(V));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Point_inherited_Copy(const Geom2d_Point* self) {
+    return new Handle(Geom2d_Geometry)(self->Copy());
+}
+extern "C" void Geom2d_Point_destructor(Geom2d_Point* self_) { delete self_; }
+
+// ========================
+// Geom2d_Transformation wrappers
+// ========================
+
+extern "C" Geom2d_Transformation* Geom2d_Transformation_ctor() {
+    return new Geom2d_Transformation();
+}
+extern "C" Geom2d_Transformation* Geom2d_Transformation_ctor_trsf2d(const gp_Trsf2d* T) {
+    return new Geom2d_Transformation(*T);
+}
+extern "C" gp_Trsf2d* Geom2d_Transformation_trsf2d(const Geom2d_Transformation* self_) {
+    return new gp_Trsf2d(self_->Trsf2d());
+}
+extern "C" opencascade::handle<Geom2d_Transformation>* Geom2d_Transformation_inverted(const Geom2d_Transformation* self_) {
+    return new opencascade::handle<Geom2d_Transformation>(self_->Inverted());
+}
+extern "C" opencascade::handle<Geom2d_Transformation>* Geom2d_Transformation_multiplied(const Geom2d_Transformation* self_, const opencascade::handle<Geom2d_Transformation>* Other) {
+    return new opencascade::handle<Geom2d_Transformation>(self_->Multiplied(*Other));
+}
+extern "C" opencascade::handle<Geom2d_Transformation>* Geom2d_Transformation_powered(const Geom2d_Transformation* self_, Standard_Integer N) {
+    return new opencascade::handle<Geom2d_Transformation>(self_->Powered(N));
+}
+extern "C" opencascade::handle<Geom2d_Transformation>* Geom2d_Transformation_copy(const Geom2d_Transformation* self_) {
+    return new opencascade::handle<Geom2d_Transformation>(self_->Copy());
+}
+extern "C" int32_t Geom2d_Transformation_form(const Geom2d_Transformation* self_) {
+    return static_cast<int32_t>(self_->Form());
+}
+extern "C" void Geom2d_Transformation_set_mirror_pnt2d(Geom2d_Transformation* self_, const gp_Pnt2d* P) {
+    self_->SetMirror(*P);
+}
+extern "C" void Geom2d_Transformation_set_mirror_ax2d(Geom2d_Transformation* self_, const gp_Ax2d* A) {
+    self_->SetMirror(*A);
+}
+extern "C" void Geom2d_Transformation_set_rotation(Geom2d_Transformation* self_, const gp_Pnt2d* P, Standard_Real Ang) {
+    self_->SetRotation(*P, Ang);
+}
+extern "C" void Geom2d_Transformation_set_scale(Geom2d_Transformation* self_, const gp_Pnt2d* P, Standard_Real S) {
+    self_->SetScale(*P, S);
+}
+extern "C" void Geom2d_Transformation_set_transformation_ax2d2(Geom2d_Transformation* self_, const gp_Ax2d* FromSystem1, const gp_Ax2d* ToSystem2) {
+    self_->SetTransformation(*FromSystem1, *ToSystem2);
+}
+extern "C" void Geom2d_Transformation_set_transformation_ax2d(Geom2d_Transformation* self_, const gp_Ax2d* ToSystem) {
+    self_->SetTransformation(*ToSystem);
+}
+extern "C" void Geom2d_Transformation_set_translation_vec2d(Geom2d_Transformation* self_, const gp_Vec2d* V) {
+    self_->SetTranslation(*V);
+}
+extern "C" void Geom2d_Transformation_set_translation_pnt2d2(Geom2d_Transformation* self_, const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
+    self_->SetTranslation(*P1, *P2);
+}
+extern "C" void Geom2d_Transformation_set_trsf2d(Geom2d_Transformation* self_, const gp_Trsf2d* T) {
+    self_->SetTrsf2d(*T);
+}
+extern "C" Standard_Boolean Geom2d_Transformation_is_negative(const Geom2d_Transformation* self_) {
+    return self_->IsNegative();
+}
+extern "C" Standard_Real Geom2d_Transformation_scale_factor(const Geom2d_Transformation* self_) {
+    return self_->ScaleFactor();
+}
+extern "C" Standard_Real Geom2d_Transformation_value(const Geom2d_Transformation* self_, Standard_Integer Row, Standard_Integer Col) {
+    return self_->Value(Row, Col);
+}
+extern "C" void Geom2d_Transformation_invert(Geom2d_Transformation* self_) {
+    self_->Invert();
+}
+extern "C" void Geom2d_Transformation_multiply(Geom2d_Transformation* self_, const opencascade::handle<Geom2d_Transformation>* Other) {
+    self_->Multiply(*Other);
+}
+extern "C" void Geom2d_Transformation_power(Geom2d_Transformation* self_, Standard_Integer N) {
+    self_->Power(N);
+}
+extern "C" void Geom2d_Transformation_pre_multiply(Geom2d_Transformation* self_, const opencascade::handle<Geom2d_Transformation>* Other) {
+    self_->PreMultiply(*Other);
+}
+extern "C" void Geom2d_Transformation_transforms(const Geom2d_Transformation* self_, Standard_Real* X, Standard_Real* Y) {
+    self_->Transforms(*X, *Y);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Transformation_dynamic_type(const Geom2d_Transformation* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Geom2d_Transformation_get_type_name() {
+    return Geom2d_Transformation::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Transformation_get_type_descriptor() {
+    return Geom2d_Transformation::get_type_descriptor();
+}
+extern "C" HandleGeom2dTransformation* Geom2d_Transformation_to_handle(Geom2d_Transformation* obj) {
+    return new HandleGeom2dTransformation(obj);
+}
+extern "C" const Geom2d_Transformation* HandleGeom2dTransformation_get(const HandleGeom2dTransformation* handle) { return (*handle).get(); }
+extern "C" Geom2d_Transformation* HandleGeom2dTransformation_get_mut(HandleGeom2dTransformation* handle) { return (*handle).get(); }
+extern "C" void Geom2d_Transformation_destructor(Geom2d_Transformation* self_) { delete self_; }
+
+// ========================
+// Geom2d_TrimmedCurve wrappers
+// ========================
+
+extern "C" Geom2d_TrimmedCurve* Geom2d_TrimmedCurve_ctor_handlegeom2dcurve_real2_bool2(const opencascade::handle<Geom2d_Curve>* C, Standard_Real U1, Standard_Real U2, Standard_Boolean Sense, Standard_Boolean theAdjustPeriodic) {
+    return new Geom2d_TrimmedCurve(*C, U1, U2, Sense, theAdjustPeriodic);
+}
+extern "C" opencascade::handle<Geom2d_Curve>* Geom2d_TrimmedCurve_basis_curve(const Geom2d_TrimmedCurve* self_) {
+    return new opencascade::handle<Geom2d_Curve>(self_->BasisCurve());
+}
+extern "C" gp_Pnt2d* Geom2d_TrimmedCurve_end_point(const Geom2d_TrimmedCurve* self_) {
+    return new gp_Pnt2d(self_->EndPoint());
+}
+extern "C" gp_Pnt2d* Geom2d_TrimmedCurve_start_point(const Geom2d_TrimmedCurve* self_) {
+    return new gp_Pnt2d(self_->StartPoint());
+}
+extern "C" gp_Vec2d* Geom2d_TrimmedCurve_dn(const Geom2d_TrimmedCurve* self_, Standard_Real U, Standard_Integer N) {
+    return new gp_Vec2d(self_->DN(U, N));
+}
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_TrimmedCurve_copy(const Geom2d_TrimmedCurve* self_) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Copy());
+}
+extern "C" int32_t Geom2d_TrimmedCurve_continuity(const Geom2d_TrimmedCurve* self_) {
+    return static_cast<int32_t>(self_->Continuity());
+}
+extern "C" void Geom2d_TrimmedCurve_reverse(Geom2d_TrimmedCurve* self_) {
+    self_->Reverse();
+}
+extern "C" Standard_Real Geom2d_TrimmedCurve_reversed_parameter(const Geom2d_TrimmedCurve* self_, Standard_Real U) {
+    return self_->ReversedParameter(U);
+}
+extern "C" void Geom2d_TrimmedCurve_set_trim(Geom2d_TrimmedCurve* self_, Standard_Real U1, Standard_Real U2, Standard_Boolean Sense, Standard_Boolean theAdjustPeriodic) {
+    self_->SetTrim(U1, U2, Sense, theAdjustPeriodic);
+}
+extern "C" Standard_Boolean Geom2d_TrimmedCurve_is_cn(const Geom2d_TrimmedCurve* self_, Standard_Integer N) {
+    return self_->IsCN(N);
+}
+extern "C" Standard_Real Geom2d_TrimmedCurve_first_parameter(const Geom2d_TrimmedCurve* self_) {
+    return self_->FirstParameter();
+}
+extern "C" Standard_Boolean Geom2d_TrimmedCurve_is_closed(const Geom2d_TrimmedCurve* self_) {
+    return self_->IsClosed();
+}
+extern "C" Standard_Boolean Geom2d_TrimmedCurve_is_periodic(const Geom2d_TrimmedCurve* self_) {
+    return self_->IsPeriodic();
+}
+extern "C" Standard_Real Geom2d_TrimmedCurve_period(const Geom2d_TrimmedCurve* self_) {
+    return self_->Period();
+}
+extern "C" Standard_Real Geom2d_TrimmedCurve_last_parameter(const Geom2d_TrimmedCurve* self_) {
+    return self_->LastParameter();
+}
+extern "C" void Geom2d_TrimmedCurve_d0(const Geom2d_TrimmedCurve* self_, Standard_Real U, gp_Pnt2d* P) {
+    self_->D0(U, *P);
+}
+extern "C" void Geom2d_TrimmedCurve_d1(const Geom2d_TrimmedCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1) {
+    self_->D1(U, *P, *V1);
+}
+extern "C" void Geom2d_TrimmedCurve_d2(const Geom2d_TrimmedCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
+    self_->D2(U, *P, *V1, *V2);
+}
+extern "C" void Geom2d_TrimmedCurve_d3(const Geom2d_TrimmedCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
+    self_->D3(U, *P, *V1, *V2, *V3);
+}
+extern "C" void Geom2d_TrimmedCurve_transform(Geom2d_TrimmedCurve* self_, const gp_Trsf2d* T) {
+    self_->Transform(*T);
+}
+extern "C" Standard_Real Geom2d_TrimmedCurve_transformed_parameter(const Geom2d_TrimmedCurve* self_, Standard_Real U, const gp_Trsf2d* T) {
+    return self_->TransformedParameter(U, *T);
+}
+extern "C" Standard_Real Geom2d_TrimmedCurve_parametric_transformation(const Geom2d_TrimmedCurve* self_, const gp_Trsf2d* T) {
+    return self_->ParametricTransformation(*T);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_TrimmedCurve_dynamic_type(const Geom2d_TrimmedCurve* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Geom2d_TrimmedCurve_get_type_name() {
+    return Geom2d_TrimmedCurve::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_TrimmedCurve_get_type_descriptor() {
+    return Geom2d_TrimmedCurve::get_type_descriptor();
+}
+extern "C" const Geom2d_BoundedCurve* Geom2d_TrimmedCurve_as_Geom2d_BoundedCurve(const Geom2d_TrimmedCurve* self_) { return static_cast<const Geom2d_BoundedCurve*>(self_); }
+extern "C" Geom2d_BoundedCurve* Geom2d_TrimmedCurve_as_Geom2d_BoundedCurve_mut(Geom2d_TrimmedCurve* self_) { return static_cast<Geom2d_BoundedCurve*>(self_); }
+extern "C" const Geom2d_Curve* Geom2d_TrimmedCurve_as_Geom2d_Curve(const Geom2d_TrimmedCurve* self_) { return static_cast<const Geom2d_Curve*>(self_); }
+extern "C" Geom2d_Curve* Geom2d_TrimmedCurve_as_Geom2d_Curve_mut(Geom2d_TrimmedCurve* self_) { return static_cast<Geom2d_Curve*>(self_); }
+extern "C" const Geom2d_Geometry* Geom2d_TrimmedCurve_as_Geom2d_Geometry(const Geom2d_TrimmedCurve* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
+extern "C" Geom2d_Geometry* Geom2d_TrimmedCurve_as_Geom2d_Geometry_mut(Geom2d_TrimmedCurve* self_) { return static_cast<Geom2d_Geometry*>(self_); }
+extern "C" HandleGeom2dTrimmedCurve* Geom2d_TrimmedCurve_to_handle(Geom2d_TrimmedCurve* obj) {
+    return new HandleGeom2dTrimmedCurve(obj);
+}
+extern "C" const Geom2d_TrimmedCurve* HandleGeom2dTrimmedCurve_get(const HandleGeom2dTrimmedCurve* handle) { return (*handle).get(); }
+extern "C" Geom2d_TrimmedCurve* HandleGeom2dTrimmedCurve_get_mut(HandleGeom2dTrimmedCurve* handle) { return (*handle).get(); }
+extern "C" HandleGeom2dBoundedCurve* HandleGeom2dTrimmedCurve_to_HandleGeom2dBoundedCurve(const HandleGeom2dTrimmedCurve* self_) {
+    return new HandleGeom2dBoundedCurve(*self_);
+}
+extern "C" HandleGeom2dCurve* HandleGeom2dTrimmedCurve_to_HandleGeom2dCurve(const HandleGeom2dTrimmedCurve* self_) {
+    return new HandleGeom2dCurve(*self_);
+}
+extern "C" HandleGeom2dGeometry* HandleGeom2dTrimmedCurve_to_HandleGeom2dGeometry(const HandleGeom2dTrimmedCurve* self_) {
+    return new HandleGeom2dGeometry(*self_);
+}
+extern "C" Handle(Geom2d_Curve)* Geom2d_TrimmedCurve_inherited_Reversed(const Geom2d_TrimmedCurve* self) {
+    return new Handle(Geom2d_Curve)(self->Reversed());
+}
+extern "C" gp_Pnt2d* Geom2d_TrimmedCurve_inherited_Value(const Geom2d_TrimmedCurve* self, Standard_Real U) {
+    return new gp_Pnt2d(self->Value(U));
+}
+extern "C" void Geom2d_TrimmedCurve_inherited_Mirror(Geom2d_TrimmedCurve* self, const gp_Pnt2d& P) {
+    self->Mirror(P);
+}
+extern "C" void Geom2d_TrimmedCurve_inherited_Rotate(Geom2d_TrimmedCurve* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    self->Rotate(P, Ang);
+}
+extern "C" void Geom2d_TrimmedCurve_inherited_Scale(Geom2d_TrimmedCurve* self, const gp_Pnt2d& P, Standard_Real S) {
+    self->Scale(P, S);
+}
+extern "C" void Geom2d_TrimmedCurve_inherited_Translate(Geom2d_TrimmedCurve* self, const gp_Vec2d& V) {
+    self->Translate(V);
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_TrimmedCurve_inherited_Mirrored(const Geom2d_TrimmedCurve* self, const gp_Pnt2d& P) {
+    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_TrimmedCurve_inherited_Rotated(const Geom2d_TrimmedCurve* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_TrimmedCurve_inherited_Scaled(const Geom2d_TrimmedCurve* self, const gp_Pnt2d& P, Standard_Real S) {
+    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_TrimmedCurve_inherited_Transformed(const Geom2d_TrimmedCurve* self, const gp_Trsf2d& T) {
+    return new Handle(Geom2d_Geometry)(self->Transformed(T));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_TrimmedCurve_inherited_Translated(const Geom2d_TrimmedCurve* self, const gp_Vec2d& V) {
+    return new Handle(Geom2d_Geometry)(self->Translated(V));
+}
+extern "C" void Geom2d_TrimmedCurve_destructor(Geom2d_TrimmedCurve* self_) { delete self_; }
+
+// ========================
+// Geom2d_UndefinedDerivative wrappers
+// ========================
+
+extern "C" Geom2d_UndefinedDerivative* Geom2d_UndefinedDerivative_ctor() {
+    return new Geom2d_UndefinedDerivative();
+}
+extern "C" Geom2d_UndefinedDerivative* Geom2d_UndefinedDerivative_ctor_charptr(const char* theMessage) {
+    return new Geom2d_UndefinedDerivative(theMessage);
+}
+extern "C" Geom2d_UndefinedDerivative* Geom2d_UndefinedDerivative_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Geom2d_UndefinedDerivative(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_UndefinedDerivative_dynamic_type(const Geom2d_UndefinedDerivative* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Geom2d_UndefinedDerivative_raise(const char* theMessage) {
+    return Geom2d_UndefinedDerivative::Raise(theMessage);
+}
+extern "C" const char* Geom2d_UndefinedDerivative_get_type_name() {
+    return Geom2d_UndefinedDerivative::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_UndefinedDerivative_get_type_descriptor() {
+    return Geom2d_UndefinedDerivative::get_type_descriptor();
+}
+extern "C" void Geom2d_UndefinedDerivative_destructor(Geom2d_UndefinedDerivative* self_) { delete self_; }
+
+// ========================
+// Geom2d_UndefinedValue wrappers
+// ========================
+
+extern "C" Geom2d_UndefinedValue* Geom2d_UndefinedValue_ctor() {
+    return new Geom2d_UndefinedValue();
+}
+extern "C" Geom2d_UndefinedValue* Geom2d_UndefinedValue_ctor_charptr(const char* theMessage) {
+    return new Geom2d_UndefinedValue(theMessage);
+}
+extern "C" Geom2d_UndefinedValue* Geom2d_UndefinedValue_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Geom2d_UndefinedValue(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_UndefinedValue_dynamic_type(const Geom2d_UndefinedValue* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Geom2d_UndefinedValue_raise(const char* theMessage) {
+    return Geom2d_UndefinedValue::Raise(theMessage);
+}
+extern "C" const char* Geom2d_UndefinedValue_get_type_name() {
+    return Geom2d_UndefinedValue::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_UndefinedValue_get_type_descriptor() {
+    return Geom2d_UndefinedValue::get_type_descriptor();
+}
+extern "C" void Geom2d_UndefinedValue_destructor(Geom2d_UndefinedValue* self_) { delete self_; }
+
+// ========================
+// Geom2d_Vector wrappers
+// ========================
+
+extern "C" opencascade::handle<Geom2d_Vector>* Geom2d_Vector_reversed(const Geom2d_Vector* self_) {
+    return new opencascade::handle<Geom2d_Vector>(self_->Reversed());
+}
+extern "C" gp_Vec2d* Geom2d_Vector_vec2d(const Geom2d_Vector* self_) {
+    return new gp_Vec2d(self_->Vec2d());
+}
+extern "C" void Geom2d_Vector_reverse(Geom2d_Vector* self_) {
+    self_->Reverse();
+}
+extern "C" Standard_Real Geom2d_Vector_angle(const Geom2d_Vector* self_, const opencascade::handle<Geom2d_Vector>* Other) {
+    return self_->Angle(*Other);
+}
+extern "C" void Geom2d_Vector_coord(const Geom2d_Vector* self_, Standard_Real* X, Standard_Real* Y) {
+    self_->Coord(*X, *Y);
+}
+extern "C" Standard_Real Geom2d_Vector_magnitude(const Geom2d_Vector* self_) {
+    return self_->Magnitude();
+}
+extern "C" Standard_Real Geom2d_Vector_square_magnitude(const Geom2d_Vector* self_) {
+    return self_->SquareMagnitude();
+}
+extern "C" Standard_Real Geom2d_Vector_x(const Geom2d_Vector* self_) {
+    return self_->X();
+}
+extern "C" Standard_Real Geom2d_Vector_y(const Geom2d_Vector* self_) {
+    return self_->Y();
+}
+extern "C" Standard_Real Geom2d_Vector_crossed(const Geom2d_Vector* self_, const opencascade::handle<Geom2d_Vector>* Other) {
+    return self_->Crossed(*Other);
+}
+extern "C" Standard_Real Geom2d_Vector_dot(const Geom2d_Vector* self_, const opencascade::handle<Geom2d_Vector>* Other) {
+    return self_->Dot(*Other);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Vector_dynamic_type(const Geom2d_Vector* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Geom2d_Vector_get_type_name() {
+    return Geom2d_Vector::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_Vector_get_type_descriptor() {
+    return Geom2d_Vector::get_type_descriptor();
+}
+extern "C" const Geom2d_Geometry* Geom2d_Vector_as_Geom2d_Geometry(const Geom2d_Vector* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
+extern "C" Geom2d_Geometry* Geom2d_Vector_as_Geom2d_Geometry_mut(Geom2d_Vector* self_) { return static_cast<Geom2d_Geometry*>(self_); }
+extern "C" const Geom2d_Vector* HandleGeom2dVector_get(const HandleGeom2dVector* handle) { return (*handle).get(); }
+extern "C" Geom2d_Vector* HandleGeom2dVector_get_mut(HandleGeom2dVector* handle) { return (*handle).get(); }
+extern "C" HandleGeom2dGeometry* HandleGeom2dVector_to_HandleGeom2dGeometry(const HandleGeom2dVector* self_) {
+    return new HandleGeom2dGeometry(*self_);
+}
+extern "C" void Geom2d_Vector_inherited_Mirror(Geom2d_Vector* self, const gp_Pnt2d& P) {
+    self->Mirror(P);
+}
+extern "C" void Geom2d_Vector_inherited_Rotate(Geom2d_Vector* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    self->Rotate(P, Ang);
+}
+extern "C" void Geom2d_Vector_inherited_Scale(Geom2d_Vector* self, const gp_Pnt2d& P, Standard_Real S) {
+    self->Scale(P, S);
+}
+extern "C" void Geom2d_Vector_inherited_Translate(Geom2d_Vector* self, const gp_Vec2d& V) {
+    self->Translate(V);
+}
+extern "C" void Geom2d_Vector_inherited_Transform(Geom2d_Vector* self, const gp_Trsf2d& T) {
+    self->Transform(T);
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Vector_inherited_Mirrored(const Geom2d_Vector* self, const gp_Pnt2d& P) {
+    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Vector_inherited_Rotated(const Geom2d_Vector* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Vector_inherited_Scaled(const Geom2d_Vector* self, const gp_Pnt2d& P, Standard_Real S) {
+    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Vector_inherited_Transformed(const Geom2d_Vector* self, const gp_Trsf2d& T) {
+    return new Handle(Geom2d_Geometry)(self->Transformed(T));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Vector_inherited_Translated(const Geom2d_Vector* self, const gp_Vec2d& V) {
+    return new Handle(Geom2d_Geometry)(self->Translated(V));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_Vector_inherited_Copy(const Geom2d_Vector* self) {
+    return new Handle(Geom2d_Geometry)(self->Copy());
+}
+extern "C" void Geom2d_Vector_destructor(Geom2d_Vector* self_) { delete self_; }
+
+// ========================
+// Geom2d_VectorWithMagnitude wrappers
+// ========================
+
+extern "C" Geom2d_VectorWithMagnitude* Geom2d_VectorWithMagnitude_ctor_vec2d(const gp_Vec2d* V) {
+    return new Geom2d_VectorWithMagnitude(*V);
+}
+extern "C" Geom2d_VectorWithMagnitude* Geom2d_VectorWithMagnitude_ctor_real2(Standard_Real X, Standard_Real Y) {
+    return new Geom2d_VectorWithMagnitude(X, Y);
+}
+extern "C" Geom2d_VectorWithMagnitude* Geom2d_VectorWithMagnitude_ctor_pnt2d2(const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
+    return new Geom2d_VectorWithMagnitude(*P1, *P2);
+}
+extern "C" opencascade::handle<Geom2d_VectorWithMagnitude>* Geom2d_VectorWithMagnitude_added(const Geom2d_VectorWithMagnitude* self_, const opencascade::handle<Geom2d_Vector>* Other) {
+    return new opencascade::handle<Geom2d_VectorWithMagnitude>(self_->Added(*Other));
+}
+extern "C" opencascade::handle<Geom2d_VectorWithMagnitude>* Geom2d_VectorWithMagnitude_divided(const Geom2d_VectorWithMagnitude* self_, Standard_Real Scalar) {
+    return new opencascade::handle<Geom2d_VectorWithMagnitude>(self_->Divided(Scalar));
+}
+extern "C" opencascade::handle<Geom2d_VectorWithMagnitude>* Geom2d_VectorWithMagnitude_multiplied(const Geom2d_VectorWithMagnitude* self_, Standard_Real Scalar) {
+    return new opencascade::handle<Geom2d_VectorWithMagnitude>(self_->Multiplied(Scalar));
+}
+extern "C" opencascade::handle<Geom2d_VectorWithMagnitude>* Geom2d_VectorWithMagnitude_normalized(const Geom2d_VectorWithMagnitude* self_) {
+    return new opencascade::handle<Geom2d_VectorWithMagnitude>(self_->Normalized());
+}
+extern "C" opencascade::handle<Geom2d_VectorWithMagnitude>* Geom2d_VectorWithMagnitude_subtracted(const Geom2d_VectorWithMagnitude* self_, const opencascade::handle<Geom2d_Vector>* Other) {
+    return new opencascade::handle<Geom2d_VectorWithMagnitude>(self_->Subtracted(*Other));
+}
+extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_VectorWithMagnitude_copy(const Geom2d_VectorWithMagnitude* self_) {
+    return new opencascade::handle<Geom2d_Geometry>(self_->Copy());
+}
+extern "C" void Geom2d_VectorWithMagnitude_set_coord(Geom2d_VectorWithMagnitude* self_, Standard_Real X, Standard_Real Y) {
+    self_->SetCoord(X, Y);
+}
+extern "C" void Geom2d_VectorWithMagnitude_set_vec2d(Geom2d_VectorWithMagnitude* self_, const gp_Vec2d* V) {
+    self_->SetVec2d(*V);
+}
+extern "C" void Geom2d_VectorWithMagnitude_set_x(Geom2d_VectorWithMagnitude* self_, Standard_Real X) {
+    self_->SetX(X);
+}
+extern "C" void Geom2d_VectorWithMagnitude_set_y(Geom2d_VectorWithMagnitude* self_, Standard_Real Y) {
+    self_->SetY(Y);
+}
+extern "C" Standard_Real Geom2d_VectorWithMagnitude_magnitude(const Geom2d_VectorWithMagnitude* self_) {
+    return self_->Magnitude();
+}
+extern "C" Standard_Real Geom2d_VectorWithMagnitude_square_magnitude(const Geom2d_VectorWithMagnitude* self_) {
+    return self_->SquareMagnitude();
+}
+extern "C" void Geom2d_VectorWithMagnitude_add(Geom2d_VectorWithMagnitude* self_, const opencascade::handle<Geom2d_Vector>* Other) {
+    self_->Add(*Other);
+}
+extern "C" Standard_Real Geom2d_VectorWithMagnitude_crossed(const Geom2d_VectorWithMagnitude* self_, const opencascade::handle<Geom2d_Vector>* Other) {
+    return self_->Crossed(*Other);
+}
+extern "C" void Geom2d_VectorWithMagnitude_divide(Geom2d_VectorWithMagnitude* self_, Standard_Real Scalar) {
+    self_->Divide(Scalar);
+}
+extern "C" void Geom2d_VectorWithMagnitude_multiply(Geom2d_VectorWithMagnitude* self_, Standard_Real Scalar) {
+    self_->Multiply(Scalar);
+}
+extern "C" void Geom2d_VectorWithMagnitude_normalize(Geom2d_VectorWithMagnitude* self_) {
+    self_->Normalize();
+}
+extern "C" void Geom2d_VectorWithMagnitude_subtract(Geom2d_VectorWithMagnitude* self_, const opencascade::handle<Geom2d_Vector>* Other) {
+    self_->Subtract(*Other);
+}
+extern "C" void Geom2d_VectorWithMagnitude_transform(Geom2d_VectorWithMagnitude* self_, const gp_Trsf2d* T) {
+    self_->Transform(*T);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_VectorWithMagnitude_dynamic_type(const Geom2d_VectorWithMagnitude* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Geom2d_VectorWithMagnitude_get_type_name() {
+    return Geom2d_VectorWithMagnitude::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2d_VectorWithMagnitude_get_type_descriptor() {
+    return Geom2d_VectorWithMagnitude::get_type_descriptor();
+}
+extern "C" const Geom2d_Geometry* Geom2d_VectorWithMagnitude_as_Geom2d_Geometry(const Geom2d_VectorWithMagnitude* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
+extern "C" Geom2d_Geometry* Geom2d_VectorWithMagnitude_as_Geom2d_Geometry_mut(Geom2d_VectorWithMagnitude* self_) { return static_cast<Geom2d_Geometry*>(self_); }
+extern "C" const Geom2d_Vector* Geom2d_VectorWithMagnitude_as_Geom2d_Vector(const Geom2d_VectorWithMagnitude* self_) { return static_cast<const Geom2d_Vector*>(self_); }
+extern "C" Geom2d_Vector* Geom2d_VectorWithMagnitude_as_Geom2d_Vector_mut(Geom2d_VectorWithMagnitude* self_) { return static_cast<Geom2d_Vector*>(self_); }
+extern "C" HandleGeom2dVectorWithMagnitude* Geom2d_VectorWithMagnitude_to_handle(Geom2d_VectorWithMagnitude* obj) {
+    return new HandleGeom2dVectorWithMagnitude(obj);
+}
+extern "C" const Geom2d_VectorWithMagnitude* HandleGeom2dVectorWithMagnitude_get(const HandleGeom2dVectorWithMagnitude* handle) { return (*handle).get(); }
+extern "C" Geom2d_VectorWithMagnitude* HandleGeom2dVectorWithMagnitude_get_mut(HandleGeom2dVectorWithMagnitude* handle) { return (*handle).get(); }
+extern "C" HandleGeom2dGeometry* HandleGeom2dVectorWithMagnitude_to_HandleGeom2dGeometry(const HandleGeom2dVectorWithMagnitude* self_) {
+    return new HandleGeom2dGeometry(*self_);
+}
+extern "C" HandleGeom2dVector* HandleGeom2dVectorWithMagnitude_to_HandleGeom2dVector(const HandleGeom2dVectorWithMagnitude* self_) {
+    return new HandleGeom2dVector(*self_);
+}
+extern "C" void Geom2d_VectorWithMagnitude_inherited_Mirror(Geom2d_VectorWithMagnitude* self, const gp_Pnt2d& P) {
+    self->Mirror(P);
+}
+extern "C" void Geom2d_VectorWithMagnitude_inherited_Rotate(Geom2d_VectorWithMagnitude* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    self->Rotate(P, Ang);
+}
+extern "C" void Geom2d_VectorWithMagnitude_inherited_Scale(Geom2d_VectorWithMagnitude* self, const gp_Pnt2d& P, Standard_Real S) {
+    self->Scale(P, S);
+}
+extern "C" void Geom2d_VectorWithMagnitude_inherited_Translate(Geom2d_VectorWithMagnitude* self, const gp_Vec2d& V) {
+    self->Translate(V);
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_VectorWithMagnitude_inherited_Mirrored(const Geom2d_VectorWithMagnitude* self, const gp_Pnt2d& P) {
+    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_VectorWithMagnitude_inherited_Rotated(const Geom2d_VectorWithMagnitude* self, const gp_Pnt2d& P, Standard_Real Ang) {
+    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_VectorWithMagnitude_inherited_Scaled(const Geom2d_VectorWithMagnitude* self, const gp_Pnt2d& P, Standard_Real S) {
+    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_VectorWithMagnitude_inherited_Transformed(const Geom2d_VectorWithMagnitude* self, const gp_Trsf2d& T) {
+    return new Handle(Geom2d_Geometry)(self->Transformed(T));
+}
+extern "C" Handle(Geom2d_Geometry)* Geom2d_VectorWithMagnitude_inherited_Translated(const Geom2d_VectorWithMagnitude* self, const gp_Vec2d& V) {
+    return new Handle(Geom2d_Geometry)(self->Translated(V));
+}
+extern "C" void Geom2d_VectorWithMagnitude_inherited_Reverse(Geom2d_VectorWithMagnitude* self) {
+    self->Reverse();
+}
+extern "C" Handle(Geom2d_Vector)* Geom2d_VectorWithMagnitude_inherited_Reversed(const Geom2d_VectorWithMagnitude* self) {
+    return new Handle(Geom2d_Vector)(self->Reversed());
+}
+extern "C" Standard_Real Geom2d_VectorWithMagnitude_inherited_Angle(const Geom2d_VectorWithMagnitude* self, const opencascade::handle<Geom2d_Vector>& Other) {
+    return self->Angle(Other);
+}
+extern "C" void Geom2d_VectorWithMagnitude_inherited_Coord(const Geom2d_VectorWithMagnitude* self, Standard_Real& X, Standard_Real& Y) {
+    self->Coord(X, Y);
+}
+extern "C" Standard_Real Geom2d_VectorWithMagnitude_inherited_X(const Geom2d_VectorWithMagnitude* self) {
+    return self->X();
+}
+extern "C" Standard_Real Geom2d_VectorWithMagnitude_inherited_Y(const Geom2d_VectorWithMagnitude* self) {
+    return self->Y();
+}
+extern "C" Standard_Real Geom2d_VectorWithMagnitude_inherited_Dot(const Geom2d_VectorWithMagnitude* self, const opencascade::handle<Geom2d_Vector>& Other) {
+    return self->Dot(Other);
+}
+extern "C" gp_Vec2d* Geom2d_VectorWithMagnitude_inherited_Vec2d(const Geom2d_VectorWithMagnitude* self) {
+    return new gp_Vec2d(self->Vec2d());
+}
+extern "C" void Geom2d_VectorWithMagnitude_destructor(Geom2d_VectorWithMagnitude* self_) { delete self_; }
 
 // ========================
 // GeomAPI_ExtremaCurveCurve wrappers
@@ -33670,6 +38603,1154 @@ extern "C" void Law_S_inherited_SetCurve(Law_S* self, const opencascade::handle<
 extern "C" void Law_S_destructor(Law_S* self_) { delete self_; }
 
 // ========================
+// math_BFGS wrappers
+// ========================
+
+extern "C" math_BFGS* math_BFGS_ctor_int_real_int_real(Standard_Integer NbVariables, Standard_Real Tolerance, Standard_Integer NbIterations, Standard_Real ZEPS) {
+    return new math_BFGS(NbVariables, Tolerance, NbIterations, ZEPS);
+}
+extern "C" Standard_Boolean math_BFGS_is_solution_reached(const math_BFGS* self_, math_MultipleVarFunctionWithGradient* F) {
+    return self_->IsSolutionReached(*F);
+}
+extern "C" Standard_Boolean math_BFGS_is_done(const math_BFGS* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Real math_BFGS_minimum(const math_BFGS* self_) {
+    return self_->Minimum();
+}
+extern "C" Standard_Integer math_BFGS_nb_iterations(const math_BFGS* self_) {
+    return self_->NbIterations();
+}
+extern "C" void math_BFGS_destructor(math_BFGS* self_) { delete self_; }
+
+// ========================
+// math_BissecNewton wrappers
+// ========================
+
+extern "C" math_BissecNewton* math_BissecNewton_ctor_real(Standard_Real theXTolerance) {
+    return new math_BissecNewton(theXTolerance);
+}
+extern "C" void math_BissecNewton_perform(math_BissecNewton* self_, math_FunctionWithDerivative* F, Standard_Real Bound1, Standard_Real Bound2, Standard_Integer NbIterations) {
+    self_->Perform(*F, Bound1, Bound2, NbIterations);
+}
+extern "C" Standard_Boolean math_BissecNewton_is_solution_reached(math_BissecNewton* self_, math_FunctionWithDerivative* theFunction) {
+    return self_->IsSolutionReached(*theFunction);
+}
+extern "C" Standard_Boolean math_BissecNewton_is_done(const math_BissecNewton* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Real math_BissecNewton_root(const math_BissecNewton* self_) {
+    return self_->Root();
+}
+extern "C" Standard_Real math_BissecNewton_derivative(const math_BissecNewton* self_) {
+    return self_->Derivative();
+}
+extern "C" Standard_Real math_BissecNewton_value(const math_BissecNewton* self_) {
+    return self_->Value();
+}
+extern "C" void math_BissecNewton_destructor(math_BissecNewton* self_) { delete self_; }
+
+// ========================
+// math_BracketMinimum wrappers
+// ========================
+
+extern "C" math_BracketMinimum* math_BracketMinimum_ctor_real2(Standard_Real A, Standard_Real B) {
+    return new math_BracketMinimum(A, B);
+}
+extern "C" math_BracketMinimum* math_BracketMinimum_ctor_function_real2(math_Function* F, Standard_Real A, Standard_Real B) {
+    return new math_BracketMinimum(*F, A, B);
+}
+extern "C" math_BracketMinimum* math_BracketMinimum_ctor_function_real3(math_Function* F, Standard_Real A, Standard_Real B, Standard_Real FA) {
+    return new math_BracketMinimum(*F, A, B, FA);
+}
+extern "C" math_BracketMinimum* math_BracketMinimum_ctor_function_real4(math_Function* F, Standard_Real A, Standard_Real B, Standard_Real FA, Standard_Real FB) {
+    return new math_BracketMinimum(*F, A, B, FA, FB);
+}
+extern "C" void math_BracketMinimum_set_limits(math_BracketMinimum* self_, Standard_Real theLeft, Standard_Real theRight) {
+    self_->SetLimits(theLeft, theRight);
+}
+extern "C" void math_BracketMinimum_set_fa(math_BracketMinimum* self_, Standard_Real theValue) {
+    self_->SetFA(theValue);
+}
+extern "C" void math_BracketMinimum_set_fb(math_BracketMinimum* self_, Standard_Real theValue) {
+    self_->SetFB(theValue);
+}
+extern "C" void math_BracketMinimum_perform(math_BracketMinimum* self_, math_Function* F) {
+    self_->Perform(*F);
+}
+extern "C" Standard_Boolean math_BracketMinimum_is_done(const math_BracketMinimum* self_) {
+    return self_->IsDone();
+}
+extern "C" void math_BracketMinimum_values(const math_BracketMinimum* self_, Standard_Real* A, Standard_Real* B, Standard_Real* C) {
+    self_->Values(*A, *B, *C);
+}
+extern "C" void math_BracketMinimum_function_values(const math_BracketMinimum* self_, Standard_Real* FA, Standard_Real* FB, Standard_Real* FC) {
+    self_->FunctionValues(*FA, *FB, *FC);
+}
+extern "C" void math_BracketMinimum_destructor(math_BracketMinimum* self_) { delete self_; }
+
+// ========================
+// math_BracketedRoot wrappers
+// ========================
+
+extern "C" math_BracketedRoot* math_BracketedRoot_ctor_function_real3_int_real(math_Function* F, Standard_Real Bound1, Standard_Real Bound2, Standard_Real Tolerance, Standard_Integer NbIterations, Standard_Real ZEPS) {
+    return new math_BracketedRoot(*F, Bound1, Bound2, Tolerance, NbIterations, ZEPS);
+}
+extern "C" Standard_Boolean math_BracketedRoot_is_done(const math_BracketedRoot* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Real math_BracketedRoot_root(const math_BracketedRoot* self_) {
+    return self_->Root();
+}
+extern "C" Standard_Real math_BracketedRoot_value(const math_BracketedRoot* self_) {
+    return self_->Value();
+}
+extern "C" Standard_Integer math_BracketedRoot_nb_iterations(const math_BracketedRoot* self_) {
+    return self_->NbIterations();
+}
+extern "C" void math_BracketedRoot_destructor(math_BracketedRoot* self_) { delete self_; }
+
+// ========================
+// math_BrentMinimum wrappers
+// ========================
+
+extern "C" math_BrentMinimum* math_BrentMinimum_ctor_real_int_real(Standard_Real TolX, Standard_Integer NbIterations, Standard_Real ZEPS) {
+    return new math_BrentMinimum(TolX, NbIterations, ZEPS);
+}
+extern "C" math_BrentMinimum* math_BrentMinimum_ctor_real2_int_real(Standard_Real TolX, Standard_Real Fbx, Standard_Integer NbIterations, Standard_Real ZEPS) {
+    return new math_BrentMinimum(TolX, Fbx, NbIterations, ZEPS);
+}
+extern "C" void math_BrentMinimum_perform(math_BrentMinimum* self_, math_Function* F, Standard_Real Ax, Standard_Real Bx, Standard_Real Cx) {
+    self_->Perform(*F, Ax, Bx, Cx);
+}
+extern "C" Standard_Boolean math_BrentMinimum_is_solution_reached(math_BrentMinimum* self_, math_Function* theFunction) {
+    return self_->IsSolutionReached(*theFunction);
+}
+extern "C" Standard_Boolean math_BrentMinimum_is_done(const math_BrentMinimum* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Real math_BrentMinimum_location(const math_BrentMinimum* self_) {
+    return self_->Location();
+}
+extern "C" Standard_Real math_BrentMinimum_minimum(const math_BrentMinimum* self_) {
+    return self_->Minimum();
+}
+extern "C" Standard_Integer math_BrentMinimum_nb_iterations(const math_BrentMinimum* self_) {
+    return self_->NbIterations();
+}
+extern "C" void math_BrentMinimum_destructor(math_BrentMinimum* self_) { delete self_; }
+
+// ========================
+// math_BullardGenerator wrappers
+// ========================
+
+extern "C" math_BullardGenerator* math_BullardGenerator_ctor_uint(unsigned int theSeed) {
+    return new math_BullardGenerator(theSeed);
+}
+extern "C" void math_BullardGenerator_set_seed(math_BullardGenerator* self_, unsigned int theSeed) {
+    self_->SetSeed(theSeed);
+}
+extern "C" unsigned int math_BullardGenerator_next_int(math_BullardGenerator* self_) {
+    return self_->NextInt();
+}
+extern "C" Standard_Real math_BullardGenerator_next_real(math_BullardGenerator* self_) {
+    return self_->NextReal();
+}
+extern "C" void math_BullardGenerator_destructor(math_BullardGenerator* self_) { delete self_; }
+
+// ========================
+// math_ComputeGaussPointsAndWeights wrappers
+// ========================
+
+extern "C" math_ComputeGaussPointsAndWeights* math_ComputeGaussPointsAndWeights_ctor_int(Standard_Integer Number) {
+    return new math_ComputeGaussPointsAndWeights(Number);
+}
+extern "C" Standard_Boolean math_ComputeGaussPointsAndWeights_is_done(const math_ComputeGaussPointsAndWeights* self_) {
+    return self_->IsDone();
+}
+extern "C" void math_ComputeGaussPointsAndWeights_destructor(math_ComputeGaussPointsAndWeights* self_) { delete self_; }
+
+// ========================
+// math_ComputeKronrodPointsAndWeights wrappers
+// ========================
+
+extern "C" math_ComputeKronrodPointsAndWeights* math_ComputeKronrodPointsAndWeights_ctor_int(Standard_Integer Number) {
+    return new math_ComputeKronrodPointsAndWeights(Number);
+}
+extern "C" Standard_Boolean math_ComputeKronrodPointsAndWeights_is_done(const math_ComputeKronrodPointsAndWeights* self_) {
+    return self_->IsDone();
+}
+extern "C" void math_ComputeKronrodPointsAndWeights_destructor(math_ComputeKronrodPointsAndWeights* self_) { delete self_; }
+
+// ========================
+// math_Crout wrappers
+// ========================
+
+extern "C" math_Crout* math_Crout_ctor_matrix_real(const math_Matrix* A, Standard_Real MinPivot) {
+    return new math_Crout(*A, MinPivot);
+}
+extern "C" Standard_Boolean math_Crout_is_done(const math_Crout* self_) {
+    return self_->IsDone();
+}
+extern "C" const math_Matrix& math_Crout_inverse(const math_Crout* self_) {
+    return self_->Inverse();
+}
+extern "C" void math_Crout_invert(const math_Crout* self_, math_Matrix* Inv) {
+    self_->Invert(*Inv);
+}
+extern "C" Standard_Real math_Crout_determinant(const math_Crout* self_) {
+    return self_->Determinant();
+}
+extern "C" void math_Crout_destructor(math_Crout* self_) { delete self_; }
+
+// ========================
+// math_DirectPolynomialRoots wrappers
+// ========================
+
+extern "C" math_DirectPolynomialRoots* math_DirectPolynomialRoots_ctor_real5(Standard_Real A, Standard_Real B, Standard_Real C, Standard_Real D, Standard_Real E) {
+    return new math_DirectPolynomialRoots(A, B, C, D, E);
+}
+extern "C" math_DirectPolynomialRoots* math_DirectPolynomialRoots_ctor_real4(Standard_Real A, Standard_Real B, Standard_Real C, Standard_Real D) {
+    return new math_DirectPolynomialRoots(A, B, C, D);
+}
+extern "C" math_DirectPolynomialRoots* math_DirectPolynomialRoots_ctor_real3(Standard_Real A, Standard_Real B, Standard_Real C) {
+    return new math_DirectPolynomialRoots(A, B, C);
+}
+extern "C" math_DirectPolynomialRoots* math_DirectPolynomialRoots_ctor_real2(Standard_Real A, Standard_Real B) {
+    return new math_DirectPolynomialRoots(A, B);
+}
+extern "C" Standard_Boolean math_DirectPolynomialRoots_is_done(const math_DirectPolynomialRoots* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Boolean math_DirectPolynomialRoots_infinite_roots(const math_DirectPolynomialRoots* self_) {
+    return self_->InfiniteRoots();
+}
+extern "C" Standard_Integer math_DirectPolynomialRoots_nb_solutions(const math_DirectPolynomialRoots* self_) {
+    return self_->NbSolutions();
+}
+extern "C" Standard_Real math_DirectPolynomialRoots_value(const math_DirectPolynomialRoots* self_, Standard_Integer Nieme) {
+    return self_->Value(Nieme);
+}
+extern "C" void math_DirectPolynomialRoots_destructor(math_DirectPolynomialRoots* self_) { delete self_; }
+
+// ========================
+// math_DoubleTab wrappers
+// ========================
+
+extern "C" math_DoubleTab* math_DoubleTab_ctor_int4(Standard_Integer LowerRow, Standard_Integer UpperRow, Standard_Integer LowerCol, Standard_Integer UpperCol) {
+    return new math_DoubleTab(LowerRow, UpperRow, LowerCol, UpperCol);
+}
+extern "C" math_DoubleTab* math_DoubleTab_ctor_doubletab(const math_DoubleTab* Other) {
+    return new math_DoubleTab(*Other);
+}
+extern "C" Standard_Real& math_DoubleTab_value(math_DoubleTab* self_, Standard_Integer RowIndex, Standard_Integer ColIndex) {
+    return self_->Value(RowIndex, ColIndex);
+}
+extern "C" void math_DoubleTab_init(math_DoubleTab* self_, Standard_Real InitValue) {
+    self_->Init(InitValue);
+}
+extern "C" void math_DoubleTab_copy(const math_DoubleTab* self_, math_DoubleTab* Other) {
+    self_->Copy(*Other);
+}
+extern "C" void math_DoubleTab_set_lower_row(math_DoubleTab* self_, Standard_Integer LowerRow) {
+    self_->SetLowerRow(LowerRow);
+}
+extern "C" void math_DoubleTab_set_lower_col(math_DoubleTab* self_, Standard_Integer LowerCol) {
+    self_->SetLowerCol(LowerCol);
+}
+extern "C" void math_DoubleTab_free(math_DoubleTab* self_) {
+    self_->Free();
+}
+extern "C" void math_DoubleTab_destructor(math_DoubleTab* self_) { delete self_; }
+
+// ========================
+// math_EigenValuesSearcher wrappers
+// ========================
+
+extern "C" math_EigenValuesSearcher* math_EigenValuesSearcher_ctor_array1ofreal2(const TColStd_Array1OfReal* Diagonal, const TColStd_Array1OfReal* Subdiagonal) {
+    return new math_EigenValuesSearcher(*Diagonal, *Subdiagonal);
+}
+extern "C" Standard_Boolean math_EigenValuesSearcher_is_done(const math_EigenValuesSearcher* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Integer math_EigenValuesSearcher_dimension(const math_EigenValuesSearcher* self_) {
+    return self_->Dimension();
+}
+extern "C" Standard_Real math_EigenValuesSearcher_eigen_value(const math_EigenValuesSearcher* self_, Standard_Integer Index) {
+    return self_->EigenValue(Index);
+}
+extern "C" void math_EigenValuesSearcher_destructor(math_EigenValuesSearcher* self_) { delete self_; }
+
+// ========================
+// math_FRPR wrappers
+// ========================
+
+extern "C" math_FRPR* math_FRPR_ctor_multiplevarfunctionwithgradient_real_int_real(const math_MultipleVarFunctionWithGradient* theFunction, Standard_Real theTolerance, Standard_Integer theNbIterations, Standard_Real theZEPS) {
+    return new math_FRPR(*theFunction, theTolerance, theNbIterations, theZEPS);
+}
+extern "C" Standard_Boolean math_FRPR_is_solution_reached(math_FRPR* self_, math_MultipleVarFunctionWithGradient* theFunction) {
+    return self_->IsSolutionReached(*theFunction);
+}
+extern "C" Standard_Boolean math_FRPR_is_done(const math_FRPR* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Real math_FRPR_minimum(const math_FRPR* self_) {
+    return self_->Minimum();
+}
+extern "C" Standard_Integer math_FRPR_nb_iterations(const math_FRPR* self_) {
+    return self_->NbIterations();
+}
+extern "C" void math_FRPR_destructor(math_FRPR* self_) { delete self_; }
+
+// ========================
+// math_Function wrappers
+// ========================
+
+extern "C" Standard_Boolean math_Function_value(math_Function* self_, Standard_Real X, Standard_Real* F) {
+    return self_->Value(X, *F);
+}
+extern "C" Standard_Integer math_Function_get_state_number(math_Function* self_) {
+    return self_->GetStateNumber();
+}
+extern "C" void math_Function_destructor(math_Function* self_) { delete self_; }
+
+// ========================
+// math_FunctionAllRoots wrappers
+// ========================
+
+extern "C" math_FunctionAllRoots* math_FunctionAllRoots_ctor_functionwithderivative_functionsample_real3(math_FunctionWithDerivative* F, const math_FunctionSample* S, Standard_Real EpsX, Standard_Real EpsF, Standard_Real EpsNul) {
+    return new math_FunctionAllRoots(*F, *S, EpsX, EpsF, EpsNul);
+}
+extern "C" Standard_Boolean math_FunctionAllRoots_is_done(const math_FunctionAllRoots* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Integer math_FunctionAllRoots_nb_intervals(const math_FunctionAllRoots* self_) {
+    return self_->NbIntervals();
+}
+extern "C" void math_FunctionAllRoots_get_interval(const math_FunctionAllRoots* self_, Standard_Integer Index, Standard_Real* A, Standard_Real* B) {
+    self_->GetInterval(Index, *A, *B);
+}
+extern "C" void math_FunctionAllRoots_get_interval_state(const math_FunctionAllRoots* self_, Standard_Integer Index, Standard_Integer* IFirst, Standard_Integer* ILast) {
+    self_->GetIntervalState(Index, *IFirst, *ILast);
+}
+extern "C" Standard_Integer math_FunctionAllRoots_nb_points(const math_FunctionAllRoots* self_) {
+    return self_->NbPoints();
+}
+extern "C" Standard_Real math_FunctionAllRoots_get_point(const math_FunctionAllRoots* self_, Standard_Integer Index) {
+    return self_->GetPoint(Index);
+}
+extern "C" Standard_Integer math_FunctionAllRoots_get_point_state(const math_FunctionAllRoots* self_, Standard_Integer Index) {
+    return self_->GetPointState(Index);
+}
+extern "C" void math_FunctionAllRoots_destructor(math_FunctionAllRoots* self_) { delete self_; }
+
+// ========================
+// math_FunctionRoot wrappers
+// ========================
+
+extern "C" math_FunctionRoot* math_FunctionRoot_ctor_functionwithderivative_real2_int(math_FunctionWithDerivative* F, Standard_Real Guess, Standard_Real Tolerance, Standard_Integer NbIterations) {
+    return new math_FunctionRoot(*F, Guess, Tolerance, NbIterations);
+}
+extern "C" math_FunctionRoot* math_FunctionRoot_ctor_functionwithderivative_real4_int(math_FunctionWithDerivative* F, Standard_Real Guess, Standard_Real Tolerance, Standard_Real A, Standard_Real B, Standard_Integer NbIterations) {
+    return new math_FunctionRoot(*F, Guess, Tolerance, A, B, NbIterations);
+}
+extern "C" Standard_Boolean math_FunctionRoot_is_done(const math_FunctionRoot* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Real math_FunctionRoot_root(const math_FunctionRoot* self_) {
+    return self_->Root();
+}
+extern "C" Standard_Real math_FunctionRoot_derivative(const math_FunctionRoot* self_) {
+    return self_->Derivative();
+}
+extern "C" Standard_Real math_FunctionRoot_value(const math_FunctionRoot* self_) {
+    return self_->Value();
+}
+extern "C" Standard_Integer math_FunctionRoot_nb_iterations(const math_FunctionRoot* self_) {
+    return self_->NbIterations();
+}
+extern "C" void math_FunctionRoot_destructor(math_FunctionRoot* self_) { delete self_; }
+
+// ========================
+// math_FunctionRoots wrappers
+// ========================
+
+extern "C" math_FunctionRoots* math_FunctionRoots_ctor_functionwithderivative_real2_int_real4(math_FunctionWithDerivative* F, Standard_Real A, Standard_Real B, Standard_Integer NbSample, Standard_Real EpsX, Standard_Real EpsF, Standard_Real EpsNull, Standard_Real K) {
+    return new math_FunctionRoots(*F, A, B, NbSample, EpsX, EpsF, EpsNull, K);
+}
+extern "C" Standard_Boolean math_FunctionRoots_is_done(const math_FunctionRoots* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Boolean math_FunctionRoots_is_all_null(const math_FunctionRoots* self_) {
+    return self_->IsAllNull();
+}
+extern "C" Standard_Integer math_FunctionRoots_nb_solutions(const math_FunctionRoots* self_) {
+    return self_->NbSolutions();
+}
+extern "C" Standard_Real math_FunctionRoots_value(const math_FunctionRoots* self_, Standard_Integer Nieme) {
+    return self_->Value(Nieme);
+}
+extern "C" Standard_Integer math_FunctionRoots_state_number(const math_FunctionRoots* self_, Standard_Integer Nieme) {
+    return self_->StateNumber(Nieme);
+}
+extern "C" void math_FunctionRoots_destructor(math_FunctionRoots* self_) { delete self_; }
+
+// ========================
+// math_FunctionSample wrappers
+// ========================
+
+extern "C" math_FunctionSample* math_FunctionSample_ctor_real2_int(Standard_Real A, Standard_Real B, Standard_Integer N) {
+    return new math_FunctionSample(A, B, N);
+}
+extern "C" void math_FunctionSample_bounds(const math_FunctionSample* self_, Standard_Real* A, Standard_Real* B) {
+    self_->Bounds(*A, *B);
+}
+extern "C" Standard_Integer math_FunctionSample_nb_points(const math_FunctionSample* self_) {
+    return self_->NbPoints();
+}
+extern "C" Standard_Real math_FunctionSample_get_parameter(const math_FunctionSample* self_, Standard_Integer Index) {
+    return self_->GetParameter(Index);
+}
+extern "C" void math_FunctionSample_destructor(math_FunctionSample* self_) { delete self_; }
+
+// ========================
+// math_FunctionSet wrappers
+// ========================
+
+extern "C" Standard_Integer math_FunctionSet_nb_variables(const math_FunctionSet* self_) {
+    return self_->NbVariables();
+}
+extern "C" Standard_Integer math_FunctionSet_nb_equations(const math_FunctionSet* self_) {
+    return self_->NbEquations();
+}
+extern "C" Standard_Integer math_FunctionSet_get_state_number(math_FunctionSet* self_) {
+    return self_->GetStateNumber();
+}
+extern "C" void math_FunctionSet_destructor(math_FunctionSet* self_) { delete self_; }
+
+// ========================
+// math_FunctionSetRoot wrappers
+// ========================
+
+extern "C" math_FunctionSetRoot* math_FunctionSetRoot_ctor_functionsetwithderivatives_vector_int(math_FunctionSetWithDerivatives* F, const math_Vector* Tolerance, Standard_Integer NbIterations) {
+    return new math_FunctionSetRoot(*F, *Tolerance, NbIterations);
+}
+extern "C" math_FunctionSetRoot* math_FunctionSetRoot_ctor_functionsetwithderivatives_int(math_FunctionSetWithDerivatives* F, Standard_Integer NbIterations) {
+    return new math_FunctionSetRoot(*F, NbIterations);
+}
+extern "C" Standard_Boolean math_FunctionSetRoot_is_solution_reached(math_FunctionSetRoot* self_, math_FunctionSetWithDerivatives* arg0) {
+    return self_->IsSolutionReached(*arg0);
+}
+extern "C" Standard_Boolean math_FunctionSetRoot_is_done(const math_FunctionSetRoot* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Integer math_FunctionSetRoot_nb_iterations(const math_FunctionSetRoot* self_) {
+    return self_->NbIterations();
+}
+extern "C" Standard_Integer math_FunctionSetRoot_state_number(const math_FunctionSetRoot* self_) {
+    return self_->StateNumber();
+}
+extern "C" const math_Matrix& math_FunctionSetRoot_derivative(const math_FunctionSetRoot* self_) {
+    return self_->Derivative();
+}
+extern "C" void math_FunctionSetRoot_derivative_matrix(const math_FunctionSetRoot* self_, math_Matrix* Der) {
+    self_->Derivative(*Der);
+}
+extern "C" Standard_Boolean math_FunctionSetRoot_is_divergent(const math_FunctionSetRoot* self_) {
+    return self_->IsDivergent();
+}
+extern "C" void math_FunctionSetRoot_destructor(math_FunctionSetRoot* self_) { delete self_; }
+
+// ========================
+// math_FunctionSetWithDerivatives wrappers
+// ========================
+
+extern "C" Standard_Integer math_FunctionSetWithDerivatives_nb_variables(const math_FunctionSetWithDerivatives* self_) {
+    return self_->NbVariables();
+}
+extern "C" Standard_Integer math_FunctionSetWithDerivatives_nb_equations(const math_FunctionSetWithDerivatives* self_) {
+    return self_->NbEquations();
+}
+extern "C" const math_FunctionSet* math_FunctionSetWithDerivatives_as_math_FunctionSet(const math_FunctionSetWithDerivatives* self_) { return static_cast<const math_FunctionSet*>(self_); }
+extern "C" math_FunctionSet* math_FunctionSetWithDerivatives_as_math_FunctionSet_mut(math_FunctionSetWithDerivatives* self_) { return static_cast<math_FunctionSet*>(self_); }
+extern "C" Standard_Integer math_FunctionSetWithDerivatives_inherited_GetStateNumber(math_FunctionSetWithDerivatives* self) {
+    return self->GetStateNumber();
+}
+extern "C" void math_FunctionSetWithDerivatives_destructor(math_FunctionSetWithDerivatives* self_) { delete self_; }
+
+// ========================
+// math_FunctionWithDerivative wrappers
+// ========================
+
+extern "C" Standard_Boolean math_FunctionWithDerivative_value(math_FunctionWithDerivative* self_, Standard_Real X, Standard_Real* F) {
+    return self_->Value(X, *F);
+}
+extern "C" Standard_Boolean math_FunctionWithDerivative_derivative(math_FunctionWithDerivative* self_, Standard_Real X, Standard_Real* D) {
+    return self_->Derivative(X, *D);
+}
+extern "C" Standard_Boolean math_FunctionWithDerivative_values(math_FunctionWithDerivative* self_, Standard_Real X, Standard_Real* F, Standard_Real* D) {
+    return self_->Values(X, *F, *D);
+}
+extern "C" const math_Function* math_FunctionWithDerivative_as_math_Function(const math_FunctionWithDerivative* self_) { return static_cast<const math_Function*>(self_); }
+extern "C" math_Function* math_FunctionWithDerivative_as_math_Function_mut(math_FunctionWithDerivative* self_) { return static_cast<math_Function*>(self_); }
+extern "C" Standard_Integer math_FunctionWithDerivative_inherited_GetStateNumber(math_FunctionWithDerivative* self) {
+    return self->GetStateNumber();
+}
+extern "C" void math_FunctionWithDerivative_destructor(math_FunctionWithDerivative* self_) { delete self_; }
+
+// ========================
+// math_Gauss wrappers
+// ========================
+
+extern "C" math_Gauss* math_Gauss_ctor_matrix_real_progressrange(const math_Matrix* A, Standard_Real MinPivot, const Message_ProgressRange* theProgress) {
+    return new math_Gauss(*A, MinPivot, *theProgress);
+}
+extern "C" Standard_Boolean math_Gauss_is_done(const math_Gauss* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Real math_Gauss_determinant(const math_Gauss* self_) {
+    return self_->Determinant();
+}
+extern "C" void math_Gauss_invert(const math_Gauss* self_, math_Matrix* Inv) {
+    self_->Invert(*Inv);
+}
+extern "C" void math_Gauss_destructor(math_Gauss* self_) { delete self_; }
+
+// ========================
+// math_GaussLeastSquare wrappers
+// ========================
+
+extern "C" math_GaussLeastSquare* math_GaussLeastSquare_ctor_matrix_real(const math_Matrix* A, Standard_Real MinPivot) {
+    return new math_GaussLeastSquare(*A, MinPivot);
+}
+extern "C" Standard_Boolean math_GaussLeastSquare_is_done(const math_GaussLeastSquare* self_) {
+    return self_->IsDone();
+}
+extern "C" void math_GaussLeastSquare_destructor(math_GaussLeastSquare* self_) { delete self_; }
+
+// ========================
+// math_GaussMultipleIntegration wrappers
+// ========================
+
+extern "C" math_GaussMultipleIntegration* math_GaussMultipleIntegration_ctor_multiplevarfunction_vector2_integervector(math_MultipleVarFunction* F, const math_Vector* Lower, const math_Vector* Upper, const math_IntegerVector* Order) {
+    return new math_GaussMultipleIntegration(*F, *Lower, *Upper, *Order);
+}
+extern "C" Standard_Boolean math_GaussMultipleIntegration_is_done(const math_GaussMultipleIntegration* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Real math_GaussMultipleIntegration_value(const math_GaussMultipleIntegration* self_) {
+    return self_->Value();
+}
+extern "C" void math_GaussMultipleIntegration_destructor(math_GaussMultipleIntegration* self_) { delete self_; }
+
+// ========================
+// math_GaussSetIntegration wrappers
+// ========================
+
+extern "C" math_GaussSetIntegration* math_GaussSetIntegration_ctor_functionset_vector2_integervector(math_FunctionSet* F, const math_Vector* Lower, const math_Vector* Upper, const math_IntegerVector* Order) {
+    return new math_GaussSetIntegration(*F, *Lower, *Upper, *Order);
+}
+extern "C" Standard_Boolean math_GaussSetIntegration_is_done(const math_GaussSetIntegration* self_) {
+    return self_->IsDone();
+}
+extern "C" void math_GaussSetIntegration_destructor(math_GaussSetIntegration* self_) { delete self_; }
+
+// ========================
+// math_GaussSingleIntegration wrappers
+// ========================
+
+extern "C" math_GaussSingleIntegration* math_GaussSingleIntegration_ctor() {
+    return new math_GaussSingleIntegration();
+}
+extern "C" math_GaussSingleIntegration* math_GaussSingleIntegration_ctor_function_real2_int(math_Function* F, Standard_Real Lower, Standard_Real Upper, Standard_Integer Order) {
+    return new math_GaussSingleIntegration(*F, Lower, Upper, Order);
+}
+extern "C" math_GaussSingleIntegration* math_GaussSingleIntegration_ctor_function_real2_int_real(math_Function* F, Standard_Real Lower, Standard_Real Upper, Standard_Integer Order, Standard_Real Tol) {
+    return new math_GaussSingleIntegration(*F, Lower, Upper, Order, Tol);
+}
+extern "C" Standard_Boolean math_GaussSingleIntegration_is_done(const math_GaussSingleIntegration* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Real math_GaussSingleIntegration_value(const math_GaussSingleIntegration* self_) {
+    return self_->Value();
+}
+extern "C" void math_GaussSingleIntegration_destructor(math_GaussSingleIntegration* self_) { delete self_; }
+
+// ========================
+// math_GlobOptMin wrappers
+// ========================
+
+extern "C" void math_GlobOptMin_set_tol(math_GlobOptMin* self_, Standard_Real theDiscretizationTol, Standard_Real theSameTol) {
+    self_->SetTol(theDiscretizationTol, theSameTol);
+}
+extern "C" void math_GlobOptMin_get_tol(math_GlobOptMin* self_, Standard_Real* theDiscretizationTol, Standard_Real* theSameTol) {
+    self_->GetTol(*theDiscretizationTol, *theSameTol);
+}
+extern "C" void math_GlobOptMin_perform(math_GlobOptMin* self_, Standard_Boolean isFindSingleSolution) {
+    self_->Perform(isFindSingleSolution);
+}
+extern "C" void math_GlobOptMin_set_continuity(math_GlobOptMin* self_, Standard_Integer theCont) {
+    self_->SetContinuity(theCont);
+}
+extern "C" Standard_Integer math_GlobOptMin_get_continuity(const math_GlobOptMin* self_) {
+    return self_->GetContinuity();
+}
+extern "C" void math_GlobOptMin_set_functional_minimal_value(math_GlobOptMin* self_, Standard_Real theMinimalValue) {
+    self_->SetFunctionalMinimalValue(theMinimalValue);
+}
+extern "C" Standard_Real math_GlobOptMin_get_functional_minimal_value(const math_GlobOptMin* self_) {
+    return self_->GetFunctionalMinimalValue();
+}
+extern "C" void math_GlobOptMin_set_lip_const_state(math_GlobOptMin* self_, Standard_Boolean theFlag) {
+    self_->SetLipConstState(theFlag);
+}
+extern "C" Standard_Boolean math_GlobOptMin_get_lip_const_state(const math_GlobOptMin* self_) {
+    return self_->GetLipConstState();
+}
+extern "C" Standard_Boolean math_GlobOptMin_is_done(const math_GlobOptMin* self_) {
+    return self_->isDone();
+}
+extern "C" Standard_Real math_GlobOptMin_get_f(const math_GlobOptMin* self_) {
+    return self_->GetF();
+}
+extern "C" Standard_Integer math_GlobOptMin_nb_extrema(const math_GlobOptMin* self_) {
+    return self_->NbExtrema();
+}
+extern "C" void math_GlobOptMin_destructor(math_GlobOptMin* self_) { delete self_; }
+
+// ========================
+// math_Householder wrappers
+// ========================
+
+extern "C" math_Householder* math_Householder_ctor_matrix2_real(const math_Matrix* A, const math_Matrix* B, Standard_Real EPS) {
+    return new math_Householder(*A, *B, EPS);
+}
+extern "C" math_Householder* math_Householder_ctor_matrix2_int4_real(const math_Matrix* A, const math_Matrix* B, Standard_Integer lowerArow, Standard_Integer upperArow, Standard_Integer lowerAcol, Standard_Integer upperAcol, Standard_Real EPS) {
+    return new math_Householder(*A, *B, lowerArow, upperArow, lowerAcol, upperAcol, EPS);
+}
+extern "C" math_Householder* math_Householder_ctor_matrix_vector_real(const math_Matrix* A, const math_Vector* B, Standard_Real EPS) {
+    return new math_Householder(*A, *B, EPS);
+}
+extern "C" Standard_Boolean math_Householder_is_done(const math_Householder* self_) {
+    return self_->IsDone();
+}
+extern "C" const math_Matrix& math_Householder_all_values(const math_Householder* self_) {
+    return self_->AllValues();
+}
+extern "C" void math_Householder_destructor(math_Householder* self_) { delete self_; }
+
+// ========================
+// math_Jacobi wrappers
+// ========================
+
+extern "C" math_Jacobi* math_Jacobi_ctor_matrix(const math_Matrix* A) {
+    return new math_Jacobi(*A);
+}
+extern "C" Standard_Boolean math_Jacobi_is_done(const math_Jacobi* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Real math_Jacobi_value(const math_Jacobi* self_, Standard_Integer Num) {
+    return self_->Value(Num);
+}
+extern "C" const math_Matrix& math_Jacobi_vectors(const math_Jacobi* self_) {
+    return self_->Vectors();
+}
+extern "C" void math_Jacobi_destructor(math_Jacobi* self_) { delete self_; }
+
+// ========================
+// math_KronrodSingleIntegration wrappers
+// ========================
+
+extern "C" math_KronrodSingleIntegration* math_KronrodSingleIntegration_ctor() {
+    return new math_KronrodSingleIntegration();
+}
+extern "C" math_KronrodSingleIntegration* math_KronrodSingleIntegration_ctor_function_real2_int(math_Function* theFunction, Standard_Real theLower, Standard_Real theUpper, Standard_Integer theNbPnts) {
+    return new math_KronrodSingleIntegration(*theFunction, theLower, theUpper, theNbPnts);
+}
+extern "C" math_KronrodSingleIntegration* math_KronrodSingleIntegration_ctor_function_real2_int_real_int(math_Function* theFunction, Standard_Real theLower, Standard_Real theUpper, Standard_Integer theNbPnts, Standard_Real theTolerance, Standard_Integer theMaxNbIter) {
+    return new math_KronrodSingleIntegration(*theFunction, theLower, theUpper, theNbPnts, theTolerance, theMaxNbIter);
+}
+extern "C" void math_KronrodSingleIntegration_perform_function_real2_int(math_KronrodSingleIntegration* self_, math_Function* theFunction, Standard_Real theLower, Standard_Real theUpper, Standard_Integer theNbPnts) {
+    self_->Perform(*theFunction, theLower, theUpper, theNbPnts);
+}
+extern "C" void math_KronrodSingleIntegration_perform_function_real2_int_real_int(math_KronrodSingleIntegration* self_, math_Function* theFunction, Standard_Real theLower, Standard_Real theUpper, Standard_Integer theNbPnts, Standard_Real theTolerance, Standard_Integer theMaxNbIter) {
+    self_->Perform(*theFunction, theLower, theUpper, theNbPnts, theTolerance, theMaxNbIter);
+}
+extern "C" Standard_Boolean math_KronrodSingleIntegration_is_done(const math_KronrodSingleIntegration* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Real math_KronrodSingleIntegration_value(const math_KronrodSingleIntegration* self_) {
+    return self_->Value();
+}
+extern "C" Standard_Real math_KronrodSingleIntegration_error_reached(const math_KronrodSingleIntegration* self_) {
+    return self_->ErrorReached();
+}
+extern "C" Standard_Real math_KronrodSingleIntegration_absolut_error(const math_KronrodSingleIntegration* self_) {
+    return self_->AbsolutError();
+}
+extern "C" Standard_Integer math_KronrodSingleIntegration_order_reached(const math_KronrodSingleIntegration* self_) {
+    return self_->OrderReached();
+}
+extern "C" Standard_Integer math_KronrodSingleIntegration_nb_iter_reached(const math_KronrodSingleIntegration* self_) {
+    return self_->NbIterReached();
+}
+extern "C" void math_KronrodSingleIntegration_destructor(math_KronrodSingleIntegration* self_) { delete self_; }
+
+// ========================
+// math_Matrix wrappers
+// ========================
+
+extern "C" math_Matrix* math_Matrix_ctor_int4(Standard_Integer LowerRow, Standard_Integer UpperRow, Standard_Integer LowerCol, Standard_Integer UpperCol) {
+    return new math_Matrix(LowerRow, UpperRow, LowerCol, UpperCol);
+}
+extern "C" math_Matrix* math_Matrix_ctor_int4_real(Standard_Integer LowerRow, Standard_Integer UpperRow, Standard_Integer LowerCol, Standard_Integer UpperCol, Standard_Real InitialValue) {
+    return new math_Matrix(LowerRow, UpperRow, LowerCol, UpperCol, InitialValue);
+}
+extern "C" math_Matrix* math_Matrix_ctor_matrix(const math_Matrix* Other) {
+    return new math_Matrix(*Other);
+}
+extern "C" math_Matrix* math_Matrix_multiplied_real(const math_Matrix* self_, Standard_Real Right) {
+    return new math_Matrix(self_->Multiplied(Right));
+}
+extern "C" math_Matrix* math_Matrix_t_multiplied(const math_Matrix* self_, Standard_Real Right) {
+    return new math_Matrix(self_->TMultiplied(Right));
+}
+extern "C" math_Matrix* math_Matrix_divided(const math_Matrix* self_, Standard_Real Right) {
+    return new math_Matrix(self_->Divided(Right));
+}
+extern "C" math_Matrix* math_Matrix_added(const math_Matrix* self_, const math_Matrix* Right) {
+    return new math_Matrix(self_->Added(*Right));
+}
+extern "C" math_Matrix* math_Matrix_subtracted(const math_Matrix* self_, const math_Matrix* Right) {
+    return new math_Matrix(self_->Subtracted(*Right));
+}
+extern "C" math_Matrix* math_Matrix_transposed(const math_Matrix* self_) {
+    return new math_Matrix(self_->Transposed());
+}
+extern "C" math_Matrix* math_Matrix_inverse(const math_Matrix* self_) {
+    return new math_Matrix(self_->Inverse());
+}
+extern "C" math_Matrix* math_Matrix_t_multiply_matrix(const math_Matrix* self_, const math_Matrix* Right) {
+    return new math_Matrix(self_->TMultiply(*Right));
+}
+extern "C" math_Matrix* math_Matrix_multiplied_matrix(const math_Matrix* self_, const math_Matrix* Right) {
+    return new math_Matrix(self_->Multiplied(*Right));
+}
+extern "C" math_Matrix* math_Matrix_opposite(math_Matrix* self_) {
+    return new math_Matrix(self_->Opposite());
+}
+extern "C" Standard_Real& math_Matrix_value(math_Matrix* self_, Standard_Integer Row, Standard_Integer Col) {
+    return self_->Value(Row, Col);
+}
+extern "C" void math_Matrix_init(math_Matrix* self_, Standard_Real InitialValue) {
+    self_->Init(InitialValue);
+}
+extern "C" Standard_Integer math_Matrix_row_number(const math_Matrix* self_) {
+    return self_->RowNumber();
+}
+extern "C" Standard_Integer math_Matrix_col_number(const math_Matrix* self_) {
+    return self_->ColNumber();
+}
+extern "C" Standard_Integer math_Matrix_lower_row(const math_Matrix* self_) {
+    return self_->LowerRow();
+}
+extern "C" Standard_Integer math_Matrix_upper_row(const math_Matrix* self_) {
+    return self_->UpperRow();
+}
+extern "C" Standard_Integer math_Matrix_lower_col(const math_Matrix* self_) {
+    return self_->LowerCol();
+}
+extern "C" Standard_Integer math_Matrix_upper_col(const math_Matrix* self_) {
+    return self_->UpperCol();
+}
+extern "C" Standard_Real math_Matrix_determinant(const math_Matrix* self_) {
+    return self_->Determinant();
+}
+extern "C" void math_Matrix_transpose(math_Matrix* self_) {
+    self_->Transpose();
+}
+extern "C" void math_Matrix_invert(math_Matrix* self_) {
+    self_->Invert();
+}
+extern "C" void math_Matrix_multiply_real(math_Matrix* self_, Standard_Real Right) {
+    self_->Multiply(Right);
+}
+extern "C" void math_Matrix_divide(math_Matrix* self_, Standard_Real Right) {
+    self_->Divide(Right);
+}
+extern "C" void math_Matrix_add_matrix(math_Matrix* self_, const math_Matrix* Right) {
+    self_->Add(*Right);
+}
+extern "C" void math_Matrix_add_matrix2(math_Matrix* self_, const math_Matrix* Left, const math_Matrix* Right) {
+    self_->Add(*Left, *Right);
+}
+extern "C" void math_Matrix_subtract_matrix(math_Matrix* self_, const math_Matrix* Right) {
+    self_->Subtract(*Right);
+}
+extern "C" void math_Matrix_set(math_Matrix* self_, Standard_Integer I1, Standard_Integer I2, Standard_Integer J1, Standard_Integer J2, const math_Matrix* M) {
+    self_->Set(I1, I2, J1, J2, *M);
+}
+extern "C" void math_Matrix_set_diag(math_Matrix* self_, Standard_Real Value) {
+    self_->SetDiag(Value);
+}
+extern "C" void math_Matrix_swap_row(math_Matrix* self_, Standard_Integer Row1, Standard_Integer Row2) {
+    self_->SwapRow(Row1, Row2);
+}
+extern "C" void math_Matrix_swap_col(math_Matrix* self_, Standard_Integer Col1, Standard_Integer Col2) {
+    self_->SwapCol(Col1, Col2);
+}
+extern "C" void math_Matrix_multiply_matrix2(math_Matrix* self_, const math_Matrix* Left, const math_Matrix* Right) {
+    self_->Multiply(*Left, *Right);
+}
+extern "C" void math_Matrix_t_multiply_matrix2(math_Matrix* self_, const math_Matrix* TLeft, const math_Matrix* Right) {
+    self_->TMultiply(*TLeft, *Right);
+}
+extern "C" void math_Matrix_subtract_matrix2(math_Matrix* self_, const math_Matrix* Left, const math_Matrix* Right) {
+    self_->Subtract(*Left, *Right);
+}
+extern "C" void math_Matrix_multiply_matrix(math_Matrix* self_, const math_Matrix* Right) {
+    self_->Multiply(*Right);
+}
+extern "C" void math_Matrix_destructor(math_Matrix* self_) { delete self_; }
+
+// ========================
+// math_MultipleVarFunction wrappers
+// ========================
+
+extern "C" Standard_Integer math_MultipleVarFunction_nb_variables(const math_MultipleVarFunction* self_) {
+    return self_->NbVariables();
+}
+extern "C" Standard_Integer math_MultipleVarFunction_get_state_number(math_MultipleVarFunction* self_) {
+    return self_->GetStateNumber();
+}
+extern "C" void math_MultipleVarFunction_destructor(math_MultipleVarFunction* self_) { delete self_; }
+
+// ========================
+// math_MultipleVarFunctionWithGradient wrappers
+// ========================
+
+extern "C" Standard_Integer math_MultipleVarFunctionWithGradient_nb_variables(const math_MultipleVarFunctionWithGradient* self_) {
+    return self_->NbVariables();
+}
+extern "C" const math_MultipleVarFunction* math_MultipleVarFunctionWithGradient_as_math_MultipleVarFunction(const math_MultipleVarFunctionWithGradient* self_) { return static_cast<const math_MultipleVarFunction*>(self_); }
+extern "C" math_MultipleVarFunction* math_MultipleVarFunctionWithGradient_as_math_MultipleVarFunction_mut(math_MultipleVarFunctionWithGradient* self_) { return static_cast<math_MultipleVarFunction*>(self_); }
+extern "C" Standard_Integer math_MultipleVarFunctionWithGradient_inherited_GetStateNumber(math_MultipleVarFunctionWithGradient* self) {
+    return self->GetStateNumber();
+}
+extern "C" void math_MultipleVarFunctionWithGradient_destructor(math_MultipleVarFunctionWithGradient* self_) { delete self_; }
+
+// ========================
+// math_MultipleVarFunctionWithHessian wrappers
+// ========================
+
+extern "C" Standard_Integer math_MultipleVarFunctionWithHessian_nb_variables(const math_MultipleVarFunctionWithHessian* self_) {
+    return self_->NbVariables();
+}
+extern "C" const math_MultipleVarFunction* math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunction(const math_MultipleVarFunctionWithHessian* self_) { return static_cast<const math_MultipleVarFunction*>(self_); }
+extern "C" math_MultipleVarFunction* math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunction_mut(math_MultipleVarFunctionWithHessian* self_) { return static_cast<math_MultipleVarFunction*>(self_); }
+extern "C" const math_MultipleVarFunctionWithGradient* math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunctionWithGradient(const math_MultipleVarFunctionWithHessian* self_) { return static_cast<const math_MultipleVarFunctionWithGradient*>(self_); }
+extern "C" math_MultipleVarFunctionWithGradient* math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunctionWithGradient_mut(math_MultipleVarFunctionWithHessian* self_) { return static_cast<math_MultipleVarFunctionWithGradient*>(self_); }
+extern "C" Standard_Integer math_MultipleVarFunctionWithHessian_inherited_GetStateNumber(math_MultipleVarFunctionWithHessian* self) {
+    return self->GetStateNumber();
+}
+extern "C" void math_MultipleVarFunctionWithHessian_destructor(math_MultipleVarFunctionWithHessian* self_) { delete self_; }
+
+// ========================
+// math_NewtonFunctionRoot wrappers
+// ========================
+
+extern "C" math_NewtonFunctionRoot* math_NewtonFunctionRoot_ctor_functionwithderivative_real3_int(math_FunctionWithDerivative* F, Standard_Real Guess, Standard_Real EpsX, Standard_Real EpsF, Standard_Integer NbIterations) {
+    return new math_NewtonFunctionRoot(*F, Guess, EpsX, EpsF, NbIterations);
+}
+extern "C" math_NewtonFunctionRoot* math_NewtonFunctionRoot_ctor_functionwithderivative_real5_int(math_FunctionWithDerivative* F, Standard_Real Guess, Standard_Real EpsX, Standard_Real EpsF, Standard_Real A, Standard_Real B, Standard_Integer NbIterations) {
+    return new math_NewtonFunctionRoot(*F, Guess, EpsX, EpsF, A, B, NbIterations);
+}
+extern "C" math_NewtonFunctionRoot* math_NewtonFunctionRoot_ctor_real4_int(Standard_Real A, Standard_Real B, Standard_Real EpsX, Standard_Real EpsF, Standard_Integer NbIterations) {
+    return new math_NewtonFunctionRoot(A, B, EpsX, EpsF, NbIterations);
+}
+extern "C" void math_NewtonFunctionRoot_perform(math_NewtonFunctionRoot* self_, math_FunctionWithDerivative* F, Standard_Real Guess) {
+    self_->Perform(*F, Guess);
+}
+extern "C" Standard_Boolean math_NewtonFunctionRoot_is_done(const math_NewtonFunctionRoot* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Real math_NewtonFunctionRoot_root(const math_NewtonFunctionRoot* self_) {
+    return self_->Root();
+}
+extern "C" Standard_Real math_NewtonFunctionRoot_derivative(const math_NewtonFunctionRoot* self_) {
+    return self_->Derivative();
+}
+extern "C" Standard_Real math_NewtonFunctionRoot_value(const math_NewtonFunctionRoot* self_) {
+    return self_->Value();
+}
+extern "C" Standard_Integer math_NewtonFunctionRoot_nb_iterations(const math_NewtonFunctionRoot* self_) {
+    return self_->NbIterations();
+}
+extern "C" void math_NewtonFunctionRoot_destructor(math_NewtonFunctionRoot* self_) { delete self_; }
+
+// ========================
+// math_NewtonFunctionSetRoot wrappers
+// ========================
+
+extern "C" math_NewtonFunctionSetRoot* math_NewtonFunctionSetRoot_ctor_functionsetwithderivatives_vector_real_int(math_FunctionSetWithDerivatives* theFunction, const math_Vector* theXTolerance, Standard_Real theFTolerance, Standard_Integer tehNbIterations) {
+    return new math_NewtonFunctionSetRoot(*theFunction, *theXTolerance, theFTolerance, tehNbIterations);
+}
+extern "C" math_NewtonFunctionSetRoot* math_NewtonFunctionSetRoot_ctor_functionsetwithderivatives_real_int(math_FunctionSetWithDerivatives* theFunction, Standard_Real theFTolerance, Standard_Integer theNbIterations) {
+    return new math_NewtonFunctionSetRoot(*theFunction, theFTolerance, theNbIterations);
+}
+extern "C" Standard_Boolean math_NewtonFunctionSetRoot_is_solution_reached(math_NewtonFunctionSetRoot* self_, math_FunctionSetWithDerivatives* F) {
+    return self_->IsSolutionReached(*F);
+}
+extern "C" Standard_Boolean math_NewtonFunctionSetRoot_is_done(const math_NewtonFunctionSetRoot* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Integer math_NewtonFunctionSetRoot_state_number(const math_NewtonFunctionSetRoot* self_) {
+    return self_->StateNumber();
+}
+extern "C" const math_Matrix& math_NewtonFunctionSetRoot_derivative(const math_NewtonFunctionSetRoot* self_) {
+    return self_->Derivative();
+}
+extern "C" void math_NewtonFunctionSetRoot_derivative_matrix(const math_NewtonFunctionSetRoot* self_, math_Matrix* Der) {
+    self_->Derivative(*Der);
+}
+extern "C" Standard_Integer math_NewtonFunctionSetRoot_nb_iterations(const math_NewtonFunctionSetRoot* self_) {
+    return self_->NbIterations();
+}
+extern "C" void math_NewtonFunctionSetRoot_destructor(math_NewtonFunctionSetRoot* self_) { delete self_; }
+
+// ========================
+// math_NewtonMinimum wrappers
+// ========================
+
+extern "C" math_NewtonMinimum* math_NewtonMinimum_ctor_multiplevarfunctionwithhessian_real_int_real_bool(const math_MultipleVarFunctionWithHessian* theFunction, Standard_Real theTolerance, Standard_Integer theNbIterations, Standard_Real theConvexity, Standard_Boolean theWithSingularity) {
+    return new math_NewtonMinimum(*theFunction, theTolerance, theNbIterations, theConvexity, theWithSingularity);
+}
+extern "C" int32_t math_NewtonMinimum_get_status(const math_NewtonMinimum* self_) {
+    return static_cast<int32_t>(self_->GetStatus());
+}
+extern "C" Standard_Boolean math_NewtonMinimum_is_converged(const math_NewtonMinimum* self_) {
+    return self_->IsConverged();
+}
+extern "C" Standard_Boolean math_NewtonMinimum_is_done(const math_NewtonMinimum* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Boolean math_NewtonMinimum_is_convex(const math_NewtonMinimum* self_) {
+    return self_->IsConvex();
+}
+extern "C" Standard_Real math_NewtonMinimum_minimum(const math_NewtonMinimum* self_) {
+    return self_->Minimum();
+}
+extern "C" Standard_Integer math_NewtonMinimum_nb_iterations(const math_NewtonMinimum* self_) {
+    return self_->NbIterations();
+}
+extern "C" void math_NewtonMinimum_destructor(math_NewtonMinimum* self_) { delete self_; }
+
+// ========================
+// math_NotSquare wrappers
+// ========================
+
+extern "C" math_NotSquare* math_NotSquare_ctor() {
+    return new math_NotSquare();
+}
+extern "C" math_NotSquare* math_NotSquare_ctor_charptr(const char* theMessage) {
+    return new math_NotSquare(theMessage);
+}
+extern "C" math_NotSquare* math_NotSquare_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new math_NotSquare(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& math_NotSquare_dynamic_type(const math_NotSquare* self_) {
+    return self_->DynamicType();
+}
+extern "C" void math_NotSquare_raise(const char* theMessage) {
+    return math_NotSquare::Raise(theMessage);
+}
+extern "C" const char* math_NotSquare_get_type_name() {
+    return math_NotSquare::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& math_NotSquare_get_type_descriptor() {
+    return math_NotSquare::get_type_descriptor();
+}
+extern "C" void math_NotSquare_destructor(math_NotSquare* self_) { delete self_; }
+
+// ========================
+// math_PSO wrappers
+// ========================
+
+extern "C" void math_PSO_destructor(math_PSO* self_) { delete self_; }
+
+// ========================
+// PSO_Particle wrappers
+// ========================
+
+extern "C" PSO_Particle* PSO_Particle_ctor() {
+    return new PSO_Particle();
+}
+extern "C" void PSO_Particle_destructor(PSO_Particle* self_) { delete self_; }
+
+// ========================
+// math_PSOParticlesPool wrappers
+// ========================
+
+extern "C" math_PSOParticlesPool* math_PSOParticlesPool_ctor_int2(Standard_Integer theParticlesCount, Standard_Integer theDimensionCount) {
+    return new math_PSOParticlesPool(theParticlesCount, theDimensionCount);
+}
+extern "C" void math_PSOParticlesPool_destructor(math_PSOParticlesPool* self_) { delete self_; }
+
+// ========================
+// math_Powell wrappers
+// ========================
+
+extern "C" math_Powell* math_Powell_ctor_multiplevarfunction_real_int_real(const math_MultipleVarFunction* theFunction, Standard_Real theTolerance, Standard_Integer theNbIterations, Standard_Real theZEPS) {
+    return new math_Powell(*theFunction, theTolerance, theNbIterations, theZEPS);
+}
+extern "C" Standard_Boolean math_Powell_is_solution_reached(math_Powell* self_, math_MultipleVarFunction* theFunction) {
+    return self_->IsSolutionReached(*theFunction);
+}
+extern "C" Standard_Boolean math_Powell_is_done(const math_Powell* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Real math_Powell_minimum(const math_Powell* self_) {
+    return self_->Minimum();
+}
+extern "C" Standard_Integer math_Powell_nb_iterations(const math_Powell* self_) {
+    return self_->NbIterations();
+}
+extern "C" void math_Powell_destructor(math_Powell* self_) { delete self_; }
+
+// ========================
+// math_SVD wrappers
+// ========================
+
+extern "C" math_SVD* math_SVD_ctor_matrix(const math_Matrix* A) {
+    return new math_SVD(*A);
+}
+extern "C" Standard_Boolean math_SVD_is_done(const math_SVD* self_) {
+    return self_->IsDone();
+}
+extern "C" void math_SVD_pseudo_inverse(math_SVD* self_, math_Matrix* Inv, Standard_Real Eps) {
+    self_->PseudoInverse(*Inv, Eps);
+}
+extern "C" void math_SVD_destructor(math_SVD* self_) { delete self_; }
+
+// ========================
+// math_SingularMatrix wrappers
+// ========================
+
+extern "C" math_SingularMatrix* math_SingularMatrix_ctor() {
+    return new math_SingularMatrix();
+}
+extern "C" math_SingularMatrix* math_SingularMatrix_ctor_charptr(const char* theMessage) {
+    return new math_SingularMatrix(theMessage);
+}
+extern "C" math_SingularMatrix* math_SingularMatrix_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new math_SingularMatrix(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& math_SingularMatrix_dynamic_type(const math_SingularMatrix* self_) {
+    return self_->DynamicType();
+}
+extern "C" void math_SingularMatrix_raise(const char* theMessage) {
+    return math_SingularMatrix::Raise(theMessage);
+}
+extern "C" const char* math_SingularMatrix_get_type_name() {
+    return math_SingularMatrix::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& math_SingularMatrix_get_type_descriptor() {
+    return math_SingularMatrix::get_type_descriptor();
+}
+extern "C" void math_SingularMatrix_destructor(math_SingularMatrix* self_) { delete self_; }
+
+// ========================
+// math_TrigonometricEquationFunction wrappers
+// ========================
+
+extern "C" math_TrigonometricEquationFunction* math_TrigonometricEquationFunction_ctor_real5(Standard_Real A, Standard_Real B, Standard_Real C, Standard_Real D, Standard_Real E) {
+    return new math_TrigonometricEquationFunction(A, B, C, D, E);
+}
+extern "C" Standard_Boolean math_TrigonometricEquationFunction_value(math_TrigonometricEquationFunction* self_, Standard_Real X, Standard_Real* F) {
+    return self_->Value(X, *F);
+}
+extern "C" Standard_Boolean math_TrigonometricEquationFunction_derivative(math_TrigonometricEquationFunction* self_, Standard_Real X, Standard_Real* D) {
+    return self_->Derivative(X, *D);
+}
+extern "C" Standard_Boolean math_TrigonometricEquationFunction_values(math_TrigonometricEquationFunction* self_, Standard_Real X, Standard_Real* F, Standard_Real* D) {
+    return self_->Values(X, *F, *D);
+}
+extern "C" const math_Function* math_TrigonometricEquationFunction_as_math_Function(const math_TrigonometricEquationFunction* self_) { return static_cast<const math_Function*>(self_); }
+extern "C" math_Function* math_TrigonometricEquationFunction_as_math_Function_mut(math_TrigonometricEquationFunction* self_) { return static_cast<math_Function*>(self_); }
+extern "C" const math_FunctionWithDerivative* math_TrigonometricEquationFunction_as_math_FunctionWithDerivative(const math_TrigonometricEquationFunction* self_) { return static_cast<const math_FunctionWithDerivative*>(self_); }
+extern "C" math_FunctionWithDerivative* math_TrigonometricEquationFunction_as_math_FunctionWithDerivative_mut(math_TrigonometricEquationFunction* self_) { return static_cast<math_FunctionWithDerivative*>(self_); }
+extern "C" Standard_Integer math_TrigonometricEquationFunction_inherited_GetStateNumber(math_TrigonometricEquationFunction* self) {
+    return self->GetStateNumber();
+}
+extern "C" void math_TrigonometricEquationFunction_destructor(math_TrigonometricEquationFunction* self_) { delete self_; }
+
+// ========================
+// math_TrigonometricFunctionRoots wrappers
+// ========================
+
+extern "C" math_TrigonometricFunctionRoots* math_TrigonometricFunctionRoots_ctor_real7(Standard_Real A, Standard_Real B, Standard_Real C, Standard_Real D, Standard_Real E, Standard_Real InfBound, Standard_Real SupBound) {
+    return new math_TrigonometricFunctionRoots(A, B, C, D, E, InfBound, SupBound);
+}
+extern "C" math_TrigonometricFunctionRoots* math_TrigonometricFunctionRoots_ctor_real4(Standard_Real D, Standard_Real E, Standard_Real InfBound, Standard_Real SupBound) {
+    return new math_TrigonometricFunctionRoots(D, E, InfBound, SupBound);
+}
+extern "C" math_TrigonometricFunctionRoots* math_TrigonometricFunctionRoots_ctor_real5(Standard_Real C, Standard_Real D, Standard_Real E, Standard_Real InfBound, Standard_Real SupBound) {
+    return new math_TrigonometricFunctionRoots(C, D, E, InfBound, SupBound);
+}
+extern "C" Standard_Boolean math_TrigonometricFunctionRoots_is_done(const math_TrigonometricFunctionRoots* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Boolean math_TrigonometricFunctionRoots_infinite_roots(const math_TrigonometricFunctionRoots* self_) {
+    return self_->InfiniteRoots();
+}
+extern "C" Standard_Real math_TrigonometricFunctionRoots_value(const math_TrigonometricFunctionRoots* self_, Standard_Integer Index) {
+    return self_->Value(Index);
+}
+extern "C" Standard_Integer math_TrigonometricFunctionRoots_nb_solutions(const math_TrigonometricFunctionRoots* self_) {
+    return self_->NbSolutions();
+}
+extern "C" void math_TrigonometricFunctionRoots_destructor(math_TrigonometricFunctionRoots* self_) { delete self_; }
+
+// ========================
+// math_Uzawa wrappers
+// ========================
+
+extern "C" math_Uzawa* math_Uzawa_ctor_matrix_vector2_real2_int(const math_Matrix* Cont, const math_Vector* Secont, const math_Vector* StartingPoint, Standard_Real EpsLix, Standard_Real EpsLic, Standard_Integer NbIterations) {
+    return new math_Uzawa(*Cont, *Secont, *StartingPoint, EpsLix, EpsLic, NbIterations);
+}
+extern "C" math_Uzawa* math_Uzawa_ctor_matrix_vector2_int2_real2_int(const math_Matrix* Cont, const math_Vector* Secont, const math_Vector* StartingPoint, Standard_Integer Nci, Standard_Integer Nce, Standard_Real EpsLix, Standard_Real EpsLic, Standard_Integer NbIterations) {
+    return new math_Uzawa(*Cont, *Secont, *StartingPoint, Nci, Nce, EpsLix, EpsLic, NbIterations);
+}
+extern "C" Standard_Boolean math_Uzawa_is_done(const math_Uzawa* self_) {
+    return self_->IsDone();
+}
+extern "C" Standard_Integer math_Uzawa_nb_iterations(const math_Uzawa* self_) {
+    return self_->NbIterations();
+}
+extern "C" const math_Matrix& math_Uzawa_inverse_cont(const math_Uzawa* self_) {
+    return self_->InverseCont();
+}
+extern "C" void math_Uzawa_destructor(math_Uzawa* self_) { delete self_; }
+
+// ========================
+// math_ValueAndWeight wrappers
+// ========================
+
+extern "C" math_ValueAndWeight* math_ValueAndWeight_ctor() {
+    return new math_ValueAndWeight();
+}
+extern "C" math_ValueAndWeight* math_ValueAndWeight_ctor_real2(Standard_Real theValue, Standard_Real theWeight) {
+    return new math_ValueAndWeight(theValue, theWeight);
+}
+extern "C" Standard_Real math_ValueAndWeight_value(const math_ValueAndWeight* self_) {
+    return self_->Value();
+}
+extern "C" Standard_Real math_ValueAndWeight_weight(const math_ValueAndWeight* self_) {
+    return self_->Weight();
+}
+extern "C" void math_ValueAndWeight_destructor(math_ValueAndWeight* self_) { delete self_; }
+
+// ========================
 // Message_Alert wrappers
 // ========================
 
@@ -33752,6 +39833,9 @@ extern "C" Message_Algorithm* Message_Algorithm_ctor() {
 extern "C" opencascade::handle<Message_Messenger>* Message_Algorithm_get_messenger(const Message_Algorithm* self_) {
     return new opencascade::handle<Message_Messenger>(self_->GetMessenger());
 }
+extern "C" opencascade::handle<TColStd_HPackedMapOfInteger>* Message_Algorithm_get_message_numbers(const Message_Algorithm* self_, int32_t theStatus) {
+    return new opencascade::handle<TColStd_HPackedMapOfInteger>(self_->GetMessageNumbers(static_cast<Message_Status>(theStatus)));
+}
 extern "C" opencascade::handle<TColStd_HSequenceOfHExtendedString>* Message_Algorithm_get_message_strings(const Message_Algorithm* self_, int32_t theStatus) {
     return new opencascade::handle<TColStd_HSequenceOfHExtendedString>(self_->GetMessageStrings(static_cast<Message_Status>(theStatus)));
 }
@@ -33805,6 +39889,9 @@ extern "C" void Message_Algorithm_add_status_execstatus_handlemessagealgorithm(M
 }
 extern "C" const opencascade::handle<Standard_Type>& Message_Algorithm_dynamic_type(const Message_Algorithm* self_) {
     return self_->DynamicType();
+}
+extern "C" TCollection_ExtendedString* Message_Algorithm_prepare_report(const opencascade::handle<TColStd_HPackedMapOfInteger>* theError, Standard_Integer theMaxCount) {
+    return new TCollection_ExtendedString(Message_Algorithm::PrepareReport(*theError, theMaxCount));
 }
 extern "C" const char* Message_Algorithm_get_type_name() {
     return Message_Algorithm::get_type_name();
@@ -34475,6 +40562,202 @@ extern "C" HandleMessageReport* Message_Report_to_handle(Message_Report* obj) {
 extern "C" const Message_Report* HandleMessageReport_get(const HandleMessageReport* handle) { return (*handle).get(); }
 extern "C" Message_Report* HandleMessageReport_get_mut(HandleMessageReport* handle) { return (*handle).get(); }
 extern "C" void Message_Report_destructor(Message_Report* self_) { delete self_; }
+
+// ========================
+// NCollection_AccAllocator wrappers
+// ========================
+
+extern "C" NCollection_AccAllocator* NCollection_AccAllocator_ctor_size(size_t theBlockSize) {
+    return new NCollection_AccAllocator(theBlockSize);
+}
+extern "C" const opencascade::handle<Standard_Type>& NCollection_AccAllocator_dynamic_type(const NCollection_AccAllocator* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* NCollection_AccAllocator_get_type_name() {
+    return NCollection_AccAllocator::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& NCollection_AccAllocator_get_type_descriptor() {
+    return NCollection_AccAllocator::get_type_descriptor();
+}
+extern "C" void NCollection_AccAllocator_destructor(NCollection_AccAllocator* self_) { delete self_; }
+
+// ========================
+// NCollection_AlignedAllocator wrappers
+// ========================
+
+extern "C" NCollection_AlignedAllocator* NCollection_AlignedAllocator_ctor_size(size_t theAlignment) {
+    return new NCollection_AlignedAllocator(theAlignment);
+}
+extern "C" const opencascade::handle<Standard_Type>& NCollection_AlignedAllocator_dynamic_type(const NCollection_AlignedAllocator* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* NCollection_AlignedAllocator_get_type_name() {
+    return NCollection_AlignedAllocator::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& NCollection_AlignedAllocator_get_type_descriptor() {
+    return NCollection_AlignedAllocator::get_type_descriptor();
+}
+extern "C" void NCollection_AlignedAllocator_destructor(NCollection_AlignedAllocator* self_) { delete self_; }
+
+// ========================
+// NCollection_BaseAllocator wrappers
+// ========================
+
+extern "C" const opencascade::handle<Standard_Type>& NCollection_BaseAllocator_dynamic_type(const NCollection_BaseAllocator* self_) {
+    return self_->DynamicType();
+}
+extern "C" const opencascade::handle<NCollection_BaseAllocator>& NCollection_BaseAllocator_common_base_allocator() {
+    return NCollection_BaseAllocator::CommonBaseAllocator();
+}
+extern "C" const char* NCollection_BaseAllocator_get_type_name() {
+    return NCollection_BaseAllocator::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& NCollection_BaseAllocator_get_type_descriptor() {
+    return NCollection_BaseAllocator::get_type_descriptor();
+}
+extern "C" HandleNCollectionBaseAllocator* NCollection_BaseAllocator_to_handle(NCollection_BaseAllocator* obj) {
+    return new HandleNCollectionBaseAllocator(obj);
+}
+extern "C" const NCollection_BaseAllocator* HandleNCollectionBaseAllocator_get(const HandleNCollectionBaseAllocator* handle) { return (*handle).get(); }
+extern "C" NCollection_BaseAllocator* HandleNCollectionBaseAllocator_get_mut(HandleNCollectionBaseAllocator* handle) { return (*handle).get(); }
+extern "C" void NCollection_BaseAllocator_destructor(NCollection_BaseAllocator* self_) { delete self_; }
+
+// ========================
+// NCollection_BaseList wrappers
+// ========================
+
+extern "C" Standard_Integer NCollection_BaseList_extent(const NCollection_BaseList* self_) {
+    return self_->Extent();
+}
+extern "C" Standard_Boolean NCollection_BaseList_is_empty(const NCollection_BaseList* self_) {
+    return self_->IsEmpty();
+}
+extern "C" const opencascade::handle<NCollection_BaseAllocator>& NCollection_BaseList_allocator(const NCollection_BaseList* self_) {
+    return self_->Allocator();
+}
+extern "C" void NCollection_BaseList_destructor(NCollection_BaseList* self_) { delete self_; }
+
+// ========================
+// NCollection_BasePointerVector wrappers
+// ========================
+
+extern "C" NCollection_BasePointerVector* NCollection_BasePointerVector_ctor() {
+    return new NCollection_BasePointerVector();
+}
+extern "C" NCollection_BasePointerVector* NCollection_BasePointerVector_ctor_basepointervector(const NCollection_BasePointerVector* theOther) {
+    return new NCollection_BasePointerVector(*theOther);
+}
+extern "C" Standard_Boolean NCollection_BasePointerVector_is_empty(const NCollection_BasePointerVector* self_) {
+    return self_->IsEmpty();
+}
+extern "C" size_t NCollection_BasePointerVector_size(const NCollection_BasePointerVector* self_) {
+    return self_->Size();
+}
+extern "C" size_t NCollection_BasePointerVector_capacity(const NCollection_BasePointerVector* self_) {
+    return self_->Capacity();
+}
+extern "C" void NCollection_BasePointerVector_remove_last(NCollection_BasePointerVector* self_) {
+    self_->RemoveLast();
+}
+extern "C" void NCollection_BasePointerVector_clear(NCollection_BasePointerVector* self_, Standard_Boolean theReleaseMemory) {
+    self_->Clear(theReleaseMemory);
+}
+extern "C" void NCollection_BasePointerVector_destructor(NCollection_BasePointerVector* self_) { delete self_; }
+
+// ========================
+// NCollection_Buffer wrappers
+// ========================
+
+extern "C" Standard_Boolean NCollection_Buffer_is_empty(const NCollection_Buffer* self_) {
+    return self_->IsEmpty();
+}
+extern "C" size_t NCollection_Buffer_size(const NCollection_Buffer* self_) {
+    return self_->Size();
+}
+extern "C" const opencascade::handle<NCollection_BaseAllocator>& NCollection_Buffer_allocator(const NCollection_Buffer* self_) {
+    return self_->Allocator();
+}
+extern "C" void NCollection_Buffer_set_allocator(NCollection_Buffer* self_, const opencascade::handle<NCollection_BaseAllocator>* theAlloc) {
+    self_->SetAllocator(*theAlloc);
+}
+extern "C" Standard_Boolean NCollection_Buffer_allocate(NCollection_Buffer* self_, size_t theSize) {
+    return self_->Allocate(theSize);
+}
+extern "C" void NCollection_Buffer_free(NCollection_Buffer* self_) {
+    self_->Free();
+}
+extern "C" const opencascade::handle<Standard_Type>& NCollection_Buffer_dynamic_type(const NCollection_Buffer* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* NCollection_Buffer_get_type_name() {
+    return NCollection_Buffer::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& NCollection_Buffer_get_type_descriptor() {
+    return NCollection_Buffer::get_type_descriptor();
+}
+extern "C" HandleNCollectionBuffer* NCollection_Buffer_to_handle(NCollection_Buffer* obj) {
+    return new HandleNCollectionBuffer(obj);
+}
+extern "C" const NCollection_Buffer* HandleNCollectionBuffer_get(const HandleNCollectionBuffer* handle) { return (*handle).get(); }
+extern "C" NCollection_Buffer* HandleNCollectionBuffer_get_mut(HandleNCollectionBuffer* handle) { return (*handle).get(); }
+extern "C" void NCollection_Buffer_destructor(NCollection_Buffer* self_) { delete self_; }
+
+// ========================
+// NCollection_HeapAllocator wrappers
+// ========================
+
+extern "C" const opencascade::handle<Standard_Type>& NCollection_HeapAllocator_dynamic_type(const NCollection_HeapAllocator* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* NCollection_HeapAllocator_get_type_name() {
+    return NCollection_HeapAllocator::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& NCollection_HeapAllocator_get_type_descriptor() {
+    return NCollection_HeapAllocator::get_type_descriptor();
+}
+extern "C" void NCollection_HeapAllocator_destructor(NCollection_HeapAllocator* self_) { delete self_; }
+
+// ========================
+// NCollection_IncAllocator wrappers
+// ========================
+
+extern "C" NCollection_IncAllocator* NCollection_IncAllocator_ctor_size(size_t theBlockSize) {
+    return new NCollection_IncAllocator(theBlockSize);
+}
+extern "C" void NCollection_IncAllocator_set_thread_safe(NCollection_IncAllocator* self_, Standard_Boolean theIsThreadSafe) {
+    self_->SetThreadSafe(theIsThreadSafe);
+}
+extern "C" void NCollection_IncAllocator_reset(NCollection_IncAllocator* self_, Standard_Boolean theReleaseMemory) {
+    self_->Reset(theReleaseMemory);
+}
+extern "C" const opencascade::handle<Standard_Type>& NCollection_IncAllocator_dynamic_type(const NCollection_IncAllocator* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* NCollection_IncAllocator_get_type_name() {
+    return NCollection_IncAllocator::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& NCollection_IncAllocator_get_type_descriptor() {
+    return NCollection_IncAllocator::get_type_descriptor();
+}
+extern "C" void NCollection_IncAllocator_destructor(NCollection_IncAllocator* self_) { delete self_; }
+
+// ========================
+// NCollection_WinHeapAllocator wrappers
+// ========================
+
+extern "C" NCollection_WinHeapAllocator* NCollection_WinHeapAllocator_ctor_size(size_t theInitSizeBytes) {
+    return new NCollection_WinHeapAllocator(theInitSizeBytes);
+}
+extern "C" const opencascade::handle<Standard_Type>& NCollection_WinHeapAllocator_dynamic_type(const NCollection_WinHeapAllocator* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* NCollection_WinHeapAllocator_get_type_name() {
+    return NCollection_WinHeapAllocator::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& NCollection_WinHeapAllocator_get_type_descriptor() {
+    return NCollection_WinHeapAllocator::get_type_descriptor();
+}
+extern "C" void NCollection_WinHeapAllocator_destructor(NCollection_WinHeapAllocator* self_) { delete self_; }
 
 // ========================
 // Poly_ArrayOfNodes wrappers
@@ -38396,6 +44679,1050 @@ extern "C" Standard_Real ShapeUpgrade_WireDivide_inherited_LimitTolerance(const 
 extern "C" void ShapeUpgrade_WireDivide_destructor(ShapeUpgrade_WireDivide* self_) { delete self_; }
 
 // ========================
+// Standard_AbortiveTransaction wrappers
+// ========================
+
+extern "C" Standard_AbortiveTransaction* Standard_AbortiveTransaction_ctor() {
+    return new Standard_AbortiveTransaction();
+}
+extern "C" Standard_AbortiveTransaction* Standard_AbortiveTransaction_ctor_charptr(const char* theMessage) {
+    return new Standard_AbortiveTransaction(theMessage);
+}
+extern "C" Standard_AbortiveTransaction* Standard_AbortiveTransaction_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_AbortiveTransaction(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_AbortiveTransaction_dynamic_type(const Standard_AbortiveTransaction* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_AbortiveTransaction_raise(const char* theMessage) {
+    return Standard_AbortiveTransaction::Raise(theMessage);
+}
+extern "C" const char* Standard_AbortiveTransaction_get_type_name() {
+    return Standard_AbortiveTransaction::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_AbortiveTransaction_get_type_descriptor() {
+    return Standard_AbortiveTransaction::get_type_descriptor();
+}
+extern "C" void Standard_AbortiveTransaction_destructor(Standard_AbortiveTransaction* self_) { delete self_; }
+
+// ========================
+// Standard_ArrayStreamBuffer wrappers
+// ========================
+
+extern "C" Standard_ArrayStreamBuffer* Standard_ArrayStreamBuffer_ctor_charptr_size(const char* theBegin, size_t theSize) {
+    return new Standard_ArrayStreamBuffer(theBegin, theSize);
+}
+extern "C" void Standard_ArrayStreamBuffer_init(Standard_ArrayStreamBuffer* self_, const char* theBegin, size_t theSize) {
+    self_->Init(theBegin, theSize);
+}
+extern "C" void Standard_ArrayStreamBuffer_destructor(Standard_ArrayStreamBuffer* self_) { delete self_; }
+
+// ========================
+// Standard_CLocaleSentry wrappers
+// ========================
+
+extern "C" Standard_CLocaleSentry* Standard_CLocaleSentry_ctor() {
+    return new Standard_CLocaleSentry();
+}
+extern "C" void Standard_CLocaleSentry_destructor(Standard_CLocaleSentry* self_) { delete self_; }
+
+// ========================
+// Standard_Condition wrappers
+// ========================
+
+extern "C" Standard_Condition* Standard_Condition_ctor_bool(Standard_Boolean theIsSet) {
+    return new Standard_Condition(theIsSet);
+}
+extern "C" void Standard_Condition_set(Standard_Condition* self_) {
+    self_->Set();
+}
+extern "C" void Standard_Condition_reset(Standard_Condition* self_) {
+    self_->Reset();
+}
+extern "C" void Standard_Condition_wait(Standard_Condition* self_) {
+    self_->Wait();
+}
+extern "C" Standard_Boolean Standard_Condition_wait_int(Standard_Condition* self_, Standard_Integer theTimeMilliseconds) {
+    return self_->Wait(theTimeMilliseconds);
+}
+extern "C" Standard_Boolean Standard_Condition_check(Standard_Condition* self_) {
+    return self_->Check();
+}
+extern "C" Standard_Boolean Standard_Condition_check_reset(Standard_Condition* self_) {
+    return self_->CheckReset();
+}
+extern "C" void Standard_Condition_destructor(Standard_Condition* self_) { delete self_; }
+
+// ========================
+// Standard_ConstructionError wrappers
+// ========================
+
+extern "C" Standard_ConstructionError* Standard_ConstructionError_ctor() {
+    return new Standard_ConstructionError();
+}
+extern "C" Standard_ConstructionError* Standard_ConstructionError_ctor_charptr(const char* theMessage) {
+    return new Standard_ConstructionError(theMessage);
+}
+extern "C" Standard_ConstructionError* Standard_ConstructionError_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_ConstructionError(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_ConstructionError_dynamic_type(const Standard_ConstructionError* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_ConstructionError_raise(const char* theMessage) {
+    return Standard_ConstructionError::Raise(theMessage);
+}
+extern "C" const char* Standard_ConstructionError_get_type_name() {
+    return Standard_ConstructionError::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_ConstructionError_get_type_descriptor() {
+    return Standard_ConstructionError::get_type_descriptor();
+}
+extern "C" void Standard_ConstructionError_destructor(Standard_ConstructionError* self_) { delete self_; }
+
+// ========================
+// Standard_DimensionError wrappers
+// ========================
+
+extern "C" Standard_DimensionError* Standard_DimensionError_ctor() {
+    return new Standard_DimensionError();
+}
+extern "C" Standard_DimensionError* Standard_DimensionError_ctor_charptr(const char* theMessage) {
+    return new Standard_DimensionError(theMessage);
+}
+extern "C" Standard_DimensionError* Standard_DimensionError_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_DimensionError(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_DimensionError_dynamic_type(const Standard_DimensionError* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_DimensionError_raise(const char* theMessage) {
+    return Standard_DimensionError::Raise(theMessage);
+}
+extern "C" const char* Standard_DimensionError_get_type_name() {
+    return Standard_DimensionError::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_DimensionError_get_type_descriptor() {
+    return Standard_DimensionError::get_type_descriptor();
+}
+extern "C" void Standard_DimensionError_destructor(Standard_DimensionError* self_) { delete self_; }
+
+// ========================
+// Standard_DimensionMismatch wrappers
+// ========================
+
+extern "C" Standard_DimensionMismatch* Standard_DimensionMismatch_ctor() {
+    return new Standard_DimensionMismatch();
+}
+extern "C" Standard_DimensionMismatch* Standard_DimensionMismatch_ctor_charptr(const char* theMessage) {
+    return new Standard_DimensionMismatch(theMessage);
+}
+extern "C" Standard_DimensionMismatch* Standard_DimensionMismatch_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_DimensionMismatch(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_DimensionMismatch_dynamic_type(const Standard_DimensionMismatch* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_DimensionMismatch_raise(const char* theMessage) {
+    return Standard_DimensionMismatch::Raise(theMessage);
+}
+extern "C" const char* Standard_DimensionMismatch_get_type_name() {
+    return Standard_DimensionMismatch::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_DimensionMismatch_get_type_descriptor() {
+    return Standard_DimensionMismatch::get_type_descriptor();
+}
+extern "C" void Standard_DimensionMismatch_destructor(Standard_DimensionMismatch* self_) { delete self_; }
+
+// ========================
+// Standard_DivideByZero wrappers
+// ========================
+
+extern "C" Standard_DivideByZero* Standard_DivideByZero_ctor() {
+    return new Standard_DivideByZero();
+}
+extern "C" Standard_DivideByZero* Standard_DivideByZero_ctor_charptr(const char* theMessage) {
+    return new Standard_DivideByZero(theMessage);
+}
+extern "C" Standard_DivideByZero* Standard_DivideByZero_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_DivideByZero(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_DivideByZero_dynamic_type(const Standard_DivideByZero* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_DivideByZero_raise(const char* theMessage) {
+    return Standard_DivideByZero::Raise(theMessage);
+}
+extern "C" const char* Standard_DivideByZero_get_type_name() {
+    return Standard_DivideByZero::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_DivideByZero_get_type_descriptor() {
+    return Standard_DivideByZero::get_type_descriptor();
+}
+extern "C" void Standard_DivideByZero_destructor(Standard_DivideByZero* self_) { delete self_; }
+
+// ========================
+// Standard_DomainError wrappers
+// ========================
+
+extern "C" Standard_DomainError* Standard_DomainError_ctor() {
+    return new Standard_DomainError();
+}
+extern "C" Standard_DomainError* Standard_DomainError_ctor_charptr(const char* theMessage) {
+    return new Standard_DomainError(theMessage);
+}
+extern "C" Standard_DomainError* Standard_DomainError_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_DomainError(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_DomainError_dynamic_type(const Standard_DomainError* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_DomainError_raise(const char* theMessage) {
+    return Standard_DomainError::Raise(theMessage);
+}
+extern "C" const char* Standard_DomainError_get_type_name() {
+    return Standard_DomainError::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_DomainError_get_type_descriptor() {
+    return Standard_DomainError::get_type_descriptor();
+}
+extern "C" void Standard_DomainError_destructor(Standard_DomainError* self_) { delete self_; }
+
+// ========================
+// Standard_DumpValue wrappers
+// ========================
+
+extern "C" Standard_DumpValue* Standard_DumpValue_ctor() {
+    return new Standard_DumpValue();
+}
+extern "C" Standard_DumpValue* Standard_DumpValue_ctor_asciistring_int(const TCollection_AsciiString* theValue, Standard_Integer theStartPos) {
+    return new Standard_DumpValue(*theValue, theStartPos);
+}
+extern "C" void Standard_DumpValue_destructor(Standard_DumpValue* self_) { delete self_; }
+
+// ========================
+// Standard_Dump wrappers
+// ========================
+
+extern "C" Standard_Dump* Standard_Dump_ctor() {
+    return new Standard_Dump();
+}
+extern "C" Standard_Boolean Standard_Dump_has_child_key(const TCollection_AsciiString* theSourceValue) {
+    return Standard_Dump::HasChildKey(*theSourceValue);
+}
+extern "C" const char* Standard_Dump_json_key_to_string(int32_t theKey) {
+    return Standard_Dump::JsonKeyToString(static_cast<Standard_JsonKey>(theKey));
+}
+extern "C" Standard_Integer Standard_Dump_json_key_length(int32_t theKey) {
+    return Standard_Dump::JsonKeyLength(static_cast<Standard_JsonKey>(theKey));
+}
+extern "C" TCollection_AsciiString* Standard_Dump_get_pointer_prefix() {
+    return new TCollection_AsciiString(Standard_Dump::GetPointerPrefix());
+}
+extern "C" Standard_Boolean Standard_Dump_process_stream_name(const TCollection_AsciiString* theStreamStr, const TCollection_AsciiString* theName, Standard_Integer* theStreamPos) {
+    return Standard_Dump::ProcessStreamName(*theStreamStr, *theName, *theStreamPos);
+}
+extern "C" Standard_Boolean Standard_Dump_process_field_name(const TCollection_AsciiString* theStreamStr, const TCollection_AsciiString* theName, Standard_Integer* theStreamPos) {
+    return Standard_Dump::ProcessFieldName(*theStreamStr, *theName, *theStreamPos);
+}
+extern "C" Standard_Boolean Standard_Dump_init_real_values(const TCollection_AsciiString* theStreamStr, Standard_Integer* theStreamPos, Standard_Integer theCount) {
+    return Standard_Dump::InitRealValues(*theStreamStr, *theStreamPos, theCount);
+}
+extern "C" Standard_Boolean Standard_Dump_init_value(const TCollection_AsciiString* theStreamStr, Standard_Integer* theStreamPos, TCollection_AsciiString* theValue) {
+    return Standard_Dump::InitValue(*theStreamStr, *theStreamPos, *theValue);
+}
+extern "C" TCollection_AsciiString* Standard_Dump_dump_field_to_name(const TCollection_AsciiString* theField) {
+    return new TCollection_AsciiString(Standard_Dump::DumpFieldToName(*theField));
+}
+extern "C" void Standard_Dump_destructor(Standard_Dump* self_) { delete self_; }
+
+// ========================
+// Standard_ErrorHandler wrappers
+// ========================
+
+extern "C" Standard_ErrorHandler* Standard_ErrorHandler_ctor() {
+    return new Standard_ErrorHandler();
+}
+extern "C" opencascade::handle<Standard_Failure>* Standard_ErrorHandler_error(const Standard_ErrorHandler* self_) {
+    return new opencascade::handle<Standard_Failure>(self_->Error());
+}
+extern "C" void Standard_ErrorHandler_destroy(Standard_ErrorHandler* self_) {
+    self_->Destroy();
+}
+extern "C" void Standard_ErrorHandler_unlink(Standard_ErrorHandler* self_) {
+    self_->Unlink();
+}
+extern "C" Standard_Boolean Standard_ErrorHandler_catches(Standard_ErrorHandler* self_, const opencascade::handle<Standard_Type>* aType) {
+    return self_->Catches(*aType);
+}
+extern "C" opencascade::handle<Standard_Failure>* Standard_ErrorHandler_last_caught_error() {
+    return new opencascade::handle<Standard_Failure>(Standard_ErrorHandler::LastCaughtError());
+}
+extern "C" Standard_Boolean Standard_ErrorHandler_is_in_try_block() {
+    return Standard_ErrorHandler::IsInTryBlock();
+}
+extern "C" void Standard_ErrorHandler_destructor(Standard_ErrorHandler* self_) { delete self_; }
+
+// ========================
+// Standard_Failure wrappers
+// ========================
+
+extern "C" Standard_Failure* Standard_Failure_ctor() {
+    return new Standard_Failure();
+}
+extern "C" Standard_Failure* Standard_Failure_ctor_failure(const Standard_Failure* f) {
+    return new Standard_Failure(*f);
+}
+extern "C" Standard_Failure* Standard_Failure_ctor_charptr(const char* theDesc) {
+    return new Standard_Failure(theDesc);
+}
+extern "C" Standard_Failure* Standard_Failure_ctor_charptr2(const char* theDesc, const char* theStackTrace) {
+    return new Standard_Failure(theDesc, theStackTrace);
+}
+extern "C" void Standard_Failure_set_message_string(Standard_Failure* self_, const char* theMessage) {
+    self_->SetMessageString(theMessage);
+}
+extern "C" void Standard_Failure_set_stack_string(Standard_Failure* self_, const char* theStack) {
+    self_->SetStackString(theStack);
+}
+extern "C" void Standard_Failure_reraise_charptr(Standard_Failure* self_, const char* aMessage) {
+    self_->Reraise(aMessage);
+}
+extern "C" const char* Standard_Failure_get_message_string(const Standard_Failure* self_) {
+    return self_->GetMessageString();
+}
+extern "C" const char* Standard_Failure_get_stack_string(const Standard_Failure* self_) {
+    return self_->GetStackString();
+}
+extern "C" void Standard_Failure_reraise(Standard_Failure* self_) {
+    self_->Reraise();
+}
+extern "C" void Standard_Failure_jump(Standard_Failure* self_) {
+    self_->Jump();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_Failure_dynamic_type(const Standard_Failure* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_Failure_raise(const char* aMessage) {
+    return Standard_Failure::Raise(aMessage);
+}
+extern "C" opencascade::handle<Standard_Failure>* Standard_Failure_new_instance_charptr(const char* theMessage) {
+    return new opencascade::handle<Standard_Failure>(Standard_Failure::NewInstance(theMessage));
+}
+extern "C" opencascade::handle<Standard_Failure>* Standard_Failure_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new opencascade::handle<Standard_Failure>(Standard_Failure::NewInstance(theMessage, theStackTrace));
+}
+extern "C" Standard_Integer Standard_Failure_default_stack_trace_length() {
+    return Standard_Failure::DefaultStackTraceLength();
+}
+extern "C" void Standard_Failure_set_default_stack_trace_length(Standard_Integer theNbStackTraces) {
+    return Standard_Failure::SetDefaultStackTraceLength(theNbStackTraces);
+}
+extern "C" const char* Standard_Failure_get_type_name() {
+    return Standard_Failure::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_Failure_get_type_descriptor() {
+    return Standard_Failure::get_type_descriptor();
+}
+extern "C" HandleStandardFailure* Standard_Failure_to_handle(Standard_Failure* obj) {
+    return new HandleStandardFailure(obj);
+}
+extern "C" const Standard_Failure* HandleStandardFailure_get(const HandleStandardFailure* handle) { return (*handle).get(); }
+extern "C" Standard_Failure* HandleStandardFailure_get_mut(HandleStandardFailure* handle) { return (*handle).get(); }
+extern "C" void Standard_Failure_destructor(Standard_Failure* self_) { delete self_; }
+
+// ========================
+// Standard_GUID wrappers
+// ========================
+
+extern "C" Standard_GUID* Standard_GUID_ctor() {
+    return new Standard_GUID();
+}
+extern "C" Standard_GUID* Standard_GUID_ctor_charptr(const char* aGuid) {
+    return new Standard_GUID(aGuid);
+}
+extern "C" Standard_GUID* Standard_GUID_ctor_extstring(const Standard_ExtString* aGuid) {
+    return new Standard_GUID(*aGuid);
+}
+extern "C" Standard_GUID* Standard_GUID_ctor_int_extcharacter3_byte6(Standard_Integer a32b, const Standard_ExtCharacter* a16b1, const Standard_ExtCharacter* a16b2, const Standard_ExtCharacter* a16b3, const Standard_Byte* a8b1, const Standard_Byte* a8b2, const Standard_Byte* a8b3, const Standard_Byte* a8b4, const Standard_Byte* a8b5, const Standard_Byte* a8b6) {
+    return new Standard_GUID(a32b, *a16b1, *a16b2, *a16b3, *a8b1, *a8b2, *a8b3, *a8b4, *a8b5, *a8b6);
+}
+extern "C" Standard_GUID* Standard_GUID_ctor_uuid(const Standard_UUID* aGuid) {
+    return new Standard_GUID(*aGuid);
+}
+extern "C" Standard_GUID* Standard_GUID_ctor_guid(const Standard_GUID* aGuid) {
+    return new Standard_GUID(*aGuid);
+}
+extern "C" Standard_Boolean Standard_GUID_is_same(const Standard_GUID* self_, const Standard_GUID* uid) {
+    return self_->IsSame(*uid);
+}
+extern "C" Standard_Boolean Standard_GUID_is_not_same(const Standard_GUID* self_, const Standard_GUID* uid) {
+    return self_->IsNotSame(*uid);
+}
+extern "C" void Standard_GUID_assign(Standard_GUID* self_, const Standard_GUID* uid) {
+    self_->Assign(*uid);
+}
+extern "C" Standard_Boolean Standard_GUID_check_guid_format(const char* aGuid) {
+    return Standard_GUID::CheckGUIDFormat(aGuid);
+}
+extern "C" void Standard_GUID_destructor(Standard_GUID* self_) { delete self_; }
+
+// ========================
+// Standard_ImmutableObject wrappers
+// ========================
+
+extern "C" Standard_ImmutableObject* Standard_ImmutableObject_ctor() {
+    return new Standard_ImmutableObject();
+}
+extern "C" Standard_ImmutableObject* Standard_ImmutableObject_ctor_charptr(const char* theMessage) {
+    return new Standard_ImmutableObject(theMessage);
+}
+extern "C" Standard_ImmutableObject* Standard_ImmutableObject_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_ImmutableObject(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_ImmutableObject_dynamic_type(const Standard_ImmutableObject* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_ImmutableObject_raise(const char* theMessage) {
+    return Standard_ImmutableObject::Raise(theMessage);
+}
+extern "C" const char* Standard_ImmutableObject_get_type_name() {
+    return Standard_ImmutableObject::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_ImmutableObject_get_type_descriptor() {
+    return Standard_ImmutableObject::get_type_descriptor();
+}
+extern "C" void Standard_ImmutableObject_destructor(Standard_ImmutableObject* self_) { delete self_; }
+
+// ========================
+// Standard_LicenseError wrappers
+// ========================
+
+extern "C" Standard_LicenseError* Standard_LicenseError_ctor() {
+    return new Standard_LicenseError();
+}
+extern "C" Standard_LicenseError* Standard_LicenseError_ctor_charptr(const char* theMessage) {
+    return new Standard_LicenseError(theMessage);
+}
+extern "C" Standard_LicenseError* Standard_LicenseError_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_LicenseError(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_LicenseError_dynamic_type(const Standard_LicenseError* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_LicenseError_raise(const char* theMessage) {
+    return Standard_LicenseError::Raise(theMessage);
+}
+extern "C" const char* Standard_LicenseError_get_type_name() {
+    return Standard_LicenseError::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_LicenseError_get_type_descriptor() {
+    return Standard_LicenseError::get_type_descriptor();
+}
+extern "C" void Standard_LicenseError_destructor(Standard_LicenseError* self_) { delete self_; }
+
+// ========================
+// Standard_LicenseNotFound wrappers
+// ========================
+
+extern "C" Standard_LicenseNotFound* Standard_LicenseNotFound_ctor() {
+    return new Standard_LicenseNotFound();
+}
+extern "C" Standard_LicenseNotFound* Standard_LicenseNotFound_ctor_charptr(const char* theMessage) {
+    return new Standard_LicenseNotFound(theMessage);
+}
+extern "C" Standard_LicenseNotFound* Standard_LicenseNotFound_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_LicenseNotFound(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_LicenseNotFound_dynamic_type(const Standard_LicenseNotFound* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_LicenseNotFound_raise(const char* theMessage) {
+    return Standard_LicenseNotFound::Raise(theMessage);
+}
+extern "C" const char* Standard_LicenseNotFound_get_type_name() {
+    return Standard_LicenseNotFound::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_LicenseNotFound_get_type_descriptor() {
+    return Standard_LicenseNotFound::get_type_descriptor();
+}
+extern "C" void Standard_LicenseNotFound_destructor(Standard_LicenseNotFound* self_) { delete self_; }
+
+// ========================
+// Standard_MMgrOpt wrappers
+// ========================
+
+extern "C" Standard_MMgrOpt* Standard_MMgrOpt_ctor_bool2_size_int_size(Standard_Boolean aClear, Standard_Boolean aMMap, size_t aCellSize, Standard_Integer aNbPages, size_t aThreshold) {
+    return new Standard_MMgrOpt(aClear, aMMap, aCellSize, aNbPages, aThreshold);
+}
+extern "C" Standard_Integer Standard_MMgrOpt_purge(Standard_MMgrOpt* self_, Standard_Boolean isDestroyed) {
+    return self_->Purge(isDestroyed);
+}
+extern "C" void Standard_MMgrOpt_destructor(Standard_MMgrOpt* self_) { delete self_; }
+
+// ========================
+// Standard_MMgrRoot wrappers
+// ========================
+
+extern "C" Standard_Integer Standard_MMgrRoot_purge(Standard_MMgrRoot* self_, Standard_Boolean isDestroyed) {
+    return self_->Purge(isDestroyed);
+}
+extern "C" void Standard_MMgrRoot_destructor(Standard_MMgrRoot* self_) { delete self_; }
+
+// ========================
+// Standard_MultiplyDefined wrappers
+// ========================
+
+extern "C" Standard_MultiplyDefined* Standard_MultiplyDefined_ctor() {
+    return new Standard_MultiplyDefined();
+}
+extern "C" Standard_MultiplyDefined* Standard_MultiplyDefined_ctor_charptr(const char* theMessage) {
+    return new Standard_MultiplyDefined(theMessage);
+}
+extern "C" Standard_MultiplyDefined* Standard_MultiplyDefined_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_MultiplyDefined(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_MultiplyDefined_dynamic_type(const Standard_MultiplyDefined* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_MultiplyDefined_raise(const char* theMessage) {
+    return Standard_MultiplyDefined::Raise(theMessage);
+}
+extern "C" const char* Standard_MultiplyDefined_get_type_name() {
+    return Standard_MultiplyDefined::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_MultiplyDefined_get_type_descriptor() {
+    return Standard_MultiplyDefined::get_type_descriptor();
+}
+extern "C" void Standard_MultiplyDefined_destructor(Standard_MultiplyDefined* self_) { delete self_; }
+
+// ========================
+// Standard_Mutex wrappers
+// ========================
+
+extern "C" Standard_Mutex* Standard_Mutex_ctor() {
+    return new Standard_Mutex();
+}
+extern "C" void Standard_Mutex_lock(Standard_Mutex* self_) {
+    self_->Lock();
+}
+extern "C" Standard_Boolean Standard_Mutex_try_lock(Standard_Mutex* self_) {
+    return self_->TryLock();
+}
+extern "C" void Standard_Mutex_unlock(Standard_Mutex* self_) {
+    self_->Unlock();
+}
+extern "C" void Standard_Mutex_destructor(Standard_Mutex* self_) { delete self_; }
+
+// ========================
+// Standard_NegativeValue wrappers
+// ========================
+
+extern "C" Standard_NegativeValue* Standard_NegativeValue_ctor() {
+    return new Standard_NegativeValue();
+}
+extern "C" Standard_NegativeValue* Standard_NegativeValue_ctor_charptr(const char* theMessage) {
+    return new Standard_NegativeValue(theMessage);
+}
+extern "C" Standard_NegativeValue* Standard_NegativeValue_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_NegativeValue(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_NegativeValue_dynamic_type(const Standard_NegativeValue* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_NegativeValue_raise(const char* theMessage) {
+    return Standard_NegativeValue::Raise(theMessage);
+}
+extern "C" const char* Standard_NegativeValue_get_type_name() {
+    return Standard_NegativeValue::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_NegativeValue_get_type_descriptor() {
+    return Standard_NegativeValue::get_type_descriptor();
+}
+extern "C" void Standard_NegativeValue_destructor(Standard_NegativeValue* self_) { delete self_; }
+
+// ========================
+// Standard_NoMoreObject wrappers
+// ========================
+
+extern "C" Standard_NoMoreObject* Standard_NoMoreObject_ctor() {
+    return new Standard_NoMoreObject();
+}
+extern "C" Standard_NoMoreObject* Standard_NoMoreObject_ctor_charptr(const char* theMessage) {
+    return new Standard_NoMoreObject(theMessage);
+}
+extern "C" Standard_NoMoreObject* Standard_NoMoreObject_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_NoMoreObject(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_NoMoreObject_dynamic_type(const Standard_NoMoreObject* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_NoMoreObject_raise(const char* theMessage) {
+    return Standard_NoMoreObject::Raise(theMessage);
+}
+extern "C" const char* Standard_NoMoreObject_get_type_name() {
+    return Standard_NoMoreObject::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_NoMoreObject_get_type_descriptor() {
+    return Standard_NoMoreObject::get_type_descriptor();
+}
+extern "C" void Standard_NoMoreObject_destructor(Standard_NoMoreObject* self_) { delete self_; }
+
+// ========================
+// Standard_NoSuchObject wrappers
+// ========================
+
+extern "C" Standard_NoSuchObject* Standard_NoSuchObject_ctor() {
+    return new Standard_NoSuchObject();
+}
+extern "C" Standard_NoSuchObject* Standard_NoSuchObject_ctor_charptr(const char* theMessage) {
+    return new Standard_NoSuchObject(theMessage);
+}
+extern "C" Standard_NoSuchObject* Standard_NoSuchObject_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_NoSuchObject(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_NoSuchObject_dynamic_type(const Standard_NoSuchObject* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_NoSuchObject_raise(const char* theMessage) {
+    return Standard_NoSuchObject::Raise(theMessage);
+}
+extern "C" const char* Standard_NoSuchObject_get_type_name() {
+    return Standard_NoSuchObject::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_NoSuchObject_get_type_descriptor() {
+    return Standard_NoSuchObject::get_type_descriptor();
+}
+extern "C" void Standard_NoSuchObject_destructor(Standard_NoSuchObject* self_) { delete self_; }
+
+// ========================
+// Standard_NotImplemented wrappers
+// ========================
+
+extern "C" Standard_NotImplemented* Standard_NotImplemented_ctor() {
+    return new Standard_NotImplemented();
+}
+extern "C" Standard_NotImplemented* Standard_NotImplemented_ctor_charptr(const char* theMessage) {
+    return new Standard_NotImplemented(theMessage);
+}
+extern "C" Standard_NotImplemented* Standard_NotImplemented_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_NotImplemented(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_NotImplemented_dynamic_type(const Standard_NotImplemented* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_NotImplemented_raise(const char* theMessage) {
+    return Standard_NotImplemented::Raise(theMessage);
+}
+extern "C" const char* Standard_NotImplemented_get_type_name() {
+    return Standard_NotImplemented::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_NotImplemented_get_type_descriptor() {
+    return Standard_NotImplemented::get_type_descriptor();
+}
+extern "C" void Standard_NotImplemented_destructor(Standard_NotImplemented* self_) { delete self_; }
+
+// ========================
+// Standard_NullObject wrappers
+// ========================
+
+extern "C" Standard_NullObject* Standard_NullObject_ctor() {
+    return new Standard_NullObject();
+}
+extern "C" Standard_NullObject* Standard_NullObject_ctor_charptr(const char* theMessage) {
+    return new Standard_NullObject(theMessage);
+}
+extern "C" Standard_NullObject* Standard_NullObject_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_NullObject(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_NullObject_dynamic_type(const Standard_NullObject* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_NullObject_raise(const char* theMessage) {
+    return Standard_NullObject::Raise(theMessage);
+}
+extern "C" const char* Standard_NullObject_get_type_name() {
+    return Standard_NullObject::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_NullObject_get_type_descriptor() {
+    return Standard_NullObject::get_type_descriptor();
+}
+extern "C" void Standard_NullObject_destructor(Standard_NullObject* self_) { delete self_; }
+
+// ========================
+// Standard_NullValue wrappers
+// ========================
+
+extern "C" Standard_NullValue* Standard_NullValue_ctor() {
+    return new Standard_NullValue();
+}
+extern "C" Standard_NullValue* Standard_NullValue_ctor_charptr(const char* theMessage) {
+    return new Standard_NullValue(theMessage);
+}
+extern "C" Standard_NullValue* Standard_NullValue_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_NullValue(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_NullValue_dynamic_type(const Standard_NullValue* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_NullValue_raise(const char* theMessage) {
+    return Standard_NullValue::Raise(theMessage);
+}
+extern "C" const char* Standard_NullValue_get_type_name() {
+    return Standard_NullValue::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_NullValue_get_type_descriptor() {
+    return Standard_NullValue::get_type_descriptor();
+}
+extern "C" void Standard_NullValue_destructor(Standard_NullValue* self_) { delete self_; }
+
+// ========================
+// Standard_NumericError wrappers
+// ========================
+
+extern "C" Standard_NumericError* Standard_NumericError_ctor() {
+    return new Standard_NumericError();
+}
+extern "C" Standard_NumericError* Standard_NumericError_ctor_charptr(const char* theMessage) {
+    return new Standard_NumericError(theMessage);
+}
+extern "C" Standard_NumericError* Standard_NumericError_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_NumericError(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_NumericError_dynamic_type(const Standard_NumericError* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_NumericError_raise(const char* theMessage) {
+    return Standard_NumericError::Raise(theMessage);
+}
+extern "C" const char* Standard_NumericError_get_type_name() {
+    return Standard_NumericError::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_NumericError_get_type_descriptor() {
+    return Standard_NumericError::get_type_descriptor();
+}
+extern "C" void Standard_NumericError_destructor(Standard_NumericError* self_) { delete self_; }
+
+// ========================
+// Standard_OutOfMemory wrappers
+// ========================
+
+extern "C" Standard_OutOfMemory* Standard_OutOfMemory_ctor_charptr(const char* theMessage) {
+    return new Standard_OutOfMemory(theMessage);
+}
+extern "C" void Standard_OutOfMemory_set_message_string(Standard_OutOfMemory* self_, const char* aMessage) {
+    self_->SetMessageString(aMessage);
+}
+extern "C" const char* Standard_OutOfMemory_get_message_string(const Standard_OutOfMemory* self_) {
+    return self_->GetMessageString();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_OutOfMemory_dynamic_type(const Standard_OutOfMemory* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_OutOfMemory_raise(const char* theMessage) {
+    return Standard_OutOfMemory::Raise(theMessage);
+}
+extern "C" const char* Standard_OutOfMemory_get_type_name() {
+    return Standard_OutOfMemory::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_OutOfMemory_get_type_descriptor() {
+    return Standard_OutOfMemory::get_type_descriptor();
+}
+extern "C" void Standard_OutOfMemory_destructor(Standard_OutOfMemory* self_) { delete self_; }
+
+// ========================
+// Standard_OutOfRange wrappers
+// ========================
+
+extern "C" Standard_OutOfRange* Standard_OutOfRange_ctor() {
+    return new Standard_OutOfRange();
+}
+extern "C" Standard_OutOfRange* Standard_OutOfRange_ctor_charptr(const char* theMessage) {
+    return new Standard_OutOfRange(theMessage);
+}
+extern "C" Standard_OutOfRange* Standard_OutOfRange_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_OutOfRange(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_OutOfRange_dynamic_type(const Standard_OutOfRange* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_OutOfRange_raise(const char* theMessage) {
+    return Standard_OutOfRange::Raise(theMessage);
+}
+extern "C" const char* Standard_OutOfRange_get_type_name() {
+    return Standard_OutOfRange::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_OutOfRange_get_type_descriptor() {
+    return Standard_OutOfRange::get_type_descriptor();
+}
+extern "C" void Standard_OutOfRange_destructor(Standard_OutOfRange* self_) { delete self_; }
+
+// ========================
+// Standard_Overflow wrappers
+// ========================
+
+extern "C" Standard_Overflow* Standard_Overflow_ctor() {
+    return new Standard_Overflow();
+}
+extern "C" Standard_Overflow* Standard_Overflow_ctor_charptr(const char* theMessage) {
+    return new Standard_Overflow(theMessage);
+}
+extern "C" Standard_Overflow* Standard_Overflow_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_Overflow(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_Overflow_dynamic_type(const Standard_Overflow* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_Overflow_raise(const char* theMessage) {
+    return Standard_Overflow::Raise(theMessage);
+}
+extern "C" const char* Standard_Overflow_get_type_name() {
+    return Standard_Overflow::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_Overflow_get_type_descriptor() {
+    return Standard_Overflow::get_type_descriptor();
+}
+extern "C" void Standard_Overflow_destructor(Standard_Overflow* self_) { delete self_; }
+
+// ========================
+// Standard_Persistent wrappers
+// ========================
+
+extern "C" Standard_Persistent* Standard_Persistent_ctor() {
+    return new Standard_Persistent();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_Persistent_dynamic_type(const Standard_Persistent* self_) {
+    return self_->DynamicType();
+}
+extern "C" Standard_Integer& Standard_Persistent_type_num(Standard_Persistent* self_) {
+    return self_->TypeNum();
+}
+extern "C" const char* Standard_Persistent_get_type_name() {
+    return Standard_Persistent::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_Persistent_get_type_descriptor() {
+    return Standard_Persistent::get_type_descriptor();
+}
+extern "C" HandleStandardPersistent* Standard_Persistent_to_handle(Standard_Persistent* obj) {
+    return new HandleStandardPersistent(obj);
+}
+extern "C" const Standard_Persistent* HandleStandardPersistent_get(const HandleStandardPersistent* handle) { return (*handle).get(); }
+extern "C" Standard_Persistent* HandleStandardPersistent_get_mut(HandleStandardPersistent* handle) { return (*handle).get(); }
+extern "C" void Standard_Persistent_destructor(Standard_Persistent* self_) { delete self_; }
+
+// ========================
+// Standard_ProgramError wrappers
+// ========================
+
+extern "C" Standard_ProgramError* Standard_ProgramError_ctor() {
+    return new Standard_ProgramError();
+}
+extern "C" Standard_ProgramError* Standard_ProgramError_ctor_charptr(const char* theMessage) {
+    return new Standard_ProgramError(theMessage);
+}
+extern "C" Standard_ProgramError* Standard_ProgramError_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_ProgramError(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_ProgramError_dynamic_type(const Standard_ProgramError* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_ProgramError_raise(const char* theMessage) {
+    return Standard_ProgramError::Raise(theMessage);
+}
+extern "C" const char* Standard_ProgramError_get_type_name() {
+    return Standard_ProgramError::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_ProgramError_get_type_descriptor() {
+    return Standard_ProgramError::get_type_descriptor();
+}
+extern "C" void Standard_ProgramError_destructor(Standard_ProgramError* self_) { delete self_; }
+
+// ========================
+// Standard_RangeError wrappers
+// ========================
+
+extern "C" Standard_RangeError* Standard_RangeError_ctor() {
+    return new Standard_RangeError();
+}
+extern "C" Standard_RangeError* Standard_RangeError_ctor_charptr(const char* theMessage) {
+    return new Standard_RangeError(theMessage);
+}
+extern "C" Standard_RangeError* Standard_RangeError_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_RangeError(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_RangeError_dynamic_type(const Standard_RangeError* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_RangeError_raise(const char* theMessage) {
+    return Standard_RangeError::Raise(theMessage);
+}
+extern "C" const char* Standard_RangeError_get_type_name() {
+    return Standard_RangeError::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_RangeError_get_type_descriptor() {
+    return Standard_RangeError::get_type_descriptor();
+}
+extern "C" void Standard_RangeError_destructor(Standard_RangeError* self_) { delete self_; }
+
+// ========================
+// Standard_ReadLineBuffer wrappers
+// ========================
+
+extern "C" Standard_ReadLineBuffer* Standard_ReadLineBuffer_ctor_size(size_t theMaxBufferSizeBytes) {
+    return new Standard_ReadLineBuffer(theMaxBufferSizeBytes);
+}
+extern "C" void Standard_ReadLineBuffer_clear(Standard_ReadLineBuffer* self_) {
+    self_->Clear();
+}
+extern "C" Standard_Boolean Standard_ReadLineBuffer_is_multiline_mode(const Standard_ReadLineBuffer* self_) {
+    return self_->IsMultilineMode();
+}
+extern "C" Standard_Boolean Standard_ReadLineBuffer_to_put_gap_in_multiline(const Standard_ReadLineBuffer* self_) {
+    return self_->ToPutGapInMultiline();
+}
+extern "C" void Standard_ReadLineBuffer_set_multiline_mode(Standard_ReadLineBuffer* self_, Standard_Boolean theMultilineMode, Standard_Boolean theToPutGap) {
+    self_->SetMultilineMode(theMultilineMode, theToPutGap);
+}
+extern "C" void Standard_ReadLineBuffer_destructor(Standard_ReadLineBuffer* self_) { delete self_; }
+
+// ========================
+// Standard_Transient wrappers
+// ========================
+
+extern "C" Standard_Transient* Standard_Transient_ctor() {
+    return new Standard_Transient();
+}
+extern "C" Standard_Transient* Standard_Transient_ctor_transient(const Standard_Transient* arg0) {
+    return new Standard_Transient(*arg0);
+}
+extern "C" Standard_Boolean Standard_Transient_is_instance_charptr(const Standard_Transient* self_, const char* theTypeName) {
+    return self_->IsInstance(theTypeName);
+}
+extern "C" Standard_Boolean Standard_Transient_is_kind_charptr(const Standard_Transient* self_, const char* theTypeName) {
+    return self_->IsKind(theTypeName);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_Transient_dynamic_type(const Standard_Transient* self_) {
+    return self_->DynamicType();
+}
+extern "C" Standard_Boolean Standard_Transient_is_instance_handlestandardtype(const Standard_Transient* self_, const opencascade::handle<Standard_Type>* theType) {
+    return self_->IsInstance(*theType);
+}
+extern "C" Standard_Boolean Standard_Transient_is_kind_handlestandardtype(const Standard_Transient* self_, const opencascade::handle<Standard_Type>* theType) {
+    return self_->IsKind(*theType);
+}
+extern "C" Standard_Integer Standard_Transient_get_ref_count(const Standard_Transient* self_) {
+    return self_->GetRefCount();
+}
+extern "C" void Standard_Transient_increment_ref_counter(Standard_Transient* self_) {
+    self_->IncrementRefCounter();
+}
+extern "C" Standard_Integer Standard_Transient_decrement_ref_counter(Standard_Transient* self_) {
+    return self_->DecrementRefCounter();
+}
+extern "C" void Standard_Transient_delete(const Standard_Transient* self_) {
+    self_->Delete();
+}
+extern "C" const char* Standard_Transient_get_type_name() {
+    return Standard_Transient::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_Transient_get_type_descriptor() {
+    return Standard_Transient::get_type_descriptor();
+}
+extern "C" void Standard_Transient_destructor(Standard_Transient* self_) { delete self_; }
+
+// ========================
+// Standard_Type wrappers
+// ========================
+
+extern "C" Standard_Boolean Standard_Type_sub_type_charptr(const Standard_Type* self_, const char* theOther) {
+    return self_->SubType(theOther);
+}
+extern "C" const char* Standard_Type_system_name(const Standard_Type* self_) {
+    return self_->SystemName();
+}
+extern "C" const char* Standard_Type_name(const Standard_Type* self_) {
+    return self_->Name();
+}
+extern "C" size_t Standard_Type_size(const Standard_Type* self_) {
+    return self_->Size();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_Type_parent(const Standard_Type* self_) {
+    return self_->Parent();
+}
+extern "C" Standard_Boolean Standard_Type_sub_type_handlestandardtype(const Standard_Type* self_, const opencascade::handle<Standard_Type>* theOther) {
+    return self_->SubType(*theOther);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_Type_dynamic_type(const Standard_Type* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Standard_Type_get_type_name() {
+    return Standard_Type::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_Type_get_type_descriptor() {
+    return Standard_Type::get_type_descriptor();
+}
+extern "C" HandleStandardType* Standard_Type_to_handle(Standard_Type* obj) {
+    return new HandleStandardType(obj);
+}
+extern "C" const Standard_Type* HandleStandardType_get(const HandleStandardType* handle) { return (*handle).get(); }
+extern "C" Standard_Type* HandleStandardType_get_mut(HandleStandardType* handle) { return (*handle).get(); }
+extern "C" void Standard_Type_destructor(Standard_Type* self_) { delete self_; }
+
+// ========================
+// Standard_TypeMismatch wrappers
+// ========================
+
+extern "C" Standard_TypeMismatch* Standard_TypeMismatch_ctor() {
+    return new Standard_TypeMismatch();
+}
+extern "C" Standard_TypeMismatch* Standard_TypeMismatch_ctor_charptr(const char* theMessage) {
+    return new Standard_TypeMismatch(theMessage);
+}
+extern "C" Standard_TypeMismatch* Standard_TypeMismatch_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_TypeMismatch(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_TypeMismatch_dynamic_type(const Standard_TypeMismatch* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_TypeMismatch_raise(const char* theMessage) {
+    return Standard_TypeMismatch::Raise(theMessage);
+}
+extern "C" const char* Standard_TypeMismatch_get_type_name() {
+    return Standard_TypeMismatch::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_TypeMismatch_get_type_descriptor() {
+    return Standard_TypeMismatch::get_type_descriptor();
+}
+extern "C" void Standard_TypeMismatch_destructor(Standard_TypeMismatch* self_) { delete self_; }
+
+// ========================
+// Standard_Underflow wrappers
+// ========================
+
+extern "C" Standard_Underflow* Standard_Underflow_ctor() {
+    return new Standard_Underflow();
+}
+extern "C" Standard_Underflow* Standard_Underflow_ctor_charptr(const char* theMessage) {
+    return new Standard_Underflow(theMessage);
+}
+extern "C" Standard_Underflow* Standard_Underflow_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new Standard_Underflow(theMessage, theStackTrace);
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_Underflow_dynamic_type(const Standard_Underflow* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Standard_Underflow_raise(const char* theMessage) {
+    return Standard_Underflow::Raise(theMessage);
+}
+extern "C" const char* Standard_Underflow_get_type_name() {
+    return Standard_Underflow::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Standard_Underflow_get_type_descriptor() {
+    return Standard_Underflow::get_type_descriptor();
+}
+extern "C" void Standard_Underflow_destructor(Standard_Underflow* self_) { delete self_; }
+
+// ========================
 // STEPControl_ActorRead wrappers
 // ========================
 
@@ -39687,6 +47014,1350 @@ extern "C" HandleTColgpHSequenceOfXYZ* TColgp_HSequenceOfXYZ_to_handle(TColgp_HS
 extern "C" const TColgp_HSequenceOfXYZ* HandleTColgpHSequenceOfXYZ_get(const HandleTColgpHSequenceOfXYZ* handle) { return (*handle).get(); }
 extern "C" TColgp_HSequenceOfXYZ* HandleTColgpHSequenceOfXYZ_get_mut(HandleTColgpHSequenceOfXYZ* handle) { return (*handle).get(); }
 extern "C" void TColgp_HSequenceOfXYZ_destructor(TColgp_HSequenceOfXYZ* self_) { delete self_; }
+
+// ========================
+// TCollection_AsciiString wrappers
+// ========================
+
+extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor() {
+    return new TCollection_AsciiString();
+}
+extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_charptr(const char* message) {
+    return new TCollection_AsciiString(message);
+}
+extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_charptr_int(const char* message, Standard_Integer aLen) {
+    return new TCollection_AsciiString(message, aLen);
+}
+extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_character(const Standard_Character* aChar) {
+    return new TCollection_AsciiString(*aChar);
+}
+extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_int_character(Standard_Integer length, const Standard_Character* filler) {
+    return new TCollection_AsciiString(length, *filler);
+}
+extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_int(Standard_Integer value) {
+    return new TCollection_AsciiString(value);
+}
+extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_real(Standard_Real value) {
+    return new TCollection_AsciiString(value);
+}
+extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_asciistring(const TCollection_AsciiString* astring) {
+    return new TCollection_AsciiString(*astring);
+}
+extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_asciistring_character(const TCollection_AsciiString* astring, const Standard_Character* message) {
+    return new TCollection_AsciiString(*astring, *message);
+}
+extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_asciistring_charptr(const TCollection_AsciiString* astring, const char* message) {
+    return new TCollection_AsciiString(*astring, message);
+}
+extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_asciistring2(const TCollection_AsciiString* astring, const TCollection_AsciiString* message) {
+    return new TCollection_AsciiString(*astring, *message);
+}
+extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_extendedstring_character(const TCollection_ExtendedString* astring, const Standard_Character* replaceNonAscii) {
+    return new TCollection_AsciiString(*astring, *replaceNonAscii);
+}
+extern "C" TCollection_AsciiString* TCollection_AsciiString_cat_int(const TCollection_AsciiString* self_, Standard_Integer other) {
+    return new TCollection_AsciiString(self_->Cat(other));
+}
+extern "C" TCollection_AsciiString* TCollection_AsciiString_cat_real(const TCollection_AsciiString* self_, Standard_Real other) {
+    return new TCollection_AsciiString(self_->Cat(other));
+}
+extern "C" TCollection_AsciiString* TCollection_AsciiString_cat_charptr(const TCollection_AsciiString* self_, const char* other) {
+    return new TCollection_AsciiString(self_->Cat(other));
+}
+extern "C" TCollection_AsciiString* TCollection_AsciiString_cat_asciistring(const TCollection_AsciiString* self_, const TCollection_AsciiString* other) {
+    return new TCollection_AsciiString(self_->Cat(*other));
+}
+extern "C" TCollection_AsciiString* TCollection_AsciiString_split(TCollection_AsciiString* self_, Standard_Integer where) {
+    return new TCollection_AsciiString(self_->Split(where));
+}
+extern "C" TCollection_AsciiString* TCollection_AsciiString_sub_string(const TCollection_AsciiString* self_, Standard_Integer FromIndex, Standard_Integer ToIndex) {
+    return new TCollection_AsciiString(self_->SubString(FromIndex, ToIndex));
+}
+extern "C" TCollection_AsciiString* TCollection_AsciiString_token(const TCollection_AsciiString* self_, const char* separators, Standard_Integer whichone) {
+    return new TCollection_AsciiString(self_->Token(separators, whichone));
+}
+extern "C" void TCollection_AsciiString_assign_cat_charptr(TCollection_AsciiString* self_, const char* other) {
+    self_->AssignCat(other);
+}
+extern "C" void TCollection_AsciiString_copy_charptr(TCollection_AsciiString* self_, const char* fromwhere) {
+    self_->Copy(fromwhere);
+}
+extern "C" void TCollection_AsciiString_insert_int_charptr(TCollection_AsciiString* self_, Standard_Integer where, const char* what) {
+    self_->Insert(where, what);
+}
+extern "C" Standard_Boolean TCollection_AsciiString_is_equal_charptr(const TCollection_AsciiString* self_, const char* other) {
+    return self_->IsEqual(other);
+}
+extern "C" Standard_Boolean TCollection_AsciiString_is_different_charptr(const TCollection_AsciiString* self_, const char* other) {
+    return self_->IsDifferent(other);
+}
+extern "C" Standard_Boolean TCollection_AsciiString_is_less_charptr(const TCollection_AsciiString* self_, const char* other) {
+    return self_->IsLess(other);
+}
+extern "C" Standard_Boolean TCollection_AsciiString_is_greater_charptr(const TCollection_AsciiString* self_, const char* other) {
+    return self_->IsGreater(other);
+}
+extern "C" Standard_Integer TCollection_AsciiString_search_charptr(const TCollection_AsciiString* self_, const char* what) {
+    return self_->Search(what);
+}
+extern "C" Standard_Integer TCollection_AsciiString_search_from_end_charptr(const TCollection_AsciiString* self_, const char* what) {
+    return self_->SearchFromEnd(what);
+}
+extern "C" void TCollection_AsciiString_set_value_int_charptr(TCollection_AsciiString* self_, Standard_Integer where, const char* what) {
+    self_->SetValue(where, what);
+}
+extern "C" const char* TCollection_AsciiString_to_c_string(const TCollection_AsciiString* self_) {
+    return self_->ToCString();
+}
+extern "C" void TCollection_AsciiString_assign_cat_int(TCollection_AsciiString* self_, Standard_Integer other) {
+    self_->AssignCat(other);
+}
+extern "C" void TCollection_AsciiString_assign_cat_real(TCollection_AsciiString* self_, Standard_Real other) {
+    self_->AssignCat(other);
+}
+extern "C" void TCollection_AsciiString_assign_cat_asciistring(TCollection_AsciiString* self_, const TCollection_AsciiString* other) {
+    self_->AssignCat(*other);
+}
+extern "C" void TCollection_AsciiString_capitalize(TCollection_AsciiString* self_) {
+    self_->Capitalize();
+}
+extern "C" void TCollection_AsciiString_clear(TCollection_AsciiString* self_) {
+    self_->Clear();
+}
+extern "C" void TCollection_AsciiString_copy_asciistring(TCollection_AsciiString* self_, const TCollection_AsciiString* fromwhere) {
+    self_->Copy(*fromwhere);
+}
+extern "C" void TCollection_AsciiString_swap(TCollection_AsciiString* self_, TCollection_AsciiString* theOther) {
+    self_->Swap(*theOther);
+}
+extern "C" Standard_Integer TCollection_AsciiString_first_location_in_set(const TCollection_AsciiString* self_, const TCollection_AsciiString* Set, Standard_Integer FromIndex, Standard_Integer ToIndex) {
+    return self_->FirstLocationInSet(*Set, FromIndex, ToIndex);
+}
+extern "C" Standard_Integer TCollection_AsciiString_first_location_not_in_set(const TCollection_AsciiString* self_, const TCollection_AsciiString* Set, Standard_Integer FromIndex, Standard_Integer ToIndex) {
+    return self_->FirstLocationNotInSet(*Set, FromIndex, ToIndex);
+}
+extern "C" void TCollection_AsciiString_insert_int_asciistring(TCollection_AsciiString* self_, Standard_Integer where, const TCollection_AsciiString* what) {
+    self_->Insert(where, *what);
+}
+extern "C" void TCollection_AsciiString_insert_after(TCollection_AsciiString* self_, Standard_Integer Index, const TCollection_AsciiString* other) {
+    self_->InsertAfter(Index, *other);
+}
+extern "C" void TCollection_AsciiString_insert_before(TCollection_AsciiString* self_, Standard_Integer Index, const TCollection_AsciiString* other) {
+    self_->InsertBefore(Index, *other);
+}
+extern "C" Standard_Boolean TCollection_AsciiString_is_empty(const TCollection_AsciiString* self_) {
+    return self_->IsEmpty();
+}
+extern "C" Standard_Boolean TCollection_AsciiString_is_equal_asciistring(const TCollection_AsciiString* self_, const TCollection_AsciiString* other) {
+    return self_->IsEqual(*other);
+}
+extern "C" Standard_Boolean TCollection_AsciiString_is_different_asciistring(const TCollection_AsciiString* self_, const TCollection_AsciiString* other) {
+    return self_->IsDifferent(*other);
+}
+extern "C" Standard_Boolean TCollection_AsciiString_is_less_asciistring(const TCollection_AsciiString* self_, const TCollection_AsciiString* other) {
+    return self_->IsLess(*other);
+}
+extern "C" Standard_Boolean TCollection_AsciiString_is_greater_asciistring(const TCollection_AsciiString* self_, const TCollection_AsciiString* other) {
+    return self_->IsGreater(*other);
+}
+extern "C" Standard_Boolean TCollection_AsciiString_starts_with(const TCollection_AsciiString* self_, const TCollection_AsciiString* theStartString) {
+    return self_->StartsWith(*theStartString);
+}
+extern "C" Standard_Boolean TCollection_AsciiString_ends_with(const TCollection_AsciiString* self_, const TCollection_AsciiString* theEndString) {
+    return self_->EndsWith(*theEndString);
+}
+extern "C" Standard_Integer TCollection_AsciiString_integer_value(const TCollection_AsciiString* self_) {
+    return self_->IntegerValue();
+}
+extern "C" Standard_Boolean TCollection_AsciiString_is_integer_value(const TCollection_AsciiString* self_) {
+    return self_->IsIntegerValue();
+}
+extern "C" Standard_Boolean TCollection_AsciiString_is_real_value(const TCollection_AsciiString* self_, Standard_Boolean theToCheckFull) {
+    return self_->IsRealValue(theToCheckFull);
+}
+extern "C" Standard_Boolean TCollection_AsciiString_is_ascii(const TCollection_AsciiString* self_) {
+    return self_->IsAscii();
+}
+extern "C" void TCollection_AsciiString_left_adjust(TCollection_AsciiString* self_) {
+    self_->LeftAdjust();
+}
+extern "C" Standard_Integer TCollection_AsciiString_length(const TCollection_AsciiString* self_) {
+    return self_->Length();
+}
+extern "C" Standard_Integer TCollection_AsciiString_location(const TCollection_AsciiString* self_, const TCollection_AsciiString* other, Standard_Integer FromIndex, Standard_Integer ToIndex) {
+    return self_->Location(*other, FromIndex, ToIndex);
+}
+extern "C" void TCollection_AsciiString_lower_case(TCollection_AsciiString* self_) {
+    self_->LowerCase();
+}
+extern "C" void TCollection_AsciiString_prepend(TCollection_AsciiString* self_, const TCollection_AsciiString* other) {
+    self_->Prepend(*other);
+}
+extern "C" Standard_Real TCollection_AsciiString_real_value(const TCollection_AsciiString* self_) {
+    return self_->RealValue();
+}
+extern "C" void TCollection_AsciiString_remove(TCollection_AsciiString* self_, Standard_Integer where, Standard_Integer ahowmany) {
+    self_->Remove(where, ahowmany);
+}
+extern "C" void TCollection_AsciiString_right_adjust(TCollection_AsciiString* self_) {
+    self_->RightAdjust();
+}
+extern "C" Standard_Integer TCollection_AsciiString_search_asciistring(const TCollection_AsciiString* self_, const TCollection_AsciiString* what) {
+    return self_->Search(*what);
+}
+extern "C" Standard_Integer TCollection_AsciiString_search_from_end_asciistring(const TCollection_AsciiString* self_, const TCollection_AsciiString* what) {
+    return self_->SearchFromEnd(*what);
+}
+extern "C" void TCollection_AsciiString_set_value_int_asciistring(TCollection_AsciiString* self_, Standard_Integer where, const TCollection_AsciiString* what) {
+    self_->SetValue(where, *what);
+}
+extern "C" void TCollection_AsciiString_trunc(TCollection_AsciiString* self_, Standard_Integer ahowmany) {
+    self_->Trunc(ahowmany);
+}
+extern "C" void TCollection_AsciiString_upper_case(TCollection_AsciiString* self_) {
+    self_->UpperCase();
+}
+extern "C" Standard_Integer TCollection_AsciiString_usefull_length(const TCollection_AsciiString* self_) {
+    return self_->UsefullLength();
+}
+extern "C" size_t TCollection_AsciiString_hash_code(const TCollection_AsciiString* self_) {
+    return self_->HashCode();
+}
+extern "C" Standard_Boolean TCollection_AsciiString_is_equal_asciistring2(const TCollection_AsciiString* string1, const TCollection_AsciiString* string2) {
+    return TCollection_AsciiString::IsEqual(*string1, *string2);
+}
+extern "C" Standard_Boolean TCollection_AsciiString_is_equal_asciistring_charptr(const TCollection_AsciiString* string1, const char* string2) {
+    return TCollection_AsciiString::IsEqual(*string1, string2);
+}
+extern "C" Standard_Boolean TCollection_AsciiString_is_same_string(const TCollection_AsciiString* theString1, const TCollection_AsciiString* theString2, Standard_Boolean theIsCaseSensitive) {
+    return TCollection_AsciiString::IsSameString(*theString1, *theString2, theIsCaseSensitive);
+}
+extern "C" void TCollection_AsciiString_destructor(TCollection_AsciiString* self_) { delete self_; }
+
+// ========================
+// TCollection_ExtendedString wrappers
+// ========================
+
+extern "C" TCollection_ExtendedString* TCollection_ExtendedString_ctor() {
+    return new TCollection_ExtendedString();
+}
+extern "C" TCollection_ExtendedString* TCollection_ExtendedString_ctor_charptr_bool(const char* astring, Standard_Boolean isMultiByte) {
+    return new TCollection_ExtendedString(astring, isMultiByte);
+}
+extern "C" TCollection_ExtendedString* TCollection_ExtendedString_ctor_extstring(const Standard_ExtString* astring) {
+    return new TCollection_ExtendedString(*astring);
+}
+extern "C" TCollection_ExtendedString* TCollection_ExtendedString_ctor_character(const Standard_Character* aChar) {
+    return new TCollection_ExtendedString(*aChar);
+}
+extern "C" TCollection_ExtendedString* TCollection_ExtendedString_ctor_extcharacter(const Standard_ExtCharacter* aChar) {
+    return new TCollection_ExtendedString(*aChar);
+}
+extern "C" TCollection_ExtendedString* TCollection_ExtendedString_ctor_int_extcharacter(Standard_Integer length, const Standard_ExtCharacter* filler) {
+    return new TCollection_ExtendedString(length, *filler);
+}
+extern "C" TCollection_ExtendedString* TCollection_ExtendedString_ctor_int(Standard_Integer value) {
+    return new TCollection_ExtendedString(value);
+}
+extern "C" TCollection_ExtendedString* TCollection_ExtendedString_ctor_real(Standard_Real value) {
+    return new TCollection_ExtendedString(value);
+}
+extern "C" TCollection_ExtendedString* TCollection_ExtendedString_ctor_extendedstring(const TCollection_ExtendedString* astring) {
+    return new TCollection_ExtendedString(*astring);
+}
+extern "C" TCollection_ExtendedString* TCollection_ExtendedString_ctor_asciistring_bool(const TCollection_AsciiString* astring, Standard_Boolean isMultiByte) {
+    return new TCollection_ExtendedString(*astring, isMultiByte);
+}
+extern "C" TCollection_ExtendedString* TCollection_ExtendedString_cat(const TCollection_ExtendedString* self_, const TCollection_ExtendedString* other) {
+    return new TCollection_ExtendedString(self_->Cat(*other));
+}
+extern "C" TCollection_ExtendedString* TCollection_ExtendedString_split(TCollection_ExtendedString* self_, Standard_Integer where) {
+    return new TCollection_ExtendedString(self_->Split(where));
+}
+extern "C" void TCollection_ExtendedString_assign_cat(TCollection_ExtendedString* self_, const TCollection_ExtendedString* other) {
+    self_->AssignCat(*other);
+}
+extern "C" void TCollection_ExtendedString_clear(TCollection_ExtendedString* self_) {
+    self_->Clear();
+}
+extern "C" void TCollection_ExtendedString_copy(TCollection_ExtendedString* self_, const TCollection_ExtendedString* fromwhere) {
+    self_->Copy(*fromwhere);
+}
+extern "C" void TCollection_ExtendedString_swap(TCollection_ExtendedString* self_, TCollection_ExtendedString* theOther) {
+    self_->Swap(*theOther);
+}
+extern "C" void TCollection_ExtendedString_insert(TCollection_ExtendedString* self_, Standard_Integer where, const TCollection_ExtendedString* what) {
+    self_->Insert(where, *what);
+}
+extern "C" Standard_Boolean TCollection_ExtendedString_is_empty(const TCollection_ExtendedString* self_) {
+    return self_->IsEmpty();
+}
+extern "C" Standard_Boolean TCollection_ExtendedString_is_equal(const TCollection_ExtendedString* self_, const TCollection_ExtendedString* other) {
+    return self_->IsEqual(*other);
+}
+extern "C" Standard_Boolean TCollection_ExtendedString_is_different(const TCollection_ExtendedString* self_, const TCollection_ExtendedString* other) {
+    return self_->IsDifferent(*other);
+}
+extern "C" Standard_Boolean TCollection_ExtendedString_is_less(const TCollection_ExtendedString* self_, const TCollection_ExtendedString* other) {
+    return self_->IsLess(*other);
+}
+extern "C" Standard_Boolean TCollection_ExtendedString_is_greater(const TCollection_ExtendedString* self_, const TCollection_ExtendedString* other) {
+    return self_->IsGreater(*other);
+}
+extern "C" Standard_Boolean TCollection_ExtendedString_starts_with(const TCollection_ExtendedString* self_, const TCollection_ExtendedString* theStartString) {
+    return self_->StartsWith(*theStartString);
+}
+extern "C" Standard_Boolean TCollection_ExtendedString_ends_with(const TCollection_ExtendedString* self_, const TCollection_ExtendedString* theEndString) {
+    return self_->EndsWith(*theEndString);
+}
+extern "C" Standard_Boolean TCollection_ExtendedString_is_ascii(const TCollection_ExtendedString* self_) {
+    return self_->IsAscii();
+}
+extern "C" Standard_Integer TCollection_ExtendedString_length(const TCollection_ExtendedString* self_) {
+    return self_->Length();
+}
+extern "C" void TCollection_ExtendedString_remove(TCollection_ExtendedString* self_, Standard_Integer where, Standard_Integer ahowmany) {
+    self_->Remove(where, ahowmany);
+}
+extern "C" Standard_Integer TCollection_ExtendedString_search(const TCollection_ExtendedString* self_, const TCollection_ExtendedString* what) {
+    return self_->Search(*what);
+}
+extern "C" Standard_Integer TCollection_ExtendedString_search_from_end(const TCollection_ExtendedString* self_, const TCollection_ExtendedString* what) {
+    return self_->SearchFromEnd(*what);
+}
+extern "C" void TCollection_ExtendedString_set_value(TCollection_ExtendedString* self_, Standard_Integer where, const TCollection_ExtendedString* what) {
+    self_->SetValue(where, *what);
+}
+extern "C" void TCollection_ExtendedString_trunc(TCollection_ExtendedString* self_, Standard_Integer ahowmany) {
+    self_->Trunc(ahowmany);
+}
+extern "C" size_t TCollection_ExtendedString_hash_code(const TCollection_ExtendedString* self_) {
+    return self_->HashCode();
+}
+extern "C" Standard_Integer TCollection_ExtendedString_length_of_c_string(const TCollection_ExtendedString* self_) {
+    return self_->LengthOfCString();
+}
+extern "C" Standard_Boolean TCollection_ExtendedString_is_equal_extendedstring2(const TCollection_ExtendedString* theString1, const TCollection_ExtendedString* theString2) {
+    return TCollection_ExtendedString::IsEqual(*theString1, *theString2);
+}
+extern "C" void TCollection_ExtendedString_destructor(TCollection_ExtendedString* self_) { delete self_; }
+
+// ========================
+// TCollection_HAsciiString wrappers
+// ========================
+
+extern "C" TCollection_HAsciiString* TCollection_HAsciiString_ctor() {
+    return new TCollection_HAsciiString();
+}
+extern "C" TCollection_HAsciiString* TCollection_HAsciiString_ctor_charptr(const char* message) {
+    return new TCollection_HAsciiString(message);
+}
+extern "C" TCollection_HAsciiString* TCollection_HAsciiString_ctor_character(const Standard_Character* aChar) {
+    return new TCollection_HAsciiString(*aChar);
+}
+extern "C" TCollection_HAsciiString* TCollection_HAsciiString_ctor_int_character(Standard_Integer length, const Standard_Character* filler) {
+    return new TCollection_HAsciiString(length, *filler);
+}
+extern "C" TCollection_HAsciiString* TCollection_HAsciiString_ctor_int(Standard_Integer value) {
+    return new TCollection_HAsciiString(value);
+}
+extern "C" TCollection_HAsciiString* TCollection_HAsciiString_ctor_real(Standard_Real value) {
+    return new TCollection_HAsciiString(value);
+}
+extern "C" TCollection_HAsciiString* TCollection_HAsciiString_ctor_asciistring(const TCollection_AsciiString* aString) {
+    return new TCollection_HAsciiString(*aString);
+}
+extern "C" TCollection_HAsciiString* TCollection_HAsciiString_ctor_handletcollectionhasciistring(const opencascade::handle<TCollection_HAsciiString>* aString) {
+    return new TCollection_HAsciiString(*aString);
+}
+extern "C" TCollection_HAsciiString* TCollection_HAsciiString_ctor_handletcollectionhextendedstring_character(const opencascade::handle<TCollection_HExtendedString>* aString, const Standard_Character* replaceNonAscii) {
+    return new TCollection_HAsciiString(*aString, *replaceNonAscii);
+}
+extern "C" opencascade::handle<TCollection_HAsciiString>* TCollection_HAsciiString_cat_charptr(const TCollection_HAsciiString* self_, const char* other) {
+    return new opencascade::handle<TCollection_HAsciiString>(self_->Cat(other));
+}
+extern "C" opencascade::handle<TCollection_HAsciiString>* TCollection_HAsciiString_cat_handletcollectionhasciistring(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* other) {
+    return new opencascade::handle<TCollection_HAsciiString>(self_->Cat(*other));
+}
+extern "C" opencascade::handle<TCollection_HAsciiString>* TCollection_HAsciiString_split(TCollection_HAsciiString* self_, Standard_Integer where) {
+    return new opencascade::handle<TCollection_HAsciiString>(self_->Split(where));
+}
+extern "C" opencascade::handle<TCollection_HAsciiString>* TCollection_HAsciiString_sub_string(const TCollection_HAsciiString* self_, Standard_Integer FromIndex, Standard_Integer ToIndex) {
+    return new opencascade::handle<TCollection_HAsciiString>(self_->SubString(FromIndex, ToIndex));
+}
+extern "C" opencascade::handle<TCollection_HAsciiString>* TCollection_HAsciiString_token(const TCollection_HAsciiString* self_, const char* separators, Standard_Integer whichone) {
+    return new opencascade::handle<TCollection_HAsciiString>(self_->Token(separators, whichone));
+}
+extern "C" void TCollection_HAsciiString_assign_cat_charptr(TCollection_HAsciiString* self_, const char* other) {
+    self_->AssignCat(other);
+}
+extern "C" void TCollection_HAsciiString_insert_int_charptr(TCollection_HAsciiString* self_, Standard_Integer where, const char* what) {
+    self_->Insert(where, what);
+}
+extern "C" Standard_Integer TCollection_HAsciiString_search_charptr(const TCollection_HAsciiString* self_, const char* what) {
+    return self_->Search(what);
+}
+extern "C" Standard_Integer TCollection_HAsciiString_search_from_end_charptr(const TCollection_HAsciiString* self_, const char* what) {
+    return self_->SearchFromEnd(what);
+}
+extern "C" void TCollection_HAsciiString_set_value_int_charptr(TCollection_HAsciiString* self_, Standard_Integer where, const char* what) {
+    self_->SetValue(where, what);
+}
+extern "C" const char* TCollection_HAsciiString_to_c_string(const TCollection_HAsciiString* self_) {
+    return self_->ToCString();
+}
+extern "C" void TCollection_HAsciiString_assign_cat_handletcollectionhasciistring(TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* other) {
+    self_->AssignCat(*other);
+}
+extern "C" void TCollection_HAsciiString_capitalize(TCollection_HAsciiString* self_) {
+    self_->Capitalize();
+}
+extern "C" void TCollection_HAsciiString_clear(TCollection_HAsciiString* self_) {
+    self_->Clear();
+}
+extern "C" Standard_Integer TCollection_HAsciiString_first_location_in_set(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* Set, Standard_Integer FromIndex, Standard_Integer ToIndex) {
+    return self_->FirstLocationInSet(*Set, FromIndex, ToIndex);
+}
+extern "C" Standard_Integer TCollection_HAsciiString_first_location_not_in_set(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* Set, Standard_Integer FromIndex, Standard_Integer ToIndex) {
+    return self_->FirstLocationNotInSet(*Set, FromIndex, ToIndex);
+}
+extern "C" void TCollection_HAsciiString_insert_int_handletcollectionhasciistring(TCollection_HAsciiString* self_, Standard_Integer where, const opencascade::handle<TCollection_HAsciiString>* what) {
+    self_->Insert(where, *what);
+}
+extern "C" void TCollection_HAsciiString_insert_after(TCollection_HAsciiString* self_, Standard_Integer Index, const opencascade::handle<TCollection_HAsciiString>* other) {
+    self_->InsertAfter(Index, *other);
+}
+extern "C" void TCollection_HAsciiString_insert_before(TCollection_HAsciiString* self_, Standard_Integer Index, const opencascade::handle<TCollection_HAsciiString>* other) {
+    self_->InsertBefore(Index, *other);
+}
+extern "C" Standard_Boolean TCollection_HAsciiString_is_empty(const TCollection_HAsciiString* self_) {
+    return self_->IsEmpty();
+}
+extern "C" Standard_Boolean TCollection_HAsciiString_is_less(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* other) {
+    return self_->IsLess(*other);
+}
+extern "C" Standard_Boolean TCollection_HAsciiString_is_greater(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* other) {
+    return self_->IsGreater(*other);
+}
+extern "C" Standard_Integer TCollection_HAsciiString_integer_value(const TCollection_HAsciiString* self_) {
+    return self_->IntegerValue();
+}
+extern "C" Standard_Boolean TCollection_HAsciiString_is_integer_value(const TCollection_HAsciiString* self_) {
+    return self_->IsIntegerValue();
+}
+extern "C" Standard_Boolean TCollection_HAsciiString_is_real_value(const TCollection_HAsciiString* self_) {
+    return self_->IsRealValue();
+}
+extern "C" Standard_Boolean TCollection_HAsciiString_is_ascii(const TCollection_HAsciiString* self_) {
+    return self_->IsAscii();
+}
+extern "C" Standard_Boolean TCollection_HAsciiString_is_different(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* S) {
+    return self_->IsDifferent(*S);
+}
+extern "C" Standard_Boolean TCollection_HAsciiString_is_same_string_handletcollectionhasciistring(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* S) {
+    return self_->IsSameString(*S);
+}
+extern "C" Standard_Boolean TCollection_HAsciiString_is_same_string_handletcollectionhasciistring_bool(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* S, Standard_Boolean CaseSensitive) {
+    return self_->IsSameString(*S, CaseSensitive);
+}
+extern "C" void TCollection_HAsciiString_left_adjust(TCollection_HAsciiString* self_) {
+    self_->LeftAdjust();
+}
+extern "C" Standard_Integer TCollection_HAsciiString_length(const TCollection_HAsciiString* self_) {
+    return self_->Length();
+}
+extern "C" Standard_Integer TCollection_HAsciiString_location(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* other, Standard_Integer FromIndex, Standard_Integer ToIndex) {
+    return self_->Location(*other, FromIndex, ToIndex);
+}
+extern "C" void TCollection_HAsciiString_lower_case(TCollection_HAsciiString* self_) {
+    self_->LowerCase();
+}
+extern "C" void TCollection_HAsciiString_prepend(TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* other) {
+    self_->Prepend(*other);
+}
+extern "C" Standard_Real TCollection_HAsciiString_real_value(const TCollection_HAsciiString* self_) {
+    return self_->RealValue();
+}
+extern "C" void TCollection_HAsciiString_remove(TCollection_HAsciiString* self_, Standard_Integer where, Standard_Integer ahowmany) {
+    self_->Remove(where, ahowmany);
+}
+extern "C" void TCollection_HAsciiString_right_adjust(TCollection_HAsciiString* self_) {
+    self_->RightAdjust();
+}
+extern "C" Standard_Integer TCollection_HAsciiString_search_handletcollectionhasciistring(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* what) {
+    return self_->Search(*what);
+}
+extern "C" Standard_Integer TCollection_HAsciiString_search_from_end_handletcollectionhasciistring(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* what) {
+    return self_->SearchFromEnd(*what);
+}
+extern "C" void TCollection_HAsciiString_set_value_int_handletcollectionhasciistring(TCollection_HAsciiString* self_, Standard_Integer where, const opencascade::handle<TCollection_HAsciiString>* what) {
+    self_->SetValue(where, *what);
+}
+extern "C" void TCollection_HAsciiString_trunc(TCollection_HAsciiString* self_, Standard_Integer ahowmany) {
+    self_->Trunc(ahowmany);
+}
+extern "C" void TCollection_HAsciiString_upper_case(TCollection_HAsciiString* self_) {
+    self_->UpperCase();
+}
+extern "C" Standard_Integer TCollection_HAsciiString_usefull_length(const TCollection_HAsciiString* self_) {
+    return self_->UsefullLength();
+}
+extern "C" const TCollection_AsciiString& TCollection_HAsciiString_string(const TCollection_HAsciiString* self_) {
+    return self_->String();
+}
+extern "C" Standard_Boolean TCollection_HAsciiString_is_same_state(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* other) {
+    return self_->IsSameState(*other);
+}
+extern "C" const opencascade::handle<Standard_Type>& TCollection_HAsciiString_dynamic_type(const TCollection_HAsciiString* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TCollection_HAsciiString_get_type_name() {
+    return TCollection_HAsciiString::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TCollection_HAsciiString_get_type_descriptor() {
+    return TCollection_HAsciiString::get_type_descriptor();
+}
+extern "C" HandleTCollectionHAsciiString* TCollection_HAsciiString_to_handle(TCollection_HAsciiString* obj) {
+    return new HandleTCollectionHAsciiString(obj);
+}
+extern "C" const TCollection_HAsciiString* HandleTCollectionHAsciiString_get(const HandleTCollectionHAsciiString* handle) { return (*handle).get(); }
+extern "C" TCollection_HAsciiString* HandleTCollectionHAsciiString_get_mut(HandleTCollectionHAsciiString* handle) { return (*handle).get(); }
+extern "C" void TCollection_HAsciiString_destructor(TCollection_HAsciiString* self_) { delete self_; }
+
+// ========================
+// TCollection_HExtendedString wrappers
+// ========================
+
+extern "C" TCollection_HExtendedString* TCollection_HExtendedString_ctor() {
+    return new TCollection_HExtendedString();
+}
+extern "C" TCollection_HExtendedString* TCollection_HExtendedString_ctor_charptr(const char* message) {
+    return new TCollection_HExtendedString(message);
+}
+extern "C" TCollection_HExtendedString* TCollection_HExtendedString_ctor_extstring(const Standard_ExtString* message) {
+    return new TCollection_HExtendedString(*message);
+}
+extern "C" TCollection_HExtendedString* TCollection_HExtendedString_ctor_extcharacter(const Standard_ExtCharacter* aChar) {
+    return new TCollection_HExtendedString(*aChar);
+}
+extern "C" TCollection_HExtendedString* TCollection_HExtendedString_ctor_int_extcharacter(Standard_Integer length, const Standard_ExtCharacter* filler) {
+    return new TCollection_HExtendedString(length, *filler);
+}
+extern "C" TCollection_HExtendedString* TCollection_HExtendedString_ctor_extendedstring(const TCollection_ExtendedString* aString) {
+    return new TCollection_HExtendedString(*aString);
+}
+extern "C" TCollection_HExtendedString* TCollection_HExtendedString_ctor_handletcollectionhasciistring(const opencascade::handle<TCollection_HAsciiString>* aString) {
+    return new TCollection_HExtendedString(*aString);
+}
+extern "C" TCollection_HExtendedString* TCollection_HExtendedString_ctor_handletcollectionhextendedstring(const opencascade::handle<TCollection_HExtendedString>* aString) {
+    return new TCollection_HExtendedString(*aString);
+}
+extern "C" opencascade::handle<TCollection_HExtendedString>* TCollection_HExtendedString_cat(const TCollection_HExtendedString* self_, const opencascade::handle<TCollection_HExtendedString>* other) {
+    return new opencascade::handle<TCollection_HExtendedString>(self_->Cat(*other));
+}
+extern "C" opencascade::handle<TCollection_HExtendedString>* TCollection_HExtendedString_split(TCollection_HExtendedString* self_, Standard_Integer where) {
+    return new opencascade::handle<TCollection_HExtendedString>(self_->Split(where));
+}
+extern "C" void TCollection_HExtendedString_assign_cat(TCollection_HExtendedString* self_, const opencascade::handle<TCollection_HExtendedString>* other) {
+    self_->AssignCat(*other);
+}
+extern "C" void TCollection_HExtendedString_clear(TCollection_HExtendedString* self_) {
+    self_->Clear();
+}
+extern "C" Standard_Boolean TCollection_HExtendedString_is_empty(const TCollection_HExtendedString* self_) {
+    return self_->IsEmpty();
+}
+extern "C" void TCollection_HExtendedString_insert(TCollection_HExtendedString* self_, Standard_Integer where, const opencascade::handle<TCollection_HExtendedString>* what) {
+    self_->Insert(where, *what);
+}
+extern "C" Standard_Boolean TCollection_HExtendedString_is_less(const TCollection_HExtendedString* self_, const opencascade::handle<TCollection_HExtendedString>* other) {
+    return self_->IsLess(*other);
+}
+extern "C" Standard_Boolean TCollection_HExtendedString_is_greater(const TCollection_HExtendedString* self_, const opencascade::handle<TCollection_HExtendedString>* other) {
+    return self_->IsGreater(*other);
+}
+extern "C" Standard_Boolean TCollection_HExtendedString_is_ascii(const TCollection_HExtendedString* self_) {
+    return self_->IsAscii();
+}
+extern "C" Standard_Integer TCollection_HExtendedString_length(const TCollection_HExtendedString* self_) {
+    return self_->Length();
+}
+extern "C" void TCollection_HExtendedString_remove(TCollection_HExtendedString* self_, Standard_Integer where, Standard_Integer ahowmany) {
+    self_->Remove(where, ahowmany);
+}
+extern "C" void TCollection_HExtendedString_set_value(TCollection_HExtendedString* self_, Standard_Integer where, const opencascade::handle<TCollection_HExtendedString>* what) {
+    self_->SetValue(where, *what);
+}
+extern "C" Standard_Integer TCollection_HExtendedString_search(const TCollection_HExtendedString* self_, const opencascade::handle<TCollection_HExtendedString>* what) {
+    return self_->Search(*what);
+}
+extern "C" Standard_Integer TCollection_HExtendedString_search_from_end(const TCollection_HExtendedString* self_, const opencascade::handle<TCollection_HExtendedString>* what) {
+    return self_->SearchFromEnd(*what);
+}
+extern "C" void TCollection_HExtendedString_trunc(TCollection_HExtendedString* self_, Standard_Integer ahowmany) {
+    self_->Trunc(ahowmany);
+}
+extern "C" const TCollection_ExtendedString& TCollection_HExtendedString_string(const TCollection_HExtendedString* self_) {
+    return self_->String();
+}
+extern "C" Standard_Boolean TCollection_HExtendedString_is_same_state(const TCollection_HExtendedString* self_, const opencascade::handle<TCollection_HExtendedString>* other) {
+    return self_->IsSameState(*other);
+}
+extern "C" const opencascade::handle<Standard_Type>& TCollection_HExtendedString_dynamic_type(const TCollection_HExtendedString* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TCollection_HExtendedString_get_type_name() {
+    return TCollection_HExtendedString::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TCollection_HExtendedString_get_type_descriptor() {
+    return TCollection_HExtendedString::get_type_descriptor();
+}
+extern "C" HandleTCollectionHExtendedString* TCollection_HExtendedString_to_handle(TCollection_HExtendedString* obj) {
+    return new HandleTCollectionHExtendedString(obj);
+}
+extern "C" const TCollection_HExtendedString* HandleTCollectionHExtendedString_get(const HandleTCollectionHExtendedString* handle) { return (*handle).get(); }
+extern "C" TCollection_HExtendedString* HandleTCollectionHExtendedString_get_mut(HandleTCollectionHExtendedString* handle) { return (*handle).get(); }
+extern "C" void TCollection_HExtendedString_destructor(TCollection_HExtendedString* self_) { delete self_; }
+
+// ========================
+// TColStd_HArray1OfAsciiString wrappers
+// ========================
+
+extern "C" TColStd_HArray1OfAsciiString* TColStd_HArray1OfAsciiString_ctor() {
+    return new TColStd_HArray1OfAsciiString();
+}
+extern "C" TColStd_HArray1OfAsciiString* TColStd_HArray1OfAsciiString_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return new TColStd_HArray1OfAsciiString(theLower, theUpper);
+}
+extern "C" TColStd_HArray1OfAsciiString* TColStd_HArray1OfAsciiString_ctor_int2_asciistring(Standard_Integer theLower, Standard_Integer theUpper, const TCollection_AsciiString* theValue) {
+    return new TColStd_HArray1OfAsciiString(theLower, theUpper, *theValue);
+}
+extern "C" TColStd_HArray1OfAsciiString* TColStd_HArray1OfAsciiString_ctor_asciistring_int2_bool(const TCollection_AsciiString* theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
+    return new TColStd_HArray1OfAsciiString(*theBegin, theLower, theUpper, arg3);
+}
+extern "C" TColStd_HArray1OfAsciiString* TColStd_HArray1OfAsciiString_ctor_array1ofasciistring(const TColStd_Array1OfAsciiString* theOther) {
+    return new TColStd_HArray1OfAsciiString(*theOther);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfAsciiString_dynamic_type(const TColStd_HArray1OfAsciiString* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HArray1OfAsciiString_get_type_name() {
+    return TColStd_HArray1OfAsciiString::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfAsciiString_get_type_descriptor() {
+    return TColStd_HArray1OfAsciiString::get_type_descriptor();
+}
+extern "C" HandleTColStdHArray1OfAsciiString* TColStd_HArray1OfAsciiString_to_handle(TColStd_HArray1OfAsciiString* obj) {
+    return new HandleTColStdHArray1OfAsciiString(obj);
+}
+extern "C" const TColStd_HArray1OfAsciiString* HandleTColStdHArray1OfAsciiString_get(const HandleTColStdHArray1OfAsciiString* handle) { return (*handle).get(); }
+extern "C" TColStd_HArray1OfAsciiString* HandleTColStdHArray1OfAsciiString_get_mut(HandleTColStdHArray1OfAsciiString* handle) { return (*handle).get(); }
+extern "C" void TColStd_HArray1OfAsciiString_destructor(TColStd_HArray1OfAsciiString* self_) { delete self_; }
+
+// ========================
+// TColStd_HArray1OfBoolean wrappers
+// ========================
+
+extern "C" TColStd_HArray1OfBoolean* TColStd_HArray1OfBoolean_ctor() {
+    return new TColStd_HArray1OfBoolean();
+}
+extern "C" TColStd_HArray1OfBoolean* TColStd_HArray1OfBoolean_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return new TColStd_HArray1OfBoolean(theLower, theUpper);
+}
+extern "C" TColStd_HArray1OfBoolean* TColStd_HArray1OfBoolean_ctor_int2_bool(Standard_Integer theLower, Standard_Integer theUpper, const Standard_Boolean* theValue) {
+    return new TColStd_HArray1OfBoolean(theLower, theUpper, *theValue);
+}
+extern "C" TColStd_HArray1OfBoolean* TColStd_HArray1OfBoolean_ctor_bool_int2_bool(const Standard_Boolean* theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
+    return new TColStd_HArray1OfBoolean(*theBegin, theLower, theUpper, arg3);
+}
+extern "C" TColStd_HArray1OfBoolean* TColStd_HArray1OfBoolean_ctor_array1ofboolean(const TColStd_Array1OfBoolean* theOther) {
+    return new TColStd_HArray1OfBoolean(*theOther);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfBoolean_dynamic_type(const TColStd_HArray1OfBoolean* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HArray1OfBoolean_get_type_name() {
+    return TColStd_HArray1OfBoolean::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfBoolean_get_type_descriptor() {
+    return TColStd_HArray1OfBoolean::get_type_descriptor();
+}
+extern "C" HandleTColStdHArray1OfBoolean* TColStd_HArray1OfBoolean_to_handle(TColStd_HArray1OfBoolean* obj) {
+    return new HandleTColStdHArray1OfBoolean(obj);
+}
+extern "C" const TColStd_HArray1OfBoolean* HandleTColStdHArray1OfBoolean_get(const HandleTColStdHArray1OfBoolean* handle) { return (*handle).get(); }
+extern "C" TColStd_HArray1OfBoolean* HandleTColStdHArray1OfBoolean_get_mut(HandleTColStdHArray1OfBoolean* handle) { return (*handle).get(); }
+extern "C" void TColStd_HArray1OfBoolean_destructor(TColStd_HArray1OfBoolean* self_) { delete self_; }
+
+// ========================
+// TColStd_HArray1OfByte wrappers
+// ========================
+
+extern "C" TColStd_HArray1OfByte* TColStd_HArray1OfByte_ctor() {
+    return new TColStd_HArray1OfByte();
+}
+extern "C" TColStd_HArray1OfByte* TColStd_HArray1OfByte_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return new TColStd_HArray1OfByte(theLower, theUpper);
+}
+extern "C" TColStd_HArray1OfByte* TColStd_HArray1OfByte_ctor_array1ofbyte(const TColStd_Array1OfByte* theOther) {
+    return new TColStd_HArray1OfByte(*theOther);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfByte_dynamic_type(const TColStd_HArray1OfByte* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HArray1OfByte_get_type_name() {
+    return TColStd_HArray1OfByte::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfByte_get_type_descriptor() {
+    return TColStd_HArray1OfByte::get_type_descriptor();
+}
+extern "C" HandleTColStdHArray1OfByte* TColStd_HArray1OfByte_to_handle(TColStd_HArray1OfByte* obj) {
+    return new HandleTColStdHArray1OfByte(obj);
+}
+extern "C" const TColStd_HArray1OfByte* HandleTColStdHArray1OfByte_get(const HandleTColStdHArray1OfByte* handle) { return (*handle).get(); }
+extern "C" TColStd_HArray1OfByte* HandleTColStdHArray1OfByte_get_mut(HandleTColStdHArray1OfByte* handle) { return (*handle).get(); }
+extern "C" void TColStd_HArray1OfByte_destructor(TColStd_HArray1OfByte* self_) { delete self_; }
+
+// ========================
+// TColStd_HArray1OfCharacter wrappers
+// ========================
+
+extern "C" TColStd_HArray1OfCharacter* TColStd_HArray1OfCharacter_ctor() {
+    return new TColStd_HArray1OfCharacter();
+}
+extern "C" TColStd_HArray1OfCharacter* TColStd_HArray1OfCharacter_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return new TColStd_HArray1OfCharacter(theLower, theUpper);
+}
+extern "C" TColStd_HArray1OfCharacter* TColStd_HArray1OfCharacter_ctor_int2_char(Standard_Integer theLower, Standard_Integer theUpper, const char* theValue) {
+    return new TColStd_HArray1OfCharacter(theLower, theUpper, *theValue);
+}
+extern "C" TColStd_HArray1OfCharacter* TColStd_HArray1OfCharacter_ctor_char_int2_bool(const char* theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
+    return new TColStd_HArray1OfCharacter(*theBegin, theLower, theUpper, arg3);
+}
+extern "C" TColStd_HArray1OfCharacter* TColStd_HArray1OfCharacter_ctor_array1ofcharacter(const TColStd_Array1OfCharacter* theOther) {
+    return new TColStd_HArray1OfCharacter(*theOther);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfCharacter_dynamic_type(const TColStd_HArray1OfCharacter* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HArray1OfCharacter_get_type_name() {
+    return TColStd_HArray1OfCharacter::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfCharacter_get_type_descriptor() {
+    return TColStd_HArray1OfCharacter::get_type_descriptor();
+}
+extern "C" HandleTColStdHArray1OfCharacter* TColStd_HArray1OfCharacter_to_handle(TColStd_HArray1OfCharacter* obj) {
+    return new HandleTColStdHArray1OfCharacter(obj);
+}
+extern "C" const TColStd_HArray1OfCharacter* HandleTColStdHArray1OfCharacter_get(const HandleTColStdHArray1OfCharacter* handle) { return (*handle).get(); }
+extern "C" TColStd_HArray1OfCharacter* HandleTColStdHArray1OfCharacter_get_mut(HandleTColStdHArray1OfCharacter* handle) { return (*handle).get(); }
+extern "C" void TColStd_HArray1OfCharacter_destructor(TColStd_HArray1OfCharacter* self_) { delete self_; }
+
+// ========================
+// TColStd_HArray1OfExtendedString wrappers
+// ========================
+
+extern "C" TColStd_HArray1OfExtendedString* TColStd_HArray1OfExtendedString_ctor() {
+    return new TColStd_HArray1OfExtendedString();
+}
+extern "C" TColStd_HArray1OfExtendedString* TColStd_HArray1OfExtendedString_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return new TColStd_HArray1OfExtendedString(theLower, theUpper);
+}
+extern "C" TColStd_HArray1OfExtendedString* TColStd_HArray1OfExtendedString_ctor_int2_extendedstring(Standard_Integer theLower, Standard_Integer theUpper, const TCollection_ExtendedString* theValue) {
+    return new TColStd_HArray1OfExtendedString(theLower, theUpper, *theValue);
+}
+extern "C" TColStd_HArray1OfExtendedString* TColStd_HArray1OfExtendedString_ctor_extendedstring_int2_bool(const TCollection_ExtendedString* theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
+    return new TColStd_HArray1OfExtendedString(*theBegin, theLower, theUpper, arg3);
+}
+extern "C" TColStd_HArray1OfExtendedString* TColStd_HArray1OfExtendedString_ctor_array1ofextendedstring(const TColStd_Array1OfExtendedString* theOther) {
+    return new TColStd_HArray1OfExtendedString(*theOther);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfExtendedString_dynamic_type(const TColStd_HArray1OfExtendedString* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HArray1OfExtendedString_get_type_name() {
+    return TColStd_HArray1OfExtendedString::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfExtendedString_get_type_descriptor() {
+    return TColStd_HArray1OfExtendedString::get_type_descriptor();
+}
+extern "C" HandleTColStdHArray1OfExtendedString* TColStd_HArray1OfExtendedString_to_handle(TColStd_HArray1OfExtendedString* obj) {
+    return new HandleTColStdHArray1OfExtendedString(obj);
+}
+extern "C" const TColStd_HArray1OfExtendedString* HandleTColStdHArray1OfExtendedString_get(const HandleTColStdHArray1OfExtendedString* handle) { return (*handle).get(); }
+extern "C" TColStd_HArray1OfExtendedString* HandleTColStdHArray1OfExtendedString_get_mut(HandleTColStdHArray1OfExtendedString* handle) { return (*handle).get(); }
+extern "C" void TColStd_HArray1OfExtendedString_destructor(TColStd_HArray1OfExtendedString* self_) { delete self_; }
+
+// ========================
+// TColStd_HArray1OfInteger wrappers
+// ========================
+
+extern "C" TColStd_HArray1OfInteger* TColStd_HArray1OfInteger_ctor() {
+    return new TColStd_HArray1OfInteger();
+}
+extern "C" TColStd_HArray1OfInteger* TColStd_HArray1OfInteger_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return new TColStd_HArray1OfInteger(theLower, theUpper);
+}
+extern "C" TColStd_HArray1OfInteger* TColStd_HArray1OfInteger_ctor_int3(Standard_Integer theLower, Standard_Integer theUpper, const Standard_Integer* theValue) {
+    return new TColStd_HArray1OfInteger(theLower, theUpper, *theValue);
+}
+extern "C" TColStd_HArray1OfInteger* TColStd_HArray1OfInteger_ctor_int3_bool(const Standard_Integer* theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
+    return new TColStd_HArray1OfInteger(*theBegin, theLower, theUpper, arg3);
+}
+extern "C" TColStd_HArray1OfInteger* TColStd_HArray1OfInteger_ctor_array1ofinteger(const TColStd_Array1OfInteger* theOther) {
+    return new TColStd_HArray1OfInteger(*theOther);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfInteger_dynamic_type(const TColStd_HArray1OfInteger* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HArray1OfInteger_get_type_name() {
+    return TColStd_HArray1OfInteger::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfInteger_get_type_descriptor() {
+    return TColStd_HArray1OfInteger::get_type_descriptor();
+}
+extern "C" HandleTColStdHArray1OfInteger* TColStd_HArray1OfInteger_to_handle(TColStd_HArray1OfInteger* obj) {
+    return new HandleTColStdHArray1OfInteger(obj);
+}
+extern "C" const TColStd_HArray1OfInteger* HandleTColStdHArray1OfInteger_get(const HandleTColStdHArray1OfInteger* handle) { return (*handle).get(); }
+extern "C" TColStd_HArray1OfInteger* HandleTColStdHArray1OfInteger_get_mut(HandleTColStdHArray1OfInteger* handle) { return (*handle).get(); }
+extern "C" void TColStd_HArray1OfInteger_destructor(TColStd_HArray1OfInteger* self_) { delete self_; }
+
+// ========================
+// TColStd_HArray1OfListOfInteger wrappers
+// ========================
+
+extern "C" TColStd_HArray1OfListOfInteger* TColStd_HArray1OfListOfInteger_ctor() {
+    return new TColStd_HArray1OfListOfInteger();
+}
+extern "C" TColStd_HArray1OfListOfInteger* TColStd_HArray1OfListOfInteger_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return new TColStd_HArray1OfListOfInteger(theLower, theUpper);
+}
+extern "C" TColStd_HArray1OfListOfInteger* TColStd_HArray1OfListOfInteger_ctor_array1oflistofinteger(const TColStd_Array1OfListOfInteger* theOther) {
+    return new TColStd_HArray1OfListOfInteger(*theOther);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfListOfInteger_dynamic_type(const TColStd_HArray1OfListOfInteger* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HArray1OfListOfInteger_get_type_name() {
+    return TColStd_HArray1OfListOfInteger::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfListOfInteger_get_type_descriptor() {
+    return TColStd_HArray1OfListOfInteger::get_type_descriptor();
+}
+extern "C" HandleTColStdHArray1OfListOfInteger* TColStd_HArray1OfListOfInteger_to_handle(TColStd_HArray1OfListOfInteger* obj) {
+    return new HandleTColStdHArray1OfListOfInteger(obj);
+}
+extern "C" const TColStd_HArray1OfListOfInteger* HandleTColStdHArray1OfListOfInteger_get(const HandleTColStdHArray1OfListOfInteger* handle) { return (*handle).get(); }
+extern "C" TColStd_HArray1OfListOfInteger* HandleTColStdHArray1OfListOfInteger_get_mut(HandleTColStdHArray1OfListOfInteger* handle) { return (*handle).get(); }
+extern "C" void TColStd_HArray1OfListOfInteger_destructor(TColStd_HArray1OfListOfInteger* self_) { delete self_; }
+
+// ========================
+// TColStd_HArray1OfReal wrappers
+// ========================
+
+extern "C" TColStd_HArray1OfReal* TColStd_HArray1OfReal_ctor() {
+    return new TColStd_HArray1OfReal();
+}
+extern "C" TColStd_HArray1OfReal* TColStd_HArray1OfReal_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return new TColStd_HArray1OfReal(theLower, theUpper);
+}
+extern "C" TColStd_HArray1OfReal* TColStd_HArray1OfReal_ctor_int2_real(Standard_Integer theLower, Standard_Integer theUpper, const Standard_Real* theValue) {
+    return new TColStd_HArray1OfReal(theLower, theUpper, *theValue);
+}
+extern "C" TColStd_HArray1OfReal* TColStd_HArray1OfReal_ctor_real_int2_bool(const Standard_Real* theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
+    return new TColStd_HArray1OfReal(*theBegin, theLower, theUpper, arg3);
+}
+extern "C" TColStd_HArray1OfReal* TColStd_HArray1OfReal_ctor_array1ofreal(const TColStd_Array1OfReal* theOther) {
+    return new TColStd_HArray1OfReal(*theOther);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfReal_dynamic_type(const TColStd_HArray1OfReal* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HArray1OfReal_get_type_name() {
+    return TColStd_HArray1OfReal::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfReal_get_type_descriptor() {
+    return TColStd_HArray1OfReal::get_type_descriptor();
+}
+extern "C" HandleTColStdHArray1OfReal* TColStd_HArray1OfReal_to_handle(TColStd_HArray1OfReal* obj) {
+    return new HandleTColStdHArray1OfReal(obj);
+}
+extern "C" const TColStd_HArray1OfReal* HandleTColStdHArray1OfReal_get(const HandleTColStdHArray1OfReal* handle) { return (*handle).get(); }
+extern "C" TColStd_HArray1OfReal* HandleTColStdHArray1OfReal_get_mut(HandleTColStdHArray1OfReal* handle) { return (*handle).get(); }
+extern "C" void TColStd_HArray1OfReal_destructor(TColStd_HArray1OfReal* self_) { delete self_; }
+
+// ========================
+// TColStd_HArray1OfTransient wrappers
+// ========================
+
+extern "C" TColStd_HArray1OfTransient* TColStd_HArray1OfTransient_ctor() {
+    return new TColStd_HArray1OfTransient();
+}
+extern "C" TColStd_HArray1OfTransient* TColStd_HArray1OfTransient_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+    return new TColStd_HArray1OfTransient(theLower, theUpper);
+}
+extern "C" TColStd_HArray1OfTransient* TColStd_HArray1OfTransient_ctor_array1oftransient(const TColStd_Array1OfTransient* theOther) {
+    return new TColStd_HArray1OfTransient(*theOther);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfTransient_dynamic_type(const TColStd_HArray1OfTransient* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HArray1OfTransient_get_type_name() {
+    return TColStd_HArray1OfTransient::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfTransient_get_type_descriptor() {
+    return TColStd_HArray1OfTransient::get_type_descriptor();
+}
+extern "C" HandleTColStdHArray1OfTransient* TColStd_HArray1OfTransient_to_handle(TColStd_HArray1OfTransient* obj) {
+    return new HandleTColStdHArray1OfTransient(obj);
+}
+extern "C" const TColStd_HArray1OfTransient* HandleTColStdHArray1OfTransient_get(const HandleTColStdHArray1OfTransient* handle) { return (*handle).get(); }
+extern "C" TColStd_HArray1OfTransient* HandleTColStdHArray1OfTransient_get_mut(HandleTColStdHArray1OfTransient* handle) { return (*handle).get(); }
+extern "C" void TColStd_HArray1OfTransient_destructor(TColStd_HArray1OfTransient* self_) { delete self_; }
+
+// ========================
+// TColStd_HArray2OfBoolean wrappers
+// ========================
+
+extern "C" TColStd_HArray2OfBoolean* TColStd_HArray2OfBoolean_ctor_int4(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp) {
+    return new TColStd_HArray2OfBoolean(theRowLow, theRowUpp, theColLow, theColUpp);
+}
+extern "C" TColStd_HArray2OfBoolean* TColStd_HArray2OfBoolean_ctor_int4_bool(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp, const Standard_Boolean* theValue) {
+    return new TColStd_HArray2OfBoolean(theRowLow, theRowUpp, theColLow, theColUpp, *theValue);
+}
+extern "C" TColStd_HArray2OfBoolean* TColStd_HArray2OfBoolean_ctor_array2ofboolean(const TColStd_Array2OfBoolean* theOther) {
+    return new TColStd_HArray2OfBoolean(*theOther);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray2OfBoolean_dynamic_type(const TColStd_HArray2OfBoolean* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HArray2OfBoolean_get_type_name() {
+    return TColStd_HArray2OfBoolean::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray2OfBoolean_get_type_descriptor() {
+    return TColStd_HArray2OfBoolean::get_type_descriptor();
+}
+extern "C" HandleTColStdHArray2OfBoolean* TColStd_HArray2OfBoolean_to_handle(TColStd_HArray2OfBoolean* obj) {
+    return new HandleTColStdHArray2OfBoolean(obj);
+}
+extern "C" const TColStd_HArray2OfBoolean* HandleTColStdHArray2OfBoolean_get(const HandleTColStdHArray2OfBoolean* handle) { return (*handle).get(); }
+extern "C" TColStd_HArray2OfBoolean* HandleTColStdHArray2OfBoolean_get_mut(HandleTColStdHArray2OfBoolean* handle) { return (*handle).get(); }
+extern "C" void TColStd_HArray2OfBoolean_destructor(TColStd_HArray2OfBoolean* self_) { delete self_; }
+
+// ========================
+// TColStd_HArray2OfCharacter wrappers
+// ========================
+
+extern "C" TColStd_HArray2OfCharacter* TColStd_HArray2OfCharacter_ctor_int4(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp) {
+    return new TColStd_HArray2OfCharacter(theRowLow, theRowUpp, theColLow, theColUpp);
+}
+extern "C" TColStd_HArray2OfCharacter* TColStd_HArray2OfCharacter_ctor_int4_char(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp, const char* theValue) {
+    return new TColStd_HArray2OfCharacter(theRowLow, theRowUpp, theColLow, theColUpp, *theValue);
+}
+extern "C" TColStd_HArray2OfCharacter* TColStd_HArray2OfCharacter_ctor_array2ofcharacter(const TColStd_Array2OfCharacter* theOther) {
+    return new TColStd_HArray2OfCharacter(*theOther);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray2OfCharacter_dynamic_type(const TColStd_HArray2OfCharacter* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HArray2OfCharacter_get_type_name() {
+    return TColStd_HArray2OfCharacter::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray2OfCharacter_get_type_descriptor() {
+    return TColStd_HArray2OfCharacter::get_type_descriptor();
+}
+extern "C" HandleTColStdHArray2OfCharacter* TColStd_HArray2OfCharacter_to_handle(TColStd_HArray2OfCharacter* obj) {
+    return new HandleTColStdHArray2OfCharacter(obj);
+}
+extern "C" const TColStd_HArray2OfCharacter* HandleTColStdHArray2OfCharacter_get(const HandleTColStdHArray2OfCharacter* handle) { return (*handle).get(); }
+extern "C" TColStd_HArray2OfCharacter* HandleTColStdHArray2OfCharacter_get_mut(HandleTColStdHArray2OfCharacter* handle) { return (*handle).get(); }
+extern "C" void TColStd_HArray2OfCharacter_destructor(TColStd_HArray2OfCharacter* self_) { delete self_; }
+
+// ========================
+// TColStd_HArray2OfInteger wrappers
+// ========================
+
+extern "C" TColStd_HArray2OfInteger* TColStd_HArray2OfInteger_ctor_int4(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp) {
+    return new TColStd_HArray2OfInteger(theRowLow, theRowUpp, theColLow, theColUpp);
+}
+extern "C" TColStd_HArray2OfInteger* TColStd_HArray2OfInteger_ctor_int5(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp, const Standard_Integer* theValue) {
+    return new TColStd_HArray2OfInteger(theRowLow, theRowUpp, theColLow, theColUpp, *theValue);
+}
+extern "C" TColStd_HArray2OfInteger* TColStd_HArray2OfInteger_ctor_array2ofinteger(const TColStd_Array2OfInteger* theOther) {
+    return new TColStd_HArray2OfInteger(*theOther);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray2OfInteger_dynamic_type(const TColStd_HArray2OfInteger* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HArray2OfInteger_get_type_name() {
+    return TColStd_HArray2OfInteger::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray2OfInteger_get_type_descriptor() {
+    return TColStd_HArray2OfInteger::get_type_descriptor();
+}
+extern "C" HandleTColStdHArray2OfInteger* TColStd_HArray2OfInteger_to_handle(TColStd_HArray2OfInteger* obj) {
+    return new HandleTColStdHArray2OfInteger(obj);
+}
+extern "C" const TColStd_HArray2OfInteger* HandleTColStdHArray2OfInteger_get(const HandleTColStdHArray2OfInteger* handle) { return (*handle).get(); }
+extern "C" TColStd_HArray2OfInteger* HandleTColStdHArray2OfInteger_get_mut(HandleTColStdHArray2OfInteger* handle) { return (*handle).get(); }
+extern "C" void TColStd_HArray2OfInteger_destructor(TColStd_HArray2OfInteger* self_) { delete self_; }
+
+// ========================
+// TColStd_HArray2OfReal wrappers
+// ========================
+
+extern "C" TColStd_HArray2OfReal* TColStd_HArray2OfReal_ctor_int4(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp) {
+    return new TColStd_HArray2OfReal(theRowLow, theRowUpp, theColLow, theColUpp);
+}
+extern "C" TColStd_HArray2OfReal* TColStd_HArray2OfReal_ctor_int4_real(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp, const Standard_Real* theValue) {
+    return new TColStd_HArray2OfReal(theRowLow, theRowUpp, theColLow, theColUpp, *theValue);
+}
+extern "C" TColStd_HArray2OfReal* TColStd_HArray2OfReal_ctor_array2ofreal(const TColStd_Array2OfReal* theOther) {
+    return new TColStd_HArray2OfReal(*theOther);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray2OfReal_dynamic_type(const TColStd_HArray2OfReal* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HArray2OfReal_get_type_name() {
+    return TColStd_HArray2OfReal::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray2OfReal_get_type_descriptor() {
+    return TColStd_HArray2OfReal::get_type_descriptor();
+}
+extern "C" HandleTColStdHArray2OfReal* TColStd_HArray2OfReal_to_handle(TColStd_HArray2OfReal* obj) {
+    return new HandleTColStdHArray2OfReal(obj);
+}
+extern "C" const TColStd_HArray2OfReal* HandleTColStdHArray2OfReal_get(const HandleTColStdHArray2OfReal* handle) { return (*handle).get(); }
+extern "C" TColStd_HArray2OfReal* HandleTColStdHArray2OfReal_get_mut(HandleTColStdHArray2OfReal* handle) { return (*handle).get(); }
+extern "C" void TColStd_HArray2OfReal_destructor(TColStd_HArray2OfReal* self_) { delete self_; }
+
+// ========================
+// TColStd_HArray2OfTransient wrappers
+// ========================
+
+extern "C" TColStd_HArray2OfTransient* TColStd_HArray2OfTransient_ctor_int4(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp) {
+    return new TColStd_HArray2OfTransient(theRowLow, theRowUpp, theColLow, theColUpp);
+}
+extern "C" TColStd_HArray2OfTransient* TColStd_HArray2OfTransient_ctor_array2oftransient(const TColStd_Array2OfTransient* theOther) {
+    return new TColStd_HArray2OfTransient(*theOther);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray2OfTransient_dynamic_type(const TColStd_HArray2OfTransient* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HArray2OfTransient_get_type_name() {
+    return TColStd_HArray2OfTransient::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray2OfTransient_get_type_descriptor() {
+    return TColStd_HArray2OfTransient::get_type_descriptor();
+}
+extern "C" HandleTColStdHArray2OfTransient* TColStd_HArray2OfTransient_to_handle(TColStd_HArray2OfTransient* obj) {
+    return new HandleTColStdHArray2OfTransient(obj);
+}
+extern "C" const TColStd_HArray2OfTransient* HandleTColStdHArray2OfTransient_get(const HandleTColStdHArray2OfTransient* handle) { return (*handle).get(); }
+extern "C" TColStd_HArray2OfTransient* HandleTColStdHArray2OfTransient_get_mut(HandleTColStdHArray2OfTransient* handle) { return (*handle).get(); }
+extern "C" void TColStd_HArray2OfTransient_destructor(TColStd_HArray2OfTransient* self_) { delete self_; }
+
+// ========================
+// TColStd_HPackedMapOfInteger wrappers
+// ========================
+
+extern "C" TColStd_HPackedMapOfInteger* TColStd_HPackedMapOfInteger_ctor_int(Standard_Integer NbBuckets) {
+    return new TColStd_HPackedMapOfInteger(NbBuckets);
+}
+extern "C" TColStd_HPackedMapOfInteger* TColStd_HPackedMapOfInteger_ctor_packedmapofinteger(const TColStd_PackedMapOfInteger* theOther) {
+    return new TColStd_HPackedMapOfInteger(*theOther);
+}
+extern "C" const TColStd_PackedMapOfInteger& TColStd_HPackedMapOfInteger_map(const TColStd_HPackedMapOfInteger* self_) {
+    return self_->Map();
+}
+extern "C" TColStd_PackedMapOfInteger& TColStd_HPackedMapOfInteger_change_map(TColStd_HPackedMapOfInteger* self_) {
+    return self_->ChangeMap();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HPackedMapOfInteger_dynamic_type(const TColStd_HPackedMapOfInteger* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HPackedMapOfInteger_get_type_name() {
+    return TColStd_HPackedMapOfInteger::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HPackedMapOfInteger_get_type_descriptor() {
+    return TColStd_HPackedMapOfInteger::get_type_descriptor();
+}
+extern "C" HandleTColStdHPackedMapOfInteger* TColStd_HPackedMapOfInteger_to_handle(TColStd_HPackedMapOfInteger* obj) {
+    return new HandleTColStdHPackedMapOfInteger(obj);
+}
+extern "C" const TColStd_HPackedMapOfInteger* HandleTColStdHPackedMapOfInteger_get(const HandleTColStdHPackedMapOfInteger* handle) { return (*handle).get(); }
+extern "C" TColStd_HPackedMapOfInteger* HandleTColStdHPackedMapOfInteger_get_mut(HandleTColStdHPackedMapOfInteger* handle) { return (*handle).get(); }
+extern "C" void TColStd_HPackedMapOfInteger_destructor(TColStd_HPackedMapOfInteger* self_) { delete self_; }
+
+// ========================
+// TColStd_HSequenceOfAsciiString wrappers
+// ========================
+
+extern "C" TColStd_HSequenceOfAsciiString* TColStd_HSequenceOfAsciiString_ctor() {
+    return new TColStd_HSequenceOfAsciiString();
+}
+extern "C" TColStd_HSequenceOfAsciiString* TColStd_HSequenceOfAsciiString_ctor_sequenceofasciistring(const TColStd_SequenceOfAsciiString* theOther) {
+    return new TColStd_HSequenceOfAsciiString(*theOther);
+}
+extern "C" void TColStd_HSequenceOfAsciiString_append(TColStd_HSequenceOfAsciiString* self_, const TCollection_AsciiString* theItem) {
+    self_->Append(*theItem);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfAsciiString_dynamic_type(const TColStd_HSequenceOfAsciiString* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HSequenceOfAsciiString_get_type_name() {
+    return TColStd_HSequenceOfAsciiString::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfAsciiString_get_type_descriptor() {
+    return TColStd_HSequenceOfAsciiString::get_type_descriptor();
+}
+extern "C" HandleTColStdHSequenceOfAsciiString* TColStd_HSequenceOfAsciiString_to_handle(TColStd_HSequenceOfAsciiString* obj) {
+    return new HandleTColStdHSequenceOfAsciiString(obj);
+}
+extern "C" const TColStd_HSequenceOfAsciiString* HandleTColStdHSequenceOfAsciiString_get(const HandleTColStdHSequenceOfAsciiString* handle) { return (*handle).get(); }
+extern "C" TColStd_HSequenceOfAsciiString* HandleTColStdHSequenceOfAsciiString_get_mut(HandleTColStdHSequenceOfAsciiString* handle) { return (*handle).get(); }
+extern "C" void TColStd_HSequenceOfAsciiString_destructor(TColStd_HSequenceOfAsciiString* self_) { delete self_; }
+
+// ========================
+// TColStd_HSequenceOfExtendedString wrappers
+// ========================
+
+extern "C" TColStd_HSequenceOfExtendedString* TColStd_HSequenceOfExtendedString_ctor() {
+    return new TColStd_HSequenceOfExtendedString();
+}
+extern "C" TColStd_HSequenceOfExtendedString* TColStd_HSequenceOfExtendedString_ctor_sequenceofextendedstring(const TColStd_SequenceOfExtendedString* theOther) {
+    return new TColStd_HSequenceOfExtendedString(*theOther);
+}
+extern "C" void TColStd_HSequenceOfExtendedString_append(TColStd_HSequenceOfExtendedString* self_, const TCollection_ExtendedString* theItem) {
+    self_->Append(*theItem);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfExtendedString_dynamic_type(const TColStd_HSequenceOfExtendedString* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HSequenceOfExtendedString_get_type_name() {
+    return TColStd_HSequenceOfExtendedString::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfExtendedString_get_type_descriptor() {
+    return TColStd_HSequenceOfExtendedString::get_type_descriptor();
+}
+extern "C" HandleTColStdHSequenceOfExtendedString* TColStd_HSequenceOfExtendedString_to_handle(TColStd_HSequenceOfExtendedString* obj) {
+    return new HandleTColStdHSequenceOfExtendedString(obj);
+}
+extern "C" const TColStd_HSequenceOfExtendedString* HandleTColStdHSequenceOfExtendedString_get(const HandleTColStdHSequenceOfExtendedString* handle) { return (*handle).get(); }
+extern "C" TColStd_HSequenceOfExtendedString* HandleTColStdHSequenceOfExtendedString_get_mut(HandleTColStdHSequenceOfExtendedString* handle) { return (*handle).get(); }
+extern "C" void TColStd_HSequenceOfExtendedString_destructor(TColStd_HSequenceOfExtendedString* self_) { delete self_; }
+
+// ========================
+// TColStd_HSequenceOfHAsciiString wrappers
+// ========================
+
+extern "C" TColStd_HSequenceOfHAsciiString* TColStd_HSequenceOfHAsciiString_ctor() {
+    return new TColStd_HSequenceOfHAsciiString();
+}
+extern "C" TColStd_HSequenceOfHAsciiString* TColStd_HSequenceOfHAsciiString_ctor_sequenceofhasciistring(const TColStd_SequenceOfHAsciiString* theOther) {
+    return new TColStd_HSequenceOfHAsciiString(*theOther);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfHAsciiString_dynamic_type(const TColStd_HSequenceOfHAsciiString* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HSequenceOfHAsciiString_get_type_name() {
+    return TColStd_HSequenceOfHAsciiString::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfHAsciiString_get_type_descriptor() {
+    return TColStd_HSequenceOfHAsciiString::get_type_descriptor();
+}
+extern "C" HandleTColStdHSequenceOfHAsciiString* TColStd_HSequenceOfHAsciiString_to_handle(TColStd_HSequenceOfHAsciiString* obj) {
+    return new HandleTColStdHSequenceOfHAsciiString(obj);
+}
+extern "C" const TColStd_HSequenceOfHAsciiString* HandleTColStdHSequenceOfHAsciiString_get(const HandleTColStdHSequenceOfHAsciiString* handle) { return (*handle).get(); }
+extern "C" TColStd_HSequenceOfHAsciiString* HandleTColStdHSequenceOfHAsciiString_get_mut(HandleTColStdHSequenceOfHAsciiString* handle) { return (*handle).get(); }
+extern "C" void TColStd_HSequenceOfHAsciiString_destructor(TColStd_HSequenceOfHAsciiString* self_) { delete self_; }
+
+// ========================
+// TColStd_HSequenceOfHExtendedString wrappers
+// ========================
+
+extern "C" TColStd_HSequenceOfHExtendedString* TColStd_HSequenceOfHExtendedString_ctor() {
+    return new TColStd_HSequenceOfHExtendedString();
+}
+extern "C" TColStd_HSequenceOfHExtendedString* TColStd_HSequenceOfHExtendedString_ctor_sequenceofhextendedstring(const TColStd_SequenceOfHExtendedString* theOther) {
+    return new TColStd_HSequenceOfHExtendedString(*theOther);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfHExtendedString_dynamic_type(const TColStd_HSequenceOfHExtendedString* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HSequenceOfHExtendedString_get_type_name() {
+    return TColStd_HSequenceOfHExtendedString::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfHExtendedString_get_type_descriptor() {
+    return TColStd_HSequenceOfHExtendedString::get_type_descriptor();
+}
+extern "C" HandleTColStdHSequenceOfHExtendedString* TColStd_HSequenceOfHExtendedString_to_handle(TColStd_HSequenceOfHExtendedString* obj) {
+    return new HandleTColStdHSequenceOfHExtendedString(obj);
+}
+extern "C" const TColStd_HSequenceOfHExtendedString* HandleTColStdHSequenceOfHExtendedString_get(const HandleTColStdHSequenceOfHExtendedString* handle) { return (*handle).get(); }
+extern "C" TColStd_HSequenceOfHExtendedString* HandleTColStdHSequenceOfHExtendedString_get_mut(HandleTColStdHSequenceOfHExtendedString* handle) { return (*handle).get(); }
+extern "C" void TColStd_HSequenceOfHExtendedString_destructor(TColStd_HSequenceOfHExtendedString* self_) { delete self_; }
+
+// ========================
+// TColStd_HSequenceOfInteger wrappers
+// ========================
+
+extern "C" TColStd_HSequenceOfInteger* TColStd_HSequenceOfInteger_ctor() {
+    return new TColStd_HSequenceOfInteger();
+}
+extern "C" TColStd_HSequenceOfInteger* TColStd_HSequenceOfInteger_ctor_sequenceofinteger(const TColStd_SequenceOfInteger* theOther) {
+    return new TColStd_HSequenceOfInteger(*theOther);
+}
+extern "C" void TColStd_HSequenceOfInteger_append(TColStd_HSequenceOfInteger* self_, const Standard_Integer* theItem) {
+    self_->Append(*theItem);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfInteger_dynamic_type(const TColStd_HSequenceOfInteger* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HSequenceOfInteger_get_type_name() {
+    return TColStd_HSequenceOfInteger::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfInteger_get_type_descriptor() {
+    return TColStd_HSequenceOfInteger::get_type_descriptor();
+}
+extern "C" HandleTColStdHSequenceOfInteger* TColStd_HSequenceOfInteger_to_handle(TColStd_HSequenceOfInteger* obj) {
+    return new HandleTColStdHSequenceOfInteger(obj);
+}
+extern "C" const TColStd_HSequenceOfInteger* HandleTColStdHSequenceOfInteger_get(const HandleTColStdHSequenceOfInteger* handle) { return (*handle).get(); }
+extern "C" TColStd_HSequenceOfInteger* HandleTColStdHSequenceOfInteger_get_mut(HandleTColStdHSequenceOfInteger* handle) { return (*handle).get(); }
+extern "C" void TColStd_HSequenceOfInteger_destructor(TColStd_HSequenceOfInteger* self_) { delete self_; }
+
+// ========================
+// TColStd_HSequenceOfReal wrappers
+// ========================
+
+extern "C" TColStd_HSequenceOfReal* TColStd_HSequenceOfReal_ctor() {
+    return new TColStd_HSequenceOfReal();
+}
+extern "C" TColStd_HSequenceOfReal* TColStd_HSequenceOfReal_ctor_sequenceofreal(const TColStd_SequenceOfReal* theOther) {
+    return new TColStd_HSequenceOfReal(*theOther);
+}
+extern "C" void TColStd_HSequenceOfReal_append(TColStd_HSequenceOfReal* self_, const Standard_Real* theItem) {
+    self_->Append(*theItem);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfReal_dynamic_type(const TColStd_HSequenceOfReal* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HSequenceOfReal_get_type_name() {
+    return TColStd_HSequenceOfReal::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfReal_get_type_descriptor() {
+    return TColStd_HSequenceOfReal::get_type_descriptor();
+}
+extern "C" HandleTColStdHSequenceOfReal* TColStd_HSequenceOfReal_to_handle(TColStd_HSequenceOfReal* obj) {
+    return new HandleTColStdHSequenceOfReal(obj);
+}
+extern "C" const TColStd_HSequenceOfReal* HandleTColStdHSequenceOfReal_get(const HandleTColStdHSequenceOfReal* handle) { return (*handle).get(); }
+extern "C" TColStd_HSequenceOfReal* HandleTColStdHSequenceOfReal_get_mut(HandleTColStdHSequenceOfReal* handle) { return (*handle).get(); }
+extern "C" void TColStd_HSequenceOfReal_destructor(TColStd_HSequenceOfReal* self_) { delete self_; }
+
+// ========================
+// TColStd_HSequenceOfTransient wrappers
+// ========================
+
+extern "C" TColStd_HSequenceOfTransient* TColStd_HSequenceOfTransient_ctor() {
+    return new TColStd_HSequenceOfTransient();
+}
+extern "C" TColStd_HSequenceOfTransient* TColStd_HSequenceOfTransient_ctor_sequenceoftransient(const TColStd_SequenceOfTransient* theOther) {
+    return new TColStd_HSequenceOfTransient(*theOther);
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfTransient_dynamic_type(const TColStd_HSequenceOfTransient* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* TColStd_HSequenceOfTransient_get_type_name() {
+    return TColStd_HSequenceOfTransient::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfTransient_get_type_descriptor() {
+    return TColStd_HSequenceOfTransient::get_type_descriptor();
+}
+extern "C" HandleTColStdHSequenceOfTransient* TColStd_HSequenceOfTransient_to_handle(TColStd_HSequenceOfTransient* obj) {
+    return new HandleTColStdHSequenceOfTransient(obj);
+}
+extern "C" const TColStd_HSequenceOfTransient* HandleTColStdHSequenceOfTransient_get(const HandleTColStdHSequenceOfTransient* handle) { return (*handle).get(); }
+extern "C" TColStd_HSequenceOfTransient* HandleTColStdHSequenceOfTransient_get_mut(HandleTColStdHSequenceOfTransient* handle) { return (*handle).get(); }
+extern "C" void TColStd_HSequenceOfTransient_destructor(TColStd_HSequenceOfTransient* self_) { delete self_; }
+
+// ========================
+// TColStd_PackedMapOfInteger wrappers
+// ========================
+
+extern "C" TColStd_PackedMapOfInteger* TColStd_PackedMapOfInteger_ctor_int(Standard_Integer theNbBuckets) {
+    return new TColStd_PackedMapOfInteger(theNbBuckets);
+}
+extern "C" TColStd_PackedMapOfInteger* TColStd_PackedMapOfInteger_ctor_packedmapofinteger(const TColStd_PackedMapOfInteger* theOther) {
+    return new TColStd_PackedMapOfInteger(*theOther);
+}
+extern "C" void TColStd_PackedMapOfInteger_re_size(TColStd_PackedMapOfInteger* self_, Standard_Integer NbBuckets) {
+    self_->ReSize(NbBuckets);
+}
+extern "C" void TColStd_PackedMapOfInteger_clear(TColStd_PackedMapOfInteger* self_) {
+    self_->Clear();
+}
+extern "C" Standard_Boolean TColStd_PackedMapOfInteger_add(TColStd_PackedMapOfInteger* self_, Standard_Integer aKey) {
+    return self_->Add(aKey);
+}
+extern "C" Standard_Boolean TColStd_PackedMapOfInteger_contains(const TColStd_PackedMapOfInteger* self_, Standard_Integer aKey) {
+    return self_->Contains(aKey);
+}
+extern "C" Standard_Boolean TColStd_PackedMapOfInteger_remove(TColStd_PackedMapOfInteger* self_, Standard_Integer aKey) {
+    return self_->Remove(aKey);
+}
+extern "C" Standard_Integer TColStd_PackedMapOfInteger_nb_buckets(const TColStd_PackedMapOfInteger* self_) {
+    return self_->NbBuckets();
+}
+extern "C" Standard_Integer TColStd_PackedMapOfInteger_extent(const TColStd_PackedMapOfInteger* self_) {
+    return self_->Extent();
+}
+extern "C" Standard_Boolean TColStd_PackedMapOfInteger_is_empty(const TColStd_PackedMapOfInteger* self_) {
+    return self_->IsEmpty();
+}
+extern "C" Standard_Integer TColStd_PackedMapOfInteger_get_minimal_mapped(const TColStd_PackedMapOfInteger* self_) {
+    return self_->GetMinimalMapped();
+}
+extern "C" Standard_Integer TColStd_PackedMapOfInteger_get_maximal_mapped(const TColStd_PackedMapOfInteger* self_) {
+    return self_->GetMaximalMapped();
+}
+extern "C" void TColStd_PackedMapOfInteger_union(TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0, const TColStd_PackedMapOfInteger* arg1) {
+    self_->Union(*arg0, *arg1);
+}
+extern "C" Standard_Boolean TColStd_PackedMapOfInteger_unite(TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0) {
+    return self_->Unite(*arg0);
+}
+extern "C" void TColStd_PackedMapOfInteger_intersection(TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0, const TColStd_PackedMapOfInteger* arg1) {
+    self_->Intersection(*arg0, *arg1);
+}
+extern "C" Standard_Boolean TColStd_PackedMapOfInteger_intersect(TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0) {
+    return self_->Intersect(*arg0);
+}
+extern "C" void TColStd_PackedMapOfInteger_subtraction(TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0, const TColStd_PackedMapOfInteger* arg1) {
+    self_->Subtraction(*arg0, *arg1);
+}
+extern "C" Standard_Boolean TColStd_PackedMapOfInteger_subtract(TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0) {
+    return self_->Subtract(*arg0);
+}
+extern "C" void TColStd_PackedMapOfInteger_difference(TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0, const TColStd_PackedMapOfInteger* arg1) {
+    self_->Difference(*arg0, *arg1);
+}
+extern "C" Standard_Boolean TColStd_PackedMapOfInteger_differ(TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0) {
+    return self_->Differ(*arg0);
+}
+extern "C" Standard_Boolean TColStd_PackedMapOfInteger_is_equal(const TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0) {
+    return self_->IsEqual(*arg0);
+}
+extern "C" Standard_Boolean TColStd_PackedMapOfInteger_is_subset(const TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0) {
+    return self_->IsSubset(*arg0);
+}
+extern "C" Standard_Boolean TColStd_PackedMapOfInteger_has_intersection(const TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0) {
+    return self_->HasIntersection(*arg0);
+}
+extern "C" void TColStd_PackedMapOfInteger_destructor(TColStd_PackedMapOfInteger* self_) { delete self_; }
 
 // ========================
 // TopExp_Explorer wrappers
@@ -41811,711 +50482,6 @@ extern "C" Standard_Integer TopTools_ShapeSet_nb_shapes(const TopTools_ShapeSet*
 extern "C" void TopTools_ShapeSet_destructor(TopTools_ShapeSet* self_) { delete self_; }
 
 // ========================
-// Standard_OutOfRange wrappers
-// ========================
-
-extern "C" Standard_OutOfRange* Standard_OutOfRange_ctor() {
-    return new Standard_OutOfRange();
-}
-extern "C" Standard_OutOfRange* Standard_OutOfRange_ctor_charptr(const char* theMessage) {
-    return new Standard_OutOfRange(theMessage);
-}
-extern "C" Standard_OutOfRange* Standard_OutOfRange_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
-    return new Standard_OutOfRange(theMessage, theStackTrace);
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_OutOfRange_dynamic_type(const Standard_OutOfRange* self_) {
-    return self_->DynamicType();
-}
-extern "C" void Standard_OutOfRange_raise(const char* theMessage) {
-    return Standard_OutOfRange::Raise(theMessage);
-}
-extern "C" const char* Standard_OutOfRange_get_type_name() {
-    return Standard_OutOfRange::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_OutOfRange_get_type_descriptor() {
-    return Standard_OutOfRange::get_type_descriptor();
-}
-extern "C" void Standard_OutOfRange_destructor(Standard_OutOfRange* self_) { delete self_; }
-
-// ========================
-// Standard_NoSuchObject wrappers
-// ========================
-
-extern "C" Standard_NoSuchObject* Standard_NoSuchObject_ctor() {
-    return new Standard_NoSuchObject();
-}
-extern "C" Standard_NoSuchObject* Standard_NoSuchObject_ctor_charptr(const char* theMessage) {
-    return new Standard_NoSuchObject(theMessage);
-}
-extern "C" Standard_NoSuchObject* Standard_NoSuchObject_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
-    return new Standard_NoSuchObject(theMessage, theStackTrace);
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_NoSuchObject_dynamic_type(const Standard_NoSuchObject* self_) {
-    return self_->DynamicType();
-}
-extern "C" void Standard_NoSuchObject_raise(const char* theMessage) {
-    return Standard_NoSuchObject::Raise(theMessage);
-}
-extern "C" const char* Standard_NoSuchObject_get_type_name() {
-    return Standard_NoSuchObject::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_NoSuchObject_get_type_descriptor() {
-    return Standard_NoSuchObject::get_type_descriptor();
-}
-extern "C" void Standard_NoSuchObject_destructor(Standard_NoSuchObject* self_) { delete self_; }
-
-// ========================
-// Standard_Type wrappers
-// ========================
-
-extern "C" Standard_Boolean Standard_Type_sub_type_charptr(const Standard_Type* self_, const char* theOther) {
-    return self_->SubType(theOther);
-}
-extern "C" const char* Standard_Type_system_name(const Standard_Type* self_) {
-    return self_->SystemName();
-}
-extern "C" const char* Standard_Type_name(const Standard_Type* self_) {
-    return self_->Name();
-}
-extern "C" size_t Standard_Type_size(const Standard_Type* self_) {
-    return self_->Size();
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_Type_parent(const Standard_Type* self_) {
-    return self_->Parent();
-}
-extern "C" Standard_Boolean Standard_Type_sub_type_handlestandardtype(const Standard_Type* self_, const opencascade::handle<Standard_Type>* theOther) {
-    return self_->SubType(*theOther);
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_Type_dynamic_type(const Standard_Type* self_) {
-    return self_->DynamicType();
-}
-extern "C" const char* Standard_Type_get_type_name() {
-    return Standard_Type::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_Type_get_type_descriptor() {
-    return Standard_Type::get_type_descriptor();
-}
-extern "C" HandleStandardType* Standard_Type_to_handle(Standard_Type* obj) {
-    return new HandleStandardType(obj);
-}
-extern "C" const Standard_Type* HandleStandardType_get(const HandleStandardType* handle) { return (*handle).get(); }
-extern "C" Standard_Type* HandleStandardType_get_mut(HandleStandardType* handle) { return (*handle).get(); }
-extern "C" void Standard_Type_destructor(Standard_Type* self_) { delete self_; }
-
-// ========================
-// Standard_DomainError wrappers
-// ========================
-
-extern "C" Standard_DomainError* Standard_DomainError_ctor() {
-    return new Standard_DomainError();
-}
-extern "C" Standard_DomainError* Standard_DomainError_ctor_charptr(const char* theMessage) {
-    return new Standard_DomainError(theMessage);
-}
-extern "C" Standard_DomainError* Standard_DomainError_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
-    return new Standard_DomainError(theMessage, theStackTrace);
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_DomainError_dynamic_type(const Standard_DomainError* self_) {
-    return self_->DynamicType();
-}
-extern "C" void Standard_DomainError_raise(const char* theMessage) {
-    return Standard_DomainError::Raise(theMessage);
-}
-extern "C" const char* Standard_DomainError_get_type_name() {
-    return Standard_DomainError::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_DomainError_get_type_descriptor() {
-    return Standard_DomainError::get_type_descriptor();
-}
-extern "C" void Standard_DomainError_destructor(Standard_DomainError* self_) { delete self_; }
-
-// ========================
-// Standard_Failure wrappers
-// ========================
-
-extern "C" Standard_Failure* Standard_Failure_ctor() {
-    return new Standard_Failure();
-}
-extern "C" Standard_Failure* Standard_Failure_ctor_failure(const Standard_Failure* f) {
-    return new Standard_Failure(*f);
-}
-extern "C" Standard_Failure* Standard_Failure_ctor_charptr(const char* theDesc) {
-    return new Standard_Failure(theDesc);
-}
-extern "C" Standard_Failure* Standard_Failure_ctor_charptr2(const char* theDesc, const char* theStackTrace) {
-    return new Standard_Failure(theDesc, theStackTrace);
-}
-extern "C" void Standard_Failure_set_message_string(Standard_Failure* self_, const char* theMessage) {
-    self_->SetMessageString(theMessage);
-}
-extern "C" void Standard_Failure_set_stack_string(Standard_Failure* self_, const char* theStack) {
-    self_->SetStackString(theStack);
-}
-extern "C" void Standard_Failure_reraise_charptr(Standard_Failure* self_, const char* aMessage) {
-    self_->Reraise(aMessage);
-}
-extern "C" const char* Standard_Failure_get_message_string(const Standard_Failure* self_) {
-    return self_->GetMessageString();
-}
-extern "C" const char* Standard_Failure_get_stack_string(const Standard_Failure* self_) {
-    return self_->GetStackString();
-}
-extern "C" void Standard_Failure_reraise(Standard_Failure* self_) {
-    self_->Reraise();
-}
-extern "C" void Standard_Failure_jump(Standard_Failure* self_) {
-    self_->Jump();
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_Failure_dynamic_type(const Standard_Failure* self_) {
-    return self_->DynamicType();
-}
-extern "C" void Standard_Failure_raise(const char* aMessage) {
-    return Standard_Failure::Raise(aMessage);
-}
-extern "C" opencascade::handle<Standard_Failure>* Standard_Failure_new_instance_charptr(const char* theMessage) {
-    return new opencascade::handle<Standard_Failure>(Standard_Failure::NewInstance(theMessage));
-}
-extern "C" opencascade::handle<Standard_Failure>* Standard_Failure_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    return new opencascade::handle<Standard_Failure>(Standard_Failure::NewInstance(theMessage, theStackTrace));
-}
-extern "C" Standard_Integer Standard_Failure_default_stack_trace_length() {
-    return Standard_Failure::DefaultStackTraceLength();
-}
-extern "C" void Standard_Failure_set_default_stack_trace_length(Standard_Integer theNbStackTraces) {
-    return Standard_Failure::SetDefaultStackTraceLength(theNbStackTraces);
-}
-extern "C" const char* Standard_Failure_get_type_name() {
-    return Standard_Failure::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_Failure_get_type_descriptor() {
-    return Standard_Failure::get_type_descriptor();
-}
-extern "C" HandleStandardFailure* Standard_Failure_to_handle(Standard_Failure* obj) {
-    return new HandleStandardFailure(obj);
-}
-extern "C" const Standard_Failure* HandleStandardFailure_get(const HandleStandardFailure* handle) { return (*handle).get(); }
-extern "C" Standard_Failure* HandleStandardFailure_get_mut(HandleStandardFailure* handle) { return (*handle).get(); }
-extern "C" void Standard_Failure_destructor(Standard_Failure* self_) { delete self_; }
-
-// ========================
-// Standard_Transient wrappers
-// ========================
-
-extern "C" Standard_Transient* Standard_Transient_ctor() {
-    return new Standard_Transient();
-}
-extern "C" Standard_Transient* Standard_Transient_ctor_transient(const Standard_Transient* arg0) {
-    return new Standard_Transient(*arg0);
-}
-extern "C" Standard_Boolean Standard_Transient_is_instance_charptr(const Standard_Transient* self_, const char* theTypeName) {
-    return self_->IsInstance(theTypeName);
-}
-extern "C" Standard_Boolean Standard_Transient_is_kind_charptr(const Standard_Transient* self_, const char* theTypeName) {
-    return self_->IsKind(theTypeName);
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_Transient_dynamic_type(const Standard_Transient* self_) {
-    return self_->DynamicType();
-}
-extern "C" Standard_Boolean Standard_Transient_is_instance_handlestandardtype(const Standard_Transient* self_, const opencascade::handle<Standard_Type>* theType) {
-    return self_->IsInstance(*theType);
-}
-extern "C" Standard_Boolean Standard_Transient_is_kind_handlestandardtype(const Standard_Transient* self_, const opencascade::handle<Standard_Type>* theType) {
-    return self_->IsKind(*theType);
-}
-extern "C" Standard_Integer Standard_Transient_get_ref_count(const Standard_Transient* self_) {
-    return self_->GetRefCount();
-}
-extern "C" void Standard_Transient_increment_ref_counter(Standard_Transient* self_) {
-    self_->IncrementRefCounter();
-}
-extern "C" Standard_Integer Standard_Transient_decrement_ref_counter(Standard_Transient* self_) {
-    return self_->DecrementRefCounter();
-}
-extern "C" void Standard_Transient_delete(const Standard_Transient* self_) {
-    self_->Delete();
-}
-extern "C" const char* Standard_Transient_get_type_name() {
-    return Standard_Transient::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_Transient_get_type_descriptor() {
-    return Standard_Transient::get_type_descriptor();
-}
-extern "C" void Standard_Transient_destructor(Standard_Transient* self_) { delete self_; }
-
-// ========================
-// Standard_RangeError wrappers
-// ========================
-
-extern "C" Standard_RangeError* Standard_RangeError_ctor() {
-    return new Standard_RangeError();
-}
-extern "C" Standard_RangeError* Standard_RangeError_ctor_charptr(const char* theMessage) {
-    return new Standard_RangeError(theMessage);
-}
-extern "C" Standard_RangeError* Standard_RangeError_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
-    return new Standard_RangeError(theMessage, theStackTrace);
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_RangeError_dynamic_type(const Standard_RangeError* self_) {
-    return self_->DynamicType();
-}
-extern "C" void Standard_RangeError_raise(const char* theMessage) {
-    return Standard_RangeError::Raise(theMessage);
-}
-extern "C" const char* Standard_RangeError_get_type_name() {
-    return Standard_RangeError::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_RangeError_get_type_descriptor() {
-    return Standard_RangeError::get_type_descriptor();
-}
-extern "C" void Standard_RangeError_destructor(Standard_RangeError* self_) { delete self_; }
-
-// ========================
-// Standard_ProgramError wrappers
-// ========================
-
-extern "C" Standard_ProgramError* Standard_ProgramError_ctor() {
-    return new Standard_ProgramError();
-}
-extern "C" Standard_ProgramError* Standard_ProgramError_ctor_charptr(const char* theMessage) {
-    return new Standard_ProgramError(theMessage);
-}
-extern "C" Standard_ProgramError* Standard_ProgramError_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
-    return new Standard_ProgramError(theMessage, theStackTrace);
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_ProgramError_dynamic_type(const Standard_ProgramError* self_) {
-    return self_->DynamicType();
-}
-extern "C" void Standard_ProgramError_raise(const char* theMessage) {
-    return Standard_ProgramError::Raise(theMessage);
-}
-extern "C" const char* Standard_ProgramError_get_type_name() {
-    return Standard_ProgramError::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_ProgramError_get_type_descriptor() {
-    return Standard_ProgramError::get_type_descriptor();
-}
-extern "C" void Standard_ProgramError_destructor(Standard_ProgramError* self_) { delete self_; }
-
-// ========================
-// NCollection_BaseAllocator wrappers
-// ========================
-
-extern "C" const opencascade::handle<Standard_Type>& NCollection_BaseAllocator_dynamic_type(const NCollection_BaseAllocator* self_) {
-    return self_->DynamicType();
-}
-extern "C" const opencascade::handle<NCollection_BaseAllocator>& NCollection_BaseAllocator_common_base_allocator() {
-    return NCollection_BaseAllocator::CommonBaseAllocator();
-}
-extern "C" const char* NCollection_BaseAllocator_get_type_name() {
-    return NCollection_BaseAllocator::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& NCollection_BaseAllocator_get_type_descriptor() {
-    return NCollection_BaseAllocator::get_type_descriptor();
-}
-extern "C" HandleNCollectionBaseAllocator* NCollection_BaseAllocator_to_handle(NCollection_BaseAllocator* obj) {
-    return new HandleNCollectionBaseAllocator(obj);
-}
-extern "C" const NCollection_BaseAllocator* HandleNCollectionBaseAllocator_get(const HandleNCollectionBaseAllocator* handle) { return (*handle).get(); }
-extern "C" NCollection_BaseAllocator* HandleNCollectionBaseAllocator_get_mut(HandleNCollectionBaseAllocator* handle) { return (*handle).get(); }
-extern "C" void NCollection_BaseAllocator_destructor(NCollection_BaseAllocator* self_) { delete self_; }
-
-// ========================
-// Standard_TypeMismatch wrappers
-// ========================
-
-extern "C" Standard_TypeMismatch* Standard_TypeMismatch_ctor() {
-    return new Standard_TypeMismatch();
-}
-extern "C" Standard_TypeMismatch* Standard_TypeMismatch_ctor_charptr(const char* theMessage) {
-    return new Standard_TypeMismatch(theMessage);
-}
-extern "C" Standard_TypeMismatch* Standard_TypeMismatch_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
-    return new Standard_TypeMismatch(theMessage, theStackTrace);
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_TypeMismatch_dynamic_type(const Standard_TypeMismatch* self_) {
-    return self_->DynamicType();
-}
-extern "C" void Standard_TypeMismatch_raise(const char* theMessage) {
-    return Standard_TypeMismatch::Raise(theMessage);
-}
-extern "C" const char* Standard_TypeMismatch_get_type_name() {
-    return Standard_TypeMismatch::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_TypeMismatch_get_type_descriptor() {
-    return Standard_TypeMismatch::get_type_descriptor();
-}
-extern "C" void Standard_TypeMismatch_destructor(Standard_TypeMismatch* self_) { delete self_; }
-
-// ========================
-// NCollection_BaseList wrappers
-// ========================
-
-extern "C" Standard_Integer NCollection_BaseList_extent(const NCollection_BaseList* self_) {
-    return self_->Extent();
-}
-extern "C" Standard_Boolean NCollection_BaseList_is_empty(const NCollection_BaseList* self_) {
-    return self_->IsEmpty();
-}
-extern "C" const opencascade::handle<NCollection_BaseAllocator>& NCollection_BaseList_allocator(const NCollection_BaseList* self_) {
-    return self_->Allocator();
-}
-extern "C" void NCollection_BaseList_destructor(NCollection_BaseList* self_) { delete self_; }
-
-// ========================
-// Standard_DimensionMismatch wrappers
-// ========================
-
-extern "C" Standard_DimensionMismatch* Standard_DimensionMismatch_ctor() {
-    return new Standard_DimensionMismatch();
-}
-extern "C" Standard_DimensionMismatch* Standard_DimensionMismatch_ctor_charptr(const char* theMessage) {
-    return new Standard_DimensionMismatch(theMessage);
-}
-extern "C" Standard_DimensionMismatch* Standard_DimensionMismatch_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
-    return new Standard_DimensionMismatch(theMessage, theStackTrace);
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_DimensionMismatch_dynamic_type(const Standard_DimensionMismatch* self_) {
-    return self_->DynamicType();
-}
-extern "C" void Standard_DimensionMismatch_raise(const char* theMessage) {
-    return Standard_DimensionMismatch::Raise(theMessage);
-}
-extern "C" const char* Standard_DimensionMismatch_get_type_name() {
-    return Standard_DimensionMismatch::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_DimensionMismatch_get_type_descriptor() {
-    return Standard_DimensionMismatch::get_type_descriptor();
-}
-extern "C" void Standard_DimensionMismatch_destructor(Standard_DimensionMismatch* self_) { delete self_; }
-
-// ========================
-// Standard_OutOfMemory wrappers
-// ========================
-
-extern "C" Standard_OutOfMemory* Standard_OutOfMemory_ctor_charptr(const char* theMessage) {
-    return new Standard_OutOfMemory(theMessage);
-}
-extern "C" void Standard_OutOfMemory_set_message_string(Standard_OutOfMemory* self_, const char* aMessage) {
-    self_->SetMessageString(aMessage);
-}
-extern "C" const char* Standard_OutOfMemory_get_message_string(const Standard_OutOfMemory* self_) {
-    return self_->GetMessageString();
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_OutOfMemory_dynamic_type(const Standard_OutOfMemory* self_) {
-    return self_->DynamicType();
-}
-extern "C" void Standard_OutOfMemory_raise(const char* theMessage) {
-    return Standard_OutOfMemory::Raise(theMessage);
-}
-extern "C" const char* Standard_OutOfMemory_get_type_name() {
-    return Standard_OutOfMemory::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_OutOfMemory_get_type_descriptor() {
-    return Standard_OutOfMemory::get_type_descriptor();
-}
-extern "C" void Standard_OutOfMemory_destructor(Standard_OutOfMemory* self_) { delete self_; }
-
-// ========================
-// Standard_NotImplemented wrappers
-// ========================
-
-extern "C" Standard_NotImplemented* Standard_NotImplemented_ctor() {
-    return new Standard_NotImplemented();
-}
-extern "C" Standard_NotImplemented* Standard_NotImplemented_ctor_charptr(const char* theMessage) {
-    return new Standard_NotImplemented(theMessage);
-}
-extern "C" Standard_NotImplemented* Standard_NotImplemented_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
-    return new Standard_NotImplemented(theMessage, theStackTrace);
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_NotImplemented_dynamic_type(const Standard_NotImplemented* self_) {
-    return self_->DynamicType();
-}
-extern "C" void Standard_NotImplemented_raise(const char* theMessage) {
-    return Standard_NotImplemented::Raise(theMessage);
-}
-extern "C" const char* Standard_NotImplemented_get_type_name() {
-    return Standard_NotImplemented::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_NotImplemented_get_type_descriptor() {
-    return Standard_NotImplemented::get_type_descriptor();
-}
-extern "C" void Standard_NotImplemented_destructor(Standard_NotImplemented* self_) { delete self_; }
-
-// ========================
-// StdFail_NotDone wrappers
-// ========================
-
-extern "C" StdFail_NotDone* StdFail_NotDone_ctor() {
-    return new StdFail_NotDone();
-}
-extern "C" StdFail_NotDone* StdFail_NotDone_ctor_charptr(const char* theMessage) {
-    return new StdFail_NotDone(theMessage);
-}
-extern "C" StdFail_NotDone* StdFail_NotDone_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
-    return new StdFail_NotDone(theMessage, theStackTrace);
-}
-extern "C" const opencascade::handle<Standard_Type>& StdFail_NotDone_dynamic_type(const StdFail_NotDone* self_) {
-    return self_->DynamicType();
-}
-extern "C" void StdFail_NotDone_raise(const char* theMessage) {
-    return StdFail_NotDone::Raise(theMessage);
-}
-extern "C" const char* StdFail_NotDone_get_type_name() {
-    return StdFail_NotDone::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& StdFail_NotDone_get_type_descriptor() {
-    return StdFail_NotDone::get_type_descriptor();
-}
-extern "C" void StdFail_NotDone_destructor(StdFail_NotDone* self_) { delete self_; }
-
-// ========================
-// Standard_DimensionError wrappers
-// ========================
-
-extern "C" Standard_DimensionError* Standard_DimensionError_ctor() {
-    return new Standard_DimensionError();
-}
-extern "C" Standard_DimensionError* Standard_DimensionError_ctor_charptr(const char* theMessage) {
-    return new Standard_DimensionError(theMessage);
-}
-extern "C" Standard_DimensionError* Standard_DimensionError_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
-    return new Standard_DimensionError(theMessage, theStackTrace);
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_DimensionError_dynamic_type(const Standard_DimensionError* self_) {
-    return self_->DynamicType();
-}
-extern "C" void Standard_DimensionError_raise(const char* theMessage) {
-    return Standard_DimensionError::Raise(theMessage);
-}
-extern "C" const char* Standard_DimensionError_get_type_name() {
-    return Standard_DimensionError::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_DimensionError_get_type_descriptor() {
-    return Standard_DimensionError::get_type_descriptor();
-}
-extern "C" void Standard_DimensionError_destructor(Standard_DimensionError* self_) { delete self_; }
-
-// ========================
-// TCollection_AsciiString wrappers
-// ========================
-
-extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor() {
-    return new TCollection_AsciiString();
-}
-extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_charptr(const char* message) {
-    return new TCollection_AsciiString(message);
-}
-extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_charptr_int(const char* message, Standard_Integer aLen) {
-    return new TCollection_AsciiString(message, aLen);
-}
-extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_character(const Standard_Character* aChar) {
-    return new TCollection_AsciiString(*aChar);
-}
-extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_int_character(Standard_Integer length, const Standard_Character* filler) {
-    return new TCollection_AsciiString(length, *filler);
-}
-extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_int(Standard_Integer value) {
-    return new TCollection_AsciiString(value);
-}
-extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_real(Standard_Real value) {
-    return new TCollection_AsciiString(value);
-}
-extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_asciistring(const TCollection_AsciiString* astring) {
-    return new TCollection_AsciiString(*astring);
-}
-extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_asciistring_character(const TCollection_AsciiString* astring, const Standard_Character* message) {
-    return new TCollection_AsciiString(*astring, *message);
-}
-extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_asciistring_charptr(const TCollection_AsciiString* astring, const char* message) {
-    return new TCollection_AsciiString(*astring, message);
-}
-extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_asciistring2(const TCollection_AsciiString* astring, const TCollection_AsciiString* message) {
-    return new TCollection_AsciiString(*astring, *message);
-}
-extern "C" TCollection_AsciiString* TCollection_AsciiString_ctor_extendedstring_character(const TCollection_ExtendedString* astring, const Standard_Character* replaceNonAscii) {
-    return new TCollection_AsciiString(*astring, *replaceNonAscii);
-}
-extern "C" TCollection_AsciiString* TCollection_AsciiString_cat_int(const TCollection_AsciiString* self_, Standard_Integer other) {
-    return new TCollection_AsciiString(self_->Cat(other));
-}
-extern "C" TCollection_AsciiString* TCollection_AsciiString_cat_real(const TCollection_AsciiString* self_, Standard_Real other) {
-    return new TCollection_AsciiString(self_->Cat(other));
-}
-extern "C" TCollection_AsciiString* TCollection_AsciiString_cat_charptr(const TCollection_AsciiString* self_, const char* other) {
-    return new TCollection_AsciiString(self_->Cat(other));
-}
-extern "C" TCollection_AsciiString* TCollection_AsciiString_cat_asciistring(const TCollection_AsciiString* self_, const TCollection_AsciiString* other) {
-    return new TCollection_AsciiString(self_->Cat(*other));
-}
-extern "C" TCollection_AsciiString* TCollection_AsciiString_split(TCollection_AsciiString* self_, Standard_Integer where) {
-    return new TCollection_AsciiString(self_->Split(where));
-}
-extern "C" TCollection_AsciiString* TCollection_AsciiString_sub_string(const TCollection_AsciiString* self_, Standard_Integer FromIndex, Standard_Integer ToIndex) {
-    return new TCollection_AsciiString(self_->SubString(FromIndex, ToIndex));
-}
-extern "C" TCollection_AsciiString* TCollection_AsciiString_token(const TCollection_AsciiString* self_, const char* separators, Standard_Integer whichone) {
-    return new TCollection_AsciiString(self_->Token(separators, whichone));
-}
-extern "C" void TCollection_AsciiString_assign_cat_charptr(TCollection_AsciiString* self_, const char* other) {
-    self_->AssignCat(other);
-}
-extern "C" void TCollection_AsciiString_copy_charptr(TCollection_AsciiString* self_, const char* fromwhere) {
-    self_->Copy(fromwhere);
-}
-extern "C" void TCollection_AsciiString_insert_int_charptr(TCollection_AsciiString* self_, Standard_Integer where, const char* what) {
-    self_->Insert(where, what);
-}
-extern "C" Standard_Boolean TCollection_AsciiString_is_equal_charptr(const TCollection_AsciiString* self_, const char* other) {
-    return self_->IsEqual(other);
-}
-extern "C" Standard_Boolean TCollection_AsciiString_is_different_charptr(const TCollection_AsciiString* self_, const char* other) {
-    return self_->IsDifferent(other);
-}
-extern "C" Standard_Boolean TCollection_AsciiString_is_less_charptr(const TCollection_AsciiString* self_, const char* other) {
-    return self_->IsLess(other);
-}
-extern "C" Standard_Boolean TCollection_AsciiString_is_greater_charptr(const TCollection_AsciiString* self_, const char* other) {
-    return self_->IsGreater(other);
-}
-extern "C" Standard_Integer TCollection_AsciiString_search_charptr(const TCollection_AsciiString* self_, const char* what) {
-    return self_->Search(what);
-}
-extern "C" Standard_Integer TCollection_AsciiString_search_from_end_charptr(const TCollection_AsciiString* self_, const char* what) {
-    return self_->SearchFromEnd(what);
-}
-extern "C" void TCollection_AsciiString_set_value_int_charptr(TCollection_AsciiString* self_, Standard_Integer where, const char* what) {
-    self_->SetValue(where, what);
-}
-extern "C" const char* TCollection_AsciiString_to_c_string(const TCollection_AsciiString* self_) {
-    return self_->ToCString();
-}
-extern "C" void TCollection_AsciiString_assign_cat_int(TCollection_AsciiString* self_, Standard_Integer other) {
-    self_->AssignCat(other);
-}
-extern "C" void TCollection_AsciiString_assign_cat_real(TCollection_AsciiString* self_, Standard_Real other) {
-    self_->AssignCat(other);
-}
-extern "C" void TCollection_AsciiString_assign_cat_asciistring(TCollection_AsciiString* self_, const TCollection_AsciiString* other) {
-    self_->AssignCat(*other);
-}
-extern "C" void TCollection_AsciiString_capitalize(TCollection_AsciiString* self_) {
-    self_->Capitalize();
-}
-extern "C" void TCollection_AsciiString_clear(TCollection_AsciiString* self_) {
-    self_->Clear();
-}
-extern "C" void TCollection_AsciiString_copy_asciistring(TCollection_AsciiString* self_, const TCollection_AsciiString* fromwhere) {
-    self_->Copy(*fromwhere);
-}
-extern "C" void TCollection_AsciiString_swap(TCollection_AsciiString* self_, TCollection_AsciiString* theOther) {
-    self_->Swap(*theOther);
-}
-extern "C" Standard_Integer TCollection_AsciiString_first_location_in_set(const TCollection_AsciiString* self_, const TCollection_AsciiString* Set, Standard_Integer FromIndex, Standard_Integer ToIndex) {
-    return self_->FirstLocationInSet(*Set, FromIndex, ToIndex);
-}
-extern "C" Standard_Integer TCollection_AsciiString_first_location_not_in_set(const TCollection_AsciiString* self_, const TCollection_AsciiString* Set, Standard_Integer FromIndex, Standard_Integer ToIndex) {
-    return self_->FirstLocationNotInSet(*Set, FromIndex, ToIndex);
-}
-extern "C" void TCollection_AsciiString_insert_int_asciistring(TCollection_AsciiString* self_, Standard_Integer where, const TCollection_AsciiString* what) {
-    self_->Insert(where, *what);
-}
-extern "C" void TCollection_AsciiString_insert_after(TCollection_AsciiString* self_, Standard_Integer Index, const TCollection_AsciiString* other) {
-    self_->InsertAfter(Index, *other);
-}
-extern "C" void TCollection_AsciiString_insert_before(TCollection_AsciiString* self_, Standard_Integer Index, const TCollection_AsciiString* other) {
-    self_->InsertBefore(Index, *other);
-}
-extern "C" Standard_Boolean TCollection_AsciiString_is_empty(const TCollection_AsciiString* self_) {
-    return self_->IsEmpty();
-}
-extern "C" Standard_Boolean TCollection_AsciiString_is_equal_asciistring(const TCollection_AsciiString* self_, const TCollection_AsciiString* other) {
-    return self_->IsEqual(*other);
-}
-extern "C" Standard_Boolean TCollection_AsciiString_is_different_asciistring(const TCollection_AsciiString* self_, const TCollection_AsciiString* other) {
-    return self_->IsDifferent(*other);
-}
-extern "C" Standard_Boolean TCollection_AsciiString_is_less_asciistring(const TCollection_AsciiString* self_, const TCollection_AsciiString* other) {
-    return self_->IsLess(*other);
-}
-extern "C" Standard_Boolean TCollection_AsciiString_is_greater_asciistring(const TCollection_AsciiString* self_, const TCollection_AsciiString* other) {
-    return self_->IsGreater(*other);
-}
-extern "C" Standard_Boolean TCollection_AsciiString_starts_with(const TCollection_AsciiString* self_, const TCollection_AsciiString* theStartString) {
-    return self_->StartsWith(*theStartString);
-}
-extern "C" Standard_Boolean TCollection_AsciiString_ends_with(const TCollection_AsciiString* self_, const TCollection_AsciiString* theEndString) {
-    return self_->EndsWith(*theEndString);
-}
-extern "C" Standard_Integer TCollection_AsciiString_integer_value(const TCollection_AsciiString* self_) {
-    return self_->IntegerValue();
-}
-extern "C" Standard_Boolean TCollection_AsciiString_is_integer_value(const TCollection_AsciiString* self_) {
-    return self_->IsIntegerValue();
-}
-extern "C" Standard_Boolean TCollection_AsciiString_is_real_value(const TCollection_AsciiString* self_, Standard_Boolean theToCheckFull) {
-    return self_->IsRealValue(theToCheckFull);
-}
-extern "C" Standard_Boolean TCollection_AsciiString_is_ascii(const TCollection_AsciiString* self_) {
-    return self_->IsAscii();
-}
-extern "C" void TCollection_AsciiString_left_adjust(TCollection_AsciiString* self_) {
-    self_->LeftAdjust();
-}
-extern "C" Standard_Integer TCollection_AsciiString_length(const TCollection_AsciiString* self_) {
-    return self_->Length();
-}
-extern "C" Standard_Integer TCollection_AsciiString_location(const TCollection_AsciiString* self_, const TCollection_AsciiString* other, Standard_Integer FromIndex, Standard_Integer ToIndex) {
-    return self_->Location(*other, FromIndex, ToIndex);
-}
-extern "C" void TCollection_AsciiString_lower_case(TCollection_AsciiString* self_) {
-    self_->LowerCase();
-}
-extern "C" void TCollection_AsciiString_prepend(TCollection_AsciiString* self_, const TCollection_AsciiString* other) {
-    self_->Prepend(*other);
-}
-extern "C" Standard_Real TCollection_AsciiString_real_value(const TCollection_AsciiString* self_) {
-    return self_->RealValue();
-}
-extern "C" void TCollection_AsciiString_remove(TCollection_AsciiString* self_, Standard_Integer where, Standard_Integer ahowmany) {
-    self_->Remove(where, ahowmany);
-}
-extern "C" void TCollection_AsciiString_right_adjust(TCollection_AsciiString* self_) {
-    self_->RightAdjust();
-}
-extern "C" Standard_Integer TCollection_AsciiString_search_asciistring(const TCollection_AsciiString* self_, const TCollection_AsciiString* what) {
-    return self_->Search(*what);
-}
-extern "C" Standard_Integer TCollection_AsciiString_search_from_end_asciistring(const TCollection_AsciiString* self_, const TCollection_AsciiString* what) {
-    return self_->SearchFromEnd(*what);
-}
-extern "C" void TCollection_AsciiString_set_value_int_asciistring(TCollection_AsciiString* self_, Standard_Integer where, const TCollection_AsciiString* what) {
-    self_->SetValue(where, *what);
-}
-extern "C" void TCollection_AsciiString_trunc(TCollection_AsciiString* self_, Standard_Integer ahowmany) {
-    self_->Trunc(ahowmany);
-}
-extern "C" void TCollection_AsciiString_upper_case(TCollection_AsciiString* self_) {
-    self_->UpperCase();
-}
-extern "C" Standard_Integer TCollection_AsciiString_usefull_length(const TCollection_AsciiString* self_) {
-    return self_->UsefullLength();
-}
-extern "C" size_t TCollection_AsciiString_hash_code(const TCollection_AsciiString* self_) {
-    return self_->HashCode();
-}
-extern "C" Standard_Boolean TCollection_AsciiString_is_equal_asciistring2(const TCollection_AsciiString* string1, const TCollection_AsciiString* string2) {
-    return TCollection_AsciiString::IsEqual(*string1, *string2);
-}
-extern "C" Standard_Boolean TCollection_AsciiString_is_equal_asciistring_charptr(const TCollection_AsciiString* string1, const char* string2) {
-    return TCollection_AsciiString::IsEqual(*string1, string2);
-}
-extern "C" Standard_Boolean TCollection_AsciiString_is_same_string(const TCollection_AsciiString* theString1, const TCollection_AsciiString* theString2, Standard_Boolean theIsCaseSensitive) {
-    return TCollection_AsciiString::IsSameString(*theString1, *theString2, theIsCaseSensitive);
-}
-extern "C" void TCollection_AsciiString_destructor(TCollection_AsciiString* self_) { delete self_; }
-
-// ========================
 // DESTEP_Parameters wrappers
 // ========================
 
@@ -42609,32 +50575,6 @@ extern "C" void XSControl_Reader_get_stats_transfer(const XSControl_Reader* self
 extern "C" void XSControl_Reader_destructor(XSControl_Reader* self_) { delete self_; }
 
 // ========================
-// TColStd_HSequenceOfTransient wrappers
-// ========================
-
-extern "C" TColStd_HSequenceOfTransient* TColStd_HSequenceOfTransient_ctor() {
-    return new TColStd_HSequenceOfTransient();
-}
-extern "C" TColStd_HSequenceOfTransient* TColStd_HSequenceOfTransient_ctor_sequenceoftransient(const TColStd_SequenceOfTransient* theOther) {
-    return new TColStd_HSequenceOfTransient(*theOther);
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfTransient_dynamic_type(const TColStd_HSequenceOfTransient* self_) {
-    return self_->DynamicType();
-}
-extern "C" const char* TColStd_HSequenceOfTransient_get_type_name() {
-    return TColStd_HSequenceOfTransient::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfTransient_get_type_descriptor() {
-    return TColStd_HSequenceOfTransient::get_type_descriptor();
-}
-extern "C" HandleTColStdHSequenceOfTransient* TColStd_HSequenceOfTransient_to_handle(TColStd_HSequenceOfTransient* obj) {
-    return new HandleTColStdHSequenceOfTransient(obj);
-}
-extern "C" const TColStd_HSequenceOfTransient* HandleTColStdHSequenceOfTransient_get(const HandleTColStdHSequenceOfTransient* handle) { return (*handle).get(); }
-extern "C" TColStd_HSequenceOfTransient* HandleTColStdHSequenceOfTransient_get_mut(HandleTColStdHSequenceOfTransient* handle) { return (*handle).get(); }
-extern "C" void TColStd_HSequenceOfTransient_destructor(TColStd_HSequenceOfTransient* self_) { delete self_; }
-
-// ========================
 // XSControl_Controller wrappers
 // ========================
 
@@ -42718,215 +50658,6 @@ extern "C" HandleInterfaceHArray1OfHAsciiString* Interface_HArray1OfHAsciiString
 extern "C" const Interface_HArray1OfHAsciiString* HandleInterfaceHArray1OfHAsciiString_get(const HandleInterfaceHArray1OfHAsciiString* handle) { return (*handle).get(); }
 extern "C" Interface_HArray1OfHAsciiString* HandleInterfaceHArray1OfHAsciiString_get_mut(HandleInterfaceHArray1OfHAsciiString* handle) { return (*handle).get(); }
 extern "C" void Interface_HArray1OfHAsciiString_destructor(Interface_HArray1OfHAsciiString* self_) { delete self_; }
-
-// ========================
-// NCollection_BasePointerVector wrappers
-// ========================
-
-extern "C" NCollection_BasePointerVector* NCollection_BasePointerVector_ctor() {
-    return new NCollection_BasePointerVector();
-}
-extern "C" NCollection_BasePointerVector* NCollection_BasePointerVector_ctor_basepointervector(const NCollection_BasePointerVector* theOther) {
-    return new NCollection_BasePointerVector(*theOther);
-}
-extern "C" Standard_Boolean NCollection_BasePointerVector_is_empty(const NCollection_BasePointerVector* self_) {
-    return self_->IsEmpty();
-}
-extern "C" size_t NCollection_BasePointerVector_size(const NCollection_BasePointerVector* self_) {
-    return self_->Size();
-}
-extern "C" size_t NCollection_BasePointerVector_capacity(const NCollection_BasePointerVector* self_) {
-    return self_->Capacity();
-}
-extern "C" void NCollection_BasePointerVector_remove_last(NCollection_BasePointerVector* self_) {
-    self_->RemoveLast();
-}
-extern "C" void NCollection_BasePointerVector_clear(NCollection_BasePointerVector* self_, Standard_Boolean theReleaseMemory) {
-    self_->Clear(theReleaseMemory);
-}
-extern "C" void NCollection_BasePointerVector_destructor(NCollection_BasePointerVector* self_) { delete self_; }
-
-// ========================
-// TCollection_HAsciiString wrappers
-// ========================
-
-extern "C" TCollection_HAsciiString* TCollection_HAsciiString_ctor() {
-    return new TCollection_HAsciiString();
-}
-extern "C" TCollection_HAsciiString* TCollection_HAsciiString_ctor_charptr(const char* message) {
-    return new TCollection_HAsciiString(message);
-}
-extern "C" TCollection_HAsciiString* TCollection_HAsciiString_ctor_character(const Standard_Character* aChar) {
-    return new TCollection_HAsciiString(*aChar);
-}
-extern "C" TCollection_HAsciiString* TCollection_HAsciiString_ctor_int_character(Standard_Integer length, const Standard_Character* filler) {
-    return new TCollection_HAsciiString(length, *filler);
-}
-extern "C" TCollection_HAsciiString* TCollection_HAsciiString_ctor_int(Standard_Integer value) {
-    return new TCollection_HAsciiString(value);
-}
-extern "C" TCollection_HAsciiString* TCollection_HAsciiString_ctor_real(Standard_Real value) {
-    return new TCollection_HAsciiString(value);
-}
-extern "C" TCollection_HAsciiString* TCollection_HAsciiString_ctor_asciistring(const TCollection_AsciiString* aString) {
-    return new TCollection_HAsciiString(*aString);
-}
-extern "C" TCollection_HAsciiString* TCollection_HAsciiString_ctor_handletcollectionhasciistring(const opencascade::handle<TCollection_HAsciiString>* aString) {
-    return new TCollection_HAsciiString(*aString);
-}
-extern "C" TCollection_HAsciiString* TCollection_HAsciiString_ctor_handletcollectionhextendedstring_character(const opencascade::handle<TCollection_HExtendedString>* aString, const Standard_Character* replaceNonAscii) {
-    return new TCollection_HAsciiString(*aString, *replaceNonAscii);
-}
-extern "C" opencascade::handle<TCollection_HAsciiString>* TCollection_HAsciiString_cat_charptr(const TCollection_HAsciiString* self_, const char* other) {
-    return new opencascade::handle<TCollection_HAsciiString>(self_->Cat(other));
-}
-extern "C" opencascade::handle<TCollection_HAsciiString>* TCollection_HAsciiString_cat_handletcollectionhasciistring(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* other) {
-    return new opencascade::handle<TCollection_HAsciiString>(self_->Cat(*other));
-}
-extern "C" opencascade::handle<TCollection_HAsciiString>* TCollection_HAsciiString_split(TCollection_HAsciiString* self_, Standard_Integer where) {
-    return new opencascade::handle<TCollection_HAsciiString>(self_->Split(where));
-}
-extern "C" opencascade::handle<TCollection_HAsciiString>* TCollection_HAsciiString_sub_string(const TCollection_HAsciiString* self_, Standard_Integer FromIndex, Standard_Integer ToIndex) {
-    return new opencascade::handle<TCollection_HAsciiString>(self_->SubString(FromIndex, ToIndex));
-}
-extern "C" opencascade::handle<TCollection_HAsciiString>* TCollection_HAsciiString_token(const TCollection_HAsciiString* self_, const char* separators, Standard_Integer whichone) {
-    return new opencascade::handle<TCollection_HAsciiString>(self_->Token(separators, whichone));
-}
-extern "C" void TCollection_HAsciiString_assign_cat_charptr(TCollection_HAsciiString* self_, const char* other) {
-    self_->AssignCat(other);
-}
-extern "C" void TCollection_HAsciiString_insert_int_charptr(TCollection_HAsciiString* self_, Standard_Integer where, const char* what) {
-    self_->Insert(where, what);
-}
-extern "C" Standard_Integer TCollection_HAsciiString_search_charptr(const TCollection_HAsciiString* self_, const char* what) {
-    return self_->Search(what);
-}
-extern "C" Standard_Integer TCollection_HAsciiString_search_from_end_charptr(const TCollection_HAsciiString* self_, const char* what) {
-    return self_->SearchFromEnd(what);
-}
-extern "C" void TCollection_HAsciiString_set_value_int_charptr(TCollection_HAsciiString* self_, Standard_Integer where, const char* what) {
-    self_->SetValue(where, what);
-}
-extern "C" const char* TCollection_HAsciiString_to_c_string(const TCollection_HAsciiString* self_) {
-    return self_->ToCString();
-}
-extern "C" void TCollection_HAsciiString_assign_cat_handletcollectionhasciistring(TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* other) {
-    self_->AssignCat(*other);
-}
-extern "C" void TCollection_HAsciiString_capitalize(TCollection_HAsciiString* self_) {
-    self_->Capitalize();
-}
-extern "C" void TCollection_HAsciiString_clear(TCollection_HAsciiString* self_) {
-    self_->Clear();
-}
-extern "C" Standard_Integer TCollection_HAsciiString_first_location_in_set(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* Set, Standard_Integer FromIndex, Standard_Integer ToIndex) {
-    return self_->FirstLocationInSet(*Set, FromIndex, ToIndex);
-}
-extern "C" Standard_Integer TCollection_HAsciiString_first_location_not_in_set(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* Set, Standard_Integer FromIndex, Standard_Integer ToIndex) {
-    return self_->FirstLocationNotInSet(*Set, FromIndex, ToIndex);
-}
-extern "C" void TCollection_HAsciiString_insert_int_handletcollectionhasciistring(TCollection_HAsciiString* self_, Standard_Integer where, const opencascade::handle<TCollection_HAsciiString>* what) {
-    self_->Insert(where, *what);
-}
-extern "C" void TCollection_HAsciiString_insert_after(TCollection_HAsciiString* self_, Standard_Integer Index, const opencascade::handle<TCollection_HAsciiString>* other) {
-    self_->InsertAfter(Index, *other);
-}
-extern "C" void TCollection_HAsciiString_insert_before(TCollection_HAsciiString* self_, Standard_Integer Index, const opencascade::handle<TCollection_HAsciiString>* other) {
-    self_->InsertBefore(Index, *other);
-}
-extern "C" Standard_Boolean TCollection_HAsciiString_is_empty(const TCollection_HAsciiString* self_) {
-    return self_->IsEmpty();
-}
-extern "C" Standard_Boolean TCollection_HAsciiString_is_less(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* other) {
-    return self_->IsLess(*other);
-}
-extern "C" Standard_Boolean TCollection_HAsciiString_is_greater(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* other) {
-    return self_->IsGreater(*other);
-}
-extern "C" Standard_Integer TCollection_HAsciiString_integer_value(const TCollection_HAsciiString* self_) {
-    return self_->IntegerValue();
-}
-extern "C" Standard_Boolean TCollection_HAsciiString_is_integer_value(const TCollection_HAsciiString* self_) {
-    return self_->IsIntegerValue();
-}
-extern "C" Standard_Boolean TCollection_HAsciiString_is_real_value(const TCollection_HAsciiString* self_) {
-    return self_->IsRealValue();
-}
-extern "C" Standard_Boolean TCollection_HAsciiString_is_ascii(const TCollection_HAsciiString* self_) {
-    return self_->IsAscii();
-}
-extern "C" Standard_Boolean TCollection_HAsciiString_is_different(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* S) {
-    return self_->IsDifferent(*S);
-}
-extern "C" Standard_Boolean TCollection_HAsciiString_is_same_string_handletcollectionhasciistring(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* S) {
-    return self_->IsSameString(*S);
-}
-extern "C" Standard_Boolean TCollection_HAsciiString_is_same_string_handletcollectionhasciistring_bool(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* S, Standard_Boolean CaseSensitive) {
-    return self_->IsSameString(*S, CaseSensitive);
-}
-extern "C" void TCollection_HAsciiString_left_adjust(TCollection_HAsciiString* self_) {
-    self_->LeftAdjust();
-}
-extern "C" Standard_Integer TCollection_HAsciiString_length(const TCollection_HAsciiString* self_) {
-    return self_->Length();
-}
-extern "C" Standard_Integer TCollection_HAsciiString_location(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* other, Standard_Integer FromIndex, Standard_Integer ToIndex) {
-    return self_->Location(*other, FromIndex, ToIndex);
-}
-extern "C" void TCollection_HAsciiString_lower_case(TCollection_HAsciiString* self_) {
-    self_->LowerCase();
-}
-extern "C" void TCollection_HAsciiString_prepend(TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* other) {
-    self_->Prepend(*other);
-}
-extern "C" Standard_Real TCollection_HAsciiString_real_value(const TCollection_HAsciiString* self_) {
-    return self_->RealValue();
-}
-extern "C" void TCollection_HAsciiString_remove(TCollection_HAsciiString* self_, Standard_Integer where, Standard_Integer ahowmany) {
-    self_->Remove(where, ahowmany);
-}
-extern "C" void TCollection_HAsciiString_right_adjust(TCollection_HAsciiString* self_) {
-    self_->RightAdjust();
-}
-extern "C" Standard_Integer TCollection_HAsciiString_search_handletcollectionhasciistring(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* what) {
-    return self_->Search(*what);
-}
-extern "C" Standard_Integer TCollection_HAsciiString_search_from_end_handletcollectionhasciistring(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* what) {
-    return self_->SearchFromEnd(*what);
-}
-extern "C" void TCollection_HAsciiString_set_value_int_handletcollectionhasciistring(TCollection_HAsciiString* self_, Standard_Integer where, const opencascade::handle<TCollection_HAsciiString>* what) {
-    self_->SetValue(where, *what);
-}
-extern "C" void TCollection_HAsciiString_trunc(TCollection_HAsciiString* self_, Standard_Integer ahowmany) {
-    self_->Trunc(ahowmany);
-}
-extern "C" void TCollection_HAsciiString_upper_case(TCollection_HAsciiString* self_) {
-    self_->UpperCase();
-}
-extern "C" Standard_Integer TCollection_HAsciiString_usefull_length(const TCollection_HAsciiString* self_) {
-    return self_->UsefullLength();
-}
-extern "C" const TCollection_AsciiString& TCollection_HAsciiString_string(const TCollection_HAsciiString* self_) {
-    return self_->String();
-}
-extern "C" Standard_Boolean TCollection_HAsciiString_is_same_state(const TCollection_HAsciiString* self_, const opencascade::handle<TCollection_HAsciiString>* other) {
-    return self_->IsSameState(*other);
-}
-extern "C" const opencascade::handle<Standard_Type>& TCollection_HAsciiString_dynamic_type(const TCollection_HAsciiString* self_) {
-    return self_->DynamicType();
-}
-extern "C" const char* TCollection_HAsciiString_get_type_name() {
-    return TCollection_HAsciiString::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& TCollection_HAsciiString_get_type_descriptor() {
-    return TCollection_HAsciiString::get_type_descriptor();
-}
-extern "C" HandleTCollectionHAsciiString* TCollection_HAsciiString_to_handle(TCollection_HAsciiString* obj) {
-    return new HandleTCollectionHAsciiString(obj);
-}
-extern "C" const TCollection_HAsciiString* HandleTCollectionHAsciiString_get(const HandleTCollectionHAsciiString* handle) { return (*handle).get(); }
-extern "C" TCollection_HAsciiString* HandleTCollectionHAsciiString_get_mut(HandleTCollectionHAsciiString* handle) { return (*handle).get(); }
-extern "C" void TCollection_HAsciiString_destructor(TCollection_HAsciiString* self_) { delete self_; }
 
 // ========================
 // STEPConstruct_ContextTool wrappers
@@ -43345,41 +51076,6 @@ extern "C" Standard_Integer Interface_EntityList_nb_typed_entities(const Interfa
 extern "C" void Interface_EntityList_destructor(Interface_EntityList* self_) { delete self_; }
 
 // ========================
-// TColStd_HArray1OfInteger wrappers
-// ========================
-
-extern "C" TColStd_HArray1OfInteger* TColStd_HArray1OfInteger_ctor() {
-    return new TColStd_HArray1OfInteger();
-}
-extern "C" TColStd_HArray1OfInteger* TColStd_HArray1OfInteger_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return new TColStd_HArray1OfInteger(theLower, theUpper);
-}
-extern "C" TColStd_HArray1OfInteger* TColStd_HArray1OfInteger_ctor_int3(Standard_Integer theLower, Standard_Integer theUpper, const Standard_Integer* theValue) {
-    return new TColStd_HArray1OfInteger(theLower, theUpper, *theValue);
-}
-extern "C" TColStd_HArray1OfInteger* TColStd_HArray1OfInteger_ctor_int3_bool(const Standard_Integer* theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
-    return new TColStd_HArray1OfInteger(*theBegin, theLower, theUpper, arg3);
-}
-extern "C" TColStd_HArray1OfInteger* TColStd_HArray1OfInteger_ctor_array1ofinteger(const TColStd_Array1OfInteger* theOther) {
-    return new TColStd_HArray1OfInteger(*theOther);
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfInteger_dynamic_type(const TColStd_HArray1OfInteger* self_) {
-    return self_->DynamicType();
-}
-extern "C" const char* TColStd_HArray1OfInteger_get_type_name() {
-    return TColStd_HArray1OfInteger::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfInteger_get_type_descriptor() {
-    return TColStd_HArray1OfInteger::get_type_descriptor();
-}
-extern "C" HandleTColStdHArray1OfInteger* TColStd_HArray1OfInteger_to_handle(TColStd_HArray1OfInteger* obj) {
-    return new HandleTColStdHArray1OfInteger(obj);
-}
-extern "C" const TColStd_HArray1OfInteger* HandleTColStdHArray1OfInteger_get(const HandleTColStdHArray1OfInteger* handle) { return (*handle).get(); }
-extern "C" TColStd_HArray1OfInteger* HandleTColStdHArray1OfInteger_get_mut(HandleTColStdHArray1OfInteger* handle) { return (*handle).get(); }
-extern "C" void TColStd_HArray1OfInteger_destructor(TColStd_HArray1OfInteger* self_) { delete self_; }
-
-// ========================
 // Interface_InterfaceModel wrappers
 // ========================
 
@@ -43491,32 +51187,6 @@ extern "C" const opencascade::handle<Standard_Type>& Interface_InterfaceModel_ge
 extern "C" const Interface_InterfaceModel* HandleInterfaceInterfaceModel_get(const HandleInterfaceInterfaceModel* handle) { return (*handle).get(); }
 extern "C" Interface_InterfaceModel* HandleInterfaceInterfaceModel_get_mut(HandleInterfaceInterfaceModel* handle) { return (*handle).get(); }
 extern "C" void Interface_InterfaceModel_destructor(Interface_InterfaceModel* self_) { delete self_; }
-
-// ========================
-// TColStd_HSequenceOfHAsciiString wrappers
-// ========================
-
-extern "C" TColStd_HSequenceOfHAsciiString* TColStd_HSequenceOfHAsciiString_ctor() {
-    return new TColStd_HSequenceOfHAsciiString();
-}
-extern "C" TColStd_HSequenceOfHAsciiString* TColStd_HSequenceOfHAsciiString_ctor_sequenceofhasciistring(const TColStd_SequenceOfHAsciiString* theOther) {
-    return new TColStd_HSequenceOfHAsciiString(*theOther);
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfHAsciiString_dynamic_type(const TColStd_HSequenceOfHAsciiString* self_) {
-    return self_->DynamicType();
-}
-extern "C" const char* TColStd_HSequenceOfHAsciiString_get_type_name() {
-    return TColStd_HSequenceOfHAsciiString::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfHAsciiString_get_type_descriptor() {
-    return TColStd_HSequenceOfHAsciiString::get_type_descriptor();
-}
-extern "C" HandleTColStdHSequenceOfHAsciiString* TColStd_HSequenceOfHAsciiString_to_handle(TColStd_HSequenceOfHAsciiString* obj) {
-    return new HandleTColStdHSequenceOfHAsciiString(obj);
-}
-extern "C" const TColStd_HSequenceOfHAsciiString* HandleTColStdHSequenceOfHAsciiString_get(const HandleTColStdHSequenceOfHAsciiString* handle) { return (*handle).get(); }
-extern "C" TColStd_HSequenceOfHAsciiString* HandleTColStdHSequenceOfHAsciiString_get_mut(HandleTColStdHSequenceOfHAsciiString* handle) { return (*handle).get(); }
-extern "C" void TColStd_HSequenceOfHAsciiString_destructor(TColStd_HSequenceOfHAsciiString* self_) { delete self_; }
 
 // ========================
 // StepToTopoDS_NMTool wrappers
@@ -43678,35 +51348,6 @@ extern "C" StepRepr_RepresentationItem* HandleStepReprRepresentationItem_get_mut
 extern "C" void StepRepr_RepresentationItem_destructor(StepRepr_RepresentationItem* self_) { delete self_; }
 
 // ========================
-// TColStd_HSequenceOfReal wrappers
-// ========================
-
-extern "C" TColStd_HSequenceOfReal* TColStd_HSequenceOfReal_ctor() {
-    return new TColStd_HSequenceOfReal();
-}
-extern "C" TColStd_HSequenceOfReal* TColStd_HSequenceOfReal_ctor_sequenceofreal(const TColStd_SequenceOfReal* theOther) {
-    return new TColStd_HSequenceOfReal(*theOther);
-}
-extern "C" void TColStd_HSequenceOfReal_append(TColStd_HSequenceOfReal* self_, const Standard_Real* theItem) {
-    self_->Append(*theItem);
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfReal_dynamic_type(const TColStd_HSequenceOfReal* self_) {
-    return self_->DynamicType();
-}
-extern "C" const char* TColStd_HSequenceOfReal_get_type_name() {
-    return TColStd_HSequenceOfReal::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfReal_get_type_descriptor() {
-    return TColStd_HSequenceOfReal::get_type_descriptor();
-}
-extern "C" HandleTColStdHSequenceOfReal* TColStd_HSequenceOfReal_to_handle(TColStd_HSequenceOfReal* obj) {
-    return new HandleTColStdHSequenceOfReal(obj);
-}
-extern "C" const TColStd_HSequenceOfReal* HandleTColStdHSequenceOfReal_get(const HandleTColStdHSequenceOfReal* handle) { return (*handle).get(); }
-extern "C" TColStd_HSequenceOfReal* HandleTColStdHSequenceOfReal_get_mut(HandleTColStdHSequenceOfReal* handle) { return (*handle).get(); }
-extern "C" void TColStd_HSequenceOfReal_destructor(TColStd_HSequenceOfReal* self_) { delete self_; }
-
-// ========================
 // TColGeom_HArray1OfCurve wrappers
 // ========================
 
@@ -43765,177 +51406,6 @@ extern "C" TColGeom2d_HArray1OfCurve* HandleTColGeom2dHArray1OfCurve_get_mut(Han
 extern "C" void TColGeom2d_HArray1OfCurve_destructor(TColGeom2d_HArray1OfCurve* self_) { delete self_; }
 
 // ========================
-// Geom2d_Curve wrappers
-// ========================
-
-extern "C" opencascade::handle<Geom2d_Curve>* Geom2d_Curve_reversed(const Geom2d_Curve* self_) {
-    return new opencascade::handle<Geom2d_Curve>(self_->Reversed());
-}
-extern "C" gp_Vec2d* Geom2d_Curve_dn(const Geom2d_Curve* self_, Standard_Real U, Standard_Integer N) {
-    return new gp_Vec2d(self_->DN(U, N));
-}
-extern "C" gp_Pnt2d* Geom2d_Curve_value(const Geom2d_Curve* self_, Standard_Real U) {
-    return new gp_Pnt2d(self_->Value(U));
-}
-extern "C" int32_t Geom2d_Curve_continuity(const Geom2d_Curve* self_) {
-    return static_cast<int32_t>(self_->Continuity());
-}
-extern "C" void Geom2d_Curve_reverse(Geom2d_Curve* self_) {
-    self_->Reverse();
-}
-extern "C" Standard_Real Geom2d_Curve_reversed_parameter(const Geom2d_Curve* self_, Standard_Real U) {
-    return self_->ReversedParameter(U);
-}
-extern "C" Standard_Real Geom2d_Curve_transformed_parameter(const Geom2d_Curve* self_, Standard_Real U, const gp_Trsf2d* T) {
-    return self_->TransformedParameter(U, *T);
-}
-extern "C" Standard_Real Geom2d_Curve_parametric_transformation(const Geom2d_Curve* self_, const gp_Trsf2d* T) {
-    return self_->ParametricTransformation(*T);
-}
-extern "C" Standard_Real Geom2d_Curve_first_parameter(const Geom2d_Curve* self_) {
-    return self_->FirstParameter();
-}
-extern "C" Standard_Real Geom2d_Curve_last_parameter(const Geom2d_Curve* self_) {
-    return self_->LastParameter();
-}
-extern "C" Standard_Boolean Geom2d_Curve_is_closed(const Geom2d_Curve* self_) {
-    return self_->IsClosed();
-}
-extern "C" Standard_Boolean Geom2d_Curve_is_periodic(const Geom2d_Curve* self_) {
-    return self_->IsPeriodic();
-}
-extern "C" Standard_Real Geom2d_Curve_period(const Geom2d_Curve* self_) {
-    return self_->Period();
-}
-extern "C" Standard_Boolean Geom2d_Curve_is_cn(const Geom2d_Curve* self_, Standard_Integer N) {
-    return self_->IsCN(N);
-}
-extern "C" void Geom2d_Curve_d0(const Geom2d_Curve* self_, Standard_Real U, gp_Pnt2d* P) {
-    self_->D0(U, *P);
-}
-extern "C" void Geom2d_Curve_d1(const Geom2d_Curve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1) {
-    self_->D1(U, *P, *V1);
-}
-extern "C" void Geom2d_Curve_d2(const Geom2d_Curve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
-    self_->D2(U, *P, *V1, *V2);
-}
-extern "C" void Geom2d_Curve_d3(const Geom2d_Curve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
-    self_->D3(U, *P, *V1, *V2, *V3);
-}
-extern "C" const opencascade::handle<Standard_Type>& Geom2d_Curve_dynamic_type(const Geom2d_Curve* self_) {
-    return self_->DynamicType();
-}
-extern "C" const char* Geom2d_Curve_get_type_name() {
-    return Geom2d_Curve::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Geom2d_Curve_get_type_descriptor() {
-    return Geom2d_Curve::get_type_descriptor();
-}
-extern "C" const Geom2d_Geometry* Geom2d_Curve_as_Geom2d_Geometry(const Geom2d_Curve* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
-extern "C" Geom2d_Geometry* Geom2d_Curve_as_Geom2d_Geometry_mut(Geom2d_Curve* self_) { return static_cast<Geom2d_Geometry*>(self_); }
-extern "C" const Geom2d_Curve* HandleGeom2dCurve_get(const HandleGeom2dCurve* handle) { return (*handle).get(); }
-extern "C" Geom2d_Curve* HandleGeom2dCurve_get_mut(HandleGeom2dCurve* handle) { return (*handle).get(); }
-extern "C" HandleGeom2dGeometry* HandleGeom2dCurve_to_HandleGeom2dGeometry(const HandleGeom2dCurve* self_) {
-    return new HandleGeom2dGeometry(*self_);
-}
-extern "C" void Geom2d_Curve_inherited_Mirror(Geom2d_Curve* self, const gp_Pnt2d& P) {
-    self->Mirror(P);
-}
-extern "C" void Geom2d_Curve_inherited_Rotate(Geom2d_Curve* self, const gp_Pnt2d& P, Standard_Real Ang) {
-    self->Rotate(P, Ang);
-}
-extern "C" void Geom2d_Curve_inherited_Scale(Geom2d_Curve* self, const gp_Pnt2d& P, Standard_Real S) {
-    self->Scale(P, S);
-}
-extern "C" void Geom2d_Curve_inherited_Translate(Geom2d_Curve* self, const gp_Vec2d& V) {
-    self->Translate(V);
-}
-extern "C" void Geom2d_Curve_inherited_Transform(Geom2d_Curve* self, const gp_Trsf2d& T) {
-    self->Transform(T);
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_Curve_inherited_Mirrored(const Geom2d_Curve* self, const gp_Pnt2d& P) {
-    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_Curve_inherited_Rotated(const Geom2d_Curve* self, const gp_Pnt2d& P, Standard_Real Ang) {
-    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_Curve_inherited_Scaled(const Geom2d_Curve* self, const gp_Pnt2d& P, Standard_Real S) {
-    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_Curve_inherited_Transformed(const Geom2d_Curve* self, const gp_Trsf2d& T) {
-    return new Handle(Geom2d_Geometry)(self->Transformed(T));
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_Curve_inherited_Translated(const Geom2d_Curve* self, const gp_Vec2d& V) {
-    return new Handle(Geom2d_Geometry)(self->Translated(V));
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_Curve_inherited_Copy(const Geom2d_Curve* self) {
-    return new Handle(Geom2d_Geometry)(self->Copy());
-}
-extern "C" void Geom2d_Curve_destructor(Geom2d_Curve* self_) { delete self_; }
-
-// ========================
-// Geom2d_Geometry wrappers
-// ========================
-
-extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Geometry_mirrored_pnt2d(const Geom2d_Geometry* self_, const gp_Pnt2d* P) {
-    return new opencascade::handle<Geom2d_Geometry>(self_->Mirrored(*P));
-}
-extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Geometry_mirrored_ax2d(const Geom2d_Geometry* self_, const gp_Ax2d* A) {
-    return new opencascade::handle<Geom2d_Geometry>(self_->Mirrored(*A));
-}
-extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Geometry_rotated(const Geom2d_Geometry* self_, const gp_Pnt2d* P, Standard_Real Ang) {
-    return new opencascade::handle<Geom2d_Geometry>(self_->Rotated(*P, Ang));
-}
-extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Geometry_scaled(const Geom2d_Geometry* self_, const gp_Pnt2d* P, Standard_Real S) {
-    return new opencascade::handle<Geom2d_Geometry>(self_->Scaled(*P, S));
-}
-extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Geometry_transformed(const Geom2d_Geometry* self_, const gp_Trsf2d* T) {
-    return new opencascade::handle<Geom2d_Geometry>(self_->Transformed(*T));
-}
-extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Geometry_translated_vec2d(const Geom2d_Geometry* self_, const gp_Vec2d* V) {
-    return new opencascade::handle<Geom2d_Geometry>(self_->Translated(*V));
-}
-extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Geometry_translated_pnt2d2(const Geom2d_Geometry* self_, const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
-    return new opencascade::handle<Geom2d_Geometry>(self_->Translated(*P1, *P2));
-}
-extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_Geometry_copy(const Geom2d_Geometry* self_) {
-    return new opencascade::handle<Geom2d_Geometry>(self_->Copy());
-}
-extern "C" void Geom2d_Geometry_mirror_pnt2d(Geom2d_Geometry* self_, const gp_Pnt2d* P) {
-    self_->Mirror(*P);
-}
-extern "C" void Geom2d_Geometry_mirror_ax2d(Geom2d_Geometry* self_, const gp_Ax2d* A) {
-    self_->Mirror(*A);
-}
-extern "C" void Geom2d_Geometry_rotate(Geom2d_Geometry* self_, const gp_Pnt2d* P, Standard_Real Ang) {
-    self_->Rotate(*P, Ang);
-}
-extern "C" void Geom2d_Geometry_scale(Geom2d_Geometry* self_, const gp_Pnt2d* P, Standard_Real S) {
-    self_->Scale(*P, S);
-}
-extern "C" void Geom2d_Geometry_translate_vec2d(Geom2d_Geometry* self_, const gp_Vec2d* V) {
-    self_->Translate(*V);
-}
-extern "C" void Geom2d_Geometry_translate_pnt2d2(Geom2d_Geometry* self_, const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
-    self_->Translate(*P1, *P2);
-}
-extern "C" void Geom2d_Geometry_transform(Geom2d_Geometry* self_, const gp_Trsf2d* T) {
-    self_->Transform(*T);
-}
-extern "C" const opencascade::handle<Standard_Type>& Geom2d_Geometry_dynamic_type(const Geom2d_Geometry* self_) {
-    return self_->DynamicType();
-}
-extern "C" const char* Geom2d_Geometry_get_type_name() {
-    return Geom2d_Geometry::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Geom2d_Geometry_get_type_descriptor() {
-    return Geom2d_Geometry::get_type_descriptor();
-}
-extern "C" const Geom2d_Geometry* HandleGeom2dGeometry_get(const HandleGeom2dGeometry* handle) { return (*handle).get(); }
-extern "C" Geom2d_Geometry* HandleGeom2dGeometry_get_mut(HandleGeom2dGeometry* handle) { return (*handle).get(); }
-extern "C" void Geom2d_Geometry_destructor(Geom2d_Geometry* self_) { delete self_; }
-
-// ========================
 // TColGeom_HSequenceOfBoundedCurve wrappers
 // ========================
 
@@ -43986,161 +51456,6 @@ extern "C" HandleTColGeom2dHSequenceOfBoundedCurve* TColGeom2d_HSequenceOfBounde
 extern "C" const TColGeom2d_HSequenceOfBoundedCurve* HandleTColGeom2dHSequenceOfBoundedCurve_get(const HandleTColGeom2dHSequenceOfBoundedCurve* handle) { return (*handle).get(); }
 extern "C" TColGeom2d_HSequenceOfBoundedCurve* HandleTColGeom2dHSequenceOfBoundedCurve_get_mut(HandleTColGeom2dHSequenceOfBoundedCurve* handle) { return (*handle).get(); }
 extern "C" void TColGeom2d_HSequenceOfBoundedCurve_destructor(TColGeom2d_HSequenceOfBoundedCurve* self_) { delete self_; }
-
-// ========================
-// Geom2d_BoundedCurve wrappers
-// ========================
-
-extern "C" gp_Pnt2d* Geom2d_BoundedCurve_end_point(const Geom2d_BoundedCurve* self_) {
-    return new gp_Pnt2d(self_->EndPoint());
-}
-extern "C" gp_Pnt2d* Geom2d_BoundedCurve_start_point(const Geom2d_BoundedCurve* self_) {
-    return new gp_Pnt2d(self_->StartPoint());
-}
-extern "C" const opencascade::handle<Standard_Type>& Geom2d_BoundedCurve_dynamic_type(const Geom2d_BoundedCurve* self_) {
-    return self_->DynamicType();
-}
-extern "C" const char* Geom2d_BoundedCurve_get_type_name() {
-    return Geom2d_BoundedCurve::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Geom2d_BoundedCurve_get_type_descriptor() {
-    return Geom2d_BoundedCurve::get_type_descriptor();
-}
-extern "C" const Geom2d_Curve* Geom2d_BoundedCurve_as_Geom2d_Curve(const Geom2d_BoundedCurve* self_) { return static_cast<const Geom2d_Curve*>(self_); }
-extern "C" Geom2d_Curve* Geom2d_BoundedCurve_as_Geom2d_Curve_mut(Geom2d_BoundedCurve* self_) { return static_cast<Geom2d_Curve*>(self_); }
-extern "C" const Geom2d_Geometry* Geom2d_BoundedCurve_as_Geom2d_Geometry(const Geom2d_BoundedCurve* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
-extern "C" Geom2d_Geometry* Geom2d_BoundedCurve_as_Geom2d_Geometry_mut(Geom2d_BoundedCurve* self_) { return static_cast<Geom2d_Geometry*>(self_); }
-extern "C" const Geom2d_BoundedCurve* HandleGeom2dBoundedCurve_get(const HandleGeom2dBoundedCurve* handle) { return (*handle).get(); }
-extern "C" Geom2d_BoundedCurve* HandleGeom2dBoundedCurve_get_mut(HandleGeom2dBoundedCurve* handle) { return (*handle).get(); }
-extern "C" HandleGeom2dCurve* HandleGeom2dBoundedCurve_to_HandleGeom2dCurve(const HandleGeom2dBoundedCurve* self_) {
-    return new HandleGeom2dCurve(*self_);
-}
-extern "C" HandleGeom2dGeometry* HandleGeom2dBoundedCurve_to_HandleGeom2dGeometry(const HandleGeom2dBoundedCurve* self_) {
-    return new HandleGeom2dGeometry(*self_);
-}
-extern "C" void Geom2d_BoundedCurve_inherited_Reverse(Geom2d_BoundedCurve* self) {
-    self->Reverse();
-}
-extern "C" Standard_Real Geom2d_BoundedCurve_inherited_ReversedParameter(const Geom2d_BoundedCurve* self, Standard_Real U) {
-    return self->ReversedParameter(U);
-}
-extern "C" Standard_Real Geom2d_BoundedCurve_inherited_TransformedParameter(const Geom2d_BoundedCurve* self, Standard_Real U, const gp_Trsf2d& T) {
-    return self->TransformedParameter(U, T);
-}
-extern "C" Standard_Real Geom2d_BoundedCurve_inherited_ParametricTransformation(const Geom2d_BoundedCurve* self, const gp_Trsf2d& T) {
-    return self->ParametricTransformation(T);
-}
-extern "C" Handle(Geom2d_Curve)* Geom2d_BoundedCurve_inherited_Reversed(const Geom2d_BoundedCurve* self) {
-    return new Handle(Geom2d_Curve)(self->Reversed());
-}
-extern "C" Standard_Real Geom2d_BoundedCurve_inherited_FirstParameter(const Geom2d_BoundedCurve* self) {
-    return self->FirstParameter();
-}
-extern "C" Standard_Real Geom2d_BoundedCurve_inherited_LastParameter(const Geom2d_BoundedCurve* self) {
-    return self->LastParameter();
-}
-extern "C" bool Geom2d_BoundedCurve_inherited_IsClosed(const Geom2d_BoundedCurve* self) {
-    return self->IsClosed();
-}
-extern "C" bool Geom2d_BoundedCurve_inherited_IsPeriodic(const Geom2d_BoundedCurve* self) {
-    return self->IsPeriodic();
-}
-extern "C" Standard_Real Geom2d_BoundedCurve_inherited_Period(const Geom2d_BoundedCurve* self) {
-    return self->Period();
-}
-extern "C" int32_t Geom2d_BoundedCurve_inherited_Continuity(const Geom2d_BoundedCurve* self) {
-    return static_cast<int32_t>(self->Continuity());
-}
-extern "C" bool Geom2d_BoundedCurve_inherited_IsCN(const Geom2d_BoundedCurve* self, Standard_Integer N) {
-    return self->IsCN(N);
-}
-extern "C" void Geom2d_BoundedCurve_inherited_D0(const Geom2d_BoundedCurve* self, Standard_Real U, gp_Pnt2d& P) {
-    self->D0(U, P);
-}
-extern "C" void Geom2d_BoundedCurve_inherited_D1(const Geom2d_BoundedCurve* self, Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1) {
-    self->D1(U, P, V1);
-}
-extern "C" void Geom2d_BoundedCurve_inherited_D2(const Geom2d_BoundedCurve* self, Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
-    self->D2(U, P, V1, V2);
-}
-extern "C" void Geom2d_BoundedCurve_inherited_D3(const Geom2d_BoundedCurve* self, Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
-    self->D3(U, P, V1, V2, V3);
-}
-extern "C" gp_Vec2d* Geom2d_BoundedCurve_inherited_DN(const Geom2d_BoundedCurve* self, Standard_Real U, Standard_Integer N) {
-    return new gp_Vec2d(self->DN(U, N));
-}
-extern "C" gp_Pnt2d* Geom2d_BoundedCurve_inherited_Value(const Geom2d_BoundedCurve* self, Standard_Real U) {
-    return new gp_Pnt2d(self->Value(U));
-}
-extern "C" void Geom2d_BoundedCurve_inherited_Mirror(Geom2d_BoundedCurve* self, const gp_Pnt2d& P) {
-    self->Mirror(P);
-}
-extern "C" void Geom2d_BoundedCurve_inherited_Rotate(Geom2d_BoundedCurve* self, const gp_Pnt2d& P, Standard_Real Ang) {
-    self->Rotate(P, Ang);
-}
-extern "C" void Geom2d_BoundedCurve_inherited_Scale(Geom2d_BoundedCurve* self, const gp_Pnt2d& P, Standard_Real S) {
-    self->Scale(P, S);
-}
-extern "C" void Geom2d_BoundedCurve_inherited_Translate(Geom2d_BoundedCurve* self, const gp_Vec2d& V) {
-    self->Translate(V);
-}
-extern "C" void Geom2d_BoundedCurve_inherited_Transform(Geom2d_BoundedCurve* self, const gp_Trsf2d& T) {
-    self->Transform(T);
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_BoundedCurve_inherited_Mirrored(const Geom2d_BoundedCurve* self, const gp_Pnt2d& P) {
-    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_BoundedCurve_inherited_Rotated(const Geom2d_BoundedCurve* self, const gp_Pnt2d& P, Standard_Real Ang) {
-    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_BoundedCurve_inherited_Scaled(const Geom2d_BoundedCurve* self, const gp_Pnt2d& P, Standard_Real S) {
-    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_BoundedCurve_inherited_Transformed(const Geom2d_BoundedCurve* self, const gp_Trsf2d& T) {
-    return new Handle(Geom2d_Geometry)(self->Transformed(T));
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_BoundedCurve_inherited_Translated(const Geom2d_BoundedCurve* self, const gp_Vec2d& V) {
-    return new Handle(Geom2d_Geometry)(self->Translated(V));
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_BoundedCurve_inherited_Copy(const Geom2d_BoundedCurve* self) {
-    return new Handle(Geom2d_Geometry)(self->Copy());
-}
-extern "C" void Geom2d_BoundedCurve_destructor(Geom2d_BoundedCurve* self_) { delete self_; }
-
-// ========================
-// TColStd_HArray1OfReal wrappers
-// ========================
-
-extern "C" TColStd_HArray1OfReal* TColStd_HArray1OfReal_ctor() {
-    return new TColStd_HArray1OfReal();
-}
-extern "C" TColStd_HArray1OfReal* TColStd_HArray1OfReal_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return new TColStd_HArray1OfReal(theLower, theUpper);
-}
-extern "C" TColStd_HArray1OfReal* TColStd_HArray1OfReal_ctor_int2_real(Standard_Integer theLower, Standard_Integer theUpper, const Standard_Real* theValue) {
-    return new TColStd_HArray1OfReal(theLower, theUpper, *theValue);
-}
-extern "C" TColStd_HArray1OfReal* TColStd_HArray1OfReal_ctor_real_int2_bool(const Standard_Real* theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
-    return new TColStd_HArray1OfReal(*theBegin, theLower, theUpper, arg3);
-}
-extern "C" TColStd_HArray1OfReal* TColStd_HArray1OfReal_ctor_array1ofreal(const TColStd_Array1OfReal* theOther) {
-    return new TColStd_HArray1OfReal(*theOther);
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfReal_dynamic_type(const TColStd_HArray1OfReal* self_) {
-    return self_->DynamicType();
-}
-extern "C" const char* TColStd_HArray1OfReal_get_type_name() {
-    return TColStd_HArray1OfReal::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfReal_get_type_descriptor() {
-    return TColStd_HArray1OfReal::get_type_descriptor();
-}
-extern "C" HandleTColStdHArray1OfReal* TColStd_HArray1OfReal_to_handle(TColStd_HArray1OfReal* obj) {
-    return new HandleTColStdHArray1OfReal(obj);
-}
-extern "C" const TColStd_HArray1OfReal* HandleTColStdHArray1OfReal_get(const HandleTColStdHArray1OfReal* handle) { return (*handle).get(); }
-extern "C" TColStd_HArray1OfReal* HandleTColStdHArray1OfReal_get_mut(HandleTColStdHArray1OfReal* handle) { return (*handle).get(); }
-extern "C" void TColStd_HArray1OfReal_destructor(TColStd_HArray1OfReal* self_) { delete self_; }
 
 // ========================
 // IntRes2d_IntersectionPoint wrappers
@@ -44458,62 +51773,6 @@ extern "C" GeomEvaluator_Surface* HandleGeomEvaluatorSurface_get_mut(HandleGeomE
 extern "C" void GeomEvaluator_Surface_destructor(GeomEvaluator_Surface* self_) { delete self_; }
 
 // ========================
-// Standard_NullObject wrappers
-// ========================
-
-extern "C" Standard_NullObject* Standard_NullObject_ctor() {
-    return new Standard_NullObject();
-}
-extern "C" Standard_NullObject* Standard_NullObject_ctor_charptr(const char* theMessage) {
-    return new Standard_NullObject(theMessage);
-}
-extern "C" Standard_NullObject* Standard_NullObject_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
-    return new Standard_NullObject(theMessage, theStackTrace);
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_NullObject_dynamic_type(const Standard_NullObject* self_) {
-    return self_->DynamicType();
-}
-extern "C" void Standard_NullObject_raise(const char* theMessage) {
-    return Standard_NullObject::Raise(theMessage);
-}
-extern "C" const char* Standard_NullObject_get_type_name() {
-    return Standard_NullObject::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_NullObject_get_type_descriptor() {
-    return Standard_NullObject::get_type_descriptor();
-}
-extern "C" void Standard_NullObject_destructor(Standard_NullObject* self_) { delete self_; }
-
-// ========================
-// TColStd_HArray2OfReal wrappers
-// ========================
-
-extern "C" TColStd_HArray2OfReal* TColStd_HArray2OfReal_ctor_int4(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp) {
-    return new TColStd_HArray2OfReal(theRowLow, theRowUpp, theColLow, theColUpp);
-}
-extern "C" TColStd_HArray2OfReal* TColStd_HArray2OfReal_ctor_int4_real(Standard_Integer theRowLow, Standard_Integer theRowUpp, Standard_Integer theColLow, Standard_Integer theColUpp, const Standard_Real* theValue) {
-    return new TColStd_HArray2OfReal(theRowLow, theRowUpp, theColLow, theColUpp, *theValue);
-}
-extern "C" TColStd_HArray2OfReal* TColStd_HArray2OfReal_ctor_array2ofreal(const TColStd_Array2OfReal* theOther) {
-    return new TColStd_HArray2OfReal(*theOther);
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray2OfReal_dynamic_type(const TColStd_HArray2OfReal* self_) {
-    return self_->DynamicType();
-}
-extern "C" const char* TColStd_HArray2OfReal_get_type_name() {
-    return TColStd_HArray2OfReal::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray2OfReal_get_type_descriptor() {
-    return TColStd_HArray2OfReal::get_type_descriptor();
-}
-extern "C" HandleTColStdHArray2OfReal* TColStd_HArray2OfReal_to_handle(TColStd_HArray2OfReal* obj) {
-    return new HandleTColStdHArray2OfReal(obj);
-}
-extern "C" const TColStd_HArray2OfReal* HandleTColStdHArray2OfReal_get(const HandleTColStdHArray2OfReal* handle) { return (*handle).get(); }
-extern "C" TColStd_HArray2OfReal* HandleTColStdHArray2OfReal_get_mut(HandleTColStdHArray2OfReal* handle) { return (*handle).get(); }
-extern "C" void TColStd_HArray2OfReal_destructor(TColStd_HArray2OfReal* self_) { delete self_; }
-
-// ========================
 // BSplCLib_CacheParams wrappers
 // ========================
 
@@ -44570,406 +51829,31 @@ extern "C" TShort_HArray1OfShortReal* HandleTShortHArray1OfShortReal_get_mut(Han
 extern "C" void TShort_HArray1OfShortReal_destructor(TShort_HArray1OfShortReal* self_) { delete self_; }
 
 // ========================
-// NCollection_IncAllocator wrappers
+// StdFail_NotDone wrappers
 // ========================
 
-extern "C" NCollection_IncAllocator* NCollection_IncAllocator_ctor_size(size_t theBlockSize) {
-    return new NCollection_IncAllocator(theBlockSize);
+extern "C" StdFail_NotDone* StdFail_NotDone_ctor() {
+    return new StdFail_NotDone();
 }
-extern "C" void NCollection_IncAllocator_set_thread_safe(NCollection_IncAllocator* self_, Standard_Boolean theIsThreadSafe) {
-    self_->SetThreadSafe(theIsThreadSafe);
+extern "C" StdFail_NotDone* StdFail_NotDone_ctor_charptr(const char* theMessage) {
+    return new StdFail_NotDone(theMessage);
 }
-extern "C" void NCollection_IncAllocator_reset(NCollection_IncAllocator* self_, Standard_Boolean theReleaseMemory) {
-    self_->Reset(theReleaseMemory);
+extern "C" StdFail_NotDone* StdFail_NotDone_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
+    return new StdFail_NotDone(theMessage, theStackTrace);
 }
-extern "C" const opencascade::handle<Standard_Type>& NCollection_IncAllocator_dynamic_type(const NCollection_IncAllocator* self_) {
+extern "C" const opencascade::handle<Standard_Type>& StdFail_NotDone_dynamic_type(const StdFail_NotDone* self_) {
     return self_->DynamicType();
 }
-extern "C" const char* NCollection_IncAllocator_get_type_name() {
-    return NCollection_IncAllocator::get_type_name();
+extern "C" void StdFail_NotDone_raise(const char* theMessage) {
+    return StdFail_NotDone::Raise(theMessage);
 }
-extern "C" const opencascade::handle<Standard_Type>& NCollection_IncAllocator_get_type_descriptor() {
-    return NCollection_IncAllocator::get_type_descriptor();
+extern "C" const char* StdFail_NotDone_get_type_name() {
+    return StdFail_NotDone::get_type_name();
 }
-extern "C" void NCollection_IncAllocator_destructor(NCollection_IncAllocator* self_) { delete self_; }
-
-// ========================
-// TColStd_PackedMapOfInteger wrappers
-// ========================
-
-extern "C" TColStd_PackedMapOfInteger* TColStd_PackedMapOfInteger_ctor_int(Standard_Integer theNbBuckets) {
-    return new TColStd_PackedMapOfInteger(theNbBuckets);
+extern "C" const opencascade::handle<Standard_Type>& StdFail_NotDone_get_type_descriptor() {
+    return StdFail_NotDone::get_type_descriptor();
 }
-extern "C" TColStd_PackedMapOfInteger* TColStd_PackedMapOfInteger_ctor_packedmapofinteger(const TColStd_PackedMapOfInteger* theOther) {
-    return new TColStd_PackedMapOfInteger(*theOther);
-}
-extern "C" void TColStd_PackedMapOfInteger_re_size(TColStd_PackedMapOfInteger* self_, Standard_Integer NbBuckets) {
-    self_->ReSize(NbBuckets);
-}
-extern "C" void TColStd_PackedMapOfInteger_clear(TColStd_PackedMapOfInteger* self_) {
-    self_->Clear();
-}
-extern "C" Standard_Boolean TColStd_PackedMapOfInteger_add(TColStd_PackedMapOfInteger* self_, Standard_Integer aKey) {
-    return self_->Add(aKey);
-}
-extern "C" Standard_Boolean TColStd_PackedMapOfInteger_contains(const TColStd_PackedMapOfInteger* self_, Standard_Integer aKey) {
-    return self_->Contains(aKey);
-}
-extern "C" Standard_Boolean TColStd_PackedMapOfInteger_remove(TColStd_PackedMapOfInteger* self_, Standard_Integer aKey) {
-    return self_->Remove(aKey);
-}
-extern "C" Standard_Integer TColStd_PackedMapOfInteger_nb_buckets(const TColStd_PackedMapOfInteger* self_) {
-    return self_->NbBuckets();
-}
-extern "C" Standard_Integer TColStd_PackedMapOfInteger_extent(const TColStd_PackedMapOfInteger* self_) {
-    return self_->Extent();
-}
-extern "C" Standard_Boolean TColStd_PackedMapOfInteger_is_empty(const TColStd_PackedMapOfInteger* self_) {
-    return self_->IsEmpty();
-}
-extern "C" Standard_Integer TColStd_PackedMapOfInteger_get_minimal_mapped(const TColStd_PackedMapOfInteger* self_) {
-    return self_->GetMinimalMapped();
-}
-extern "C" Standard_Integer TColStd_PackedMapOfInteger_get_maximal_mapped(const TColStd_PackedMapOfInteger* self_) {
-    return self_->GetMaximalMapped();
-}
-extern "C" void TColStd_PackedMapOfInteger_union(TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0, const TColStd_PackedMapOfInteger* arg1) {
-    self_->Union(*arg0, *arg1);
-}
-extern "C" Standard_Boolean TColStd_PackedMapOfInteger_unite(TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0) {
-    return self_->Unite(*arg0);
-}
-extern "C" void TColStd_PackedMapOfInteger_intersection(TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0, const TColStd_PackedMapOfInteger* arg1) {
-    self_->Intersection(*arg0, *arg1);
-}
-extern "C" Standard_Boolean TColStd_PackedMapOfInteger_intersect(TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0) {
-    return self_->Intersect(*arg0);
-}
-extern "C" void TColStd_PackedMapOfInteger_subtraction(TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0, const TColStd_PackedMapOfInteger* arg1) {
-    self_->Subtraction(*arg0, *arg1);
-}
-extern "C" Standard_Boolean TColStd_PackedMapOfInteger_subtract(TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0) {
-    return self_->Subtract(*arg0);
-}
-extern "C" void TColStd_PackedMapOfInteger_difference(TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0, const TColStd_PackedMapOfInteger* arg1) {
-    self_->Difference(*arg0, *arg1);
-}
-extern "C" Standard_Boolean TColStd_PackedMapOfInteger_differ(TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0) {
-    return self_->Differ(*arg0);
-}
-extern "C" Standard_Boolean TColStd_PackedMapOfInteger_is_equal(const TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0) {
-    return self_->IsEqual(*arg0);
-}
-extern "C" Standard_Boolean TColStd_PackedMapOfInteger_is_subset(const TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0) {
-    return self_->IsSubset(*arg0);
-}
-extern "C" Standard_Boolean TColStd_PackedMapOfInteger_has_intersection(const TColStd_PackedMapOfInteger* self_, const TColStd_PackedMapOfInteger* arg0) {
-    return self_->HasIntersection(*arg0);
-}
-extern "C" void TColStd_PackedMapOfInteger_destructor(TColStd_PackedMapOfInteger* self_) { delete self_; }
-
-// ========================
-// Standard_Mutex wrappers
-// ========================
-
-extern "C" Standard_Mutex* Standard_Mutex_ctor() {
-    return new Standard_Mutex();
-}
-extern "C" void Standard_Mutex_lock(Standard_Mutex* self_) {
-    self_->Lock();
-}
-extern "C" Standard_Boolean Standard_Mutex_try_lock(Standard_Mutex* self_) {
-    return self_->TryLock();
-}
-extern "C" void Standard_Mutex_unlock(Standard_Mutex* self_) {
-    self_->Unlock();
-}
-extern "C" void Standard_Mutex_destructor(Standard_Mutex* self_) { delete self_; }
-
-// ========================
-// Standard_ErrorHandler wrappers
-// ========================
-
-extern "C" Standard_ErrorHandler* Standard_ErrorHandler_ctor() {
-    return new Standard_ErrorHandler();
-}
-extern "C" opencascade::handle<Standard_Failure>* Standard_ErrorHandler_error(const Standard_ErrorHandler* self_) {
-    return new opencascade::handle<Standard_Failure>(self_->Error());
-}
-extern "C" void Standard_ErrorHandler_destroy(Standard_ErrorHandler* self_) {
-    self_->Destroy();
-}
-extern "C" void Standard_ErrorHandler_unlink(Standard_ErrorHandler* self_) {
-    self_->Unlink();
-}
-extern "C" Standard_Boolean Standard_ErrorHandler_catches(Standard_ErrorHandler* self_, const opencascade::handle<Standard_Type>* aType) {
-    return self_->Catches(*aType);
-}
-extern "C" opencascade::handle<Standard_Failure>* Standard_ErrorHandler_last_caught_error() {
-    return new opencascade::handle<Standard_Failure>(Standard_ErrorHandler::LastCaughtError());
-}
-extern "C" Standard_Boolean Standard_ErrorHandler_is_in_try_block() {
-    return Standard_ErrorHandler::IsInTryBlock();
-}
-extern "C" void Standard_ErrorHandler_destructor(Standard_ErrorHandler* self_) { delete self_; }
-
-// ========================
-// TCollection_HExtendedString wrappers
-// ========================
-
-extern "C" TCollection_HExtendedString* TCollection_HExtendedString_ctor() {
-    return new TCollection_HExtendedString();
-}
-extern "C" TCollection_HExtendedString* TCollection_HExtendedString_ctor_charptr(const char* message) {
-    return new TCollection_HExtendedString(message);
-}
-extern "C" TCollection_HExtendedString* TCollection_HExtendedString_ctor_extstring(const Standard_ExtString* message) {
-    return new TCollection_HExtendedString(*message);
-}
-extern "C" TCollection_HExtendedString* TCollection_HExtendedString_ctor_extcharacter(const Standard_ExtCharacter* aChar) {
-    return new TCollection_HExtendedString(*aChar);
-}
-extern "C" TCollection_HExtendedString* TCollection_HExtendedString_ctor_int_extcharacter(Standard_Integer length, const Standard_ExtCharacter* filler) {
-    return new TCollection_HExtendedString(length, *filler);
-}
-extern "C" TCollection_HExtendedString* TCollection_HExtendedString_ctor_extendedstring(const TCollection_ExtendedString* aString) {
-    return new TCollection_HExtendedString(*aString);
-}
-extern "C" TCollection_HExtendedString* TCollection_HExtendedString_ctor_handletcollectionhasciistring(const opencascade::handle<TCollection_HAsciiString>* aString) {
-    return new TCollection_HExtendedString(*aString);
-}
-extern "C" TCollection_HExtendedString* TCollection_HExtendedString_ctor_handletcollectionhextendedstring(const opencascade::handle<TCollection_HExtendedString>* aString) {
-    return new TCollection_HExtendedString(*aString);
-}
-extern "C" opencascade::handle<TCollection_HExtendedString>* TCollection_HExtendedString_cat(const TCollection_HExtendedString* self_, const opencascade::handle<TCollection_HExtendedString>* other) {
-    return new opencascade::handle<TCollection_HExtendedString>(self_->Cat(*other));
-}
-extern "C" opencascade::handle<TCollection_HExtendedString>* TCollection_HExtendedString_split(TCollection_HExtendedString* self_, Standard_Integer where) {
-    return new opencascade::handle<TCollection_HExtendedString>(self_->Split(where));
-}
-extern "C" void TCollection_HExtendedString_assign_cat(TCollection_HExtendedString* self_, const opencascade::handle<TCollection_HExtendedString>* other) {
-    self_->AssignCat(*other);
-}
-extern "C" void TCollection_HExtendedString_clear(TCollection_HExtendedString* self_) {
-    self_->Clear();
-}
-extern "C" Standard_Boolean TCollection_HExtendedString_is_empty(const TCollection_HExtendedString* self_) {
-    return self_->IsEmpty();
-}
-extern "C" void TCollection_HExtendedString_insert(TCollection_HExtendedString* self_, Standard_Integer where, const opencascade::handle<TCollection_HExtendedString>* what) {
-    self_->Insert(where, *what);
-}
-extern "C" Standard_Boolean TCollection_HExtendedString_is_less(const TCollection_HExtendedString* self_, const opencascade::handle<TCollection_HExtendedString>* other) {
-    return self_->IsLess(*other);
-}
-extern "C" Standard_Boolean TCollection_HExtendedString_is_greater(const TCollection_HExtendedString* self_, const opencascade::handle<TCollection_HExtendedString>* other) {
-    return self_->IsGreater(*other);
-}
-extern "C" Standard_Boolean TCollection_HExtendedString_is_ascii(const TCollection_HExtendedString* self_) {
-    return self_->IsAscii();
-}
-extern "C" Standard_Integer TCollection_HExtendedString_length(const TCollection_HExtendedString* self_) {
-    return self_->Length();
-}
-extern "C" void TCollection_HExtendedString_remove(TCollection_HExtendedString* self_, Standard_Integer where, Standard_Integer ahowmany) {
-    self_->Remove(where, ahowmany);
-}
-extern "C" void TCollection_HExtendedString_set_value(TCollection_HExtendedString* self_, Standard_Integer where, const opencascade::handle<TCollection_HExtendedString>* what) {
-    self_->SetValue(where, *what);
-}
-extern "C" Standard_Integer TCollection_HExtendedString_search(const TCollection_HExtendedString* self_, const opencascade::handle<TCollection_HExtendedString>* what) {
-    return self_->Search(*what);
-}
-extern "C" Standard_Integer TCollection_HExtendedString_search_from_end(const TCollection_HExtendedString* self_, const opencascade::handle<TCollection_HExtendedString>* what) {
-    return self_->SearchFromEnd(*what);
-}
-extern "C" void TCollection_HExtendedString_trunc(TCollection_HExtendedString* self_, Standard_Integer ahowmany) {
-    self_->Trunc(ahowmany);
-}
-extern "C" const TCollection_ExtendedString& TCollection_HExtendedString_string(const TCollection_HExtendedString* self_) {
-    return self_->String();
-}
-extern "C" Standard_Boolean TCollection_HExtendedString_is_same_state(const TCollection_HExtendedString* self_, const opencascade::handle<TCollection_HExtendedString>* other) {
-    return self_->IsSameState(*other);
-}
-extern "C" const opencascade::handle<Standard_Type>& TCollection_HExtendedString_dynamic_type(const TCollection_HExtendedString* self_) {
-    return self_->DynamicType();
-}
-extern "C" const char* TCollection_HExtendedString_get_type_name() {
-    return TCollection_HExtendedString::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& TCollection_HExtendedString_get_type_descriptor() {
-    return TCollection_HExtendedString::get_type_descriptor();
-}
-extern "C" HandleTCollectionHExtendedString* TCollection_HExtendedString_to_handle(TCollection_HExtendedString* obj) {
-    return new HandleTCollectionHExtendedString(obj);
-}
-extern "C" const TCollection_HExtendedString* HandleTCollectionHExtendedString_get(const HandleTCollectionHExtendedString* handle) { return (*handle).get(); }
-extern "C" TCollection_HExtendedString* HandleTCollectionHExtendedString_get_mut(HandleTCollectionHExtendedString* handle) { return (*handle).get(); }
-extern "C" void TCollection_HExtendedString_destructor(TCollection_HExtendedString* self_) { delete self_; }
-
-// ========================
-// TCollection_ExtendedString wrappers
-// ========================
-
-extern "C" TCollection_ExtendedString* TCollection_ExtendedString_ctor() {
-    return new TCollection_ExtendedString();
-}
-extern "C" TCollection_ExtendedString* TCollection_ExtendedString_ctor_charptr_bool(const char* astring, Standard_Boolean isMultiByte) {
-    return new TCollection_ExtendedString(astring, isMultiByte);
-}
-extern "C" TCollection_ExtendedString* TCollection_ExtendedString_ctor_extstring(const Standard_ExtString* astring) {
-    return new TCollection_ExtendedString(*astring);
-}
-extern "C" TCollection_ExtendedString* TCollection_ExtendedString_ctor_character(const Standard_Character* aChar) {
-    return new TCollection_ExtendedString(*aChar);
-}
-extern "C" TCollection_ExtendedString* TCollection_ExtendedString_ctor_extcharacter(const Standard_ExtCharacter* aChar) {
-    return new TCollection_ExtendedString(*aChar);
-}
-extern "C" TCollection_ExtendedString* TCollection_ExtendedString_ctor_int_extcharacter(Standard_Integer length, const Standard_ExtCharacter* filler) {
-    return new TCollection_ExtendedString(length, *filler);
-}
-extern "C" TCollection_ExtendedString* TCollection_ExtendedString_ctor_int(Standard_Integer value) {
-    return new TCollection_ExtendedString(value);
-}
-extern "C" TCollection_ExtendedString* TCollection_ExtendedString_ctor_real(Standard_Real value) {
-    return new TCollection_ExtendedString(value);
-}
-extern "C" TCollection_ExtendedString* TCollection_ExtendedString_ctor_extendedstring(const TCollection_ExtendedString* astring) {
-    return new TCollection_ExtendedString(*astring);
-}
-extern "C" TCollection_ExtendedString* TCollection_ExtendedString_ctor_asciistring_bool(const TCollection_AsciiString* astring, Standard_Boolean isMultiByte) {
-    return new TCollection_ExtendedString(*astring, isMultiByte);
-}
-extern "C" TCollection_ExtendedString* TCollection_ExtendedString_cat(const TCollection_ExtendedString* self_, const TCollection_ExtendedString* other) {
-    return new TCollection_ExtendedString(self_->Cat(*other));
-}
-extern "C" TCollection_ExtendedString* TCollection_ExtendedString_split(TCollection_ExtendedString* self_, Standard_Integer where) {
-    return new TCollection_ExtendedString(self_->Split(where));
-}
-extern "C" void TCollection_ExtendedString_assign_cat(TCollection_ExtendedString* self_, const TCollection_ExtendedString* other) {
-    self_->AssignCat(*other);
-}
-extern "C" void TCollection_ExtendedString_clear(TCollection_ExtendedString* self_) {
-    self_->Clear();
-}
-extern "C" void TCollection_ExtendedString_copy(TCollection_ExtendedString* self_, const TCollection_ExtendedString* fromwhere) {
-    self_->Copy(*fromwhere);
-}
-extern "C" void TCollection_ExtendedString_swap(TCollection_ExtendedString* self_, TCollection_ExtendedString* theOther) {
-    self_->Swap(*theOther);
-}
-extern "C" void TCollection_ExtendedString_insert(TCollection_ExtendedString* self_, Standard_Integer where, const TCollection_ExtendedString* what) {
-    self_->Insert(where, *what);
-}
-extern "C" Standard_Boolean TCollection_ExtendedString_is_empty(const TCollection_ExtendedString* self_) {
-    return self_->IsEmpty();
-}
-extern "C" Standard_Boolean TCollection_ExtendedString_is_equal(const TCollection_ExtendedString* self_, const TCollection_ExtendedString* other) {
-    return self_->IsEqual(*other);
-}
-extern "C" Standard_Boolean TCollection_ExtendedString_is_different(const TCollection_ExtendedString* self_, const TCollection_ExtendedString* other) {
-    return self_->IsDifferent(*other);
-}
-extern "C" Standard_Boolean TCollection_ExtendedString_is_less(const TCollection_ExtendedString* self_, const TCollection_ExtendedString* other) {
-    return self_->IsLess(*other);
-}
-extern "C" Standard_Boolean TCollection_ExtendedString_is_greater(const TCollection_ExtendedString* self_, const TCollection_ExtendedString* other) {
-    return self_->IsGreater(*other);
-}
-extern "C" Standard_Boolean TCollection_ExtendedString_starts_with(const TCollection_ExtendedString* self_, const TCollection_ExtendedString* theStartString) {
-    return self_->StartsWith(*theStartString);
-}
-extern "C" Standard_Boolean TCollection_ExtendedString_ends_with(const TCollection_ExtendedString* self_, const TCollection_ExtendedString* theEndString) {
-    return self_->EndsWith(*theEndString);
-}
-extern "C" Standard_Boolean TCollection_ExtendedString_is_ascii(const TCollection_ExtendedString* self_) {
-    return self_->IsAscii();
-}
-extern "C" Standard_Integer TCollection_ExtendedString_length(const TCollection_ExtendedString* self_) {
-    return self_->Length();
-}
-extern "C" void TCollection_ExtendedString_remove(TCollection_ExtendedString* self_, Standard_Integer where, Standard_Integer ahowmany) {
-    self_->Remove(where, ahowmany);
-}
-extern "C" Standard_Integer TCollection_ExtendedString_search(const TCollection_ExtendedString* self_, const TCollection_ExtendedString* what) {
-    return self_->Search(*what);
-}
-extern "C" Standard_Integer TCollection_ExtendedString_search_from_end(const TCollection_ExtendedString* self_, const TCollection_ExtendedString* what) {
-    return self_->SearchFromEnd(*what);
-}
-extern "C" void TCollection_ExtendedString_set_value(TCollection_ExtendedString* self_, Standard_Integer where, const TCollection_ExtendedString* what) {
-    self_->SetValue(where, *what);
-}
-extern "C" void TCollection_ExtendedString_trunc(TCollection_ExtendedString* self_, Standard_Integer ahowmany) {
-    self_->Trunc(ahowmany);
-}
-extern "C" size_t TCollection_ExtendedString_hash_code(const TCollection_ExtendedString* self_) {
-    return self_->HashCode();
-}
-extern "C" Standard_Integer TCollection_ExtendedString_length_of_c_string(const TCollection_ExtendedString* self_) {
-    return self_->LengthOfCString();
-}
-extern "C" Standard_Boolean TCollection_ExtendedString_is_equal_extendedstring2(const TCollection_ExtendedString* theString1, const TCollection_ExtendedString* theString2) {
-    return TCollection_ExtendedString::IsEqual(*theString1, *theString2);
-}
-extern "C" void TCollection_ExtendedString_destructor(TCollection_ExtendedString* self_) { delete self_; }
-
-// ========================
-// TColStd_HArray1OfTransient wrappers
-// ========================
-
-extern "C" TColStd_HArray1OfTransient* TColStd_HArray1OfTransient_ctor() {
-    return new TColStd_HArray1OfTransient();
-}
-extern "C" TColStd_HArray1OfTransient* TColStd_HArray1OfTransient_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return new TColStd_HArray1OfTransient(theLower, theUpper);
-}
-extern "C" TColStd_HArray1OfTransient* TColStd_HArray1OfTransient_ctor_array1oftransient(const TColStd_Array1OfTransient* theOther) {
-    return new TColStd_HArray1OfTransient(*theOther);
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfTransient_dynamic_type(const TColStd_HArray1OfTransient* self_) {
-    return self_->DynamicType();
-}
-extern "C" const char* TColStd_HArray1OfTransient_get_type_name() {
-    return TColStd_HArray1OfTransient::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfTransient_get_type_descriptor() {
-    return TColStd_HArray1OfTransient::get_type_descriptor();
-}
-extern "C" HandleTColStdHArray1OfTransient* TColStd_HArray1OfTransient_to_handle(TColStd_HArray1OfTransient* obj) {
-    return new HandleTColStdHArray1OfTransient(obj);
-}
-extern "C" const TColStd_HArray1OfTransient* HandleTColStdHArray1OfTransient_get(const HandleTColStdHArray1OfTransient* handle) { return (*handle).get(); }
-extern "C" TColStd_HArray1OfTransient* HandleTColStdHArray1OfTransient_get_mut(HandleTColStdHArray1OfTransient* handle) { return (*handle).get(); }
-extern "C" void TColStd_HArray1OfTransient_destructor(TColStd_HArray1OfTransient* self_) { delete self_; }
-
-// ========================
-// TColStd_HSequenceOfHExtendedString wrappers
-// ========================
-
-extern "C" TColStd_HSequenceOfHExtendedString* TColStd_HSequenceOfHExtendedString_ctor() {
-    return new TColStd_HSequenceOfHExtendedString();
-}
-extern "C" TColStd_HSequenceOfHExtendedString* TColStd_HSequenceOfHExtendedString_ctor_sequenceofhextendedstring(const TColStd_SequenceOfHExtendedString* theOther) {
-    return new TColStd_HSequenceOfHExtendedString(*theOther);
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfHExtendedString_dynamic_type(const TColStd_HSequenceOfHExtendedString* self_) {
-    return self_->DynamicType();
-}
-extern "C" const char* TColStd_HSequenceOfHExtendedString_get_type_name() {
-    return TColStd_HSequenceOfHExtendedString::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfHExtendedString_get_type_descriptor() {
-    return TColStd_HSequenceOfHExtendedString::get_type_descriptor();
-}
-extern "C" HandleTColStdHSequenceOfHExtendedString* TColStd_HSequenceOfHExtendedString_to_handle(TColStd_HSequenceOfHExtendedString* obj) {
-    return new HandleTColStdHSequenceOfHExtendedString(obj);
-}
-extern "C" const TColStd_HSequenceOfHExtendedString* HandleTColStdHSequenceOfHExtendedString_get(const HandleTColStdHSequenceOfHExtendedString* handle) { return (*handle).get(); }
-extern "C" TColStd_HSequenceOfHExtendedString* HandleTColStdHSequenceOfHExtendedString_get_mut(HandleTColStdHSequenceOfHExtendedString* handle) { return (*handle).get(); }
-extern "C" void TColStd_HSequenceOfHExtendedString_destructor(TColStd_HSequenceOfHExtendedString* self_) { delete self_; }
+extern "C" void StdFail_NotDone_destructor(StdFail_NotDone* self_) { delete self_; }
 
 // ========================
 // OSD_MemInfo wrappers
@@ -44994,41 +51878,6 @@ extern "C" TCollection_AsciiString* OSD_MemInfo_print_info() {
     return new TCollection_AsciiString(OSD_MemInfo::PrintInfo());
 }
 extern "C" void OSD_MemInfo_destructor(OSD_MemInfo* self_) { delete self_; }
-
-// ========================
-// TColStd_HArray1OfBoolean wrappers
-// ========================
-
-extern "C" TColStd_HArray1OfBoolean* TColStd_HArray1OfBoolean_ctor() {
-    return new TColStd_HArray1OfBoolean();
-}
-extern "C" TColStd_HArray1OfBoolean* TColStd_HArray1OfBoolean_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return new TColStd_HArray1OfBoolean(theLower, theUpper);
-}
-extern "C" TColStd_HArray1OfBoolean* TColStd_HArray1OfBoolean_ctor_int2_bool(Standard_Integer theLower, Standard_Integer theUpper, const Standard_Boolean* theValue) {
-    return new TColStd_HArray1OfBoolean(theLower, theUpper, *theValue);
-}
-extern "C" TColStd_HArray1OfBoolean* TColStd_HArray1OfBoolean_ctor_bool_int2_bool(const Standard_Boolean* theBegin, Standard_Integer theLower, Standard_Integer theUpper, Standard_Boolean arg3) {
-    return new TColStd_HArray1OfBoolean(*theBegin, theLower, theUpper, arg3);
-}
-extern "C" TColStd_HArray1OfBoolean* TColStd_HArray1OfBoolean_ctor_array1ofboolean(const TColStd_Array1OfBoolean* theOther) {
-    return new TColStd_HArray1OfBoolean(*theOther);
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfBoolean_dynamic_type(const TColStd_HArray1OfBoolean* self_) {
-    return self_->DynamicType();
-}
-extern "C" const char* TColStd_HArray1OfBoolean_get_type_name() {
-    return TColStd_HArray1OfBoolean::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfBoolean_get_type_descriptor() {
-    return TColStd_HArray1OfBoolean::get_type_descriptor();
-}
-extern "C" HandleTColStdHArray1OfBoolean* TColStd_HArray1OfBoolean_to_handle(TColStd_HArray1OfBoolean* obj) {
-    return new HandleTColStdHArray1OfBoolean(obj);
-}
-extern "C" const TColStd_HArray1OfBoolean* HandleTColStdHArray1OfBoolean_get(const HandleTColStdHArray1OfBoolean* handle) { return (*handle).get(); }
-extern "C" TColStd_HArray1OfBoolean* HandleTColStdHArray1OfBoolean_get_mut(HandleTColStdHArray1OfBoolean* handle) { return (*handle).get(); }
-extern "C" void TColStd_HArray1OfBoolean_destructor(TColStd_HArray1OfBoolean* self_) { delete self_; }
 
 // ========================
 // IGESData_BasicEditor wrappers
@@ -45641,35 +52490,6 @@ extern "C" void Interface_CheckIterator_destroy(Interface_CheckIterator* self_) 
 extern "C" void Interface_CheckIterator_destructor(Interface_CheckIterator* self_) { delete self_; }
 
 // ========================
-// TColStd_HSequenceOfInteger wrappers
-// ========================
-
-extern "C" TColStd_HSequenceOfInteger* TColStd_HSequenceOfInteger_ctor() {
-    return new TColStd_HSequenceOfInteger();
-}
-extern "C" TColStd_HSequenceOfInteger* TColStd_HSequenceOfInteger_ctor_sequenceofinteger(const TColStd_SequenceOfInteger* theOther) {
-    return new TColStd_HSequenceOfInteger(*theOther);
-}
-extern "C" void TColStd_HSequenceOfInteger_append(TColStd_HSequenceOfInteger* self_, const Standard_Integer* theItem) {
-    self_->Append(*theItem);
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfInteger_dynamic_type(const TColStd_HSequenceOfInteger* self_) {
-    return self_->DynamicType();
-}
-extern "C" const char* TColStd_HSequenceOfInteger_get_type_name() {
-    return TColStd_HSequenceOfInteger::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfInteger_get_type_descriptor() {
-    return TColStd_HSequenceOfInteger::get_type_descriptor();
-}
-extern "C" HandleTColStdHSequenceOfInteger* TColStd_HSequenceOfInteger_to_handle(TColStd_HSequenceOfInteger* obj) {
-    return new HandleTColStdHSequenceOfInteger(obj);
-}
-extern "C" const TColStd_HSequenceOfInteger* HandleTColStdHSequenceOfInteger_get(const HandleTColStdHSequenceOfInteger* handle) { return (*handle).get(); }
-extern "C" TColStd_HSequenceOfInteger* HandleTColStdHSequenceOfInteger_get_mut(HandleTColStdHSequenceOfInteger* handle) { return (*handle).get(); }
-extern "C" void TColStd_HSequenceOfInteger_destructor(TColStd_HSequenceOfInteger* self_) { delete self_; }
-
-// ========================
 // Interface_HSequenceOfCheck wrappers
 // ========================
 
@@ -45831,35 +52651,6 @@ extern "C" HandleInterfaceCheck* Interface_Check_to_handle(Interface_Check* obj)
 extern "C" const Interface_Check* HandleInterfaceCheck_get(const HandleInterfaceCheck* handle) { return (*handle).get(); }
 extern "C" Interface_Check* HandleInterfaceCheck_get_mut(HandleInterfaceCheck* handle) { return (*handle).get(); }
 extern "C" void Interface_Check_destructor(Interface_Check* self_) { delete self_; }
-
-// ========================
-// TColStd_HSequenceOfAsciiString wrappers
-// ========================
-
-extern "C" TColStd_HSequenceOfAsciiString* TColStd_HSequenceOfAsciiString_ctor() {
-    return new TColStd_HSequenceOfAsciiString();
-}
-extern "C" TColStd_HSequenceOfAsciiString* TColStd_HSequenceOfAsciiString_ctor_sequenceofasciistring(const TColStd_SequenceOfAsciiString* theOther) {
-    return new TColStd_HSequenceOfAsciiString(*theOther);
-}
-extern "C" void TColStd_HSequenceOfAsciiString_append(TColStd_HSequenceOfAsciiString* self_, const TCollection_AsciiString* theItem) {
-    self_->Append(*theItem);
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfAsciiString_dynamic_type(const TColStd_HSequenceOfAsciiString* self_) {
-    return self_->DynamicType();
-}
-extern "C" const char* TColStd_HSequenceOfAsciiString_get_type_name() {
-    return TColStd_HSequenceOfAsciiString::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HSequenceOfAsciiString_get_type_descriptor() {
-    return TColStd_HSequenceOfAsciiString::get_type_descriptor();
-}
-extern "C" HandleTColStdHSequenceOfAsciiString* TColStd_HSequenceOfAsciiString_to_handle(TColStd_HSequenceOfAsciiString* obj) {
-    return new HandleTColStdHSequenceOfAsciiString(obj);
-}
-extern "C" const TColStd_HSequenceOfAsciiString* HandleTColStdHSequenceOfAsciiString_get(const HandleTColStdHSequenceOfAsciiString* handle) { return (*handle).get(); }
-extern "C" TColStd_HSequenceOfAsciiString* HandleTColStdHSequenceOfAsciiString_get_mut(HandleTColStdHSequenceOfAsciiString* handle) { return (*handle).get(); }
-extern "C" void TColStd_HSequenceOfAsciiString_destructor(TColStd_HSequenceOfAsciiString* self_) { delete self_; }
 
 // ========================
 // Interface_SignType wrappers
@@ -46100,35 +52891,6 @@ extern "C" void Interface_BitMap_clear(Interface_BitMap* self_) {
 extern "C" void Interface_BitMap_destructor(Interface_BitMap* self_) { delete self_; }
 
 // ========================
-// TColStd_HArray1OfListOfInteger wrappers
-// ========================
-
-extern "C" TColStd_HArray1OfListOfInteger* TColStd_HArray1OfListOfInteger_ctor() {
-    return new TColStd_HArray1OfListOfInteger();
-}
-extern "C" TColStd_HArray1OfListOfInteger* TColStd_HArray1OfListOfInteger_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return new TColStd_HArray1OfListOfInteger(theLower, theUpper);
-}
-extern "C" TColStd_HArray1OfListOfInteger* TColStd_HArray1OfListOfInteger_ctor_array1oflistofinteger(const TColStd_Array1OfListOfInteger* theOther) {
-    return new TColStd_HArray1OfListOfInteger(*theOther);
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfListOfInteger_dynamic_type(const TColStd_HArray1OfListOfInteger* self_) {
-    return self_->DynamicType();
-}
-extern "C" const char* TColStd_HArray1OfListOfInteger_get_type_name() {
-    return TColStd_HArray1OfListOfInteger::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& TColStd_HArray1OfListOfInteger_get_type_descriptor() {
-    return TColStd_HArray1OfListOfInteger::get_type_descriptor();
-}
-extern "C" HandleTColStdHArray1OfListOfInteger* TColStd_HArray1OfListOfInteger_to_handle(TColStd_HArray1OfListOfInteger* obj) {
-    return new HandleTColStdHArray1OfListOfInteger(obj);
-}
-extern "C" const TColStd_HArray1OfListOfInteger* HandleTColStdHArray1OfListOfInteger_get(const HandleTColStdHArray1OfListOfInteger* handle) { return (*handle).get(); }
-extern "C" TColStd_HArray1OfListOfInteger* HandleTColStdHArray1OfListOfInteger_get_mut(HandleTColStdHArray1OfListOfInteger* handle) { return (*handle).get(); }
-extern "C" void TColStd_HArray1OfListOfInteger_destructor(TColStd_HArray1OfListOfInteger* self_) { delete self_; }
-
-// ========================
 // Interface_IntList wrappers
 // ========================
 
@@ -46190,81 +52952,6 @@ extern "C" void Interface_IntList_adjust_size(Interface_IntList* self_, Standard
     self_->AdjustSize(margin);
 }
 extern "C" void Interface_IntList_destructor(Interface_IntList* self_) { delete self_; }
-
-// ========================
-// Standard_ConstructionError wrappers
-// ========================
-
-extern "C" Standard_ConstructionError* Standard_ConstructionError_ctor() {
-    return new Standard_ConstructionError();
-}
-extern "C" Standard_ConstructionError* Standard_ConstructionError_ctor_charptr(const char* theMessage) {
-    return new Standard_ConstructionError(theMessage);
-}
-extern "C" Standard_ConstructionError* Standard_ConstructionError_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
-    return new Standard_ConstructionError(theMessage, theStackTrace);
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_ConstructionError_dynamic_type(const Standard_ConstructionError* self_) {
-    return self_->DynamicType();
-}
-extern "C" void Standard_ConstructionError_raise(const char* theMessage) {
-    return Standard_ConstructionError::Raise(theMessage);
-}
-extern "C" const char* Standard_ConstructionError_get_type_name() {
-    return Standard_ConstructionError::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_ConstructionError_get_type_descriptor() {
-    return Standard_ConstructionError::get_type_descriptor();
-}
-extern "C" void Standard_ConstructionError_destructor(Standard_ConstructionError* self_) { delete self_; }
-
-// ========================
-// Standard_DumpValue wrappers
-// ========================
-
-extern "C" Standard_DumpValue* Standard_DumpValue_ctor() {
-    return new Standard_DumpValue();
-}
-extern "C" Standard_DumpValue* Standard_DumpValue_ctor_asciistring_int(const TCollection_AsciiString* theValue, Standard_Integer theStartPos) {
-    return new Standard_DumpValue(*theValue, theStartPos);
-}
-extern "C" void Standard_DumpValue_destructor(Standard_DumpValue* self_) { delete self_; }
-
-// ========================
-// Standard_Dump wrappers
-// ========================
-
-extern "C" Standard_Dump* Standard_Dump_ctor() {
-    return new Standard_Dump();
-}
-extern "C" Standard_Boolean Standard_Dump_has_child_key(const TCollection_AsciiString* theSourceValue) {
-    return Standard_Dump::HasChildKey(*theSourceValue);
-}
-extern "C" const char* Standard_Dump_json_key_to_string(int32_t theKey) {
-    return Standard_Dump::JsonKeyToString(static_cast<Standard_JsonKey>(theKey));
-}
-extern "C" Standard_Integer Standard_Dump_json_key_length(int32_t theKey) {
-    return Standard_Dump::JsonKeyLength(static_cast<Standard_JsonKey>(theKey));
-}
-extern "C" TCollection_AsciiString* Standard_Dump_get_pointer_prefix() {
-    return new TCollection_AsciiString(Standard_Dump::GetPointerPrefix());
-}
-extern "C" Standard_Boolean Standard_Dump_process_stream_name(const TCollection_AsciiString* theStreamStr, const TCollection_AsciiString* theName, Standard_Integer* theStreamPos) {
-    return Standard_Dump::ProcessStreamName(*theStreamStr, *theName, *theStreamPos);
-}
-extern "C" Standard_Boolean Standard_Dump_process_field_name(const TCollection_AsciiString* theStreamStr, const TCollection_AsciiString* theName, Standard_Integer* theStreamPos) {
-    return Standard_Dump::ProcessFieldName(*theStreamStr, *theName, *theStreamPos);
-}
-extern "C" Standard_Boolean Standard_Dump_init_real_values(const TCollection_AsciiString* theStreamStr, Standard_Integer* theStreamPos, Standard_Integer theCount) {
-    return Standard_Dump::InitRealValues(*theStreamStr, *theStreamPos, theCount);
-}
-extern "C" Standard_Boolean Standard_Dump_init_value(const TCollection_AsciiString* theStreamStr, Standard_Integer* theStreamPos, TCollection_AsciiString* theValue) {
-    return Standard_Dump::InitValue(*theStreamStr, *theStreamPos, *theValue);
-}
-extern "C" TCollection_AsciiString* Standard_Dump_dump_field_to_name(const TCollection_AsciiString* theField) {
-    return new TCollection_AsciiString(Standard_Dump::DumpFieldToName(*theField));
-}
-extern "C" void Standard_Dump_destructor(Standard_Dump* self_) { delete self_; }
 
 // ========================
 // GeomAdaptor_Curve wrappers
@@ -46872,116 +53559,6 @@ extern "C" Standard_Boolean IntSurf_Transition_is_opposite(const IntSurf_Transit
 extern "C" void IntSurf_Transition_destructor(IntSurf_Transition* self_) { delete self_; }
 
 // ========================
-// Adaptor2d_Curve2d wrappers
-// ========================
-
-extern "C" Adaptor2d_Curve2d* Adaptor2d_Curve2d_ctor() {
-    return new Adaptor2d_Curve2d();
-}
-extern "C" opencascade::handle<Adaptor2d_Curve2d>* Adaptor2d_Curve2d_shallow_copy(const Adaptor2d_Curve2d* self_) {
-    return new opencascade::handle<Adaptor2d_Curve2d>(self_->ShallowCopy());
-}
-extern "C" opencascade::handle<Adaptor2d_Curve2d>* Adaptor2d_Curve2d_trim(const Adaptor2d_Curve2d* self_, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
-    return new opencascade::handle<Adaptor2d_Curve2d>(self_->Trim(First, Last, Tol));
-}
-extern "C" gp_Pnt2d* Adaptor2d_Curve2d_value(const Adaptor2d_Curve2d* self_, Standard_Real U) {
-    return new gp_Pnt2d(self_->Value(U));
-}
-extern "C" gp_Vec2d* Adaptor2d_Curve2d_dn(const Adaptor2d_Curve2d* self_, Standard_Real U, Standard_Integer N) {
-    return new gp_Vec2d(self_->DN(U, N));
-}
-extern "C" gp_Lin2d* Adaptor2d_Curve2d_line(const Adaptor2d_Curve2d* self_) {
-    return new gp_Lin2d(self_->Line());
-}
-extern "C" gp_Circ2d* Adaptor2d_Curve2d_circle(const Adaptor2d_Curve2d* self_) {
-    return new gp_Circ2d(self_->Circle());
-}
-extern "C" gp_Elips2d* Adaptor2d_Curve2d_ellipse(const Adaptor2d_Curve2d* self_) {
-    return new gp_Elips2d(self_->Ellipse());
-}
-extern "C" gp_Hypr2d* Adaptor2d_Curve2d_hyperbola(const Adaptor2d_Curve2d* self_) {
-    return new gp_Hypr2d(self_->Hyperbola());
-}
-extern "C" gp_Parab2d* Adaptor2d_Curve2d_parabola(const Adaptor2d_Curve2d* self_) {
-    return new gp_Parab2d(self_->Parabola());
-}
-extern "C" opencascade::handle<Geom2d_BezierCurve>* Adaptor2d_Curve2d_bezier(const Adaptor2d_Curve2d* self_) {
-    return new opencascade::handle<Geom2d_BezierCurve>(self_->Bezier());
-}
-extern "C" opencascade::handle<Geom2d_BSplineCurve>* Adaptor2d_Curve2d_b_spline(const Adaptor2d_Curve2d* self_) {
-    return new opencascade::handle<Geom2d_BSplineCurve>(self_->BSpline());
-}
-extern "C" int32_t Adaptor2d_Curve2d_continuity(const Adaptor2d_Curve2d* self_) {
-    return static_cast<int32_t>(self_->Continuity());
-}
-extern "C" Standard_Integer Adaptor2d_Curve2d_nb_intervals(const Adaptor2d_Curve2d* self_, int32_t S) {
-    return self_->NbIntervals(static_cast<GeomAbs_Shape>(S));
-}
-extern "C" int32_t Adaptor2d_Curve2d_get_type(const Adaptor2d_Curve2d* self_) {
-    return static_cast<int32_t>(self_->GetType());
-}
-extern "C" const opencascade::handle<Standard_Type>& Adaptor2d_Curve2d_dynamic_type(const Adaptor2d_Curve2d* self_) {
-    return self_->DynamicType();
-}
-extern "C" Standard_Real Adaptor2d_Curve2d_first_parameter(const Adaptor2d_Curve2d* self_) {
-    return self_->FirstParameter();
-}
-extern "C" Standard_Real Adaptor2d_Curve2d_last_parameter(const Adaptor2d_Curve2d* self_) {
-    return self_->LastParameter();
-}
-extern "C" Standard_Boolean Adaptor2d_Curve2d_is_closed(const Adaptor2d_Curve2d* self_) {
-    return self_->IsClosed();
-}
-extern "C" Standard_Boolean Adaptor2d_Curve2d_is_periodic(const Adaptor2d_Curve2d* self_) {
-    return self_->IsPeriodic();
-}
-extern "C" Standard_Real Adaptor2d_Curve2d_period(const Adaptor2d_Curve2d* self_) {
-    return self_->Period();
-}
-extern "C" void Adaptor2d_Curve2d_d0(const Adaptor2d_Curve2d* self_, Standard_Real U, gp_Pnt2d* P) {
-    self_->D0(U, *P);
-}
-extern "C" void Adaptor2d_Curve2d_d1(const Adaptor2d_Curve2d* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V) {
-    self_->D1(U, *P, *V);
-}
-extern "C" void Adaptor2d_Curve2d_d2(const Adaptor2d_Curve2d* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
-    self_->D2(U, *P, *V1, *V2);
-}
-extern "C" void Adaptor2d_Curve2d_d3(const Adaptor2d_Curve2d* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
-    self_->D3(U, *P, *V1, *V2, *V3);
-}
-extern "C" Standard_Real Adaptor2d_Curve2d_resolution(const Adaptor2d_Curve2d* self_, Standard_Real R3d) {
-    return self_->Resolution(R3d);
-}
-extern "C" Standard_Integer Adaptor2d_Curve2d_degree(const Adaptor2d_Curve2d* self_) {
-    return self_->Degree();
-}
-extern "C" Standard_Boolean Adaptor2d_Curve2d_is_rational(const Adaptor2d_Curve2d* self_) {
-    return self_->IsRational();
-}
-extern "C" Standard_Integer Adaptor2d_Curve2d_nb_poles(const Adaptor2d_Curve2d* self_) {
-    return self_->NbPoles();
-}
-extern "C" Standard_Integer Adaptor2d_Curve2d_nb_knots(const Adaptor2d_Curve2d* self_) {
-    return self_->NbKnots();
-}
-extern "C" Standard_Integer Adaptor2d_Curve2d_nb_samples(const Adaptor2d_Curve2d* self_) {
-    return self_->NbSamples();
-}
-extern "C" const char* Adaptor2d_Curve2d_get_type_name() {
-    return Adaptor2d_Curve2d::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Adaptor2d_Curve2d_get_type_descriptor() {
-    return Adaptor2d_Curve2d::get_type_descriptor();
-}
-extern "C" HandleAdaptor2dCurve2d* Adaptor2d_Curve2d_to_handle(Adaptor2d_Curve2d* obj) {
-    return new HandleAdaptor2dCurve2d(obj);
-}
-extern "C" const Adaptor2d_Curve2d* HandleAdaptor2dCurve2d_get(const HandleAdaptor2dCurve2d* handle) { return (*handle).get(); }
-extern "C" Adaptor2d_Curve2d* HandleAdaptor2dCurve2d_get_mut(HandleAdaptor2dCurve2d* handle) { return (*handle).get(); }
-extern "C" void Adaptor2d_Curve2d_destructor(Adaptor2d_Curve2d* self_) { delete self_; }
-
-// ========================
 // IntCurveSurface_HInter wrappers
 // ========================
 
@@ -47084,6 +53661,207 @@ extern "C" void IntCurveSurface_IntersectionPoint_dump(const IntCurveSurface_Int
     self_->Dump();
 }
 extern "C" void IntCurveSurface_IntersectionPoint_destructor(IntCurveSurface_IntersectionPoint* self_) { delete self_; }
+
+// ========================
+// Geom2dEvaluator_OffsetCurve wrappers
+// ========================
+
+extern "C" Geom2dEvaluator_OffsetCurve* Geom2dEvaluator_OffsetCurve_ctor_handlegeom2dcurve_real(const opencascade::handle<Geom2d_Curve>* theBase, Standard_Real theOffset) {
+    return new Geom2dEvaluator_OffsetCurve(*theBase, theOffset);
+}
+extern "C" gp_Vec2d* Geom2dEvaluator_OffsetCurve_dn(const Geom2dEvaluator_OffsetCurve* self_, Standard_Real theU, Standard_Integer theDeriv) {
+    return new gp_Vec2d(self_->DN(theU, theDeriv));
+}
+extern "C" opencascade::handle<Geom2dEvaluator_Curve>* Geom2dEvaluator_OffsetCurve_shallow_copy(const Geom2dEvaluator_OffsetCurve* self_) {
+    return new opencascade::handle<Geom2dEvaluator_Curve>(self_->ShallowCopy());
+}
+extern "C" void Geom2dEvaluator_OffsetCurve_set_offset_value(Geom2dEvaluator_OffsetCurve* self_, Standard_Real theOffset) {
+    self_->SetOffsetValue(theOffset);
+}
+extern "C" void Geom2dEvaluator_OffsetCurve_d0(const Geom2dEvaluator_OffsetCurve* self_, Standard_Real theU, gp_Pnt2d* theValue) {
+    self_->D0(theU, *theValue);
+}
+extern "C" void Geom2dEvaluator_OffsetCurve_d1(const Geom2dEvaluator_OffsetCurve* self_, Standard_Real theU, gp_Pnt2d* theValue, gp_Vec2d* theD1) {
+    self_->D1(theU, *theValue, *theD1);
+}
+extern "C" void Geom2dEvaluator_OffsetCurve_d2(const Geom2dEvaluator_OffsetCurve* self_, Standard_Real theU, gp_Pnt2d* theValue, gp_Vec2d* theD1, gp_Vec2d* theD2) {
+    self_->D2(theU, *theValue, *theD1, *theD2);
+}
+extern "C" void Geom2dEvaluator_OffsetCurve_d3(const Geom2dEvaluator_OffsetCurve* self_, Standard_Real theU, gp_Pnt2d* theValue, gp_Vec2d* theD1, gp_Vec2d* theD2, gp_Vec2d* theD3) {
+    self_->D3(theU, *theValue, *theD1, *theD2, *theD3);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2dEvaluator_OffsetCurve_dynamic_type(const Geom2dEvaluator_OffsetCurve* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Geom2dEvaluator_OffsetCurve_get_type_name() {
+    return Geom2dEvaluator_OffsetCurve::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2dEvaluator_OffsetCurve_get_type_descriptor() {
+    return Geom2dEvaluator_OffsetCurve::get_type_descriptor();
+}
+extern "C" const Geom2dEvaluator_Curve* Geom2dEvaluator_OffsetCurve_as_Geom2dEvaluator_Curve(const Geom2dEvaluator_OffsetCurve* self_) { return static_cast<const Geom2dEvaluator_Curve*>(self_); }
+extern "C" Geom2dEvaluator_Curve* Geom2dEvaluator_OffsetCurve_as_Geom2dEvaluator_Curve_mut(Geom2dEvaluator_OffsetCurve* self_) { return static_cast<Geom2dEvaluator_Curve*>(self_); }
+extern "C" void Geom2dEvaluator_OffsetCurve_destructor(Geom2dEvaluator_OffsetCurve* self_) { delete self_; }
+
+// ========================
+// Geom2dAdaptor_Curve wrappers
+// ========================
+
+extern "C" Geom2dAdaptor_Curve* Geom2dAdaptor_Curve_ctor() {
+    return new Geom2dAdaptor_Curve();
+}
+extern "C" Geom2dAdaptor_Curve* Geom2dAdaptor_Curve_ctor_handlegeom2dcurve(const opencascade::handle<Geom2d_Curve>* C) {
+    return new Geom2dAdaptor_Curve(*C);
+}
+extern "C" Geom2dAdaptor_Curve* Geom2dAdaptor_Curve_ctor_handlegeom2dcurve_real2(const opencascade::handle<Geom2d_Curve>* C, Standard_Real UFirst, Standard_Real ULast) {
+    return new Geom2dAdaptor_Curve(*C, UFirst, ULast);
+}
+extern "C" opencascade::handle<Adaptor2d_Curve2d>* Geom2dAdaptor_Curve_shallow_copy(const Geom2dAdaptor_Curve* self_) {
+    return new opencascade::handle<Adaptor2d_Curve2d>(self_->ShallowCopy());
+}
+extern "C" opencascade::handle<Adaptor2d_Curve2d>* Geom2dAdaptor_Curve_trim(const Geom2dAdaptor_Curve* self_, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
+    return new opencascade::handle<Adaptor2d_Curve2d>(self_->Trim(First, Last, Tol));
+}
+extern "C" gp_Pnt2d* Geom2dAdaptor_Curve_value(const Geom2dAdaptor_Curve* self_, Standard_Real U) {
+    return new gp_Pnt2d(self_->Value(U));
+}
+extern "C" gp_Vec2d* Geom2dAdaptor_Curve_dn(const Geom2dAdaptor_Curve* self_, Standard_Real U, Standard_Integer N) {
+    return new gp_Vec2d(self_->DN(U, N));
+}
+extern "C" gp_Lin2d* Geom2dAdaptor_Curve_line(const Geom2dAdaptor_Curve* self_) {
+    return new gp_Lin2d(self_->Line());
+}
+extern "C" gp_Circ2d* Geom2dAdaptor_Curve_circle(const Geom2dAdaptor_Curve* self_) {
+    return new gp_Circ2d(self_->Circle());
+}
+extern "C" gp_Elips2d* Geom2dAdaptor_Curve_ellipse(const Geom2dAdaptor_Curve* self_) {
+    return new gp_Elips2d(self_->Ellipse());
+}
+extern "C" gp_Hypr2d* Geom2dAdaptor_Curve_hyperbola(const Geom2dAdaptor_Curve* self_) {
+    return new gp_Hypr2d(self_->Hyperbola());
+}
+extern "C" gp_Parab2d* Geom2dAdaptor_Curve_parabola(const Geom2dAdaptor_Curve* self_) {
+    return new gp_Parab2d(self_->Parabola());
+}
+extern "C" opencascade::handle<Geom2d_BezierCurve>* Geom2dAdaptor_Curve_bezier(const Geom2dAdaptor_Curve* self_) {
+    return new opencascade::handle<Geom2d_BezierCurve>(self_->Bezier());
+}
+extern "C" opencascade::handle<Geom2d_BSplineCurve>* Geom2dAdaptor_Curve_b_spline(const Geom2dAdaptor_Curve* self_) {
+    return new opencascade::handle<Geom2d_BSplineCurve>(self_->BSpline());
+}
+extern "C" int32_t Geom2dAdaptor_Curve_continuity(const Geom2dAdaptor_Curve* self_) {
+    return static_cast<int32_t>(self_->Continuity());
+}
+extern "C" Standard_Integer Geom2dAdaptor_Curve_nb_intervals(const Geom2dAdaptor_Curve* self_, int32_t S) {
+    return self_->NbIntervals(static_cast<GeomAbs_Shape>(S));
+}
+extern "C" int32_t Geom2dAdaptor_Curve_get_type(const Geom2dAdaptor_Curve* self_) {
+    return static_cast<int32_t>(self_->GetType());
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2dAdaptor_Curve_dynamic_type(const Geom2dAdaptor_Curve* self_) {
+    return self_->DynamicType();
+}
+extern "C" void Geom2dAdaptor_Curve_reset(Geom2dAdaptor_Curve* self_) {
+    self_->Reset();
+}
+extern "C" void Geom2dAdaptor_Curve_load_handlegeom2dcurve(Geom2dAdaptor_Curve* self_, const opencascade::handle<Geom2d_Curve>* theCurve) {
+    self_->Load(*theCurve);
+}
+extern "C" void Geom2dAdaptor_Curve_load_handlegeom2dcurve_real2(Geom2dAdaptor_Curve* self_, const opencascade::handle<Geom2d_Curve>* theCurve, Standard_Real theUFirst, Standard_Real theULast) {
+    self_->Load(*theCurve, theUFirst, theULast);
+}
+extern "C" const opencascade::handle<Geom2d_Curve>& Geom2dAdaptor_Curve_curve(const Geom2dAdaptor_Curve* self_) {
+    return self_->Curve();
+}
+extern "C" Standard_Real Geom2dAdaptor_Curve_first_parameter(const Geom2dAdaptor_Curve* self_) {
+    return self_->FirstParameter();
+}
+extern "C" Standard_Real Geom2dAdaptor_Curve_last_parameter(const Geom2dAdaptor_Curve* self_) {
+    return self_->LastParameter();
+}
+extern "C" Standard_Boolean Geom2dAdaptor_Curve_is_closed(const Geom2dAdaptor_Curve* self_) {
+    return self_->IsClosed();
+}
+extern "C" Standard_Boolean Geom2dAdaptor_Curve_is_periodic(const Geom2dAdaptor_Curve* self_) {
+    return self_->IsPeriodic();
+}
+extern "C" Standard_Real Geom2dAdaptor_Curve_period(const Geom2dAdaptor_Curve* self_) {
+    return self_->Period();
+}
+extern "C" void Geom2dAdaptor_Curve_d0(const Geom2dAdaptor_Curve* self_, Standard_Real U, gp_Pnt2d* P) {
+    self_->D0(U, *P);
+}
+extern "C" void Geom2dAdaptor_Curve_d1(const Geom2dAdaptor_Curve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V) {
+    self_->D1(U, *P, *V);
+}
+extern "C" void Geom2dAdaptor_Curve_d2(const Geom2dAdaptor_Curve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
+    self_->D2(U, *P, *V1, *V2);
+}
+extern "C" void Geom2dAdaptor_Curve_d3(const Geom2dAdaptor_Curve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
+    self_->D3(U, *P, *V1, *V2, *V3);
+}
+extern "C" Standard_Real Geom2dAdaptor_Curve_resolution(const Geom2dAdaptor_Curve* self_, Standard_Real Ruv) {
+    return self_->Resolution(Ruv);
+}
+extern "C" Standard_Integer Geom2dAdaptor_Curve_degree(const Geom2dAdaptor_Curve* self_) {
+    return self_->Degree();
+}
+extern "C" Standard_Boolean Geom2dAdaptor_Curve_is_rational(const Geom2dAdaptor_Curve* self_) {
+    return self_->IsRational();
+}
+extern "C" Standard_Integer Geom2dAdaptor_Curve_nb_poles(const Geom2dAdaptor_Curve* self_) {
+    return self_->NbPoles();
+}
+extern "C" Standard_Integer Geom2dAdaptor_Curve_nb_knots(const Geom2dAdaptor_Curve* self_) {
+    return self_->NbKnots();
+}
+extern "C" Standard_Integer Geom2dAdaptor_Curve_nb_samples(const Geom2dAdaptor_Curve* self_) {
+    return self_->NbSamples();
+}
+extern "C" const char* Geom2dAdaptor_Curve_get_type_name() {
+    return Geom2dAdaptor_Curve::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2dAdaptor_Curve_get_type_descriptor() {
+    return Geom2dAdaptor_Curve::get_type_descriptor();
+}
+extern "C" const Adaptor2d_Curve2d* Geom2dAdaptor_Curve_as_Adaptor2d_Curve2d(const Geom2dAdaptor_Curve* self_) { return static_cast<const Adaptor2d_Curve2d*>(self_); }
+extern "C" Adaptor2d_Curve2d* Geom2dAdaptor_Curve_as_Adaptor2d_Curve2d_mut(Geom2dAdaptor_Curve* self_) { return static_cast<Adaptor2d_Curve2d*>(self_); }
+extern "C" void Geom2dAdaptor_Curve_destructor(Geom2dAdaptor_Curve* self_) { delete self_; }
+
+// ========================
+// Geom2dEvaluator_Curve wrappers
+// ========================
+
+extern "C" gp_Vec2d* Geom2dEvaluator_Curve_dn(const Geom2dEvaluator_Curve* self_, Standard_Real theU, Standard_Integer theDerU) {
+    return new gp_Vec2d(self_->DN(theU, theDerU));
+}
+extern "C" opencascade::handle<Geom2dEvaluator_Curve>* Geom2dEvaluator_Curve_shallow_copy(const Geom2dEvaluator_Curve* self_) {
+    return new opencascade::handle<Geom2dEvaluator_Curve>(self_->ShallowCopy());
+}
+extern "C" void Geom2dEvaluator_Curve_d0(const Geom2dEvaluator_Curve* self_, Standard_Real theU, gp_Pnt2d* theValue) {
+    self_->D0(theU, *theValue);
+}
+extern "C" void Geom2dEvaluator_Curve_d1(const Geom2dEvaluator_Curve* self_, Standard_Real theU, gp_Pnt2d* theValue, gp_Vec2d* theD1) {
+    self_->D1(theU, *theValue, *theD1);
+}
+extern "C" void Geom2dEvaluator_Curve_d2(const Geom2dEvaluator_Curve* self_, Standard_Real theU, gp_Pnt2d* theValue, gp_Vec2d* theD1, gp_Vec2d* theD2) {
+    self_->D2(theU, *theValue, *theD1, *theD2);
+}
+extern "C" void Geom2dEvaluator_Curve_d3(const Geom2dEvaluator_Curve* self_, Standard_Real theU, gp_Pnt2d* theValue, gp_Vec2d* theD1, gp_Vec2d* theD2, gp_Vec2d* theD3) {
+    self_->D3(theU, *theValue, *theD1, *theD2, *theD3);
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2dEvaluator_Curve_dynamic_type(const Geom2dEvaluator_Curve* self_) {
+    return self_->DynamicType();
+}
+extern "C" const char* Geom2dEvaluator_Curve_get_type_name() {
+    return Geom2dEvaluator_Curve::get_type_name();
+}
+extern "C" const opencascade::handle<Standard_Type>& Geom2dEvaluator_Curve_get_type_descriptor() {
+    return Geom2dEvaluator_Curve::get_type_descriptor();
+}
+extern "C" const Geom2dEvaluator_Curve* HandleGeom2dEvaluatorCurve_get(const HandleGeom2dEvaluatorCurve* handle) { return (*handle).get(); }
+extern "C" Geom2dEvaluator_Curve* HandleGeom2dEvaluatorCurve_get_mut(HandleGeom2dEvaluatorCurve* handle) { return (*handle).get(); }
+extern "C" void Geom2dEvaluator_Curve_destructor(Geom2dEvaluator_Curve* self_) { delete self_; }
 
 // ========================
 // GeomEvaluator_SurfaceOfRevolution wrappers
@@ -47274,457 +54052,6 @@ extern "C" void BSplSLib_EvaluatorFunction_evaluate(const BSplSLib_EvaluatorFunc
 extern "C" void BSplSLib_EvaluatorFunction_destructor(BSplSLib_EvaluatorFunction* self_) { delete self_; }
 
 // ========================
-// Geom2d_BezierCurve wrappers
-// ========================
-
-extern "C" Geom2d_BezierCurve* Geom2d_BezierCurve_ctor_array1ofpnt2d(const TColgp_Array1OfPnt2d* CurvePoles) {
-    return new Geom2d_BezierCurve(*CurvePoles);
-}
-extern "C" Geom2d_BezierCurve* Geom2d_BezierCurve_ctor_array1ofpnt2d_array1ofreal(const TColgp_Array1OfPnt2d* CurvePoles, const TColStd_Array1OfReal* PoleWeights) {
-    return new Geom2d_BezierCurve(*CurvePoles, *PoleWeights);
-}
-extern "C" gp_Vec2d* Geom2d_BezierCurve_dn(const Geom2d_BezierCurve* self_, Standard_Real U, Standard_Integer N) {
-    return new gp_Vec2d(self_->DN(U, N));
-}
-extern "C" gp_Pnt2d* Geom2d_BezierCurve_end_point(const Geom2d_BezierCurve* self_) {
-    return new gp_Pnt2d(self_->EndPoint());
-}
-extern "C" gp_Pnt2d* Geom2d_BezierCurve_start_point(const Geom2d_BezierCurve* self_) {
-    return new gp_Pnt2d(self_->StartPoint());
-}
-extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_BezierCurve_copy(const Geom2d_BezierCurve* self_) {
-    return new opencascade::handle<Geom2d_Geometry>(self_->Copy());
-}
-extern "C" int32_t Geom2d_BezierCurve_continuity(const Geom2d_BezierCurve* self_) {
-    return static_cast<int32_t>(self_->Continuity());
-}
-extern "C" void Geom2d_BezierCurve_increase(Geom2d_BezierCurve* self_, Standard_Integer Degree) {
-    self_->Increase(Degree);
-}
-extern "C" void Geom2d_BezierCurve_insert_pole_after(Geom2d_BezierCurve* self_, Standard_Integer Index, const gp_Pnt2d* P, Standard_Real Weight) {
-    self_->InsertPoleAfter(Index, *P, Weight);
-}
-extern "C" void Geom2d_BezierCurve_insert_pole_before(Geom2d_BezierCurve* self_, Standard_Integer Index, const gp_Pnt2d* P, Standard_Real Weight) {
-    self_->InsertPoleBefore(Index, *P, Weight);
-}
-extern "C" void Geom2d_BezierCurve_remove_pole(Geom2d_BezierCurve* self_, Standard_Integer Index) {
-    self_->RemovePole(Index);
-}
-extern "C" void Geom2d_BezierCurve_reverse(Geom2d_BezierCurve* self_) {
-    self_->Reverse();
-}
-extern "C" Standard_Real Geom2d_BezierCurve_reversed_parameter(const Geom2d_BezierCurve* self_, Standard_Real U) {
-    return self_->ReversedParameter(U);
-}
-extern "C" void Geom2d_BezierCurve_segment(Geom2d_BezierCurve* self_, Standard_Real U1, Standard_Real U2) {
-    self_->Segment(U1, U2);
-}
-extern "C" void Geom2d_BezierCurve_set_pole_int_pnt2d(Geom2d_BezierCurve* self_, Standard_Integer Index, const gp_Pnt2d* P) {
-    self_->SetPole(Index, *P);
-}
-extern "C" void Geom2d_BezierCurve_set_pole_int_pnt2d_real(Geom2d_BezierCurve* self_, Standard_Integer Index, const gp_Pnt2d* P, Standard_Real Weight) {
-    self_->SetPole(Index, *P, Weight);
-}
-extern "C" void Geom2d_BezierCurve_set_weight(Geom2d_BezierCurve* self_, Standard_Integer Index, Standard_Real Weight) {
-    self_->SetWeight(Index, Weight);
-}
-extern "C" Standard_Boolean Geom2d_BezierCurve_is_closed(const Geom2d_BezierCurve* self_) {
-    return self_->IsClosed();
-}
-extern "C" Standard_Boolean Geom2d_BezierCurve_is_cn(const Geom2d_BezierCurve* self_, Standard_Integer N) {
-    return self_->IsCN(N);
-}
-extern "C" Standard_Boolean Geom2d_BezierCurve_is_periodic(const Geom2d_BezierCurve* self_) {
-    return self_->IsPeriodic();
-}
-extern "C" Standard_Boolean Geom2d_BezierCurve_is_rational(const Geom2d_BezierCurve* self_) {
-    return self_->IsRational();
-}
-extern "C" Standard_Integer Geom2d_BezierCurve_degree(const Geom2d_BezierCurve* self_) {
-    return self_->Degree();
-}
-extern "C" void Geom2d_BezierCurve_d0(const Geom2d_BezierCurve* self_, Standard_Real U, gp_Pnt2d* P) {
-    self_->D0(U, *P);
-}
-extern "C" void Geom2d_BezierCurve_d1(const Geom2d_BezierCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1) {
-    self_->D1(U, *P, *V1);
-}
-extern "C" void Geom2d_BezierCurve_d2(const Geom2d_BezierCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
-    self_->D2(U, *P, *V1, *V2);
-}
-extern "C" void Geom2d_BezierCurve_d3(const Geom2d_BezierCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
-    self_->D3(U, *P, *V1, *V2, *V3);
-}
-extern "C" Standard_Real Geom2d_BezierCurve_first_parameter(const Geom2d_BezierCurve* self_) {
-    return self_->FirstParameter();
-}
-extern "C" Standard_Real Geom2d_BezierCurve_last_parameter(const Geom2d_BezierCurve* self_) {
-    return self_->LastParameter();
-}
-extern "C" Standard_Integer Geom2d_BezierCurve_nb_poles(const Geom2d_BezierCurve* self_) {
-    return self_->NbPoles();
-}
-extern "C" const gp_Pnt2d& Geom2d_BezierCurve_pole(const Geom2d_BezierCurve* self_, Standard_Integer Index) {
-    return self_->Pole(Index);
-}
-extern "C" void Geom2d_BezierCurve_poles_array1ofpnt2d(const Geom2d_BezierCurve* self_, TColgp_Array1OfPnt2d* P) {
-    self_->Poles(*P);
-}
-extern "C" const TColgp_Array1OfPnt2d& Geom2d_BezierCurve_poles(const Geom2d_BezierCurve* self_) {
-    return self_->Poles();
-}
-extern "C" Standard_Real Geom2d_BezierCurve_weight(const Geom2d_BezierCurve* self_, Standard_Integer Index) {
-    return self_->Weight(Index);
-}
-extern "C" void Geom2d_BezierCurve_transform(Geom2d_BezierCurve* self_, const gp_Trsf2d* T) {
-    self_->Transform(*T);
-}
-extern "C" void Geom2d_BezierCurve_resolution(Geom2d_BezierCurve* self_, Standard_Real ToleranceUV, Standard_Real* UTolerance) {
-    self_->Resolution(ToleranceUV, *UTolerance);
-}
-extern "C" const opencascade::handle<Standard_Type>& Geom2d_BezierCurve_dynamic_type(const Geom2d_BezierCurve* self_) {
-    return self_->DynamicType();
-}
-extern "C" Standard_Integer Geom2d_BezierCurve_max_degree() {
-    return Geom2d_BezierCurve::MaxDegree();
-}
-extern "C" const char* Geom2d_BezierCurve_get_type_name() {
-    return Geom2d_BezierCurve::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Geom2d_BezierCurve_get_type_descriptor() {
-    return Geom2d_BezierCurve::get_type_descriptor();
-}
-extern "C" const Geom2d_BoundedCurve* Geom2d_BezierCurve_as_Geom2d_BoundedCurve(const Geom2d_BezierCurve* self_) { return static_cast<const Geom2d_BoundedCurve*>(self_); }
-extern "C" Geom2d_BoundedCurve* Geom2d_BezierCurve_as_Geom2d_BoundedCurve_mut(Geom2d_BezierCurve* self_) { return static_cast<Geom2d_BoundedCurve*>(self_); }
-extern "C" const Geom2d_Curve* Geom2d_BezierCurve_as_Geom2d_Curve(const Geom2d_BezierCurve* self_) { return static_cast<const Geom2d_Curve*>(self_); }
-extern "C" Geom2d_Curve* Geom2d_BezierCurve_as_Geom2d_Curve_mut(Geom2d_BezierCurve* self_) { return static_cast<Geom2d_Curve*>(self_); }
-extern "C" const Geom2d_Geometry* Geom2d_BezierCurve_as_Geom2d_Geometry(const Geom2d_BezierCurve* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
-extern "C" Geom2d_Geometry* Geom2d_BezierCurve_as_Geom2d_Geometry_mut(Geom2d_BezierCurve* self_) { return static_cast<Geom2d_Geometry*>(self_); }
-extern "C" HandleGeom2dBezierCurve* Geom2d_BezierCurve_to_handle(Geom2d_BezierCurve* obj) {
-    return new HandleGeom2dBezierCurve(obj);
-}
-extern "C" const Geom2d_BezierCurve* HandleGeom2dBezierCurve_get(const HandleGeom2dBezierCurve* handle) { return (*handle).get(); }
-extern "C" Geom2d_BezierCurve* HandleGeom2dBezierCurve_get_mut(HandleGeom2dBezierCurve* handle) { return (*handle).get(); }
-extern "C" HandleGeom2dBoundedCurve* HandleGeom2dBezierCurve_to_HandleGeom2dBoundedCurve(const HandleGeom2dBezierCurve* self_) {
-    return new HandleGeom2dBoundedCurve(*self_);
-}
-extern "C" HandleGeom2dCurve* HandleGeom2dBezierCurve_to_HandleGeom2dCurve(const HandleGeom2dBezierCurve* self_) {
-    return new HandleGeom2dCurve(*self_);
-}
-extern "C" HandleGeom2dGeometry* HandleGeom2dBezierCurve_to_HandleGeom2dGeometry(const HandleGeom2dBezierCurve* self_) {
-    return new HandleGeom2dGeometry(*self_);
-}
-extern "C" Standard_Real Geom2d_BezierCurve_inherited_TransformedParameter(const Geom2d_BezierCurve* self, Standard_Real U, const gp_Trsf2d& T) {
-    return self->TransformedParameter(U, T);
-}
-extern "C" Standard_Real Geom2d_BezierCurve_inherited_ParametricTransformation(const Geom2d_BezierCurve* self, const gp_Trsf2d& T) {
-    return self->ParametricTransformation(T);
-}
-extern "C" Handle(Geom2d_Curve)* Geom2d_BezierCurve_inherited_Reversed(const Geom2d_BezierCurve* self) {
-    return new Handle(Geom2d_Curve)(self->Reversed());
-}
-extern "C" Standard_Real Geom2d_BezierCurve_inherited_Period(const Geom2d_BezierCurve* self) {
-    return self->Period();
-}
-extern "C" gp_Pnt2d* Geom2d_BezierCurve_inherited_Value(const Geom2d_BezierCurve* self, Standard_Real U) {
-    return new gp_Pnt2d(self->Value(U));
-}
-extern "C" void Geom2d_BezierCurve_inherited_Mirror(Geom2d_BezierCurve* self, const gp_Pnt2d& P) {
-    self->Mirror(P);
-}
-extern "C" void Geom2d_BezierCurve_inherited_Rotate(Geom2d_BezierCurve* self, const gp_Pnt2d& P, Standard_Real Ang) {
-    self->Rotate(P, Ang);
-}
-extern "C" void Geom2d_BezierCurve_inherited_Scale(Geom2d_BezierCurve* self, const gp_Pnt2d& P, Standard_Real S) {
-    self->Scale(P, S);
-}
-extern "C" void Geom2d_BezierCurve_inherited_Translate(Geom2d_BezierCurve* self, const gp_Vec2d& V) {
-    self->Translate(V);
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_BezierCurve_inherited_Mirrored(const Geom2d_BezierCurve* self, const gp_Pnt2d& P) {
-    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_BezierCurve_inherited_Rotated(const Geom2d_BezierCurve* self, const gp_Pnt2d& P, Standard_Real Ang) {
-    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_BezierCurve_inherited_Scaled(const Geom2d_BezierCurve* self, const gp_Pnt2d& P, Standard_Real S) {
-    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_BezierCurve_inherited_Transformed(const Geom2d_BezierCurve* self, const gp_Trsf2d& T) {
-    return new Handle(Geom2d_Geometry)(self->Transformed(T));
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_BezierCurve_inherited_Translated(const Geom2d_BezierCurve* self, const gp_Vec2d& V) {
-    return new Handle(Geom2d_Geometry)(self->Translated(V));
-}
-extern "C" void Geom2d_BezierCurve_destructor(Geom2d_BezierCurve* self_) { delete self_; }
-
-// ========================
-// Geom2d_BSplineCurve wrappers
-// ========================
-
-extern "C" Geom2d_BSplineCurve* Geom2d_BSplineCurve_ctor_array1ofpnt2d_array1ofreal_array1ofinteger_int_bool(const TColgp_Array1OfPnt2d* Poles, const TColStd_Array1OfReal* Knots, const TColStd_Array1OfInteger* Multiplicities, Standard_Integer Degree, Standard_Boolean Periodic) {
-    return new Geom2d_BSplineCurve(*Poles, *Knots, *Multiplicities, Degree, Periodic);
-}
-extern "C" Geom2d_BSplineCurve* Geom2d_BSplineCurve_ctor_array1ofpnt2d_array1ofreal2_array1ofinteger_int_bool(const TColgp_Array1OfPnt2d* Poles, const TColStd_Array1OfReal* Weights, const TColStd_Array1OfReal* Knots, const TColStd_Array1OfInteger* Multiplicities, Standard_Integer Degree, Standard_Boolean Periodic) {
-    return new Geom2d_BSplineCurve(*Poles, *Weights, *Knots, *Multiplicities, Degree, Periodic);
-}
-extern "C" gp_Vec2d* Geom2d_BSplineCurve_dn(const Geom2d_BSplineCurve* self_, Standard_Real U, Standard_Integer N) {
-    return new gp_Vec2d(self_->DN(U, N));
-}
-extern "C" gp_Pnt2d* Geom2d_BSplineCurve_local_value(const Geom2d_BSplineCurve* self_, Standard_Real U, Standard_Integer FromK1, Standard_Integer ToK2) {
-    return new gp_Pnt2d(self_->LocalValue(U, FromK1, ToK2));
-}
-extern "C" gp_Vec2d* Geom2d_BSplineCurve_local_dn(const Geom2d_BSplineCurve* self_, Standard_Real U, Standard_Integer FromK1, Standard_Integer ToK2, Standard_Integer N) {
-    return new gp_Vec2d(self_->LocalDN(U, FromK1, ToK2, N));
-}
-extern "C" gp_Pnt2d* Geom2d_BSplineCurve_end_point(const Geom2d_BSplineCurve* self_) {
-    return new gp_Pnt2d(self_->EndPoint());
-}
-extern "C" gp_Pnt2d* Geom2d_BSplineCurve_start_point(const Geom2d_BSplineCurve* self_) {
-    return new gp_Pnt2d(self_->StartPoint());
-}
-extern "C" opencascade::handle<Geom2d_Geometry>* Geom2d_BSplineCurve_copy(const Geom2d_BSplineCurve* self_) {
-    return new opencascade::handle<Geom2d_Geometry>(self_->Copy());
-}
-extern "C" int32_t Geom2d_BSplineCurve_continuity(const Geom2d_BSplineCurve* self_) {
-    return static_cast<int32_t>(self_->Continuity());
-}
-extern "C" int32_t Geom2d_BSplineCurve_knot_distribution(const Geom2d_BSplineCurve* self_) {
-    return static_cast<int32_t>(self_->KnotDistribution());
-}
-extern "C" void Geom2d_BSplineCurve_increase_degree(Geom2d_BSplineCurve* self_, Standard_Integer Degree) {
-    self_->IncreaseDegree(Degree);
-}
-extern "C" void Geom2d_BSplineCurve_increase_multiplicity_int2(Geom2d_BSplineCurve* self_, Standard_Integer Index, Standard_Integer M) {
-    self_->IncreaseMultiplicity(Index, M);
-}
-extern "C" void Geom2d_BSplineCurve_increase_multiplicity_int3(Geom2d_BSplineCurve* self_, Standard_Integer I1, Standard_Integer I2, Standard_Integer M) {
-    self_->IncreaseMultiplicity(I1, I2, M);
-}
-extern "C" void Geom2d_BSplineCurve_increment_multiplicity(Geom2d_BSplineCurve* self_, Standard_Integer I1, Standard_Integer I2, Standard_Integer M) {
-    self_->IncrementMultiplicity(I1, I2, M);
-}
-extern "C" void Geom2d_BSplineCurve_insert_knot(Geom2d_BSplineCurve* self_, Standard_Real U, Standard_Integer M, Standard_Real ParametricTolerance) {
-    self_->InsertKnot(U, M, ParametricTolerance);
-}
-extern "C" Standard_Boolean Geom2d_BSplineCurve_remove_knot(Geom2d_BSplineCurve* self_, Standard_Integer Index, Standard_Integer M, Standard_Real Tolerance) {
-    return self_->RemoveKnot(Index, M, Tolerance);
-}
-extern "C" void Geom2d_BSplineCurve_insert_pole_after(Geom2d_BSplineCurve* self_, Standard_Integer Index, const gp_Pnt2d* P, Standard_Real Weight) {
-    self_->InsertPoleAfter(Index, *P, Weight);
-}
-extern "C" void Geom2d_BSplineCurve_insert_pole_before(Geom2d_BSplineCurve* self_, Standard_Integer Index, const gp_Pnt2d* P, Standard_Real Weight) {
-    self_->InsertPoleBefore(Index, *P, Weight);
-}
-extern "C" void Geom2d_BSplineCurve_remove_pole(Geom2d_BSplineCurve* self_, Standard_Integer Index) {
-    self_->RemovePole(Index);
-}
-extern "C" void Geom2d_BSplineCurve_reverse(Geom2d_BSplineCurve* self_) {
-    self_->Reverse();
-}
-extern "C" Standard_Real Geom2d_BSplineCurve_reversed_parameter(const Geom2d_BSplineCurve* self_, Standard_Real U) {
-    return self_->ReversedParameter(U);
-}
-extern "C" void Geom2d_BSplineCurve_segment(Geom2d_BSplineCurve* self_, Standard_Real U1, Standard_Real U2, Standard_Real theTolerance) {
-    self_->Segment(U1, U2, theTolerance);
-}
-extern "C" void Geom2d_BSplineCurve_set_knot_int_real(Geom2d_BSplineCurve* self_, Standard_Integer Index, Standard_Real K) {
-    self_->SetKnot(Index, K);
-}
-extern "C" void Geom2d_BSplineCurve_set_knot_int_real_int(Geom2d_BSplineCurve* self_, Standard_Integer Index, Standard_Real K, Standard_Integer M) {
-    self_->SetKnot(Index, K, M);
-}
-extern "C" void Geom2d_BSplineCurve_periodic_normalization(const Geom2d_BSplineCurve* self_, Standard_Real* U) {
-    self_->PeriodicNormalization(*U);
-}
-extern "C" void Geom2d_BSplineCurve_set_periodic(Geom2d_BSplineCurve* self_) {
-    self_->SetPeriodic();
-}
-extern "C" void Geom2d_BSplineCurve_set_origin(Geom2d_BSplineCurve* self_, Standard_Integer Index) {
-    self_->SetOrigin(Index);
-}
-extern "C" void Geom2d_BSplineCurve_set_not_periodic(Geom2d_BSplineCurve* self_) {
-    self_->SetNotPeriodic();
-}
-extern "C" void Geom2d_BSplineCurve_set_pole_int_pnt2d(Geom2d_BSplineCurve* self_, Standard_Integer Index, const gp_Pnt2d* P) {
-    self_->SetPole(Index, *P);
-}
-extern "C" void Geom2d_BSplineCurve_set_pole_int_pnt2d_real(Geom2d_BSplineCurve* self_, Standard_Integer Index, const gp_Pnt2d* P, Standard_Real Weight) {
-    self_->SetPole(Index, *P, Weight);
-}
-extern "C" void Geom2d_BSplineCurve_set_weight(Geom2d_BSplineCurve* self_, Standard_Integer Index, Standard_Real Weight) {
-    self_->SetWeight(Index, Weight);
-}
-extern "C" void Geom2d_BSplineCurve_move_point(Geom2d_BSplineCurve* self_, Standard_Real U, const gp_Pnt2d* P, Standard_Integer Index1, Standard_Integer Index2, Standard_Integer* FirstModifiedPole, Standard_Integer* LastModifiedPole) {
-    self_->MovePoint(U, *P, Index1, Index2, *FirstModifiedPole, *LastModifiedPole);
-}
-extern "C" void Geom2d_BSplineCurve_move_point_and_tangent(Geom2d_BSplineCurve* self_, Standard_Real U, const gp_Pnt2d* P, const gp_Vec2d* Tangent, Standard_Real Tolerance, Standard_Integer StartingCondition, Standard_Integer EndingCondition, Standard_Integer* ErrorStatus) {
-    self_->MovePointAndTangent(U, *P, *Tangent, Tolerance, StartingCondition, EndingCondition, *ErrorStatus);
-}
-extern "C" Standard_Boolean Geom2d_BSplineCurve_is_cn(const Geom2d_BSplineCurve* self_, Standard_Integer N) {
-    return self_->IsCN(N);
-}
-extern "C" Standard_Boolean Geom2d_BSplineCurve_is_g1(const Geom2d_BSplineCurve* self_, Standard_Real theTf, Standard_Real theTl, Standard_Real theAngTol) {
-    return self_->IsG1(theTf, theTl, theAngTol);
-}
-extern "C" Standard_Boolean Geom2d_BSplineCurve_is_closed(const Geom2d_BSplineCurve* self_) {
-    return self_->IsClosed();
-}
-extern "C" Standard_Boolean Geom2d_BSplineCurve_is_periodic(const Geom2d_BSplineCurve* self_) {
-    return self_->IsPeriodic();
-}
-extern "C" Standard_Boolean Geom2d_BSplineCurve_is_rational(const Geom2d_BSplineCurve* self_) {
-    return self_->IsRational();
-}
-extern "C" Standard_Integer Geom2d_BSplineCurve_degree(const Geom2d_BSplineCurve* self_) {
-    return self_->Degree();
-}
-extern "C" void Geom2d_BSplineCurve_d0(const Geom2d_BSplineCurve* self_, Standard_Real U, gp_Pnt2d* P) {
-    self_->D0(U, *P);
-}
-extern "C" void Geom2d_BSplineCurve_d1(const Geom2d_BSplineCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1) {
-    self_->D1(U, *P, *V1);
-}
-extern "C" void Geom2d_BSplineCurve_d2(const Geom2d_BSplineCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
-    self_->D2(U, *P, *V1, *V2);
-}
-extern "C" void Geom2d_BSplineCurve_d3(const Geom2d_BSplineCurve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
-    self_->D3(U, *P, *V1, *V2, *V3);
-}
-extern "C" void Geom2d_BSplineCurve_local_d0(const Geom2d_BSplineCurve* self_, Standard_Real U, Standard_Integer FromK1, Standard_Integer ToK2, gp_Pnt2d* P) {
-    self_->LocalD0(U, FromK1, ToK2, *P);
-}
-extern "C" void Geom2d_BSplineCurve_local_d1(const Geom2d_BSplineCurve* self_, Standard_Real U, Standard_Integer FromK1, Standard_Integer ToK2, gp_Pnt2d* P, gp_Vec2d* V1) {
-    self_->LocalD1(U, FromK1, ToK2, *P, *V1);
-}
-extern "C" void Geom2d_BSplineCurve_local_d2(const Geom2d_BSplineCurve* self_, Standard_Real U, Standard_Integer FromK1, Standard_Integer ToK2, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
-    self_->LocalD2(U, FromK1, ToK2, *P, *V1, *V2);
-}
-extern "C" void Geom2d_BSplineCurve_local_d3(const Geom2d_BSplineCurve* self_, Standard_Real U, Standard_Integer FromK1, Standard_Integer ToK2, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
-    self_->LocalD3(U, FromK1, ToK2, *P, *V1, *V2, *V3);
-}
-extern "C" Standard_Integer Geom2d_BSplineCurve_first_u_knot_index(const Geom2d_BSplineCurve* self_) {
-    return self_->FirstUKnotIndex();
-}
-extern "C" Standard_Real Geom2d_BSplineCurve_first_parameter(const Geom2d_BSplineCurve* self_) {
-    return self_->FirstParameter();
-}
-extern "C" Standard_Real Geom2d_BSplineCurve_knot(const Geom2d_BSplineCurve* self_, Standard_Integer Index) {
-    return self_->Knot(Index);
-}
-extern "C" Standard_Integer Geom2d_BSplineCurve_last_u_knot_index(const Geom2d_BSplineCurve* self_) {
-    return self_->LastUKnotIndex();
-}
-extern "C" Standard_Real Geom2d_BSplineCurve_last_parameter(const Geom2d_BSplineCurve* self_) {
-    return self_->LastParameter();
-}
-extern "C" void Geom2d_BSplineCurve_locate_u(const Geom2d_BSplineCurve* self_, Standard_Real U, Standard_Real ParametricTolerance, Standard_Integer* I1, Standard_Integer* I2, Standard_Boolean WithKnotRepetition) {
-    self_->LocateU(U, ParametricTolerance, *I1, *I2, WithKnotRepetition);
-}
-extern "C" Standard_Integer Geom2d_BSplineCurve_multiplicity(const Geom2d_BSplineCurve* self_, Standard_Integer Index) {
-    return self_->Multiplicity(Index);
-}
-extern "C" Standard_Integer Geom2d_BSplineCurve_nb_knots(const Geom2d_BSplineCurve* self_) {
-    return self_->NbKnots();
-}
-extern "C" Standard_Integer Geom2d_BSplineCurve_nb_poles(const Geom2d_BSplineCurve* self_) {
-    return self_->NbPoles();
-}
-extern "C" const gp_Pnt2d& Geom2d_BSplineCurve_pole(const Geom2d_BSplineCurve* self_, Standard_Integer Index) {
-    return self_->Pole(Index);
-}
-extern "C" void Geom2d_BSplineCurve_poles_array1ofpnt2d(const Geom2d_BSplineCurve* self_, TColgp_Array1OfPnt2d* P) {
-    self_->Poles(*P);
-}
-extern "C" const TColgp_Array1OfPnt2d& Geom2d_BSplineCurve_poles(const Geom2d_BSplineCurve* self_) {
-    return self_->Poles();
-}
-extern "C" Standard_Real Geom2d_BSplineCurve_weight(const Geom2d_BSplineCurve* self_, Standard_Integer Index) {
-    return self_->Weight(Index);
-}
-extern "C" void Geom2d_BSplineCurve_transform(Geom2d_BSplineCurve* self_, const gp_Trsf2d* T) {
-    self_->Transform(*T);
-}
-extern "C" void Geom2d_BSplineCurve_resolution(Geom2d_BSplineCurve* self_, Standard_Real ToleranceUV, Standard_Real* UTolerance) {
-    self_->Resolution(ToleranceUV, *UTolerance);
-}
-extern "C" const opencascade::handle<Standard_Type>& Geom2d_BSplineCurve_dynamic_type(const Geom2d_BSplineCurve* self_) {
-    return self_->DynamicType();
-}
-extern "C" Standard_Integer Geom2d_BSplineCurve_max_degree() {
-    return Geom2d_BSplineCurve::MaxDegree();
-}
-extern "C" const char* Geom2d_BSplineCurve_get_type_name() {
-    return Geom2d_BSplineCurve::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Geom2d_BSplineCurve_get_type_descriptor() {
-    return Geom2d_BSplineCurve::get_type_descriptor();
-}
-extern "C" const Geom2d_BoundedCurve* Geom2d_BSplineCurve_as_Geom2d_BoundedCurve(const Geom2d_BSplineCurve* self_) { return static_cast<const Geom2d_BoundedCurve*>(self_); }
-extern "C" Geom2d_BoundedCurve* Geom2d_BSplineCurve_as_Geom2d_BoundedCurve_mut(Geom2d_BSplineCurve* self_) { return static_cast<Geom2d_BoundedCurve*>(self_); }
-extern "C" const Geom2d_Curve* Geom2d_BSplineCurve_as_Geom2d_Curve(const Geom2d_BSplineCurve* self_) { return static_cast<const Geom2d_Curve*>(self_); }
-extern "C" Geom2d_Curve* Geom2d_BSplineCurve_as_Geom2d_Curve_mut(Geom2d_BSplineCurve* self_) { return static_cast<Geom2d_Curve*>(self_); }
-extern "C" const Geom2d_Geometry* Geom2d_BSplineCurve_as_Geom2d_Geometry(const Geom2d_BSplineCurve* self_) { return static_cast<const Geom2d_Geometry*>(self_); }
-extern "C" Geom2d_Geometry* Geom2d_BSplineCurve_as_Geom2d_Geometry_mut(Geom2d_BSplineCurve* self_) { return static_cast<Geom2d_Geometry*>(self_); }
-extern "C" HandleGeom2dBSplineCurve* Geom2d_BSplineCurve_to_handle(Geom2d_BSplineCurve* obj) {
-    return new HandleGeom2dBSplineCurve(obj);
-}
-extern "C" const Geom2d_BSplineCurve* HandleGeom2dBSplineCurve_get(const HandleGeom2dBSplineCurve* handle) { return (*handle).get(); }
-extern "C" Geom2d_BSplineCurve* HandleGeom2dBSplineCurve_get_mut(HandleGeom2dBSplineCurve* handle) { return (*handle).get(); }
-extern "C" HandleGeom2dBoundedCurve* HandleGeom2dBSplineCurve_to_HandleGeom2dBoundedCurve(const HandleGeom2dBSplineCurve* self_) {
-    return new HandleGeom2dBoundedCurve(*self_);
-}
-extern "C" HandleGeom2dCurve* HandleGeom2dBSplineCurve_to_HandleGeom2dCurve(const HandleGeom2dBSplineCurve* self_) {
-    return new HandleGeom2dCurve(*self_);
-}
-extern "C" HandleGeom2dGeometry* HandleGeom2dBSplineCurve_to_HandleGeom2dGeometry(const HandleGeom2dBSplineCurve* self_) {
-    return new HandleGeom2dGeometry(*self_);
-}
-extern "C" Standard_Real Geom2d_BSplineCurve_inherited_TransformedParameter(const Geom2d_BSplineCurve* self, Standard_Real U, const gp_Trsf2d& T) {
-    return self->TransformedParameter(U, T);
-}
-extern "C" Standard_Real Geom2d_BSplineCurve_inherited_ParametricTransformation(const Geom2d_BSplineCurve* self, const gp_Trsf2d& T) {
-    return self->ParametricTransformation(T);
-}
-extern "C" Handle(Geom2d_Curve)* Geom2d_BSplineCurve_inherited_Reversed(const Geom2d_BSplineCurve* self) {
-    return new Handle(Geom2d_Curve)(self->Reversed());
-}
-extern "C" Standard_Real Geom2d_BSplineCurve_inherited_Period(const Geom2d_BSplineCurve* self) {
-    return self->Period();
-}
-extern "C" gp_Pnt2d* Geom2d_BSplineCurve_inherited_Value(const Geom2d_BSplineCurve* self, Standard_Real U) {
-    return new gp_Pnt2d(self->Value(U));
-}
-extern "C" void Geom2d_BSplineCurve_inherited_Mirror(Geom2d_BSplineCurve* self, const gp_Pnt2d& P) {
-    self->Mirror(P);
-}
-extern "C" void Geom2d_BSplineCurve_inherited_Rotate(Geom2d_BSplineCurve* self, const gp_Pnt2d& P, Standard_Real Ang) {
-    self->Rotate(P, Ang);
-}
-extern "C" void Geom2d_BSplineCurve_inherited_Scale(Geom2d_BSplineCurve* self, const gp_Pnt2d& P, Standard_Real S) {
-    self->Scale(P, S);
-}
-extern "C" void Geom2d_BSplineCurve_inherited_Translate(Geom2d_BSplineCurve* self, const gp_Vec2d& V) {
-    self->Translate(V);
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_BSplineCurve_inherited_Mirrored(const Geom2d_BSplineCurve* self, const gp_Pnt2d& P) {
-    return new Handle(Geom2d_Geometry)(self->Mirrored(P));
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_BSplineCurve_inherited_Rotated(const Geom2d_BSplineCurve* self, const gp_Pnt2d& P, Standard_Real Ang) {
-    return new Handle(Geom2d_Geometry)(self->Rotated(P, Ang));
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_BSplineCurve_inherited_Scaled(const Geom2d_BSplineCurve* self, const gp_Pnt2d& P, Standard_Real S) {
-    return new Handle(Geom2d_Geometry)(self->Scaled(P, S));
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_BSplineCurve_inherited_Transformed(const Geom2d_BSplineCurve* self, const gp_Trsf2d& T) {
-    return new Handle(Geom2d_Geometry)(self->Transformed(T));
-}
-extern "C" Handle(Geom2d_Geometry)* Geom2d_BSplineCurve_inherited_Translated(const Geom2d_BSplineCurve* self, const gp_Vec2d& V) {
-    return new Handle(Geom2d_Geometry)(self->Translated(V));
-}
-extern "C" void Geom2d_BSplineCurve_destructor(Geom2d_BSplineCurve* self_) { delete self_; }
-
-// ========================
 // CPnts_AbscissaPoint wrappers
 // ========================
 
@@ -47833,6 +54160,13 @@ extern "C" Standard_Boolean CPnts_MyRootFunction_derivative(CPnts_MyRootFunction
 extern "C" Standard_Boolean CPnts_MyRootFunction_values(CPnts_MyRootFunction* self_, Standard_Real X, Standard_Real* F, Standard_Real* Df) {
     return self_->Values(X, *F, *Df);
 }
+extern "C" const math_Function* CPnts_MyRootFunction_as_math_Function(const CPnts_MyRootFunction* self_) { return static_cast<const math_Function*>(self_); }
+extern "C" math_Function* CPnts_MyRootFunction_as_math_Function_mut(CPnts_MyRootFunction* self_) { return static_cast<math_Function*>(self_); }
+extern "C" const math_FunctionWithDerivative* CPnts_MyRootFunction_as_math_FunctionWithDerivative(const CPnts_MyRootFunction* self_) { return static_cast<const math_FunctionWithDerivative*>(self_); }
+extern "C" math_FunctionWithDerivative* CPnts_MyRootFunction_as_math_FunctionWithDerivative_mut(CPnts_MyRootFunction* self_) { return static_cast<math_FunctionWithDerivative*>(self_); }
+extern "C" Standard_Integer CPnts_MyRootFunction_inherited_GetStateNumber(CPnts_MyRootFunction* self) {
+    return self->GetStateNumber();
+}
 extern "C" void CPnts_MyRootFunction_destructor(CPnts_MyRootFunction* self_) { delete self_; }
 
 // ========================
@@ -47844,6 +54178,11 @@ extern "C" CPnts_MyGaussFunction* CPnts_MyGaussFunction_ctor() {
 }
 extern "C" Standard_Boolean CPnts_MyGaussFunction_value(CPnts_MyGaussFunction* self_, Standard_Real X, Standard_Real* F) {
     return self_->Value(X, *F);
+}
+extern "C" const math_Function* CPnts_MyGaussFunction_as_math_Function(const CPnts_MyGaussFunction* self_) { return static_cast<const math_Function*>(self_); }
+extern "C" math_Function* CPnts_MyGaussFunction_as_math_Function_mut(CPnts_MyGaussFunction* self_) { return static_cast<math_Function*>(self_); }
+extern "C" Standard_Integer CPnts_MyGaussFunction_inherited_GetStateNumber(CPnts_MyGaussFunction* self) {
+    return self->GetStateNumber();
 }
 extern "C" void CPnts_MyGaussFunction_destructor(CPnts_MyGaussFunction* self_) { delete self_; }
 
@@ -50940,8 +57279,23 @@ extern "C" void MAT2d_BiInt_destructor(MAT2d_BiInt* self_) { delete self_; }
 extern "C" Bisector_Bisec* Bisector_Bisec_ctor() {
     return new Bisector_Bisec();
 }
-extern "C" void Bisector_Bisec_perform(Bisector_Bisec* self_, const opencascade::handle<Geom2d_Curve>* Cu1, const opencascade::handle<Geom2d_Curve>* Cu2, const gp_Pnt2d* P, const gp_Vec2d* V1, const gp_Vec2d* V2, Standard_Real Sense, int32_t ajointype, Standard_Real Tolerance, Standard_Boolean oncurve) {
+extern "C" void Bisector_Bisec_perform_handlegeom2dcurve2_pnt2d_vec2d2_real_jointype_real_bool(Bisector_Bisec* self_, const opencascade::handle<Geom2d_Curve>* Cu1, const opencascade::handle<Geom2d_Curve>* Cu2, const gp_Pnt2d* P, const gp_Vec2d* V1, const gp_Vec2d* V2, Standard_Real Sense, int32_t ajointype, Standard_Real Tolerance, Standard_Boolean oncurve) {
     self_->Perform(*Cu1, *Cu2, *P, *V1, *V2, Sense, static_cast<GeomAbs_JoinType>(ajointype), Tolerance, oncurve);
+}
+extern "C" void Bisector_Bisec_perform_handlegeom2dcurve_handlegeom2dpoint_pnt2d_vec2d2_real2_bool(Bisector_Bisec* self_, const opencascade::handle<Geom2d_Curve>* Cu, const opencascade::handle<Geom2d_Point>* Pnt, const gp_Pnt2d* P, const gp_Vec2d* V1, const gp_Vec2d* V2, Standard_Real Sense, Standard_Real Tolerance, Standard_Boolean oncurve) {
+    self_->Perform(*Cu, *Pnt, *P, *V1, *V2, Sense, Tolerance, oncurve);
+}
+extern "C" void Bisector_Bisec_perform_handlegeom2dpoint_handlegeom2dcurve_pnt2d_vec2d2_real2_bool(Bisector_Bisec* self_, const opencascade::handle<Geom2d_Point>* Pnt, const opencascade::handle<Geom2d_Curve>* Cu, const gp_Pnt2d* P, const gp_Vec2d* V1, const gp_Vec2d* V2, Standard_Real Sense, Standard_Real Tolerance, Standard_Boolean oncurve) {
+    self_->Perform(*Pnt, *Cu, *P, *V1, *V2, Sense, Tolerance, oncurve);
+}
+extern "C" void Bisector_Bisec_perform_handlegeom2dpoint2_pnt2d_vec2d2_real2_bool(Bisector_Bisec* self_, const opencascade::handle<Geom2d_Point>* Pnt1, const opencascade::handle<Geom2d_Point>* Pnt2, const gp_Pnt2d* P, const gp_Vec2d* V1, const gp_Vec2d* V2, Standard_Real Sense, Standard_Real Tolerance, Standard_Boolean oncurve) {
+    self_->Perform(*Pnt1, *Pnt2, *P, *V1, *V2, Sense, Tolerance, oncurve);
+}
+extern "C" const opencascade::handle<Geom2d_TrimmedCurve>& Bisector_Bisec_value(const Bisector_Bisec* self_) {
+    return self_->Value();
+}
+extern "C" const opencascade::handle<Geom2d_TrimmedCurve>& Bisector_Bisec_change_value(Bisector_Bisec* self_) {
+    return self_->ChangeValue();
 }
 extern "C" void Bisector_Bisec_destructor(Bisector_Bisec* self_) { delete self_; }
 
@@ -52211,6 +58565,9 @@ extern "C" void IMeshTools_ModelBuilder_inherited_SendMessages(const IMeshTools_
 extern "C" void IMeshTools_ModelBuilder_inherited_AddStatus(IMeshTools_ModelBuilder* self, const opencascade::handle<Message_Algorithm>& theOther) {
     self->AddStatus(theOther);
 }
+extern "C" Handle(TColStd_HPackedMapOfInteger)* IMeshTools_ModelBuilder_inherited_GetMessageNumbers(const IMeshTools_ModelBuilder* self, int32_t theStatus) {
+    return new Handle(TColStd_HPackedMapOfInteger)(self->GetMessageNumbers(static_cast<Message_Status>(theStatus)));
+}
 extern "C" Handle(TColStd_HSequenceOfHExtendedString)* IMeshTools_ModelBuilder_inherited_GetMessageStrings(const IMeshTools_ModelBuilder* self, int32_t theStatus) {
     return new Handle(TColStd_HSequenceOfHExtendedString)(self->GetMessageStrings(static_cast<Message_Status>(theStatus)));
 }
@@ -52337,33 +58694,6 @@ extern "C" const TopoDS_Shape& IMeshTools_Context_inherited_GetShape(const IMesh
 extern "C" void IMeshTools_Context_destructor(IMeshTools_Context* self_) { delete self_; }
 
 // ========================
-// Standard_NumericError wrappers
-// ========================
-
-extern "C" Standard_NumericError* Standard_NumericError_ctor() {
-    return new Standard_NumericError();
-}
-extern "C" Standard_NumericError* Standard_NumericError_ctor_charptr(const char* theMessage) {
-    return new Standard_NumericError(theMessage);
-}
-extern "C" Standard_NumericError* Standard_NumericError_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
-    return new Standard_NumericError(theMessage, theStackTrace);
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_NumericError_dynamic_type(const Standard_NumericError* self_) {
-    return self_->DynamicType();
-}
-extern "C" void Standard_NumericError_raise(const char* theMessage) {
-    return Standard_NumericError::Raise(theMessage);
-}
-extern "C" const char* Standard_NumericError_get_type_name() {
-    return Standard_NumericError::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Standard_NumericError_get_type_descriptor() {
-    return Standard_NumericError::get_type_descriptor();
-}
-extern "C" void Standard_NumericError_destructor(Standard_NumericError* self_) { delete self_; }
-
-// ========================
 // IMeshTools_CurveTessellator wrappers
 // ========================
 
@@ -52387,164 +58717,166 @@ extern "C" IMeshTools_CurveTessellator* HandleIMeshToolsCurveTessellator_get_mut
 extern "C" void IMeshTools_CurveTessellator_destructor(IMeshTools_CurveTessellator* self_) { delete self_; }
 
 // ========================
-// Geom2dAdaptor_Curve wrappers
+// Quantity_Color wrappers
 // ========================
 
-extern "C" Geom2dAdaptor_Curve* Geom2dAdaptor_Curve_ctor() {
-    return new Geom2dAdaptor_Curve();
+extern "C" Quantity_Color* Quantity_Color_ctor() {
+    return new Quantity_Color();
 }
-extern "C" Geom2dAdaptor_Curve* Geom2dAdaptor_Curve_ctor_handlegeom2dcurve(const opencascade::handle<Geom2d_Curve>* C) {
-    return new Geom2dAdaptor_Curve(*C);
+extern "C" Quantity_Color* Quantity_Color_ctor_nameofcolor(int32_t theName) {
+    return new Quantity_Color(static_cast<Quantity_NameOfColor>(theName));
 }
-extern "C" Geom2dAdaptor_Curve* Geom2dAdaptor_Curve_ctor_handlegeom2dcurve_real2(const opencascade::handle<Geom2d_Curve>* C, Standard_Real UFirst, Standard_Real ULast) {
-    return new Geom2dAdaptor_Curve(*C, UFirst, ULast);
+extern "C" Quantity_Color* Quantity_Color_ctor_real3_typeofcolor(Standard_Real theC1, Standard_Real theC2, Standard_Real theC3, int32_t theType) {
+    return new Quantity_Color(theC1, theC2, theC3, static_cast<Quantity_TypeOfColor>(theType));
 }
-extern "C" opencascade::handle<Adaptor2d_Curve2d>* Geom2dAdaptor_Curve_shallow_copy(const Geom2dAdaptor_Curve* self_) {
-    return new opencascade::handle<Adaptor2d_Curve2d>(self_->ShallowCopy());
+extern "C" int32_t Quantity_Color_name(const Quantity_Color* self_) {
+    return static_cast<int32_t>(self_->Name());
 }
-extern "C" opencascade::handle<Adaptor2d_Curve2d>* Geom2dAdaptor_Curve_trim(const Geom2dAdaptor_Curve* self_, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
-    return new opencascade::handle<Adaptor2d_Curve2d>(self_->Trim(First, Last, Tol));
+extern "C" void Quantity_Color_set_values_nameofcolor(Quantity_Color* self_, int32_t theName) {
+    self_->SetValues(static_cast<Quantity_NameOfColor>(theName));
 }
-extern "C" gp_Pnt2d* Geom2dAdaptor_Curve_value(const Geom2dAdaptor_Curve* self_, Standard_Real U) {
-    return new gp_Pnt2d(self_->Value(U));
+extern "C" void Quantity_Color_values(const Quantity_Color* self_, Standard_Real* theC1, Standard_Real* theC2, Standard_Real* theC3, int32_t theType) {
+    self_->Values(*theC1, *theC2, *theC3, static_cast<Quantity_TypeOfColor>(theType));
 }
-extern "C" gp_Vec2d* Geom2dAdaptor_Curve_dn(const Geom2dAdaptor_Curve* self_, Standard_Real U, Standard_Integer N) {
-    return new gp_Vec2d(self_->DN(U, N));
+extern "C" void Quantity_Color_set_values_real3_typeofcolor(Quantity_Color* self_, Standard_Real theC1, Standard_Real theC2, Standard_Real theC3, int32_t theType) {
+    self_->SetValues(theC1, theC2, theC3, static_cast<Quantity_TypeOfColor>(theType));
 }
-extern "C" gp_Lin2d* Geom2dAdaptor_Curve_line(const Geom2dAdaptor_Curve* self_) {
-    return new gp_Lin2d(self_->Line());
+extern "C" Standard_Real Quantity_Color_red(const Quantity_Color* self_) {
+    return self_->Red();
 }
-extern "C" gp_Circ2d* Geom2dAdaptor_Curve_circle(const Geom2dAdaptor_Curve* self_) {
-    return new gp_Circ2d(self_->Circle());
+extern "C" Standard_Real Quantity_Color_green(const Quantity_Color* self_) {
+    return self_->Green();
 }
-extern "C" gp_Elips2d* Geom2dAdaptor_Curve_ellipse(const Geom2dAdaptor_Curve* self_) {
-    return new gp_Elips2d(self_->Ellipse());
+extern "C" Standard_Real Quantity_Color_blue(const Quantity_Color* self_) {
+    return self_->Blue();
 }
-extern "C" gp_Hypr2d* Geom2dAdaptor_Curve_hyperbola(const Geom2dAdaptor_Curve* self_) {
-    return new gp_Hypr2d(self_->Hyperbola());
+extern "C" Standard_Real Quantity_Color_hue(const Quantity_Color* self_) {
+    return self_->Hue();
 }
-extern "C" gp_Parab2d* Geom2dAdaptor_Curve_parabola(const Geom2dAdaptor_Curve* self_) {
-    return new gp_Parab2d(self_->Parabola());
+extern "C" Standard_Real Quantity_Color_light(const Quantity_Color* self_) {
+    return self_->Light();
 }
-extern "C" opencascade::handle<Geom2d_BezierCurve>* Geom2dAdaptor_Curve_bezier(const Geom2dAdaptor_Curve* self_) {
-    return new opencascade::handle<Geom2d_BezierCurve>(self_->Bezier());
+extern "C" void Quantity_Color_change_intensity(Quantity_Color* self_, Standard_Real theDelta) {
+    self_->ChangeIntensity(theDelta);
 }
-extern "C" opencascade::handle<Geom2d_BSplineCurve>* Geom2dAdaptor_Curve_b_spline(const Geom2dAdaptor_Curve* self_) {
-    return new opencascade::handle<Geom2d_BSplineCurve>(self_->BSpline());
+extern "C" Standard_Real Quantity_Color_saturation(const Quantity_Color* self_) {
+    return self_->Saturation();
 }
-extern "C" int32_t Geom2dAdaptor_Curve_continuity(const Geom2dAdaptor_Curve* self_) {
-    return static_cast<int32_t>(self_->Continuity());
+extern "C" void Quantity_Color_change_contrast(Quantity_Color* self_, Standard_Real theDelta) {
+    self_->ChangeContrast(theDelta);
 }
-extern "C" Standard_Integer Geom2dAdaptor_Curve_nb_intervals(const Geom2dAdaptor_Curve* self_, int32_t S) {
-    return self_->NbIntervals(static_cast<GeomAbs_Shape>(S));
+extern "C" Standard_Boolean Quantity_Color_is_different(const Quantity_Color* self_, const Quantity_Color* theOther) {
+    return self_->IsDifferent(*theOther);
 }
-extern "C" int32_t Geom2dAdaptor_Curve_get_type(const Geom2dAdaptor_Curve* self_) {
-    return static_cast<int32_t>(self_->GetType());
+extern "C" Standard_Boolean Quantity_Color_is_equal(const Quantity_Color* self_, const Quantity_Color* theOther) {
+    return self_->IsEqual(*theOther);
 }
-extern "C" const opencascade::handle<Standard_Type>& Geom2dAdaptor_Curve_dynamic_type(const Geom2dAdaptor_Curve* self_) {
-    return self_->DynamicType();
+extern "C" Standard_Real Quantity_Color_distance(const Quantity_Color* self_, const Quantity_Color* theColor) {
+    return self_->Distance(*theColor);
 }
-extern "C" void Geom2dAdaptor_Curve_reset(Geom2dAdaptor_Curve* self_) {
-    self_->Reset();
+extern "C" Standard_Real Quantity_Color_square_distance(const Quantity_Color* self_, const Quantity_Color* theColor) {
+    return self_->SquareDistance(*theColor);
 }
-extern "C" void Geom2dAdaptor_Curve_load_handlegeom2dcurve(Geom2dAdaptor_Curve* self_, const opencascade::handle<Geom2d_Curve>* theCurve) {
-    self_->Load(*theCurve);
+extern "C" void Quantity_Color_delta(const Quantity_Color* self_, const Quantity_Color* theColor, Standard_Real* DC, Standard_Real* DI) {
+    self_->Delta(*theColor, *DC, *DI);
 }
-extern "C" void Geom2dAdaptor_Curve_load_handlegeom2dcurve_real2(Geom2dAdaptor_Curve* self_, const opencascade::handle<Geom2d_Curve>* theCurve, Standard_Real theUFirst, Standard_Real theULast) {
-    self_->Load(*theCurve, theUFirst, theULast);
+extern "C" Standard_Real Quantity_Color_delta_e2000(const Quantity_Color* self_, const Quantity_Color* theOther) {
+    return self_->DeltaE2000(*theOther);
 }
-extern "C" const opencascade::handle<Geom2d_Curve>& Geom2dAdaptor_Curve_curve(const Geom2dAdaptor_Curve* self_) {
-    return self_->Curve();
+extern "C" int32_t Quantity_Color_name_real3(Standard_Real theR, Standard_Real theG, Standard_Real theB) {
+    return static_cast<int32_t>(Quantity_Color::Name(theR, theG, theB));
 }
-extern "C" Standard_Real Geom2dAdaptor_Curve_first_parameter(const Geom2dAdaptor_Curve* self_) {
-    return self_->FirstParameter();
+extern "C" const char* Quantity_Color_string_name(int32_t theColor) {
+    return Quantity_Color::StringName(static_cast<Quantity_NameOfColor>(theColor));
 }
-extern "C" Standard_Real Geom2dAdaptor_Curve_last_parameter(const Geom2dAdaptor_Curve* self_) {
-    return self_->LastParameter();
+extern "C" Standard_Boolean Quantity_Color_color_from_name_charptr_nameofcolor(const char* theName, int32_t& theColor) {
+    auto theColor_enum_ = static_cast<Quantity_NameOfColor>(theColor);
+    auto result_ = Quantity_Color::ColorFromName(theName, theColor_enum_);
+    theColor = static_cast<int32_t>(theColor_enum_);
+    return result_;
 }
-extern "C" Standard_Boolean Geom2dAdaptor_Curve_is_closed(const Geom2dAdaptor_Curve* self_) {
-    return self_->IsClosed();
+extern "C" Standard_Boolean Quantity_Color_color_from_name_charptr_color(const char* theColorNameString, Quantity_Color* theColor) {
+    return Quantity_Color::ColorFromName(theColorNameString, *theColor);
 }
-extern "C" Standard_Boolean Geom2dAdaptor_Curve_is_periodic(const Geom2dAdaptor_Curve* self_) {
-    return self_->IsPeriodic();
+extern "C" Standard_Boolean Quantity_Color_color_from_hex(const char* theHexColorString, Quantity_Color* theColor) {
+    return Quantity_Color::ColorFromHex(theHexColorString, *theColor);
 }
-extern "C" Standard_Real Geom2dAdaptor_Curve_period(const Geom2dAdaptor_Curve* self_) {
-    return self_->Period();
+extern "C" TCollection_AsciiString* Quantity_Color_color_to_hex(const Quantity_Color* theColor, Standard_Boolean theToPrefixHash) {
+    return new TCollection_AsciiString(Quantity_Color::ColorToHex(*theColor, theToPrefixHash));
 }
-extern "C" void Geom2dAdaptor_Curve_d0(const Geom2dAdaptor_Curve* self_, Standard_Real U, gp_Pnt2d* P) {
-    self_->D0(U, *P);
+extern "C" void Quantity_Color_color2argb(const Quantity_Color* theColor, Standard_Integer* theARGB) {
+    return Quantity_Color::Color2argb(*theColor, *theARGB);
 }
-extern "C" void Geom2dAdaptor_Curve_d1(const Geom2dAdaptor_Curve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V) {
-    self_->D1(U, *P, *V);
+extern "C" void Quantity_Color_argb2color(Standard_Integer theARGB, Quantity_Color* theColor) {
+    return Quantity_Color::Argb2color(theARGB, *theColor);
 }
-extern "C" void Geom2dAdaptor_Curve_d2(const Geom2dAdaptor_Curve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
-    self_->D2(U, *P, *V1, *V2);
+extern "C" Standard_Real Quantity_Color_convert_linear_rgb_to_s_rgb_real(Standard_Real theLinearValue) {
+    return Quantity_Color::Convert_LinearRGB_To_sRGB(theLinearValue);
 }
-extern "C" void Geom2dAdaptor_Curve_d3(const Geom2dAdaptor_Curve* self_, Standard_Real U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
-    self_->D3(U, *P, *V1, *V2, *V3);
+extern "C" float Quantity_Color_convert_linear_rgb_to_s_rgb_float(float theLinearValue) {
+    return Quantity_Color::Convert_LinearRGB_To_sRGB(theLinearValue);
 }
-extern "C" Standard_Real Geom2dAdaptor_Curve_resolution(const Geom2dAdaptor_Curve* self_, Standard_Real Ruv) {
-    return self_->Resolution(Ruv);
+extern "C" Standard_Real Quantity_Color_convert_s_rgb_to_linear_rgb_real(Standard_Real thesRGBValue) {
+    return Quantity_Color::Convert_sRGB_To_LinearRGB(thesRGBValue);
 }
-extern "C" Standard_Integer Geom2dAdaptor_Curve_degree(const Geom2dAdaptor_Curve* self_) {
-    return self_->Degree();
+extern "C" float Quantity_Color_convert_s_rgb_to_linear_rgb_float(float thesRGBValue) {
+    return Quantity_Color::Convert_sRGB_To_LinearRGB(thesRGBValue);
 }
-extern "C" Standard_Boolean Geom2dAdaptor_Curve_is_rational(const Geom2dAdaptor_Curve* self_) {
-    return self_->IsRational();
+extern "C" float Quantity_Color_convert_linear_rgb_to_s_rgb_approx22(float theLinearValue) {
+    return Quantity_Color::Convert_LinearRGB_To_sRGB_approx22(theLinearValue);
 }
-extern "C" Standard_Integer Geom2dAdaptor_Curve_nb_poles(const Geom2dAdaptor_Curve* self_) {
-    return self_->NbPoles();
+extern "C" float Quantity_Color_convert_s_rgb_to_linear_rgb_approx22(float thesRGBValue) {
+    return Quantity_Color::Convert_sRGB_To_LinearRGB_approx22(thesRGBValue);
 }
-extern "C" Standard_Integer Geom2dAdaptor_Curve_nb_knots(const Geom2dAdaptor_Curve* self_) {
-    return self_->NbKnots();
+extern "C" void Quantity_Color_hls_rgb(Standard_Real theH, Standard_Real theL, Standard_Real theS, Standard_Real* theR, Standard_Real* theG, Standard_Real* theB) {
+    return Quantity_Color::HlsRgb(theH, theL, theS, *theR, *theG, *theB);
 }
-extern "C" Standard_Integer Geom2dAdaptor_Curve_nb_samples(const Geom2dAdaptor_Curve* self_) {
-    return self_->NbSamples();
+extern "C" void Quantity_Color_rgb_hls(Standard_Real theR, Standard_Real theG, Standard_Real theB, Standard_Real* theH, Standard_Real* theL, Standard_Real* theS) {
+    return Quantity_Color::RgbHls(theR, theG, theB, *theH, *theL, *theS);
 }
-extern "C" const char* Geom2dAdaptor_Curve_get_type_name() {
-    return Geom2dAdaptor_Curve::get_type_name();
+extern "C" Standard_Real Quantity_Color_epsilon() {
+    return Quantity_Color::Epsilon();
 }
-extern "C" const opencascade::handle<Standard_Type>& Geom2dAdaptor_Curve_get_type_descriptor() {
-    return Geom2dAdaptor_Curve::get_type_descriptor();
+extern "C" void Quantity_Color_set_epsilon(Standard_Real theEpsilon) {
+    return Quantity_Color::SetEpsilon(theEpsilon);
 }
-extern "C" const Adaptor2d_Curve2d* Geom2dAdaptor_Curve_as_Adaptor2d_Curve2d(const Geom2dAdaptor_Curve* self_) { return static_cast<const Adaptor2d_Curve2d*>(self_); }
-extern "C" Adaptor2d_Curve2d* Geom2dAdaptor_Curve_as_Adaptor2d_Curve2d_mut(Geom2dAdaptor_Curve* self_) { return static_cast<Adaptor2d_Curve2d*>(self_); }
-extern "C" void Geom2dAdaptor_Curve_destructor(Geom2dAdaptor_Curve* self_) { delete self_; }
+extern "C" void Quantity_Color_destructor(Quantity_Color* self_) { delete self_; }
 
 // ========================
-// Geom2dEvaluator_Curve wrappers
+// GeomLib_CheckCurveOnSurface wrappers
 // ========================
 
-extern "C" gp_Vec2d* Geom2dEvaluator_Curve_dn(const Geom2dEvaluator_Curve* self_, Standard_Real theU, Standard_Integer theDerU) {
-    return new gp_Vec2d(self_->DN(theU, theDerU));
+extern "C" GeomLib_CheckCurveOnSurface* GeomLib_CheckCurveOnSurface_ctor() {
+    return new GeomLib_CheckCurveOnSurface();
 }
-extern "C" opencascade::handle<Geom2dEvaluator_Curve>* Geom2dEvaluator_Curve_shallow_copy(const Geom2dEvaluator_Curve* self_) {
-    return new opencascade::handle<Geom2dEvaluator_Curve>(self_->ShallowCopy());
+extern "C" GeomLib_CheckCurveOnSurface* GeomLib_CheckCurveOnSurface_ctor_handleadaptor3dcurve_real(const opencascade::handle<Adaptor3d_Curve>* theCurve, Standard_Real theTolRange) {
+    return new GeomLib_CheckCurveOnSurface(*theCurve, theTolRange);
 }
-extern "C" void Geom2dEvaluator_Curve_d0(const Geom2dEvaluator_Curve* self_, Standard_Real theU, gp_Pnt2d* theValue) {
-    self_->D0(theU, *theValue);
+extern "C" void GeomLib_CheckCurveOnSurface_init_handleadaptor3dcurve_real(GeomLib_CheckCurveOnSurface* self_, const opencascade::handle<Adaptor3d_Curve>* theCurve, Standard_Real theTolRange) {
+    self_->Init(*theCurve, theTolRange);
 }
-extern "C" void Geom2dEvaluator_Curve_d1(const Geom2dEvaluator_Curve* self_, Standard_Real theU, gp_Pnt2d* theValue, gp_Vec2d* theD1) {
-    self_->D1(theU, *theValue, *theD1);
+extern "C" void GeomLib_CheckCurveOnSurface_init(GeomLib_CheckCurveOnSurface* self_) {
+    self_->Init();
 }
-extern "C" void Geom2dEvaluator_Curve_d2(const Geom2dEvaluator_Curve* self_, Standard_Real theU, gp_Pnt2d* theValue, gp_Vec2d* theD1, gp_Vec2d* theD2) {
-    self_->D2(theU, *theValue, *theD1, *theD2);
+extern "C" void GeomLib_CheckCurveOnSurface_set_parallel(GeomLib_CheckCurveOnSurface* self_, Standard_Boolean theIsParallel) {
+    self_->SetParallel(theIsParallel);
 }
-extern "C" void Geom2dEvaluator_Curve_d3(const Geom2dEvaluator_Curve* self_, Standard_Real theU, gp_Pnt2d* theValue, gp_Vec2d* theD1, gp_Vec2d* theD2, gp_Vec2d* theD3) {
-    self_->D3(theU, *theValue, *theD1, *theD2, *theD3);
+extern "C" Standard_Boolean GeomLib_CheckCurveOnSurface_is_parallel(GeomLib_CheckCurveOnSurface* self_) {
+    return self_->IsParallel();
 }
-extern "C" const opencascade::handle<Standard_Type>& Geom2dEvaluator_Curve_dynamic_type(const Geom2dEvaluator_Curve* self_) {
-    return self_->DynamicType();
+extern "C" Standard_Boolean GeomLib_CheckCurveOnSurface_is_done(const GeomLib_CheckCurveOnSurface* self_) {
+    return self_->IsDone();
 }
-extern "C" const char* Geom2dEvaluator_Curve_get_type_name() {
-    return Geom2dEvaluator_Curve::get_type_name();
+extern "C" Standard_Integer GeomLib_CheckCurveOnSurface_error_status(const GeomLib_CheckCurveOnSurface* self_) {
+    return self_->ErrorStatus();
 }
-extern "C" const opencascade::handle<Standard_Type>& Geom2dEvaluator_Curve_get_type_descriptor() {
-    return Geom2dEvaluator_Curve::get_type_descriptor();
+extern "C" Standard_Real GeomLib_CheckCurveOnSurface_max_distance(const GeomLib_CheckCurveOnSurface* self_) {
+    return self_->MaxDistance();
 }
-extern "C" const Geom2dEvaluator_Curve* HandleGeom2dEvaluatorCurve_get(const HandleGeom2dEvaluatorCurve* handle) { return (*handle).get(); }
-extern "C" Geom2dEvaluator_Curve* HandleGeom2dEvaluatorCurve_get_mut(HandleGeom2dEvaluatorCurve* handle) { return (*handle).get(); }
-extern "C" void Geom2dEvaluator_Curve_destructor(Geom2dEvaluator_Curve* self_) { delete self_; }
+extern "C" Standard_Real GeomLib_CheckCurveOnSurface_max_parameter(const GeomLib_CheckCurveOnSurface* self_) {
+    return self_->MaxParameter();
+}
+extern "C" void GeomLib_CheckCurveOnSurface_destructor(GeomLib_CheckCurveOnSurface* self_) { delete self_; }
 
 // ========================
 // ChFi2d_Builder wrappers
@@ -54518,868 +60850,6 @@ extern "C" void BOPAlgo_Options_set_parallel_mode(Standard_Boolean theNewMode) {
 extern "C" void BOPAlgo_Options_destructor(BOPAlgo_Options* self_) { delete self_; }
 
 // ========================
-// BRepLib_MakeWire wrappers
-// ========================
-
-extern "C" BRepLib_MakeWire* BRepLib_MakeWire_ctor() {
-    return new BRepLib_MakeWire();
-}
-extern "C" BRepLib_MakeWire* BRepLib_MakeWire_ctor_edge(const TopoDS_Edge* E) {
-    return new BRepLib_MakeWire(*E);
-}
-extern "C" BRepLib_MakeWire* BRepLib_MakeWire_ctor_edge2(const TopoDS_Edge* E1, const TopoDS_Edge* E2) {
-    return new BRepLib_MakeWire(*E1, *E2);
-}
-extern "C" BRepLib_MakeWire* BRepLib_MakeWire_ctor_edge3(const TopoDS_Edge* E1, const TopoDS_Edge* E2, const TopoDS_Edge* E3) {
-    return new BRepLib_MakeWire(*E1, *E2, *E3);
-}
-extern "C" BRepLib_MakeWire* BRepLib_MakeWire_ctor_edge4(const TopoDS_Edge* E1, const TopoDS_Edge* E2, const TopoDS_Edge* E3, const TopoDS_Edge* E4) {
-    return new BRepLib_MakeWire(*E1, *E2, *E3, *E4);
-}
-extern "C" BRepLib_MakeWire* BRepLib_MakeWire_ctor_wire(const TopoDS_Wire* W) {
-    return new BRepLib_MakeWire(*W);
-}
-extern "C" BRepLib_MakeWire* BRepLib_MakeWire_ctor_wire_edge(const TopoDS_Wire* W, const TopoDS_Edge* E) {
-    return new BRepLib_MakeWire(*W, *E);
-}
-extern "C" int32_t BRepLib_MakeWire_error(const BRepLib_MakeWire* self_) {
-    return static_cast<int32_t>(self_->Error());
-}
-extern "C" void BRepLib_MakeWire_add_edge(BRepLib_MakeWire* self_, const TopoDS_Edge* E) {
-    self_->Add(*E);
-}
-extern "C" void BRepLib_MakeWire_add_wire(BRepLib_MakeWire* self_, const TopoDS_Wire* W) {
-    self_->Add(*W);
-}
-extern "C" void BRepLib_MakeWire_add_listofshape(BRepLib_MakeWire* self_, const TopTools_ListOfShape* L) {
-    self_->Add(*L);
-}
-extern "C" const TopoDS_Wire& BRepLib_MakeWire_wire(BRepLib_MakeWire* self_) {
-    return self_->Wire();
-}
-extern "C" const TopoDS_Edge& BRepLib_MakeWire_edge(const BRepLib_MakeWire* self_) {
-    return self_->Edge();
-}
-extern "C" const TopoDS_Vertex& BRepLib_MakeWire_vertex(const BRepLib_MakeWire* self_) {
-    return self_->Vertex();
-}
-extern "C" const BRepLib_Command* BRepLib_MakeWire_as_BRepLib_Command(const BRepLib_MakeWire* self_) { return static_cast<const BRepLib_Command*>(self_); }
-extern "C" BRepLib_Command* BRepLib_MakeWire_as_BRepLib_Command_mut(BRepLib_MakeWire* self_) { return static_cast<BRepLib_Command*>(self_); }
-extern "C" const BRepLib_MakeShape* BRepLib_MakeWire_as_BRepLib_MakeShape(const BRepLib_MakeWire* self_) { return static_cast<const BRepLib_MakeShape*>(self_); }
-extern "C" BRepLib_MakeShape* BRepLib_MakeWire_as_BRepLib_MakeShape_mut(BRepLib_MakeWire* self_) { return static_cast<BRepLib_MakeShape*>(self_); }
-extern "C" bool BRepLib_MakeWire_inherited_IsDone(const BRepLib_MakeWire* self) {
-    return self->IsDone();
-}
-extern "C" void BRepLib_MakeWire_inherited_Check(const BRepLib_MakeWire* self) {
-    self->Check();
-}
-extern "C" void BRepLib_MakeWire_inherited_Build(BRepLib_MakeWire* self) {
-    self->Build();
-}
-extern "C" const TopoDS_Shape& BRepLib_MakeWire_inherited_Shape(BRepLib_MakeWire* self) {
-    return self->Shape();
-}
-extern "C" int32_t BRepLib_MakeWire_inherited_FaceStatus(const BRepLib_MakeWire* self, const TopoDS_Face& F) {
-    return static_cast<int32_t>(self->FaceStatus(F));
-}
-extern "C" bool BRepLib_MakeWire_inherited_HasDescendants(const BRepLib_MakeWire* self, const TopoDS_Face& F) {
-    return self->HasDescendants(F);
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeWire_inherited_DescendantFaces(BRepLib_MakeWire* self, const TopoDS_Face& F) {
-    return self->DescendantFaces(F);
-}
-extern "C" Standard_Integer BRepLib_MakeWire_inherited_NbSurfaces(const BRepLib_MakeWire* self) {
-    return self->NbSurfaces();
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeWire_inherited_NewFaces(BRepLib_MakeWire* self, Standard_Integer I) {
-    return self->NewFaces(I);
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeWire_inherited_FacesFromEdges(BRepLib_MakeWire* self, const TopoDS_Edge& E) {
-    return self->FacesFromEdges(E);
-}
-extern "C" void BRepLib_MakeWire_destructor(BRepLib_MakeWire* self_) { delete self_; }
-
-// ========================
-// BRepLib_MakeShape wrappers
-// ========================
-
-extern "C" int32_t BRepLib_MakeShape_face_status(const BRepLib_MakeShape* self_, const TopoDS_Face* F) {
-    return static_cast<int32_t>(self_->FaceStatus(*F));
-}
-extern "C" void BRepLib_MakeShape_build(BRepLib_MakeShape* self_) {
-    self_->Build();
-}
-extern "C" const TopoDS_Shape& BRepLib_MakeShape_shape(BRepLib_MakeShape* self_) {
-    return self_->Shape();
-}
-extern "C" Standard_Boolean BRepLib_MakeShape_has_descendants(const BRepLib_MakeShape* self_, const TopoDS_Face* F) {
-    return self_->HasDescendants(*F);
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeShape_descendant_faces(BRepLib_MakeShape* self_, const TopoDS_Face* F) {
-    return self_->DescendantFaces(*F);
-}
-extern "C" Standard_Integer BRepLib_MakeShape_nb_surfaces(const BRepLib_MakeShape* self_) {
-    return self_->NbSurfaces();
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeShape_new_faces(BRepLib_MakeShape* self_, Standard_Integer I) {
-    return self_->NewFaces(I);
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeShape_faces_from_edges(BRepLib_MakeShape* self_, const TopoDS_Edge* E) {
-    return self_->FacesFromEdges(*E);
-}
-extern "C" const BRepLib_Command* BRepLib_MakeShape_as_BRepLib_Command(const BRepLib_MakeShape* self_) { return static_cast<const BRepLib_Command*>(self_); }
-extern "C" BRepLib_Command* BRepLib_MakeShape_as_BRepLib_Command_mut(BRepLib_MakeShape* self_) { return static_cast<BRepLib_Command*>(self_); }
-extern "C" bool BRepLib_MakeShape_inherited_IsDone(const BRepLib_MakeShape* self) {
-    return self->IsDone();
-}
-extern "C" void BRepLib_MakeShape_inherited_Check(const BRepLib_MakeShape* self) {
-    self->Check();
-}
-extern "C" void BRepLib_MakeShape_destructor(BRepLib_MakeShape* self_) { delete self_; }
-
-// ========================
-// BRepLib_Command wrappers
-// ========================
-
-extern "C" Standard_Boolean BRepLib_Command_is_done(const BRepLib_Command* self_) {
-    return self_->IsDone();
-}
-extern "C" void BRepLib_Command_check(const BRepLib_Command* self_) {
-    self_->Check();
-}
-extern "C" void BRepLib_Command_destructor(BRepLib_Command* self_) { delete self_; }
-
-// ========================
-// BRepLib_MakeVertex wrappers
-// ========================
-
-extern "C" BRepLib_MakeVertex* BRepLib_MakeVertex_ctor_pnt(const gp_Pnt* P) {
-    return new BRepLib_MakeVertex(*P);
-}
-extern "C" const TopoDS_Vertex& BRepLib_MakeVertex_vertex(BRepLib_MakeVertex* self_) {
-    return self_->Vertex();
-}
-extern "C" const BRepLib_Command* BRepLib_MakeVertex_as_BRepLib_Command(const BRepLib_MakeVertex* self_) { return static_cast<const BRepLib_Command*>(self_); }
-extern "C" BRepLib_Command* BRepLib_MakeVertex_as_BRepLib_Command_mut(BRepLib_MakeVertex* self_) { return static_cast<BRepLib_Command*>(self_); }
-extern "C" const BRepLib_MakeShape* BRepLib_MakeVertex_as_BRepLib_MakeShape(const BRepLib_MakeVertex* self_) { return static_cast<const BRepLib_MakeShape*>(self_); }
-extern "C" BRepLib_MakeShape* BRepLib_MakeVertex_as_BRepLib_MakeShape_mut(BRepLib_MakeVertex* self_) { return static_cast<BRepLib_MakeShape*>(self_); }
-extern "C" bool BRepLib_MakeVertex_inherited_IsDone(const BRepLib_MakeVertex* self) {
-    return self->IsDone();
-}
-extern "C" void BRepLib_MakeVertex_inherited_Check(const BRepLib_MakeVertex* self) {
-    self->Check();
-}
-extern "C" void BRepLib_MakeVertex_inherited_Build(BRepLib_MakeVertex* self) {
-    self->Build();
-}
-extern "C" const TopoDS_Shape& BRepLib_MakeVertex_inherited_Shape(BRepLib_MakeVertex* self) {
-    return self->Shape();
-}
-extern "C" int32_t BRepLib_MakeVertex_inherited_FaceStatus(const BRepLib_MakeVertex* self, const TopoDS_Face& F) {
-    return static_cast<int32_t>(self->FaceStatus(F));
-}
-extern "C" bool BRepLib_MakeVertex_inherited_HasDescendants(const BRepLib_MakeVertex* self, const TopoDS_Face& F) {
-    return self->HasDescendants(F);
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeVertex_inherited_DescendantFaces(BRepLib_MakeVertex* self, const TopoDS_Face& F) {
-    return self->DescendantFaces(F);
-}
-extern "C" Standard_Integer BRepLib_MakeVertex_inherited_NbSurfaces(const BRepLib_MakeVertex* self) {
-    return self->NbSurfaces();
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeVertex_inherited_NewFaces(BRepLib_MakeVertex* self, Standard_Integer I) {
-    return self->NewFaces(I);
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeVertex_inherited_FacesFromEdges(BRepLib_MakeVertex* self, const TopoDS_Edge& E) {
-    return self->FacesFromEdges(E);
-}
-extern "C" void BRepLib_MakeVertex_destructor(BRepLib_MakeVertex* self_) { delete self_; }
-
-// ========================
-// BRepLib_MakeSolid wrappers
-// ========================
-
-extern "C" BRepLib_MakeSolid* BRepLib_MakeSolid_ctor() {
-    return new BRepLib_MakeSolid();
-}
-extern "C" BRepLib_MakeSolid* BRepLib_MakeSolid_ctor_compsolid(const TopoDS_CompSolid* S) {
-    return new BRepLib_MakeSolid(*S);
-}
-extern "C" BRepLib_MakeSolid* BRepLib_MakeSolid_ctor_shell(const TopoDS_Shell* S) {
-    return new BRepLib_MakeSolid(*S);
-}
-extern "C" BRepLib_MakeSolid* BRepLib_MakeSolid_ctor_shell2(const TopoDS_Shell* S1, const TopoDS_Shell* S2) {
-    return new BRepLib_MakeSolid(*S1, *S2);
-}
-extern "C" BRepLib_MakeSolid* BRepLib_MakeSolid_ctor_shell3(const TopoDS_Shell* S1, const TopoDS_Shell* S2, const TopoDS_Shell* S3) {
-    return new BRepLib_MakeSolid(*S1, *S2, *S3);
-}
-extern "C" BRepLib_MakeSolid* BRepLib_MakeSolid_ctor_solid(const TopoDS_Solid* So) {
-    return new BRepLib_MakeSolid(*So);
-}
-extern "C" BRepLib_MakeSolid* BRepLib_MakeSolid_ctor_solid_shell(const TopoDS_Solid* So, const TopoDS_Shell* S) {
-    return new BRepLib_MakeSolid(*So, *S);
-}
-extern "C" int32_t BRepLib_MakeSolid_face_status(const BRepLib_MakeSolid* self_, const TopoDS_Face* F) {
-    return static_cast<int32_t>(self_->FaceStatus(*F));
-}
-extern "C" void BRepLib_MakeSolid_add(BRepLib_MakeSolid* self_, const TopoDS_Shell* S) {
-    self_->Add(*S);
-}
-extern "C" const TopoDS_Solid& BRepLib_MakeSolid_solid(BRepLib_MakeSolid* self_) {
-    return self_->Solid();
-}
-extern "C" const BRepLib_Command* BRepLib_MakeSolid_as_BRepLib_Command(const BRepLib_MakeSolid* self_) { return static_cast<const BRepLib_Command*>(self_); }
-extern "C" BRepLib_Command* BRepLib_MakeSolid_as_BRepLib_Command_mut(BRepLib_MakeSolid* self_) { return static_cast<BRepLib_Command*>(self_); }
-extern "C" const BRepLib_MakeShape* BRepLib_MakeSolid_as_BRepLib_MakeShape(const BRepLib_MakeSolid* self_) { return static_cast<const BRepLib_MakeShape*>(self_); }
-extern "C" BRepLib_MakeShape* BRepLib_MakeSolid_as_BRepLib_MakeShape_mut(BRepLib_MakeSolid* self_) { return static_cast<BRepLib_MakeShape*>(self_); }
-extern "C" bool BRepLib_MakeSolid_inherited_IsDone(const BRepLib_MakeSolid* self) {
-    return self->IsDone();
-}
-extern "C" void BRepLib_MakeSolid_inherited_Check(const BRepLib_MakeSolid* self) {
-    self->Check();
-}
-extern "C" void BRepLib_MakeSolid_inherited_Build(BRepLib_MakeSolid* self) {
-    self->Build();
-}
-extern "C" const TopoDS_Shape& BRepLib_MakeSolid_inherited_Shape(BRepLib_MakeSolid* self) {
-    return self->Shape();
-}
-extern "C" bool BRepLib_MakeSolid_inherited_HasDescendants(const BRepLib_MakeSolid* self, const TopoDS_Face& F) {
-    return self->HasDescendants(F);
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeSolid_inherited_DescendantFaces(BRepLib_MakeSolid* self, const TopoDS_Face& F) {
-    return self->DescendantFaces(F);
-}
-extern "C" Standard_Integer BRepLib_MakeSolid_inherited_NbSurfaces(const BRepLib_MakeSolid* self) {
-    return self->NbSurfaces();
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeSolid_inherited_NewFaces(BRepLib_MakeSolid* self, Standard_Integer I) {
-    return self->NewFaces(I);
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeSolid_inherited_FacesFromEdges(BRepLib_MakeSolid* self, const TopoDS_Edge& E) {
-    return self->FacesFromEdges(E);
-}
-extern "C" void BRepLib_MakeSolid_destructor(BRepLib_MakeSolid* self_) { delete self_; }
-
-// ========================
-// BRepLib_MakeShell wrappers
-// ========================
-
-extern "C" BRepLib_MakeShell* BRepLib_MakeShell_ctor() {
-    return new BRepLib_MakeShell();
-}
-extern "C" BRepLib_MakeShell* BRepLib_MakeShell_ctor_handlegeomsurface_bool(const opencascade::handle<Geom_Surface>* S, Standard_Boolean Segment) {
-    return new BRepLib_MakeShell(*S, Segment);
-}
-extern "C" BRepLib_MakeShell* BRepLib_MakeShell_ctor_handlegeomsurface_real4_bool(const opencascade::handle<Geom_Surface>* S, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax, Standard_Boolean Segment) {
-    return new BRepLib_MakeShell(*S, UMin, UMax, VMin, VMax, Segment);
-}
-extern "C" int32_t BRepLib_MakeShell_error(const BRepLib_MakeShell* self_) {
-    return static_cast<int32_t>(self_->Error());
-}
-extern "C" void BRepLib_MakeShell_init(BRepLib_MakeShell* self_, const opencascade::handle<Geom_Surface>* S, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax, Standard_Boolean Segment) {
-    self_->Init(*S, UMin, UMax, VMin, VMax, Segment);
-}
-extern "C" const TopoDS_Shell& BRepLib_MakeShell_shell(const BRepLib_MakeShell* self_) {
-    return self_->Shell();
-}
-extern "C" const BRepLib_Command* BRepLib_MakeShell_as_BRepLib_Command(const BRepLib_MakeShell* self_) { return static_cast<const BRepLib_Command*>(self_); }
-extern "C" BRepLib_Command* BRepLib_MakeShell_as_BRepLib_Command_mut(BRepLib_MakeShell* self_) { return static_cast<BRepLib_Command*>(self_); }
-extern "C" const BRepLib_MakeShape* BRepLib_MakeShell_as_BRepLib_MakeShape(const BRepLib_MakeShell* self_) { return static_cast<const BRepLib_MakeShape*>(self_); }
-extern "C" BRepLib_MakeShape* BRepLib_MakeShell_as_BRepLib_MakeShape_mut(BRepLib_MakeShell* self_) { return static_cast<BRepLib_MakeShape*>(self_); }
-extern "C" bool BRepLib_MakeShell_inherited_IsDone(const BRepLib_MakeShell* self) {
-    return self->IsDone();
-}
-extern "C" void BRepLib_MakeShell_inherited_Check(const BRepLib_MakeShell* self) {
-    self->Check();
-}
-extern "C" void BRepLib_MakeShell_inherited_Build(BRepLib_MakeShell* self) {
-    self->Build();
-}
-extern "C" const TopoDS_Shape& BRepLib_MakeShell_inherited_Shape(BRepLib_MakeShell* self) {
-    return self->Shape();
-}
-extern "C" int32_t BRepLib_MakeShell_inherited_FaceStatus(const BRepLib_MakeShell* self, const TopoDS_Face& F) {
-    return static_cast<int32_t>(self->FaceStatus(F));
-}
-extern "C" bool BRepLib_MakeShell_inherited_HasDescendants(const BRepLib_MakeShell* self, const TopoDS_Face& F) {
-    return self->HasDescendants(F);
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeShell_inherited_DescendantFaces(BRepLib_MakeShell* self, const TopoDS_Face& F) {
-    return self->DescendantFaces(F);
-}
-extern "C" Standard_Integer BRepLib_MakeShell_inherited_NbSurfaces(const BRepLib_MakeShell* self) {
-    return self->NbSurfaces();
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeShell_inherited_NewFaces(BRepLib_MakeShell* self, Standard_Integer I) {
-    return self->NewFaces(I);
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeShell_inherited_FacesFromEdges(BRepLib_MakeShell* self, const TopoDS_Edge& E) {
-    return self->FacesFromEdges(E);
-}
-extern "C" void BRepLib_MakeShell_destructor(BRepLib_MakeShell* self_) { delete self_; }
-
-// ========================
-// BRepLib_MakePolygon wrappers
-// ========================
-
-extern "C" BRepLib_MakePolygon* BRepLib_MakePolygon_ctor() {
-    return new BRepLib_MakePolygon();
-}
-extern "C" BRepLib_MakePolygon* BRepLib_MakePolygon_ctor_pnt2(const gp_Pnt* P1, const gp_Pnt* P2) {
-    return new BRepLib_MakePolygon(*P1, *P2);
-}
-extern "C" BRepLib_MakePolygon* BRepLib_MakePolygon_ctor_pnt3_bool(const gp_Pnt* P1, const gp_Pnt* P2, const gp_Pnt* P3, Standard_Boolean Close) {
-    return new BRepLib_MakePolygon(*P1, *P2, *P3, Close);
-}
-extern "C" BRepLib_MakePolygon* BRepLib_MakePolygon_ctor_pnt4_bool(const gp_Pnt* P1, const gp_Pnt* P2, const gp_Pnt* P3, const gp_Pnt* P4, Standard_Boolean Close) {
-    return new BRepLib_MakePolygon(*P1, *P2, *P3, *P4, Close);
-}
-extern "C" BRepLib_MakePolygon* BRepLib_MakePolygon_ctor_vertex2(const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
-    return new BRepLib_MakePolygon(*V1, *V2);
-}
-extern "C" BRepLib_MakePolygon* BRepLib_MakePolygon_ctor_vertex3_bool(const TopoDS_Vertex* V1, const TopoDS_Vertex* V2, const TopoDS_Vertex* V3, Standard_Boolean Close) {
-    return new BRepLib_MakePolygon(*V1, *V2, *V3, Close);
-}
-extern "C" BRepLib_MakePolygon* BRepLib_MakePolygon_ctor_vertex4_bool(const TopoDS_Vertex* V1, const TopoDS_Vertex* V2, const TopoDS_Vertex* V3, const TopoDS_Vertex* V4, Standard_Boolean Close) {
-    return new BRepLib_MakePolygon(*V1, *V2, *V3, *V4, Close);
-}
-extern "C" void BRepLib_MakePolygon_add_pnt(BRepLib_MakePolygon* self_, const gp_Pnt* P) {
-    self_->Add(*P);
-}
-extern "C" void BRepLib_MakePolygon_add_vertex(BRepLib_MakePolygon* self_, const TopoDS_Vertex* V) {
-    self_->Add(*V);
-}
-extern "C" Standard_Boolean BRepLib_MakePolygon_added(const BRepLib_MakePolygon* self_) {
-    return self_->Added();
-}
-extern "C" void BRepLib_MakePolygon_close(BRepLib_MakePolygon* self_) {
-    self_->Close();
-}
-extern "C" const TopoDS_Vertex& BRepLib_MakePolygon_first_vertex(const BRepLib_MakePolygon* self_) {
-    return self_->FirstVertex();
-}
-extern "C" const TopoDS_Vertex& BRepLib_MakePolygon_last_vertex(const BRepLib_MakePolygon* self_) {
-    return self_->LastVertex();
-}
-extern "C" const TopoDS_Edge& BRepLib_MakePolygon_edge(const BRepLib_MakePolygon* self_) {
-    return self_->Edge();
-}
-extern "C" const TopoDS_Wire& BRepLib_MakePolygon_wire(BRepLib_MakePolygon* self_) {
-    return self_->Wire();
-}
-extern "C" const BRepLib_Command* BRepLib_MakePolygon_as_BRepLib_Command(const BRepLib_MakePolygon* self_) { return static_cast<const BRepLib_Command*>(self_); }
-extern "C" BRepLib_Command* BRepLib_MakePolygon_as_BRepLib_Command_mut(BRepLib_MakePolygon* self_) { return static_cast<BRepLib_Command*>(self_); }
-extern "C" const BRepLib_MakeShape* BRepLib_MakePolygon_as_BRepLib_MakeShape(const BRepLib_MakePolygon* self_) { return static_cast<const BRepLib_MakeShape*>(self_); }
-extern "C" BRepLib_MakeShape* BRepLib_MakePolygon_as_BRepLib_MakeShape_mut(BRepLib_MakePolygon* self_) { return static_cast<BRepLib_MakeShape*>(self_); }
-extern "C" bool BRepLib_MakePolygon_inherited_IsDone(const BRepLib_MakePolygon* self) {
-    return self->IsDone();
-}
-extern "C" void BRepLib_MakePolygon_inherited_Check(const BRepLib_MakePolygon* self) {
-    self->Check();
-}
-extern "C" void BRepLib_MakePolygon_inherited_Build(BRepLib_MakePolygon* self) {
-    self->Build();
-}
-extern "C" const TopoDS_Shape& BRepLib_MakePolygon_inherited_Shape(BRepLib_MakePolygon* self) {
-    return self->Shape();
-}
-extern "C" int32_t BRepLib_MakePolygon_inherited_FaceStatus(const BRepLib_MakePolygon* self, const TopoDS_Face& F) {
-    return static_cast<int32_t>(self->FaceStatus(F));
-}
-extern "C" bool BRepLib_MakePolygon_inherited_HasDescendants(const BRepLib_MakePolygon* self, const TopoDS_Face& F) {
-    return self->HasDescendants(F);
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakePolygon_inherited_DescendantFaces(BRepLib_MakePolygon* self, const TopoDS_Face& F) {
-    return self->DescendantFaces(F);
-}
-extern "C" Standard_Integer BRepLib_MakePolygon_inherited_NbSurfaces(const BRepLib_MakePolygon* self) {
-    return self->NbSurfaces();
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakePolygon_inherited_NewFaces(BRepLib_MakePolygon* self, Standard_Integer I) {
-    return self->NewFaces(I);
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakePolygon_inherited_FacesFromEdges(BRepLib_MakePolygon* self, const TopoDS_Edge& E) {
-    return self->FacesFromEdges(E);
-}
-extern "C" void BRepLib_MakePolygon_destructor(BRepLib_MakePolygon* self_) { delete self_; }
-
-// ========================
-// BRepLib_MakeFace wrappers
-// ========================
-
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor() {
-    return new BRepLib_MakeFace();
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_face(const TopoDS_Face* F) {
-    return new BRepLib_MakeFace(*F);
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_pln(const gp_Pln* P) {
-    return new BRepLib_MakeFace(*P);
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_cylinder(const gp_Cylinder* C) {
-    return new BRepLib_MakeFace(*C);
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_cone(const gp_Cone* C) {
-    return new BRepLib_MakeFace(*C);
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_sphere(const gp_Sphere* S) {
-    return new BRepLib_MakeFace(*S);
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_torus(const gp_Torus* C) {
-    return new BRepLib_MakeFace(*C);
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_handlegeomsurface_real(const opencascade::handle<Geom_Surface>* S, Standard_Real TolDegen) {
-    return new BRepLib_MakeFace(*S, TolDegen);
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_pln_real4(const gp_Pln* P, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax) {
-    return new BRepLib_MakeFace(*P, UMin, UMax, VMin, VMax);
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_cylinder_real4(const gp_Cylinder* C, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax) {
-    return new BRepLib_MakeFace(*C, UMin, UMax, VMin, VMax);
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_cone_real4(const gp_Cone* C, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax) {
-    return new BRepLib_MakeFace(*C, UMin, UMax, VMin, VMax);
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_sphere_real4(const gp_Sphere* S, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax) {
-    return new BRepLib_MakeFace(*S, UMin, UMax, VMin, VMax);
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_torus_real4(const gp_Torus* C, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax) {
-    return new BRepLib_MakeFace(*C, UMin, UMax, VMin, VMax);
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_handlegeomsurface_real5(const opencascade::handle<Geom_Surface>* S, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax, Standard_Real TolDegen) {
-    return new BRepLib_MakeFace(*S, UMin, UMax, VMin, VMax, TolDegen);
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_wire_bool(const TopoDS_Wire* W, Standard_Boolean OnlyPlane) {
-    return new BRepLib_MakeFace(*W, OnlyPlane);
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_pln_wire_bool(const gp_Pln* P, const TopoDS_Wire* W, Standard_Boolean Inside) {
-    return new BRepLib_MakeFace(*P, *W, Inside);
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_cylinder_wire_bool(const gp_Cylinder* C, const TopoDS_Wire* W, Standard_Boolean Inside) {
-    return new BRepLib_MakeFace(*C, *W, Inside);
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_cone_wire_bool(const gp_Cone* C, const TopoDS_Wire* W, Standard_Boolean Inside) {
-    return new BRepLib_MakeFace(*C, *W, Inside);
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_sphere_wire_bool(const gp_Sphere* S, const TopoDS_Wire* W, Standard_Boolean Inside) {
-    return new BRepLib_MakeFace(*S, *W, Inside);
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_torus_wire_bool(const gp_Torus* C, const TopoDS_Wire* W, Standard_Boolean Inside) {
-    return new BRepLib_MakeFace(*C, *W, Inside);
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_handlegeomsurface_wire_bool(const opencascade::handle<Geom_Surface>* S, const TopoDS_Wire* W, Standard_Boolean Inside) {
-    return new BRepLib_MakeFace(*S, *W, Inside);
-}
-extern "C" BRepLib_MakeFace* BRepLib_MakeFace_ctor_face_wire(const TopoDS_Face* F, const TopoDS_Wire* W) {
-    return new BRepLib_MakeFace(*F, *W);
-}
-extern "C" int32_t BRepLib_MakeFace_error(const BRepLib_MakeFace* self_) {
-    return static_cast<int32_t>(self_->Error());
-}
-extern "C" void BRepLib_MakeFace_init_face(BRepLib_MakeFace* self_, const TopoDS_Face* F) {
-    self_->Init(*F);
-}
-extern "C" void BRepLib_MakeFace_init_handlegeomsurface_bool_real(BRepLib_MakeFace* self_, const opencascade::handle<Geom_Surface>* S, Standard_Boolean Bound, Standard_Real TolDegen) {
-    self_->Init(*S, Bound, TolDegen);
-}
-extern "C" void BRepLib_MakeFace_init_handlegeomsurface_real5(BRepLib_MakeFace* self_, const opencascade::handle<Geom_Surface>* S, Standard_Real UMin, Standard_Real UMax, Standard_Real VMin, Standard_Real VMax, Standard_Real TolDegen) {
-    self_->Init(*S, UMin, UMax, VMin, VMax, TolDegen);
-}
-extern "C" void BRepLib_MakeFace_add(BRepLib_MakeFace* self_, const TopoDS_Wire* W) {
-    self_->Add(*W);
-}
-extern "C" const TopoDS_Face& BRepLib_MakeFace_face(const BRepLib_MakeFace* self_) {
-    return self_->Face();
-}
-extern "C" Standard_Boolean BRepLib_MakeFace_is_degenerated(const opencascade::handle<Geom_Curve>* theCurve, Standard_Real theMaxTol, Standard_Real* theActTol) {
-    return BRepLib_MakeFace::IsDegenerated(*theCurve, theMaxTol, *theActTol);
-}
-extern "C" const BRepLib_Command* BRepLib_MakeFace_as_BRepLib_Command(const BRepLib_MakeFace* self_) { return static_cast<const BRepLib_Command*>(self_); }
-extern "C" BRepLib_Command* BRepLib_MakeFace_as_BRepLib_Command_mut(BRepLib_MakeFace* self_) { return static_cast<BRepLib_Command*>(self_); }
-extern "C" const BRepLib_MakeShape* BRepLib_MakeFace_as_BRepLib_MakeShape(const BRepLib_MakeFace* self_) { return static_cast<const BRepLib_MakeShape*>(self_); }
-extern "C" BRepLib_MakeShape* BRepLib_MakeFace_as_BRepLib_MakeShape_mut(BRepLib_MakeFace* self_) { return static_cast<BRepLib_MakeShape*>(self_); }
-extern "C" bool BRepLib_MakeFace_inherited_IsDone(const BRepLib_MakeFace* self) {
-    return self->IsDone();
-}
-extern "C" void BRepLib_MakeFace_inherited_Check(const BRepLib_MakeFace* self) {
-    self->Check();
-}
-extern "C" void BRepLib_MakeFace_inherited_Build(BRepLib_MakeFace* self) {
-    self->Build();
-}
-extern "C" const TopoDS_Shape& BRepLib_MakeFace_inherited_Shape(BRepLib_MakeFace* self) {
-    return self->Shape();
-}
-extern "C" int32_t BRepLib_MakeFace_inherited_FaceStatus(const BRepLib_MakeFace* self, const TopoDS_Face& F) {
-    return static_cast<int32_t>(self->FaceStatus(F));
-}
-extern "C" bool BRepLib_MakeFace_inherited_HasDescendants(const BRepLib_MakeFace* self, const TopoDS_Face& F) {
-    return self->HasDescendants(F);
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeFace_inherited_DescendantFaces(BRepLib_MakeFace* self, const TopoDS_Face& F) {
-    return self->DescendantFaces(F);
-}
-extern "C" Standard_Integer BRepLib_MakeFace_inherited_NbSurfaces(const BRepLib_MakeFace* self) {
-    return self->NbSurfaces();
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeFace_inherited_NewFaces(BRepLib_MakeFace* self, Standard_Integer I) {
-    return self->NewFaces(I);
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeFace_inherited_FacesFromEdges(BRepLib_MakeFace* self, const TopoDS_Edge& E) {
-    return self->FacesFromEdges(E);
-}
-extern "C" void BRepLib_MakeFace_destructor(BRepLib_MakeFace* self_) { delete self_; }
-
-// ========================
-// BRepLib_MakeEdge2d wrappers
-// ========================
-
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_vertex2(const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
-    return new BRepLib_MakeEdge2d(*V1, *V2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_pnt2d2(const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
-    return new BRepLib_MakeEdge2d(*P1, *P2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_lin2d(const gp_Lin2d* L) {
-    return new BRepLib_MakeEdge2d(*L);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_lin2d_real2(const gp_Lin2d* L, Standard_Real p1, Standard_Real p2) {
-    return new BRepLib_MakeEdge2d(*L, p1, p2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_lin2d_pnt2d2(const gp_Lin2d* L, const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
-    return new BRepLib_MakeEdge2d(*L, *P1, *P2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_lin2d_vertex2(const gp_Lin2d* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
-    return new BRepLib_MakeEdge2d(*L, *V1, *V2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_circ2d(const gp_Circ2d* L) {
-    return new BRepLib_MakeEdge2d(*L);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_circ2d_real2(const gp_Circ2d* L, Standard_Real p1, Standard_Real p2) {
-    return new BRepLib_MakeEdge2d(*L, p1, p2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_circ2d_pnt2d2(const gp_Circ2d* L, const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
-    return new BRepLib_MakeEdge2d(*L, *P1, *P2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_circ2d_vertex2(const gp_Circ2d* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
-    return new BRepLib_MakeEdge2d(*L, *V1, *V2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_elips2d(const gp_Elips2d* L) {
-    return new BRepLib_MakeEdge2d(*L);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_elips2d_real2(const gp_Elips2d* L, Standard_Real p1, Standard_Real p2) {
-    return new BRepLib_MakeEdge2d(*L, p1, p2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_elips2d_pnt2d2(const gp_Elips2d* L, const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
-    return new BRepLib_MakeEdge2d(*L, *P1, *P2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_elips2d_vertex2(const gp_Elips2d* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
-    return new BRepLib_MakeEdge2d(*L, *V1, *V2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_hypr2d(const gp_Hypr2d* L) {
-    return new BRepLib_MakeEdge2d(*L);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_hypr2d_real2(const gp_Hypr2d* L, Standard_Real p1, Standard_Real p2) {
-    return new BRepLib_MakeEdge2d(*L, p1, p2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_hypr2d_pnt2d2(const gp_Hypr2d* L, const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
-    return new BRepLib_MakeEdge2d(*L, *P1, *P2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_hypr2d_vertex2(const gp_Hypr2d* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
-    return new BRepLib_MakeEdge2d(*L, *V1, *V2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_parab2d(const gp_Parab2d* L) {
-    return new BRepLib_MakeEdge2d(*L);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_parab2d_real2(const gp_Parab2d* L, Standard_Real p1, Standard_Real p2) {
-    return new BRepLib_MakeEdge2d(*L, p1, p2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_parab2d_pnt2d2(const gp_Parab2d* L, const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
-    return new BRepLib_MakeEdge2d(*L, *P1, *P2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_parab2d_vertex2(const gp_Parab2d* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
-    return new BRepLib_MakeEdge2d(*L, *V1, *V2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_handlegeom2dcurve(const opencascade::handle<Geom2d_Curve>* L) {
-    return new BRepLib_MakeEdge2d(*L);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_handlegeom2dcurve_real2(const opencascade::handle<Geom2d_Curve>* L, Standard_Real p1, Standard_Real p2) {
-    return new BRepLib_MakeEdge2d(*L, p1, p2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_handlegeom2dcurve_pnt2d2(const opencascade::handle<Geom2d_Curve>* L, const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
-    return new BRepLib_MakeEdge2d(*L, *P1, *P2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_handlegeom2dcurve_vertex2(const opencascade::handle<Geom2d_Curve>* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
-    return new BRepLib_MakeEdge2d(*L, *V1, *V2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_handlegeom2dcurve_pnt2d2_real2(const opencascade::handle<Geom2d_Curve>* L, const gp_Pnt2d* P1, const gp_Pnt2d* P2, Standard_Real p1, Standard_Real p2) {
-    return new BRepLib_MakeEdge2d(*L, *P1, *P2, p1, p2);
-}
-extern "C" BRepLib_MakeEdge2d* BRepLib_MakeEdge2d_ctor_handlegeom2dcurve_vertex2_real2(const opencascade::handle<Geom2d_Curve>* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2, Standard_Real p1, Standard_Real p2) {
-    return new BRepLib_MakeEdge2d(*L, *V1, *V2, p1, p2);
-}
-extern "C" int32_t BRepLib_MakeEdge2d_error(const BRepLib_MakeEdge2d* self_) {
-    return static_cast<int32_t>(self_->Error());
-}
-extern "C" void BRepLib_MakeEdge2d_init_handlegeom2dcurve(BRepLib_MakeEdge2d* self_, const opencascade::handle<Geom2d_Curve>* C) {
-    self_->Init(*C);
-}
-extern "C" void BRepLib_MakeEdge2d_init_handlegeom2dcurve_real2(BRepLib_MakeEdge2d* self_, const opencascade::handle<Geom2d_Curve>* C, Standard_Real p1, Standard_Real p2) {
-    self_->Init(*C, p1, p2);
-}
-extern "C" void BRepLib_MakeEdge2d_init_handlegeom2dcurve_pnt2d2(BRepLib_MakeEdge2d* self_, const opencascade::handle<Geom2d_Curve>* C, const gp_Pnt2d* P1, const gp_Pnt2d* P2) {
-    self_->Init(*C, *P1, *P2);
-}
-extern "C" void BRepLib_MakeEdge2d_init_handlegeom2dcurve_vertex2(BRepLib_MakeEdge2d* self_, const opencascade::handle<Geom2d_Curve>* C, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
-    self_->Init(*C, *V1, *V2);
-}
-extern "C" void BRepLib_MakeEdge2d_init_handlegeom2dcurve_pnt2d2_real2(BRepLib_MakeEdge2d* self_, const opencascade::handle<Geom2d_Curve>* C, const gp_Pnt2d* P1, const gp_Pnt2d* P2, Standard_Real p1, Standard_Real p2) {
-    self_->Init(*C, *P1, *P2, p1, p2);
-}
-extern "C" void BRepLib_MakeEdge2d_init_handlegeom2dcurve_vertex2_real2(BRepLib_MakeEdge2d* self_, const opencascade::handle<Geom2d_Curve>* C, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2, Standard_Real p1, Standard_Real p2) {
-    self_->Init(*C, *V1, *V2, p1, p2);
-}
-extern "C" const TopoDS_Edge& BRepLib_MakeEdge2d_edge(BRepLib_MakeEdge2d* self_) {
-    return self_->Edge();
-}
-extern "C" const TopoDS_Vertex& BRepLib_MakeEdge2d_vertex1(const BRepLib_MakeEdge2d* self_) {
-    return self_->Vertex1();
-}
-extern "C" const TopoDS_Vertex& BRepLib_MakeEdge2d_vertex2(const BRepLib_MakeEdge2d* self_) {
-    return self_->Vertex2();
-}
-extern "C" const BRepLib_Command* BRepLib_MakeEdge2d_as_BRepLib_Command(const BRepLib_MakeEdge2d* self_) { return static_cast<const BRepLib_Command*>(self_); }
-extern "C" BRepLib_Command* BRepLib_MakeEdge2d_as_BRepLib_Command_mut(BRepLib_MakeEdge2d* self_) { return static_cast<BRepLib_Command*>(self_); }
-extern "C" const BRepLib_MakeShape* BRepLib_MakeEdge2d_as_BRepLib_MakeShape(const BRepLib_MakeEdge2d* self_) { return static_cast<const BRepLib_MakeShape*>(self_); }
-extern "C" BRepLib_MakeShape* BRepLib_MakeEdge2d_as_BRepLib_MakeShape_mut(BRepLib_MakeEdge2d* self_) { return static_cast<BRepLib_MakeShape*>(self_); }
-extern "C" bool BRepLib_MakeEdge2d_inherited_IsDone(const BRepLib_MakeEdge2d* self) {
-    return self->IsDone();
-}
-extern "C" void BRepLib_MakeEdge2d_inherited_Check(const BRepLib_MakeEdge2d* self) {
-    self->Check();
-}
-extern "C" void BRepLib_MakeEdge2d_inherited_Build(BRepLib_MakeEdge2d* self) {
-    self->Build();
-}
-extern "C" const TopoDS_Shape& BRepLib_MakeEdge2d_inherited_Shape(BRepLib_MakeEdge2d* self) {
-    return self->Shape();
-}
-extern "C" int32_t BRepLib_MakeEdge2d_inherited_FaceStatus(const BRepLib_MakeEdge2d* self, const TopoDS_Face& F) {
-    return static_cast<int32_t>(self->FaceStatus(F));
-}
-extern "C" bool BRepLib_MakeEdge2d_inherited_HasDescendants(const BRepLib_MakeEdge2d* self, const TopoDS_Face& F) {
-    return self->HasDescendants(F);
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeEdge2d_inherited_DescendantFaces(BRepLib_MakeEdge2d* self, const TopoDS_Face& F) {
-    return self->DescendantFaces(F);
-}
-extern "C" Standard_Integer BRepLib_MakeEdge2d_inherited_NbSurfaces(const BRepLib_MakeEdge2d* self) {
-    return self->NbSurfaces();
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeEdge2d_inherited_NewFaces(BRepLib_MakeEdge2d* self, Standard_Integer I) {
-    return self->NewFaces(I);
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeEdge2d_inherited_FacesFromEdges(BRepLib_MakeEdge2d* self, const TopoDS_Edge& E) {
-    return self->FacesFromEdges(E);
-}
-extern "C" void BRepLib_MakeEdge2d_destructor(BRepLib_MakeEdge2d* self_) { delete self_; }
-
-// ========================
-// BRepLib_MakeEdge wrappers
-// ========================
-
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor() {
-    return new BRepLib_MakeEdge();
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_vertex2(const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
-    return new BRepLib_MakeEdge(*V1, *V2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_pnt2(const gp_Pnt* P1, const gp_Pnt* P2) {
-    return new BRepLib_MakeEdge(*P1, *P2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_lin(const gp_Lin* L) {
-    return new BRepLib_MakeEdge(*L);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_lin_real2(const gp_Lin* L, Standard_Real p1, Standard_Real p2) {
-    return new BRepLib_MakeEdge(*L, p1, p2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_lin_pnt2(const gp_Lin* L, const gp_Pnt* P1, const gp_Pnt* P2) {
-    return new BRepLib_MakeEdge(*L, *P1, *P2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_lin_vertex2(const gp_Lin* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
-    return new BRepLib_MakeEdge(*L, *V1, *V2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_circ(const gp_Circ* L) {
-    return new BRepLib_MakeEdge(*L);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_circ_real2(const gp_Circ* L, Standard_Real p1, Standard_Real p2) {
-    return new BRepLib_MakeEdge(*L, p1, p2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_circ_pnt2(const gp_Circ* L, const gp_Pnt* P1, const gp_Pnt* P2) {
-    return new BRepLib_MakeEdge(*L, *P1, *P2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_circ_vertex2(const gp_Circ* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
-    return new BRepLib_MakeEdge(*L, *V1, *V2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_elips(const gp_Elips* L) {
-    return new BRepLib_MakeEdge(*L);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_elips_real2(const gp_Elips* L, Standard_Real p1, Standard_Real p2) {
-    return new BRepLib_MakeEdge(*L, p1, p2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_elips_pnt2(const gp_Elips* L, const gp_Pnt* P1, const gp_Pnt* P2) {
-    return new BRepLib_MakeEdge(*L, *P1, *P2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_elips_vertex2(const gp_Elips* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
-    return new BRepLib_MakeEdge(*L, *V1, *V2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_hypr(const gp_Hypr* L) {
-    return new BRepLib_MakeEdge(*L);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_hypr_real2(const gp_Hypr* L, Standard_Real p1, Standard_Real p2) {
-    return new BRepLib_MakeEdge(*L, p1, p2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_hypr_pnt2(const gp_Hypr* L, const gp_Pnt* P1, const gp_Pnt* P2) {
-    return new BRepLib_MakeEdge(*L, *P1, *P2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_hypr_vertex2(const gp_Hypr* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
-    return new BRepLib_MakeEdge(*L, *V1, *V2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_parab(const gp_Parab* L) {
-    return new BRepLib_MakeEdge(*L);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_parab_real2(const gp_Parab* L, Standard_Real p1, Standard_Real p2) {
-    return new BRepLib_MakeEdge(*L, p1, p2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_parab_pnt2(const gp_Parab* L, const gp_Pnt* P1, const gp_Pnt* P2) {
-    return new BRepLib_MakeEdge(*L, *P1, *P2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_parab_vertex2(const gp_Parab* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
-    return new BRepLib_MakeEdge(*L, *V1, *V2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeomcurve(const opencascade::handle<Geom_Curve>* L) {
-    return new BRepLib_MakeEdge(*L);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeomcurve_real2(const opencascade::handle<Geom_Curve>* L, Standard_Real p1, Standard_Real p2) {
-    return new BRepLib_MakeEdge(*L, p1, p2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeomcurve_pnt2(const opencascade::handle<Geom_Curve>* L, const gp_Pnt* P1, const gp_Pnt* P2) {
-    return new BRepLib_MakeEdge(*L, *P1, *P2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeomcurve_vertex2(const opencascade::handle<Geom_Curve>* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
-    return new BRepLib_MakeEdge(*L, *V1, *V2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeomcurve_pnt2_real2(const opencascade::handle<Geom_Curve>* L, const gp_Pnt* P1, const gp_Pnt* P2, Standard_Real p1, Standard_Real p2) {
-    return new BRepLib_MakeEdge(*L, *P1, *P2, p1, p2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeomcurve_vertex2_real2(const opencascade::handle<Geom_Curve>* L, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2, Standard_Real p1, Standard_Real p2) {
-    return new BRepLib_MakeEdge(*L, *V1, *V2, p1, p2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface(const opencascade::handle<Geom2d_Curve>* L, const opencascade::handle<Geom_Surface>* S) {
-    return new BRepLib_MakeEdge(*L, *S);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_real2(const opencascade::handle<Geom2d_Curve>* L, const opencascade::handle<Geom_Surface>* S, Standard_Real p1, Standard_Real p2) {
-    return new BRepLib_MakeEdge(*L, *S, p1, p2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_pnt2(const opencascade::handle<Geom2d_Curve>* L, const opencascade::handle<Geom_Surface>* S, const gp_Pnt* P1, const gp_Pnt* P2) {
-    return new BRepLib_MakeEdge(*L, *S, *P1, *P2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_vertex2(const opencascade::handle<Geom2d_Curve>* L, const opencascade::handle<Geom_Surface>* S, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
-    return new BRepLib_MakeEdge(*L, *S, *V1, *V2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_pnt2_real2(const opencascade::handle<Geom2d_Curve>* L, const opencascade::handle<Geom_Surface>* S, const gp_Pnt* P1, const gp_Pnt* P2, Standard_Real p1, Standard_Real p2) {
-    return new BRepLib_MakeEdge(*L, *S, *P1, *P2, p1, p2);
-}
-extern "C" BRepLib_MakeEdge* BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_vertex2_real2(const opencascade::handle<Geom2d_Curve>* L, const opencascade::handle<Geom_Surface>* S, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2, Standard_Real p1, Standard_Real p2) {
-    return new BRepLib_MakeEdge(*L, *S, *V1, *V2, p1, p2);
-}
-extern "C" int32_t BRepLib_MakeEdge_error(const BRepLib_MakeEdge* self_) {
-    return static_cast<int32_t>(self_->Error());
-}
-extern "C" void BRepLib_MakeEdge_init_handlegeomcurve(BRepLib_MakeEdge* self_, const opencascade::handle<Geom_Curve>* C) {
-    self_->Init(*C);
-}
-extern "C" void BRepLib_MakeEdge_init_handlegeomcurve_real2(BRepLib_MakeEdge* self_, const opencascade::handle<Geom_Curve>* C, Standard_Real p1, Standard_Real p2) {
-    self_->Init(*C, p1, p2);
-}
-extern "C" void BRepLib_MakeEdge_init_handlegeomcurve_pnt2(BRepLib_MakeEdge* self_, const opencascade::handle<Geom_Curve>* C, const gp_Pnt* P1, const gp_Pnt* P2) {
-    self_->Init(*C, *P1, *P2);
-}
-extern "C" void BRepLib_MakeEdge_init_handlegeomcurve_vertex2(BRepLib_MakeEdge* self_, const opencascade::handle<Geom_Curve>* C, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
-    self_->Init(*C, *V1, *V2);
-}
-extern "C" void BRepLib_MakeEdge_init_handlegeomcurve_pnt2_real2(BRepLib_MakeEdge* self_, const opencascade::handle<Geom_Curve>* C, const gp_Pnt* P1, const gp_Pnt* P2, Standard_Real p1, Standard_Real p2) {
-    self_->Init(*C, *P1, *P2, p1, p2);
-}
-extern "C" void BRepLib_MakeEdge_init_handlegeomcurve_vertex2_real2(BRepLib_MakeEdge* self_, const opencascade::handle<Geom_Curve>* C, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2, Standard_Real p1, Standard_Real p2) {
-    self_->Init(*C, *V1, *V2, p1, p2);
-}
-extern "C" void BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface(BRepLib_MakeEdge* self_, const opencascade::handle<Geom2d_Curve>* C, const opencascade::handle<Geom_Surface>* S) {
-    self_->Init(*C, *S);
-}
-extern "C" void BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_real2(BRepLib_MakeEdge* self_, const opencascade::handle<Geom2d_Curve>* C, const opencascade::handle<Geom_Surface>* S, Standard_Real p1, Standard_Real p2) {
-    self_->Init(*C, *S, p1, p2);
-}
-extern "C" void BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_pnt2(BRepLib_MakeEdge* self_, const opencascade::handle<Geom2d_Curve>* C, const opencascade::handle<Geom_Surface>* S, const gp_Pnt* P1, const gp_Pnt* P2) {
-    self_->Init(*C, *S, *P1, *P2);
-}
-extern "C" void BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_vertex2(BRepLib_MakeEdge* self_, const opencascade::handle<Geom2d_Curve>* C, const opencascade::handle<Geom_Surface>* S, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2) {
-    self_->Init(*C, *S, *V1, *V2);
-}
-extern "C" void BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_pnt2_real2(BRepLib_MakeEdge* self_, const opencascade::handle<Geom2d_Curve>* C, const opencascade::handle<Geom_Surface>* S, const gp_Pnt* P1, const gp_Pnt* P2, Standard_Real p1, Standard_Real p2) {
-    self_->Init(*C, *S, *P1, *P2, p1, p2);
-}
-extern "C" void BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_vertex2_real2(BRepLib_MakeEdge* self_, const opencascade::handle<Geom2d_Curve>* C, const opencascade::handle<Geom_Surface>* S, const TopoDS_Vertex* V1, const TopoDS_Vertex* V2, Standard_Real p1, Standard_Real p2) {
-    self_->Init(*C, *S, *V1, *V2, p1, p2);
-}
-extern "C" const TopoDS_Edge& BRepLib_MakeEdge_edge(BRepLib_MakeEdge* self_) {
-    return self_->Edge();
-}
-extern "C" const TopoDS_Vertex& BRepLib_MakeEdge_vertex1(const BRepLib_MakeEdge* self_) {
-    return self_->Vertex1();
-}
-extern "C" const TopoDS_Vertex& BRepLib_MakeEdge_vertex2(const BRepLib_MakeEdge* self_) {
-    return self_->Vertex2();
-}
-extern "C" const BRepLib_Command* BRepLib_MakeEdge_as_BRepLib_Command(const BRepLib_MakeEdge* self_) { return static_cast<const BRepLib_Command*>(self_); }
-extern "C" BRepLib_Command* BRepLib_MakeEdge_as_BRepLib_Command_mut(BRepLib_MakeEdge* self_) { return static_cast<BRepLib_Command*>(self_); }
-extern "C" const BRepLib_MakeShape* BRepLib_MakeEdge_as_BRepLib_MakeShape(const BRepLib_MakeEdge* self_) { return static_cast<const BRepLib_MakeShape*>(self_); }
-extern "C" BRepLib_MakeShape* BRepLib_MakeEdge_as_BRepLib_MakeShape_mut(BRepLib_MakeEdge* self_) { return static_cast<BRepLib_MakeShape*>(self_); }
-extern "C" bool BRepLib_MakeEdge_inherited_IsDone(const BRepLib_MakeEdge* self) {
-    return self->IsDone();
-}
-extern "C" void BRepLib_MakeEdge_inherited_Check(const BRepLib_MakeEdge* self) {
-    self->Check();
-}
-extern "C" void BRepLib_MakeEdge_inherited_Build(BRepLib_MakeEdge* self) {
-    self->Build();
-}
-extern "C" const TopoDS_Shape& BRepLib_MakeEdge_inherited_Shape(BRepLib_MakeEdge* self) {
-    return self->Shape();
-}
-extern "C" int32_t BRepLib_MakeEdge_inherited_FaceStatus(const BRepLib_MakeEdge* self, const TopoDS_Face& F) {
-    return static_cast<int32_t>(self->FaceStatus(F));
-}
-extern "C" bool BRepLib_MakeEdge_inherited_HasDescendants(const BRepLib_MakeEdge* self, const TopoDS_Face& F) {
-    return self->HasDescendants(F);
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeEdge_inherited_DescendantFaces(BRepLib_MakeEdge* self, const TopoDS_Face& F) {
-    return self->DescendantFaces(F);
-}
-extern "C" Standard_Integer BRepLib_MakeEdge_inherited_NbSurfaces(const BRepLib_MakeEdge* self) {
-    return self->NbSurfaces();
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeEdge_inherited_NewFaces(BRepLib_MakeEdge* self, Standard_Integer I) {
-    return self->NewFaces(I);
-}
-extern "C" const TopTools_ListOfShape& BRepLib_MakeEdge_inherited_FacesFromEdges(BRepLib_MakeEdge* self, const TopoDS_Edge& E) {
-    return self->FacesFromEdges(E);
-}
-extern "C" void BRepLib_MakeEdge_destructor(BRepLib_MakeEdge* self_) { delete self_; }
-
-// ========================
 // BOPAlgo_RemoveFeatures wrappers
 // ========================
 
@@ -55552,122 +61022,6 @@ extern "C" Standard_Real BOPAlgo_CheckResult_get_max_parameter2(const BOPAlgo_Ch
 extern "C" void BOPAlgo_CheckResult_destructor(BOPAlgo_CheckResult* self_) { delete self_; }
 
 // ========================
-// Adaptor2d_Line2d wrappers
-// ========================
-
-extern "C" Adaptor2d_Line2d* Adaptor2d_Line2d_ctor() {
-    return new Adaptor2d_Line2d();
-}
-extern "C" Adaptor2d_Line2d* Adaptor2d_Line2d_ctor_pnt2d_dir2d_real2(const gp_Pnt2d* P, const gp_Dir2d* D, Standard_Real UFirst, Standard_Real ULast) {
-    return new Adaptor2d_Line2d(*P, *D, UFirst, ULast);
-}
-extern "C" opencascade::handle<Adaptor2d_Curve2d>* Adaptor2d_Line2d_shallow_copy(const Adaptor2d_Line2d* self_) {
-    return new opencascade::handle<Adaptor2d_Curve2d>(self_->ShallowCopy());
-}
-extern "C" opencascade::handle<Adaptor2d_Curve2d>* Adaptor2d_Line2d_trim(const Adaptor2d_Line2d* self_, Standard_Real First, Standard_Real Last, Standard_Real Tol) {
-    return new opencascade::handle<Adaptor2d_Curve2d>(self_->Trim(First, Last, Tol));
-}
-extern "C" gp_Pnt2d* Adaptor2d_Line2d_value(const Adaptor2d_Line2d* self_, Standard_Real X) {
-    return new gp_Pnt2d(self_->Value(X));
-}
-extern "C" gp_Vec2d* Adaptor2d_Line2d_dn(const Adaptor2d_Line2d* self_, Standard_Real U, Standard_Integer N) {
-    return new gp_Vec2d(self_->DN(U, N));
-}
-extern "C" gp_Lin2d* Adaptor2d_Line2d_line(const Adaptor2d_Line2d* self_) {
-    return new gp_Lin2d(self_->Line());
-}
-extern "C" gp_Circ2d* Adaptor2d_Line2d_circle(const Adaptor2d_Line2d* self_) {
-    return new gp_Circ2d(self_->Circle());
-}
-extern "C" gp_Elips2d* Adaptor2d_Line2d_ellipse(const Adaptor2d_Line2d* self_) {
-    return new gp_Elips2d(self_->Ellipse());
-}
-extern "C" gp_Hypr2d* Adaptor2d_Line2d_hyperbola(const Adaptor2d_Line2d* self_) {
-    return new gp_Hypr2d(self_->Hyperbola());
-}
-extern "C" gp_Parab2d* Adaptor2d_Line2d_parabola(const Adaptor2d_Line2d* self_) {
-    return new gp_Parab2d(self_->Parabola());
-}
-extern "C" opencascade::handle<Geom2d_BezierCurve>* Adaptor2d_Line2d_bezier(const Adaptor2d_Line2d* self_) {
-    return new opencascade::handle<Geom2d_BezierCurve>(self_->Bezier());
-}
-extern "C" opencascade::handle<Geom2d_BSplineCurve>* Adaptor2d_Line2d_b_spline(const Adaptor2d_Line2d* self_) {
-    return new opencascade::handle<Geom2d_BSplineCurve>(self_->BSpline());
-}
-extern "C" int32_t Adaptor2d_Line2d_continuity(const Adaptor2d_Line2d* self_) {
-    return static_cast<int32_t>(self_->Continuity());
-}
-extern "C" Standard_Integer Adaptor2d_Line2d_nb_intervals(const Adaptor2d_Line2d* self_, int32_t S) {
-    return self_->NbIntervals(static_cast<GeomAbs_Shape>(S));
-}
-extern "C" int32_t Adaptor2d_Line2d_get_type(const Adaptor2d_Line2d* self_) {
-    return static_cast<int32_t>(self_->GetType());
-}
-extern "C" const opencascade::handle<Standard_Type>& Adaptor2d_Line2d_dynamic_type(const Adaptor2d_Line2d* self_) {
-    return self_->DynamicType();
-}
-extern "C" void Adaptor2d_Line2d_load_lin2d(Adaptor2d_Line2d* self_, const gp_Lin2d* L) {
-    self_->Load(*L);
-}
-extern "C" void Adaptor2d_Line2d_load_lin2d_real2(Adaptor2d_Line2d* self_, const gp_Lin2d* L, Standard_Real UFirst, Standard_Real ULast) {
-    self_->Load(*L, UFirst, ULast);
-}
-extern "C" Standard_Real Adaptor2d_Line2d_first_parameter(const Adaptor2d_Line2d* self_) {
-    return self_->FirstParameter();
-}
-extern "C" Standard_Real Adaptor2d_Line2d_last_parameter(const Adaptor2d_Line2d* self_) {
-    return self_->LastParameter();
-}
-extern "C" Standard_Boolean Adaptor2d_Line2d_is_closed(const Adaptor2d_Line2d* self_) {
-    return self_->IsClosed();
-}
-extern "C" Standard_Boolean Adaptor2d_Line2d_is_periodic(const Adaptor2d_Line2d* self_) {
-    return self_->IsPeriodic();
-}
-extern "C" Standard_Real Adaptor2d_Line2d_period(const Adaptor2d_Line2d* self_) {
-    return self_->Period();
-}
-extern "C" void Adaptor2d_Line2d_d0(const Adaptor2d_Line2d* self_, Standard_Real X, gp_Pnt2d* P) {
-    self_->D0(X, *P);
-}
-extern "C" void Adaptor2d_Line2d_d1(const Adaptor2d_Line2d* self_, Standard_Real X, gp_Pnt2d* P, gp_Vec2d* V) {
-    self_->D1(X, *P, *V);
-}
-extern "C" void Adaptor2d_Line2d_d2(const Adaptor2d_Line2d* self_, Standard_Real X, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
-    self_->D2(X, *P, *V1, *V2);
-}
-extern "C" void Adaptor2d_Line2d_d3(const Adaptor2d_Line2d* self_, Standard_Real X, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
-    self_->D3(X, *P, *V1, *V2, *V3);
-}
-extern "C" Standard_Real Adaptor2d_Line2d_resolution(const Adaptor2d_Line2d* self_, Standard_Real R3d) {
-    return self_->Resolution(R3d);
-}
-extern "C" Standard_Integer Adaptor2d_Line2d_degree(const Adaptor2d_Line2d* self_) {
-    return self_->Degree();
-}
-extern "C" Standard_Boolean Adaptor2d_Line2d_is_rational(const Adaptor2d_Line2d* self_) {
-    return self_->IsRational();
-}
-extern "C" Standard_Integer Adaptor2d_Line2d_nb_poles(const Adaptor2d_Line2d* self_) {
-    return self_->NbPoles();
-}
-extern "C" Standard_Integer Adaptor2d_Line2d_nb_knots(const Adaptor2d_Line2d* self_) {
-    return self_->NbKnots();
-}
-extern "C" const char* Adaptor2d_Line2d_get_type_name() {
-    return Adaptor2d_Line2d::get_type_name();
-}
-extern "C" const opencascade::handle<Standard_Type>& Adaptor2d_Line2d_get_type_descriptor() {
-    return Adaptor2d_Line2d::get_type_descriptor();
-}
-extern "C" const Adaptor2d_Curve2d* Adaptor2d_Line2d_as_Adaptor2d_Curve2d(const Adaptor2d_Line2d* self_) { return static_cast<const Adaptor2d_Curve2d*>(self_); }
-extern "C" Adaptor2d_Curve2d* Adaptor2d_Line2d_as_Adaptor2d_Curve2d_mut(Adaptor2d_Line2d* self_) { return static_cast<Adaptor2d_Curve2d*>(self_); }
-extern "C" Standard_Integer Adaptor2d_Line2d_inherited_NbSamples(const Adaptor2d_Line2d* self) {
-    return self->NbSamples();
-}
-extern "C" void Adaptor2d_Line2d_destructor(Adaptor2d_Line2d* self_) { delete self_; }
-
-// ========================
 // BRepBndLib namespace functions
 // ========================
 #include <BRepBndLib.hxx>
@@ -55722,6 +61076,55 @@ extern "C" void BRepGProp_volume_properties_shape_gprops_bool3(const TopoDS_Shap
 extern "C" Standard_Real BRepGProp_volume_properties_shape_gprops_real_bool2(const TopoDS_Shape* S, GProp_GProps* VProps, Standard_Real Eps, Standard_Boolean OnlyClosed, Standard_Boolean SkipShared) { return BRepGProp::VolumeProperties(*S, *VProps, Eps, OnlyClosed, SkipShared); }
 extern "C" Standard_Real BRepGProp_volume_properties_gk_shape_gprops_real_bool5(const TopoDS_Shape* S, GProp_GProps* VProps, Standard_Real Eps, Standard_Boolean OnlyClosed, Standard_Boolean IsUseSpan, Standard_Boolean CGFlag, Standard_Boolean IFlag, Standard_Boolean SkipShared) { return BRepGProp::VolumePropertiesGK(*S, *VProps, Eps, OnlyClosed, IsUseSpan, CGFlag, IFlag, SkipShared); }
 extern "C" Standard_Real BRepGProp_volume_properties_gk_shape_gprops_pln_real_bool5(const TopoDS_Shape* S, GProp_GProps* VProps, const gp_Pln* thePln, Standard_Real Eps, Standard_Boolean OnlyClosed, Standard_Boolean IsUseSpan, Standard_Boolean CGFlag, Standard_Boolean IFlag, Standard_Boolean SkipShared) { return BRepGProp::VolumePropertiesGK(*S, *VProps, *thePln, Eps, OnlyClosed, IsUseSpan, CGFlag, IFlag, SkipShared); }
+
+// ========================
+// BRepLib namespace functions
+// ========================
+#include <Adaptor3d_Curve.hxx>
+#include <BRepLib.hxx>
+#include <BRepTools_ReShape.hxx>
+#include <Geom2d_Curve.hxx>
+#include <GeomAbs_Shape.hxx>
+#include <Geom_Plane.hxx>
+#include <Standard_Handle.hxx>
+#include <TopTools_ListOfShape.hxx>
+#include <TopoDS_Edge.hxx>
+#include <TopoDS_Face.hxx>
+#include <TopoDS_Shape.hxx>
+#include <TopoDS_Solid.hxx>
+#include <gp_Pnt.hxx>
+extern "C" void BRepLib_precision_real_2(Standard_Real P) { BRepLib::Precision(P); }
+extern "C" Standard_Real BRepLib_precision_2() { return BRepLib::Precision(); }
+extern "C" void BRepLib_plane_handlegeomplane_2(const opencascade::handle<Geom_Plane>* P) { BRepLib::Plane(*P); }
+extern "C" opencascade::handle<Geom_Plane>* BRepLib_plane_2() { return new opencascade::handle<Geom_Plane>(BRepLib::Plane()); }
+extern "C" Standard_Boolean BRepLib_check_same_range(const TopoDS_Edge* E, Standard_Real Confusion) { return BRepLib::CheckSameRange(*E, Confusion); }
+extern "C" void BRepLib_same_range_edge_real(const TopoDS_Edge* E, Standard_Real Tolerance) { BRepLib::SameRange(*E, Tolerance); }
+extern "C" Standard_Boolean BRepLib_build_curve3d_edge_real_shape_int2(const TopoDS_Edge* E, Standard_Real Tolerance, int32_t Continuity, Standard_Integer MaxDegree, Standard_Integer MaxSegment) { return BRepLib::BuildCurve3d(*E, Tolerance, static_cast<GeomAbs_Shape>(Continuity), MaxDegree, MaxSegment); }
+extern "C" Standard_Boolean BRepLib_build_curves3d_shape_real_shape_int2(const TopoDS_Shape* S, Standard_Real Tolerance, int32_t Continuity, Standard_Integer MaxDegree, Standard_Integer MaxSegment) { return BRepLib::BuildCurves3d(*S, Tolerance, static_cast<GeomAbs_Shape>(Continuity), MaxDegree, MaxSegment); }
+extern "C" Standard_Boolean BRepLib_build_curves3d_shape(const TopoDS_Shape* S) { return BRepLib::BuildCurves3d(*S); }
+extern "C" void BRepLib_build_p_curve_for_edge_on_plane_edge_face(const TopoDS_Edge* theE, const TopoDS_Face* theF) { BRepLib::BuildPCurveForEdgeOnPlane(*theE, *theF); }
+extern "C" void BRepLib_build_p_curve_for_edge_on_plane_edge_face_handlegeom2dcurve_bool(const TopoDS_Edge* theE, const TopoDS_Face* theF, opencascade::handle<Geom2d_Curve>* aC2D, Standard_Boolean* bToUpdate) { BRepLib::BuildPCurveForEdgeOnPlane(*theE, *theF, *aC2D, *bToUpdate); }
+extern "C" Standard_Boolean BRepLib_update_edge_tol(const TopoDS_Edge* E, Standard_Real MinToleranceRequest, Standard_Real MaxToleranceToCheck) { return BRepLib::UpdateEdgeTol(*E, MinToleranceRequest, MaxToleranceToCheck); }
+extern "C" Standard_Boolean BRepLib_update_edge_tolerance(const TopoDS_Shape* S, Standard_Real MinToleranceRequest, Standard_Real MaxToleranceToCheck) { return BRepLib::UpdateEdgeTolerance(*S, MinToleranceRequest, MaxToleranceToCheck); }
+extern "C" void BRepLib_same_parameter_edge_real(const TopoDS_Edge* theEdge, Standard_Real Tolerance) { BRepLib::SameParameter(*theEdge, Tolerance); }
+extern "C" TopoDS_Edge* BRepLib_same_parameter_edge_real2_bool(const TopoDS_Edge* theEdge, Standard_Real theTolerance, Standard_Real* theNewTol, Standard_Boolean IsUseOldEdge) { return new TopoDS_Edge(BRepLib::SameParameter(*theEdge, theTolerance, *theNewTol, IsUseOldEdge)); }
+extern "C" void BRepLib_same_parameter_shape_real_bool(const TopoDS_Shape* S, Standard_Real Tolerance, Standard_Boolean forced) { BRepLib::SameParameter(*S, Tolerance, forced); }
+extern "C" void BRepLib_same_parameter_shape_reshape_real_bool(const TopoDS_Shape* S, BRepTools_ReShape* theReshaper, Standard_Real Tolerance, Standard_Boolean forced) { BRepLib::SameParameter(*S, *theReshaper, Tolerance, forced); }
+extern "C" void BRepLib_update_tolerances_shape_bool(const TopoDS_Shape* S, Standard_Boolean verifyFaceTolerance) { BRepLib::UpdateTolerances(*S, verifyFaceTolerance); }
+extern "C" void BRepLib_update_tolerances_shape_reshape_bool(const TopoDS_Shape* S, BRepTools_ReShape* theReshaper, Standard_Boolean verifyFaceTolerance) { BRepLib::UpdateTolerances(*S, *theReshaper, verifyFaceTolerance); }
+extern "C" void BRepLib_update_inner_tolerances(const TopoDS_Shape* S) { BRepLib::UpdateInnerTolerances(*S); }
+extern "C" Standard_Boolean BRepLib_orient_closed_solid(TopoDS_Solid* solid) { return BRepLib::OrientClosedSolid(*solid); }
+extern "C" int32_t BRepLib_continuity_of_faces(const TopoDS_Edge* theEdge, const TopoDS_Face* theFace1, const TopoDS_Face* theFace2, Standard_Real theAngleTol) { return static_cast<int32_t>(BRepLib::ContinuityOfFaces(*theEdge, *theFace1, *theFace2, theAngleTol)); }
+extern "C" void BRepLib_encode_regularity_shape_real(const TopoDS_Shape* S, Standard_Real TolAng) { BRepLib::EncodeRegularity(*S, TolAng); }
+extern "C" void BRepLib_encode_regularity_shape_listofshape_real(const TopoDS_Shape* S, const TopTools_ListOfShape* LE, Standard_Real TolAng) { BRepLib::EncodeRegularity(*S, *LE, TolAng); }
+extern "C" void BRepLib_encode_regularity_edge_face2_real(TopoDS_Edge* E, const TopoDS_Face* F1, const TopoDS_Face* F2, Standard_Real TolAng) { BRepLib::EncodeRegularity(*E, *F1, *F2, TolAng); }
+extern "C" void BRepLib_sort_faces(const TopoDS_Shape* S, TopTools_ListOfShape* LF) { BRepLib::SortFaces(*S, *LF); }
+extern "C" void BRepLib_reverse_sort_faces(const TopoDS_Shape* S, TopTools_ListOfShape* LF) { BRepLib::ReverseSortFaces(*S, *LF); }
+extern "C" Standard_Boolean BRepLib_ensure_normal_consistency(const TopoDS_Shape* S, Standard_Real theAngTol, Standard_Boolean ForceComputeNormals) { return BRepLib::EnsureNormalConsistency(*S, theAngTol, ForceComputeNormals); }
+extern "C" void BRepLib_update_deflection(const TopoDS_Shape* S) { BRepLib::UpdateDeflection(*S); }
+extern "C" Standard_Boolean BRepLib_find_valid_range_curve_real2_pnt_real2_pnt_real3(const Adaptor3d_Curve* theCurve, Standard_Real theTolE, Standard_Real theParV1, const gp_Pnt* thePntV1, Standard_Real theTolV1, Standard_Real theParV2, const gp_Pnt* thePntV2, Standard_Real theTolV2, Standard_Real* theFirst, Standard_Real* theLast) { return BRepLib::FindValidRange(*theCurve, theTolE, theParV1, *thePntV1, theTolV1, theParV2, *thePntV2, theTolV2, *theFirst, *theLast); }
+extern "C" Standard_Boolean BRepLib_find_valid_range_edge_real2(const TopoDS_Edge* theEdge, Standard_Real* theFirst, Standard_Real* theLast) { return BRepLib::FindValidRange(*theEdge, *theFirst, *theLast); }
+extern "C" void BRepLib_extend_face(const TopoDS_Face* theF, Standard_Real theExtVal, Standard_Boolean theExtUMin, Standard_Boolean theExtUMax, Standard_Boolean theExtVMin, Standard_Boolean theExtVMax, TopoDS_Face* theFExtended) { BRepLib::ExtendFace(*theF, theExtVal, theExtUMin, theExtUMax, theExtVMin, theExtVMax, *theFExtended); }
 
 // ========================
 // BRepTools namespace functions
@@ -55790,6 +61193,7 @@ extern "C" void BRepTools_check_locations(const TopoDS_Shape* theS, TopTools_Lis
 #include <BSplCLib.hxx>
 #include <TColgp_Array1OfPnt.hxx>
 #include <TColgp_Array1OfPnt2d.hxx>
+#include <math_Matrix.hxx>
 extern "C" void BSplCLib_reverse_array1ofpnt_int(TColgp_Array1OfPnt* Poles, Standard_Integer Last) { BSplCLib::Reverse(*Poles, Last); }
 extern "C" void BSplCLib_reverse_array1ofpnt2d_int(TColgp_Array1OfPnt2d* Poles, Standard_Integer Last) { BSplCLib::Reverse(*Poles, Last); }
 extern "C" Standard_Integer BSplCLib_max_degree() { return BSplCLib::MaxDegree(); }
@@ -55799,6 +61203,11 @@ extern "C" Standard_Boolean BSplCLib_anti_boor_scheme(Standard_Real U, Standard_
 extern "C" void BSplCLib_derivative(Standard_Integer Degree, Standard_Real* Knots, Standard_Integer Dimension, Standard_Integer Length, Standard_Integer Order, Standard_Real* Poles) { BSplCLib::Derivative(Degree, *Knots, Dimension, Length, Order, *Poles); }
 extern "C" void BSplCLib_bohm(Standard_Real U, Standard_Integer Degree, Standard_Integer N, Standard_Real* Knots, Standard_Integer Dimension, Standard_Real* Poles) { BSplCLib::Bohm(U, Degree, N, *Knots, Dimension, *Poles); }
 extern "C" Standard_Integer BSplCLib_boor_index(Standard_Integer Index, Standard_Integer Length, Standard_Integer Depth) { return BSplCLib::BoorIndex(Index, Length, Depth); }
+extern "C" Standard_Integer BSplCLib_factor_banded_matrix(math_Matrix* Matrix, Standard_Integer UpperBandWidth, Standard_Integer LowerBandWidth, Standard_Integer* PivotIndexProblem) { return BSplCLib::FactorBandedMatrix(*Matrix, UpperBandWidth, LowerBandWidth, *PivotIndexProblem); }
+extern "C" Standard_Integer BSplCLib_solve_banded_system_matrix_int3_real(const math_Matrix* Matrix, Standard_Integer UpperBandWidth, Standard_Integer LowerBandWidth, Standard_Integer ArrayDimension, Standard_Real* Array) { return BSplCLib::SolveBandedSystem(*Matrix, UpperBandWidth, LowerBandWidth, ArrayDimension, *Array); }
+extern "C" Standard_Integer BSplCLib_solve_banded_system_matrix_int2_array1ofpnt2d(const math_Matrix* Matrix, Standard_Integer UpperBandWidth, Standard_Integer LowerBandWidth, TColgp_Array1OfPnt2d* Array) { return BSplCLib::SolveBandedSystem(*Matrix, UpperBandWidth, LowerBandWidth, *Array); }
+extern "C" Standard_Integer BSplCLib_solve_banded_system_matrix_int2_array1ofpnt(const math_Matrix* Matrix, Standard_Integer UpperBandWidth, Standard_Integer LowerBandWidth, TColgp_Array1OfPnt* Array) { return BSplCLib::SolveBandedSystem(*Matrix, UpperBandWidth, LowerBandWidth, *Array); }
+extern "C" Standard_Integer BSplCLib_solve_banded_system_matrix_int2_bool_int_real2(const math_Matrix* Matrix, Standard_Integer UpperBandWidth, Standard_Integer LowerBandWidth, Standard_Boolean HomogenousFlag, Standard_Integer ArrayDimension, Standard_Real* Array, Standard_Real* Weights) { return BSplCLib::SolveBandedSystem(*Matrix, UpperBandWidth, LowerBandWidth, HomogenousFlag, ArrayDimension, *Array, *Weights); }
 extern "C" void BSplCLib_poles_coefficients_array1ofpnt2d2(const TColgp_Array1OfPnt2d* Poles, TColgp_Array1OfPnt2d* CachePoles) { BSplCLib::PolesCoefficients(*Poles, *CachePoles); }
 extern "C" void BSplCLib_poles_coefficients_array1ofpnt2(const TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt* CachePoles) { BSplCLib::PolesCoefficients(*Poles, *CachePoles); }
 extern "C" Standard_Real BSplCLib_flat_bezier_knots(Standard_Integer Degree) { return BSplCLib::FlatBezierKnots(Degree); }
@@ -55856,8 +61265,8 @@ extern "C" opencascade::handle<Geom_Curve>* GeomAPI_to3d_handlegeom2dcurve_pln(c
 #include <gp_Vec.hxx>
 extern "C" opencascade::handle<Geom_Curve>* GeomLib_to3d_ax2_handlegeom2dcurve(const gp_Ax2* Position, const opencascade::handle<Geom2d_Curve>* Curve2d) { return new opencascade::handle<Geom_Curve>(GeomLib::To3d(*Position, *Curve2d)); }
 extern "C" opencascade::handle<Geom2d_Curve>* GeomLib_g_transform(const opencascade::handle<Geom2d_Curve>* Curve, const gp_GTrsf2d* GTrsf) { return new opencascade::handle<Geom2d_Curve>(GeomLib::GTransform(*Curve, *GTrsf)); }
-extern "C" void GeomLib_same_range(Standard_Real Tolerance, const opencascade::handle<Geom2d_Curve>* Curve2dPtr, Standard_Real First, Standard_Real Last, Standard_Real RequestedFirst, Standard_Real RequestedLast, opencascade::handle<Geom2d_Curve>* NewCurve2dPtr) { GeomLib::SameRange(Tolerance, *Curve2dPtr, First, Last, RequestedFirst, RequestedLast, *NewCurve2dPtr); }
-extern "C" void GeomLib_build_curve3d(Standard_Real Tolerance, Adaptor3d_CurveOnSurface* CurvePtr, Standard_Real FirstParameter, Standard_Real LastParameter, opencascade::handle<Geom_Curve>* NewCurvePtr, Standard_Real* MaxDeviation, Standard_Real* AverageDeviation, int32_t Continuity, Standard_Integer MaxDegree, Standard_Integer MaxSegment) { GeomLib::BuildCurve3d(Tolerance, *CurvePtr, FirstParameter, LastParameter, *NewCurvePtr, *MaxDeviation, *AverageDeviation, static_cast<GeomAbs_Shape>(Continuity), MaxDegree, MaxSegment); }
+extern "C" void GeomLib_same_range_real_handlegeom2dcurve_real4_handlegeom2dcurve(Standard_Real Tolerance, const opencascade::handle<Geom2d_Curve>* Curve2dPtr, Standard_Real First, Standard_Real Last, Standard_Real RequestedFirst, Standard_Real RequestedLast, opencascade::handle<Geom2d_Curve>* NewCurve2dPtr) { GeomLib::SameRange(Tolerance, *Curve2dPtr, First, Last, RequestedFirst, RequestedLast, *NewCurve2dPtr); }
+extern "C" void GeomLib_build_curve3d_real_curveonsurface_real2_handlegeomcurve_real2_shape_int2(Standard_Real Tolerance, Adaptor3d_CurveOnSurface* CurvePtr, Standard_Real FirstParameter, Standard_Real LastParameter, opencascade::handle<Geom_Curve>* NewCurvePtr, Standard_Real* MaxDeviation, Standard_Real* AverageDeviation, int32_t Continuity, Standard_Integer MaxDegree, Standard_Integer MaxSegment) { GeomLib::BuildCurve3d(Tolerance, *CurvePtr, FirstParameter, LastParameter, *NewCurvePtr, *MaxDeviation, *AverageDeviation, static_cast<GeomAbs_Shape>(Continuity), MaxDegree, MaxSegment); }
 extern "C" void GeomLib_adjust_extremity(opencascade::handle<Geom_BoundedCurve>* Curve, const gp_Pnt* P1, const gp_Pnt* P2, const gp_Vec* T1, const gp_Vec* T2) { GeomLib::AdjustExtremity(*Curve, *P1, *P2, *T1, *T2); }
 extern "C" void GeomLib_extend_curve_to_point(opencascade::handle<Geom_BoundedCurve>* Curve, const gp_Pnt* Point, Standard_Integer Cont, Standard_Boolean After) { GeomLib::ExtendCurveToPoint(*Curve, *Point, Cont, After); }
 extern "C" void GeomLib_extend_surf_by_length(opencascade::handle<Geom_BoundedSurface>* Surf, Standard_Real Length, Standard_Integer Cont, Standard_Boolean InU, Standard_Boolean After) { GeomLib::ExtendSurfByLength(*Surf, Length, Cont, InU, After); }
@@ -55917,6 +61326,12 @@ extern "C" TCollection_AsciiString* Message_fill_time(Standard_Integer Hour, Sta
 extern "C" opencascade::handle<Message_Report>* Message_default_report(Standard_Boolean theToCreate) { return new opencascade::handle<Message_Report>(Message::DefaultReport(theToCreate)); }
 extern "C" const char* Message_metric_to_string(int32_t theType) { return Message::MetricToString(static_cast<Message_MetricType>(theType)); }
 extern "C" int32_t Message_metric_from_string(const char* theString) { return static_cast<int32_t>(Message::MetricFromString(theString)); }
+
+// ========================
+// NCollection_Primes namespace functions
+// ========================
+#include <NCollection_Primes.hxx>
+extern "C" Standard_Integer NCollection_Primes_next_prime_for_map(Standard_Integer theN) { return NCollection_Primes::NextPrimeForMap(theN); }
 
 // ========================
 // Poly namespace functions
@@ -56006,6 +61421,12 @@ extern "C" Standard_Integer Standard_purge() { return Standard::Purge(); }
 #include <StlAPI.hxx>
 #include <TopoDS_Shape.hxx>
 extern "C" Standard_Boolean StlAPI_write_shape_charptr_bool(const TopoDS_Shape* theShape, const char* theFile, Standard_Boolean theAsciiMode) { return StlAPI::Write(*theShape, theFile, theAsciiMode); }
+
+// ========================
+// TCollection namespace functions
+// ========================
+#include <TCollection.hxx>
+extern "C" Standard_Integer TCollection_next_prime_for_map(Standard_Integer I) { return TCollection::NextPrimeForMap(I); }
 
 // ========================
 // TopAbs namespace functions
@@ -56107,6 +61528,13 @@ extern "C" gp_Dir2d* gp_dx2d() { return new gp_Dir2d(gp::DX2d()); }
 extern "C" gp_Dir2d* gp_dy2d() { return new gp_Dir2d(gp::DY2d()); }
 extern "C" gp_Ax2d* gp_ox2d() { return new gp_Ax2d(gp::OX2d()); }
 extern "C" gp_Ax2d* gp_oy2d() { return new gp_Ax2d(gp::OY2d()); }
+
+// ========================
+// math namespace functions
+// ========================
+#include <math.hxx>
+extern "C" Standard_Integer math_gauss_points_max() { return math::GaussPointsMax(); }
+extern "C" Standard_Integer math_kronrod_points_max() { return math::KronrodPointsMax(); }
 
 
 // ========================

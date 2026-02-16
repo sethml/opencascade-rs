@@ -1,13 +1,15 @@
+use std::ffi::CStr;
+
 use opencascade_sys::b_rep;
 use opencascade_sys::b_rep_algo_api;
 use opencascade_sys::b_rep_builder_api;
 use opencascade_sys::b_rep_fillet_api;
-use opencascade_sys::b_rep_offset;
-use opencascade_sys::ch_fi3d;
 use opencascade_sys::b_rep_lib;
 use opencascade_sys::b_rep_mesh;
+use opencascade_sys::b_rep_offset;
 use opencascade_sys::b_rep_offset_api;
 use opencascade_sys::b_rep_prim_api;
+use opencascade_sys::ch_fi3d;
 use opencascade_sys::gc;
 use opencascade_sys::gce2d;
 use opencascade_sys::geom;
@@ -20,6 +22,7 @@ use opencascade_sys::top_abs;
 use opencascade_sys::top_exp;
 use opencascade_sys::top_tools;
 use opencascade_sys::topo_ds;
+use opencascade_sys::OwnedPtr;
 
 // All dimensions are in millimeters.
 pub fn main() {
@@ -40,7 +43,7 @@ pub fn main() {
     let segment_2 = gc::MakeSegment::new_pnt2(&point_4, &point_5);
 
     // Profile : Define the Topology
-    // GC_Make* types have a .value() CXX method returning &HandleGeomTrimmedCurve.
+    // GC_Make* types have a .value() method returning &HandleGeomTrimmedCurve.
     // We upcast to HandleGeomCurve for BRepBuilderAPI_MakeEdge.
     let segment_1_curve = segment_1.value().to_handle_curve();
     let arc_curve = arc_of_circle.value().to_handle_curve();
@@ -51,27 +54,27 @@ pub fn main() {
     let mut edge_3 = b_rep_builder_api::MakeEdge::new_handlegeomcurve(&segment_2_curve);
 
     let mut wire = b_rep_builder_api::MakeWire::new_edge3(
-        edge_1.pin_mut().edge(),
-        edge_2.pin_mut().edge(),
-        edge_3.pin_mut().edge(),
+        edge_1.edge(),
+        edge_2.edge(),
+        edge_3.edge(),
     );
 
     // Complete Profile
     let x_axis = gp::ox();
 
     let mut trsf = gp::Trsf::new();
-    trsf.pin_mut().set_mirror_ax1(&x_axis);
+    trsf.set_mirror_ax1(&x_axis);
 
     let mut brep_transform =
-        b_rep_builder_api::Transform::new_shape_trsf(wire.pin_mut().shape(), &trsf);
-    let mirrored_shape = brep_transform.pin_mut().shape();
-    let mirrored_wire = topo_ds::wire(mirrored_shape);
+        b_rep_builder_api::Transform::new_shape_trsf(wire.shape(), &trsf);
+    let mirrored_shape = brep_transform.shape();
+    let mirrored_wire = unsafe { &*topo_ds::wire(mirrored_shape) };
 
     let mut make_wire = b_rep_builder_api::MakeWire::new();
-    make_wire.pin_mut().add_wire(wire.pin_mut().wire());
-    make_wire.pin_mut().add_wire(mirrored_wire);
+    make_wire.add_wire(wire.wire());
+    make_wire.add_wire(mirrored_wire);
 
-    let wire_profile = make_wire.pin_mut().wire();
+    let wire_profile = make_wire.wire();
 
     // Body : Prism the Profile
     let face_profile = b_rep_builder_api::MakeFace::new_wire_bool(wire_profile, false);
@@ -82,22 +85,22 @@ pub fn main() {
     // Body : Apply Fillets
     let mut make_fillet =
         b_rep_fillet_api::MakeFillet::new_shape_filletshape(
-            body.pin_mut().shape(),
+            body.shape(),
             ch_fi3d::FilletShape::Rational,
         );
     let mut edge_explorer = top_exp::Explorer::new_shape_shapeenum2(
-        body.pin_mut().shape(),
+        body.shape(),
         top_abs::ShapeEnum::Edge,
         top_abs::ShapeEnum::Shape,
     );
 
     while edge_explorer.more() {
-        let edge = topo_ds::edge(edge_explorer.current());
-        make_fillet.pin_mut().add_real_edge(thickness / 12.0, edge);
-        edge_explorer.pin_mut().next();
+        let edge = unsafe { &*topo_ds::edge(edge_explorer.current()) };
+        make_fillet.add_real_edge(thickness / 12.0, edge);
+        edge_explorer.next();
     }
 
-    let body_shape = make_fillet.pin_mut().shape();
+    let body_shape = make_fillet.shape();
 
     // Body : Add the Neck
     let neck_location = gp::Pnt::new_real3(0.0, 0.0, height);
@@ -109,11 +112,11 @@ pub fn main() {
 
     let mut cylinder =
         b_rep_prim_api::MakeCylinder::new_ax2_real2(&neck_ax2, neck_radius, neck_height);
-    let cylinder_shape = cylinder.pin_mut().shape();
+    let cylinder_shape = cylinder.shape();
 
     let progress = message::ProgressRange::new();
     let mut fuse = b_rep_algo_api::Fuse::new_shape2_progressrange(body_shape, cylinder_shape, &progress);
-    let body_shape = fuse.pin_mut().shape();
+    let body_shape = fuse.shape();
 
     // Body : Create a Hollowed Solid
     let mut face_explorer = top_exp::Explorer::new_shape_shapeenum2(
@@ -122,11 +125,11 @@ pub fn main() {
         top_abs::ShapeEnum::Shape,
     );
     let mut z_max = -1.0_f64;
-    let mut top_face: Option<cxx::UniquePtr<topo_ds::Face>> = None;
+    let mut top_face: Option<OwnedPtr<topo_ds::Face>> = None;
 
     while face_explorer.more() {
         let current = face_explorer.current();
-        let face = topo_ds::face(current);
+        let face = unsafe { &*topo_ds::face(current) };
         let surface = b_rep::Tool::surface_face(face);
 
         // Check if this face is a Geom_Plane
@@ -134,8 +137,9 @@ pub fn main() {
         let dynamic_type = surface_ref.dynamic_type();
         let type_obj = dynamic_type.get();
         let name = type_obj.name();
+        let name_str = unsafe { CStr::from_ptr(name) }.to_str().unwrap_or("");
 
-        if name == "Geom_Plane" {
+        if name_str == "Geom_Plane" {
             // TODO: The binding generator should produce Handle downcasts
             // (e.g., HandleGeomSurface → HandleGeomPlane via Handle::DownCast).
             // Until then, we use an unsafe pointer cast after confirming the
@@ -152,17 +156,17 @@ pub fn main() {
             }
         }
 
-        face_explorer.pin_mut().next();
+        face_explorer.next();
     }
 
     let top_face = top_face.unwrap();
 
     let mut faces_to_remove = top_tools::ListOfShape::new();
-    faces_to_remove.pin_mut().append(top_face.as_shape());
+    faces_to_remove.append(top_face.as_shape());
 
     let mut solid_maker = b_rep_offset_api::MakeThickSolid::new();
     let progress = message::ProgressRange::new();
-    solid_maker.pin_mut().make_thick_solid_by_join(
+    solid_maker.make_thick_solid_by_join(
         body_shape,
         &faces_to_remove,
         -thickness / 50.0,
@@ -175,7 +179,7 @@ pub fn main() {
         &progress,
     );
 
-    let body_shape = solid_maker.pin_mut().shape();
+    let body_shape = solid_maker.shape();
 
     // Threading : Create Surfaces
     let neck_ax3 = gp::Ax3::new_ax2(&neck_ax2);
@@ -230,36 +234,34 @@ pub fn main() {
         b_rep_builder_api::MakeEdge::new_handlegeom2dcurve_handlegeomsurface(&segment_handle, &handle_surface_2);
 
     let mut threading_wire_1 = b_rep_builder_api::MakeWire::new_edge2(
-        edge_1_on_surf_1.pin_mut().edge(),
-        edge_2_on_surf_1.pin_mut().edge(),
+        edge_1_on_surf_1.edge(),
+        edge_2_on_surf_1.edge(),
     );
     let mut threading_wire_2 = b_rep_builder_api::MakeWire::new_edge2(
-        edge_1_on_surf_2.pin_mut().edge(),
-        edge_2_on_surf_2.pin_mut().edge(),
+        edge_1_on_surf_2.edge(),
+        edge_2_on_surf_2.edge(),
     );
 
-    b_rep_lib::build_curves3d(threading_wire_1.pin_mut().shape());
-    b_rep_lib::build_curves3d(threading_wire_2.pin_mut().shape());
+    unsafe {
+        b_rep_lib::build_curves3d_shape(threading_wire_1.shape() as *const _);
+        b_rep_lib::build_curves3d_shape(threading_wire_2.shape() as *const _);
+    }
 
     // Create Threading
     let mut threading_loft = b_rep_offset_api::ThruSections::new_bool2_real(true, false, 1.0e-06);
-    threading_loft
-        .pin_mut()
-        .add_wire(threading_wire_1.pin_mut().wire());
-    threading_loft
-        .pin_mut()
-        .add_wire(threading_wire_2.pin_mut().wire());
-    threading_loft.pin_mut().check_compatibility(false);
+    threading_loft.add_wire(threading_wire_1.wire());
+    threading_loft.add_wire(threading_wire_2.wire());
+    threading_loft.check_compatibility(false);
 
-    let threading_shape = threading_loft.pin_mut().shape();
+    let threading_shape = threading_loft.shape();
 
     // Building the Resulting Compound
     let mut compound = topo_ds::Compound::new();
     let builder = b_rep::Builder::new();
-    builder.make_compound(compound.pin_mut());
+    builder.make_compound(&mut compound);
 
-    builder.add(compound.pin_mut().as_shape_mut(), body_shape);
-    builder.add(compound.pin_mut().as_shape_mut(), threading_shape);
+    builder.add(compound.as_shape_mut(), body_shape);
+    builder.add(compound.as_shape_mut(), threading_shape);
 
     // Export to an STL file
     let progress = message::ProgressRange::new();
@@ -271,9 +273,9 @@ pub fn main() {
         false,
     );
     let mut stl_writer = stl_api::Writer::new();
+    let filename = std::ffi::CString::new("bottle.stl").unwrap();
     let success = stl_writer
-        .pin_mut()
-        .write(compound.as_shape(), "bottle.stl", &progress);
+        .write(compound.as_shape(), filename.as_ptr(), &progress);
 
     println!("Done! Success = {success}");
 }

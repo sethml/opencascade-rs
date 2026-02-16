@@ -79,6 +79,20 @@ fn main() {
     build
         .cpp(true)
         .flag_if_supported("-std=c++14")
+        // Generated wrappers use extern "C" functions that return C++ reference types
+        // (e.g. const TopoDS_Shape&). This is technically incompatible with C linkage
+        // but works fine for Rust FFI where both sides agree on calling convention.
+        .flag_if_supported("-Wno-unused-function")
+        .flag_if_supported("-Wno-deprecated-declarations")
+        .flag_if_supported("-Wno-return-type-c-linkage")
+        // OCCT classes math_FunctionSample, Poly_MakeLoops, Poly_MakeLoops2D,
+        // and Poly_MakeLoops3D have virtual functions but non-virtual destructors.
+        // Our generated destructors always delete through the concrete type pointer
+        // (e.g. delete static_cast<Poly_MakeLoops3D*>(ptr)), never through a base
+        // pointer, so the non-virtual destructor is safe. OwnedPtr<T> ensures the
+        // static type always matches the dynamic type.
+        .flag_if_supported("-Wno-delete-non-abstract-non-virtual-dtor")
+        .flag_if_supported("-Wno-delete-abstract-non-virtual-dtor")
         .define("_USE_MATH_DEFINES", "TRUE")
         .include(&occt_config.include_dir)
         .include(&gen_dir)

@@ -354,6 +354,21 @@ impl DistFunction {
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         unsafe { crate::ffi::GCPnts_DistFunction_value(self as *mut Self, X, F) }
     }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe { &*(crate::ffi::GCPnts_DistFunction_as_math_Function(self as *const Self)) }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe { &mut *(crate::ffi::GCPnts_DistFunction_as_math_Function_mut(self as *mut Self)) }
+    }
+
+    /// Inherited from math_Function: GetStateNumber()
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::GCPnts_DistFunction_inherited_GetStateNumber(self as *mut Self) }
+    }
 }
 
 /// The same as class GCPnts_DistFunction, but it can be used in minimization algorithms that
@@ -379,6 +394,27 @@ impl DistFunctionMV {
 
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::GCPnts_DistFunctionMV_nb_variables(self as *const Self) }
+    }
+
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        unsafe {
+            &*(crate::ffi::GCPnts_DistFunctionMV_as_math_MultipleVarFunction(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
+        unsafe {
+            &mut *(crate::ffi::GCPnts_DistFunctionMV_as_math_MultipleVarFunction_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::GCPnts_DistFunctionMV_inherited_GetStateNumber(self as *mut Self) }
     }
 }
 
@@ -424,6 +460,21 @@ impl DistFunction2d {
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         unsafe { crate::ffi::GCPnts_DistFunction2d_value(self as *mut Self, X, F) }
     }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe { &*(crate::ffi::GCPnts_DistFunction2d_as_math_Function(self as *const Self)) }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe { &mut *(crate::ffi::GCPnts_DistFunction2d_as_math_Function_mut(self as *mut Self)) }
+    }
+
+    /// Inherited from math_Function: GetStateNumber()
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::GCPnts_DistFunction2d_inherited_GetStateNumber(self as *mut Self) }
+    }
 }
 
 /// The same as class GCPnts_DistFunction2d,
@@ -450,6 +501,27 @@ impl DistFunction2dMV {
 
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::GCPnts_DistFunction2dMV_nb_variables(self as *const Self) }
+    }
+
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        unsafe {
+            &*(crate::ffi::GCPnts_DistFunction2dMV_as_math_MultipleVarFunction(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
+        unsafe {
+            &mut *(crate::ffi::GCPnts_DistFunction2dMV_as_math_MultipleVarFunction_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::GCPnts_DistFunction2dMV_inherited_GetStateNumber(self as *mut Self) }
     }
 }
 

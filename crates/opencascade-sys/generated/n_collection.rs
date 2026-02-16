@@ -36,6 +36,95 @@ impl TryFrom<i32> for CellFilterAction {
 }
 
 // ========================
+// From NCollection_AccAllocator.hxx
+// ========================
+
+///
+/// Class  NCollection_AccAllocator  -  accumulating  memory  allocator.  This
+/// class  allocates  memory on request returning the pointer to the allocated
+/// space.  The  allocation  units  are  grouped  in blocks requested from the
+/// system  as  required.  This  memory  is  returned  to  the system when all
+/// allocations in a block are freed.
+///
+/// By comparison with  the standard new() and malloc()  calls, this method is
+/// faster and consumes very small additional memory to maintain the heap.
+///
+/// By comparison with NCollection_IncAllocator,  this class requires some more
+/// additional memory  and a little more time for allocation and deallocation.
+/// Memory overhead for NCollection_IncAllocator is 12 bytes per block;
+/// average memory overhead for NCollection_AccAllocator is 28 bytes per block.
+///
+/// All pointers  returned by Allocate() are aligned to 4 byte boundaries.
+/// To  define  the size  of  memory  blocks  requested  from the OS,  use the
+/// parameter of the constructor (measured in bytes).
+pub use crate::ffi::NCollection_AccAllocator as AccAllocator;
+
+unsafe impl crate::CppDeletable for AccAllocator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::NCollection_AccAllocator_destructor(ptr);
+    }
+}
+
+impl AccAllocator {
+    /// Constructor
+    pub fn new_size(theBlockSize: usize) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::NCollection_AccAllocator_ctor_size(theBlockSize))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::NCollection_AccAllocator_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::NCollection_AccAllocator_get_type_name() }
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::NCollection_AccAllocator_get_type_descriptor()) }
+    }
+}
+
+// ========================
+// From NCollection_AlignedAllocator.hxx
+// ========================
+
+/// NCollection allocator with managed memory alignment capabilities.
+pub use crate::ffi::NCollection_AlignedAllocator as AlignedAllocator;
+
+unsafe impl crate::CppDeletable for AlignedAllocator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::NCollection_AlignedAllocator_destructor(ptr);
+    }
+}
+
+impl AlignedAllocator {
+    /// Constructor. The alignment should be specified explicitly:
+    /// 16 bytes for SSE instructions
+    /// 32 bytes for AVX instructions
+    pub fn new_size(theAlignment: usize) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::NCollection_AlignedAllocator_ctor_size(
+                theAlignment,
+            ))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::NCollection_AlignedAllocator_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::NCollection_AlignedAllocator_get_type_name() }
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::NCollection_AlignedAllocator_get_type_descriptor()) }
+    }
+}
+
+// ========================
 // From NCollection_BaseAllocator.hxx
 // ========================
 
@@ -203,6 +292,121 @@ impl BasePointerVector {
 }
 
 // ========================
+// From NCollection_Buffer.hxx
+// ========================
+
+/// Low-level buffer object.
+pub use crate::ffi::NCollection_Buffer as Buffer;
+
+unsafe impl crate::CppDeletable for Buffer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::NCollection_Buffer_destructor(ptr);
+    }
+}
+
+impl Buffer {
+    /// @return true if buffer is not allocated
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::NCollection_Buffer_is_empty(self as *const Self) }
+    }
+
+    /// Return buffer length in bytes.
+    pub fn size(&self) -> usize {
+        unsafe { crate::ffi::NCollection_Buffer_size(self as *const Self) }
+    }
+
+    /// @return buffer allocator
+    pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
+        unsafe { &*(crate::ffi::NCollection_Buffer_allocator(self as *const Self)) }
+    }
+
+    /// Assign new buffer allocator with de-allocation of buffer.
+    pub fn set_allocator(&mut self, theAlloc: &crate::ffi::HandleNCollectionBaseAllocator) {
+        unsafe { crate::ffi::NCollection_Buffer_set_allocator(self as *mut Self, theAlloc) }
+    }
+
+    /// Allocate the buffer.
+    /// @param theSize buffer length in bytes
+    pub fn allocate(&mut self, theSize: usize) -> bool {
+        unsafe { crate::ffi::NCollection_Buffer_allocate(self as *mut Self, theSize) }
+    }
+
+    /// De-allocate buffer.
+    pub fn free(&mut self) {
+        unsafe { crate::ffi::NCollection_Buffer_free(self as *mut Self) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::NCollection_Buffer_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::NCollection_Buffer_get_type_name() }
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::NCollection_Buffer_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionBuffer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::NCollection_Buffer_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleNCollectionBuffer;
+
+unsafe impl crate::CppDeletable for HandleNCollectionBuffer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleNCollectionBuffer_destructor(ptr);
+    }
+}
+
+impl HandleNCollectionBuffer {
+    /// Dereference this Handle to access the underlying NCollection_Buffer
+    pub fn get(&self) -> &crate::ffi::NCollection_Buffer {
+        unsafe { &*(crate::ffi::HandleNCollectionBuffer_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying NCollection_Buffer
+    pub fn get_mut(&mut self) -> &mut crate::ffi::NCollection_Buffer {
+        unsafe { &mut *(crate::ffi::HandleNCollectionBuffer_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From NCollection_HeapAllocator.hxx
+// ========================
+
+///
+/// Allocator that uses the global dynamic heap (malloc / free).
+pub use crate::ffi::NCollection_HeapAllocator as HeapAllocator;
+
+unsafe impl crate::CppDeletable for HeapAllocator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::NCollection_HeapAllocator_destructor(ptr);
+    }
+}
+
+impl HeapAllocator {
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::NCollection_HeapAllocator_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::NCollection_HeapAllocator_get_type_name() }
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::NCollection_HeapAllocator_get_type_descriptor()) }
+    }
+}
+
+// ========================
 // From NCollection_IncAllocator.hxx
 // ========================
 
@@ -281,5 +485,53 @@ impl IncAllocator {
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NCollection_IncAllocator_get_type_descriptor()) }
+    }
+}
+
+// ========================
+// From NCollection_WinHeapAllocator.hxx
+// ========================
+
+/// This memory allocator creates dedicated heap for allocations.
+/// This technics available only on Windows platform
+/// (no alternative on Unix systems).
+/// It may be used to take control over memory fragmentation
+/// because on destruction ALL allocated memory will be released
+/// to the system.
+///
+/// This allocator can also be created per each working thread
+/// however its real multi-threading performance is dubious.
+///
+/// Notice that this also means that existing pointers will be broken
+/// and you should control that allocator is alive along all objects
+/// allocated with him.
+pub use crate::ffi::NCollection_WinHeapAllocator as WinHeapAllocator;
+
+unsafe impl crate::CppDeletable for WinHeapAllocator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::NCollection_WinHeapAllocator_destructor(ptr);
+    }
+}
+
+impl WinHeapAllocator {
+    /// Main constructor
+    pub fn new_size(theInitSizeBytes: usize) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::NCollection_WinHeapAllocator_ctor_size(
+                theInitSizeBytes,
+            ))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::NCollection_WinHeapAllocator_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::NCollection_WinHeapAllocator_get_type_name() }
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::NCollection_WinHeapAllocator_get_type_descriptor()) }
     }
 }

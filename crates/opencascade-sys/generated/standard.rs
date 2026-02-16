@@ -8,34 +8,6 @@
 
 pub use crate::ffi::Standard_purge as purge;
 
-/// C++ enum: `Standard_HandlerStatus`
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(i32)]
-pub enum HandlerStatus {
-    Handlervoid = 0,
-    Handlerjumped = 1,
-    Handlerprocessed = 2,
-}
-
-impl From<HandlerStatus> for i32 {
-    fn from(value: HandlerStatus) -> Self {
-        value as i32
-    }
-}
-
-impl TryFrom<i32> for HandlerStatus {
-    type Error = i32;
-
-    fn try_from(value: i32) -> Result<Self, i32> {
-        match value {
-            0 => Ok(HandlerStatus::Handlervoid),
-            1 => Ok(HandlerStatus::Handlerjumped),
-            2 => Ok(HandlerStatus::Handlerprocessed),
-            _ => Err(value),
-        }
-    }
-}
-
 /// Kind of key in Json string
 /// C++ enum: `Standard_JsonKey`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -80,6 +52,235 @@ impl TryFrom<i32> for JsonKey {
             7 => Ok(JsonKey::JsonkeySeparatorvaluetovalue),
             _ => Err(value),
         }
+    }
+}
+
+/// C++ enum: `Standard_HandlerStatus`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum HandlerStatus {
+    Handlervoid = 0,
+    Handlerjumped = 1,
+    Handlerprocessed = 2,
+}
+
+impl From<HandlerStatus> for i32 {
+    fn from(value: HandlerStatus) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for HandlerStatus {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(HandlerStatus::Handlervoid),
+            1 => Ok(HandlerStatus::Handlerjumped),
+            2 => Ok(HandlerStatus::Handlerprocessed),
+            _ => Err(value),
+        }
+    }
+}
+
+// ========================
+// From Standard_AbortiveTransaction.hxx
+// ========================
+
+pub use crate::ffi::Standard_AbortiveTransaction as AbortiveTransaction;
+
+unsafe impl crate::CppDeletable for AbortiveTransaction {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_AbortiveTransaction_destructor(ptr);
+    }
+}
+
+impl AbortiveTransaction {
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_AbortiveTransaction_ctor()) }
+    }
+
+    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_AbortiveTransaction_ctor_charptr(
+                theMessage,
+            ))
+        }
+    }
+
+    pub fn new_charptr2(
+        theMessage: *const std::ffi::c_char,
+        theStackTrace: *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_AbortiveTransaction_ctor_charptr2(
+                theMessage,
+                theStackTrace,
+            ))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_AbortiveTransaction_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn raise(theMessage: *const std::ffi::c_char) {
+        unsafe { crate::ffi::Standard_AbortiveTransaction_raise(theMessage) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Standard_AbortiveTransaction_get_type_name() }
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_AbortiveTransaction_get_type_descriptor()) }
+    }
+}
+
+// ========================
+// From Standard_ArrayStreamBuffer.hxx
+// ========================
+
+/// Custom buffer object implementing STL interface std::streambuf for streamed reading from
+/// allocated memory block. Implements minimal sub-set of methods for passing buffer to
+/// std::istream, including seek support.
+///
+/// This class can be used for creating a seekable input stream in cases,
+/// when the source data does not satisfies Reader requirements (non-seekable stream, compressed
+/// data) or represents an in-memory resource.
+///
+/// The memory itself is NOT managed by this class - it is up to the caller to ensure that passed
+/// memory pointer is not released during Standard_ArrayStreamBuffer lifetime.
+///
+/// Usage example:
+/// @code
+/// const char*  theBuffer;
+/// const size_t theBufferLength;
+/// Standard_ArrayStreamBuffer aStreamBuffer (theBuffer, theBufferLength);
+/// std::istream aStream (&aStreamBuffer);
+/// TopoDS_Shape aShape;
+/// BRep_Builder aBuilder;
+/// BRepTools::Read (aShape, aStream, aBuilder);
+/// @endcode
+pub use crate::ffi::Standard_ArrayStreamBuffer as ArrayStreamBuffer;
+
+unsafe impl crate::CppDeletable for ArrayStreamBuffer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_ArrayStreamBuffer_destructor(ptr);
+    }
+}
+
+impl ArrayStreamBuffer {
+    /// Main constructor.
+    /// Passed pointer is stored as is (memory is NOT copied nor released with destructor).
+    /// @param theBegin pointer to the beginning of pre-allocated buffer
+    /// @param theSize  length of pre-allocated buffer
+    pub fn new_charptr_size(
+        theBegin: *const std::ffi::c_char,
+        theSize: usize,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_ArrayStreamBuffer_ctor_charptr_size(
+                theBegin, theSize,
+            ))
+        }
+    }
+
+    /// (Re)-initialize the stream.
+    /// Passed pointer is stored as is (memory is NOT copied nor released with destructor).
+    /// @param theBegin pointer to the beginning of pre-allocated buffer
+    /// @param theSize  length of pre-allocated buffer
+    pub fn init(&mut self, theBegin: *const std::ffi::c_char, theSize: usize) {
+        unsafe { crate::ffi::Standard_ArrayStreamBuffer_init(self as *mut Self, theBegin, theSize) }
+    }
+}
+
+// ========================
+// From Standard_CLocaleSentry.hxx
+// ========================
+
+/// This class intended to temporary switch C locale and logically equivalent to setlocale(LC_ALL,
+/// "C"). It is intended to format text regardless of user locale settings (for import/export
+/// functionality). Thus following calls to sprintf, atoi and other functions will use "C" locale.
+/// Destructor of this class will return original locale.
+///
+/// Notice that this functionality is platform dependent and intended only to workaround alien code
+/// that doesn't setup locale correctly.
+///
+/// Internally you should prefer more portable C++ locale interfaces
+/// or OCCT wrappers to some C functions like Sprintf, Atof, Strtod.
+pub use crate::ffi::Standard_CLocaleSentry as CLocaleSentry;
+
+unsafe impl crate::CppDeletable for CLocaleSentry {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_CLocaleSentry_destructor(ptr);
+    }
+}
+
+impl CLocaleSentry {
+    /// Setup current C locale to "C".
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_CLocaleSentry_ctor()) }
+    }
+}
+
+// ========================
+// From Standard_Condition.hxx
+// ========================
+
+/// This is boolean flag intended for communication between threads.
+/// One thread sets this flag to TRUE to indicate some event happened
+/// and another thread either waits this event or checks periodically its state to perform job.
+///
+/// This class provides interface similar to WinAPI Event objects.
+pub use crate::ffi::Standard_Condition as Condition;
+
+unsafe impl crate::CppDeletable for Condition {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_Condition_destructor(ptr);
+    }
+}
+
+impl Condition {
+    /// Default constructor.
+    /// @param theIsSet Initial flag state
+    pub fn new_bool(theIsSet: bool) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Condition_ctor_bool(theIsSet)) }
+    }
+
+    /// Set event into signaling state.
+    pub fn set(&mut self) {
+        unsafe { crate::ffi::Standard_Condition_set(self as *mut Self) }
+    }
+
+    /// Reset event (unset signaling state)
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::Standard_Condition_reset(self as *mut Self) }
+    }
+
+    /// Wait for Event (infinity).
+    pub fn wait(&mut self) {
+        unsafe { crate::ffi::Standard_Condition_wait(self as *mut Self) }
+    }
+
+    /// Wait for signal requested time.
+    /// @param theTimeMilliseconds wait limit in milliseconds
+    /// @return true if get event
+    pub fn wait_int(&mut self, theTimeMilliseconds: i32) -> bool {
+        unsafe { crate::ffi::Standard_Condition_wait_int(self as *mut Self, theTimeMilliseconds) }
+    }
+
+    /// Do not wait for signal - just test it state.
+    /// @return true if get event
+    pub fn check(&mut self) -> bool {
+        unsafe { crate::ffi::Standard_Condition_check(self as *mut Self) }
+    }
+
+    /// Method perform two steps at-once - reset the event object
+    /// and returns true if it was in signaling state.
+    /// @return true if event object was in signaling state.
+    pub fn check_reset(&mut self) -> bool {
+        unsafe { crate::ffi::Standard_Condition_check_reset(self as *mut Self) }
     }
 }
 
@@ -240,6 +441,58 @@ impl DimensionMismatch {
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_DimensionMismatch_get_type_descriptor()) }
+    }
+}
+
+// ========================
+// From Standard_DivideByZero.hxx
+// ========================
+
+pub use crate::ffi::Standard_DivideByZero as DivideByZero;
+
+unsafe impl crate::CppDeletable for DivideByZero {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_DivideByZero_destructor(ptr);
+    }
+}
+
+impl DivideByZero {
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_DivideByZero_ctor()) }
+    }
+
+    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_DivideByZero_ctor_charptr(theMessage))
+        }
+    }
+
+    pub fn new_charptr2(
+        theMessage: *const std::ffi::c_char,
+        theStackTrace: *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_DivideByZero_ctor_charptr2(
+                theMessage,
+                theStackTrace,
+            ))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_DivideByZero_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn raise(theMessage: *const std::ffi::c_char) {
+        unsafe { crate::ffi::Standard_DivideByZero_raise(theMessage) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Standard_DivideByZero_get_type_name() }
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_DivideByZero_get_type_descriptor()) }
     }
 }
 
@@ -647,6 +900,444 @@ impl HandleStandardFailure {
 }
 
 // ========================
+// From Standard_GUID.hxx
+// ========================
+
+pub use crate::ffi::Standard_GUID as GUID;
+
+unsafe impl crate::CppDeletable for GUID {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_GUID_destructor(ptr);
+    }
+}
+
+impl GUID {
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor()) }
+    }
+
+    /// build a GUID from an ascii string with the
+    /// following format:
+    /// Length : 36 char
+    /// "00000000-0000-0000-0000-000000000000"
+    pub fn new_charptr(aGuid: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_charptr(aGuid)) }
+    }
+
+    /// build a GUID from an unicode string with the
+    /// following format:
+    ///
+    /// "00000000-0000-0000-0000-000000000000"
+    pub fn new_extstring(aGuid: &crate::ffi::Standard_ExtString) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_extstring(aGuid)) }
+    }
+
+    pub fn new_int_extcharacter3_byte6(
+        a32b: i32,
+        a16b1: &crate::ffi::Standard_ExtCharacter,
+        a16b2: &crate::ffi::Standard_ExtCharacter,
+        a16b3: &crate::ffi::Standard_ExtCharacter,
+        a8b1: &crate::ffi::Standard_Byte,
+        a8b2: &crate::ffi::Standard_Byte,
+        a8b3: &crate::ffi::Standard_Byte,
+        a8b4: &crate::ffi::Standard_Byte,
+        a8b5: &crate::ffi::Standard_Byte,
+        a8b6: &crate::ffi::Standard_Byte,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_int_extcharacter3_byte6(
+                a32b, a16b1, a16b2, a16b3, a8b1, a8b2, a8b3, a8b4, a8b5, a8b6,
+            ))
+        }
+    }
+
+    pub fn new_uuid(aGuid: &crate::ffi::Standard_UUID) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_uuid(aGuid)) }
+    }
+
+    pub fn new_guid(aGuid: &crate::ffi::Standard_GUID) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_guid(aGuid)) }
+    }
+
+    pub fn is_same(&self, uid: &crate::ffi::Standard_GUID) -> bool {
+        unsafe { crate::ffi::Standard_GUID_is_same(self as *const Self, uid) }
+    }
+
+    pub fn is_not_same(&self, uid: &crate::ffi::Standard_GUID) -> bool {
+        unsafe { crate::ffi::Standard_GUID_is_not_same(self as *const Self, uid) }
+    }
+
+    pub fn assign(&mut self, uid: &crate::ffi::Standard_GUID) {
+        unsafe { crate::ffi::Standard_GUID_assign(self as *mut Self, uid) }
+    }
+
+    /// Check the format of a GUID string.
+    /// It checks the size, the position of the '-' and the correct size of fields.
+    pub fn check_guid_format(aGuid: *const std::ffi::c_char) -> bool {
+        unsafe { crate::ffi::Standard_GUID_check_guid_format(aGuid) }
+    }
+}
+
+// ========================
+// From Standard_ImmutableObject.hxx
+// ========================
+
+pub use crate::ffi::Standard_ImmutableObject as ImmutableObject;
+
+unsafe impl crate::CppDeletable for ImmutableObject {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_ImmutableObject_destructor(ptr);
+    }
+}
+
+impl ImmutableObject {
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_ImmutableObject_ctor()) }
+    }
+
+    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_ImmutableObject_ctor_charptr(theMessage))
+        }
+    }
+
+    pub fn new_charptr2(
+        theMessage: *const std::ffi::c_char,
+        theStackTrace: *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_ImmutableObject_ctor_charptr2(
+                theMessage,
+                theStackTrace,
+            ))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_ImmutableObject_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn raise(theMessage: *const std::ffi::c_char) {
+        unsafe { crate::ffi::Standard_ImmutableObject_raise(theMessage) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Standard_ImmutableObject_get_type_name() }
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_ImmutableObject_get_type_descriptor()) }
+    }
+}
+
+// ========================
+// From Standard_LicenseError.hxx
+// ========================
+
+pub use crate::ffi::Standard_LicenseError as LicenseError;
+
+unsafe impl crate::CppDeletable for LicenseError {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_LicenseError_destructor(ptr);
+    }
+}
+
+impl LicenseError {
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_LicenseError_ctor()) }
+    }
+
+    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_LicenseError_ctor_charptr(theMessage))
+        }
+    }
+
+    pub fn new_charptr2(
+        theMessage: *const std::ffi::c_char,
+        theStackTrace: *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_LicenseError_ctor_charptr2(
+                theMessage,
+                theStackTrace,
+            ))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_LicenseError_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn raise(theMessage: *const std::ffi::c_char) {
+        unsafe { crate::ffi::Standard_LicenseError_raise(theMessage) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Standard_LicenseError_get_type_name() }
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_LicenseError_get_type_descriptor()) }
+    }
+}
+
+// ========================
+// From Standard_LicenseNotFound.hxx
+// ========================
+
+pub use crate::ffi::Standard_LicenseNotFound as LicenseNotFound;
+
+unsafe impl crate::CppDeletable for LicenseNotFound {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_LicenseNotFound_destructor(ptr);
+    }
+}
+
+impl LicenseNotFound {
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_LicenseNotFound_ctor()) }
+    }
+
+    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_LicenseNotFound_ctor_charptr(theMessage))
+        }
+    }
+
+    pub fn new_charptr2(
+        theMessage: *const std::ffi::c_char,
+        theStackTrace: *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_LicenseNotFound_ctor_charptr2(
+                theMessage,
+                theStackTrace,
+            ))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_LicenseNotFound_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn raise(theMessage: *const std::ffi::c_char) {
+        unsafe { crate::ffi::Standard_LicenseNotFound_raise(theMessage) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Standard_LicenseNotFound_get_type_name() }
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_LicenseNotFound_get_type_descriptor()) }
+    }
+}
+
+// ========================
+// From Standard_MMgrOpt.hxx
+// ========================
+
+///
+/// @brief Open CASCADE memory manager optimized for speed.
+///
+/// The behaviour is different for memory blocks of different sizes,
+/// according to specified options provided to constructor:
+///
+/// - Small blocks with size less than or equal to aCellSize are allocated
+/// in big pools of memory. The parameter aNbPages specifies size of
+/// these pools in pages (operating system-dependent).
+/// When freed, small block is not returned to the system but added
+/// into free blocks list and reused when block of the same size is
+/// requested.
+///
+/// - Medium size blocks with size less than aThreshold are allocated
+/// using malloc() or calloc() function but not returned to the system
+/// when method Free() is called; instead they are put into free list
+/// and reused when block of the same size is requested.
+/// Blocks of medium size stored in free lists can be released to the
+/// system (by free()) by calling method Purge().
+///
+/// - Large blocks with size greater than or equal to aThreshold are allocated
+/// and freed directly: either using malloc()/calloc() and free(), or using
+/// memory mapped files (if option aMMap is True)
+///
+/// Thus the optimization of memory allocation/deallocation is reached
+/// for small and medium size blocks using free lists method;
+/// note that space allocated for small blocks cannot be (currently) released
+/// to the system while space for medium size blocks can be released by method Purge().
+///
+/// Note that destructor of that class frees all free lists and memory pools
+/// allocated for small blocks.
+///
+/// Note that size of memory blocks allocated by this memory manager is always
+/// rounded up to 16 bytes. In addition, 8 bytes are added at the beginning
+/// of the memory block to hold auxiliary information (size of the block when
+/// in use, or pointer to the next free block when in free list).
+/// This the expense of speed optimization. At the same time, allocating small
+/// blocks is usually less costly than directly by malloc since allocation is made
+/// once (when allocating a pool) and overheads induced by malloc are minimized.
+pub use crate::ffi::Standard_MMgrOpt as MMgrOpt;
+
+unsafe impl crate::CppDeletable for MMgrOpt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_MMgrOpt_destructor(ptr);
+    }
+}
+
+impl MMgrOpt {
+    /// Constructor. If aClear is True, the allocated emmory will be
+    /// nullified. For description of other parameters, see description
+    /// of the class above.
+    pub fn new_bool2_size_int_size(
+        aClear: bool,
+        aMMap: bool,
+        aCellSize: usize,
+        aNbPages: i32,
+        aThreshold: usize,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_MMgrOpt_ctor_bool2_size_int_size(
+                aClear, aMMap, aCellSize, aNbPages, aThreshold,
+            ))
+        }
+    }
+
+    /// Constructor. If aClear is True, the allocated emmory will be
+    /// nullified. For description of other parameters, see description
+    /// of the class above.
+    pub fn new_bool2_size_int(
+        aClear: bool,
+        aMMap: bool,
+        aCellSize: usize,
+        aNbPages: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_bool2_size_int_size(aClear, aMMap, aCellSize, aNbPages, 40000)
+    }
+
+    /// Constructor. If aClear is True, the allocated emmory will be
+    /// nullified. For description of other parameters, see description
+    /// of the class above.
+    pub fn new_bool2_size(aClear: bool, aMMap: bool, aCellSize: usize) -> crate::OwnedPtr<Self> {
+        Self::new_bool2_size_int_size(aClear, aMMap, aCellSize, 10000, 40000)
+    }
+
+    /// Constructor. If aClear is True, the allocated emmory will be
+    /// nullified. For description of other parameters, see description
+    /// of the class above.
+    pub fn new_bool2(aClear: bool, aMMap: bool) -> crate::OwnedPtr<Self> {
+        Self::new_bool2_size_int_size(aClear, aMMap, 200, 10000, 40000)
+    }
+
+    /// Constructor. If aClear is True, the allocated emmory will be
+    /// nullified. For description of other parameters, see description
+    /// of the class above.
+    pub fn new_bool(aClear: bool) -> crate::OwnedPtr<Self> {
+        Self::new_bool2_size_int_size(aClear, true, 200, 10000, 40000)
+    }
+
+    /// Constructor. If aClear is True, the allocated emmory will be
+    /// nullified. For description of other parameters, see description
+    /// of the class above.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        Self::new_bool2_size_int_size(true, true, 200, 10000, 40000)
+    }
+
+    /// Release medium-sized blocks of memory in free lists to the system.
+    /// Returns number of actually freed blocks
+    pub fn purge(&mut self, isDestroyed: bool) -> i32 {
+        unsafe { crate::ffi::Standard_MMgrOpt_purge(self as *mut Self, isDestroyed) }
+    }
+}
+
+// ========================
+// From Standard_MMgrRoot.hxx
+// ========================
+
+///
+/// Root class for Open CASCADE mmemory managers.
+/// Defines only abstract interface functions.
+pub use crate::ffi::Standard_MMgrRoot as MMgrRoot;
+
+unsafe impl crate::CppDeletable for MMgrRoot {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_MMgrRoot_destructor(ptr);
+    }
+}
+
+impl MMgrRoot {
+    /// Purge internally cached unused memory blocks (if any)
+    /// by releasing them to the operating system.
+    /// Must return non-zero if some memory has been actually released,
+    /// or zero otherwise.
+    ///
+    /// If option isDestroyed is True, this means that memory
+    /// manager is not expected to be used any more; note however
+    /// that in general case it is still possible to have calls to that
+    /// instance of memory manager after this (e.g. to free memory
+    /// of static objects in OCC). Thus this option should
+    /// command the memory manager to release any cached memory
+    /// to the system and not cache any more, but still remain operable...
+    ///
+    /// Default implementation does nothing and returns 0.
+    pub fn purge(&mut self, isDestroyed: bool) -> i32 {
+        unsafe { crate::ffi::Standard_MMgrRoot_purge(self as *mut Self, isDestroyed) }
+    }
+}
+
+// ========================
+// From Standard_MultiplyDefined.hxx
+// ========================
+
+pub use crate::ffi::Standard_MultiplyDefined as MultiplyDefined;
+
+unsafe impl crate::CppDeletable for MultiplyDefined {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_MultiplyDefined_destructor(ptr);
+    }
+}
+
+impl MultiplyDefined {
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_MultiplyDefined_ctor()) }
+    }
+
+    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_MultiplyDefined_ctor_charptr(theMessage))
+        }
+    }
+
+    pub fn new_charptr2(
+        theMessage: *const std::ffi::c_char,
+        theStackTrace: *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_MultiplyDefined_ctor_charptr2(
+                theMessage,
+                theStackTrace,
+            ))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_MultiplyDefined_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn raise(theMessage: *const std::ffi::c_char) {
+        unsafe { crate::ffi::Standard_MultiplyDefined_raise(theMessage) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Standard_MultiplyDefined_get_type_name() }
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_MultiplyDefined_get_type_descriptor()) }
+    }
+}
+
+// ========================
 // From Standard_Mutex.hxx
 // ========================
 
@@ -713,6 +1404,110 @@ impl Mutex {
     /// Method to unlock the mutex; releases it to other users
     pub fn unlock(&mut self) {
         unsafe { crate::ffi::Standard_Mutex_unlock(self as *mut Self) }
+    }
+}
+
+// ========================
+// From Standard_NegativeValue.hxx
+// ========================
+
+pub use crate::ffi::Standard_NegativeValue as NegativeValue;
+
+unsafe impl crate::CppDeletable for NegativeValue {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_NegativeValue_destructor(ptr);
+    }
+}
+
+impl NegativeValue {
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_NegativeValue_ctor()) }
+    }
+
+    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_NegativeValue_ctor_charptr(theMessage))
+        }
+    }
+
+    pub fn new_charptr2(
+        theMessage: *const std::ffi::c_char,
+        theStackTrace: *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_NegativeValue_ctor_charptr2(
+                theMessage,
+                theStackTrace,
+            ))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_NegativeValue_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn raise(theMessage: *const std::ffi::c_char) {
+        unsafe { crate::ffi::Standard_NegativeValue_raise(theMessage) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Standard_NegativeValue_get_type_name() }
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_NegativeValue_get_type_descriptor()) }
+    }
+}
+
+// ========================
+// From Standard_NoMoreObject.hxx
+// ========================
+
+pub use crate::ffi::Standard_NoMoreObject as NoMoreObject;
+
+unsafe impl crate::CppDeletable for NoMoreObject {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_NoMoreObject_destructor(ptr);
+    }
+}
+
+impl NoMoreObject {
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_NoMoreObject_ctor()) }
+    }
+
+    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_NoMoreObject_ctor_charptr(theMessage))
+        }
+    }
+
+    pub fn new_charptr2(
+        theMessage: *const std::ffi::c_char,
+        theStackTrace: *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_NoMoreObject_ctor_charptr2(
+                theMessage,
+                theStackTrace,
+            ))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_NoMoreObject_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn raise(theMessage: *const std::ffi::c_char) {
+        unsafe { crate::ffi::Standard_NoMoreObject_raise(theMessage) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Standard_NoMoreObject_get_type_name() }
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_NoMoreObject_get_type_descriptor()) }
     }
 }
 
@@ -869,6 +1664,58 @@ impl NullObject {
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_NullObject_get_type_descriptor()) }
+    }
+}
+
+// ========================
+// From Standard_NullValue.hxx
+// ========================
+
+pub use crate::ffi::Standard_NullValue as NullValue;
+
+unsafe impl crate::CppDeletable for NullValue {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_NullValue_destructor(ptr);
+    }
+}
+
+impl NullValue {
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_NullValue_ctor()) }
+    }
+
+    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_NullValue_ctor_charptr(theMessage))
+        }
+    }
+
+    pub fn new_charptr2(
+        theMessage: *const std::ffi::c_char,
+        theStackTrace: *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_NullValue_ctor_charptr2(
+                theMessage,
+                theStackTrace,
+            ))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_NullValue_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn raise(theMessage: *const std::ffi::c_char) {
+        unsafe { crate::ffi::Standard_NullValue_raise(theMessage) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Standard_NullValue_get_type_name() }
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_NullValue_get_type_descriptor()) }
     }
 }
 
@@ -1038,6 +1885,121 @@ impl OutOfRange {
 }
 
 // ========================
+// From Standard_Overflow.hxx
+// ========================
+
+pub use crate::ffi::Standard_Overflow as Overflow;
+
+unsafe impl crate::CppDeletable for Overflow {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_Overflow_destructor(ptr);
+    }
+}
+
+impl Overflow {
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Overflow_ctor()) }
+    }
+
+    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Overflow_ctor_charptr(theMessage)) }
+    }
+
+    pub fn new_charptr2(
+        theMessage: *const std::ffi::c_char,
+        theStackTrace: *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_Overflow_ctor_charptr2(
+                theMessage,
+                theStackTrace,
+            ))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_Overflow_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn raise(theMessage: *const std::ffi::c_char) {
+        unsafe { crate::ffi::Standard_Overflow_raise(theMessage) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Standard_Overflow_get_type_name() }
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_Overflow_get_type_descriptor()) }
+    }
+}
+
+// ========================
+// From Standard_Persistent.hxx
+// ========================
+
+/// Root of "persistent" classes, a legacy support of
+/// object oriented databases, now outdated.
+pub use crate::ffi::Standard_Persistent as Persistent;
+
+unsafe impl crate::CppDeletable for Persistent {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_Persistent_destructor(ptr);
+    }
+}
+
+impl Persistent {
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Persistent_ctor()) }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_Persistent_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn type_num(&mut self) -> &mut i32 {
+        unsafe { &mut *(crate::ffi::Standard_Persistent_type_num(self as *mut Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Standard_Persistent_get_type_name() }
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_Persistent_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardPersistent> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_Persistent_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleStandardPersistent;
+
+unsafe impl crate::CppDeletable for HandleStandardPersistent {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStandardPersistent_destructor(ptr);
+    }
+}
+
+impl HandleStandardPersistent {
+    /// Dereference this Handle to access the underlying Standard_Persistent
+    pub fn get(&self) -> &crate::ffi::Standard_Persistent {
+        unsafe { &*(crate::ffi::HandleStandardPersistent_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Standard_Persistent
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Standard_Persistent {
+        unsafe { &mut *(crate::ffi::HandleStandardPersistent_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From Standard_ProgramError.hxx
 // ========================
 
@@ -1138,6 +2100,70 @@ impl RangeError {
 
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_RangeError_get_type_descriptor()) }
+    }
+}
+
+// ========================
+// From Standard_ReadLineBuffer.hxx
+// ========================
+
+/// Auxiliary tool for buffered reading of lines from input stream.
+pub use crate::ffi::Standard_ReadLineBuffer as ReadLineBuffer;
+
+unsafe impl crate::CppDeletable for ReadLineBuffer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_ReadLineBuffer_destructor(ptr);
+    }
+}
+
+impl ReadLineBuffer {
+    /// Constructor with initialization.
+    /// @param theMaxBufferSizeBytes the length of buffer to read (in bytes)
+    pub fn new_size(theMaxBufferSizeBytes: usize) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_ReadLineBuffer_ctor_size(
+                theMaxBufferSizeBytes,
+            ))
+        }
+    }
+
+    /// Clear buffer and cached values.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::Standard_ReadLineBuffer_clear(self as *mut Self) }
+    }
+
+    /// Returns TRUE when the Multiline Mode is on; FALSE by default.
+    /// Multiline modes joins several lines in file having \ at the end of line:
+    /// @code
+    /// Line starts here, \ // line continuation character without this comment
+    /// continues \         // line continuation character without this comment
+    /// and ends.
+    /// @endcode
+    pub fn is_multiline_mode(&self) -> bool {
+        unsafe { crate::ffi::Standard_ReadLineBuffer_is_multiline_mode(self as *const Self) }
+    }
+
+    /// Put gap space while merging lines within multiline syntax, so that the following sample:
+    /// @code
+    /// 1/2/3\      // line continuation character without this comment
+    /// 4/5/6
+    /// @endcode
+    /// Will become "1/2/3 4/5/6" when flag is TRUE, and "1/2/35/5/6" otherwise.
+    pub fn to_put_gap_in_multiline(&self) -> bool {
+        unsafe { crate::ffi::Standard_ReadLineBuffer_to_put_gap_in_multiline(self as *const Self) }
+    }
+
+    /// Sets or unsets the multi-line mode.
+    /// @param[in] theMultilineMode  multiline mode flag
+    /// @param[in] theToPutGap       put gap space while connecting lines (no gap otherwise)
+    pub fn set_multiline_mode(&mut self, theMultilineMode: bool, theToPutGap: bool) {
+        unsafe {
+            crate::ffi::Standard_ReadLineBuffer_set_multiline_mode(
+                self as *mut Self,
+                theMultilineMode,
+                theToPutGap,
+            )
+        }
     }
 }
 
@@ -1397,11 +2423,64 @@ impl TypeMismatch {
 }
 
 // ========================
+// From Standard_Underflow.hxx
+// ========================
+
+pub use crate::ffi::Standard_Underflow as Underflow;
+
+unsafe impl crate::CppDeletable for Underflow {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_Underflow_destructor(ptr);
+    }
+}
+
+impl Underflow {
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Underflow_ctor()) }
+    }
+
+    pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_Underflow_ctor_charptr(theMessage))
+        }
+    }
+
+    pub fn new_charptr2(
+        theMessage: *const std::ffi::c_char,
+        theStackTrace: *const std::ffi::c_char,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_Underflow_ctor_charptr2(
+                theMessage,
+                theStackTrace,
+            ))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_Underflow_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn raise(theMessage: *const std::ffi::c_char) {
+        unsafe { crate::ffi::Standard_Underflow_raise(theMessage) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Standard_Underflow_get_type_name() }
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Standard_Underflow_get_type_descriptor()) }
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
-    Standard_Character as Character, Standard_ExtCharacter as ExtCharacter,
+    Standard_Byte as Byte, Standard_Character as Character, Standard_ExtCharacter as ExtCharacter,
     Standard_ExtString as ExtString, Standard_JmpBuf as JmpBuf, Standard_PCharacter as PCharacter,
-    Standard_SStream as SStream, Standard_Utf16Char as Utf16Char,
+    Standard_PExtCharacter as PExtCharacter, Standard_SStream as SStream, Standard_UUID as UUID,
+    Standard_Utf16Char as Utf16Char,
 };

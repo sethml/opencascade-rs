@@ -525,3 +525,335 @@ impl Line2d {
         unsafe { crate::ffi::Adaptor2d_Line2d_inherited_NbSamples(self as *const Self) }
     }
 }
+
+// ========================
+// From Adaptor2d_OffsetCurve.hxx
+// ========================
+
+/// Defines an Offset curve (algorithmic 2d curve).
+pub use crate::ffi::Adaptor2d_OffsetCurve as OffsetCurve;
+
+unsafe impl crate::CppDeletable for OffsetCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Adaptor2d_OffsetCurve_destructor(ptr);
+    }
+}
+
+impl OffsetCurve {
+    /// The Offset is set to 0.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Adaptor2d_OffsetCurve_ctor()) }
+    }
+
+    /// The curve is loaded. The Offset is set to 0.
+    pub fn new_handleadaptor2dcurve2d(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Adaptor2d_OffsetCurve_ctor_handleadaptor2dcurve2d(C),
+            )
+        }
+    }
+
+    /// Creates  an  OffsetCurve curve.
+    /// The Offset is set to Offset.
+    pub fn new_handleadaptor2dcurve2d_real(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        Offset: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Adaptor2d_OffsetCurve_ctor_handleadaptor2dcurve2d_real(C, Offset),
+            )
+        }
+    }
+
+    /// Create an Offset curve.
+    /// WFirst,WLast define the bounds of the Offset curve.
+    pub fn new_handleadaptor2dcurve2d_real3(
+        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        Offset: f64,
+        WFirst: f64,
+        WLast: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Adaptor2d_OffsetCurve_ctor_handleadaptor2dcurve2d_real3(
+                    C, Offset, WFirst, WLast,
+                ),
+            )
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Adaptor2d_OffsetCurve_dynamic_type(self as *const Self)) }
+    }
+
+    /// Shallow copy of adaptor
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Adaptor2d_OffsetCurve_shallow_copy(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Changes  the curve.  The Offset is reset to 0.
+    pub fn load_handleadaptor2dcurve2d(&mut self, S: &crate::ffi::HandleAdaptor2dCurve2d) {
+        unsafe {
+            crate::ffi::Adaptor2d_OffsetCurve_load_handleadaptor2dcurve2d(self as *mut Self, S)
+        }
+    }
+
+    /// Changes the Offset on the current Curve.
+    pub fn load_real(&mut self, Offset: f64) {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_load_real(self as *mut Self, Offset) }
+    }
+
+    /// Changes the Offset Curve on the current Curve.
+    pub fn load_real3(&mut self, Offset: f64, WFirst: f64, WLast: f64) {
+        unsafe {
+            crate::ffi::Adaptor2d_OffsetCurve_load_real3(self as *mut Self, Offset, WFirst, WLast)
+        }
+    }
+
+    pub fn curve(&self) -> &crate::ffi::HandleAdaptor2dCurve2d {
+        unsafe { &*(crate::ffi::Adaptor2d_OffsetCurve_curve(self as *const Self)) }
+    }
+
+    pub fn offset(&self) -> f64 {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_offset(self as *const Self) }
+    }
+
+    pub fn first_parameter(&self) -> f64 {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_first_parameter(self as *const Self) }
+    }
+
+    pub fn last_parameter(&self) -> f64 {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_last_parameter(self as *const Self) }
+    }
+
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::Adaptor2d_OffsetCurve_continuity(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// If necessary,  breaks the  curve in  intervals  of
+    /// continuity  <S>.    And  returns   the number   of
+    /// intervals.
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// Returns    a  curve equivalent   of  <me>  between
+    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// test for 3d points confusion.
+    /// If <First> >= <Last>
+    pub fn trim(
+        &self,
+        First: f64,
+        Last: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Adaptor2d_OffsetCurve_trim(
+                self as *const Self,
+                First,
+                Last,
+                Tol,
+            ))
+        }
+    }
+
+    pub fn is_closed(&self) -> bool {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_is_closed(self as *const Self) }
+    }
+
+    pub fn is_periodic(&self) -> bool {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_is_periodic(self as *const Self) }
+    }
+
+    pub fn period(&self) -> f64 {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_period(self as *const Self) }
+    }
+
+    /// Computes the point of parameter U on the curve.
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Adaptor2d_OffsetCurve_value(
+                self as *const Self,
+                U,
+            ))
+        }
+    }
+
+    /// Computes the point of parameter U on the curve.
+    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_d0(self as *const Self, U, P) }
+    }
+
+    /// Computes the point of parameter U on the curve with its
+    /// first derivative.
+    /// Raised if the continuity of the current interval
+    /// is not C1.
+    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V: &mut crate::ffi::gp_Vec2d) {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_d1(self as *const Self, U, P, V) }
+    }
+
+    /// Returns the point P of parameter U, the first and second
+    /// derivatives V1 and V2.
+    /// Raised if the continuity of the current interval
+    /// is not C2.
+    pub fn d2(
+        &self,
+        U: f64,
+        P: &mut crate::ffi::gp_Pnt2d,
+        V1: &mut crate::ffi::gp_Vec2d,
+        V2: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_d2(self as *const Self, U, P, V1, V2) }
+    }
+
+    /// Returns the point P of parameter U, the first, the second
+    /// and the third derivative.
+    /// Raised if the continuity of the current interval
+    /// is not C3.
+    pub fn d3(
+        &self,
+        U: f64,
+        P: &mut crate::ffi::gp_Pnt2d,
+        V1: &mut crate::ffi::gp_Vec2d,
+        V2: &mut crate::ffi::gp_Vec2d,
+        V3: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_d3(self as *const Self, U, P, V1, V2, V3) }
+    }
+
+    /// The returned vector gives the value of the derivative for the
+    /// order of derivation N.
+    /// Raised if the continuity of the current interval
+    /// is not CN.
+    /// Raised if N < 1.
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Adaptor2d_OffsetCurve_dn(
+                self as *const Self,
+                U,
+                N,
+            ))
+        }
+    }
+
+    /// Returns the parametric  resolution corresponding
+    /// to the real space resolution <R3d>.
+    pub fn resolution(&self, R3d: f64) -> f64 {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_resolution(self as *const Self, R3d) }
+    }
+
+    /// Returns  the  type of the   curve  in the  current
+    /// interval :   Line,   Circle,   Ellipse, Hyperbola,
+    /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
+    pub fn get_type(&self) -> crate::geom_abs::CurveType {
+        unsafe {
+            crate::geom_abs::CurveType::try_from(crate::ffi::Adaptor2d_OffsetCurve_get_type(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Adaptor2d_OffsetCurve_line(self as *const Self))
+        }
+    }
+
+    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Adaptor2d_OffsetCurve_circle(self as *const Self))
+        }
+    }
+
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Adaptor2d_OffsetCurve_ellipse(
+                self as *const Self,
+            ))
+        }
+    }
+
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Adaptor2d_OffsetCurve_hyperbola(
+                self as *const Self,
+            ))
+        }
+    }
+
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Adaptor2d_OffsetCurve_parabola(
+                self as *const Self,
+            ))
+        }
+    }
+
+    pub fn degree(&self) -> i32 {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_degree(self as *const Self) }
+    }
+
+    pub fn is_rational(&self) -> bool {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_is_rational(self as *const Self) }
+    }
+
+    pub fn nb_poles(&self) -> i32 {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_nb_poles(self as *const Self) }
+    }
+
+    pub fn nb_knots(&self) -> i32 {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_nb_knots(self as *const Self) }
+    }
+
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Adaptor2d_OffsetCurve_bezier(self as *const Self))
+        }
+    }
+
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Adaptor2d_OffsetCurve_b_spline(
+                self as *const Self,
+            ))
+        }
+    }
+
+    pub fn nb_samples(&self) -> i32 {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_nb_samples(self as *const Self) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_get_type_name() }
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Adaptor2d_OffsetCurve_get_type_descriptor()) }
+    }
+
+    /// Upcast to Adaptor2d_Curve2d
+    pub fn as_curve2d(&self) -> &Curve2d {
+        unsafe { &*(crate::ffi::Adaptor2d_OffsetCurve_as_Adaptor2d_Curve2d(self as *const Self)) }
+    }
+
+    /// Upcast to Adaptor2d_Curve2d (mutable)
+    pub fn as_curve2d_mut(&mut self) -> &mut Curve2d {
+        unsafe {
+            &mut *(crate::ffi::Adaptor2d_OffsetCurve_as_Adaptor2d_Curve2d_mut(self as *mut Self))
+        }
+    }
+}

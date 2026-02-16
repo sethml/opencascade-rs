@@ -1132,6 +1132,20 @@ impl Algorithm {
         }
     }
 
+    /// Return the numbers associated with the indicated status;
+    /// Null handle if no such status or no numbers associated with it
+    pub fn get_message_numbers(
+        &self,
+        theStatus: crate::message::Status,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHPackedMapOfInteger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_Algorithm_get_message_numbers(
+                self as *const Self,
+                theStatus.into(),
+            ))
+        }
+    }
+
     /// Return the strings associated with the indicated status;
     /// Null handle if no such status or no strings associated with it
     pub fn get_message_strings(
@@ -1148,6 +1162,20 @@ impl Algorithm {
 
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Message_Algorithm_dynamic_type(self as *const Self)) }
+    }
+
+    /// Prepares a string containing a list of integers contained
+    /// in theError map, but not more than theMaxCount
+    pub fn prepare_report(
+        theError: &crate::ffi::HandleTColStdHPackedMapOfInteger,
+        theMaxCount: i32,
+    ) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_Algorithm_prepare_report(
+                theError,
+                theMaxCount,
+            ))
+        }
     }
 
     pub fn get_type_name() -> *const std::ffi::c_char {

@@ -47,7 +47,7 @@ impl Bisec {
     /// <Cu1> and <Cu2>.
     /// <oncurve> is True if the point <P> is common to <Cu1>
     /// and <Cu2>.
-    pub fn perform(
+    pub fn perform_handlegeom2dcurve2_pnt2d_vec2d2_real_jointype_real_bool(
         &mut self,
         Cu1: &crate::ffi::HandleGeom2dCurve,
         Cu2: &crate::ffi::HandleGeom2dCurve,
@@ -60,18 +60,83 @@ impl Bisec {
         oncurve: bool,
     ) {
         unsafe {
-            crate::ffi::Bisector_Bisec_perform(
+            crate::ffi::Bisector_Bisec_perform_handlegeom2dcurve2_pnt2d_vec2d2_real_jointype_real_bool(self as *mut Self, Cu1, Cu2, P, V1, V2, Sense, ajointype.into(), Tolerance, oncurve)
+        }
+    }
+
+    /// Performs  the bisecting line  between the  curve
+    /// <Cu1> and the point <Pnt>.
+    /// <oncurve> is True if the point <P> is the point <Pnt>.
+    pub fn perform_handlegeom2dcurve_handlegeom2dpoint_pnt2d_vec2d2_real2_bool(
+        &mut self,
+        Cu: &crate::ffi::HandleGeom2dCurve,
+        Pnt: &crate::ffi::HandleGeom2dPoint,
+        P: &crate::ffi::gp_Pnt2d,
+        V1: &crate::ffi::gp_Vec2d,
+        V2: &crate::ffi::gp_Vec2d,
+        Sense: f64,
+        Tolerance: f64,
+        oncurve: bool,
+    ) {
+        unsafe {
+            crate::ffi::Bisector_Bisec_perform_handlegeom2dcurve_handlegeom2dpoint_pnt2d_vec2d2_real2_bool(self as *mut Self, Cu, Pnt, P, V1, V2, Sense, Tolerance, oncurve)
+        }
+    }
+
+    /// Performs  the bisecting line  between the  curve
+    /// <Cu> and the point <Pnt>.
+    /// <oncurve> is True if the point <P> is the point <Pnt>.
+    pub fn perform_handlegeom2dpoint_handlegeom2dcurve_pnt2d_vec2d2_real2_bool(
+        &mut self,
+        Pnt: &crate::ffi::HandleGeom2dPoint,
+        Cu: &crate::ffi::HandleGeom2dCurve,
+        P: &crate::ffi::gp_Pnt2d,
+        V1: &crate::ffi::gp_Vec2d,
+        V2: &crate::ffi::gp_Vec2d,
+        Sense: f64,
+        Tolerance: f64,
+        oncurve: bool,
+    ) {
+        unsafe {
+            crate::ffi::Bisector_Bisec_perform_handlegeom2dpoint_handlegeom2dcurve_pnt2d_vec2d2_real2_bool(self as *mut Self, Pnt, Cu, P, V1, V2, Sense, Tolerance, oncurve)
+        }
+    }
+
+    /// Performs  the bisecting line  between the two points
+    /// <Pnt1>  and <Pnt2>.
+    pub fn perform_handlegeom2dpoint2_pnt2d_vec2d2_real2_bool(
+        &mut self,
+        Pnt1: &crate::ffi::HandleGeom2dPoint,
+        Pnt2: &crate::ffi::HandleGeom2dPoint,
+        P: &crate::ffi::gp_Pnt2d,
+        V1: &crate::ffi::gp_Vec2d,
+        V2: &crate::ffi::gp_Vec2d,
+        Sense: f64,
+        Tolerance: f64,
+        oncurve: bool,
+    ) {
+        unsafe {
+            crate::ffi::Bisector_Bisec_perform_handlegeom2dpoint2_pnt2d_vec2d2_real2_bool(
                 self as *mut Self,
-                Cu1,
-                Cu2,
+                Pnt1,
+                Pnt2,
                 P,
                 V1,
                 V2,
                 Sense,
-                ajointype.into(),
                 Tolerance,
                 oncurve,
             )
         }
+    }
+
+    /// Returns the Curve of <me>.
+    pub fn value(&self) -> &crate::ffi::HandleGeom2dTrimmedCurve {
+        unsafe { &*(crate::ffi::Bisector_Bisec_value(self as *const Self)) }
+    }
+
+    /// Returns the Curve of <me>.
+    pub fn change_value(&mut self) -> &crate::ffi::HandleGeom2dTrimmedCurve {
+        unsafe { &*(crate::ffi::Bisector_Bisec_change_value(self as *mut Self)) }
     }
 }

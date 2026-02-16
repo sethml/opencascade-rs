@@ -18,8 +18,6 @@ Never git commit unless explicitly asked to do so.
 
 When resolving git merge conflicts, any code in crates/opencascade-sys/generated is generated code and should be regenerated rather than trying to resolve conflicts.
 
-The opencascade crate should build. Making it function correctly is a work in progress. Some dependencies of opencascade may not build, which is OK.
-
 When converting code to use the new API, refer to crates/opencascade-sys/PORTING.md. Update that file as you discover new porting ideas or changes.
 
 ## File Editing

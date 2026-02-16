@@ -121,3 +121,145 @@ impl HandleGeom2dEvaluatorCurve {
         unsafe { &mut *(crate::ffi::HandleGeom2dEvaluatorCurve_get_mut(self as *mut Self)) }
     }
 }
+
+// ========================
+// From Geom2dEvaluator_OffsetCurve.hxx
+// ========================
+
+/// Allows to calculate values and derivatives for offset curves in 2D
+pub use crate::ffi::Geom2dEvaluator_OffsetCurve as OffsetCurve;
+
+unsafe impl crate::CppDeletable for OffsetCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Geom2dEvaluator_OffsetCurve_destructor(ptr);
+    }
+}
+
+impl OffsetCurve {
+    /// Initialize evaluator by curve
+    pub fn new_handlegeom2dcurve_real(
+        theBase: &crate::ffi::HandleGeom2dCurve,
+        theOffset: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Geom2dEvaluator_OffsetCurve_ctor_handlegeom2dcurve_real(
+                    theBase, theOffset,
+                ),
+            )
+        }
+    }
+
+    /// Change the offset value
+    pub fn set_offset_value(&mut self, theOffset: f64) {
+        unsafe {
+            crate::ffi::Geom2dEvaluator_OffsetCurve_set_offset_value(self as *mut Self, theOffset)
+        }
+    }
+
+    /// Value of curve
+    pub fn d0(&self, theU: f64, theValue: &mut crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::Geom2dEvaluator_OffsetCurve_d0(self as *const Self, theU, theValue) }
+    }
+
+    /// Value and first derivatives of curve
+    pub fn d1(
+        &self,
+        theU: f64,
+        theValue: &mut crate::ffi::gp_Pnt2d,
+        theD1: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe {
+            crate::ffi::Geom2dEvaluator_OffsetCurve_d1(self as *const Self, theU, theValue, theD1)
+        }
+    }
+
+    /// Value, first and second derivatives of curve
+    pub fn d2(
+        &self,
+        theU: f64,
+        theValue: &mut crate::ffi::gp_Pnt2d,
+        theD1: &mut crate::ffi::gp_Vec2d,
+        theD2: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe {
+            crate::ffi::Geom2dEvaluator_OffsetCurve_d2(
+                self as *const Self,
+                theU,
+                theValue,
+                theD1,
+                theD2,
+            )
+        }
+    }
+
+    /// Value, first, second and third derivatives of curve
+    pub fn d3(
+        &self,
+        theU: f64,
+        theValue: &mut crate::ffi::gp_Pnt2d,
+        theD1: &mut crate::ffi::gp_Vec2d,
+        theD2: &mut crate::ffi::gp_Vec2d,
+        theD3: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe {
+            crate::ffi::Geom2dEvaluator_OffsetCurve_d3(
+                self as *const Self,
+                theU,
+                theValue,
+                theD1,
+                theD2,
+                theD3,
+            )
+        }
+    }
+
+    /// Calculates N-th derivatives of curve, where N = theDeriv. Raises if N < 1
+    pub fn dn(&self, theU: f64, theDeriv: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2dEvaluator_OffsetCurve_dn(
+                self as *const Self,
+                theU,
+                theDeriv,
+            ))
+        }
+    }
+
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dEvaluatorCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2dEvaluator_OffsetCurve_shallow_copy(
+                self as *const Self,
+            ))
+        }
+    }
+
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Geom2dEvaluator_OffsetCurve_dynamic_type(self as *const Self)) }
+    }
+
+    pub fn get_type_name() -> *const std::ffi::c_char {
+        unsafe { crate::ffi::Geom2dEvaluator_OffsetCurve_get_type_name() }
+    }
+
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Geom2dEvaluator_OffsetCurve_get_type_descriptor()) }
+    }
+
+    /// Upcast to Geom2dEvaluator_Curve
+    pub fn as_curve(&self) -> &Curve {
+        unsafe {
+            &*(crate::ffi::Geom2dEvaluator_OffsetCurve_as_Geom2dEvaluator_Curve(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Geom2dEvaluator_Curve (mutable)
+    pub fn as_curve_mut(&mut self) -> &mut Curve {
+        unsafe {
+            &mut *(crate::ffi::Geom2dEvaluator_OffsetCurve_as_Geom2dEvaluator_Curve_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+}

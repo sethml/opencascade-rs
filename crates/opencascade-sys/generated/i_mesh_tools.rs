@@ -556,6 +556,21 @@ impl ModelBuilder {
         }
     }
 
+    /// Inherited from Message_Algorithm: GetMessageNumbers()
+    pub fn get_message_numbers(
+        &self,
+        theStatus: crate::message::Status,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHPackedMapOfInteger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IMeshTools_ModelBuilder_inherited_GetMessageNumbers(
+                    self as *const Self,
+                    theStatus.into(),
+                ),
+            )
+        }
+    }
+
     /// Inherited from Message_Algorithm: GetMessageStrings()
     pub fn get_message_strings(
         &self,

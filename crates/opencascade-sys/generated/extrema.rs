@@ -176,6 +176,40 @@ impl CCLocFOfLocECC {
     pub fn tolerance(&self) -> f64 {
         unsafe { crate::ffi::Extrema_CCLocFOfLocECC_tolerance(self as *const Self) }
     }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe { &*(crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSet(self as *const Self)) }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSet_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &*(crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &mut *(crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            ))
+        }
+    }
 }
 
 // ========================
@@ -263,6 +297,40 @@ impl CCLocFOfLocECC2d {
     /// or in SetTolerance() method.
     pub fn tolerance(&self) -> f64 {
         unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_tolerance(self as *const Self) }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe { &*(crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSet(self as *const Self)) }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSet_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &*(crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &mut *(crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -4527,6 +4595,38 @@ impl FuncExtCS {
     pub fn point_on_surface(&self, N: i32) -> &crate::ffi::Extrema_POnSurf {
         unsafe { &*(crate::ffi::Extrema_FuncExtCS_point_on_surface(self as *const Self, N)) }
     }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe { &*(crate::ffi::Extrema_FuncExtCS_as_math_FunctionSet(self as *const Self)) }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe { &mut *(crate::ffi::Extrema_FuncExtCS_as_math_FunctionSet_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &*(crate::ffi::Extrema_FuncExtCS_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &mut *(crate::ffi::Extrema_FuncExtCS_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            ))
+        }
+    }
 }
 
 // ========================
@@ -4596,6 +4696,38 @@ impl FuncExtSS {
     pub fn point_on_s2(&self, N: i32) -> &crate::ffi::Extrema_POnSurf {
         unsafe { &*(crate::ffi::Extrema_FuncExtSS_point_on_s2(self as *const Self, N)) }
     }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe { &*(crate::ffi::Extrema_FuncExtSS_as_math_FunctionSet(self as *const Self)) }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe { &mut *(crate::ffi::Extrema_FuncExtSS_as_math_FunctionSet_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &*(crate::ffi::Extrema_FuncExtSS_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &mut *(crate::ffi::Extrema_FuncExtSS_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            ))
+        }
+    }
 }
 
 // ========================
@@ -4638,6 +4770,49 @@ impl FuncPSDist {
     /// Number of variables.
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::Extrema_FuncPSDist_nb_variables(self as *const Self) }
+    }
+
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        unsafe {
+            &*(crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunction(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
+        unsafe {
+            &mut *(crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunction_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient
+    pub fn as_math_multiple_var_function_with_gradient(
+        &self,
+    ) -> &crate::math::MultipleVarFunctionWithGradient {
+        unsafe {
+            &*(crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunctionWithGradient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
+    pub fn as_math_multiple_var_function_with_gradient_mut(
+        &mut self,
+    ) -> &mut crate::math::MultipleVarFunctionWithGradient {
+        unsafe {
+            &mut *(crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunctionWithGradient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::Extrema_FuncPSDist_inherited_GetStateNumber(self as *mut Self) }
     }
 }
 
@@ -4721,6 +4896,38 @@ impl FuncPSNorm {
     /// Returns the Nth extremum.
     pub fn point(&self, N: i32) -> &crate::ffi::Extrema_POnSurf {
         unsafe { &*(crate::ffi::Extrema_FuncPSNorm_point(self as *const Self, N)) }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe { &*(crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSet(self as *const Self)) }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe { &mut *(crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSet_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives
+    pub fn as_math_function_set_with_derivatives(
+        &self,
+    ) -> &crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &*(crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSetWithDerivatives (mutable)
+    pub fn as_math_function_set_with_derivatives_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionSetWithDerivatives {
+        unsafe {
+            &mut *(crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -5547,6 +5754,27 @@ impl GlobOptFuncCCC0 {
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::Extrema_GlobOptFuncCCC0_nb_variables(self as *const Self) }
     }
+
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        unsafe {
+            &*(crate::ffi::Extrema_GlobOptFuncCCC0_as_math_MultipleVarFunction(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
+        unsafe {
+            &mut *(crate::ffi::Extrema_GlobOptFuncCCC0_as_math_MultipleVarFunction_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::Extrema_GlobOptFuncCCC0_inherited_GetStateNumber(self as *mut Self) }
+    }
 }
 
 /// This class implements function which calculate Eucluidean distance
@@ -5580,6 +5808,49 @@ impl GlobOptFuncCCC1 {
 
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_nb_variables(self as *const Self) }
+    }
+
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        unsafe {
+            &*(crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunction(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
+        unsafe {
+            &mut *(crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunction_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient
+    pub fn as_math_multiple_var_function_with_gradient(
+        &self,
+    ) -> &crate::math::MultipleVarFunctionWithGradient {
+        unsafe {
+            &*(crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunctionWithGradient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
+    pub fn as_math_multiple_var_function_with_gradient_mut(
+        &mut self,
+    ) -> &mut crate::math::MultipleVarFunctionWithGradient {
+        unsafe {
+            &mut *(crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunctionWithGradient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_inherited_GetStateNumber(self as *mut Self) }
     }
 }
 
@@ -5615,6 +5886,71 @@ impl GlobOptFuncCCC2 {
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_nb_variables(self as *const Self) }
     }
+
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        unsafe {
+            &*(crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunction(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
+        unsafe {
+            &mut *(crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunction_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient
+    pub fn as_math_multiple_var_function_with_gradient(
+        &self,
+    ) -> &crate::math::MultipleVarFunctionWithGradient {
+        unsafe {
+            &*(crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithGradient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
+    pub fn as_math_multiple_var_function_with_gradient_mut(
+        &mut self,
+    ) -> &mut crate::math::MultipleVarFunctionWithGradient {
+        unsafe {
+            &mut *(crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithGradient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithHessian
+    pub fn as_math_multiple_var_function_with_hessian(
+        &self,
+    ) -> &crate::math::MultipleVarFunctionWithHessian {
+        unsafe {
+            &*(crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithHessian(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithHessian (mutable)
+    pub fn as_math_multiple_var_function_with_hessian_mut(
+        &mut self,
+    ) -> &mut crate::math::MultipleVarFunctionWithHessian {
+        unsafe {
+            &mut *(crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithHessian_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_inherited_GetStateNumber(self as *mut Self) }
+    }
 }
 
 // ========================
@@ -5634,6 +5970,31 @@ unsafe impl crate::CppDeletable for GlobOptFuncCQuadric {
 impl GlobOptFuncCQuadric {
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::Extrema_GlobOptFuncCQuadric_nb_variables(self as *const Self) }
+    }
+
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        unsafe {
+            &*(crate::ffi::Extrema_GlobOptFuncCQuadric_as_math_MultipleVarFunction(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
+        unsafe {
+            &mut *(crate::ffi::Extrema_GlobOptFuncCQuadric_as_math_MultipleVarFunction_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::Extrema_GlobOptFuncCQuadric_inherited_GetStateNumber(self as *mut Self)
+        }
     }
 }
 
@@ -5655,6 +6016,71 @@ impl GlobOptFuncCS {
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::Extrema_GlobOptFuncCS_nb_variables(self as *const Self) }
     }
+
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        unsafe {
+            &*(crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunction(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
+        unsafe {
+            &mut *(crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunction_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient
+    pub fn as_math_multiple_var_function_with_gradient(
+        &self,
+    ) -> &crate::math::MultipleVarFunctionWithGradient {
+        unsafe {
+            &*(crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithGradient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
+    pub fn as_math_multiple_var_function_with_gradient_mut(
+        &mut self,
+    ) -> &mut crate::math::MultipleVarFunctionWithGradient {
+        unsafe {
+            &mut *(crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithGradient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithHessian
+    pub fn as_math_multiple_var_function_with_hessian(
+        &self,
+    ) -> &crate::math::MultipleVarFunctionWithHessian {
+        unsafe {
+            &*(crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithHessian(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithHessian (mutable)
+    pub fn as_math_multiple_var_function_with_hessian_mut(
+        &mut self,
+    ) -> &mut crate::math::MultipleVarFunctionWithHessian {
+        unsafe {
+            &mut *(crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithHessian_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::Extrema_GlobOptFuncCS_inherited_GetStateNumber(self as *mut Self) }
+    }
 }
 
 // ========================
@@ -5674,6 +6100,29 @@ unsafe impl crate::CppDeletable for GlobOptFuncConicS {
 impl GlobOptFuncConicS {
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::Extrema_GlobOptFuncConicS_nb_variables(self as *const Self) }
+    }
+
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        unsafe {
+            &*(crate::ffi::Extrema_GlobOptFuncConicS_as_math_MultipleVarFunction(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
+        unsafe {
+            &mut *(crate::ffi::Extrema_GlobOptFuncConicS_as_math_MultipleVarFunction_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited from math_MultipleVarFunction: GetStateNumber()
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::Extrema_GlobOptFuncConicS_inherited_GetStateNumber(self as *mut Self) }
     }
 }
 
@@ -7015,6 +7464,42 @@ impl PCFOfEPCOfELPCOfLocateExtPC {
             crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_search_of_tolerance(self as *mut Self)
         }
     }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe {
+            &*(crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_Function(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe {
+            &mut *(crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_Function_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionWithDerivative
+    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
+        unsafe {
+            &*(crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_FunctionWithDerivative(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionWithDerivative (mutable)
+    pub fn as_math_function_with_derivative_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionWithDerivative {
+        unsafe {
+            &mut *(crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_FunctionWithDerivative_mut(self as *mut Self))
+        }
+    }
 }
 
 // ========================
@@ -7130,6 +7615,42 @@ impl PCFOfEPCOfELPCOfLocateExtPC2d {
             crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_search_of_tolerance(self as *mut Self)
         }
     }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe {
+            &*(crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_Function(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe {
+            &mut *(crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_Function_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionWithDerivative
+    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
+        unsafe {
+            &*(crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_FunctionWithDerivative(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionWithDerivative (mutable)
+    pub fn as_math_function_with_derivative_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionWithDerivative {
+        unsafe {
+            &mut *(crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_FunctionWithDerivative_mut(self as *mut Self))
+        }
+    }
 }
 
 // ========================
@@ -7223,6 +7744,38 @@ impl PCFOfEPCOfExtPC {
     /// |D1|<Tol, it is considered D1=0.
     pub fn search_of_tolerance(&mut self) -> f64 {
         unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_search_of_tolerance(self as *mut Self) }
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe { &*(crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_Function(self as *const Self)) }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe {
+            &mut *(crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_Function_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_FunctionWithDerivative
+    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
+        unsafe {
+            &*(crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionWithDerivative (mutable)
+    pub fn as_math_function_with_derivative_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionWithDerivative {
+        unsafe {
+            &mut *(crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -7319,6 +7872,38 @@ impl PCFOfEPCOfExtPC2d {
     /// |D1|<Tol, it is considered D1=0.
     pub fn search_of_tolerance(&mut self) -> f64 {
         unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_search_of_tolerance(self as *mut Self) }
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe { &*(crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_Function(self as *const Self)) }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe {
+            &mut *(crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_Function_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_FunctionWithDerivative
+    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
+        unsafe {
+            &*(crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_FunctionWithDerivative(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionWithDerivative (mutable)
+    pub fn as_math_function_with_derivative_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionWithDerivative {
+        unsafe {
+            &mut *(crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_FunctionWithDerivative_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -7424,6 +8009,42 @@ impl PCLocFOfLocEPCOfLocateExtPC {
     pub fn search_of_tolerance(&mut self) -> f64 {
         unsafe {
             crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_search_of_tolerance(self as *mut Self)
+        }
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe {
+            &*(crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_Function(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe {
+            &mut *(crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_Function_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionWithDerivative
+    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
+        unsafe {
+            &*(crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_FunctionWithDerivative(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionWithDerivative (mutable)
+    pub fn as_math_function_with_derivative_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionWithDerivative {
+        unsafe {
+            &mut *(crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_FunctionWithDerivative_mut(self as *mut Self))
         }
     }
 }
@@ -7539,6 +8160,42 @@ impl PCLocFOfLocEPCOfLocateExtPC2d {
     pub fn search_of_tolerance(&mut self) -> f64 {
         unsafe {
             crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_search_of_tolerance(self as *mut Self)
+        }
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe {
+            &*(crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_Function(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe {
+            &mut *(crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_Function_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionWithDerivative
+    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
+        unsafe {
+            &*(crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_FunctionWithDerivative(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionWithDerivative (mutable)
+    pub fn as_math_function_with_derivative_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionWithDerivative {
+        unsafe {
+            &mut *(crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_FunctionWithDerivative_mut(self as *mut Self))
         }
     }
 }

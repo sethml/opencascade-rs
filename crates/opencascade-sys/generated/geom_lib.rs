@@ -20,8 +20,8 @@ pub fn g_transform(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomLib_g_transform(Curve, GTrsf)) }
 }
-pub use crate::ffi::GeomLib_same_range as same_range;
-pub fn build_curve3d(
+pub use crate::ffi::GeomLib_same_range_real_handlegeom2dcurve_real4_handlegeom2dcurve as same_range_real_handlegeom2dcurve_real4_handlegeom2dcurve;
+pub fn build_curve3d_real_curveonsurface_real2_handlegeomcurve_real2_shape_int2(
     Tolerance: f64,
     CurvePtr: &mut crate::ffi::Adaptor3d_CurveOnSurface,
     FirstParameter: f64,
@@ -34,7 +34,7 @@ pub fn build_curve3d(
     MaxSegment: i32,
 ) {
     unsafe {
-        crate::ffi::GeomLib_build_curve3d(
+        crate::ffi::GeomLib_build_curve3d_real_curveonsurface_real2_handlegeomcurve_real2_shape_int2(
             Tolerance,
             CurvePtr,
             FirstParameter,
@@ -79,5 +79,98 @@ pub fn build_c3d_on_iso_line(
             theParam,
             theIsForward,
         ))
+    }
+}
+
+// ========================
+// From GeomLib_CheckCurveOnSurface.hxx
+// ========================
+
+/// Computes the max distance between 3D-curve and 2D-curve
+/// in some surface.
+pub use crate::ffi::GeomLib_CheckCurveOnSurface as CheckCurveOnSurface;
+
+unsafe impl crate::CppDeletable for CheckCurveOnSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomLib_CheckCurveOnSurface_destructor(ptr);
+    }
+}
+
+impl CheckCurveOnSurface {
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomLib_CheckCurveOnSurface_ctor()) }
+    }
+
+    /// Constructor
+    pub fn new_handleadaptor3dcurve_real(
+        theCurve: &crate::ffi::HandleAdaptor3dCurve,
+        theTolRange: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomLib_CheckCurveOnSurface_ctor_handleadaptor3dcurve_real(
+                    theCurve,
+                    theTolRange,
+                ),
+            )
+        }
+    }
+
+    /// Sets the data for the algorithm
+    pub fn init_handleadaptor3dcurve_real(
+        &mut self,
+        theCurve: &crate::ffi::HandleAdaptor3dCurve,
+        theTolRange: f64,
+    ) {
+        unsafe {
+            crate::ffi::GeomLib_CheckCurveOnSurface_init_handleadaptor3dcurve_real(
+                self as *mut Self,
+                theCurve,
+                theTolRange,
+            )
+        }
+    }
+
+    /// Initializes all members by default values
+    pub fn init(&mut self) {
+        unsafe { crate::ffi::GeomLib_CheckCurveOnSurface_init(self as *mut Self) }
+    }
+
+    /// Sets parallel flag
+    pub fn set_parallel(&mut self, theIsParallel: bool) {
+        unsafe {
+            crate::ffi::GeomLib_CheckCurveOnSurface_set_parallel(self as *mut Self, theIsParallel)
+        }
+    }
+
+    /// Returns true if parallel flag is set
+    pub fn is_parallel(&mut self) -> bool {
+        unsafe { crate::ffi::GeomLib_CheckCurveOnSurface_is_parallel(self as *mut Self) }
+    }
+
+    /// Returns true if the max distance has been found
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::GeomLib_CheckCurveOnSurface_is_done(self as *const Self) }
+    }
+
+    /// Returns error status
+    /// The possible values are:
+    /// 0 - OK;
+    /// 1 - null curve or surface or 2d curve;
+    /// 2 - invalid parametric range;
+    /// 3 - error in calculations.
+    pub fn error_status(&self) -> i32 {
+        unsafe { crate::ffi::GeomLib_CheckCurveOnSurface_error_status(self as *const Self) }
+    }
+
+    /// Returns max distance
+    pub fn max_distance(&self) -> f64 {
+        unsafe { crate::ffi::GeomLib_CheckCurveOnSurface_max_distance(self as *const Self) }
+    }
+
+    /// Returns parameter in which the distance is maximal
+    pub fn max_parameter(&self) -> f64 {
+        unsafe { crate::ffi::GeomLib_CheckCurveOnSurface_max_parameter(self as *const Self) }
     }
 }

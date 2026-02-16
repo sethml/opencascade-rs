@@ -302,6 +302,21 @@ impl MyGaussFunction {
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         unsafe { crate::ffi::CPnts_MyGaussFunction_value(self as *mut Self, X, F) }
     }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe { &*(crate::ffi::CPnts_MyGaussFunction_as_math_Function(self as *const Self)) }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe { &mut *(crate::ffi::CPnts_MyGaussFunction_as_math_Function_mut(self as *mut Self)) }
+    }
+
+    /// Inherited from math_Function: GetStateNumber()
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::CPnts_MyGaussFunction_inherited_GetStateNumber(self as *mut Self) }
+    }
 }
 
 // ========================
@@ -347,6 +362,39 @@ impl MyRootFunction {
 
     pub fn values(&mut self, X: f64, F: &mut f64, Df: &mut f64) -> bool {
         unsafe { crate::ffi::CPnts_MyRootFunction_values(self as *mut Self, X, F, Df) }
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe { &*(crate::ffi::CPnts_MyRootFunction_as_math_Function(self as *const Self)) }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe { &mut *(crate::ffi::CPnts_MyRootFunction_as_math_Function_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to math_FunctionWithDerivative
+    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
+        unsafe {
+            &*(crate::ffi::CPnts_MyRootFunction_as_math_FunctionWithDerivative(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_FunctionWithDerivative (mutable)
+    pub fn as_math_function_with_derivative_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionWithDerivative {
+        unsafe {
+            &mut *(crate::ffi::CPnts_MyRootFunction_as_math_FunctionWithDerivative_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited from math_Function: GetStateNumber()
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::CPnts_MyRootFunction_inherited_GetStateNumber(self as *mut Self) }
     }
 }
 
