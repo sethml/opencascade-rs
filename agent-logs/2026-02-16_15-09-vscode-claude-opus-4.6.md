@@ -2196,3 +2196,405 @@ Ran terminal command:  cd /Users/sethml/src/opencascade-rs && git add -A && git 
 Created 4 todos
 
 Committed as `dbeb638`. All source references now include line numbers (except synthetic default constructors), inherited methods show their original source location with `ClassName::MethodName()` format, and doctests are disabled via `doctest = false` in Cargo.toml.
+
+User: I think PLAN and TRANSITION_PLAN are complete now. Read through and verify whether that's true. If there are good ideas that we could still implement them, evaluate implementation difficulty and benefit and report back. If there's things in either documentation that really is more like documentation, verify that it's current, then move it into README.md or PORTING.md.
+
+GitHub Copilot: Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/TRANSITION_PLAN.md#1-1), lines 1 to 200
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/TRANSITION_PLAN.md#200-200), lines 200 to 400
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/TRANSITION_PLAN.md#400-400), lines 400 to 558
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#1-1), lines 1 to 150
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#150-150), lines 150 to 345
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-sys/PORTING.md#1-1), lines 1 to 200
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-sys/PORTING.md#200-200), lines 200 to 495
+
+Created 3 todos
+
+Based on my review, **yes, both PLAN.md and TRANSITION_PLAN.md are essentially complete** for their original scopes. Here's my detailed analysis:
+
+## Current State
+
+### PLAN.md
+- ✅ All TODO items completed
+- ✅ Architecture is documented and deployed
+- ✅ Current scope is feature-complete
+
+### TRANSITION_PLAN.md
+- ✅ All migration steps complete (Step 5 says "compiles", all methods unstubbed)
+- ✅ All generator limitations are marked "FIXED" or "RESOLVED"
+- ✅ opencascade crate fully working
+
+## Future Work Evaluation
+
+Both docs have "Future Work" sections. Here's my assessment of what's left:
+
+### Worth Implementing (Low Effort, Clear Value)
+
+**#15: Raw pointer syntax bug** (TRANSITION_PLAN.md)
+- **What**: `IMeshData_Edge *const` leaks into type names (2 instances)
+- **Difficulty**: Easy - add validation in `generate_opaque_declarations()`
+- **Benefit**: Fixes a parser bug
+- **Recommendation**: ✅ Fix this
+
+### Not Worth It (Edge Cases, Low Value)
+
+**#13: Fortran common blocks** (11 instances)
+- Invalid identifiers like `maovpar_1_`
+- Already skipped by parser, only pulled in as opaque types
+- **Recommendation**: ❌ Skip - document as known limitation
+
+**#14: Non-type template parameter** (1 instance - `BVH_Tree<T, 3>`)
+- CXX doesn't support value template params
+- **Recommendation**: ❌ Skip - edge case, document if needed
+
+**#17: Raw pointers** (190 methods, but 87% in BSplCLib/BSplSLib)
+- Analysis concludes "NOT WORTH GENERAL SUPPORT"
+- Only 2-3 useful cases (BRep_Tool::CurveOnSurface, gp_XYZ::GetData)
+- **Recommendation**: ❌ Skip general support, hand-write the 2-3 if needed
+
+**#18: Nullable pointer parameters**
+- Optional enhancement for `T* param = NULL` patterns
+- Marked "low priority"
+- **Recommendation**: ❌ Skip unless user requests it
+
+### Legitimate Future Work (Leave Documented)
+
+**#16: All-headers build scale concerns**
+- 6,875 headers → 6x larger ffi.rs, 12x larger wrappers.hxx
+- Requires modular compilation strategy
+- **Recommendation**: ✅ Keep as documented future work
+
+**Optional: extern "C" migration**
+- Major architectural change with pros/cons well-documented
+- Enables per-module compilation
+- Needs prototype first
+- **Recommendation**: ✅ Keep as documented exploration
+
+## Documentation Reorganization
+
+Several sections in PLAN.md and TRANSITION_PLAN.md are **documentation**, not planning:
+
+### Move from PLAN.md to README.md:
+- CLI Usage section (lines ~80-100)
+- Key Patterns table (lines ~110-170) - this is excellent reference material
+
+### Move from TRANSITION_PLAN.md to PORTING.md:
+- The translation table in Step 5 (old pattern → new pattern) - already mostly covered in PORTING.md
+
+### Mark as Historical:
+- PLAN.md "Completed Steps" section - prepend "## Historical:" header
+- TRANSITION_PLAN.md "Completed Steps" and "Current Work" - mark as historical
+
+### Keep in PLAN.md:
+- Architecture section - this is design documentation
+- Methods Skipped section - this is important technical reference
+- Future Work section - legitimate future items
+
+Let me know if you want me to:
+1. Fix bug #15 (raw pointer syntax leak)
+2. Reorganize the documentation as outlined above
+3. Mark completed sections as historical
+
+User: OK, do 1 & 2. Then delete PLAN.md and TRANSITION_PLAN.md. Then make sure everything builds and tests pass, and commit.
+
+GitHub Copilot: 
+
+  
+
+Added 1 todo
+
+Let me first investigate the raw pointer syntax bug to understand where it occurs: 
+
+Searched for text `IMeshData_Edge|IMeshData_Face` (`**/crates/opencascade-sys/generated/**`), 20 results
+
+The types `IMeshData_Edge` and `IMeshData_Face` look fine — they're declared properly without `*const`. The bug from TRANSITION_PLAN #15 must have been a historical issue that's already been fixed, or only appears in all-headers builds. Let me verify: 
+
+Searched for regex `\*const|\\*const` (`**/crates/opencascade-sys/generated/**`), 20 results
+
+No `*const` in type positions — just in normal pointer parameters. The bug described in TRANSITION_PLAN.md #15 is specifically about all-headers builds (future work section), not the current build. Let me verify: 
+
+Searched for regex `pub struct.*\\*` (`**/crates/opencascade-sys/generated/ffi.rs`), 20 results
+
+No `pub struct IMeshData_Edge *const` — the bug doesn't exist in the current build. It's only a future concern for all-headers builds. So bug #15 is not actionable now.
+
+Let me add a defensive check in the generator anyway to prevent it if/when all-headers builds are attempted, then focus on the documentation reorganization. 
+
+Searched for text `generate_opaque_declarations` (`**/crates/opencascade-binding-generator/src/codegen/rust.rs`), 2 results
+
+Reading lines 334-375 of [rust.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/rust.rs#L334-L376)
+Completed with input: {
+  "endLine": 375,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/rust.rs",
+  "startLine": 334
+}
+
+The fix is already in place (lines 366-370). Bug #15 was already fixed. Good.
+
+Now let me focus on the documentation reorganization. Let me read the current README.md to understand what's already there: 
+
+Reading lines 1-345 of [README.md](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L1-L346)
+Completed with input: {
+  "endLine": 345,
+  "filePath": "crates/opencascade-binding-generator/README.md",
+  "startLine": 1
+}
+
+Now let me plan what to move:
+
+**From PLAN.md → README.md:**
+- Architecture section (well-documented design) — but README.md already has "Implementation Details" covering similar ground. Need to merge carefully.
+- CLI Usage — README doesn't have this, should add.
+- Methods Skipped section — important technical reference, add to README.
+- Key Patterns table — README already has a similar table in "Implementation Details". PLAN.md's is more complete.
+
+**From PLAN.md → README.md (carefully merge):**
+- The Key Patterns table from PLAN is more up-to-date than README's
+
+**From TRANSITION_PLAN.md → README.md:**  
+- "Future Work: Expanding to All OCCT Headers" section (items 13-17) — generator-specific future work
+- "Optional: Switching from CXX to extern C FFI" — important design exploration doc
+
+**From TRANSITION_PLAN.md → PORTING.md:**
+- The translation table is already in PORTING.md
+
+Let me now compose the new README.md that consolidates the best content from all three docs, then check PORTING.md is complete. 
+
+Starting: *Reorganize docs into README/PORTING* (2/4)
+
+Let me check what sections README already covers thoroughly vs what needs adding: 
+
+Ran terminal command:  grep "^#" crates/opencascade-binding-generator/README.md
+
+Ran terminal command:  grep "^#" crates/opencascade-binding-generator/PLAN.md
+
+Ran terminal command:  grep "^#" crates/opencascade-binding-generator/TRANSITION_PLAN.md
+
+Now I have a clear picture. Let me plan the new README structure:
+
+1. Keep everything currently in README (public API docs, implementation internals)
+2. Add from PLAN.md:
+   - Architecture section (Generator Source, Two-Pass Pipeline) — complements README's "Implementation Details"
+   - CLI Usage
+   - Methods Skipped (current limitations)
+   - Key Patterns (wrapper table, handle support, collection types, naming)
+3. Add from TRANSITION_PLAN.md:
+   - Future Work: All OCCT Headers (items 13-17)
+   - Raw pointer investigation summary
+   - Nullable pointer parameters
+   - extern "C" FFI exploration
+
+Let me write the new comprehensive README: The README.md is going to be quite long since it needs to consolidate content from 3 docs. Let me write it as a new file since I'm replacing the vast majority of the content: 
+
+Ran terminal command:  wc -l /Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md /Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/PLAN.md /Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/TRANSITION_PLAN.md
+
+Ran terminal command:  cat crates/opencascade-binding-generator/README.md > tmp/old-readme-backup.md
+
+Now let me write the consolidated README. I'll keep the good public API docs from the old README, add the architecture/CLI/patterns from PLAN.md, and add the future work sections from TRANSITION_PLAN.md. I'll skip all the completed/historical work tracking since it's in git history.  
+
+Created [](file:///Users/sethml/src/opencascade-rs/tmp/new-readme.md)
+
+Now let me replace the README with this new version:  
+
+Ran terminal command:  cp tmp/new-readme.md crates/opencascade-binding-generator/README.md
+
+Now let me check if PORTING.md needs any updates from the TRANSITION_PLAN content. The main thing from TRANSITION_PLAN.md that could go to PORTING.md is the viewer crate note (Step 9). Let me check if that's already there:  
+
+Searched for text `viewer` (`**/crates/opencascade-sys/PORTING.md`), no results
+
+The viewer crate issue is a known limitation. Let me add it to the "Known Limitations" section of PORTING.md:  
+
+Reading lines 470-495 of [PORTING.md](file:///Users/sethml/src/opencascade-rs/crates/opencascade-sys/PORTING.md#L470-L496)
+Completed with input: {
+  "endLine": 495,
+  "filePath": "crates/opencascade-sys/PORTING.md",
+  "startLine": 470
+}
+
+The PORTING.md looks comprehensive. The "Known Limitations" section already covers the relevant current limitations. The viewer crate issue is more of a project-level concern than a porting guide item, so I'll skip adding it to PORTING.md.
+
+Now let me also verify the PORTING.md "Known Limitations" section is current:   
+
+Searched for text `Known Limitations` (`**/crates/opencascade-sys/PORTING.md`), 1 result
+
+Reading lines 409-440 of [PORTING.md](file:///Users/sethml/src/opencascade-rs/crates/opencascade-sys/PORTING.md#L409-L441)
+Completed with input: {
+  "endLine": 440,
+  "filePath": "crates/opencascade-sys/PORTING.md",
+  "startLine": 409
+}
+
+PORTING.md looks current and complete. Now let me delete PLAN.md and TRANSITION_PLAN.md:    
+
+Starting: *Delete PLAN.md and TRANSITION_PLAN.md* (3/4)
+
+Ran terminal command:  rm crates/opencascade-binding-generator/PLAN.md crates/opencascade-binding-generator/TRANSITION_PLAN.md && rm tmp/new-readme.md tmp/old-readme-backup.md
+
+Now check if anything references PLAN.md or TRANSITION_PLAN.md:     
+
+Searched for regex `PLAN\.md|TRANSITION_PLAN`, 20 results
+
+The references in agent-logs are just historical logs — those are fine. But CLAUDE.md and AGENTS.md reference the deleted files. Let me update those: 
+
+Reading lines 1-15 of [AGENTS.md](file:///Users/sethml/src/opencascade-rs/AGENTS.md#L1-L16)
+Completed with input: {
+  "endLine": 15,
+  "filePath": "AGENTS.md",
+  "startLine": 1
+}
+
+Reading lines 1-15 of [CLAUDE.md](file:///Users/sethml/src/opencascade-rs/CLAUDE.md#L1-L16)
+Completed with input: {
+  "endLine": 15,
+  "filePath": "CLAUDE.md",
+  "startLine": 1
+}
+
+Edited: [AGENTS.md <u>-4+4</u>](file:///Users/sethml/src/opencascade-rs/AGENTS.md#L4-L8)  
+Edited: [CLAUDE.md <u>-4+4</u>](file:///Users/sethml/src/opencascade-rs/CLAUDE.md#L4-L8)
+Completed with input: {
+  "edits": [
+    {
+      "content": "In order to do that, there's a work-in-progress tool\ncrates/opencascade-binding-generator. The README.md in that directory describes\nthe architecture, CLI usage, and future work. Use\nscripts/regenerate-bindings.sh in order to run the generator and regenerate the",
+      "filePath": "AGENTS.md",
+      "lineHashes": "4:jl,5:ga,6:ew,7:fl"
+    },
+    {
+      "content": "In order to do that, there's a work-in-progress tool\ncrates/opencascade-binding-generator. The README.md in that directory describes\nthe architecture, CLI usage, and future work. Use\nscripts/regenerate-bindings.sh in order to run the generator and regenerate the",
+      "filePath": "CLAUDE.md",
+      "lineHashes": "4:jl,5:ga,6:ew,7:fl"
+    }
+  ]
+}
+
+Starting: *Build, test, and commit* (4/4)
+
+Now build and run all tests:      
+
+Ran terminal command:  time cargo build -p opencascade-binding-generator 2>&1
+
+Ran terminal command:  time ./scripts/run-binding-generator-tests.sh 2>&1
+
+Ran terminal command:  time cargo test -p opencascade-sys 2>&1
+
+All tests pass. Now commit:      
+
+Ran terminal command:  git status --short
+
+Wait — CLAUDE.md doesn't show as modified. Let me check:    
+
+Ran terminal command:  git diff CLAUDE.md | head -20
+
+Ran terminal command:  head -8 CLAUDE.md
+
+The edit is there but maybe git ignores CLAUDE.md. Let me check:     
+
+Ran terminal command:  git check-ignore CLAUDE.md; echo "exit: $?"
+
+Ran terminal command:  git ls-files CLAUDE.md
+
+Ran terminal command:  git diff CLAUDE.md
+
+Ran terminal command:  git show HEAD:CLAUDE.md | head -8
+
+CLAUDE.md is a symlink to AGENTS.md — they're the same file. That's why only AGENTS.md shows up as modified.  
+
+Ran terminal command:  cd /Users/sethml/src/opencascade-rs && git add -A && git commit -m "Consolidate PLAN.md and TRANSITION_PLAN.md into README.md
+
+- Merge architecture, CLI usage, wrapper patterns, naming conventions,
+  and skipped methods docs from PLAN.md into README.md
+- Merge future work items (all-headers scaling, raw pointers, nullable
+  params) from TRANSITION_PLAN.md into README.md
+- Delete PLAN.md and TRANSITION_PLAN.md (all content preserved or
+  historical work tracking no longer needed)
+- Update AGENTS.md/CLAUDE.md references to point to README.md"
+
+Completed: *Build, test, and commit* (4/4)
+
+Committed as `ca6a267`. Summary:
+
+- **Bug #15** (raw pointer syntax in type names) — already fixed in the codebase with a `contains('*')` filter at rust.rs. Only affects hypothetical all-headers builds.
+- **README.md** — consolidated architecture, CLI, wrapper patterns, naming conventions, skipped methods, and future work from all three docs into a single comprehensive reference.
+- **PLAN.md** and **TRANSITION_PLAN.md** — deleted. All reusable content moved to README.md; historical work tracking is in git history.
+- **CLAUDE.md** — updated references to point to README.md.
+
+Made changes.
+
+User: Methods Skipped Due to CXX/OCCT Limitations: I'm not sure these 4 items are still true - verify by looking at the generated code or binding generator, and delete them if they're resolved.
+
+GitHub Copilot: Summarized conversation history
+
+  
+
+Created 5 todos
+
+Searched for regex `ambiguous.*lifetime|lifetime.*ambiguous|Pin.*&mut Self|mutable_ref_return` (`**/crates/opencascade-binding-generator/src/**`), 5 results
+
+Searched for regex `abstract|protected.*destructor|raw.*pointer|pointer.*param|skip|filter|exclude` (`**/crates/opencascade-binding-generator/src/resolver.rs`), 20 results
+
+Let me look at the resolver code to see all four filters in detail.  
+
+Reading lines 50-100 of [resolver.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L50-L101)
+Completed with input: {
+  "filePath": "crates/opencascade-binding-generator/src/resolver.rs",
+  "startLine": 50,
+  "endLine": 100
+}
+
+Searched for regex `raw.pointer|pointer.*parameter|has_pointer|ptr_param` (`**/crates/opencascade-binding-generator/src/resolver.rs`), no results
+
+Now let me search for the specific filters for each item more thoroughly:  
+
+Searched for regex `NeedsExplicitLifetimes|ProtectedDestructor|AbstractClass|UnbindableType` (`**/crates/opencascade-binding-generator/src/resolver.rs`), 8 results
+
+Searched for regex `has_pointer|raw.*pointer|pointer_param|T\*|const T\*` (`**/crates/opencascade-binding-generator/src/**`), 10 results
+
+Good, all four filters are still actively used. Let me now look at the actual filtering code for each to confirm they're still applying:    
+
+Reading lines 810-840 of [resolver.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L810-L841)
+Completed with input: {
+  "endLine": 840,
+  "filePath": "crates/opencascade-binding-generator/src/resolver.rs",
+  "startLine": 810
+}
+
+Reading lines 915-935 of [resolver.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L915-L936)
+Completed with input: {
+  "endLine": 935,
+  "filePath": "crates/opencascade-binding-generator/src/resolver.rs",
+  "startLine": 915
+}
+
+Reading lines 965-995 of [resolver.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/resolver.rs#L965-L996)
+Completed with input: {
+  "endLine": 995,
+  "filePath": "crates/opencascade-binding-generator/src/resolver.rs",
+  "startLine": 965
+}
+
+Reading lines 1800-1835 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L1800-L1836)
+Completed with input: {
+  "endLine": 1835,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 1800
+}
+
+Completed: *Verify ambiguous lifetimes filter* (1/5)
+
+All four filters are actively used in the current code:
+
+1. **Ambiguous lifetimes** — resolver.rs: `method_needs_explicit_lifetimes()` check, excludes with `NeedsExplicitLifetimes`. Still active.
+
+2. **Abstract class constructors** — resolver.rs: `if is_abstract` check on constructors, excludes with `AbstractClass`. Still active.
+
+3. **Protected destructors** — resolver.rs: `if class.has_protected_destructor` check, excludes entire class with `ProtectedDestructor`. Still active.
+
+4. **Raw pointer parameters** — bindings.rs: Checks `rust_ffi_type.contains("*const")` or `"*mut"` on params and return types, skips the method. Still active.
+
+All four are genuine, active filters in the binding generator. No changes needed — the README is accurate. 
+
+Completed: *Update README if any resolved* (5/5)

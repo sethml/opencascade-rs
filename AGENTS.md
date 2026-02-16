@@ -2,8 +2,8 @@ My goal is to make crates/opencascade-sys a more complete FFI layer to access
 the C++ OCCT library.
 
 In order to do that, there's a work-in-progress tool
-crates/opencascade-binding-generator. The PLAN.md and TRANSITION_PLAN.md
-documents in that directory describe the progress. Use
+crates/opencascade-binding-generator. The README.md in that directory describes
+the architecture, CLI usage, and future work. Use
 scripts/regenerate-bindings.sh in order to run the generator and regenerate the
 ffi files in opencascade-sys/generated. You must regenerate bindings after modifying opencascade-binding-generator. Avoid using head or tail when running
 the script in order to avoid missing errors.
