@@ -118,7 +118,7 @@ fn collect_section_edges(edge_list: &opencascade_sys::top_tools::ListOfShape) ->
     let mut new_edges = vec![];
     let mut iter = edge_list.iter();
     while let Some(shape) = iter.next() {
-        let edge = unsafe { &*topo_ds::edge(shape.as_ptr()) };
+        let edge = topo_ds::edge(unsafe { &*shape.as_ptr() });
         new_edges.push(Edge::from_edge(edge));
     }
     new_edges

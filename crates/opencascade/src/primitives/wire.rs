@@ -239,7 +239,7 @@ impl Wire {
         let raise_exception = false;
         wire_shape.move_(&location, raise_exception);
 
-        let translated_wire = unsafe { &*topo_ds::wire(wire_shape.as_ptr()) };
+        let translated_wire = topo_ds::wire(unsafe { &*wire_shape.as_ptr() });
 
         Self::from_wire(translated_wire)
     }

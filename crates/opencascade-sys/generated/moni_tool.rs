@@ -10,6 +10,7 @@
 // From MoniTool_SignText.hxx
 // ========================
 
+/// **Source:** `MoniTool_SignText.hxx`:34 - `MoniTool_SignText`
 /// Provides the basic service to get a text which identifies
 /// an object in a context
 /// It can be used for other classes (general signatures ...)
@@ -24,20 +25,24 @@ unsafe impl crate::CppDeletable for SignText {
 }
 
 impl SignText {
+    /// **Source:** `MoniTool_SignText.hxx`:40 - `MoniTool_SignText::Name()`
     /// Returns an identification of the Signature (a word), given at
     /// initialization time
     pub fn name(&self) -> *const std::ffi::c_char {
         unsafe { crate::ffi::MoniTool_SignText_name(self as *const Self) }
     }
 
+    /// **Source:** `MoniTool_SignText.hxx`:57 - `MoniTool_SignText::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::MoniTool_SignText_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `MoniTool_SignText.hxx`:57 - `MoniTool_SignText::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::MoniTool_SignText_get_type_name() }
     }
 
+    /// **Source:** `MoniTool_SignText.hxx`:57 - `MoniTool_SignText::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::MoniTool_SignText_get_type_descriptor()) }
     }

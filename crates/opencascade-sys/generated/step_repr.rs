@@ -10,6 +10,7 @@
 // From StepRepr_RepresentationItem.hxx
 // ========================
 
+/// **Source:** `StepRepr_RepresentationItem.hxx`:29 - `StepRepr_RepresentationItem`
 pub use crate::ffi::StepRepr_RepresentationItem as RepresentationItem;
 
 unsafe impl crate::CppDeletable for RepresentationItem {
@@ -19,19 +20,23 @@ unsafe impl crate::CppDeletable for RepresentationItem {
 }
 
 impl RepresentationItem {
+    /// **Source:** `StepRepr_RepresentationItem.hxx`:34 - `StepRepr_RepresentationItem::StepRepr_RepresentationItem()`
     /// Returns a RepresentationItem
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepRepr_RepresentationItem_ctor()) }
     }
 
+    /// **Source:** `StepRepr_RepresentationItem.hxx`:36 - `StepRepr_RepresentationItem::Init()`
     pub fn init(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
         unsafe { crate::ffi::StepRepr_RepresentationItem_init(self as *mut Self, aName) }
     }
 
+    /// **Source:** `StepRepr_RepresentationItem.hxx`:38 - `StepRepr_RepresentationItem::SetName()`
     pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
         unsafe { crate::ffi::StepRepr_RepresentationItem_set_name(self as *mut Self, aName) }
     }
 
+    /// **Source:** `StepRepr_RepresentationItem.hxx`:40 - `StepRepr_RepresentationItem::Name()`
     pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::StepRepr_RepresentationItem_name(
@@ -40,14 +45,17 @@ impl RepresentationItem {
         }
     }
 
+    /// **Source:** `StepRepr_RepresentationItem.hxx`:42 - `StepRepr_RepresentationItem::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::StepRepr_RepresentationItem_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `StepRepr_RepresentationItem.hxx`:42 - `StepRepr_RepresentationItem::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::StepRepr_RepresentationItem_get_type_name() }
     }
 
+    /// **Source:** `StepRepr_RepresentationItem.hxx`:42 - `StepRepr_RepresentationItem::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::StepRepr_RepresentationItem_get_type_descriptor()) }
     }

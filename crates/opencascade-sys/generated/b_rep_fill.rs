@@ -112,6 +112,7 @@ impl TryFrom<i32> for TransitionStyle {
 // From BRepFill_Draft.hxx
 // ========================
 
+/// **Source:** `BRepFill_Draft.hxx`:36 - `BRepFill_Draft`
 pub use crate::ffi::BRepFill_Draft as Draft;
 
 unsafe impl crate::CppDeletable for Draft {
@@ -121,6 +122,7 @@ unsafe impl crate::CppDeletable for Draft {
 }
 
 impl Draft {
+    /// **Source:** `BRepFill_Draft.hxx`:41 - `BRepFill_Draft::BRepFill_Draft()`
     pub fn new_shape_dir_real(
         Shape: &crate::ffi::TopoDS_Shape,
         Dir: &crate::ffi::gp_Dir,
@@ -133,6 +135,7 @@ impl Draft {
         }
     }
 
+    /// **Source:** `BRepFill_Draft.hxx`:45 - `BRepFill_Draft::SetOptions()`
     pub fn set_options(
         &mut self,
         Style: crate::b_rep_fill::TransitionStyle,
@@ -149,14 +152,17 @@ impl Draft {
         }
     }
 
+    /// **Source:** `BRepFill_Draft.hxx`:49 - `BRepFill_Draft::SetDraft()`
     pub fn set_draft(&mut self, IsInternal: bool) {
         unsafe { crate::ffi::BRepFill_Draft_set_draft(self as *mut Self, IsInternal) }
     }
 
+    /// **Source:** `BRepFill_Draft.hxx`:51 - `BRepFill_Draft::Perform()`
     pub fn perform_real(&mut self, LengthMax: f64) {
         unsafe { crate::ffi::BRepFill_Draft_perform_real(self as *mut Self, LengthMax) }
     }
 
+    /// **Source:** `BRepFill_Draft.hxx`:53 - `BRepFill_Draft::Perform()`
     pub fn perform_handlegeomsurface_bool(
         &mut self,
         Surface: &crate::ffi::HandleGeomSurface,
@@ -171,16 +177,19 @@ impl Draft {
         }
     }
 
+    /// **Source:** `BRepFill_Draft.hxx`:56 - `BRepFill_Draft::Perform()`
     pub fn perform_shape_bool(&mut self, StopShape: &crate::ffi::TopoDS_Shape, KeepOutSide: bool) {
         unsafe {
             crate::ffi::BRepFill_Draft_perform_shape_bool(self as *mut Self, StopShape, KeepOutSide)
         }
     }
 
+    /// **Source:** `BRepFill_Draft.hxx`:59 - `BRepFill_Draft::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepFill_Draft_is_done(self as *const Self) }
     }
 
+    /// **Source:** `BRepFill_Draft.hxx`:64 - `BRepFill_Draft::Shell()`
     /// Returns the draft surface
     /// To have the complete shape
     /// you have to use the Shape() methode.
@@ -188,12 +197,14 @@ impl Draft {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Draft_shell(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFill_Draft.hxx`:68 - `BRepFill_Draft::Generated()`
     /// Returns the  list   of shapes generated   from the
     /// shape <S>.
     pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFill_Draft_generated(self as *mut Self, S)) }
     }
 
+    /// **Source:** `BRepFill_Draft.hxx`:70 - `BRepFill_Draft::Shape()`
     pub fn shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Draft_shape(self as *const Self)) }
     }
@@ -203,6 +214,7 @@ impl Draft {
 // From BRepFill_EdgeFaceAndOrder.hxx
 // ========================
 
+/// **Source:** `BRepFill_EdgeFaceAndOrder.hxx`:28 - `BRepFill_EdgeFaceAndOrder`
 pub use crate::ffi::BRepFill_EdgeFaceAndOrder as EdgeFaceAndOrder;
 
 unsafe impl crate::CppDeletable for EdgeFaceAndOrder {
@@ -212,10 +224,12 @@ unsafe impl crate::CppDeletable for EdgeFaceAndOrder {
 }
 
 impl EdgeFaceAndOrder {
+    /// **Source:** `BRepFill_EdgeFaceAndOrder.hxx`:33 - `BRepFill_EdgeFaceAndOrder::BRepFill_EdgeFaceAndOrder()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_EdgeFaceAndOrder_ctor()) }
     }
 
+    /// **Source:** `BRepFill_EdgeFaceAndOrder.hxx`:35 - `BRepFill_EdgeFaceAndOrder::BRepFill_EdgeFaceAndOrder()`
     pub fn new_edge_face_shape(
         anEdge: &crate::ffi::TopoDS_Edge,
         aFace: &crate::ffi::TopoDS_Face,
@@ -235,6 +249,7 @@ impl EdgeFaceAndOrder {
 // From BRepFill_Evolved.hxx
 // ========================
 
+/// **Source:** `BRepFill_Evolved.hxx`:40 - `BRepFill_Evolved`
 /// Constructs an evolved volume from a spine (wire or face)
 /// and  a profile ( wire).
 pub use crate::ffi::BRepFill_Evolved as Evolved;
@@ -246,10 +261,12 @@ unsafe impl crate::CppDeletable for Evolved {
 }
 
 impl Evolved {
+    /// **Source:** `BRepFill_Evolved.hxx`:45 - `BRepFill_Evolved::BRepFill_Evolved()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Evolved_ctor()) }
     }
 
+    /// **Source:** `BRepFill_Evolved.hxx`:53 - `BRepFill_Evolved::BRepFill_Evolved()`
     /// Creates an evolved shape by sweeping the <Profile>
     /// along the  <Spine>.  <AxeProf> is  used to set the
     /// position of <Profile> along  <Spine> as  follows:
@@ -274,6 +291,7 @@ impl Evolved {
         }
     }
 
+    /// **Source:** `BRepFill_Evolved.hxx`:61 - `BRepFill_Evolved::BRepFill_Evolved()`
     /// Creates an  evolved shape  by sweeping the <Profile>
     /// along the <Spine>
     pub fn new_face_wire_ax3_jointype_bool(
@@ -296,6 +314,7 @@ impl Evolved {
         }
     }
 
+    /// **Source:** `BRepFill_Evolved.hxx`:53 - `BRepFill_Evolved::BRepFill_Evolved()`
     /// Creates an evolved shape by sweeping the <Profile>
     /// along the  <Spine>.  <AxeProf> is  used to set the
     /// position of <Profile> along  <Spine> as  follows:
@@ -311,6 +330,7 @@ impl Evolved {
         Self::new_wire2_ax3_jointype_bool(Spine, Profile, AxeProf, Join.into(), false)
     }
 
+    /// **Source:** `BRepFill_Evolved.hxx`:61 - `BRepFill_Evolved::BRepFill_Evolved()`
     /// Creates an  evolved shape  by sweeping the <Profile>
     /// along the <Spine>
     pub fn new_face_wire_ax3_jointype(
@@ -322,6 +342,7 @@ impl Evolved {
         Self::new_face_wire_ax3_jointype_bool(Spine, Profile, AxeProf, Join.into(), false)
     }
 
+    /// **Source:** `BRepFill_Evolved.hxx`:69 - `BRepFill_Evolved::Perform()`
     /// Performs an  evolved shape  by sweeping the <Profile>
     /// along the <Spine>
     pub fn perform_wire2_ax3_jointype_bool(
@@ -344,6 +365,7 @@ impl Evolved {
         }
     }
 
+    /// **Source:** `BRepFill_Evolved.hxx`:77 - `BRepFill_Evolved::Perform()`
     /// Performs an  evolved shape  by sweeping the <Profile>
     /// along the <Spine>
     pub fn perform_face_wire_ax3_jointype_bool(
@@ -366,15 +388,18 @@ impl Evolved {
         }
     }
 
+    /// **Source:** `BRepFill_Evolved.hxx`:83 - `BRepFill_Evolved::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepFill_Evolved_is_done(self as *const Self) }
     }
 
+    /// **Source:** `BRepFill_Evolved.hxx`:86 - `BRepFill_Evolved::Shape()`
     /// returns the generated shape.
     pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepFill_Evolved_shape(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFill_Evolved.hxx`:91 - `BRepFill_Evolved::GeneratedShapes()`
     /// Returns   the  shapes  created  from   a  subshape
     /// <SpineShape>  of     the  spine   and   a subshape
     /// <ProfShape> on the profile.
@@ -392,6 +417,7 @@ impl Evolved {
         }
     }
 
+    /// **Source:** `BRepFill_Evolved.hxx`:94 - `BRepFill_Evolved::JoinType()`
     pub fn join_type(&self) -> crate::geom_abs::JoinType {
         unsafe {
             crate::geom_abs::JoinType::try_from(crate::ffi::BRepFill_Evolved_join_type(
@@ -401,11 +427,13 @@ impl Evolved {
         }
     }
 
+    /// **Source:** `BRepFill_Evolved.hxx`:97 - `BRepFill_Evolved::Top()`
     /// Return the face Top if <Solid> is True in the constructor.
     pub fn top(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepFill_Evolved_top(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFill_Evolved.hxx`:100 - `BRepFill_Evolved::Bottom()`
     /// Return the face Bottom  if <Solid> is True in the constructor.
     pub fn bottom(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepFill_Evolved_bottom(self as *const Self)) }
@@ -416,6 +444,7 @@ impl Evolved {
 // From BRepFill_FaceAndOrder.hxx
 // ========================
 
+/// **Source:** `BRepFill_FaceAndOrder.hxx`:28 - `BRepFill_FaceAndOrder`
 /// A structure containing Face and Order of constraint
 pub use crate::ffi::BRepFill_FaceAndOrder as FaceAndOrder;
 
@@ -426,10 +455,12 @@ unsafe impl crate::CppDeletable for FaceAndOrder {
 }
 
 impl FaceAndOrder {
+    /// **Source:** `BRepFill_FaceAndOrder.hxx`:33 - `BRepFill_FaceAndOrder::BRepFill_FaceAndOrder()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_FaceAndOrder_ctor()) }
     }
 
+    /// **Source:** `BRepFill_FaceAndOrder.hxx`:35 - `BRepFill_FaceAndOrder::BRepFill_FaceAndOrder()`
     pub fn new_face_shape(
         aFace: &crate::ffi::TopoDS_Face,
         anOrder: crate::geom_abs::Shape,
@@ -447,6 +478,7 @@ impl FaceAndOrder {
 // From BRepFill_Filling.hxx
 // ========================
 
+/// **Source:** `BRepFill_Filling.hxx`:65 - `BRepFill_Filling`
 /// N-Side Filling
 /// This algorithm avoids to build a face from:
 /// * a set of edges defining the bounds of the face and some
@@ -486,6 +518,7 @@ unsafe impl crate::CppDeletable for Filling {
 }
 
 impl Filling {
+    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new_int3_bool_real4_int2(
         Degree: i32,
@@ -515,6 +548,7 @@ impl Filling {
         }
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new_int3_bool_real4_int(
         Degree: i32,
@@ -541,6 +575,7 @@ impl Filling {
         )
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new_int3_bool_real4(
         Degree: i32,
@@ -566,6 +601,7 @@ impl Filling {
         )
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new_int3_bool_real3(
         Degree: i32,
@@ -590,6 +626,7 @@ impl Filling {
         )
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new_int3_bool_real2(
         Degree: i32,
@@ -613,6 +650,7 @@ impl Filling {
         )
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new_int3_bool_real(
         Degree: i32,
@@ -635,6 +673,7 @@ impl Filling {
         )
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new_int3_bool(
         Degree: i32,
@@ -656,6 +695,7 @@ impl Filling {
         )
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new_int3(Degree: i32, NbPtsOnCur: i32, NbIter: i32) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(
@@ -663,6 +703,7 @@ impl Filling {
         )
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new_int2(Degree: i32, NbPtsOnCur: i32) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(
@@ -670,16 +711,19 @@ impl Filling {
         )
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new_int(Degree: i32) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(Degree, 15, 2, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9)
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(3, 15, 2, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9)
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:90 - `BRepFill_Filling::SetConstrParam()`
     /// Sets the values of Tolerances used to control the constraint.
     /// Tol2d:
     /// Tol3d:   it is the maximum distance allowed between the support surface
@@ -700,6 +744,7 @@ impl Filling {
         }
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:109 - `BRepFill_Filling::SetResolParam()`
     /// Sets the parameters used for resolution.
     /// The default values of these parameters have been chosen for a good
     /// ratio quality/performance.
@@ -732,6 +777,7 @@ impl Filling {
         }
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:115 - `BRepFill_Filling::SetApproxParam()`
     /// Sets the parameters used for approximation of the surface
     pub fn set_approx_param(&mut self, MaxDeg: i32, MaxSegments: i32) {
         unsafe {
@@ -739,6 +785,7 @@ impl Filling {
         }
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:124 - `BRepFill_Filling::LoadInitSurface()`
     /// Loads the initial Surface
     /// The initial surface must have orthogonal local coordinates,
     /// i.e. partial derivatives dS/du and dS/dv must be orthogonal
@@ -749,6 +796,7 @@ impl Filling {
         unsafe { crate::ffi::BRepFill_Filling_load_init_surface(self as *mut Self, aFace) }
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:137 - `BRepFill_Filling::Add()`
     /// Adds a new constraint which also defines an edge of the wire
     /// of the face
     /// Order: Order of the constraint:
@@ -776,6 +824,7 @@ impl Filling {
         }
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:152 - `BRepFill_Filling::Add()`
     /// Adds a new constraint which also defines an edge of the wire
     /// of the face
     /// Order: Order of the constraint:
@@ -805,6 +854,7 @@ impl Filling {
         }
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:160 - `BRepFill_Filling::Add()`
     /// Adds a free constraint on a face. The corresponding edge has to
     /// be automatically recomputed.
     /// It is always a bound.
@@ -818,11 +868,13 @@ impl Filling {
         }
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:163 - `BRepFill_Filling::Add()`
     /// Adds a punctual constraint
     pub fn add_pnt(&mut self, Point: &crate::ffi::gp_Pnt) -> i32 {
         unsafe { crate::ffi::BRepFill_Filling_add_pnt(self as *mut Self, Point) }
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:166 - `BRepFill_Filling::Add()`
     /// Adds a punctual constraint.
     pub fn add_real2_face_shape(
         &mut self,
@@ -842,45 +894,55 @@ impl Filling {
         }
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:172 - `BRepFill_Filling::Build()`
     /// Builds the resulting faces
     pub fn build(&mut self) {
         unsafe { crate::ffi::BRepFill_Filling_build(self as *mut Self) }
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:174 - `BRepFill_Filling::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepFill_Filling_is_done(self as *const Self) }
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:176 - `BRepFill_Filling::Face()`
     pub fn face(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Filling_face(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:180 - `BRepFill_Filling::Generated()`
     /// Returns the list of shapes generated from the
     /// shape <S>.
     pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFill_Filling_generated(self as *mut Self, S)) }
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:182 - `BRepFill_Filling::G0Error()`
     pub fn g0_error(&self) -> f64 {
         unsafe { crate::ffi::BRepFill_Filling_g0_error(self as *const Self) }
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:184 - `BRepFill_Filling::G1Error()`
     pub fn g1_error(&self) -> f64 {
         unsafe { crate::ffi::BRepFill_Filling_g1_error(self as *const Self) }
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:186 - `BRepFill_Filling::G2Error()`
     pub fn g2_error(&self) -> f64 {
         unsafe { crate::ffi::BRepFill_Filling_g2_error(self as *const Self) }
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:188 - `BRepFill_Filling::G0Error()`
     pub fn g0_error_int(&mut self, Index: i32) -> f64 {
         unsafe { crate::ffi::BRepFill_Filling_g0_error_int(self as *mut Self, Index) }
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:190 - `BRepFill_Filling::G1Error()`
     pub fn g1_error_int(&mut self, Index: i32) -> f64 {
         unsafe { crate::ffi::BRepFill_Filling_g1_error_int(self as *mut Self, Index) }
     }
 
+    /// **Source:** `BRepFill_Filling.hxx`:192 - `BRepFill_Filling::G2Error()`
     pub fn g2_error_int(&mut self, Index: i32) -> f64 {
         unsafe { crate::ffi::BRepFill_Filling_g2_error_int(self as *mut Self, Index) }
     }
@@ -890,6 +952,7 @@ impl Filling {
 // From BRepFill_OffsetWire.hxx
 // ========================
 
+/// **Source:** `BRepFill_OffsetWire.hxx`:48 - `BRepFill_OffsetWire`
 /// Constructs a Offset Wire to a spine (wire or face).
 /// Offset direction will be to outer region in case of
 /// positive offset value and to inner region in case of
@@ -911,10 +974,12 @@ unsafe impl crate::CppDeletable for OffsetWire {
 }
 
 impl OffsetWire {
+    /// **Source:** `BRepFill_OffsetWire.hxx`:53 - `BRepFill_OffsetWire::BRepFill_OffsetWire()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_OffsetWire_ctor()) }
     }
 
+    /// **Source:** `BRepFill_OffsetWire.hxx`:55 - `BRepFill_OffsetWire::BRepFill_OffsetWire()`
     pub fn new_face_jointype_bool(
         Spine: &crate::ffi::TopoDS_Face,
         Join: crate::geom_abs::JoinType,
@@ -929,6 +994,7 @@ impl OffsetWire {
         }
     }
 
+    /// **Source:** `BRepFill_OffsetWire.hxx`:55 - `BRepFill_OffsetWire::BRepFill_OffsetWire()`
     pub fn new_face_jointype(
         Spine: &crate::ffi::TopoDS_Face,
         Join: crate::geom_abs::JoinType,
@@ -936,6 +1002,7 @@ impl OffsetWire {
         Self::new_face_jointype_bool(Spine, Join.into(), false)
     }
 
+    /// **Source:** `BRepFill_OffsetWire.hxx`:60 - `BRepFill_OffsetWire::Init()`
     /// Initialize the evaluation of Offsetting.
     pub fn init(
         &mut self,
@@ -953,6 +1020,7 @@ impl OffsetWire {
         }
     }
 
+    /// **Source:** `BRepFill_OffsetWire.hxx`:67 - `BRepFill_OffsetWire::Perform()`
     /// Performs  an OffsetWire at  an altitude <Alt> from
     /// the  face ( According  to  the orientation of  the
     /// face)
@@ -960,6 +1028,7 @@ impl OffsetWire {
         unsafe { crate::ffi::BRepFill_OffsetWire_perform(self as *mut Self, Offset, Alt) }
     }
 
+    /// **Source:** `BRepFill_OffsetWire.hxx`:70 - `BRepFill_OffsetWire::PerformWithBiLo()`
     /// Performs an  OffsetWire
     pub fn perform_with_bi_lo(
         &mut self,
@@ -983,19 +1052,23 @@ impl OffsetWire {
         }
     }
 
+    /// **Source:** `BRepFill_OffsetWire.hxx`:77 - `BRepFill_OffsetWire::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepFill_OffsetWire_is_done(self as *const Self) }
     }
 
+    /// **Source:** `BRepFill_OffsetWire.hxx`:79 - `BRepFill_OffsetWire::Spine()`
     pub fn spine(&self) -> &crate::ffi::TopoDS_Face {
         unsafe { &*(crate::ffi::BRepFill_OffsetWire_spine(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFill_OffsetWire.hxx`:82 - `BRepFill_OffsetWire::Shape()`
     /// returns the generated shape.
     pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepFill_OffsetWire_shape(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFill_OffsetWire.hxx`:87 - `BRepFill_OffsetWire::GeneratedShapes()`
     /// Returns   the  shapes  created  from   a  subshape
     /// <SpineShape> of the spine.
     /// Returns the last computed Offset.
@@ -1008,6 +1081,7 @@ impl OffsetWire {
         }
     }
 
+    /// **Source:** `BRepFill_OffsetWire.hxx`:89 - `BRepFill_OffsetWire::JoinType()`
     pub fn join_type(&self) -> crate::geom_abs::JoinType {
         unsafe {
             crate::geom_abs::JoinType::try_from(crate::ffi::BRepFill_OffsetWire_join_type(
@@ -1022,6 +1096,7 @@ impl OffsetWire {
 // From BRepFill_Pipe.hxx
 // ========================
 
+/// **Source:** `BRepFill_Pipe.hxx`:46 - `BRepFill_Pipe`
 /// Create a  shape by sweeping a shape  (the profile)
 /// along a wire (the spine).
 ///
@@ -1037,10 +1112,12 @@ unsafe impl crate::CppDeletable for Pipe {
 }
 
 impl Pipe {
+    /// **Source:** `BRepFill_Pipe.hxx`:51 - `BRepFill_Pipe::BRepFill_Pipe()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Pipe_ctor()) }
     }
 
+    /// **Source:** `BRepFill_Pipe.hxx`:53 - `BRepFill_Pipe::BRepFill_Pipe()`
     pub fn new_wire_shape_trihedron_bool2(
         Spine: &crate::ffi::TopoDS_Wire,
         Profile: &crate::ffi::TopoDS_Shape,
@@ -1059,6 +1136,7 @@ impl Pipe {
         }
     }
 
+    /// **Source:** `BRepFill_Pipe.hxx`:53 - `BRepFill_Pipe::BRepFill_Pipe()`
     pub fn new_wire_shape_trihedron_bool(
         Spine: &crate::ffi::TopoDS_Wire,
         Profile: &crate::ffi::TopoDS_Shape,
@@ -1068,6 +1146,7 @@ impl Pipe {
         Self::new_wire_shape_trihedron_bool2(Spine, Profile, aMode.into(), ForceApproxC1, false)
     }
 
+    /// **Source:** `BRepFill_Pipe.hxx`:53 - `BRepFill_Pipe::BRepFill_Pipe()`
     pub fn new_wire_shape_trihedron(
         Spine: &crate::ffi::TopoDS_Wire,
         Profile: &crate::ffi::TopoDS_Shape,
@@ -1076,6 +1155,7 @@ impl Pipe {
         Self::new_wire_shape_trihedron_bool2(Spine, Profile, aMode.into(), false, false)
     }
 
+    /// **Source:** `BRepFill_Pipe.hxx`:59 - `BRepFill_Pipe::Perform()`
     pub fn perform(
         &mut self,
         Spine: &crate::ffi::TopoDS_Wire,
@@ -1087,30 +1167,37 @@ impl Pipe {
         }
     }
 
+    /// **Source:** `BRepFill_Pipe.hxx`:63 - `BRepFill_Pipe::Spine()`
     pub fn spine(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepFill_Pipe_spine(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFill_Pipe.hxx`:65 - `BRepFill_Pipe::Profile()`
     pub fn profile(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepFill_Pipe_profile(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFill_Pipe.hxx`:67 - `BRepFill_Pipe::Shape()`
     pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepFill_Pipe_shape(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFill_Pipe.hxx`:69 - `BRepFill_Pipe::ErrorOnSurface()`
     pub fn error_on_surface(&self) -> f64 {
         unsafe { crate::ffi::BRepFill_Pipe_error_on_surface(self as *const Self) }
     }
 
+    /// **Source:** `BRepFill_Pipe.hxx`:71 - `BRepFill_Pipe::FirstShape()`
     pub fn first_shape(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepFill_Pipe_first_shape(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFill_Pipe.hxx`:73 - `BRepFill_Pipe::LastShape()`
     pub fn last_shape(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepFill_Pipe_last_shape(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFill_Pipe.hxx`:77 - `BRepFill_Pipe::Generated()`
     /// Returns the  list   of shapes generated   from the
     /// shape <S>.
     pub fn generated(
@@ -1121,6 +1208,7 @@ impl Pipe {
         unsafe { crate::ffi::BRepFill_Pipe_generated(self as *mut Self, S, L) }
     }
 
+    /// **Source:** `BRepFill_Pipe.hxx`:82 - `BRepFill_Pipe::Face()`
     /// Returns the face created from an edge of the spine
     /// and an edge of the profile.
     /// if the edges are not in the spine or the profile
@@ -1138,6 +1226,7 @@ impl Pipe {
         }
     }
 
+    /// **Source:** `BRepFill_Pipe.hxx`:88 - `BRepFill_Pipe::Edge()`
     /// Returns the edge created from an edge of the spine
     /// and a vertex of the profile.
     /// if the edge or the vertex are not in  the spine or
@@ -1156,6 +1245,7 @@ impl Pipe {
         }
     }
 
+    /// **Source:** `BRepFill_Pipe.hxx`:93 - `BRepFill_Pipe::Section()`
     /// Returns  the shape created from the profile at the
     /// position of the vertex VSpine.
     /// if the vertex is not in the Spine
@@ -1171,6 +1261,7 @@ impl Pipe {
         }
     }
 
+    /// **Source:** `BRepFill_Pipe.hxx`:97 - `BRepFill_Pipe::PipeLine()`
     /// Create a Wire by sweeping the Point along the <spine>
     /// if the <Spine> is undefined
     pub fn pipe_line(
@@ -1187,6 +1278,7 @@ impl Pipe {
 // From BRepFill_PipeShell.hxx
 // ========================
 
+/// **Source:** `BRepFill_PipeShell.hxx`:52 - `BRepFill_PipeShell`
 /// Computes a topological shell using some wires
 /// (spines and profiles) and displacement option
 /// Perform general sweeping construction
@@ -1199,36 +1291,42 @@ unsafe impl crate::CppDeletable for PipeShell {
 }
 
 impl PipeShell {
+    /// **Source:** `BRepFill_PipeShell.hxx`:58 - `BRepFill_PipeShell::BRepFill_PipeShell()`
     /// Set an sweep's mode
     /// If no mode are set, the mode used in MakePipe is used
     pub fn new_wire(Spine: &crate::ffi::TopoDS_Wire) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_PipeShell_ctor_wire(Spine)) }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:62 - `BRepFill_PipeShell::Set()`
     /// Set an Frenet or an CorrectedFrenet trihedron
     /// to  perform  the  sweeping
     pub fn set_bool(&mut self, Frenet: bool) {
         unsafe { crate::ffi::BRepFill_PipeShell_set_bool(self as *mut Self, Frenet) }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:66 - `BRepFill_PipeShell::SetDiscrete()`
     /// Set a Discrete trihedron
     /// to  perform  the  sweeping
     pub fn set_discrete(&mut self) {
         unsafe { crate::ffi::BRepFill_PipeShell_set_discrete(self as *mut Self) }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:70 - `BRepFill_PipeShell::Set()`
     /// Set  an  fixed  trihedron  to  perform  the  sweeping
     /// all sections will be parallel.
     pub fn set_ax2(&mut self, Axe: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::BRepFill_PipeShell_set_ax2(self as *mut Self, Axe) }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:74 - `BRepFill_PipeShell::Set()`
     /// Set an fixed  BiNormal  direction to  perform
     /// the sweeping
     pub fn set_dir(&mut self, BiNormal: &crate::ffi::gp_Dir) {
         unsafe { crate::ffi::BRepFill_PipeShell_set_dir(self as *mut Self, BiNormal) }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:80 - `BRepFill_PipeShell::Set()`
     /// Set support to the spine to define the BiNormal
     /// at   the spine, like    the  normal the surfaces.
     /// Warning: To  be  effective,  Each  edge  of  the  <spine>  must
@@ -1237,6 +1335,7 @@ impl PipeShell {
         unsafe { crate::ffi::BRepFill_PipeShell_set_shape(self as *mut Self, SpineSupport) }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:102 - `BRepFill_PipeShell::Set()`
     /// Set  an  auxiliary  spine  to  define  the Normal
     /// For  each  Point  of  the  Spine  P,  an  Point  Q  is  evalued
     /// on  <AuxiliarySpine>
@@ -1273,11 +1372,13 @@ impl PipeShell {
         }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:107 - `BRepFill_PipeShell::SetMaxDegree()`
     /// Define the maximum V degree of resulting surface
     pub fn set_max_degree(&mut self, NewMaxDegree: i32) {
         unsafe { crate::ffi::BRepFill_PipeShell_set_max_degree(self as *mut Self, NewMaxDegree) }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:111 - `BRepFill_PipeShell::SetMaxSegments()`
     /// Define the maximum number of spans in V-direction
     /// on resulting surface
     pub fn set_max_segments(&mut self, NewMaxSegments: i32) {
@@ -1286,6 +1387,7 @@ impl PipeShell {
         }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:123 - `BRepFill_PipeShell::SetForceApproxC1()`
     /// Set the flag that indicates attempt to approximate
     /// a C1-continuous surface if a swept surface proved
     /// to be C0.
@@ -1302,6 +1404,7 @@ impl PipeShell {
         }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:126 - `BRepFill_PipeShell::Add()`
     /// Set an section. The correspondence with the spine, will be automatically performed.
     pub fn add_shape_bool2(
         &mut self,
@@ -1319,6 +1422,7 @@ impl PipeShell {
         }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:131 - `BRepFill_PipeShell::Add()`
     /// Set an section. The correspondence with the spine, is given by Location.
     pub fn add_shape_vertex_bool2(
         &mut self,
@@ -1338,6 +1442,7 @@ impl PipeShell {
         }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:138 - `BRepFill_PipeShell::SetLaw()`
     /// Set  an    section  and  an   homotetic    law.
     /// The  homotetie's  centers  is  given  by  point  on  the  <Spine>.
     pub fn set_law_shape_handlelawfunction_bool2(
@@ -1358,6 +1463,7 @@ impl PipeShell {
         }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:145 - `BRepFill_PipeShell::SetLaw()`
     /// Set  an    section  and  an   homotetic    law.
     /// The  homotetie  center  is  given  by  point  on  the  <Spine>
     pub fn set_law_shape_handlelawfunction_vertex_bool2(
@@ -1380,17 +1486,20 @@ impl PipeShell {
         }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:152 - `BRepFill_PipeShell::DeleteProfile()`
     /// Delete an section.
     pub fn delete_profile(&mut self, Profile: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BRepFill_PipeShell_delete_profile(self as *mut Self, Profile) }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:156 - `BRepFill_PipeShell::IsReady()`
     /// Say if <me> is ready to build the shape
     /// return False if <me> do not have section definition
     pub fn is_ready(&self) -> bool {
         unsafe { crate::ffi::BRepFill_PipeShell_is_ready(self as *const Self) }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:159 - `BRepFill_PipeShell::GetStatus()`
     /// Get a status, when Simulate or Build failed.
     pub fn get_status(&self) -> crate::geom_fill::PipeError {
         unsafe {
@@ -1401,6 +1510,7 @@ impl PipeShell {
         }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:161 - `BRepFill_PipeShell::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol3d: f64, BoundTol: f64, TolAngular: f64) {
         unsafe {
             crate::ffi::BRepFill_PipeShell_set_tolerance(
@@ -1412,6 +1522,7 @@ impl PipeShell {
         }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:167 - `BRepFill_PipeShell::SetTransition()`
     /// Set the  Transition Mode to manage discontinuities
     /// on the sweep.
     pub fn set_transition(
@@ -1430,6 +1541,7 @@ impl PipeShell {
         }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:173 - `BRepFill_PipeShell::Simulate()`
     /// Perform simulation of the sweep :
     /// Some Section are returned.
     pub fn simulate(
@@ -1442,46 +1554,55 @@ impl PipeShell {
         }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:177 - `BRepFill_PipeShell::Build()`
     /// Builds the resulting shape (redefined from MakeShape).
     pub fn build(&mut self) -> bool {
         unsafe { crate::ffi::BRepFill_PipeShell_build(self as *mut Self) }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:181 - `BRepFill_PipeShell::MakeSolid()`
     /// Transform the sweeping Shell in Solid.
     /// If the section are not closed returns False
     pub fn make_solid(&mut self) -> bool {
         unsafe { crate::ffi::BRepFill_PipeShell_make_solid(self as *mut Self) }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:184 - `BRepFill_PipeShell::Shape()`
     /// Returns the result Shape.
     pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepFill_PipeShell_shape(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:186 - `BRepFill_PipeShell::ErrorOnSurface()`
     pub fn error_on_surface(&self) -> f64 {
         unsafe { crate::ffi::BRepFill_PipeShell_error_on_surface(self as *const Self) }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:189 - `BRepFill_PipeShell::FirstShape()`
     /// Returns the  TopoDS  Shape of the bottom of the sweep.
     pub fn first_shape(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepFill_PipeShell_first_shape(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:192 - `BRepFill_PipeShell::LastShape()`
     /// Returns the TopoDS Shape of the top of the sweep.
     pub fn last_shape(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepFill_PipeShell_last_shape(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:195 - `BRepFill_PipeShell::Profiles()`
     /// Returns the list of original profiles
     pub fn profiles(&mut self, theProfiles: &mut crate::ffi::TopTools_ListOfShape) {
         unsafe { crate::ffi::BRepFill_PipeShell_profiles(self as *mut Self, theProfiles) }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:202 - `BRepFill_PipeShell::Spine()`
     /// Returns the spine
     pub fn spine(&mut self) -> &crate::ffi::TopoDS_Wire {
         unsafe { &*(crate::ffi::BRepFill_PipeShell_spine(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:206 - `BRepFill_PipeShell::Generated()`
     /// Returns the  list   of shapes generated   from the
     /// shape <S>.
     pub fn generated(
@@ -1492,14 +1613,17 @@ impl PipeShell {
         unsafe { crate::ffi::BRepFill_PipeShell_generated(self as *mut Self, S, L) }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:208 - `BRepFill_PipeShell::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepFill_PipeShell_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:208 - `BRepFill_PipeShell::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepFill_PipeShell_get_type_name() }
     }
 
+    /// **Source:** `BRepFill_PipeShell.hxx`:208 - `BRepFill_PipeShell::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepFill_PipeShell_get_type_descriptor()) }
     }
@@ -1538,6 +1662,7 @@ impl HandleBRepFillPipeShell {
 // From BRepFill_Section.hxx
 // ========================
 
+/// **Source:** `BRepFill_Section.hxx`:27 - `BRepFill_Section`
 /// To store section definition
 pub use crate::ffi::BRepFill_Section as Section;
 
@@ -1548,10 +1673,12 @@ unsafe impl crate::CppDeletable for Section {
 }
 
 impl Section {
+    /// **Source:** `BRepFill_Section.hxx`:32 - `BRepFill_Section::BRepFill_Section()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Section_ctor()) }
     }
 
+    /// **Source:** `BRepFill_Section.hxx`:34 - `BRepFill_Section::BRepFill_Section()`
     pub fn new_shape_vertex_bool2(
         Profile: &crate::ffi::TopoDS_Shape,
         V: &crate::ffi::TopoDS_Vertex,
@@ -1568,22 +1695,27 @@ impl Section {
         }
     }
 
+    /// **Source:** `BRepFill_Section.hxx`:39 - `BRepFill_Section::Set()`
     pub fn set(&mut self, IsLaw: bool) {
         unsafe { crate::ffi::BRepFill_Section_set(self as *mut Self, IsLaw) }
     }
 
+    /// **Source:** `BRepFill_Section.hxx`:41 - `BRepFill_Section::OriginalShape()`
     pub fn original_shape(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepFill_Section_original_shape(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFill_Section.hxx`:43 - `BRepFill_Section::Wire()`
     pub fn wire(&self) -> &crate::ffi::TopoDS_Wire {
         unsafe { &*(crate::ffi::BRepFill_Section_wire(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFill_Section.hxx`:45 - `BRepFill_Section::Vertex()`
     pub fn vertex(&self) -> &crate::ffi::TopoDS_Vertex {
         unsafe { &*(crate::ffi::BRepFill_Section_vertex(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFill_Section.hxx`:47 - `BRepFill_Section::ModifiedShape()`
     pub fn modified_shape(
         &self,
         theShape: &crate::ffi::TopoDS_Shape,
@@ -1596,18 +1728,22 @@ impl Section {
         }
     }
 
+    /// **Source:** `BRepFill_Section.hxx`:49 - `BRepFill_Section::IsLaw()`
     pub fn is_law(&self) -> bool {
         unsafe { crate::ffi::BRepFill_Section_is_law(self as *const Self) }
     }
 
+    /// **Source:** `BRepFill_Section.hxx`:51 - `BRepFill_Section::IsPunctual()`
     pub fn is_punctual(&self) -> bool {
         unsafe { crate::ffi::BRepFill_Section_is_punctual(self as *const Self) }
     }
 
+    /// **Source:** `BRepFill_Section.hxx`:53 - `BRepFill_Section::WithContact()`
     pub fn with_contact(&self) -> bool {
         unsafe { crate::ffi::BRepFill_Section_with_contact(self as *const Self) }
     }
 
+    /// **Source:** `BRepFill_Section.hxx`:55 - `BRepFill_Section::WithCorrection()`
     pub fn with_correction(&self) -> bool {
         unsafe { crate::ffi::BRepFill_Section_with_correction(self as *const Self) }
     }

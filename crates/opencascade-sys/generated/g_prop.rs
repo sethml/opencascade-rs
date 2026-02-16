@@ -6,7 +6,28 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::GProp_h_operator as h_operator;
+/// **Source:** `GProp.hxx` - `GProp::HOperator`
+/// methods of package
+/// Computes the matrix Operator, referred to as the
+/// "Huyghens Operator" of a geometric system at the
+/// point Q of the space, using the following data :
+/// - Mass, i.e. the mass of the system,
+/// - G, the center of mass of the system.
+/// The "Huyghens Operator" is used to compute
+/// Inertia/Q, the matrix of inertia of the system at
+/// the point Q using Huyghens' theorem :
+/// Inertia/Q = Inertia/G + HOperator (Q, G, Mass)
+/// where Inertia/G is the matrix of inertia of the
+/// system relative to its center of mass as returned by
+/// the function MatrixOfInertia on any GProp_GProps object.
+pub fn h_operator(
+    G: &crate::ffi::gp_Pnt,
+    Q: &crate::ffi::gp_Pnt,
+    Mass: f64,
+    Operator: &mut crate::ffi::gp_Mat,
+) {
+    unsafe { crate::ffi::GProp_h_operator(G, Q, Mass, Operator) }
+}
 
 /// C++ enum: `GProp_EquaType`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -89,6 +110,7 @@ impl TryFrom<i32> for ValueType {
 // From GProp_CelGProps.hxx
 // ========================
 
+/// **Source:** `GProp_CelGProps.hxx`:32 - `GProp_CelGProps`
 /// Computes the  global properties of bounded curves
 /// in 3D space.
 /// It can be an elementary curve from package gp such as
@@ -102,10 +124,12 @@ unsafe impl crate::CppDeletable for CelGProps {
 }
 
 impl CelGProps {
+    /// **Source:** `GProp_CelGProps.hxx`:37 - `GProp_CelGProps::GProp_CelGProps()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GProp_CelGProps_ctor()) }
     }
 
+    /// **Source:** `GProp_CelGProps.hxx`:39 - `GProp_CelGProps::GProp_CelGProps()`
     pub fn new_circ_pnt(
         C: &crate::ffi::gp_Circ,
         CLocation: &crate::ffi::gp_Pnt,
@@ -115,6 +139,7 @@ impl CelGProps {
         }
     }
 
+    /// **Source:** `GProp_CelGProps.hxx`:41 - `GProp_CelGProps::GProp_CelGProps()`
     pub fn new_circ_real2_pnt(
         C: &crate::ffi::gp_Circ,
         U1: f64,
@@ -128,6 +153,7 @@ impl CelGProps {
         }
     }
 
+    /// **Source:** `GProp_CelGProps.hxx`:46 - `GProp_CelGProps::GProp_CelGProps()`
     pub fn new_lin_real2_pnt(
         C: &crate::ffi::gp_Lin,
         U1: f64,
@@ -141,14 +167,17 @@ impl CelGProps {
         }
     }
 
+    /// **Source:** `GProp_CelGProps.hxx`:51 - `GProp_CelGProps::SetLocation()`
     pub fn set_location(&mut self, CLocation: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::GProp_CelGProps_set_location(self as *mut Self, CLocation) }
     }
 
+    /// **Source:** `GProp_CelGProps.hxx`:53 - `GProp_CelGProps::Perform()`
     pub fn perform_circ_real2(&mut self, C: &crate::ffi::gp_Circ, U1: f64, U2: f64) {
         unsafe { crate::ffi::GProp_CelGProps_perform_circ_real2(self as *mut Self, C, U1, U2) }
     }
 
+    /// **Source:** `GProp_CelGProps.hxx`:55 - `GProp_CelGProps::Perform()`
     pub fn perform_lin_real2(&mut self, C: &crate::ffi::gp_Lin, U1: f64, U2: f64) {
         unsafe { crate::ffi::GProp_CelGProps_perform_lin_real2(self as *mut Self, C, U1, U2) }
     }
@@ -229,6 +258,7 @@ impl CelGProps {
 // From GProp_GProps.hxx
 // ========================
 
+/// **Source:** `GProp_GProps.hxx`:97 - `GProp_GProps`
 /// Implements a general mechanism to compute the global properties of
 /// a "compound geometric system" in 3d space    by composition of the
 /// global properties of "elementary geometric entities"       such as
@@ -307,12 +337,14 @@ unsafe impl crate::CppDeletable for GProps {
 }
 
 impl GProps {
+    /// **Source:** `GProp_GProps.hxx`:104 - `GProp_GProps::GProp_GProps()`
     /// The origin (0, 0, 0) of the absolute cartesian coordinate system
     /// is used to compute the global properties.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GProp_GProps_ctor()) }
     }
 
+    /// **Source:** `GProp_GProps.hxx`:125 - `GProp_GProps::GProp_GProps()`
     /// The point SystemLocation is used to compute the global properties
     /// of the system. For more accuracy it is better to define this
     /// point closed to the location of the system. For example it could
@@ -336,6 +368,7 @@ impl GProps {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GProp_GProps_ctor_pnt(SystemLocation)) }
     }
 
+    /// **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
     /// Either
     /// - initializes the global properties retained by this
     /// framework from those retained by the framework Item, or
@@ -377,6 +410,7 @@ impl GProps {
         unsafe { crate::ffi::GProp_GProps_add(self as *mut Self, Item, Density) }
     }
 
+    /// **Source:** `GProp_GProps.hxx`:190 - `GProp_GProps::Mass()`
     /// Returns the mass of the current system.
     /// If no density is attached to the components of the
     /// current system the returned value corresponds to :
@@ -405,6 +439,7 @@ impl GProps {
         unsafe { crate::ffi::GProp_GProps_mass(self as *const Self) }
     }
 
+    /// **Source:** `GProp_GProps.hxx`:196 - `GProp_GProps::CentreOfMass()`
     /// Returns the center of mass of the current system. If
     /// the gravitational field is uniform, it is the center of gravity.
     /// The coordinates returned for the center of mass are
@@ -415,6 +450,7 @@ impl GProps {
         }
     }
 
+    /// **Source:** `GProp_GProps.hxx`:215 - `GProp_GProps::MatrixOfInertia()`
     /// returns the matrix of inertia. It is a symmetrical matrix.
     /// The coefficients of the matrix are the quadratic moments of
     /// inertia.
@@ -440,6 +476,7 @@ impl GProps {
         }
     }
 
+    /// **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
     /// Returns Ix, Iy, Iz, the static moments of inertia of the
     /// current system; i.e. the moments of inertia about the
     /// three axes of the Cartesian coordinate system.
@@ -447,12 +484,14 @@ impl GProps {
         unsafe { crate::ffi::GProp_GProps_static_moments(self as *const Self, Ix, Iy, Iz) }
     }
 
+    /// **Source:** `GProp_GProps.hxx`:224 - `GProp_GProps::MomentOfInertia()`
     /// computes the moment of inertia of the material system about the
     /// axis A.
     pub fn moment_of_inertia(&self, A: &crate::ffi::gp_Ax1) -> f64 {
         unsafe { crate::ffi::GProp_GProps_moment_of_inertia(self as *const Self, A) }
     }
 
+    /// **Source:** `GProp_GProps.hxx`:239 - `GProp_GProps::PrincipalProperties()`
     /// Computes the principal properties of inertia of the current system.
     /// There is always a set of axes for which the products
     /// of inertia of a geometric system are equal to 0; i.e. the
@@ -474,6 +513,7 @@ impl GProps {
         }
     }
 
+    /// **Source:** `GProp_GProps.hxx`:242 - `GProp_GProps::RadiusOfGyration()`
     /// Returns the radius of gyration of the current system about the axis A.
     pub fn radius_of_gyration(&self, A: &crate::ffi::gp_Ax1) -> f64 {
         unsafe { crate::ffi::GProp_GProps_radius_of_gyration(self as *const Self, A) }
@@ -489,6 +529,7 @@ impl GProps {
 // From GProp_PEquation.hxx
 // ========================
 
+/// **Source:** `GProp_PEquation.hxx`:36 - `GProp_PEquation`
 /// A framework to analyze a collection - or cloud
 /// - of points and to verify if they are coincident,
 /// collinear or coplanar within a given precision. If
@@ -504,6 +545,7 @@ unsafe impl crate::CppDeletable for PEquation {
 }
 
 impl PEquation {
+    /// **Source:** `GProp_PEquation.hxx`:54 - `GProp_PEquation::GProp_PEquation()`
     /// Constructs a framework to analyze the
     /// collection of points Pnts and computes:
     /// -   the mean point if the points in question are
@@ -526,6 +568,7 @@ impl PEquation {
         }
     }
 
+    /// **Source:** `GProp_PEquation.hxx`:59 - `GProp_PEquation::IsPlanar()`
     /// Returns true if, according to the given
     /// tolerance, the points analyzed by this framework are  coplanar.
     /// Use the function  Plane  to access the computed result.
@@ -533,6 +576,7 @@ impl PEquation {
         unsafe { crate::ffi::GProp_PEquation_is_planar(self as *const Self) }
     }
 
+    /// **Source:** `GProp_PEquation.hxx`:64 - `GProp_PEquation::IsLinear()`
     /// Returns true if, according to the given
     /// tolerance, the points analyzed by this framework are  colinear.
     /// Use the function  Line  to access the computed result.
@@ -540,6 +584,7 @@ impl PEquation {
         unsafe { crate::ffi::GProp_PEquation_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `GProp_PEquation.hxx`:69 - `GProp_PEquation::IsPoint()`
     /// Returns true if, according to the given
     /// tolerance, the points analyzed by this framework are  coincident.
     /// Use the function  Point  to access the computed result.
@@ -547,6 +592,7 @@ impl PEquation {
         unsafe { crate::ffi::GProp_PEquation_is_point(self as *const Self) }
     }
 
+    /// **Source:** `GProp_PEquation.hxx`:76 - `GProp_PEquation::IsSpace()`
     /// Returns true if, according to the given
     /// tolerance value, the points analyzed by this
     /// framework are neither coincident, nor collinear, nor coplanar.
@@ -556,6 +602,7 @@ impl PEquation {
         unsafe { crate::ffi::GProp_PEquation_is_space(self as *const Self) }
     }
 
+    /// **Source:** `GProp_PEquation.hxx`:88 - `GProp_PEquation::Plane()`
     /// Returns the mean plane passing near all the
     /// points analyzed by this framework if, according
     /// to the given precision, the points are considered to be coplanar.
@@ -570,6 +617,7 @@ impl PEquation {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GProp_PEquation_plane(self as *const Self)) }
     }
 
+    /// **Source:** `GProp_PEquation.hxx`:99 - `GProp_PEquation::Line()`
     /// Returns the mean line passing near all the
     /// points analyzed by this framework if, according
     /// to the given precision value, the points are considered to be collinear.
@@ -583,6 +631,7 @@ impl PEquation {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GProp_PEquation_line(self as *const Self)) }
     }
 
+    /// **Source:** `GProp_PEquation.hxx`:108 - `GProp_PEquation::Point()`
     /// Returns the mean point of all the points
     /// analyzed by this framework if, according to the
     /// given precision, the points are considered to be coincident.
@@ -594,6 +643,7 @@ impl PEquation {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GProp_PEquation_point(self as *const Self)) }
     }
 
+    /// **Source:** `GProp_PEquation.hxx`:125 - `GProp_PEquation::Box()`
     /// Returns the definition of the smallest box which
     /// contains all the points analyzed by this
     /// framework if, according to the given precision
@@ -631,6 +681,7 @@ impl PEquation {
 // From GProp_PGProps.hxx
 // ========================
 
+/// **Source:** `GProp_PGProps.hxx`:50 - `GProp_PGProps`
 /// A framework for computing the global properties of a
 /// set of points.
 /// A point mass is attached to each point. The global
@@ -659,6 +710,7 @@ unsafe impl crate::CppDeletable for PGProps {
 }
 
 impl PGProps {
+    /// **Source:** `GProp_PGProps.hxx`:71 - `GProp_PGProps::GProp_PGProps()`
     /// Initializes a framework to compute global properties
     /// on a set of points.
     /// The point relative to which the inertia of the system is
@@ -679,18 +731,21 @@ impl PGProps {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GProp_PGProps_ctor()) }
     }
 
+    /// **Source:** `GProp_PGProps.hxx`:88 - `GProp_PGProps::GProp_PGProps()`
     /// computes the global properties of the system of points Pnts.
     /// The density of the points are defaulted to all being 1
     pub fn new_array1ofpnt(Pnts: &crate::ffi::TColgp_Array1OfPnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GProp_PGProps_ctor_array1ofpnt(Pnts)) }
     }
 
+    /// **Source:** `GProp_PGProps.hxx`:92 - `GProp_PGProps::GProp_PGProps()`
     /// computes the global properties of the system of points Pnts.
     /// The density of the points are defaulted to all being 1
     pub fn new_array2ofpnt(Pnts: &crate::ffi::TColgp_Array2OfPnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GProp_PGProps_ctor_array2ofpnt(Pnts)) }
     }
 
+    /// **Source:** `GProp_PGProps.hxx`:102 - `GProp_PGProps::GProp_PGProps()`
     /// computes the global properties of the system of points Pnts.
     /// A density is associated with each point.
     ///
@@ -710,6 +765,7 @@ impl PGProps {
         }
     }
 
+    /// **Source:** `GProp_PGProps.hxx`:113 - `GProp_PGProps::GProp_PGProps()`
     /// computes the global properties of the system of points Pnts.
     /// A density is associated with each point.
     ///
@@ -729,6 +785,7 @@ impl PGProps {
         }
     }
 
+    /// **Source:** `GProp_PGProps.hxx`:78 - `GProp_PGProps::AddPoint()`
     /// Brings together the global properties already
     /// retained by this framework with those induced by
     /// the point Pnt. Pnt may be the first point of the current system.
@@ -738,6 +795,7 @@ impl PGProps {
         unsafe { crate::ffi::GProp_PGProps_add_point_pnt(self as *mut Self, P) }
     }
 
+    /// **Source:** `GProp_PGProps.hxx`:84 - `GProp_PGProps::AddPoint()`
     /// Adds a new point P with its density in the system of points
     /// Exceptions
     /// Standard_DomainError if the mass value Density
@@ -746,6 +804,7 @@ impl PGProps {
         unsafe { crate::ffi::GProp_PGProps_add_point_pnt_real(self as *mut Self, P, Density) }
     }
 
+    /// **Source:** `GProp_PGProps.hxx`:118 - `GProp_PGProps::Barycentre()`
     /// Computes the barycentre of a set of points. The density of the
     /// points is defaulted to 1.
     pub fn barycentre_array1ofpnt(
@@ -754,6 +813,7 @@ impl PGProps {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GProp_PGProps_barycentre_array1ofpnt(Pnts)) }
     }
 
+    /// **Source:** `GProp_PGProps.hxx`:122 - `GProp_PGProps::Barycentre()`
     /// Computes the barycentre of a set of points. The density of the
     /// points is defaulted to 1.
     pub fn barycentre_array2ofpnt(
@@ -838,6 +898,7 @@ impl PGProps {
 // From GProp_PrincipalProps.hxx
 // ========================
 
+/// **Source:** `GProp_PrincipalProps.hxx`:47 - `GProp_PrincipalProps`
 /// A framework to present the principal properties of
 /// inertia of a system of which global properties are
 /// computed by a GProp_GProps object.
@@ -865,11 +926,13 @@ unsafe impl crate::CppDeletable for PrincipalProps {
 }
 
 impl PrincipalProps {
+    /// **Source:** `GProp_PrincipalProps.hxx`:53 - `GProp_PrincipalProps::GProp_PrincipalProps()`
     /// creates an undefined PrincipalProps.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GProp_PrincipalProps_ctor()) }
     }
 
+    /// **Source:** `GProp_PrincipalProps.hxx`:59 - `GProp_PrincipalProps::HasSymmetryAxis()`
     /// returns true if the geometric system has an axis of symmetry.
     /// For  comparing  moments  relative  tolerance  1.e-10  is  used.
     /// Usually  it  is  enough  for  objects,  restricted  by  faces  with
@@ -878,6 +941,7 @@ impl PrincipalProps {
         unsafe { crate::ffi::GProp_PrincipalProps_has_symmetry_axis(self as *const Self) }
     }
 
+    /// **Source:** `GProp_PrincipalProps.hxx`:64 - `GProp_PrincipalProps::HasSymmetryAxis()`
     /// returns true if the geometric system has an axis of symmetry.
     /// aTol  is  relative  tolerance for  checking  equality  of  moments
     /// If  aTol  ==  0,  relative  tolerance  is  ~  1.e-16  (Epsilon(I))
@@ -887,6 +951,7 @@ impl PrincipalProps {
         }
     }
 
+    /// **Source:** `GProp_PrincipalProps.hxx`:70 - `GProp_PrincipalProps::HasSymmetryPoint()`
     /// returns true if the geometric system has a point of symmetry.
     /// For  comparing  moments  relative  tolerance  1.e-10  is  used.
     /// Usually  it  is  enough  for  objects,  restricted  by  faces  with
@@ -895,6 +960,7 @@ impl PrincipalProps {
         unsafe { crate::ffi::GProp_PrincipalProps_has_symmetry_point(self as *const Self) }
     }
 
+    /// **Source:** `GProp_PrincipalProps.hxx`:75 - `GProp_PrincipalProps::HasSymmetryPoint()`
     /// returns true if the geometric system has a point of symmetry.
     /// aTol  is  relative  tolerance for  checking  equality  of  moments
     /// If  aTol  ==  0,  relative  tolerance  is  ~  1.e-16  (Epsilon(I))
@@ -904,6 +970,7 @@ impl PrincipalProps {
         }
     }
 
+    /// **Source:** `GProp_PrincipalProps.hxx`:86 - `GProp_PrincipalProps::Moments()`
     /// Ixx, Iyy and Izz return the principal moments of inertia
     /// in the current system.
     /// Notes :
@@ -917,6 +984,7 @@ impl PrincipalProps {
         unsafe { crate::ffi::GProp_PrincipalProps_moments(self as *const Self, Ixx, Iyy, Izz) }
     }
 
+    /// **Source:** `GProp_PrincipalProps.hxx`:93 - `GProp_PrincipalProps::FirstAxisOfInertia()`
     /// returns the first axis of inertia.
     ///
     /// if the system has a point of symmetry there is an infinity of
@@ -926,6 +994,7 @@ impl PrincipalProps {
         unsafe { &*(crate::ffi::GProp_PrincipalProps_first_axis_of_inertia(self as *const Self)) }
     }
 
+    /// **Source:** `GProp_PrincipalProps.hxx`:99 - `GProp_PrincipalProps::SecondAxisOfInertia()`
     /// returns the second axis of inertia.
     ///
     /// if the system has a point of symmetry or an axis of symmetry the
@@ -934,6 +1003,7 @@ impl PrincipalProps {
         unsafe { &*(crate::ffi::GProp_PrincipalProps_second_axis_of_inertia(self as *const Self)) }
     }
 
+    /// **Source:** `GProp_PrincipalProps.hxx`:126 - `GProp_PrincipalProps::ThirdAxisOfInertia()`
     /// returns the third axis of inertia.
     /// This and the above functions return the first, second or third eigen vector of the
     /// matrix of inertia of the current system.
@@ -963,6 +1033,7 @@ impl PrincipalProps {
         unsafe { &*(crate::ffi::GProp_PrincipalProps_third_axis_of_inertia(self as *const Self)) }
     }
 
+    /// **Source:** `GProp_PrincipalProps.hxx`:136 - `GProp_PrincipalProps::RadiusOfGyration()`
     /// Returns the principal radii of gyration  Rxx, Ryy
     /// and Rzz are the radii of gyration of the current
     /// system about its three principal axes of inertia.
@@ -991,6 +1062,7 @@ impl PrincipalProps {
 // From GProp_SelGProps.hxx
 // ========================
 
+/// **Source:** `GProp_SelGProps.hxx`:32 - `GProp_SelGProps`
 /// Computes the global properties of a bounded
 /// elementary surface in 3d (surface of the gp package)
 pub use crate::ffi::GProp_SelGProps as SelGProps;
@@ -1002,10 +1074,12 @@ unsafe impl crate::CppDeletable for SelGProps {
 }
 
 impl SelGProps {
+    /// **Source:** `GProp_SelGProps.hxx`:37 - `GProp_SelGProps::GProp_SelGProps()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GProp_SelGProps_ctor()) }
     }
 
+    /// **Source:** `GProp_SelGProps.hxx`:39 - `GProp_SelGProps::GProp_SelGProps()`
     pub fn new_cylinder_real4_pnt(
         S: &crate::ffi::gp_Cylinder,
         Alpha1: f64,
@@ -1021,6 +1095,7 @@ impl SelGProps {
         }
     }
 
+    /// **Source:** `GProp_SelGProps.hxx`:46 - `GProp_SelGProps::GProp_SelGProps()`
     pub fn new_cone_real4_pnt(
         S: &crate::ffi::gp_Cone,
         Alpha1: f64,
@@ -1036,6 +1111,7 @@ impl SelGProps {
         }
     }
 
+    /// **Source:** `GProp_SelGProps.hxx`:53 - `GProp_SelGProps::GProp_SelGProps()`
     pub fn new_sphere_real4_pnt(
         S: &crate::ffi::gp_Sphere,
         Teta1: f64,
@@ -1051,6 +1127,7 @@ impl SelGProps {
         }
     }
 
+    /// **Source:** `GProp_SelGProps.hxx`:60 - `GProp_SelGProps::GProp_SelGProps()`
     pub fn new_torus_real4_pnt(
         S: &crate::ffi::gp_Torus,
         Teta1: f64,
@@ -1066,10 +1143,12 @@ impl SelGProps {
         }
     }
 
+    /// **Source:** `GProp_SelGProps.hxx`:67 - `GProp_SelGProps::SetLocation()`
     pub fn set_location(&mut self, SLocation: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::GProp_SelGProps_set_location(self as *mut Self, SLocation) }
     }
 
+    /// **Source:** `GProp_SelGProps.hxx`:69 - `GProp_SelGProps::Perform()`
     pub fn perform_cylinder_real4(
         &mut self,
         S: &crate::ffi::gp_Cylinder,
@@ -1090,6 +1169,7 @@ impl SelGProps {
         }
     }
 
+    /// **Source:** `GProp_SelGProps.hxx`:75 - `GProp_SelGProps::Perform()`
     pub fn perform_cone_real4(
         &mut self,
         S: &crate::ffi::gp_Cone,
@@ -1110,6 +1190,7 @@ impl SelGProps {
         }
     }
 
+    /// **Source:** `GProp_SelGProps.hxx`:81 - `GProp_SelGProps::Perform()`
     pub fn perform_sphere_real4(
         &mut self,
         S: &crate::ffi::gp_Sphere,
@@ -1130,6 +1211,7 @@ impl SelGProps {
         }
     }
 
+    /// **Source:** `GProp_SelGProps.hxx`:87 - `GProp_SelGProps::Perform()`
     pub fn perform_torus_real4(
         &mut self,
         S: &crate::ffi::gp_Torus,
@@ -1226,6 +1308,7 @@ impl SelGProps {
 // From GProp_UndefinedAxis.hxx
 // ========================
 
+/// **Source:** `GProp_UndefinedAxis.hxx`:38 - `GProp_UndefinedAxis`
 /// This exception is raised when a method makes reference to
 /// an undefined inertia axis of symmetry.
 pub use crate::ffi::GProp_UndefinedAxis as UndefinedAxis;
@@ -1237,16 +1320,19 @@ unsafe impl crate::CppDeletable for UndefinedAxis {
 }
 
 impl UndefinedAxis {
+    /// **Source:** `GProp_UndefinedAxis.hxx`:38 - `GProp_UndefinedAxis::GProp_UndefinedAxis()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GProp_UndefinedAxis_ctor()) }
     }
 
+    /// **Source:** `GProp_UndefinedAxis.hxx`:38 - `GProp_UndefinedAxis::GProp_UndefinedAxis()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GProp_UndefinedAxis_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `GProp_UndefinedAxis.hxx`:38 - `GProp_UndefinedAxis::GProp_UndefinedAxis()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -1259,18 +1345,22 @@ impl UndefinedAxis {
         }
     }
 
+    /// **Source:** `GProp_UndefinedAxis.hxx`:38 - `GProp_UndefinedAxis::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GProp_UndefinedAxis_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `GProp_UndefinedAxis.hxx`:38 - `GProp_UndefinedAxis::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::GProp_UndefinedAxis_raise(theMessage) }
     }
 
+    /// **Source:** `GProp_UndefinedAxis.hxx`:38 - `GProp_UndefinedAxis::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::GProp_UndefinedAxis_get_type_name() }
     }
 
+    /// **Source:** `GProp_UndefinedAxis.hxx`:38 - `GProp_UndefinedAxis::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GProp_UndefinedAxis_get_type_descriptor()) }
     }
@@ -1287,6 +1377,7 @@ impl UndefinedAxis {
 // From GProp_VelGProps.hxx
 // ========================
 
+/// **Source:** `GProp_VelGProps.hxx`:33 - `GProp_VelGProps`
 /// Computes the global properties and the volume of a geometric solid
 /// (3D closed region of space)
 /// The solid can be elementary(definition in the gp package)
@@ -1299,10 +1390,12 @@ unsafe impl crate::CppDeletable for VelGProps {
 }
 
 impl VelGProps {
+    /// **Source:** `GProp_VelGProps.hxx`:38 - `GProp_VelGProps::GProp_VelGProps()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GProp_VelGProps_ctor()) }
     }
 
+    /// **Source:** `GProp_VelGProps.hxx`:40 - `GProp_VelGProps::GProp_VelGProps()`
     pub fn new_cylinder_real4_pnt(
         S: &crate::ffi::gp_Cylinder,
         Alpha1: f64,
@@ -1318,6 +1411,7 @@ impl VelGProps {
         }
     }
 
+    /// **Source:** `GProp_VelGProps.hxx`:47 - `GProp_VelGProps::GProp_VelGProps()`
     pub fn new_cone_real4_pnt(
         S: &crate::ffi::gp_Cone,
         Alpha1: f64,
@@ -1333,6 +1427,7 @@ impl VelGProps {
         }
     }
 
+    /// **Source:** `GProp_VelGProps.hxx`:54 - `GProp_VelGProps::GProp_VelGProps()`
     pub fn new_sphere_real4_pnt(
         S: &crate::ffi::gp_Sphere,
         Teta1: f64,
@@ -1348,6 +1443,7 @@ impl VelGProps {
         }
     }
 
+    /// **Source:** `GProp_VelGProps.hxx`:61 - `GProp_VelGProps::GProp_VelGProps()`
     pub fn new_torus_real4_pnt(
         S: &crate::ffi::gp_Torus,
         Teta1: f64,
@@ -1363,10 +1459,12 @@ impl VelGProps {
         }
     }
 
+    /// **Source:** `GProp_VelGProps.hxx`:68 - `GProp_VelGProps::SetLocation()`
     pub fn set_location(&mut self, VLocation: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::GProp_VelGProps_set_location(self as *mut Self, VLocation) }
     }
 
+    /// **Source:** `GProp_VelGProps.hxx`:70 - `GProp_VelGProps::Perform()`
     pub fn perform_cylinder_real4(
         &mut self,
         S: &crate::ffi::gp_Cylinder,
@@ -1387,6 +1485,7 @@ impl VelGProps {
         }
     }
 
+    /// **Source:** `GProp_VelGProps.hxx`:76 - `GProp_VelGProps::Perform()`
     pub fn perform_cone_real4(
         &mut self,
         S: &crate::ffi::gp_Cone,
@@ -1407,6 +1506,7 @@ impl VelGProps {
         }
     }
 
+    /// **Source:** `GProp_VelGProps.hxx`:82 - `GProp_VelGProps::Perform()`
     pub fn perform_sphere_real4(
         &mut self,
         S: &crate::ffi::gp_Sphere,
@@ -1427,6 +1527,7 @@ impl VelGProps {
         }
     }
 
+    /// **Source:** `GProp_VelGProps.hxx`:88 - `GProp_VelGProps::Perform()`
     pub fn perform_torus_real4(
         &mut self,
         S: &crate::ffi::gp_Torus,

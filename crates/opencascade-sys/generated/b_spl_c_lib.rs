@@ -6,21 +6,294 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{
-    BSplCLib_anti_boor_scheme as anti_boor_scheme, BSplCLib_bohm as bohm,
-    BSplCLib_boor_index as boor_index, BSplCLib_boor_scheme as boor_scheme,
-    BSplCLib_derivative as derivative, BSplCLib_eval as eval,
-    BSplCLib_factor_banded_matrix as factor_banded_matrix,
-    BSplCLib_flat_bezier_knots as flat_bezier_knots, BSplCLib_max_degree as max_degree,
-    BSplCLib_poles_coefficients_array1ofpnt2 as poles_coefficients_array1ofpnt2,
-    BSplCLib_poles_coefficients_array1ofpnt2d2 as poles_coefficients_array1ofpnt2d2,
-    BSplCLib_reverse_array1ofpnt2d_int as reverse_array1ofpnt2d_int,
-    BSplCLib_reverse_array1ofpnt_int as reverse_array1ofpnt_int,
-    BSplCLib_solve_banded_system_matrix_int2_array1ofpnt as solve_banded_system_matrix_int2_array1ofpnt,
-    BSplCLib_solve_banded_system_matrix_int2_array1ofpnt2d as solve_banded_system_matrix_int2_array1ofpnt2d,
-    BSplCLib_solve_banded_system_matrix_int2_bool_int_real2 as solve_banded_system_matrix_int2_bool_int_real2,
-    BSplCLib_solve_banded_system_matrix_int3_real as solve_banded_system_matrix_int3_real,
-};
+/// **Source:** `BSplCLib.hxx` - `BSplCLib::Reverse`
+/// Reverses the array of poles. Last is the  index of
+/// the new first pole. On  a  non periodic curve last
+/// is Poles.Upper(). On a periodic curve last is
+///
+/// (number of flat knots - degree - 1)
+///
+/// or
+///
+/// (sum of multiplicities(but  for the last) + degree
+/// - 1)
+pub fn reverse_array1ofpnt_int(Poles: &mut crate::ffi::TColgp_Array1OfPnt, Last: i32) {
+    unsafe { crate::ffi::BSplCLib_reverse_array1ofpnt_int(Poles, Last) }
+}
+/// **Source:** `BSplCLib.hxx` - `BSplCLib::Reverse`
+/// Reverses the array of poles.
+pub fn reverse_array1ofpnt2d_int(Poles: &mut crate::ffi::TColgp_Array1OfPnt2d, Last: i32) {
+    unsafe { crate::ffi::BSplCLib_reverse_array1ofpnt2d_int(Poles, Last) }
+}
+/// **Source:** `BSplCLib.hxx` - `BSplCLib::MaxDegree`
+/// returns the degree maxima for a BSplineCurve.
+pub fn max_degree() -> i32 {
+    unsafe { crate::ffi::BSplCLib_max_degree() }
+}
+/// **Source:** `BSplCLib.hxx` - `BSplCLib::Eval`
+/// Perform the Boor  algorithm  to  evaluate a point at
+/// parameter <U>, with <Degree> and <Dimension>.
+///
+/// Poles is  an array of  Reals of size
+///
+/// <Dimension> *  <Degree>+1
+///
+/// Containing  the poles.  At  the end <Poles> contains
+/// the current point.
+pub fn eval(U: f64, Degree: i32, Knots: &mut f64, Dimension: i32, Poles: &mut f64) {
+    unsafe { crate::ffi::BSplCLib_eval(U, Degree, Knots, Dimension, Poles) }
+}
+/// **Source:** `BSplCLib.hxx` - `BSplCLib::BoorScheme`
+/// Performs the  Boor Algorithm  at  parameter <U> with
+/// the given <Degree> and the  array of <Knots> on  the
+/// poles <Poles> of dimension  <Dimension>.  The schema
+/// is  computed  until  level  <Depth>  on a   basis of
+/// <Length+1> poles.
+///
+/// * Knots is an array of reals of length :
+///
+/// <Length> + <Degree>
+///
+/// * Poles is an array of reals of length :
+///
+/// (2 * <Length> + 1) * <Dimension>
+///
+/// The poles values  must be  set  in the array at the
+/// positions.
+///
+/// 0..Dimension,
+///
+/// 2 * Dimension ..
+/// 3 * Dimension
+///
+/// 4  * Dimension ..
+/// 5  * Dimension
+///
+/// ...
+///
+/// The results are found in the array poles depending
+/// on the Depth. (See the method GetPole).
+pub fn boor_scheme(
+    U: f64,
+    Degree: i32,
+    Knots: &mut f64,
+    Dimension: i32,
+    Poles: &mut f64,
+    Depth: i32,
+    Length: i32,
+) {
+    unsafe { crate::ffi::BSplCLib_boor_scheme(U, Degree, Knots, Dimension, Poles, Depth, Length) }
+}
+/// **Source:** `BSplCLib.hxx` - `BSplCLib::AntiBoorScheme`
+/// Compute  the content of  Pole before the BoorScheme.
+/// This method is used to remove poles.
+///
+/// U is the poles to  remove, Knots should contains the
+/// knots of the curve after knot removal.
+///
+/// The first  and last poles  do not  change, the other
+/// poles are computed by averaging two possible values.
+/// The distance between  the  two   possible  poles  is
+/// computed, if it  is higher than <Tolerance> False is
+/// returned.
+pub fn anti_boor_scheme(
+    U: f64,
+    Degree: i32,
+    Knots: &mut f64,
+    Dimension: i32,
+    Poles: &mut f64,
+    Depth: i32,
+    Length: i32,
+    Tolerance: f64,
+) -> bool {
+    unsafe {
+        crate::ffi::BSplCLib_anti_boor_scheme(
+            U, Degree, Knots, Dimension, Poles, Depth, Length, Tolerance,
+        )
+    }
+}
+/// **Source:** `BSplCLib.hxx` - `BSplCLib::Derivative`
+/// Computes   the   poles of  the    BSpline  giving the
+/// derivatives of order <Order>.
+///
+/// The formula for the first order is
+///
+/// Pole(i) = Degree * (Pole(i+1) - Pole(i)) /
+/// (Knots(i+Degree+1) - Knots(i+1))
+///
+/// This formula  is repeated  (Degree  is decremented at
+/// each step).
+pub fn derivative(
+    Degree: i32,
+    Knots: &mut f64,
+    Dimension: i32,
+    Length: i32,
+    Order: i32,
+    Poles: &mut f64,
+) {
+    unsafe { crate::ffi::BSplCLib_derivative(Degree, Knots, Dimension, Length, Order, Poles) }
+}
+/// **Source:** `BSplCLib.hxx` - `BSplCLib::Bohm`
+/// Performs the Bohm  Algorithm at  parameter <U>. This
+/// algorithm computes the value and all the derivatives
+/// up to order N (N <= Degree).
+///
+/// <Poles> is the original array of poles.
+///
+/// The   result in  <Poles>  is    the value and    the
+/// derivatives.  Poles[0] is  the value,  Poles[Degree]
+/// is the last  derivative.
+pub fn bohm(U: f64, Degree: i32, N: i32, Knots: &mut f64, Dimension: i32, Poles: &mut f64) {
+    unsafe { crate::ffi::BSplCLib_bohm(U, Degree, N, Knots, Dimension, Poles) }
+}
+/// **Source:** `BSplCLib.hxx` - `BSplCLib::BoorIndex`
+/// Returns the index in  the Boor result array of the
+/// poles <Index>. If  the Boor  algorithm was perform
+/// with <Length> and <Depth>.
+pub fn boor_index(Index: i32, Length: i32, Depth: i32) -> i32 {
+    unsafe { crate::ffi::BSplCLib_boor_index(Index, Length, Depth) }
+}
+/// **Source:** `BSplCLib.hxx` - `BSplCLib::FactorBandedMatrix`
+/// this  factors  the Banded Matrix in
+/// the LU form with a Banded storage of
+/// components of the L matrix
+/// WARNING : do not use if the Matrix is
+/// totally positive (It is the case for
+/// Bspline matrices build as above with
+/// parameters being the Schoenberg points
+pub fn factor_banded_matrix(
+    Matrix: &mut crate::ffi::math_Matrix,
+    UpperBandWidth: i32,
+    LowerBandWidth: i32,
+    PivotIndexProblem: &mut i32,
+) -> i32 {
+    unsafe {
+        crate::ffi::BSplCLib_factor_banded_matrix(
+            Matrix,
+            UpperBandWidth,
+            LowerBandWidth,
+            PivotIndexProblem,
+        )
+    }
+}
+/// **Source:** `BSplCLib.hxx` - `BSplCLib::SolveBandedSystem`
+/// This solves  the system Matrix.X =  B
+/// with when Matrix is factored in LU form
+/// The  Array   is    an   seen   as    an
+/// Array[1..N][1..ArrayDimension] with N =
+/// the  rank  of the  matrix  Matrix.  The
+/// result is stored   in Array  when  each
+/// coordinate is  solved that is  B is the
+/// array whose values are
+/// B[i] = Array[i][p] for each p in 1..ArrayDimension
+pub fn solve_banded_system_matrix_int3_real(
+    Matrix: &crate::ffi::math_Matrix,
+    UpperBandWidth: i32,
+    LowerBandWidth: i32,
+    ArrayDimension: i32,
+    Array: &mut f64,
+) -> i32 {
+    unsafe {
+        crate::ffi::BSplCLib_solve_banded_system_matrix_int3_real(
+            Matrix,
+            UpperBandWidth,
+            LowerBandWidth,
+            ArrayDimension,
+            Array,
+        )
+    }
+}
+/// **Source:** `BSplCLib.hxx` - `BSplCLib::SolveBandedSystem`
+/// This solves  the system Matrix.X =  B
+/// with when Matrix is factored in LU form
+/// The  Array   has the length of
+/// the  rank  of the  matrix  Matrix.  The
+/// result is stored   in Array  when  each
+/// coordinate is  solved that is  B is the
+/// array whose values are
+/// B[i] = Array[i][p] for each p in 1..ArrayDimension
+pub fn solve_banded_system_matrix_int2_array1ofpnt2d(
+    Matrix: &crate::ffi::math_Matrix,
+    UpperBandWidth: i32,
+    LowerBandWidth: i32,
+    Array: &mut crate::ffi::TColgp_Array1OfPnt2d,
+) -> i32 {
+    unsafe {
+        crate::ffi::BSplCLib_solve_banded_system_matrix_int2_array1ofpnt2d(
+            Matrix,
+            UpperBandWidth,
+            LowerBandWidth,
+            Array,
+        )
+    }
+}
+/// **Source:** `BSplCLib.hxx` - `BSplCLib::SolveBandedSystem`
+/// This solves  the system Matrix.X =  B
+/// with when Matrix is factored in LU form
+/// The  Array   has the length of
+/// the  rank  of the  matrix  Matrix.  The
+/// result is stored   in Array  when  each
+/// coordinate is  solved that is  B is the
+/// array whose values are
+/// B[i] = Array[i][p] for each p in 1..ArrayDimension
+pub fn solve_banded_system_matrix_int2_array1ofpnt(
+    Matrix: &crate::ffi::math_Matrix,
+    UpperBandWidth: i32,
+    LowerBandWidth: i32,
+    Array: &mut crate::ffi::TColgp_Array1OfPnt,
+) -> i32 {
+    unsafe {
+        crate::ffi::BSplCLib_solve_banded_system_matrix_int2_array1ofpnt(
+            Matrix,
+            UpperBandWidth,
+            LowerBandWidth,
+            Array,
+        )
+    }
+}
+/// **Source:** `BSplCLib.hxx` - `BSplCLib::SolveBandedSystem`
+pub fn solve_banded_system_matrix_int2_bool_int_real2(
+    Matrix: &crate::ffi::math_Matrix,
+    UpperBandWidth: i32,
+    LowerBandWidth: i32,
+    HomogenousFlag: bool,
+    ArrayDimension: i32,
+    Array: &mut f64,
+    Weights: &mut f64,
+) -> i32 {
+    unsafe {
+        crate::ffi::BSplCLib_solve_banded_system_matrix_int2_bool_int_real2(
+            Matrix,
+            UpperBandWidth,
+            LowerBandWidth,
+            HomogenousFlag,
+            ArrayDimension,
+            Array,
+            Weights,
+        )
+    }
+}
+/// **Source:** `BSplCLib.hxx` - `BSplCLib::PolesCoefficients`
+pub fn poles_coefficients_array1ofpnt2d2(
+    Poles: &crate::ffi::TColgp_Array1OfPnt2d,
+    CachePoles: &mut crate::ffi::TColgp_Array1OfPnt2d,
+) {
+    unsafe { crate::ffi::BSplCLib_poles_coefficients_array1ofpnt2d2(Poles, CachePoles) }
+}
+/// **Source:** `BSplCLib.hxx` - `BSplCLib::PolesCoefficients`
+pub fn poles_coefficients_array1ofpnt2(
+    Poles: &crate::ffi::TColgp_Array1OfPnt,
+    CachePoles: &mut crate::ffi::TColgp_Array1OfPnt,
+) {
+    unsafe { crate::ffi::BSplCLib_poles_coefficients_array1ofpnt2(Poles, CachePoles) }
+}
+/// **Source:** `BSplCLib.hxx` - `BSplCLib::FlatBezierKnots`
+/// Returns pointer to statically allocated array representing
+/// flat knots for bezier curve of the specified degree.
+/// Raises OutOfRange if Degree > MaxDegree()
+pub fn flat_bezier_knots(Degree: i32) -> f64 {
+    unsafe { crate::ffi::BSplCLib_flat_bezier_knots(Degree) }
+}
 
 /// This enumeration describes the repartition of the
 /// knots  sequence.   If all the knots  differ  by the
@@ -96,6 +369,7 @@ impl TryFrom<i32> for MultDistribution {
 // From BSplCLib_Cache.hxx
 // ========================
 
+/// **Source:** `BSplCLib_Cache.hxx`:24 - `BSplCLib_Cache`
 /// \brief A cache class for Bezier and B-spline curves.
 ///
 /// Defines all data, that can be cached on a span of a curve.
@@ -109,12 +383,14 @@ unsafe impl crate::CppDeletable for Cache {
 }
 
 impl Cache {
+    /// **Source:** `BSplCLib_Cache.hxx`:53 - `BSplCLib_Cache::IsCacheValid()`
     /// Verifies validity of the cache using flat parameter of the point
     /// \param theParameter parameter of the point placed in the span
     pub fn is_cache_valid(&self, theParameter: f64) -> bool {
         unsafe { crate::ffi::BSplCLib_Cache_is_cache_valid(self as *const Self, theParameter) }
     }
 
+    /// **Source:** `BSplCLib_Cache.hxx`:78 - `BSplCLib_Cache::D0()`
     /// Calculates the point on the curve in the specified parameter
     /// \param[in]  theParameter parameter of calculation of the value
     /// \param[out] thePoint     the result of calculation (the point on the curve)
@@ -124,12 +400,14 @@ impl Cache {
         }
     }
 
+    /// **Source:** `BSplCLib_Cache.hxx`:79 - `BSplCLib_Cache::D0()`
     pub fn d0_real_pnt(&self, theParameter: &f64, thePoint: &mut crate::ffi::gp_Pnt) {
         unsafe {
             crate::ffi::BSplCLib_Cache_d0_real_pnt(self as *const Self, theParameter, thePoint)
         }
     }
 
+    /// **Source:** `BSplCLib_Cache.hxx`:86 - `BSplCLib_Cache::D1()`
     /// Calculates the point on the curve and its first derivative in the specified parameter
     /// \param[in]  theParameter parameter of calculation of the value
     /// \param[out] thePoint     the result of calculation (the point on the curve)
@@ -151,6 +429,7 @@ impl Cache {
         }
     }
 
+    /// **Source:** `BSplCLib_Cache.hxx`:89 - `BSplCLib_Cache::D1()`
     pub fn d1_real_pnt_vec(
         &self,
         theParameter: &f64,
@@ -167,6 +446,7 @@ impl Cache {
         }
     }
 
+    /// **Source:** `BSplCLib_Cache.hxx`:99 - `BSplCLib_Cache::D2()`
     /// Calculates the point on the curve and two derivatives in the specified parameter
     /// \param[in]  theParameter parameter of calculation of the value
     /// \param[out] thePoint     the result of calculation (the point on the curve)
@@ -191,6 +471,7 @@ impl Cache {
         }
     }
 
+    /// **Source:** `BSplCLib_Cache.hxx`:103 - `BSplCLib_Cache::D2()`
     pub fn d2_real_pnt_vec2(
         &self,
         theParameter: &f64,
@@ -209,6 +490,7 @@ impl Cache {
         }
     }
 
+    /// **Source:** `BSplCLib_Cache.hxx`:115 - `BSplCLib_Cache::D3()`
     /// Calculates the point on the curve and three derivatives in the specified parameter
     /// \param[in]  theParameter parameter of calculation of the value
     /// \param[out] thePoint     the result of calculation (the point on the curve)
@@ -236,6 +518,7 @@ impl Cache {
         }
     }
 
+    /// **Source:** `BSplCLib_Cache.hxx`:120 - `BSplCLib_Cache::D3()`
     pub fn d3_real_pnt_vec3(
         &self,
         theParameter: &f64,
@@ -256,14 +539,17 @@ impl Cache {
         }
     }
 
+    /// **Source:** `BSplCLib_Cache.hxx`:126 - `BSplCLib_Cache::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BSplCLib_Cache_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BSplCLib_Cache.hxx`:126 - `BSplCLib_Cache::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BSplCLib_Cache_get_type_name() }
     }
 
+    /// **Source:** `BSplCLib_Cache.hxx`:126 - `BSplCLib_Cache::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BSplCLib_Cache_get_type_descriptor()) }
     }
@@ -300,6 +586,7 @@ impl HandleBSplCLibCache {
 // From BSplCLib_CacheParams.hxx
 // ========================
 
+/// **Source:** `BSplCLib_CacheParams.hxx`:22 - `BSplCLib_CacheParams`
 /// Simple structure containing parameters describing parameterization
 /// of a B-spline curve or a surface in one direction (U or V),
 /// and data of the current span for its caching
@@ -312,6 +599,7 @@ unsafe impl crate::CppDeletable for CacheParams {
 }
 
 impl CacheParams {
+    /// **Source:** `BSplCLib_CacheParams.hxx`:40 - `BSplCLib_CacheParams::BSplCLib_CacheParams()`
     /// Constructor, prepares data structures for caching.
     /// \param theDegree     degree of the B-spline (or Bezier)
     /// \param thePeriodic   identify whether the B-spline is periodic
@@ -330,6 +618,7 @@ impl CacheParams {
         }
     }
 
+    /// **Source:** `BSplCLib_CacheParams.hxx`:57 - `BSplCLib_CacheParams::PeriodicNormalization()`
     /// Normalizes the parameter for periodic B-splines
     /// \param theParameter the value to be normalized into the knots array
     pub fn periodic_normalization(&self, theParameter: f64) -> f64 {
@@ -341,6 +630,7 @@ impl CacheParams {
         }
     }
 
+    /// **Source:** `BSplCLib_CacheParams.hxx`:79 - `BSplCLib_CacheParams::IsCacheValid()`
     /// Verifies validity of the cache using flat parameter of the point
     /// \param theParameter parameter of the point placed in the span
     pub fn is_cache_valid(&self, theParameter: f64) -> bool {
@@ -354,6 +644,7 @@ impl CacheParams {
 // From BSplCLib_EvaluatorFunction.hxx
 // ========================
 
+/// **Source:** `BSplCLib_EvaluatorFunction.hxx`:28 - `BSplCLib_EvaluatorFunction`
 pub use crate::ffi::BSplCLib_EvaluatorFunction as EvaluatorFunction;
 
 unsafe impl crate::CppDeletable for EvaluatorFunction {

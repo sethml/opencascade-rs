@@ -6,16 +6,132 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{
-    BSplSLib_poles_coefficients_array2ofpnt2 as poles_coefficients_array2ofpnt2,
-    BSplSLib_rational_derivative as rational_derivative,
-    BSplSLib_reverse_array2ofpnt_int_bool as reverse_array2ofpnt_int_bool,
-};
+/// **Source:** `BSplSLib.hxx` - `BSplSLib::RationalDerivative`
+/// this is a one dimensional function
+/// typedef  void (*EvaluatorFunction)  (
+/// Standard_Integer     // Derivative Request
+/// Standard_Real    *   // StartEnd[2][2]
+/// //  [0] = U
+/// //  [1] = V
+/// //        [0] = start
+/// //        [1] = end
+/// Standard_Real        // UParameter
+/// Standard_Real        // VParamerer
+/// Standard_Real    &   // Result
+/// Standard_Integer &) ;// Error Code
+/// serves to multiply a given vectorial BSpline by a function
+/// Computes  the     derivatives   of  a    ratio  of
+/// two-variables functions  x(u,v) / w(u,v) at orders
+/// <N,M>,    x(u,v)    is   a  vector in    dimension
+/// <3>.
+///
+/// <Ders> is  an array  containing the values  of the
+/// input derivatives from 0  to Min(<N>,<UDeg>), 0 to
+/// Min(<M>,<VDeg>).    For orders    higher      than
+/// <UDeg,VDeg>  the  input derivatives are assumed to
+/// be 0.
+///
+/// The <Ders> is a 2d array and the  dimension of the
+/// lines is always (<VDeg>+1) * (<3>+1), even
+/// if   <N> is smaller  than  <Udeg> (the derivatives
+/// higher than <N> are not used).
+///
+/// Content of <Ders> :
+///
+/// x(i,j)[k] means :  the composant  k of x derivated
+/// (i) times in u and (j) times in v.
+///
+/// ... First line ...
+///
+/// x[1],x[2],...,x[3],w
+/// x(0,1)[1],...,x(0,1)[3],w(1,0)
+/// ...
+/// x(0,VDeg)[1],...,x(0,VDeg)[3],w(0,VDeg)
+///
+/// ... Then second line ...
+///
+/// x(1,0)[1],...,x(1,0)[3],w(1,0)
+/// x(1,1)[1],...,x(1,1)[3],w(1,1)
+/// ...
+/// x(1,VDeg)[1],...,x(1,VDeg)[3],w(1,VDeg)
+///
+/// ...
+///
+/// ... Last line ...
+///
+/// x(UDeg,0)[1],...,x(UDeg,0)[3],w(UDeg,0)
+/// x(UDeg,1)[1],...,x(UDeg,1)[3],w(UDeg,1)
+/// ...
+/// x(Udeg,VDeg)[1],...,x(UDeg,VDeg)[3],w(Udeg,VDeg)
+///
+/// If <All>  is false, only  the derivative  at order
+/// <N,M> is computed.  <RDers> is an  array of length
+/// 3 which will contain the result :
+///
+/// x(1)/w , x(2)/w ,  ... derivated <N> <M> times
+///
+/// If   <All>    is  true  multiples  derivatives are
+/// computed. All the  derivatives (i,j) with 0 <= i+j
+/// <= Max(N,M) are  computed.  <RDers> is an array of
+/// length 3 *  (<N>+1)  * (<M>+1) which  will
+/// contains :
+///
+/// x(1)/w , x(2)/w ,  ...
+/// x(1)/w , x(2)/w ,  ... derivated <0,1> times
+/// x(1)/w , x(2)/w ,  ... derivated <0,2> times
+/// ...
+/// x(1)/w , x(2)/w ,  ... derivated <0,N> times
+///
+/// x(1)/w , x(2)/w ,  ... derivated <1,0> times
+/// x(1)/w , x(2)/w ,  ... derivated <1,1> times
+/// ...
+/// x(1)/w , x(2)/w ,  ... derivated <1,N> times
+///
+/// x(1)/w , x(2)/w ,  ... derivated <N,0> times
+/// ....
+/// Warning: <RDers> must be dimensioned properly.
+pub fn rational_derivative(
+    UDeg: i32,
+    VDeg: i32,
+    N: i32,
+    M: i32,
+    Ders: &mut f64,
+    RDers: &mut f64,
+    All: bool,
+) {
+    unsafe { crate::ffi::BSplSLib_rational_derivative(UDeg, VDeg, N, M, Ders, RDers, All) }
+}
+/// **Source:** `BSplSLib.hxx` - `BSplSLib::Reverse`
+/// Reverses the array of poles. Last is the Index of
+/// the new first Row( Col) of Poles.
+/// On  a  non periodic surface Last is
+/// Poles.Upper().
+/// On a periodic curve last is
+/// (number of flat knots - degree - 1)
+/// or
+/// (sum of multiplicities(but  for the last) + degree
+/// - 1)
+pub fn reverse_array2ofpnt_int_bool(
+    Poles: &mut crate::ffi::TColgp_Array2OfPnt,
+    Last: i32,
+    UDirection: bool,
+) {
+    unsafe { crate::ffi::BSplSLib_reverse_array2ofpnt_int_bool(Poles, Last, UDirection) }
+}
+/// **Source:** `BSplSLib.hxx` - `BSplSLib::PolesCoefficients`
+/// Warning! To be used for BezierSurfaces ONLY!!!
+pub fn poles_coefficients_array2ofpnt2(
+    Poles: &crate::ffi::TColgp_Array2OfPnt,
+    CachePoles: &mut crate::ffi::TColgp_Array2OfPnt,
+) {
+    unsafe { crate::ffi::BSplSLib_poles_coefficients_array2ofpnt2(Poles, CachePoles) }
+}
 
 // ========================
 // From BSplSLib_Cache.hxx
 // ========================
 
+/// **Source:** `BSplSLib_Cache.hxx`:26 - `BSplSLib_Cache`
 /// \brief A cache class for Bezier and B-spline surfaces.
 ///
 /// Defines all data, that can be cached on a span of the surface.
@@ -29,6 +145,7 @@ unsafe impl crate::CppDeletable for Cache {
 }
 
 impl Cache {
+    /// **Source:** `BSplSLib_Cache.hxx`:48 - `BSplSLib_Cache::IsCacheValid()`
     /// Verifies validity of the cache using parameters of the point
     /// \param theParameterU  first parameter of the point placed in the span
     /// \param theParameterV  second parameter of the point placed in the span
@@ -42,6 +159,7 @@ impl Cache {
         }
     }
 
+    /// **Source:** `BSplSLib_Cache.hxx`:73 - `BSplSLib_Cache::D0()`
     /// Calculates the point on the surface for specified parameters
     /// \param[in]  theU      first parameter for calculation of the value
     /// \param[in]  theV      second parameter for calculation of the value
@@ -50,6 +168,7 @@ impl Cache {
         unsafe { crate::ffi::BSplSLib_Cache_d0(self as *const Self, theU, theV, thePoint) }
     }
 
+    /// **Source:** `BSplSLib_Cache.hxx`:83 - `BSplSLib_Cache::D1()`
     /// Calculates the point on the surface and its first derivative
     /// \param[in]  theU         first parameter of calculation of the value
     /// \param[in]  theV         second parameter of calculation of the value
@@ -76,6 +195,7 @@ impl Cache {
         }
     }
 
+    /// **Source:** `BSplSLib_Cache.hxx`:98 - `BSplSLib_Cache::D2()`
     /// Calculates the point on the surface and derivatives till second order
     /// \param[in]  theU            first parameter of calculation of the value
     /// \param[in]  theV            second parameter of calculation of the value
@@ -111,14 +231,17 @@ impl Cache {
         }
     }
 
+    /// **Source:** `BSplSLib_Cache.hxx`:107 - `BSplSLib_Cache::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BSplSLib_Cache_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BSplSLib_Cache.hxx`:107 - `BSplSLib_Cache::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BSplSLib_Cache_get_type_name() }
     }
 
+    /// **Source:** `BSplSLib_Cache.hxx`:107 - `BSplSLib_Cache::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BSplSLib_Cache_get_type_descriptor()) }
     }
@@ -155,6 +278,7 @@ impl HandleBSplSLibCache {
 // From BSplSLib_EvaluatorFunction.hxx
 // ========================
 
+/// **Source:** `BSplSLib_EvaluatorFunction.hxx`:31 - `BSplSLib_EvaluatorFunction`
 pub use crate::ffi::BSplSLib_EvaluatorFunction as EvaluatorFunction;
 
 unsafe impl crate::CppDeletable for EvaluatorFunction {
@@ -164,6 +288,7 @@ unsafe impl crate::CppDeletable for EvaluatorFunction {
 }
 
 impl EvaluatorFunction {
+    /// **Source:** `BSplSLib_EvaluatorFunction.hxx`:41 - `BSplSLib_EvaluatorFunction::Evaluate()`
     /// Function evaluation method to be defined by descendant
     pub fn evaluate(
         &self,

@@ -10,6 +10,7 @@
 // From Sweep_NumShape.hxx
 // ========================
 
+/// **Source:** `Sweep_NumShape.hxx`:30 - `Sweep_NumShape`
 /// Gives    a  simple  indexed   representation  of a
 /// Directing Edge topology.
 pub use crate::ffi::Sweep_NumShape as NumShape;
@@ -21,11 +22,13 @@ unsafe impl crate::CppDeletable for NumShape {
 }
 
 impl NumShape {
+    /// **Source:** `Sweep_NumShape.hxx`:36 - `Sweep_NumShape::Sweep_NumShape()`
     /// Creates a dummy indexed edge.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Sweep_NumShape_ctor()) }
     }
 
+    /// **Source:** `Sweep_NumShape.hxx`:49 - `Sweep_NumShape::Sweep_NumShape()`
     /// Creates a new simple indexed edge.
     ///
     /// For an Edge : Index is the  number of vertices (0,
@@ -55,6 +58,7 @@ impl NumShape {
         }
     }
 
+    /// **Source:** `Sweep_NumShape.hxx`:49 - `Sweep_NumShape::Sweep_NumShape()`
     /// Creates a new simple indexed edge.
     ///
     /// For an Edge : Index is the  number of vertices (0,
@@ -75,6 +79,7 @@ impl NumShape {
         Self::new_int_shapeenum_bool3(Index, Type.into(), Closed, BegInf, false)
     }
 
+    /// **Source:** `Sweep_NumShape.hxx`:49 - `Sweep_NumShape::Sweep_NumShape()`
     /// Creates a new simple indexed edge.
     ///
     /// For an Edge : Index is the  number of vertices (0,
@@ -94,6 +99,7 @@ impl NumShape {
         Self::new_int_shapeenum_bool3(Index, Type.into(), Closed, false, false)
     }
 
+    /// **Source:** `Sweep_NumShape.hxx`:49 - `Sweep_NumShape::Sweep_NumShape()`
     /// Creates a new simple indexed edge.
     ///
     /// For an Edge : Index is the  number of vertices (0,
@@ -109,6 +115,7 @@ impl NumShape {
         Self::new_int_shapeenum_bool3(Index, Type.into(), false, false, false)
     }
 
+    /// **Source:** `Sweep_NumShape.hxx`:67 - `Sweep_NumShape::Init()`
     /// Reinitialize a simple indexed edge.
     ///
     /// For an Edge : Index is the  number of vertices (0,
@@ -141,10 +148,12 @@ impl NumShape {
         }
     }
 
+    /// **Source:** `Sweep_NumShape.hxx`:73 - `Sweep_NumShape::Index()`
     pub fn index(&self) -> i32 {
         unsafe { crate::ffi::Sweep_NumShape_index(self as *const Self) }
     }
 
+    /// **Source:** `Sweep_NumShape.hxx`:75 - `Sweep_NumShape::Type()`
     pub fn type_(&self) -> crate::top_abs::ShapeEnum {
         unsafe {
             crate::top_abs::ShapeEnum::try_from(crate::ffi::Sweep_NumShape_type_(
@@ -154,18 +163,22 @@ impl NumShape {
         }
     }
 
+    /// **Source:** `Sweep_NumShape.hxx`:77 - `Sweep_NumShape::Closed()`
     pub fn closed(&self) -> bool {
         unsafe { crate::ffi::Sweep_NumShape_closed(self as *const Self) }
     }
 
+    /// **Source:** `Sweep_NumShape.hxx`:79 - `Sweep_NumShape::BegInfinite()`
     pub fn beg_infinite(&self) -> bool {
         unsafe { crate::ffi::Sweep_NumShape_beg_infinite(self as *const Self) }
     }
 
+    /// **Source:** `Sweep_NumShape.hxx`:81 - `Sweep_NumShape::EndInfinite()`
     pub fn end_infinite(&self) -> bool {
         unsafe { crate::ffi::Sweep_NumShape_end_infinite(self as *const Self) }
     }
 
+    /// **Source:** `Sweep_NumShape.hxx`:83 - `Sweep_NumShape::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         unsafe {
             crate::top_abs::Orientation::try_from(crate::ffi::Sweep_NumShape_orientation(
@@ -180,6 +193,7 @@ impl NumShape {
 // From Sweep_NumShapeTool.hxx
 // ========================
 
+/// **Source:** `Sweep_NumShapeTool.hxx`:31 - `Sweep_NumShapeTool`
 /// This class provides  the indexation and  type analysis
 /// services required by  the NumShape Directing Shapes of
 /// Swept Primitives.
@@ -192,6 +206,7 @@ unsafe impl crate::CppDeletable for NumShapeTool {
 }
 
 impl NumShapeTool {
+    /// **Source:** `Sweep_NumShapeTool.hxx`:39 - `Sweep_NumShapeTool::Sweep_NumShapeTool()`
     /// Create a new NumShapeTool with <aShape>.  The Tool
     /// must prepare an indexation  for  all the subshapes
     /// of this shape.
@@ -199,16 +214,19 @@ impl NumShapeTool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Sweep_NumShapeTool_ctor_numshape(aShape)) }
     }
 
+    /// **Source:** `Sweep_NumShapeTool.hxx`:42 - `Sweep_NumShapeTool::NbShapes()`
     /// Returns the number of subshapes in the shape.
     pub fn nb_shapes(&self) -> i32 {
         unsafe { crate::ffi::Sweep_NumShapeTool_nb_shapes(self as *const Self) }
     }
 
+    /// **Source:** `Sweep_NumShapeTool.hxx`:45 - `Sweep_NumShapeTool::Index()`
     /// Returns the index of <aShape>.
     pub fn index(&self, aShape: &crate::ffi::Sweep_NumShape) -> i32 {
         unsafe { crate::ffi::Sweep_NumShapeTool_index(self as *const Self, aShape) }
     }
 
+    /// **Source:** `Sweep_NumShapeTool.hxx`:48 - `Sweep_NumShapeTool::Shape()`
     /// Returns the Shape at index anIndex
     pub fn shape(&self, anIndex: i32) -> crate::OwnedPtr<crate::ffi::Sweep_NumShape> {
         unsafe {
@@ -219,6 +237,7 @@ impl NumShapeTool {
         }
     }
 
+    /// **Source:** `Sweep_NumShapeTool.hxx`:51 - `Sweep_NumShapeTool::Type()`
     /// Returns the type of <aShape>.
     pub fn type_(&self, aShape: &crate::ffi::Sweep_NumShape) -> crate::top_abs::ShapeEnum {
         unsafe {
@@ -230,6 +249,7 @@ impl NumShapeTool {
         }
     }
 
+    /// **Source:** `Sweep_NumShapeTool.hxx`:54 - `Sweep_NumShapeTool::Orientation()`
     /// Returns the orientation of <aShape>.
     pub fn orientation(&self, aShape: &crate::ffi::Sweep_NumShape) -> crate::top_abs::Orientation {
         unsafe {
@@ -241,16 +261,19 @@ impl NumShapeTool {
         }
     }
 
+    /// **Source:** `Sweep_NumShapeTool.hxx`:57 - `Sweep_NumShapeTool::HasFirstVertex()`
     /// Returns true if there is a First Vertex in the Shape.
     pub fn has_first_vertex(&self) -> bool {
         unsafe { crate::ffi::Sweep_NumShapeTool_has_first_vertex(self as *const Self) }
     }
 
+    /// **Source:** `Sweep_NumShapeTool.hxx`:60 - `Sweep_NumShapeTool::HasLastVertex()`
     /// Returns true if there is a Last Vertex in the Shape.
     pub fn has_last_vertex(&self) -> bool {
         unsafe { crate::ffi::Sweep_NumShapeTool_has_last_vertex(self as *const Self) }
     }
 
+    /// **Source:** `Sweep_NumShapeTool.hxx`:63 - `Sweep_NumShapeTool::FirstVertex()`
     /// Returns the first vertex.
     pub fn first_vertex(&self) -> crate::OwnedPtr<crate::ffi::Sweep_NumShape> {
         unsafe {
@@ -260,6 +283,7 @@ impl NumShapeTool {
         }
     }
 
+    /// **Source:** `Sweep_NumShapeTool.hxx`:66 - `Sweep_NumShapeTool::LastVertex()`
     /// Returns the last vertex.
     pub fn last_vertex(&self) -> crate::OwnedPtr<crate::ffi::Sweep_NumShape> {
         unsafe {

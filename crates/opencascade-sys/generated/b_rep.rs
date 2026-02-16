@@ -10,6 +10,7 @@
 // From BRep_Builder.hxx
 // ========================
 
+/// **Source:** `BRep_Builder.hxx`:57 - `BRep_Builder`
 /// A framework providing advanced tolerance control.
 /// It is used to build Shapes.
 /// If tolerance control is required, you are advised to:
@@ -35,16 +36,19 @@ unsafe impl crate::CppDeletable for Builder {
 }
 
 impl Builder {
+    /// **Source:** `BRep_Builder.hxx` - `BRep_Builder::BRep_Builder()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_Builder_ctor()) }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:63 - `BRep_Builder::MakeFace()`
     /// Makes an undefined Face.
     pub fn make_face_face(&self, F: &mut crate::ffi::TopoDS_Face) {
         unsafe { crate::ffi::BRep_Builder_make_face_face(self as *const Self, F) }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:66 - `BRep_Builder::MakeFace()`
     /// Makes a Face with a surface.
     pub fn make_face_face_handlegeomsurface_real(
         &self,
@@ -62,6 +66,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:71 - `BRep_Builder::MakeFace()`
     /// Makes a Face with a surface and a location.
     pub fn make_face_face_handlegeomsurface_location_real(
         &self,
@@ -81,6 +86,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:78 - `BRep_Builder::MakeFace()`
     /// Makes a theFace with a single triangulation. The triangulation
     /// is in the same reference system than the TFace.
     pub fn make_face_face_handlepolytriangulation(
@@ -97,6 +103,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:91 - `BRep_Builder::UpdateFace()`
     /// Updates the face F using the tolerance value Tol,
     /// surface S and location Location.
     pub fn update_face_face_handlegeomsurface_location_real(
@@ -117,6 +124,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:102 - `BRep_Builder::UpdateFace()`
     /// Changes a face triangulation.
     /// A NULL theTriangulation removes face triangulations.
     /// If theToReset is TRUE face triangulations will be reset to new list with only one input
@@ -139,21 +147,25 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:107 - `BRep_Builder::UpdateFace()`
     /// Updates the face Tolerance.
     pub fn update_face_face_real(&self, F: &crate::ffi::TopoDS_Face, Tol: f64) {
         unsafe { crate::ffi::BRep_Builder_update_face_face_real(self as *const Self, F, Tol) }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:110 - `BRep_Builder::NaturalRestriction()`
     /// Sets the  NaturalRestriction flag of  the face.
     pub fn natural_restriction(&self, F: &crate::ffi::TopoDS_Face, N: bool) {
         unsafe { crate::ffi::BRep_Builder_natural_restriction(self as *const Self, F, N) }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:113 - `BRep_Builder::MakeEdge()`
     /// Makes an undefined Edge (no geometry).
     pub fn make_edge_edge(&self, E: &mut crate::ffi::TopoDS_Edge) {
         unsafe { crate::ffi::BRep_Builder_make_edge_edge(self as *const Self, E) }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:116 - `BRep_Builder::MakeEdge()`
     /// Makes an Edge with a curve.
     pub fn make_edge_edge_handlegeomcurve_real(
         &self,
@@ -171,6 +183,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:119 - `BRep_Builder::MakeEdge()`
     /// Makes an Edge with a curve and a location.
     pub fn make_edge_edge_handlegeomcurve_location_real(
         &self,
@@ -190,6 +203,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:125 - `BRep_Builder::MakeEdge()`
     /// Makes an Edge with a polygon 3d.
     pub fn make_edge_edge_handlepolypolygon3d(
         &self,
@@ -201,6 +215,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:128 - `BRep_Builder::MakeEdge()`
     /// makes an Edge polygon on Triangulation.
     pub fn make_edge_edge_handlepolypolygonontriangulation_handlepolytriangulation(
         &self,
@@ -213,6 +228,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:133 - `BRep_Builder::MakeEdge()`
     /// makes an Edge polygon on Triangulation.
     pub fn make_edge_edge_handlepolypolygonontriangulation_handlepolytriangulation_location(
         &self,
@@ -226,6 +242,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:140 - `BRep_Builder::UpdateEdge()`
     /// Sets a 3D curve for the edge.
     /// If <C> is a null handle, remove any existing 3d curve.
     pub fn update_edge_edge_handlegeomcurve_real(
@@ -244,6 +261,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:144 - `BRep_Builder::UpdateEdge()`
     /// Sets a 3D curve for the edge.
     /// If <C> is a null handle, remove any existing 3d curve.
     pub fn update_edge_edge_handlegeomcurve_location_real(
@@ -264,6 +282,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:151 - `BRep_Builder::UpdateEdge()`
     /// Sets a pcurve for the edge on the face.
     /// If <C> is a null handle, remove any existing pcurve.
     pub fn update_edge_edge_handlegeom2dcurve_face_real(
@@ -284,6 +303,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:159 - `BRep_Builder::UpdateEdge()`
     /// Sets pcurves for the edge on the  closed face.  If
     /// <C1> or <C2> is a null handle, remove any existing
     /// pcurve.
@@ -307,6 +327,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:167 - `BRep_Builder::UpdateEdge()`
     /// Sets a pcurve for the edge on the face.
     /// If <C> is a null handle, remove any existing pcurve.
     pub fn update_edge_edge_handlegeom2dcurve_handlegeomsurface_location_real(
@@ -322,6 +343,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:176 - `BRep_Builder::UpdateEdge()`
     /// Sets a pcurve for the edge on the face.
     /// If <C> is a null handle, remove any existing pcurve.
     /// Sets UV bounds for curve repsentation
@@ -340,6 +362,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:187 - `BRep_Builder::UpdateEdge()`
     /// Sets pcurves for the edge on the closed surface.
     /// <C1> or <C2> is a null handle, remove any existing
     /// pcurve.
@@ -357,6 +380,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:198 - `BRep_Builder::UpdateEdge()`
     /// Sets pcurves for the edge on the closed surface.
     /// <C1> or <C2> is a null handle, remove any existing
     /// pcurve.
@@ -377,6 +401,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:209 - `BRep_Builder::UpdateEdge()`
     /// Changes an Edge 3D polygon.
     /// A null Polygon removes the 3d Polygon.
     pub fn update_edge_edge_handlepolypolygon3d(
@@ -389,6 +414,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:213 - `BRep_Builder::UpdateEdge()`
     /// Changes an Edge 3D polygon.
     /// A null Polygon removes the 3d Polygon.
     pub fn update_edge_edge_handlepolypolygon3d_location(
@@ -407,6 +433,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:218 - `BRep_Builder::UpdateEdge()`
     /// Changes an Edge polygon on Triangulation.
     pub fn update_edge_edge_handlepolypolygonontriangulation_handlepolytriangulation(
         &self,
@@ -419,6 +446,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:223 - `BRep_Builder::UpdateEdge()`
     /// Changes an Edge polygon on Triangulation.
     pub fn update_edge_edge_handlepolypolygonontriangulation_handlepolytriangulation_location(
         &self,
@@ -432,6 +460,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:229 - `BRep_Builder::UpdateEdge()`
     /// Changes an Edge polygon on Triangulation.
     pub fn update_edge_edge_handlepolypolygonontriangulation2_handlepolytriangulation(
         &self,
@@ -445,6 +474,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:235 - `BRep_Builder::UpdateEdge()`
     /// Changes an Edge polygon on Triangulation.
     pub fn update_edge_edge_handlepolypolygonontriangulation2_handlepolytriangulation_location(
         &self,
@@ -459,6 +489,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:242 - `BRep_Builder::UpdateEdge()`
     /// Changes Edge polygon on a face.
     pub fn update_edge_edge_handlepolypolygon2d_face(
         &self,
@@ -476,6 +507,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:247 - `BRep_Builder::UpdateEdge()`
     /// Changes Edge polygon on a face.
     pub fn update_edge_edge_handlepolypolygon2d_handlegeomsurface_location(
         &self,
@@ -495,6 +527,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:255 - `BRep_Builder::UpdateEdge()`
     /// Changes Edge polygons on a face.
     ///
     /// A null Polygon removes the 2d Polygon.
@@ -516,6 +549,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:263 - `BRep_Builder::UpdateEdge()`
     /// Changes Edge polygons on a face.
     ///
     /// A null Polygon removes the 2d Polygon.
@@ -532,11 +566,13 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:270 - `BRep_Builder::UpdateEdge()`
     /// Updates the edge tolerance.
     pub fn update_edge_edge_real(&self, E: &crate::ffi::TopoDS_Edge, Tol: f64) {
         unsafe { crate::ffi::BRep_Builder_update_edge_edge_real(self as *const Self, E, Tol) }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:273 - `BRep_Builder::Continuity()`
     /// Sets the geometric continuity on the edge.
     pub fn continuity_edge_face2_shape(
         &self,
@@ -556,6 +592,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:279 - `BRep_Builder::Continuity()`
     /// Sets the geometric continuity on the edge.
     pub fn continuity_edge_handlegeomsurface2_location2_shape(
         &self,
@@ -579,21 +616,25 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:287 - `BRep_Builder::SameParameter()`
     /// Sets the same parameter flag for the edge <E>.
     pub fn same_parameter(&self, E: &crate::ffi::TopoDS_Edge, S: bool) {
         unsafe { crate::ffi::BRep_Builder_same_parameter(self as *const Self, E, S) }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:290 - `BRep_Builder::SameRange()`
     /// Sets the same range flag for the edge <E>.
     pub fn same_range(&self, E: &crate::ffi::TopoDS_Edge, S: bool) {
         unsafe { crate::ffi::BRep_Builder_same_range(self as *const Self, E, S) }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:293 - `BRep_Builder::Degenerated()`
     /// Sets the degenerated flag for the edge <E>.
     pub fn degenerated(&self, E: &crate::ffi::TopoDS_Edge, D: bool) {
         unsafe { crate::ffi::BRep_Builder_degenerated(self as *const Self, E, D) }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:297 - `BRep_Builder::Range()`
     /// Sets the range of the 3d curve if Only3d=TRUE,
     /// otherwise sets the range to all the representations
     pub fn range_edge_real2_bool(
@@ -614,6 +655,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:304 - `BRep_Builder::Range()`
     /// Sets the range  of the edge  on the pcurve on  the
     /// surface.
     pub fn range_edge_handlegeomsurface_location_real2(
@@ -636,6 +678,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:311 - `BRep_Builder::Range()`
     /// Sets the range of the edge on the pcurve on the face.
     pub fn range_edge_face_real2(
         &self,
@@ -649,17 +692,20 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:318 - `BRep_Builder::Transfert()`
     /// Add  to <Eout>  the  geometric representations  of
     /// <Ein>.
     pub fn transfert_edge2(&self, Ein: &crate::ffi::TopoDS_Edge, Eout: &crate::ffi::TopoDS_Edge) {
         unsafe { crate::ffi::BRep_Builder_transfert_edge2(self as *const Self, Ein, Eout) }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:321 - `BRep_Builder::MakeVertex()`
     /// Makes an udefined vertex without geometry.
     pub fn make_vertex_vertex(&self, V: &mut crate::ffi::TopoDS_Vertex) {
         unsafe { crate::ffi::BRep_Builder_make_vertex_vertex(self as *const Self, V) }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:324 - `BRep_Builder::MakeVertex()`
     /// Makes a vertex from a 3D point.
     pub fn make_vertex_vertex_pnt_real(
         &self,
@@ -672,6 +718,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:327 - `BRep_Builder::UpdateVertex()`
     /// Sets a 3D point on the vertex.
     pub fn update_vertex_vertex_pnt_real(
         &self,
@@ -684,6 +731,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:333 - `BRep_Builder::UpdateVertex()`
     /// Sets  the parameter  for the   vertex on the  edge
     /// curves.
     pub fn update_vertex_vertex_real_edge_real(
@@ -704,6 +752,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:340 - `BRep_Builder::UpdateVertex()`
     /// Sets  the parameter  for the  vertex  on the  edge
     /// pcurve  on the face.
     pub fn update_vertex_vertex_real_edge_face_real(
@@ -726,6 +775,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:348 - `BRep_Builder::UpdateVertex()`
     /// Sets  the parameter  for the  vertex  on the  edge
     /// pcurve  on the surface.
     pub fn update_vertex_vertex_real_edge_handlegeomsurface_location_real(
@@ -750,6 +800,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:356 - `BRep_Builder::UpdateVertex()`
     /// Sets the parameters for the vertex on the face.
     pub fn update_vertex_vertex_real2_face_real(
         &self,
@@ -771,11 +822,13 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:363 - `BRep_Builder::UpdateVertex()`
     /// Updates the vertex tolerance.
     pub fn update_vertex_vertex_real(&self, V: &crate::ffi::TopoDS_Vertex, Tol: f64) {
         unsafe { crate::ffi::BRep_Builder_update_vertex_vertex_real(self as *const Self, V, Tol) }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:367 - `BRep_Builder::Transfert()`
     /// Transfert the parameters  of   Vin on  Ein as  the
     /// parameter of Vout on Eout.
     pub fn transfert_edge2_vertex2(
@@ -846,6 +899,7 @@ impl Builder {
 // From BRep_Curve3D.hxx
 // ========================
 
+/// **Source:** `BRep_Curve3D.hxx`:33 - `BRep_Curve3D`
 /// Representation of a curve by a 3D curve.
 pub use crate::ffi::BRep_Curve3D as Curve3D;
 
@@ -856,6 +910,7 @@ unsafe impl crate::CppDeletable for Curve3D {
 }
 
 impl Curve3D {
+    /// **Source:** `BRep_Curve3D.hxx`:37 - `BRep_Curve3D::BRep_Curve3D()`
     pub fn new_handlegeomcurve_location(
         C: &crate::ffi::HandleGeomCurve,
         L: &crate::ffi::TopLoc_Location,
@@ -865,37 +920,45 @@ impl Curve3D {
         }
     }
 
+    /// **Source:** `BRep_Curve3D.hxx`:40 - `BRep_Curve3D::D0()`
     /// Computes the point at parameter U.
     pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::BRep_Curve3D_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `BRep_Curve3D.hxx`:43 - `BRep_Curve3D::IsCurve3D()`
     /// Returns True.
     pub fn is_curve3_d(&self) -> bool {
         unsafe { crate::ffi::BRep_Curve3D_is_curve3_d(self as *const Self) }
     }
 
+    /// **Source:** `BRep_Curve3D.hxx`:45 - `BRep_Curve3D::Curve3D()`
     pub fn curve3_d(&self) -> &crate::ffi::HandleGeomCurve {
         unsafe { &*(crate::ffi::BRep_Curve3D_curve3_d(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_Curve3D.hxx`:47 - `BRep_Curve3D::Curve3D()`
     pub fn curve3_d_handlegeomcurve(&mut self, C: &crate::ffi::HandleGeomCurve) {
         unsafe { crate::ffi::BRep_Curve3D_curve3_d_handlegeomcurve(self as *mut Self, C) }
     }
 
+    /// **Source:** `BRep_Curve3D.hxx`:50 - `BRep_Curve3D::Copy()`
     /// Return a copy of this representation.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_Curve3D_copy(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_Curve3D.hxx`:56 - `BRep_Curve3D::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_Curve3D_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_Curve3D.hxx`:56 - `BRep_Curve3D::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRep_Curve3D_get_type_name() }
     }
 
+    /// **Source:** `BRep_Curve3D.hxx`:56 - `BRep_Curve3D::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_Curve3D_get_type_descriptor()) }
     }
@@ -1068,6 +1131,7 @@ impl Curve3D {
 // From BRep_CurveOn2Surfaces.hxx
 // ========================
 
+/// **Source:** `BRep_CurveOn2Surfaces.hxx`:31 - `BRep_CurveOn2Surfaces`
 /// Defines a continuity between two surfaces.
 pub use crate::ffi::BRep_CurveOn2Surfaces as CurveOn2Surfaces;
 
@@ -1078,6 +1142,7 @@ unsafe impl crate::CppDeletable for CurveOn2Surfaces {
 }
 
 impl CurveOn2Surfaces {
+    /// **Source:** `BRep_CurveOn2Surfaces.hxx`:35 - `BRep_CurveOn2Surfaces::BRep_CurveOn2Surfaces()`
     pub fn new_handlegeomsurface2_location2_shape(
         S1: &crate::ffi::HandleGeomSurface,
         S2: &crate::ffi::HandleGeomSurface,
@@ -1098,11 +1163,13 @@ impl CurveOn2Surfaces {
         }
     }
 
+    /// **Source:** `BRep_CurveOn2Surfaces.hxx`:42 - `BRep_CurveOn2Surfaces::IsRegularity()`
     /// Returns True.
     pub fn is_regularity(&self) -> bool {
         unsafe { crate::ffi::BRep_CurveOn2Surfaces_is_regularity(self as *const Self) }
     }
 
+    /// **Source:** `BRep_CurveOn2Surfaces.hxx`:45 - `BRep_CurveOn2Surfaces::IsRegularity()`
     /// A curve on two surfaces (continuity).
     pub fn is_regularity_handlegeomsurface2_location2(
         &self,
@@ -1122,23 +1189,28 @@ impl CurveOn2Surfaces {
         }
     }
 
+    /// **Source:** `BRep_CurveOn2Surfaces.hxx`:52 - `BRep_CurveOn2Surfaces::D0()`
     /// Raises an error.
     pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::BRep_CurveOn2Surfaces_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `BRep_CurveOn2Surfaces.hxx`:54 - `BRep_CurveOn2Surfaces::Surface()`
     pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
         unsafe { &*(crate::ffi::BRep_CurveOn2Surfaces_surface(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveOn2Surfaces.hxx`:56 - `BRep_CurveOn2Surfaces::Surface2()`
     pub fn surface2(&self) -> &crate::ffi::HandleGeomSurface {
         unsafe { &*(crate::ffi::BRep_CurveOn2Surfaces_surface2(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveOn2Surfaces.hxx`:58 - `BRep_CurveOn2Surfaces::Location2()`
     pub fn location2(&self) -> &crate::ffi::TopLoc_Location {
         unsafe { &*(crate::ffi::BRep_CurveOn2Surfaces_location2(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveOn2Surfaces.hxx`:60 - `BRep_CurveOn2Surfaces::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         unsafe {
             crate::geom_abs::Shape::try_from(crate::ffi::BRep_CurveOn2Surfaces_continuity(
@@ -1148,10 +1220,12 @@ impl CurveOn2Surfaces {
         }
     }
 
+    /// **Source:** `BRep_CurveOn2Surfaces.hxx`:62 - `BRep_CurveOn2Surfaces::Continuity()`
     pub fn continuity_shape(&mut self, C: crate::geom_abs::Shape) {
         unsafe { crate::ffi::BRep_CurveOn2Surfaces_continuity_shape(self as *mut Self, C.into()) }
     }
 
+    /// **Source:** `BRep_CurveOn2Surfaces.hxx`:65 - `BRep_CurveOn2Surfaces::Copy()`
     /// Return a copy of this representation.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
         unsafe {
@@ -1159,14 +1233,17 @@ impl CurveOn2Surfaces {
         }
     }
 
+    /// **Source:** `BRep_CurveOn2Surfaces.hxx`:71 - `BRep_CurveOn2Surfaces::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_CurveOn2Surfaces_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveOn2Surfaces.hxx`:71 - `BRep_CurveOn2Surfaces::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRep_CurveOn2Surfaces_get_type_name() }
     }
 
+    /// **Source:** `BRep_CurveOn2Surfaces.hxx`:71 - `BRep_CurveOn2Surfaces::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_CurveOn2Surfaces_get_type_descriptor()) }
     }
@@ -1308,6 +1385,7 @@ impl CurveOn2Surfaces {
 // From BRep_CurveOnClosedSurface.hxx
 // ========================
 
+/// **Source:** `BRep_CurveOnClosedSurface.hxx`:33 - `BRep_CurveOnClosedSurface`
 /// Representation  of a    curve by two  pcurves   on
 /// a closed surface.
 pub use crate::ffi::BRep_CurveOnClosedSurface as CurveOnClosedSurface;
@@ -1319,6 +1397,7 @@ unsafe impl crate::CppDeletable for CurveOnClosedSurface {
 }
 
 impl CurveOnClosedSurface {
+    /// **Source:** `BRep_CurveOnClosedSurface.hxx`:37 - `BRep_CurveOnClosedSurface::BRep_CurveOnClosedSurface()`
     pub fn new_handlegeom2dcurve2_handlegeomsurface_location_shape(
         PC1: &crate::ffi::HandleGeom2dCurve,
         PC2: &crate::ffi::HandleGeom2dCurve,
@@ -1331,14 +1410,17 @@ impl CurveOnClosedSurface {
         }
     }
 
+    /// **Source:** `BRep_CurveOnClosedSurface.hxx`:43 - `BRep_CurveOnClosedSurface::SetUVPoints2()`
     pub fn set_uv_points2(&mut self, P1: &crate::ffi::gp_Pnt2d, P2: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::BRep_CurveOnClosedSurface_set_uv_points2(self as *mut Self, P1, P2) }
     }
 
+    /// **Source:** `BRep_CurveOnClosedSurface.hxx`:45 - `BRep_CurveOnClosedSurface::UVPoints2()`
     pub fn uv_points2(&self, P1: &mut crate::ffi::gp_Pnt2d, P2: &mut crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::BRep_CurveOnClosedSurface_uv_points2(self as *const Self, P1, P2) }
     }
 
+    /// **Source:** `BRep_CurveOnClosedSurface.hxx`:48 - `BRep_CurveOnClosedSurface::IsCurveOnClosedSurface()`
     /// Returns True.
     pub fn is_curve_on_closed_surface(&self) -> bool {
         unsafe {
@@ -1346,11 +1428,13 @@ impl CurveOnClosedSurface {
         }
     }
 
+    /// **Source:** `BRep_CurveOnClosedSurface.hxx`:51 - `BRep_CurveOnClosedSurface::IsRegularity()`
     /// Returns True
     pub fn is_regularity(&self) -> bool {
         unsafe { crate::ffi::BRep_CurveOnClosedSurface_is_regularity(self as *const Self) }
     }
 
+    /// **Source:** `BRep_CurveOnClosedSurface.hxx`:54 - `BRep_CurveOnClosedSurface::IsRegularity()`
     /// A curve on two surfaces (continuity).
     pub fn is_regularity_handlegeomsurface2_location2(
         &self,
@@ -1370,20 +1454,24 @@ impl CurveOnClosedSurface {
         }
     }
 
+    /// **Source:** `BRep_CurveOnClosedSurface.hxx`:60 - `BRep_CurveOnClosedSurface::PCurve2()`
     pub fn p_curve2(&self) -> &crate::ffi::HandleGeom2dCurve {
         unsafe { &*(crate::ffi::BRep_CurveOnClosedSurface_p_curve2(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveOnClosedSurface.hxx`:63 - `BRep_CurveOnClosedSurface::Surface2()`
     /// Returns Surface()
     pub fn surface2(&self) -> &crate::ffi::HandleGeomSurface {
         unsafe { &*(crate::ffi::BRep_CurveOnClosedSurface_surface2(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveOnClosedSurface.hxx`:66 - `BRep_CurveOnClosedSurface::Location2()`
     /// Returns Location()
     pub fn location2(&self) -> &crate::ffi::TopLoc_Location {
         unsafe { &*(crate::ffi::BRep_CurveOnClosedSurface_location2(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveOnClosedSurface.hxx`:68 - `BRep_CurveOnClosedSurface::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         unsafe {
             crate::geom_abs::Shape::try_from(crate::ffi::BRep_CurveOnClosedSurface_continuity(
@@ -1393,18 +1481,21 @@ impl CurveOnClosedSurface {
         }
     }
 
+    /// **Source:** `BRep_CurveOnClosedSurface.hxx`:70 - `BRep_CurveOnClosedSurface::Continuity()`
     pub fn continuity_shape(&mut self, C: crate::geom_abs::Shape) {
         unsafe {
             crate::ffi::BRep_CurveOnClosedSurface_continuity_shape(self as *mut Self, C.into())
         }
     }
 
+    /// **Source:** `BRep_CurveOnClosedSurface.hxx`:72 - `BRep_CurveOnClosedSurface::PCurve2()`
     pub fn p_curve2_handlegeom2dcurve(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
         unsafe {
             crate::ffi::BRep_CurveOnClosedSurface_p_curve2_handlegeom2dcurve(self as *mut Self, C)
         }
     }
 
+    /// **Source:** `BRep_CurveOnClosedSurface.hxx`:75 - `BRep_CurveOnClosedSurface::Copy()`
     /// Return a copy of this representation.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
         unsafe {
@@ -1414,20 +1505,24 @@ impl CurveOnClosedSurface {
         }
     }
 
+    /// **Source:** `BRep_CurveOnClosedSurface.hxx`:79 - `BRep_CurveOnClosedSurface::Update()`
     /// Recomputes any derived data after a modification.
     /// This is called when the range is modified.
     pub fn update(&mut self) {
         unsafe { crate::ffi::BRep_CurveOnClosedSurface_update(self as *mut Self) }
     }
 
+    /// **Source:** `BRep_CurveOnClosedSurface.hxx`:85 - `BRep_CurveOnClosedSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_CurveOnClosedSurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveOnClosedSurface.hxx`:85 - `BRep_CurveOnClosedSurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRep_CurveOnClosedSurface_get_type_name() }
     }
 
+    /// **Source:** `BRep_CurveOnClosedSurface.hxx`:85 - `BRep_CurveOnClosedSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_CurveOnClosedSurface_get_type_descriptor()) }
     }
@@ -1639,6 +1734,7 @@ impl CurveOnClosedSurface {
 // From BRep_CurveOnSurface.hxx
 // ========================
 
+/// **Source:** `BRep_CurveOnSurface.hxx`:36 - `BRep_CurveOnSurface`
 /// Representation  of a  curve   by a   curve  in the
 /// parametric space of a surface.
 pub use crate::ffi::BRep_CurveOnSurface as CurveOnSurface;
@@ -1650,6 +1746,7 @@ unsafe impl crate::CppDeletable for CurveOnSurface {
 }
 
 impl CurveOnSurface {
+    /// **Source:** `BRep_CurveOnSurface.hxx`:40 - `BRep_CurveOnSurface::BRep_CurveOnSurface()`
     pub fn new_handlegeom2dcurve_handlegeomsurface_location(
         PC: &crate::ffi::HandleGeom2dCurve,
         S: &crate::ffi::HandleGeomSurface,
@@ -1664,24 +1761,29 @@ impl CurveOnSurface {
         }
     }
 
+    /// **Source:** `BRep_CurveOnSurface.hxx`:44 - `BRep_CurveOnSurface::SetUVPoints()`
     pub fn set_uv_points(&mut self, P1: &crate::ffi::gp_Pnt2d, P2: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::BRep_CurveOnSurface_set_uv_points(self as *mut Self, P1, P2) }
     }
 
+    /// **Source:** `BRep_CurveOnSurface.hxx`:46 - `BRep_CurveOnSurface::UVPoints()`
     pub fn uv_points(&self, P1: &mut crate::ffi::gp_Pnt2d, P2: &mut crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::BRep_CurveOnSurface_uv_points(self as *const Self, P1, P2) }
     }
 
+    /// **Source:** `BRep_CurveOnSurface.hxx`:49 - `BRep_CurveOnSurface::D0()`
     /// Computes the point at parameter U.
     pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::BRep_CurveOnSurface_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `BRep_CurveOnSurface.hxx`:52 - `BRep_CurveOnSurface::IsCurveOnSurface()`
     /// Returns True.
     pub fn is_curve_on_surface(&self) -> bool {
         unsafe { crate::ffi::BRep_CurveOnSurface_is_curve_on_surface(self as *const Self) }
     }
 
+    /// **Source:** `BRep_CurveOnSurface.hxx`:55 - `BRep_CurveOnSurface::IsCurveOnSurface()`
     /// A curve in the parametric space of a surface.
     pub fn is_curve_on_surface_handlegeomsurface_location(
         &self,
@@ -1697,18 +1799,22 @@ impl CurveOnSurface {
         }
     }
 
+    /// **Source:** `BRep_CurveOnSurface.hxx`:59 - `BRep_CurveOnSurface::Surface()`
     pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
         unsafe { &*(crate::ffi::BRep_CurveOnSurface_surface(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveOnSurface.hxx`:61 - `BRep_CurveOnSurface::PCurve()`
     pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
         unsafe { &*(crate::ffi::BRep_CurveOnSurface_p_curve(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveOnSurface.hxx`:63 - `BRep_CurveOnSurface::PCurve()`
     pub fn p_curve_handlegeom2dcurve(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
         unsafe { crate::ffi::BRep_CurveOnSurface_p_curve_handlegeom2dcurve(self as *mut Self, C) }
     }
 
+    /// **Source:** `BRep_CurveOnSurface.hxx`:66 - `BRep_CurveOnSurface::Copy()`
     /// Return a copy of this representation.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
         unsafe {
@@ -1716,20 +1822,24 @@ impl CurveOnSurface {
         }
     }
 
+    /// **Source:** `BRep_CurveOnSurface.hxx`:70 - `BRep_CurveOnSurface::Update()`
     /// Recomputes any derived data after a modification.
     /// This is called when the range is modified.
     pub fn update(&mut self) {
         unsafe { crate::ffi::BRep_CurveOnSurface_update(self as *mut Self) }
     }
 
+    /// **Source:** `BRep_CurveOnSurface.hxx`:76 - `BRep_CurveOnSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_CurveOnSurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveOnSurface.hxx`:76 - `BRep_CurveOnSurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRep_CurveOnSurface_get_type_name() }
     }
 
+    /// **Source:** `BRep_CurveOnSurface.hxx`:76 - `BRep_CurveOnSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_CurveOnSurface_get_type_descriptor()) }
     }
@@ -1910,6 +2020,7 @@ impl CurveOnSurface {
 // From BRep_CurveRepresentation.hxx
 // ========================
 
+/// **Source:** `BRep_CurveRepresentation.hxx`:38 - `BRep_CurveRepresentation`
 /// Root class for the curve representations. Contains
 /// a location.
 pub use crate::ffi::BRep_CurveRepresentation as CurveRepresentation;
@@ -1921,21 +2032,25 @@ unsafe impl crate::CppDeletable for CurveRepresentation {
 }
 
 impl CurveRepresentation {
+    /// **Source:** `BRep_CurveRepresentation.hxx`:43 - `BRep_CurveRepresentation::IsCurve3D()`
     /// A 3D curve representation.
     pub fn is_curve3_d(&self) -> bool {
         unsafe { crate::ffi::BRep_CurveRepresentation_is_curve3_d(self as *const Self) }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:46 - `BRep_CurveRepresentation::IsCurveOnSurface()`
     /// A curve in the parametric space of a surface.
     pub fn is_curve_on_surface(&self) -> bool {
         unsafe { crate::ffi::BRep_CurveRepresentation_is_curve_on_surface(self as *const Self) }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:49 - `BRep_CurveRepresentation::IsRegularity()`
     /// A continuity between two surfaces.
     pub fn is_regularity(&self) -> bool {
         unsafe { crate::ffi::BRep_CurveRepresentation_is_regularity(self as *const Self) }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:53 - `BRep_CurveRepresentation::IsCurveOnClosedSurface()`
     /// A curve with two parametric   curves  on the  same
     /// surface.
     pub fn is_curve_on_closed_surface(&self) -> bool {
@@ -1944,6 +2059,7 @@ impl CurveRepresentation {
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:57 - `BRep_CurveRepresentation::IsCurveOnSurface()`
     /// Is it a curve in the parametric space  of <S> with
     /// location <L>.
     pub fn is_curve_on_surface_handlegeomsurface_location(
@@ -1960,6 +2076,7 @@ impl CurveRepresentation {
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:62 - `BRep_CurveRepresentation::IsRegularity()`
     /// Is it  a  regularity between  <S1> and   <S2> with
     /// location <L1> and <L2>.
     pub fn is_regularity_handlegeomsurface2_location2(
@@ -1980,11 +2097,13 @@ impl CurveRepresentation {
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:68 - `BRep_CurveRepresentation::IsPolygon3D()`
     /// A 3D polygon representation.
     pub fn is_polygon3_d(&self) -> bool {
         unsafe { crate::ffi::BRep_CurveRepresentation_is_polygon3_d(self as *const Self) }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:72 - `BRep_CurveRepresentation::IsPolygonOnTriangulation()`
     /// A representation by an array of nodes on a
     /// triangulation.
     pub fn is_polygon_on_triangulation(&self) -> bool {
@@ -1993,6 +2112,7 @@ impl CurveRepresentation {
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:76 - `BRep_CurveRepresentation::IsPolygonOnTriangulation()`
     /// Is it a polygon in the definition of <T> with
     /// location <L>.
     pub fn is_polygon_on_triangulation_handlepolytriangulation_location(
@@ -2005,6 +2125,7 @@ impl CurveRepresentation {
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:82 - `BRep_CurveRepresentation::IsPolygonOnClosedTriangulation()`
     /// A representation by two arrays of nodes on a
     /// triangulation.
     pub fn is_polygon_on_closed_triangulation(&self) -> bool {
@@ -2015,11 +2136,13 @@ impl CurveRepresentation {
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:85 - `BRep_CurveRepresentation::IsPolygonOnSurface()`
     /// A polygon in the parametric space of a surface.
     pub fn is_polygon_on_surface(&self) -> bool {
         unsafe { crate::ffi::BRep_CurveRepresentation_is_polygon_on_surface(self as *const Self) }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:89 - `BRep_CurveRepresentation::IsPolygonOnSurface()`
     /// Is it a polygon in the parametric space  of <S> with
     /// location <L>.
     pub fn is_polygon_on_surface_handlegeomsurface_location(
@@ -2036,6 +2159,7 @@ impl CurveRepresentation {
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:94 - `BRep_CurveRepresentation::IsPolygonOnClosedSurface()`
     /// Two   2D polygon  representations  in the  parametric
     /// space of a surface.
     pub fn is_polygon_on_closed_surface(&self) -> bool {
@@ -2044,52 +2168,63 @@ impl CurveRepresentation {
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:96 - `BRep_CurveRepresentation::Location()`
     pub fn location(&self) -> &crate::ffi::TopLoc_Location {
         unsafe { &*(crate::ffi::BRep_CurveRepresentation_location(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:98 - `BRep_CurveRepresentation::Location()`
     pub fn location_location(&mut self, L: &crate::ffi::TopLoc_Location) {
         unsafe { crate::ffi::BRep_CurveRepresentation_location_location(self as *mut Self, L) }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:100 - `BRep_CurveRepresentation::Curve3D()`
     pub fn curve3_d(&self) -> &crate::ffi::HandleGeomCurve {
         unsafe { &*(crate::ffi::BRep_CurveRepresentation_curve3_d(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:102 - `BRep_CurveRepresentation::Curve3D()`
     pub fn curve3_d_handlegeomcurve(&mut self, C: &crate::ffi::HandleGeomCurve) {
         unsafe {
             crate::ffi::BRep_CurveRepresentation_curve3_d_handlegeomcurve(self as *mut Self, C)
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:104 - `BRep_CurveRepresentation::Surface()`
     pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
         unsafe { &*(crate::ffi::BRep_CurveRepresentation_surface(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:106 - `BRep_CurveRepresentation::PCurve()`
     pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
         unsafe { &*(crate::ffi::BRep_CurveRepresentation_p_curve(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:108 - `BRep_CurveRepresentation::PCurve()`
     pub fn p_curve_handlegeom2dcurve(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
         unsafe {
             crate::ffi::BRep_CurveRepresentation_p_curve_handlegeom2dcurve(self as *mut Self, C)
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:110 - `BRep_CurveRepresentation::PCurve2()`
     pub fn p_curve2(&self) -> &crate::ffi::HandleGeom2dCurve {
         unsafe { &*(crate::ffi::BRep_CurveRepresentation_p_curve2(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:112 - `BRep_CurveRepresentation::PCurve2()`
     pub fn p_curve2_handlegeom2dcurve(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
         unsafe {
             crate::ffi::BRep_CurveRepresentation_p_curve2_handlegeom2dcurve(self as *mut Self, C)
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:114 - `BRep_CurveRepresentation::Polygon3D()`
     pub fn polygon3_d(&self) -> &crate::ffi::HandlePolyPolygon3D {
         unsafe { &*(crate::ffi::BRep_CurveRepresentation_polygon3_d(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:116 - `BRep_CurveRepresentation::Polygon3D()`
     pub fn polygon3_d_handlepolypolygon3d(&mut self, P: &crate::ffi::HandlePolyPolygon3D) {
         unsafe {
             crate::ffi::BRep_CurveRepresentation_polygon3_d_handlepolypolygon3d(
@@ -2099,36 +2234,43 @@ impl CurveRepresentation {
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:118 - `BRep_CurveRepresentation::Polygon()`
     pub fn polygon(&self) -> &crate::ffi::HandlePolyPolygon2D {
         unsafe { &*(crate::ffi::BRep_CurveRepresentation_polygon(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:120 - `BRep_CurveRepresentation::Polygon()`
     pub fn polygon_handlepolypolygon2d(&mut self, P: &crate::ffi::HandlePolyPolygon2D) {
         unsafe {
             crate::ffi::BRep_CurveRepresentation_polygon_handlepolypolygon2d(self as *mut Self, P)
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:122 - `BRep_CurveRepresentation::Polygon2()`
     pub fn polygon2(&self) -> &crate::ffi::HandlePolyPolygon2D {
         unsafe { &*(crate::ffi::BRep_CurveRepresentation_polygon2(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:124 - `BRep_CurveRepresentation::Polygon2()`
     pub fn polygon2_handlepolypolygon2d(&mut self, P: &crate::ffi::HandlePolyPolygon2D) {
         unsafe {
             crate::ffi::BRep_CurveRepresentation_polygon2_handlepolypolygon2d(self as *mut Self, P)
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:126 - `BRep_CurveRepresentation::Triangulation()`
     pub fn triangulation(&self) -> &crate::ffi::HandlePolyTriangulation {
         unsafe { &*(crate::ffi::BRep_CurveRepresentation_triangulation(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:128 - `BRep_CurveRepresentation::PolygonOnTriangulation()`
     pub fn polygon_on_triangulation(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
         unsafe {
             &*(crate::ffi::BRep_CurveRepresentation_polygon_on_triangulation(self as *const Self))
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:130 - `BRep_CurveRepresentation::PolygonOnTriangulation()`
     pub fn polygon_on_triangulation_handlepolypolygonontriangulation(
         &mut self,
         P: &crate::ffi::HandlePolyPolygonOnTriangulation,
@@ -2138,12 +2280,14 @@ impl CurveRepresentation {
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:132 - `BRep_CurveRepresentation::PolygonOnTriangulation2()`
     pub fn polygon_on_triangulation2(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
         unsafe {
             &*(crate::ffi::BRep_CurveRepresentation_polygon_on_triangulation2(self as *const Self))
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:135 - `BRep_CurveRepresentation::PolygonOnTriangulation2()`
     pub fn polygon_on_triangulation2_handlepolypolygonontriangulation(
         &mut self,
         P2: &crate::ffi::HandlePolyPolygonOnTriangulation,
@@ -2153,14 +2297,17 @@ impl CurveRepresentation {
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:138 - `BRep_CurveRepresentation::Surface2()`
     pub fn surface2(&self) -> &crate::ffi::HandleGeomSurface {
         unsafe { &*(crate::ffi::BRep_CurveRepresentation_surface2(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:140 - `BRep_CurveRepresentation::Location2()`
     pub fn location2(&self) -> &crate::ffi::TopLoc_Location {
         unsafe { &*(crate::ffi::BRep_CurveRepresentation_location2(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:142 - `BRep_CurveRepresentation::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         unsafe {
             crate::geom_abs::Shape::try_from(crate::ffi::BRep_CurveRepresentation_continuity(
@@ -2170,12 +2317,14 @@ impl CurveRepresentation {
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:144 - `BRep_CurveRepresentation::Continuity()`
     pub fn continuity_shape(&mut self, C: crate::geom_abs::Shape) {
         unsafe {
             crate::ffi::BRep_CurveRepresentation_continuity_shape(self as *mut Self, C.into())
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:147 - `BRep_CurveRepresentation::Copy()`
     /// Return a copy of this representation.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
         unsafe {
@@ -2185,14 +2334,17 @@ impl CurveRepresentation {
         }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:153 - `BRep_CurveRepresentation::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_CurveRepresentation_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:153 - `BRep_CurveRepresentation::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRep_CurveRepresentation_get_type_name() }
     }
 
+    /// **Source:** `BRep_CurveRepresentation.hxx`:153 - `BRep_CurveRepresentation::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_CurveRepresentation_get_type_descriptor()) }
     }
@@ -2222,6 +2374,7 @@ impl HandleBRepCurveRepresentation {
 // From BRep_GCurve.hxx
 // ========================
 
+/// **Source:** `BRep_GCurve.hxx`:33 - `BRep_GCurve`
 /// Root   class    for    the    geometric     curves
 /// representation. Contains a range.
 /// Contains a first and a last parameter.
@@ -2234,49 +2387,60 @@ unsafe impl crate::CppDeletable for GCurve {
 }
 
 impl GCurve {
+    /// **Source:** `BRep_GCurve.hxx`:37 - `BRep_GCurve::SetRange()`
     pub fn set_range(&mut self, First: f64, Last: f64) {
         unsafe { crate::ffi::BRep_GCurve_set_range(self as *mut Self, First, Last) }
     }
 
+    /// **Source:** `BRep_GCurve.hxx`:39 - `BRep_GCurve::Range()`
     pub fn range(&self, First: &mut f64, Last: &mut f64) {
         unsafe { crate::ffi::BRep_GCurve_range(self as *const Self, First, Last) }
     }
 
+    /// **Source:** `BRep_GCurve.hxx`:41 - `BRep_GCurve::First()`
     pub fn first(&self) -> f64 {
         unsafe { crate::ffi::BRep_GCurve_first(self as *const Self) }
     }
 
+    /// **Source:** `BRep_GCurve.hxx`:43 - `BRep_GCurve::Last()`
     pub fn last(&self) -> f64 {
         unsafe { crate::ffi::BRep_GCurve_last(self as *const Self) }
     }
 
+    /// **Source:** `BRep_GCurve.hxx`:45 - `BRep_GCurve::First()`
     pub fn first_real(&mut self, F: f64) {
         unsafe { crate::ffi::BRep_GCurve_first_real(self as *mut Self, F) }
     }
 
+    /// **Source:** `BRep_GCurve.hxx`:47 - `BRep_GCurve::Last()`
     pub fn last_real(&mut self, L: f64) {
         unsafe { crate::ffi::BRep_GCurve_last_real(self as *mut Self, L) }
     }
 
+    /// **Source:** `BRep_GCurve.hxx`:50 - `BRep_GCurve::D0()`
     /// Computes the point at parameter U.
     pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::BRep_GCurve_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `BRep_GCurve.hxx`:54 - `BRep_GCurve::Update()`
     /// Recomputes any derived data after a modification.
     /// This is called when the range is modified.
     pub fn update(&mut self) {
         unsafe { crate::ffi::BRep_GCurve_update(self as *mut Self) }
     }
 
+    /// **Source:** `BRep_GCurve.hxx`:60 - `BRep_GCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_GCurve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_GCurve.hxx`:60 - `BRep_GCurve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRep_GCurve_get_type_name() }
     }
 
+    /// **Source:** `BRep_GCurve.hxx`:60 - `BRep_GCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_GCurve_get_type_descriptor()) }
     }
@@ -2429,6 +2593,7 @@ impl GCurve {
 // From BRep_PointOnCurve.hxx
 // ========================
 
+/// **Source:** `BRep_PointOnCurve.hxx`:31 - `BRep_PointOnCurve`
 /// Representation by a parameter on a 3D curve.
 pub use crate::ffi::BRep_PointOnCurve as PointOnCurve;
 
@@ -2439,6 +2604,7 @@ unsafe impl crate::CppDeletable for PointOnCurve {
 }
 
 impl PointOnCurve {
+    /// **Source:** `BRep_PointOnCurve.hxx`:35 - `BRep_PointOnCurve::BRep_PointOnCurve()`
     pub fn new_real_handlegeomcurve_location(
         P: f64,
         C: &crate::ffi::HandleGeomCurve,
@@ -2451,11 +2617,13 @@ impl PointOnCurve {
         }
     }
 
+    /// **Source:** `BRep_PointOnCurve.hxx`:40 - `BRep_PointOnCurve::IsPointOnCurve()`
     /// Returns True
     pub fn is_point_on_curve(&self) -> bool {
         unsafe { crate::ffi::BRep_PointOnCurve_is_point_on_curve(self as *const Self) }
     }
 
+    /// **Source:** `BRep_PointOnCurve.hxx`:42 - `BRep_PointOnCurve::IsPointOnCurve()`
     pub fn is_point_on_curve_handlegeomcurve_location(
         &self,
         C: &crate::ffi::HandleGeomCurve,
@@ -2470,22 +2638,27 @@ impl PointOnCurve {
         }
     }
 
+    /// **Source:** `BRep_PointOnCurve.hxx`:46 - `BRep_PointOnCurve::Curve()`
     pub fn curve(&self) -> &crate::ffi::HandleGeomCurve {
         unsafe { &*(crate::ffi::BRep_PointOnCurve_curve(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_PointOnCurve.hxx`:48 - `BRep_PointOnCurve::Curve()`
     pub fn curve_handlegeomcurve(&mut self, C: &crate::ffi::HandleGeomCurve) {
         unsafe { crate::ffi::BRep_PointOnCurve_curve_handlegeomcurve(self as *mut Self, C) }
     }
 
+    /// **Source:** `BRep_PointOnCurve.hxx`:54 - `BRep_PointOnCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_PointOnCurve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_PointOnCurve.hxx`:54 - `BRep_PointOnCurve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRep_PointOnCurve_get_type_name() }
     }
 
+    /// **Source:** `BRep_PointOnCurve.hxx`:54 - `BRep_PointOnCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_PointOnCurve_get_type_descriptor()) }
     }
@@ -2546,6 +2719,7 @@ impl PointOnCurve {
 // From BRep_PointOnCurveOnSurface.hxx
 // ========================
 
+/// **Source:** `BRep_PointOnCurveOnSurface.hxx`:33 - `BRep_PointOnCurveOnSurface`
 /// Representation by   a parameter on  a curve   on a
 /// surface.
 pub use crate::ffi::BRep_PointOnCurveOnSurface as PointOnCurveOnSurface;
@@ -2557,6 +2731,7 @@ unsafe impl crate::CppDeletable for PointOnCurveOnSurface {
 }
 
 impl PointOnCurveOnSurface {
+    /// **Source:** `BRep_PointOnCurveOnSurface.hxx`:37 - `BRep_PointOnCurveOnSurface::BRep_PointOnCurveOnSurface()`
     pub fn new_real_handlegeom2dcurve_handlegeomsurface_location(
         P: f64,
         C: &crate::ffi::HandleGeom2dCurve,
@@ -2568,6 +2743,7 @@ impl PointOnCurveOnSurface {
         }
     }
 
+    /// **Source:** `BRep_PointOnCurveOnSurface.hxx`:43 - `BRep_PointOnCurveOnSurface::IsPointOnCurveOnSurface()`
     /// Returns True
     pub fn is_point_on_curve_on_surface(&self) -> bool {
         unsafe {
@@ -2575,6 +2751,7 @@ impl PointOnCurveOnSurface {
         }
     }
 
+    /// **Source:** `BRep_PointOnCurveOnSurface.hxx`:45 - `BRep_PointOnCurveOnSurface::IsPointOnCurveOnSurface()`
     pub fn is_point_on_curve_on_surface_handlegeom2dcurve_handlegeomsurface_location(
         &self,
         PC: &crate::ffi::HandleGeom2dCurve,
@@ -2586,24 +2763,29 @@ impl PointOnCurveOnSurface {
         }
     }
 
+    /// **Source:** `BRep_PointOnCurveOnSurface.hxx`:50 - `BRep_PointOnCurveOnSurface::PCurve()`
     pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
         unsafe { &*(crate::ffi::BRep_PointOnCurveOnSurface_p_curve(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_PointOnCurveOnSurface.hxx`:52 - `BRep_PointOnCurveOnSurface::PCurve()`
     pub fn p_curve_handlegeom2dcurve(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
         unsafe {
             crate::ffi::BRep_PointOnCurveOnSurface_p_curve_handlegeom2dcurve(self as *mut Self, C)
         }
     }
 
+    /// **Source:** `BRep_PointOnCurveOnSurface.hxx`:58 - `BRep_PointOnCurveOnSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_PointOnCurveOnSurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_PointOnCurveOnSurface.hxx`:58 - `BRep_PointOnCurveOnSurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRep_PointOnCurveOnSurface_get_type_name() }
     }
 
+    /// **Source:** `BRep_PointOnCurveOnSurface.hxx`:58 - `BRep_PointOnCurveOnSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_PointOnCurveOnSurface_get_type_descriptor()) }
     }
@@ -2688,6 +2870,7 @@ impl PointOnCurveOnSurface {
 // From BRep_PointOnSurface.hxx
 // ========================
 
+/// **Source:** `BRep_PointOnSurface.hxx`:31 - `BRep_PointOnSurface`
 /// Representation by two parameters on a surface.
 pub use crate::ffi::BRep_PointOnSurface as PointOnSurface;
 
@@ -2698,6 +2881,7 @@ unsafe impl crate::CppDeletable for PointOnSurface {
 }
 
 impl PointOnSurface {
+    /// **Source:** `BRep_PointOnSurface.hxx`:35 - `BRep_PointOnSurface::BRep_PointOnSurface()`
     pub fn new_real2_handlegeomsurface_location(
         P1: f64,
         P2: f64,
@@ -2711,10 +2895,12 @@ impl PointOnSurface {
         }
     }
 
+    /// **Source:** `BRep_PointOnSurface.hxx`:40 - `BRep_PointOnSurface::IsPointOnSurface()`
     pub fn is_point_on_surface(&self) -> bool {
         unsafe { crate::ffi::BRep_PointOnSurface_is_point_on_surface(self as *const Self) }
     }
 
+    /// **Source:** `BRep_PointOnSurface.hxx`:42 - `BRep_PointOnSurface::IsPointOnSurface()`
     pub fn is_point_on_surface_handlegeomsurface_location(
         &self,
         S: &crate::ffi::HandleGeomSurface,
@@ -2729,22 +2915,27 @@ impl PointOnSurface {
         }
     }
 
+    /// **Source:** `BRep_PointOnSurface.hxx`:46 - `BRep_PointOnSurface::Parameter2()`
     pub fn parameter2(&self) -> f64 {
         unsafe { crate::ffi::BRep_PointOnSurface_parameter2(self as *const Self) }
     }
 
+    /// **Source:** `BRep_PointOnSurface.hxx`:48 - `BRep_PointOnSurface::Parameter2()`
     pub fn parameter2_real(&mut self, P: f64) {
         unsafe { crate::ffi::BRep_PointOnSurface_parameter2_real(self as *mut Self, P) }
     }
 
+    /// **Source:** `BRep_PointOnSurface.hxx`:50 - `BRep_PointOnSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_PointOnSurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_PointOnSurface.hxx`:50 - `BRep_PointOnSurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRep_PointOnSurface_get_type_name() }
     }
 
+    /// **Source:** `BRep_PointOnSurface.hxx`:50 - `BRep_PointOnSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_PointOnSurface_get_type_descriptor()) }
     }
@@ -2819,6 +3010,7 @@ impl PointOnSurface {
 // From BRep_PointRepresentation.hxx
 // ========================
 
+/// **Source:** `BRep_PointRepresentation.hxx`:34 - `BRep_PointRepresentation`
 /// Root  class     for   the points  representations.
 /// Contains a location and a parameter.
 pub use crate::ffi::BRep_PointRepresentation as PointRepresentation;
@@ -2830,11 +3022,13 @@ unsafe impl crate::CppDeletable for PointRepresentation {
 }
 
 impl PointRepresentation {
+    /// **Source:** `BRep_PointRepresentation.hxx`:39 - `BRep_PointRepresentation::IsPointOnCurve()`
     /// A point on a 3d curve.
     pub fn is_point_on_curve(&self) -> bool {
         unsafe { crate::ffi::BRep_PointRepresentation_is_point_on_curve(self as *const Self) }
     }
 
+    /// **Source:** `BRep_PointRepresentation.hxx`:42 - `BRep_PointRepresentation::IsPointOnCurveOnSurface()`
     /// A point on a 2d curve on a surface.
     pub fn is_point_on_curve_on_surface(&self) -> bool {
         unsafe {
@@ -2842,11 +3036,13 @@ impl PointRepresentation {
         }
     }
 
+    /// **Source:** `BRep_PointRepresentation.hxx`:45 - `BRep_PointRepresentation::IsPointOnSurface()`
     /// A point on a surface.
     pub fn is_point_on_surface(&self) -> bool {
         unsafe { crate::ffi::BRep_PointRepresentation_is_point_on_surface(self as *const Self) }
     }
 
+    /// **Source:** `BRep_PointRepresentation.hxx`:48 - `BRep_PointRepresentation::IsPointOnCurve()`
     /// A point on the curve <C>.
     pub fn is_point_on_curve_handlegeomcurve_location(
         &self,
@@ -2862,6 +3058,7 @@ impl PointRepresentation {
         }
     }
 
+    /// **Source:** `BRep_PointRepresentation.hxx`:52 - `BRep_PointRepresentation::IsPointOnCurveOnSurface()`
     /// A point on the 2d curve <PC> on the surface <S>.
     pub fn is_point_on_curve_on_surface_handlegeom2dcurve_handlegeomsurface_location(
         &self,
@@ -2874,6 +3071,7 @@ impl PointRepresentation {
         }
     }
 
+    /// **Source:** `BRep_PointRepresentation.hxx`:57 - `BRep_PointRepresentation::IsPointOnSurface()`
     /// A point on the surface <S>.
     pub fn is_point_on_surface_handlegeomsurface_location(
         &self,
@@ -2889,66 +3087,81 @@ impl PointRepresentation {
         }
     }
 
+    /// **Source:** `BRep_PointRepresentation.hxx`:60 - `BRep_PointRepresentation::Location()`
     pub fn location(&self) -> &crate::ffi::TopLoc_Location {
         unsafe { &*(crate::ffi::BRep_PointRepresentation_location(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_PointRepresentation.hxx`:62 - `BRep_PointRepresentation::Location()`
     pub fn location_location(&mut self, L: &crate::ffi::TopLoc_Location) {
         unsafe { crate::ffi::BRep_PointRepresentation_location_location(self as *mut Self, L) }
     }
 
+    /// **Source:** `BRep_PointRepresentation.hxx`:64 - `BRep_PointRepresentation::Parameter()`
     pub fn parameter(&self) -> f64 {
         unsafe { crate::ffi::BRep_PointRepresentation_parameter(self as *const Self) }
     }
 
+    /// **Source:** `BRep_PointRepresentation.hxx`:66 - `BRep_PointRepresentation::Parameter()`
     pub fn parameter_real(&mut self, P: f64) {
         unsafe { crate::ffi::BRep_PointRepresentation_parameter_real(self as *mut Self, P) }
     }
 
+    /// **Source:** `BRep_PointRepresentation.hxx`:68 - `BRep_PointRepresentation::Parameter2()`
     pub fn parameter2(&self) -> f64 {
         unsafe { crate::ffi::BRep_PointRepresentation_parameter2(self as *const Self) }
     }
 
+    /// **Source:** `BRep_PointRepresentation.hxx`:70 - `BRep_PointRepresentation::Parameter2()`
     pub fn parameter2_real(&mut self, P: f64) {
         unsafe { crate::ffi::BRep_PointRepresentation_parameter2_real(self as *mut Self, P) }
     }
 
+    /// **Source:** `BRep_PointRepresentation.hxx`:72 - `BRep_PointRepresentation::Curve()`
     pub fn curve(&self) -> &crate::ffi::HandleGeomCurve {
         unsafe { &*(crate::ffi::BRep_PointRepresentation_curve(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_PointRepresentation.hxx`:74 - `BRep_PointRepresentation::Curve()`
     pub fn curve_handlegeomcurve(&mut self, C: &crate::ffi::HandleGeomCurve) {
         unsafe { crate::ffi::BRep_PointRepresentation_curve_handlegeomcurve(self as *mut Self, C) }
     }
 
+    /// **Source:** `BRep_PointRepresentation.hxx`:76 - `BRep_PointRepresentation::PCurve()`
     pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
         unsafe { &*(crate::ffi::BRep_PointRepresentation_p_curve(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_PointRepresentation.hxx`:78 - `BRep_PointRepresentation::PCurve()`
     pub fn p_curve_handlegeom2dcurve(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
         unsafe {
             crate::ffi::BRep_PointRepresentation_p_curve_handlegeom2dcurve(self as *mut Self, C)
         }
     }
 
+    /// **Source:** `BRep_PointRepresentation.hxx`:80 - `BRep_PointRepresentation::Surface()`
     pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
         unsafe { &*(crate::ffi::BRep_PointRepresentation_surface(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_PointRepresentation.hxx`:82 - `BRep_PointRepresentation::Surface()`
     pub fn surface_handlegeomsurface(&mut self, S: &crate::ffi::HandleGeomSurface) {
         unsafe {
             crate::ffi::BRep_PointRepresentation_surface_handlegeomsurface(self as *mut Self, S)
         }
     }
 
+    /// **Source:** `BRep_PointRepresentation.hxx`:88 - `BRep_PointRepresentation::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_PointRepresentation_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_PointRepresentation.hxx`:88 - `BRep_PointRepresentation::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRep_PointRepresentation_get_type_name() }
     }
 
+    /// **Source:** `BRep_PointRepresentation.hxx`:88 - `BRep_PointRepresentation::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_PointRepresentation_get_type_descriptor()) }
     }
@@ -2989,6 +3202,7 @@ impl HandleBRepPointRepresentation {
 // From BRep_PointsOnSurface.hxx
 // ========================
 
+/// **Source:** `BRep_PointsOnSurface.hxx`:31 - `BRep_PointsOnSurface`
 /// Root for points on surface.
 pub use crate::ffi::BRep_PointsOnSurface as PointsOnSurface;
 
@@ -2999,22 +3213,27 @@ unsafe impl crate::CppDeletable for PointsOnSurface {
 }
 
 impl PointsOnSurface {
+    /// **Source:** `BRep_PointsOnSurface.hxx`:35 - `BRep_PointsOnSurface::Surface()`
     pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
         unsafe { &*(crate::ffi::BRep_PointsOnSurface_surface(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_PointsOnSurface.hxx`:37 - `BRep_PointsOnSurface::Surface()`
     pub fn surface_handlegeomsurface(&mut self, S: &crate::ffi::HandleGeomSurface) {
         unsafe { crate::ffi::BRep_PointsOnSurface_surface_handlegeomsurface(self as *mut Self, S) }
     }
 
+    /// **Source:** `BRep_PointsOnSurface.hxx`:43 - `BRep_PointsOnSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_PointsOnSurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_PointsOnSurface.hxx`:43 - `BRep_PointsOnSurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRep_PointsOnSurface_get_type_name() }
     }
 
+    /// **Source:** `BRep_PointsOnSurface.hxx`:43 - `BRep_PointsOnSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_PointsOnSurface_get_type_descriptor()) }
     }
@@ -3082,6 +3301,7 @@ impl PointsOnSurface {
 // From BRep_Polygon3D.hxx
 // ========================
 
+/// **Source:** `BRep_Polygon3D.hxx`:31 - `BRep_Polygon3D`
 /// Representation by a 3D polygon.
 pub use crate::ffi::BRep_Polygon3D as Polygon3D;
 
@@ -3092,6 +3312,7 @@ unsafe impl crate::CppDeletable for Polygon3D {
 }
 
 impl Polygon3D {
+    /// **Source:** `BRep_Polygon3D.hxx`:35 - `BRep_Polygon3D::BRep_Polygon3D()`
     pub fn new_handlepolypolygon3d_location(
         P: &crate::ffi::HandlePolyPolygon3D,
         L: &crate::ffi::TopLoc_Location,
@@ -3103,32 +3324,39 @@ impl Polygon3D {
         }
     }
 
+    /// **Source:** `BRep_Polygon3D.hxx`:38 - `BRep_Polygon3D::IsPolygon3D()`
     /// Returns True.
     pub fn is_polygon3_d(&self) -> bool {
         unsafe { crate::ffi::BRep_Polygon3D_is_polygon3_d(self as *const Self) }
     }
 
+    /// **Source:** `BRep_Polygon3D.hxx`:40 - `BRep_Polygon3D::Polygon3D()`
     pub fn polygon3_d(&self) -> &crate::ffi::HandlePolyPolygon3D {
         unsafe { &*(crate::ffi::BRep_Polygon3D_polygon3_d(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_Polygon3D.hxx`:42 - `BRep_Polygon3D::Polygon3D()`
     pub fn polygon3_d_handlepolypolygon3d(&mut self, P: &crate::ffi::HandlePolyPolygon3D) {
         unsafe { crate::ffi::BRep_Polygon3D_polygon3_d_handlepolypolygon3d(self as *mut Self, P) }
     }
 
+    /// **Source:** `BRep_Polygon3D.hxx`:45 - `BRep_Polygon3D::Copy()`
     /// Return a copy of this representation.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_Polygon3D_copy(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_Polygon3D.hxx`:51 - `BRep_Polygon3D::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_Polygon3D_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_Polygon3D.hxx`:51 - `BRep_Polygon3D::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRep_Polygon3D_get_type_name() }
     }
 
+    /// **Source:** `BRep_Polygon3D.hxx`:51 - `BRep_Polygon3D::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_Polygon3D_get_type_descriptor()) }
     }
@@ -3270,6 +3498,7 @@ impl Polygon3D {
 // From BRep_PolygonOnClosedSurface.hxx
 // ========================
 
+/// **Source:** `BRep_PolygonOnClosedSurface.hxx`:34 - `BRep_PolygonOnClosedSurface`
 /// Representation by two 2d polygons in the parametric
 /// space of a surface.
 pub use crate::ffi::BRep_PolygonOnClosedSurface as PolygonOnClosedSurface;
@@ -3281,6 +3510,7 @@ unsafe impl crate::CppDeletable for PolygonOnClosedSurface {
 }
 
 impl PolygonOnClosedSurface {
+    /// **Source:** `BRep_PolygonOnClosedSurface.hxx`:38 - `BRep_PolygonOnClosedSurface::BRep_PolygonOnClosedSurface()`
     pub fn new_handlepolypolygon2d2_handlegeomsurface_location(
         P1: &crate::ffi::HandlePolyPolygon2D,
         P2: &crate::ffi::HandlePolyPolygon2D,
@@ -3292,6 +3522,7 @@ impl PolygonOnClosedSurface {
         }
     }
 
+    /// **Source:** `BRep_PolygonOnClosedSurface.hxx`:44 - `BRep_PolygonOnClosedSurface::IsPolygonOnClosedSurface()`
     /// returns True.
     pub fn is_polygon_on_closed_surface(&self) -> bool {
         unsafe {
@@ -3301,10 +3532,12 @@ impl PolygonOnClosedSurface {
         }
     }
 
+    /// **Source:** `BRep_PolygonOnClosedSurface.hxx`:46 - `BRep_PolygonOnClosedSurface::Polygon2()`
     pub fn polygon2(&self) -> &crate::ffi::HandlePolyPolygon2D {
         unsafe { &*(crate::ffi::BRep_PolygonOnClosedSurface_polygon2(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_PolygonOnClosedSurface.hxx`:48 - `BRep_PolygonOnClosedSurface::Polygon2()`
     pub fn polygon2_handlepolypolygon2d(&mut self, P: &crate::ffi::HandlePolyPolygon2D) {
         unsafe {
             crate::ffi::BRep_PolygonOnClosedSurface_polygon2_handlepolypolygon2d(
@@ -3314,6 +3547,7 @@ impl PolygonOnClosedSurface {
         }
     }
 
+    /// **Source:** `BRep_PolygonOnClosedSurface.hxx`:51 - `BRep_PolygonOnClosedSurface::Copy()`
     /// Return a copy of this representation.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
         unsafe {
@@ -3323,14 +3557,17 @@ impl PolygonOnClosedSurface {
         }
     }
 
+    /// **Source:** `BRep_PolygonOnClosedSurface.hxx`:57 - `BRep_PolygonOnClosedSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_PolygonOnClosedSurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_PolygonOnClosedSurface.hxx`:57 - `BRep_PolygonOnClosedSurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRep_PolygonOnClosedSurface_get_type_name() }
     }
 
+    /// **Source:** `BRep_PolygonOnClosedSurface.hxx`:57 - `BRep_PolygonOnClosedSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_PolygonOnClosedSurface_get_type_descriptor()) }
     }
@@ -3534,6 +3771,7 @@ impl PolygonOnClosedSurface {
 // From BRep_PolygonOnClosedTriangulation.hxx
 // ========================
 
+/// **Source:** `BRep_PolygonOnClosedTriangulation.hxx`:34 - `BRep_PolygonOnClosedTriangulation`
 /// A representation by two arrays of nodes on a
 /// triangulation.
 pub use crate::ffi::BRep_PolygonOnClosedTriangulation as PolygonOnClosedTriangulation;
@@ -3545,6 +3783,7 @@ unsafe impl crate::CppDeletable for PolygonOnClosedTriangulation {
 }
 
 impl PolygonOnClosedTriangulation {
+    /// **Source:** `BRep_PolygonOnClosedTriangulation.hxx`:38 - `BRep_PolygonOnClosedTriangulation::BRep_PolygonOnClosedTriangulation()`
     pub fn new_handlepolypolygonontriangulation2_handlepolytriangulation_location(
         P1: &crate::ffi::HandlePolyPolygonOnTriangulation,
         P2: &crate::ffi::HandlePolyPolygonOnTriangulation,
@@ -3556,6 +3795,7 @@ impl PolygonOnClosedTriangulation {
         }
     }
 
+    /// **Source:** `BRep_PolygonOnClosedTriangulation.hxx`:44 - `BRep_PolygonOnClosedTriangulation::IsPolygonOnClosedTriangulation()`
     /// Returns True.
     pub fn is_polygon_on_closed_triangulation(&self) -> bool {
         unsafe {
@@ -3565,6 +3805,7 @@ impl PolygonOnClosedTriangulation {
         }
     }
 
+    /// **Source:** `BRep_PolygonOnClosedTriangulation.hxx`:46 - `BRep_PolygonOnClosedTriangulation::PolygonOnTriangulation2()`
     pub fn polygon_on_triangulation2_handlepolypolygonontriangulation(
         &mut self,
         P2: &crate::ffi::HandlePolyPolygonOnTriangulation,
@@ -3574,6 +3815,7 @@ impl PolygonOnClosedTriangulation {
         }
     }
 
+    /// **Source:** `BRep_PolygonOnClosedTriangulation.hxx`:49 - `BRep_PolygonOnClosedTriangulation::PolygonOnTriangulation2()`
     pub fn polygon_on_triangulation2(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
         unsafe {
             &*(crate::ffi::BRep_PolygonOnClosedTriangulation_polygon_on_triangulation2(
@@ -3582,6 +3824,7 @@ impl PolygonOnClosedTriangulation {
         }
     }
 
+    /// **Source:** `BRep_PolygonOnClosedTriangulation.hxx`:53 - `BRep_PolygonOnClosedTriangulation::Copy()`
     /// Return a copy of this representation.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
         unsafe {
@@ -3591,16 +3834,19 @@ impl PolygonOnClosedTriangulation {
         }
     }
 
+    /// **Source:** `BRep_PolygonOnClosedTriangulation.hxx`:59 - `BRep_PolygonOnClosedTriangulation::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
             &*(crate::ffi::BRep_PolygonOnClosedTriangulation_dynamic_type(self as *const Self))
         }
     }
 
+    /// **Source:** `BRep_PolygonOnClosedTriangulation.hxx`:59 - `BRep_PolygonOnClosedTriangulation::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRep_PolygonOnClosedTriangulation_get_type_name() }
     }
 
+    /// **Source:** `BRep_PolygonOnClosedTriangulation.hxx`:59 - `BRep_PolygonOnClosedTriangulation::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_PolygonOnClosedTriangulation_get_type_descriptor()) }
     }
@@ -3824,6 +4070,7 @@ impl PolygonOnClosedTriangulation {
 // From BRep_PolygonOnSurface.hxx
 // ========================
 
+/// **Source:** `BRep_PolygonOnSurface.hxx`:33 - `BRep_PolygonOnSurface`
 /// Representation of a 2D polygon in the parametric
 /// space of a surface.
 pub use crate::ffi::BRep_PolygonOnSurface as PolygonOnSurface;
@@ -3835,6 +4082,7 @@ unsafe impl crate::CppDeletable for PolygonOnSurface {
 }
 
 impl PolygonOnSurface {
+    /// **Source:** `BRep_PolygonOnSurface.hxx`:37 - `BRep_PolygonOnSurface::BRep_PolygonOnSurface()`
     pub fn new_handlepolypolygon2d_handlegeomsurface_location(
         P: &crate::ffi::HandlePolyPolygon2D,
         S: &crate::ffi::HandleGeomSurface,
@@ -3845,12 +4093,14 @@ impl PolygonOnSurface {
         }
     }
 
+    /// **Source:** `BRep_PolygonOnSurface.hxx`:43 - `BRep_PolygonOnSurface::IsPolygonOnSurface()`
     /// A   2D polygon  representation  in the  parametric
     /// space of a surface.
     pub fn is_polygon_on_surface(&self) -> bool {
         unsafe { crate::ffi::BRep_PolygonOnSurface_is_polygon_on_surface(self as *const Self) }
     }
 
+    /// **Source:** `BRep_PolygonOnSurface.hxx`:47 - `BRep_PolygonOnSurface::IsPolygonOnSurface()`
     /// A   2D polygon  representation  in the  parametric
     /// space of a surface.
     pub fn is_polygon_on_surface_handlegeomsurface_location(
@@ -3867,20 +4117,24 @@ impl PolygonOnSurface {
         }
     }
 
+    /// **Source:** `BRep_PolygonOnSurface.hxx`:51 - `BRep_PolygonOnSurface::Surface()`
     pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
         unsafe { &*(crate::ffi::BRep_PolygonOnSurface_surface(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_PolygonOnSurface.hxx`:53 - `BRep_PolygonOnSurface::Polygon()`
     pub fn polygon(&self) -> &crate::ffi::HandlePolyPolygon2D {
         unsafe { &*(crate::ffi::BRep_PolygonOnSurface_polygon(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_PolygonOnSurface.hxx`:55 - `BRep_PolygonOnSurface::Polygon()`
     pub fn polygon_handlepolypolygon2d(&mut self, P: &crate::ffi::HandlePolyPolygon2D) {
         unsafe {
             crate::ffi::BRep_PolygonOnSurface_polygon_handlepolypolygon2d(self as *mut Self, P)
         }
     }
 
+    /// **Source:** `BRep_PolygonOnSurface.hxx`:58 - `BRep_PolygonOnSurface::Copy()`
     /// Return a copy of this representation.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
         unsafe {
@@ -3888,14 +4142,17 @@ impl PolygonOnSurface {
         }
     }
 
+    /// **Source:** `BRep_PolygonOnSurface.hxx`:64 - `BRep_PolygonOnSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_PolygonOnSurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_PolygonOnSurface.hxx`:64 - `BRep_PolygonOnSurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRep_PolygonOnSurface_get_type_name() }
     }
 
+    /// **Source:** `BRep_PolygonOnSurface.hxx`:64 - `BRep_PolygonOnSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_PolygonOnSurface_get_type_descriptor()) }
     }
@@ -4050,6 +4307,7 @@ impl PolygonOnSurface {
 // From BRep_PolygonOnTriangulation.hxx
 // ========================
 
+/// **Source:** `BRep_PolygonOnTriangulation.hxx`:33 - `BRep_PolygonOnTriangulation`
 /// A representation by an array of nodes on a
 /// triangulation.
 pub use crate::ffi::BRep_PolygonOnTriangulation as PolygonOnTriangulation;
@@ -4061,6 +4319,7 @@ unsafe impl crate::CppDeletable for PolygonOnTriangulation {
 }
 
 impl PolygonOnTriangulation {
+    /// **Source:** `BRep_PolygonOnTriangulation.hxx`:37 - `BRep_PolygonOnTriangulation::BRep_PolygonOnTriangulation()`
     pub fn new_handlepolypolygonontriangulation_handlepolytriangulation_location(
         P: &crate::ffi::HandlePolyPolygonOnTriangulation,
         T: &crate::ffi::HandlePolyTriangulation,
@@ -4071,6 +4330,7 @@ impl PolygonOnTriangulation {
         }
     }
 
+    /// **Source:** `BRep_PolygonOnTriangulation.hxx`:42 - `BRep_PolygonOnTriangulation::IsPolygonOnTriangulation()`
     /// returns True.
     pub fn is_polygon_on_triangulation(&self) -> bool {
         unsafe {
@@ -4078,6 +4338,7 @@ impl PolygonOnTriangulation {
         }
     }
 
+    /// **Source:** `BRep_PolygonOnTriangulation.hxx`:46 - `BRep_PolygonOnTriangulation::IsPolygonOnTriangulation()`
     /// Is it a polygon in the definition of <T> with
     /// location <L>.
     pub fn is_polygon_on_triangulation_handlepolytriangulation_location(
@@ -4090,6 +4351,7 @@ impl PolygonOnTriangulation {
         }
     }
 
+    /// **Source:** `BRep_PolygonOnTriangulation.hxx`:51 - `BRep_PolygonOnTriangulation::PolygonOnTriangulation()`
     /// returns True.
     pub fn polygon_on_triangulation_handlepolypolygonontriangulation(
         &mut self,
@@ -4100,10 +4362,12 @@ impl PolygonOnTriangulation {
         }
     }
 
+    /// **Source:** `BRep_PolygonOnTriangulation.hxx`:54 - `BRep_PolygonOnTriangulation::Triangulation()`
     pub fn triangulation(&self) -> &crate::ffi::HandlePolyTriangulation {
         unsafe { &*(crate::ffi::BRep_PolygonOnTriangulation_triangulation(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_PolygonOnTriangulation.hxx`:56 - `BRep_PolygonOnTriangulation::PolygonOnTriangulation()`
     pub fn polygon_on_triangulation(&self) -> &crate::ffi::HandlePolyPolygonOnTriangulation {
         unsafe {
             &*(crate::ffi::BRep_PolygonOnTriangulation_polygon_on_triangulation(
@@ -4112,6 +4376,7 @@ impl PolygonOnTriangulation {
         }
     }
 
+    /// **Source:** `BRep_PolygonOnTriangulation.hxx`:60 - `BRep_PolygonOnTriangulation::Copy()`
     /// Return a copy of this representation.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
         unsafe {
@@ -4121,14 +4386,17 @@ impl PolygonOnTriangulation {
         }
     }
 
+    /// **Source:** `BRep_PolygonOnTriangulation.hxx`:66 - `BRep_PolygonOnTriangulation::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_PolygonOnTriangulation_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_PolygonOnTriangulation.hxx`:66 - `BRep_PolygonOnTriangulation::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRep_PolygonOnTriangulation_get_type_name() }
     }
 
+    /// **Source:** `BRep_PolygonOnTriangulation.hxx`:66 - `BRep_PolygonOnTriangulation::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_PolygonOnTriangulation_get_type_descriptor()) }
     }
@@ -4305,6 +4573,7 @@ impl PolygonOnTriangulation {
 // From BRep_TEdge.hxx
 // ========================
 
+/// **Source:** `BRep_TEdge.hxx`:45 - `BRep_TEdge`
 /// The TEdge from BRep is  inherited from  the  TEdge
 /// from TopoDS. It contains the geometric data.
 ///
@@ -4328,62 +4597,76 @@ unsafe impl crate::CppDeletable for TEdge {
 }
 
 impl TEdge {
+    /// **Source:** `BRep_TEdge.hxx`:50 - `BRep_TEdge::BRep_TEdge()`
     /// Creates an empty TEdge.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_TEdge_ctor()) }
     }
 
+    /// **Source:** `BRep_TEdge.hxx`:52 - `BRep_TEdge::Tolerance()`
     pub fn tolerance(&self) -> f64 {
         unsafe { crate::ffi::BRep_TEdge_tolerance(self as *const Self) }
     }
 
+    /// **Source:** `BRep_TEdge.hxx`:54 - `BRep_TEdge::Tolerance()`
     pub fn tolerance_real(&mut self, T: f64) {
         unsafe { crate::ffi::BRep_TEdge_tolerance_real(self as *mut Self, T) }
     }
 
+    /// **Source:** `BRep_TEdge.hxx`:58 - `BRep_TEdge::UpdateTolerance()`
     /// Sets the tolerance  to the   max  of <T>  and  the
     /// current  tolerance.
     pub fn update_tolerance(&mut self, T: f64) {
         unsafe { crate::ffi::BRep_TEdge_update_tolerance(self as *mut Self, T) }
     }
 
+    /// **Source:** `BRep_TEdge.hxx`:60 - `BRep_TEdge::SameParameter()`
     pub fn same_parameter(&self) -> bool {
         unsafe { crate::ffi::BRep_TEdge_same_parameter(self as *const Self) }
     }
 
+    /// **Source:** `BRep_TEdge.hxx`:62 - `BRep_TEdge::SameParameter()`
     pub fn same_parameter_bool(&mut self, S: bool) {
         unsafe { crate::ffi::BRep_TEdge_same_parameter_bool(self as *mut Self, S) }
     }
 
+    /// **Source:** `BRep_TEdge.hxx`:64 - `BRep_TEdge::SameRange()`
     pub fn same_range(&self) -> bool {
         unsafe { crate::ffi::BRep_TEdge_same_range(self as *const Self) }
     }
 
+    /// **Source:** `BRep_TEdge.hxx`:66 - `BRep_TEdge::SameRange()`
     pub fn same_range_bool(&mut self, S: bool) {
         unsafe { crate::ffi::BRep_TEdge_same_range_bool(self as *mut Self, S) }
     }
 
+    /// **Source:** `BRep_TEdge.hxx`:68 - `BRep_TEdge::Degenerated()`
     pub fn degenerated(&self) -> bool {
         unsafe { crate::ffi::BRep_TEdge_degenerated(self as *const Self) }
     }
 
+    /// **Source:** `BRep_TEdge.hxx`:70 - `BRep_TEdge::Degenerated()`
     pub fn degenerated_bool(&mut self, S: bool) {
         unsafe { crate::ffi::BRep_TEdge_degenerated_bool(self as *mut Self, S) }
     }
 
+    /// **Source:** `BRep_TEdge.hxx`:77 - `BRep_TEdge::EmptyCopy()`
     /// Returns a copy  of the  TShape  with no sub-shapes.
     pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_TEdge_empty_copy(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_TEdge.hxx`:83 - `BRep_TEdge::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_TEdge_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_TEdge.hxx`:83 - `BRep_TEdge::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRep_TEdge_get_type_name() }
     }
 
+    /// **Source:** `BRep_TEdge.hxx`:83 - `BRep_TEdge::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_TEdge_get_type_descriptor()) }
     }
@@ -4468,6 +4751,7 @@ impl TEdge {
 // From BRep_TFace.hxx
 // ========================
 
+/// **Source:** `BRep_TFace.hxx`:54 - `BRep_TFace`
 /// The Tface from BRep  is  based  on the TFace  from
 /// TopoDS. The TFace contains :
 ///
@@ -4499,47 +4783,56 @@ unsafe impl crate::CppDeletable for TFace {
 }
 
 impl TFace {
+    /// **Source:** `BRep_TFace.hxx`:59 - `BRep_TFace::BRep_TFace()`
     /// Creates an empty TFace.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_TFace_ctor()) }
     }
 
+    /// **Source:** `BRep_TFace.hxx`:62 - `BRep_TFace::Surface()`
     /// Returns face surface.
     pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
         unsafe { &*(crate::ffi::BRep_TFace_surface(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_TFace.hxx`:65 - `BRep_TFace::Surface()`
     /// Sets surface for this face.
     pub fn surface_handlegeomsurface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) {
         unsafe { crate::ffi::BRep_TFace_surface_handlegeomsurface(self as *mut Self, theSurface) }
     }
 
+    /// **Source:** `BRep_TFace.hxx`:68 - `BRep_TFace::Location()`
     /// Returns the face location.
     pub fn location(&self) -> &crate::ffi::TopLoc_Location {
         unsafe { &*(crate::ffi::BRep_TFace_location(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_TFace.hxx`:71 - `BRep_TFace::Location()`
     /// Sets the location for this face.
     pub fn location_location(&mut self, theLocation: &crate::ffi::TopLoc_Location) {
         unsafe { crate::ffi::BRep_TFace_location_location(self as *mut Self, theLocation) }
     }
 
+    /// **Source:** `BRep_TFace.hxx`:74 - `BRep_TFace::Tolerance()`
     /// Returns the face tolerance.
     pub fn tolerance(&self) -> f64 {
         unsafe { crate::ffi::BRep_TFace_tolerance(self as *const Self) }
     }
 
+    /// **Source:** `BRep_TFace.hxx`:77 - `BRep_TFace::Tolerance()`
     /// Sets the tolerance for this face.
     pub fn tolerance_real(&mut self, theTolerance: f64) {
         unsafe { crate::ffi::BRep_TFace_tolerance_real(self as *mut Self, theTolerance) }
     }
 
+    /// **Source:** `BRep_TFace.hxx`:81 - `BRep_TFace::NaturalRestriction()`
     /// Returns TRUE if the boundary of this face is known to be the parametric space (Umin, UMax,
     /// VMin, VMax).
     pub fn natural_restriction(&self) -> bool {
         unsafe { crate::ffi::BRep_TFace_natural_restriction(self as *const Self) }
     }
 
+    /// **Source:** `BRep_TFace.hxx`:84 - `BRep_TFace::NaturalRestriction()`
     /// Sets the flag that is TRUE if the boundary of this face is known to be the parametric space.
     pub fn natural_restriction_bool(&mut self, theRestriction: bool) {
         unsafe {
@@ -4547,6 +4840,7 @@ impl TFace {
         }
     }
 
+    /// **Source:** `BRep_TFace.hxx`:95 - `BRep_TFace::Triangulation()`
     /// Returns the triangulation of this face according to the mesh purpose.
     /// @param[in] thePurpose a mesh purpose to find appropriate triangulation (NONE by default).
     /// @return an active triangulation in case of NONE purpose,
@@ -4557,6 +4851,7 @@ impl TFace {
         unsafe { &*(crate::ffi::BRep_TFace_triangulation_uint(self as *const Self, thePurpose)) }
     }
 
+    /// **Source:** `BRep_TFace.hxx`:106 - `BRep_TFace::Triangulation()`
     /// Sets input triangulation for this face.
     /// @param[in] theTriangulation  triangulation to be set
     /// @param[in] theToReset  flag to reset triangulations list to new list with only one input
@@ -4579,30 +4874,36 @@ impl TFace {
         }
     }
 
+    /// **Source:** `BRep_TFace.hxx`:111 - `BRep_TFace::EmptyCopy()`
     /// Returns a copy  of the  TShape  with no sub-shapes.
     /// The new Face has no triangulation.
     pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_TFace_empty_copy(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_TFace.hxx`:131 - `BRep_TFace::NbTriangulations()`
     /// Returns number of available face triangulations.
     pub fn nb_triangulations(&self) -> i32 {
         unsafe { crate::ffi::BRep_TFace_nb_triangulations(self as *const Self) }
     }
 
+    /// **Source:** `BRep_TFace.hxx`:134 - `BRep_TFace::ActiveTriangulation()`
     /// Returns current active triangulation.
     pub fn active_triangulation(&self) -> &crate::ffi::HandlePolyTriangulation {
         unsafe { &*(crate::ffi::BRep_TFace_active_triangulation(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_TFace.hxx`:136 - `BRep_TFace::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_TFace_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_TFace.hxx`:136 - `BRep_TFace::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRep_TFace_get_type_name() }
     }
 
+    /// **Source:** `BRep_TFace.hxx`:136 - `BRep_TFace::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_TFace_get_type_descriptor()) }
     }
@@ -4687,6 +4988,7 @@ impl TFace {
 // From BRep_TVertex.hxx
 // ========================
 
+/// **Source:** `BRep_TVertex.hxx`:35 - `BRep_TVertex`
 /// The TVertex from  BRep inherits  from  the TVertex
 /// from TopoDS. It contains the geometric data.
 ///
@@ -4700,32 +5002,39 @@ unsafe impl crate::CppDeletable for TVertex {
 }
 
 impl TVertex {
+    /// **Source:** `BRep_TVertex.hxx`:39 - `BRep_TVertex::BRep_TVertex()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_TVertex_ctor()) }
     }
 
+    /// **Source:** `BRep_TVertex.hxx`:41 - `BRep_TVertex::Tolerance()`
     pub fn tolerance(&self) -> f64 {
         unsafe { crate::ffi::BRep_TVertex_tolerance(self as *const Self) }
     }
 
+    /// **Source:** `BRep_TVertex.hxx`:43 - `BRep_TVertex::Tolerance()`
     pub fn tolerance_real(&mut self, T: f64) {
         unsafe { crate::ffi::BRep_TVertex_tolerance_real(self as *mut Self, T) }
     }
 
+    /// **Source:** `BRep_TVertex.hxx`:47 - `BRep_TVertex::UpdateTolerance()`
     /// Sets the tolerance  to the   max  of <T>  and  the
     /// current  tolerance.
     pub fn update_tolerance(&mut self, T: f64) {
         unsafe { crate::ffi::BRep_TVertex_update_tolerance(self as *mut Self, T) }
     }
 
+    /// **Source:** `BRep_TVertex.hxx`:49 - `BRep_TVertex::Pnt()`
     pub fn pnt(&self) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::BRep_TVertex_pnt(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_TVertex.hxx`:51 - `BRep_TVertex::Pnt()`
     pub fn pnt_pnt(&mut self, P: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::BRep_TVertex_pnt_pnt(self as *mut Self, P) }
     }
 
+    /// **Source:** `BRep_TVertex.hxx`:58 - `BRep_TVertex::EmptyCopy()`
     /// Returns a copy  of the  TShape  with no sub-shapes.
     pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         unsafe {
@@ -4733,14 +5042,17 @@ impl TVertex {
         }
     }
 
+    /// **Source:** `BRep_TVertex.hxx`:64 - `BRep_TVertex::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_TVertex_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_TVertex.hxx`:64 - `BRep_TVertex::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRep_TVertex_get_type_name() }
     }
 
+    /// **Source:** `BRep_TVertex.hxx`:64 - `BRep_TVertex::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRep_TVertex_get_type_descriptor()) }
     }
@@ -4825,6 +5137,7 @@ impl TVertex {
 // From BRep_Tool.hxx
 // ========================
 
+/// **Source:** `BRep_Tool.hxx`:44 - `BRep_Tool`
 /// Provides class methods  to  access to the geometry
 /// of BRep shapes.
 pub use crate::ffi::BRep_Tool as Tool;
@@ -4836,11 +5149,13 @@ unsafe impl crate::CppDeletable for Tool {
 }
 
 impl Tool {
+    /// **Source:** `BRep_Tool.hxx` - `BRep_Tool::BRep_Tool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_Tool_ctor()) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:54 - `BRep_Tool::IsClosed()`
     /// If S is Shell, returns True if it has no free boundaries (edges).
     /// If S is Wire, returns True if it has no free ends (vertices).
     /// (Internal and External sub-shepes are ignored in these checks)
@@ -4850,6 +5165,7 @@ impl Tool {
         unsafe { crate::ffi::BRep_Tool_is_closed_shape(S) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:58 - `BRep_Tool::Surface()`
     /// Returns the geometric surface of the face. Returns
     /// in <L> the location for the surface.
     pub fn surface_face_location(
@@ -4859,6 +5175,7 @@ impl Tool {
         unsafe { &*(crate::ffi::BRep_Tool_surface_face_location(F, L)) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:63 - `BRep_Tool::Surface()`
     /// Returns the geometric  surface of the face. It can
     /// be a copy if there is a Location.
     pub fn surface_face(
@@ -4867,6 +5184,7 @@ impl Tool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_Tool_surface_face(F)) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:73 - `BRep_Tool::Triangulation()`
     /// Returns the triangulation of the face according to the mesh purpose.
     /// @param[in] theFace  the input face to find triangulation.
     /// @param[out] theLocation  the face location.
@@ -4883,27 +5201,32 @@ impl Tool {
         unsafe { &*(crate::ffi::BRep_Tool_triangulation(theFace, theLocation, theMeshPurpose)) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:87 - `BRep_Tool::Tolerance()`
     /// Returns the tolerance of the face.
     pub fn tolerance_face(F: &crate::ffi::TopoDS_Face) -> f64 {
         unsafe { crate::ffi::BRep_Tool_tolerance_face(F) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:90 - `BRep_Tool::NaturalRestriction()`
     /// Returns the  NaturalRestriction  flag of the  face.
     pub fn natural_restriction(F: &crate::ffi::TopoDS_Face) -> bool {
         unsafe { crate::ffi::BRep_Tool_natural_restriction(F) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:93 - `BRep_Tool::IsGeometric()`
     /// Returns True if <F> has a surface, false otherwise.
     pub fn is_geometric_face(F: &crate::ffi::TopoDS_Face) -> bool {
         unsafe { crate::ffi::BRep_Tool_is_geometric_face(F) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:97 - `BRep_Tool::IsGeometric()`
     /// Returns True if <E> is a 3d curve or a curve on
     /// surface.
     pub fn is_geometric_edge(E: &crate::ffi::TopoDS_Edge) -> bool {
         unsafe { crate::ffi::BRep_Tool_is_geometric_edge(E) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:102 - `BRep_Tool::Curve()`
     /// Returns the 3D curve  of the edge.  May be  a Null
     /// handle. Returns in <L> the location for the curve.
     /// In <First> and <Last> the parameter range.
@@ -4916,6 +5239,7 @@ impl Tool {
         unsafe { &*(crate::ffi::BRep_Tool_curve_edge_location_real2(E, L, First, Last)) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:110 - `BRep_Tool::Curve()`
     /// Returns the 3D curve  of the edge. May be a Null handle.
     /// In <First> and <Last> the parameter range.
     /// It can be a copy if there is a Location.
@@ -4927,6 +5251,7 @@ impl Tool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_Tool_curve_edge_real2(E, First, Last)) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:116 - `BRep_Tool::Polygon3D()`
     /// Returns the 3D polygon of the edge. May be   a Null
     /// handle. Returns in <L> the location for the polygon.
     pub fn polygon3_d(
@@ -4936,6 +5261,7 @@ impl Tool {
         unsafe { &*(crate::ffi::BRep_Tool_polygon3_d(E, L)) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:150 - `BRep_Tool::CurveOnPlane()`
     /// For the planar surface builds the 2d curve for the edge
     /// by projection of the edge on plane.
     /// Returns a NULL handle if the surface is not planar or
@@ -4952,6 +5278,7 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:160 - `BRep_Tool::CurveOnSurface()`
     /// Returns in <C>, <S>, <L> a 2d curve, a surface and
     /// a location for the edge <E>. <C> and <S>  are null
     /// if the  edge has no curve on  surface.  Returns in
@@ -4969,6 +5296,7 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:171 - `BRep_Tool::CurveOnSurface()`
     /// Returns in <C>, <S>, <L> the 2d curve, the surface
     /// and the location for the edge <E> of rank <Index>.
     /// <C> and <S> are null if the index is out of range.
@@ -4987,6 +5315,7 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:182 - `BRep_Tool::PolygonOnSurface()`
     /// Returns the polygon associated to the  edge in  the
     /// parametric  space of  the  face.  Returns   a NULL
     /// handle  if this polygon  does not exist.
@@ -4999,6 +5328,7 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:188 - `BRep_Tool::PolygonOnSurface()`
     /// Returns the polygon associated to the  edge in  the
     /// parametric  space of  the surface. Returns   a NULL
     /// handle  if this polygon  does not exist.
@@ -5014,6 +5344,7 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:195 - `BRep_Tool::PolygonOnSurface()`
     /// Returns in <C>, <S>, <L> a 2d curve, a surface and
     /// a location for the edge <E>. <C> and <S>  are null
     /// if the  edge has no polygon on  surface.
@@ -5028,6 +5359,7 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:203 - `BRep_Tool::PolygonOnSurface()`
     /// Returns in <C>, <S>, <L> the 2d curve, the surface
     /// and the location for the edge <E> of rank <Index>.
     /// <C> and <S> are null if the index is out of range.
@@ -5043,6 +5375,7 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:212 - `BRep_Tool::PolygonOnTriangulation()`
     /// Returns the polygon associated to the  edge in  the
     /// parametric  space of  the  face.  Returns   a NULL
     /// handle  if this polygon  does not exist.
@@ -5058,6 +5391,7 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:221 - `BRep_Tool::PolygonOnTriangulation()`
     /// Returns in <P>, <T>, <L> a polygon on triangulation, a
     /// triangulation and a location for the edge <E>.
     /// <P>  and  <T>  are null  if  the  edge has no
@@ -5073,6 +5407,7 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:230 - `BRep_Tool::PolygonOnTriangulation()`
     /// Returns   in   <P>,  <T>,    <L> a     polygon  on
     /// triangulation,   a triangulation  and a  location for
     /// the edge <E> for the range index.  <C> and <S> are
@@ -5089,6 +5424,7 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:239 - `BRep_Tool::IsClosed()`
     /// Returns  True  if  <E>  has  two  PCurves  in  the
     /// parametric space of <F>. i.e.  <F>  is on a closed
     /// surface and <E> is on the closing curve.
@@ -5096,6 +5432,7 @@ impl Tool {
         unsafe { crate::ffi::BRep_Tool_is_closed_edge_face(E, F) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:244 - `BRep_Tool::IsClosed()`
     /// Returns  True  if  <E>  has  two  PCurves  in  the
     /// parametric space  of <S>.  i.e.   <S>  is a closed
     /// surface and <E> is on the closing curve.
@@ -5107,6 +5444,7 @@ impl Tool {
         unsafe { crate::ffi::BRep_Tool_is_closed_edge_handlegeomsurface_location(E, S, L) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:250 - `BRep_Tool::IsClosed()`
     /// Returns  True  if <E> has two arrays of indices in
     /// the triangulation <T>.
     pub fn is_closed_edge_handlepolytriangulation_location(
@@ -5117,31 +5455,37 @@ impl Tool {
         unsafe { crate::ffi::BRep_Tool_is_closed_edge_handlepolytriangulation_location(E, T, L) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:255 - `BRep_Tool::Tolerance()`
     /// Returns the tolerance for <E>.
     pub fn tolerance_edge(E: &crate::ffi::TopoDS_Edge) -> f64 {
         unsafe { crate::ffi::BRep_Tool_tolerance_edge(E) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:258 - `BRep_Tool::SameParameter()`
     /// Returns the SameParameter flag for the edge.
     pub fn same_parameter(E: &crate::ffi::TopoDS_Edge) -> bool {
         unsafe { crate::ffi::BRep_Tool_same_parameter(E) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:261 - `BRep_Tool::SameRange()`
     /// Returns the SameRange flag for the edge.
     pub fn same_range(E: &crate::ffi::TopoDS_Edge) -> bool {
         unsafe { crate::ffi::BRep_Tool_same_range(E) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:264 - `BRep_Tool::Degenerated()`
     /// Returns True  if the edge is degenerated.
     pub fn degenerated(E: &crate::ffi::TopoDS_Edge) -> bool {
         unsafe { crate::ffi::BRep_Tool_degenerated(E) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:267 - `BRep_Tool::Range()`
     /// Gets the range of the 3d curve.
     pub fn range_edge_real2(E: &crate::ffi::TopoDS_Edge, First: &mut f64, Last: &mut f64) {
         unsafe { crate::ffi::BRep_Tool_range_edge_real2(E, First, Last) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:273 - `BRep_Tool::Range()`
     /// Gets the range  of the edge  on the pcurve on  the
     /// surface.
     pub fn range_edge_handlegeomsurface_location_real2(
@@ -5156,6 +5500,7 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:280 - `BRep_Tool::Range()`
     /// Gets the range of the edge on the pcurve on the face.
     pub fn range_edge_face_real2(
         E: &crate::ffi::TopoDS_Edge,
@@ -5166,6 +5511,7 @@ impl Tool {
         unsafe { crate::ffi::BRep_Tool_range_edge_face_real2(E, F, First, Last) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:286 - `BRep_Tool::UVPoints()`
     /// Gets the UV locations of the extremities of the edge.
     pub fn uv_points_edge_handlegeomsurface_location_pnt2d2(
         E: &crate::ffi::TopoDS_Edge,
@@ -5181,6 +5527,7 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:293 - `BRep_Tool::UVPoints()`
     /// Gets the UV locations of the extremities of the edge.
     pub fn uv_points_edge_face_pnt2d2(
         E: &crate::ffi::TopoDS_Edge,
@@ -5191,6 +5538,7 @@ impl Tool {
         unsafe { crate::ffi::BRep_Tool_uv_points_edge_face_pnt2d2(E, F, PFirst, PLast) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:299 - `BRep_Tool::SetUVPoints()`
     /// Sets the UV locations of the extremities of the edge.
     pub fn set_uv_points_edge_handlegeomsurface_location_pnt2d2(
         E: &crate::ffi::TopoDS_Edge,
@@ -5206,6 +5554,7 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:306 - `BRep_Tool::SetUVPoints()`
     /// Sets the UV locations of the extremities of the edge.
     pub fn set_uv_points_edge_face_pnt2d2(
         E: &crate::ffi::TopoDS_Edge,
@@ -5216,6 +5565,7 @@ impl Tool {
         unsafe { crate::ffi::BRep_Tool_set_uv_points_edge_face_pnt2d2(E, F, PFirst, PLast) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:313 - `BRep_Tool::HasContinuity()`
     /// Returns True if the edge is on the surfaces of the
     /// two faces.
     pub fn has_continuity_edge_face2(
@@ -5226,6 +5576,7 @@ impl Tool {
         unsafe { crate::ffi::BRep_Tool_has_continuity_edge_face2(E, F1, F2) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:318 - `BRep_Tool::Continuity()`
     /// Returns the continuity.
     pub fn continuity_edge_face2(
         E: &crate::ffi::TopoDS_Edge,
@@ -5238,6 +5589,7 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:323 - `BRep_Tool::HasContinuity()`
     /// Returns True if the edge is on the surfaces.
     pub fn has_continuity_edge_handlegeomsurface2_location2(
         E: &crate::ffi::TopoDS_Edge,
@@ -5253,6 +5605,7 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:330 - `BRep_Tool::Continuity()`
     /// Returns the continuity.
     pub fn continuity_edge_handlegeomsurface2_location2(
         E: &crate::ffi::TopoDS_Edge,
@@ -5271,12 +5624,14 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:338 - `BRep_Tool::HasContinuity()`
     /// Returns True if the edge has regularity on some
     /// two surfaces
     pub fn has_continuity_edge(E: &crate::ffi::TopoDS_Edge) -> bool {
         unsafe { crate::ffi::BRep_Tool_has_continuity_edge(E) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:342 - `BRep_Tool::MaxContinuity()`
     /// Returns the max continuity of edge between some surfaces or GeomAbs_C0 if there no such
     /// surfaces.
     pub fn max_continuity(theEdge: &crate::ffi::TopoDS_Edge) -> crate::geom_abs::Shape {
@@ -5285,16 +5640,19 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:345 - `BRep_Tool::Pnt()`
     /// Returns the 3d point.
     pub fn pnt(V: &crate::ffi::TopoDS_Vertex) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_Tool_pnt(V)) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:348 - `BRep_Tool::Tolerance()`
     /// Returns the tolerance.
     pub fn tolerance_vertex(V: &crate::ffi::TopoDS_Vertex) -> f64 {
         unsafe { crate::ffi::BRep_Tool_tolerance_vertex(V) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:355 - `BRep_Tool::Parameter()`
     /// Finds the parameter of <theV> on <theE>.
     /// @param[in] theV  input vertex
     /// @param[in] theE  input edge
@@ -5308,6 +5666,7 @@ impl Tool {
         unsafe { crate::ffi::BRep_Tool_parameter_vertex_edge_real(theV, theE, theParam) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:361 - `BRep_Tool::Parameter()`
     /// Returns the parameter of <V> on <E>.
     /// Throws Standard_NoSuchObject if no parameter on edge
     pub fn parameter_vertex_edge(
@@ -5317,6 +5676,7 @@ impl Tool {
         unsafe { crate::ffi::BRep_Tool_parameter_vertex_edge(V, E) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:365 - `BRep_Tool::Parameter()`
     /// Returns the  parameters  of   the  vertex   on the
     /// pcurve of the edge on the face.
     pub fn parameter_vertex_edge_face(
@@ -5327,6 +5687,7 @@ impl Tool {
         unsafe { crate::ffi::BRep_Tool_parameter_vertex_edge_face(V, E, F) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:371 - `BRep_Tool::Parameter()`
     /// Returns the  parameters  of   the  vertex   on the
     /// pcurve of the edge on the surface.
     pub fn parameter_vertex_edge_handlegeomsurface_location(
@@ -5340,6 +5701,7 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:377 - `BRep_Tool::Parameters()`
     /// Returns the parameters of the vertex on the face.
     pub fn parameters(
         V: &crate::ffi::TopoDS_Vertex,
@@ -5348,6 +5710,7 @@ impl Tool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_Tool_parameters(V, F)) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:382 - `BRep_Tool::MaxTolerance()`
     pub fn max_tolerance(
         theShape: &crate::ffi::TopoDS_Shape,
         theSubShape: crate::top_abs::ShapeEnum,

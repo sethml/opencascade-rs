@@ -10,6 +10,7 @@
 // From GeomInt_IntSS.hxx
 // ========================
 
+/// **Source:** `GeomInt_IntSS.hxx`:37 - `GeomInt_IntSS`
 pub use crate::ffi::GeomInt_IntSS as IntSS;
 
 unsafe impl crate::CppDeletable for IntSS {
@@ -19,10 +20,12 @@ unsafe impl crate::CppDeletable for IntSS {
 }
 
 impl IntSS {
+    /// **Source:** `GeomInt_IntSS.hxx`:42 - `GeomInt_IntSS::GeomInt_IntSS()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomInt_IntSS_ctor()) }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:45 - `GeomInt_IntSS::GeomInt_IntSS()`
     /// performs general intersection of two surfaces just now
     pub fn new_handlegeomsurface2_real_bool3(
         S1: &crate::ffi::HandleGeomSurface,
@@ -39,6 +42,7 @@ impl IntSS {
         }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:45 - `GeomInt_IntSS::GeomInt_IntSS()`
     /// performs general intersection of two surfaces just now
     pub fn new_handlegeomsurface2_real_bool2(
         S1: &crate::ffi::HandleGeomSurface,
@@ -50,6 +54,7 @@ impl IntSS {
         Self::new_handlegeomsurface2_real_bool3(S1, S2, Tol, Approx, ApproxS1, false)
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:45 - `GeomInt_IntSS::GeomInt_IntSS()`
     /// performs general intersection of two surfaces just now
     pub fn new_handlegeomsurface2_real_bool(
         S1: &crate::ffi::HandleGeomSurface,
@@ -60,6 +65,7 @@ impl IntSS {
         Self::new_handlegeomsurface2_real_bool3(S1, S2, Tol, Approx, false, false)
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:45 - `GeomInt_IntSS::GeomInt_IntSS()`
     /// performs general intersection of two surfaces just now
     pub fn new_handlegeomsurface2_real(
         S1: &crate::ffi::HandleGeomSurface,
@@ -69,6 +75,7 @@ impl IntSS {
         Self::new_handlegeomsurface2_real_bool3(S1, S2, Tol, true, false, false)
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:53 - `GeomInt_IntSS::Perform()`
     /// general intersection of two surfaces
     pub fn perform_handlegeomsurface2_real_bool3(
         &mut self,
@@ -92,6 +99,7 @@ impl IntSS {
         }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:69 - `GeomInt_IntSS::Perform()`
     /// general intersection using a starting point
     pub fn perform_handlegeomsurface2_real5_bool3(
         &mut self,
@@ -123,60 +131,74 @@ impl IntSS {
         }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:92 - `GeomInt_IntSS::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GeomInt_IntSS_is_done(self as *const Self) }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:94 - `GeomInt_IntSS::TolReached3d()`
     pub fn tol_reached3d(&self) -> f64 {
         unsafe { crate::ffi::GeomInt_IntSS_tol_reached3d(self as *const Self) }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:96 - `GeomInt_IntSS::TolReached2d()`
     pub fn tol_reached2d(&self) -> f64 {
         unsafe { crate::ffi::GeomInt_IntSS_tol_reached2d(self as *const Self) }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:98 - `GeomInt_IntSS::NbLines()`
     pub fn nb_lines(&self) -> i32 {
         unsafe { crate::ffi::GeomInt_IntSS_nb_lines(self as *const Self) }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:100 - `GeomInt_IntSS::Line()`
     pub fn line(&self, Index: i32) -> &crate::ffi::HandleGeomCurve {
         unsafe { &*(crate::ffi::GeomInt_IntSS_line(self as *const Self, Index)) }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:102 - `GeomInt_IntSS::HasLineOnS1()`
     pub fn has_line_on_s1(&self, Index: i32) -> bool {
         unsafe { crate::ffi::GeomInt_IntSS_has_line_on_s1(self as *const Self, Index) }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:104 - `GeomInt_IntSS::LineOnS1()`
     pub fn line_on_s1(&self, Index: i32) -> &crate::ffi::HandleGeom2dCurve {
         unsafe { &*(crate::ffi::GeomInt_IntSS_line_on_s1(self as *const Self, Index)) }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:106 - `GeomInt_IntSS::HasLineOnS2()`
     pub fn has_line_on_s2(&self, Index: i32) -> bool {
         unsafe { crate::ffi::GeomInt_IntSS_has_line_on_s2(self as *const Self, Index) }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:108 - `GeomInt_IntSS::LineOnS2()`
     pub fn line_on_s2(&self, Index: i32) -> &crate::ffi::HandleGeom2dCurve {
         unsafe { &*(crate::ffi::GeomInt_IntSS_line_on_s2(self as *const Self, Index)) }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:110 - `GeomInt_IntSS::NbBoundaries()`
     pub fn nb_boundaries(&self) -> i32 {
         unsafe { crate::ffi::GeomInt_IntSS_nb_boundaries(self as *const Self) }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:112 - `GeomInt_IntSS::Boundary()`
     pub fn boundary(&self, Index: i32) -> &crate::ffi::HandleGeomCurve {
         unsafe { &*(crate::ffi::GeomInt_IntSS_boundary(self as *const Self, Index)) }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:114 - `GeomInt_IntSS::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         unsafe { crate::ffi::GeomInt_IntSS_nb_points(self as *const Self) }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:116 - `GeomInt_IntSS::Point()`
     pub fn point(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomInt_IntSS_point(self as *const Self, Index))
         }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:118 - `GeomInt_IntSS::Pnt2d()`
     pub fn pnt2d(&self, Index: i32, OnFirst: bool) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomInt_IntSS_pnt2d(
@@ -187,6 +209,7 @@ impl IntSS {
         }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:121 - `GeomInt_IntSS::SetTolFixTangents()`
     pub fn set_tol_fix_tangents(&mut self, aTolCheck: f64, aTolAngCheck: f64) {
         unsafe {
             crate::ffi::GeomInt_IntSS_set_tol_fix_tangents(
@@ -197,12 +220,14 @@ impl IntSS {
         }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:124 - `GeomInt_IntSS::TolFixTangents()`
     pub fn tol_fix_tangents(&mut self, aTolCheck: &mut f64, aTolAngCheck: &mut f64) {
         unsafe {
             crate::ffi::GeomInt_IntSS_tol_fix_tangents(self as *mut Self, aTolCheck, aTolAngCheck)
         }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:136 - `GeomInt_IntSS::BuildPCurves()`
     /// creates 2D-curve on given surface from given 3D-curve
     pub fn build_p_curves_real7_handlegeomsurface_handlegeomcurve_handlegeom2dcurve(
         theFirst: f64,
@@ -221,6 +246,7 @@ impl IntSS {
         }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:148 - `GeomInt_IntSS::BuildPCurves()`
     /// creates 2D-curve on given surface from given 3D-curve
     pub fn build_p_curves_real3_handlegeomsurface_handlegeomcurve_handlegeom2dcurve(
         f: f64,
@@ -240,6 +266,7 @@ impl IntSS {
 // From GeomInt_LineConstructor.hxx
 // ========================
 
+/// **Source:** `GeomInt_LineConstructor.hxx`:27 - `GeomInt_LineConstructor`
 /// Splits given Line.
 pub use crate::ffi::GeomInt_LineConstructor as LineConstructor;
 
@@ -250,26 +277,31 @@ unsafe impl crate::CppDeletable for LineConstructor {
 }
 
 impl LineConstructor {
+    /// **Source:** `GeomInt_LineConstructor.hxx`:33 - `GeomInt_LineConstructor::GeomInt_LineConstructor()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomInt_LineConstructor_ctor()) }
     }
 
+    /// **Source:** `GeomInt_LineConstructor.hxx`:43 - `GeomInt_LineConstructor::Perform()`
     /// Splits line
     pub fn perform(&mut self, L: &crate::ffi::HandleIntPatchLine) {
         unsafe { crate::ffi::GeomInt_LineConstructor_perform(self as *mut Self, L) }
     }
 
+    /// **Source:** `GeomInt_LineConstructor.hxx`:46 - `GeomInt_LineConstructor::IsDone()`
     /// Returns True if splitting was successful
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GeomInt_LineConstructor_is_done(self as *const Self) }
     }
 
+    /// **Source:** `GeomInt_LineConstructor.hxx`:49 - `GeomInt_LineConstructor::NbParts()`
     /// Returns number of splits
     pub fn nb_parts(&self) -> i32 {
         unsafe { crate::ffi::GeomInt_LineConstructor_nb_parts(self as *const Self) }
     }
 
+    /// **Source:** `GeomInt_LineConstructor.hxx`:53 - `GeomInt_LineConstructor::Part()`
     /// Return first and last parameters
     /// for given index of split
     pub fn part(&self, I: i32, WFirst: &mut f64, WLast: &mut f64) {

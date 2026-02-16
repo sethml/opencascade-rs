@@ -10,6 +10,7 @@
 // From GC_MakeArcOfCircle.hxx
 // ========================
 
+/// **Source:** `GC_MakeArcOfCircle.hxx`:38 - `GC_MakeArcOfCircle`
 /// Implements construction algorithms for an
 /// arc of circle in 3D space. The result is a Geom_TrimmedCurve curve.
 /// A MakeArcOfCircle object provides a framework for:
@@ -26,6 +27,7 @@ unsafe impl crate::CppDeletable for MakeArcOfCircle {
 }
 
 impl MakeArcOfCircle {
+    /// **Source:** `GC_MakeArcOfCircle.hxx`:46 - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
     /// Make an arc of circle (TrimmedCurve from Geom) from
     /// a circle between two angles Alpha1 and Alpha2
     /// given in radiians.
@@ -42,6 +44,7 @@ impl MakeArcOfCircle {
         }
     }
 
+    /// **Source:** `GC_MakeArcOfCircle.hxx`:54 - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
     /// Make an arc of circle (TrimmedCurve from Geom) from
     /// a circle between point <P> and the angle Alpha
     /// given in radians.
@@ -58,6 +61,7 @@ impl MakeArcOfCircle {
         }
     }
 
+    /// **Source:** `GC_MakeArcOfCircle.hxx`:61 - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
     /// Make an arc of circle (TrimmedCurve from Geom) from
     /// a circle between two points P1 and P2.
     pub fn new_circ_pnt2_bool(
@@ -73,6 +77,7 @@ impl MakeArcOfCircle {
         }
     }
 
+    /// **Source:** `GC_MakeArcOfCircle.hxx`:68 - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
     /// Make an arc of circle (TrimmedCurve from Geom) from
     /// three points P1,P2,P3 between two points P1 and P2.
     pub fn new_pnt3(
@@ -83,6 +88,7 @@ impl MakeArcOfCircle {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeArcOfCircle_ctor_pnt3(P1, P2, P3)) }
     }
 
+    /// **Source:** `GC_MakeArcOfCircle.hxx`:90 - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
     /// Make an arc of circle (TrimmedCurve from Geom) from
     /// two points P1,P2 and the tangente to the solution at
     /// the point P1.
@@ -113,6 +119,7 @@ impl MakeArcOfCircle {
         }
     }
 
+    /// **Source:** `GC_MakeArcOfCircle.hxx`:94 - `GC_MakeArcOfCircle::Value()`
     /// Returns the constructed arc of circle.
     /// Exceptions StdFail_NotDone if no arc of circle is constructed.
     pub fn value(&self) -> &crate::ffi::HandleGeomTrimmedCurve {
@@ -139,6 +146,7 @@ impl MakeArcOfCircle {
 // From GC_MakeArcOfEllipse.hxx
 // ========================
 
+/// **Source:** `GC_MakeArcOfEllipse.hxx`:37 - `GC_MakeArcOfEllipse`
 /// Implements construction algorithms for an arc
 /// of ellipse in 3D space. The result is a Geom_TrimmedCurve curve.
 /// A MakeArcOfEllipse object provides a framework for:
@@ -155,6 +163,7 @@ unsafe impl crate::CppDeletable for MakeArcOfEllipse {
 }
 
 impl MakeArcOfEllipse {
+    /// **Source:** `GC_MakeArcOfEllipse.hxx`:44 - `GC_MakeArcOfEllipse::GC_MakeArcOfEllipse()`
     /// Constructs an arc of Ellipse (TrimmedCurve from Geom) from
     /// a Ellipse between two parameters Alpha1 and Alpha2.
     pub fn new_elips_real2_bool(
@@ -170,6 +179,7 @@ impl MakeArcOfEllipse {
         }
     }
 
+    /// **Source:** `GC_MakeArcOfEllipse.hxx`:52 - `GC_MakeArcOfEllipse::GC_MakeArcOfEllipse()`
     /// Constructs an arc of Ellipse (TrimmedCurve from Geom) from
     /// a Ellipse between point <P> and the angle Alpha
     /// given in radians.
@@ -186,6 +196,7 @@ impl MakeArcOfEllipse {
         }
     }
 
+    /// **Source:** `GC_MakeArcOfEllipse.hxx`:65 - `GC_MakeArcOfEllipse::GC_MakeArcOfEllipse()`
     /// Constructs an arc of Ellipse (TrimmedCurve from Geom) from
     /// a Ellipse between two points P1 and P2.
     /// The orientation of the arc of ellipse is:
@@ -207,6 +218,7 @@ impl MakeArcOfEllipse {
         }
     }
 
+    /// **Source:** `GC_MakeArcOfEllipse.hxx`:71 - `GC_MakeArcOfEllipse::Value()`
     /// Returns the constructed arc of ellipse.
     pub fn value(&self) -> &crate::ffi::HandleGeomTrimmedCurve {
         unsafe { &*(crate::ffi::GC_MakeArcOfEllipse_value(self as *const Self)) }
@@ -232,6 +244,7 @@ impl MakeArcOfEllipse {
 // From GC_MakeArcOfHyperbola.hxx
 // ========================
 
+/// **Source:** `GC_MakeArcOfHyperbola.hxx`:37 - `GC_MakeArcOfHyperbola`
 /// Implements construction algorithms for an arc
 /// of hyperbola in 3D space. The result is a Geom_TrimmedCurve curve.
 /// A MakeArcOfHyperbola object provides a framework for:
@@ -248,6 +261,7 @@ unsafe impl crate::CppDeletable for MakeArcOfHyperbola {
 }
 
 impl MakeArcOfHyperbola {
+    /// **Source:** `GC_MakeArcOfHyperbola.hxx`:45 - `GC_MakeArcOfHyperbola::GC_MakeArcOfHyperbola()`
     /// Creates an arc of Hyperbola (TrimmedCurve from Geom) from
     /// a Hyperbola between two parameters Alpha1 and Alpha2
     /// (given in radians).
@@ -264,6 +278,7 @@ impl MakeArcOfHyperbola {
         }
     }
 
+    /// **Source:** `GC_MakeArcOfHyperbola.hxx`:53 - `GC_MakeArcOfHyperbola::GC_MakeArcOfHyperbola()`
     /// Creates an arc of Hyperbola (TrimmedCurve from Geom) from
     /// a Hyperbola between point <P> and the parameter
     /// Alpha (given in radians).
@@ -280,6 +295,7 @@ impl MakeArcOfHyperbola {
         }
     }
 
+    /// **Source:** `GC_MakeArcOfHyperbola.hxx`:63 - `GC_MakeArcOfHyperbola::GC_MakeArcOfHyperbola()`
     /// Creates an arc of Hyperbola (TrimmedCurve from Geom) from
     /// a Hyperbola between two points P1 and P2.
     /// The orientation of the arc of hyperbola is:
@@ -298,6 +314,7 @@ impl MakeArcOfHyperbola {
         }
     }
 
+    /// **Source:** `GC_MakeArcOfHyperbola.hxx`:69 - `GC_MakeArcOfHyperbola::Value()`
     /// Returns the constructed arc of hyperbola.
     pub fn value(&self) -> &crate::ffi::HandleGeomTrimmedCurve {
         unsafe { &*(crate::ffi::GC_MakeArcOfHyperbola_value(self as *const Self)) }
@@ -323,6 +340,7 @@ impl MakeArcOfHyperbola {
 // From GC_MakeArcOfParabola.hxx
 // ========================
 
+/// **Source:** `GC_MakeArcOfParabola.hxx`:37 - `GC_MakeArcOfParabola`
 /// Implements construction algorithms for an arc
 /// of parabola in 3D space. The result is a Geom_TrimmedCurve curve.
 /// A MakeArcOfParabola object provides a framework for:
@@ -339,6 +357,7 @@ unsafe impl crate::CppDeletable for MakeArcOfParabola {
 }
 
 impl MakeArcOfParabola {
+    /// **Source:** `GC_MakeArcOfParabola.hxx`:45 - `GC_MakeArcOfParabola::GC_MakeArcOfParabola()`
     /// Creates an arc of Parabola (TrimmedCurve from Geom) from
     /// a Parabola between two parameters Alpha1 and Alpha2
     /// (given in radians).
@@ -355,6 +374,7 @@ impl MakeArcOfParabola {
         }
     }
 
+    /// **Source:** `GC_MakeArcOfParabola.hxx`:53 - `GC_MakeArcOfParabola::GC_MakeArcOfParabola()`
     /// Creates an arc of Parabola (TrimmedCurve from Geom) from
     /// a Parabola between point <P> and the parameter
     /// Alpha (given in radians).
@@ -371,6 +391,7 @@ impl MakeArcOfParabola {
         }
     }
 
+    /// **Source:** `GC_MakeArcOfParabola.hxx`:60 - `GC_MakeArcOfParabola::GC_MakeArcOfParabola()`
     /// Creates an arc of Parabola (TrimmedCurve from Geom) from
     /// a Parabola between two points P1 and P2.
     pub fn new_parab_pnt2_bool(
@@ -386,6 +407,7 @@ impl MakeArcOfParabola {
         }
     }
 
+    /// **Source:** `GC_MakeArcOfParabola.hxx`:66 - `GC_MakeArcOfParabola::Value()`
     /// Returns the constructed arc of parabola.
     pub fn value(&self) -> &crate::ffi::HandleGeomTrimmedCurve {
         unsafe { &*(crate::ffi::GC_MakeArcOfParabola_value(self as *const Self)) }
@@ -411,6 +433,7 @@ impl MakeArcOfParabola {
 // From GC_MakeCircle.hxx
 // ========================
 
+/// **Source:** `GC_MakeCircle.hxx`:50 - `GC_MakeCircle`
 /// This class implements the following algorithms used
 /// to create Cirlec from Geom.
 ///
@@ -437,11 +460,13 @@ unsafe impl crate::CppDeletable for MakeCircle {
 }
 
 impl MakeCircle {
+    /// **Source:** `GC_MakeCircle.hxx`:56 - `GC_MakeCircle::GC_MakeCircle()`
     /// creates a circle from a non persistent circle C by its conversion.
     pub fn new_circ(C: &crate::ffi::gp_Circ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeCircle_ctor_circ(C)) }
     }
 
+    /// **Source:** `GC_MakeCircle.hxx`:61 - `GC_MakeCircle::GC_MakeCircle()`
     /// A2 is the local coordinates system of the circle.
     /// It is not forbidden to create a circle with Radius = 0.0
     /// Status is "NegativeRadius" if Radius < 0.
@@ -449,6 +474,7 @@ impl MakeCircle {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeCircle_ctor_ax2_real(A2, Radius)) }
     }
 
+    /// **Source:** `GC_MakeCircle.hxx`:68 - `GC_MakeCircle::GC_MakeCircle()`
     /// Make a Circle from Geom <TheCirc> parallel to another
     /// Circ <Circ> with a distance <Dist>.
     /// If Dist is greater than zero the result is enclosing
@@ -458,6 +484,7 @@ impl MakeCircle {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeCircle_ctor_circ_real(Circ, Dist)) }
     }
 
+    /// **Source:** `GC_MakeCircle.hxx`:72 - `GC_MakeCircle::GC_MakeCircle()`
     /// Make a Circle from Geom <TheCirc> parallel to another
     /// Circ <Circ> and passing through a Pnt <Point>.
     pub fn new_circ_pnt(
@@ -467,6 +494,7 @@ impl MakeCircle {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeCircle_ctor_circ_pnt(Circ, Point)) }
     }
 
+    /// **Source:** `GC_MakeCircle.hxx`:76 - `GC_MakeCircle::GC_MakeCircle()`
     /// Make a Circ from gp <TheCirc> passing through 3
     /// Pnt2d <P1>,<P2>,<P3>.
     pub fn new_pnt3(
@@ -477,6 +505,7 @@ impl MakeCircle {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeCircle_ctor_pnt3(P1, P2, P3)) }
     }
 
+    /// **Source:** `GC_MakeCircle.hxx`:81 - `GC_MakeCircle::GC_MakeCircle()`
     /// Make a Circle from Geom <TheCirc> with its center
     /// <Center> and the normal of its plane <Norm> and
     /// its radius <Radius>.
@@ -492,6 +521,7 @@ impl MakeCircle {
         }
     }
 
+    /// **Source:** `GC_MakeCircle.hxx`:88 - `GC_MakeCircle::GC_MakeCircle()`
     /// Make a Circle from Geom <TheCirc> with its center
     /// <Center> and the normal of its plane defined by the
     /// two points <Center> and <PtAxis> and its radius <Radius>.
@@ -507,12 +537,14 @@ impl MakeCircle {
         }
     }
 
+    /// **Source:** `GC_MakeCircle.hxx`:94 - `GC_MakeCircle::GC_MakeCircle()`
     /// Make a Circle from Geom <TheCirc> with its center
     /// <Center> and its radius <Radius>.
     pub fn new_ax1_real(Axis: &crate::ffi::gp_Ax1, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeCircle_ctor_ax1_real(Axis, Radius)) }
     }
 
+    /// **Source:** `GC_MakeCircle.hxx`:99 - `GC_MakeCircle::Value()`
     /// Returns the constructed circle.
     /// Exceptions
     /// StdFail_NotDone if no circle is constructed.
@@ -540,6 +572,7 @@ impl MakeCircle {
 // From GC_MakeConicalSurface.hxx
 // ========================
 
+/// **Source:** `GC_MakeConicalSurface.hxx`:59 - `GC_MakeConicalSurface`
 /// This class implements the following algorithms used
 /// to create a ConicalSurface from Geom.
 /// * Create a ConicalSurface parallel to another and passing
@@ -577,6 +610,7 @@ unsafe impl crate::CppDeletable for MakeConicalSurface {
 }
 
 impl MakeConicalSurface {
+    /// **Source:** `GC_MakeConicalSurface.hxx`:77 - `GC_MakeConicalSurface::GC_MakeConicalSurface()`
     /// A2 defines the local coordinate system of the conical surface.
     /// Ang is the conical surface semi-angle ]0, PI/2[.
     /// Radius is the radius of the circle Viso in the placement plane
@@ -598,11 +632,13 @@ impl MakeConicalSurface {
         }
     }
 
+    /// **Source:** `GC_MakeConicalSurface.hxx`:82 - `GC_MakeConicalSurface::GC_MakeConicalSurface()`
     /// Creates a ConicalSurface from a non persistent Cone from package gp.
     pub fn new_cone(C: &crate::ffi::gp_Cone) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeConicalSurface_ctor_cone(C)) }
     }
 
+    /// **Source:** `GC_MakeConicalSurface.hxx`:93 - `GC_MakeConicalSurface::GC_MakeConicalSurface()`
     /// Make a ConicalSurface from Geom <TheCone> passing through 3
     /// Pnt <P1>,<P2>,<P3>.
     /// Its axis is <P1P2> and the radius of its base is
@@ -623,6 +659,7 @@ impl MakeConicalSurface {
         }
     }
 
+    /// **Source:** `GC_MakeConicalSurface.hxx`:103 - `GC_MakeConicalSurface::GC_MakeConicalSurface()`
     /// Make a ConicalSurface with two points and two radius.
     /// The axis of the solution is the line passing through
     /// <P1> and <P2>.
@@ -641,6 +678,7 @@ impl MakeConicalSurface {
         }
     }
 
+    /// **Source:** `GC_MakeConicalSurface.hxx`:111 - `GC_MakeConicalSurface::Value()`
     /// Returns the constructed cone.
     /// Exceptions
     /// StdFail_NotDone if no cone is constructed.
@@ -668,6 +706,7 @@ impl MakeConicalSurface {
 // From GC_MakeCylindricalSurface.hxx
 // ========================
 
+/// **Source:** `GC_MakeCylindricalSurface.hxx`:57 - `GC_MakeCylindricalSurface`
 /// This class implements the following algorithms used
 /// to create a CylindricalSurface from Geom.
 /// * Create a CylindricalSurface parallel to another and
@@ -701,6 +740,7 @@ unsafe impl crate::CppDeletable for MakeCylindricalSurface {
 }
 
 impl MakeCylindricalSurface {
+    /// **Source:** `GC_MakeCylindricalSurface.hxx`:72 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
     /// A2 defines the local coordinate system of the cylindrical surface.
     /// The "ZDirection" of A2 defines the direction of the surface's
     /// axis of symmetry.
@@ -719,12 +759,14 @@ impl MakeCylindricalSurface {
         }
     }
 
+    /// **Source:** `GC_MakeCylindricalSurface.hxx`:76 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
     /// Creates a CylindricalSurface from a non persistent Cylinder
     /// from package gp.
     pub fn new_cylinder(C: &crate::ffi::gp_Cylinder) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeCylindricalSurface_ctor_cylinder(C)) }
     }
 
+    /// **Source:** `GC_MakeCylindricalSurface.hxx`:82 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
     /// Make a CylindricalSurface from Geom <TheCylinder>
     /// parallel to another
     /// CylindricalSurface <Cylinder> and passing through a
@@ -740,6 +782,7 @@ impl MakeCylindricalSurface {
         }
     }
 
+    /// **Source:** `GC_MakeCylindricalSurface.hxx`:90 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
     /// Make a CylindricalSurface from Geom <TheCylinder>
     /// parallel to another
     /// CylindricalSurface <Cylinder> at the distance <Dist>
@@ -754,6 +797,7 @@ impl MakeCylindricalSurface {
         }
     }
 
+    /// **Source:** `GC_MakeCylindricalSurface.hxx`:96 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
     /// Make a CylindricalSurface from Geom <TheCylinder>
     /// passing through 3 Pnt <P1>,<P2>,<P3>.
     /// Its axis is <P1P2> and its radius is the distance
@@ -768,6 +812,7 @@ impl MakeCylindricalSurface {
         }
     }
 
+    /// **Source:** `GC_MakeCylindricalSurface.hxx`:100 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
     /// Make a CylindricalSurface by its axis <Axis> and radius
     /// <Radius>.
     pub fn new_ax1_real(Axis: &crate::ffi::gp_Ax1, Radius: f64) -> crate::OwnedPtr<Self> {
@@ -778,11 +823,13 @@ impl MakeCylindricalSurface {
         }
     }
 
+    /// **Source:** `GC_MakeCylindricalSurface.hxx`:103 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
     /// Make a CylindricalSurface by its circular base.
     pub fn new_circ(Circ: &crate::ffi::gp_Circ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeCylindricalSurface_ctor_circ(Circ)) }
     }
 
+    /// **Source:** `GC_MakeCylindricalSurface.hxx`:107 - `GC_MakeCylindricalSurface::Value()`
     /// Returns the constructed cylinder.
     /// Exceptions StdFail_NotDone if no cylinder is constructed.
     pub fn value(&self) -> &crate::ffi::HandleGeomCylindricalSurface {
@@ -809,6 +856,7 @@ impl MakeCylindricalSurface {
 // From GC_MakeEllipse.hxx
 // ========================
 
+/// **Source:** `GC_MakeEllipse.hxx`:38 - `GC_MakeEllipse`
 /// This class implements construction algorithms for an ellipse in
 /// 3D space. The result is a Geom_Ellipse ellipse.
 /// A MakeEllipse object provides a framework for:
@@ -825,11 +873,13 @@ unsafe impl crate::CppDeletable for MakeEllipse {
 }
 
 impl MakeEllipse {
+    /// **Source:** `GC_MakeEllipse.hxx`:44 - `GC_MakeEllipse::GC_MakeEllipse()`
     /// Creates an ellipse from a non persistent ellipse E from package gp by its conversion.
     pub fn new_elips(E: &crate::ffi::gp_Elips) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeEllipse_ctor_elips(E)) }
     }
 
+    /// **Source:** `GC_MakeEllipse.hxx`:63 - `GC_MakeEllipse::GC_MakeEllipse()`
     /// Constructs an ellipse with major and minor radii MajorRadius and
     /// MinorRadius, and located in the plane defined by
     /// the "X Axis" and "Y Axis" of the coordinate system A2, where:
@@ -861,6 +911,7 @@ impl MakeEllipse {
         }
     }
 
+    /// **Source:** `GC_MakeEllipse.hxx`:72 - `GC_MakeEllipse::GC_MakeEllipse()`
     /// Constructs an ellipse centered on the point Center, where
     /// -   the plane of the ellipse is defined by Center, S1 and S2,
     /// -   its major axis is defined by Center and S1,
@@ -874,6 +925,7 @@ impl MakeEllipse {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeEllipse_ctor_pnt3(S1, S2, Center)) }
     }
 
+    /// **Source:** `GC_MakeEllipse.hxx`:76 - `GC_MakeEllipse::Value()`
     /// Returns the constructed ellipse.
     /// Exceptions StdFail_NotDone if no ellipse is constructed.
     pub fn value(&self) -> &crate::ffi::HandleGeomEllipse {
@@ -900,6 +952,7 @@ impl MakeEllipse {
 // From GC_MakeHyperbola.hxx
 // ========================
 
+/// **Source:** `GC_MakeHyperbola.hxx`:61 - `GC_MakeHyperbola`
 /// This class implements construction algorithms for a hyperbola in
 /// 3D space. The result is a Geom_Hyperbola hyperbola.
 /// A MakeHyperbola object provides a framework for:
@@ -939,11 +992,13 @@ unsafe impl crate::CppDeletable for MakeHyperbola {
 }
 
 impl MakeHyperbola {
+    /// **Source:** `GC_MakeHyperbola.hxx`:67 - `GC_MakeHyperbola::GC_MakeHyperbola()`
     /// Creates  an Hyperbola from a non persistent hyperbola  from package gp by conversion.
     pub fn new_hypr(H: &crate::ffi::gp_Hypr) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeHyperbola_ctor_hypr(H)) }
     }
 
+    /// **Source:** `GC_MakeHyperbola.hxx`:73 - `GC_MakeHyperbola::GC_MakeHyperbola()`
     /// Constructs a hyperbola centered on the origin of the coordinate system
     /// A2, with major and minor radii MajorRadius and MinorRadius, where:
     /// the plane of the hyperbola is defined by the "X Axis" and "Y Axis" of A2,
@@ -962,6 +1017,7 @@ impl MakeHyperbola {
         }
     }
 
+    /// **Source:** `GC_MakeHyperbola.hxx`:82 - `GC_MakeHyperbola::GC_MakeHyperbola()`
     /// Constructs a hyperbola centered on the point Center, where
     /// -   the plane of the hyperbola is defined by Center, S1 and S2,
     /// -   its major axis is defined by Center and S1,
@@ -975,6 +1031,7 @@ impl MakeHyperbola {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeHyperbola_ctor_pnt3(S1, S2, Center)) }
     }
 
+    /// **Source:** `GC_MakeHyperbola.hxx`:86 - `GC_MakeHyperbola::Value()`
     /// Returns the constructed hyperbola.
     /// Exceptions StdFail_NotDone if no hyperbola is constructed.
     pub fn value(&self) -> &crate::ffi::HandleGeomHyperbola {
@@ -1001,6 +1058,7 @@ impl MakeHyperbola {
 // From GC_MakeLine.hxx
 // ========================
 
+/// **Source:** `GC_MakeLine.hxx`:42 - `GC_MakeLine`
 /// This class implements the following algorithms used
 /// to create a Line from Geom.
 /// * Create a Line parallel to another and passing
@@ -1020,22 +1078,26 @@ unsafe impl crate::CppDeletable for MakeLine {
 }
 
 impl MakeLine {
+    /// **Source:** `GC_MakeLine.hxx`:49 - `GC_MakeLine::GC_MakeLine()`
     /// Creates a line located in 3D space with the axis placement A1.
     /// The Location of A1 is the origin of the line.
     pub fn new_ax1(A1: &crate::ffi::gp_Ax1) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeLine_ctor_ax1(A1)) }
     }
 
+    /// **Source:** `GC_MakeLine.hxx`:52 - `GC_MakeLine::GC_MakeLine()`
     /// Creates a line from a non persistent line from package gp.
     pub fn new_lin(L: &crate::ffi::gp_Lin) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeLine_ctor_lin(L)) }
     }
 
+    /// **Source:** `GC_MakeLine.hxx`:55 - `GC_MakeLine::GC_MakeLine()`
     /// P is the origin and V is the direction of the line.
     pub fn new_pnt_dir(P: &crate::ffi::gp_Pnt, V: &crate::ffi::gp_Dir) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeLine_ctor_pnt_dir(P, V)) }
     }
 
+    /// **Source:** `GC_MakeLine.hxx`:59 - `GC_MakeLine::GC_MakeLine()`
     /// Make a Line from Geom <TheLin> parallel to another
     /// Lin <Lin> and passing through a Pnt <Point>.
     pub fn new_lin_pnt(
@@ -1045,6 +1107,7 @@ impl MakeLine {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeLine_ctor_lin_pnt(Lin, Point)) }
     }
 
+    /// **Source:** `GC_MakeLine.hxx`:67 - `GC_MakeLine::GC_MakeLine()`
     /// Make a Line from Geom <TheLin> passing through 2
     /// Pnt <P1>,<P2>.
     /// It returns false if <p1> and <P2> are confused.
@@ -1055,6 +1118,7 @@ impl MakeLine {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeLine_ctor_pnt2(P1, P2)) }
     }
 
+    /// **Source:** `GC_MakeLine.hxx`:71 - `GC_MakeLine::Value()`
     /// Returns the constructed line.
     /// Exceptions StdFail_NotDone if no line is constructed.
     pub fn value(&self) -> &crate::ffi::HandleGeomLine {
@@ -1081,6 +1145,7 @@ impl MakeLine {
 // From GC_MakeMirror.hxx
 // ========================
 
+/// **Source:** `GC_MakeMirror.hxx`:39 - `GC_MakeMirror`
 /// This class implements elementary construction algorithms for a
 /// symmetrical transformation in 3D space about a point,
 /// axis or plane. The result is a Geom_Transformation transformation.
@@ -1097,18 +1162,22 @@ unsafe impl crate::CppDeletable for MakeMirror {
 }
 
 impl MakeMirror {
+    /// **Source:** `GC_MakeMirror.hxx`:44 - `GC_MakeMirror::GC_MakeMirror()`
     pub fn new_pnt(Point: &crate::ffi::gp_Pnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeMirror_ctor_pnt(Point)) }
     }
 
+    /// **Source:** `GC_MakeMirror.hxx`:46 - `GC_MakeMirror::GC_MakeMirror()`
     pub fn new_ax1(Axis: &crate::ffi::gp_Ax1) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeMirror_ctor_ax1(Axis)) }
     }
 
+    /// **Source:** `GC_MakeMirror.hxx`:48 - `GC_MakeMirror::GC_MakeMirror()`
     pub fn new_lin(Line: &crate::ffi::gp_Lin) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeMirror_ctor_lin(Line)) }
     }
 
+    /// **Source:** `GC_MakeMirror.hxx`:52 - `GC_MakeMirror::GC_MakeMirror()`
     /// Make a symmetry transformation af axis defined by
     /// <Point> and <Direc>.
     pub fn new_pnt_dir(
@@ -1118,16 +1187,19 @@ impl MakeMirror {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeMirror_ctor_pnt_dir(Point, Direc)) }
     }
 
+    /// **Source:** `GC_MakeMirror.hxx`:55 - `GC_MakeMirror::GC_MakeMirror()`
     /// Make a symmetry transformation of plane <Plane>.
     pub fn new_pln(Plane: &crate::ffi::gp_Pln) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeMirror_ctor_pln(Plane)) }
     }
 
+    /// **Source:** `GC_MakeMirror.hxx`:58 - `GC_MakeMirror::GC_MakeMirror()`
     /// Make a symmetry transformation of plane <Plane>.
     pub fn new_ax2(Plane: &crate::ffi::gp_Ax2) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeMirror_ctor_ax2(Plane)) }
     }
 
+    /// **Source:** `GC_MakeMirror.hxx`:61 - `GC_MakeMirror::Value()`
     /// Returns the constructed transformation.
     pub fn value(&self) -> &crate::ffi::HandleGeomTransformation {
         unsafe { &*(crate::ffi::GC_MakeMirror_value(self as *const Self)) }
@@ -1138,6 +1210,7 @@ impl MakeMirror {
 // From GC_MakePlane.hxx
 // ========================
 
+/// **Source:** `GC_MakePlane.hxx`:43 - `GC_MakePlane`
 /// This class implements the following algorithms used
 /// to create a Plane from gp.
 /// * Create a Plane parallel to another and passing
@@ -1158,17 +1231,20 @@ unsafe impl crate::CppDeletable for MakePlane {
 }
 
 impl MakePlane {
+    /// **Source:** `GC_MakePlane.hxx`:49 - `GC_MakePlane::GC_MakePlane()`
     /// Creates a plane from a non persistent plane from package gp.
     pub fn new_pln(Pl: &crate::ffi::gp_Pln) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakePlane_ctor_pln(Pl)) }
     }
 
+    /// **Source:** `GC_MakePlane.hxx`:53 - `GC_MakePlane::GC_MakePlane()`
     /// P is the "Location" point or origin of the plane.
     /// V is the direction normal to the plane.
     pub fn new_pnt_dir(P: &crate::ffi::gp_Pnt, V: &crate::ffi::gp_Dir) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakePlane_ctor_pnt_dir(P, V)) }
     }
 
+    /// **Source:** `GC_MakePlane.hxx`:59 - `GC_MakePlane::GC_MakePlane()`
     /// Creates a plane from its cartesian equation :
     /// Ax + By + Cz + D = 0.0
     /// Status is "BadEquation" if Sqrt (A*A + B*B + C*C)
@@ -1177,6 +1253,7 @@ impl MakePlane {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakePlane_ctor_real4(A, B, C, D)) }
     }
 
+    /// **Source:** `GC_MakePlane.hxx`:66 - `GC_MakePlane::GC_MakePlane()`
     /// Make a Plane from Geom <ThePlane> parallel to another
     /// Pln <Pln> and passing through a Pnt <Point>.
     pub fn new_pln_pnt(
@@ -1186,6 +1263,7 @@ impl MakePlane {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakePlane_ctor_pln_pnt(Pln, Point)) }
     }
 
+    /// **Source:** `GC_MakePlane.hxx`:75 - `GC_MakePlane::GC_MakePlane()`
     /// Make a Plane from Geom <ThePlane> parallel to another
     /// Pln <Pln> at the distance <Dist> which can be greater
     /// or lower than zero.
@@ -1197,6 +1275,7 @@ impl MakePlane {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakePlane_ctor_pln_real(Pln, Dist)) }
     }
 
+    /// **Source:** `GC_MakePlane.hxx`:80 - `GC_MakePlane::GC_MakePlane()`
     /// Make a Plane from Geom <ThePlane> passing through 3
     /// Pnt <P1>,<P2>,<P3>.
     /// It returns false if <P1> <P2> <P3> are confused.
@@ -1208,12 +1287,14 @@ impl MakePlane {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakePlane_ctor_pnt3(P1, P2, P3)) }
     }
 
+    /// **Source:** `GC_MakePlane.hxx`:84 - `GC_MakePlane::GC_MakePlane()`
     /// Make a Plane  passing through the location of <Axis>and
     /// normal to the Direction of <Axis>.
     pub fn new_ax1(Axis: &crate::ffi::gp_Ax1) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakePlane_ctor_ax1(Axis)) }
     }
 
+    /// **Source:** `GC_MakePlane.hxx`:88 - `GC_MakePlane::Value()`
     /// Returns the constructed plane.
     /// Exceptions StdFail_NotDone if no plane is constructed.
     pub fn value(&self) -> &crate::ffi::HandleGeomPlane {
@@ -1240,6 +1321,7 @@ impl MakePlane {
 // From GC_MakeRotation.hxx
 // ========================
 
+/// **Source:** `GC_MakeRotation.hxx`:38 - `GC_MakeRotation`
 /// This class implements elementary construction algorithms for a
 /// rotation in 3D space. The result is a
 /// Geom_Transformation transformation.
@@ -1256,16 +1338,19 @@ unsafe impl crate::CppDeletable for MakeRotation {
 }
 
 impl MakeRotation {
+    /// **Source:** `GC_MakeRotation.hxx`:44 - `GC_MakeRotation::GC_MakeRotation()`
     /// Constructs a rotation through angle Angle about the axis defined by the line Line.
     pub fn new_lin_real(Line: &crate::ffi::gp_Lin, Angle: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeRotation_ctor_lin_real(Line, Angle)) }
     }
 
+    /// **Source:** `GC_MakeRotation.hxx`:47 - `GC_MakeRotation::GC_MakeRotation()`
     /// Constructs a rotation through angle Angle about the axis defined by the axis Axis.
     pub fn new_ax1_real(Axis: &crate::ffi::gp_Ax1, Angle: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeRotation_ctor_ax1_real(Axis, Angle)) }
     }
 
+    /// **Source:** `GC_MakeRotation.hxx`:51 - `GC_MakeRotation::GC_MakeRotation()`
     /// Constructs a rotation through angle Angle about the axis
     /// defined by the point Point and the unit vector Direc.
     pub fn new_pnt_dir_real(
@@ -1280,6 +1365,7 @@ impl MakeRotation {
         }
     }
 
+    /// **Source:** `GC_MakeRotation.hxx`:56 - `GC_MakeRotation::Value()`
     /// Returns the constructed transformation.
     pub fn value(&self) -> &crate::ffi::HandleGeomTransformation {
         unsafe { &*(crate::ffi::GC_MakeRotation_value(self as *const Self)) }
@@ -1290,6 +1376,7 @@ impl MakeRotation {
 // From GC_MakeScale.hxx
 // ========================
 
+/// **Source:** `GC_MakeScale.hxx`:36 - `GC_MakeScale`
 /// This class implements an elementary construction algorithm for
 /// a scaling transformation in 3D space. The result is a
 /// Geom_Transformation transformation (a scaling transformation with
@@ -1307,6 +1394,7 @@ unsafe impl crate::CppDeletable for MakeScale {
 }
 
 impl MakeScale {
+    /// **Source:** `GC_MakeScale.hxx`:44 - `GC_MakeScale::GC_MakeScale()`
     /// Constructs a scaling transformation with
     /// -   Point as the center of the transformation, and
     /// -   Scale as the scale factor.
@@ -1314,6 +1402,7 @@ impl MakeScale {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeScale_ctor_pnt_real(Point, Scale)) }
     }
 
+    /// **Source:** `GC_MakeScale.hxx`:47 - `GC_MakeScale::Value()`
     /// Returns the constructed transformation.
     pub fn value(&self) -> &crate::ffi::HandleGeomTransformation {
         unsafe { &*(crate::ffi::GC_MakeScale_value(self as *const Self)) }
@@ -1324,6 +1413,7 @@ impl MakeScale {
 // From GC_MakeSegment.hxx
 // ========================
 
+/// **Source:** `GC_MakeSegment.hxx`:39 - `GC_MakeSegment`
 /// Implements construction algorithms for a line
 /// segment in 3D space.
 /// Makes a segment of Line from the 2 points <P1> and <P2>.
@@ -1342,12 +1432,14 @@ unsafe impl crate::CppDeletable for MakeSegment {
 }
 
 impl MakeSegment {
+    /// **Source:** `GC_MakeSegment.hxx`:46 - `GC_MakeSegment::GC_MakeSegment()`
     /// Make a segment of Line from the 2 points <P1> and <P2>.
     /// It returns NullObject if <P1> and <P2> are confused.
     pub fn new_pnt2(P1: &crate::ffi::gp_Pnt, P2: &crate::ffi::gp_Pnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeSegment_ctor_pnt2(P1, P2)) }
     }
 
+    /// **Source:** `GC_MakeSegment.hxx`:51 - `GC_MakeSegment::GC_MakeSegment()`
     /// Make a segment of Line from the line <Line1>
     /// between the two parameters U1 and U2.
     /// It returns NullObject if <U1> is equal <U2>.
@@ -1357,6 +1449,7 @@ impl MakeSegment {
         }
     }
 
+    /// **Source:** `GC_MakeSegment.hxx`:58 - `GC_MakeSegment::GC_MakeSegment()`
     /// Make a segment of Line from the line <Line1>
     /// between the point <Point> and the parameter Ulast.
     /// It returns NullObject if <U1> is equal <U2>.
@@ -1372,6 +1465,7 @@ impl MakeSegment {
         }
     }
 
+    /// **Source:** `GC_MakeSegment.hxx`:65 - `GC_MakeSegment::GC_MakeSegment()`
     /// Make a segment of Line from the line <Line1>
     /// between the two points <P1> and <P2>.
     /// It returns NullObject if <U1> is equal <U2>.
@@ -1383,6 +1477,7 @@ impl MakeSegment {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeSegment_ctor_lin_pnt2(Line, P1, P2)) }
     }
 
+    /// **Source:** `GC_MakeSegment.hxx`:68 - `GC_MakeSegment::Value()`
     /// Returns the constructed line segment.
     pub fn value(&self) -> &crate::ffi::HandleGeomTrimmedCurve {
         unsafe { &*(crate::ffi::GC_MakeSegment_value(self as *const Self)) }
@@ -1408,6 +1503,7 @@ impl MakeSegment {
 // From GC_MakeTranslation.hxx
 // ========================
 
+/// **Source:** `GC_MakeTranslation.hxx`:35 - `GC_MakeTranslation`
 /// This class implements elementary construction algorithms for a
 /// translation in 3D space. The result is a
 /// Geom_Transformation transformation.
@@ -1424,11 +1520,13 @@ unsafe impl crate::CppDeletable for MakeTranslation {
 }
 
 impl MakeTranslation {
+    /// **Source:** `GC_MakeTranslation.hxx`:41 - `GC_MakeTranslation::GC_MakeTranslation()`
     /// Constructs a translation along the vector " Vect "
     pub fn new_vec(Vect: &crate::ffi::gp_Vec) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeTranslation_ctor_vec(Vect)) }
     }
 
+    /// **Source:** `GC_MakeTranslation.hxx`:45 - `GC_MakeTranslation::GC_MakeTranslation()`
     /// Constructs a translation along the vector (Point1,Point2)
     /// defined from the point Point1 to the point Point2.
     pub fn new_pnt2(
@@ -1440,6 +1538,7 @@ impl MakeTranslation {
         }
     }
 
+    /// **Source:** `GC_MakeTranslation.hxx`:48 - `GC_MakeTranslation::Value()`
     /// Returns the constructed transformation.
     pub fn value(&self) -> &crate::ffi::HandleGeomTransformation {
         unsafe { &*(crate::ffi::GC_MakeTranslation_value(self as *const Self)) }
@@ -1450,6 +1549,7 @@ impl MakeTranslation {
 // From GC_MakeTrimmedCone.hxx
 // ========================
 
+/// **Source:** `GC_MakeTrimmedCone.hxx`:37 - `GC_MakeTrimmedCone`
 /// Implements construction algorithms for a trimmed
 /// cone limited by two planes orthogonal to its axis. The
 /// result is a Geom_RectangularTrimmedSurface surface.
@@ -1467,6 +1567,7 @@ unsafe impl crate::CppDeletable for MakeTrimmedCone {
 }
 
 impl MakeTrimmedCone {
+    /// **Source:** `GC_MakeTrimmedCone.hxx`:51 - `GC_MakeTrimmedCone::GC_MakeTrimmedCone()`
     /// Make a RectangularTrimmedSurface <TheCone> from Geom
     /// It is trimmed by P3 and P4.
     /// Its axis is <P1P2> and the radius of its base is
@@ -1487,6 +1588,7 @@ impl MakeTrimmedCone {
         }
     }
 
+    /// **Source:** `GC_MakeTrimmedCone.hxx`:72 - `GC_MakeTrimmedCone::GC_MakeTrimmedCone()`
     /// Make a RectangularTrimmedSurface from Geom <TheCone>
     /// from a cone and trimmed by two points P1 and P2 and
     /// the two radius <R1> and <R2> of the sections passing
@@ -1516,6 +1618,7 @@ impl MakeTrimmedCone {
         }
     }
 
+    /// **Source:** `GC_MakeTrimmedCone.hxx`:79 - `GC_MakeTrimmedCone::Value()`
     /// Returns the constructed trimmed cone.
     /// StdFail_NotDone if no trimmed cone is constructed.
     pub fn value(&self) -> &crate::ffi::HandleGeomRectangularTrimmedSurface {
@@ -1542,6 +1645,7 @@ impl MakeTrimmedCone {
 // From GC_MakeTrimmedCylinder.hxx
 // ========================
 
+/// **Source:** `GC_MakeTrimmedCylinder.hxx`:39 - `GC_MakeTrimmedCylinder`
 /// Implements construction algorithms for a trimmed
 /// cylinder limited by two planes orthogonal to its axis.
 /// The result is a Geom_RectangularTrimmedSurface surface.
@@ -1559,6 +1663,7 @@ unsafe impl crate::CppDeletable for MakeTrimmedCylinder {
 }
 
 impl MakeTrimmedCylinder {
+    /// **Source:** `GC_MakeTrimmedCylinder.hxx`:48 - `GC_MakeTrimmedCylinder::GC_MakeTrimmedCylinder()`
     /// Make a cylindricalSurface <Cyl> from Geom
     /// Its axis is <P1P2> and its radius is the distance
     /// between <P3> and <P1P2>.
@@ -1573,6 +1678,7 @@ impl MakeTrimmedCylinder {
         }
     }
 
+    /// **Source:** `GC_MakeTrimmedCylinder.hxx`:56 - `GC_MakeTrimmedCylinder::GC_MakeTrimmedCylinder()`
     /// Make a cylindricalSurface <Cyl> from gp by its base <Circ>.
     /// Its axis is the normal to the plane defined bi <Circ>.
     /// <Height> can be greater than zero or lower than zero.
@@ -1587,6 +1693,7 @@ impl MakeTrimmedCylinder {
         }
     }
 
+    /// **Source:** `GC_MakeTrimmedCylinder.hxx`:65 - `GC_MakeTrimmedCylinder::GC_MakeTrimmedCylinder()`
     /// Make a cylindricalSurface <Cyl> from gp by its
     /// axis <A1> and its radius <Radius>.
     /// It returns NullObject if <Radius> is lower than zero.
@@ -1606,6 +1713,7 @@ impl MakeTrimmedCylinder {
         }
     }
 
+    /// **Source:** `GC_MakeTrimmedCylinder.hxx`:72 - `GC_MakeTrimmedCylinder::Value()`
     /// Returns the constructed trimmed cylinder.
     /// Exceptions
     /// StdFail_NotDone if no trimmed cylinder is constructed.
@@ -1633,6 +1741,7 @@ impl MakeTrimmedCylinder {
 // From GC_Root.hxx
 // ========================
 
+/// **Source:** `GC_Root.hxx`:32 - `GC_Root`
 /// This class implements the common services for
 /// all classes of gce which report error.
 pub use crate::ffi::GC_Root as Root;
@@ -1644,11 +1753,13 @@ unsafe impl crate::CppDeletable for Root {
 }
 
 impl Root {
+    /// **Source:** `GC_Root.hxx` - `GC_Root::GC_Root()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_Root_ctor()) }
     }
 
+    /// **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     /// Returns true if the construction is successful.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GC_Root_is_done(self as *const Self) }

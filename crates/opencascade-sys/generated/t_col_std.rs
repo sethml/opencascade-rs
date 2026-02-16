@@ -10,6 +10,7 @@
 // From TColStd_HArray1OfAsciiString.hxx
 // ========================
 
+/// **Source:** `TColStd_HArray1OfAsciiString.hxx`:22 - `TColStd_HArray1OfAsciiString`
 pub use crate::ffi::TColStd_HArray1OfAsciiString as HArray1OfAsciiString;
 
 unsafe impl crate::CppDeletable for HArray1OfAsciiString {
@@ -19,10 +20,12 @@ unsafe impl crate::CppDeletable for HArray1OfAsciiString {
 }
 
 impl HArray1OfAsciiString {
+    /// **Source:** `TColStd_HArray1OfAsciiString.hxx`:22 - `TColStd_HArray1OfAsciiString::TColStd_HArray1OfAsciiString()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfAsciiString_ctor()) }
     }
 
+    /// **Source:** `TColStd_HArray1OfAsciiString.hxx`:22 - `TColStd_HArray1OfAsciiString::TColStd_HArray1OfAsciiString()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfAsciiString_ctor_int2(
@@ -31,6 +34,7 @@ impl HArray1OfAsciiString {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfAsciiString.hxx`:22 - `TColStd_HArray1OfAsciiString::TColStd_HArray1OfAsciiString()`
     pub fn new_int2_asciistring(
         theLower: i32,
         theUpper: i32,
@@ -45,6 +49,7 @@ impl HArray1OfAsciiString {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfAsciiString.hxx`:22 - `TColStd_HArray1OfAsciiString::TColStd_HArray1OfAsciiString()`
     pub fn new_asciistring_int2_bool(
         theBegin: &crate::ffi::TCollection_AsciiString,
         theLower: i32,
@@ -60,6 +65,7 @@ impl HArray1OfAsciiString {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfAsciiString.hxx`:22 - `TColStd_HArray1OfAsciiString::TColStd_HArray1OfAsciiString()`
     pub fn new_array1ofasciistring(
         theOther: &crate::ffi::TColStd_Array1OfAsciiString,
     ) -> crate::OwnedPtr<Self> {
@@ -70,14 +76,17 @@ impl HArray1OfAsciiString {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfAsciiString.hxx`:22 - `TColStd_HArray1OfAsciiString::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfAsciiString_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HArray1OfAsciiString.hxx`:22 - `TColStd_HArray1OfAsciiString::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HArray1OfAsciiString_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HArray1OfAsciiString.hxx`:22 - `TColStd_HArray1OfAsciiString::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfAsciiString_get_type_descriptor()) }
     }
@@ -118,6 +127,7 @@ impl HandleTColStdHArray1OfAsciiString {
 // From TColStd_HArray1OfBoolean.hxx
 // ========================
 
+/// **Source:** `TColStd_HArray1OfBoolean.hxx`:21 - `TColStd_HArray1OfBoolean`
 pub use crate::ffi::TColStd_HArray1OfBoolean as HArray1OfBoolean;
 
 unsafe impl crate::CppDeletable for HArray1OfBoolean {
@@ -127,10 +137,12 @@ unsafe impl crate::CppDeletable for HArray1OfBoolean {
 }
 
 impl HArray1OfBoolean {
+    /// **Source:** `TColStd_HArray1OfBoolean.hxx`:21 - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfBoolean_ctor()) }
     }
 
+    /// **Source:** `TColStd_HArray1OfBoolean.hxx`:21 - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfBoolean_ctor_int2(
@@ -139,6 +151,7 @@ impl HArray1OfBoolean {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfBoolean.hxx`:21 - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`
     pub fn new_int2_bool(theLower: i32, theUpper: i32, theValue: &bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfBoolean_ctor_int2_bool(
@@ -147,6 +160,7 @@ impl HArray1OfBoolean {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfBoolean.hxx`:21 - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`
     pub fn new_bool_int2_bool(
         theBegin: &bool,
         theLower: i32,
@@ -160,6 +174,7 @@ impl HArray1OfBoolean {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfBoolean.hxx`:21 - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`
     pub fn new_array1ofboolean(
         theOther: &crate::ffi::TColStd_Array1OfBoolean,
     ) -> crate::OwnedPtr<Self> {
@@ -170,14 +185,17 @@ impl HArray1OfBoolean {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfBoolean.hxx`:21 - `TColStd_HArray1OfBoolean::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfBoolean_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HArray1OfBoolean.hxx`:21 - `TColStd_HArray1OfBoolean::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HArray1OfBoolean_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HArray1OfBoolean.hxx`:21 - `TColStd_HArray1OfBoolean::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfBoolean_get_type_descriptor()) }
     }
@@ -218,6 +236,7 @@ impl HandleTColStdHArray1OfBoolean {
 // From TColStd_HArray1OfByte.hxx
 // ========================
 
+/// **Source:** `TColStd_HArray1OfByte.hxx`:21 - `TColStd_HArray1OfByte`
 pub use crate::ffi::TColStd_HArray1OfByte as HArray1OfByte;
 
 unsafe impl crate::CppDeletable for HArray1OfByte {
@@ -227,10 +246,12 @@ unsafe impl crate::CppDeletable for HArray1OfByte {
 }
 
 impl HArray1OfByte {
+    /// **Source:** `TColStd_HArray1OfByte.hxx`:21 - `TColStd_HArray1OfByte::TColStd_HArray1OfByte()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfByte_ctor()) }
     }
 
+    /// **Source:** `TColStd_HArray1OfByte.hxx`:21 - `TColStd_HArray1OfByte::TColStd_HArray1OfByte()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfByte_ctor_int2(
@@ -239,20 +260,24 @@ impl HArray1OfByte {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfByte.hxx`:21 - `TColStd_HArray1OfByte::TColStd_HArray1OfByte()`
     pub fn new_array1ofbyte(theOther: &crate::ffi::TColStd_Array1OfByte) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfByte_ctor_array1ofbyte(theOther))
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfByte.hxx`:21 - `TColStd_HArray1OfByte::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfByte_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HArray1OfByte.hxx`:21 - `TColStd_HArray1OfByte::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HArray1OfByte_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HArray1OfByte.hxx`:21 - `TColStd_HArray1OfByte::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfByte_get_type_descriptor()) }
     }
@@ -291,6 +316,7 @@ impl HandleTColStdHArray1OfByte {
 // From TColStd_HArray1OfCharacter.hxx
 // ========================
 
+/// **Source:** `TColStd_HArray1OfCharacter.hxx`:22 - `TColStd_HArray1OfCharacter`
 pub use crate::ffi::TColStd_HArray1OfCharacter as HArray1OfCharacter;
 
 unsafe impl crate::CppDeletable for HArray1OfCharacter {
@@ -300,10 +326,12 @@ unsafe impl crate::CppDeletable for HArray1OfCharacter {
 }
 
 impl HArray1OfCharacter {
+    /// **Source:** `TColStd_HArray1OfCharacter.hxx`:22 - `TColStd_HArray1OfCharacter::TColStd_HArray1OfCharacter()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfCharacter_ctor()) }
     }
 
+    /// **Source:** `TColStd_HArray1OfCharacter.hxx`:22 - `TColStd_HArray1OfCharacter::TColStd_HArray1OfCharacter()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfCharacter_ctor_int2(
@@ -312,6 +340,7 @@ impl HArray1OfCharacter {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfCharacter.hxx`:22 - `TColStd_HArray1OfCharacter::TColStd_HArray1OfCharacter()`
     pub fn new_int2_char(
         theLower: i32,
         theUpper: i32,
@@ -324,6 +353,7 @@ impl HArray1OfCharacter {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfCharacter.hxx`:22 - `TColStd_HArray1OfCharacter::TColStd_HArray1OfCharacter()`
     pub fn new_char_int2_bool(
         theBegin: &std::ffi::c_char,
         theLower: i32,
@@ -337,6 +367,7 @@ impl HArray1OfCharacter {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfCharacter.hxx`:22 - `TColStd_HArray1OfCharacter::TColStd_HArray1OfCharacter()`
     pub fn new_array1ofcharacter(
         theOther: &crate::ffi::TColStd_Array1OfCharacter,
     ) -> crate::OwnedPtr<Self> {
@@ -347,14 +378,17 @@ impl HArray1OfCharacter {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfCharacter.hxx`:22 - `TColStd_HArray1OfCharacter::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfCharacter_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HArray1OfCharacter.hxx`:22 - `TColStd_HArray1OfCharacter::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HArray1OfCharacter_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HArray1OfCharacter.hxx`:22 - `TColStd_HArray1OfCharacter::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfCharacter_get_type_descriptor()) }
     }
@@ -395,6 +429,7 @@ impl HandleTColStdHArray1OfCharacter {
 // From TColStd_HArray1OfExtendedString.hxx
 // ========================
 
+/// **Source:** `TColStd_HArray1OfExtendedString.hxx`:22 - `TColStd_HArray1OfExtendedString`
 pub use crate::ffi::TColStd_HArray1OfExtendedString as HArray1OfExtendedString;
 
 unsafe impl crate::CppDeletable for HArray1OfExtendedString {
@@ -404,10 +439,12 @@ unsafe impl crate::CppDeletable for HArray1OfExtendedString {
 }
 
 impl HArray1OfExtendedString {
+    /// **Source:** `TColStd_HArray1OfExtendedString.hxx`:22 - `TColStd_HArray1OfExtendedString::TColStd_HArray1OfExtendedString()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfExtendedString_ctor()) }
     }
 
+    /// **Source:** `TColStd_HArray1OfExtendedString.hxx`:22 - `TColStd_HArray1OfExtendedString::TColStd_HArray1OfExtendedString()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfExtendedString_ctor_int2(
@@ -416,6 +453,7 @@ impl HArray1OfExtendedString {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfExtendedString.hxx`:22 - `TColStd_HArray1OfExtendedString::TColStd_HArray1OfExtendedString()`
     pub fn new_int2_extendedstring(
         theLower: i32,
         theUpper: i32,
@@ -430,6 +468,7 @@ impl HArray1OfExtendedString {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfExtendedString.hxx`:22 - `TColStd_HArray1OfExtendedString::TColStd_HArray1OfExtendedString()`
     pub fn new_extendedstring_int2_bool(
         theBegin: &crate::ffi::TCollection_ExtendedString,
         theLower: i32,
@@ -445,6 +484,7 @@ impl HArray1OfExtendedString {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfExtendedString.hxx`:22 - `TColStd_HArray1OfExtendedString::TColStd_HArray1OfExtendedString()`
     pub fn new_array1ofextendedstring(
         theOther: &crate::ffi::TColStd_Array1OfExtendedString,
     ) -> crate::OwnedPtr<Self> {
@@ -455,14 +495,17 @@ impl HArray1OfExtendedString {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfExtendedString.hxx`:22 - `TColStd_HArray1OfExtendedString::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfExtendedString_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HArray1OfExtendedString.hxx`:22 - `TColStd_HArray1OfExtendedString::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HArray1OfExtendedString_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HArray1OfExtendedString.hxx`:22 - `TColStd_HArray1OfExtendedString::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfExtendedString_get_type_descriptor()) }
     }
@@ -505,6 +548,7 @@ impl HandleTColStdHArray1OfExtendedString {
 // From TColStd_HArray1OfInteger.hxx
 // ========================
 
+/// **Source:** `TColStd_HArray1OfInteger.hxx`:22 - `TColStd_HArray1OfInteger`
 pub use crate::ffi::TColStd_HArray1OfInteger as HArray1OfInteger;
 
 unsafe impl crate::CppDeletable for HArray1OfInteger {
@@ -514,10 +558,12 @@ unsafe impl crate::CppDeletable for HArray1OfInteger {
 }
 
 impl HArray1OfInteger {
+    /// **Source:** `TColStd_HArray1OfInteger.hxx`:22 - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfInteger_ctor()) }
     }
 
+    /// **Source:** `TColStd_HArray1OfInteger.hxx`:22 - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfInteger_ctor_int2(
@@ -526,6 +572,7 @@ impl HArray1OfInteger {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfInteger.hxx`:22 - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`
     pub fn new_int3(theLower: i32, theUpper: i32, theValue: &i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfInteger_ctor_int3(
@@ -534,6 +581,7 @@ impl HArray1OfInteger {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfInteger.hxx`:22 - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`
     pub fn new_int3_bool(
         theBegin: &i32,
         theLower: i32,
@@ -547,6 +595,7 @@ impl HArray1OfInteger {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfInteger.hxx`:22 - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`
     pub fn new_array1ofinteger(
         theOther: &crate::ffi::TColStd_Array1OfInteger,
     ) -> crate::OwnedPtr<Self> {
@@ -557,14 +606,17 @@ impl HArray1OfInteger {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfInteger.hxx`:22 - `TColStd_HArray1OfInteger::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfInteger_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HArray1OfInteger.hxx`:22 - `TColStd_HArray1OfInteger::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HArray1OfInteger_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HArray1OfInteger.hxx`:22 - `TColStd_HArray1OfInteger::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfInteger_get_type_descriptor()) }
     }
@@ -605,6 +657,7 @@ impl HandleTColStdHArray1OfInteger {
 // From TColStd_HArray1OfListOfInteger.hxx
 // ========================
 
+/// **Source:** `TColStd_HArray1OfListOfInteger.hxx`:21 - `TColStd_HArray1OfListOfInteger`
 pub use crate::ffi::TColStd_HArray1OfListOfInteger as HArray1OfListOfInteger;
 
 unsafe impl crate::CppDeletable for HArray1OfListOfInteger {
@@ -614,10 +667,12 @@ unsafe impl crate::CppDeletable for HArray1OfListOfInteger {
 }
 
 impl HArray1OfListOfInteger {
+    /// **Source:** `TColStd_HArray1OfListOfInteger.hxx`:21 - `TColStd_HArray1OfListOfInteger::TColStd_HArray1OfListOfInteger()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfListOfInteger_ctor()) }
     }
 
+    /// **Source:** `TColStd_HArray1OfListOfInteger.hxx`:21 - `TColStd_HArray1OfListOfInteger::TColStd_HArray1OfListOfInteger()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfListOfInteger_ctor_int2(
@@ -626,6 +681,7 @@ impl HArray1OfListOfInteger {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfListOfInteger.hxx`:21 - `TColStd_HArray1OfListOfInteger::TColStd_HArray1OfListOfInteger()`
     pub fn new_array1oflistofinteger(
         theOther: &crate::ffi::TColStd_Array1OfListOfInteger,
     ) -> crate::OwnedPtr<Self> {
@@ -636,14 +692,17 @@ impl HArray1OfListOfInteger {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfListOfInteger.hxx`:21 - `TColStd_HArray1OfListOfInteger::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfListOfInteger_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HArray1OfListOfInteger.hxx`:21 - `TColStd_HArray1OfListOfInteger::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HArray1OfListOfInteger_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HArray1OfListOfInteger.hxx`:21 - `TColStd_HArray1OfListOfInteger::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfListOfInteger_get_type_descriptor()) }
     }
@@ -686,6 +745,7 @@ impl HandleTColStdHArray1OfListOfInteger {
 // From TColStd_HArray1OfReal.hxx
 // ========================
 
+/// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal`
 pub use crate::ffi::TColStd_HArray1OfReal as HArray1OfReal;
 
 unsafe impl crate::CppDeletable for HArray1OfReal {
@@ -695,10 +755,12 @@ unsafe impl crate::CppDeletable for HArray1OfReal {
 }
 
 impl HArray1OfReal {
+    /// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfReal_ctor()) }
     }
 
+    /// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfReal_ctor_int2(
@@ -707,6 +769,7 @@ impl HArray1OfReal {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`
     pub fn new_int2_real(theLower: i32, theUpper: i32, theValue: &f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfReal_ctor_int2_real(
@@ -715,6 +778,7 @@ impl HArray1OfReal {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`
     pub fn new_real_int2_bool(
         theBegin: &f64,
         theLower: i32,
@@ -728,20 +792,24 @@ impl HArray1OfReal {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`
     pub fn new_array1ofreal(theOther: &crate::ffi::TColStd_Array1OfReal) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfReal_ctor_array1ofreal(theOther))
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfReal_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HArray1OfReal_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfReal_get_type_descriptor()) }
     }
@@ -780,6 +848,7 @@ impl HandleTColStdHArray1OfReal {
 // From TColStd_HArray1OfTransient.hxx
 // ========================
 
+/// **Source:** `TColStd_HArray1OfTransient.hxx`:22 - `TColStd_HArray1OfTransient`
 pub use crate::ffi::TColStd_HArray1OfTransient as HArray1OfTransient;
 
 unsafe impl crate::CppDeletable for HArray1OfTransient {
@@ -789,10 +858,12 @@ unsafe impl crate::CppDeletable for HArray1OfTransient {
 }
 
 impl HArray1OfTransient {
+    /// **Source:** `TColStd_HArray1OfTransient.hxx`:22 - `TColStd_HArray1OfTransient::TColStd_HArray1OfTransient()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfTransient_ctor()) }
     }
 
+    /// **Source:** `TColStd_HArray1OfTransient.hxx`:22 - `TColStd_HArray1OfTransient::TColStd_HArray1OfTransient()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfTransient_ctor_int2(
@@ -801,6 +872,7 @@ impl HArray1OfTransient {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfTransient.hxx`:22 - `TColStd_HArray1OfTransient::TColStd_HArray1OfTransient()`
     pub fn new_array1oftransient(
         theOther: &crate::ffi::TColStd_Array1OfTransient,
     ) -> crate::OwnedPtr<Self> {
@@ -811,14 +883,17 @@ impl HArray1OfTransient {
         }
     }
 
+    /// **Source:** `TColStd_HArray1OfTransient.hxx`:22 - `TColStd_HArray1OfTransient::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfTransient_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HArray1OfTransient.hxx`:22 - `TColStd_HArray1OfTransient::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HArray1OfTransient_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HArray1OfTransient.hxx`:22 - `TColStd_HArray1OfTransient::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfTransient_get_type_descriptor()) }
     }
@@ -859,6 +934,7 @@ impl HandleTColStdHArray1OfTransient {
 // From TColStd_HArray2OfBoolean.hxx
 // ========================
 
+/// **Source:** `TColStd_HArray2OfBoolean.hxx`:22 - `TColStd_HArray2OfBoolean`
 pub use crate::ffi::TColStd_HArray2OfBoolean as HArray2OfBoolean;
 
 unsafe impl crate::CppDeletable for HArray2OfBoolean {
@@ -868,6 +944,7 @@ unsafe impl crate::CppDeletable for HArray2OfBoolean {
 }
 
 impl HArray2OfBoolean {
+    /// **Source:** `TColStd_HArray2OfBoolean.hxx`:22 - `TColStd_HArray2OfBoolean::TColStd_HArray2OfBoolean()`
     pub fn new_int4(
         theRowLow: i32,
         theRowUpp: i32,
@@ -881,6 +958,7 @@ impl HArray2OfBoolean {
         }
     }
 
+    /// **Source:** `TColStd_HArray2OfBoolean.hxx`:22 - `TColStd_HArray2OfBoolean::TColStd_HArray2OfBoolean()`
     pub fn new_int4_bool(
         theRowLow: i32,
         theRowUpp: i32,
@@ -895,6 +973,7 @@ impl HArray2OfBoolean {
         }
     }
 
+    /// **Source:** `TColStd_HArray2OfBoolean.hxx`:22 - `TColStd_HArray2OfBoolean::TColStd_HArray2OfBoolean()`
     pub fn new_array2ofboolean(
         theOther: &crate::ffi::TColStd_Array2OfBoolean,
     ) -> crate::OwnedPtr<Self> {
@@ -905,14 +984,17 @@ impl HArray2OfBoolean {
         }
     }
 
+    /// **Source:** `TColStd_HArray2OfBoolean.hxx`:22 - `TColStd_HArray2OfBoolean::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray2OfBoolean_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HArray2OfBoolean.hxx`:22 - `TColStd_HArray2OfBoolean::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HArray2OfBoolean_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HArray2OfBoolean.hxx`:22 - `TColStd_HArray2OfBoolean::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray2OfBoolean_get_type_descriptor()) }
     }
@@ -953,6 +1035,7 @@ impl HandleTColStdHArray2OfBoolean {
 // From TColStd_HArray2OfCharacter.hxx
 // ========================
 
+/// **Source:** `TColStd_HArray2OfCharacter.hxx`:22 - `TColStd_HArray2OfCharacter`
 pub use crate::ffi::TColStd_HArray2OfCharacter as HArray2OfCharacter;
 
 unsafe impl crate::CppDeletable for HArray2OfCharacter {
@@ -962,6 +1045,7 @@ unsafe impl crate::CppDeletable for HArray2OfCharacter {
 }
 
 impl HArray2OfCharacter {
+    /// **Source:** `TColStd_HArray2OfCharacter.hxx`:22 - `TColStd_HArray2OfCharacter::TColStd_HArray2OfCharacter()`
     pub fn new_int4(
         theRowLow: i32,
         theRowUpp: i32,
@@ -975,6 +1059,7 @@ impl HArray2OfCharacter {
         }
     }
 
+    /// **Source:** `TColStd_HArray2OfCharacter.hxx`:22 - `TColStd_HArray2OfCharacter::TColStd_HArray2OfCharacter()`
     pub fn new_int4_char(
         theRowLow: i32,
         theRowUpp: i32,
@@ -989,6 +1074,7 @@ impl HArray2OfCharacter {
         }
     }
 
+    /// **Source:** `TColStd_HArray2OfCharacter.hxx`:22 - `TColStd_HArray2OfCharacter::TColStd_HArray2OfCharacter()`
     pub fn new_array2ofcharacter(
         theOther: &crate::ffi::TColStd_Array2OfCharacter,
     ) -> crate::OwnedPtr<Self> {
@@ -999,14 +1085,17 @@ impl HArray2OfCharacter {
         }
     }
 
+    /// **Source:** `TColStd_HArray2OfCharacter.hxx`:22 - `TColStd_HArray2OfCharacter::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray2OfCharacter_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HArray2OfCharacter.hxx`:22 - `TColStd_HArray2OfCharacter::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HArray2OfCharacter_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HArray2OfCharacter.hxx`:22 - `TColStd_HArray2OfCharacter::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray2OfCharacter_get_type_descriptor()) }
     }
@@ -1047,6 +1136,7 @@ impl HandleTColStdHArray2OfCharacter {
 // From TColStd_HArray2OfInteger.hxx
 // ========================
 
+/// **Source:** `TColStd_HArray2OfInteger.hxx`:22 - `TColStd_HArray2OfInteger`
 pub use crate::ffi::TColStd_HArray2OfInteger as HArray2OfInteger;
 
 unsafe impl crate::CppDeletable for HArray2OfInteger {
@@ -1056,6 +1146,7 @@ unsafe impl crate::CppDeletable for HArray2OfInteger {
 }
 
 impl HArray2OfInteger {
+    /// **Source:** `TColStd_HArray2OfInteger.hxx`:22 - `TColStd_HArray2OfInteger::TColStd_HArray2OfInteger()`
     pub fn new_int4(
         theRowLow: i32,
         theRowUpp: i32,
@@ -1069,6 +1160,7 @@ impl HArray2OfInteger {
         }
     }
 
+    /// **Source:** `TColStd_HArray2OfInteger.hxx`:22 - `TColStd_HArray2OfInteger::TColStd_HArray2OfInteger()`
     pub fn new_int5(
         theRowLow: i32,
         theRowUpp: i32,
@@ -1083,6 +1175,7 @@ impl HArray2OfInteger {
         }
     }
 
+    /// **Source:** `TColStd_HArray2OfInteger.hxx`:22 - `TColStd_HArray2OfInteger::TColStd_HArray2OfInteger()`
     pub fn new_array2ofinteger(
         theOther: &crate::ffi::TColStd_Array2OfInteger,
     ) -> crate::OwnedPtr<Self> {
@@ -1093,14 +1186,17 @@ impl HArray2OfInteger {
         }
     }
 
+    /// **Source:** `TColStd_HArray2OfInteger.hxx`:22 - `TColStd_HArray2OfInteger::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray2OfInteger_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HArray2OfInteger.hxx`:22 - `TColStd_HArray2OfInteger::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HArray2OfInteger_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HArray2OfInteger.hxx`:22 - `TColStd_HArray2OfInteger::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray2OfInteger_get_type_descriptor()) }
     }
@@ -1141,6 +1237,7 @@ impl HandleTColStdHArray2OfInteger {
 // From TColStd_HArray2OfReal.hxx
 // ========================
 
+/// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal`
 pub use crate::ffi::TColStd_HArray2OfReal as HArray2OfReal;
 
 unsafe impl crate::CppDeletable for HArray2OfReal {
@@ -1150,6 +1247,7 @@ unsafe impl crate::CppDeletable for HArray2OfReal {
 }
 
 impl HArray2OfReal {
+    /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::TColStd_HArray2OfReal()`
     pub fn new_int4(
         theRowLow: i32,
         theRowUpp: i32,
@@ -1163,6 +1261,7 @@ impl HArray2OfReal {
         }
     }
 
+    /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::TColStd_HArray2OfReal()`
     pub fn new_int4_real(
         theRowLow: i32,
         theRowUpp: i32,
@@ -1177,20 +1276,24 @@ impl HArray2OfReal {
         }
     }
 
+    /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::TColStd_HArray2OfReal()`
     pub fn new_array2ofreal(theOther: &crate::ffi::TColStd_Array2OfReal) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfReal_ctor_array2ofreal(theOther))
         }
     }
 
+    /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray2OfReal_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HArray2OfReal_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray2OfReal_get_type_descriptor()) }
     }
@@ -1229,6 +1332,7 @@ impl HandleTColStdHArray2OfReal {
 // From TColStd_HArray2OfTransient.hxx
 // ========================
 
+/// **Source:** `TColStd_HArray2OfTransient.hxx`:22 - `TColStd_HArray2OfTransient`
 pub use crate::ffi::TColStd_HArray2OfTransient as HArray2OfTransient;
 
 unsafe impl crate::CppDeletable for HArray2OfTransient {
@@ -1238,6 +1342,7 @@ unsafe impl crate::CppDeletable for HArray2OfTransient {
 }
 
 impl HArray2OfTransient {
+    /// **Source:** `TColStd_HArray2OfTransient.hxx`:22 - `TColStd_HArray2OfTransient::TColStd_HArray2OfTransient()`
     pub fn new_int4(
         theRowLow: i32,
         theRowUpp: i32,
@@ -1251,6 +1356,7 @@ impl HArray2OfTransient {
         }
     }
 
+    /// **Source:** `TColStd_HArray2OfTransient.hxx`:22 - `TColStd_HArray2OfTransient::TColStd_HArray2OfTransient()`
     pub fn new_array2oftransient(
         theOther: &crate::ffi::TColStd_Array2OfTransient,
     ) -> crate::OwnedPtr<Self> {
@@ -1261,14 +1367,17 @@ impl HArray2OfTransient {
         }
     }
 
+    /// **Source:** `TColStd_HArray2OfTransient.hxx`:22 - `TColStd_HArray2OfTransient::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray2OfTransient_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HArray2OfTransient.hxx`:22 - `TColStd_HArray2OfTransient::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HArray2OfTransient_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HArray2OfTransient.hxx`:22 - `TColStd_HArray2OfTransient::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray2OfTransient_get_type_descriptor()) }
     }
@@ -1309,6 +1418,7 @@ impl HandleTColStdHArray2OfTransient {
 // From TColStd_HPackedMapOfInteger.hxx
 // ========================
 
+/// **Source:** `TColStd_HPackedMapOfInteger.hxx`:29 - `TColStd_HPackedMapOfInteger`
 /// Extension of TColStd_PackedMapOfInteger class to be manipulated by handle.
 pub use crate::ffi::TColStd_HPackedMapOfInteger as HPackedMapOfInteger;
 
@@ -1319,12 +1429,14 @@ unsafe impl crate::CppDeletable for HPackedMapOfInteger {
 }
 
 impl HPackedMapOfInteger {
+    /// **Source:** `TColStd_HPackedMapOfInteger.hxx`:33 - `TColStd_HPackedMapOfInteger::TColStd_HPackedMapOfInteger()`
     pub fn new_int(NbBuckets: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HPackedMapOfInteger_ctor_int(NbBuckets))
         }
     }
 
+    /// **Source:** `TColStd_HPackedMapOfInteger.hxx`:35 - `TColStd_HPackedMapOfInteger::TColStd_HPackedMapOfInteger()`
     pub fn new_packedmapofinteger(
         theOther: &crate::ffi::TColStd_PackedMapOfInteger,
     ) -> crate::OwnedPtr<Self> {
@@ -1335,28 +1447,34 @@ impl HPackedMapOfInteger {
         }
     }
 
+    /// **Source:** `TColStd_HPackedMapOfInteger.hxx`:33 - `TColStd_HPackedMapOfInteger::TColStd_HPackedMapOfInteger()`
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_int(1)
     }
 
+    /// **Source:** `TColStd_HPackedMapOfInteger.hxx`:37 - `TColStd_HPackedMapOfInteger::Map()`
     /// Access to the map
     pub fn map(&self) -> &crate::ffi::TColStd_PackedMapOfInteger {
         unsafe { &*(crate::ffi::TColStd_HPackedMapOfInteger_map(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HPackedMapOfInteger.hxx`:39 - `TColStd_HPackedMapOfInteger::ChangeMap()`
     /// Access to the map for modification
     pub fn change_map(&mut self) -> &mut crate::ffi::TColStd_PackedMapOfInteger {
         unsafe { &mut *(crate::ffi::TColStd_HPackedMapOfInteger_change_map(self as *mut Self)) }
     }
 
+    /// **Source:** `TColStd_HPackedMapOfInteger.hxx`:41 - `TColStd_HPackedMapOfInteger::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HPackedMapOfInteger_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HPackedMapOfInteger.hxx`:41 - `TColStd_HPackedMapOfInteger::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HPackedMapOfInteger_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HPackedMapOfInteger.hxx`:41 - `TColStd_HPackedMapOfInteger::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HPackedMapOfInteger_get_type_descriptor()) }
     }
@@ -1397,6 +1515,7 @@ impl HandleTColStdHPackedMapOfInteger {
 // From TColStd_HSequenceOfAsciiString.hxx
 // ========================
 
+/// **Source:** `TColStd_HSequenceOfAsciiString.hxx`:22 - `TColStd_HSequenceOfAsciiString`
 pub use crate::ffi::TColStd_HSequenceOfAsciiString as HSequenceOfAsciiString;
 
 unsafe impl crate::CppDeletable for HSequenceOfAsciiString {
@@ -1406,10 +1525,12 @@ unsafe impl crate::CppDeletable for HSequenceOfAsciiString {
 }
 
 impl HSequenceOfAsciiString {
+    /// **Source:** `TColStd_HSequenceOfAsciiString.hxx`:22 - `TColStd_HSequenceOfAsciiString::TColStd_HSequenceOfAsciiString()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfAsciiString_ctor()) }
     }
 
+    /// **Source:** `TColStd_HSequenceOfAsciiString.hxx`:22 - `TColStd_HSequenceOfAsciiString::TColStd_HSequenceOfAsciiString()`
     pub fn new_sequenceofasciistring(
         theOther: &crate::ffi::TColStd_SequenceOfAsciiString,
     ) -> crate::OwnedPtr<Self> {
@@ -1420,18 +1541,22 @@ impl HSequenceOfAsciiString {
         }
     }
 
+    /// **Source:** `TColStd_HSequenceOfAsciiString.hxx`:22 - `TColStd_HSequenceOfAsciiString::Append()`
     pub fn append(&mut self, theItem: &crate::ffi::TCollection_AsciiString) {
         unsafe { crate::ffi::TColStd_HSequenceOfAsciiString_append(self as *mut Self, theItem) }
     }
 
+    /// **Source:** `TColStd_HSequenceOfAsciiString.hxx`:22 - `TColStd_HSequenceOfAsciiString::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HSequenceOfAsciiString_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HSequenceOfAsciiString.hxx`:22 - `TColStd_HSequenceOfAsciiString::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HSequenceOfAsciiString_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HSequenceOfAsciiString.hxx`:22 - `TColStd_HSequenceOfAsciiString::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HSequenceOfAsciiString_get_type_descriptor()) }
     }
@@ -1474,6 +1599,7 @@ impl HandleTColStdHSequenceOfAsciiString {
 // From TColStd_HSequenceOfExtendedString.hxx
 // ========================
 
+/// **Source:** `TColStd_HSequenceOfExtendedString.hxx`:22 - `TColStd_HSequenceOfExtendedString`
 pub use crate::ffi::TColStd_HSequenceOfExtendedString as HSequenceOfExtendedString;
 
 unsafe impl crate::CppDeletable for HSequenceOfExtendedString {
@@ -1483,10 +1609,12 @@ unsafe impl crate::CppDeletable for HSequenceOfExtendedString {
 }
 
 impl HSequenceOfExtendedString {
+    /// **Source:** `TColStd_HSequenceOfExtendedString.hxx`:22 - `TColStd_HSequenceOfExtendedString::TColStd_HSequenceOfExtendedString()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfExtendedString_ctor()) }
     }
 
+    /// **Source:** `TColStd_HSequenceOfExtendedString.hxx`:22 - `TColStd_HSequenceOfExtendedString::TColStd_HSequenceOfExtendedString()`
     pub fn new_sequenceofextendedstring(
         theOther: &crate::ffi::TColStd_SequenceOfExtendedString,
     ) -> crate::OwnedPtr<Self> {
@@ -1499,20 +1627,24 @@ impl HSequenceOfExtendedString {
         }
     }
 
+    /// **Source:** `TColStd_HSequenceOfExtendedString.hxx`:22 - `TColStd_HSequenceOfExtendedString::Append()`
     pub fn append(&mut self, theItem: &crate::ffi::TCollection_ExtendedString) {
         unsafe { crate::ffi::TColStd_HSequenceOfExtendedString_append(self as *mut Self, theItem) }
     }
 
+    /// **Source:** `TColStd_HSequenceOfExtendedString.hxx`:22 - `TColStd_HSequenceOfExtendedString::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
             &*(crate::ffi::TColStd_HSequenceOfExtendedString_dynamic_type(self as *const Self))
         }
     }
 
+    /// **Source:** `TColStd_HSequenceOfExtendedString.hxx`:22 - `TColStd_HSequenceOfExtendedString::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HSequenceOfExtendedString_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HSequenceOfExtendedString.hxx`:22 - `TColStd_HSequenceOfExtendedString::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HSequenceOfExtendedString_get_type_descriptor()) }
     }
@@ -1555,6 +1687,7 @@ impl HandleTColStdHSequenceOfExtendedString {
 // From TColStd_HSequenceOfHAsciiString.hxx
 // ========================
 
+/// **Source:** `TColStd_HSequenceOfHAsciiString.hxx`:21 - `TColStd_HSequenceOfHAsciiString`
 pub use crate::ffi::TColStd_HSequenceOfHAsciiString as HSequenceOfHAsciiString;
 
 unsafe impl crate::CppDeletable for HSequenceOfHAsciiString {
@@ -1564,10 +1697,12 @@ unsafe impl crate::CppDeletable for HSequenceOfHAsciiString {
 }
 
 impl HSequenceOfHAsciiString {
+    /// **Source:** `TColStd_HSequenceOfHAsciiString.hxx`:21 - `TColStd_HSequenceOfHAsciiString::TColStd_HSequenceOfHAsciiString()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfHAsciiString_ctor()) }
     }
 
+    /// **Source:** `TColStd_HSequenceOfHAsciiString.hxx`:21 - `TColStd_HSequenceOfHAsciiString::TColStd_HSequenceOfHAsciiString()`
     pub fn new_sequenceofhasciistring(
         theOther: &crate::ffi::TColStd_SequenceOfHAsciiString,
     ) -> crate::OwnedPtr<Self> {
@@ -1578,14 +1713,17 @@ impl HSequenceOfHAsciiString {
         }
     }
 
+    /// **Source:** `TColStd_HSequenceOfHAsciiString.hxx`:21 - `TColStd_HSequenceOfHAsciiString::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HSequenceOfHAsciiString_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HSequenceOfHAsciiString.hxx`:21 - `TColStd_HSequenceOfHAsciiString::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HSequenceOfHAsciiString_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HSequenceOfHAsciiString.hxx`:21 - `TColStd_HSequenceOfHAsciiString::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HSequenceOfHAsciiString_get_type_descriptor()) }
     }
@@ -1628,6 +1766,7 @@ impl HandleTColStdHSequenceOfHAsciiString {
 // From TColStd_HSequenceOfHExtendedString.hxx
 // ========================
 
+/// **Source:** `TColStd_HSequenceOfHExtendedString.hxx`:21 - `TColStd_HSequenceOfHExtendedString`
 pub use crate::ffi::TColStd_HSequenceOfHExtendedString as HSequenceOfHExtendedString;
 
 unsafe impl crate::CppDeletable for HSequenceOfHExtendedString {
@@ -1637,10 +1776,12 @@ unsafe impl crate::CppDeletable for HSequenceOfHExtendedString {
 }
 
 impl HSequenceOfHExtendedString {
+    /// **Source:** `TColStd_HSequenceOfHExtendedString.hxx`:21 - `TColStd_HSequenceOfHExtendedString::TColStd_HSequenceOfHExtendedString()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfHExtendedString_ctor()) }
     }
 
+    /// **Source:** `TColStd_HSequenceOfHExtendedString.hxx`:21 - `TColStd_HSequenceOfHExtendedString::TColStd_HSequenceOfHExtendedString()`
     pub fn new_sequenceofhextendedstring(
         theOther: &crate::ffi::TColStd_SequenceOfHExtendedString,
     ) -> crate::OwnedPtr<Self> {
@@ -1653,16 +1794,19 @@ impl HSequenceOfHExtendedString {
         }
     }
 
+    /// **Source:** `TColStd_HSequenceOfHExtendedString.hxx`:21 - `TColStd_HSequenceOfHExtendedString::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
             &*(crate::ffi::TColStd_HSequenceOfHExtendedString_dynamic_type(self as *const Self))
         }
     }
 
+    /// **Source:** `TColStd_HSequenceOfHExtendedString.hxx`:21 - `TColStd_HSequenceOfHExtendedString::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HSequenceOfHExtendedString_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HSequenceOfHExtendedString.hxx`:21 - `TColStd_HSequenceOfHExtendedString::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HSequenceOfHExtendedString_get_type_descriptor()) }
     }
@@ -1705,6 +1849,7 @@ impl HandleTColStdHSequenceOfHExtendedString {
 // From TColStd_HSequenceOfInteger.hxx
 // ========================
 
+/// **Source:** `TColStd_HSequenceOfInteger.hxx`:22 - `TColStd_HSequenceOfInteger`
 pub use crate::ffi::TColStd_HSequenceOfInteger as HSequenceOfInteger;
 
 unsafe impl crate::CppDeletable for HSequenceOfInteger {
@@ -1714,10 +1859,12 @@ unsafe impl crate::CppDeletable for HSequenceOfInteger {
 }
 
 impl HSequenceOfInteger {
+    /// **Source:** `TColStd_HSequenceOfInteger.hxx`:22 - `TColStd_HSequenceOfInteger::TColStd_HSequenceOfInteger()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfInteger_ctor()) }
     }
 
+    /// **Source:** `TColStd_HSequenceOfInteger.hxx`:22 - `TColStd_HSequenceOfInteger::TColStd_HSequenceOfInteger()`
     pub fn new_sequenceofinteger(
         theOther: &crate::ffi::TColStd_SequenceOfInteger,
     ) -> crate::OwnedPtr<Self> {
@@ -1728,18 +1875,22 @@ impl HSequenceOfInteger {
         }
     }
 
+    /// **Source:** `TColStd_HSequenceOfInteger.hxx`:22 - `TColStd_HSequenceOfInteger::Append()`
     pub fn append(&mut self, theItem: &i32) {
         unsafe { crate::ffi::TColStd_HSequenceOfInteger_append(self as *mut Self, theItem) }
     }
 
+    /// **Source:** `TColStd_HSequenceOfInteger.hxx`:22 - `TColStd_HSequenceOfInteger::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HSequenceOfInteger_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HSequenceOfInteger.hxx`:22 - `TColStd_HSequenceOfInteger::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HSequenceOfInteger_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HSequenceOfInteger.hxx`:22 - `TColStd_HSequenceOfInteger::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HSequenceOfInteger_get_type_descriptor()) }
     }
@@ -1780,6 +1931,7 @@ impl HandleTColStdHSequenceOfInteger {
 // From TColStd_HSequenceOfReal.hxx
 // ========================
 
+/// **Source:** `TColStd_HSequenceOfReal.hxx`:21 - `TColStd_HSequenceOfReal`
 pub use crate::ffi::TColStd_HSequenceOfReal as HSequenceOfReal;
 
 unsafe impl crate::CppDeletable for HSequenceOfReal {
@@ -1789,10 +1941,12 @@ unsafe impl crate::CppDeletable for HSequenceOfReal {
 }
 
 impl HSequenceOfReal {
+    /// **Source:** `TColStd_HSequenceOfReal.hxx`:21 - `TColStd_HSequenceOfReal::TColStd_HSequenceOfReal()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfReal_ctor()) }
     }
 
+    /// **Source:** `TColStd_HSequenceOfReal.hxx`:21 - `TColStd_HSequenceOfReal::TColStd_HSequenceOfReal()`
     pub fn new_sequenceofreal(
         theOther: &crate::ffi::TColStd_SequenceOfReal,
     ) -> crate::OwnedPtr<Self> {
@@ -1803,18 +1957,22 @@ impl HSequenceOfReal {
         }
     }
 
+    /// **Source:** `TColStd_HSequenceOfReal.hxx`:21 - `TColStd_HSequenceOfReal::Append()`
     pub fn append(&mut self, theItem: &f64) {
         unsafe { crate::ffi::TColStd_HSequenceOfReal_append(self as *mut Self, theItem) }
     }
 
+    /// **Source:** `TColStd_HSequenceOfReal.hxx`:21 - `TColStd_HSequenceOfReal::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HSequenceOfReal_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HSequenceOfReal.hxx`:21 - `TColStd_HSequenceOfReal::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HSequenceOfReal_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HSequenceOfReal.hxx`:21 - `TColStd_HSequenceOfReal::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HSequenceOfReal_get_type_descriptor()) }
     }
@@ -1853,6 +2011,7 @@ impl HandleTColStdHSequenceOfReal {
 // From TColStd_HSequenceOfTransient.hxx
 // ========================
 
+/// **Source:** `TColStd_HSequenceOfTransient.hxx`:22 - `TColStd_HSequenceOfTransient`
 pub use crate::ffi::TColStd_HSequenceOfTransient as HSequenceOfTransient;
 
 unsafe impl crate::CppDeletable for HSequenceOfTransient {
@@ -1862,10 +2021,12 @@ unsafe impl crate::CppDeletable for HSequenceOfTransient {
 }
 
 impl HSequenceOfTransient {
+    /// **Source:** `TColStd_HSequenceOfTransient.hxx`:22 - `TColStd_HSequenceOfTransient::TColStd_HSequenceOfTransient()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfTransient_ctor()) }
     }
 
+    /// **Source:** `TColStd_HSequenceOfTransient.hxx`:22 - `TColStd_HSequenceOfTransient::TColStd_HSequenceOfTransient()`
     pub fn new_sequenceoftransient(
         theOther: &crate::ffi::TColStd_SequenceOfTransient,
     ) -> crate::OwnedPtr<Self> {
@@ -1876,14 +2037,17 @@ impl HSequenceOfTransient {
         }
     }
 
+    /// **Source:** `TColStd_HSequenceOfTransient.hxx`:22 - `TColStd_HSequenceOfTransient::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HSequenceOfTransient_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TColStd_HSequenceOfTransient.hxx`:22 - `TColStd_HSequenceOfTransient::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TColStd_HSequenceOfTransient_get_type_name() }
     }
 
+    /// **Source:** `TColStd_HSequenceOfTransient.hxx`:22 - `TColStd_HSequenceOfTransient::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HSequenceOfTransient_get_type_descriptor()) }
     }
@@ -1924,6 +2088,7 @@ impl HandleTColStdHSequenceOfTransient {
 // From TColStd_PackedMapOfInteger.hxx
 // ========================
 
+/// **Source:** `TColStd_PackedMapOfInteger.hxx`:30 - `TColStd_PackedMapOfInteger`
 ///
 /// Optimized Map of integer values. Each block of 32 integers is stored in 8 bytes in memory.
 pub use crate::ffi::TColStd_PackedMapOfInteger as PackedMapOfInteger;
@@ -1935,6 +2100,7 @@ unsafe impl crate::CppDeletable for PackedMapOfInteger {
 }
 
 impl PackedMapOfInteger {
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:266 - `TColStd_PackedMapOfInteger::TColStd_PackedMapOfInteger()`
     /// Constructor
     pub fn new_int(theNbBuckets: i32) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1942,6 +2108,7 @@ impl PackedMapOfInteger {
         }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:275 - `TColStd_PackedMapOfInteger::TColStd_PackedMapOfInteger()`
     /// Copy constructor
     pub fn new_packedmapofinteger(
         theOther: &crate::ffi::TColStd_PackedMapOfInteger,
@@ -1953,59 +2120,71 @@ impl PackedMapOfInteger {
         }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:266 - `TColStd_PackedMapOfInteger::TColStd_PackedMapOfInteger()`
     /// Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_int(1)
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:290 - `TColStd_PackedMapOfInteger::ReSize()`
     pub fn re_size(&mut self, NbBuckets: i32) {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_re_size(self as *mut Self, NbBuckets) }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:291 - `TColStd_PackedMapOfInteger::Clear()`
     pub fn clear(&mut self) {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_clear(self as *mut Self) }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:295 - `TColStd_PackedMapOfInteger::Add()`
     pub fn add(&mut self, aKey: i32) -> bool {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_add(self as *mut Self, aKey) }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:296 - `TColStd_PackedMapOfInteger::Contains()`
     pub fn contains(&self, aKey: i32) -> bool {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_contains(self as *const Self, aKey) }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:297 - `TColStd_PackedMapOfInteger::Remove()`
     pub fn remove(&mut self, aKey: i32) -> bool {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_remove(self as *mut Self, aKey) }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:301 - `TColStd_PackedMapOfInteger::NbBuckets()`
     /// Returns the number of map buckets (not that since integers are packed in this map, the number
     /// is smaller than extent).
     pub fn nb_buckets(&self) -> i32 {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_nb_buckets(self as *const Self) }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:304 - `TColStd_PackedMapOfInteger::Extent()`
     /// Returns map extent.
     pub fn extent(&self) -> i32 {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_extent(self as *const Self) }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:307 - `TColStd_PackedMapOfInteger::IsEmpty()`
     /// Returns TRUE if map is empty.
     pub fn is_empty(&self) -> bool {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_is_empty(self as *const Self) }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:312 - `TColStd_PackedMapOfInteger::GetMinimalMapped()`
     ///
     /// Query the minimal contained key value.
     pub fn get_minimal_mapped(&self) -> i32 {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_get_minimal_mapped(self as *const Self) }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:317 - `TColStd_PackedMapOfInteger::GetMaximalMapped()`
     ///
     /// Query the maximal contained key value.
     pub fn get_maximal_mapped(&self) -> i32 {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_get_maximal_mapped(self as *const Self) }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:333 - `TColStd_PackedMapOfInteger::Union()`
     ///
     /// Sets this Map to be the result of union (aka addition, fuse, merge, boolean OR) operation
     /// between two given Maps. The new Map contains the values that are contained either in the first
@@ -2019,6 +2198,7 @@ impl PackedMapOfInteger {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_union(self as *mut Self, arg0, arg1) }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:341 - `TColStd_PackedMapOfInteger::Unite()`
     ///
     /// Apply to this Map the boolean operation union (aka addition, fuse, merge, boolean OR) with
     /// another (given) Map. The result contains the values that were previously contained in this map
@@ -2028,6 +2208,7 @@ impl PackedMapOfInteger {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_unite(self as *mut Self, arg0) }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:360 - `TColStd_PackedMapOfInteger::Intersection()`
     ///
     /// Sets this Map to be the result of intersection (aka multiplication, common, boolean AND)
     /// operation between two given Maps. The new Map contains only the values that are contained in
@@ -2045,6 +2226,7 @@ impl PackedMapOfInteger {
         }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:369 - `TColStd_PackedMapOfInteger::Intersect()`
     ///
     /// Apply to this Map the intersection operation (aka multiplication, common,  boolean AND) with
     /// another (given) Map. The result contains only the values that are contained in both this and
@@ -2054,6 +2236,7 @@ impl PackedMapOfInteger {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_intersect(self as *mut Self, arg0) }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:387 - `TColStd_PackedMapOfInteger::Subtraction()`
     ///
     /// Sets this Map to be the result of subtraction
     /// (aka set-theoretic difference, relative complement, exclude, cut, boolean NOT) operation
@@ -2068,6 +2251,7 @@ impl PackedMapOfInteger {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_subtraction(self as *mut Self, arg0, arg1) }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:397 - `TColStd_PackedMapOfInteger::Subtract()`
     ///
     /// Apply to this Map the subtraction (aka set-theoretic difference, relative complement, exclude,
     /// cut, boolean NOT) operation with another (given) Map. The result contains only the values that
@@ -2078,6 +2262,7 @@ impl PackedMapOfInteger {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_subtract(self as *mut Self, arg0) }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:414 - `TColStd_PackedMapOfInteger::Difference()`
     ///
     /// Sets this Map to be the result of symmetric difference (aka exclusive disjunction, boolean XOR)
     /// operation between two given Maps. The new Map contains the values that are contained only in
@@ -2091,6 +2276,7 @@ impl PackedMapOfInteger {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_difference(self as *mut Self, arg0, arg1) }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:423 - `TColStd_PackedMapOfInteger::Differ()`
     ///
     /// Apply to this Map the symmetric difference (aka exclusive disjunction, boolean XOR) operation
     /// with another (given) Map. The result contains the values that are contained only in this or the
@@ -2100,6 +2286,7 @@ impl PackedMapOfInteger {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_differ(self as *mut Self, arg0) }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:438 - `TColStd_PackedMapOfInteger::IsEqual()`
     ///
     /// Returns True if this map is equal to the given one, i.e. they contain the
     /// same sets of elements
@@ -2107,6 +2294,7 @@ impl PackedMapOfInteger {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_is_equal(self as *const Self, arg0) }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:450 - `TColStd_PackedMapOfInteger::IsSubset()`
     ///
     /// Returns True if this map is subset of the given one, i.e. all elements
     /// contained in this map is contained also in the operand map.
@@ -2115,6 +2303,7 @@ impl PackedMapOfInteger {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_is_subset(self as *const Self, arg0) }
     }
 
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:460 - `TColStd_PackedMapOfInteger::HasIntersection()`
     ///
     /// Returns True if this map has common items with the given one.
     pub fn has_intersection(&self, arg0: &crate::ffi::TColStd_PackedMapOfInteger) -> bool {

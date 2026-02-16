@@ -6,49 +6,102 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::gp_resolution as resolution;
+/// **Source:** `gp.hxx` - `gp::Resolution`
+/// Method of package gp
+///
+/// In geometric computations, defines the tolerance criterion
+/// used to determine when two numbers can be considered equal.
+/// Many class functions use this tolerance criterion, for
+/// example, to avoid division by zero in geometric
+/// computations. In the documentation, tolerance criterion is
+/// always referred to as gp::Resolution().
+pub fn resolution() -> f64 {
+    unsafe { crate::ffi::gp_resolution() }
+}
+/// **Source:** `gp.hxx` - `gp::Origin`
+/// Identifies a Cartesian point with coordinates X = Y = Z = 0.0.0
 pub fn origin() -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_origin()) }
 }
+/// **Source:** `gp.hxx` - `gp::DX`
+/// Returns a unit vector with the combination (1,0,0)
 pub fn dx() -> crate::OwnedPtr<crate::ffi::gp_Dir> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_dx()) }
 }
+/// **Source:** `gp.hxx` - `gp::DY`
+/// Returns a unit vector with the combination (0,1,0)
 pub fn dy() -> crate::OwnedPtr<crate::ffi::gp_Dir> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_dy()) }
 }
+/// **Source:** `gp.hxx` - `gp::DZ`
+/// Returns a unit vector with the combination (0,0,1)
 pub fn dz() -> crate::OwnedPtr<crate::ffi::gp_Dir> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_dz()) }
 }
+/// **Source:** `gp.hxx` - `gp::OX`
+/// Identifies an axis where its origin is Origin
+/// and its unit vector coordinates  X = 1.0,  Y = Z = 0.0
 pub fn ox() -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_ox()) }
 }
+/// **Source:** `gp.hxx` - `gp::OY`
+/// Identifies an axis where its origin is Origin
+/// and its unit vector coordinates Y = 1.0,  X = Z = 0.0
 pub fn oy() -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_oy()) }
 }
+/// **Source:** `gp.hxx` - `gp::OZ`
+/// Identifies an axis where its origin is Origin
+/// and its unit vector coordinates Z = 1.0,  Y = X = 0.0
 pub fn oz() -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_oz()) }
 }
+/// **Source:** `gp.hxx` - `gp::XOY`
+/// Identifies a coordinate system where its origin is Origin,
+/// and its "main Direction" and "X Direction" coordinates
+/// Z = 1.0, X = Y =0.0 and X direction coordinates X = 1.0, Y = Z = 0.0
 pub fn xoy() -> crate::OwnedPtr<crate::ffi::gp_Ax2> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_xoy()) }
 }
+/// **Source:** `gp.hxx` - `gp::ZOX`
+/// Identifies a coordinate system where its origin is Origin,
+/// and its "main Direction" and "X Direction" coordinates
+/// Y = 1.0, X = Z =0.0 and X direction coordinates Z = 1.0, X = Y = 0.0
 pub fn zox() -> crate::OwnedPtr<crate::ffi::gp_Ax2> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_zox()) }
 }
+/// **Source:** `gp.hxx` - `gp::YOZ`
+/// Identifies a coordinate system where its origin is Origin,
+/// and its "main Direction" and "X Direction" coordinates
+/// X = 1.0, Z = Y =0.0 and X direction coordinates Y = 1.0, X = Z = 0.0
+/// In 2D space
 pub fn yoz() -> crate::OwnedPtr<crate::ffi::gp_Ax2> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_yoz()) }
 }
+/// **Source:** `gp.hxx` - `gp::Origin2d`
+/// Identifies a Cartesian point with coordinates X = Y = 0.0
 pub fn origin2d() -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_origin2d()) }
 }
+/// **Source:** `gp.hxx` - `gp::DX2d`
+/// Returns a unit vector with the combinations (1,0)
 pub fn dx2d() -> crate::OwnedPtr<crate::ffi::gp_Dir2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_dx2d()) }
 }
+/// **Source:** `gp.hxx` - `gp::DY2d`
+/// Returns a unit vector with the combinations (0,1)
 pub fn dy2d() -> crate::OwnedPtr<crate::ffi::gp_Dir2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_dy2d()) }
 }
+/// **Source:** `gp.hxx` - `gp::OX2d`
+/// Identifies an axis where its origin is Origin2d
+/// and its unit vector coordinates are: X = 1.0,  Y = 0.0
 pub fn ox2d() -> crate::OwnedPtr<crate::ffi::gp_Ax2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_ox2d()) }
 }
+/// **Source:** `gp.hxx` - `gp::OY2d`
+/// Identifies an axis where its origin is Origin2d
+/// and its unit vector coordinates are Y = 1.0,  X = 0.0
 pub fn oy2d() -> crate::OwnedPtr<crate::ffi::gp_Ax2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_oy2d()) }
 }
@@ -223,6 +276,7 @@ impl TryFrom<i32> for TrsfForm {
 // From gp_Ax1.hxx
 // ========================
 
+/// **Source:** `gp_Ax1.hxx`:37 - `gp_Ax1`
 /// Describes an axis in 3D space.
 /// An axis is defined by:
 /// -   its origin (also referred to as its "Location point"), and
@@ -244,12 +298,14 @@ unsafe impl crate::CppDeletable for Ax1 {
 }
 
 impl Ax1 {
+    /// **Source:** `gp_Ax1.hxx`:44 - `gp_Ax1::gp_Ax1()`
     /// Creates an axis object representing Z axis of
     /// the reference coordinate system.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Ax1_ctor()) }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:51 - `gp_Ax1::gp_Ax1()`
     /// P is the location point and V is the direction of <me>.
     pub fn new_pnt_dir(
         theP: &crate::ffi::gp_Pnt,
@@ -258,26 +314,31 @@ impl Ax1 {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Ax1_ctor_pnt_dir(theP, theV)) }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:58 - `gp_Ax1::SetDirection()`
     /// Assigns V as the "Direction"  of this axis.
     pub fn set_direction(&mut self, theV: &crate::ffi::gp_Dir) {
         unsafe { crate::ffi::gp_Ax1_set_direction(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:61 - `gp_Ax1::SetLocation()`
     /// Assigns  P as the origin of this axis.
     pub fn set_location(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Ax1_set_location(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:64 - `gp_Ax1::Direction()`
     /// Returns the direction of <me>.
     pub fn direction(&self) -> &crate::ffi::gp_Dir {
         unsafe { &*(crate::ffi::gp_Ax1_direction(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:67 - `gp_Ax1::Location()`
     /// Returns the location point of <me>.
     pub fn location(&self) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::gp_Ax1_location(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:76 - `gp_Ax1::IsCoaxial()`
     /// Returns True if  :
     /// . the angle between <me> and <Other> is lower or equal
     /// to <AngularTolerance> and
@@ -301,6 +362,7 @@ impl Ax1 {
         }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:83 - `gp_Ax1::IsNormal()`
     /// Returns True if the direction of this and another axis are normal to each other.
     /// That is, if the angle between the two axes is equal to Pi/2.
     /// Note: the tolerance criterion is given by theAngularTolerance.
@@ -308,6 +370,7 @@ impl Ax1 {
         unsafe { crate::ffi::gp_Ax1_is_normal(self as *const Self, theOther, theAngularTolerance) }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:91 - `gp_Ax1::IsOpposite()`
     /// Returns True if the direction of this and another axis are parallel with opposite orientation.
     /// That is, if the angle between the two axes is equal to Pi.
     /// Note: the tolerance criterion is given by theAngularTolerance.
@@ -317,6 +380,7 @@ impl Ax1 {
         }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:99 - `gp_Ax1::IsParallel()`
     /// Returns True if the direction of this and another axis are parallel with same orientation or
     /// opposite orientation. That is, if the angle between the two axes is equal to 0 or Pi. Note:
     /// the tolerance criterion is given by theAngularTolerance.
@@ -326,22 +390,26 @@ impl Ax1 {
         }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:106 - `gp_Ax1::Angle()`
     /// Computes the angular value, in radians, between this.Direction() and theOther.Direction().
     /// Returns the angle between 0 and 2*PI radians.
     pub fn angle(&self, theOther: &crate::ffi::gp_Ax1) -> f64 {
         unsafe { crate::ffi::gp_Ax1_angle(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:109 - `gp_Ax1::Reverse()`
     /// Reverses the unit vector of this axis and assigns the result to this axis.
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::gp_Ax1_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:112 - `gp_Ax1::Reversed()`
     /// Reverses the unit vector of this axis and creates a new one.
     pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Ax1_reversed(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:121 - `gp_Ax1::Mirror()`
     /// Performs the symmetrical transformation of an axis
     /// placement with respect to the point P which is the
     /// center of the symmetry and assigns the result to this axis.
@@ -349,6 +417,7 @@ impl Ax1 {
         unsafe { crate::ffi::gp_Ax1_mirror_pnt(self as *mut Self, P) }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:126 - `gp_Ax1::Mirrored()`
     /// Performs the symmetrical transformation of an axis
     /// placement with respect to the point P which is the
     /// center of the symmetry and creates a new axis.
@@ -358,6 +427,7 @@ impl Ax1 {
         }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:131 - `gp_Ax1::Mirror()`
     /// Performs the symmetrical transformation of an axis
     /// placement with respect to an axis placement which
     /// is the axis of the symmetry and assigns the result to this axis.
@@ -365,6 +435,7 @@ impl Ax1 {
         unsafe { crate::ffi::gp_Ax1_mirror_ax1(self as *mut Self, A1) }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:136 - `gp_Ax1::Mirrored()`
     /// Performs the symmetrical transformation of an axis
     /// placement with respect to an axis placement which
     /// is the axis of the symmetry and creates a new axis.
@@ -374,6 +445,7 @@ impl Ax1 {
         }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:142 - `gp_Ax1::Mirror()`
     /// Performs the symmetrical transformation of an axis
     /// placement with respect to a plane. The axis placement
     /// <A2> locates the plane of the symmetry :
@@ -382,6 +454,7 @@ impl Ax1 {
         unsafe { crate::ffi::gp_Ax1_mirror_ax2(self as *mut Self, A2) }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:148 - `gp_Ax1::Mirrored()`
     /// Performs the symmetrical transformation of an axis
     /// placement with respect to a plane. The axis placement
     /// <A2> locates the plane of the symmetry :
@@ -392,12 +465,14 @@ impl Ax1 {
         }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:152 - `gp_Ax1::Rotate()`
     /// Rotates this axis at an angle theAngRad (in radians) about the axis theA1
     /// and assigns the result to this axis.
     pub fn rotate(&mut self, theA1: &crate::ffi::gp_Ax1, theAngRad: f64) {
         unsafe { crate::ffi::gp_Ax1_rotate(self as *mut Self, theA1, theAngRad) }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:160 - `gp_Ax1::Rotated()`
     /// Rotates this axis at an angle theAngRad (in radians) about the axis theA1
     /// and creates a new one.
     pub fn rotated(
@@ -414,6 +489,7 @@ impl Ax1 {
         }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:170 - `gp_Ax1::Scale()`
     /// Applies a scaling transformation to this axis with:
     /// - scale factor theS, and
     /// - center theP and assigns the result to this axis.
@@ -421,6 +497,7 @@ impl Ax1 {
         unsafe { crate::ffi::gp_Ax1_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:182 - `gp_Ax1::Scaled()`
     /// Applies a scaling transformation to this axis with:
     /// - scale factor theS, and
     /// - center theP and creates a new axis.
@@ -434,11 +511,13 @@ impl Ax1 {
         }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:190 - `gp_Ax1::Transform()`
     /// Applies the transformation theT to this axis and assigns the result to this axis.
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::gp_Ax1_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:200 - `gp_Ax1::Transformed()`
     /// Applies the transformation theT to this axis and creates a new one.
     ///
     /// Translates an axis plaxement in the direction of the vector <V>.
@@ -449,11 +528,13 @@ impl Ax1 {
         }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:208 - `gp_Ax1::Translate()`
     /// Translates this axis by the vector theV, and assigns the result to this axis.
     pub fn translate_vec(&mut self, theV: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Ax1_translate_vec(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:212 - `gp_Ax1::Translated()`
     /// Translates this axis by the vector theV,
     /// and creates a new one.
     pub fn translated_vec(&self, theV: &crate::ffi::gp_Vec) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
@@ -462,6 +543,7 @@ impl Ax1 {
         }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:222 - `gp_Ax1::Translate()`
     /// Translates this axis by:
     /// the vector (theP1, theP2) defined from point theP1 to point theP2.
     /// and assigns the result to this axis.
@@ -469,6 +551,7 @@ impl Ax1 {
         unsafe { crate::ffi::gp_Ax1_translate_pnt2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Ax1.hxx`:227 - `gp_Ax1::Translated()`
     /// Translates this axis by:
     /// the vector (theP1, theP2) defined from point theP1 to point theP2.
     /// and creates a new one.
@@ -496,6 +579,7 @@ impl Ax1 {
 // From gp_Ax2.hxx
 // ========================
 
+/// **Source:** `gp_Ax2.hxx`:53 - `gp_Ax2`
 /// Describes a right-handed coordinate system in 3D space.
 /// A coordinate system is defined by:
 /// -   its origin (also referred to as its "Location point"), and
@@ -533,12 +617,14 @@ unsafe impl crate::CppDeletable for Ax2 {
 }
 
 impl Ax2 {
+    /// **Source:** `gp_Ax2.hxx`:60 - `gp_Ax2::gp_Ax2()`
     /// Creates an object corresponding to the reference
     /// coordinate system (OXYZ).
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Ax2_ctor()) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:72 - `gp_Ax2::gp_Ax2()`
     /// Creates an axis placement with an origin P such that:
     /// -   N is the Direction, and
     /// -   the "X Direction" is normal to N, in the plane
@@ -553,6 +639,7 @@ impl Ax2 {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Ax2_ctor_pnt_dir2(P, N, Vx)) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:84 - `gp_Ax2::gp_Ax2()`
     /// Creates -   a coordinate system with an origin P, where V
     /// gives the "main Direction" (here, "X Direction" and "Y
     /// Direction" are defined automatically).
@@ -560,6 +647,7 @@ impl Ax2 {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Ax2_ctor_pnt_dir(P, V)) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:94 - `gp_Ax2::SetAxis()`
     /// Assigns the origin and "main Direction" of the axis A1 to
     /// this coordinate system, then recomputes its "X Direction" and "Y Direction".
     /// Note: The new "X Direction" is computed as follows:
@@ -572,6 +660,7 @@ impl Ax2 {
         unsafe { crate::ffi::gp_Ax2_set_axis(self as *mut Self, A1) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:103 - `gp_Ax2::SetDirection()`
     /// Changes the "main Direction" of this coordinate system,
     /// then recomputes its "X Direction" and "Y Direction".
     /// Note: the new "X Direction" is computed as follows:
@@ -583,11 +672,13 @@ impl Ax2 {
         unsafe { crate::ffi::gp_Ax2_set_direction(self as *mut Self, V) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:106 - `gp_Ax2::SetLocation()`
     /// Changes the "Location" point (origin) of <me>.
     pub fn set_location(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Ax2_set_location(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:115 - `gp_Ax2::SetXDirection()`
     /// Changes the "Xdirection" of <me>. The main direction
     /// "Direction" is not modified, the "Ydirection" is modified.
     /// If <Vx> is not normal to the main direction then <XDirection>
@@ -599,6 +690,7 @@ impl Ax2 {
         unsafe { crate::ffi::gp_Ax2_set_x_direction(self as *mut Self, theVx) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:129 - `gp_Ax2::SetYDirection()`
     /// Changes the "Ydirection" of <me>. The main direction is not
     /// modified but the "Xdirection" is changed.
     /// If <Vy> is not normal to the main direction then "YDirection"
@@ -611,6 +703,7 @@ impl Ax2 {
         unsafe { crate::ffi::gp_Ax2_set_y_direction(self as *mut Self, theVy) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:138 - `gp_Ax2::Angle()`
     /// Computes the angular value, in radians, between the main direction of
     /// <me> and the main direction of <theOther>. Returns the angle
     /// between 0 and PI in radians.
@@ -618,32 +711,38 @@ impl Ax2 {
         unsafe { crate::ffi::gp_Ax2_angle(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:142 - `gp_Ax2::Axis()`
     /// Returns the main axis of <me>. It is the "Location" point
     /// and the main "Direction".
     pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
         unsafe { &*(crate::ffi::gp_Ax2_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:145 - `gp_Ax2::Direction()`
     /// Returns the main direction of <me>.
     pub fn direction(&self) -> &crate::ffi::gp_Dir {
         unsafe { &*(crate::ffi::gp_Ax2_direction(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:148 - `gp_Ax2::Location()`
     /// Returns the "Location" point (origin) of <me>.
     pub fn location(&self) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::gp_Ax2_location(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:151 - `gp_Ax2::XDirection()`
     /// Returns the "XDirection" of <me>.
     pub fn x_direction(&self) -> &crate::ffi::gp_Dir {
         unsafe { &*(crate::ffi::gp_Ax2_x_direction(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:154 - `gp_Ax2::YDirection()`
     /// Returns the "YDirection" of <me>.
     pub fn y_direction(&self) -> &crate::ffi::gp_Dir {
         unsafe { &*(crate::ffi::gp_Ax2_y_direction(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:156 - `gp_Ax2::IsCoplanar()`
     pub fn is_coplanar_ax2_real2(
         &self,
         Other: &crate::ffi::gp_Ax2,
@@ -660,6 +759,7 @@ impl Ax2 {
         }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:165 - `gp_Ax2::IsCoplanar()`
     /// Returns True if
     /// . the distance between <me> and the "Location" point of A1
     /// is lower of equal to LinearTolerance and
@@ -681,6 +781,7 @@ impl Ax2 {
         }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:184 - `gp_Ax2::Mirror()`
     /// Performs a symmetrical transformation of this coordinate
     /// system with respect to:
     /// -   the point P, and assigns the result to this coordinate system.
@@ -700,6 +801,7 @@ impl Ax2 {
         unsafe { crate::ffi::gp_Ax2_mirror_pnt(self as *mut Self, P) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:201 - `gp_Ax2::Mirrored()`
     /// Performs a symmetrical transformation of this coordinate
     /// system with respect to:
     /// -   the point P, and creates a new one.
@@ -721,6 +823,7 @@ impl Ax2 {
         }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:218 - `gp_Ax2::Mirror()`
     /// Performs a symmetrical transformation of this coordinate
     /// system with respect to:
     /// -   the axis A1, and assigns the result to this coordinate systeme.
@@ -740,6 +843,7 @@ impl Ax2 {
         unsafe { crate::ffi::gp_Ax2_mirror_ax1(self as *mut Self, A1) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:235 - `gp_Ax2::Mirrored()`
     /// Performs a symmetrical transformation of this coordinate
     /// system with respect to:
     /// -   the axis A1, and  creates a new one.
@@ -761,6 +865,7 @@ impl Ax2 {
         }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:253 - `gp_Ax2::Mirror()`
     /// Performs a symmetrical transformation of this coordinate
     /// system with respect to:
     /// -   the plane defined by the origin, "X Direction" and "Y
@@ -781,6 +886,7 @@ impl Ax2 {
         unsafe { crate::ffi::gp_Ax2_mirror_ax2(self as *mut Self, A2) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:271 - `gp_Ax2::Mirrored()`
     /// Performs a symmetrical transformation of this coordinate
     /// system with respect to:
     /// -   the plane defined by the origin, "X Direction" and "Y
@@ -803,10 +909,12 @@ impl Ax2 {
         }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:273 - `gp_Ax2::Rotate()`
     pub fn rotate(&mut self, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
         unsafe { crate::ffi::gp_Ax2_rotate(self as *mut Self, theA1, theAng) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:285 - `gp_Ax2::Rotated()`
     /// Rotates an axis placement. <theA1> is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
     pub fn rotated(
@@ -823,10 +931,12 @@ impl Ax2 {
         }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:292 - `gp_Ax2::Scale()`
     pub fn scale(&mut self, theP: &crate::ffi::gp_Pnt, theS: f64) {
         unsafe { crate::ffi::gp_Ax2_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:311 - `gp_Ax2::Scaled()`
     /// Applies a scaling transformation on the axis placement.
     /// The "Location" point of the axisplacement is modified.
     /// Warnings :
@@ -844,10 +954,12 @@ impl Ax2 {
         }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:318 - `gp_Ax2::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::gp_Ax2_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:332 - `gp_Ax2::Transformed()`
     /// Transforms an axis placement with a Trsf.
     /// The "Location" point, the "XDirection" and the "YDirection" are transformed with theT.
     /// The resulting main "Direction" of <me> is the cross product between
@@ -858,10 +970,12 @@ impl Ax2 {
         }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:339 - `gp_Ax2::Translate()`
     pub fn translate_vec(&mut self, theV: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Ax2_translate_vec(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:343 - `gp_Ax2::Translated()`
     /// Translates an axis plaxement in the direction of the vector <theV>.
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translated_vec(&self, theV: &crate::ffi::gp_Vec) -> crate::OwnedPtr<crate::ffi::gp_Ax2> {
@@ -870,10 +984,12 @@ impl Ax2 {
         }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:350 - `gp_Ax2::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &crate::ffi::gp_Pnt, theP2: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Ax2_translate_pnt2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Ax2.hxx`:353 - `gp_Ax2::Translated()`
     /// Translates an axis placement from the point <theP1> to the point <theP2>.
     pub fn translated_pnt2(
         &self,
@@ -899,6 +1015,7 @@ impl Ax2 {
 // From gp_Ax22d.hxx
 // ========================
 
+/// **Source:** `gp_Ax22d.hxx`:41 - `gp_Ax22d`
 /// Describes a coordinate system in a plane (2D space).
 /// A coordinate system is defined by:
 /// -   its origin (also referred to as its "Location point"), and
@@ -925,12 +1042,14 @@ unsafe impl crate::CppDeletable for Ax22d {
 }
 
 impl Ax22d {
+    /// **Source:** `gp_Ax22d.hxx`:48 - `gp_Ax22d::gp_Ax22d()`
     /// Creates an object representing the reference
     /// coordinate system (OXY).
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Ax22d_ctor()) }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:60 - `gp_Ax22d::gp_Ax22d()`
     /// Creates a coordinate system with origin theP and where:
     /// -   theVx is the "X Direction", and
     /// -   the "Y Direction" is orthogonal to theVx and
@@ -947,6 +1066,7 @@ impl Ax22d {
         }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:80 - `gp_Ax22d::gp_Ax22d()`
     /// Creates -   a coordinate system with origin theP and "X Direction"
     /// theV, which is:
     /// -   right-handed if theIsSense is true (default value), or
@@ -963,6 +1083,7 @@ impl Ax22d {
         }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:100 - `gp_Ax22d::gp_Ax22d()`
     /// Creates -   a coordinate system where its origin is the origin of
     /// theA and its "X Direction" is the unit vector of theA, which   is:
     /// -   right-handed if theIsSense is true (default value), or
@@ -971,6 +1092,7 @@ impl Ax22d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Ax22d_ctor_ax2d_bool(theA, theIsSense)) }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:80 - `gp_Ax22d::gp_Ax22d()`
     /// Creates -   a coordinate system with origin theP and "X Direction"
     /// theV, which is:
     /// -   right-handed if theIsSense is true (default value), or
@@ -982,6 +1104,7 @@ impl Ax22d {
         Self::new_pnt2d_dir2d_bool(theP, theV, true)
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:100 - `gp_Ax22d::gp_Ax22d()`
     /// Creates -   a coordinate system where its origin is the origin of
     /// theA and its "X Direction" is the unit vector of theA, which   is:
     /// -   right-handed if theIsSense is true (default value), or
@@ -990,12 +1113,14 @@ impl Ax22d {
         Self::new_ax2d_bool(theA, true)
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:116 - `gp_Ax22d::SetAxis()`
     /// Assigns the origin and the two unit vectors of the
     /// coordinate system theA1 to this coordinate system.
     pub fn set_axis(&mut self, theA1: &crate::ffi::gp_Ax22d) {
         unsafe { crate::ffi::gp_Ax22d_set_axis(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:126 - `gp_Ax22d::SetXAxis()`
     /// Changes the XAxis and YAxis ("Location" point and "Direction")
     /// of <me>.
     /// The "YDirection" is recomputed in the same sense as before.
@@ -1003,17 +1128,20 @@ impl Ax22d {
         unsafe { crate::ffi::gp_Ax22d_set_x_axis(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:130 - `gp_Ax22d::SetYAxis()`
     /// Changes the XAxis and YAxis ("Location" point and "Direction") of <me>.
     /// The "XDirection" is recomputed in the same sense as before.
     pub fn set_y_axis(&mut self, theA1: &crate::ffi::gp_Ax2d) {
         unsafe { crate::ffi::gp_Ax22d_set_y_axis(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:133 - `gp_Ax22d::SetLocation()`
     /// Changes the "Location" point (origin) of <me>.
     pub fn set_location(&mut self, theP: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Ax22d_set_location(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:140 - `gp_Ax22d::SetXDirection()`
     /// Assigns theVx to the "X Direction"  of
     /// this coordinate system. The other unit vector of this
     /// coordinate system is recomputed, normal to theVx ,
@@ -1023,6 +1151,7 @@ impl Ax22d {
         unsafe { crate::ffi::gp_Ax22d_set_x_direction(self as *mut Self, theVx) }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:147 - `gp_Ax22d::SetYDirection()`
     /// Assignsr theVy to the  "Y Direction" of
     /// this coordinate system. The other unit vector of this
     /// coordinate system is recomputed, normal to theVy,
@@ -1032,6 +1161,7 @@ impl Ax22d {
         unsafe { crate::ffi::gp_Ax22d_set_y_direction(self as *mut Self, theVy) }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:153 - `gp_Ax22d::XAxis()`
     /// Returns an axis, for which
     /// -   the origin is that of this coordinate system, and
     /// -   the unit vector is either the "X Direction"  of this coordinate system.
@@ -1040,6 +1170,7 @@ impl Ax22d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Ax22d_x_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:159 - `gp_Ax22d::YAxis()`
     /// Returns an axis, for which
     /// -   the origin is that of this coordinate system, and
     /// - the unit vector is either the  "Y Direction" of this coordinate system.
@@ -1048,25 +1179,30 @@ impl Ax22d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Ax22d_y_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:162 - `gp_Ax22d::Location()`
     /// Returns the "Location" point (origin) of <me>.
     pub fn location(&self) -> &crate::ffi::gp_Pnt2d {
         unsafe { &*(crate::ffi::gp_Ax22d_location(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:165 - `gp_Ax22d::XDirection()`
     /// Returns the "XDirection" of <me>.
     pub fn x_direction(&self) -> &crate::ffi::gp_Dir2d {
         unsafe { &*(crate::ffi::gp_Ax22d_x_direction(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:168 - `gp_Ax22d::YDirection()`
     /// Returns the "YDirection" of <me>.
     pub fn y_direction(&self) -> &crate::ffi::gp_Dir2d {
         unsafe { &*(crate::ffi::gp_Ax22d_y_direction(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:170 - `gp_Ax22d::Mirror()`
     pub fn mirror_pnt2d(&mut self, theP: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Ax22d_mirror_pnt2d(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:179 - `gp_Ax22d::Mirrored()`
     /// Performs the symmetrical transformation of an axis
     /// placement with respect to the point theP which is the
     /// center of the symmetry.
@@ -1086,10 +1222,12 @@ impl Ax22d {
         }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:181 - `gp_Ax22d::Mirror()`
     pub fn mirror_ax2d(&mut self, theA: &crate::ffi::gp_Ax2d) {
         unsafe { crate::ffi::gp_Ax22d_mirror_ax2d(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:190 - `gp_Ax22d::Mirrored()`
     /// Performs the symmetrical transformation of an axis
     /// placement with respect to an axis placement which
     /// is the axis of the symmetry.
@@ -1106,10 +1244,12 @@ impl Ax22d {
         }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:192 - `gp_Ax22d::Rotate()`
     pub fn rotate(&mut self, theP: &crate::ffi::gp_Pnt2d, theAng: f64) {
         unsafe { crate::ffi::gp_Ax22d_rotate(self as *mut Self, theP, theAng) }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:197 - `gp_Ax22d::Rotated()`
     /// Rotates an axis placement. <theA1> is the axis of the
     /// rotation . theAng is the angular value of the rotation
     /// in radians.
@@ -1127,10 +1267,12 @@ impl Ax22d {
         }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:204 - `gp_Ax22d::Scale()`
     pub fn scale(&mut self, theP: &crate::ffi::gp_Pnt2d, theS: f64) {
         unsafe { crate::ffi::gp_Ax22d_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:213 - `gp_Ax22d::Scaled()`
     /// Applies a scaling transformation on the axis placement.
     /// The "Location" point of the axisplacement is modified.
     /// Warnings :
@@ -1148,10 +1290,12 @@ impl Ax22d {
         }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:220 - `gp_Ax22d::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::gp_Ax22d_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:227 - `gp_Ax22d::Transformed()`
     /// Transforms an axis placement with a Trsf.
     /// The "Location" point, the "XDirection" and the
     /// "YDirection" are transformed with theT.  The resulting
@@ -1166,10 +1310,12 @@ impl Ax22d {
         }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:234 - `gp_Ax22d::Translate()`
     pub fn translate_vec2d(&mut self, theV: &crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::gp_Ax22d_translate_vec2d(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:238 - `gp_Ax22d::Translated()`
     /// Translates an axis plaxement in the direction of the vector
     /// <theV>. The magnitude of the translation is the vector's magnitude.
     pub fn translated_vec2d(
@@ -1184,10 +1330,12 @@ impl Ax22d {
         }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:245 - `gp_Ax22d::Translate()`
     pub fn translate_pnt2d2(&mut self, theP1: &crate::ffi::gp_Pnt2d, theP2: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Ax22d_translate_pnt2d2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Ax22d.hxx`:249 - `gp_Ax22d::Translated()`
     /// Translates an axis placement from the point <theP1> to the
     /// point <theP2>.
     pub fn translated_pnt2d2(
@@ -1214,6 +1362,7 @@ impl Ax22d {
 // From gp_Ax2d.hxx
 // ========================
 
+/// **Source:** `gp_Ax2d.hxx`:42 - `gp_Ax2d`
 /// Describes an axis in the plane (2D space).
 /// An axis is defined by:
 /// -   its origin (also referred to as its "Location point"),   and
@@ -1241,11 +1390,13 @@ unsafe impl crate::CppDeletable for Ax2d {
 }
 
 impl Ax2d {
+    /// **Source:** `gp_Ax2d.hxx`:48 - `gp_Ax2d::gp_Ax2d()`
     /// Creates an axis object representing X axis of the reference co-ordinate system.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Ax2d_ctor()) }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:57 - `gp_Ax2d::gp_Ax2d()`
     /// Creates an Ax2d.
     /// <theP> is the "Location" point of the axis placement
     /// and theV is the "Direction" of the axis placement.
@@ -1256,26 +1407,31 @@ impl Ax2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Ax2d_ctor_pnt2d_dir2d(theP, theV)) }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:64 - `gp_Ax2d::SetLocation()`
     /// Changes the "Location" point (origin) of <me>.
     pub fn set_location(&mut self, theP: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Ax2d_set_location(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:67 - `gp_Ax2d::SetDirection()`
     /// Changes the direction of <me>.
     pub fn set_direction(&mut self, theV: &crate::ffi::gp_Dir2d) {
         unsafe { crate::ffi::gp_Ax2d_set_direction(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:70 - `gp_Ax2d::Location()`
     /// Returns the origin of <me>.
     pub fn location(&self) -> &crate::ffi::gp_Pnt2d {
         unsafe { &*(crate::ffi::gp_Ax2d_location(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:73 - `gp_Ax2d::Direction()`
     /// Returns the direction of <me>.
     pub fn direction(&self) -> &crate::ffi::gp_Dir2d {
         unsafe { &*(crate::ffi::gp_Ax2d_direction(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:82 - `gp_Ax2d::IsCoaxial()`
     /// Returns True if  :
     /// . the angle between <me> and <Other> is lower or equal
     /// to <AngularTolerance> and
@@ -1299,6 +1455,7 @@ impl Ax2d {
         }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:89 - `gp_Ax2d::IsNormal()`
     /// Returns true if this axis and the axis theOther are normal to each other.
     /// That is, if the angle between the two axes is equal to Pi/2 or -Pi/2.
     /// Note: the tolerance criterion is given by theAngularTolerance.
@@ -1306,6 +1463,7 @@ impl Ax2d {
         unsafe { crate::ffi::gp_Ax2d_is_normal(self as *const Self, theOther, theAngularTolerance) }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:97 - `gp_Ax2d::IsOpposite()`
     /// Returns true if this axis and the axis theOther are parallel, and have opposite orientations.
     /// That is, if the angle between the two axes is equal to Pi or -Pi.
     /// Note: the tolerance criterion is given by theAngularTolerance.
@@ -1315,6 +1473,7 @@ impl Ax2d {
         }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:107 - `gp_Ax2d::IsParallel()`
     /// Returns true if this axis and the axis theOther are parallel,
     /// and have either the same or opposite orientations.
     /// That is, if the angle between the two axes is equal to 0, Pi or -Pi.
@@ -1325,26 +1484,31 @@ impl Ax2d {
         }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:115 - `gp_Ax2d::Angle()`
     /// Computes the angle, in radians, between this axis and the axis theOther.
     /// The value of the angle is between -Pi and Pi.
     pub fn angle(&self, theOther: &crate::ffi::gp_Ax2d) -> f64 {
         unsafe { crate::ffi::gp_Ax2d_angle(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:118 - `gp_Ax2d::Reverse()`
     /// Reverses the direction of <me> and assigns the result to this axis.
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::gp_Ax2d_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:121 - `gp_Ax2d::Reversed()`
     /// Computes a new axis placement with a direction opposite to the direction of <me>.
     pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Ax2d_reversed(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:128 - `gp_Ax2d::Mirror()`
     pub fn mirror_pnt2d(&mut self, P: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Ax2d_mirror_pnt2d(self as *mut Self, P) }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:133 - `gp_Ax2d::Mirrored()`
     /// Performs the symmetrical transformation of an axis
     /// placement with respect to the point P which is the
     /// center of the symmetry.
@@ -1354,10 +1518,12 @@ impl Ax2d {
         }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:135 - `gp_Ax2d::Mirror()`
     pub fn mirror_ax2d(&mut self, A: &crate::ffi::gp_Ax2d) {
         unsafe { crate::ffi::gp_Ax2d_mirror_ax2d(self as *mut Self, A) }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:140 - `gp_Ax2d::Mirrored()`
     /// Performs the symmetrical transformation of an axis
     /// placement with respect to an axis placement which
     /// is the axis of the symmetry.
@@ -1367,10 +1533,12 @@ impl Ax2d {
         }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:142 - `gp_Ax2d::Rotate()`
     pub fn rotate(&mut self, theP: &crate::ffi::gp_Pnt2d, theAng: f64) {
         unsafe { crate::ffi::gp_Ax2d_rotate(self as *mut Self, theP, theAng) }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:150 - `gp_Ax2d::Rotated()`
     /// Rotates an axis placement. <theP> is the center of the rotation.
     /// theAng is the angular value of the rotation in radians.
     pub fn rotated(
@@ -1387,10 +1555,12 @@ impl Ax2d {
         }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:157 - `gp_Ax2d::Scale()`
     pub fn scale(&mut self, P: &crate::ffi::gp_Pnt2d, S: f64) {
         unsafe { crate::ffi::gp_Ax2d_scale(self as *mut Self, P, S) }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:162 - `gp_Ax2d::Scaled()`
     /// Applies a scaling transformation on the axis placement.
     /// The "Location" point of the axisplacement is modified.
     /// The "Direction" is reversed if the scale is negative.
@@ -1404,10 +1574,12 @@ impl Ax2d {
         }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:169 - `gp_Ax2d::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::gp_Ax2d_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:176 - `gp_Ax2d::Transformed()`
     /// Transforms an axis placement with a Trsf.
     pub fn transformed(
         &self,
@@ -1418,10 +1590,12 @@ impl Ax2d {
         }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:183 - `gp_Ax2d::Translate()`
     pub fn translate_vec2d(&mut self, theV: &crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::gp_Ax2d_translate_vec2d(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:187 - `gp_Ax2d::Translated()`
     /// Translates an axis placement in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translated_vec2d(
@@ -1436,10 +1610,12 @@ impl Ax2d {
         }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:194 - `gp_Ax2d::Translate()`
     pub fn translate_pnt2d2(&mut self, theP1: &crate::ffi::gp_Pnt2d, theP2: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Ax2d_translate_pnt2d2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Ax2d.hxx`:197 - `gp_Ax2d::Translated()`
     /// Translates an axis placement from the point theP1 to the point theP2.
     pub fn translated_pnt2d2(
         &self,
@@ -1465,6 +1641,7 @@ impl Ax2d {
 // From gp_Ax3.hxx
 // ========================
 
+/// **Source:** `gp_Ax3.hxx`:62 - `gp_Ax3`
 /// Describes a coordinate system in 3D space. Unlike a
 /// gp_Ax2 coordinate system, a gp_Ax3 can be
 /// right-handed ("direct sense") or left-handed ("indirect sense").
@@ -1508,18 +1685,21 @@ unsafe impl crate::CppDeletable for Ax3 {
 }
 
 impl Ax3 {
+    /// **Source:** `gp_Ax3.hxx`:69 - `gp_Ax3::gp_Ax3()`
     /// Creates an object corresponding to the reference
     /// coordinate system (OXYZ).
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Ax3_ctor()) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:77 - `gp_Ax3::gp_Ax3()`
     /// Creates  a  coordinate  system from a right-handed
     /// coordinate system.
     pub fn new_ax2(theA: &crate::ffi::gp_Ax2) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Ax3_ctor_ax2(theA)) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:83 - `gp_Ax3::gp_Ax3()`
     /// Creates a  right handed axis placement with the
     /// "Location" point theP and  two directions, theN gives the
     /// "Direction" and theVx gives the "XDirection".
@@ -1532,6 +1712,7 @@ impl Ax3 {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Ax3_ctor_pnt_dir2(theP, theN, theVx)) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:94 - `gp_Ax3::gp_Ax3()`
     /// Creates an axis placement with the "Location" point <theP>
     /// and the normal direction <theV>.
     pub fn new_pnt_dir(
@@ -1541,21 +1722,25 @@ impl Ax3 {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Ax3_ctor_pnt_dir(theP, theV)) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:97 - `gp_Ax3::XReverse()`
     /// Reverses the X direction of <me>.
     pub fn x_reverse(&mut self) {
         unsafe { crate::ffi::gp_Ax3_x_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:100 - `gp_Ax3::YReverse()`
     /// Reverses the Y direction of <me>.
     pub fn y_reverse(&mut self) {
         unsafe { crate::ffi::gp_Ax3_y_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:103 - `gp_Ax3::ZReverse()`
     /// Reverses the Z direction of <me>.
     pub fn z_reverse(&mut self) {
         unsafe { crate::ffi::gp_Ax3_z_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:117 - `gp_Ax3::SetAxis()`
     /// Assigns the origin and "main Direction" of the axis theA1 to
     /// this coordinate system, then recomputes its "X Direction" and "Y Direction".
     /// Note:
@@ -1572,6 +1757,7 @@ impl Ax3 {
         unsafe { crate::ffi::gp_Ax3_set_axis(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:128 - `gp_Ax3::SetDirection()`
     /// Changes the main direction of this coordinate system,
     /// then recomputes its "X Direction" and "Y Direction".
     /// Note:
@@ -1585,11 +1771,13 @@ impl Ax3 {
         unsafe { crate::ffi::gp_Ax3_set_direction(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:131 - `gp_Ax3::SetLocation()`
     /// Changes the "Location" point (origin) of <me>.
     pub fn set_location(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Ax3_set_location(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:139 - `gp_Ax3::SetXDirection()`
     /// Changes the "Xdirection" of <me>. The main direction
     /// "Direction" is not modified, the "Ydirection" is modified.
     /// If <theVx> is not normal to the main direction then <XDirection>
@@ -1600,6 +1788,7 @@ impl Ax3 {
         unsafe { crate::ffi::gp_Ax3_set_x_direction(self as *mut Self, theVx) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:147 - `gp_Ax3::SetYDirection()`
     /// Changes the "Ydirection" of <me>. The main direction is not
     /// modified but the "Xdirection" is changed.
     /// If <theVy> is not normal to the main direction then "YDirection"
@@ -1610,6 +1799,7 @@ impl Ax3 {
         unsafe { crate::ffi::gp_Ax3_set_y_direction(self as *mut Self, theVy) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:152 - `gp_Ax3::Angle()`
     /// Computes the angular value between the main direction of
     /// <me> and the main direction of <theOther>. Returns the angle
     /// between 0 and PI in radians.
@@ -1617,12 +1807,14 @@ impl Ax3 {
         unsafe { crate::ffi::gp_Ax3_angle(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:156 - `gp_Ax3::Axis()`
     /// Returns the main axis of <me>. It is the "Location" point
     /// and the main "Direction".
     pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
         unsafe { &*(crate::ffi::gp_Ax3_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:164 - `gp_Ax3::Ax2()`
     /// Computes a right-handed coordinate system with the
     /// same "X Direction" and "Y Direction" as those of this
     /// coordinate system, then recomputes the "main Direction".
@@ -1633,32 +1825,38 @@ impl Ax3 {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Ax3_ax2(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:167 - `gp_Ax3::Direction()`
     /// Returns the main direction of <me>.
     pub fn direction(&self) -> &crate::ffi::gp_Dir {
         unsafe { &*(crate::ffi::gp_Ax3_direction(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:170 - `gp_Ax3::Location()`
     /// Returns the "Location" point (origin) of <me>.
     pub fn location(&self) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::gp_Ax3_location(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:173 - `gp_Ax3::XDirection()`
     /// Returns the "XDirection" of <me>.
     pub fn x_direction(&self) -> &crate::ffi::gp_Dir {
         unsafe { &*(crate::ffi::gp_Ax3_x_direction(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:176 - `gp_Ax3::YDirection()`
     /// Returns the "YDirection" of <me>.
     pub fn y_direction(&self) -> &crate::ffi::gp_Dir {
         unsafe { &*(crate::ffi::gp_Ax3_y_direction(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:180 - `gp_Ax3::Direct()`
     /// Returns  True if  the  coordinate  system is right-handed. i.e.
     /// XDirection().Crossed(YDirection()).Dot(Direction()) > 0
     pub fn direct(&self) -> bool {
         unsafe { crate::ffi::gp_Ax3_direct(self as *const Self) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:189 - `gp_Ax3::IsCoplanar()`
     /// Returns True if
     /// . the distance between the "Location" point of <me> and
     /// <theOther> is lower or equal to theLinearTolerance and
@@ -1682,6 +1880,7 @@ impl Ax3 {
         }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:199 - `gp_Ax3::IsCoplanar()`
     /// Returns True if
     /// . the distance between <me> and the "Location" point of theA1
     /// is lower of equal to theLinearTolerance and
@@ -1704,10 +1903,12 @@ impl Ax3 {
         }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:203 - `gp_Ax3::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Ax3_mirror_pnt(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:212 - `gp_Ax3::Mirrored()`
     /// Performs the symmetrical transformation of an axis
     /// placement with respect to the point theP which is the
     /// center of the symmetry.
@@ -1721,10 +1922,12 @@ impl Ax3 {
         }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:214 - `gp_Ax3::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &crate::ffi::gp_Ax1) {
         unsafe { crate::ffi::gp_Ax3_mirror_ax1(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:223 - `gp_Ax3::Mirrored()`
     /// Performs the symmetrical transformation of an axis
     /// placement with respect to an axis placement which
     /// is the axis of the symmetry.
@@ -1738,10 +1941,12 @@ impl Ax3 {
         }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:225 - `gp_Ax3::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::gp_Ax3_mirror_ax2(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:235 - `gp_Ax3::Mirrored()`
     /// Performs the symmetrical transformation of an axis
     /// placement with respect to a plane.
     /// The axis placement  <theA2> locates the plane of the symmetry :
@@ -1756,10 +1961,12 @@ impl Ax3 {
         }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:237 - `gp_Ax3::Rotate()`
     pub fn rotate(&mut self, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
         unsafe { crate::ffi::gp_Ax3_rotate(self as *mut Self, theA1, theAng) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:247 - `gp_Ax3::Rotated()`
     /// Rotates an axis placement. <theA1> is the axis of the
     /// rotation . theAng is the angular value of the rotation
     /// in radians.
@@ -1777,10 +1984,12 @@ impl Ax3 {
         }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:254 - `gp_Ax3::Scale()`
     pub fn scale(&mut self, theP: &crate::ffi::gp_Pnt, theS: f64) {
         unsafe { crate::ffi::gp_Ax3_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:271 - `gp_Ax3::Scaled()`
     /// Applies a scaling transformation on the axis placement.
     /// The "Location" point of the axisplacement is modified.
     /// Warnings :
@@ -1798,10 +2007,12 @@ impl Ax3 {
         }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:278 - `gp_Ax3::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::gp_Ax3_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:290 - `gp_Ax3::Transformed()`
     /// Transforms an axis placement with a Trsf.
     /// The "Location" point, the "XDirection" and the
     /// "YDirection" are transformed with theT.  The resulting
@@ -1813,10 +2024,12 @@ impl Ax3 {
         }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:297 - `gp_Ax3::Translate()`
     pub fn translate_vec(&mut self, theV: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Ax3_translate_vec(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:301 - `gp_Ax3::Translated()`
     /// Translates an axis plaxement in the direction of the vector
     /// <theV>. The magnitude of the translation is the vector's magnitude.
     pub fn translated_vec(&self, theV: &crate::ffi::gp_Vec) -> crate::OwnedPtr<crate::ffi::gp_Ax3> {
@@ -1825,10 +2038,12 @@ impl Ax3 {
         }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:308 - `gp_Ax3::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &crate::ffi::gp_Pnt, theP2: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Ax3_translate_pnt2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Ax3.hxx`:312 - `gp_Ax3::Translated()`
     /// Translates an axis placement from the point <theP1> to the
     /// point <theP2>.
     pub fn translated_pnt2(
@@ -1855,6 +2070,7 @@ impl Ax3 {
 // From gp_Circ.hxx
 // ========================
 
+/// **Source:** `gp_Circ.hxx`:51 - `gp_Circ`
 /// Describes a circle in 3D space.
 /// A circle is defined by its radius and positioned in space
 /// with a coordinate system (a gp_Ax2 object) as follows:
@@ -1890,11 +2106,13 @@ unsafe impl crate::CppDeletable for Circ {
 }
 
 impl Circ {
+    /// **Source:** `gp_Circ.hxx`:57 - `gp_Circ::gp_Circ()`
     /// Creates an indefinite circle.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Circ_ctor()) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:66 - `gp_Circ::gp_Circ()`
     /// A2 locates the circle and gives its orientation in 3D space.
     /// Warnings :
     /// It is not forbidden to create a circle with theRadius = 0.0  Raises ConstructionError if
@@ -1903,6 +2121,7 @@ impl Circ {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Circ_ctor_ax2_real(theA2, theRadius)) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:78 - `gp_Circ::SetAxis()`
     /// Changes the main axis of the circle. It is the axis
     /// perpendicular to the plane of the circle.
     /// Raises ConstructionError if the direction of theA1
@@ -1911,16 +2130,19 @@ impl Circ {
         unsafe { crate::ffi::gp_Circ_set_axis(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:81 - `gp_Circ::SetLocation()`
     /// Changes the "Location" point (center) of the circle.
     pub fn set_location(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Circ_set_location(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:84 - `gp_Circ::SetPosition()`
     /// Changes the position of the circle.
     pub fn set_position(&mut self, theA2: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::gp_Circ_set_position(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:90 - `gp_Circ::SetRadius()`
     /// Modifies the radius of this circle.
     /// Warning. This class does not prevent the creation of a circle where theRadius is null.
     /// Exceptions
@@ -1929,11 +2151,13 @@ impl Circ {
         unsafe { crate::ffi::gp_Circ_set_radius(self as *mut Self, theRadius) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:98 - `gp_Circ::Area()`
     /// Computes the area of the circle.
     pub fn area(&self) -> f64 {
         unsafe { crate::ffi::gp_Circ_area(self as *const Self) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:103 - `gp_Circ::Axis()`
     /// Returns the main axis of the circle.
     /// It is the axis perpendicular to the plane of the circle,
     /// passing through the "Location" point (center) of the circle.
@@ -1941,11 +2165,13 @@ impl Circ {
         unsafe { &*(crate::ffi::gp_Circ_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:106 - `gp_Circ::Length()`
     /// Computes the circumference of the circle.
     pub fn length(&self) -> f64 {
         unsafe { crate::ffi::gp_Circ_length(self as *const Self) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:111 - `gp_Circ::Location()`
     /// Returns the center of the circle. It is the
     /// "Location" point of the local coordinate system
     /// of the circle
@@ -1953,17 +2179,20 @@ impl Circ {
         unsafe { &*(crate::ffi::gp_Circ_location(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:115 - `gp_Circ::Position()`
     /// Returns the position of the circle.
     /// It is the local coordinate system of the circle.
     pub fn position(&self) -> &crate::ffi::gp_Ax2 {
         unsafe { &*(crate::ffi::gp_Circ_position(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:118 - `gp_Circ::Radius()`
     /// Returns the radius of this circle.
     pub fn radius(&self) -> f64 {
         unsafe { crate::ffi::gp_Circ_radius(self as *const Self) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:123 - `gp_Circ::XAxis()`
     /// Returns the "XAxis" of the circle.
     /// This axis is perpendicular to the axis of the conic.
     /// This axis and the "Yaxis" define the plane of the conic.
@@ -1971,6 +2200,7 @@ impl Circ {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Circ_x_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:128 - `gp_Circ::YAxis()`
     /// Returns the "YAxis" of the circle.
     /// This axis and the "Xaxis" define the plane of the conic.
     /// The "YAxis" is perpendicular to the "Xaxis".
@@ -1978,17 +2208,20 @@ impl Circ {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Circ_y_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:132 - `gp_Circ::Distance()`
     /// Computes the minimum of distance between the point theP and
     /// any point on the circumference of the circle.
     pub fn distance(&self, theP: &crate::ffi::gp_Pnt) -> f64 {
         unsafe { crate::ffi::gp_Circ_distance(self as *const Self, theP) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:135 - `gp_Circ::SquareDistance()`
     /// Computes the square distance between <me> and the point theP.
     pub fn square_distance(&self, theP: &crate::ffi::gp_Pnt) -> f64 {
         unsafe { crate::ffi::gp_Circ_square_distance(self as *const Self, theP) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:148 - `gp_Circ::Contains()`
     /// Returns True if the point theP is on the circumference.
     /// The distance between <me> and <theP> must be lower or
     /// equal to theLinearTolerance.
@@ -1996,10 +2229,12 @@ impl Circ {
         unsafe { crate::ffi::gp_Circ_contains(self as *const Self, theP, theLinearTolerance) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:153 - `gp_Circ::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Circ_mirror_pnt(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:158 - `gp_Circ::Mirrored()`
     /// Performs the symmetrical transformation of a circle
     /// with respect to the point theP which is the center of the
     /// symmetry.
@@ -2009,10 +2244,12 @@ impl Circ {
         }
     }
 
+    /// **Source:** `gp_Circ.hxx`:160 - `gp_Circ::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &crate::ffi::gp_Ax1) {
         unsafe { crate::ffi::gp_Circ_mirror_ax1(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:165 - `gp_Circ::Mirrored()`
     /// Performs the symmetrical transformation of a circle with
     /// respect to an axis placement which is the axis of the
     /// symmetry.
@@ -2022,10 +2259,12 @@ impl Circ {
         }
     }
 
+    /// **Source:** `gp_Circ.hxx`:167 - `gp_Circ::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::gp_Circ_mirror_ax2(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:172 - `gp_Circ::Mirrored()`
     /// Performs the symmetrical transformation of a circle with respect
     /// to a plane. The axis placement theA2 locates the plane of the
     /// of the symmetry : (Location, XDirection, YDirection).
@@ -2035,10 +2274,12 @@ impl Circ {
         }
     }
 
+    /// **Source:** `gp_Circ.hxx`:174 - `gp_Circ::Rotate()`
     pub fn rotate(&mut self, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
         unsafe { crate::ffi::gp_Circ_rotate(self as *mut Self, theA1, theAng) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:178 - `gp_Circ::Rotated()`
     /// Rotates a circle. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
     pub fn rotated(
@@ -2055,10 +2296,12 @@ impl Circ {
         }
     }
 
+    /// **Source:** `gp_Circ.hxx`:185 - `gp_Circ::Scale()`
     pub fn scale(&mut self, theP: &crate::ffi::gp_Pnt, theS: f64) {
         unsafe { crate::ffi::gp_Circ_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:192 - `gp_Circ::Scaled()`
     /// Scales a circle. theS is the scaling value.
     /// Warnings :
     /// If theS is negative the radius stay positive but
@@ -2074,10 +2317,12 @@ impl Circ {
         }
     }
 
+    /// **Source:** `gp_Circ.hxx`:194 - `gp_Circ::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::gp_Circ_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:197 - `gp_Circ::Transformed()`
     /// Transforms a circle with the transformation theT from class Trsf.
     pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::OwnedPtr<crate::ffi::gp_Circ> {
         unsafe {
@@ -2085,10 +2330,12 @@ impl Circ {
         }
     }
 
+    /// **Source:** `gp_Circ.hxx`:199 - `gp_Circ::Translate()`
     pub fn translate_vec(&mut self, theV: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Circ_translate_vec(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:203 - `gp_Circ::Translated()`
     /// Translates a circle in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translated_vec(
@@ -2100,10 +2347,12 @@ impl Circ {
         }
     }
 
+    /// **Source:** `gp_Circ.hxx`:210 - `gp_Circ::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &crate::ffi::gp_Pnt, theP2: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Circ_translate_pnt2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Circ.hxx`:213 - `gp_Circ::Translated()`
     /// Translates a circle from the point theP1 to the point theP2.
     pub fn translated_pnt2(
         &self,
@@ -2129,6 +2378,7 @@ impl Circ {
 // From gp_Circ2d.hxx
 // ========================
 
+/// **Source:** `gp_Circ2d.hxx`:49 - `gp_Circ2d`
 /// Describes a circle in the plane (2D space).
 /// A circle is defined by its radius and positioned in the
 /// plane with a coordinate system (a gp_Ax22d object) as follows:
@@ -2162,11 +2412,13 @@ unsafe impl crate::CppDeletable for Circ2d {
 }
 
 impl Circ2d {
+    /// **Source:** `gp_Circ2d.hxx`:55 - `gp_Circ2d::gp_Circ2d()`
     /// creates an indefinite circle.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Circ2d_ctor()) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:64 - `gp_Circ2d::gp_Circ2d()`
     /// The location point of theXAxis is the center of the circle.
     /// Warnings :
     /// It is not forbidden to create a circle with theRadius = 0.0   Raises ConstructionError if
@@ -2183,6 +2435,7 @@ impl Circ2d {
         }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:80 - `gp_Circ2d::gp_Circ2d()`
     /// theAxis defines the Xaxis and Yaxis of the circle which defines
     /// the origin and the sense of parametrization.
     /// The location point of theAxis is the center of the circle.
@@ -2195,6 +2448,7 @@ impl Circ2d {
         }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:64 - `gp_Circ2d::gp_Circ2d()`
     /// The location point of theXAxis is the center of the circle.
     /// Warnings :
     /// It is not forbidden to create a circle with theRadius = 0.0   Raises ConstructionError if
@@ -2203,26 +2457,31 @@ impl Circ2d {
         Self::new_ax2d_real_bool(theXAxis, theRadius, true)
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:89 - `gp_Circ2d::SetLocation()`
     /// Changes the location point (center) of the circle.
     pub fn set_location(&mut self, theP: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Circ2d_set_location(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:92 - `gp_Circ2d::SetXAxis()`
     /// Changes the X axis of the circle.
     pub fn set_x_axis(&mut self, theA: &crate::ffi::gp_Ax2d) {
         unsafe { crate::ffi::gp_Circ2d_set_x_axis(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:95 - `gp_Circ2d::SetAxis()`
     /// Changes the X axis of the circle.
     pub fn set_axis(&mut self, theA: &crate::ffi::gp_Ax22d) {
         unsafe { crate::ffi::gp_Circ2d_set_axis(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:98 - `gp_Circ2d::SetYAxis()`
     /// Changes the Y axis of the circle.
     pub fn set_y_axis(&mut self, theA: &crate::ffi::gp_Ax2d) {
         unsafe { crate::ffi::gp_Circ2d_set_y_axis(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:105 - `gp_Circ2d::SetRadius()`
     /// Modifies the radius of this circle.
     /// This class does not prevent the creation of a circle where
     /// theRadius is null.
@@ -2232,11 +2491,13 @@ impl Circ2d {
         unsafe { crate::ffi::gp_Circ2d_set_radius(self as *mut Self, theRadius) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:114 - `gp_Circ2d::Area()`
     /// Computes the area of the circle.
     pub fn area(&self) -> f64 {
         unsafe { crate::ffi::gp_Circ2d_area(self as *const Self) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:119 - `gp_Circ2d::Coefficients()`
     /// Returns the normalized coefficients from the implicit equation
     /// of the circle :
     /// theA * (X**2) + theB * (Y**2) + 2*theC*(X*Y) + 2*theD*X + 2*theE*Y + theF = 0.0
@@ -2262,6 +2523,7 @@ impl Circ2d {
         }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:130 - `gp_Circ2d::Contains()`
     /// Does <me> contain theP ?
     /// Returns True if the distance between theP and any point on
     /// the circumference of the circle is lower of equal to
@@ -2270,53 +2532,63 @@ impl Circ2d {
         unsafe { crate::ffi::gp_Circ2d_contains(self as *const Self, theP, theLinearTolerance) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:137 - `gp_Circ2d::Distance()`
     /// Computes the minimum of distance between the point theP and any
     /// point on the circumference of the circle.
     pub fn distance(&self, theP: &crate::ffi::gp_Pnt2d) -> f64 {
         unsafe { crate::ffi::gp_Circ2d_distance(self as *const Self, theP) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:140 - `gp_Circ2d::SquareDistance()`
     /// Computes the square distance between <me> and the point theP.
     pub fn square_distance(&self, theP: &crate::ffi::gp_Pnt2d) -> f64 {
         unsafe { crate::ffi::gp_Circ2d_square_distance(self as *const Self, theP) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:143 - `gp_Circ2d::Length()`
     /// computes the circumference of the circle.
     pub fn length(&self) -> f64 {
         unsafe { crate::ffi::gp_Circ2d_length(self as *const Self) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:146 - `gp_Circ2d::Location()`
     /// Returns the location point (center) of the circle.
     pub fn location(&self) -> &crate::ffi::gp_Pnt2d {
         unsafe { &*(crate::ffi::gp_Circ2d_location(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:149 - `gp_Circ2d::Radius()`
     /// Returns the radius value of the circle.
     pub fn radius(&self) -> f64 {
         unsafe { crate::ffi::gp_Circ2d_radius(self as *const Self) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:152 - `gp_Circ2d::Axis()`
     /// returns the position of the circle.
     pub fn axis(&self) -> &crate::ffi::gp_Ax22d {
         unsafe { &*(crate::ffi::gp_Circ2d_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:155 - `gp_Circ2d::Position()`
     /// returns the position of the circle. Idem Axis(me).
     pub fn position(&self) -> &crate::ffi::gp_Ax22d {
         unsafe { &*(crate::ffi::gp_Circ2d_position(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:158 - `gp_Circ2d::XAxis()`
     /// returns the X axis of the circle.
     pub fn x_axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Circ2d_x_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:162 - `gp_Circ2d::YAxis()`
     /// Returns the Y axis of the circle.
     /// Reverses the direction of the circle.
     pub fn y_axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Circ2d_y_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:168 - `gp_Circ2d::Reverse()`
     /// Reverses the orientation of the local coordinate system
     /// of this circle (the "Y Direction" is reversed) and therefore
     /// changes the implicit orientation of this circle.
@@ -2325,6 +2597,7 @@ impl Circ2d {
         unsafe { crate::ffi::gp_Circ2d_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:179 - `gp_Circ2d::Reversed()`
     /// Reverses the orientation of the local coordinate system
     /// of this circle (the "Y Direction" is reversed) and therefore
     /// changes the implicit orientation of this circle.
@@ -2333,16 +2606,19 @@ impl Circ2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Circ2d_reversed(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:183 - `gp_Circ2d::IsDirect()`
     /// Returns true if the local coordinate system is direct
     /// and false in the other case.
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::gp_Circ2d_is_direct(self as *const Self) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:185 - `gp_Circ2d::Mirror()`
     pub fn mirror_pnt2d(&mut self, theP: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Circ2d_mirror_pnt2d(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:189 - `gp_Circ2d::Mirrored()`
     /// Performs the symmetrical transformation of a circle with respect
     /// to the point theP which is the center of the symmetry
     pub fn mirrored_pnt2d(
@@ -2357,10 +2633,12 @@ impl Circ2d {
         }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:191 - `gp_Circ2d::Mirror()`
     pub fn mirror_ax2d(&mut self, theA: &crate::ffi::gp_Ax2d) {
         unsafe { crate::ffi::gp_Circ2d_mirror_ax2d(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:195 - `gp_Circ2d::Mirrored()`
     /// Performs the symmetrical transformation of a circle with respect
     /// to an axis placement which is the axis of the symmetry.
     pub fn mirrored_ax2d(
@@ -2375,10 +2653,12 @@ impl Circ2d {
         }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:197 - `gp_Circ2d::Rotate()`
     pub fn rotate(&mut self, theP: &crate::ffi::gp_Pnt2d, theAng: f64) {
         unsafe { crate::ffi::gp_Circ2d_rotate(self as *mut Self, theP, theAng) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:201 - `gp_Circ2d::Rotated()`
     /// Rotates a circle. theP is the center of the rotation.
     /// Ang is the angular value of the rotation in radians.
     pub fn rotated(
@@ -2395,10 +2675,12 @@ impl Circ2d {
         }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:208 - `gp_Circ2d::Scale()`
     pub fn scale(&mut self, theP: &crate::ffi::gp_Pnt2d, theS: f64) {
         unsafe { crate::ffi::gp_Circ2d_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:215 - `gp_Circ2d::Scaled()`
     /// Scales a circle. theS is the scaling value.
     /// Warnings :
     /// If theS is negative the radius stay positive but
@@ -2414,10 +2696,12 @@ impl Circ2d {
         }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:217 - `gp_Circ2d::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::gp_Circ2d_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:220 - `gp_Circ2d::Transformed()`
     /// Transforms a circle with the transformation theT from class Trsf2d.
     pub fn transformed(
         &self,
@@ -2428,10 +2712,12 @@ impl Circ2d {
         }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:222 - `gp_Circ2d::Translate()`
     pub fn translate_vec2d(&mut self, theV: &crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::gp_Circ2d_translate_vec2d(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:226 - `gp_Circ2d::Translated()`
     /// Translates a circle in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translated_vec2d(
@@ -2446,10 +2732,12 @@ impl Circ2d {
         }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:233 - `gp_Circ2d::Translate()`
     pub fn translate_pnt2d2(&mut self, theP1: &crate::ffi::gp_Pnt2d, theP2: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Circ2d_translate_pnt2d2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Circ2d.hxx`:236 - `gp_Circ2d::Translated()`
     /// Translates a circle from the point theP1 to the point theP2.
     pub fn translated_pnt2d2(
         &self,
@@ -2475,6 +2763,7 @@ impl Circ2d {
 // From gp_Cone.hxx
 // ========================
 
+/// **Source:** `gp_Cone.hxx`:51 - `gp_Cone`
 /// Defines an infinite conical surface.
 /// A cone is defined by its half-angle (can be negative) at the apex and
 /// positioned in space with a coordinate system (a gp_Ax3
@@ -2513,11 +2802,13 @@ unsafe impl crate::CppDeletable for Cone {
 }
 
 impl Cone {
+    /// **Source:** `gp_Cone.hxx`:57 - `gp_Cone::gp_Cone()`
     /// Creates an indefinite Cone.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Cone_ctor()) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:72 - `gp_Cone::gp_Cone()`
     /// Creates an infinite conical surface. theA3 locates the cone
     /// in the space and defines the reference plane of the surface.
     /// Ang is the conical surface semi-angle. Its absolute value is in range
@@ -2537,6 +2828,7 @@ impl Cone {
         }
     }
 
+    /// **Source:** `gp_Cone.hxx`:77 - `gp_Cone::SetAxis()`
     /// Changes the symmetry axis of the cone.  Raises ConstructionError
     /// the direction of theA1 is parallel to the "XDirection"
     /// of the coordinate system of the cone.
@@ -2544,17 +2836,20 @@ impl Cone {
         unsafe { crate::ffi::gp_Cone_set_axis(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:80 - `gp_Cone::SetLocation()`
     /// Changes the location of the cone.
     pub fn set_location(&mut self, theLoc: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Cone_set_location(self as *mut Self, theLoc) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:84 - `gp_Cone::SetPosition()`
     /// Changes the local coordinate system of the cone.
     /// This coordinate system defines the reference plane of the cone.
     pub fn set_position(&mut self, theA3: &crate::ffi::gp_Ax3) {
         unsafe { crate::ffi::gp_Cone_set_position(self as *mut Self, theA3) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:89 - `gp_Cone::SetRadius()`
     /// Changes the radius of the cone in the reference plane of
     /// the cone.
     /// Raised if theR < 0.0
@@ -2562,6 +2857,7 @@ impl Cone {
         unsafe { crate::ffi::gp_Cone_set_radius(self as *mut Self, theR) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:101 - `gp_Cone::SetSemiAngle()`
     /// Changes the semi-angle of the cone.
     /// Semi-angle can be negative. Its absolute value
     /// Abs(theAng) is in range ]0,PI/2[.
@@ -2571,33 +2867,39 @@ impl Cone {
         unsafe { crate::ffi::gp_Cone_set_semi_angle(self as *mut Self, theAng) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:105 - `gp_Cone::Apex()`
     /// Computes the cone's top. The Apex of the cone is on the
     /// negative side of the symmetry axis of the cone.
     pub fn apex(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Cone_apex(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:115 - `gp_Cone::UReverse()`
     /// Reverses the   U   parametrization of   the  cone
     /// reversing the YAxis.
     pub fn u_reverse(&mut self) {
         unsafe { crate::ffi::gp_Cone_u_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:118 - `gp_Cone::VReverse()`
     /// Reverses the   V   parametrization of   the  cone  reversing the ZAxis.
     pub fn v_reverse(&mut self) {
         unsafe { crate::ffi::gp_Cone_v_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:125 - `gp_Cone::Direct()`
     /// Returns true if the local coordinate system of this cone is right-handed.
     pub fn direct(&self) -> bool {
         unsafe { crate::ffi::gp_Cone_direct(self as *const Self) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:128 - `gp_Cone::Axis()`
     /// returns the symmetry axis of the cone.
     pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
         unsafe { &*(crate::ffi::gp_Cone_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:134 - `gp_Cone::Coefficients()`
     /// Computes the coefficients of the implicit equation of the quadric
     /// in the absolute cartesian coordinates system :
     /// theA1.X**2 + theA2.Y**2 + theA3.Z**2 + 2.(theB1.X.Y + theB2.X.Z + theB3.Y.Z) +
@@ -2632,41 +2934,49 @@ impl Cone {
         }
     }
 
+    /// **Source:** `gp_Cone.hxx`:146 - `gp_Cone::Location()`
     /// returns the "Location" point of the cone.
     pub fn location(&self) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::gp_Cone_location(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:149 - `gp_Cone::Position()`
     /// Returns the local coordinates system of the cone.
     pub fn position(&self) -> &crate::ffi::gp_Ax3 {
         unsafe { &*(crate::ffi::gp_Cone_position(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:152 - `gp_Cone::RefRadius()`
     /// Returns the radius of the cone in the reference plane.
     pub fn ref_radius(&self) -> f64 {
         unsafe { crate::ffi::gp_Cone_ref_radius(self as *const Self) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:156 - `gp_Cone::SemiAngle()`
     /// Returns the half-angle at the apex of this cone.
     /// Attention! Semi-angle can be negative.
     pub fn semi_angle(&self) -> f64 {
         unsafe { crate::ffi::gp_Cone_semi_angle(self as *const Self) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:159 - `gp_Cone::XAxis()`
     /// Returns the XAxis of the reference plane.
     pub fn x_axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Cone_x_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:162 - `gp_Cone::YAxis()`
     /// Returns the YAxis of the reference plane.
     pub fn y_axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Cone_y_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:164 - `gp_Cone::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Cone_mirror_pnt(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:169 - `gp_Cone::Mirrored()`
     /// Performs the symmetrical transformation of a cone
     /// with respect to the point theP which is the center of the
     /// symmetry.
@@ -2676,10 +2986,12 @@ impl Cone {
         }
     }
 
+    /// **Source:** `gp_Cone.hxx`:171 - `gp_Cone::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &crate::ffi::gp_Ax1) {
         unsafe { crate::ffi::gp_Cone_mirror_ax1(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:176 - `gp_Cone::Mirrored()`
     /// Performs the symmetrical transformation of a cone with
     /// respect to an axis placement which is the axis of the
     /// symmetry.
@@ -2689,10 +3001,12 @@ impl Cone {
         }
     }
 
+    /// **Source:** `gp_Cone.hxx`:178 - `gp_Cone::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::gp_Cone_mirror_ax2(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:183 - `gp_Cone::Mirrored()`
     /// Performs the symmetrical transformation of a cone with respect
     /// to a plane. The axis placement theA2 locates the plane of the
     /// of the symmetry : (Location, XDirection, YDirection).
@@ -2702,10 +3016,12 @@ impl Cone {
         }
     }
 
+    /// **Source:** `gp_Cone.hxx`:185 - `gp_Cone::Rotate()`
     pub fn rotate(&mut self, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
         unsafe { crate::ffi::gp_Cone_rotate(self as *mut Self, theA1, theAng) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:189 - `gp_Cone::Rotated()`
     /// Rotates a cone. theA1 is the axis of the rotation.
     /// Ang is the angular value of the rotation in radians.
     pub fn rotated(
@@ -2722,10 +3038,12 @@ impl Cone {
         }
     }
 
+    /// **Source:** `gp_Cone.hxx`:196 - `gp_Cone::Scale()`
     pub fn scale(&mut self, theP: &crate::ffi::gp_Pnt, theS: f64) {
         unsafe { crate::ffi::gp_Cone_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:200 - `gp_Cone::Scaled()`
     /// Scales a cone. theS is the scaling value.
     /// The absolute value of theS is used to scale the cone
     pub fn scaled(
@@ -2738,10 +3056,12 @@ impl Cone {
         }
     }
 
+    /// **Source:** `gp_Cone.hxx`:202 - `gp_Cone::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::gp_Cone_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:205 - `gp_Cone::Transformed()`
     /// Transforms a cone with the transformation theT from class Trsf.
     pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::OwnedPtr<crate::ffi::gp_Cone> {
         unsafe {
@@ -2749,10 +3069,12 @@ impl Cone {
         }
     }
 
+    /// **Source:** `gp_Cone.hxx`:207 - `gp_Cone::Translate()`
     pub fn translate_vec(&mut self, theV: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Cone_translate_vec(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:211 - `gp_Cone::Translated()`
     /// Translates a cone in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translated_vec(
@@ -2764,10 +3086,12 @@ impl Cone {
         }
     }
 
+    /// **Source:** `gp_Cone.hxx`:218 - `gp_Cone::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &crate::ffi::gp_Pnt, theP2: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Cone_translate_pnt2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Cone.hxx`:221 - `gp_Cone::Translated()`
     /// Translates a cone from the point P1 to the point P2.
     pub fn translated_pnt2(
         &self,
@@ -2793,6 +3117,7 @@ impl Cone {
 // From gp_Cylinder.hxx
 // ========================
 
+/// **Source:** `gp_Cylinder.hxx`:41 - `gp_Cylinder`
 /// Describes an infinite cylindrical surface.
 /// A cylinder is defined by its radius and positioned in space
 /// with a coordinate system (a gp_Ax3 object), the "main
@@ -2822,11 +3147,13 @@ unsafe impl crate::CppDeletable for Cylinder {
 }
 
 impl Cylinder {
+    /// **Source:** `gp_Cylinder.hxx`:47 - `gp_Cylinder::gp_Cylinder()`
     /// Creates a indefinite cylinder.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Cylinder_ctor()) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:52 - `gp_Cylinder::gp_Cylinder()`
     /// Creates a cylinder of radius Radius, whose axis is the "main
     /// Axis" of theA3. theA3 is the local coordinate system of the cylinder.   Raises
     /// ConstructionErrord if theRadius < 0.0
@@ -2836,22 +3163,26 @@ impl Cylinder {
         }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:62 - `gp_Cylinder::SetAxis()`
     /// Changes the symmetry axis of the cylinder. Raises ConstructionError if the direction of theA1
     /// is parallel to the "XDirection" of the coordinate system of the cylinder.
     pub fn set_axis(&mut self, theA1: &crate::ffi::gp_Ax1) {
         unsafe { crate::ffi::gp_Cylinder_set_axis(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:65 - `gp_Cylinder::SetLocation()`
     /// Changes the location of the surface.
     pub fn set_location(&mut self, theLoc: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Cylinder_set_location(self as *mut Self, theLoc) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:68 - `gp_Cylinder::SetPosition()`
     /// Change the local coordinate system of the surface.
     pub fn set_position(&mut self, theA3: &crate::ffi::gp_Ax3) {
         unsafe { crate::ffi::gp_Cylinder_set_position(self as *mut Self, theA3) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:73 - `gp_Cylinder::SetRadius()`
     /// Modifies the radius of this cylinder.
     /// Exceptions
     /// Standard_ConstructionError if theR is negative.
@@ -2859,28 +3190,33 @@ impl Cylinder {
         unsafe { crate::ffi::gp_Cylinder_set_radius(self as *mut Self, theR) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:83 - `gp_Cylinder::UReverse()`
     /// Reverses the   U   parametrization of   the cylinder
     /// reversing the YAxis.
     pub fn u_reverse(&mut self) {
         unsafe { crate::ffi::gp_Cylinder_u_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:87 - `gp_Cylinder::VReverse()`
     /// Reverses the   V   parametrization of   the  plane
     /// reversing the Axis.
     pub fn v_reverse(&mut self) {
         unsafe { crate::ffi::gp_Cylinder_v_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:90 - `gp_Cylinder::Direct()`
     /// Returns true if the local coordinate system of this cylinder is right-handed.
     pub fn direct(&self) -> bool {
         unsafe { crate::ffi::gp_Cylinder_direct(self as *const Self) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:93 - `gp_Cylinder::Axis()`
     /// Returns the symmetry axis of the cylinder.
     pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
         unsafe { &*(crate::ffi::gp_Cylinder_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:99 - `gp_Cylinder::Coefficients()`
     /// Computes the coefficients of the implicit equation of the quadric
     /// in the absolute cartesian coordinate system :
     /// theA1.X**2 + theA2.Y**2 + theA3.Z**2 + 2.(theB1.X.Y + theB2.X.Z + theB3.Y.Z) +
@@ -2915,35 +3251,42 @@ impl Cylinder {
         }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:111 - `gp_Cylinder::Location()`
     /// Returns the "Location" point of the cylinder.
     pub fn location(&self) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::gp_Cylinder_location(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:114 - `gp_Cylinder::Position()`
     /// Returns the local coordinate system of the cylinder.
     pub fn position(&self) -> &crate::ffi::gp_Ax3 {
         unsafe { &*(crate::ffi::gp_Cylinder_position(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:117 - `gp_Cylinder::Radius()`
     /// Returns the radius of the cylinder.
     pub fn radius(&self) -> f64 {
         unsafe { crate::ffi::gp_Cylinder_radius(self as *const Self) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:120 - `gp_Cylinder::XAxis()`
     /// Returns the axis X of the cylinder.
     pub fn x_axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Cylinder_x_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:123 - `gp_Cylinder::YAxis()`
     /// Returns the axis Y of the cylinder.
     pub fn y_axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Cylinder_y_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:125 - `gp_Cylinder::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Cylinder_mirror_pnt(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:130 - `gp_Cylinder::Mirrored()`
     /// Performs the symmetrical transformation of a cylinder
     /// with respect to the point theP which is the center of the
     /// symmetry.
@@ -2959,10 +3302,12 @@ impl Cylinder {
         }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:132 - `gp_Cylinder::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &crate::ffi::gp_Ax1) {
         unsafe { crate::ffi::gp_Cylinder_mirror_ax1(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:137 - `gp_Cylinder::Mirrored()`
     /// Performs the symmetrical transformation of a cylinder with
     /// respect to an axis placement which is the axis of the
     /// symmetry.
@@ -2978,10 +3323,12 @@ impl Cylinder {
         }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:139 - `gp_Cylinder::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::gp_Cylinder_mirror_ax2(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:144 - `gp_Cylinder::Mirrored()`
     /// Performs the symmetrical transformation of a cylinder with respect
     /// to a plane. The axis placement theA2 locates the plane of the
     /// of the symmetry : (Location, XDirection, YDirection).
@@ -2997,10 +3344,12 @@ impl Cylinder {
         }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:146 - `gp_Cylinder::Rotate()`
     pub fn rotate(&mut self, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
         unsafe { crate::ffi::gp_Cylinder_rotate(self as *mut Self, theA1, theAng) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:150 - `gp_Cylinder::Rotated()`
     /// Rotates a cylinder. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
     pub fn rotated(
@@ -3017,10 +3366,12 @@ impl Cylinder {
         }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:157 - `gp_Cylinder::Scale()`
     pub fn scale(&mut self, theP: &crate::ffi::gp_Pnt, theS: f64) {
         unsafe { crate::ffi::gp_Cylinder_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:161 - `gp_Cylinder::Scaled()`
     /// Scales a cylinder. theS is the scaling value.
     /// The absolute value of theS is used to scale the cylinder
     pub fn scaled(
@@ -3037,10 +3388,12 @@ impl Cylinder {
         }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:163 - `gp_Cylinder::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::gp_Cylinder_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:166 - `gp_Cylinder::Transformed()`
     /// Transforms a cylinder with the transformation theT from class Trsf.
     pub fn transformed(
         &self,
@@ -3054,10 +3407,12 @@ impl Cylinder {
         }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:168 - `gp_Cylinder::Translate()`
     pub fn translate_vec(&mut self, theV: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Cylinder_translate_vec(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:172 - `gp_Cylinder::Translated()`
     /// Translates a cylinder in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translated_vec(
@@ -3072,10 +3427,12 @@ impl Cylinder {
         }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:179 - `gp_Cylinder::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &crate::ffi::gp_Pnt, theP2: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Cylinder_translate_pnt2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Cylinder.hxx`:182 - `gp_Cylinder::Translated()`
     /// Translates a cylinder from the point theP1 to the point theP2.
     pub fn translated_pnt2(
         &self,
@@ -3101,6 +3458,7 @@ impl Cylinder {
 // From gp_Dir.hxx
 // ========================
 
+/// **Source:** `gp_Dir.hxx`:35 - `gp_Dir`
 /// Describes a unit vector in 3D space. This unit vector is also called "Direction".
 /// See Also
 /// gce_MakeDir which provides functions for more complex
@@ -3117,23 +3475,27 @@ unsafe impl crate::CppDeletable for Dir {
 }
 
 impl Dir {
+    /// **Source:** `gp_Dir.hxx`:41 - `gp_Dir::gp_Dir()`
     /// Creates a direction corresponding to X axis.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Dir_ctor()) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:48 - `gp_Dir::gp_Dir()`
     /// Normalizes the vector theV and creates a direction. Raises ConstructionError if
     /// theV.Magnitude() <= Resolution.
     pub fn new_vec(theV: &crate::ffi::gp_Vec) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Dir_ctor_vec(theV)) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:52 - `gp_Dir::gp_Dir()`
     /// Creates a direction from a triplet of coordinates. Raises ConstructionError if
     /// theCoord.Modulus() <= Resolution from gp.
     pub fn new_xyz(theCoord: &crate::ffi::gp_XYZ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Dir_ctor_xyz(theCoord)) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:60 - `gp_Dir::gp_Dir()`
     /// Creates a direction with its 3 cartesian coordinates. Raises ConstructionError if
     /// Sqrt(theXv*theXv + theYv*theYv + theZv*theZv) <= Resolution Modification of the direction's
     /// coordinates If Sqrt (theXv*theXv + theYv*theYv + theZv*theZv) <= Resolution from gp where
@@ -3144,6 +3506,7 @@ impl Dir {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Dir_ctor_real3(theXv, theYv, theZv)) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:78 - `gp_Dir::SetCoord()`
     /// For this unit vector,  assigns the value Xi to:
     /// -   the X coordinate if theIndex is 1, or
     /// -   the Y coordinate if theIndex is 2, or
@@ -3164,6 +3527,7 @@ impl Dir {
         unsafe { crate::ffi::gp_Dir_set_coord_int_real(self as *mut Self, theIndex, theXi) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:83 - `gp_Dir::SetCoord()`
     /// For this unit vector,  assigns the values theXv, theYv and theZv to its three coordinates.
     /// Remember that all the coordinates of a unit vector are
     /// implicitly modified when any single one is changed directly.
@@ -3171,26 +3535,31 @@ impl Dir {
         unsafe { crate::ffi::gp_Dir_set_coord_real3(self as *mut Self, theXv, theYv, theZv) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:86 - `gp_Dir::SetX()`
     /// Assigns the given value to the X coordinate of this   unit vector.
     pub fn set_x(&mut self, theX: f64) {
         unsafe { crate::ffi::gp_Dir_set_x(self as *mut Self, theX) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:89 - `gp_Dir::SetY()`
     /// Assigns the given value to the Y coordinate of this   unit vector.
     pub fn set_y(&mut self, theY: f64) {
         unsafe { crate::ffi::gp_Dir_set_y(self as *mut Self, theY) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:92 - `gp_Dir::SetZ()`
     /// Assigns the given value to the Z  coordinate of this   unit vector.
     pub fn set_z(&mut self, theZ: f64) {
         unsafe { crate::ffi::gp_Dir_set_z(self as *mut Self, theZ) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:95 - `gp_Dir::SetXYZ()`
     /// Assigns the three coordinates of theCoord to this unit vector.
     pub fn set_xyz(&mut self, theCoord: &crate::ffi::gp_XYZ) {
         unsafe { crate::ffi::gp_Dir_set_xyz(self as *mut Self, theCoord) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:103 - `gp_Dir::Coord()`
     /// Returns the coordinate of range theIndex :
     /// theIndex = 1 => X is returned
     /// Ithendex = 2 => Y is returned
@@ -3201,43 +3570,51 @@ impl Dir {
         unsafe { crate::ffi::gp_Dir_coord_int(self as *const Self, theIndex) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:106 - `gp_Dir::Coord()`
     /// Returns for the  unit vector  its three coordinates theXv, theYv, and theZv.
     pub fn coord_real3(&self, theXv: &mut f64, theYv: &mut f64, theZv: &mut f64) {
         unsafe { crate::ffi::gp_Dir_coord_real3(self as *const Self, theXv, theYv, theZv) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:112 - `gp_Dir::X()`
     /// Returns the X coordinate for a  unit vector.
     pub fn x(&self) -> f64 {
         unsafe { crate::ffi::gp_Dir_x(self as *const Self) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:115 - `gp_Dir::Y()`
     /// Returns the Y coordinate for a  unit vector.
     pub fn y(&self) -> f64 {
         unsafe { crate::ffi::gp_Dir_y(self as *const Self) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:118 - `gp_Dir::Z()`
     /// Returns the Z coordinate for a  unit vector.
     pub fn z(&self) -> f64 {
         unsafe { crate::ffi::gp_Dir_z(self as *const Self) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:121 - `gp_Dir::XYZ()`
     /// for this unit vector, returns  its three coordinates as a number triplea.
     pub fn xyz(&self) -> &crate::ffi::gp_XYZ {
         unsafe { &*(crate::ffi::gp_Dir_xyz(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:125 - `gp_Dir::IsEqual()`
     /// Returns True if the angle between the two directions is
     /// lower or equal to theAngularTolerance.
     pub fn is_equal(&self, theOther: &crate::ffi::gp_Dir, theAngularTolerance: f64) -> bool {
         unsafe { crate::ffi::gp_Dir_is_equal(self as *const Self, theOther, theAngularTolerance) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:132 - `gp_Dir::IsNormal()`
     /// Returns True if  the angle between this unit vector and the unit vector theOther is equal to
     /// Pi/2 (normal).
     pub fn is_normal(&self, theOther: &crate::ffi::gp_Dir, theAngularTolerance: f64) -> bool {
         unsafe { crate::ffi::gp_Dir_is_normal(self as *const Self, theOther, theAngularTolerance) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:144 - `gp_Dir::IsOpposite()`
     /// Returns True if  the angle between this unit vector and the unit vector theOther is equal to
     /// Pi (opposite).
     pub fn is_opposite(&self, theOther: &crate::ffi::gp_Dir, theAngularTolerance: f64) -> bool {
@@ -3246,6 +3623,7 @@ impl Dir {
         }
     }
 
+    /// **Source:** `gp_Dir.hxx`:152 - `gp_Dir::IsParallel()`
     /// Returns true if the angle between this unit vector and the
     /// unit vector theOther is equal to 0 or to Pi.
     /// Note: the tolerance criterion is given by theAngularTolerance.
@@ -3255,6 +3633,7 @@ impl Dir {
         }
     }
 
+    /// **Source:** `gp_Dir.hxx`:161 - `gp_Dir::Angle()`
     /// Computes the angular value in radians between <me> and
     /// <theOther>. This value is always positive in 3D space.
     /// Returns the angle in the range [0, PI]
@@ -3262,6 +3641,7 @@ impl Dir {
         unsafe { crate::ffi::gp_Dir_angle(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:171 - `gp_Dir::AngleWithRef()`
     /// Computes the angular value between <me> and <theOther>.
     /// <theVRef> is the direction of reference normal to <me> and <theOther>
     /// and its orientation gives the positive sense of rotation.
@@ -3278,6 +3658,7 @@ impl Dir {
         unsafe { crate::ffi::gp_Dir_angle_with_ref(self as *const Self, theOther, theVRef) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:177 - `gp_Dir::Cross()`
     /// Computes the cross product between two directions
     /// Raises the exception ConstructionError if the two directions
     /// are parallel because the computed vector cannot be normalized
@@ -3286,6 +3667,7 @@ impl Dir {
         unsafe { crate::ffi::gp_Dir_cross(self as *mut Self, theRight) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:186 - `gp_Dir::Crossed()`
     /// Computes the triple vector product.
     /// <me> ^ (V1 ^ V2)
     /// Raises the exception ConstructionError if V1 and V2 are parallel
@@ -3297,10 +3679,12 @@ impl Dir {
         }
     }
 
+    /// **Source:** `gp_Dir.hxx`:190 - `gp_Dir::CrossCross()`
     pub fn cross_cross(&mut self, theV1: &crate::ffi::gp_Dir, theV2: &crate::ffi::gp_Dir) {
         unsafe { crate::ffi::gp_Dir_cross_cross(self as *mut Self, theV1, theV2) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:200 - `gp_Dir::CrossCrossed()`
     /// Computes the double vector product this ^ (theV1 ^ theV2).
     /// -   CrossCrossed creates a new unit vector.
     /// Exceptions
@@ -3323,11 +3707,13 @@ impl Dir {
         }
     }
 
+    /// **Source:** `gp_Dir.hxx`:203 - `gp_Dir::Dot()`
     /// Computes the scalar product
     pub fn dot(&self, theOther: &crate::ffi::gp_Dir) -> f64 {
         unsafe { crate::ffi::gp_Dir_dot(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:212 - `gp_Dir::DotCross()`
     /// Computes the triple scalar product <me> * (theV1 ^ theV2).
     /// Warnings :
     /// The computed vector theV1' = theV1 ^ theV2 is not normalized
@@ -3337,10 +3723,12 @@ impl Dir {
         unsafe { crate::ffi::gp_Dir_dot_cross(self as *const Self, theV1, theV2) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:217 - `gp_Dir::Reverse()`
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::gp_Dir_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:224 - `gp_Dir::Reversed()`
     /// Reverses the orientation of a direction
     /// geometric transformations
     /// Performs the symmetrical transformation of a direction
@@ -3350,10 +3738,12 @@ impl Dir {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Dir_reversed(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:233 - `gp_Dir::Mirror()`
     pub fn mirror_dir(&mut self, theV: &crate::ffi::gp_Dir) {
         unsafe { crate::ffi::gp_Dir_mirror_dir(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:238 - `gp_Dir::Mirrored()`
     /// Performs the symmetrical transformation of a direction
     /// with respect to the direction theV which is the center of
     /// the  symmetry.
@@ -3363,10 +3753,12 @@ impl Dir {
         }
     }
 
+    /// **Source:** `gp_Dir.hxx`:240 - `gp_Dir::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &crate::ffi::gp_Ax1) {
         unsafe { crate::ffi::gp_Dir_mirror_ax1(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:245 - `gp_Dir::Mirrored()`
     /// Performs the symmetrical transformation of a direction
     /// with respect to an axis placement which is the axis
     /// of the symmetry.
@@ -3376,10 +3768,12 @@ impl Dir {
         }
     }
 
+    /// **Source:** `gp_Dir.hxx`:247 - `gp_Dir::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::gp_Dir_mirror_ax2(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:252 - `gp_Dir::Mirrored()`
     /// Performs the symmetrical transformation of a direction
     /// with respect to a plane. The axis placement theA2 locates
     /// the plane of the symmetry : (Location, XDirection, YDirection).
@@ -3389,10 +3783,12 @@ impl Dir {
         }
     }
 
+    /// **Source:** `gp_Dir.hxx`:254 - `gp_Dir::Rotate()`
     pub fn rotate(&mut self, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
         unsafe { crate::ffi::gp_Dir_rotate(self as *mut Self, theA1, theAng) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:258 - `gp_Dir::Rotated()`
     /// Rotates a direction. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
     pub fn rotated(
@@ -3409,10 +3805,12 @@ impl Dir {
         }
     }
 
+    /// **Source:** `gp_Dir.hxx`:265 - `gp_Dir::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::gp_Dir_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Dir.hxx`:271 - `gp_Dir::Transformed()`
     /// Transforms a direction with a "Trsf" from gp.
     /// Warnings :
     /// If the scale factor of the "Trsf" theT is negative then the
@@ -3433,6 +3831,7 @@ impl Dir {
 // From gp_Dir2d.hxx
 // ========================
 
+/// **Source:** `gp_Dir2d.hxx`:35 - `gp_Dir2d`
 /// Describes a unit vector in the plane (2D space). This unit
 /// vector is also called "Direction".
 /// See Also
@@ -3450,29 +3849,34 @@ unsafe impl crate::CppDeletable for Dir2d {
 }
 
 impl Dir2d {
+    /// **Source:** `gp_Dir2d.hxx`:41 - `gp_Dir2d::gp_Dir2d()`
     /// Creates a direction corresponding to X axis.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Dir2d_ctor()) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:48 - `gp_Dir2d::gp_Dir2d()`
     /// Normalizes the vector theV and creates a Direction. Raises ConstructionError if
     /// theV.Magnitude() <= Resolution from gp.
     pub fn new_vec2d(theV: &crate::ffi::gp_Vec2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Dir2d_ctor_vec2d(theV)) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:52 - `gp_Dir2d::gp_Dir2d()`
     /// Creates a Direction from a doublet of coordinates. Raises ConstructionError if
     /// theCoord.Modulus() <= Resolution from gp.
     pub fn new_xy(theCoord: &crate::ffi::gp_XY) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Dir2d_ctor_xy(theCoord)) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:56 - `gp_Dir2d::gp_Dir2d()`
     /// Creates a Direction with its 2 cartesian coordinates. Raises ConstructionError if
     /// Sqrt(theXv*theXv + theYv*theYv) <= Resolution from gp.
     pub fn new_real2(theXv: f64, theYv: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Dir2d_ctor_real2(theXv, theYv)) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:74 - `gp_Dir2d::SetCoord()`
     /// For this unit vector, assigns:
     /// the value theXi to:
     /// -   the X coordinate if theIndex is 1, or
@@ -3493,6 +3897,7 @@ impl Dir2d {
         unsafe { crate::ffi::gp_Dir2d_set_coord_int_real(self as *mut Self, theIndex, theXi) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:90 - `gp_Dir2d::SetCoord()`
     /// For this unit vector, assigns:
     /// -   the values theXv and theYv to its two coordinates,
     /// Warning
@@ -3511,6 +3916,7 @@ impl Dir2d {
         unsafe { crate::ffi::gp_Dir2d_set_coord_real2(self as *mut Self, theXv, theYv) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:104 - `gp_Dir2d::SetX()`
     /// Assigns the given value to the X coordinate of this unit   vector,
     /// and then normalizes it.
     /// Warning
@@ -3527,6 +3933,7 @@ impl Dir2d {
         unsafe { crate::ffi::gp_Dir2d_set_x(self as *mut Self, theX) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:118 - `gp_Dir2d::SetY()`
     /// Assigns  the given value to the Y coordinate of this unit   vector,
     /// and then normalizes it.
     /// Warning
@@ -3543,6 +3950,7 @@ impl Dir2d {
         unsafe { crate::ffi::gp_Dir2d_set_y(self as *mut Self, theY) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:133 - `gp_Dir2d::SetXY()`
     /// Assigns:
     /// -   the two coordinates of theCoord to this unit vector,
     /// and then normalizes it.
@@ -3560,6 +3968,7 @@ impl Dir2d {
         unsafe { crate::ffi::gp_Dir2d_set_xy(self as *mut Self, theCoord) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:139 - `gp_Dir2d::Coord()`
     /// For this unit vector returns the coordinate of range theIndex :
     /// theIndex = 1 => X is returned
     /// theIndex = 2 => Y is returned
@@ -3568,22 +3977,26 @@ impl Dir2d {
         unsafe { crate::ffi::gp_Dir2d_coord_int(self as *const Self, theIndex) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:143 - `gp_Dir2d::Coord()`
     /// For this unit vector returns its two coordinates theXv and theYv.
     /// Raises OutOfRange if theIndex != {1, 2}.
     pub fn coord_real2(&self, theXv: &mut f64, theYv: &mut f64) {
         unsafe { crate::ffi::gp_Dir2d_coord_real2(self as *const Self, theXv, theYv) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:146 - `gp_Dir2d::X()`
     /// For this unit vector, returns its X coordinate.
     pub fn x(&self) -> f64 {
         unsafe { crate::ffi::gp_Dir2d_x(self as *const Self) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:149 - `gp_Dir2d::Y()`
     /// For this unit vector, returns its Y coordinate.
     pub fn y(&self) -> f64 {
         unsafe { crate::ffi::gp_Dir2d_y(self as *const Self) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:154 - `gp_Dir2d::XY()`
     /// For this unit vector, returns its two coordinates as a number pair.
     /// Comparison between Directions
     /// The precision value is an input data.
@@ -3591,6 +4004,7 @@ impl Dir2d {
         unsafe { &*(crate::ffi::gp_Dir2d_xy(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:159 - `gp_Dir2d::IsEqual()`
     /// Returns True if the two vectors have the same direction
     /// i.e. the angle between this unit vector and the
     /// unit vector theOther is less than or equal to theAngularTolerance.
@@ -3598,6 +4012,7 @@ impl Dir2d {
         unsafe { crate::ffi::gp_Dir2d_is_equal(self as *const Self, theOther, theAngularTolerance) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:164 - `gp_Dir2d::IsNormal()`
     /// Returns True if the angle between this unit vector and the
     /// unit vector theOther is equal to Pi/2 or -Pi/2 (normal)
     /// i.e. Abs(Abs(<me>.Angle(theOther)) - PI/2.) <= theAngularTolerance
@@ -3607,6 +4022,7 @@ impl Dir2d {
         }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:170 - `gp_Dir2d::IsOpposite()`
     /// Returns True if the angle between this unit vector and the
     /// unit vector theOther is equal to Pi or -Pi (opposite).
     /// i.e.  PI - Abs(<me>.Angle(theOther)) <= theAngularTolerance
@@ -3616,6 +4032,7 @@ impl Dir2d {
         }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:177 - `gp_Dir2d::IsParallel()`
     /// returns true if the angle between this unit vector and unit
     /// vector theOther is equal to 0, Pi or -Pi.
     /// i.e.  Abs(Angle(<me>, theOther)) <= theAngularTolerance or
@@ -3626,35 +4043,42 @@ impl Dir2d {
         }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:182 - `gp_Dir2d::Angle()`
     /// Computes the angular value in radians between <me> and
     /// <theOther>. Returns the angle in the range [-PI, PI].
     pub fn angle(&self, theOther: &crate::ffi::gp_Dir2d) -> f64 {
         unsafe { crate::ffi::gp_Dir2d_angle(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:185 - `gp_Dir2d::Crossed()`
     /// Computes the cross product between two directions.
     pub fn crossed(&self, theRight: &crate::ffi::gp_Dir2d) -> f64 {
         unsafe { crate::ffi::gp_Dir2d_crossed(self as *const Self, theRight) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:196 - `gp_Dir2d::Dot()`
     /// Computes the scalar product
     pub fn dot(&self, theOther: &crate::ffi::gp_Dir2d) -> f64 {
         unsafe { crate::ffi::gp_Dir2d_dot(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:200 - `gp_Dir2d::Reverse()`
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::gp_Dir2d_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:203 - `gp_Dir2d::Reversed()`
     /// Reverses the orientation of a direction
     pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::gp_Dir2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Dir2d_reversed(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:212 - `gp_Dir2d::Mirror()`
     pub fn mirror_dir2d(&mut self, theV: &crate::ffi::gp_Dir2d) {
         unsafe { crate::ffi::gp_Dir2d_mirror_dir2d(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:217 - `gp_Dir2d::Mirrored()`
     /// Performs the symmetrical transformation of a direction
     /// with respect to the direction theV which is the center of
     /// the  symmetry.
@@ -3670,10 +4094,12 @@ impl Dir2d {
         }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:219 - `gp_Dir2d::Mirror()`
     pub fn mirror_ax2d(&mut self, theA: &crate::ffi::gp_Ax2d) {
         unsafe { crate::ffi::gp_Dir2d_mirror_ax2d(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:224 - `gp_Dir2d::Mirrored()`
     /// Performs the symmetrical transformation of a direction
     /// with respect to an axis placement which is the axis
     /// of the symmetry.
@@ -3686,10 +4112,12 @@ impl Dir2d {
         }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:226 - `gp_Dir2d::Rotate()`
     pub fn rotate(&mut self, Ang: f64) {
         unsafe { crate::ffi::gp_Dir2d_rotate(self as *mut Self, Ang) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:230 - `gp_Dir2d::Rotated()`
     /// Rotates a direction.  theAng is the angular value of
     /// the rotation in radians.
     pub fn rotated(&self, theAng: f64) -> crate::OwnedPtr<crate::ffi::gp_Dir2d> {
@@ -3698,10 +4126,12 @@ impl Dir2d {
         }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:237 - `gp_Dir2d::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::gp_Dir2d_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Dir2d.hxx`:243 - `gp_Dir2d::Transformed()`
     /// Transforms a direction with the "Trsf" theT.
     /// Warnings :
     /// If the scale factor of the "Trsf" theT is negative then the
@@ -3725,6 +4155,7 @@ impl Dir2d {
 // From gp_Elips.hxx
 // ========================
 
+/// **Source:** `gp_Elips.hxx`:49 - `gp_Elips`
 /// Describes an ellipse in 3D space.
 /// An ellipse is defined by its major and minor radii and
 /// positioned in space with a coordinate system (a gp_Ax2 object) as follows:
@@ -3759,11 +4190,13 @@ unsafe impl crate::CppDeletable for Elips {
 }
 
 impl Elips {
+    /// **Source:** `gp_Elips.hxx`:55 - `gp_Elips::gp_Elips()`
     /// Creates an indefinite ellipse.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Elips_ctor()) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:69 - `gp_Elips::gp_Elips()`
     /// The major radius of the ellipse is on the "XAxis" and the
     /// minor radius is on the "YAxis" of the ellipse. The "XAxis"
     /// is defined with the "XDirection" of theA2 and the "YAxis" is
@@ -3786,6 +4219,7 @@ impl Elips {
         }
     }
 
+    /// **Source:** `gp_Elips.hxx`:89 - `gp_Elips::SetAxis()`
     /// Changes the axis normal to the plane of the ellipse.
     /// It modifies the definition of this plane.
     /// The "XAxis" and the "YAxis" are recomputed.
@@ -3799,12 +4233,14 @@ impl Elips {
         unsafe { crate::ffi::gp_Elips_set_axis(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:93 - `gp_Elips::SetLocation()`
     /// Modifies this ellipse, by redefining its local coordinate
     /// so that its origin becomes theP.
     pub fn set_location(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Elips_set_location(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:98 - `gp_Elips::SetMajorRadius()`
     /// The major radius of the ellipse is on the "XAxis" (major axis)
     /// of the ellipse.
     /// Raises ConstructionError if theMajorRadius < MinorRadius.
@@ -3812,6 +4248,7 @@ impl Elips {
         unsafe { crate::ffi::gp_Elips_set_major_radius(self as *mut Self, theMajorRadius) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:109 - `gp_Elips::SetMinorRadius()`
     /// The minor radius of the ellipse is on the "YAxis" (minor axis)
     /// of the ellipse.
     /// Raises ConstructionError if theMinorRadius > MajorRadius or MinorRadius < 0.
@@ -3819,22 +4256,26 @@ impl Elips {
         unsafe { crate::ffi::gp_Elips_set_minor_radius(self as *mut Self, theMinorRadius) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:119 - `gp_Elips::SetPosition()`
     /// Modifies this ellipse, by redefining its local coordinate
     /// so that it becomes theA2.
     pub fn set_position(&mut self, theA2: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::gp_Elips_set_position(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:122 - `gp_Elips::Area()`
     /// Computes the area of the Ellipse.
     pub fn area(&self) -> f64 {
         unsafe { crate::ffi::gp_Elips_area(self as *const Self) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:125 - `gp_Elips::Axis()`
     /// Computes the axis normal to the plane of the ellipse.
     pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
         unsafe { &*(crate::ffi::gp_Elips_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:141 - `gp_Elips::Directrix1()`
     /// Computes the first or second directrix of this ellipse.
     /// These are the lines, in the plane of the ellipse, normal to
     /// the major axis, at a distance equal to
@@ -3853,6 +4294,7 @@ impl Elips {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Elips_directrix1(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:148 - `gp_Elips::Directrix2()`
     /// This line is obtained by the symmetrical transformation
     /// of "Directrix1" with respect to the "YAxis" of the ellipse.
     /// Exceptions
@@ -3862,6 +4304,7 @@ impl Elips {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Elips_directrix2(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:154 - `gp_Elips::Eccentricity()`
     /// Returns the eccentricity of the ellipse  between 0.0 and 1.0
     /// If f is the distance between the center of the ellipse and
     /// the Focus1 then the eccentricity e = f / MajorRadius.
@@ -3870,40 +4313,47 @@ impl Elips {
         unsafe { crate::ffi::gp_Elips_eccentricity(self as *const Self) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:158 - `gp_Elips::Focal()`
     /// Computes the focal distance. It is the distance between the
     /// two focus focus1 and focus2 of the ellipse.
     pub fn focal(&self) -> f64 {
         unsafe { crate::ffi::gp_Elips_focal(self as *const Self) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:165 - `gp_Elips::Focus1()`
     /// Returns the first focus of the ellipse. This focus is on the
     /// positive side of the "XAxis" of the ellipse.
     pub fn focus1(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Elips_focus1(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:169 - `gp_Elips::Focus2()`
     /// Returns the second focus of the ellipse. This focus is on the
     /// negative side of the "XAxis" of the ellipse.
     pub fn focus2(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Elips_focus2(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:173 - `gp_Elips::Location()`
     /// Returns the center of the ellipse. It is the "Location"
     /// point of the coordinate system of the ellipse.
     pub fn location(&self) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::gp_Elips_location(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:176 - `gp_Elips::MajorRadius()`
     /// Returns the major radius of the ellipse.
     pub fn major_radius(&self) -> f64 {
         unsafe { crate::ffi::gp_Elips_major_radius(self as *const Self) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:179 - `gp_Elips::MinorRadius()`
     /// Returns the minor radius of the ellipse.
     pub fn minor_radius(&self) -> f64 {
         unsafe { crate::ffi::gp_Elips_minor_radius(self as *const Self) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:184 - `gp_Elips::Parameter()`
     /// Returns p = (1 - e * e) * MajorRadius where e is the eccentricity
     /// of the ellipse.
     /// Returns 0 if MajorRadius = 0
@@ -3911,11 +4361,13 @@ impl Elips {
         unsafe { crate::ffi::gp_Elips_parameter(self as *const Self) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:187 - `gp_Elips::Position()`
     /// Returns the coordinate system of the ellipse.
     pub fn position(&self) -> &crate::ffi::gp_Ax2 {
         unsafe { &*(crate::ffi::gp_Elips_position(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:192 - `gp_Elips::XAxis()`
     /// Returns the "XAxis" of the ellipse whose origin
     /// is the center of this ellipse. It is the major axis of the
     /// ellipse.
@@ -3923,6 +4375,7 @@ impl Elips {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Elips_x_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:197 - `gp_Elips::YAxis()`
     /// Returns the "YAxis" of the ellipse whose unit vector is the "X Direction" or the "Y Direction"
     /// of the local coordinate system of this ellipse.
     /// This is the minor axis of the ellipse.
@@ -3930,10 +4383,12 @@ impl Elips {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Elips_y_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:199 - `gp_Elips::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Elips_mirror_pnt(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:203 - `gp_Elips::Mirrored()`
     /// Performs the symmetrical transformation of an ellipse with
     /// respect to the point theP which is the center of the symmetry.
     pub fn mirrored_pnt(&self, theP: &crate::ffi::gp_Pnt) -> crate::OwnedPtr<crate::ffi::gp_Elips> {
@@ -3942,10 +4397,12 @@ impl Elips {
         }
     }
 
+    /// **Source:** `gp_Elips.hxx`:205 - `gp_Elips::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &crate::ffi::gp_Ax1) {
         unsafe { crate::ffi::gp_Elips_mirror_ax1(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:209 - `gp_Elips::Mirrored()`
     /// Performs the symmetrical transformation of an ellipse with
     /// respect to an axis placement which is the axis of the symmetry.
     pub fn mirrored_ax1(
@@ -3957,10 +4414,12 @@ impl Elips {
         }
     }
 
+    /// **Source:** `gp_Elips.hxx`:211 - `gp_Elips::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::gp_Elips_mirror_ax2(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:216 - `gp_Elips::Mirrored()`
     /// Performs the symmetrical transformation of an ellipse with
     /// respect to a plane. The axis placement theA2 locates the plane
     /// of the symmetry (Location, XDirection, YDirection).
@@ -3973,10 +4432,12 @@ impl Elips {
         }
     }
 
+    /// **Source:** `gp_Elips.hxx`:218 - `gp_Elips::Rotate()`
     pub fn rotate(&mut self, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
         unsafe { crate::ffi::gp_Elips_rotate(self as *mut Self, theA1, theAng) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:222 - `gp_Elips::Rotated()`
     /// Rotates an ellipse. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
     pub fn rotated(
@@ -3993,10 +4454,12 @@ impl Elips {
         }
     }
 
+    /// **Source:** `gp_Elips.hxx`:229 - `gp_Elips::Scale()`
     pub fn scale(&mut self, theP: &crate::ffi::gp_Pnt, theS: f64) {
         unsafe { crate::ffi::gp_Elips_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:232 - `gp_Elips::Scaled()`
     /// Scales an ellipse. theS is the scaling value.
     pub fn scaled(
         &self,
@@ -4008,10 +4471,12 @@ impl Elips {
         }
     }
 
+    /// **Source:** `gp_Elips.hxx`:234 - `gp_Elips::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::gp_Elips_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:237 - `gp_Elips::Transformed()`
     /// Transforms an ellipse with the transformation theT from class Trsf.
     pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::OwnedPtr<crate::ffi::gp_Elips> {
         unsafe {
@@ -4019,10 +4484,12 @@ impl Elips {
         }
     }
 
+    /// **Source:** `gp_Elips.hxx`:239 - `gp_Elips::Translate()`
     pub fn translate_vec(&mut self, theV: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Elips_translate_vec(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:243 - `gp_Elips::Translated()`
     /// Translates an ellipse in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translated_vec(
@@ -4037,10 +4504,12 @@ impl Elips {
         }
     }
 
+    /// **Source:** `gp_Elips.hxx`:250 - `gp_Elips::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &crate::ffi::gp_Pnt, theP2: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Elips_translate_pnt2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Elips.hxx`:253 - `gp_Elips::Translated()`
     /// Translates an ellipse from the point theP1 to the point theP2.
     pub fn translated_pnt2(
         &self,
@@ -4066,6 +4535,7 @@ impl Elips {
 // From gp_Elips2d.hxx
 // ========================
 
+/// **Source:** `gp_Elips2d.hxx`:44 - `gp_Elips2d`
 /// Describes an ellipse in the plane (2D space).
 /// An ellipse is defined by its major and minor radii and
 /// positioned in the plane with a coordinate system (a
@@ -4095,11 +4565,13 @@ unsafe impl crate::CppDeletable for Elips2d {
 }
 
 impl Elips2d {
+    /// **Source:** `gp_Elips2d.hxx`:50 - `gp_Elips2d::gp_Elips2d()`
     /// Creates an indefinite ellipse.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Elips2d_ctor()) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:64 - `gp_Elips2d::gp_Elips2d()`
     /// Creates an ellipse with the major axis, the major and the
     /// minor radius. The location of the theMajorAxis is the center
     /// of the  ellipse.
@@ -4124,6 +4596,7 @@ impl Elips2d {
         }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:91 - `gp_Elips2d::gp_Elips2d()`
     /// Creates an ellipse with radii MajorRadius and
     /// MinorRadius, positioned in the plane by coordinate system theA where:
     /// -   the origin of theA is the center of the ellipse,
@@ -4153,6 +4626,7 @@ impl Elips2d {
         }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:64 - `gp_Elips2d::gp_Elips2d()`
     /// Creates an ellipse with the major axis, the major and the
     /// minor radius. The location of the theMajorAxis is the center
     /// of the  ellipse.
@@ -4169,30 +4643,35 @@ impl Elips2d {
         Self::new_ax2d_real2_bool(theMajorAxis, theMajorRadius, theMinorRadius, true)
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:104 - `gp_Elips2d::SetLocation()`
     /// Modifies this ellipse, by redefining its local coordinate system so that
     /// -   its origin becomes theP.
     pub fn set_location(&mut self, theP: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Elips2d_set_location(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:108 - `gp_Elips2d::SetMajorRadius()`
     /// Changes the value of the major radius.
     /// Raises ConstructionError if theMajorRadius < MinorRadius.
     pub fn set_major_radius(&mut self, theMajorRadius: f64) {
         unsafe { crate::ffi::gp_Elips2d_set_major_radius(self as *mut Self, theMajorRadius) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:118 - `gp_Elips2d::SetMinorRadius()`
     /// Changes the value of the minor radius.
     /// Raises ConstructionError if MajorRadius < theMinorRadius or MinorRadius < 0.0
     pub fn set_minor_radius(&mut self, theMinorRadius: f64) {
         unsafe { crate::ffi::gp_Elips2d_set_minor_radius(self as *mut Self, theMinorRadius) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:128 - `gp_Elips2d::SetAxis()`
     /// Modifies this ellipse, by redefining its local coordinate system so that
     /// it becomes theA.
     pub fn set_axis(&mut self, theA: &crate::ffi::gp_Ax22d) {
         unsafe { crate::ffi::gp_Elips2d_set_axis(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:135 - `gp_Elips2d::SetXAxis()`
     /// Modifies this ellipse, by redefining its local coordinate system so that
     /// its origin and its "X Direction"  become those
     /// of the axis theA. The "Y  Direction"  is then
@@ -4202,6 +4681,7 @@ impl Elips2d {
         unsafe { crate::ffi::gp_Elips2d_set_x_axis(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:142 - `gp_Elips2d::SetYAxis()`
     /// Modifies this ellipse, by redefining its local coordinate system so that
     /// its origin and its "Y Direction"  become those
     /// of the axis theA. The "X  Direction"  is then
@@ -4211,11 +4691,13 @@ impl Elips2d {
         unsafe { crate::ffi::gp_Elips2d_set_y_axis(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:145 - `gp_Elips2d::Area()`
     /// Computes the area of the ellipse.
     pub fn area(&self) -> f64 {
         unsafe { crate::ffi::gp_Elips2d_area(self as *const Self) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:149 - `gp_Elips2d::Coefficients()`
     /// Returns the coefficients of the implicit equation of the ellipse.
     /// theA * (X**2) + theB * (Y**2) + 2*theC*(X*Y) + 2*theD*X + 2*theE*Y + theF = 0.
     pub fn coefficients(
@@ -4240,6 +4722,7 @@ impl Elips2d {
         }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:166 - `gp_Elips2d::Directrix1()`
     /// This directrix is the line normal to the XAxis of the ellipse
     /// in the local plane (Z = 0) at a distance d = MajorRadius / e
     /// from the center of the ellipse, where e is the eccentricity of
@@ -4254,6 +4737,7 @@ impl Elips2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Elips2d_directrix1(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:173 - `gp_Elips2d::Directrix2()`
     /// This line is obtained by the symmetrical transformation
     /// of "Directrix1" with respect to the minor axis of the ellipse.
     ///
@@ -4263,6 +4747,7 @@ impl Elips2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Elips2d_directrix2(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:179 - `gp_Elips2d::Eccentricity()`
     /// Returns the eccentricity of the ellipse  between 0.0 and 1.0
     /// If f is the distance between the center of the ellipse and
     /// the Focus1 then the eccentricity e = f / MajorRadius.
@@ -4271,39 +4756,46 @@ impl Elips2d {
         unsafe { crate::ffi::gp_Elips2d_eccentricity(self as *const Self) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:183 - `gp_Elips2d::Focal()`
     /// Returns the distance between the center of the ellipse
     /// and focus1 or focus2.
     pub fn focal(&self) -> f64 {
         unsafe { crate::ffi::gp_Elips2d_focal(self as *const Self) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:190 - `gp_Elips2d::Focus1()`
     /// Returns the first focus of the ellipse. This focus is on the
     /// positive side of the major axis of the ellipse.
     pub fn focus1(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Elips2d_focus1(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:194 - `gp_Elips2d::Focus2()`
     /// Returns the second focus of the ellipse. This focus is on the
     /// negative side of the major axis of the ellipse.
     pub fn focus2(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Elips2d_focus2(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:197 - `gp_Elips2d::Location()`
     /// Returns the center of the ellipse.
     pub fn location(&self) -> &crate::ffi::gp_Pnt2d {
         unsafe { &*(crate::ffi::gp_Elips2d_location(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:200 - `gp_Elips2d::MajorRadius()`
     /// Returns the major radius of the Ellipse.
     pub fn major_radius(&self) -> f64 {
         unsafe { crate::ffi::gp_Elips2d_major_radius(self as *const Self) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:203 - `gp_Elips2d::MinorRadius()`
     /// Returns the minor radius of the Ellipse.
     pub fn minor_radius(&self) -> f64 {
         unsafe { crate::ffi::gp_Elips2d_minor_radius(self as *const Self) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:208 - `gp_Elips2d::Parameter()`
     /// Returns p = (1 - e * e) * MajorRadius where e is the eccentricity
     /// of the ellipse.
     /// Returns 0 if MajorRadius = 0
@@ -4311,40 +4803,48 @@ impl Elips2d {
         unsafe { crate::ffi::gp_Elips2d_parameter(self as *const Self) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:211 - `gp_Elips2d::Axis()`
     /// Returns the major axis of the ellipse.
     pub fn axis(&self) -> &crate::ffi::gp_Ax22d {
         unsafe { &*(crate::ffi::gp_Elips2d_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:214 - `gp_Elips2d::XAxis()`
     /// Returns the major axis of the ellipse.
     pub fn x_axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Elips2d_x_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:218 - `gp_Elips2d::YAxis()`
     /// Returns the minor axis of the ellipse.
     /// Reverses the direction of the circle.
     pub fn y_axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Elips2d_y_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:220 - `gp_Elips2d::Reverse()`
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::gp_Elips2d_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:227 - `gp_Elips2d::Reversed()`
     pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Elips2d_reversed(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:231 - `gp_Elips2d::IsDirect()`
     /// Returns true if the local coordinate system is direct
     /// and false in the other case.
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::gp_Elips2d_is_direct(self as *const Self) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:233 - `gp_Elips2d::Mirror()`
     pub fn mirror_pnt2d(&mut self, theP: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Elips2d_mirror_pnt2d(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:237 - `gp_Elips2d::Mirrored()`
     /// Performs the symmetrical transformation of a ellipse with respect
     /// to the point theP which is the center of the symmetry
     pub fn mirrored_pnt2d(
@@ -4359,10 +4859,12 @@ impl Elips2d {
         }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:239 - `gp_Elips2d::Mirror()`
     pub fn mirror_ax2d(&mut self, theA: &crate::ffi::gp_Ax2d) {
         unsafe { crate::ffi::gp_Elips2d_mirror_ax2d(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:243 - `gp_Elips2d::Mirrored()`
     /// Performs the symmetrical transformation of a ellipse with respect
     /// to an axis placement which is the axis of the symmetry.
     pub fn mirrored_ax2d(
@@ -4377,10 +4879,12 @@ impl Elips2d {
         }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:245 - `gp_Elips2d::Rotate()`
     pub fn rotate(&mut self, theP: &crate::ffi::gp_Pnt2d, theAng: f64) {
         unsafe { crate::ffi::gp_Elips2d_rotate(self as *mut Self, theP, theAng) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:247 - `gp_Elips2d::Rotated()`
     pub fn rotated(
         &self,
         theP: &crate::ffi::gp_Pnt2d,
@@ -4395,10 +4899,12 @@ impl Elips2d {
         }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:254 - `gp_Elips2d::Scale()`
     pub fn scale(&mut self, theP: &crate::ffi::gp_Pnt2d, theS: f64) {
         unsafe { crate::ffi::gp_Elips2d_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:257 - `gp_Elips2d::Scaled()`
     /// Scales a ellipse. theS is the scaling value.
     pub fn scaled(
         &self,
@@ -4414,10 +4920,12 @@ impl Elips2d {
         }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:259 - `gp_Elips2d::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::gp_Elips2d_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:262 - `gp_Elips2d::Transformed()`
     /// Transforms an ellipse with the transformation theT from class Trsf2d.
     pub fn transformed(
         &self,
@@ -4428,10 +4936,12 @@ impl Elips2d {
         }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:264 - `gp_Elips2d::Translate()`
     pub fn translate_vec2d(&mut self, theV: &crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::gp_Elips2d_translate_vec2d(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:268 - `gp_Elips2d::Translated()`
     /// Translates a ellipse in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translated_vec2d(
@@ -4446,10 +4956,12 @@ impl Elips2d {
         }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:275 - `gp_Elips2d::Translate()`
     pub fn translate_pnt2d2(&mut self, theP1: &crate::ffi::gp_Pnt2d, theP2: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Elips2d_translate_pnt2d2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Elips2d.hxx`:278 - `gp_Elips2d::Translated()`
     /// Translates a ellipse from the point theP1 to the point theP2.
     pub fn translated_pnt2d2(
         &self,
@@ -4475,6 +4987,7 @@ impl Elips2d {
 // From gp_GTrsf.hxx
 // ========================
 
+/// **Source:** `gp_GTrsf.hxx`:57 - `gp_GTrsf`
 /// Defines a non-persistent transformation in 3D space.
 /// This transformation is a general transformation.
 /// It can be a gp_Trsf, an affinity, or you can define
@@ -4509,11 +5022,13 @@ unsafe impl crate::CppDeletable for GTrsf {
 }
 
 impl GTrsf {
+    /// **Source:** `gp_GTrsf.hxx`:63 - `gp_GTrsf::gp_GTrsf()`
     /// Returns the Identity transformation.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_GTrsf_ctor()) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:74 - `gp_GTrsf::gp_GTrsf()`
     /// Converts the gp_Trsf transformation theT into a
     /// general transformation, i.e. Returns a GTrsf with
     /// the same matrix of coefficients as the Trsf theT.
@@ -4521,6 +5036,7 @@ impl GTrsf {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_GTrsf_ctor_trsf(theT)) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:85 - `gp_GTrsf::gp_GTrsf()`
     /// Creates a transformation based on the matrix theM and the
     /// vector theV where theM defines the vectorial part of
     /// the transformation, and V the translation part, or
@@ -4531,6 +5047,7 @@ impl GTrsf {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_GTrsf_ctor_mat_xyz(theM, theV)) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:100 - `gp_GTrsf::SetAffinity()`
     /// Changes this transformation into an affinity of ratio theRatio
     /// with respect to the axis theA1.
     /// Note: an affinity is a point-by-point transformation that
@@ -4542,6 +5059,7 @@ impl GTrsf {
         unsafe { crate::ffi::gp_GTrsf_set_affinity_ax1_real(self as *mut Self, theA1, theRatio) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:110 - `gp_GTrsf::SetAffinity()`
     /// Changes this transformation into an affinity of ratio theRatio
     /// with respect to  the plane defined by the origin, the "X Direction" and
     /// the "Y Direction" of coordinate system theA2.
@@ -4554,6 +5072,7 @@ impl GTrsf {
         unsafe { crate::ffi::gp_GTrsf_set_affinity_ax2_real(self as *mut Self, theA2, theRatio) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:115 - `gp_GTrsf::SetValue()`
     /// Replaces  the coefficient (theRow, theCol) of the matrix representing
     /// this transformation by theValue.  Raises OutOfRange
     /// if  theRow < 1 or theRow > 3 or theCol < 1 or theCol > 4
@@ -4561,28 +5080,33 @@ impl GTrsf {
         unsafe { crate::ffi::gp_GTrsf_set_value(self as *mut Self, theRow, theCol, theValue) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:120 - `gp_GTrsf::SetVectorialPart()`
     /// Replaces the vectorial part of this transformation by theMatrix.
     pub fn set_vectorial_part(&mut self, theMatrix: &crate::ffi::gp_Mat) {
         unsafe { crate::ffi::gp_GTrsf_set_vectorial_part(self as *mut Self, theMatrix) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:129 - `gp_GTrsf::SetTranslationPart()`
     /// Replaces the translation part of
     /// this transformation by the coordinates of the number triple theCoord.
     pub fn set_translation_part(&mut self, theCoord: &crate::ffi::gp_XYZ) {
         unsafe { crate::ffi::gp_GTrsf_set_translation_part(self as *mut Self, theCoord) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:132 - `gp_GTrsf::SetTrsf()`
     /// Assigns the vectorial and translation parts of theT to this transformation.
     pub fn set_trsf(&mut self, theT: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::gp_GTrsf_set_trsf(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:142 - `gp_GTrsf::IsNegative()`
     /// Returns true if the determinant of the vectorial part of
     /// this transformation is negative.
     pub fn is_negative(&self) -> bool {
         unsafe { crate::ffi::gp_GTrsf_is_negative(self as *const Self) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:152 - `gp_GTrsf::IsSingular()`
     /// Returns true if this transformation is singular (and
     /// therefore, cannot be inverted).
     /// Note: The Gauss LU decomposition is used to invert the
@@ -4595,6 +5119,7 @@ impl GTrsf {
         unsafe { crate::ffi::gp_GTrsf_is_singular(self as *const Self) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:159 - `gp_GTrsf::Form()`
     /// Returns the nature of the transformation.  It can be an
     /// identity transformation, a rotation, a translation, a mirror
     /// transformation (relative to a point, an axis or a plane), a
@@ -4606,6 +5131,7 @@ impl GTrsf {
         }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:169 - `gp_GTrsf::SetForm()`
     /// verify and set the shape of the GTrsf Other or CompoundTrsf
     /// Ex :
     /// @code
@@ -4618,27 +5144,32 @@ impl GTrsf {
         unsafe { crate::ffi::gp_GTrsf_set_form(self as *mut Self) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:172 - `gp_GTrsf::TranslationPart()`
     /// Returns the translation part of the GTrsf.
     pub fn translation_part(&self) -> &crate::ffi::gp_XYZ {
         unsafe { &*(crate::ffi::gp_GTrsf_translation_part(self as *const Self)) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:176 - `gp_GTrsf::VectorialPart()`
     /// Computes the vectorial part of the GTrsf. The returned Matrix
     /// is a  3*3 matrix.
     pub fn vectorial_part(&self) -> &crate::ffi::gp_Mat {
         unsafe { &*(crate::ffi::gp_GTrsf_vectorial_part(self as *const Self)) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:180 - `gp_GTrsf::Value()`
     /// Returns the coefficients of the global matrix of transformation.
     /// Raises OutOfRange if theRow < 1 or theRow > 3 or theCol < 1 or theCol > 4
     pub fn value(&self, theRow: i32, theCol: i32) -> f64 {
         unsafe { crate::ffi::gp_GTrsf_value(self as *const Self, theRow, theCol) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:187 - `gp_GTrsf::Invert()`
     pub fn invert(&mut self) {
         unsafe { crate::ffi::gp_GTrsf_invert(self as *mut Self) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:192 - `gp_GTrsf::Inverted()`
     /// Computes the reverse transformation.
     /// Raises an exception if the matrix of the transformation
     /// is not inversible.
@@ -4646,6 +5177,7 @@ impl GTrsf {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_GTrsf_inverted(self as *const Self)) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:214 - `gp_GTrsf::Multiplied()`
     /// Computes the transformation composed from theT and <me>.
     /// In a C++ implementation you can also write Tcomposed = <me> * theT.
     /// Example :
@@ -4667,12 +5199,14 @@ impl GTrsf {
         }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:225 - `gp_GTrsf::Multiply()`
     /// Computes the transformation composed with <me> and theT.
     /// <me> = <me> * theT
     pub fn multiply(&mut self, theT: &crate::ffi::gp_GTrsf) {
         unsafe { crate::ffi::gp_GTrsf_multiply(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:232 - `gp_GTrsf::PreMultiply()`
     /// Computes the product of the transformation theT and this
     /// transformation and assigns the result to this transformation.
     /// this = theT * this
@@ -4680,10 +5214,12 @@ impl GTrsf {
         unsafe { crate::ffi::gp_GTrsf_pre_multiply(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:234 - `gp_GTrsf::Power()`
     pub fn power(&mut self, theN: i32) {
         unsafe { crate::ffi::gp_GTrsf_power(self as *mut Self, theN) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:249 - `gp_GTrsf::Powered()`
     /// Computes:
     /// -   the product of this transformation multiplied by itself
     /// theN times, if theN is positive, or
@@ -4703,15 +5239,18 @@ impl GTrsf {
         }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:256 - `gp_GTrsf::Transforms()`
     pub fn transforms_xyz(&self, theCoord: &mut crate::ffi::gp_XYZ) {
         unsafe { crate::ffi::gp_GTrsf_transforms_xyz(self as *const Self, theCoord) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:259 - `gp_GTrsf::Transforms()`
     /// Transforms a triplet XYZ with a GTrsf.
     pub fn transforms_real3(&self, theX: &mut f64, theY: &mut f64, theZ: &mut f64) {
         unsafe { crate::ffi::gp_GTrsf_transforms_real3(self as *const Self, theX, theY, theZ) }
     }
 
+    /// **Source:** `gp_GTrsf.hxx`:261 - `gp_GTrsf::Trsf()`
     pub fn trsf(&self) -> crate::OwnedPtr<crate::ffi::gp_Trsf> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_GTrsf_trsf(self as *const Self)) }
     }
@@ -4726,6 +5265,7 @@ impl GTrsf {
 // From gp_GTrsf2d.hxx
 // ========================
 
+/// **Source:** `gp_GTrsf2d.hxx`:48 - `gp_GTrsf2d`
 /// Defines a non persistent transformation in 2D space.
 /// This transformation is a general transformation.
 /// It can be a gp_Trsf2d, an affinity, or you can
@@ -4759,17 +5299,20 @@ unsafe impl crate::CppDeletable for GTrsf2d {
 }
 
 impl GTrsf2d {
+    /// **Source:** `gp_GTrsf2d.hxx`:54 - `gp_GTrsf2d::gp_GTrsf2d()`
     /// returns identity transformation.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_GTrsf2d_ctor()) }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:64 - `gp_GTrsf2d::gp_GTrsf2d()`
     /// Converts the gp_Trsf2d transformation theT into a
     /// general transformation.
     pub fn new_trsf2d(theT: &crate::ffi::gp_Trsf2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_GTrsf2d_ctor_trsf2d(theT)) }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:69 - `gp_GTrsf2d::gp_GTrsf2d()`
     /// Creates   a transformation based on the matrix theM and the
     /// vector theV where theM defines the vectorial part of the
     /// transformation, and theV the translation part.
@@ -4780,6 +5323,7 @@ impl GTrsf2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_GTrsf2d_ctor_mat2d_xy(theM, theV)) }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:83 - `gp_GTrsf2d::SetAffinity()`
     /// Changes this transformation into an affinity of ratio theRatio
     /// with respect to the axis theA.
     /// Note: An affinity is a point-by-point transformation that
@@ -4790,6 +5334,7 @@ impl GTrsf2d {
         unsafe { crate::ffi::gp_GTrsf2d_set_affinity(self as *mut Self, theA, theRatio) }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:88 - `gp_GTrsf2d::SetValue()`
     /// Replaces   the coefficient (theRow, theCol) of the matrix representing
     /// this transformation by theValue,
     /// Raises OutOfRange if theRow < 1 or theRow > 2 or theCol < 1 or theCol > 3
@@ -4797,28 +5342,33 @@ impl GTrsf2d {
         unsafe { crate::ffi::gp_GTrsf2d_set_value(self as *mut Self, theRow, theCol, theValue) }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:94 - `gp_GTrsf2d::SetTranslationPart()`
     /// Replaces the translation part of this
     /// transformation by the coordinates of the number pair theCoord.
     pub fn set_translation_part(&mut self, theCoord: &crate::ffi::gp_XY) {
         unsafe { crate::ffi::gp_GTrsf2d_set_translation_part(self as *mut Self, theCoord) }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:97 - `gp_GTrsf2d::SetTrsf2d()`
     /// Assigns the vectorial and translation parts of theT to this transformation.
     pub fn set_trsf2d(&mut self, theT: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::gp_GTrsf2d_set_trsf2d(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:100 - `gp_GTrsf2d::SetVectorialPart()`
     /// Replaces the vectorial part of this transformation by theMatrix.
     pub fn set_vectorial_part(&mut self, theMatrix: &crate::ffi::gp_Mat2d) {
         unsafe { crate::ffi::gp_GTrsf2d_set_vectorial_part(self as *mut Self, theMatrix) }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:109 - `gp_GTrsf2d::IsNegative()`
     /// Returns true if the determinant of the vectorial part of
     /// this transformation is negative.
     pub fn is_negative(&self) -> bool {
         unsafe { crate::ffi::gp_GTrsf2d_is_negative(self as *const Self) }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:119 - `gp_GTrsf2d::IsSingular()`
     /// Returns true if this transformation is singular (and
     /// therefore, cannot be inverted).
     /// Note: The Gauss LU decomposition is used to invert the
@@ -4831,6 +5381,7 @@ impl GTrsf2d {
         unsafe { crate::ffi::gp_GTrsf2d_is_singular(self as *const Self) }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:126 - `gp_GTrsf2d::Form()`
     /// Returns the nature of the transformation.  It can be
     /// an identity transformation, a rotation, a translation, a mirror
     /// transformation (relative to a point or axis), a scaling
@@ -4842,27 +5393,32 @@ impl GTrsf2d {
         }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:129 - `gp_GTrsf2d::TranslationPart()`
     /// Returns the translation part of the GTrsf2d.
     pub fn translation_part(&self) -> &crate::ffi::gp_XY {
         unsafe { &*(crate::ffi::gp_GTrsf2d_translation_part(self as *const Self)) }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:133 - `gp_GTrsf2d::VectorialPart()`
     /// Computes the vectorial part of the GTrsf2d. The returned
     /// Matrix is a 2*2 matrix.
     pub fn vectorial_part(&self) -> &crate::ffi::gp_Mat2d {
         unsafe { &*(crate::ffi::gp_GTrsf2d_vectorial_part(self as *const Self)) }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:137 - `gp_GTrsf2d::Value()`
     /// Returns the coefficients of the global matrix of transformation.
     /// Raised OutOfRange if theRow < 1 or theRow > 2 or theCol < 1 or theCol > 3
     pub fn value(&self, theRow: i32, theCol: i32) -> f64 {
         unsafe { crate::ffi::gp_GTrsf2d_value(self as *const Self, theRow, theCol) }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:144 - `gp_GTrsf2d::Invert()`
     pub fn invert(&mut self) {
         unsafe { crate::ffi::gp_GTrsf2d_invert(self as *mut Self) }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:149 - `gp_GTrsf2d::Inverted()`
     /// Computes the reverse transformation.
     /// Raised an exception if the matrix of the transformation
     /// is not inversible.
@@ -4870,6 +5426,7 @@ impl GTrsf2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_GTrsf2d_inverted(self as *const Self)) }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:171 - `gp_GTrsf2d::Multiplied()`
     /// Computes the transformation composed with theT and <me>.
     /// In a C++ implementation you can also write Tcomposed = <me> * theT.
     /// Example :
@@ -4894,10 +5451,12 @@ impl GTrsf2d {
         }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:180 - `gp_GTrsf2d::Multiply()`
     pub fn multiply(&mut self, theT: &crate::ffi::gp_GTrsf2d) {
         unsafe { crate::ffi::gp_GTrsf2d_multiply(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:187 - `gp_GTrsf2d::PreMultiply()`
     /// Computes the product of the transformation theT and this
     /// transformation, and assigns the result to this transformation:
     /// this = theT * this
@@ -4905,10 +5464,12 @@ impl GTrsf2d {
         unsafe { crate::ffi::gp_GTrsf2d_pre_multiply(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:189 - `gp_GTrsf2d::Power()`
     pub fn power(&mut self, theN: i32) {
         unsafe { crate::ffi::gp_GTrsf2d_power(self as *mut Self, theN) }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:198 - `gp_GTrsf2d::Powered()`
     /// Computes the following composition of transformations
     /// <me> * <me> * .......* <me>, theN time.
     /// if theN = 0 <me> = Identity
@@ -4922,10 +5483,12 @@ impl GTrsf2d {
         }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:205 - `gp_GTrsf2d::Transforms()`
     pub fn transforms_xy(&self, theCoord: &mut crate::ffi::gp_XY) {
         unsafe { crate::ffi::gp_GTrsf2d_transforms_xy(self as *const Self, theCoord) }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:207 - `gp_GTrsf2d::Transformed()`
     pub fn transformed(&self, theCoord: &crate::ffi::gp_XY) -> crate::OwnedPtr<crate::ffi::gp_XY> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_GTrsf2d_transformed(
@@ -4935,6 +5498,7 @@ impl GTrsf2d {
         }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:221 - `gp_GTrsf2d::Transforms()`
     /// Applies this transformation to the coordinates:
     /// -   of the number pair Coord, or
     /// -   X and Y.
@@ -4946,6 +5510,7 @@ impl GTrsf2d {
         unsafe { crate::ffi::gp_GTrsf2d_transforms_real2(self as *const Self, theX, theY) }
     }
 
+    /// **Source:** `gp_GTrsf2d.hxx`:227 - `gp_GTrsf2d::Trsf2d()`
     /// Converts this transformation into a gp_Trsf2d transformation.
     /// Exceptions
     /// Standard_ConstructionError if this transformation
@@ -4964,6 +5529,7 @@ impl GTrsf2d {
 // From gp_Hypr.hxx
 // ========================
 
+/// **Source:** `gp_Hypr.hxx`:71 - `gp_Hypr`
 /// Describes a branch of a hyperbola in 3D space.
 /// A hyperbola is defined by its major and minor radii and
 /// positioned in space with a coordinate system (a gp_Ax2
@@ -5019,11 +5585,13 @@ unsafe impl crate::CppDeletable for Hypr {
 }
 
 impl Hypr {
+    /// **Source:** `gp_Hypr.hxx`:77 - `gp_Hypr::gp_Hypr()`
     /// Creates of an indefinite hyperbola.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr_ctor()) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:101 - `gp_Hypr::gp_Hypr()`
     /// Creates a hyperbola with radius theMajorRadius and
     /// theMinorRadius, positioned in the space by the
     /// coordinate system theA2 such that:
@@ -5056,6 +5624,7 @@ impl Hypr {
         }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:119 - `gp_Hypr::SetAxis()`
     /// Modifies this hyperbola, by redefining its local coordinate
     /// system so that:
     /// -   its origin and "main Direction" become those of the
@@ -5067,12 +5636,14 @@ impl Hypr {
         unsafe { crate::ffi::gp_Hypr_set_axis(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:123 - `gp_Hypr::SetLocation()`
     /// Modifies this hyperbola, by redefining its local coordinate
     /// system so that its origin becomes theP.
     pub fn set_location(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Hypr_set_location(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:128 - `gp_Hypr::SetMajorRadius()`
     /// Modifies the major  radius of this hyperbola.
     /// Exceptions
     /// Standard_ConstructionError if theMajorRadius is negative.
@@ -5080,6 +5651,7 @@ impl Hypr {
         unsafe { crate::ffi::gp_Hypr_set_major_radius(self as *mut Self, theMajorRadius) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:139 - `gp_Hypr::SetMinorRadius()`
     /// Modifies the minor  radius of this hyperbola.
     /// Exceptions
     /// Standard_ConstructionError if theMinorRadius is negative.
@@ -5087,12 +5659,14 @@ impl Hypr {
         unsafe { crate::ffi::gp_Hypr_set_minor_radius(self as *mut Self, theMinorRadius) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:149 - `gp_Hypr::SetPosition()`
     /// Modifies this hyperbola, by redefining its local coordinate
     /// system so that it becomes A2.
     pub fn set_position(&mut self, theA2: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::gp_Hypr_set_position(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:156 - `gp_Hypr::Asymptote1()`
     /// In the local coordinate system of the hyperbola the equation of
     /// the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0 and the
     /// equation of the first asymptote is Y = (B/A)*X
@@ -5102,6 +5676,7 @@ impl Hypr {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr_asymptote1(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:163 - `gp_Hypr::Asymptote2()`
     /// In the local coordinate system of the hyperbola the equation of
     /// the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0 and the
     /// equation of the first asymptote is Y = -(B/A)*X.
@@ -5111,12 +5686,14 @@ impl Hypr {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr_asymptote2(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:167 - `gp_Hypr::Axis()`
     /// Returns the axis passing through the center,
     /// and normal to the plane of this hyperbola.
     pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
         unsafe { &*(crate::ffi::gp_Hypr_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:171 - `gp_Hypr::ConjugateBranch1()`
     /// Computes the branch of hyperbola which is on the positive side of the
     /// "YAxis" of <me>.
     pub fn conjugate_branch1(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr> {
@@ -5125,6 +5702,7 @@ impl Hypr {
         }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:180 - `gp_Hypr::ConjugateBranch2()`
     /// Computes the branch of hyperbola which is on the negative side of the
     /// "YAxis" of <me>.
     pub fn conjugate_branch2(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr> {
@@ -5133,6 +5711,7 @@ impl Hypr {
         }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:195 - `gp_Hypr::Directrix1()`
     /// This directrix is the line normal to the XAxis of the hyperbola
     /// in the local plane (Z = 0) at a distance d = MajorRadius / e
     /// from the center of the hyperbola, where e is the eccentricity of
@@ -5145,12 +5724,14 @@ impl Hypr {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr_directrix1(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:199 - `gp_Hypr::Directrix2()`
     /// This line is obtained by the symmetrical transformation
     /// of "Directrix1" with respect to the "YAxis" of the hyperbola.
     pub fn directrix2(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr_directrix2(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:205 - `gp_Hypr::Eccentricity()`
     /// Returns the eccentricity of the hyperbola (e > 1).
     /// If f is the distance between the location of the hyperbola
     /// and the Focus1 then the eccentricity e = f / MajorRadius. Raises DomainError if MajorRadius =
@@ -5159,42 +5740,49 @@ impl Hypr {
         unsafe { crate::ffi::gp_Hypr_eccentricity(self as *const Self) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:214 - `gp_Hypr::Focal()`
     /// Computes the focal distance. It is the distance between the
     /// the two focus of the hyperbola.
     pub fn focal(&self) -> f64 {
         unsafe { crate::ffi::gp_Hypr_focal(self as *const Self) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:221 - `gp_Hypr::Focus1()`
     /// Returns the first focus of the hyperbola. This focus is on the
     /// positive side of the "XAxis" of the hyperbola.
     pub fn focus1(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr_focus1(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:225 - `gp_Hypr::Focus2()`
     /// Returns the second focus of the hyperbola. This focus is on the
     /// negative side of the "XAxis" of the hyperbola.
     pub fn focus2(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr_focus2(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:229 - `gp_Hypr::Location()`
     /// Returns  the location point of the hyperbola. It is the
     /// intersection point between the "XAxis" and the "YAxis".
     pub fn location(&self) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::gp_Hypr_location(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:233 - `gp_Hypr::MajorRadius()`
     /// Returns the major radius of the hyperbola. It is the radius
     /// on the "XAxis" of the hyperbola.
     pub fn major_radius(&self) -> f64 {
         unsafe { crate::ffi::gp_Hypr_major_radius(self as *const Self) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:237 - `gp_Hypr::MinorRadius()`
     /// Returns the minor radius of the hyperbola. It is the radius
     /// on the "YAxis" of the hyperbola.
     pub fn minor_radius(&self) -> f64 {
         unsafe { crate::ffi::gp_Hypr_minor_radius(self as *const Self) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:242 - `gp_Hypr::OtherBranch()`
     /// Returns the branch of hyperbola obtained by doing the
     /// symmetrical transformation of <me> with respect to the
     /// "YAxis"  of <me>.
@@ -5202,6 +5790,7 @@ impl Hypr {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr_other_branch(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:252 - `gp_Hypr::Parameter()`
     /// Returns p = (e * e - 1) * MajorRadius where e is the
     /// eccentricity of the hyperbola.
     /// Raises DomainError if MajorRadius = 0.0
@@ -5209,11 +5798,13 @@ impl Hypr {
         unsafe { crate::ffi::gp_Hypr_parameter(self as *const Self) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:260 - `gp_Hypr::Position()`
     /// Returns the coordinate system of the hyperbola.
     pub fn position(&self) -> &crate::ffi::gp_Ax2 {
         unsafe { &*(crate::ffi::gp_Hypr_position(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:268 - `gp_Hypr::XAxis()`
     /// Computes an axis, whose
     /// -   the origin is the center of this hyperbola, and
     /// -   the unit vector is the "X Direction"
@@ -5224,6 +5815,7 @@ impl Hypr {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr_x_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:275 - `gp_Hypr::YAxis()`
     /// Computes an axis, whose
     /// -   the origin is the center of this hyperbola, and
     /// -   the unit vector is the "Y Direction"
@@ -5233,10 +5825,12 @@ impl Hypr {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr_y_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:277 - `gp_Hypr::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Hypr_mirror_pnt(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:281 - `gp_Hypr::Mirrored()`
     /// Performs the symmetrical transformation of an hyperbola with
     /// respect  to the point theP which is the center of the symmetry.
     pub fn mirrored_pnt(&self, theP: &crate::ffi::gp_Pnt) -> crate::OwnedPtr<crate::ffi::gp_Hypr> {
@@ -5245,10 +5839,12 @@ impl Hypr {
         }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:283 - `gp_Hypr::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &crate::ffi::gp_Ax1) {
         unsafe { crate::ffi::gp_Hypr_mirror_ax1(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:287 - `gp_Hypr::Mirrored()`
     /// Performs the symmetrical transformation of an hyperbola with
     /// respect to an axis placement which is the axis of the symmetry.
     pub fn mirrored_ax1(&self, theA1: &crate::ffi::gp_Ax1) -> crate::OwnedPtr<crate::ffi::gp_Hypr> {
@@ -5257,10 +5853,12 @@ impl Hypr {
         }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:289 - `gp_Hypr::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::gp_Hypr_mirror_ax2(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:294 - `gp_Hypr::Mirrored()`
     /// Performs the symmetrical transformation of an hyperbola with
     /// respect to a plane. The axis placement theA2 locates the plane
     /// of the symmetry (Location, XDirection, YDirection).
@@ -5270,10 +5868,12 @@ impl Hypr {
         }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:296 - `gp_Hypr::Rotate()`
     pub fn rotate(&mut self, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
         unsafe { crate::ffi::gp_Hypr_rotate(self as *mut Self, theA1, theAng) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:300 - `gp_Hypr::Rotated()`
     /// Rotates an hyperbola. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
     pub fn rotated(
@@ -5290,10 +5890,12 @@ impl Hypr {
         }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:307 - `gp_Hypr::Scale()`
     pub fn scale(&mut self, theP: &crate::ffi::gp_Pnt, theS: f64) {
         unsafe { crate::ffi::gp_Hypr_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:310 - `gp_Hypr::Scaled()`
     /// Scales an hyperbola. theS is the scaling value.
     pub fn scaled(
         &self,
@@ -5305,10 +5907,12 @@ impl Hypr {
         }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:312 - `gp_Hypr::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::gp_Hypr_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:316 - `gp_Hypr::Transformed()`
     /// Transforms an hyperbola with the transformation theT from
     /// class Trsf.
     pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::OwnedPtr<crate::ffi::gp_Hypr> {
@@ -5317,10 +5921,12 @@ impl Hypr {
         }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:318 - `gp_Hypr::Translate()`
     pub fn translate_vec(&mut self, theV: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Hypr_translate_vec(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:322 - `gp_Hypr::Translated()`
     /// Translates an hyperbola in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translated_vec(
@@ -5332,10 +5938,12 @@ impl Hypr {
         }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:329 - `gp_Hypr::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &crate::ffi::gp_Pnt, theP2: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Hypr_translate_pnt2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Hypr.hxx`:332 - `gp_Hypr::Translated()`
     /// Translates an hyperbola from the point theP1 to the point theP2.
     pub fn translated_pnt2(
         &self,
@@ -5361,6 +5969,7 @@ impl Hypr {
 // From gp_Hypr2d.hxx
 // ========================
 
+/// **Source:** `gp_Hypr2d.hxx`:65 - `gp_Hypr2d`
 /// Describes a branch of a hyperbola in the plane (2D space).
 /// A hyperbola is defined by its major and minor radii, and
 /// positioned in the plane with a coordinate system (a
@@ -5410,11 +6019,13 @@ unsafe impl crate::CppDeletable for Hypr2d {
 }
 
 impl Hypr2d {
+    /// **Source:** `gp_Hypr2d.hxx`:71 - `gp_Hypr2d::gp_Hypr2d()`
     /// Creates of an indefinite hyperbola.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr2d_ctor()) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:87 - `gp_Hypr2d::gp_Hypr2d()`
     /// Creates a hyperbola with radii theMajorRadius and
     /// theMinorRadius, centered on the origin of theMajorAxis
     /// and where the unit vector of theMajorAxis is the "X
@@ -5441,6 +6052,7 @@ impl Hypr2d {
         }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:114 - `gp_Hypr2d::gp_Hypr2d()`
     /// a hyperbola with radii theMajorRadius and
     /// theMinorRadius, positioned in the plane by coordinate system theA where:
     /// -   the origin of theA is the center of the hyperbola,
@@ -5470,6 +6082,7 @@ impl Hypr2d {
         }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:87 - `gp_Hypr2d::gp_Hypr2d()`
     /// Creates a hyperbola with radii theMajorRadius and
     /// theMinorRadius, centered on the origin of theMajorAxis
     /// and where the unit vector of theMajorAxis is the "X
@@ -5488,12 +6101,14 @@ impl Hypr2d {
         Self::new_ax2d_real2_bool(theMajorAxis, theMajorRadius, theMinorRadius, true)
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:127 - `gp_Hypr2d::SetLocation()`
     /// Modifies this hyperbola, by redefining its local
     /// coordinate system so that its origin becomes theP.
     pub fn set_location(&mut self, theP: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Hypr2d_set_location(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:133 - `gp_Hypr2d::SetMajorRadius()`
     /// Modifies the major or minor radius of this hyperbola.
     /// Exceptions
     /// Standard_ConstructionError if theMajorRadius or
@@ -5502,6 +6117,7 @@ impl Hypr2d {
         unsafe { crate::ffi::gp_Hypr2d_set_major_radius(self as *mut Self, theMajorRadius) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:145 - `gp_Hypr2d::SetMinorRadius()`
     /// Modifies the major or minor radius of this hyperbola.
     /// Exceptions
     /// Standard_ConstructionError if MajorRadius or
@@ -5510,24 +6126,28 @@ impl Hypr2d {
         unsafe { crate::ffi::gp_Hypr2d_set_minor_radius(self as *mut Self, theMinorRadius) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:155 - `gp_Hypr2d::SetAxis()`
     /// Modifies this hyperbola, by redefining its local
     /// coordinate system so that it becomes theA.
     pub fn set_axis(&mut self, theA: &crate::ffi::gp_Ax22d) {
         unsafe { crate::ffi::gp_Hypr2d_set_axis(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:159 - `gp_Hypr2d::SetXAxis()`
     /// Changes the major axis of the hyperbola. The minor axis is
     /// recomputed and the location of the hyperbola too.
     pub fn set_x_axis(&mut self, theA: &crate::ffi::gp_Ax2d) {
         unsafe { crate::ffi::gp_Hypr2d_set_x_axis(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:163 - `gp_Hypr2d::SetYAxis()`
     /// Changes the minor axis of the hyperbola.The minor axis is
     /// recomputed and the location of the hyperbola too.
     pub fn set_y_axis(&mut self, theA: &crate::ffi::gp_Ax2d) {
         unsafe { crate::ffi::gp_Hypr2d_set_y_axis(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:171 - `gp_Hypr2d::Asymptote1()`
     /// In the local coordinate system of the hyperbola the equation of
     /// the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0 and the
     /// equation of the first asymptote is Y = (B/A)*X
@@ -5538,6 +6158,7 @@ impl Hypr2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr2d_asymptote1(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:179 - `gp_Hypr2d::Asymptote2()`
     /// In the local coordinate system of the hyperbola the equation of
     /// the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0 and the
     /// equation of the first asymptote is Y = -(B/A)*X
@@ -5548,6 +6169,7 @@ impl Hypr2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr2d_asymptote2(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:184 - `gp_Hypr2d::Coefficients()`
     /// Computes the coefficients of the implicit equation of
     /// the hyperbola :
     /// theA * (X**2) + theB * (Y**2) + 2*theC*(X*Y) + 2*theD*X + 2*theE*Y + theF = 0.
@@ -5573,6 +6195,7 @@ impl Hypr2d {
         }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:193 - `gp_Hypr2d::ConjugateBranch1()`
     /// Computes the branch of hyperbola which is on the positive side of the
     /// "YAxis" of <me>.
     pub fn conjugate_branch1(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr2d> {
@@ -5581,6 +6204,7 @@ impl Hypr2d {
         }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:202 - `gp_Hypr2d::ConjugateBranch2()`
     /// Computes the branch of hyperbola which is on the negative side of the
     /// "YAxis" of <me>.
     pub fn conjugate_branch2(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr2d> {
@@ -5589,6 +6213,7 @@ impl Hypr2d {
         }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:217 - `gp_Hypr2d::Directrix1()`
     /// Computes the directrix which is the line normal to the XAxis of the hyperbola
     /// in the local plane (Z = 0) at a distance d = MajorRadius / e
     /// from the center of the hyperbola, where e is the eccentricity of
@@ -5601,12 +6226,14 @@ impl Hypr2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr2d_directrix1(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:221 - `gp_Hypr2d::Directrix2()`
     /// This line is obtained by the symmetrical transformation
     /// of "Directrix1" with respect to the "YAxis" of the hyperbola.
     pub fn directrix2(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr2d_directrix2(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:227 - `gp_Hypr2d::Eccentricity()`
     /// Returns the eccentricity of the hyperbola (e > 1).
     /// If f is the distance between the location of the hyperbola
     /// and the Focus1 then the eccentricity e = f / MajorRadius. Raises DomainError if MajorRadius =
@@ -5615,24 +6242,28 @@ impl Hypr2d {
         unsafe { crate::ffi::gp_Hypr2d_eccentricity(self as *const Self) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:236 - `gp_Hypr2d::Focal()`
     /// Computes the focal distance. It is the distance between the
     /// "Location" of the hyperbola and "Focus1" or "Focus2".
     pub fn focal(&self) -> f64 {
         unsafe { crate::ffi::gp_Hypr2d_focal(self as *const Self) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:243 - `gp_Hypr2d::Focus1()`
     /// Returns the first focus of the hyperbola. This focus is on the
     /// positive side of the "XAxis" of the hyperbola.
     pub fn focus1(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr2d_focus1(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:252 - `gp_Hypr2d::Focus2()`
     /// Returns the second focus of the hyperbola. This focus is on the
     /// negative side of the "XAxis" of the hyperbola.
     pub fn focus2(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr2d_focus2(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:262 - `gp_Hypr2d::Location()`
     /// Returns  the location point of the hyperbola.
     /// It is the intersection point between the "XAxis" and
     /// the "YAxis".
@@ -5640,18 +6271,21 @@ impl Hypr2d {
         unsafe { &*(crate::ffi::gp_Hypr2d_location(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:266 - `gp_Hypr2d::MajorRadius()`
     /// Returns the major radius of the hyperbola (it is the radius
     /// corresponding to the "XAxis" of the hyperbola).
     pub fn major_radius(&self) -> f64 {
         unsafe { crate::ffi::gp_Hypr2d_major_radius(self as *const Self) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:270 - `gp_Hypr2d::MinorRadius()`
     /// Returns the minor radius of the hyperbola (it is the radius
     /// corresponding to the "YAxis" of the hyperbola).
     pub fn minor_radius(&self) -> f64 {
         unsafe { crate::ffi::gp_Hypr2d_minor_radius(self as *const Self) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:275 - `gp_Hypr2d::OtherBranch()`
     /// Returns the branch of hyperbola obtained by doing the
     /// symmetrical transformation of <me> with respect to the
     /// "YAxis" of <me>.
@@ -5661,6 +6295,7 @@ impl Hypr2d {
         }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:287 - `gp_Hypr2d::Parameter()`
     /// Returns p = (e * e - 1) * MajorRadius where e is the
     /// eccentricity of the hyperbola.
     /// Raises DomainError if MajorRadius = 0.0
@@ -5668,11 +6303,13 @@ impl Hypr2d {
         unsafe { crate::ffi::gp_Hypr2d_parameter(self as *const Self) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:295 - `gp_Hypr2d::Axis()`
     /// Returns the axisplacement of the hyperbola.
     pub fn axis(&self) -> &crate::ffi::gp_Ax22d {
         unsafe { &*(crate::ffi::gp_Hypr2d_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:302 - `gp_Hypr2d::XAxis()`
     /// Computes an axis whose
     /// -   the origin is the center of this hyperbola, and
     /// -   the unit vector is the "X Direction" or "Y Direction"
@@ -5682,6 +6319,7 @@ impl Hypr2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr2d_x_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:309 - `gp_Hypr2d::YAxis()`
     /// Computes an axis whose
     /// -   the origin is the center of this hyperbola, and
     /// -   the unit vector is the "X Direction" or "Y Direction"
@@ -5691,10 +6329,12 @@ impl Hypr2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr2d_y_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:311 - `gp_Hypr2d::Reverse()`
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::gp_Hypr2d_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:324 - `gp_Hypr2d::Reversed()`
     /// Reverses the orientation of the local coordinate system
     /// of this hyperbola (the "Y Axis" is reversed). Therefore,
     /// the implicit orientation of this hyperbola is reversed.
@@ -5705,16 +6345,19 @@ impl Hypr2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr2d_reversed(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:328 - `gp_Hypr2d::IsDirect()`
     /// Returns true if the local coordinate system is direct
     /// and false in the other case.
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::gp_Hypr2d_is_direct(self as *const Self) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:330 - `gp_Hypr2d::Mirror()`
     pub fn mirror_pnt2d(&mut self, theP: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Hypr2d_mirror_pnt2d(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:334 - `gp_Hypr2d::Mirrored()`
     /// Performs the symmetrical transformation of an hyperbola with
     /// respect  to the point theP which is the center of the symmetry.
     pub fn mirrored_pnt2d(
@@ -5729,10 +6372,12 @@ impl Hypr2d {
         }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:336 - `gp_Hypr2d::Mirror()`
     pub fn mirror_ax2d(&mut self, theA: &crate::ffi::gp_Ax2d) {
         unsafe { crate::ffi::gp_Hypr2d_mirror_ax2d(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:340 - `gp_Hypr2d::Mirrored()`
     /// Performs the symmetrical transformation of an hyperbola with
     /// respect to an axis placement which is the axis of the symmetry.
     pub fn mirrored_ax2d(
@@ -5747,10 +6392,12 @@ impl Hypr2d {
         }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:342 - `gp_Hypr2d::Rotate()`
     pub fn rotate(&mut self, theP: &crate::ffi::gp_Pnt2d, theAng: f64) {
         unsafe { crate::ffi::gp_Hypr2d_rotate(self as *mut Self, theP, theAng) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:346 - `gp_Hypr2d::Rotated()`
     /// Rotates an hyperbola. theP is the center of the rotation.
     /// theAng is the angular value of the rotation in radians.
     pub fn rotated(
@@ -5767,10 +6414,12 @@ impl Hypr2d {
         }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:353 - `gp_Hypr2d::Scale()`
     pub fn scale(&mut self, theP: &crate::ffi::gp_Pnt2d, theS: f64) {
         unsafe { crate::ffi::gp_Hypr2d_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:359 - `gp_Hypr2d::Scaled()`
     /// Scales an hyperbola. <theS> is the scaling value.
     /// If <theS> is positive only the location point is
     /// modified. But if <theS> is negative the "XAxis" is
@@ -5785,10 +6434,12 @@ impl Hypr2d {
         }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:361 - `gp_Hypr2d::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::gp_Hypr2d_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:365 - `gp_Hypr2d::Transformed()`
     /// Transforms an hyperbola with the transformation theT from
     /// class Trsf2d.
     pub fn transformed(
@@ -5800,10 +6451,12 @@ impl Hypr2d {
         }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:367 - `gp_Hypr2d::Translate()`
     pub fn translate_vec2d(&mut self, theV: &crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::gp_Hypr2d_translate_vec2d(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:371 - `gp_Hypr2d::Translated()`
     /// Translates an hyperbola in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translated_vec2d(
@@ -5818,10 +6471,12 @@ impl Hypr2d {
         }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:378 - `gp_Hypr2d::Translate()`
     pub fn translate_pnt2d2(&mut self, theP1: &crate::ffi::gp_Pnt2d, theP2: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Hypr2d_translate_pnt2d2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Hypr2d.hxx`:381 - `gp_Hypr2d::Translated()`
     /// Translates an hyperbola from the point theP1 to the point theP2.
     pub fn translated_pnt2d2(
         &self,
@@ -5847,6 +6502,7 @@ impl Hypr2d {
 // From gp_Lin.hxx
 // ========================
 
+/// **Source:** `gp_Lin.hxx`:39 - `gp_Lin`
 /// Describes a line in 3D space.
 /// A line is positioned in space with an axis (a gp_Ax1
 /// object) which gives it an origin and a unit vector.
@@ -5870,17 +6526,20 @@ unsafe impl crate::CppDeletable for Lin {
 }
 
 impl Lin {
+    /// **Source:** `gp_Lin.hxx`:46 - `gp_Lin::gp_Lin()`
     /// Creates a Line corresponding to Z axis of the
     /// reference coordinate system.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Lin_ctor()) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:49 - `gp_Lin::gp_Lin()`
     /// Creates a line defined by axis theA1.
     pub fn new_ax1(theA1: &crate::ffi::gp_Ax1) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Lin_ctor_ax1(theA1)) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:57 - `gp_Lin::gp_Lin()`
     /// Creates a line passing through point theP and parallel to
     /// vector theV (theP and theV are, respectively, the origin and
     /// the unit vector of the positioning axis of the line).
@@ -5891,10 +6550,12 @@ impl Lin {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Lin_ctor_pnt_dir(theP, theV)) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:62 - `gp_Lin::Reverse()`
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::gp_Lin_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:68 - `gp_Lin::Reversed()`
     /// Reverses the direction of the line.
     /// Note:
     /// -   Reverse assigns the result to this line, while
@@ -5903,16 +6564,19 @@ impl Lin {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Lin_reversed(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:76 - `gp_Lin::SetDirection()`
     /// Changes the direction of the line.
     pub fn set_direction(&mut self, theV: &crate::ffi::gp_Dir) {
         unsafe { crate::ffi::gp_Lin_set_direction(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:79 - `gp_Lin::SetLocation()`
     /// Changes the location point (origin) of the line.
     pub fn set_location(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Lin_set_location(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:84 - `gp_Lin::SetPosition()`
     /// Complete redefinition of the line.
     /// The "Location" point of <theA1> is the origin of the line.
     /// The "Direction" of <theA1> is  the direction of the line.
@@ -5920,27 +6584,32 @@ impl Lin {
         unsafe { crate::ffi::gp_Lin_set_position(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:87 - `gp_Lin::Direction()`
     /// Returns the direction of the line.
     pub fn direction(&self) -> &crate::ffi::gp_Dir {
         unsafe { &*(crate::ffi::gp_Lin_direction(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:90 - `gp_Lin::Location()`
     /// Returns the location point (origin) of the line.
     pub fn location(&self) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::gp_Lin_location(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:94 - `gp_Lin::Position()`
     /// Returns the axis placement one axis with the same
     /// location and direction as <me>.
     pub fn position(&self) -> &crate::ffi::gp_Ax1 {
         unsafe { &*(crate::ffi::gp_Lin_position(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:97 - `gp_Lin::Angle()`
     /// Computes the angle between two lines in radians.
     pub fn angle(&self, theOther: &crate::ffi::gp_Lin) -> f64 {
         unsafe { crate::ffi::gp_Lin_angle(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:105 - `gp_Lin::Contains()`
     /// Returns true if this line contains the point theP, that is, if the
     /// distance between point theP and this line is less than or
     /// equal to theLinearTolerance..
@@ -5948,26 +6617,31 @@ impl Lin {
         unsafe { crate::ffi::gp_Lin_contains(self as *const Self, theP, theLinearTolerance) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:111 - `gp_Lin::Distance()`
     /// Computes the distance between <me> and the point theP.
     pub fn distance_pnt(&self, theP: &crate::ffi::gp_Pnt) -> f64 {
         unsafe { crate::ffi::gp_Lin_distance_pnt(self as *const Self, theP) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:114 - `gp_Lin::Distance()`
     /// Computes the distance between two lines.
     pub fn distance_lin(&self, theOther: &crate::ffi::gp_Lin) -> f64 {
         unsafe { crate::ffi::gp_Lin_distance_lin(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:117 - `gp_Lin::SquareDistance()`
     /// Computes the square distance between <me> and the point theP.
     pub fn square_distance_pnt(&self, theP: &crate::ffi::gp_Pnt) -> f64 {
         unsafe { crate::ffi::gp_Lin_square_distance_pnt(self as *const Self, theP) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:120 - `gp_Lin::SquareDistance()`
     /// Computes the square distance between two lines.
     pub fn square_distance_lin(&self, theOther: &crate::ffi::gp_Lin) -> f64 {
         unsafe { crate::ffi::gp_Lin_square_distance_lin(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:131 - `gp_Lin::Normal()`
     /// Computes the line normal to the direction of <me>, passing
     /// through the point theP.  Raises ConstructionError
     /// if the distance between <me> and the point theP is lower
@@ -5977,10 +6651,12 @@ impl Lin {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Lin_normal(self as *const Self, theP)) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:133 - `gp_Lin::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Lin_mirror_pnt(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:138 - `gp_Lin::Mirrored()`
     /// Performs the symmetrical transformation of a line
     /// with respect to the point theP which is the center of
     /// the symmetry.
@@ -5990,10 +6666,12 @@ impl Lin {
         }
     }
 
+    /// **Source:** `gp_Lin.hxx`:140 - `gp_Lin::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &crate::ffi::gp_Ax1) {
         unsafe { crate::ffi::gp_Lin_mirror_ax1(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:145 - `gp_Lin::Mirrored()`
     /// Performs the symmetrical transformation of a line
     /// with respect to an axis placement which is the axis
     /// of the symmetry.
@@ -6003,10 +6681,12 @@ impl Lin {
         }
     }
 
+    /// **Source:** `gp_Lin.hxx`:147 - `gp_Lin::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::gp_Lin_mirror_ax2(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:153 - `gp_Lin::Mirrored()`
     /// Performs the symmetrical transformation of a line
     /// with respect to a plane. The axis placement  <theA2>
     /// locates the plane of the symmetry :
@@ -6017,10 +6697,12 @@ impl Lin {
         }
     }
 
+    /// **Source:** `gp_Lin.hxx`:155 - `gp_Lin::Rotate()`
     pub fn rotate(&mut self, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
         unsafe { crate::ffi::gp_Lin_rotate(self as *mut Self, theA1, theAng) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:159 - `gp_Lin::Rotated()`
     /// Rotates a line. A1 is the axis of the rotation.
     /// Ang is the angular value of the rotation in radians.
     pub fn rotated(
@@ -6037,10 +6719,12 @@ impl Lin {
         }
     }
 
+    /// **Source:** `gp_Lin.hxx`:166 - `gp_Lin::Scale()`
     pub fn scale(&mut self, theP: &crate::ffi::gp_Pnt, theS: f64) {
         unsafe { crate::ffi::gp_Lin_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:171 - `gp_Lin::Scaled()`
     /// Scales a line. theS is the scaling value.
     /// The "Location" point (origin) of the line is modified.
     /// The "Direction" is reversed if the scale is negative.
@@ -6054,10 +6738,12 @@ impl Lin {
         }
     }
 
+    /// **Source:** `gp_Lin.hxx`:178 - `gp_Lin::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::gp_Lin_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:181 - `gp_Lin::Transformed()`
     /// Transforms a line with the transformation theT from class Trsf.
     pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::OwnedPtr<crate::ffi::gp_Lin> {
         unsafe {
@@ -6065,10 +6751,12 @@ impl Lin {
         }
     }
 
+    /// **Source:** `gp_Lin.hxx`:188 - `gp_Lin::Translate()`
     pub fn translate_vec(&mut self, theV: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Lin_translate_vec(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:192 - `gp_Lin::Translated()`
     /// Translates a line in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translated_vec(&self, theV: &crate::ffi::gp_Vec) -> crate::OwnedPtr<crate::ffi::gp_Lin> {
@@ -6077,10 +6765,12 @@ impl Lin {
         }
     }
 
+    /// **Source:** `gp_Lin.hxx`:199 - `gp_Lin::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &crate::ffi::gp_Pnt, theP2: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Lin_translate_pnt2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Lin.hxx`:202 - `gp_Lin::Translated()`
     /// Translates a line from the point theP1 to the point theP2.
     pub fn translated_pnt2(
         &self,
@@ -6106,6 +6796,7 @@ impl Lin {
 // From gp_Lin2d.hxx
 // ========================
 
+/// **Source:** `gp_Lin2d.hxx`:38 - `gp_Lin2d`
 /// Describes a line in 2D space.
 /// A line is positioned in the plane with an axis (a gp_Ax2d
 /// object) which gives the line its origin and unit vector. A
@@ -6133,17 +6824,20 @@ unsafe impl crate::CppDeletable for Lin2d {
 }
 
 impl Lin2d {
+    /// **Source:** `gp_Lin2d.hxx`:45 - `gp_Lin2d::gp_Lin2d()`
     /// Creates a Line corresponding to X axis of the
     /// reference coordinate system.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Lin2d_ctor()) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:48 - `gp_Lin2d::gp_Lin2d()`
     /// Creates a line located with theA.
     pub fn new_ax2d(theA: &crate::ffi::gp_Ax2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Lin2d_ctor_ax2d(theA)) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:55 - `gp_Lin2d::gp_Lin2d()`
     /// <theP> is the location point (origin) of the line and
     /// <theV> is the direction of the line.
     pub fn new_pnt2d_dir2d(
@@ -6153,6 +6847,7 @@ impl Lin2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Lin2d_ctor_pnt2d_dir2d(theP, theV)) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:63 - `gp_Lin2d::gp_Lin2d()`
     /// Creates the line from the equation theA*X + theB*Y + theC = 0.0 Raises ConstructionError if
     /// Sqrt(theA*theA + theB*theB) <= Resolution from gp. Raised if Sqrt(theA*theA + theB*theB) <=
     /// Resolution from gp.
@@ -6160,10 +6855,12 @@ impl Lin2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Lin2d_ctor_real3(theA, theB, theC)) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:67 - `gp_Lin2d::Reverse()`
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::gp_Lin2d_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:73 - `gp_Lin2d::Reversed()`
     /// Reverses the positioning axis of this line.
     /// Note:
     /// -   Reverse assigns the result to this line, while
@@ -6172,16 +6869,19 @@ impl Lin2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Lin2d_reversed(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:81 - `gp_Lin2d::SetDirection()`
     /// Changes the direction of the line.
     pub fn set_direction(&mut self, theV: &crate::ffi::gp_Dir2d) {
         unsafe { crate::ffi::gp_Lin2d_set_direction(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:84 - `gp_Lin2d::SetLocation()`
     /// Changes the origin of the line.
     pub fn set_location(&mut self, theP: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Lin2d_set_location(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:89 - `gp_Lin2d::SetPosition()`
     /// Complete redefinition of the line.
     /// The "Location" point of <theA> is the origin of the line.
     /// The "Direction" of <theA> is  the direction of the line.
@@ -6189,33 +6889,39 @@ impl Lin2d {
         unsafe { crate::ffi::gp_Lin2d_set_position(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:93 - `gp_Lin2d::Coefficients()`
     /// Returns the normalized coefficients of the line :
     /// theA * X + theB * Y + theC = 0.
     pub fn coefficients(&self, theA: &mut f64, theB: &mut f64, theC: &mut f64) {
         unsafe { crate::ffi::gp_Lin2d_coefficients(self as *const Self, theA, theB, theC) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:101 - `gp_Lin2d::Direction()`
     /// Returns the direction of the line.
     pub fn direction(&self) -> &crate::ffi::gp_Dir2d {
         unsafe { &*(crate::ffi::gp_Lin2d_direction(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:104 - `gp_Lin2d::Location()`
     /// Returns the location point (origin) of the line.
     pub fn location(&self) -> &crate::ffi::gp_Pnt2d {
         unsafe { &*(crate::ffi::gp_Lin2d_location(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:108 - `gp_Lin2d::Position()`
     /// Returns the axis placement one axis with the same
     /// location and direction as <me>.
     pub fn position(&self) -> &crate::ffi::gp_Ax2d {
         unsafe { &*(crate::ffi::gp_Lin2d_position(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:111 - `gp_Lin2d::Angle()`
     /// Computes the angle between two lines in radians.
     pub fn angle(&self, theOther: &crate::ffi::gp_Lin2d) -> f64 {
         unsafe { crate::ffi::gp_Lin2d_angle(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:119 - `gp_Lin2d::Contains()`
     /// Returns true if this line contains the point theP, that is, if the
     /// distance between point theP and this line is less than or
     /// equal to theLinearTolerance.
@@ -6223,37 +6929,44 @@ impl Lin2d {
         unsafe { crate::ffi::gp_Lin2d_contains(self as *const Self, theP, theLinearTolerance) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:125 - `gp_Lin2d::Distance()`
     /// Computes the distance between <me> and the point <theP>.
     pub fn distance_pnt2d(&self, theP: &crate::ffi::gp_Pnt2d) -> f64 {
         unsafe { crate::ffi::gp_Lin2d_distance_pnt2d(self as *const Self, theP) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:128 - `gp_Lin2d::Distance()`
     /// Computes the distance between two lines.
     pub fn distance_lin2d(&self, theOther: &crate::ffi::gp_Lin2d) -> f64 {
         unsafe { crate::ffi::gp_Lin2d_distance_lin2d(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:132 - `gp_Lin2d::SquareDistance()`
     /// Computes the square distance between <me> and the point
     /// <theP>.
     pub fn square_distance_pnt2d(&self, theP: &crate::ffi::gp_Pnt2d) -> f64 {
         unsafe { crate::ffi::gp_Lin2d_square_distance_pnt2d(self as *const Self, theP) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:135 - `gp_Lin2d::SquareDistance()`
     /// Computes the square distance between two lines.
     pub fn square_distance_lin2d(&self, theOther: &crate::ffi::gp_Lin2d) -> f64 {
         unsafe { crate::ffi::gp_Lin2d_square_distance_lin2d(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:139 - `gp_Lin2d::Normal()`
     /// Computes the line normal to the direction of <me>,
     /// passing through the point <theP>.
     pub fn normal(&self, theP: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Lin2d_normal(self as *const Self, theP)) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:144 - `gp_Lin2d::Mirror()`
     pub fn mirror_pnt2d(&mut self, theP: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Lin2d_mirror_pnt2d(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:149 - `gp_Lin2d::Mirrored()`
     /// Performs the symmetrical transformation of a line
     /// with respect to the point <theP> which is the center
     /// of the symmetry
@@ -6269,10 +6982,12 @@ impl Lin2d {
         }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:151 - `gp_Lin2d::Mirror()`
     pub fn mirror_ax2d(&mut self, theA: &crate::ffi::gp_Ax2d) {
         unsafe { crate::ffi::gp_Lin2d_mirror_ax2d(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:156 - `gp_Lin2d::Mirrored()`
     /// Performs the symmetrical transformation of a line
     /// with respect to an axis placement which is the axis
     /// of the symmetry.
@@ -6285,10 +7000,12 @@ impl Lin2d {
         }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:158 - `gp_Lin2d::Rotate()`
     pub fn rotate(&mut self, theP: &crate::ffi::gp_Pnt2d, theAng: f64) {
         unsafe { crate::ffi::gp_Lin2d_rotate(self as *mut Self, theP, theAng) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:162 - `gp_Lin2d::Rotated()`
     /// Rotates a line. theP is the center of the rotation.
     /// theAng is the angular value of the rotation in radians.
     pub fn rotated(
@@ -6305,10 +7022,12 @@ impl Lin2d {
         }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:169 - `gp_Lin2d::Scale()`
     pub fn scale(&mut self, theP: &crate::ffi::gp_Pnt2d, theS: f64) {
         unsafe { crate::ffi::gp_Lin2d_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:173 - `gp_Lin2d::Scaled()`
     /// Scales a line. theS is the scaling value. Only the
     /// origin of the line is modified.
     pub fn scaled(
@@ -6321,10 +7040,12 @@ impl Lin2d {
         }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:180 - `gp_Lin2d::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::gp_Lin2d_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:183 - `gp_Lin2d::Transformed()`
     /// Transforms a line with the transformation theT from class Trsf2d.
     pub fn transformed(
         &self,
@@ -6335,10 +7056,12 @@ impl Lin2d {
         }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:190 - `gp_Lin2d::Translate()`
     pub fn translate_vec2d(&mut self, theV: &crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::gp_Lin2d_translate_vec2d(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:194 - `gp_Lin2d::Translated()`
     /// Translates a line in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translated_vec2d(
@@ -6353,10 +7076,12 @@ impl Lin2d {
         }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:201 - `gp_Lin2d::Translate()`
     pub fn translate_pnt2d2(&mut self, theP1: &crate::ffi::gp_Pnt2d, theP2: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Lin2d_translate_pnt2d2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Lin2d.hxx`:204 - `gp_Lin2d::Translated()`
     /// Translates a line from the point theP1 to the point theP2.
     pub fn translated_pnt2d2(
         &self,
@@ -6382,6 +7107,7 @@ impl Lin2d {
 // From gp_Mat.hxx
 // ========================
 
+/// **Source:** `gp_Mat.hxx`:27 - `gp_Mat`
 /// Describes a three column, three row matrix.
 /// This sort of object is used in various vectorial or matrix computations.
 pub use crate::ffi::gp_Mat as Mat;
@@ -6393,11 +7119,13 @@ unsafe impl crate::CppDeletable for Mat {
 }
 
 impl Mat {
+    /// **Source:** `gp_Mat.hxx`:33 - `gp_Mat::gp_Mat()`
     /// creates  a matrix with null coefficients.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Mat_ctor()) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:39 - `gp_Mat::gp_Mat()`
     pub fn new_real9(
         theA11: f64,
         theA12: f64,
@@ -6416,6 +7144,7 @@ impl Mat {
         }
     }
 
+    /// **Source:** `gp_Mat.hxx`:51 - `gp_Mat::gp_Mat()`
     /// Creates a matrix.
     /// theCol1, theCol2, theCol3 are the 3 columns of the matrix.
     pub fn new_xyz3(
@@ -6428,6 +7157,7 @@ impl Mat {
         }
     }
 
+    /// **Source:** `gp_Mat.hxx`:56 - `gp_Mat::SetCol()`
     /// Assigns the three coordinates of theValue to the column of index
     /// theCol of this matrix.
     /// Raises OutOfRange if theCol < 1 or theCol > 3.
@@ -6435,6 +7165,7 @@ impl Mat {
         unsafe { crate::ffi::gp_Mat_set_col(self as *mut Self, theCol, theValue) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:60 - `gp_Mat::SetCols()`
     /// Assigns the number triples theCol1, theCol2, theCol3 to the three
     /// columns of this matrix.
     pub fn set_cols(
@@ -6446,6 +7177,7 @@ impl Mat {
         unsafe { crate::ffi::gp_Mat_set_cols(self as *mut Self, theCol1, theCol2, theCol3) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:70 - `gp_Mat::SetCross()`
     /// Modifies the matrix  M so that applying it to any number
     /// triple (X, Y, Z) produces the same result as the cross
     /// product of theRef and the number triple (X, Y, Z):
@@ -6458,6 +7190,7 @@ impl Mat {
         unsafe { crate::ffi::gp_Mat_set_cross(self as *mut Self, theRef) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:79 - `gp_Mat::SetDiagonal()`
     /// Modifies the main diagonal of the matrix.
     /// @code
     /// <me>.Value (1, 1) = theX1
@@ -6469,6 +7202,7 @@ impl Mat {
         unsafe { crate::ffi::gp_Mat_set_diagonal(self as *mut Self, theX1, theX2, theX3) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:91 - `gp_Mat::SetDot()`
     /// Modifies this matrix so that applying it to any number
     /// triple (X, Y, Z) produces the same result as the scalar
     /// product of theRef and the number triple (X, Y, Z):
@@ -6478,11 +7212,13 @@ impl Mat {
         unsafe { crate::ffi::gp_Mat_set_dot(self as *mut Self, theRef) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:94 - `gp_Mat::SetIdentity()`
     /// Modifies this matrix so that it represents the Identity matrix.
     pub fn set_identity(&mut self) {
         unsafe { crate::ffi::gp_Mat_set_identity(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:104 - `gp_Mat::SetRotation()`
     /// Modifies this matrix so that it represents a rotation. theAng is the angular value in
     /// radians and the XYZ axis gives the direction of the
     /// rotation.
@@ -6491,12 +7227,14 @@ impl Mat {
         unsafe { crate::ffi::gp_Mat_set_rotation(self as *mut Self, theAxis, theAng) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:108 - `gp_Mat::SetRow()`
     /// Assigns the three coordinates of Value to the row of index
     /// theRow of this matrix. Raises OutOfRange if theRow < 1 or theRow > 3.
     pub fn set_row(&mut self, theRow: i32, theValue: &crate::ffi::gp_XYZ) {
         unsafe { crate::ffi::gp_Mat_set_row(self as *mut Self, theRow, theValue) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:112 - `gp_Mat::SetRows()`
     /// Assigns the number triples theRow1, theRow2, theRow3 to the three
     /// rows of this matrix.
     pub fn set_rows(
@@ -6508,6 +7246,7 @@ impl Mat {
         unsafe { crate::ffi::gp_Mat_set_rows(self as *mut Self, theRow1, theRow2, theRow3) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:121 - `gp_Mat::SetScale()`
     /// Modifies the matrix so that it represents
     /// a scaling transformation, where theS is the scale factor. :
     /// @code
@@ -6519,46 +7258,54 @@ impl Mat {
         unsafe { crate::ffi::gp_Mat_set_scale(self as *mut Self, theS) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:129 - `gp_Mat::SetValue()`
     /// Assigns <theValue> to the coefficient of row theRow, column theCol of   this matrix.
     /// Raises OutOfRange if theRow < 1 or theRow > 3 or theCol < 1 or theCol > 3
     pub fn set_value(&mut self, theRow: i32, theCol: i32, theValue: f64) {
         unsafe { crate::ffi::gp_Mat_set_value(self as *mut Self, theRow, theCol, theValue) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:139 - `gp_Mat::Column()`
     /// Returns the column of theCol index.
     /// Raises OutOfRange if theCol < 1 or theCol > 3
     pub fn column(&self, theCol: i32) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Mat_column(self as *const Self, theCol)) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:142 - `gp_Mat::Determinant()`
     /// Computes the determinant of the matrix.
     pub fn determinant(&self) -> f64 {
         unsafe { crate::ffi::gp_Mat_determinant(self as *const Self) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:150 - `gp_Mat::Diagonal()`
     /// Returns the main diagonal of the matrix.
     pub fn diagonal(&self) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Mat_diagonal(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:154 - `gp_Mat::Row()`
     /// returns the row of theRow index.
     /// Raises OutOfRange if theRow < 1 or theRow > 3
     pub fn row(&self, theRow: i32) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Mat_row(self as *const Self, theRow)) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:158 - `gp_Mat::Value()`
     /// Returns the coefficient of range (theRow, theCol)
     /// Raises OutOfRange if theRow < 1 or theRow > 3 or theCol < 1 or theCol > 3
     pub fn value(&self, theRow: i32, theCol: i32) -> &f64 {
         unsafe { &*(crate::ffi::gp_Mat_value(self as *const Self, theRow, theCol)) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:172 - `gp_Mat::ChangeValue()`
     /// Returns the coefficient of range (theRow, theCol)
     /// Raises OutOfRange if theRow < 1 or theRow > 3 or theCol < 1 or theCol > 3
     pub fn change_value(&mut self, theRow: i32, theCol: i32) -> &mut f64 {
         unsafe { &mut *(crate::ffi::gp_Mat_change_value(self as *mut Self, theRow, theCol)) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:186 - `gp_Mat::IsSingular()`
     /// The Gauss LU decomposition is used to invert the matrix
     /// (see Math package) so the matrix is considered as singular if
     /// the largest pivot found is lower or equal to Resolution from gp.
@@ -6566,10 +7313,12 @@ impl Mat {
         unsafe { crate::ffi::gp_Mat_is_singular(self as *const Self) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:197 - `gp_Mat::Add()`
     pub fn add(&mut self, theOther: &crate::ffi::gp_Mat) {
         unsafe { crate::ffi::gp_Mat_add(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:204 - `gp_Mat::Added()`
     /// Computes the sum of this matrix and
     /// the matrix theOther for each coefficient of the matrix :
     /// <me>.Coef(i,j) + <theOther>.Coef(i,j)
@@ -6579,10 +7328,12 @@ impl Mat {
         }
     }
 
+    /// **Source:** `gp_Mat.hxx`:208 - `gp_Mat::Divide()`
     pub fn divide(&mut self, theScalar: f64) {
         unsafe { crate::ffi::gp_Mat_divide(self as *mut Self, theScalar) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:213 - `gp_Mat::Divided()`
     /// Divides all the coefficients of the matrix by Scalar
     pub fn divided(&self, theScalar: f64) -> crate::OwnedPtr<crate::ffi::gp_Mat> {
         unsafe {
@@ -6590,10 +7341,12 @@ impl Mat {
         }
     }
 
+    /// **Source:** `gp_Mat.hxx`:220 - `gp_Mat::Invert()`
     pub fn invert(&mut self) {
         unsafe { crate::ffi::gp_Mat_invert(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:232 - `gp_Mat::Inverted()`
     /// Inverses the matrix and raises if the matrix is singular.
     /// -   Invert assigns the result to this matrix, while
     /// -   Inverted creates a new one.
@@ -6608,6 +7361,7 @@ impl Mat {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Mat_inverted(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:235 - `gp_Mat::Multiplied()`
     /// Computes  the product of two matrices <me> * <Other>
     pub fn multiplied_mat(
         &self,
@@ -6621,15 +7375,18 @@ impl Mat {
         }
     }
 
+    /// **Source:** `gp_Mat.hxx`:245 - `gp_Mat::Multiply()`
     /// Computes the product of two matrices <me> = <Other> * <me>.
     pub fn multiply_mat(&mut self, theOther: &crate::ffi::gp_Mat) {
         unsafe { crate::ffi::gp_Mat_multiply_mat(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:249 - `gp_Mat::PreMultiply()`
     pub fn pre_multiply(&mut self, theOther: &crate::ffi::gp_Mat) {
         unsafe { crate::ffi::gp_Mat_pre_multiply(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:251 - `gp_Mat::Multiplied()`
     pub fn multiplied_real(&self, theScalar: f64) -> crate::OwnedPtr<crate::ffi::gp_Mat> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Mat_multiplied_real(
@@ -6639,15 +7396,18 @@ impl Mat {
         }
     }
 
+    /// **Source:** `gp_Mat.hxx`:259 - `gp_Mat::Multiply()`
     /// Multiplies all the coefficients of the matrix by Scalar
     pub fn multiply_real(&mut self, theScalar: f64) {
         unsafe { crate::ffi::gp_Mat_multiply_real(self as *mut Self, theScalar) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:263 - `gp_Mat::Power()`
     pub fn power(&mut self, N: i32) {
         unsafe { crate::ffi::gp_Mat_power(self as *mut Self, N) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:270 - `gp_Mat::Powered()`
     /// Computes <me> = <me> * <me> * .......* <me>,   theN time.
     /// if theN = 0 <me> = Identity
     /// if theN < 0 <me> = <me>.Invert() *...........* <me>.Invert().
@@ -6657,10 +7417,12 @@ impl Mat {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Mat_powered(self as *const Self, theN)) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:277 - `gp_Mat::Subtract()`
     pub fn subtract(&mut self, theOther: &crate::ffi::gp_Mat) {
         unsafe { crate::ffi::gp_Mat_subtract(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:283 - `gp_Mat::Subtracted()`
     /// cOmputes for each coefficient of the matrix :
     /// <me>.Coef(i,j) - <theOther>.Coef(i,j)
     pub fn subtracted(&self, theOther: &crate::ffi::gp_Mat) -> crate::OwnedPtr<crate::ffi::gp_Mat> {
@@ -6669,10 +7431,12 @@ impl Mat {
         }
     }
 
+    /// **Source:** `gp_Mat.hxx`:287 - `gp_Mat::Transpose()`
     pub fn transpose(&mut self) {
         unsafe { crate::ffi::gp_Mat_transpose(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Mat.hxx`:290 - `gp_Mat::Transposed()`
     /// Transposes the matrix. A(j, i) -> A (i, j)
     pub fn transposed(&self) -> crate::OwnedPtr<crate::ffi::gp_Mat> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Mat_transposed(self as *const Self)) }
@@ -6688,6 +7452,7 @@ impl Mat {
 // From gp_Mat2d.hxx
 // ========================
 
+/// **Source:** `gp_Mat2d.hxx`:26 - `gp_Mat2d`
 /// Describes a two column, two row matrix.
 /// This sort of object is used in various vectorial or matrix computations.
 pub use crate::ffi::gp_Mat2d as Mat2d;
@@ -6699,11 +7464,13 @@ unsafe impl crate::CppDeletable for Mat2d {
 }
 
 impl Mat2d {
+    /// **Source:** `gp_Mat2d.hxx`:32 - `gp_Mat2d::gp_Mat2d()`
     /// Creates  a matrix with null coefficients.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Mat2d_ctor()) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:35 - `gp_Mat2d::gp_Mat2d()`
     /// theCol1, theCol2 are the 2 columns of the matrix.
     pub fn new_xy2(
         theCol1: &crate::ffi::gp_XY,
@@ -6712,6 +7479,7 @@ impl Mat2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Mat2d_ctor_xy2(theCol1, theCol2)) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:40 - `gp_Mat2d::SetCol()`
     /// Assigns the two coordinates of theValue to the column of range
     /// theCol of this matrix
     /// Raises OutOfRange if theCol < 1 or theCol > 2.
@@ -6719,11 +7487,13 @@ impl Mat2d {
         unsafe { crate::ffi::gp_Mat2d_set_col(self as *mut Self, theCol, theValue) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:43 - `gp_Mat2d::SetCols()`
     /// Assigns the number pairs theCol1, theCol2 to the two columns of   this matrix
     pub fn set_cols(&mut self, theCol1: &crate::ffi::gp_XY, theCol2: &crate::ffi::gp_XY) {
         unsafe { crate::ffi::gp_Mat2d_set_cols(self as *mut Self, theCol1, theCol2) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:51 - `gp_Mat2d::SetDiagonal()`
     /// Modifies the main diagonal of the matrix.
     /// @code
     /// <me>.Value (1, 1) = theX1
@@ -6734,28 +7504,33 @@ impl Mat2d {
         unsafe { crate::ffi::gp_Mat2d_set_diagonal(self as *mut Self, theX1, theX2) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:58 - `gp_Mat2d::SetIdentity()`
     /// Modifies this matrix, so that it represents the Identity matrix.
     pub fn set_identity(&mut self) {
         unsafe { crate::ffi::gp_Mat2d_set_identity(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:66 - `gp_Mat2d::SetRotation()`
     /// Modifies this matrix, so that it represents a rotation. theAng is the angular
     /// value in radian of the rotation.
     pub fn set_rotation(&mut self, theAng: f64) {
         unsafe { crate::ffi::gp_Mat2d_set_rotation(self as *mut Self, theAng) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:70 - `gp_Mat2d::SetRow()`
     /// Assigns the two coordinates of theValue to the row of index theRow of this matrix.
     /// Raises OutOfRange if theRow < 1 or theRow > 2.
     pub fn set_row(&mut self, theRow: i32, theValue: &crate::ffi::gp_XY) {
         unsafe { crate::ffi::gp_Mat2d_set_row(self as *mut Self, theRow, theValue) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:73 - `gp_Mat2d::SetRows()`
     /// Assigns the number pairs theRow1, theRow2 to the two rows of this matrix.
     pub fn set_rows(&mut self, theRow1: &crate::ffi::gp_XY, theRow2: &crate::ffi::gp_XY) {
         unsafe { crate::ffi::gp_Mat2d_set_rows(self as *mut Self, theRow1, theRow2) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:81 - `gp_Mat2d::SetScale()`
     /// Modifies the matrix such that it
     /// represents a scaling transformation, where theS is the scale   factor :
     /// @code
@@ -6766,12 +7541,14 @@ impl Mat2d {
         unsafe { crate::ffi::gp_Mat2d_set_scale(self as *mut Self, theS) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:89 - `gp_Mat2d::SetValue()`
     /// Assigns <theValue> to the coefficient of row theRow, column theCol of this matrix.
     /// Raises OutOfRange if theRow < 1 or theRow > 2 or theCol < 1 or theCol > 2
     pub fn set_value(&mut self, theRow: i32, theCol: i32, theValue: f64) {
         unsafe { crate::ffi::gp_Mat2d_set_value(self as *mut Self, theRow, theCol, theValue) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:99 - `gp_Mat2d::Column()`
     /// Returns the column of theCol index.
     /// Raises OutOfRange if theCol < 1 or theCol > 2
     pub fn column(&self, theCol: i32) -> crate::OwnedPtr<crate::ffi::gp_XY> {
@@ -6780,22 +7557,26 @@ impl Mat2d {
         }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:102 - `gp_Mat2d::Determinant()`
     /// Computes the determinant of the matrix.
     pub fn determinant(&self) -> f64 {
         unsafe { crate::ffi::gp_Mat2d_determinant(self as *const Self) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:108 - `gp_Mat2d::Diagonal()`
     /// Returns the main diagonal of the matrix.
     pub fn diagonal(&self) -> crate::OwnedPtr<crate::ffi::gp_XY> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Mat2d_diagonal(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:112 - `gp_Mat2d::Row()`
     /// Returns the row of index theRow.
     /// Raised if theRow < 1 or theRow > 2
     pub fn row(&self, theRow: i32) -> crate::OwnedPtr<crate::ffi::gp_XY> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Mat2d_row(self as *const Self, theRow)) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:117 - `gp_Mat2d::Value()`
     /// Returns the coefficient of range (ttheheRow, theCol)
     /// Raises OutOfRange
     /// if theRow < 1 or theRow > 2 or theCol < 1 or theCol > 2
@@ -6803,6 +7584,7 @@ impl Mat2d {
         unsafe { &*(crate::ffi::gp_Mat2d_value(self as *const Self, theRow, theCol)) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:132 - `gp_Mat2d::ChangeValue()`
     /// Returns the coefficient of range (theRow, theCol)
     /// Raises OutOfRange
     /// if theRow < 1 or theRow > 2 or theCol < 1 or theCol > 2
@@ -6810,6 +7592,7 @@ impl Mat2d {
         unsafe { &mut *(crate::ffi::gp_Mat2d_change_value(self as *mut Self, theRow, theCol)) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:147 - `gp_Mat2d::IsSingular()`
     /// Returns true if this matrix is singular (and therefore, cannot be inverted).
     /// The Gauss LU decomposition is used to invert the matrix
     /// so the matrix is considered as singular if the largest
@@ -6818,10 +7601,12 @@ impl Mat2d {
         unsafe { crate::ffi::gp_Mat2d_is_singular(self as *const Self) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:157 - `gp_Mat2d::Add()`
     pub fn add(&mut self, Other: &crate::ffi::gp_Mat2d) {
         unsafe { crate::ffi::gp_Mat2d_add(self as *mut Self, Other) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:169 - `gp_Mat2d::Added()`
     /// Computes the sum of this matrix and the matrix
     /// theOther.for each coefficient of the matrix :
     /// @code
@@ -6836,10 +7621,12 @@ impl Mat2d {
         }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:173 - `gp_Mat2d::Divide()`
     pub fn divide(&mut self, theScalar: f64) {
         unsafe { crate::ffi::gp_Mat2d_divide(self as *mut Self, theScalar) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:178 - `gp_Mat2d::Divided()`
     /// Divides all the coefficients of the matrix by a scalar.
     pub fn divided(&self, theScalar: f64) -> crate::OwnedPtr<crate::ffi::gp_Mat2d> {
         unsafe {
@@ -6847,16 +7634,19 @@ impl Mat2d {
         }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:185 - `gp_Mat2d::Invert()`
     pub fn invert(&mut self) {
         unsafe { crate::ffi::gp_Mat2d_invert(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:189 - `gp_Mat2d::Inverted()`
     /// Inverses the matrix and raises exception if the matrix
     /// is singular.
     pub fn inverted(&self) -> crate::OwnedPtr<crate::ffi::gp_Mat2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Mat2d_inverted(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:196 - `gp_Mat2d::Multiplied()`
     pub fn multiplied_mat2d(
         &self,
         theOther: &crate::ffi::gp_Mat2d,
@@ -6869,17 +7659,20 @@ impl Mat2d {
         }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:209 - `gp_Mat2d::Multiply()`
     /// Computes the product of two matrices <me> * <theOther>
     pub fn multiply_mat2d(&mut self, theOther: &crate::ffi::gp_Mat2d) {
         unsafe { crate::ffi::gp_Mat2d_multiply_mat2d(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:213 - `gp_Mat2d::PreMultiply()`
     /// Modifies this matrix by premultiplying it by the matrix Other
     /// <me> = theOther * <me>.
     pub fn pre_multiply(&mut self, theOther: &crate::ffi::gp_Mat2d) {
         unsafe { crate::ffi::gp_Mat2d_pre_multiply(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:215 - `gp_Mat2d::Multiplied()`
     pub fn multiplied_real(&self, theScalar: f64) -> crate::OwnedPtr<crate::ffi::gp_Mat2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Mat2d_multiplied_real(
@@ -6889,15 +7682,18 @@ impl Mat2d {
         }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:223 - `gp_Mat2d::Multiply()`
     /// Multiplies all the coefficients of the matrix by a scalar.
     pub fn multiply_real(&mut self, theScalar: f64) {
         unsafe { crate::ffi::gp_Mat2d_multiply_real(self as *mut Self, theScalar) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:227 - `gp_Mat2d::Power()`
     pub fn power(&mut self, theN: i32) {
         unsafe { crate::ffi::gp_Mat2d_power(self as *mut Self, theN) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:234 - `gp_Mat2d::Powered()`
     /// computes <me> = <me> * <me> * .......* <me>, theN time.
     /// if theN = 0 <me> = Identity
     /// if theN < 0 <me> = <me>.Invert() *...........* <me>.Invert().
@@ -6909,10 +7705,12 @@ impl Mat2d {
         }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:241 - `gp_Mat2d::Subtract()`
     pub fn subtract(&mut self, theOther: &crate::ffi::gp_Mat2d) {
         unsafe { crate::ffi::gp_Mat2d_subtract(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:249 - `gp_Mat2d::Subtracted()`
     /// Computes for each coefficient of the matrix :
     /// @code
     /// <me>.Coef(i,j) - <theOther>.Coef(i,j)
@@ -6929,10 +7727,12 @@ impl Mat2d {
         }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:256 - `gp_Mat2d::Transpose()`
     pub fn transpose(&mut self) {
         unsafe { crate::ffi::gp_Mat2d_transpose(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Mat2d.hxx`:259 - `gp_Mat2d::Transposed()`
     /// Transposes the matrix. A(j, i) -> A (i, j)
     pub fn transposed(&self) -> crate::OwnedPtr<crate::ffi::gp_Mat2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Mat2d_transposed(self as *const Self)) }
@@ -6948,6 +7748,7 @@ impl Mat2d {
 // From gp_Parab.hxx
 // ========================
 
+/// **Source:** `gp_Parab.hxx`:50 - `gp_Parab`
 /// Describes a parabola in 3D space.
 /// A parabola is defined by its focal length (that is, the
 /// distance between its focus and apex) and positioned in
@@ -6984,11 +7785,13 @@ unsafe impl crate::CppDeletable for Parab {
 }
 
 impl Parab {
+    /// **Source:** `gp_Parab.hxx`:56 - `gp_Parab::gp_Parab()`
     /// Creates an indefinite Parabola.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Parab_ctor()) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:69 - `gp_Parab::gp_Parab()`
     /// Creates a parabola with its local coordinate system "theA2"
     /// and it's focal length "Focal".
     /// The XDirection of theA2 defines the axis of symmetry of the
@@ -7001,6 +7804,7 @@ impl Parab {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Parab_ctor_ax2_real(theA2, theFocal)) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:84 - `gp_Parab::gp_Parab()`
     /// theD is the directrix of the parabola and theF the focus point.
     /// The symmetry axis (XAxis) of the parabola is normal to the
     /// directrix and pass through the focus point theF, but its
@@ -7016,6 +7820,7 @@ impl Parab {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Parab_ctor_ax1_pnt(theD, theF)) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:92 - `gp_Parab::SetAxis()`
     /// Modifies this parabola by redefining its local coordinate system so that
     /// -   its origin and "main Direction" become those of the
     /// axis theA1 (the "X Direction" and "Y Direction" are then
@@ -7026,23 +7831,27 @@ impl Parab {
         unsafe { crate::ffi::gp_Parab_set_axis(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:96 - `gp_Parab::SetFocal()`
     /// Changes the focal distance of the parabola.
     /// Raises ConstructionError if theFocal < 0.0
     pub fn set_focal(&mut self, theFocal: f64) {
         unsafe { crate::ffi::gp_Parab_set_focal(self as *mut Self, theFocal) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:105 - `gp_Parab::SetLocation()`
     /// Changes the location of the parabola. It is the vertex of
     /// the parabola.
     pub fn set_location(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Parab_set_location(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:108 - `gp_Parab::SetPosition()`
     /// Changes the local coordinate system of the parabola.
     pub fn set_position(&mut self, theA2: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::gp_Parab_set_position(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:113 - `gp_Parab::Axis()`
     /// Returns the main axis of the parabola.
     /// It is the axis normal to the plane of the parabola passing
     /// through the vertex of the parabola.
@@ -7050,6 +7859,7 @@ impl Parab {
         unsafe { &*(crate::ffi::gp_Parab_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:124 - `gp_Parab::Directrix()`
     /// Computes the directrix of this parabola.
     /// The directrix is:
     /// -   a line parallel to the "Y Direction" of the local
@@ -7063,23 +7873,27 @@ impl Parab {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Parab_directrix(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:128 - `gp_Parab::Focal()`
     /// Returns the distance between the vertex and the focus
     /// of the parabola.
     pub fn focal(&self) -> f64 {
         unsafe { crate::ffi::gp_Parab_focal(self as *const Self) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:131 - `gp_Parab::Focus()`
     /// -   Computes the focus of the parabola.
     pub fn focus(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Parab_focus(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:135 - `gp_Parab::Location()`
     /// Returns the vertex of the parabola. It is the "Location"
     /// point of the coordinate system of the parabola.
     pub fn location(&self) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::gp_Parab_location(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:140 - `gp_Parab::Parameter()`
     /// Computes the parameter of the parabola.
     /// It is the distance between the focus and the directrix of
     /// the parabola. This distance is twice the focal length.
@@ -7087,27 +7901,32 @@ impl Parab {
         unsafe { crate::ffi::gp_Parab_parameter(self as *const Self) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:143 - `gp_Parab::Position()`
     /// Returns the local coordinate system of the parabola.
     pub fn position(&self) -> &crate::ffi::gp_Ax2 {
         unsafe { &*(crate::ffi::gp_Parab_position(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:147 - `gp_Parab::XAxis()`
     /// Returns the symmetry axis of the parabola. The location point
     /// of the axis is the vertex of the parabola.
     pub fn x_axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Parab_x_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:151 - `gp_Parab::YAxis()`
     /// It is an axis parallel to the directrix of the parabola.
     /// The location point of this axis is the vertex of the parabola.
     pub fn y_axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Parab_y_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:153 - `gp_Parab::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Parab_mirror_pnt(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:158 - `gp_Parab::Mirrored()`
     /// Performs the symmetrical transformation of a parabola
     /// with respect to the point theP which is the center of the
     /// symmetry.
@@ -7117,10 +7936,12 @@ impl Parab {
         }
     }
 
+    /// **Source:** `gp_Parab.hxx`:160 - `gp_Parab::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &crate::ffi::gp_Ax1) {
         unsafe { crate::ffi::gp_Parab_mirror_ax1(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:165 - `gp_Parab::Mirrored()`
     /// Performs the symmetrical transformation of a parabola
     /// with respect to an axis placement which is the axis of
     /// the symmetry.
@@ -7133,10 +7954,12 @@ impl Parab {
         }
     }
 
+    /// **Source:** `gp_Parab.hxx`:167 - `gp_Parab::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::gp_Parab_mirror_ax2(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:172 - `gp_Parab::Mirrored()`
     /// Performs the symmetrical transformation of a parabola
     /// with respect to a plane. The axis placement theA2 locates
     /// the plane of the symmetry (Location, XDirection, YDirection).
@@ -7149,10 +7972,12 @@ impl Parab {
         }
     }
 
+    /// **Source:** `gp_Parab.hxx`:174 - `gp_Parab::Rotate()`
     pub fn rotate(&mut self, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
         unsafe { crate::ffi::gp_Parab_rotate(self as *mut Self, theA1, theAng) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:178 - `gp_Parab::Rotated()`
     /// Rotates a parabola. theA1 is the axis of the rotation.
     /// Ang is the angular value of the rotation in radians.
     pub fn rotated(
@@ -7169,10 +7994,12 @@ impl Parab {
         }
     }
 
+    /// **Source:** `gp_Parab.hxx`:185 - `gp_Parab::Scale()`
     pub fn scale(&mut self, theP: &crate::ffi::gp_Pnt, theS: f64) {
         unsafe { crate::ffi::gp_Parab_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:190 - `gp_Parab::Scaled()`
     /// Scales a parabola. theS is the scaling value.
     /// If theS is negative the direction of the symmetry axis
     /// XAxis is reversed and the direction of the YAxis too.
@@ -7186,10 +8013,12 @@ impl Parab {
         }
     }
 
+    /// **Source:** `gp_Parab.hxx`:192 - `gp_Parab::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::gp_Parab_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:195 - `gp_Parab::Transformed()`
     /// Transforms a parabola with the transformation theT from class Trsf.
     pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::OwnedPtr<crate::ffi::gp_Parab> {
         unsafe {
@@ -7197,10 +8026,12 @@ impl Parab {
         }
     }
 
+    /// **Source:** `gp_Parab.hxx`:197 - `gp_Parab::Translate()`
     pub fn translate_vec(&mut self, theV: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Parab_translate_vec(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:201 - `gp_Parab::Translated()`
     /// Translates a parabola in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translated_vec(
@@ -7215,10 +8046,12 @@ impl Parab {
         }
     }
 
+    /// **Source:** `gp_Parab.hxx`:208 - `gp_Parab::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &crate::ffi::gp_Pnt, theP2: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Parab_translate_pnt2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Parab.hxx`:211 - `gp_Parab::Translated()`
     /// Translates a parabola from the point theP1 to the point theP2.
     pub fn translated_pnt2(
         &self,
@@ -7244,6 +8077,7 @@ impl Parab {
 // From gp_Parab2d.hxx
 // ========================
 
+/// **Source:** `gp_Parab2d.hxx`:47 - `gp_Parab2d`
 /// Describes a parabola in the plane (2D space).
 /// A parabola is defined by its focal length (that is, the
 /// distance between its focus and apex) and positioned in
@@ -7277,11 +8111,13 @@ unsafe impl crate::CppDeletable for Parab2d {
 }
 
 impl Parab2d {
+    /// **Source:** `gp_Parab2d.hxx`:53 - `gp_Parab2d::gp_Parab2d()`
     /// Creates an indefinite parabola.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Parab2d_ctor()) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:66 - `gp_Parab2d::gp_Parab2d()`
     /// Creates a parabola with its vertex point, its axis of symmetry
     /// ("XAxis") and its focal length.
     /// The sense of parametrization is given by theSense. If theSense == TRUE
@@ -7304,6 +8140,7 @@ impl Parab2d {
         }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:81 - `gp_Parab2d::gp_Parab2d()`
     /// Creates a parabola with its vertex point, its axis of symmetry
     /// ("XAxis"), correspond Y-axis and its focal length.
     /// Warnings : It is possible to have FocalLength = 0. In this case,
@@ -7321,6 +8158,7 @@ impl Parab2d {
         }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:100 - `gp_Parab2d::gp_Parab2d()`
     /// Creates a parabola with the directrix and the focus point.
     /// Y-axis of the parabola (in User Coordinate System - UCS) is
     /// the direction of theDirectrix. X-axis always directs from theDirectrix
@@ -7346,6 +8184,7 @@ impl Parab2d {
         }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:66 - `gp_Parab2d::gp_Parab2d()`
     /// Creates a parabola with its vertex point, its axis of symmetry
     /// ("XAxis") and its focal length.
     /// The sense of parametrization is given by theSense. If theSense == TRUE
@@ -7361,6 +8200,7 @@ impl Parab2d {
         Self::new_ax2d_real_bool(theMirrorAxis, theFocalLength, true)
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:100 - `gp_Parab2d::gp_Parab2d()`
     /// Creates a parabola with the directrix and the focus point.
     /// Y-axis of the parabola (in User Coordinate System - UCS) is
     /// the direction of theDirectrix. X-axis always directs from theDirectrix
@@ -7379,6 +8219,7 @@ impl Parab2d {
         Self::new_ax2d_pnt2d_bool(theDirectrix, theFocus, true)
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:107 - `gp_Parab2d::SetFocal()`
     /// Changes the focal distance of the parabola
     /// Warnings : It is possible to have theFocal = 0.
     /// Raises ConstructionError if theFocal < 0.0
@@ -7386,12 +8227,14 @@ impl Parab2d {
         unsafe { crate::ffi::gp_Parab2d_set_focal(self as *mut Self, theFocal) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:116 - `gp_Parab2d::SetLocation()`
     /// Changes the "Location" point of the parabola. It is the
     /// vertex of the parabola.
     pub fn set_location(&mut self, theP: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Parab2d_set_location(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:123 - `gp_Parab2d::SetMirrorAxis()`
     /// Modifies this parabola, by redefining its local coordinate system so that
     /// its origin and "X Direction" become those of the axis
     /// MA. The "Y Direction" of the local coordinate system is
@@ -7401,12 +8244,14 @@ impl Parab2d {
         unsafe { crate::ffi::gp_Parab2d_set_mirror_axis(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:127 - `gp_Parab2d::SetAxis()`
     /// Changes the local coordinate system of the parabola.
     /// The "Location" point of A becomes the vertex of the parabola.
     pub fn set_axis(&mut self, theA: &crate::ffi::gp_Ax22d) {
         unsafe { crate::ffi::gp_Parab2d_set_axis(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:134 - `gp_Parab2d::Coefficients()`
     /// Computes the coefficients of the implicit equation of the parabola
     /// (in WCS - World Coordinate System).
     /// @code
@@ -7434,6 +8279,7 @@ impl Parab2d {
         }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:149 - `gp_Parab2d::Directrix()`
     /// Computes the directrix of the parabola.
     /// The directrix is:
     /// -   a line parallel to the "Y Direction" of the local
@@ -7446,22 +8292,26 @@ impl Parab2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Parab2d_directrix(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:153 - `gp_Parab2d::Focal()`
     /// Returns the distance between the vertex and the focus
     /// of the parabola.
     pub fn focal(&self) -> f64 {
         unsafe { crate::ffi::gp_Parab2d_focal(self as *const Self) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:156 - `gp_Parab2d::Focus()`
     /// Returns the focus of the parabola.
     pub fn focus(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Parab2d_focus(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:163 - `gp_Parab2d::Location()`
     /// Returns the vertex of the parabola.
     pub fn location(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Parab2d_location(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:167 - `gp_Parab2d::MirrorAxis()`
     /// Returns the symmetry axis of the parabola.
     /// The "Location" point of this axis is the vertex of the parabola.
     pub fn mirror_axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax2d> {
@@ -7470,22 +8320,26 @@ impl Parab2d {
         }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:171 - `gp_Parab2d::Axis()`
     /// Returns the local coordinate system of the parabola.
     /// The "Location" point of this axis is the vertex of the parabola.
     pub fn axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax22d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Parab2d_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:175 - `gp_Parab2d::Parameter()`
     /// Returns the distance between the focus and the
     /// directrix of the parabola.
     pub fn parameter(&self) -> f64 {
         unsafe { crate::ffi::gp_Parab2d_parameter(self as *const Self) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:177 - `gp_Parab2d::Reverse()`
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::gp_Parab2d_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:190 - `gp_Parab2d::Reversed()`
     /// Reverses the orientation of the local coordinate system
     /// of this parabola (the "Y Direction" is reversed).
     /// Therefore, the implicit orientation of this parabola is reversed.
@@ -7496,16 +8350,19 @@ impl Parab2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Parab2d_reversed(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:194 - `gp_Parab2d::IsDirect()`
     /// Returns true if the local coordinate system is direct
     /// and false in the other case.
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::gp_Parab2d_is_direct(self as *const Self) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:196 - `gp_Parab2d::Mirror()`
     pub fn mirror_pnt2d(&mut self, theP: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Parab2d_mirror_pnt2d(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:200 - `gp_Parab2d::Mirrored()`
     /// Performs the symmetrical transformation of a parabola with respect
     /// to the point theP which is the center of the symmetry
     pub fn mirrored_pnt2d(
@@ -7520,10 +8377,12 @@ impl Parab2d {
         }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:202 - `gp_Parab2d::Mirror()`
     pub fn mirror_ax2d(&mut self, theA: &crate::ffi::gp_Ax2d) {
         unsafe { crate::ffi::gp_Parab2d_mirror_ax2d(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:206 - `gp_Parab2d::Mirrored()`
     /// Performs the symmetrical transformation of a parabola with respect
     /// to an axis placement which is the axis of the symmetry.
     pub fn mirrored_ax2d(
@@ -7538,10 +8397,12 @@ impl Parab2d {
         }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:208 - `gp_Parab2d::Rotate()`
     pub fn rotate(&mut self, theP: &crate::ffi::gp_Pnt2d, theAng: f64) {
         unsafe { crate::ffi::gp_Parab2d_rotate(self as *mut Self, theP, theAng) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:212 - `gp_Parab2d::Rotated()`
     /// Rotates a parabola. theP is the center of the rotation.
     /// theAng is the angular value of the rotation in radians.
     pub fn rotated(
@@ -7558,10 +8419,12 @@ impl Parab2d {
         }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:219 - `gp_Parab2d::Scale()`
     pub fn scale(&mut self, theP: &crate::ffi::gp_Pnt2d, theS: f64) {
         unsafe { crate::ffi::gp_Parab2d_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:224 - `gp_Parab2d::Scaled()`
     /// Scales a parabola. theS is the scaling value.
     /// If theS is negative the direction of the symmetry axis
     /// "XAxis" is reversed and the direction of the "YAxis" too.
@@ -7579,10 +8442,12 @@ impl Parab2d {
         }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:226 - `gp_Parab2d::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::gp_Parab2d_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:229 - `gp_Parab2d::Transformed()`
     /// Transforms an parabola with the transformation theT from class Trsf2d.
     pub fn transformed(
         &self,
@@ -7593,10 +8458,12 @@ impl Parab2d {
         }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:231 - `gp_Parab2d::Translate()`
     pub fn translate_vec2d(&mut self, theV: &crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::gp_Parab2d_translate_vec2d(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:235 - `gp_Parab2d::Translated()`
     /// Translates a parabola in the direction of the vectorthe theV.
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translated_vec2d(
@@ -7611,10 +8478,12 @@ impl Parab2d {
         }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:242 - `gp_Parab2d::Translate()`
     pub fn translate_pnt2d2(&mut self, theP1: &crate::ffi::gp_Pnt2d, theP2: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Parab2d_translate_pnt2d2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Parab2d.hxx`:245 - `gp_Parab2d::Translated()`
     /// Translates a parabola from the point theP1 to the point theP2.
     pub fn translated_pnt2d2(
         &self,
@@ -7640,6 +8509,7 @@ impl Parab2d {
 // From gp_Pln.hxx
 // ========================
 
+/// **Source:** `gp_Pln.hxx`:46 - `gp_Pln`
 /// Describes a plane.
 /// A plane is positioned in space with a coordinate system
 /// (a gp_Ax3 object), such that the plane is defined by the
@@ -7670,12 +8540,14 @@ unsafe impl crate::CppDeletable for Pln {
 }
 
 impl Pln {
+    /// **Source:** `gp_Pln.hxx`:53 - `gp_Pln::gp_Pln()`
     /// Creates a plane coincident with OXY plane of the
     /// reference coordinate system.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Pln_ctor()) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:61 - `gp_Pln::gp_Pln()`
     /// The coordinate system of the plane is defined with the axis
     /// placement theA3.
     /// The "Direction" of theA3 defines the normal to the plane.
@@ -7686,6 +8558,7 @@ impl Pln {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Pln_ctor_ax3(theA3)) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:68 - `gp_Pln::gp_Pln()`
     /// Creates a plane with the  "Location" point <theP>
     /// and the normal direction <theV>.
     pub fn new_pnt_dir(
@@ -7695,6 +8568,7 @@ impl Pln {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Pln_ctor_pnt_dir(theP, theV)) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:75 - `gp_Pln::gp_Pln()`
     /// Creates a plane from its cartesian equation :
     /// @code
     /// theA * X + theB * Y + theC * Z + theD = 0.0
@@ -7704,6 +8578,7 @@ impl Pln {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Pln_ctor_real4(theA, theB, theC, theD)) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:84 - `gp_Pln::Coefficients()`
     /// Returns the coefficients of the plane's cartesian equation :
     /// @code
     /// theA * X + theB * Y + theC * Z + theD = 0.
@@ -7712,6 +8587,7 @@ impl Pln {
         unsafe { crate::ffi::gp_Pln_coefficients(self as *const Self, theA, theB, theC, theD) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:93 - `gp_Pln::SetAxis()`
     /// Modifies this plane, by redefining its local coordinate system so that
     /// -   its origin and "main Direction" become those of the
     /// axis theA1 (the "X Direction" and "Y Direction" are then recomputed).
@@ -7720,88 +8596,105 @@ impl Pln {
         unsafe { crate::ffi::gp_Pln_set_axis(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:96 - `gp_Pln::SetLocation()`
     /// Changes the origin of the plane.
     pub fn set_location(&mut self, theLoc: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Pln_set_location(self as *mut Self, theLoc) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:99 - `gp_Pln::SetPosition()`
     /// Changes the local coordinate system of the plane.
     pub fn set_position(&mut self, theA3: &crate::ffi::gp_Ax3) {
         unsafe { crate::ffi::gp_Pln_set_position(self as *mut Self, theA3) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:103 - `gp_Pln::UReverse()`
     /// Reverses the   U   parametrization of   the  plane
     /// reversing the XAxis.
     pub fn u_reverse(&mut self) {
         unsafe { crate::ffi::gp_Pln_u_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:107 - `gp_Pln::VReverse()`
     /// Reverses the   V   parametrization of   the  plane
     /// reversing the YAxis.
     pub fn v_reverse(&mut self) {
         unsafe { crate::ffi::gp_Pln_v_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:110 - `gp_Pln::Direct()`
     /// returns true if the Ax3 is right handed.
     pub fn direct(&self) -> bool {
         unsafe { crate::ffi::gp_Pln_direct(self as *const Self) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:113 - `gp_Pln::Axis()`
     /// Returns the plane's normal Axis.
     pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
         unsafe { &*(crate::ffi::gp_Pln_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:116 - `gp_Pln::Location()`
     /// Returns the plane's location (origin).
     pub fn location(&self) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::gp_Pln_location(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:119 - `gp_Pln::Position()`
     /// Returns the local coordinate system of the plane .
     pub fn position(&self) -> &crate::ffi::gp_Ax3 {
         unsafe { &*(crate::ffi::gp_Pln_position(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:122 - `gp_Pln::Distance()`
     /// Computes the distance between <me> and the point <theP>.
     pub fn distance_pnt(&self, theP: &crate::ffi::gp_Pnt) -> f64 {
         unsafe { crate::ffi::gp_Pln_distance_pnt(self as *const Self, theP) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:125 - `gp_Pln::Distance()`
     /// Computes the distance between <me> and the line <theL>.
     pub fn distance_lin(&self, theL: &crate::ffi::gp_Lin) -> f64 {
         unsafe { crate::ffi::gp_Pln_distance_lin(self as *const Self, theL) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:128 - `gp_Pln::Distance()`
     /// Computes the distance between two planes.
     pub fn distance_pln(&self, theOther: &crate::ffi::gp_Pln) -> f64 {
         unsafe { crate::ffi::gp_Pln_distance_pln(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:131 - `gp_Pln::SquareDistance()`
     /// Computes the square distance between <me> and the point <theP>.
     pub fn square_distance_pnt(&self, theP: &crate::ffi::gp_Pnt) -> f64 {
         unsafe { crate::ffi::gp_Pln_square_distance_pnt(self as *const Self, theP) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:138 - `gp_Pln::SquareDistance()`
     /// Computes the square distance between <me> and the line <theL>.
     pub fn square_distance_lin(&self, theL: &crate::ffi::gp_Lin) -> f64 {
         unsafe { crate::ffi::gp_Pln_square_distance_lin(self as *const Self, theL) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:145 - `gp_Pln::SquareDistance()`
     /// Computes the square distance between two planes.
     pub fn square_distance_pln(&self, theOther: &crate::ffi::gp_Pln) -> f64 {
         unsafe { crate::ffi::gp_Pln_square_distance_pln(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:152 - `gp_Pln::XAxis()`
     /// Returns the X axis of the plane.
     pub fn x_axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Pln_x_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:155 - `gp_Pln::YAxis()`
     /// Returns the Y axis  of the plane.
     pub fn y_axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Pln_y_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:165 - `gp_Pln::Contains()`
     /// Returns true if this plane contains the point theP. This means that
     /// -   the distance between point theP and this plane is less
     /// than or equal to theLinearTolerance, or
@@ -7816,6 +8709,7 @@ impl Pln {
         }
     }
 
+    /// **Source:** `gp_Pln.hxx`:178 - `gp_Pln::Contains()`
     /// Returns true if this plane contains the line theL. This means that
     /// -   the distance between point P and this plane is less
     /// than or equal to LinearTolerance, or
@@ -7840,10 +8734,12 @@ impl Pln {
         }
     }
 
+    /// **Source:** `gp_Pln.hxx`:186 - `gp_Pln::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Pln_mirror_pnt(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:193 - `gp_Pln::Mirrored()`
     /// Performs the symmetrical transformation of a plane with respect
     /// to the point <theP> which is the center of the symmetry
     /// Warnings :
@@ -7855,10 +8751,12 @@ impl Pln {
         }
     }
 
+    /// **Source:** `gp_Pln.hxx`:195 - `gp_Pln::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &crate::ffi::gp_Ax1) {
         unsafe { crate::ffi::gp_Pln_mirror_ax1(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:205 - `gp_Pln::Mirrored()`
     /// Performs   the symmetrical transformation  of a
     /// plane with respect to an axis placement  which is the axis
     /// of  the symmetry.  The  transformation is performed on the
@@ -7873,10 +8771,12 @@ impl Pln {
         }
     }
 
+    /// **Source:** `gp_Pln.hxx`:207 - `gp_Pln::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::gp_Pln_mirror_ax2(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:217 - `gp_Pln::Mirrored()`
     /// Performs the  symmetrical transformation  of  a
     /// plane    with respect to    an axis  placement.   The axis
     /// placement  <A2> locates the plane  of  the symmetry.   The
@@ -7891,10 +8791,12 @@ impl Pln {
         }
     }
 
+    /// **Source:** `gp_Pln.hxx`:219 - `gp_Pln::Rotate()`
     pub fn rotate(&mut self, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
         unsafe { crate::ffi::gp_Pln_rotate(self as *mut Self, theA1, theAng) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:223 - `gp_Pln::Rotated()`
     /// rotates a plane. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
     pub fn rotated(
@@ -7911,10 +8813,12 @@ impl Pln {
         }
     }
 
+    /// **Source:** `gp_Pln.hxx`:230 - `gp_Pln::Scale()`
     pub fn scale(&mut self, theP: &crate::ffi::gp_Pnt, theS: f64) {
         unsafe { crate::ffi::gp_Pln_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:233 - `gp_Pln::Scaled()`
     /// Scales a plane. theS is the scaling value.
     pub fn scaled(
         &self,
@@ -7926,10 +8830,12 @@ impl Pln {
         }
     }
 
+    /// **Source:** `gp_Pln.hxx`:240 - `gp_Pln::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::gp_Pln_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:247 - `gp_Pln::Transformed()`
     /// Transforms a plane with the transformation theT from class Trsf.
     /// The transformation is performed on the "Location"
     /// point, on the "XAxis" and the "YAxis".
@@ -7941,10 +8847,12 @@ impl Pln {
         }
     }
 
+    /// **Source:** `gp_Pln.hxx`:254 - `gp_Pln::Translate()`
     pub fn translate_vec(&mut self, theV: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Pln_translate_vec(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:258 - `gp_Pln::Translated()`
     /// Translates a plane in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translated_vec(&self, theV: &crate::ffi::gp_Vec) -> crate::OwnedPtr<crate::ffi::gp_Pln> {
@@ -7953,10 +8861,12 @@ impl Pln {
         }
     }
 
+    /// **Source:** `gp_Pln.hxx`:265 - `gp_Pln::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &crate::ffi::gp_Pnt, theP2: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Pln_translate_pnt2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Pln.hxx`:268 - `gp_Pln::Translated()`
     /// Translates a plane from the point theP1 to the point theP2.
     pub fn translated_pnt2(
         &self,
@@ -7982,6 +8892,7 @@ impl Pln {
 // From gp_Pnt.hxx
 // ========================
 
+/// **Source:** `gp_Pnt.hxx`:31 - `gp_Pnt`
 /// Defines a 3D cartesian point.
 pub use crate::ffi::gp_Pnt as Pnt;
 
@@ -7992,21 +8903,25 @@ unsafe impl crate::CppDeletable for Pnt {
 }
 
 impl Pnt {
+    /// **Source:** `gp_Pnt.hxx`:37 - `gp_Pnt::gp_Pnt()`
     /// Creates a point with zero coordinates.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Pnt_ctor()) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:40 - `gp_Pnt::gp_Pnt()`
     /// Creates a point from a XYZ object.
     pub fn new_xyz(theCoord: &crate::ffi::gp_XYZ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Pnt_ctor_xyz(theCoord)) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:46 - `gp_Pnt::gp_Pnt()`
     /// Creates a  point with its 3 cartesian's coordinates : theXp, theYp, theZp.
     pub fn new_real3(theXp: f64, theYp: f64, theZp: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Pnt_ctor_real3(theXp, theYp, theZp)) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:56 - `gp_Pnt::SetCoord()`
     /// Changes the coordinate of range theIndex :
     /// theIndex = 1 => X is modified
     /// theIndex = 2 => Y is modified
@@ -8016,31 +8931,37 @@ impl Pnt {
         unsafe { crate::ffi::gp_Pnt_set_coord_int_real(self as *mut Self, theIndex, theXi) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:62 - `gp_Pnt::SetCoord()`
     /// For this point, assigns  the values theXp, theYp and theZp to its three coordinates.
     pub fn set_coord_real3(&mut self, theXp: f64, theYp: f64, theZp: f64) {
         unsafe { crate::ffi::gp_Pnt_set_coord_real3(self as *mut Self, theXp, theYp, theZp) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:68 - `gp_Pnt::SetX()`
     /// Assigns the given value to the X coordinate of this point.
     pub fn set_x(&mut self, theX: f64) {
         unsafe { crate::ffi::gp_Pnt_set_x(self as *mut Self, theX) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:71 - `gp_Pnt::SetY()`
     /// Assigns the given value to the Y coordinate of this point.
     pub fn set_y(&mut self, theY: f64) {
         unsafe { crate::ffi::gp_Pnt_set_y(self as *mut Self, theY) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:74 - `gp_Pnt::SetZ()`
     /// Assigns the given value to the Z coordinate of this point.
     pub fn set_z(&mut self, theZ: f64) {
         unsafe { crate::ffi::gp_Pnt_set_z(self as *mut Self, theZ) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:77 - `gp_Pnt::SetXYZ()`
     /// Assigns the three coordinates of theCoord to this point.
     pub fn set_xyz(&mut self, theCoord: &crate::ffi::gp_XYZ) {
         unsafe { crate::ffi::gp_Pnt_set_xyz(self as *mut Self, theCoord) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:85 - `gp_Pnt::Coord()`
     /// Returns the coordinate of corresponding to the value of theIndex :
     /// theIndex = 1 => X is returned
     /// theIndex = 2 => Y is returned
@@ -8051,48 +8972,57 @@ impl Pnt {
         unsafe { crate::ffi::gp_Pnt_coord_int(self as *const Self, theIndex) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:88 - `gp_Pnt::Coord()`
     /// For this point gives its three coordinates theXp, theYp and theZp.
     pub fn coord_real3(&self, theXp: &mut f64, theYp: &mut f64, theZp: &mut f64) {
         unsafe { crate::ffi::gp_Pnt_coord_real3(self as *const Self, theXp, theYp, theZp) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:94 - `gp_Pnt::X()`
     /// For this point, returns its X coordinate.
     pub fn x(&self) -> f64 {
         unsafe { crate::ffi::gp_Pnt_x(self as *const Self) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:97 - `gp_Pnt::Y()`
     /// For this point, returns its Y coordinate.
     pub fn y(&self) -> f64 {
         unsafe { crate::ffi::gp_Pnt_y(self as *const Self) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:100 - `gp_Pnt::Z()`
     /// For this point, returns its Z coordinate.
     pub fn z(&self) -> f64 {
         unsafe { crate::ffi::gp_Pnt_z(self as *const Self) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:103 - `gp_Pnt::XYZ()`
     /// For this point, returns its three coordinates as a XYZ object.
     pub fn xyz(&self) -> &crate::ffi::gp_XYZ {
         unsafe { &*(crate::ffi::gp_Pnt_xyz(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:106 - `gp_Pnt::Coord()`
     /// For this point, returns its three coordinates as a XYZ object.
     pub fn coord(&self) -> &crate::ffi::gp_XYZ {
         unsafe { &*(crate::ffi::gp_Pnt_coord(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:110 - `gp_Pnt::ChangeCoord()`
     /// Returns the coordinates of this point.
     /// Note: This syntax allows direct modification of the returned value.
     pub fn change_coord(&mut self) -> &mut crate::ffi::gp_XYZ {
         unsafe { &mut *(crate::ffi::gp_Pnt_change_coord(self as *mut Self)) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:114 - `gp_Pnt::BaryCenter()`
     /// Assigns the result of the following expression to this point
     /// (theAlpha*this + theBeta*theP) / (theAlpha + theBeta)
     pub fn bary_center(&mut self, theAlpha: f64, theP: &crate::ffi::gp_Pnt, theBeta: f64) {
         unsafe { crate::ffi::gp_Pnt_bary_center(self as *mut Self, theAlpha, theP, theBeta) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:123 - `gp_Pnt::IsEqual()`
     /// Comparison
     /// Returns True if the distance between the two points is
     /// lower or equal to theLinearTolerance.
@@ -8100,16 +9030,19 @@ impl Pnt {
         unsafe { crate::ffi::gp_Pnt_is_equal(self as *const Self, theOther, theLinearTolerance) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:129 - `gp_Pnt::Distance()`
     /// Computes the distance between two points.
     pub fn distance(&self, theOther: &crate::ffi::gp_Pnt) -> f64 {
         unsafe { crate::ffi::gp_Pnt_distance(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:132 - `gp_Pnt::SquareDistance()`
     /// Computes the square distance between two points.
     pub fn square_distance(&self, theOther: &crate::ffi::gp_Pnt) -> f64 {
         unsafe { crate::ffi::gp_Pnt_square_distance(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:137 - `gp_Pnt::Mirror()`
     /// Performs the symmetrical transformation of a point
     /// with respect to the point theP which is the center of
     /// the  symmetry.
@@ -8117,6 +9050,7 @@ impl Pnt {
         unsafe { crate::ffi::gp_Pnt_mirror_pnt(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:142 - `gp_Pnt::Mirrored()`
     /// Performs the symmetrical transformation of a point
     /// with respect to an axis placement which is the axis
     /// of the symmetry.
@@ -8126,10 +9060,12 @@ impl Pnt {
         }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:144 - `gp_Pnt::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &crate::ffi::gp_Ax1) {
         unsafe { crate::ffi::gp_Pnt_mirror_ax1(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:149 - `gp_Pnt::Mirrored()`
     /// Performs the symmetrical transformation of a point
     /// with respect to a plane. The axis placement theA2 locates
     /// the plane of the symmetry : (Location, XDirection, YDirection).
@@ -8139,10 +9075,12 @@ impl Pnt {
         }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:151 - `gp_Pnt::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::gp_Pnt_mirror_ax2(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:155 - `gp_Pnt::Mirrored()`
     /// Rotates a point. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
     pub fn mirrored_ax2(&self, theA2: &crate::ffi::gp_Ax2) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
@@ -8151,10 +9089,12 @@ impl Pnt {
         }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:157 - `gp_Pnt::Rotate()`
     pub fn rotate(&mut self, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
         unsafe { crate::ffi::gp_Pnt_rotate(self as *mut Self, theA1, theAng) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:159 - `gp_Pnt::Rotated()`
     pub fn rotated(
         &self,
         theA1: &crate::ffi::gp_Ax1,
@@ -8169,11 +9109,13 @@ impl Pnt {
         }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:167 - `gp_Pnt::Scale()`
     /// Scales a point. theS is the scaling value.
     pub fn scale(&mut self, theP: &crate::ffi::gp_Pnt, theS: f64) {
         unsafe { crate::ffi::gp_Pnt_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:169 - `gp_Pnt::Scaled()`
     pub fn scaled(
         &self,
         theP: &crate::ffi::gp_Pnt,
@@ -8184,34 +9126,40 @@ impl Pnt {
         }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:177 - `gp_Pnt::Transform()`
     /// Transforms a point with the transformation T.
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::gp_Pnt_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:179 - `gp_Pnt::Transformed()`
     pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Pnt_transformed(self as *const Self, theT))
         }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:188 - `gp_Pnt::Translate()`
     /// Translates a point in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translate_vec(&mut self, theV: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Pnt_translate_vec(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:190 - `gp_Pnt::Translated()`
     pub fn translated_vec(&self, theV: &crate::ffi::gp_Vec) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Pnt_translated_vec(self as *const Self, theV))
         }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:193 - `gp_Pnt::Translate()`
     /// Translates a point from the point theP1 to the point theP2.
     pub fn translate_pnt2(&mut self, theP1: &crate::ffi::gp_Pnt, theP2: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Pnt_translate_pnt2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Pnt.hxx`:199 - `gp_Pnt::Translated()`
     pub fn translated_pnt2(
         &self,
         theP1: &crate::ffi::gp_Pnt,
@@ -8236,6 +9184,7 @@ impl Pnt {
 // From gp_Pnt2d.hxx
 // ========================
 
+/// **Source:** `gp_Pnt2d.hxx`:31 - `gp_Pnt2d`
 /// Defines  a non-persistent 2D cartesian point.
 pub use crate::ffi::gp_Pnt2d as Pnt2d;
 
@@ -8246,21 +9195,25 @@ unsafe impl crate::CppDeletable for Pnt2d {
 }
 
 impl Pnt2d {
+    /// **Source:** `gp_Pnt2d.hxx`:37 - `gp_Pnt2d::gp_Pnt2d()`
     /// Creates a point with zero coordinates.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Pnt2d_ctor()) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:40 - `gp_Pnt2d::gp_Pnt2d()`
     /// Creates a point with a doublet of coordinates.
     pub fn new_xy(theCoord: &crate::ffi::gp_XY) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Pnt2d_ctor_xy(theCoord)) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:46 - `gp_Pnt2d::gp_Pnt2d()`
     /// Creates a  point with its 2 cartesian's coordinates : theXp, theYp.
     pub fn new_real2(theXp: f64, theYp: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Pnt2d_ctor_real2(theXp, theYp)) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:55 - `gp_Pnt2d::SetCoord()`
     /// Assigns the value Xi to the coordinate that corresponds to theIndex:
     /// theIndex = 1 => X is modified
     /// theIndex = 2 => Y is modified
@@ -8269,26 +9222,31 @@ impl Pnt2d {
         unsafe { crate::ffi::gp_Pnt2d_set_coord_int_real(self as *mut Self, theIndex, theXi) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:61 - `gp_Pnt2d::SetCoord()`
     /// For this point, assigns the values theXp and theYp to its two coordinates
     pub fn set_coord_real2(&mut self, theXp: f64, theYp: f64) {
         unsafe { crate::ffi::gp_Pnt2d_set_coord_real2(self as *mut Self, theXp, theYp) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:67 - `gp_Pnt2d::SetX()`
     /// Assigns the given value to the X  coordinate of this point.
     pub fn set_x(&mut self, theX: f64) {
         unsafe { crate::ffi::gp_Pnt2d_set_x(self as *mut Self, theX) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:70 - `gp_Pnt2d::SetY()`
     /// Assigns the given value to the Y  coordinate of this point.
     pub fn set_y(&mut self, theY: f64) {
         unsafe { crate::ffi::gp_Pnt2d_set_y(self as *mut Self, theY) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:73 - `gp_Pnt2d::SetXY()`
     /// Assigns the two coordinates of Coord to this point.
     pub fn set_xy(&mut self, theCoord: &crate::ffi::gp_XY) {
         unsafe { crate::ffi::gp_Pnt2d_set_xy(self as *mut Self, theCoord) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:79 - `gp_Pnt2d::Coord()`
     /// Returns the coordinate of range theIndex :
     /// theIndex = 1 => X is returned
     /// theIndex = 2 => Y is returned
@@ -8297,37 +9255,44 @@ impl Pnt2d {
         unsafe { crate::ffi::gp_Pnt2d_coord_int(self as *const Self, theIndex) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:82 - `gp_Pnt2d::Coord()`
     /// For this point returns its two coordinates as a number pair.
     pub fn coord_real2(&self, theXp: &mut f64, theYp: &mut f64) {
         unsafe { crate::ffi::gp_Pnt2d_coord_real2(self as *const Self, theXp, theYp) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:85 - `gp_Pnt2d::X()`
     /// For this point, returns its X  coordinate.
     pub fn x(&self) -> f64 {
         unsafe { crate::ffi::gp_Pnt2d_x(self as *const Self) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:88 - `gp_Pnt2d::Y()`
     /// For this point, returns its Y coordinate.
     pub fn y(&self) -> f64 {
         unsafe { crate::ffi::gp_Pnt2d_y(self as *const Self) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:91 - `gp_Pnt2d::XY()`
     /// For this point, returns its two coordinates as a number pair.
     pub fn xy(&self) -> &crate::ffi::gp_XY {
         unsafe { &*(crate::ffi::gp_Pnt2d_xy(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:94 - `gp_Pnt2d::Coord()`
     /// For this point, returns its two coordinates as a number pair.
     pub fn coord(&self) -> &crate::ffi::gp_XY {
         unsafe { &*(crate::ffi::gp_Pnt2d_coord(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:98 - `gp_Pnt2d::ChangeCoord()`
     /// Returns the coordinates of this point.
     /// Note: This syntax allows direct modification of the returned value.
     pub fn change_coord(&mut self) -> &mut crate::ffi::gp_XY {
         unsafe { &mut *(crate::ffi::gp_Pnt2d_change_coord(self as *mut Self)) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:103 - `gp_Pnt2d::IsEqual()`
     /// Comparison
     /// Returns True if the distance between the two
     /// points is lower or equal to theLinearTolerance.
@@ -8335,16 +9300,19 @@ impl Pnt2d {
         unsafe { crate::ffi::gp_Pnt2d_is_equal(self as *const Self, theOther, theLinearTolerance) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:109 - `gp_Pnt2d::Distance()`
     /// Computes the distance between two points.
     pub fn distance(&self, theOther: &crate::ffi::gp_Pnt2d) -> f64 {
         unsafe { crate::ffi::gp_Pnt2d_distance(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:112 - `gp_Pnt2d::SquareDistance()`
     /// Computes the square distance between two points.
     pub fn square_distance(&self, theOther: &crate::ffi::gp_Pnt2d) -> f64 {
         unsafe { crate::ffi::gp_Pnt2d_square_distance(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:117 - `gp_Pnt2d::Mirror()`
     /// Performs the symmetrical transformation of a point
     /// with respect to the point theP which is the center of
     /// the  symmetry.
@@ -8352,6 +9320,7 @@ impl Pnt2d {
         unsafe { crate::ffi::gp_Pnt2d_mirror_pnt2d(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:121 - `gp_Pnt2d::Mirrored()`
     /// Performs the symmetrical transformation of a point
     /// with respect to an axis placement which is the axis
     pub fn mirrored_pnt2d(
@@ -8366,10 +9335,12 @@ impl Pnt2d {
         }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:123 - `gp_Pnt2d::Mirror()`
     pub fn mirror_ax2d(&mut self, theA: &crate::ffi::gp_Ax2d) {
         unsafe { crate::ffi::gp_Pnt2d_mirror_ax2d(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:125 - `gp_Pnt2d::Mirrored()`
     pub fn mirrored_ax2d(
         &self,
         theA: &crate::ffi::gp_Ax2d,
@@ -8379,12 +9350,14 @@ impl Pnt2d {
         }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:129 - `gp_Pnt2d::Rotate()`
     /// Rotates a point. theA1 is the axis of the rotation.
     /// Ang is the angular value of the rotation in radians.
     pub fn rotate(&mut self, theP: &crate::ffi::gp_Pnt2d, theAng: f64) {
         unsafe { crate::ffi::gp_Pnt2d_rotate(self as *mut Self, theP, theAng) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:131 - `gp_Pnt2d::Rotated()`
     pub fn rotated(
         &self,
         theP: &crate::ffi::gp_Pnt2d,
@@ -8399,11 +9372,13 @@ impl Pnt2d {
         }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:139 - `gp_Pnt2d::Scale()`
     /// Scales a point. theS is the scaling value.
     pub fn scale(&mut self, theP: &crate::ffi::gp_Pnt2d, theS: f64) {
         unsafe { crate::ffi::gp_Pnt2d_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:141 - `gp_Pnt2d::Scaled()`
     pub fn scaled(
         &self,
         theP: &crate::ffi::gp_Pnt2d,
@@ -8414,11 +9389,13 @@ impl Pnt2d {
         }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:149 - `gp_Pnt2d::Transform()`
     /// Transforms a point with the transformation theT.
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::gp_Pnt2d_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:151 - `gp_Pnt2d::Transformed()`
     pub fn transformed(
         &self,
         theT: &crate::ffi::gp_Trsf2d,
@@ -8428,12 +9405,14 @@ impl Pnt2d {
         }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:160 - `gp_Pnt2d::Translate()`
     /// Translates a point in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translate_vec2d(&mut self, theV: &crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::gp_Pnt2d_translate_vec2d(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:162 - `gp_Pnt2d::Translated()`
     pub fn translated_vec2d(
         &self,
         theV: &crate::ffi::gp_Vec2d,
@@ -8446,11 +9425,13 @@ impl Pnt2d {
         }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:165 - `gp_Pnt2d::Translate()`
     /// Translates a point from the point theP1 to the point theP2.
     pub fn translate_pnt2d2(&mut self, theP1: &crate::ffi::gp_Pnt2d, theP2: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Pnt2d_translate_pnt2d2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Pnt2d.hxx`:171 - `gp_Pnt2d::Translated()`
     pub fn translated_pnt2d2(
         &self,
         theP1: &crate::ffi::gp_Pnt2d,
@@ -8475,6 +9456,7 @@ impl Pnt2d {
 // From gp_Quaternion.hxx
 // ========================
 
+/// **Source:** `gp_Quaternion.hxx`:30 - `gp_Quaternion`
 /// Represents operation of rotation in 3d space as quaternion
 /// and implements operations with rotations basing on
 /// quaternion mathematics.
@@ -8491,11 +9473,13 @@ unsafe impl crate::CppDeletable for Quaternion {
 }
 
 impl Quaternion {
+    /// **Source:** `gp_Quaternion.hxx`:36 - `gp_Quaternion::gp_Quaternion()`
     /// Creates an identity quaternion
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Quaternion_ctor()) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:45 - `gp_Quaternion::gp_Quaternion()`
     /// Creates quaternion directly from component values
     pub fn new_real4(theX: f64, theY: f64, theZ: f64, theW: f64) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -8503,6 +9487,7 @@ impl Quaternion {
         }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:58 - `gp_Quaternion::gp_Quaternion()`
     /// Creates quaternion representing shortest-arc rotation
     /// operator producing vector theVecTo from vector theVecFrom.
     pub fn new_vec2(
@@ -8514,6 +9499,7 @@ impl Quaternion {
         }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:68 - `gp_Quaternion::gp_Quaternion()`
     /// Creates quaternion representing shortest-arc rotation
     /// operator producing vector theVecTo from vector theVecFrom.
     /// Additional vector theHelpCrossVec defines preferred direction for
@@ -8533,6 +9519,7 @@ impl Quaternion {
         }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:75 - `gp_Quaternion::gp_Quaternion()`
     /// Creates quaternion representing rotation on angle
     /// theAngle around vector theAxis
     pub fn new_vec_real(theAxis: &crate::ffi::gp_Vec, theAngle: f64) -> crate::OwnedPtr<Self> {
@@ -8541,17 +9528,20 @@ impl Quaternion {
         }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:82 - `gp_Quaternion::gp_Quaternion()`
     /// Creates quaternion from rotation matrix 3*3
     /// (which should be orthonormal skew-symmetric matrix)
     pub fn new_mat(theMat: &crate::ffi::gp_Mat) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Quaternion_ctor_mat(theMat)) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:85 - `gp_Quaternion::IsEqual()`
     /// Simple equal test without precision
     pub fn is_equal(&self, theOther: &crate::ffi::gp_Quaternion) -> bool {
         unsafe { crate::ffi::gp_Quaternion_is_equal(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:91 - `gp_Quaternion::SetRotation()`
     /// Sets quaternion to shortest-arc rotation producing
     /// vector theVecTo from vector theVecFrom.
     /// If vectors theVecFrom and theVecTo are opposite then rotation
@@ -8566,6 +9556,7 @@ impl Quaternion {
         }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:97 - `gp_Quaternion::SetRotation()`
     /// Sets quaternion to shortest-arc rotation producing
     /// vector theVecTo from vector theVecFrom.
     /// If vectors theVecFrom and theVecTo are opposite then rotation
@@ -8586,6 +9577,7 @@ impl Quaternion {
         }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:102 - `gp_Quaternion::SetVectorAndAngle()`
     /// Create a unit quaternion from Axis+Angle representation
     pub fn set_vector_and_angle(&mut self, theAxis: &crate::ffi::gp_Vec, theAngle: f64) {
         unsafe {
@@ -8593,6 +9585,7 @@ impl Quaternion {
         }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:106 - `gp_Quaternion::GetVectorAndAngle()`
     /// Convert a quaternion to Axis+Angle representation,
     /// preserve the axis direction and angle from -PI to +PI
     pub fn get_vector_and_angle(&self, theAxis: &mut crate::ffi::gp_Vec, theAngle: &mut f64) {
@@ -8601,6 +9594,7 @@ impl Quaternion {
         }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:113 - `gp_Quaternion::SetMatrix()`
     /// Create a unit quaternion by rotation matrix
     /// matrix must contain only rotation (not scale or shear)
     ///
@@ -8610,6 +9604,7 @@ impl Quaternion {
         unsafe { crate::ffi::gp_Quaternion_set_matrix(self as *mut Self, theMat) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:116 - `gp_Quaternion::GetMatrix()`
     /// Returns rotation operation as 3*3 matrix
     pub fn get_matrix(&self) -> crate::OwnedPtr<crate::ffi::gp_Mat> {
         unsafe {
@@ -8617,6 +9612,7 @@ impl Quaternion {
         }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:120 - `gp_Quaternion::SetEulerAngles()`
     /// Create a unit quaternion representing rotation defined
     /// by generalized Euler angles
     pub fn set_euler_angles(
@@ -8637,6 +9633,7 @@ impl Quaternion {
         }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:126 - `gp_Quaternion::GetEulerAngles()`
     /// Returns Euler angles describing current rotation
     pub fn get_euler_angles(
         &self,
@@ -8656,40 +9653,49 @@ impl Quaternion {
         }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:131 - `gp_Quaternion::Set()`
     pub fn set_real4(&mut self, theX: f64, theY: f64, theZ: f64, theW: f64) {
         unsafe { crate::ffi::gp_Quaternion_set_real4(self as *mut Self, theX, theY, theZ, theW) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:136 - `gp_Quaternion::Set()`
     pub fn set_quaternion(&mut self, theQuaternion: &crate::ffi::gp_Quaternion) {
         unsafe { crate::ffi::gp_Quaternion_set_quaternion(self as *mut Self, theQuaternion) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:138 - `gp_Quaternion::X()`
     pub fn x(&self) -> f64 {
         unsafe { crate::ffi::gp_Quaternion_x(self as *const Self) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:140 - `gp_Quaternion::Y()`
     pub fn y(&self) -> f64 {
         unsafe { crate::ffi::gp_Quaternion_y(self as *const Self) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:142 - `gp_Quaternion::Z()`
     pub fn z(&self) -> f64 {
         unsafe { crate::ffi::gp_Quaternion_z(self as *const Self) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:144 - `gp_Quaternion::W()`
     pub fn w(&self) -> f64 {
         unsafe { crate::ffi::gp_Quaternion_w(self as *const Self) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:147 - `gp_Quaternion::SetIdent()`
     /// Make identity quaternion (zero-rotation)
     pub fn set_ident(&mut self) {
         unsafe { crate::ffi::gp_Quaternion_set_ident(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:154 - `gp_Quaternion::Reverse()`
     /// Reverse direction of rotation (conjugate quaternion)
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::gp_Quaternion_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:162 - `gp_Quaternion::Reversed()`
     /// Return rotation with reversed direction (conjugated quaternion)
     pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::gp_Quaternion> {
         unsafe {
@@ -8697,11 +9703,13 @@ impl Quaternion {
         }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:165 - `gp_Quaternion::Invert()`
     /// Inverts quaternion (both rotation direction and norm)
     pub fn invert(&mut self) {
         unsafe { crate::ffi::gp_Quaternion_invert(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:172 - `gp_Quaternion::Inverted()`
     /// Return inversed quaternion q^-1
     pub fn inverted(&self) -> crate::OwnedPtr<crate::ffi::gp_Quaternion> {
         unsafe {
@@ -8709,22 +9717,26 @@ impl Quaternion {
         }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:179 - `gp_Quaternion::SquareNorm()`
     /// Returns square norm of quaternion
     pub fn square_norm(&self) -> f64 {
         unsafe { crate::ffi::gp_Quaternion_square_norm(self as *const Self) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:182 - `gp_Quaternion::Norm()`
     /// Returns norm of quaternion
     pub fn norm(&self) -> f64 {
         unsafe { crate::ffi::gp_Quaternion_norm(self as *const Self) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:186 - `gp_Quaternion::Scale()`
     /// Scale all components by quaternion by theScale; note that
     /// rotation is not changed by this operation (except 0-scaling)
     pub fn scale(&mut self, theScale: f64) {
         unsafe { crate::ffi::gp_Quaternion_scale(self as *mut Self, theScale) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:191 - `gp_Quaternion::Scaled()`
     /// Returns scaled quaternion
     pub fn scaled(&self, theScale: f64) -> crate::OwnedPtr<crate::ffi::gp_Quaternion> {
         unsafe {
@@ -8735,6 +9747,7 @@ impl Quaternion {
         }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:204 - `gp_Quaternion::StabilizeLength()`
     /// Stabilize quaternion length within 1 - 1/4.
     /// This operation is a lot faster than normalization
     /// and preserve length goes to 0 or infinity
@@ -8742,6 +9755,7 @@ impl Quaternion {
         unsafe { crate::ffi::gp_Quaternion_stabilize_length(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:209 - `gp_Quaternion::Normalize()`
     /// Scale quaternion that its norm goes to 1.
     /// The appearing of 0 magnitude or near is a error,
     /// so we can be sure that can divide by magnitude
@@ -8749,6 +9763,7 @@ impl Quaternion {
         unsafe { crate::ffi::gp_Quaternion_normalize(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:212 - `gp_Quaternion::Normalized()`
     /// Returns quaternion scaled so that its norm goes to 1.
     pub fn normalized(&self) -> crate::OwnedPtr<crate::ffi::gp_Quaternion> {
         unsafe {
@@ -8756,6 +9771,7 @@ impl Quaternion {
         }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:222 - `gp_Quaternion::Negated()`
     /// Returns quaternion with all components negated.
     /// Note that this operation does not affect neither
     /// rotation operator defined by quaternion nor its norm.
@@ -8763,6 +9779,7 @@ impl Quaternion {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Quaternion_negated(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:227 - `gp_Quaternion::Added()`
     /// Makes sum of quaternion components; result is "rotations mix"
     pub fn added(
         &self,
@@ -8776,6 +9793,7 @@ impl Quaternion {
         }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:238 - `gp_Quaternion::Subtracted()`
     /// Makes difference of quaternion components; result is "rotations mix"
     pub fn subtracted(
         &self,
@@ -8789,6 +9807,7 @@ impl Quaternion {
         }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:258 - `gp_Quaternion::Multiplied()`
     /// Multiply function - work the same as Matrices multiplying.
     /// @code
     /// qq' = (cross(v,v') + wv' + w'v, ww' - dot(v,v'))
@@ -8811,31 +9830,37 @@ impl Quaternion {
         }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:266 - `gp_Quaternion::Add()`
     /// Adds components of other quaternion; result is "rotations mix"
     pub fn add(&mut self, theOther: &crate::ffi::gp_Quaternion) {
         unsafe { crate::ffi::gp_Quaternion_add(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:271 - `gp_Quaternion::Subtract()`
     /// Subtracts components of other quaternion; result is "rotations mix"
     pub fn subtract(&mut self, theOther: &crate::ffi::gp_Quaternion) {
         unsafe { crate::ffi::gp_Quaternion_subtract(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:276 - `gp_Quaternion::Multiply()`
     /// Adds rotation by multiplication
     pub fn multiply_quaternion(&mut self, theOther: &crate::ffi::gp_Quaternion) {
         unsafe { crate::ffi::gp_Quaternion_multiply_quaternion(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:284 - `gp_Quaternion::Dot()`
     /// Computes inner product / scalar product / Dot
     pub fn dot(&self, theOther: &crate::ffi::gp_Quaternion) -> f64 {
         unsafe { crate::ffi::gp_Quaternion_dot(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:290 - `gp_Quaternion::GetRotationAngle()`
     /// Return rotation angle from -PI to PI
     pub fn get_rotation_angle(&self) -> f64 {
         unsafe { crate::ffi::gp_Quaternion_get_rotation_angle(self as *const Self) }
     }
 
+    /// **Source:** `gp_Quaternion.hxx`:293 - `gp_Quaternion::Multiply()`
     /// Rotates vector by quaternion as rotation operator
     pub fn multiply_vec(&self, theVec: &crate::ffi::gp_Vec) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
         unsafe {
@@ -8858,6 +9883,7 @@ impl Quaternion {
 // From gp_QuaternionNLerp.hxx
 // ========================
 
+/// **Source:** `gp_QuaternionNLerp.hxx`:21 - `gp_QuaternionNLerp`
 /// Class perform linear interpolation (approximate rotation interpolation),
 /// result quaternion nonunit, its length lay between. sqrt(2)/2  and 1.0
 pub use crate::ffi::gp_QuaternionNLerp as QuaternionNLerp;
@@ -8869,11 +9895,13 @@ unsafe impl crate::CppDeletable for QuaternionNLerp {
 }
 
 impl QuaternionNLerp {
+    /// **Source:** `gp_QuaternionNLerp.hxx`:41 - `gp_QuaternionNLerp::gp_QuaternionNLerp()`
     /// Empty constructor,
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_QuaternionNLerp_ctor()) }
     }
 
+    /// **Source:** `gp_QuaternionNLerp.hxx`:44 - `gp_QuaternionNLerp::gp_QuaternionNLerp()`
     /// Constructor with initialization.
     pub fn new_quaternion2(
         theQStart: &crate::ffi::gp_Quaternion,
@@ -8886,6 +9914,7 @@ impl QuaternionNLerp {
         }
     }
 
+    /// **Source:** `gp_QuaternionNLerp.hxx`:50 - `gp_QuaternionNLerp::Init()`
     /// Initialize the tool with Start and End values.
     pub fn init(
         &mut self,
@@ -8895,6 +9924,7 @@ impl QuaternionNLerp {
         unsafe { crate::ffi::gp_QuaternionNLerp_init(self as *mut Self, theQStart, theQEnd) }
     }
 
+    /// **Source:** `gp_QuaternionNLerp.hxx`:56 - `gp_QuaternionNLerp::InitFromUnit()`
     /// Initialize the tool with Start and End unit quaternions.
     pub fn init_from_unit(
         &mut self,
@@ -8906,11 +9936,13 @@ impl QuaternionNLerp {
         }
     }
 
+    /// **Source:** `gp_QuaternionNLerp.hxx`:69 - `gp_QuaternionNLerp::Interpolate()`
     /// Set interpolated quaternion for theT position (from 0.0 to 1.0)
     pub fn interpolate(&self, theT: f64, theResultQ: &mut crate::ffi::gp_Quaternion) {
         unsafe { crate::ffi::gp_QuaternionNLerp_interpolate(self as *const Self, theT, theResultQ) }
     }
 
+    /// **Source:** `gp_QuaternionNLerp.hxx`:29 - `gp_QuaternionNLerp::Interpolate()`
     /// Compute interpolated quaternion between two quaternions.
     /// @param theStart first  quaternion
     /// @param theEnd   second quaternion
@@ -8940,6 +9972,7 @@ impl QuaternionNLerp {
 // From gp_QuaternionSLerp.hxx
 // ========================
 
+/// **Source:** `gp_QuaternionSLerp.hxx`:21 - `gp_QuaternionSLerp`
 /// Perform Spherical Linear Interpolation of the quaternions,
 /// return unit length quaternion.
 pub use crate::ffi::gp_QuaternionSLerp as QuaternionSLerp;
@@ -8951,11 +9984,13 @@ unsafe impl crate::CppDeletable for QuaternionSLerp {
 }
 
 impl QuaternionSLerp {
+    /// **Source:** `gp_QuaternionSLerp.hxx`:41 - `gp_QuaternionSLerp::gp_QuaternionSLerp()`
     /// Empty constructor,
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_QuaternionSLerp_ctor()) }
     }
 
+    /// **Source:** `gp_QuaternionSLerp.hxx`:44 - `gp_QuaternionSLerp::gp_QuaternionSLerp()`
     /// Constructor with initialization.
     pub fn new_quaternion2(
         theQStart: &crate::ffi::gp_Quaternion,
@@ -8968,6 +10003,7 @@ impl QuaternionSLerp {
         }
     }
 
+    /// **Source:** `gp_QuaternionSLerp.hxx`:50 - `gp_QuaternionSLerp::Init()`
     /// Initialize the tool with Start and End values.
     pub fn init(
         &mut self,
@@ -8977,6 +10013,7 @@ impl QuaternionSLerp {
         unsafe { crate::ffi::gp_QuaternionSLerp_init(self as *mut Self, theQStart, theQEnd) }
     }
 
+    /// **Source:** `gp_QuaternionSLerp.hxx`:56 - `gp_QuaternionSLerp::InitFromUnit()`
     /// Initialize the tool with Start and End unit quaternions.
     pub fn init_from_unit(
         &mut self,
@@ -8988,11 +10025,13 @@ impl QuaternionSLerp {
         }
     }
 
+    /// **Source:** `gp_QuaternionSLerp.hxx`:77 - `gp_QuaternionSLerp::Interpolate()`
     /// Set interpolated quaternion for theT position (from 0.0 to 1.0)
     pub fn interpolate(&self, theT: f64, theResultQ: &mut crate::ffi::gp_Quaternion) {
         unsafe { crate::ffi::gp_QuaternionSLerp_interpolate(self as *const Self, theT, theResultQ) }
     }
 
+    /// **Source:** `gp_QuaternionSLerp.hxx`:29 - `gp_QuaternionSLerp::Interpolate()`
     /// Compute interpolated quaternion between two quaternions.
     /// @param theStart first  quaternion
     /// @param theEnd   second quaternion
@@ -9022,6 +10061,7 @@ impl QuaternionSLerp {
 // From gp_Sphere.hxx
 // ========================
 
+/// **Source:** `gp_Sphere.hxx`:42 - `gp_Sphere`
 /// Describes a sphere.
 /// A sphere is defined by its radius and positioned in space
 /// with a coordinate system (a gp_Ax3 object). The origin of
@@ -9051,11 +10091,13 @@ unsafe impl crate::CppDeletable for Sphere {
 }
 
 impl Sphere {
+    /// **Source:** `gp_Sphere.hxx`:48 - `gp_Sphere::gp_Sphere()`
     /// Creates an indefinite sphere.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Sphere_ctor()) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:58 - `gp_Sphere::gp_Sphere()`
     /// Constructs a sphere with radius theRadius, centered on the origin
     /// of theA3.  theA3 is the local coordinate system of the sphere.
     /// Warnings :
@@ -9065,16 +10107,19 @@ impl Sphere {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Sphere_ctor_ax3_real(theA3, theRadius)) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:66 - `gp_Sphere::SetLocation()`
     /// Changes the center of the sphere.
     pub fn set_location(&mut self, theLoc: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Sphere_set_location(self as *mut Self, theLoc) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:69 - `gp_Sphere::SetPosition()`
     /// Changes the local coordinate system of the sphere.
     pub fn set_position(&mut self, theA3: &crate::ffi::gp_Ax3) {
         unsafe { crate::ffi::gp_Sphere_set_position(self as *mut Self, theA3) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:75 - `gp_Sphere::SetRadius()`
     /// Assigns theR the radius of the Sphere.
     /// Warnings :
     /// It is not forbidden to create a sphere with null radius.
@@ -9083,11 +10128,13 @@ impl Sphere {
         unsafe { crate::ffi::gp_Sphere_set_radius(self as *mut Self, theR) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:83 - `gp_Sphere::Area()`
     /// Computes the area of the sphere.
     pub fn area(&self) -> f64 {
         unsafe { crate::ffi::gp_Sphere_area(self as *const Self) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:91 - `gp_Sphere::Coefficients()`
     /// Computes the coefficients of the implicit equation of the quadric
     /// in the absolute cartesian coordinates system :
     /// @code
@@ -9124,59 +10171,70 @@ impl Sphere {
         }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:104 - `gp_Sphere::UReverse()`
     /// Reverses the   U   parametrization of   the sphere
     /// reversing the YAxis.
     pub fn u_reverse(&mut self) {
         unsafe { crate::ffi::gp_Sphere_u_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:108 - `gp_Sphere::VReverse()`
     /// Reverses the   V   parametrization of   the  sphere
     /// reversing the ZAxis.
     pub fn v_reverse(&mut self) {
         unsafe { crate::ffi::gp_Sphere_v_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:112 - `gp_Sphere::Direct()`
     /// Returns true if the local coordinate system of this sphere
     /// is right-handed.
     pub fn direct(&self) -> bool {
         unsafe { crate::ffi::gp_Sphere_direct(self as *const Self) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:116 - `gp_Sphere::Location()`
     /// --- Purpose ;
     /// Returns the center of the sphere.
     pub fn location(&self) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::gp_Sphere_location(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:119 - `gp_Sphere::Position()`
     /// Returns the local coordinates system of the sphere.
     pub fn position(&self) -> &crate::ffi::gp_Ax3 {
         unsafe { &*(crate::ffi::gp_Sphere_position(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:122 - `gp_Sphere::Radius()`
     /// Returns the radius of the sphere.
     pub fn radius(&self) -> f64 {
         unsafe { crate::ffi::gp_Sphere_radius(self as *const Self) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:125 - `gp_Sphere::Volume()`
     /// Computes the volume of the sphere
     pub fn volume(&self) -> f64 {
         unsafe { crate::ffi::gp_Sphere_volume(self as *const Self) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:128 - `gp_Sphere::XAxis()`
     /// Returns the axis X of the sphere.
     pub fn x_axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Sphere_x_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:131 - `gp_Sphere::YAxis()`
     /// Returns the axis Y of the sphere.
     pub fn y_axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Sphere_y_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:133 - `gp_Sphere::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Sphere_mirror_pnt(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:138 - `gp_Sphere::Mirrored()`
     /// Performs the symmetrical transformation of a sphere
     /// with respect to the point theP which is the center of the
     /// symmetry.
@@ -9189,10 +10247,12 @@ impl Sphere {
         }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:140 - `gp_Sphere::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &crate::ffi::gp_Ax1) {
         unsafe { crate::ffi::gp_Sphere_mirror_ax1(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:145 - `gp_Sphere::Mirrored()`
     /// Performs the symmetrical transformation of a sphere with
     /// respect to an axis placement which is the axis of the
     /// symmetry.
@@ -9208,10 +10268,12 @@ impl Sphere {
         }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:147 - `gp_Sphere::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::gp_Sphere_mirror_ax2(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:152 - `gp_Sphere::Mirrored()`
     /// Performs the symmetrical transformation of a sphere with respect
     /// to a plane. The axis placement theA2 locates the plane of the
     /// of the symmetry : (Location, XDirection, YDirection).
@@ -9227,10 +10289,12 @@ impl Sphere {
         }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:154 - `gp_Sphere::Rotate()`
     pub fn rotate(&mut self, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
         unsafe { crate::ffi::gp_Sphere_rotate(self as *mut Self, theA1, theAng) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:158 - `gp_Sphere::Rotated()`
     /// Rotates a sphere. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
     pub fn rotated(
@@ -9247,10 +10311,12 @@ impl Sphere {
         }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:165 - `gp_Sphere::Scale()`
     pub fn scale(&mut self, theP: &crate::ffi::gp_Pnt, theS: f64) {
         unsafe { crate::ffi::gp_Sphere_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:169 - `gp_Sphere::Scaled()`
     /// Scales a sphere. theS is the scaling value.
     /// The absolute value of S is used to scale the sphere
     pub fn scaled(
@@ -9263,10 +10329,12 @@ impl Sphere {
         }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:171 - `gp_Sphere::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::gp_Sphere_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:174 - `gp_Sphere::Transformed()`
     /// Transforms a sphere with the transformation theT from class Trsf.
     pub fn transformed(
         &self,
@@ -9277,10 +10345,12 @@ impl Sphere {
         }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:176 - `gp_Sphere::Translate()`
     pub fn translate_vec(&mut self, theV: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Sphere_translate_vec(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:180 - `gp_Sphere::Translated()`
     /// Translates a sphere in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translated_vec(
@@ -9295,10 +10365,12 @@ impl Sphere {
         }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:187 - `gp_Sphere::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &crate::ffi::gp_Pnt, theP2: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Sphere_translate_pnt2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Sphere.hxx`:190 - `gp_Sphere::Translated()`
     /// Translates a sphere from the point theP1 to the point theP2.
     pub fn translated_pnt2(
         &self,
@@ -9324,6 +10396,7 @@ impl Sphere {
 // From gp_Torus.hxx
 // ========================
 
+/// **Source:** `gp_Torus.hxx`:55 - `gp_Torus`
 /// Describes a torus.
 /// A torus is defined by its major and minor radii and
 /// positioned in space with a coordinate system (a gp_Ax3
@@ -9365,11 +10438,13 @@ unsafe impl crate::CppDeletable for Torus {
 }
 
 impl Torus {
+    /// **Source:** `gp_Torus.hxx`:61 - `gp_Torus::gp_Torus()`
     /// creates an indefinite Torus.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Torus_ctor()) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:75 - `gp_Torus::gp_Torus()`
     /// a torus centered on the origin of coordinate system
     /// theA3, with major radius theMajorRadius and minor radius
     /// theMinorRadius, and with the reference plane defined
@@ -9392,6 +10467,7 @@ impl Torus {
         }
     }
 
+    /// **Source:** `gp_Torus.hxx`:92 - `gp_Torus::SetAxis()`
     /// Modifies this torus, by redefining its local coordinate
     /// system so that:
     /// -   its origin and "main Direction" become those of the
@@ -9402,17 +10478,20 @@ impl Torus {
         unsafe { crate::ffi::gp_Torus_set_axis(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:95 - `gp_Torus::SetLocation()`
     /// Changes the location of the torus.
     pub fn set_location(&mut self, theLoc: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Torus_set_location(self as *mut Self, theLoc) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:99 - `gp_Torus::SetMajorRadius()`
     /// Assigns value to the major radius  of this torus.
     /// Raises ConstructionError if theMajorRadius - MinorRadius <= Resolution()
     pub fn set_major_radius(&mut self, theMajorRadius: f64) {
         unsafe { crate::ffi::gp_Torus_set_major_radius(self as *mut Self, theMajorRadius) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:109 - `gp_Torus::SetMinorRadius()`
     /// Assigns value to the  minor radius of this torus.
     /// Raises ConstructionError if theMinorRadius < 0.0 or if
     /// MajorRadius - theMinorRadius <= Resolution from gp.
@@ -9420,77 +10499,92 @@ impl Torus {
         unsafe { crate::ffi::gp_Torus_set_minor_radius(self as *mut Self, theMinorRadius) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:118 - `gp_Torus::SetPosition()`
     /// Changes the local coordinate system of the surface.
     pub fn set_position(&mut self, theA3: &crate::ffi::gp_Ax3) {
         unsafe { crate::ffi::gp_Torus_set_position(self as *mut Self, theA3) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:121 - `gp_Torus::Area()`
     /// Computes the area of the torus.
     pub fn area(&self) -> f64 {
         unsafe { crate::ffi::gp_Torus_area(self as *const Self) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:125 - `gp_Torus::UReverse()`
     /// Reverses the   U   parametrization of   the  torus
     /// reversing the YAxis.
     pub fn u_reverse(&mut self) {
         unsafe { crate::ffi::gp_Torus_u_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:129 - `gp_Torus::VReverse()`
     /// Reverses the   V   parametrization of   the  torus
     /// reversing the ZAxis.
     pub fn v_reverse(&mut self) {
         unsafe { crate::ffi::gp_Torus_v_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:132 - `gp_Torus::Direct()`
     /// returns true if the Ax3, the local coordinate system of this torus, is right handed.
     pub fn direct(&self) -> bool {
         unsafe { crate::ffi::gp_Torus_direct(self as *const Self) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:135 - `gp_Torus::Axis()`
     /// returns the symmetry axis of the torus.
     pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
         unsafe { &*(crate::ffi::gp_Torus_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:159 - `gp_Torus::Location()`
     /// Returns the Torus's location.
     pub fn location(&self) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::gp_Torus_location(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:162 - `gp_Torus::Position()`
     /// Returns the local coordinates system of the torus.
     pub fn position(&self) -> &crate::ffi::gp_Ax3 {
         unsafe { &*(crate::ffi::gp_Torus_position(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:165 - `gp_Torus::MajorRadius()`
     /// returns the major radius of the torus.
     pub fn major_radius(&self) -> f64 {
         unsafe { crate::ffi::gp_Torus_major_radius(self as *const Self) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:168 - `gp_Torus::MinorRadius()`
     /// returns the minor radius of the torus.
     pub fn minor_radius(&self) -> f64 {
         unsafe { crate::ffi::gp_Torus_minor_radius(self as *const Self) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:171 - `gp_Torus::Volume()`
     /// Computes the volume of the torus.
     pub fn volume(&self) -> f64 {
         unsafe { crate::ffi::gp_Torus_volume(self as *const Self) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:177 - `gp_Torus::XAxis()`
     /// returns the axis X of the torus.
     pub fn x_axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Torus_x_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:180 - `gp_Torus::YAxis()`
     /// returns the axis Y of the torus.
     pub fn y_axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Torus_y_axis(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:182 - `gp_Torus::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Torus_mirror_pnt(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:187 - `gp_Torus::Mirrored()`
     /// Performs the symmetrical transformation of a torus
     /// with respect to the point theP which is the center of the
     /// symmetry.
@@ -9500,10 +10594,12 @@ impl Torus {
         }
     }
 
+    /// **Source:** `gp_Torus.hxx`:189 - `gp_Torus::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &crate::ffi::gp_Ax1) {
         unsafe { crate::ffi::gp_Torus_mirror_ax1(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:194 - `gp_Torus::Mirrored()`
     /// Performs the symmetrical transformation of a torus with
     /// respect to an axis placement which is the axis of the
     /// symmetry.
@@ -9516,10 +10612,12 @@ impl Torus {
         }
     }
 
+    /// **Source:** `gp_Torus.hxx`:196 - `gp_Torus::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::gp_Torus_mirror_ax2(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:201 - `gp_Torus::Mirrored()`
     /// Performs the symmetrical transformation of a torus with respect
     /// to a plane. The axis placement theA2 locates the plane of the
     /// of the symmetry : (Location, XDirection, YDirection).
@@ -9532,10 +10630,12 @@ impl Torus {
         }
     }
 
+    /// **Source:** `gp_Torus.hxx`:203 - `gp_Torus::Rotate()`
     pub fn rotate(&mut self, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
         unsafe { crate::ffi::gp_Torus_rotate(self as *mut Self, theA1, theAng) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:207 - `gp_Torus::Rotated()`
     /// Rotates a torus. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
     pub fn rotated(
@@ -9552,10 +10652,12 @@ impl Torus {
         }
     }
 
+    /// **Source:** `gp_Torus.hxx`:214 - `gp_Torus::Scale()`
     pub fn scale(&mut self, theP: &crate::ffi::gp_Pnt, theS: f64) {
         unsafe { crate::ffi::gp_Torus_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:218 - `gp_Torus::Scaled()`
     /// Scales a torus. S is the scaling value.
     /// The absolute value of S is used to scale the torus
     pub fn scaled(
@@ -9568,10 +10670,12 @@ impl Torus {
         }
     }
 
+    /// **Source:** `gp_Torus.hxx`:220 - `gp_Torus::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::gp_Torus_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:223 - `gp_Torus::Transformed()`
     /// Transforms a torus with the transformation theT from class Trsf.
     pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::OwnedPtr<crate::ffi::gp_Torus> {
         unsafe {
@@ -9579,10 +10683,12 @@ impl Torus {
         }
     }
 
+    /// **Source:** `gp_Torus.hxx`:225 - `gp_Torus::Translate()`
     pub fn translate_vec(&mut self, theV: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Torus_translate_vec(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:229 - `gp_Torus::Translated()`
     /// Translates a torus in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translated_vec(
@@ -9597,10 +10703,12 @@ impl Torus {
         }
     }
 
+    /// **Source:** `gp_Torus.hxx`:236 - `gp_Torus::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &crate::ffi::gp_Pnt, theP2: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Torus_translate_pnt2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Torus.hxx`:239 - `gp_Torus::Translated()`
     /// Translates a torus from the point theP1 to the point theP2.
     pub fn translated_pnt2(
         &self,
@@ -9626,6 +10734,7 @@ impl Torus {
 // From gp_Trsf.hxx
 // ========================
 
+/// **Source:** `gp_Trsf.hxx`:58 - `gp_Trsf`
 /// Defines a non-persistent transformation in 3D space.
 /// The following transformations are implemented :
 /// . Translation, Rotation, Scale
@@ -9654,11 +10763,13 @@ unsafe impl crate::CppDeletable for Trsf {
 }
 
 impl Trsf {
+    /// **Source:** `gp_Trsf.hxx`:64 - `gp_Trsf::gp_Trsf()`
     /// Returns the identity transformation.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Trsf_ctor()) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:82 - `gp_Trsf::gp_Trsf()`
     /// Creates  a 3D transformation from the 2D transformation theT.
     /// The resulting transformation has a homogeneous
     /// vectorial part, V3, and a translation part, T3, built from theT:
@@ -9679,18 +10790,21 @@ impl Trsf {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Trsf_ctor_trsf2d(theT)) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:86 - `gp_Trsf::SetMirror()`
     /// Makes the transformation into a symmetrical transformation.
     /// theP is the center of the symmetry.
     pub fn set_mirror_pnt(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Trsf_set_mirror_pnt(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:90 - `gp_Trsf::SetMirror()`
     /// Makes the transformation into a symmetrical transformation.
     /// theA1 is the center of the axial symmetry.
     pub fn set_mirror_ax1(&mut self, theA1: &crate::ffi::gp_Ax1) {
         unsafe { crate::ffi::gp_Trsf_set_mirror_ax1(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:96 - `gp_Trsf::SetMirror()`
     /// Makes the transformation into a symmetrical transformation.
     /// theA2 is the center of the planar symmetry
     /// and defines the plane of symmetry by its origin, "X
@@ -9699,6 +10813,7 @@ impl Trsf {
         unsafe { crate::ffi::gp_Trsf_set_mirror_ax2(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:101 - `gp_Trsf::SetRotation()`
     /// Changes the transformation into a rotation.
     /// theA1 is the rotation axis and theAng is the angular value of the
     /// rotation in radians.
@@ -9706,6 +10821,7 @@ impl Trsf {
         unsafe { crate::ffi::gp_Trsf_set_rotation_ax1_real(self as *mut Self, theA1, theAng) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:106 - `gp_Trsf::SetRotation()`
     /// Changes the transformation into a rotation defined by quaternion.
     /// Note that rotation is performed around origin, i.e.
     /// no translation is involved.
@@ -9713,11 +10829,13 @@ impl Trsf {
         unsafe { crate::ffi::gp_Trsf_set_rotation_quaternion(self as *mut Self, theR) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:109 - `gp_Trsf::SetRotationPart()`
     /// Replaces the rotation part with specified quaternion.
     pub fn set_rotation_part(&mut self, theR: &crate::ffi::gp_Quaternion) {
         unsafe { crate::ffi::gp_Trsf_set_rotation_part(self as *mut Self, theR) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:114 - `gp_Trsf::SetScale()`
     /// Changes the transformation into a scale.
     /// theP is the center of the scale and theS is the scaling value.
     /// Raises ConstructionError  If <theS> is null.
@@ -9725,6 +10843,7 @@ impl Trsf {
         unsafe { crate::ffi::gp_Trsf_set_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:136 - `gp_Trsf::SetDisplacement()`
     /// Modifies this transformation so that it transforms the
     /// coordinate system defined by theFromSystem1 into the
     /// one defined by theToSystem2. After this modification, this
@@ -9755,6 +10874,7 @@ impl Trsf {
         }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:156 - `gp_Trsf::SetTransformation()`
     /// Modifies this transformation so that it transforms the
     /// coordinates of any point, (x, y, z), relative to a source
     /// coordinate system into the coordinates (x', y', z') which
@@ -9787,6 +10907,7 @@ impl Trsf {
         }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:170 - `gp_Trsf::SetTransformation()`
     /// Modifies this transformation so that it transforms the
     /// coordinates of any point, (x, y, z), relative to a source
     /// coordinate system into the coordinates (x', y', z') which
@@ -9803,6 +10924,7 @@ impl Trsf {
         unsafe { crate::ffi::gp_Trsf_set_transformation_ax3(self as *mut Self, theToSystem) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:173 - `gp_Trsf::SetTransformation()`
     /// Sets transformation by directly specified rotation and translation.
     pub fn set_transformation_quaternion_vec(
         &mut self,
@@ -9812,33 +10934,39 @@ impl Trsf {
         unsafe { crate::ffi::gp_Trsf_set_transformation_quaternion_vec(self as *mut Self, R, theT) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:177 - `gp_Trsf::SetTranslation()`
     /// Changes the transformation into a translation.
     /// theV is the vector of the translation.
     pub fn set_translation_vec(&mut self, theV: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Trsf_set_translation_vec(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:181 - `gp_Trsf::SetTranslation()`
     /// Makes the transformation into a translation where the translation vector
     /// is the vector (theP1, theP2) defined from point theP1 to point theP2.
     pub fn set_translation_pnt2(&mut self, theP1: &crate::ffi::gp_Pnt, theP2: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::gp_Trsf_set_translation_pnt2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:184 - `gp_Trsf::SetTranslationPart()`
     /// Replaces the translation vector with the vector theV.
     pub fn set_translation_part(&mut self, theV: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Trsf_set_translation_part(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:188 - `gp_Trsf::SetScaleFactor()`
     /// Modifies the scale factor.
     /// Raises ConstructionError  If theS is null.
     pub fn set_scale_factor(&mut self, theS: f64) {
         unsafe { crate::ffi::gp_Trsf_set_scale_factor(self as *mut Self, theS) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:190 - `gp_Trsf::SetForm()`
     pub fn set_form(&mut self, theP: crate::gp::TrsfForm) {
         unsafe { crate::ffi::gp_Trsf_set_form(self as *mut Self, theP.into()) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:203 - `gp_Trsf::SetValues()`
     /// Sets the coefficients  of the transformation.  The
     /// transformation  of the  point  x,y,z is  the point
     /// x',y',z' with :
@@ -9884,12 +11012,14 @@ impl Trsf {
         }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:218 - `gp_Trsf::IsNegative()`
     /// Returns true if the determinant of the vectorial part of
     /// this transformation is negative.
     pub fn is_negative(&self) -> bool {
         unsafe { crate::ffi::gp_Trsf_is_negative(self as *const Self) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:224 - `gp_Trsf::Form()`
     /// Returns the nature of the transformation. It can be: an
     /// identity transformation, a rotation, a translation, a mirror
     /// transformation (relative to a point, an axis or a plane), a
@@ -9900,16 +11030,19 @@ impl Trsf {
         }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:227 - `gp_Trsf::ScaleFactor()`
     /// Returns the scale factor.
     pub fn scale_factor(&self) -> f64 {
         unsafe { crate::ffi::gp_Trsf_scale_factor(self as *const Self) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:230 - `gp_Trsf::TranslationPart()`
     /// Returns the translation part of the transformation's matrix
     pub fn translation_part(&self) -> &crate::ffi::gp_XYZ {
         unsafe { &*(crate::ffi::gp_Trsf_translation_part(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:239 - `gp_Trsf::GetRotation()`
     /// Returns the boolean True if there is non-zero rotation.
     /// In the presence of rotation, the output parameters store the axis
     /// and the angle of rotation. The method always returns positive
@@ -9925,11 +11058,13 @@ impl Trsf {
         unsafe { crate::ffi::gp_Trsf_get_rotation_xyz_real(self as *const Self, theAxis, theAngle) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:242 - `gp_Trsf::GetRotation()`
     /// Returns quaternion representing rotational part of the transformation.
     pub fn get_rotation(&self) -> crate::OwnedPtr<crate::ffi::gp_Quaternion> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Trsf_get_rotation(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:246 - `gp_Trsf::VectorialPart()`
     /// Returns the vectorial part of the transformation. It is
     /// a 3*3 matrix which includes the scale factor.
     pub fn vectorial_part(&self) -> crate::OwnedPtr<crate::ffi::gp_Mat> {
@@ -9938,6 +11073,7 @@ impl Trsf {
         }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:254 - `gp_Trsf::HVectorialPart()`
     /// Computes the homogeneous vectorial part of the transformation.
     /// It is a 3*3 matrix which doesn't include the scale factor.
     /// In other words, the vectorial part of this transformation is equal
@@ -9948,6 +11084,7 @@ impl Trsf {
         unsafe { &*(crate::ffi::gp_Trsf_h_vectorial_part(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:260 - `gp_Trsf::Value()`
     /// Returns the coefficients of the transformation's matrix.
     /// It is a 3 rows * 4 columns matrix.
     /// This coefficient includes the scale factor.
@@ -9956,10 +11093,12 @@ impl Trsf {
         unsafe { crate::ffi::gp_Trsf_value(self as *const Self, theRow, theCol) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:262 - `gp_Trsf::Invert()`
     pub fn invert(&mut self) {
         unsafe { crate::ffi::gp_Trsf_invert(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:279 - `gp_Trsf::Inverted()`
     /// Computes the reverse transformation
     /// Raises an exception if the matrix of the transformation
     /// is not inversible, it means that the scale factor is lower
@@ -9979,28 +11118,33 @@ impl Trsf {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Trsf_inverted(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:286 - `gp_Trsf::Multiplied()`
     pub fn multiplied(&self, theT: &crate::ffi::gp_Trsf) -> crate::OwnedPtr<crate::ffi::gp_Trsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Trsf_multiplied(self as *const Self, theT))
         }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:297 - `gp_Trsf::Multiply()`
     /// Computes the transformation composed with <me> and theT.
     /// <me> = <me> * theT
     pub fn multiply(&mut self, theT: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::gp_Trsf_multiply(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:303 - `gp_Trsf::PreMultiply()`
     /// Computes the transformation composed with <me> and T.
     /// <me> = theT * <me>
     pub fn pre_multiply(&mut self, theT: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::gp_Trsf_pre_multiply(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:305 - `gp_Trsf::Power()`
     pub fn power(&mut self, theN: i32) {
         unsafe { crate::ffi::gp_Trsf_power(self as *mut Self, theN) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:314 - `gp_Trsf::Powered()`
     /// Computes the following composition of transformations
     /// <me> * <me> * .......* <me>, theN time.
     /// if theN = 0 <me> = Identity
@@ -10012,10 +11156,12 @@ impl Trsf {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Trsf_powered(self as *const Self, theN)) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:321 - `gp_Trsf::Transforms()`
     pub fn transforms_real3(&self, theX: &mut f64, theY: &mut f64, theZ: &mut f64) {
         unsafe { crate::ffi::gp_Trsf_transforms_real3(self as *const Self, theX, theY, theZ) }
     }
 
+    /// **Source:** `gp_Trsf.hxx`:324 - `gp_Trsf::Transforms()`
     /// Transformation of a triplet XYZ with a Trsf
     pub fn transforms_xyz(&self, theCoord: &mut crate::ffi::gp_XYZ) {
         unsafe { crate::ffi::gp_Trsf_transforms_xyz(self as *const Self, theCoord) }
@@ -10031,6 +11177,7 @@ impl Trsf {
 // From gp_Trsf2d.hxx
 // ========================
 
+/// **Source:** `gp_Trsf2d.hxx`:44 - `gp_Trsf2d`
 /// Defines a non-persistent transformation in 2D space.
 /// The following transformations are implemented :
 /// - Translation, Rotation, Scale
@@ -10056,29 +11203,34 @@ unsafe impl crate::CppDeletable for Trsf2d {
 }
 
 impl Trsf2d {
+    /// **Source:** `gp_Trsf2d.hxx`:50 - `gp_Trsf2d::gp_Trsf2d()`
     /// Returns identity transformation.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Trsf2d_ctor()) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:54 - `gp_Trsf2d::gp_Trsf2d()`
     /// Creates a 2d transformation in the XY plane from a
     /// 3d transformation .
     pub fn new_trsf(theT: &crate::ffi::gp_Trsf) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Trsf2d_ctor_trsf(theT)) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:58 - `gp_Trsf2d::SetMirror()`
     /// Changes the transformation into a symmetrical transformation.
     /// theP is the center of the symmetry.
     pub fn set_mirror_pnt2d(&mut self, theP: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::gp_Trsf2d_set_mirror_pnt2d(self as *mut Self, theP) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:62 - `gp_Trsf2d::SetMirror()`
     /// Changes the transformation into a symmetrical transformation.
     /// theA is the center of the axial symmetry.
     pub fn set_mirror_ax2d(&mut self, theA: &crate::ffi::gp_Ax2d) {
         unsafe { crate::ffi::gp_Trsf2d_set_mirror_ax2d(self as *mut Self, theA) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:67 - `gp_Trsf2d::SetRotation()`
     /// Changes the transformation into a rotation.
     /// theP is the rotation's center and theAng is the angular value of the
     /// rotation in radian.
@@ -10086,12 +11238,14 @@ impl Trsf2d {
         unsafe { crate::ffi::gp_Trsf2d_set_rotation(self as *mut Self, theP, theAng) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:71 - `gp_Trsf2d::SetScale()`
     /// Changes the transformation into a scale.
     /// theP is the center of the scale and theS is the scaling value.
     pub fn set_scale(&mut self, theP: &crate::ffi::gp_Pnt2d, theS: f64) {
         unsafe { crate::ffi::gp_Trsf2d_set_scale(self as *mut Self, theP, theS) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:75 - `gp_Trsf2d::SetTransformation()`
     /// Changes a transformation allowing passage from the coordinate
     /// system "theFromSystem1" to the coordinate system "theToSystem2".
     pub fn set_transformation_ax2d2(
@@ -10108,6 +11262,7 @@ impl Trsf2d {
         }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:82 - `gp_Trsf2d::SetTransformation()`
     /// Changes the transformation allowing passage from the basic
     /// coordinate system
     /// {P(0.,0.,0.), VX (1.,0.,0.), VY (0.,1.,0.)}
@@ -10116,12 +11271,14 @@ impl Trsf2d {
         unsafe { crate::ffi::gp_Trsf2d_set_transformation_ax2d(self as *mut Self, theToSystem) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:86 - `gp_Trsf2d::SetTranslation()`
     /// Changes the transformation into a translation.
     /// theV is the vector of the translation.
     pub fn set_translation_vec2d(&mut self, theV: &crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::gp_Trsf2d_set_translation_vec2d(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:90 - `gp_Trsf2d::SetTranslation()`
     /// Makes the transformation into a translation from
     /// the point theP1 to the point theP2.
     pub fn set_translation_pnt2d2(
@@ -10132,22 +11289,26 @@ impl Trsf2d {
         unsafe { crate::ffi::gp_Trsf2d_set_translation_pnt2d2(self as *mut Self, theP1, theP2) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:93 - `gp_Trsf2d::SetTranslationPart()`
     /// Replaces the translation vector with theV.
     pub fn set_translation_part(&mut self, theV: &crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::gp_Trsf2d_set_translation_part(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:96 - `gp_Trsf2d::SetScaleFactor()`
     /// Modifies the scale factor.
     pub fn set_scale_factor(&mut self, theS: f64) {
         unsafe { crate::ffi::gp_Trsf2d_set_scale_factor(self as *mut Self, theS) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:100 - `gp_Trsf2d::IsNegative()`
     /// Returns true if the determinant of the vectorial part of
     /// this transformation is negative..
     pub fn is_negative(&self) -> bool {
         unsafe { crate::ffi::gp_Trsf2d_is_negative(self as *const Self) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:106 - `gp_Trsf2d::Form()`
     /// Returns the nature of the transformation. It can be  an
     /// identity transformation, a rotation, a translation, a mirror
     /// (relative to a point or an axis), a scaling transformation,
@@ -10158,16 +11319,19 @@ impl Trsf2d {
         }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:109 - `gp_Trsf2d::ScaleFactor()`
     /// Returns the scale factor.
     pub fn scale_factor(&self) -> f64 {
         unsafe { crate::ffi::gp_Trsf2d_scale_factor(self as *const Self) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:112 - `gp_Trsf2d::TranslationPart()`
     /// Returns the translation part of the transformation's matrix
     pub fn translation_part(&self) -> &crate::ffi::gp_XY {
         unsafe { &*(crate::ffi::gp_Trsf2d_translation_part(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:116 - `gp_Trsf2d::VectorialPart()`
     /// Returns the vectorial part of the transformation. It is a
     /// 2*2 matrix which includes the scale factor.
     pub fn vectorial_part(&self) -> crate::OwnedPtr<crate::ffi::gp_Mat2d> {
@@ -10176,6 +11340,7 @@ impl Trsf2d {
         }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:122 - `gp_Trsf2d::HVectorialPart()`
     /// Returns the homogeneous vectorial part of the transformation.
     /// It is a 2*2 matrix which doesn't include the scale factor.
     /// The coefficients of this matrix must be multiplied by the
@@ -10184,12 +11349,14 @@ impl Trsf2d {
         unsafe { &*(crate::ffi::gp_Trsf2d_h_vectorial_part(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:126 - `gp_Trsf2d::RotationPart()`
     /// Returns the angle corresponding to the rotational component
     /// of the transformation matrix (operation opposite to SetRotation()).
     pub fn rotation_part(&self) -> f64 {
         unsafe { crate::ffi::gp_Trsf2d_rotation_part(self as *const Self) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:131 - `gp_Trsf2d::Value()`
     /// Returns the coefficients of the transformation's matrix.
     /// It is a 2 rows * 3 columns matrix.
     /// Raises OutOfRange if theRow < 1 or theRow > 2 or theCol < 1 or theCol > 3
@@ -10197,10 +11364,12 @@ impl Trsf2d {
         unsafe { crate::ffi::gp_Trsf2d_value(self as *const Self, theRow, theCol) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:133 - `gp_Trsf2d::Invert()`
     pub fn invert(&mut self) {
         unsafe { crate::ffi::gp_Trsf2d_invert(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:139 - `gp_Trsf2d::Inverted()`
     /// Computes the reverse transformation.
     /// Raises an exception if the matrix of the transformation
     /// is not inversible, it means that the scale factor is lower
@@ -10209,6 +11378,7 @@ impl Trsf2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Trsf2d_inverted(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:146 - `gp_Trsf2d::Multiplied()`
     pub fn multiplied(
         &self,
         theT: &crate::ffi::gp_Trsf2d,
@@ -10218,22 +11388,26 @@ impl Trsf2d {
         }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:157 - `gp_Trsf2d::Multiply()`
     /// Computes the transformation composed from <me> and theT.
     /// <me> = <me> * theT
     pub fn multiply(&mut self, theT: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::gp_Trsf2d_multiply(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:163 - `gp_Trsf2d::PreMultiply()`
     /// Computes the transformation composed from <me> and theT.
     /// <me> = theT * <me>
     pub fn pre_multiply(&mut self, theT: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::gp_Trsf2d_pre_multiply(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:165 - `gp_Trsf2d::Power()`
     pub fn power(&mut self, theN: i32) {
         unsafe { crate::ffi::gp_Trsf2d_power(self as *mut Self, theN) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:174 - `gp_Trsf2d::Powered()`
     /// Computes the following composition of transformations
     /// <me> * <me> * .......* <me>,  theN time.
     /// if theN = 0 <me> = Identity
@@ -10245,15 +11419,18 @@ impl Trsf2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Trsf2d_powered(self as *mut Self, theN)) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:181 - `gp_Trsf2d::Transforms()`
     pub fn transforms_real2(&self, theX: &mut f64, theY: &mut f64) {
         unsafe { crate::ffi::gp_Trsf2d_transforms_real2(self as *const Self, theX, theY) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:184 - `gp_Trsf2d::Transforms()`
     /// Transforms  a doublet XY with a Trsf2d
     pub fn transforms_xy(&self, theCoord: &mut crate::ffi::gp_XY) {
         unsafe { crate::ffi::gp_Trsf2d_transforms_xy(self as *const Self, theCoord) }
     }
 
+    /// **Source:** `gp_Trsf2d.hxx`:196 - `gp_Trsf2d::SetValues()`
     /// Sets the coefficients  of the transformation. The
     /// transformation  of the  point  x,y is  the point
     /// x',y' with :
@@ -10278,6 +11455,7 @@ impl Trsf2d {
 // From gp_Vec.hxx
 // ========================
 
+/// **Source:** `gp_Vec.hxx`:29 - `gp_Vec`
 /// Defines a non-persistent vector in 3D space.
 pub use crate::ffi::gp_Vec as Vec;
 
@@ -10288,26 +11466,31 @@ unsafe impl crate::CppDeletable for Vec {
 }
 
 impl Vec {
+    /// **Source:** `gp_Vec.hxx`:35 - `gp_Vec::gp_Vec()`
     /// Creates a zero vector.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_ctor()) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:38 - `gp_Vec::gp_Vec()`
     /// Creates a unitary vector from a direction theV.
     pub fn new_dir(theV: &crate::ffi::gp_Dir) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_ctor_dir(theV)) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:41 - `gp_Vec::gp_Vec()`
     /// Creates a vector with a triplet of coordinates.
     pub fn new_xyz(theCoord: &crate::ffi::gp_XYZ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_ctor_xyz(theCoord)) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:47 - `gp_Vec::gp_Vec()`
     /// Creates a point with its three cartesian coordinates.
     pub fn new_real3(theXv: f64, theYv: f64, theZv: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_ctor_real3(theXv, theYv, theZv)) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:54 - `gp_Vec::gp_Vec()`
     /// Creates a vector from two points. The length of the vector
     /// is the distance between theP1 and theP2
     pub fn new_pnt2(
@@ -10317,6 +11500,7 @@ impl Vec {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_ctor_pnt2(theP1, theP2)) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:61 - `gp_Vec::SetCoord()`
     /// Changes the coordinate of range theIndex
     /// theIndex = 1 => X is modified
     /// theIndex = 2 => Y is modified
@@ -10326,32 +11510,38 @@ impl Vec {
         unsafe { crate::ffi::gp_Vec_set_coord_int_real(self as *mut Self, theIndex, theXi) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:68 - `gp_Vec::SetCoord()`
     /// For this vector, assigns
     /// -   the values theXv, theYv and theZv to its three coordinates.
     pub fn set_coord_real3(&mut self, theXv: f64, theYv: f64, theZv: f64) {
         unsafe { crate::ffi::gp_Vec_set_coord_real3(self as *mut Self, theXv, theYv, theZv) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:76 - `gp_Vec::SetX()`
     /// Assigns the given value to the X coordinate of this vector.
     pub fn set_x(&mut self, theX: f64) {
         unsafe { crate::ffi::gp_Vec_set_x(self as *mut Self, theX) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:79 - `gp_Vec::SetY()`
     /// Assigns the given value to the X coordinate of this vector.
     pub fn set_y(&mut self, theY: f64) {
         unsafe { crate::ffi::gp_Vec_set_y(self as *mut Self, theY) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:82 - `gp_Vec::SetZ()`
     /// Assigns the given value to the X coordinate of this vector.
     pub fn set_z(&mut self, theZ: f64) {
         unsafe { crate::ffi::gp_Vec_set_z(self as *mut Self, theZ) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:85 - `gp_Vec::SetXYZ()`
     /// Assigns the three coordinates of theCoord to this vector.
     pub fn set_xyz(&mut self, theCoord: &crate::ffi::gp_XYZ) {
         unsafe { crate::ffi::gp_Vec_set_xyz(self as *mut Self, theCoord) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:92 - `gp_Vec::Coord()`
     /// Returns the coordinate of range theIndex :
     /// theIndex = 1 => X is returned
     /// theIndex = 2 => Y is returned
@@ -10361,32 +11551,38 @@ impl Vec {
         unsafe { crate::ffi::gp_Vec_coord_int(self as *const Self, theIndex) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:95 - `gp_Vec::Coord()`
     /// For this vector returns its three coordinates theXv, theYv, and theZv inline
     pub fn coord_real3(&self, theXv: &mut f64, theYv: &mut f64, theZv: &mut f64) {
         unsafe { crate::ffi::gp_Vec_coord_real3(self as *const Self, theXv, theYv, theZv) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:103 - `gp_Vec::X()`
     /// For this vector, returns its X coordinate.
     pub fn x(&self) -> f64 {
         unsafe { crate::ffi::gp_Vec_x(self as *const Self) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:106 - `gp_Vec::Y()`
     /// For this vector, returns its Y coordinate.
     pub fn y(&self) -> f64 {
         unsafe { crate::ffi::gp_Vec_y(self as *const Self) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:109 - `gp_Vec::Z()`
     /// For this vector, returns its Z  coordinate.
     pub fn z(&self) -> f64 {
         unsafe { crate::ffi::gp_Vec_z(self as *const Self) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:113 - `gp_Vec::XYZ()`
     /// For this vector, returns
     /// -   its three coordinates as a number triple
     pub fn xyz(&self) -> &crate::ffi::gp_XYZ {
         unsafe { &*(crate::ffi::gp_Vec_xyz(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:118 - `gp_Vec::IsEqual()`
     /// Returns True if the two vectors have the same magnitude value
     /// and the same direction. The precision values are theLinearTolerance
     /// for the magnitude and theAngularTolerance for the direction.
@@ -10406,6 +11602,7 @@ impl Vec {
         }
     }
 
+    /// **Source:** `gp_Vec.hxx`:125 - `gp_Vec::IsNormal()`
     /// Returns True if abs(<me>.Angle(theOther) - PI/2.) <= theAngularTolerance
     /// Raises VectorWithNullMagnitude if <me>.Magnitude() <= Resolution or
     /// theOther.Magnitude() <= Resolution from gp
@@ -10413,6 +11610,7 @@ impl Vec {
         unsafe { crate::ffi::gp_Vec_is_normal(self as *const Self, theOther, theAngularTolerance) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:130 - `gp_Vec::IsOpposite()`
     /// Returns True if PI - <me>.Angle(theOther) <= theAngularTolerance
     /// Raises VectorWithNullMagnitude if <me>.Magnitude() <= Resolution or
     /// Other.Magnitude() <= Resolution from gp
@@ -10422,6 +11620,7 @@ impl Vec {
         }
     }
 
+    /// **Source:** `gp_Vec.hxx`:142 - `gp_Vec::IsParallel()`
     /// Returns True if Angle(<me>, theOther) <= theAngularTolerance or
     /// PI - Angle(<me>, theOther) <= theAngularTolerance
     /// This definition means that two parallel vectors cannot define
@@ -10434,6 +11633,7 @@ impl Vec {
         }
     }
 
+    /// **Source:** `gp_Vec.hxx`:153 - `gp_Vec::Angle()`
     /// Computes the angular value between <me> and <theOther>
     /// Returns the angle value between 0 and PI in radian.
     /// Raises VectorWithNullMagnitude if <me>.Magnitude() <= Resolution from gp or
@@ -10443,6 +11643,7 @@ impl Vec {
         unsafe { crate::ffi::gp_Vec_angle(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:169 - `gp_Vec::AngleWithRef()`
     /// Computes the angle, in radians, between this vector and
     /// vector theOther. The result is a value between -Pi and Pi.
     /// For this, theVRef defines the positive sense of rotation: the
@@ -10465,21 +11666,25 @@ impl Vec {
         unsafe { crate::ffi::gp_Vec_angle_with_ref(self as *const Self, theOther, theVRef) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:172 - `gp_Vec::Magnitude()`
     /// Computes the magnitude of this vector.
     pub fn magnitude(&self) -> f64 {
         unsafe { crate::ffi::gp_Vec_magnitude(self as *const Self) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:175 - `gp_Vec::SquareMagnitude()`
     /// Computes the square magnitude of this vector.
     pub fn square_magnitude(&self) -> f64 {
         unsafe { crate::ffi::gp_Vec_square_magnitude(self as *const Self) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:178 - `gp_Vec::Add()`
     /// Adds two vectors
     pub fn add(&mut self, theOther: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Vec_add(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:183 - `gp_Vec::Added()`
     /// Adds two vectors
     pub fn added(&self, theOther: &crate::ffi::gp_Vec) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
         unsafe {
@@ -10487,11 +11692,13 @@ impl Vec {
         }
     }
 
+    /// **Source:** `gp_Vec.hxx`:193 - `gp_Vec::Subtract()`
     /// Subtracts two vectors
     pub fn subtract(&mut self, theRight: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Vec_subtract(self as *mut Self, theRight) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:198 - `gp_Vec::Subtracted()`
     /// Subtracts two vectors
     pub fn subtracted(&self, theRight: &crate::ffi::gp_Vec) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
         unsafe {
@@ -10499,11 +11706,13 @@ impl Vec {
         }
     }
 
+    /// **Source:** `gp_Vec.hxx`:208 - `gp_Vec::Multiply()`
     /// Multiplies a vector by a scalar
     pub fn multiply(&mut self, theScalar: f64) {
         unsafe { crate::ffi::gp_Vec_multiply(self as *mut Self, theScalar) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:213 - `gp_Vec::Multiplied()`
     /// Multiplies a vector by a scalar
     pub fn multiplied(&self, theScalar: f64) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
         unsafe {
@@ -10511,11 +11720,13 @@ impl Vec {
         }
     }
 
+    /// **Source:** `gp_Vec.hxx`:226 - `gp_Vec::Divide()`
     /// Divides a vector by a scalar
     pub fn divide(&mut self, theScalar: f64) {
         unsafe { crate::ffi::gp_Vec_divide(self as *mut Self, theScalar) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:231 - `gp_Vec::Divided()`
     /// Divides a vector by a scalar
     pub fn divided(&self, theScalar: f64) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
         unsafe {
@@ -10523,11 +11734,13 @@ impl Vec {
         }
     }
 
+    /// **Source:** `gp_Vec.hxx`:244 - `gp_Vec::Cross()`
     /// computes the cross product between two vectors
     pub fn cross(&mut self, theRight: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Vec_cross(self as *mut Self, theRight) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:249 - `gp_Vec::Crossed()`
     /// computes the cross product between two vectors
     pub fn crossed(&self, theRight: &crate::ffi::gp_Vec) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
         unsafe {
@@ -10535,6 +11748,7 @@ impl Vec {
         }
     }
 
+    /// **Source:** `gp_Vec.hxx`:261 - `gp_Vec::CrossMagnitude()`
     /// Computes the magnitude of the cross
     /// product between <me> and theRight.
     /// Returns || <me> ^ theRight ||
@@ -10542,6 +11756,7 @@ impl Vec {
         unsafe { crate::ffi::gp_Vec_cross_magnitude(self as *const Self, theRight) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:269 - `gp_Vec::CrossSquareMagnitude()`
     /// Computes the square magnitude of
     /// the cross product between <me> and theRight.
     /// Returns || <me> ^ theRight ||**2
@@ -10549,12 +11764,14 @@ impl Vec {
         unsafe { crate::ffi::gp_Vec_cross_square_magnitude(self as *const Self, theRight) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:276 - `gp_Vec::CrossCross()`
     /// Computes the triple vector product.
     /// <me> ^= (theV1 ^ theV2)
     pub fn cross_cross(&mut self, theV1: &crate::ffi::gp_Vec, theV2: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Vec_cross_cross(self as *mut Self, theV1, theV2) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:283 - `gp_Vec::CrossCrossed()`
     /// Computes the triple vector product.
     /// <me> ^ (theV1 ^ theV2)
     pub fn cross_crossed(
@@ -10571,16 +11788,19 @@ impl Vec {
         }
     }
 
+    /// **Source:** `gp_Vec.hxx`:291 - `gp_Vec::Dot()`
     /// computes the scalar product
     pub fn dot(&self, theOther: &crate::ffi::gp_Vec) -> f64 {
         unsafe { crate::ffi::gp_Vec_dot(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:296 - `gp_Vec::DotCross()`
     /// Computes the triple scalar product <me> * (theV1 ^ theV2).
     pub fn dot_cross(&self, theV1: &crate::ffi::gp_Vec, theV2: &crate::ffi::gp_Vec) -> f64 {
         unsafe { crate::ffi::gp_Vec_dot_cross(self as *const Self, theV1, theV2) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:304 - `gp_Vec::Normalize()`
     /// normalizes a vector
     /// Raises an exception if the magnitude of the vector is
     /// lower or equal to Resolution from gp.
@@ -10588,6 +11808,7 @@ impl Vec {
         unsafe { crate::ffi::gp_Vec_normalize(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:315 - `gp_Vec::Normalized()`
     /// normalizes a vector
     /// Raises an exception if the magnitude of the vector is
     /// lower or equal to Resolution from gp.
@@ -10595,16 +11816,19 @@ impl Vec {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_normalized(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:318 - `gp_Vec::Reverse()`
     /// Reverses the direction of a vector
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::gp_Vec_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:321 - `gp_Vec::Reversed()`
     /// Reverses the direction of a vector
     pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_reversed(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:332 - `gp_Vec::SetLinearForm()`
     /// <me> is set to the following linear form :
     /// theA1 * theV1 + theA2 * theV2 + theA3 * theV3 + theV4
     pub fn set_linear_form_real_vec_real_vec_real_vec2(
@@ -10631,6 +11855,7 @@ impl Vec {
         }
     }
 
+    /// **Source:** `gp_Vec.hxx`:345 - `gp_Vec::SetLinearForm()`
     /// <me> is set to the following linear form :
     /// theA1 * theV1 + theA2 * theV2 + theA3 * theV3
     pub fn set_linear_form_real_vec_real_vec_real_vec(
@@ -10655,6 +11880,7 @@ impl Vec {
         }
     }
 
+    /// **Source:** `gp_Vec.hxx`:357 - `gp_Vec::SetLinearForm()`
     /// <me> is set to the following linear form :
     /// theA1 * theV1 + theA2 * theV2 + theV3
     pub fn set_linear_form_real_vec_real_vec2(
@@ -10677,6 +11903,7 @@ impl Vec {
         }
     }
 
+    /// **Source:** `gp_Vec.hxx`:368 - `gp_Vec::SetLinearForm()`
     /// <me> is set to the following linear form :
     /// theA1 * theV1 + theA2 * theV2
     pub fn set_linear_form_real_vec_real_vec(
@@ -10697,6 +11924,7 @@ impl Vec {
         }
     }
 
+    /// **Source:** `gp_Vec.hxx`:377 - `gp_Vec::SetLinearForm()`
     /// <me> is set to the following linear form : theA1 * theV1 + theV2
     pub fn set_linear_form_real_vec2(
         &mut self,
@@ -10709,15 +11937,18 @@ impl Vec {
         }
     }
 
+    /// **Source:** `gp_Vec.hxx`:383 - `gp_Vec::SetLinearForm()`
     /// <me> is set to the following linear form : theV1 + theV2
     pub fn set_linear_form_vec2(&mut self, theV1: &crate::ffi::gp_Vec, theV2: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Vec_set_linear_form_vec2(self as *mut Self, theV1, theV2) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:388 - `gp_Vec::Mirror()`
     pub fn mirror_vec(&mut self, theV: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::gp_Vec_mirror_vec(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:393 - `gp_Vec::Mirrored()`
     /// Performs the symmetrical transformation of a vector
     /// with respect to the vector theV which is the center of
     /// the  symmetry.
@@ -10727,10 +11958,12 @@ impl Vec {
         }
     }
 
+    /// **Source:** `gp_Vec.hxx`:395 - `gp_Vec::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &crate::ffi::gp_Ax1) {
         unsafe { crate::ffi::gp_Vec_mirror_ax1(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:400 - `gp_Vec::Mirrored()`
     /// Performs the symmetrical transformation of a vector
     /// with respect to an axis placement which is the axis
     /// of the symmetry.
@@ -10740,10 +11973,12 @@ impl Vec {
         }
     }
 
+    /// **Source:** `gp_Vec.hxx`:402 - `gp_Vec::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::gp_Vec_mirror_ax2(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:407 - `gp_Vec::Mirrored()`
     /// Performs the symmetrical transformation of a vector
     /// with respect to a plane. The axis placement theA2 locates
     /// the plane of the symmetry : (Location, XDirection, YDirection).
@@ -10753,10 +11988,12 @@ impl Vec {
         }
     }
 
+    /// **Source:** `gp_Vec.hxx`:409 - `gp_Vec::Rotate()`
     pub fn rotate(&mut self, theA1: &crate::ffi::gp_Ax1, theAng: f64) {
         unsafe { crate::ffi::gp_Vec_rotate(self as *mut Self, theA1, theAng) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:413 - `gp_Vec::Rotated()`
     /// Rotates a vector. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
     pub fn rotated(
@@ -10773,20 +12010,24 @@ impl Vec {
         }
     }
 
+    /// **Source:** `gp_Vec.hxx`:420 - `gp_Vec::Scale()`
     pub fn scale(&mut self, theS: f64) {
         unsafe { crate::ffi::gp_Vec_scale(self as *mut Self, theS) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:423 - `gp_Vec::Scaled()`
     /// Scales a vector. theS is the scaling value.
     pub fn scaled(&self, theS: f64) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_scaled(self as *const Self, theS)) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:431 - `gp_Vec::Transform()`
     /// Transforms a vector with the transformation theT.
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::gp_Vec_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Vec.hxx`:434 - `gp_Vec::Transformed()`
     /// Transforms a vector with the transformation theT.
     pub fn transformed(&self, theT: &crate::ffi::gp_Trsf) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
         unsafe {
@@ -10804,6 +12045,7 @@ impl Vec {
 // From gp_Vec2d.hxx
 // ========================
 
+/// **Source:** `gp_Vec2d.hxx`:27 - `gp_Vec2d`
 /// Defines a non-persistent vector in 2D space.
 pub use crate::ffi::gp_Vec2d as Vec2d;
 
@@ -10814,26 +12056,31 @@ unsafe impl crate::CppDeletable for Vec2d {
 }
 
 impl Vec2d {
+    /// **Source:** `gp_Vec2d.hxx`:33 - `gp_Vec2d::gp_Vec2d()`
     /// Creates a zero vector.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Vec2d_ctor()) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:36 - `gp_Vec2d::gp_Vec2d()`
     /// Creates a unitary vector from a direction theV.
     pub fn new_dir2d(theV: &crate::ffi::gp_Dir2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Vec2d_ctor_dir2d(theV)) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:39 - `gp_Vec2d::gp_Vec2d()`
     /// Creates a vector with a doublet of coordinates.
     pub fn new_xy(theCoord: &crate::ffi::gp_XY) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Vec2d_ctor_xy(theCoord)) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:45 - `gp_Vec2d::gp_Vec2d()`
     /// Creates a point with its two Cartesian coordinates.
     pub fn new_real2(theXv: f64, theYv: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Vec2d_ctor_real2(theXv, theYv)) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:52 - `gp_Vec2d::gp_Vec2d()`
     /// Creates a vector from two points. The length of the vector
     /// is the distance between theP1 and theP2
     pub fn new_pnt2d2(
@@ -10843,6 +12090,7 @@ impl Vec2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Vec2d_ctor_pnt2d2(theP1, theP2)) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:58 - `gp_Vec2d::SetCoord()`
     /// Changes the coordinate of range theIndex
     /// theIndex = 1 => X is modified
     /// theIndex = 2 => Y is modified
@@ -10851,27 +12099,32 @@ impl Vec2d {
         unsafe { crate::ffi::gp_Vec2d_set_coord_int_real(self as *mut Self, theIndex, theXi) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:65 - `gp_Vec2d::SetCoord()`
     /// For this vector, assigns
     /// the values theXv and theYv to its two coordinates
     pub fn set_coord_real2(&mut self, theXv: f64, theYv: f64) {
         unsafe { crate::ffi::gp_Vec2d_set_coord_real2(self as *mut Self, theXv, theYv) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:71 - `gp_Vec2d::SetX()`
     /// Assigns the given value to the X coordinate of this vector.
     pub fn set_x(&mut self, theX: f64) {
         unsafe { crate::ffi::gp_Vec2d_set_x(self as *mut Self, theX) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:74 - `gp_Vec2d::SetY()`
     /// Assigns the given value to the Y coordinate of this vector.
     pub fn set_y(&mut self, theY: f64) {
         unsafe { crate::ffi::gp_Vec2d_set_y(self as *mut Self, theY) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:77 - `gp_Vec2d::SetXY()`
     /// Assigns the two coordinates of theCoord to this vector.
     pub fn set_xy(&mut self, theCoord: &crate::ffi::gp_XY) {
         unsafe { crate::ffi::gp_Vec2d_set_xy(self as *mut Self, theCoord) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:83 - `gp_Vec2d::Coord()`
     /// Returns the coordinate of range theIndex :
     /// theIndex = 1 => X is returned
     /// theIndex = 2 => Y is returned
@@ -10880,26 +12133,31 @@ impl Vec2d {
         unsafe { crate::ffi::gp_Vec2d_coord_int(self as *const Self, theIndex) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:86 - `gp_Vec2d::Coord()`
     /// For this vector, returns  its two coordinates theXv and theYv
     pub fn coord_real2(&self, theXv: &mut f64, theYv: &mut f64) {
         unsafe { crate::ffi::gp_Vec2d_coord_real2(self as *const Self, theXv, theYv) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:89 - `gp_Vec2d::X()`
     /// For this vector, returns its X  coordinate.
     pub fn x(&self) -> f64 {
         unsafe { crate::ffi::gp_Vec2d_x(self as *const Self) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:92 - `gp_Vec2d::Y()`
     /// For this vector, returns its Y  coordinate.
     pub fn y(&self) -> f64 {
         unsafe { crate::ffi::gp_Vec2d_y(self as *const Self) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:95 - `gp_Vec2d::XY()`
     /// For this vector, returns its two coordinates as a number pair
     pub fn xy(&self) -> &crate::ffi::gp_XY {
         unsafe { &*(crate::ffi::gp_Vec2d_xy(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:100 - `gp_Vec2d::IsEqual()`
     /// Returns True if the two vectors have the same magnitude value
     /// and the same direction. The precision values are theLinearTolerance
     /// for the magnitude and theAngularTolerance for the direction.
@@ -10919,6 +12177,7 @@ impl Vec2d {
         }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:108 - `gp_Vec2d::IsNormal()`
     /// Returns True if abs(Abs(<me>.Angle(theOther)) - PI/2.)
     /// <= theAngularTolerance
     /// Raises VectorWithNullMagnitude if <me>.Magnitude() <= Resolution or
@@ -10929,6 +12188,7 @@ impl Vec2d {
         }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:117 - `gp_Vec2d::IsOpposite()`
     /// Returns True if PI - Abs(<me>.Angle(theOther)) <= theAngularTolerance
     /// Raises VectorWithNullMagnitude if <me>.Magnitude() <= Resolution or
     /// theOther.Magnitude() <= Resolution from gp.
@@ -10938,6 +12198,7 @@ impl Vec2d {
         }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:125 - `gp_Vec2d::IsParallel()`
     /// Returns true if Abs(Angle(<me>, theOther)) <= theAngularTolerance or
     /// PI - Abs(Angle(<me>, theOther)) <= theAngularTolerance
     /// Two vectors with opposite directions are considered as parallel.
@@ -10949,6 +12210,7 @@ impl Vec2d {
         }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:135 - `gp_Vec2d::Angle()`
     /// Computes the angular value between <me> and <theOther>
     /// returns the angle value between -PI and PI in radian.
     /// The orientation is from <me> to theOther. The positive sense is the
@@ -10960,20 +12222,24 @@ impl Vec2d {
         unsafe { crate::ffi::gp_Vec2d_angle(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:138 - `gp_Vec2d::Magnitude()`
     /// Computes the magnitude of this vector.
     pub fn magnitude(&self) -> f64 {
         unsafe { crate::ffi::gp_Vec2d_magnitude(self as *const Self) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:141 - `gp_Vec2d::SquareMagnitude()`
     /// Computes the square magnitude of this vector.
     pub fn square_magnitude(&self) -> f64 {
         unsafe { crate::ffi::gp_Vec2d_square_magnitude(self as *const Self) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:143 - `gp_Vec2d::Add()`
     pub fn add(&mut self, theOther: &crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::gp_Vec2d_add(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:148 - `gp_Vec2d::Added()`
     /// Adds two vectors
     pub fn added(&self, theOther: &crate::ffi::gp_Vec2d) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
         unsafe {
@@ -10981,27 +12247,32 @@ impl Vec2d {
         }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:158 - `gp_Vec2d::Crossed()`
     /// Computes the crossing product between two vectors
     pub fn crossed(&self, theRight: &crate::ffi::gp_Vec2d) -> f64 {
         unsafe { crate::ffi::gp_Vec2d_crossed(self as *const Self, theRight) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:170 - `gp_Vec2d::CrossMagnitude()`
     /// Computes the magnitude of the cross product between <me> and
     /// theRight. Returns || <me> ^ theRight ||
     pub fn cross_magnitude(&self, theRight: &crate::ffi::gp_Vec2d) -> f64 {
         unsafe { crate::ffi::gp_Vec2d_cross_magnitude(self as *const Self, theRight) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:177 - `gp_Vec2d::CrossSquareMagnitude()`
     /// Computes the square magnitude of the cross product between <me> and
     /// theRight. Returns || <me> ^ theRight ||**2
     pub fn cross_square_magnitude(&self, theRight: &crate::ffi::gp_Vec2d) -> f64 {
         unsafe { crate::ffi::gp_Vec2d_cross_square_magnitude(self as *const Self, theRight) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:182 - `gp_Vec2d::Divide()`
     pub fn divide(&mut self, theScalar: f64) {
         unsafe { crate::ffi::gp_Vec2d_divide(self as *mut Self, theScalar) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:187 - `gp_Vec2d::Divided()`
     /// divides a vector by a scalar
     pub fn divided(&self, theScalar: f64) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
         unsafe {
@@ -11009,19 +12280,23 @@ impl Vec2d {
         }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:200 - `gp_Vec2d::Dot()`
     /// Computes the scalar product
     pub fn dot(&self, theOther: &crate::ffi::gp_Vec2d) -> f64 {
         unsafe { crate::ffi::gp_Vec2d_dot(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:204 - `gp_Vec2d::GetNormal()`
     pub fn get_normal(&self) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Vec2d_get_normal(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:206 - `gp_Vec2d::Multiply()`
     pub fn multiply(&mut self, theScalar: f64) {
         unsafe { crate::ffi::gp_Vec2d_multiply(self as *mut Self, theScalar) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:213 - `gp_Vec2d::Multiplied()`
     /// Normalizes a vector
     /// Raises an exception if the magnitude of the vector is
     /// lower or equal to Resolution from package gp.
@@ -11034,10 +12309,12 @@ impl Vec2d {
         }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:225 - `gp_Vec2d::Normalize()`
     pub fn normalize(&mut self) {
         unsafe { crate::ffi::gp_Vec2d_normalize(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:237 - `gp_Vec2d::Normalized()`
     /// Normalizes a vector
     /// Raises an exception if the magnitude of the vector is
     /// lower or equal to Resolution from package gp.
@@ -11046,20 +12323,24 @@ impl Vec2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Vec2d_normalized(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:239 - `gp_Vec2d::Reverse()`
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::gp_Vec2d_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:242 - `gp_Vec2d::Reversed()`
     /// Reverses the direction of a vector
     pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Vec2d_reversed(self as *const Self)) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:252 - `gp_Vec2d::Subtract()`
     /// Subtracts two vectors
     pub fn subtract(&mut self, theRight: &crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::gp_Vec2d_subtract(self as *mut Self, theRight) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:257 - `gp_Vec2d::Subtracted()`
     /// Subtracts two vectors
     pub fn subtracted(
         &self,
@@ -11073,6 +12354,7 @@ impl Vec2d {
         }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:271 - `gp_Vec2d::SetLinearForm()`
     /// <me> is set to the following linear form :
     /// theA1 * theV1 + theA2 * theV2 + theV3
     pub fn set_linear_form_real_vec2d_real_vec2d2(
@@ -11095,6 +12377,7 @@ impl Vec2d {
         }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:281 - `gp_Vec2d::SetLinearForm()`
     /// <me> is set to the following linear form : theA1 * theV1 + theA2 * theV2
     pub fn set_linear_form_real_vec2d_real_vec2d(
         &mut self,
@@ -11114,6 +12397,7 @@ impl Vec2d {
         }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:290 - `gp_Vec2d::SetLinearForm()`
     /// <me> is set to the following linear form : theA1 * theV1 + theV2
     pub fn set_linear_form_real_vec2d2(
         &mut self,
@@ -11126,6 +12410,7 @@ impl Vec2d {
         }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:296 - `gp_Vec2d::SetLinearForm()`
     /// <me> is set to the following linear form : theV1 + theV2
     pub fn set_linear_form_vec2d2(
         &mut self,
@@ -11135,6 +12420,7 @@ impl Vec2d {
         unsafe { crate::ffi::gp_Vec2d_set_linear_form_vec2d2(self as *mut Self, theV1, theV2) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:304 - `gp_Vec2d::Mirror()`
     /// Performs the symmetrical transformation of a vector
     /// with respect to the vector theV which is the center of
     /// the  symmetry.
@@ -11142,6 +12428,7 @@ impl Vec2d {
         unsafe { crate::ffi::gp_Vec2d_mirror_vec2d(self as *mut Self, theV) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:309 - `gp_Vec2d::Mirrored()`
     /// Performs the symmetrical transformation of a vector
     /// with respect to the vector theV which is the center of
     /// the  symmetry.
@@ -11157,6 +12444,7 @@ impl Vec2d {
         }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:314 - `gp_Vec2d::Mirror()`
     /// Performs the symmetrical transformation of a vector
     /// with respect to an axis placement which is the axis
     /// of the symmetry.
@@ -11164,6 +12452,7 @@ impl Vec2d {
         unsafe { crate::ffi::gp_Vec2d_mirror_ax2d(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:319 - `gp_Vec2d::Mirrored()`
     /// Performs the symmetrical transformation of a vector
     /// with respect to an axis placement which is the axis
     /// of the symmetry.
@@ -11179,10 +12468,12 @@ impl Vec2d {
         }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:321 - `gp_Vec2d::Rotate()`
     pub fn rotate(&mut self, theAng: f64) {
         unsafe { crate::ffi::gp_Vec2d_rotate(self as *mut Self, theAng) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:325 - `gp_Vec2d::Rotated()`
     /// Rotates a vector. theAng is the angular value of the
     /// rotation in radians.
     pub fn rotated(&self, theAng: f64) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
@@ -11191,19 +12482,23 @@ impl Vec2d {
         }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:332 - `gp_Vec2d::Scale()`
     pub fn scale(&mut self, theS: f64) {
         unsafe { crate::ffi::gp_Vec2d_scale(self as *mut Self, theS) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:335 - `gp_Vec2d::Scaled()`
     /// Scales a vector. theS is the scaling value.
     pub fn scaled(&self, theS: f64) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Vec2d_scaled(self as *const Self, theS)) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:342 - `gp_Vec2d::Transform()`
     pub fn transform(&mut self, theT: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::gp_Vec2d_transform(self as *mut Self, theT) }
     }
 
+    /// **Source:** `gp_Vec2d.hxx`:345 - `gp_Vec2d::Transformed()`
     /// Transforms a vector with a Trsf from gp.
     pub fn transformed(
         &self,
@@ -11224,6 +12519,7 @@ impl Vec2d {
 // From gp_VectorWithNullMagnitude.hxx
 // ========================
 
+/// **Source:** `gp_VectorWithNullMagnitude.hxx`:36 - `gp_VectorWithNullMagnitude`
 pub use crate::ffi::gp_VectorWithNullMagnitude as VectorWithNullMagnitude;
 
 unsafe impl crate::CppDeletable for VectorWithNullMagnitude {
@@ -11233,10 +12529,12 @@ unsafe impl crate::CppDeletable for VectorWithNullMagnitude {
 }
 
 impl VectorWithNullMagnitude {
+    /// **Source:** `gp_VectorWithNullMagnitude.hxx`:36 - `gp_VectorWithNullMagnitude::gp_VectorWithNullMagnitude()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_VectorWithNullMagnitude_ctor()) }
     }
 
+    /// **Source:** `gp_VectorWithNullMagnitude.hxx`:36 - `gp_VectorWithNullMagnitude::gp_VectorWithNullMagnitude()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_VectorWithNullMagnitude_ctor_charptr(
@@ -11245,6 +12543,7 @@ impl VectorWithNullMagnitude {
         }
     }
 
+    /// **Source:** `gp_VectorWithNullMagnitude.hxx`:36 - `gp_VectorWithNullMagnitude::gp_VectorWithNullMagnitude()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -11257,18 +12556,22 @@ impl VectorWithNullMagnitude {
         }
     }
 
+    /// **Source:** `gp_VectorWithNullMagnitude.hxx`:36 - `gp_VectorWithNullMagnitude::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::gp_VectorWithNullMagnitude_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `gp_VectorWithNullMagnitude.hxx`:36 - `gp_VectorWithNullMagnitude::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::gp_VectorWithNullMagnitude_raise(theMessage) }
     }
 
+    /// **Source:** `gp_VectorWithNullMagnitude.hxx`:36 - `gp_VectorWithNullMagnitude::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::gp_VectorWithNullMagnitude_get_type_name() }
     }
 
+    /// **Source:** `gp_VectorWithNullMagnitude.hxx`:36 - `gp_VectorWithNullMagnitude::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::gp_VectorWithNullMagnitude_get_type_descriptor()) }
     }
@@ -11287,6 +12590,7 @@ impl VectorWithNullMagnitude {
 // From gp_XY.hxx
 // ========================
 
+/// **Source:** `gp_XY.hxx`:29 - `gp_XY`
 /// This class describes a cartesian coordinate entity in 2D
 /// space {X,Y}. This class is non persistent. This entity used
 /// for algebraic calculation. An XY can be transformed with a
@@ -11302,16 +12606,19 @@ unsafe impl crate::CppDeletable for XY {
 }
 
 impl XY {
+    /// **Source:** `gp_XY.hxx`:35 - `gp_XY::gp_XY()`
     /// Creates XY object with zero coordinates (0,0).
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_XY_ctor()) }
     }
 
+    /// **Source:** `gp_XY.hxx`:42 - `gp_XY::gp_XY()`
     /// a number pair defined by the XY coordinates
     pub fn new_real2(theX: f64, theY: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_XY_ctor_real2(theX, theY)) }
     }
 
+    /// **Source:** `gp_XY.hxx`:52 - `gp_XY::SetCoord()`
     /// modifies the coordinate of range theIndex
     /// theIndex = 1 => X is modified
     /// theIndex = 2 => Y is modified
@@ -11320,22 +12627,26 @@ impl XY {
         unsafe { crate::ffi::gp_XY_set_coord_int_real(self as *mut Self, theIndex, theXi) }
     }
 
+    /// **Source:** `gp_XY.hxx`:60 - `gp_XY::SetCoord()`
     /// For this number pair, assigns
     /// the values theX and theY to its coordinates
     pub fn set_coord_real2(&mut self, theX: f64, theY: f64) {
         unsafe { crate::ffi::gp_XY_set_coord_real2(self as *mut Self, theX, theY) }
     }
 
+    /// **Source:** `gp_XY.hxx`:67 - `gp_XY::SetX()`
     /// Assigns the given value to the X coordinate of this number pair.
     pub fn set_x(&mut self, theX: f64) {
         unsafe { crate::ffi::gp_XY_set_x(self as *mut Self, theX) }
     }
 
+    /// **Source:** `gp_XY.hxx`:70 - `gp_XY::SetY()`
     /// Assigns the given value to the Y  coordinate of this number pair.
     pub fn set_y(&mut self, theY: f64) {
         unsafe { crate::ffi::gp_XY_set_y(self as *mut Self, theY) }
     }
 
+    /// **Source:** `gp_XY.hxx`:76 - `gp_XY::Coord()`
     /// returns the coordinate of range theIndex :
     /// theIndex = 1 => X is returned
     /// theIndex = 2 => Y is returned
@@ -11344,35 +12655,42 @@ impl XY {
         unsafe { crate::ffi::gp_XY_coord_int(self as *const Self, theIndex) }
     }
 
+    /// **Source:** `gp_XY.hxx`:82 - `gp_XY::ChangeCoord()`
     pub fn change_coord(&mut self, theIndex: i32) -> &mut f64 {
         unsafe { &mut *(crate::ffi::gp_XY_change_coord(self as *mut Self, theIndex)) }
     }
 
+    /// **Source:** `gp_XY.hxx`:89 - `gp_XY::Coord()`
     /// For this number pair, returns its coordinates X and Y.
     pub fn coord_real2(&self, theX: &mut f64, theY: &mut f64) {
         unsafe { crate::ffi::gp_XY_coord_real2(self as *const Self, theX, theY) }
     }
 
+    /// **Source:** `gp_XY.hxx`:96 - `gp_XY::X()`
     /// Returns the X coordinate of this number pair.
     pub fn x(&self) -> f64 {
         unsafe { crate::ffi::gp_XY_x(self as *const Self) }
     }
 
+    /// **Source:** `gp_XY.hxx`:99 - `gp_XY::Y()`
     /// Returns the Y coordinate of this number pair.
     pub fn y(&self) -> f64 {
         unsafe { crate::ffi::gp_XY_y(self as *const Self) }
     }
 
+    /// **Source:** `gp_XY.hxx`:102 - `gp_XY::Modulus()`
     /// Computes Sqrt (X*X + Y*Y) where X and Y are the two coordinates of this number pair.
     pub fn modulus(&self) -> f64 {
         unsafe { crate::ffi::gp_XY_modulus(self as *const Self) }
     }
 
+    /// **Source:** `gp_XY.hxx`:105 - `gp_XY::SquareModulus()`
     /// Computes X*X + Y*Y where X and Y are the two coordinates of this number pair.
     pub fn square_modulus(&self) -> f64 {
         unsafe { crate::ffi::gp_XY_square_modulus(self as *const Self) }
     }
 
+    /// **Source:** `gp_XY.hxx`:113 - `gp_XY::IsEqual()`
     /// Returns true if the coordinates of this number pair are
     /// equal to the respective coordinates of the number pair
     /// theOther, within the specified tolerance theTolerance. I.e.:
@@ -11383,6 +12701,7 @@ impl XY {
         unsafe { crate::ffi::gp_XY_is_equal(self as *const Self, theOther, theTolerance) }
     }
 
+    /// **Source:** `gp_XY.hxx`:121 - `gp_XY::Add()`
     /// Computes the sum of this number pair and number pair theOther
     /// @code
     /// <me>.X() = <me>.X() + theOther.X()
@@ -11392,6 +12711,7 @@ impl XY {
         unsafe { crate::ffi::gp_XY_add(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `gp_XY.hxx`:134 - `gp_XY::Added()`
     /// Computes the sum of this number pair and number pair theOther
     /// @code
     /// new.X() = <me>.X() + theOther.X()
@@ -11401,6 +12721,7 @@ impl XY {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_XY_added(self as *const Self, theOther)) }
     }
 
+    /// **Source:** `gp_XY.hxx`:144 - `gp_XY::Crossed()`
     /// @code
     /// double D = <me>.X() * theOther.Y() - <me>.Y() * theOther.X()
     /// @endcode
@@ -11408,23 +12729,27 @@ impl XY {
         unsafe { crate::ffi::gp_XY_crossed(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_XY.hxx`:156 - `gp_XY::CrossMagnitude()`
     /// computes the magnitude of the cross product between <me> and
     /// theRight. Returns || <me> ^ theRight ||
     pub fn cross_magnitude(&self, theRight: &crate::ffi::gp_XY) -> f64 {
         unsafe { crate::ffi::gp_XY_cross_magnitude(self as *const Self, theRight) }
     }
 
+    /// **Source:** `gp_XY.hxx`:164 - `gp_XY::CrossSquareMagnitude()`
     /// computes the square magnitude of the cross product between <me> and
     /// theRight. Returns || <me> ^ theRight ||**2
     pub fn cross_square_magnitude(&self, theRight: &crate::ffi::gp_XY) -> f64 {
         unsafe { crate::ffi::gp_XY_cross_square_magnitude(self as *const Self, theRight) }
     }
 
+    /// **Source:** `gp_XY.hxx`:171 - `gp_XY::Divide()`
     /// divides <me> by a real.
     pub fn divide(&mut self, theScalar: f64) {
         unsafe { crate::ffi::gp_XY_divide(self as *mut Self, theScalar) }
     }
 
+    /// **Source:** `gp_XY.hxx`:180 - `gp_XY::Divided()`
     /// Divides <me> by a real.
     pub fn divided(&self, theScalar: f64) -> crate::OwnedPtr<crate::ffi::gp_XY> {
         unsafe {
@@ -11432,11 +12757,13 @@ impl XY {
         }
     }
 
+    /// **Source:** `gp_XY.hxx`:191 - `gp_XY::Dot()`
     /// Computes the scalar product between <me> and theOther
     pub fn dot(&self, theOther: &crate::ffi::gp_XY) -> f64 {
         unsafe { crate::ffi::gp_XY_dot(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_XY.hxx`:199 - `gp_XY::Multiply()`
     /// @code
     /// <me>.X() = <me>.X() * theScalar;
     /// <me>.Y() = <me>.Y() * theScalar;
@@ -11445,6 +12772,7 @@ impl XY {
         unsafe { crate::ffi::gp_XY_multiply_real(self as *mut Self, theScalar) }
     }
 
+    /// **Source:** `gp_XY.hxx`:211 - `gp_XY::Multiply()`
     /// @code
     /// <me>.X() = <me>.X() * theOther.X();
     /// <me>.Y() = <me>.Y() * theOther.Y();
@@ -11453,11 +12781,13 @@ impl XY {
         unsafe { crate::ffi::gp_XY_multiply_xy(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `gp_XY.hxx`:220 - `gp_XY::Multiply()`
     /// <me> = theMatrix * <me>
     pub fn multiply_mat2d(&mut self, theMatrix: &crate::ffi::gp_Mat2d) {
         unsafe { crate::ffi::gp_XY_multiply_mat2d(self as *mut Self, theMatrix) }
     }
 
+    /// **Source:** `gp_XY.hxx`:228 - `gp_XY::Multiplied()`
     /// @code
     /// New.X() = <me>.X() * theScalar;
     /// New.Y() = <me>.Y() * theScalar;
@@ -11471,6 +12801,7 @@ impl XY {
         }
     }
 
+    /// **Source:** `gp_XY.hxx`:242 - `gp_XY::Multiplied()`
     /// @code
     /// new.X() = <me>.X() * theOther.X();
     /// new.Y() = <me>.Y() * theOther.Y();
@@ -11487,6 +12818,7 @@ impl XY {
         }
     }
 
+    /// **Source:** `gp_XY.hxx`:248 - `gp_XY::Multiplied()`
     /// New = theMatrix * <me>
     pub fn multiplied_mat2d(
         &self,
@@ -11500,6 +12832,7 @@ impl XY {
         }
     }
 
+    /// **Source:** `gp_XY.hxx`:264 - `gp_XY::Normalize()`
     /// @code
     /// <me>.X() = <me>.X()/ <me>.Modulus()
     /// <me>.Y() = <me>.Y()/ <me>.Modulus()
@@ -11509,6 +12842,7 @@ impl XY {
         unsafe { crate::ffi::gp_XY_normalize(self as *mut Self) }
     }
 
+    /// **Source:** `gp_XY.hxx`:271 - `gp_XY::Normalized()`
     /// @code
     /// New.X() = <me>.X()/ <me>.Modulus()
     /// New.Y() = <me>.Y()/ <me>.Modulus()
@@ -11518,6 +12852,7 @@ impl XY {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_XY_normalized(self as *const Self)) }
     }
 
+    /// **Source:** `gp_XY.hxx`:282 - `gp_XY::Reverse()`
     /// @code
     /// <me>.X() = -<me>.X()
     /// <me>.Y() = -<me>.Y()
@@ -11525,6 +12860,7 @@ impl XY {
         unsafe { crate::ffi::gp_XY_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_XY.hxx`:292 - `gp_XY::Reversed()`
     /// @code
     /// New.X() = -<me>.X()
     /// New.Y() = -<me>.Y()
@@ -11533,6 +12869,7 @@ impl XY {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_XY_reversed(self as *const Self)) }
     }
 
+    /// **Source:** `gp_XY.hxx`:306 - `gp_XY::SetLinearForm()`
     /// Computes  the following linear combination and
     /// assigns the result to this number pair:
     /// @code
@@ -11556,6 +12893,7 @@ impl XY {
         }
     }
 
+    /// **Source:** `gp_XY.hxx`:320 - `gp_XY::SetLinearForm()`
     /// --  Computes  the following linear combination and
     /// assigns the result to this number pair:
     /// @code
@@ -11581,6 +12919,7 @@ impl XY {
         }
     }
 
+    /// **Source:** `gp_XY.hxx`:335 - `gp_XY::SetLinearForm()`
     /// Computes  the following linear combination and
     /// assigns the result to this number pair:
     /// @code
@@ -11597,6 +12936,7 @@ impl XY {
         }
     }
 
+    /// **Source:** `gp_XY.hxx`:346 - `gp_XY::SetLinearForm()`
     /// Computes  the following linear combination and
     /// assigns the result to this number pair:
     /// @code
@@ -11606,6 +12946,7 @@ impl XY {
         unsafe { crate::ffi::gp_XY_set_linear_form_xy2(self as *mut Self, theXY1, theXY2) }
     }
 
+    /// **Source:** `gp_XY.hxx`:356 - `gp_XY::Subtract()`
     /// @code
     /// <me>.X() = <me>.X() - theOther.X()
     /// <me>.Y() = <me>.Y() - theOther.Y()
@@ -11614,6 +12955,7 @@ impl XY {
         unsafe { crate::ffi::gp_XY_subtract(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `gp_XY.hxx`:368 - `gp_XY::Subtracted()`
     /// @code
     /// new.X() = <me>.X() - theOther.X()
     /// new.Y() = <me>.Y() - theOther.Y()
@@ -11634,6 +12976,7 @@ impl XY {
 // From gp_XYZ.hxx
 // ========================
 
+/// **Source:** `gp_XYZ.hxx`:31 - `gp_XYZ`
 /// This class describes a cartesian coordinate entity in
 /// 3D space {X,Y,Z}. This entity is used for algebraic
 /// calculation. This entity can be transformed
@@ -11649,22 +12992,26 @@ unsafe impl crate::CppDeletable for XYZ {
 }
 
 impl XYZ {
+    /// **Source:** `gp_XYZ.hxx`:37 - `gp_XYZ::gp_XYZ()`
     /// Creates an XYZ object with zero coordinates (0,0,0)
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_XYZ_ctor()) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:45 - `gp_XYZ::gp_XYZ()`
     /// creates an XYZ with given coordinates
     pub fn new_real3(theX: f64, theY: f64, theZ: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_XYZ_ctor_real3(theX, theY, theZ)) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:54 - `gp_XYZ::SetCoord()`
     /// For this XYZ object, assigns
     /// the values theX, theY and theZ to its three coordinates
     pub fn set_coord_real3(&mut self, theX: f64, theY: f64, theZ: f64) {
         unsafe { crate::ffi::gp_XYZ_set_coord_real3(self as *mut Self, theX, theY, theZ) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:66 - `gp_XYZ::SetCoord()`
     /// modifies the coordinate of range theIndex
     /// theIndex = 1 => X is modified
     /// theIndex = 2 => Y is modified
@@ -11674,21 +13021,25 @@ impl XYZ {
         unsafe { crate::ffi::gp_XYZ_set_coord_int_real(self as *mut Self, theIndex, theXi) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:73 - `gp_XYZ::SetX()`
     /// Assigns the given value to the X coordinate
     pub fn set_x(&mut self, theX: f64) {
         unsafe { crate::ffi::gp_XYZ_set_x(self as *mut Self, theX) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:76 - `gp_XYZ::SetY()`
     /// Assigns the given value to the Y coordinate
     pub fn set_y(&mut self, theY: f64) {
         unsafe { crate::ffi::gp_XYZ_set_y(self as *mut Self, theY) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:79 - `gp_XYZ::SetZ()`
     /// Assigns the given value to the Z coordinate
     pub fn set_z(&mut self, theZ: f64) {
         unsafe { crate::ffi::gp_XYZ_set_z(self as *mut Self, theZ) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:87 - `gp_XYZ::Coord()`
     /// returns the coordinate of range theIndex :
     /// theIndex = 1 => X is returned
     /// theIndex = 2 => Y is returned
@@ -11699,39 +13050,47 @@ impl XYZ {
         unsafe { crate::ffi::gp_XYZ_coord_int(self as *const Self, theIndex) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:93 - `gp_XYZ::ChangeCoord()`
     pub fn change_coord(&mut self, theIndex: i32) -> &mut f64 {
         unsafe { &mut *(crate::ffi::gp_XYZ_change_coord(self as *mut Self, theIndex)) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:99 - `gp_XYZ::Coord()`
     pub fn coord_real3(&self, theX: &mut f64, theY: &mut f64, theZ: &mut f64) {
         unsafe { crate::ffi::gp_XYZ_coord_real3(self as *const Self, theX, theY, theZ) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:117 - `gp_XYZ::X()`
     /// Returns the X coordinate
     pub fn x(&self) -> f64 {
         unsafe { crate::ffi::gp_XYZ_x(self as *const Self) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:120 - `gp_XYZ::Y()`
     /// Returns the Y coordinate
     pub fn y(&self) -> f64 {
         unsafe { crate::ffi::gp_XYZ_y(self as *const Self) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:123 - `gp_XYZ::Z()`
     /// Returns the Z coordinate
     pub fn z(&self) -> f64 {
         unsafe { crate::ffi::gp_XYZ_z(self as *const Self) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:126 - `gp_XYZ::Modulus()`
     /// computes Sqrt (X*X + Y*Y + Z*Z) where X, Y and Z are the three coordinates of this XYZ object.
     pub fn modulus(&self) -> f64 {
         unsafe { crate::ffi::gp_XYZ_modulus(self as *const Self) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:129 - `gp_XYZ::SquareModulus()`
     /// Computes X*X + Y*Y + Z*Z where X, Y and Z are the three coordinates of this XYZ object.
     pub fn square_modulus(&self) -> f64 {
         unsafe { crate::ffi::gp_XYZ_square_modulus(self as *const Self) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:137 - `gp_XYZ::IsEqual()`
     /// Returns True if he coordinates of this XYZ object are
     /// equal to the respective coordinates Other,
     /// within the specified tolerance theTolerance. I.e.:
@@ -11742,6 +13101,7 @@ impl XYZ {
         unsafe { crate::ffi::gp_XYZ_is_equal(self as *const Self, theOther, theTolerance) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:145 - `gp_XYZ::Add()`
     /// @code
     /// <me>.X() = <me>.X() + theOther.X()
     /// <me>.Y() = <me>.Y() + theOther.Y()
@@ -11751,6 +13111,7 @@ impl XYZ {
         unsafe { crate::ffi::gp_XYZ_add(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:159 - `gp_XYZ::Added()`
     /// @code
     /// new.X() = <me>.X() + theOther.X()
     /// new.Y() = <me>.Y() + theOther.Y()
@@ -11762,6 +13123,7 @@ impl XYZ {
         }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:171 - `gp_XYZ::Cross()`
     /// @code
     /// <me>.X() = <me>.Y() * theOther.Z() - <me>.Z() * theOther.Y()
     /// <me>.Y() = <me>.Z() * theOther.X() - <me>.X() * theOther.Z()
@@ -11771,6 +13133,7 @@ impl XYZ {
         unsafe { crate::ffi::gp_XYZ_cross(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:180 - `gp_XYZ::Crossed()`
     /// @code
     /// new.X() = <me>.Y() * theOther.Z() - <me>.Z() * theOther.Y()
     /// new.Y() = <me>.Z() * theOther.X() - <me>.X() * theOther.Z()
@@ -11782,24 +13145,28 @@ impl XYZ {
         }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:191 - `gp_XYZ::CrossMagnitude()`
     /// Computes the magnitude of the cross product between <me> and
     /// theRight. Returns || <me> ^ theRight ||
     pub fn cross_magnitude(&self, theRight: &crate::ffi::gp_XYZ) -> f64 {
         unsafe { crate::ffi::gp_XYZ_cross_magnitude(self as *const Self, theRight) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:195 - `gp_XYZ::CrossSquareMagnitude()`
     /// Computes the square magnitude of the cross product between <me> and
     /// theRight. Returns || <me> ^ theRight ||**2
     pub fn cross_square_magnitude(&self, theRight: &crate::ffi::gp_XYZ) -> f64 {
         unsafe { crate::ffi::gp_XYZ_cross_square_magnitude(self as *const Self, theRight) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:199 - `gp_XYZ::CrossCross()`
     /// Triple vector product
     /// Computes <me> = <me>.Cross(theCoord1.Cross(theCoord2))
     pub fn cross_cross(&mut self, theCoord1: &crate::ffi::gp_XYZ, theCoord2: &crate::ffi::gp_XYZ) {
         unsafe { crate::ffi::gp_XYZ_cross_cross(self as *mut Self, theCoord1, theCoord2) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:203 - `gp_XYZ::CrossCrossed()`
     /// Triple vector product
     /// computes New = <me>.Cross(theCoord1.Cross(theCoord2))
     pub fn cross_crossed(
@@ -11816,11 +13183,13 @@ impl XYZ {
         }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:211 - `gp_XYZ::Divide()`
     /// divides <me> by a real.
     pub fn divide(&mut self, theScalar: f64) {
         unsafe { crate::ffi::gp_XYZ_divide(self as *mut Self, theScalar) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:221 - `gp_XYZ::Divided()`
     /// divides <me> by a real.
     pub fn divided(&self, theScalar: f64) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
         unsafe {
@@ -11828,16 +13197,19 @@ impl XYZ {
         }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:232 - `gp_XYZ::Dot()`
     /// computes the scalar product between <me> and theOther
     pub fn dot(&self, theOther: &crate::ffi::gp_XYZ) -> f64 {
         unsafe { crate::ffi::gp_XYZ_dot(self as *const Self, theOther) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:240 - `gp_XYZ::DotCross()`
     /// computes the triple scalar product
     pub fn dot_cross(&self, theCoord1: &crate::ffi::gp_XYZ, theCoord2: &crate::ffi::gp_XYZ) -> f64 {
         unsafe { crate::ffi::gp_XYZ_dot_cross(self as *const Self, theCoord1, theCoord2) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:247 - `gp_XYZ::Multiply()`
     /// @code
     /// <me>.X() = <me>.X() * theScalar;
     /// <me>.Y() = <me>.Y() * theScalar;
@@ -11847,6 +13219,7 @@ impl XYZ {
         unsafe { crate::ffi::gp_XYZ_multiply_real(self as *mut Self, theScalar) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:261 - `gp_XYZ::Multiply()`
     /// @code
     /// <me>.X() = <me>.X() * theOther.X();
     /// <me>.Y() = <me>.Y() * theOther.Y();
@@ -11856,11 +13229,13 @@ impl XYZ {
         unsafe { crate::ffi::gp_XYZ_multiply_xyz(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:271 - `gp_XYZ::Multiply()`
     /// <me> = theMatrix * <me>
     pub fn multiply_mat(&mut self, theMatrix: &crate::ffi::gp_Mat) {
         unsafe { crate::ffi::gp_XYZ_multiply_mat(self as *mut Self, theMatrix) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:280 - `gp_XYZ::Multiplied()`
     /// @code
     /// New.X() = <me>.X() * theScalar;
     /// New.Y() = <me>.Y() * theScalar;
@@ -11875,6 +13250,7 @@ impl XYZ {
         }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:295 - `gp_XYZ::Multiplied()`
     /// @code
     /// new.X() = <me>.X() * theOther.X();
     /// new.Y() = <me>.Y() * theOther.Y();
@@ -11892,6 +13268,7 @@ impl XYZ {
         }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:301 - `gp_XYZ::Multiplied()`
     /// New = theMatrix * <me>
     pub fn multiplied_mat(
         &self,
@@ -11905,6 +13282,7 @@ impl XYZ {
         }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:320 - `gp_XYZ::Normalize()`
     /// @code
     /// <me>.X() = <me>.X()/ <me>.Modulus()
     /// <me>.Y() = <me>.Y()/ <me>.Modulus()
@@ -11915,6 +13293,7 @@ impl XYZ {
         unsafe { crate::ffi::gp_XYZ_normalize(self as *mut Self) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:328 - `gp_XYZ::Normalized()`
     /// @code
     /// New.X() = <me>.X()/ <me>.Modulus()
     /// New.Y() = <me>.Y()/ <me>.Modulus()
@@ -11925,6 +13304,7 @@ impl XYZ {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_XYZ_normalized(self as *const Self)) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:341 - `gp_XYZ::Reverse()`
     /// @code
     /// <me>.X() = -<me>.X()
     /// <me>.Y() = -<me>.Y()
@@ -11934,6 +13314,7 @@ impl XYZ {
         unsafe { crate::ffi::gp_XYZ_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:353 - `gp_XYZ::Reversed()`
     /// @code
     /// New.X() = -<me>.X()
     /// New.Y() = -<me>.Y()
@@ -11943,6 +13324,7 @@ impl XYZ {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_XYZ_reversed(self as *const Self)) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:360 - `gp_XYZ::Subtract()`
     /// @code
     /// <me>.X() = <me>.X() - theOther.X()
     /// <me>.Y() = <me>.Y() - theOther.Y()
@@ -11952,6 +13334,7 @@ impl XYZ {
         unsafe { crate::ffi::gp_XYZ_subtract(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:374 - `gp_XYZ::Subtracted()`
     /// @code
     /// new.X() = <me>.X() - theOther.X()
     /// new.Y() = <me>.Y() - theOther.Y()
@@ -11963,6 +13346,7 @@ impl XYZ {
         }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:385 - `gp_XYZ::SetLinearForm()`
     /// <me> is set to the following linear form :
     /// @code
     /// theA1 * theXYZ1 + theA2 * theXYZ2 + theA3 * theXYZ3 + theXYZ4
@@ -11991,6 +13375,7 @@ impl XYZ {
         }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:402 - `gp_XYZ::SetLinearForm()`
     /// <me> is set to the following linear form :
     /// @code
     /// theA1 * theXYZ1 + theA2 * theXYZ2 + theA3 * theXYZ3
@@ -12017,6 +13402,7 @@ impl XYZ {
         }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:418 - `gp_XYZ::SetLinearForm()`
     /// <me> is set to the following linear form :
     /// @code
     /// theA1 * theXYZ1 + theA2 * theXYZ2 + theXYZ3
@@ -12041,6 +13427,7 @@ impl XYZ {
         }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:433 - `gp_XYZ::SetLinearForm()`
     /// <me> is set to the following linear form :
     /// @code
     /// theA1 * theXYZ1 + theA2 * theXYZ2
@@ -12063,6 +13450,7 @@ impl XYZ {
         }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:447 - `gp_XYZ::SetLinearForm()`
     /// <me> is set to the following linear form :
     /// @code
     /// theA1 * theXYZ1 + theXYZ2
@@ -12078,6 +13466,7 @@ impl XYZ {
         }
     }
 
+    /// **Source:** `gp_XYZ.hxx`:458 - `gp_XYZ::SetLinearForm()`
     /// <me> is set to the following linear form :
     /// @code
     /// theXYZ1 + theXYZ2

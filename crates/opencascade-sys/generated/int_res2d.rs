@@ -96,6 +96,7 @@ impl TryFrom<i32> for Situation {
 // From IntRes2d_IntersectionPoint.hxx
 // ========================
 
+/// **Source:** `IntRes2d_IntersectionPoint.hxx`:30 - `IntRes2d_IntersectionPoint`
 /// Definition of an intersection point between two
 /// 2D curves.
 pub use crate::ffi::IntRes2d_IntersectionPoint as IntersectionPoint;
@@ -107,11 +108,13 @@ unsafe impl crate::CppDeletable for IntersectionPoint {
 }
 
 impl IntersectionPoint {
+    /// **Source:** `IntRes2d_IntersectionPoint.hxx`:36 - `IntRes2d_IntersectionPoint::IntRes2d_IntersectionPoint()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntRes2d_IntersectionPoint_ctor()) }
     }
 
+    /// **Source:** `IntRes2d_IntersectionPoint.hxx`:44 - `IntRes2d_IntersectionPoint::IntRes2d_IntersectionPoint()`
     /// Creates an IntersectionPoint.
     /// if ReversedFlag is False, the parameter Uc1(resp. Uc2)
     /// and the Transition Trans1 (resp. Trans2) refer to
@@ -140,6 +143,7 @@ impl IntersectionPoint {
         }
     }
 
+    /// **Source:** `IntRes2d_IntersectionPoint.hxx`:54 - `IntRes2d_IntersectionPoint::SetValues()`
     /// Sets the values for an existing intersection
     /// point. The meaning of the parameters are the same
     /// as for the Create.
@@ -165,22 +169,26 @@ impl IntersectionPoint {
         }
     }
 
+    /// **Source:** `IntRes2d_IntersectionPoint.hxx`:63 - `IntRes2d_IntersectionPoint::Value()`
     /// Returns the value of the coordinates of the
     /// intersection point in the 2D space.
     pub fn value(&self) -> &crate::ffi::gp_Pnt2d {
         unsafe { &*(crate::ffi::IntRes2d_IntersectionPoint_value(self as *const Self)) }
     }
 
+    /// **Source:** `IntRes2d_IntersectionPoint.hxx`:66 - `IntRes2d_IntersectionPoint::ParamOnFirst()`
     /// Returns the parameter on the first curve.
     pub fn param_on_first(&self) -> f64 {
         unsafe { crate::ffi::IntRes2d_IntersectionPoint_param_on_first(self as *const Self) }
     }
 
+    /// **Source:** `IntRes2d_IntersectionPoint.hxx`:69 - `IntRes2d_IntersectionPoint::ParamOnSecond()`
     /// Returns the parameter on the second curve.
     pub fn param_on_second(&self) -> f64 {
         unsafe { crate::ffi::IntRes2d_IntersectionPoint_param_on_second(self as *const Self) }
     }
 
+    /// **Source:** `IntRes2d_IntersectionPoint.hxx`:73 - `IntRes2d_IntersectionPoint::TransitionOfFirst()`
     /// Returns the transition of the 1st curve compared to
     /// the 2nd one.
     pub fn transition_of_first(&self) -> &crate::ffi::IntRes2d_Transition {
@@ -189,6 +197,7 @@ impl IntersectionPoint {
         }
     }
 
+    /// **Source:** `IntRes2d_IntersectionPoint.hxx`:77 - `IntRes2d_IntersectionPoint::TransitionOfSecond()`
     /// returns the transition of the 2nd curve compared to
     /// the 1st one.
     pub fn transition_of_second(&self) -> &crate::ffi::IntRes2d_Transition {
@@ -202,6 +211,7 @@ impl IntersectionPoint {
 // From IntRes2d_Transition.hxx
 // ========================
 
+/// **Source:** `IntRes2d_Transition.hxx`:37 - `IntRes2d_Transition`
 /// Definition of    the  type  of   transition    near an
 /// intersection point between  two curves. The transition
 /// is either a "true transition", which means that one of
@@ -219,11 +229,13 @@ unsafe impl crate::CppDeletable for Transition {
 }
 
 impl Transition {
+    /// **Source:** `IntRes2d_Transition.hxx`:43 - `IntRes2d_Transition::IntRes2d_Transition()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntRes2d_Transition_ctor()) }
     }
 
+    /// **Source:** `IntRes2d_Transition.hxx`:46 - `IntRes2d_Transition::IntRes2d_Transition()`
     /// Creates an IN or OUT transition.
     pub fn new_bool_position_typetrans(
         Tangent: bool,
@@ -239,6 +251,7 @@ impl Transition {
         }
     }
 
+    /// **Source:** `IntRes2d_Transition.hxx`:51 - `IntRes2d_Transition::IntRes2d_Transition()`
     /// Creates a TOUCH transition.
     pub fn new_bool_position_situation_bool(
         Tangent: bool,
@@ -258,6 +271,7 @@ impl Transition {
         }
     }
 
+    /// **Source:** `IntRes2d_Transition.hxx`:57 - `IntRes2d_Transition::IntRes2d_Transition()`
     /// Creates an UNDECIDED transition.
     pub fn new_position(Pos: crate::int_res2d::Position) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -265,6 +279,7 @@ impl Transition {
         }
     }
 
+    /// **Source:** `IntRes2d_Transition.hxx`:60 - `IntRes2d_Transition::SetValue()`
     /// Sets the values of an IN or OUT transition.
     pub fn set_value_bool_position_typetrans(
         &mut self,
@@ -282,6 +297,7 @@ impl Transition {
         }
     }
 
+    /// **Source:** `IntRes2d_Transition.hxx`:65 - `IntRes2d_Transition::SetValue()`
     /// Sets the values of a TOUCH transition.
     pub fn set_value_bool_position_situation_bool(
         &mut self,
@@ -301,16 +317,19 @@ impl Transition {
         }
     }
 
+    /// **Source:** `IntRes2d_Transition.hxx`:71 - `IntRes2d_Transition::SetValue()`
     /// Sets the values of an UNDECIDED transition.
     pub fn set_value_position(&mut self, Pos: crate::int_res2d::Position) {
         unsafe { crate::ffi::IntRes2d_Transition_set_value_position(self as *mut Self, Pos.into()) }
     }
 
+    /// **Source:** `IntRes2d_Transition.hxx`:74 - `IntRes2d_Transition::SetPosition()`
     /// Sets the value of the position.
     pub fn set_position(&mut self, Pos: crate::int_res2d::Position) {
         unsafe { crate::ffi::IntRes2d_Transition_set_position(self as *mut Self, Pos.into()) }
     }
 
+    /// **Source:** `IntRes2d_Transition.hxx`:79 - `IntRes2d_Transition::PositionOnCurve()`
     /// Indicates if the  intersection is at the beginning
     /// (IntRes2d_Head),  at the end (IntRes2d_End), or in
     /// the middle (IntRes2d_Middle) of the curve.
@@ -323,6 +342,7 @@ impl Transition {
         }
     }
 
+    /// **Source:** `IntRes2d_Transition.hxx`:85 - `IntRes2d_Transition::TransitionType()`
     /// Returns the type of transition at the intersection.
     /// It may be IN or OUT or TOUCH, or UNDECIDED if the
     /// two first derivatives are not enough to give
@@ -336,6 +356,7 @@ impl Transition {
         }
     }
 
+    /// **Source:** `IntRes2d_Transition.hxx`:91 - `IntRes2d_Transition::IsTangent()`
     /// Returns TRUE when the 2 curves are tangent at the
     /// intersection point.
     /// Theexception DomainError is raised if the type of
@@ -344,6 +365,7 @@ impl Transition {
         unsafe { crate::ffi::IntRes2d_Transition_is_tangent(self as *const Self) }
     }
 
+    /// **Source:** `IntRes2d_Transition.hxx`:101 - `IntRes2d_Transition::Situation()`
     /// returns a significant value if TransitionType returns
     /// TOUCH. In this case, the function returns :
     /// INSIDE when the curve remains inside the other one,
@@ -361,6 +383,7 @@ impl Transition {
         }
     }
 
+    /// **Source:** `IntRes2d_Transition.hxx`:109 - `IntRes2d_Transition::IsOpposite()`
     /// returns a  significant value   if   TransitionType
     /// returns TOUCH. In this  case, the function returns
     /// true   when  the  2   curves   locally define  two

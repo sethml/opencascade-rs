@@ -6,6 +6,11 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `GeomLib.hxx` - `GeomLib::To3d`
+/// Computes     the  curve  3d    from  package  Geom
+/// corresponding to curve 2d  from package Geom2d, on
+/// the plan defined with the local coordinate system
+/// Position.
 pub fn to3d_ax2_handlegeom2dcurve(
     Position: &crate::ffi::gp_Ax2,
     Curve2d: &crate::ffi::HandleGeom2dCurve,
@@ -14,13 +19,50 @@ pub fn to3d_ax2_handlegeom2dcurve(
         crate::OwnedPtr::from_raw(crate::ffi::GeomLib_to3d_ax2_handlegeom2dcurve(Position, Curve2d))
     }
 }
+/// **Source:** `GeomLib.hxx` - `GeomLib::GTransform`
+/// Computes the    curve    3d  from   package   Geom
+/// corresponding  to the curve  3d from package Geom,
+/// transformed with the transformation <GTrsf>
+/// WARNING : this method may return a null Handle if
+/// it's impossible to compute the transformation of
+/// a curve. It's not implemented when :
+/// 1) the curve is an infinite parabola or hyperbola
+/// 2) the curve is an offsetcurve
 pub fn g_transform(
     Curve: &crate::ffi::HandleGeom2dCurve,
     GTrsf: &crate::ffi::gp_GTrsf2d,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomLib_g_transform(Curve, GTrsf)) }
 }
-pub use crate::ffi::GeomLib_same_range_real_handlegeom2dcurve_real4_handlegeom2dcurve as same_range_real_handlegeom2dcurve_real4_handlegeom2dcurve;
+/// **Source:** `GeomLib.hxx` - `GeomLib::SameRange`
+/// Make the curve Curve2dPtr have the imposed
+/// range First to List the most economic way,
+/// that is if it can change the range without
+/// changing the nature of the curve it will try
+/// to do that. Otherwise it will produce a Bspline
+/// curve that has the required range
+pub fn same_range_real_handlegeom2dcurve_real4_handlegeom2dcurve(
+    Tolerance: f64,
+    Curve2dPtr: &crate::ffi::HandleGeom2dCurve,
+    First: f64,
+    Last: f64,
+    RequestedFirst: f64,
+    RequestedLast: f64,
+    NewCurve2dPtr: &mut crate::ffi::HandleGeom2dCurve,
+) {
+    unsafe {
+        crate::ffi::GeomLib_same_range_real_handlegeom2dcurve_real4_handlegeom2dcurve(
+            Tolerance,
+            Curve2dPtr,
+            First,
+            Last,
+            RequestedFirst,
+            RequestedLast,
+            NewCurve2dPtr,
+        )
+    }
+}
+/// **Source:** `GeomLib.hxx` - `GeomLib::BuildCurve3d`
 pub fn build_curve3d_real_curveonsurface_real2_handlegeomcurve_real2_shape_int2(
     Tolerance: f64,
     CurvePtr: &mut crate::ffi::Adaptor3d_CurveOnSurface,
@@ -48,16 +90,195 @@ pub fn build_curve3d_real_curveonsurface_real2_handlegeomcurve_real2_shape_int2(
         )
     }
 }
-pub use crate::ffi::{
-    GeomLib_adjust_extremity as adjust_extremity, GeomLib_axe_of_inertia as axe_of_inertia,
-    GeomLib_cancel_denominator_derivative as cancel_denominator_derivative,
-    GeomLib_extend_curve_to_point as extend_curve_to_point,
-    GeomLib_extend_surf_by_length as extend_surf_by_length, GeomLib_inertia as inertia,
-    GeomLib_is_b_spl_u_closed as is_b_spl_u_closed, GeomLib_is_b_spl_v_closed as is_b_spl_v_closed,
-    GeomLib_is_bz_u_closed as is_bz_u_closed, GeomLib_is_bz_v_closed as is_bz_v_closed,
-    GeomLib_is_closed as is_closed, GeomLib_is_iso_line as is_iso_line,
-    GeomLib_norm_estim as norm_estim,
-};
+/// **Source:** `GeomLib.hxx` - `GeomLib::AdjustExtremity`
+pub fn adjust_extremity(
+    Curve: &mut crate::ffi::HandleGeomBoundedCurve,
+    P1: &crate::ffi::gp_Pnt,
+    P2: &crate::ffi::gp_Pnt,
+    T1: &crate::ffi::gp_Vec,
+    T2: &crate::ffi::gp_Vec,
+) {
+    unsafe { crate::ffi::GeomLib_adjust_extremity(Curve, P1, P2, T1, T2) }
+}
+/// **Source:** `GeomLib.hxx` - `GeomLib::ExtendCurveToPoint`
+/// Extends the bounded curve Curve to the point Point.
+/// The extension is built:
+/// -      at the end of the curve if After equals true, or
+/// -      at the beginning of the curve if After equals false.
+/// The extension is performed according to a degree of
+/// continuity equal to Cont, which in its turn must be equal to 1, 2 or 3.
+/// This function converts the bounded curve Curve into a BSpline curve.
+/// Warning
+/// -   Nothing is done, and Curve is not modified if Cont is
+/// not equal to 1, 2 or 3.
+/// -   It is recommended that the extension should not be
+/// too large with respect to the size of the bounded
+/// curve Curve: Point must not be located too far from
+/// one of the extremities of Curve.
+pub fn extend_curve_to_point(
+    Curve: &mut crate::ffi::HandleGeomBoundedCurve,
+    Point: &crate::ffi::gp_Pnt,
+    Cont: i32,
+    After: bool,
+) {
+    unsafe { crate::ffi::GeomLib_extend_curve_to_point(Curve, Point, Cont, After) }
+}
+/// **Source:** `GeomLib.hxx` - `GeomLib::ExtendSurfByLength`
+/// Extends the bounded surface Surf along one of its
+/// boundaries. The chord length of the extension is equal to Length.
+/// The direction of the extension is given as:
+/// -   the u parametric direction of Surf, if InU equals true,   or
+/// -   the v parametric direction of Surf, if InU equals false.
+/// In this parametric direction, the extension is built on the side of:
+/// -   the last parameter of Surf, if After equals true, or
+/// -   the first parameter of Surf, if After equals false.
+/// The extension is performed according to a degree of
+/// continuity equal to Cont, which in its turn must be equal to 1, 2 or 3.
+/// This function converts the bounded surface Surf into a BSpline surface.
+/// Warning
+/// -   Nothing is done, and Surf is not modified if Cont is
+/// not equal to 1, 2 or 3.
+/// -   It is recommended that Length, the size of the
+/// extension should not be too large with respect to the
+/// size of the bounded surface Surf.
+/// -   Surf must not be a periodic BSpline surface in the
+/// parametric direction corresponding to the direction of extension.
+pub fn extend_surf_by_length(
+    Surf: &mut crate::ffi::HandleGeomBoundedSurface,
+    Length: f64,
+    Cont: i32,
+    InU: bool,
+    After: bool,
+) {
+    unsafe { crate::ffi::GeomLib_extend_surf_by_length(Surf, Length, Cont, InU, After) }
+}
+/// **Source:** `GeomLib.hxx` - `GeomLib::AxeOfInertia`
+/// Compute   axes of inertia,  of some  points --  -- --
+/// <Axe>.Location() is the   BaryCentre -- -- --   -- --
+/// <Axe>.XDirection is the axe of upper inertia -- -- --
+/// -- <Axe>.Direction is the Normal to the average plane
+/// -- -- -- IsSingular is True if  points are on line --
+/// Tol is used to determine singular cases.
+pub fn axe_of_inertia(
+    Points: &crate::ffi::TColgp_Array1OfPnt,
+    Axe: &mut crate::ffi::gp_Ax2,
+    IsSingular: &mut bool,
+    Tol: f64,
+) {
+    unsafe { crate::ffi::GeomLib_axe_of_inertia(Points, Axe, IsSingular, Tol) }
+}
+/// **Source:** `GeomLib.hxx` - `GeomLib::Inertia`
+/// Compute principale axes  of  inertia, and dispersion
+/// value  of some  points.
+pub fn inertia(
+    Points: &crate::ffi::TColgp_Array1OfPnt,
+    Bary: &mut crate::ffi::gp_Pnt,
+    XDir: &mut crate::ffi::gp_Dir,
+    YDir: &mut crate::ffi::gp_Dir,
+    Xgap: &mut f64,
+    YGap: &mut f64,
+    ZGap: &mut f64,
+) {
+    unsafe { crate::ffi::GeomLib_inertia(Points, Bary, XDir, YDir, Xgap, YGap, ZGap) }
+}
+/// **Source:** `GeomLib.hxx` - `GeomLib::CancelDenominatorDerivative`
+/// Cancel,on the boundaries,the denominator  first derivative
+/// in  the directions wished by the user and set its value to 1.
+pub fn cancel_denominator_derivative(
+    BSurf: &mut crate::ffi::HandleGeomBSplineSurface,
+    UDirection: bool,
+    VDirection: bool,
+) {
+    unsafe { crate::ffi::GeomLib_cancel_denominator_derivative(BSurf, UDirection, VDirection) }
+}
+/// **Source:** `GeomLib.hxx` - `GeomLib::NormEstim`
+/// Estimate surface normal at the given (U, V) point.
+/// @param[in]  theSurf input surface
+/// @param[in]  theUV   (U, V) point coordinates on the surface
+/// @param[in]  theTol  estimation tolerance
+/// @param[out] theNorm computed normal
+/// @return 0 if normal estimated from D1,
+/// 1 if estimated from D2 (quasysingular),
+/// >=2 in case of failure (undefined or infinite solutions)
+pub fn norm_estim(
+    theSurf: &crate::ffi::HandleGeomSurface,
+    theUV: &crate::ffi::gp_Pnt2d,
+    theTol: f64,
+    theNorm: &mut crate::ffi::gp_Dir,
+) -> i32 {
+    unsafe { crate::ffi::GeomLib_norm_estim(theSurf, theUV, theTol, theNorm) }
+}
+/// **Source:** `GeomLib.hxx` - `GeomLib::IsClosed`
+/// This method defines if opposite boundaries of surface
+/// coincide with given tolerance
+pub fn is_closed(
+    S: &crate::ffi::HandleGeomSurface,
+    Tol: f64,
+    isUClosed: &mut bool,
+    isVClosed: &mut bool,
+) {
+    unsafe { crate::ffi::GeomLib_is_closed(S, Tol, isUClosed, isVClosed) }
+}
+/// **Source:** `GeomLib.hxx` - `GeomLib::IsBSplUClosed`
+/// Returns true if the poles of U1 isoline and the poles of
+/// U2 isoline of surface are identical according to tolerance criterion.
+/// For rational surfaces Weights(i)*Poles(i) are checked.
+pub fn is_b_spl_u_closed(
+    S: &crate::ffi::HandleGeomBSplineSurface,
+    U1: f64,
+    U2: f64,
+    Tol: f64,
+) -> bool {
+    unsafe { crate::ffi::GeomLib_is_b_spl_u_closed(S, U1, U2, Tol) }
+}
+/// **Source:** `GeomLib.hxx` - `GeomLib::IsBSplVClosed`
+/// Returns true if the poles of V1 isoline and the poles of
+/// V2 isoline of surface are identical according to tolerance criterion.
+/// For rational surfaces Weights(i)*Poles(i) are checked.
+pub fn is_b_spl_v_closed(
+    S: &crate::ffi::HandleGeomBSplineSurface,
+    V1: f64,
+    V2: f64,
+    Tol: f64,
+) -> bool {
+    unsafe { crate::ffi::GeomLib_is_b_spl_v_closed(S, V1, V2, Tol) }
+}
+/// **Source:** `GeomLib.hxx` - `GeomLib::IsBzUClosed`
+/// Returns true if the poles of U1 isoline and the poles of
+/// U2 isoline of surface are identical according to tolerance criterion.
+pub fn is_bz_u_closed(S: &crate::ffi::HandleGeomBezierSurface, U1: f64, U2: f64, Tol: f64) -> bool {
+    unsafe { crate::ffi::GeomLib_is_bz_u_closed(S, U1, U2, Tol) }
+}
+/// **Source:** `GeomLib.hxx` - `GeomLib::IsBzVClosed`
+/// Returns true if the poles of V1 isoline and the poles of
+/// V2 isoline of surface are identical according to tolerance criterion.
+pub fn is_bz_v_closed(S: &crate::ffi::HandleGeomBezierSurface, V1: f64, V2: f64, Tol: f64) -> bool {
+    unsafe { crate::ffi::GeomLib_is_bz_v_closed(S, V1, V2, Tol) }
+}
+/// **Source:** `GeomLib.hxx` - `GeomLib::isIsoLine`
+/// Checks whether the 2d curve is a isoline. It can be represented by b-spline, bezier,
+/// or geometric line. This line should have natural parameterization.
+/// @param theC2D       Trimmed curve to be checked.
+/// @param theIsU       Flag indicating that line is u const.
+/// @param theParam     Line parameter.
+/// @param theIsForward Flag indicating forward parameterization on a isoline.
+/// @return Standard_True when 2d curve is a line and Standard_False otherwise.
+pub fn is_iso_line(
+    theC2D: &crate::ffi::HandleAdaptor2dCurve2d,
+    theIsU: &mut bool,
+    theParam: &mut f64,
+    theIsForward: &mut bool,
+) -> bool {
+    unsafe { crate::ffi::GeomLib_is_iso_line(theC2D, theIsU, theParam, theIsForward) }
+}
+/// **Source:** `GeomLib.hxx` - `GeomLib::buildC3dOnIsoLine`
+/// Builds 3D curve for a isoline. This method takes corresponding isoline from
+/// the input surface.
+/// @param theC2D   Trimmed curve to be approximated.
+/// @param theIsU   Flag indicating that line is u const.
+/// @param theParam Line parameter.
+/// @param theIsForward Flag indicating forward parameterization on a isoline.
+/// @return Standard_True when 3d curve is built and Standard_False otherwise.
 pub fn build_c3d_on_iso_line(
     theC2D: &crate::ffi::HandleAdaptor2dCurve2d,
     theSurf: &crate::ffi::HandleAdaptor3dSurface,
@@ -86,6 +307,7 @@ pub fn build_c3d_on_iso_line(
 // From GeomLib_CheckCurveOnSurface.hxx
 // ========================
 
+/// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:26 - `GeomLib_CheckCurveOnSurface`
 /// Computes the max distance between 3D-curve and 2D-curve
 /// in some surface.
 pub use crate::ffi::GeomLib_CheckCurveOnSurface as CheckCurveOnSurface;
@@ -97,11 +319,13 @@ unsafe impl crate::CppDeletable for CheckCurveOnSurface {
 }
 
 impl CheckCurveOnSurface {
+    /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:32 - `GeomLib_CheckCurveOnSurface::GeomLib_CheckCurveOnSurface()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomLib_CheckCurveOnSurface_ctor()) }
     }
 
+    /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:35 - `GeomLib_CheckCurveOnSurface::GeomLib_CheckCurveOnSurface()`
     /// Constructor
     pub fn new_handleadaptor3dcurve_real(
         theCurve: &crate::ffi::HandleAdaptor3dCurve,
@@ -117,6 +341,7 @@ impl CheckCurveOnSurface {
         }
     }
 
+    /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:40 - `GeomLib_CheckCurveOnSurface::Init()`
     /// Sets the data for the algorithm
     pub fn init_handleadaptor3dcurve_real(
         &mut self,
@@ -132,11 +357,13 @@ impl CheckCurveOnSurface {
         }
     }
 
+    /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:44 - `GeomLib_CheckCurveOnSurface::Init()`
     /// Initializes all members by default values
     pub fn init(&mut self) {
         unsafe { crate::ffi::GeomLib_CheckCurveOnSurface_init(self as *mut Self) }
     }
 
+    /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:52 - `GeomLib_CheckCurveOnSurface::SetParallel()`
     /// Sets parallel flag
     pub fn set_parallel(&mut self, theIsParallel: bool) {
         unsafe {
@@ -144,16 +371,19 @@ impl CheckCurveOnSurface {
         }
     }
 
+    /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:55 - `GeomLib_CheckCurveOnSurface::IsParallel()`
     /// Returns true if parallel flag is set
     pub fn is_parallel(&mut self) -> bool {
         unsafe { crate::ffi::GeomLib_CheckCurveOnSurface_is_parallel(self as *mut Self) }
     }
 
+    /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:58 - `GeomLib_CheckCurveOnSurface::IsDone()`
     /// Returns true if the max distance has been found
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GeomLib_CheckCurveOnSurface_is_done(self as *const Self) }
     }
 
+    /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:66 - `GeomLib_CheckCurveOnSurface::ErrorStatus()`
     /// Returns error status
     /// The possible values are:
     /// 0 - OK;
@@ -164,11 +394,13 @@ impl CheckCurveOnSurface {
         unsafe { crate::ffi::GeomLib_CheckCurveOnSurface_error_status(self as *const Self) }
     }
 
+    /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:69 - `GeomLib_CheckCurveOnSurface::MaxDistance()`
     /// Returns max distance
     pub fn max_distance(&self) -> f64 {
         unsafe { crate::ffi::GeomLib_CheckCurveOnSurface_max_distance(self as *const Self) }
     }
 
+    /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:72 - `GeomLib_CheckCurveOnSurface::MaxParameter()`
     /// Returns parameter in which the distance is maximal
     pub fn max_parameter(&self) -> f64 {
         unsafe { crate::ffi::GeomLib_CheckCurveOnSurface_max_parameter(self as *const Self) }

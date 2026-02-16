@@ -10,6 +10,7 @@
 // From GeomEvaluator_Curve.hxx
 // ========================
 
+/// **Source:** `GeomEvaluator_Curve.hxx`:26 - `GeomEvaluator_Curve`
 /// Interface for calculation of values and derivatives for different kinds of curves in 3D.
 /// Works both with adaptors and curves.
 pub use crate::ffi::GeomEvaluator_Curve as Curve;
@@ -21,16 +22,19 @@ unsafe impl crate::CppDeletable for Curve {
 }
 
 impl Curve {
+    /// **Source:** `GeomEvaluator_Curve.hxx`:32 - `GeomEvaluator_Curve::D0()`
     /// Value of 3D curve
     pub fn d0(&self, theU: f64, theValue: &mut crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::GeomEvaluator_Curve_d0(self as *const Self, theU, theValue) }
     }
 
+    /// **Source:** `GeomEvaluator_Curve.hxx`:34 - `GeomEvaluator_Curve::D1()`
     /// Value and first derivatives of curve
     pub fn d1(&self, theU: f64, theValue: &mut crate::ffi::gp_Pnt, theD1: &mut crate::ffi::gp_Vec) {
         unsafe { crate::ffi::GeomEvaluator_Curve_d1(self as *const Self, theU, theValue, theD1) }
     }
 
+    /// **Source:** `GeomEvaluator_Curve.hxx`:36 - `GeomEvaluator_Curve::D2()`
     /// Value, first and second derivatives of curve
     pub fn d2(
         &self,
@@ -44,6 +48,7 @@ impl Curve {
         }
     }
 
+    /// **Source:** `GeomEvaluator_Curve.hxx`:41 - `GeomEvaluator_Curve::D3()`
     /// Value, first, second and third derivatives of curve
     pub fn d3(
         &self,
@@ -65,6 +70,7 @@ impl Curve {
         }
     }
 
+    /// **Source:** `GeomEvaluator_Curve.hxx`:47 - `GeomEvaluator_Curve::DN()`
     /// Calculates N-th derivatives of curve, where N = theDerU. Raises if N < 1
     pub fn dn(&self, theU: f64, theDerU: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
         unsafe {
@@ -76,6 +82,7 @@ impl Curve {
         }
     }
 
+    /// **Source:** `GeomEvaluator_Curve.hxx`:49 - `GeomEvaluator_Curve::ShallowCopy()`
     pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomEvaluator_Curve_shallow_copy(
@@ -84,14 +91,17 @@ impl Curve {
         }
     }
 
+    /// **Source:** `GeomEvaluator_Curve.hxx`:51 - `GeomEvaluator_Curve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomEvaluator_Curve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `GeomEvaluator_Curve.hxx`:51 - `GeomEvaluator_Curve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::GeomEvaluator_Curve_get_type_name() }
     }
 
+    /// **Source:** `GeomEvaluator_Curve.hxx`:51 - `GeomEvaluator_Curve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomEvaluator_Curve_get_type_descriptor()) }
     }
@@ -121,6 +131,7 @@ impl HandleGeomEvaluatorCurve {
 // From GeomEvaluator_OffsetCurve.hxx
 // ========================
 
+/// **Source:** `GeomEvaluator_OffsetCurve.hxx`:23 - `GeomEvaluator_OffsetCurve`
 /// Allows to calculate values and derivatives for offset curves in 3D
 pub use crate::ffi::GeomEvaluator_OffsetCurve as OffsetCurve;
 
@@ -131,6 +142,7 @@ unsafe impl crate::CppDeletable for OffsetCurve {
 }
 
 impl OffsetCurve {
+    /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:27 - `GeomEvaluator_OffsetCurve::GeomEvaluator_OffsetCurve()`
     /// Initialize evaluator by curve
     pub fn new_handlegeomcurve_real_dir(
         theBase: &crate::ffi::HandleGeomCurve,
@@ -148,6 +160,7 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:36 - `GeomEvaluator_OffsetCurve::SetOffsetValue()`
     /// Change the offset value
     pub fn set_offset_value(&mut self, theOffset: f64) {
         unsafe {
@@ -155,6 +168,7 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:38 - `GeomEvaluator_OffsetCurve::SetOffsetDirection()`
     pub fn set_offset_direction(&mut self, theDirection: &crate::ffi::gp_Dir) {
         unsafe {
             crate::ffi::GeomEvaluator_OffsetCurve_set_offset_direction(
@@ -164,11 +178,13 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:41 - `GeomEvaluator_OffsetCurve::D0()`
     /// Value of curve
     pub fn d0(&self, theU: f64, theValue: &mut crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::GeomEvaluator_OffsetCurve_d0(self as *const Self, theU, theValue) }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:43 - `GeomEvaluator_OffsetCurve::D1()`
     /// Value and first derivatives of curve
     pub fn d1(&self, theU: f64, theValue: &mut crate::ffi::gp_Pnt, theD1: &mut crate::ffi::gp_Vec) {
         unsafe {
@@ -176,6 +192,7 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:47 - `GeomEvaluator_OffsetCurve::D2()`
     /// Value, first and second derivatives of curve
     pub fn d2(
         &self,
@@ -195,6 +212,7 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:52 - `GeomEvaluator_OffsetCurve::D3()`
     /// Value, first, second and third derivatives of curve
     pub fn d3(
         &self,
@@ -216,6 +234,7 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:58 - `GeomEvaluator_OffsetCurve::DN()`
     /// Calculates N-th derivatives of curve, where N = theDeriv. Raises if N < 1
     pub fn dn(&self, theU: f64, theDeriv: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
         unsafe {
@@ -227,6 +246,7 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:61 - `GeomEvaluator_OffsetCurve::ShallowCopy()`
     pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomEvaluator_OffsetCurve_shallow_copy(
@@ -235,14 +255,17 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:63 - `GeomEvaluator_OffsetCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomEvaluator_OffsetCurve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:63 - `GeomEvaluator_OffsetCurve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::GeomEvaluator_OffsetCurve_get_type_name() }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:63 - `GeomEvaluator_OffsetCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomEvaluator_OffsetCurve_get_type_descriptor()) }
     }
@@ -268,6 +291,7 @@ impl OffsetCurve {
 // From GeomEvaluator_OffsetSurface.hxx
 // ========================
 
+/// **Source:** `GeomEvaluator_OffsetSurface.hxx`:24 - `GeomEvaluator_OffsetSurface`
 /// Allows to calculate values and derivatives for offset surfaces
 pub use crate::ffi::GeomEvaluator_OffsetSurface as OffsetSurface;
 
@@ -278,6 +302,7 @@ unsafe impl crate::CppDeletable for OffsetSurface {
 }
 
 impl OffsetSurface {
+    /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:28 - `GeomEvaluator_OffsetSurface::GeomEvaluator_OffsetSurface()`
     /// Initialize evaluator by surface
     pub fn new_handlegeomsurface_real_handlegeomosculatingsurface(
         theBase: &crate::ffi::HandleGeomSurface,
@@ -289,6 +314,7 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:39 - `GeomEvaluator_OffsetSurface::SetOffsetValue()`
     /// Change the offset value
     pub fn set_offset_value(&mut self, theOffset: f64) {
         unsafe {
@@ -296,6 +322,7 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:42 - `GeomEvaluator_OffsetSurface::D0()`
     /// Value of surface
     pub fn d0(&self, theU: f64, theV: f64, theValue: &mut crate::ffi::gp_Pnt) {
         unsafe {
@@ -303,6 +330,7 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:46 - `GeomEvaluator_OffsetSurface::D1()`
     /// Value and first derivatives of surface
     pub fn d1(
         &self,
@@ -324,6 +352,7 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:52 - `GeomEvaluator_OffsetSurface::D2()`
     /// Value, first and second derivatives of surface
     pub fn d2(
         &self,
@@ -351,6 +380,7 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:61 - `GeomEvaluator_OffsetSurface::D3()`
     /// Value, first, second and third derivatives of surface
     pub fn d3(
         &self,
@@ -386,6 +416,7 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:76 - `GeomEvaluator_OffsetSurface::DN()`
     /// Calculates N-th derivatives of surface, where N = theDerU + theDerV.
     ///
     /// Raises if N < 1 or theDerU < 0 or theDerV < 0
@@ -407,6 +438,7 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:81 - `GeomEvaluator_OffsetSurface::ShallowCopy()`
     pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomEvaluator_OffsetSurface_shallow_copy(
@@ -415,14 +447,17 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:83 - `GeomEvaluator_OffsetSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomEvaluator_OffsetSurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:83 - `GeomEvaluator_OffsetSurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::GeomEvaluator_OffsetSurface_get_type_name() }
     }
 
+    /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:83 - `GeomEvaluator_OffsetSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomEvaluator_OffsetSurface_get_type_descriptor()) }
     }
@@ -450,6 +485,7 @@ impl OffsetSurface {
 // From GeomEvaluator_Surface.hxx
 // ========================
 
+/// **Source:** `GeomEvaluator_Surface.hxx`:26 - `GeomEvaluator_Surface`
 /// Interface for calculation of values and derivatives for different kinds of surfaces.
 /// Works both with adaptors and surfaces.
 pub use crate::ffi::GeomEvaluator_Surface as Surface;
@@ -461,11 +497,13 @@ unsafe impl crate::CppDeletable for Surface {
 }
 
 impl Surface {
+    /// **Source:** `GeomEvaluator_Surface.hxx`:32 - `GeomEvaluator_Surface::D0()`
     /// Value of surface
     pub fn d0(&self, theU: f64, theV: f64, theValue: &mut crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::GeomEvaluator_Surface_d0(self as *const Self, theU, theV, theValue) }
     }
 
+    /// **Source:** `GeomEvaluator_Surface.hxx`:34 - `GeomEvaluator_Surface::D1()`
     /// Value and first derivatives of surface
     pub fn d1(
         &self,
@@ -487,6 +525,7 @@ impl Surface {
         }
     }
 
+    /// **Source:** `GeomEvaluator_Surface.hxx`:40 - `GeomEvaluator_Surface::D2()`
     /// Value, first and second derivatives of surface
     pub fn d2(
         &self,
@@ -514,6 +553,7 @@ impl Surface {
         }
     }
 
+    /// **Source:** `GeomEvaluator_Surface.hxx`:49 - `GeomEvaluator_Surface::D3()`
     /// Value, first, second and third derivatives of surface
     pub fn d3(
         &self,
@@ -549,6 +589,7 @@ impl Surface {
         }
     }
 
+    /// **Source:** `GeomEvaluator_Surface.hxx`:64 - `GeomEvaluator_Surface::DN()`
     /// Calculates N-th derivatives of surface, where N = theDerU + theDerV.
     ///
     /// Raises if N < 1 or theDerU < 0 or theDerV < 0
@@ -570,6 +611,7 @@ impl Surface {
         }
     }
 
+    /// **Source:** `GeomEvaluator_Surface.hxx`:69 - `GeomEvaluator_Surface::ShallowCopy()`
     pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomEvaluator_Surface_shallow_copy(
@@ -578,14 +620,17 @@ impl Surface {
         }
     }
 
+    /// **Source:** `GeomEvaluator_Surface.hxx`:71 - `GeomEvaluator_Surface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomEvaluator_Surface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `GeomEvaluator_Surface.hxx`:71 - `GeomEvaluator_Surface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::GeomEvaluator_Surface_get_type_name() }
     }
 
+    /// **Source:** `GeomEvaluator_Surface.hxx`:71 - `GeomEvaluator_Surface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomEvaluator_Surface_get_type_descriptor()) }
     }
@@ -615,6 +660,7 @@ impl HandleGeomEvaluatorSurface {
 // From GeomEvaluator_SurfaceOfExtrusion.hxx
 // ========================
 
+/// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:24 - `GeomEvaluator_SurfaceOfExtrusion`
 /// Allows to calculate values and derivatives for surfaces of linear extrusion
 pub use crate::ffi::GeomEvaluator_SurfaceOfExtrusion as SurfaceOfExtrusion;
 
@@ -625,6 +671,7 @@ unsafe impl crate::CppDeletable for SurfaceOfExtrusion {
 }
 
 impl SurfaceOfExtrusion {
+    /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:28 - `GeomEvaluator_SurfaceOfExtrusion::GeomEvaluator_SurfaceOfExtrusion()`
     /// Initialize evaluator by surface
     pub fn new_handlegeomcurve_dir(
         theBase: &crate::ffi::HandleGeomCurve,
@@ -640,6 +687,7 @@ impl SurfaceOfExtrusion {
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:31 - `GeomEvaluator_SurfaceOfExtrusion::GeomEvaluator_SurfaceOfExtrusion()`
     /// Initialize evaluator by surface adaptor
     pub fn new_handleadaptor3dcurve_dir(
         theBase: &crate::ffi::HandleAdaptor3dCurve,
@@ -655,6 +703,7 @@ impl SurfaceOfExtrusion {
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:35 - `GeomEvaluator_SurfaceOfExtrusion::SetDirection()`
     /// ! Changes the direction of extrusion
     pub fn set_direction(&mut self, theDirection: &crate::ffi::gp_Dir) {
         unsafe {
@@ -665,6 +714,7 @@ impl SurfaceOfExtrusion {
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:38 - `GeomEvaluator_SurfaceOfExtrusion::D0()`
     /// Value of surface
     pub fn d0(&self, theU: f64, theV: f64, theValue: &mut crate::ffi::gp_Pnt) {
         unsafe {
@@ -677,6 +727,7 @@ impl SurfaceOfExtrusion {
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:42 - `GeomEvaluator_SurfaceOfExtrusion::D1()`
     /// Value and first derivatives of surface
     pub fn d1(
         &self,
@@ -698,6 +749,7 @@ impl SurfaceOfExtrusion {
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:48 - `GeomEvaluator_SurfaceOfExtrusion::D2()`
     /// Value, first and second derivatives of surface
     pub fn d2(
         &self,
@@ -725,6 +777,7 @@ impl SurfaceOfExtrusion {
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:57 - `GeomEvaluator_SurfaceOfExtrusion::D3()`
     /// Value, first, second and third derivatives of surface
     pub fn d3(
         &self,
@@ -760,6 +813,7 @@ impl SurfaceOfExtrusion {
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:72 - `GeomEvaluator_SurfaceOfExtrusion::DN()`
     /// Calculates N-th derivatives of surface, where N = theDerU + theDerV.
     ///
     /// Raises if N < 1 or theDerU < 0 or theDerV < 0
@@ -781,6 +835,7 @@ impl SurfaceOfExtrusion {
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:77 - `GeomEvaluator_SurfaceOfExtrusion::ShallowCopy()`
     pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomEvaluator_SurfaceOfExtrusion_shallow_copy(
@@ -789,16 +844,19 @@ impl SurfaceOfExtrusion {
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:79 - `GeomEvaluator_SurfaceOfExtrusion::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
             &*(crate::ffi::GeomEvaluator_SurfaceOfExtrusion_dynamic_type(self as *const Self))
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:79 - `GeomEvaluator_SurfaceOfExtrusion::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::GeomEvaluator_SurfaceOfExtrusion_get_type_name() }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:79 - `GeomEvaluator_SurfaceOfExtrusion::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomEvaluator_SurfaceOfExtrusion_get_type_descriptor()) }
     }
@@ -826,6 +884,7 @@ impl SurfaceOfExtrusion {
 // From GeomEvaluator_SurfaceOfRevolution.hxx
 // ========================
 
+/// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:26 - `GeomEvaluator_SurfaceOfRevolution`
 /// Allows to calculate values and derivatives for surfaces of revolution
 pub use crate::ffi::GeomEvaluator_SurfaceOfRevolution as SurfaceOfRevolution;
 
@@ -836,6 +895,7 @@ unsafe impl crate::CppDeletable for SurfaceOfRevolution {
 }
 
 impl SurfaceOfRevolution {
+    /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:30 - `GeomEvaluator_SurfaceOfRevolution::GeomEvaluator_SurfaceOfRevolution()`
     /// Initialize evaluator by revolved curve, the axis of revolution and the location
     pub fn new_handlegeomcurve_dir_pnt(
         theBase: &crate::ffi::HandleGeomCurve,
@@ -853,6 +913,7 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:34 - `GeomEvaluator_SurfaceOfRevolution::GeomEvaluator_SurfaceOfRevolution()`
     /// Initialize evaluator by adaptor of the revolved curve, the axis of revolution and the location
     pub fn new_handleadaptor3dcurve_dir_pnt(
         theBase: &crate::ffi::HandleAdaptor3dCurve,
@@ -870,6 +931,7 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:39 - `GeomEvaluator_SurfaceOfRevolution::SetDirection()`
     /// Change direction of the axis of revolution
     pub fn set_direction(&mut self, theDirection: &crate::ffi::gp_Dir) {
         unsafe {
@@ -880,6 +942,7 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:42 - `GeomEvaluator_SurfaceOfRevolution::SetLocation()`
     /// Change location of the axis of revolution
     pub fn set_location(&mut self, theLocation: &crate::ffi::gp_Pnt) {
         unsafe {
@@ -890,6 +953,7 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:45 - `GeomEvaluator_SurfaceOfRevolution::SetAxis()`
     /// Change the axis of revolution
     pub fn set_axis(&mut self, theAxis: &crate::ffi::gp_Ax1) {
         unsafe {
@@ -897,6 +961,7 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:48 - `GeomEvaluator_SurfaceOfRevolution::D0()`
     /// Value of surface
     pub fn d0(&self, theU: f64, theV: f64, theValue: &mut crate::ffi::gp_Pnt) {
         unsafe {
@@ -909,6 +974,7 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:52 - `GeomEvaluator_SurfaceOfRevolution::D1()`
     /// Value and first derivatives of surface
     pub fn d1(
         &self,
@@ -930,6 +996,7 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:58 - `GeomEvaluator_SurfaceOfRevolution::D2()`
     /// Value, first and second derivatives of surface
     pub fn d2(
         &self,
@@ -957,6 +1024,7 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:67 - `GeomEvaluator_SurfaceOfRevolution::D3()`
     /// Value, first, second and third derivatives of surface
     pub fn d3(
         &self,
@@ -992,6 +1060,7 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:82 - `GeomEvaluator_SurfaceOfRevolution::DN()`
     /// Calculates N-th derivatives of surface, where N = theDerU + theDerV.
     ///
     /// Raises if N < 1 or theDerU < 0 or theDerV < 0
@@ -1013,6 +1082,7 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:87 - `GeomEvaluator_SurfaceOfRevolution::ShallowCopy()`
     pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomEvaluator_SurfaceOfRevolution_shallow_copy(
@@ -1021,16 +1091,19 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:89 - `GeomEvaluator_SurfaceOfRevolution::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
             &*(crate::ffi::GeomEvaluator_SurfaceOfRevolution_dynamic_type(self as *const Self))
         }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:89 - `GeomEvaluator_SurfaceOfRevolution::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::GeomEvaluator_SurfaceOfRevolution_get_type_name() }
     }
 
+    /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:89 - `GeomEvaluator_SurfaceOfRevolution::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomEvaluator_SurfaceOfRevolution_get_type_descriptor()) }
     }

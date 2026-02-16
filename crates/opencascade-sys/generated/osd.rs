@@ -10,6 +10,7 @@
 // From OSD_MemInfo.hxx
 // ========================
 
+/// **Source:** `OSD_MemInfo.hxx`:49 - `OSD_MemInfo`
 /// This class provide information about memory utilized by current process.
 /// This information includes:
 /// - Private Memory - synthetic value that tries to filter out the memory
@@ -47,37 +48,44 @@ unsafe impl crate::CppDeletable for MemInfo {
 }
 
 impl MemInfo {
+    /// **Source:** `OSD_MemInfo.hxx`:67 - `OSD_MemInfo::OSD_MemInfo()`
     /// Create and initialize. By default all countes are active
     pub fn new_bool(theImmediateUpdate: bool) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_MemInfo_ctor_bool(theImmediateUpdate)) }
     }
 
+    /// **Source:** `OSD_MemInfo.hxx`:67 - `OSD_MemInfo::OSD_MemInfo()`
     /// Create and initialize. By default all countes are active
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_bool(true)
     }
 
+    /// **Source:** `OSD_MemInfo.hxx`:77 - `OSD_MemInfo::SetActive()`
     /// Set all counters active. The information is collected for active counters.
     /// @param theActive state for counters
     pub fn set_active(&mut self, theActive: bool) {
         unsafe { crate::ffi::OSD_MemInfo_set_active(self as *mut Self, theActive) }
     }
 
+    /// **Source:** `OSD_MemInfo.hxx`:88 - `OSD_MemInfo::Clear()`
     /// Clear counters
     pub fn clear(&mut self) {
         unsafe { crate::ffi::OSD_MemInfo_clear(self as *mut Self) }
     }
 
+    /// **Source:** `OSD_MemInfo.hxx`:91 - `OSD_MemInfo::Update()`
     /// Update counters
     pub fn update(&mut self) {
         unsafe { crate::ffi::OSD_MemInfo_update(self as *mut Self) }
     }
 
+    /// **Source:** `OSD_MemInfo.hxx`:94 - `OSD_MemInfo::ToString()`
     /// Return the string representation for all available counter.
     pub fn to_string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_MemInfo_to_string(self as *const Self)) }
     }
 
+    /// **Source:** `OSD_MemInfo.hxx`:113 - `OSD_MemInfo::PrintInfo()`
     /// Return the string representation for all available counter.
     pub fn print_info() -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_MemInfo_print_info()) }

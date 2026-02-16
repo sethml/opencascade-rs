@@ -6,10 +6,19 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::ShapeExtend_init as init;
+/// **Source:** `ShapeExtend.hxx` - `ShapeExtend::Init`
+/// Inits using of ShapeExtend.
+/// Currently, loads messages output by ShapeHealing algorithms.
+pub fn init() {
+    unsafe { crate::ffi::ShapeExtend_init() }
+}
+/// **Source:** `ShapeExtend.hxx` - `ShapeExtend::EncodeStatus`
+/// Encodes status (enumeration) to a bit flag
 pub fn encode_status(status: crate::shape_extend::Status) -> i32 {
     unsafe { crate::ffi::ShapeExtend_encode_status(status.into()) }
 }
+/// **Source:** `ShapeExtend.hxx` - `ShapeExtend::DecodeStatus`
+/// Tells if a bit flag contains bit corresponding to enumerated status
 pub fn decode_status(flag: i32, status: crate::shape_extend::Status) -> bool {
     unsafe { crate::ffi::ShapeExtend_decode_status(flag, status.into()) }
 }

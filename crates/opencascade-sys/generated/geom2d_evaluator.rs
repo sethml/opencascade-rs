@@ -10,6 +10,7 @@
 // From Geom2dEvaluator_Curve.hxx
 // ========================
 
+/// **Source:** `Geom2dEvaluator_Curve.hxx`:26 - `Geom2dEvaluator_Curve`
 /// Interface for calculation of values and derivatives for different kinds of curves in 2D.
 /// Works both with adaptors and curves.
 pub use crate::ffi::Geom2dEvaluator_Curve as Curve;
@@ -21,11 +22,13 @@ unsafe impl crate::CppDeletable for Curve {
 }
 
 impl Curve {
+    /// **Source:** `Geom2dEvaluator_Curve.hxx`:32 - `Geom2dEvaluator_Curve::D0()`
     /// Value of 2D curve
     pub fn d0(&self, theU: f64, theValue: &mut crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::Geom2dEvaluator_Curve_d0(self as *const Self, theU, theValue) }
     }
 
+    /// **Source:** `Geom2dEvaluator_Curve.hxx`:34 - `Geom2dEvaluator_Curve::D1()`
     /// Value and first derivatives of curve
     pub fn d1(
         &self,
@@ -36,6 +39,7 @@ impl Curve {
         unsafe { crate::ffi::Geom2dEvaluator_Curve_d1(self as *const Self, theU, theValue, theD1) }
     }
 
+    /// **Source:** `Geom2dEvaluator_Curve.hxx`:36 - `Geom2dEvaluator_Curve::D2()`
     /// Value, first and second derivatives of curve
     pub fn d2(
         &self,
@@ -49,6 +53,7 @@ impl Curve {
         }
     }
 
+    /// **Source:** `Geom2dEvaluator_Curve.hxx`:41 - `Geom2dEvaluator_Curve::D3()`
     /// Value, first, second and third derivatives of curve
     pub fn d3(
         &self,
@@ -70,6 +75,7 @@ impl Curve {
         }
     }
 
+    /// **Source:** `Geom2dEvaluator_Curve.hxx`:47 - `Geom2dEvaluator_Curve::DN()`
     /// Calculates N-th derivatives of curve, where N = theDerU. Raises if N < 1
     pub fn dn(&self, theU: f64, theDerU: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
         unsafe {
@@ -81,6 +87,7 @@ impl Curve {
         }
     }
 
+    /// **Source:** `Geom2dEvaluator_Curve.hxx`:49 - `Geom2dEvaluator_Curve::ShallowCopy()`
     pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dEvaluatorCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dEvaluator_Curve_shallow_copy(
@@ -89,14 +96,17 @@ impl Curve {
         }
     }
 
+    /// **Source:** `Geom2dEvaluator_Curve.hxx`:51 - `Geom2dEvaluator_Curve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2dEvaluator_Curve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2dEvaluator_Curve.hxx`:51 - `Geom2dEvaluator_Curve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2dEvaluator_Curve_get_type_name() }
     }
 
+    /// **Source:** `Geom2dEvaluator_Curve.hxx`:51 - `Geom2dEvaluator_Curve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2dEvaluator_Curve_get_type_descriptor()) }
     }
@@ -126,6 +136,7 @@ impl HandleGeom2dEvaluatorCurve {
 // From Geom2dEvaluator_OffsetCurve.hxx
 // ========================
 
+/// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:22 - `Geom2dEvaluator_OffsetCurve`
 /// Allows to calculate values and derivatives for offset curves in 2D
 pub use crate::ffi::Geom2dEvaluator_OffsetCurve as OffsetCurve;
 
@@ -136,6 +147,7 @@ unsafe impl crate::CppDeletable for OffsetCurve {
 }
 
 impl OffsetCurve {
+    /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:26 - `Geom2dEvaluator_OffsetCurve::Geom2dEvaluator_OffsetCurve()`
     /// Initialize evaluator by curve
     pub fn new_handlegeom2dcurve_real(
         theBase: &crate::ffi::HandleGeom2dCurve,
@@ -150,6 +162,7 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:33 - `Geom2dEvaluator_OffsetCurve::SetOffsetValue()`
     /// Change the offset value
     pub fn set_offset_value(&mut self, theOffset: f64) {
         unsafe {
@@ -157,11 +170,13 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:36 - `Geom2dEvaluator_OffsetCurve::D0()`
     /// Value of curve
     pub fn d0(&self, theU: f64, theValue: &mut crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::Geom2dEvaluator_OffsetCurve_d0(self as *const Self, theU, theValue) }
     }
 
+    /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:38 - `Geom2dEvaluator_OffsetCurve::D1()`
     /// Value and first derivatives of curve
     pub fn d1(
         &self,
@@ -174,6 +189,7 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:42 - `Geom2dEvaluator_OffsetCurve::D2()`
     /// Value, first and second derivatives of curve
     pub fn d2(
         &self,
@@ -193,6 +209,7 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:47 - `Geom2dEvaluator_OffsetCurve::D3()`
     /// Value, first, second and third derivatives of curve
     pub fn d3(
         &self,
@@ -214,6 +231,7 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:53 - `Geom2dEvaluator_OffsetCurve::DN()`
     /// Calculates N-th derivatives of curve, where N = theDeriv. Raises if N < 1
     pub fn dn(&self, theU: f64, theDeriv: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
         unsafe {
@@ -225,6 +243,7 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:56 - `Geom2dEvaluator_OffsetCurve::ShallowCopy()`
     pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dEvaluatorCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dEvaluator_OffsetCurve_shallow_copy(
@@ -233,14 +252,17 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:58 - `Geom2dEvaluator_OffsetCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2dEvaluator_OffsetCurve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:58 - `Geom2dEvaluator_OffsetCurve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2dEvaluator_OffsetCurve_get_type_name() }
     }
 
+    /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:58 - `Geom2dEvaluator_OffsetCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2dEvaluator_OffsetCurve_get_type_descriptor()) }
     }

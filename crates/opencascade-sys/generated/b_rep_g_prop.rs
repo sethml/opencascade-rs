@@ -6,20 +6,277 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{
-    BRepGProp_linear_properties as linear_properties,
-    BRepGProp_surface_properties_shape_gprops_bool2 as surface_properties_shape_gprops_bool2,
-    BRepGProp_surface_properties_shape_gprops_real_bool as surface_properties_shape_gprops_real_bool,
-    BRepGProp_volume_properties_gk_shape_gprops_pln_real_bool5 as volume_properties_gk_shape_gprops_pln_real_bool5,
-    BRepGProp_volume_properties_gk_shape_gprops_real_bool5 as volume_properties_gk_shape_gprops_real_bool5,
-    BRepGProp_volume_properties_shape_gprops_bool3 as volume_properties_shape_gprops_bool3,
-    BRepGProp_volume_properties_shape_gprops_real_bool2 as volume_properties_shape_gprops_real_bool2,
-};
+/// **Source:** `BRepGProp.hxx` - `BRepGProp::LinearProperties`
+/// Computes the linear global properties of the shape S,
+/// i.e. the global properties induced by each edge of the
+/// shape S, and brings them together with the global
+/// properties still retained by the framework LProps. If
+/// the current system of LProps was empty, its global
+/// properties become equal to the linear global
+/// properties of S.
+/// For this computation no linear density is attached to
+/// the edges. So, for example, the added mass
+/// corresponds to the sum of the lengths of the edges of
+/// S. The density of the composed systems, i.e. that of
+/// each component of the current system of LProps, and
+/// that of S which is considered to be equal to 1, must be coherent.
+/// Note that this coherence cannot be checked. You are
+/// advised to use a separate framework for each
+/// density, and then to bring these frameworks together
+/// into a global one.
+/// The point relative to which the inertia of the system is
+/// computed is the reference point of the framework LProps.
+/// Note: if your programming ensures that the framework
+/// LProps retains only linear global properties (brought
+/// together for example, by the function
+/// LinearProperties) for objects the density of which is
+/// equal to 1 (or is not defined), the function Mass will
+/// return the total length of edges of the system analysed by LProps.
+/// Warning
+/// No check is performed to verify that the shape S
+/// retains truly linear properties. If S is simply a vertex, it
+/// is not considered to present any additional global properties.
+/// SkipShared is a special flag, which allows taking in calculation
+/// shared topological entities or not.
+/// For ex., if SkipShared = True, edges, shared by two or more faces,
+/// are taken into calculation only once.
+/// If we have cube with sizes 1, 1, 1, its linear properties = 12
+/// for SkipEdges = true and 24 for SkipEdges = false.
+/// UseTriangulation is a special flag, which defines preferable
+/// source of geometry data. If UseTriangulation = Standard_False,
+/// exact geometry objects (curves) are used, otherwise polygons of
+/// triangulation are used first.
+pub fn linear_properties(
+    S: &crate::ffi::TopoDS_Shape,
+    LProps: &mut crate::ffi::GProp_GProps,
+    SkipShared: bool,
+    UseTriangulation: bool,
+) {
+    unsafe { crate::ffi::BRepGProp_linear_properties(S, LProps, SkipShared, UseTriangulation) }
+}
+/// **Source:** `BRepGProp.hxx` - `BRepGProp::SurfaceProperties`
+/// Computes the surface global properties of the
+/// shape S, i.e. the global properties induced by each
+/// face of the shape S, and brings them together with
+/// the global properties still retained by the framework
+/// SProps. If the current system of SProps was empty,
+/// its global properties become equal to the surface
+/// global properties of S.
+/// For this computation, no surface density is attached
+/// to the faces. Consequently, the added mass
+/// corresponds to the sum of the areas of the faces of
+/// S. The density of the component systems, i.e. that
+/// of each component of the current system of
+/// SProps, and that of S which is considered to be
+/// equal to 1, must be coherent.
+/// Note that this coherence cannot be checked. You
+/// are advised to use a framework for each different
+/// value of density, and then to bring these
+/// frameworks together into a global one.
+/// The point relative to which the inertia of the system
+/// is computed is the reference point of the framework SProps.
+/// Note : if your programming ensures that the
+/// framework SProps retains only surface global
+/// properties, brought together, for example, by the
+/// function SurfaceProperties, for objects the density
+/// of which is equal to 1 (or is not defined), the
+/// function Mass will return the total area of faces of
+/// the system analysed by SProps.
+/// Warning
+/// No check is performed to verify that the shape S
+/// retains truly surface properties. If S is simply a
+/// vertex, an edge or a wire, it is not considered to
+/// present any additional global properties.
+/// SkipShared is a special flag, which allows taking in calculation
+/// shared topological entities or not.
+/// For ex., if SkipShared = True, faces, shared by two or more shells,
+/// are taken into calculation only once.
+/// UseTriangulation is a special flag, which defines preferable
+/// source of geometry data. If UseTriangulation = Standard_False,
+/// exact geometry objects (surfaces) are used,
+/// otherwise face triangulations are used first.
+pub fn surface_properties_shape_gprops_bool2(
+    S: &crate::ffi::TopoDS_Shape,
+    SProps: &mut crate::ffi::GProp_GProps,
+    SkipShared: bool,
+    UseTriangulation: bool,
+) {
+    unsafe {
+        crate::ffi::BRepGProp_surface_properties_shape_gprops_bool2(
+            S,
+            SProps,
+            SkipShared,
+            UseTriangulation,
+        )
+    }
+}
+/// **Source:** `BRepGProp.hxx` - `BRepGProp::SurfaceProperties`
+/// Updates <SProps> with the shape <S>, that contains its principal properties.
+/// The surface properties of all the faces in <S> are computed.
+/// Adaptive 2D Gauss integration is used.
+/// Parameter Eps sets maximal relative error of computed mass (area) for each face.
+/// Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values
+/// for two successive steps of adaptive integration.
+/// Method returns estimation of relative error reached for whole shape.
+/// WARNING: if Eps > 0.001 algorithm performs non-adaptive integration.
+/// SkipShared is a special flag, which allows taking in calculation
+/// shared topological entities or not
+/// For ex., if SkipShared = True, faces, shared by two or more shells,
+/// are taken into calculation only once.
+pub fn surface_properties_shape_gprops_real_bool(
+    S: &crate::ffi::TopoDS_Shape,
+    SProps: &mut crate::ffi::GProp_GProps,
+    Eps: f64,
+    SkipShared: bool,
+) -> f64 {
+    unsafe {
+        crate::ffi::BRepGProp_surface_properties_shape_gprops_real_bool(S, SProps, Eps, SkipShared)
+    }
+}
+/// **Source:** `BRepGProp.hxx` - `BRepGProp::VolumeProperties`
+///
+/// Computes the global volume properties of the solid
+/// S, and brings them together with the global
+/// properties still retained by the framework VProps. If
+/// the current system of VProps was empty, its global
+/// properties become equal to the global properties of S for volume.
+/// For this computation, no volume density is attached
+/// to the solid. Consequently, the added mass
+/// corresponds to the volume of S. The density of the
+/// component systems, i.e. that of each component of
+/// the current system of VProps, and that of S which
+/// is considered to be equal to 1, must be coherent to each other.
+/// Note that this coherence cannot be checked. You
+/// are advised to use a separate framework for each
+/// density, and then to bring these frameworks
+/// together into a global one.
+/// The point relative to which the inertia of the system
+/// is computed is the reference point of the framework VProps.
+/// Note: if your programming ensures that the
+/// framework VProps retains only global properties of
+/// volume (brought together for example, by the
+/// function VolumeProperties) for objects the density
+/// of which is equal to 1 (or is not defined), the
+/// function Mass will return the total volume of the
+/// solids of the system analysed by VProps.
+/// Warning
+/// The shape S must represent an object whose
+/// global volume properties can be computed. It may
+/// be a finite solid, or a series of finite solids all
+/// oriented in a coherent way. Nonetheless, S must be
+/// exempt of any free boundary. Note that these
+/// conditions of coherence are not checked by this
+/// algorithm, and results will be false if they are not respected.
+/// SkipShared a is special flag, which allows taking in calculation
+/// shared topological entities or not.
+/// For ex., if SkipShared = True, the volumes formed by the equal
+/// (the same TShape, location and orientation) faces are taken
+/// into calculation only once.
+/// UseTriangulation is a special flag, which defines preferable
+/// source of geometry data. If UseTriangulation = Standard_False,
+/// exact geometry objects (surfaces) are used,
+/// otherwise face triangulations are used first.
+pub fn volume_properties_shape_gprops_bool3(
+    S: &crate::ffi::TopoDS_Shape,
+    VProps: &mut crate::ffi::GProp_GProps,
+    OnlyClosed: bool,
+    SkipShared: bool,
+    UseTriangulation: bool,
+) {
+    unsafe {
+        crate::ffi::BRepGProp_volume_properties_shape_gprops_bool3(
+            S,
+            VProps,
+            OnlyClosed,
+            SkipShared,
+            UseTriangulation,
+        )
+    }
+}
+/// **Source:** `BRepGProp.hxx` - `BRepGProp::VolumeProperties`
+/// Updates <VProps> with the shape <S>, that contains its principal properties.
+/// The volume properties of all the FORWARD and REVERSED faces in <S> are computed.
+/// If OnlyClosed is True then computed faces must belong to closed Shells.
+/// Adaptive 2D Gauss integration is used.
+/// Parameter Eps sets maximal relative error of computed mass (volume) for each face.
+/// Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values
+/// for two successive steps of adaptive integration.
+/// Method returns estimation of relative error reached for whole shape.
+/// WARNING: if Eps > 0.001 algorithm performs non-adaptive integration.
+/// SkipShared is a special flag, which allows taking in calculation shared
+/// topological entities or not.
+/// For ex., if SkipShared = True, the volumes formed by the equal
+/// (the same TShape, location and orientation)
+/// faces are taken into calculation only once.
+pub fn volume_properties_shape_gprops_real_bool2(
+    S: &crate::ffi::TopoDS_Shape,
+    VProps: &mut crate::ffi::GProp_GProps,
+    Eps: f64,
+    OnlyClosed: bool,
+    SkipShared: bool,
+) -> f64 {
+    unsafe {
+        crate::ffi::BRepGProp_volume_properties_shape_gprops_real_bool2(
+            S, VProps, Eps, OnlyClosed, SkipShared,
+        )
+    }
+}
+/// **Source:** `BRepGProp.hxx` - `BRepGProp::VolumePropertiesGK`
+/// Updates <VProps> with the shape <S>, that contains its principal properties.
+/// The volume properties of all the FORWARD and REVERSED faces in <S> are computed.
+/// If OnlyClosed is True then computed faces must belong to closed Shells.
+/// Adaptive 2D Gauss integration is used.
+/// Parameter IsUseSpan says if it is necessary to define spans on a face.
+/// This option has an effect only for BSpline faces.
+/// Parameter Eps sets maximal relative error of computed property for each face.
+/// Error is delivered by the adaptive Gauss-Kronrod method of integral computation
+/// that is used for properties computation.
+/// Method returns estimation of relative error reached for whole shape.
+/// Returns negative value if the computation is failed.
+/// SkipShared is a special flag, which allows taking in calculation
+/// shared topological entities or not.
+/// For ex., if SkipShared = True, the volumes formed by the equal
+/// (the same TShape, location and orientation) faces are taken into calculation only once.
+pub fn volume_properties_gk_shape_gprops_real_bool5(
+    S: &crate::ffi::TopoDS_Shape,
+    VProps: &mut crate::ffi::GProp_GProps,
+    Eps: f64,
+    OnlyClosed: bool,
+    IsUseSpan: bool,
+    CGFlag: bool,
+    IFlag: bool,
+    SkipShared: bool,
+) -> f64 {
+    unsafe {
+        crate::ffi::BRepGProp_volume_properties_gk_shape_gprops_real_bool5(
+            S, VProps, Eps, OnlyClosed, IsUseSpan, CGFlag, IFlag, SkipShared,
+        )
+    }
+}
+/// **Source:** `BRepGProp.hxx` - `BRepGProp::VolumePropertiesGK`
+pub fn volume_properties_gk_shape_gprops_pln_real_bool5(
+    S: &crate::ffi::TopoDS_Shape,
+    VProps: &mut crate::ffi::GProp_GProps,
+    thePln: &crate::ffi::gp_Pln,
+    Eps: f64,
+    OnlyClosed: bool,
+    IsUseSpan: bool,
+    CGFlag: bool,
+    IFlag: bool,
+    SkipShared: bool,
+) -> f64 {
+    unsafe {
+        crate::ffi::BRepGProp_volume_properties_gk_shape_gprops_pln_real_bool5(
+            S, VProps, thePln, Eps, OnlyClosed, IsUseSpan, CGFlag, IFlag, SkipShared,
+        )
+    }
+}
 
 // ========================
 // From BRepGProp_Cinert.hxx
 // ========================
 
+/// **Source:** `BRepGProp_Cinert.hxx`:33 - `BRepGProp_Cinert`
 /// Computes the  global properties of bounded curves
 /// in 3D space. The curve must have at least a continuity C1.
 /// It can be a curve as defined in the template CurveTool from
@@ -35,10 +292,12 @@ unsafe impl crate::CppDeletable for Cinert {
 }
 
 impl Cinert {
+    /// **Source:** `BRepGProp_Cinert.hxx`:38 - `BRepGProp_Cinert::BRepGProp_Cinert()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_Cinert_ctor()) }
     }
 
+    /// **Source:** `BRepGProp_Cinert.hxx`:40 - `BRepGProp_Cinert::BRepGProp_Cinert()`
     pub fn new_curve_pnt(
         C: &crate::ffi::BRepAdaptor_Curve,
         CLocation: &crate::ffi::gp_Pnt,
@@ -48,10 +307,12 @@ impl Cinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Cinert.hxx`:42 - `BRepGProp_Cinert::SetLocation()`
     pub fn set_location(&mut self, CLocation: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::BRepGProp_Cinert_set_location(self as *mut Self, CLocation) }
     }
 
+    /// **Source:** `BRepGProp_Cinert.hxx`:44 - `BRepGProp_Cinert::Perform()`
     pub fn perform(&mut self, C: &crate::ffi::BRepAdaptor_Curve) {
         unsafe { crate::ffi::BRepGProp_Cinert_perform(self as *mut Self, C) }
     }
@@ -125,6 +386,7 @@ impl Cinert {
 // From BRepGProp_Domain.hxx
 // ========================
 
+/// **Source:** `BRepGProp_Domain.hxx`:31 - `BRepGProp_Domain`
 /// Arc iterator. Returns only Forward and Reversed edges from
 /// the face in an undigested order.
 pub use crate::ffi::BRepGProp_Domain as Domain;
@@ -136,36 +398,43 @@ unsafe impl crate::CppDeletable for Domain {
 }
 
 impl Domain {
+    /// **Source:** `BRepGProp_Domain.hxx`:37 - `BRepGProp_Domain::BRepGProp_Domain()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_Domain_ctor()) }
     }
 
+    /// **Source:** `BRepGProp_Domain.hxx`:40 - `BRepGProp_Domain::BRepGProp_Domain()`
     /// Constructor. Initializes the domain with the face.
     pub fn new_face(F: &crate::ffi::TopoDS_Face) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_Domain_ctor_face(F)) }
     }
 
+    /// **Source:** `BRepGProp_Domain.hxx`:43 - `BRepGProp_Domain::Init()`
     /// Initializes the domain with the face.
     pub fn init_face(&mut self, F: &crate::ffi::TopoDS_Face) {
         unsafe { crate::ffi::BRepGProp_Domain_init_face(self as *mut Self, F) }
     }
 
+    /// **Source:** `BRepGProp_Domain.hxx`:46 - `BRepGProp_Domain::More()`
     /// Returns True if there is another arc of curve in the list.
     pub fn more(&mut self) -> bool {
         unsafe { crate::ffi::BRepGProp_Domain_more(self as *mut Self) }
     }
 
+    /// **Source:** `BRepGProp_Domain.hxx`:49 - `BRepGProp_Domain::Init()`
     /// Initializes the exploration with the face already set.
     pub fn init(&mut self) {
         unsafe { crate::ffi::BRepGProp_Domain_init(self as *mut Self) }
     }
 
+    /// **Source:** `BRepGProp_Domain.hxx`:52 - `BRepGProp_Domain::Value()`
     /// Returns the current edge.
     pub fn value(&mut self) -> &crate::ffi::TopoDS_Edge {
         unsafe { &*(crate::ffi::BRepGProp_Domain_value(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepGProp_Domain.hxx`:56 - `BRepGProp_Domain::Next()`
     /// Sets the index of the arc iterator to the next arc of
     /// curve.
     pub fn next(&mut self) {
@@ -177,6 +446,7 @@ impl Domain {
 // From BRepGProp_EdgeTool.hxx
 // ========================
 
+/// **Source:** `BRepGProp_EdgeTool.hxx`:32 - `BRepGProp_EdgeTool`
 /// Provides  the required  methods    to instantiate
 /// CGProps from GProp with a Curve from BRepAdaptor.
 pub use crate::ffi::BRepGProp_EdgeTool as EdgeTool;
@@ -188,11 +458,13 @@ unsafe impl crate::CppDeletable for EdgeTool {
 }
 
 impl EdgeTool {
+    /// **Source:** `BRepGProp_EdgeTool.hxx` - `BRepGProp_EdgeTool::BRepGProp_EdgeTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_EdgeTool_ctor()) }
     }
 
+    /// **Source:** `BRepGProp_EdgeTool.hxx`:40 - `BRepGProp_EdgeTool::FirstParameter()`
     /// Returns the parametric value of the start point of
     /// the curve.  The curve is oriented from the start point
     /// to the end point.
@@ -200,6 +472,7 @@ impl EdgeTool {
         unsafe { crate::ffi::BRepGProp_EdgeTool_first_parameter(C) }
     }
 
+    /// **Source:** `BRepGProp_EdgeTool.hxx`:45 - `BRepGProp_EdgeTool::LastParameter()`
     /// Returns the parametric value of the end point of
     /// the curve.  The curve is oriented from the start point
     /// to the end point.
@@ -207,6 +480,7 @@ impl EdgeTool {
         unsafe { crate::ffi::BRepGProp_EdgeTool_last_parameter(C) }
     }
 
+    /// **Source:** `BRepGProp_EdgeTool.hxx`:52 - `BRepGProp_EdgeTool::IntegrationOrder()`
     /// Returns the number of Gauss points required to do
     /// the integration with a good accuracy using the
     /// Gauss method.  For a polynomial curve of degree n
@@ -216,11 +490,13 @@ impl EdgeTool {
         unsafe { crate::ffi::BRepGProp_EdgeTool_integration_order(C) }
     }
 
+    /// **Source:** `BRepGProp_EdgeTool.hxx`:55 - `BRepGProp_EdgeTool::Value()`
     /// Returns the point of parameter U on the loaded curve.
     pub fn value(C: &crate::ffi::BRepAdaptor_Curve, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_EdgeTool_value(C, U)) }
     }
 
+    /// **Source:** `BRepGProp_EdgeTool.hxx`:59 - `BRepGProp_EdgeTool::D1()`
     /// Returns the point of parameter U and the first derivative
     /// at this point.
     pub fn d1(
@@ -232,6 +508,7 @@ impl EdgeTool {
         unsafe { crate::ffi::BRepGProp_EdgeTool_d1(C, U, P, V1) }
     }
 
+    /// **Source:** `BRepGProp_EdgeTool.hxx`:66 - `BRepGProp_EdgeTool::NbIntervals()`
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(C: &crate::ffi::BRepAdaptor_Curve, S: crate::geom_abs::Shape) -> i32 {
@@ -243,6 +520,7 @@ impl EdgeTool {
 // From BRepGProp_Face.hxx
 // ========================
 
+/// **Source:** `BRepGProp_Face.hxx`:38 - `BRepGProp_Face`
 pub use crate::ffi::BRepGProp_Face as Face;
 
 unsafe impl crate::CppDeletable for Face {
@@ -252,6 +530,7 @@ unsafe impl crate::CppDeletable for Face {
 }
 
 impl Face {
+    /// **Source:** `BRepGProp_Face.hxx`:47 - `BRepGProp_Face::BRepGProp_Face()`
     /// Constructor. Initializes the object with a flag IsUseSpan
     /// that says if it is necessary to define spans on a face.
     /// This option has an effect only for BSpline faces. Spans
@@ -260,6 +539,7 @@ impl Face {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_Face_ctor_bool(IsUseSpan)) }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:54 - `BRepGProp_Face::BRepGProp_Face()`
     /// Constructor. Initializes the object with the face and the
     /// flag IsUseSpan that says if it is necessary to define
     /// spans on a face. This option has an effect only for
@@ -271,6 +551,7 @@ impl Face {
         }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:47 - `BRepGProp_Face::BRepGProp_Face()`
     /// Constructor. Initializes the object with a flag IsUseSpan
     /// that says if it is necessary to define spans on a face.
     /// This option has an effect only for BSpline faces. Spans
@@ -279,6 +560,7 @@ impl Face {
         Self::new_bool(false)
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:54 - `BRepGProp_Face::BRepGProp_Face()`
     /// Constructor. Initializes the object with the face and the
     /// flag IsUseSpan that says if it is necessary to define
     /// spans on a face. This option has an effect only for
@@ -288,24 +570,29 @@ impl Face {
         Self::new_face_bool(F, false)
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:56 - `BRepGProp_Face::Load()`
     pub fn load_face(&mut self, F: &crate::ffi::TopoDS_Face) {
         unsafe { crate::ffi::BRepGProp_Face_load_face(self as *mut Self, F) }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:58 - `BRepGProp_Face::VIntegrationOrder()`
     pub fn v_integration_order(&self) -> i32 {
         unsafe { crate::ffi::BRepGProp_Face_v_integration_order(self as *const Self) }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:61 - `BRepGProp_Face::NaturalRestriction()`
     /// Returns Standard_True if the face is not trimmed.
     pub fn natural_restriction(&self) -> bool {
         unsafe { crate::ffi::BRepGProp_Face_natural_restriction(self as *const Self) }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:64 - `BRepGProp_Face::GetFace()`
     /// Returns the TopoDS face.
     pub fn get_face(&self) -> &crate::ffi::TopoDS_Face {
         unsafe { &*(crate::ffi::BRepGProp_Face_get_face(self as *const Self)) }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:67 - `BRepGProp_Face::Value2d()`
     /// Returns the value of the boundary curve of the face.
     pub fn value2d(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
         unsafe {
@@ -313,26 +600,32 @@ impl Face {
         }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:69 - `BRepGProp_Face::SIntOrder()`
     pub fn s_int_order(&self, Eps: f64) -> i32 {
         unsafe { crate::ffi::BRepGProp_Face_s_int_order(self as *const Self, Eps) }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:71 - `BRepGProp_Face::SVIntSubs()`
     pub fn sv_int_subs(&self) -> i32 {
         unsafe { crate::ffi::BRepGProp_Face_sv_int_subs(self as *const Self) }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:73 - `BRepGProp_Face::SUIntSubs()`
     pub fn su_int_subs(&self) -> i32 {
         unsafe { crate::ffi::BRepGProp_Face_su_int_subs(self as *const Self) }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:79 - `BRepGProp_Face::LIntOrder()`
     pub fn l_int_order(&self, Eps: f64) -> i32 {
         unsafe { crate::ffi::BRepGProp_Face_l_int_order(self as *const Self, Eps) }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:81 - `BRepGProp_Face::LIntSubs()`
     pub fn l_int_subs(&self) -> i32 {
         unsafe { crate::ffi::BRepGProp_Face_l_int_subs(self as *const Self) }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:88 - `BRepGProp_Face::UIntegrationOrder()`
     /// Returns the number of points required to do the
     /// integration in the U parametric direction with
     /// a good accuracy.
@@ -340,11 +633,13 @@ impl Face {
         unsafe { crate::ffi::BRepGProp_Face_u_integration_order(self as *const Self) }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:91 - `BRepGProp_Face::Bounds()`
     /// Returns the parametric bounds of the Face.
     pub fn bounds(&self, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64) {
         unsafe { crate::ffi::BRepGProp_Face_bounds(self as *const Self, U1, U2, V1, V2) }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:98 - `BRepGProp_Face::Normal()`
     /// Computes the point of parameter U, V on the Face <S> and
     /// the normal to the face at this point.
     pub fn normal(
@@ -357,36 +652,42 @@ impl Face {
         unsafe { crate::ffi::BRepGProp_Face_normal(self as *const Self, U, V, P, VNor) }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:105 - `BRepGProp_Face::Load()`
     /// Loading the boundary arc.
     /// Returns FALSE if edge has no P-Curve.
     pub fn load_edge(&mut self, E: &crate::ffi::TopoDS_Edge) -> bool {
         unsafe { crate::ffi::BRepGProp_Face_load_edge(self as *mut Self, E) }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:109 - `BRepGProp_Face::FirstParameter()`
     /// Returns the parametric value of the start point of
     /// the current arc of curve.
     pub fn first_parameter(&self) -> f64 {
         unsafe { crate::ffi::BRepGProp_Face_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:113 - `BRepGProp_Face::LastParameter()`
     /// Returns the parametric value of the end point of
     /// the current arc of curve.
     pub fn last_parameter(&self) -> f64 {
         unsafe { crate::ffi::BRepGProp_Face_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:117 - `BRepGProp_Face::IntegrationOrder()`
     /// Returns the number of points required to do the
     /// integration along the parameter of curve.
     pub fn integration_order(&self) -> i32 {
         unsafe { crate::ffi::BRepGProp_Face_integration_order(self as *const Self) }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:121 - `BRepGProp_Face::D12d()`
     /// Returns the point of parameter U and the first derivative
     /// at this point of a boundary curve.
     pub fn d12d(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V1: &mut crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::BRepGProp_Face_d12d(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:132 - `BRepGProp_Face::Load()`
     /// Loading the boundary arc. This arc is either a top, bottom,
     /// left or right bound of a UV rectangle in which the
     /// parameters of surface are defined.
@@ -406,6 +707,7 @@ impl Face {
         }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:140 - `BRepGProp_Face::GetUKnots()`
     /// Returns an array of U knots of the face. The first and last
     /// elements of the array will be theUMin and theUMax. The
     /// middle elements will be the U Knots of the face greater
@@ -423,6 +725,7 @@ impl Face {
         }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:153 - `BRepGProp_Face::GetTKnots()`
     /// Returns an array of combination of T knots of the arc and
     /// V knots of the face. The first and last elements of the
     /// array will be theTMin and theTMax. The middle elements will
@@ -448,6 +751,7 @@ impl Face {
 // From BRepGProp_Gauss.hxx
 // ========================
 
+/// **Source:** `BRepGProp_Gauss.hxx`:27 - `BRepGProp_Gauss`
 /// Class performs computing of the global inertia properties
 /// of geometric object in 3D space by adaptive and non-adaptive
 /// 2D Gauss integration algorithms.
@@ -460,6 +764,7 @@ unsafe impl crate::CppDeletable for Gauss {
 }
 
 impl Gauss {
+    /// **Source:** `BRepGProp_Gauss.hxx`:106 - `BRepGProp_Gauss::Compute()`
     /// Computes the global properties of a surface. Surface can be closed.
     /// The method is quick and its precision is enough for many cases of analytical surfaces.
     /// Non-adaptive 2D Gauss integration with predefined numbers of Gauss points
@@ -490,6 +795,7 @@ impl Gauss {
         }
     }
 
+    /// **Source:** `BRepGProp_Gauss.hxx`:146 - `BRepGProp_Gauss::Compute()`
     /// Computes the global properties of a surface. Surface can be closed.
     /// The method is quick and its precision is enough for many cases of analytical surfaces.
     /// Non-adaptive 2D Gauss integration with predefined numbers of Gauss points
@@ -523,6 +829,7 @@ impl Gauss {
         }
     }
 
+    /// **Source:** `BRepGProp_Gauss.hxx`:191 - `BRepGProp_Gauss::Compute()`
     /// Computes the global properties of the face. Adaptive 2D Gauss integration is used.
     /// If Epsilon more than 0.001 then algorithm performs non-adaptive integration.
     /// @param theSurface - bounding surface of the region;
@@ -564,6 +871,7 @@ impl Gauss {
 // From BRepGProp_MeshCinert.hxx
 // ========================
 
+/// **Source:** `BRepGProp_MeshCinert.hxx`:32 - `BRepGProp_MeshCinert`
 /// Computes the  global properties of
 /// of polylines  represented by set of points.
 /// This class is used for computation of global
@@ -579,20 +887,24 @@ unsafe impl crate::CppDeletable for MeshCinert {
 }
 
 impl MeshCinert {
+    /// **Source:** `BRepGProp_MeshCinert.hxx`:37 - `BRepGProp_MeshCinert::BRepGProp_MeshCinert()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_MeshCinert_ctor()) }
     }
 
+    /// **Source:** `BRepGProp_MeshCinert.hxx`:39 - `BRepGProp_MeshCinert::SetLocation()`
     pub fn set_location(&mut self, CLocation: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::BRepGProp_MeshCinert_set_location(self as *mut Self, CLocation) }
     }
 
+    /// **Source:** `BRepGProp_MeshCinert.hxx`:43 - `BRepGProp_MeshCinert::Perform()`
     /// Computes the  global properties of
     /// of polylines  represented by set of points.
     pub fn perform(&mut self, theNodes: &crate::ffi::TColgp_Array1OfPnt) {
         unsafe { crate::ffi::BRepGProp_MeshCinert_perform(self as *mut Self, theNodes) }
     }
 
+    /// **Source:** `BRepGProp_MeshCinert.hxx`:48 - `BRepGProp_MeshCinert::PreparePolygon()`
     /// Prepare set of 3d points on base of any available edge polygons:
     /// 3D polygon, polygon on triangulation, 2d polygon on surface
     /// If edge has no polygons, array thePolyg is left unchanged
@@ -681,6 +993,7 @@ impl MeshCinert {
 // From BRepGProp_MeshProps.hxx
 // ========================
 
+/// **Source:** `BRepGProp_MeshProps.hxx`:26 - `BRepGProp_MeshProps`
 /// Computes the global properties of a surface mesh. The mesh can be
 /// interpreted as just a surface or as a piece of volume limited by this surface.
 pub use crate::ffi::BRepGProp_MeshProps as MeshProps;
@@ -692,11 +1005,13 @@ unsafe impl crate::CppDeletable for MeshProps {
 }
 
 impl MeshProps {
+    /// **Source:** `BRepGProp_MeshProps.hxx`:48 - `BRepGProp_MeshProps::SetLocation()`
     /// Sets the point relative which the calculation is to be done
     pub fn set_location(&mut self, theLocation: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::BRepGProp_MeshProps_set_location(self as *mut Self, theLocation) }
     }
 
+    /// **Source:** `BRepGProp_MeshProps.hxx`:55 - `BRepGProp_MeshProps::Perform()`
     /// Computes the global properties of a surface mesh of 3D space.
     /// Calculation of surface properties is performed by numerical integration
     /// over triangle surfaces using Gauss cubature formulas.
@@ -718,6 +1033,7 @@ impl MeshProps {
         }
     }
 
+    /// **Source:** `BRepGProp_MeshProps.hxx`:59 - `BRepGProp_MeshProps::Perform()`
     pub fn perform_handlepolytriangulation_orientation(
         &mut self,
         theMesh: &crate::ffi::HandlePolyTriangulation,
@@ -803,6 +1119,7 @@ impl MeshProps {
 // From BRepGProp_Sinert.hxx
 // ========================
 
+/// **Source:** `BRepGProp_Sinert.hxx`:31 - `BRepGProp_Sinert`
 /// Computes the global properties of a face in 3D space.
 /// The face 's requirements to evaluate the global properties
 /// are defined in the template FaceTool from package GProp.
@@ -815,10 +1132,12 @@ unsafe impl crate::CppDeletable for Sinert {
 }
 
 impl Sinert {
+    /// **Source:** `BRepGProp_Sinert.hxx`:36 - `BRepGProp_Sinert::BRepGProp_Sinert()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_Sinert_ctor()) }
     }
 
+    /// **Source:** `BRepGProp_Sinert.hxx`:38 - `BRepGProp_Sinert::BRepGProp_Sinert()`
     pub fn new_face_pnt(
         S: &crate::ffi::BRepGProp_Face,
         SLocation: &crate::ffi::gp_Pnt,
@@ -828,6 +1147,7 @@ impl Sinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Sinert.hxx`:44 - `BRepGProp_Sinert::BRepGProp_Sinert()`
     /// Builds a Sinert to evaluate the global properties of
     /// the face <S>. If isNaturalRestriction is true the domain of S is defined
     /// with the natural bounds, else it defined with an iterator
@@ -844,6 +1164,7 @@ impl Sinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Sinert.hxx`:46 - `BRepGProp_Sinert::BRepGProp_Sinert()`
     pub fn new_face_pnt_real(
         S: &mut crate::ffi::BRepGProp_Face,
         SLocation: &crate::ffi::gp_Pnt,
@@ -856,6 +1177,7 @@ impl Sinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Sinert.hxx`:50 - `BRepGProp_Sinert::BRepGProp_Sinert()`
     pub fn new_face_domain_pnt_real(
         S: &mut crate::ffi::BRepGProp_Face,
         D: &mut crate::ffi::BRepGProp_Domain,
@@ -869,14 +1191,17 @@ impl Sinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Sinert.hxx`:55 - `BRepGProp_Sinert::SetLocation()`
     pub fn set_location(&mut self, SLocation: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::BRepGProp_Sinert_set_location(self as *mut Self, SLocation) }
     }
 
+    /// **Source:** `BRepGProp_Sinert.hxx`:57 - `BRepGProp_Sinert::Perform()`
     pub fn perform_face(&mut self, S: &crate::ffi::BRepGProp_Face) {
         unsafe { crate::ffi::BRepGProp_Sinert_perform_face(self as *mut Self, S) }
     }
 
+    /// **Source:** `BRepGProp_Sinert.hxx`:59 - `BRepGProp_Sinert::Perform()`
     pub fn perform_face_domain(
         &mut self,
         S: &mut crate::ffi::BRepGProp_Face,
@@ -885,10 +1210,12 @@ impl Sinert {
         unsafe { crate::ffi::BRepGProp_Sinert_perform_face_domain(self as *mut Self, S, D) }
     }
 
+    /// **Source:** `BRepGProp_Sinert.hxx`:61 - `BRepGProp_Sinert::Perform()`
     pub fn perform_face_real(&mut self, S: &mut crate::ffi::BRepGProp_Face, Eps: f64) -> f64 {
         unsafe { crate::ffi::BRepGProp_Sinert_perform_face_real(self as *mut Self, S, Eps) }
     }
 
+    /// **Source:** `BRepGProp_Sinert.hxx`:63 - `BRepGProp_Sinert::Perform()`
     pub fn perform_face_domain_real(
         &mut self,
         S: &mut crate::ffi::BRepGProp_Face,
@@ -900,6 +1227,7 @@ impl Sinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Sinert.hxx`:69 - `BRepGProp_Sinert::GetEpsilon()`
     /// If previously used method contained Eps parameter
     /// get actual relative error of the computation, else return  1.0.
     pub fn get_epsilon(&mut self) -> f64 {
@@ -975,6 +1303,7 @@ impl Sinert {
 // From BRepGProp_TFunction.hxx
 // ========================
 
+/// **Source:** `BRepGProp_TFunction.hxx`:34 - `BRepGProp_TFunction`
 /// This class represents the integrand function for the outer
 /// integral computation. The returned value represents the
 /// integral of UFunction. It depends on the value type and the
@@ -988,10 +1317,12 @@ unsafe impl crate::CppDeletable for TFunction {
 }
 
 impl TFunction {
+    /// **Source:** `BRepGProp_TFunction.hxx`:61 - `BRepGProp_TFunction::Init()`
     pub fn init(&mut self) {
         unsafe { crate::ffi::BRepGProp_TFunction_init(self as *mut Self) }
     }
 
+    /// **Source:** `BRepGProp_TFunction.hxx`:73 - `BRepGProp_TFunction::SetNbKronrodPoints()`
     /// Setting the expected number of Kronrod points for the outer
     /// integral computation. This number is required for
     /// computation of a value of tolerance for inner integral
@@ -1008,29 +1339,34 @@ impl TFunction {
         }
     }
 
+    /// **Source:** `BRepGProp_TFunction.hxx`:77 - `BRepGProp_TFunction::SetValueType()`
     /// Setting the type of the value to be returned. This
     /// parameter is directly passed to the UFunction.
     pub fn set_value_type(&mut self, aType: crate::g_prop::ValueType) {
         unsafe { crate::ffi::BRepGProp_TFunction_set_value_type(self as *mut Self, aType.into()) }
     }
 
+    /// **Source:** `BRepGProp_TFunction.hxx`:80 - `BRepGProp_TFunction::SetTolerance()`
     /// Setting the tolerance  for  inner integration
     pub fn set_tolerance(&mut self, aTol: f64) {
         unsafe { crate::ffi::BRepGProp_TFunction_set_tolerance(self as *mut Self, aTol) }
     }
 
+    /// **Source:** `BRepGProp_TFunction.hxx`:84 - `BRepGProp_TFunction::ErrorReached()`
     /// Returns the relative reached error of all values computation since
     /// the last call of GetStateNumber method.
     pub fn error_reached(&self) -> f64 {
         unsafe { crate::ffi::BRepGProp_TFunction_error_reached(self as *const Self) }
     }
 
+    /// **Source:** `BRepGProp_TFunction.hxx`:88 - `BRepGProp_TFunction::AbsolutError()`
     /// Returns the absolut reached error of all values computation since
     /// the last call of GetStateNumber method.
     pub fn absolut_error(&self) -> f64 {
         unsafe { crate::ffi::BRepGProp_TFunction_absolut_error(self as *const Self) }
     }
 
+    /// **Source:** `BRepGProp_TFunction.hxx`:93 - `BRepGProp_TFunction::Value()`
     /// Returns a value of the function. The value represents an
     /// integral of UFunction. It is computed with the predefined
     /// tolerance using the adaptive Gauss-Kronrod method.
@@ -1038,6 +1374,7 @@ impl TFunction {
         unsafe { crate::ffi::BRepGProp_TFunction_value(self as *mut Self, X, F) }
     }
 
+    /// **Source:** `BRepGProp_TFunction.hxx`:102 - `BRepGProp_TFunction::GetStateNumber()`
     /// Redefined  method. Remembers the error reached during
     /// computation of integral values since the object creation
     /// or the last call of GetStateNumber. It is invoked in each
@@ -1063,6 +1400,7 @@ impl TFunction {
 // From BRepGProp_UFunction.hxx
 // ========================
 
+/// **Source:** `BRepGProp_UFunction.hxx`:49 - `BRepGProp_UFunction`
 /// This class represents the integrand function for
 /// computation of an inner integral. The returned value
 /// depends on the value type and the flag IsByPoint.
@@ -1091,17 +1429,20 @@ unsafe impl crate::CppDeletable for UFunction {
 }
 
 impl UFunction {
+    /// **Source:** `BRepGProp_UFunction.hxx`:72 - `BRepGProp_UFunction::SetValueType()`
     /// Setting the type of the value to be returned.
     pub fn set_value_type(&mut self, theType: crate::g_prop::ValueType) {
         unsafe { crate::ffi::BRepGProp_UFunction_set_value_type(self as *mut Self, theType.into()) }
     }
 
+    /// **Source:** `BRepGProp_UFunction.hxx`:76 - `BRepGProp_UFunction::SetVParam()`
     /// Setting the V parameter that is constant during the
     /// integral computation.
     pub fn set_v_param(&mut self, theVParam: f64) {
         unsafe { crate::ffi::BRepGProp_UFunction_set_v_param(self as *mut Self, theVParam) }
     }
 
+    /// **Source:** `BRepGProp_UFunction.hxx`:79 - `BRepGProp_UFunction::Value()`
     /// Returns a value of the function.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         unsafe { crate::ffi::BRepGProp_UFunction_value(self as *mut Self, X, F) }
@@ -1127,6 +1468,7 @@ impl UFunction {
 // From BRepGProp_Vinert.hxx
 // ========================
 
+/// **Source:** `BRepGProp_Vinert.hxx`:41 - `BRepGProp_Vinert`
 /// Computes the global properties of a geometric solid
 /// (3D closed region of space) delimited with :
 /// . a surface
@@ -1148,10 +1490,12 @@ unsafe impl crate::CppDeletable for Vinert {
 }
 
 impl Vinert {
+    /// **Source:** `BRepGProp_Vinert.hxx`:46 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_Vinert_ctor()) }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:55 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     /// Computes the global properties of a region of 3D space
     /// delimited with the surface <S> and the point VLocation. S can be closed
     /// The method is quick and its precision is enough for many cases of analytical
@@ -1168,6 +1512,7 @@ impl Vinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:63 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     /// Computes the global properties of a region of 3D space
     /// delimited with the surface <S> and the point VLocation. S can be closed
     /// Adaptive 2D Gauss integration is used.
@@ -1186,6 +1531,7 @@ impl Vinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:74 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     /// Computes the global properties of the region of 3D space
     /// delimited with the surface <S> and the point VLocation.
     /// The method is quick and its precision is enough for many cases of analytical
@@ -1203,6 +1549,7 @@ impl Vinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:85 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     /// Computes the global properties of the region of 3D space
     /// delimited with the surface <S> and the point VLocation.
     /// Adaptive 2D Gauss integration is used.
@@ -1223,6 +1570,7 @@ impl Vinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:97 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     /// Computes the global properties of the region of 3D space
     /// delimited with the surface <S> and the plane Pln.
     /// The method is quick and its precision is enough for many cases of analytical
@@ -1242,6 +1590,7 @@ impl Vinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:108 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     /// Computes the global properties of the region of 3D space
     /// delimited with the surface <S> and the plane Pln.
     /// Adaptive 2D Gauss integration is used.
@@ -1262,6 +1611,7 @@ impl Vinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:120 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     /// Computes the global properties of a region of 3D space
     /// delimited with the surface <S> and the point VLocation. S can be closed
     /// The method is quick and its precision is enough for many cases of analytical
@@ -1281,6 +1631,7 @@ impl Vinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:128 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     /// Computes the global properties of a region of 3D space
     /// delimited with the surface <S> and the point VLocation. S can be closed
     /// Adaptive 2D Gauss integration is used.
@@ -1300,6 +1651,7 @@ impl Vinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:140 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     /// Computes the global properties of the region of 3D space
     /// delimited with the surface <S> and the point VLocation.
     /// The method is quick and its precision is enough for many cases of analytical
@@ -1320,6 +1672,7 @@ impl Vinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:152 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     /// Computes the global properties of the region of 3D space
     /// delimited with the surface <S> and the point VLocation.
     /// Adaptive 2D Gauss integration is used.
@@ -1341,6 +1694,7 @@ impl Vinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:165 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     /// Computes the global properties of the region of 3D space
     /// delimited with the surface <S> and the plane Pln.
     /// The method is quick and its precision is enough for many cases of analytical
@@ -1361,6 +1715,7 @@ impl Vinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:177 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     /// Computes the global properties of the region of 3D space
     /// delimited with the surface <S> and the plane Pln.
     /// Adaptive 2D Gauss integration is used.
@@ -1382,22 +1737,27 @@ impl Vinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:183 - `BRepGProp_Vinert::SetLocation()`
     pub fn set_location(&mut self, VLocation: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::BRepGProp_Vinert_set_location(self as *mut Self, VLocation) }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:185 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face(&mut self, S: &crate::ffi::BRepGProp_Face) {
         unsafe { crate::ffi::BRepGProp_Vinert_perform_face(self as *mut Self, S) }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:187 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_real(&mut self, S: &mut crate::ffi::BRepGProp_Face, Eps: f64) -> f64 {
         unsafe { crate::ffi::BRepGProp_Vinert_perform_face_real(self as *mut Self, S, Eps) }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:189 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_pnt(&mut self, S: &crate::ffi::BRepGProp_Face, O: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::BRepGProp_Vinert_perform_face_pnt(self as *mut Self, S, O) }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:191 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_pnt_real(
         &mut self,
         S: &mut crate::ffi::BRepGProp_Face,
@@ -1407,10 +1767,12 @@ impl Vinert {
         unsafe { crate::ffi::BRepGProp_Vinert_perform_face_pnt_real(self as *mut Self, S, O, Eps) }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:195 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_pln(&mut self, S: &crate::ffi::BRepGProp_Face, Pl: &crate::ffi::gp_Pln) {
         unsafe { crate::ffi::BRepGProp_Vinert_perform_face_pln(self as *mut Self, S, Pl) }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:197 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_pln_real(
         &mut self,
         S: &mut crate::ffi::BRepGProp_Face,
@@ -1420,6 +1782,7 @@ impl Vinert {
         unsafe { crate::ffi::BRepGProp_Vinert_perform_face_pln_real(self as *mut Self, S, Pl, Eps) }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:201 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_domain(
         &mut self,
         S: &mut crate::ffi::BRepGProp_Face,
@@ -1428,6 +1791,7 @@ impl Vinert {
         unsafe { crate::ffi::BRepGProp_Vinert_perform_face_domain(self as *mut Self, S, D) }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:203 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_domain_real(
         &mut self,
         S: &mut crate::ffi::BRepGProp_Face,
@@ -1439,6 +1803,7 @@ impl Vinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:207 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_domain_pnt(
         &mut self,
         S: &mut crate::ffi::BRepGProp_Face,
@@ -1448,6 +1813,7 @@ impl Vinert {
         unsafe { crate::ffi::BRepGProp_Vinert_perform_face_domain_pnt(self as *mut Self, S, D, O) }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:209 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_domain_pnt_real(
         &mut self,
         S: &mut crate::ffi::BRepGProp_Face,
@@ -1466,6 +1832,7 @@ impl Vinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:214 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_domain_pln(
         &mut self,
         S: &mut crate::ffi::BRepGProp_Face,
@@ -1475,6 +1842,7 @@ impl Vinert {
         unsafe { crate::ffi::BRepGProp_Vinert_perform_face_domain_pln(self as *mut Self, S, D, Pl) }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:216 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_domain_pln_real(
         &mut self,
         S: &mut crate::ffi::BRepGProp_Face,
@@ -1493,6 +1861,7 @@ impl Vinert {
         }
     }
 
+    /// **Source:** `BRepGProp_Vinert.hxx`:223 - `BRepGProp_Vinert::GetEpsilon()`
     /// If previously used methods containe Eps parameter
     /// gets actual relative error of the computation, else returns  1.0.
     pub fn get_epsilon(&mut self) -> f64 {
@@ -1568,6 +1937,7 @@ impl Vinert {
 // From BRepGProp_VinertGK.hxx
 // ========================
 
+/// **Source:** `BRepGProp_VinertGK.hxx`:52 - `BRepGProp_VinertGK`
 /// Computes the global properties of a geometric solid
 /// (3D closed region of space) delimited with :
 /// -  a point and a surface
@@ -1602,11 +1972,13 @@ unsafe impl crate::CppDeletable for VinertGK {
 }
 
 impl VinertGK {
+    /// **Source:** `BRepGProp_VinertGK.hxx`:58 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_VinertGK_ctor()) }
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:67 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the naturally restricted surface
     /// and the point VLocation.
@@ -1628,6 +2000,7 @@ impl VinertGK {
         }
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:77 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the naturally restricted surface
     /// and the point VLocation. The inertia is computed with
@@ -1652,6 +2025,7 @@ impl VinertGK {
         }
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:87 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the surface bounded by the domain
     /// and the point VLocation.
@@ -1677,6 +2051,7 @@ impl VinertGK {
         }
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:98 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the surface bounded by the domain
     /// and the point VLocation. The inertia is computed with
@@ -1705,6 +2080,7 @@ impl VinertGK {
         }
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:109 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the naturally restricted surface
     /// and the plane.
@@ -1728,6 +2104,7 @@ impl VinertGK {
         }
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:119 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the surface bounded by the domain
     /// and the plane.
@@ -1755,6 +2132,7 @@ impl VinertGK {
         }
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:67 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the naturally restricted surface
     /// and the point VLocation.
@@ -1767,6 +2145,7 @@ impl VinertGK {
         Self::new_face_pnt_real_bool2(theSurface, theLocation, theTolerance, theCGFlag, false)
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:67 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the naturally restricted surface
     /// and the point VLocation.
@@ -1778,6 +2157,7 @@ impl VinertGK {
         Self::new_face_pnt_real_bool2(theSurface, theLocation, theTolerance, false, false)
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:67 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the naturally restricted surface
     /// and the point VLocation.
@@ -1788,6 +2168,7 @@ impl VinertGK {
         Self::new_face_pnt_real_bool2(theSurface, theLocation, 0.001, false, false)
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:77 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the naturally restricted surface
     /// and the point VLocation. The inertia is computed with
@@ -1809,6 +2190,7 @@ impl VinertGK {
         )
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:77 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the naturally restricted surface
     /// and the point VLocation. The inertia is computed with
@@ -1829,6 +2211,7 @@ impl VinertGK {
         )
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:77 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the naturally restricted surface
     /// and the point VLocation. The inertia is computed with
@@ -1841,6 +2224,7 @@ impl VinertGK {
         Self::new_face_pnt2_real_bool2(theSurface, thePoint, theLocation, 0.001, false, false)
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:87 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the surface bounded by the domain
     /// and the point VLocation.
@@ -1861,6 +2245,7 @@ impl VinertGK {
         )
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:87 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the surface bounded by the domain
     /// and the point VLocation.
@@ -1880,6 +2265,7 @@ impl VinertGK {
         )
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:87 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the surface bounded by the domain
     /// and the point VLocation.
@@ -1898,6 +2284,7 @@ impl VinertGK {
         )
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:98 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the surface bounded by the domain
     /// and the point VLocation. The inertia is computed with
@@ -1921,6 +2308,7 @@ impl VinertGK {
         )
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:98 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the surface bounded by the domain
     /// and the point VLocation. The inertia is computed with
@@ -1943,6 +2331,7 @@ impl VinertGK {
         )
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:98 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the surface bounded by the domain
     /// and the point VLocation. The inertia is computed with
@@ -1964,6 +2353,7 @@ impl VinertGK {
         )
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:109 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the naturally restricted surface
     /// and the plane.
@@ -1984,6 +2374,7 @@ impl VinertGK {
         )
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:109 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the naturally restricted surface
     /// and the plane.
@@ -2003,6 +2394,7 @@ impl VinertGK {
         )
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:109 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the naturally restricted surface
     /// and the plane.
@@ -2014,6 +2406,7 @@ impl VinertGK {
         Self::new_face_pln_pnt_real_bool2(theSurface, thePlane, theLocation, 0.001, false, false)
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:119 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the surface bounded by the domain
     /// and the plane.
@@ -2036,6 +2429,7 @@ impl VinertGK {
         )
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:119 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the surface bounded by the domain
     /// and the plane.
@@ -2057,6 +2451,7 @@ impl VinertGK {
         )
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:119 - `BRepGProp_VinertGK::BRepGProp_VinertGK()`
     /// Constructor. Computes the global properties of a region of
     /// 3D space delimited with the surface bounded by the domain
     /// and the plane.
@@ -2077,11 +2472,13 @@ impl VinertGK {
         )
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:128 - `BRepGProp_VinertGK::SetLocation()`
     /// Sets the vertex that delimit 3D closed region of space.
     pub fn set_location(&mut self, theLocation: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::BRepGProp_VinertGK_set_location(self as *mut Self, theLocation) }
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:133 - `BRepGProp_VinertGK::Perform()`
     /// Computes the global properties of a region of 3D space
     /// delimited with the naturally restricted surface and the
     /// point VLocation.
@@ -2103,6 +2500,7 @@ impl VinertGK {
         }
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:142 - `BRepGProp_VinertGK::Perform()`
     /// Computes the global properties of a region of 3D space
     /// delimited with the naturally restricted surface and the
     /// point VLocation. The inertia is computed with respect to
@@ -2127,6 +2525,7 @@ impl VinertGK {
         }
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:151 - `BRepGProp_VinertGK::Perform()`
     /// Computes the global properties of a region of 3D space
     /// delimited with the surface bounded by the domain and the
     /// point VLocation.
@@ -2150,6 +2549,7 @@ impl VinertGK {
         }
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:161 - `BRepGProp_VinertGK::Perform()`
     /// Computes the global properties of a region of 3D space
     /// delimited with the surface bounded by the domain and the
     /// point VLocation. The inertia is computed with respect to
@@ -2176,6 +2576,7 @@ impl VinertGK {
         }
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:171 - `BRepGProp_VinertGK::Perform()`
     /// Computes the global properties of a region of 3D space
     /// delimited with the naturally restricted surface and the
     /// plane.
@@ -2199,6 +2600,7 @@ impl VinertGK {
         }
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:180 - `BRepGProp_VinertGK::Perform()`
     /// Computes the global properties of a region of 3D space
     /// delimited with the surface bounded by the domain and the
     /// plane.
@@ -2224,11 +2626,13 @@ impl VinertGK {
         }
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:188 - `BRepGProp_VinertGK::GetErrorReached()`
     /// Returns the relative reached computation error.
     pub fn get_error_reached(&self) -> f64 {
         unsafe { crate::ffi::BRepGProp_VinertGK_get_error_reached(self as *const Self) }
     }
 
+    /// **Source:** `BRepGProp_VinertGK.hxx`:191 - `BRepGProp_VinertGK::GetAbsolutError()`
     /// Returns the absolut reached computation error.
     pub fn get_absolut_error(&self) -> f64 {
         unsafe { crate::ffi::BRepGProp_VinertGK_get_absolut_error(self as *const Self) }

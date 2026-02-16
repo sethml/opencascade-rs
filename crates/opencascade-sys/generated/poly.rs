@@ -6,15 +6,75 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{
-    Poly_compute_normals as compute_normals, Poly_intersect as intersect,
-    Poly_intersect_tri_line as intersect_tri_line, Poly_point_on_triangle as point_on_triangle,
-};
+/// **Source:** `Poly.hxx` - `Poly::ComputeNormals`
+/// Compute node normals for face triangulation
+/// as mean normal of surrounding triangles
+pub fn compute_normals(Tri: &crate::ffi::HandlePolyTriangulation) {
+    unsafe { crate::ffi::Poly_compute_normals(Tri) }
+}
+/// **Source:** `Poly.hxx` - `Poly::PointOnTriangle`
+/// Computes parameters of the point P on triangle
+/// defined by points P1, P2, and P3, in 2d.
+/// The parameters U and V are defined so that
+/// P = P1 + U * (P2 - P1) + V * (P3 - P1),
+/// with U >= 0, V >= 0, U + V <= 1.
+/// If P is located outside of triangle, or triangle
+/// is degenerated, the returned parameters correspond
+/// to closest point, and returned value is square of
+/// the distance from original point to triangle (0 if
+/// point is inside).
+pub fn point_on_triangle(
+    P1: &crate::ffi::gp_XY,
+    P2: &crate::ffi::gp_XY,
+    P3: &crate::ffi::gp_XY,
+    P: &crate::ffi::gp_XY,
+    UV: &mut crate::ffi::gp_XY,
+) -> f64 {
+    unsafe { crate::ffi::Poly_point_on_triangle(P1, P2, P3, P, UV) }
+}
+/// **Source:** `Poly.hxx` - `Poly::Intersect`
+/// Computes the intersection between axis and triangulation.
+/// @param[in] theTri   input triangulation
+/// @param[in] theAxis  intersecting ray
+/// @param[in] theIsClosest  finds the closest intersection when TRUE, finds the farthest
+/// otherwise
+/// @param[out] theTriangle  intersected triangle
+/// @param[out] theDistance  distance along ray to intersection point
+/// @return TRUE if intersection takes place, FALSE otherwise.
+pub fn intersect(
+    theTri: &crate::ffi::HandlePolyTriangulation,
+    theAxis: &crate::ffi::gp_Ax1,
+    theIsClosest: bool,
+    theTriangle: &mut crate::ffi::Poly_Triangle,
+    theDistance: &mut f64,
+) -> bool {
+    unsafe { crate::ffi::Poly_intersect(theTri, theAxis, theIsClosest, theTriangle, theDistance) }
+}
+/// **Source:** `Poly.hxx` - `Poly::IntersectTriLine`
+/// Computes the intersection between a triangle defined by three vertexes and a line.
+/// @param[in] theStart  picking ray origin
+/// @param[in] theDir    picking ray direction
+/// @param[in] theV0     first triangle node
+/// @param[in] theV1     second triangle node
+/// @param[in] theV2     third triangle node
+/// @param[out] theParam  param on line of the intersection point
+/// @return 1 if intersection was found, 0 otherwise.
+pub fn intersect_tri_line(
+    theStart: &crate::ffi::gp_XYZ,
+    theDir: &crate::ffi::gp_Dir,
+    theV0: &crate::ffi::gp_XYZ,
+    theV1: &crate::ffi::gp_XYZ,
+    theV2: &crate::ffi::gp_XYZ,
+    theParam: &mut f64,
+) -> i32 {
+    unsafe { crate::ffi::Poly_intersect_tri_line(theStart, theDir, theV0, theV1, theV2, theParam) }
+}
 
 // ========================
 // From Poly_ArrayOfNodes.hxx
 // ========================
 
+/// **Source:** `Poly_ArrayOfNodes.hxx`:23 - `Poly_ArrayOfNodes`
 /// Defines an array of 3D nodes of single/double precision configurable at construction time.
 pub use crate::ffi::Poly_ArrayOfNodes as ArrayOfNodes;
 
@@ -25,16 +85,19 @@ unsafe impl crate::CppDeletable for ArrayOfNodes {
 }
 
 impl ArrayOfNodes {
+    /// **Source:** `Poly_ArrayOfNodes.hxx`:27 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
     /// Empty constructor of double-precision array.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_ArrayOfNodes_ctor()) }
     }
 
+    /// **Source:** `Poly_ArrayOfNodes.hxx`:34 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
     /// Constructor of double-precision array.
     pub fn new_int(theLength: i32) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_ArrayOfNodes_ctor_int(theLength)) }
     }
 
+    /// **Source:** `Poly_ArrayOfNodes.hxx`:41 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
     /// Copy constructor
     pub fn new_arrayofnodes(theOther: &crate::ffi::Poly_ArrayOfNodes) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -42,6 +105,7 @@ impl ArrayOfNodes {
         }
     }
 
+    /// **Source:** `Poly_ArrayOfNodes.hxx`:44 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
     /// Constructor wrapping pre-allocated C-array of values without copying them.
     pub fn new_pnt_int(theBegin: &crate::ffi::gp_Pnt, theLength: i32) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -51,6 +115,7 @@ impl ArrayOfNodes {
         }
     }
 
+    /// **Source:** `Poly_ArrayOfNodes.hxx`:51 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
     /// Constructor wrapping pre-allocated C-array of values without copying them.
     pub fn new_vec3f_int(theBegin: &crate::ffi::gp_Vec3f, theLength: i32) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -60,11 +125,13 @@ impl ArrayOfNodes {
         }
     }
 
+    /// **Source:** `Poly_ArrayOfNodes.hxx`:61 - `Poly_ArrayOfNodes::IsDoublePrecision()`
     /// Returns TRUE if array defines nodes with double precision.
     pub fn is_double_precision(&self) -> bool {
         unsafe { crate::ffi::Poly_ArrayOfNodes_is_double_precision(self as *const Self) }
     }
 
+    /// **Source:** `Poly_ArrayOfNodes.hxx`:65 - `Poly_ArrayOfNodes::SetDoublePrecision()`
     /// Sets if array should define nodes with double or single precision.
     /// Raises exception if array was already allocated.
     pub fn set_double_precision(&mut self, theIsDouble: bool) {
@@ -73,6 +140,7 @@ impl ArrayOfNodes {
         }
     }
 
+    /// **Source:** `Poly_ArrayOfNodes.hxx`:106 - `Poly_ArrayOfNodes::Value()`
     /// A generalized accessor to point.
     pub fn value(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
@@ -83,6 +151,7 @@ impl ArrayOfNodes {
         }
     }
 
+    /// **Source:** `Poly_ArrayOfNodes.hxx`:109 - `Poly_ArrayOfNodes::SetValue()`
     /// A generalized setter for point.
     pub fn set_value(&mut self, theIndex: i32, theValue: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::Poly_ArrayOfNodes_set_value(self as *mut Self, theIndex, theValue) }
@@ -93,6 +162,7 @@ impl ArrayOfNodes {
 // From Poly_ArrayOfUVNodes.hxx
 // ========================
 
+/// **Source:** `Poly_ArrayOfUVNodes.hxx`:23 - `Poly_ArrayOfUVNodes`
 /// Defines an array of 2D nodes of single/double precision configurable at construction time.
 pub use crate::ffi::Poly_ArrayOfUVNodes as ArrayOfUVNodes;
 
@@ -103,16 +173,19 @@ unsafe impl crate::CppDeletable for ArrayOfUVNodes {
 }
 
 impl ArrayOfUVNodes {
+    /// **Source:** `Poly_ArrayOfUVNodes.hxx`:27 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
     /// Empty constructor of double-precision array.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_ArrayOfUVNodes_ctor()) }
     }
 
+    /// **Source:** `Poly_ArrayOfUVNodes.hxx`:34 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
     /// Constructor of double-precision array.
     pub fn new_int(theLength: i32) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_ArrayOfUVNodes_ctor_int(theLength)) }
     }
 
+    /// **Source:** `Poly_ArrayOfUVNodes.hxx`:41 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
     /// Copy constructor
     pub fn new_arrayofuvnodes(theOther: &crate::ffi::Poly_ArrayOfUVNodes) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -120,6 +193,7 @@ impl ArrayOfUVNodes {
         }
     }
 
+    /// **Source:** `Poly_ArrayOfUVNodes.hxx`:44 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
     /// Constructor wrapping pre-allocated C-array of values without copying them.
     pub fn new_pnt2d_int(theBegin: &crate::ffi::gp_Pnt2d, theLength: i32) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -129,6 +203,7 @@ impl ArrayOfUVNodes {
         }
     }
 
+    /// **Source:** `Poly_ArrayOfUVNodes.hxx`:51 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
     /// Constructor wrapping pre-allocated C-array of values without copying them.
     pub fn new_vec2f_int(theBegin: &crate::ffi::gp_Vec2f, theLength: i32) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -138,11 +213,13 @@ impl ArrayOfUVNodes {
         }
     }
 
+    /// **Source:** `Poly_ArrayOfUVNodes.hxx`:61 - `Poly_ArrayOfUVNodes::IsDoublePrecision()`
     /// Returns TRUE if array defines nodes with double precision.
     pub fn is_double_precision(&self) -> bool {
         unsafe { crate::ffi::Poly_ArrayOfUVNodes_is_double_precision(self as *const Self) }
     }
 
+    /// **Source:** `Poly_ArrayOfUVNodes.hxx`:65 - `Poly_ArrayOfUVNodes::SetDoublePrecision()`
     /// Sets if array should define nodes with double or single precision.
     /// Raises exception if array was already allocated.
     pub fn set_double_precision(&mut self, theIsDouble: bool) {
@@ -151,6 +228,7 @@ impl ArrayOfUVNodes {
         }
     }
 
+    /// **Source:** `Poly_ArrayOfUVNodes.hxx`:106 - `Poly_ArrayOfUVNodes::Value()`
     /// A generalized accessor to point.
     pub fn value(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
         unsafe {
@@ -161,6 +239,7 @@ impl ArrayOfUVNodes {
         }
     }
 
+    /// **Source:** `Poly_ArrayOfUVNodes.hxx`:109 - `Poly_ArrayOfUVNodes::SetValue()`
     /// A generalized setter for point.
     pub fn set_value(&mut self, theIndex: i32, theValue: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::Poly_ArrayOfUVNodes_set_value(self as *mut Self, theIndex, theValue) }
@@ -171,6 +250,7 @@ impl ArrayOfUVNodes {
 // From Poly_CoherentLink.hxx
 // ========================
 
+/// **Source:** `Poly_CoherentLink.hxx`:34 - `Poly_CoherentLink`
 ///
 /// Link between two mesh nodes that is created by existing triangle(s).
 /// Keeps reference to the opposite node of each incident triangle.
@@ -189,12 +269,14 @@ unsafe impl crate::CppDeletable for CoherentLink {
 }
 
 impl CoherentLink {
+    /// **Source:** `Poly_CoherentLink.hxx`:42 - `Poly_CoherentLink::Poly_CoherentLink()`
     ///
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_CoherentLink_ctor()) }
     }
 
+    /// **Source:** `Poly_CoherentLink.hxx`:49 - `Poly_CoherentLink::Poly_CoherentLink()`
     ///
     /// Constructor. Creates a Link that has no reference to 'opposite nodes'.
     /// This constructor is useful to create temporary object that is not
@@ -205,6 +287,7 @@ impl CoherentLink {
         }
     }
 
+    /// **Source:** `Poly_CoherentLink.hxx`:68 - `Poly_CoherentLink::Poly_CoherentLink()`
     ///
     /// Constructor, takes a triangle and a side. A link is created always such
     /// that myNode[0] < myNode[1]. Unlike the previous constructor, this one
@@ -225,6 +308,7 @@ impl CoherentLink {
         }
     }
 
+    /// **Source:** `Poly_CoherentLink.hxx`:76 - `Poly_CoherentLink::Node()`
     ///
     /// Return the node index in the current triangulation.
     /// @param ind
@@ -234,6 +318,7 @@ impl CoherentLink {
         unsafe { crate::ffi::Poly_CoherentLink_node(self as *const Self, ind) }
     }
 
+    /// **Source:** `Poly_CoherentLink.hxx`:85 - `Poly_CoherentLink::OppositeNode()`
     ///
     /// Return the opposite node (belonging to the left or right incident triangle)
     /// index in the current triangulation.
@@ -244,6 +329,7 @@ impl CoherentLink {
         unsafe { crate::ffi::Poly_CoherentLink_opposite_node(self as *const Self, ind) }
     }
 
+    /// **Source:** `Poly_CoherentLink.hxx`:104 - `Poly_CoherentLink::IsEmpty()`
     ///
     /// Query the status of the link - if it is an invalid one.
     /// An invalid link has Node members equal to -1.
@@ -251,6 +337,7 @@ impl CoherentLink {
         unsafe { crate::ffi::Poly_CoherentLink_is_empty(self as *const Self) }
     }
 
+    /// **Source:** `Poly_CoherentLink.hxx`:109 - `Poly_CoherentLink::Nullify()`
     ///
     /// Invalidate this Link.
     pub fn nullify(&mut self) {
@@ -262,6 +349,7 @@ impl CoherentLink {
 // From Poly_CoherentNode.hxx
 // ========================
 
+/// **Source:** `Poly_CoherentNode.hxx`:36 - `Poly_CoherentNode`
 ///
 /// Node of coherent triangulation. Contains:
 /// <ul>
@@ -280,48 +368,56 @@ unsafe impl crate::CppDeletable for CoherentNode {
 }
 
 impl CoherentNode {
+    /// **Source:** `Poly_CoherentNode.hxx`:44 - `Poly_CoherentNode::Poly_CoherentNode()`
     ///
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_CoherentNode_ctor()) }
     }
 
+    /// **Source:** `Poly_CoherentNode.hxx`:56 - `Poly_CoherentNode::Poly_CoherentNode()`
     ///
     /// Constructor.
     pub fn new_xyz(thePnt: &crate::ffi::gp_XYZ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_CoherentNode_ctor_xyz(thePnt)) }
     }
 
+    /// **Source:** `Poly_CoherentNode.hxx`:71 - `Poly_CoherentNode::SetUV()`
     ///
     /// Set the UV coordinates of the Node.
     pub fn set_uv(&mut self, theU: f64, theV: f64) {
         unsafe { crate::ffi::Poly_CoherentNode_set_uv(self as *mut Self, theU, theV) }
     }
 
+    /// **Source:** `Poly_CoherentNode.hxx`:80 - `Poly_CoherentNode::GetU()`
     ///
     /// Get U coordinate of the Node.
     pub fn get_u(&self) -> f64 {
         unsafe { crate::ffi::Poly_CoherentNode_get_u(self as *const Self) }
     }
 
+    /// **Source:** `Poly_CoherentNode.hxx`:85 - `Poly_CoherentNode::GetV()`
     ///
     /// Get V coordinate of the Node.
     pub fn get_v(&self) -> f64 {
         unsafe { crate::ffi::Poly_CoherentNode_get_v(self as *const Self) }
     }
 
+    /// **Source:** `Poly_CoherentNode.hxx`:90 - `Poly_CoherentNode::SetNormal()`
     ///
     /// Define the normal vector in the Node.
     pub fn set_normal(&mut self, theVector: &crate::ffi::gp_XYZ) {
         unsafe { crate::ffi::Poly_CoherentNode_set_normal(self as *mut Self, theVector) }
     }
 
+    /// **Source:** `Poly_CoherentNode.hxx`:95 - `Poly_CoherentNode::HasNormal()`
     ///
     /// Query if the Node contains a normal vector.
     pub fn has_normal(&self) -> bool {
         unsafe { crate::ffi::Poly_CoherentNode_has_normal(self as *const Self) }
     }
 
+    /// **Source:** `Poly_CoherentNode.hxx`:104 - `Poly_CoherentNode::GetNormal()`
     ///
     /// Get the stored normal in the node.
     pub fn get_normal(&self) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
@@ -330,18 +426,21 @@ impl CoherentNode {
         }
     }
 
+    /// **Source:** `Poly_CoherentNode.hxx`:109 - `Poly_CoherentNode::SetIndex()`
     ///
     /// Set the value of node Index.
     pub fn set_index(&mut self, theIndex: i32) {
         unsafe { crate::ffi::Poly_CoherentNode_set_index(self as *mut Self, theIndex) }
     }
 
+    /// **Source:** `Poly_CoherentNode.hxx`:114 - `Poly_CoherentNode::GetIndex()`
     ///
     /// Get the value of node Index.
     pub fn get_index(&self) -> i32 {
         unsafe { crate::ffi::Poly_CoherentNode_get_index(self as *const Self) }
     }
 
+    /// **Source:** `Poly_CoherentNode.hxx`:120 - `Poly_CoherentNode::IsFreeNode()`
     ///
     /// Check if this is a free node, i.e., a node without a single
     /// incident triangle.
@@ -349,12 +448,14 @@ impl CoherentNode {
         unsafe { crate::ffi::Poly_CoherentNode_is_free_node(self as *const Self) }
     }
 
+    /// **Source:** `Poly_CoherentNode.hxx`:125 - `Poly_CoherentNode::Clear()`
     ///
     /// Reset the Node to void.
     pub fn clear(&mut self, arg0: &crate::ffi::HandleNCollectionBaseAllocator) {
         unsafe { crate::ffi::Poly_CoherentNode_clear(self as *mut Self, arg0) }
     }
 
+    /// **Source:** `Poly_CoherentNode.hxx`:130 - `Poly_CoherentNode::AddTriangle()`
     ///
     /// Connect a triangle to this Node.
     pub fn add_triangle(
@@ -365,6 +466,7 @@ impl CoherentNode {
         unsafe { crate::ffi::Poly_CoherentNode_add_triangle(self as *mut Self, theTri, theA) }
     }
 
+    /// **Source:** `Poly_CoherentNode.hxx`:136 - `Poly_CoherentNode::RemoveTriangle()`
     ///
     /// Disconnect a triangle from this Node.
     pub fn remove_triangle(
@@ -647,6 +749,7 @@ impl CoherentNode {
 // From Poly_CoherentTriangle.hxx
 // ========================
 
+/// **Source:** `Poly_CoherentTriangle.hxx`:28 - `Poly_CoherentTriangle`
 ///
 /// Data class used in Poly_CoherentTriangultion.
 /// Implements a triangle with references to its neighbours.
@@ -659,12 +762,14 @@ unsafe impl crate::CppDeletable for CoherentTriangle {
 }
 
 impl CoherentTriangle {
+    /// **Source:** `Poly_CoherentTriangle.hxx`:36 - `Poly_CoherentTriangle::Poly_CoherentTriangle()`
     ///
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_CoherentTriangle_ctor()) }
     }
 
+    /// **Source:** `Poly_CoherentTriangle.hxx`:41 - `Poly_CoherentTriangle::Poly_CoherentTriangle()`
     ///
     /// Constructor.
     pub fn new_int3(iNode0: i32, iNode1: i32, iNode2: i32) -> crate::OwnedPtr<Self> {
@@ -675,18 +780,21 @@ impl CoherentTriangle {
         }
     }
 
+    /// **Source:** `Poly_CoherentTriangle.hxx`:48 - `Poly_CoherentTriangle::Node()`
     ///
     /// Query the node index in the position given by the parameter 'ind'
     pub fn node(&self, ind: i32) -> i32 {
         unsafe { crate::ffi::Poly_CoherentTriangle_node(self as *const Self, ind) }
     }
 
+    /// **Source:** `Poly_CoherentTriangle.hxx`:60 - `Poly_CoherentTriangle::IsEmpty()`
     ///
     /// Query if this is a valid triangle.
     pub fn is_empty(&self) -> bool {
         unsafe { crate::ffi::Poly_CoherentTriangle_is_empty(self as *const Self) }
     }
 
+    /// **Source:** `Poly_CoherentTriangle.hxx`:78 - `Poly_CoherentTriangle::SetConnection()`
     ///
     /// Create connection with another triangle theTri.
     /// This method creates both connections: in this triangle and in theTri. You
@@ -713,6 +821,7 @@ impl CoherentTriangle {
         }
     }
 
+    /// **Source:** `Poly_CoherentTriangle.hxx`:92 - `Poly_CoherentTriangle::SetConnection()`
     ///
     /// Create connection with another triangle theTri.
     /// This method creates both connections: in this triangle and in theTri.
@@ -735,6 +844,7 @@ impl CoherentTriangle {
         }
     }
 
+    /// **Source:** `Poly_CoherentTriangle.hxx`:100 - `Poly_CoherentTriangle::RemoveConnection()`
     ///
     /// Remove the connection with the given index.
     /// @param iConn
@@ -744,6 +854,7 @@ impl CoherentTriangle {
         unsafe { crate::ffi::Poly_CoherentTriangle_remove_connection_int(self as *mut Self, iConn) }
     }
 
+    /// **Source:** `Poly_CoherentTriangle.hxx`:107 - `Poly_CoherentTriangle::RemoveConnection()`
     ///
     /// Remove the connection with the given Triangle.
     /// @return
@@ -760,12 +871,14 @@ impl CoherentTriangle {
         }
     }
 
+    /// **Source:** `Poly_CoherentTriangle.hxx`:112 - `Poly_CoherentTriangle::NConnections()`
     ///
     /// Query the number of connected triangles.
     pub fn n_connections(&self) -> i32 {
         unsafe { crate::ffi::Poly_CoherentTriangle_n_connections(self as *const Self) }
     }
 
+    /// **Source:** `Poly_CoherentTriangle.hxx`:118 - `Poly_CoherentTriangle::GetConnectedNode()`
     ///
     /// Query the connected node on the given side.
     /// Returns -1 if there is no connection on the specified side.
@@ -773,6 +886,7 @@ impl CoherentTriangle {
         unsafe { crate::ffi::Poly_CoherentTriangle_get_connected_node(self as *const Self, iConn) }
     }
 
+    /// **Source:** `Poly_CoherentTriangle.hxx`:144 - `Poly_CoherentTriangle::FindConnection()`
     ///
     /// Returns the index of the connection with the given triangle, or -1 if not found.
     pub fn find_connection(&self, arg0: &crate::ffi::Poly_CoherentTriangle) -> i32 {
@@ -784,6 +898,7 @@ impl CoherentTriangle {
 // From Poly_CoherentTriangulation.hxx
 // ========================
 
+/// **Source:** `Poly_CoherentTriangulation.hxx`:105 - `Poly_CoherentTriangulation`
 ///
 /// Triangulation structure that allows to:
 /// <ul>
@@ -860,6 +975,7 @@ unsafe impl crate::CppDeletable for CoherentTriangulation {
 }
 
 impl CoherentTriangulation {
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:165 - `Poly_CoherentTriangulation::Poly_CoherentTriangulation()`
     ///
     /// Empty constructor.
     pub fn new_handlencollectionbaseallocator(
@@ -874,6 +990,7 @@ impl CoherentTriangulation {
         }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:172 - `Poly_CoherentTriangulation::Poly_CoherentTriangulation()`
     ///
     /// Constructor. It does not create Links, you should call ComputeLinks
     /// following this constructor if you need these links.
@@ -886,6 +1003,7 @@ impl CoherentTriangulation {
         }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:184 - `Poly_CoherentTriangulation::GetTriangulation()`
     ///
     /// Create an instance of Poly_Triangulation from this object.
     pub fn get_triangulation(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
@@ -896,30 +1014,35 @@ impl CoherentTriangulation {
         }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:214 - `Poly_CoherentTriangulation::MaxNode()`
     ///
     /// Query the index of the last node in the triangulation
     pub fn max_node(&self) -> i32 {
         unsafe { crate::ffi::Poly_CoherentTriangulation_max_node(self as *const Self) }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:219 - `Poly_CoherentTriangulation::MaxTriangle()`
     ///
     /// Query the index of the last triangle in the triangulation
     pub fn max_triangle(&self) -> i32 {
         unsafe { crate::ffi::Poly_CoherentTriangulation_max_triangle(self as *const Self) }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:224 - `Poly_CoherentTriangulation::SetDeflection()`
     ///
     /// Set the Deflection value as the parameter of the given triangulation.
     pub fn set_deflection(&mut self, theDefl: f64) {
         unsafe { crate::ffi::Poly_CoherentTriangulation_set_deflection(self as *mut Self, theDefl) }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:229 - `Poly_CoherentTriangulation::Deflection()`
     ///
     /// Query the Deflection parameter (default value 0. -- if never initialized)
     pub fn deflection(&self) -> f64 {
         unsafe { crate::ffi::Poly_CoherentTriangulation_deflection(self as *const Self) }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:241 - `Poly_CoherentTriangulation::SetNode()`
     ///
     /// Initialize a node
     /// @param thePoint
@@ -933,18 +1056,21 @@ impl CoherentTriangulation {
         unsafe { crate::ffi::Poly_CoherentTriangulation_set_node(self as *mut Self, thePnt, iN) }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:246 - `Poly_CoherentTriangulation::Node()`
     ///
     /// Get the node at the given index 'i'.
     pub fn node(&self, i: i32) -> &crate::ffi::Poly_CoherentNode {
         unsafe { &*(crate::ffi::Poly_CoherentTriangulation_node(self as *const Self, i)) }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:251 - `Poly_CoherentTriangulation::ChangeNode()`
     ///
     /// Get the node at the given index 'i'.
     pub fn change_node(&mut self, i: i32) -> &mut crate::ffi::Poly_CoherentNode {
         unsafe { &mut *(crate::ffi::Poly_CoherentTriangulation_change_node(self as *mut Self, i)) }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:257 - `Poly_CoherentTriangulation::NNodes()`
     ///
     /// Query the total number of active nodes (i.e. nodes used by 1 or more
     /// triangles)
@@ -952,12 +1078,14 @@ impl CoherentTriangulation {
         unsafe { crate::ffi::Poly_CoherentTriangulation_n_nodes(self as *const Self) }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:262 - `Poly_CoherentTriangulation::Triangle()`
     ///
     /// Get the triangle at the given index 'i'.
     pub fn triangle(&self, i: i32) -> &crate::ffi::Poly_CoherentTriangle {
         unsafe { &*(crate::ffi::Poly_CoherentTriangulation_triangle(self as *const Self, i)) }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:271 - `Poly_CoherentTriangulation::NTriangles()`
     ///
     /// Query the total number of active triangles (i.e. triangles that refer
     /// nodes, non-empty ones)
@@ -965,24 +1093,28 @@ impl CoherentTriangulation {
         unsafe { crate::ffi::Poly_CoherentTriangulation_n_triangles(self as *const Self) }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:276 - `Poly_CoherentTriangulation::NLinks()`
     ///
     /// Query the total number of active Links.
     pub fn n_links(&self) -> i32 {
         unsafe { crate::ffi::Poly_CoherentTriangulation_n_links(self as *const Self) }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:281 - `Poly_CoherentTriangulation::RemoveTriangle()`
     ///
     /// Removal of a single triangle from the triangulation.
     pub fn remove_triangle(&mut self, theTr: &mut crate::ffi::Poly_CoherentTriangle) -> bool {
         unsafe { crate::ffi::Poly_CoherentTriangulation_remove_triangle(self as *mut Self, theTr) }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:286 - `Poly_CoherentTriangulation::RemoveLink()`
     ///
     /// Removal of a single link from the triangulation.
     pub fn remove_link(&mut self, theLink: &mut crate::ffi::Poly_CoherentLink) {
         unsafe { crate::ffi::Poly_CoherentTriangulation_remove_link(self as *mut Self, theLink) }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:302 - `Poly_CoherentTriangulation::ReplaceNodes()`
     ///
     /// Replace nodes in the given triangle.
     /// @return
@@ -1005,18 +1137,21 @@ impl CoherentTriangulation {
         }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:336 - `Poly_CoherentTriangulation::ComputeLinks()`
     ///
     /// (Re)Calculate all links in this Triangulation.
     pub fn compute_links(&mut self) -> i32 {
         unsafe { crate::ffi::Poly_CoherentTriangulation_compute_links(self as *mut Self) }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:341 - `Poly_CoherentTriangulation::ClearLinks()`
     ///
     /// Clear all Links data from the Triangulation data.
     pub fn clear_links(&mut self) {
         unsafe { crate::ffi::Poly_CoherentTriangulation_clear_links(self as *mut Self) }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:347 - `Poly_CoherentTriangulation::Allocator()`
     ///
     /// Query the allocator of elements, this allocator can be used for other
     /// objects
@@ -1024,6 +1159,7 @@ impl CoherentTriangulation {
         unsafe { &*(crate::ffi::Poly_CoherentTriangulation_allocator(self as *const Self)) }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:352 - `Poly_CoherentTriangulation::Clone()`
     ///
     /// Create a copy of this Triangulation, using the given allocator.
     pub fn clone(
@@ -1038,14 +1174,17 @@ impl CoherentTriangulation {
         }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:374 - `Poly_CoherentTriangulation::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Poly_CoherentTriangulation_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:374 - `Poly_CoherentTriangulation::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Poly_CoherentTriangulation_get_type_name() }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:374 - `Poly_CoherentTriangulation::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Poly_CoherentTriangulation_get_type_descriptor()) }
     }
@@ -1086,6 +1225,7 @@ impl HandlePolyCoherentTriangulation {
 // From Poly_Connect.hxx
 // ========================
 
+/// **Source:** `Poly_Connect.hxx`:63 - `Poly_Connect`
 /// Provides an algorithm to explore, inside a triangulation, the
 /// adjacency data for a node or a triangle.
 /// Adjacency data for a node consists of triangles which
@@ -1128,11 +1268,13 @@ unsafe impl crate::CppDeletable for Connect {
 }
 
 impl Connect {
+    /// **Source:** `Poly_Connect.hxx`:69 - `Poly_Connect::Poly_Connect()`
     /// Constructs an uninitialized algorithm.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_Connect_ctor()) }
     }
 
+    /// **Source:** `Poly_Connect.hxx`:73 - `Poly_Connect::Poly_Connect()`
     /// Constructs an algorithm to explore the adjacency data of
     /// nodes or triangles for the triangulation T.
     pub fn new_handlepolytriangulation(
@@ -1145,23 +1287,27 @@ impl Connect {
         }
     }
 
+    /// **Source:** `Poly_Connect.hxx`:77 - `Poly_Connect::Load()`
     /// Initialize the algorithm to explore the adjacency data of
     /// nodes or triangles for the triangulation theTriangulation.
     pub fn load(&mut self, theTriangulation: &crate::ffi::HandlePolyTriangulation) {
         unsafe { crate::ffi::Poly_Connect_load(self as *mut Self, theTriangulation) }
     }
 
+    /// **Source:** `Poly_Connect.hxx`:80 - `Poly_Connect::Triangulation()`
     /// Returns the triangulation analyzed by this tool.
     pub fn triangulation(&self) -> &crate::ffi::HandlePolyTriangulation {
         unsafe { &*(crate::ffi::Poly_Connect_triangulation(self as *const Self)) }
     }
 
+    /// **Source:** `Poly_Connect.hxx`:84 - `Poly_Connect::Triangle()`
     /// Returns the index of a triangle containing the node at
     /// index N in the nodes table specific to the triangulation analyzed by this tool
     pub fn triangle(&self, N: i32) -> i32 {
         unsafe { crate::ffi::Poly_Connect_triangle(self as *const Self, N) }
     }
 
+    /// **Source:** `Poly_Connect.hxx`:92 - `Poly_Connect::Triangles()`
     /// Returns in t1, t2 and t3, the indices of the 3 triangles
     /// adjacent to the triangle at index T in the triangles table
     /// specific to the triangulation analyzed by this tool.
@@ -1172,6 +1318,7 @@ impl Connect {
         unsafe { crate::ffi::Poly_Connect_triangles(self as *const Self, T, t1, t2, t3) }
     }
 
+    /// **Source:** `Poly_Connect.hxx`:108 - `Poly_Connect::Nodes()`
     /// Returns, in n1, n2 and n3, the indices of the 3 nodes
     /// adjacent to the triangle referenced at index T in the
     /// triangles table specific to the triangulation analyzed by this tool.
@@ -1181,6 +1328,7 @@ impl Connect {
         unsafe { crate::ffi::Poly_Connect_nodes(self as *const Self, T, n1, n2, n3) }
     }
 
+    /// **Source:** `Poly_Connect.hxx`:137 - `Poly_Connect::Initialize()`
     /// Initializes an iterator to search for all the triangles
     /// containing the node referenced at index N in the nodes
     /// table, for the triangulation analyzed by this tool.
@@ -1202,6 +1350,7 @@ impl Connect {
         unsafe { crate::ffi::Poly_Connect_initialize(self as *mut Self, N) }
     }
 
+    /// **Source:** `Poly_Connect.hxx`:142 - `Poly_Connect::More()`
     /// Returns true if there is another element in the iterator
     /// defined with the function Initialize (i.e. if there is another
     /// triangle containing the given node).
@@ -1209,6 +1358,7 @@ impl Connect {
         unsafe { crate::ffi::Poly_Connect_more(self as *const Self) }
     }
 
+    /// **Source:** `Poly_Connect.hxx`:148 - `Poly_Connect::Next()`
     /// Advances the iterator defined with the function Initialize to
     /// access the next triangle.
     /// Note: There is no action if the iterator is empty (i.e. if the
@@ -1217,6 +1367,7 @@ impl Connect {
         unsafe { crate::ffi::Poly_Connect_next(self as *mut Self) }
     }
 
+    /// **Source:** `Poly_Connect.hxx`:154 - `Poly_Connect::Value()`
     /// Returns the index of the current triangle to which the
     /// iterator, defined with the function Initialize, points. This is
     /// an index in the triangles table specific to the triangulation
@@ -1230,6 +1381,7 @@ impl Connect {
 // From Poly_HArray1OfTriangle.hxx
 // ========================
 
+/// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle`
 pub use crate::ffi::Poly_HArray1OfTriangle as HArray1OfTriangle;
 
 unsafe impl crate::CppDeletable for HArray1OfTriangle {
@@ -1239,10 +1391,12 @@ unsafe impl crate::CppDeletable for HArray1OfTriangle {
 }
 
 impl HArray1OfTriangle {
+    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_HArray1OfTriangle_ctor()) }
     }
 
+    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Poly_HArray1OfTriangle_ctor_int2(
@@ -1251,6 +1405,7 @@ impl HArray1OfTriangle {
         }
     }
 
+    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
     pub fn new_int2_triangle(
         theLower: i32,
         theUpper: i32,
@@ -1263,6 +1418,7 @@ impl HArray1OfTriangle {
         }
     }
 
+    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
     pub fn new_triangle_int2_bool(
         theBegin: &crate::ffi::Poly_Triangle,
         theLower: i32,
@@ -1276,6 +1432,7 @@ impl HArray1OfTriangle {
         }
     }
 
+    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
     pub fn new_array1oftriangle(
         theOther: &crate::ffi::Poly_Array1OfTriangle,
     ) -> crate::OwnedPtr<Self> {
@@ -1286,14 +1443,17 @@ impl HArray1OfTriangle {
         }
     }
 
+    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Poly_HArray1OfTriangle_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Poly_HArray1OfTriangle_get_type_name() }
     }
 
+    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Poly_HArray1OfTriangle_get_type_descriptor()) }
     }
@@ -1332,6 +1492,7 @@ impl HandlePolyHArray1OfTriangle {
 // From Poly_MakeLoops.hxx
 // ========================
 
+/// **Source:** `Poly_MakeLoops.hxx`:31 - `Poly_MakeLoops`
 ///
 /// Make loops from a set of connected links. A link is represented by
 /// a pair of integer indices of nodes.
@@ -1344,22 +1505,26 @@ unsafe impl crate::CppDeletable for MakeLoops {
 }
 
 impl MakeLoops {
+    /// **Source:** `Poly_MakeLoops.hxx`:211 - `Poly_MakeLoops::Perform()`
     /// Does the work. Returns the collection of result codes
     pub fn perform(&mut self) -> i32 {
         unsafe { crate::ffi::Poly_MakeLoops_perform(self as *mut Self) }
     }
 
+    /// **Source:** `Poly_MakeLoops.hxx`:214 - `Poly_MakeLoops::GetNbLoops()`
     /// Returns the number of loops in the result
     pub fn get_nb_loops(&self) -> i32 {
         unsafe { crate::ffi::Poly_MakeLoops_get_nb_loops(self as *const Self) }
     }
 
+    /// **Source:** `Poly_MakeLoops.hxx`:220 - `Poly_MakeLoops::GetNbHanging()`
     /// Returns the number of detected hanging chains
     pub fn get_nb_hanging(&self) -> i32 {
         unsafe { crate::ffi::Poly_MakeLoops_get_nb_hanging(self as *const Self) }
     }
 }
 
+/// **Source:** `Poly_MakeLoops.hxx`:270 - `Poly_MakeLoops3D`
 pub use crate::ffi::Poly_MakeLoops3D as MakeLoops3D;
 
 unsafe impl crate::CppDeletable for MakeLoops3D {
@@ -1395,6 +1560,7 @@ impl MakeLoops3D {
     }
 }
 
+/// **Source:** `Poly_MakeLoops.hxx`:312 - `Poly_MakeLoops2D`
 pub use crate::ffi::Poly_MakeLoops2D as MakeLoops2D;
 
 unsafe impl crate::CppDeletable for MakeLoops2D {
@@ -1434,6 +1600,7 @@ impl MakeLoops2D {
 // From Poly_MergeNodesTool.hxx
 // ========================
 
+/// **Source:** `Poly_MergeNodesTool.hxx`:24 - `Poly_MergeNodesTool`
 /// Auxiliary tool for merging triangulation nodes for visualization purposes.
 /// Tool tries to merge all nodes within input triangulation, but split the ones on sharp corners at
 /// specified angle.
@@ -1446,6 +1613,7 @@ unsafe impl crate::CppDeletable for MergeNodesTool {
 }
 
 impl MergeNodesTool {
+    /// **Source:** `Poly_MergeNodesTool.hxx`:50 - `Poly_MergeNodesTool::Poly_MergeNodesTool()`
     /// Constructor
     /// @param[in] theSmoothAngle smooth angle in radians or 0.0 to disable merging by angle
     /// @param[in] theMergeTolerance node merging maximum distance
@@ -1464,6 +1632,7 @@ impl MergeNodesTool {
         }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:50 - `Poly_MergeNodesTool::Poly_MergeNodesTool()`
     /// Constructor
     /// @param[in] theSmoothAngle smooth angle in radians or 0.0 to disable merging by angle
     /// @param[in] theMergeTolerance node merging maximum distance
@@ -1472,6 +1641,7 @@ impl MergeNodesTool {
         Self::new_real2_int(theSmoothAngle, theMergeTolerance, -1)
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:50 - `Poly_MergeNodesTool::Poly_MergeNodesTool()`
     /// Constructor
     /// @param[in] theSmoothAngle smooth angle in radians or 0.0 to disable merging by angle
     /// @param[in] theMergeTolerance node merging maximum distance
@@ -1480,16 +1650,19 @@ impl MergeNodesTool {
         Self::new_real2_int(theSmoothAngle, 0.0, -1)
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:26 - `Poly_MergeNodesTool::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Poly_MergeNodesTool_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:56 - `Poly_MergeNodesTool::MergeTolerance()`
     /// Return merge tolerance; 0.0 by default (only 3D points with exactly matching coordinates are
     /// merged).
     pub fn merge_tolerance(&self) -> f64 {
         unsafe { crate::ffi::Poly_MergeNodesTool_merge_tolerance(self as *const Self) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:59 - `Poly_MergeNodesTool::SetMergeTolerance()`
     /// Set merge tolerance.
     pub fn set_merge_tolerance(&mut self, theTolerance: f64) {
         unsafe {
@@ -1497,37 +1670,44 @@ impl MergeNodesTool {
         }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:63 - `Poly_MergeNodesTool::MergeAngle()`
     /// Return merge angle in radians; 0.0 by default (normals with non-exact directions are not
     /// merged).
     pub fn merge_angle(&self) -> f64 {
         unsafe { crate::ffi::Poly_MergeNodesTool_merge_angle(self as *const Self) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:66 - `Poly_MergeNodesTool::SetMergeAngle()`
     /// Set merge angle.
     pub fn set_merge_angle(&mut self, theAngleRad: f64) {
         unsafe { crate::ffi::Poly_MergeNodesTool_set_merge_angle(self as *mut Self, theAngleRad) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:69 - `Poly_MergeNodesTool::ToMergeOpposite()`
     /// Return TRUE if nodes with opposite normals should be merged; FALSE by default.
     pub fn to_merge_opposite(&self) -> bool {
         unsafe { crate::ffi::Poly_MergeNodesTool_to_merge_opposite(self as *const Self) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:72 - `Poly_MergeNodesTool::SetMergeOpposite()`
     /// Set if nodes with opposite normals should be merged.
     pub fn set_merge_opposite(&mut self, theToMerge: bool) {
         unsafe { crate::ffi::Poly_MergeNodesTool_set_merge_opposite(self as *mut Self, theToMerge) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:75 - `Poly_MergeNodesTool::SetUnitFactor()`
     /// Setup unit factor.
     pub fn set_unit_factor(&mut self, theUnitFactor: f64) {
         unsafe { crate::ffi::Poly_MergeNodesTool_set_unit_factor(self as *mut Self, theUnitFactor) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:78 - `Poly_MergeNodesTool::ToDropDegenerative()`
     /// Return TRUE if degenerate elements should be discarded; TRUE by default.
     pub fn to_drop_degenerative(&self) -> bool {
         unsafe { crate::ffi::Poly_MergeNodesTool_to_drop_degenerative(self as *const Self) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:81 - `Poly_MergeNodesTool::SetDropDegenerative()`
     /// Set if degenerate elements should be discarded.
     pub fn set_drop_degenerative(&mut self, theToDrop: bool) {
         unsafe {
@@ -1535,16 +1715,19 @@ impl MergeNodesTool {
         }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:84 - `Poly_MergeNodesTool::ToMergeElems()`
     /// Return TRUE if equal elements should be filtered; FALSE by default.
     pub fn to_merge_elems(&self) -> bool {
         unsafe { crate::ffi::Poly_MergeNodesTool_to_merge_elems(self as *const Self) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:87 - `Poly_MergeNodesTool::SetMergeElems()`
     /// Set if equal elements should be filtered.
     pub fn set_merge_elems(&mut self, theToMerge: bool) {
         unsafe { crate::ffi::Poly_MergeNodesTool_set_merge_elems(self as *mut Self, theToMerge) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:104 - `Poly_MergeNodesTool::AddTriangulation()`
     /// Add another triangulation to created one.
     /// @param[in] theTris triangulation to add
     /// @param[in] theTrsf transformation to apply
@@ -1565,6 +1748,7 @@ impl MergeNodesTool {
         }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:109 - `Poly_MergeNodesTool::Result()`
     /// Prepare and return result triangulation (temporary data will be truncated to result size).
     pub fn result(&mut self) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
         unsafe {
@@ -1572,6 +1756,7 @@ impl MergeNodesTool {
         }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:127 - `Poly_MergeNodesTool::ChangeElementNode()`
     /// Change node coordinates of element to be pushed.
     /// @param[in] theIndex node index within current element, in 0..3 range
     pub fn change_element_node(&mut self, theIndex: i32) -> &mut crate::ffi::gp_XYZ {
@@ -1580,46 +1765,55 @@ impl MergeNodesTool {
         }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:130 - `Poly_MergeNodesTool::PushLastElement()`
     /// Add new triangle or quad with nodes specified by ChangeElementNode().
     pub fn push_last_element(&mut self, theNbNodes: i32) {
         unsafe { crate::ffi::Poly_MergeNodesTool_push_last_element(self as *mut Self, theNbNodes) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:133 - `Poly_MergeNodesTool::PushLastTriangle()`
     /// Add new triangle with nodes specified by ChangeElementNode().
     pub fn push_last_triangle(&mut self) {
         unsafe { crate::ffi::Poly_MergeNodesTool_push_last_triangle(self as *mut Self) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:136 - `Poly_MergeNodesTool::PushLastQuad()`
     /// Add new quad with nodes specified by ChangeElementNode().
     pub fn push_last_quad(&mut self) {
         unsafe { crate::ffi::Poly_MergeNodesTool_push_last_quad(self as *mut Self) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:139 - `Poly_MergeNodesTool::ElementNodeIndex()`
     /// Return current element node index defined by PushLastElement().
     pub fn element_node_index(&self, theIndex: i32) -> i32 {
         unsafe { crate::ffi::Poly_MergeNodesTool_element_node_index(self as *const Self, theIndex) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:142 - `Poly_MergeNodesTool::NbNodes()`
     /// Return number of nodes.
     pub fn nb_nodes(&self) -> i32 {
         unsafe { crate::ffi::Poly_MergeNodesTool_nb_nodes(self as *const Self) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:145 - `Poly_MergeNodesTool::NbElements()`
     /// Return number of elements.
     pub fn nb_elements(&self) -> i32 {
         unsafe { crate::ffi::Poly_MergeNodesTool_nb_elements(self as *const Self) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:148 - `Poly_MergeNodesTool::NbDegenerativeElems()`
     /// Return number of discarded degenerate elements.
     pub fn nb_degenerative_elems(&self) -> i32 {
         unsafe { crate::ffi::Poly_MergeNodesTool_nb_degenerative_elems(self as *const Self) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:151 - `Poly_MergeNodesTool::NbMergedElems()`
     /// Return number of merged equal elements.
     pub fn nb_merged_elems(&self) -> i32 {
         unsafe { crate::ffi::Poly_MergeNodesTool_nb_merged_elems(self as *const Self) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:156 - `Poly_MergeNodesTool::ChangeOutput()`
     /// Setup output triangulation for modifications.
     /// When set to NULL, the tool could be used as a merge map for filling in external mesh
     /// structure.
@@ -1627,14 +1821,17 @@ impl MergeNodesTool {
         unsafe { &mut *(crate::ffi::Poly_MergeNodesTool_change_output(self as *mut Self)) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:26 - `Poly_MergeNodesTool::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Poly_MergeNodesTool_get_type_name() }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:26 - `Poly_MergeNodesTool::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Poly_MergeNodesTool_get_type_descriptor()) }
     }
 
+    /// **Source:** `Poly_MergeNodesTool.hxx`:37 - `Poly_MergeNodesTool::MergeNodes()`
     /// Merge nodes of existing mesh and return the new mesh.
     /// @param[in] theTris triangulation to add
     /// @param[in] theTrsf transformation to apply
@@ -1698,6 +1895,7 @@ impl HandlePolyMergeNodesTool {
 // From Poly_Polygon2D.hxx
 // ========================
 
+/// **Source:** `Poly_Polygon2D.hxx`:31 - `Poly_Polygon2D`
 /// Provides a polygon in 2D space (for example, in the
 /// parametric space of a surface). It is generally an
 /// approximate representation of a curve.
@@ -1713,16 +1911,19 @@ unsafe impl crate::CppDeletable for Polygon2D {
 }
 
 impl Polygon2D {
+    /// **Source:** `Poly_Polygon2D.hxx`:35 - `Poly_Polygon2D::Poly_Polygon2D()`
     /// Constructs a 2D polygon with specified number of nodes.
     pub fn new_int(theNbNodes: i32) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_Polygon2D_ctor_int(theNbNodes)) }
     }
 
+    /// **Source:** `Poly_Polygon2D.hxx`:38 - `Poly_Polygon2D::Poly_Polygon2D()`
     /// Constructs a 2D polygon defined by the table of points, <Nodes>.
     pub fn new_array1ofpnt2d(Nodes: &crate::ffi::TColgp_Array1OfPnt2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_Polygon2D_ctor_array1ofpnt2d(Nodes)) }
     }
 
+    /// **Source:** `Poly_Polygon2D.hxx`:59 - `Poly_Polygon2D::Deflection()`
     /// Returns the deflection of this polygon.
     /// Deflection is used in cases where the polygon is an
     /// approximate representation of a curve. Deflection
@@ -1746,11 +1947,13 @@ impl Polygon2D {
         unsafe { crate::ffi::Poly_Polygon2D_deflection(self as *const Self) }
     }
 
+    /// **Source:** `Poly_Polygon2D.hxx`:62 - `Poly_Polygon2D::Deflection()`
     /// Sets the deflection of this polygon.
     pub fn deflection_real(&mut self, theDefl: f64) {
         unsafe { crate::ffi::Poly_Polygon2D_deflection_real(self as *mut Self, theDefl) }
     }
 
+    /// **Source:** `Poly_Polygon2D.hxx`:68 - `Poly_Polygon2D::NbNodes()`
     /// Returns the number of nodes in this polygon.
     /// Note: If the polygon is closed, the point of closure is
     /// repeated at the end of its table of nodes. Thus, on a closed
@@ -1759,24 +1962,29 @@ impl Polygon2D {
         unsafe { crate::ffi::Poly_Polygon2D_nb_nodes(self as *const Self) }
     }
 
+    /// **Source:** `Poly_Polygon2D.hxx`:71 - `Poly_Polygon2D::Nodes()`
     /// Returns the table of nodes for this polygon.
     pub fn nodes(&self) -> &crate::ffi::TColgp_Array1OfPnt2d {
         unsafe { &*(crate::ffi::Poly_Polygon2D_nodes(self as *const Self)) }
     }
 
+    /// **Source:** `Poly_Polygon2D.hxx`:74 - `Poly_Polygon2D::ChangeNodes()`
     /// Returns the table of nodes for this polygon.
     pub fn change_nodes(&mut self) -> &mut crate::ffi::TColgp_Array1OfPnt2d {
         unsafe { &mut *(crate::ffi::Poly_Polygon2D_change_nodes(self as *mut Self)) }
     }
 
+    /// **Source:** `Poly_Polygon2D.hxx`:80 - `Poly_Polygon2D::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Poly_Polygon2D_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Poly_Polygon2D.hxx`:80 - `Poly_Polygon2D::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Poly_Polygon2D_get_type_name() }
     }
 
+    /// **Source:** `Poly_Polygon2D.hxx`:80 - `Poly_Polygon2D::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Poly_Polygon2D_get_type_descriptor()) }
     }
@@ -1813,6 +2021,7 @@ impl HandlePolyPolygon2D {
 // From Poly_Polygon3D.hxx
 // ========================
 
+/// **Source:** `Poly_Polygon3D.hxx`:31 - `Poly_Polygon3D`
 /// This class Provides a polygon in 3D space. It is generally an approximate representation of a
 /// curve. A Polygon3D is defined by a table of nodes. Each node is a 3D point. If the polygon is
 /// closed, the point of closure is repeated at the end of the table of nodes. If the polygon is an
@@ -1827,6 +2036,7 @@ unsafe impl crate::CppDeletable for Polygon3D {
 }
 
 impl Polygon3D {
+    /// **Source:** `Poly_Polygon3D.hxx`:35 - `Poly_Polygon3D::Poly_Polygon3D()`
     /// Constructs a 3D polygon with specific number of nodes.
     pub fn new_int_bool(theNbNodes: i32, theHasParams: bool) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1837,11 +2047,13 @@ impl Polygon3D {
         }
     }
 
+    /// **Source:** `Poly_Polygon3D.hxx`:39 - `Poly_Polygon3D::Poly_Polygon3D()`
     /// Constructs a 3D polygon defined by the table of points, Nodes.
     pub fn new_array1ofpnt(Nodes: &crate::ffi::TColgp_Array1OfPnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_Polygon3D_ctor_array1ofpnt(Nodes)) }
     }
 
+    /// **Source:** `Poly_Polygon3D.hxx`:49 - `Poly_Polygon3D::Poly_Polygon3D()`
     /// Constructs a 3D polygon defined by
     /// the table of points, Nodes, and the parallel table of
     /// parameters, Parameters, where each value of the table
@@ -1861,21 +2073,25 @@ impl Polygon3D {
         }
     }
 
+    /// **Source:** `Poly_Polygon3D.hxx`:53 - `Poly_Polygon3D::Copy()`
     /// Creates a copy of current polygon
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyPolygon3D> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_Polygon3D_copy(self as *const Self)) }
     }
 
+    /// **Source:** `Poly_Polygon3D.hxx`:56 - `Poly_Polygon3D::Deflection()`
     /// Returns the deflection of this polygon
     pub fn deflection(&self) -> f64 {
         unsafe { crate::ffi::Poly_Polygon3D_deflection(self as *const Self) }
     }
 
+    /// **Source:** `Poly_Polygon3D.hxx`:59 - `Poly_Polygon3D::Deflection()`
     /// Sets the deflection of this polygon. See more on deflection in Poly_Polygon2D
     pub fn deflection_real(&mut self, theDefl: f64) {
         unsafe { crate::ffi::Poly_Polygon3D_deflection_real(self as *mut Self, theDefl) }
     }
 
+    /// **Source:** `Poly_Polygon3D.hxx`:65 - `Poly_Polygon3D::NbNodes()`
     /// Returns the number of nodes in this polygon.
     /// Note: If the polygon is closed, the point of closure is
     /// repeated at the end of its table of nodes. Thus, on a closed
@@ -1884,30 +2100,36 @@ impl Polygon3D {
         unsafe { crate::ffi::Poly_Polygon3D_nb_nodes(self as *const Self) }
     }
 
+    /// **Source:** `Poly_Polygon3D.hxx`:68 - `Poly_Polygon3D::Nodes()`
     /// Returns the table of nodes for this polygon.
     pub fn nodes(&self) -> &crate::ffi::TColgp_Array1OfPnt {
         unsafe { &*(crate::ffi::Poly_Polygon3D_nodes(self as *const Self)) }
     }
 
+    /// **Source:** `Poly_Polygon3D.hxx`:71 - `Poly_Polygon3D::ChangeNodes()`
     /// Returns the table of nodes for this polygon.
     pub fn change_nodes(&mut self) -> &mut crate::ffi::TColgp_Array1OfPnt {
         unsafe { &mut *(crate::ffi::Poly_Polygon3D_change_nodes(self as *mut Self)) }
     }
 
+    /// **Source:** `Poly_Polygon3D.hxx`:75 - `Poly_Polygon3D::HasParameters()`
     /// Returns the table of the parameters associated with each node in this polygon.
     /// HasParameters function checks if   parameters are associated with the nodes of this polygon.
     pub fn has_parameters(&self) -> bool {
         unsafe { crate::ffi::Poly_Polygon3D_has_parameters(self as *const Self) }
     }
 
+    /// **Source:** `Poly_Polygon3D.hxx`:91 - `Poly_Polygon3D::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Poly_Polygon3D_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Poly_Polygon3D.hxx`:91 - `Poly_Polygon3D::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Poly_Polygon3D_get_type_name() }
     }
 
+    /// **Source:** `Poly_Polygon3D.hxx`:91 - `Poly_Polygon3D::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Poly_Polygon3D_get_type_descriptor()) }
     }
@@ -1944,6 +2166,7 @@ impl HandlePolyPolygon3D {
 // From Poly_PolygonOnTriangulation.hxx
 // ========================
 
+/// **Source:** `Poly_PolygonOnTriangulation.hxx`:40 - `Poly_PolygonOnTriangulation`
 /// This class provides a polygon in 3D space, based on the triangulation
 /// of a surface. It may be the approximate representation of a
 /// curve on the surface, or more generally the shape.
@@ -1965,6 +2188,7 @@ unsafe impl crate::CppDeletable for PolygonOnTriangulation {
 }
 
 impl PolygonOnTriangulation {
+    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:45 - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
     /// Constructs a 3D polygon on the triangulation of a shape with specified size of nodes.
     pub fn new_int_bool(theNbNodes: i32, theHasParams: bool) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1975,6 +2199,7 @@ impl PolygonOnTriangulation {
         }
     }
 
+    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:50 - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
     /// Constructs a 3D polygon on the triangulation of a shape,
     /// defined by the table of nodes, <Nodes>.
     pub fn new_array1ofinteger(
@@ -1987,6 +2212,7 @@ impl PolygonOnTriangulation {
         }
     }
 
+    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:63 - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
     /// Constructs a 3D polygon on the triangulation of a shape, defined by:
     /// -   the table of nodes, Nodes, and the table of parameters, <Parameters>.
     /// where:
@@ -2011,10 +2237,12 @@ impl PolygonOnTriangulation {
         }
     }
 
+    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:42 - `Poly_PolygonOnTriangulation::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Poly_PolygonOnTriangulation_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:67 - `Poly_PolygonOnTriangulation::Copy()`
     /// Creates a copy of current polygon
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyPolygonOnTriangulation> {
         unsafe {
@@ -2024,11 +2252,13 @@ impl PolygonOnTriangulation {
         }
     }
 
+    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:70 - `Poly_PolygonOnTriangulation::Deflection()`
     /// Returns the deflection of this polygon
     pub fn deflection(&self) -> f64 {
         unsafe { crate::ffi::Poly_PolygonOnTriangulation_deflection(self as *const Self) }
     }
 
+    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:74 - `Poly_PolygonOnTriangulation::Deflection()`
     /// Sets the deflection of this polygon.
     /// See more on deflection in Poly_Polygones2D.
     pub fn deflection_real(&mut self, theDefl: f64) {
@@ -2037,6 +2267,7 @@ impl PolygonOnTriangulation {
         }
     }
 
+    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:80 - `Poly_PolygonOnTriangulation::NbNodes()`
     /// Returns the number of nodes for this polygon.
     /// Note: If the polygon is closed, the point of closure is
     /// repeated at the end of its table of nodes. Thus, on a closed
@@ -2045,11 +2276,13 @@ impl PolygonOnTriangulation {
         unsafe { crate::ffi::Poly_PolygonOnTriangulation_nb_nodes(self as *const Self) }
     }
 
+    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:83 - `Poly_PolygonOnTriangulation::Node()`
     /// Returns node at the given index.
     pub fn node(&self, theIndex: i32) -> i32 {
         unsafe { crate::ffi::Poly_PolygonOnTriangulation_node(self as *const Self, theIndex) }
     }
 
+    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:86 - `Poly_PolygonOnTriangulation::SetNode()`
     /// Sets node at the given index.
     pub fn set_node(&mut self, theIndex: i32, theNode: i32) {
         unsafe {
@@ -2057,16 +2290,19 @@ impl PolygonOnTriangulation {
         }
     }
 
+    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:92 - `Poly_PolygonOnTriangulation::HasParameters()`
     /// Returns true if parameters are associated with the nodes in this polygon.
     pub fn has_parameters(&self) -> bool {
         unsafe { crate::ffi::Poly_PolygonOnTriangulation_has_parameters(self as *const Self) }
     }
 
+    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:95 - `Poly_PolygonOnTriangulation::Parameter()`
     /// Returns parameter at the given index.
     pub fn parameter(&self, theIndex: i32) -> f64 {
         unsafe { crate::ffi::Poly_PolygonOnTriangulation_parameter(self as *const Self, theIndex) }
     }
 
+    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:103 - `Poly_PolygonOnTriangulation::SetParameter()`
     /// Sets parameter at the given index.
     pub fn set_parameter(&mut self, theIndex: i32, theValue: f64) {
         unsafe {
@@ -2078,6 +2314,7 @@ impl PolygonOnTriangulation {
         }
     }
 
+    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:112 - `Poly_PolygonOnTriangulation::SetParameters()`
     /// Sets the table of the parameters associated with each node in this polygon.
     /// Raises exception if array size doesn't much number of polygon nodes.
     pub fn set_parameters(&mut self, theParameters: &crate::ffi::HandleTColStdHArray1OfReal) {
@@ -2086,6 +2323,7 @@ impl PolygonOnTriangulation {
         }
     }
 
+    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:127 - `Poly_PolygonOnTriangulation::Parameters()`
     /// Returns the table of the parameters associated with each node in this polygon.
     /// Warning! Use the function HasParameters to check if parameters are associated with the nodes
     /// in this polygon.
@@ -2093,10 +2331,12 @@ impl PolygonOnTriangulation {
         unsafe { &*(crate::ffi::Poly_PolygonOnTriangulation_parameters(self as *const Self)) }
     }
 
+    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:42 - `Poly_PolygonOnTriangulation::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Poly_PolygonOnTriangulation_get_type_name() }
     }
 
+    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:42 - `Poly_PolygonOnTriangulation::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Poly_PolygonOnTriangulation_get_type_descriptor()) }
     }
@@ -2137,6 +2377,7 @@ impl HandlePolyPolygonOnTriangulation {
 // From Poly_Triangle.hxx
 // ========================
 
+/// **Source:** `Poly_Triangle.hxx`:30 - `Poly_Triangle`
 /// Describes a component triangle of a triangulation (Poly_Triangulation object).
 /// A Triangle is defined by a triplet of nodes within [1, Poly_Triangulation::NbNodes()] range.
 /// Each node is an index in the table of nodes specific to an existing
@@ -2150,11 +2391,13 @@ unsafe impl crate::CppDeletable for Triangle {
 }
 
 impl Triangle {
+    /// **Source:** `Poly_Triangle.hxx`:36 - `Poly_Triangle::Poly_Triangle()`
     /// Constructs a triangle and sets all indices to zero.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_Triangle_ctor()) }
     }
 
+    /// **Source:** `Poly_Triangle.hxx`:41 - `Poly_Triangle::Poly_Triangle()`
     /// Constructs a triangle and sets its three indices,
     /// where these node values are indices in the table of nodes specific to an existing
     /// triangulation of a shape.
@@ -2164,28 +2407,33 @@ impl Triangle {
         }
     }
 
+    /// **Source:** `Poly_Triangle.hxx`:51 - `Poly_Triangle::Set()`
     /// Sets the value of the three nodes of this triangle.
     pub fn set_int3(&mut self, theN1: i32, theN2: i32, theN3: i32) {
         unsafe { crate::ffi::Poly_Triangle_set_int3(self as *mut Self, theN1, theN2, theN3) }
     }
 
+    /// **Source:** `Poly_Triangle.hxx`:60 - `Poly_Triangle::Set()`
     /// Sets the value of node with specified index of this triangle.
     /// Raises Standard_OutOfRange if index is not in 1,2,3
     pub fn set_int2(&mut self, theIndex: i32, theNode: i32) {
         unsafe { crate::ffi::Poly_Triangle_set_int2(self as *mut Self, theIndex, theNode) }
     }
 
+    /// **Source:** `Poly_Triangle.hxx`:68 - `Poly_Triangle::Get()`
     /// Returns the node indices of this triangle.
     pub fn get(&self, theN1: &mut i32, theN2: &mut i32, theN3: &mut i32) {
         unsafe { crate::ffi::Poly_Triangle_get(self as *const Self, theN1, theN2, theN3) }
     }
 
+    /// **Source:** `Poly_Triangle.hxx`:77 - `Poly_Triangle::Value()`
     /// Get the node of given Index.
     /// Raises OutOfRange from Standard if Index is not in 1,2,3
     pub fn value(&self, theIndex: i32) -> i32 {
         unsafe { crate::ffi::Poly_Triangle_value(self as *const Self, theIndex) }
     }
 
+    /// **Source:** `Poly_Triangle.hxx`:88 - `Poly_Triangle::ChangeValue()`
     /// Get the node of given Index.
     /// Raises OutOfRange if Index is not in 1,2,3
     pub fn change_value(&mut self, theIndex: i32) -> &mut i32 {
@@ -2197,6 +2445,7 @@ impl Triangle {
 // From Poly_Triangulation.hxx
 // ========================
 
+/// **Source:** `Poly_Triangulation.hxx`:59 - `Poly_Triangulation`
 /// Provides a triangulation for a surface, a set of surfaces, or more generally a shape.
 ///
 /// A triangulation consists of an approximate representation of the actual shape,
@@ -2230,11 +2479,13 @@ unsafe impl crate::CppDeletable for Triangulation {
 }
 
 impl Triangulation {
+    /// **Source:** `Poly_Triangulation.hxx`:64 - `Poly_Triangulation::Poly_Triangulation()`
     /// Constructs an empty triangulation.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_Triangulation_ctor()) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:74 - `Poly_Triangulation::Poly_Triangulation()`
     /// Constructs a triangulation from a set of triangles.
     /// The triangulation is initialized without a triangle or a node,
     /// but capable of containing specified number of nodes and triangles.
@@ -2259,6 +2510,7 @@ impl Triangulation {
         }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:82 - `Poly_Triangulation::Poly_Triangulation()`
     /// Constructs a triangulation from a set of triangles. The
     /// triangulation is initialized with 3D points from Nodes and triangles
     /// from Triangles.
@@ -2273,6 +2525,7 @@ impl Triangulation {
         }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:92 - `Poly_Triangulation::Poly_Triangulation()`
     /// Constructs a triangulation from a set of triangles. The
     /// triangulation is initialized with 3D points from Nodes, 2D points from
     /// UVNodes and triangles from Triangles, where
@@ -2294,6 +2547,7 @@ impl Triangulation {
         }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:103 - `Poly_Triangulation::Poly_Triangulation()`
     /// Copy constructor for triangulation.
     pub fn new_handlepolytriangulation(
         theTriangulation: &crate::ffi::HandlePolyTriangulation,
@@ -2305,6 +2559,7 @@ impl Triangulation {
         }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:74 - `Poly_Triangulation::Poly_Triangulation()`
     /// Constructs a triangulation from a set of triangles.
     /// The triangulation is initialized without a triangle or a node,
     /// but capable of containing specified number of nodes and triangles.
@@ -2321,10 +2576,12 @@ impl Triangulation {
         Self::new_int2_bool2(theNbNodes, theNbTriangles, theHasUVNodes, false)
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:61 - `Poly_Triangulation::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Poly_Triangulation_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:100 - `Poly_Triangulation::Copy()`
     /// Creates full copy of current triangulation
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
         unsafe {
@@ -2332,22 +2589,26 @@ impl Triangulation {
         }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:106 - `Poly_Triangulation::Deflection()`
     /// Returns the deflection of this triangulation.
     pub fn deflection(&self) -> f64 {
         unsafe { crate::ffi::Poly_Triangulation_deflection(self as *const Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:110 - `Poly_Triangulation::Deflection()`
     /// Sets the deflection of this triangulation to theDeflection.
     /// See more on deflection in Polygon2D
     pub fn deflection_real(&mut self, theDeflection: f64) {
         unsafe { crate::ffi::Poly_Triangulation_deflection_real(self as *mut Self, theDeflection) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:113 - `Poly_Triangulation::Parameters()`
     /// Returns initial set of parameters used to generate this triangulation.
     pub fn parameters(&self) -> &crate::ffi::HandlePolyTriangulationParameters {
         unsafe { &*(crate::ffi::Poly_Triangulation_parameters(self as *const Self)) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:116 - `Poly_Triangulation::Parameters()`
     /// Updates initial set of parameters used to generate this triangulation.
     pub fn parameters_handlepolytriangulationparameters(
         &mut self,
@@ -2361,36 +2622,43 @@ impl Triangulation {
         }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:119 - `Poly_Triangulation::Clear()`
     /// Clears internal arrays of nodes and all attributes.
     pub fn clear(&mut self) {
         unsafe { crate::ffi::Poly_Triangulation_clear(self as *mut Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:122 - `Poly_Triangulation::HasGeometry()`
     /// Returns TRUE if triangulation has some geometry.
     pub fn has_geometry(&self) -> bool {
         unsafe { crate::ffi::Poly_Triangulation_has_geometry(self as *const Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:128 - `Poly_Triangulation::NbNodes()`
     /// Returns the number of nodes for this triangulation.
     pub fn nb_nodes(&self) -> i32 {
         unsafe { crate::ffi::Poly_Triangulation_nb_nodes(self as *const Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:131 - `Poly_Triangulation::NbTriangles()`
     /// Returns the number of triangles for this triangulation.
     pub fn nb_triangles(&self) -> i32 {
         unsafe { crate::ffi::Poly_Triangulation_nb_triangles(self as *const Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:134 - `Poly_Triangulation::HasUVNodes()`
     /// Returns Standard_True if 2D nodes are associated with 3D nodes for this triangulation.
     pub fn has_uv_nodes(&self) -> bool {
         unsafe { crate::ffi::Poly_Triangulation_has_uv_nodes(self as *const Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:137 - `Poly_Triangulation::HasNormals()`
     /// Returns Standard_True if nodal normals are defined.
     pub fn has_normals(&self) -> bool {
         unsafe { crate::ffi::Poly_Triangulation_has_normals(self as *const Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:142 - `Poly_Triangulation::Node()`
     /// Returns a node at the given index.
     /// @param[in] theIndex node index within [1, NbNodes()] range
     /// @return 3D point coordinates
@@ -2403,6 +2671,7 @@ impl Triangulation {
         }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:147 - `Poly_Triangulation::SetNode()`
     /// Sets a node coordinates.
     /// @param[in] theIndex node index within [1, NbNodes()] range
     /// @param[in] thePnt   3D point coordinates
@@ -2410,6 +2679,7 @@ impl Triangulation {
         unsafe { crate::ffi::Poly_Triangulation_set_node(self as *mut Self, theIndex, thePnt) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:155 - `Poly_Triangulation::UVNode()`
     /// Returns UV-node at the given index.
     /// @param[in] theIndex node index within [1, NbNodes()] range
     /// @return 2D point defining UV coordinates
@@ -2422,6 +2692,7 @@ impl Triangulation {
         }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:160 - `Poly_Triangulation::SetUVNode()`
     /// Sets an UV-node coordinates.
     /// @param[in] theIndex node index within [1, NbNodes()] range
     /// @param[in] thePnt   UV coordinates
@@ -2429,6 +2700,7 @@ impl Triangulation {
         unsafe { crate::ffi::Poly_Triangulation_set_uv_node(self as *mut Self, theIndex, thePnt) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:168 - `Poly_Triangulation::Triangle()`
     /// Returns triangle at the given index.
     /// @param[in] theIndex triangle index within [1, NbTriangles()] range
     /// @return triangle node indices, with each node defined within [1, NbNodes()] range
@@ -2436,6 +2708,7 @@ impl Triangulation {
         unsafe { &*(crate::ffi::Poly_Triangulation_triangle(self as *const Self, theIndex)) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:177 - `Poly_Triangulation::SetTriangle()`
     /// Sets a triangle.
     /// @param[in] theIndex triangle index within [1, NbTriangles()] range
     /// @param[in] theTriangle triangle node indices, with each node defined within [1, NbNodes()]
@@ -2446,6 +2719,7 @@ impl Triangulation {
         }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:185 - `Poly_Triangulation::Normal()`
     /// Returns normal at the given index.
     /// @param[in] theIndex node index within [1, NbNodes()] range
     /// @return normalized 3D vector defining a surface normal
@@ -2458,6 +2732,7 @@ impl Triangulation {
         }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:210 - `Poly_Triangulation::SetNormal()`
     /// Changes normal at the given index.
     /// @param[in] theIndex  node index within [1, NbNodes()] range
     /// @param[in] theNormal normalized 3D vector defining a surface normal
@@ -2465,22 +2740,26 @@ impl Triangulation {
         unsafe { crate::ffi::Poly_Triangulation_set_normal(self as *mut Self, theIndex, theNormal) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:216 - `Poly_Triangulation::MeshPurpose()`
     /// Returns mesh purpose bits.
     pub fn mesh_purpose(&self) -> u32 {
         unsafe { crate::ffi::Poly_Triangulation_mesh_purpose(self as *const Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:219 - `Poly_Triangulation::SetMeshPurpose()`
     /// Sets mesh purpose bits.
     pub fn set_mesh_purpose(&mut self, thePurpose: u32) {
         unsafe { crate::ffi::Poly_Triangulation_set_mesh_purpose(self as *mut Self, thePurpose) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:223 - `Poly_Triangulation::CachedMinMax()`
     /// Returns cached min - max range of triangulation data,
     /// which is VOID by default (e.g, no cached information).
     pub fn cached_min_max(&self) -> &crate::ffi::Bnd_Box {
         unsafe { &*(crate::ffi::Poly_Triangulation_cached_min_max(self as *const Self)) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:229 - `Poly_Triangulation::SetCachedMinMax()`
     /// Sets a cached min - max range of this triangulation.
     /// The bounding box should exactly match actual range of triangulation data
     /// without a gap or transformation, or otherwise undefined behavior will be observed.
@@ -2489,16 +2768,19 @@ impl Triangulation {
         unsafe { crate::ffi::Poly_Triangulation_set_cached_min_max(self as *mut Self, theBox) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:232 - `Poly_Triangulation::HasCachedMinMax()`
     /// Returns TRUE if there is some cached min - max range of this triangulation.
     pub fn has_cached_min_max(&self) -> bool {
         unsafe { crate::ffi::Poly_Triangulation_has_cached_min_max(self as *const Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:235 - `Poly_Triangulation::UpdateCachedMinMax()`
     /// Updates cached min - max range of this triangulation with bounding box of nodal data.
     pub fn update_cached_min_max(&mut self) {
         unsafe { crate::ffi::Poly_Triangulation_update_cached_min_max(self as *mut Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:254 - `Poly_Triangulation::MinMax()`
     /// Extends the passed box with bounding box of this triangulation.
     /// Uses cached min - max range when available and:
     /// - input transformation theTrsf has no rotation part;
@@ -2527,11 +2809,13 @@ impl Triangulation {
         }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:264 - `Poly_Triangulation::IsDoublePrecision()`
     /// Returns TRUE if node positions are defined with double precision; TRUE by default.
     pub fn is_double_precision(&self) -> bool {
         unsafe { crate::ffi::Poly_Triangulation_is_double_precision(self as *const Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:268 - `Poly_Triangulation::SetDoublePrecision()`
     /// Set if node positions should be defined with double or single precision for 3D and UV nodes.
     /// Raises exception if data was already allocated.
     pub fn set_double_precision(&mut self, theIsDouble: bool) {
@@ -2540,6 +2824,7 @@ impl Triangulation {
         }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:273 - `Poly_Triangulation::ResizeNodes()`
     /// Method resizing internal arrays of nodes (synchronously for all attributes).
     /// @param[in] theNbNodes    new number of nodes
     /// @param[in] theToCopyOld  copy old nodes into the new array
@@ -2549,6 +2834,7 @@ impl Triangulation {
         }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:278 - `Poly_Triangulation::ResizeTriangles()`
     /// Method resizing an internal array of triangles.
     /// @param[in] theNbTriangles  new number of triangles
     /// @param[in] theToCopyOld    copy old triangles into the new array
@@ -2562,31 +2848,37 @@ impl Triangulation {
         }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:282 - `Poly_Triangulation::AddUVNodes()`
     /// If an array for UV coordinates is not allocated yet, do it now.
     pub fn add_uv_nodes(&mut self) {
         unsafe { crate::ffi::Poly_Triangulation_add_uv_nodes(self as *mut Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:285 - `Poly_Triangulation::RemoveUVNodes()`
     /// Deallocates the UV nodes array.
     pub fn remove_uv_nodes(&mut self) {
         unsafe { crate::ffi::Poly_Triangulation_remove_uv_nodes(self as *mut Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:288 - `Poly_Triangulation::AddNormals()`
     /// If an array for normals is not allocated yet, do it now.
     pub fn add_normals(&mut self) {
         unsafe { crate::ffi::Poly_Triangulation_add_normals(self as *mut Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:291 - `Poly_Triangulation::RemoveNormals()`
     /// Deallocates the normals array.
     pub fn remove_normals(&mut self) {
         unsafe { crate::ffi::Poly_Triangulation_remove_normals(self as *mut Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:294 - `Poly_Triangulation::ComputeNormals()`
     /// Compute smooth normals by averaging triangle normals.
     pub fn compute_normals(&mut self) {
         unsafe { crate::ffi::Poly_Triangulation_compute_normals(self as *mut Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:300 - `Poly_Triangulation::MapNodeArray()`
     /// Returns the table of 3D points for read-only access or NULL if nodes array is undefined.
     /// Poly_Triangulation::Node() should be used instead when possible.
     /// Returned object should not be used after Poly_Triangulation destruction.
@@ -2598,6 +2890,7 @@ impl Triangulation {
         }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:305 - `Poly_Triangulation::MapTriangleArray()`
     /// Returns the triangle array for read-only access or NULL if triangle array is undefined.
     /// Poly_Triangulation::Triangle() should be used instead when possible.
     /// Returned object should not be used after Poly_Triangulation destruction.
@@ -2609,6 +2902,7 @@ impl Triangulation {
         }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:310 - `Poly_Triangulation::MapUVNodeArray()`
     /// Returns the table of 2D nodes for read-only access or NULL if UV nodes array is undefined.
     /// Poly_Triangulation::UVNode() should be used instead when possible.
     /// Returned object should not be used after Poly_Triangulation destruction.
@@ -2620,6 +2914,7 @@ impl Triangulation {
         }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:315 - `Poly_Triangulation::MapNormalArray()`
     /// Returns the table of per-vertex normals for read-only access or NULL if normals array is
     /// undefined. Poly_Triangulation::Normal() should be used instead when possible. Returned object
     /// should not be used after Poly_Triangulation destruction.
@@ -2631,18 +2926,21 @@ impl Triangulation {
         }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:324 - `Poly_Triangulation::InternalNodes()`
     /// Returns an internal array of nodes.
     /// Node()/SetNode() should be used instead in portable code.
     pub fn internal_nodes(&mut self) -> &mut crate::ffi::Poly_ArrayOfNodes {
         unsafe { &mut *(crate::ffi::Poly_Triangulation_internal_nodes(self as *mut Self)) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:328 - `Poly_Triangulation::InternalUVNodes()`
     /// Returns an internal array of UV nodes.
     /// UBNode()/SetUVNode() should be used instead in portable code.
     pub fn internal_uv_nodes(&mut self) -> &mut crate::ffi::Poly_ArrayOfUVNodes {
         unsafe { &mut *(crate::ffi::Poly_Triangulation_internal_uv_nodes(self as *mut Self)) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:356 - `Poly_Triangulation::NbDeferredNodes()`
     /// @name late-load deferred data interface
     /// Returns number of deferred nodes that can be loaded using LoadDeferredData().
     /// Note: this is estimated values, which might be different from actually loaded values.
@@ -2651,6 +2949,7 @@ impl Triangulation {
         unsafe { crate::ffi::Poly_Triangulation_nb_deferred_nodes(self as *const Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:361 - `Poly_Triangulation::NbDeferredTriangles()`
     /// Returns number of deferred triangles that can be loaded using LoadDeferredData().
     /// Note: this is estimated values, which might be different from actually loaded values
     /// Always check triangulation size of actually loaded data in code to avoid out-of-range issues.
@@ -2658,20 +2957,24 @@ impl Triangulation {
         unsafe { crate::ffi::Poly_Triangulation_nb_deferred_triangles(self as *const Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:364 - `Poly_Triangulation::HasDeferredData()`
     /// Returns TRUE if there is some triangulation data that can be loaded using LoadDeferredData().
     pub fn has_deferred_data(&self) -> bool {
         unsafe { crate::ffi::Poly_Triangulation_has_deferred_data(self as *const Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:377 - `Poly_Triangulation::UnloadDeferredData()`
     /// Releases triangulation data if it has connected deferred storage.
     pub fn unload_deferred_data(&mut self) -> bool {
         unsafe { crate::ffi::Poly_Triangulation_unload_deferred_data(self as *mut Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:61 - `Poly_Triangulation::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Poly_Triangulation_get_type_name() }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:61 - `Poly_Triangulation::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Poly_Triangulation_get_type_descriptor()) }
     }
@@ -2710,6 +3013,7 @@ impl HandlePolyTriangulation {
 // From Poly_TriangulationParameters.hxx
 // ========================
 
+/// **Source:** `Poly_TriangulationParameters.hxx`:23 - `Poly_TriangulationParameters`
 /// Represents initial set of parameters triangulation is built for.
 pub use crate::ffi::Poly_TriangulationParameters as TriangulationParameters;
 
@@ -2720,6 +3024,7 @@ unsafe impl crate::CppDeletable for TriangulationParameters {
 }
 
 impl TriangulationParameters {
+    /// **Source:** `Poly_TriangulationParameters.hxx`:31 - `Poly_TriangulationParameters::Poly_TriangulationParameters()`
     /// Constructor.
     /// Initializes object with the given parameters.
     /// @param theDeflection linear deflection
@@ -2735,6 +3040,7 @@ impl TriangulationParameters {
         }
     }
 
+    /// **Source:** `Poly_TriangulationParameters.hxx`:31 - `Poly_TriangulationParameters::Poly_TriangulationParameters()`
     /// Constructor.
     /// Initializes object with the given parameters.
     /// @param theDeflection linear deflection
@@ -2744,6 +3050,7 @@ impl TriangulationParameters {
         Self::new_real3(theDeflection, theAngle, -1.)
     }
 
+    /// **Source:** `Poly_TriangulationParameters.hxx`:31 - `Poly_TriangulationParameters::Poly_TriangulationParameters()`
     /// Constructor.
     /// Initializes object with the given parameters.
     /// @param theDeflection linear deflection
@@ -2753,6 +3060,7 @@ impl TriangulationParameters {
         Self::new_real3(theDeflection, -1., -1.)
     }
 
+    /// **Source:** `Poly_TriangulationParameters.hxx`:31 - `Poly_TriangulationParameters::Poly_TriangulationParameters()`
     /// Constructor.
     /// Initializes object with the given parameters.
     /// @param theDeflection linear deflection
@@ -2762,44 +3070,53 @@ impl TriangulationParameters {
         Self::new_real3(-1., -1., -1.)
     }
 
+    /// **Source:** `Poly_TriangulationParameters.hxx`:44 - `Poly_TriangulationParameters::HasDeflection()`
     /// Returns true if linear deflection is defined.
     pub fn has_deflection(&self) -> bool {
         unsafe { crate::ffi::Poly_TriangulationParameters_has_deflection(self as *const Self) }
     }
 
+    /// **Source:** `Poly_TriangulationParameters.hxx`:47 - `Poly_TriangulationParameters::HasAngle()`
     /// Returns true if angular deflection is defined.
     pub fn has_angle(&self) -> bool {
         unsafe { crate::ffi::Poly_TriangulationParameters_has_angle(self as *const Self) }
     }
 
+    /// **Source:** `Poly_TriangulationParameters.hxx`:50 - `Poly_TriangulationParameters::HasMinSize()`
     /// Returns true if minimum size is defined.
     pub fn has_min_size(&self) -> bool {
         unsafe { crate::ffi::Poly_TriangulationParameters_has_min_size(self as *const Self) }
     }
 
+    /// **Source:** `Poly_TriangulationParameters.hxx`:53 - `Poly_TriangulationParameters::Deflection()`
     /// Returns linear deflection or -1 if undefined.
     pub fn deflection(&self) -> f64 {
         unsafe { crate::ffi::Poly_TriangulationParameters_deflection(self as *const Self) }
     }
 
+    /// **Source:** `Poly_TriangulationParameters.hxx`:56 - `Poly_TriangulationParameters::Angle()`
     /// Returns angular deflection or -1 if undefined.
     pub fn angle(&self) -> f64 {
         unsafe { crate::ffi::Poly_TriangulationParameters_angle(self as *const Self) }
     }
 
+    /// **Source:** `Poly_TriangulationParameters.hxx`:59 - `Poly_TriangulationParameters::MinSize()`
     /// Returns minimum size or -1 if undefined.
     pub fn min_size(&self) -> f64 {
         unsafe { crate::ffi::Poly_TriangulationParameters_min_size(self as *const Self) }
     }
 
+    /// **Source:** `Poly_TriangulationParameters.hxx`:61 - `Poly_TriangulationParameters::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Poly_TriangulationParameters_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Poly_TriangulationParameters.hxx`:61 - `Poly_TriangulationParameters::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Poly_TriangulationParameters_get_type_name() }
     }
 
+    /// **Source:** `Poly_TriangulationParameters.hxx`:61 - `Poly_TriangulationParameters::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Poly_TriangulationParameters_get_type_descriptor()) }
     }

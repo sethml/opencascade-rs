@@ -10,6 +10,7 @@
 // From BRepAlgoAPI_BooleanOperation.hxx
 // ========================
 
+/// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:51 - `BRepAlgoAPI_BooleanOperation`
 /// The root API class for performing Boolean Operations on arbitrary shapes.
 ///
 /// The arguments of the operation are divided in two groups - *Objects* and *Tools*.
@@ -41,12 +42,14 @@ unsafe impl crate::CppDeletable for BooleanOperation {
 }
 
 impl BooleanOperation {
+    /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:58 - `BRepAlgoAPI_BooleanOperation::BRepAlgoAPI_BooleanOperation()`
     /// @name Constructors
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgoAPI_BooleanOperation_ctor()) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:61 - `BRepAlgoAPI_BooleanOperation::BRepAlgoAPI_BooleanOperation()`
     /// Constructor with precomputed intersections of arguments.
     pub fn new_pavefiller(thePF: &crate::ffi::BOPAlgo_PaveFiller) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -56,6 +59,7 @@ impl BooleanOperation {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:66 - `BRepAlgoAPI_BooleanOperation::Shape1()`
     /// @name Setting/getting arguments
     /// Returns the first argument involved in this Boolean operation.
     /// Obsolete
@@ -63,22 +67,26 @@ impl BooleanOperation {
         unsafe { &*(crate::ffi::BRepAlgoAPI_BooleanOperation_shape1(self as *const Self)) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:70 - `BRepAlgoAPI_BooleanOperation::Shape2()`
     /// Returns the second argument involved in this Boolean operation.
     /// Obsolete
     pub fn shape2(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_BooleanOperation_shape2(self as *const Self)) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:73 - `BRepAlgoAPI_BooleanOperation::SetTools()`
     /// Sets the Tool arguments
     pub fn set_tools(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         unsafe { crate::ffi::BRepAlgoAPI_BooleanOperation_set_tools(self as *mut Self, theLS) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:76 - `BRepAlgoAPI_BooleanOperation::Tools()`
     /// Returns the Tools arguments
     pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_BooleanOperation_tools(self as *const Self)) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:80 - `BRepAlgoAPI_BooleanOperation::SetOperation()`
     /// @name Setting/Getting the type of Boolean operation
     /// Sets the type of Boolean operation
     pub fn set_operation(&mut self, theBOP: crate::bop_algo::Operation) {
@@ -87,6 +95,7 @@ impl BooleanOperation {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:83 - `BRepAlgoAPI_BooleanOperation::Operation()`
     /// Returns the type of Boolean Operation
     pub fn operation(&self) -> crate::bop_algo::Operation {
         unsafe {
@@ -97,6 +106,7 @@ impl BooleanOperation {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:87 - `BRepAlgoAPI_BooleanOperation::Build()`
     /// @name Performing the operation
     /// Performs the Boolean operation.
     pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
@@ -351,6 +361,7 @@ impl BooleanOperation {
 // From BRepAlgoAPI_BuilderAlgo.hxx
 // ========================
 
+/// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:60 - `BRepAlgoAPI_BuilderAlgo`
 /// The class contains API level of the General Fuse algorithm.<br>
 ///
 /// Additionally to the options defined in the base class, the algorithm has
@@ -388,12 +399,14 @@ unsafe impl crate::CppDeletable for BuilderAlgo {
 }
 
 impl BuilderAlgo {
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:67 - `BRepAlgoAPI_BuilderAlgo::BRepAlgoAPI_BuilderAlgo()`
     /// @name Constructors
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgoAPI_BuilderAlgo_ctor()) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:71 - `BRepAlgoAPI_BuilderAlgo::BRepAlgoAPI_BuilderAlgo()`
     /// Constructor with prepared Filler object
     pub fn new_pavefiller(thePF: &crate::ffi::BOPAlgo_PaveFiller) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -401,17 +414,20 @@ impl BuilderAlgo {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
     /// @name Setting/Getting data for the algorithm
     /// Sets the arguments
     pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_set_arguments(self as *mut Self, theLS) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:78 - `BRepAlgoAPI_BuilderAlgo::Arguments()`
     /// Gets the arguments
     pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_BuilderAlgo_arguments(self as *const Self)) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
     /// @name Setting options
     /// Sets the flag that defines the mode of treatment.
     /// In non-destructive mode the argument shapes are not modified. Instead
@@ -422,6 +438,7 @@ impl BuilderAlgo {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:89 - `BRepAlgoAPI_BuilderAlgo::NonDestructive()`
     /// Returns the flag that defines the mode of treatment.
     /// In non-destructive mode the argument shapes are not modified. Instead
     /// a copy of a sub-shape is created in the result if it is needed to be updated.
@@ -429,6 +446,7 @@ impl BuilderAlgo {
         unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_non_destructive(self as *const Self) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
     /// Sets the glue option for the algorithm,
     /// which allows increasing performance of the intersection
     /// of the input shapes.
@@ -436,6 +454,7 @@ impl BuilderAlgo {
         unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_set_glue(self as *mut Self, theGlue.into()) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:97 - `BRepAlgoAPI_BuilderAlgo::Glue()`
     /// Returns the glue option of the algorithm
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
         unsafe {
@@ -446,6 +465,7 @@ impl BuilderAlgo {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
     /// Enables/Disables the check of the input solids for inverted status
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         unsafe {
@@ -453,18 +473,21 @@ impl BuilderAlgo {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:104 - `BRepAlgoAPI_BuilderAlgo::CheckInverted()`
     /// Returns the flag defining whether the check for input solids on inverted status
     /// should be performed or not.
     pub fn check_inverted(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_check_inverted(self as *const Self) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:108 - `BRepAlgoAPI_BuilderAlgo::Build()`
     /// @name Performing the operation
     /// Performs the algorithm
     pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_build(self as *mut Self, theRange) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:135 - `BRepAlgoAPI_BuilderAlgo::SimplifyResult()`
     /// @name Result simplification
     /// Simplification of the result shape is performed by the means of
     /// *ShapeUpgrade_UnifySameDomain* algorithm. The result of the operation will
@@ -505,6 +528,7 @@ impl BuilderAlgo {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:143 - `BRepAlgoAPI_BuilderAlgo::Modified()`
     /// @name History support
     /// Returns the shapes modified from the shape <theS>.
     /// If any, the list will contain only those splits of the
@@ -516,6 +540,7 @@ impl BuilderAlgo {
         unsafe { &*(crate::ffi::BRepAlgoAPI_BuilderAlgo_modified(self as *mut Self, theS)) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:152 - `BRepAlgoAPI_BuilderAlgo::Generated()`
     /// Returns the list  of shapes generated from the shape <theS>.
     /// In frames of Boolean Operations algorithms only Edges and Faces
     /// could have Generated elements, as only they produce new elements
@@ -529,6 +554,7 @@ impl BuilderAlgo {
         unsafe { &*(crate::ffi::BRepAlgoAPI_BuilderAlgo_generated(self as *mut Self, theS)) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:158 - `BRepAlgoAPI_BuilderAlgo::IsDeleted()`
     /// Checks if the shape <theS> has been completely removed from the result,
     /// i.e. the result does not contain the shape itself and any of its splits.
     /// Returns TRUE if the shape has been deleted.
@@ -536,16 +562,19 @@ impl BuilderAlgo {
         unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_is_deleted(self as *mut Self, aS) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:161 - `BRepAlgoAPI_BuilderAlgo::HasModified()`
     /// Returns true if any of the input shapes has been modified during operation.
     pub fn has_modified(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_has_modified(self as *const Self) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:164 - `BRepAlgoAPI_BuilderAlgo::HasGenerated()`
     /// Returns true if any of the input shapes has generated shapes during operation.
     pub fn has_generated(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_has_generated(self as *const Self) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:169 - `BRepAlgoAPI_BuilderAlgo::HasDeleted()`
     /// Returns true if any of the input shapes has been deleted during operation.
     /// Normally, General Fuse operation should not have Deleted elements,
     /// but all derived operation can have.
@@ -553,6 +582,7 @@ impl BuilderAlgo {
         unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_has_deleted(self as *const Self) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
     /// @name Enabling/Disabling the history collection.
     /// Allows disabling the history collection
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
@@ -561,11 +591,13 @@ impl BuilderAlgo {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:176 - `BRepAlgoAPI_BuilderAlgo::HasHistory()`
     /// Returns flag of history availability
     pub fn has_history(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_has_history(self as *const Self) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:181 - `BRepAlgoAPI_BuilderAlgo::SectionEdges()`
     /// @name Getting the section edges
     /// Returns a list of section edges.
     /// The edges represent the result of intersection between arguments of operation.
@@ -573,6 +605,7 @@ impl BuilderAlgo {
         unsafe { &*(crate::ffi::BRepAlgoAPI_BuilderAlgo_section_edges(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:191 - `BRepAlgoAPI_BuilderAlgo::History()`
     /// History tool
     pub fn history(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
         unsafe {
@@ -636,6 +669,7 @@ impl BuilderAlgo {
 // From BRepAlgoAPI_Check.hxx
 // ========================
 
+/// **Source:** `BRepAlgoAPI_Check.hxx`:47 - `BRepAlgoAPI_Check`
 /// The class Check provides a diagnostic tool for checking the validity
 /// of the single shape or couple of shapes.
 /// The shapes are checked on:
@@ -662,12 +696,14 @@ unsafe impl crate::CppDeletable for Check {
 }
 
 impl Check {
+    /// **Source:** `BRepAlgoAPI_Check.hxx`:54 - `BRepAlgoAPI_Check::BRepAlgoAPI_Check()`
     /// @name Constructors
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgoAPI_Check_ctor()) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Check.hxx`:65 - `BRepAlgoAPI_Check::BRepAlgoAPI_Check()`
     /// Constructor for checking single shape.
     ///
     /// @param[in] theS  - the shape to check;
@@ -689,6 +725,7 @@ impl Check {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_Check.hxx`:85 - `BRepAlgoAPI_Check::BRepAlgoAPI_Check()`
     /// Constructor for checking the couple of shapes.
     /// Additionally to the validity checks of each given shape,
     /// the types of the given shapes will be checked on validity
@@ -725,6 +762,7 @@ impl Check {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_Check.hxx`:101 - `BRepAlgoAPI_Check::SetData()`
     /// @name Initializing the algorithm
     /// Initializes the algorithm with single shape.
     ///
@@ -749,6 +787,7 @@ impl Check {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_Check.hxx`:125 - `BRepAlgoAPI_Check::SetData()`
     /// Initializes the algorithm with couple of shapes.
     /// Additionally to the validity checks of each given shape,
     /// the types of the given shapes will be checked on validity
@@ -782,12 +821,14 @@ impl Check {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_Check.hxx`:141 - `BRepAlgoAPI_Check::Perform()`
     /// @name Performing the operation
     /// Performs the check.
     pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BRepAlgoAPI_Check_perform(self as *mut Self, theRange) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Check.hxx`:145 - `BRepAlgoAPI_Check::IsValid()`
     /// @name Getting the results.
     /// Shows whether shape(s) valid or not.
     pub fn is_valid(&mut self) -> bool {
@@ -891,6 +932,7 @@ impl Check {
 // From BRepAlgoAPI_Common.hxx
 // ========================
 
+/// **Source:** `BRepAlgoAPI_Common.hxx`:29 - `BRepAlgoAPI_Common`
 /// The class provides Boolean common operation
 /// between arguments and tools (Boolean Intersection).
 pub use crate::ffi::BRepAlgoAPI_Common as Common;
@@ -902,17 +944,20 @@ unsafe impl crate::CppDeletable for Common {
 }
 
 impl Common {
+    /// **Source:** `BRepAlgoAPI_Common.hxx`:35 - `BRepAlgoAPI_Common::BRepAlgoAPI_Common()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgoAPI_Common_ctor()) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Common.hxx`:40 - `BRepAlgoAPI_Common::BRepAlgoAPI_Common()`
     /// Empty constructor
     /// <PF> - PaveFiller object that is carried out
     pub fn new_pavefiller(PF: &crate::ffi::BOPAlgo_PaveFiller) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgoAPI_Common_ctor_pavefiller(PF)) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Common.hxx`:47 - `BRepAlgoAPI_Common::BRepAlgoAPI_Common()`
     /// Constructor with two shapes
     /// <S1>  -argument
     /// <S2>  -tool
@@ -930,6 +975,7 @@ impl Common {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_Common.hxx`:58 - `BRepAlgoAPI_Common::BRepAlgoAPI_Common()`
     /// Constructor with two shapes
     /// <S1>  -argument
     /// <S2>  -tool
@@ -1206,6 +1252,7 @@ impl Common {
 // From BRepAlgoAPI_Cut.hxx
 // ========================
 
+/// **Source:** `BRepAlgoAPI_Cut.hxx`:29 - `BRepAlgoAPI_Cut`
 /// The class Cut provides Boolean cut operation
 /// between arguments and tools (Boolean Subtraction).
 pub use crate::ffi::BRepAlgoAPI_Cut as Cut;
@@ -1217,17 +1264,20 @@ unsafe impl crate::CppDeletable for Cut {
 }
 
 impl Cut {
+    /// **Source:** `BRepAlgoAPI_Cut.hxx`:35 - `BRepAlgoAPI_Cut::BRepAlgoAPI_Cut()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgoAPI_Cut_ctor()) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Cut.hxx`:40 - `BRepAlgoAPI_Cut::BRepAlgoAPI_Cut()`
     /// Empty constructor
     /// <PF> - PaveFiller object that is carried out
     pub fn new_pavefiller(PF: &crate::ffi::BOPAlgo_PaveFiller) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgoAPI_Cut_ctor_pavefiller(PF)) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Cut.hxx`:47 - `BRepAlgoAPI_Cut::BRepAlgoAPI_Cut()`
     /// Constructor with two shapes
     /// <S1>  -argument
     /// <S2>  -tool
@@ -1245,6 +1295,7 @@ impl Cut {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_Cut.hxx`:57 - `BRepAlgoAPI_Cut::BRepAlgoAPI_Cut()`
     /// Constructor with two shapes
     /// <S1>  -argument
     /// <S2>  -tool
@@ -1511,6 +1562,7 @@ impl Cut {
 // From BRepAlgoAPI_Defeaturing.hxx
 // ========================
 
+/// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:100 - `BRepAlgoAPI_Defeaturing`
 /// The BRepAlgoAPI_Defeaturing algorithm is the API algorithm intended for
 /// removal of the unwanted parts from the shape. The unwanted parts
 /// (or features) can be holes, protrusions, gaps, chamfers, fillets etc.
@@ -1594,12 +1646,14 @@ unsafe impl crate::CppDeletable for Defeaturing {
 }
 
 impl Defeaturing {
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:107 - `BRepAlgoAPI_Defeaturing::BRepAlgoAPI_Defeaturing()`
     /// @name Constructors
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgoAPI_Defeaturing_ctor()) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:117 - `BRepAlgoAPI_Defeaturing::SetShape()`
     /// @name Setting input data for the algorithm
     /// Sets the shape for processing.
     /// @param[in] theShape  The shape to remove the features from.
@@ -1608,11 +1662,13 @@ impl Defeaturing {
         unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_set_shape(self as *mut Self, theShape) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:120 - `BRepAlgoAPI_Defeaturing::InputShape()`
     /// Returns the input shape
     pub fn input_shape(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Defeaturing_input_shape(self as *const Self)) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:124 - `BRepAlgoAPI_Defeaturing::AddFaceToRemove()`
     /// Adds the features to remove from the input shape.
     /// @param[in] theFace  The shape to extract the faces for removal.
     pub fn add_face_to_remove(&mut self, theFace: &crate::ffi::TopoDS_Shape) {
@@ -1621,6 +1677,7 @@ impl Defeaturing {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:128 - `BRepAlgoAPI_Defeaturing::AddFacesToRemove()`
     /// Adds the faces to remove from the input shape.
     /// @param[in] theFaces  The list of shapes to extract the faces for removal.
     pub fn add_faces_to_remove(&mut self, theFaces: &crate::ffi::TopTools_ListOfShape) {
@@ -1629,18 +1686,21 @@ impl Defeaturing {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:137 - `BRepAlgoAPI_Defeaturing::FacesToRemove()`
     /// Returns the list of faces which have been requested for removal
     /// from the input shape.
     pub fn faces_to_remove(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Defeaturing_faces_to_remove(self as *const Self)) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:141 - `BRepAlgoAPI_Defeaturing::Build()`
     /// @name Performing the operation
     /// Performs the operation
     pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_build(self as *mut Self, theRange) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:146 - `BRepAlgoAPI_Defeaturing::SetToFillHistory()`
     /// @name History Methods
     /// Defines whether to track the modification of the shapes or not.
     pub fn set_to_fill_history(&mut self, theFlag: bool) {
@@ -1649,11 +1709,13 @@ impl Defeaturing {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:149 - `BRepAlgoAPI_Defeaturing::HasHistory()`
     /// Returns whether the history was requested or not.
     pub fn has_history(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_has_history(self as *const Self) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:152 - `BRepAlgoAPI_Defeaturing::Modified()`
     /// Returns the list of shapes modified from the shape <theS> during the operation.
     pub fn modified(
         &mut self,
@@ -1662,6 +1724,7 @@ impl Defeaturing {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Defeaturing_modified(self as *mut Self, theS)) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:156 - `BRepAlgoAPI_Defeaturing::Generated()`
     /// Returns the list of shapes generated from the shape <theS> during the operation.
     pub fn generated(
         &mut self,
@@ -1670,6 +1733,7 @@ impl Defeaturing {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Defeaturing_generated(self as *mut Self, theS)) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:162 - `BRepAlgoAPI_Defeaturing::IsDeleted()`
     /// Returns true if the shape <theS> has been deleted during the operation.
     /// It means that the shape has no any trace in the result.
     /// Otherwise it returns false.
@@ -1677,21 +1741,25 @@ impl Defeaturing {
         unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_is_deleted(self as *mut Self, theS) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:165 - `BRepAlgoAPI_Defeaturing::HasModified()`
     /// Returns true if any of the input shapes has been modified during operation.
     pub fn has_modified(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_has_modified(self as *const Self) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:168 - `BRepAlgoAPI_Defeaturing::HasGenerated()`
     /// Returns true if any of the input shapes has generated shapes during operation.
     pub fn has_generated(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_has_generated(self as *const Self) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:171 - `BRepAlgoAPI_Defeaturing::HasDeleted()`
     /// Returns true if any of the input shapes has been deleted during operation.
     pub fn has_deleted(&self) -> bool {
         unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_has_deleted(self as *const Self) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Defeaturing.hxx`:174 - `BRepAlgoAPI_Defeaturing::History()`
     /// Returns the History of shapes modifications
     pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
         unsafe {
@@ -1755,6 +1823,7 @@ impl Defeaturing {
 // From BRepAlgoAPI_Fuse.hxx
 // ========================
 
+/// **Source:** `BRepAlgoAPI_Fuse.hxx`:29 - `BRepAlgoAPI_Fuse`
 /// The class provides Boolean fusion operation
 /// between arguments and tools  (Boolean Union).
 pub use crate::ffi::BRepAlgoAPI_Fuse as Fuse;
@@ -1766,17 +1835,20 @@ unsafe impl crate::CppDeletable for Fuse {
 }
 
 impl Fuse {
+    /// **Source:** `BRepAlgoAPI_Fuse.hxx`:35 - `BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgoAPI_Fuse_ctor()) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Fuse.hxx`:40 - `BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse()`
     /// Empty constructor
     /// <PF> - PaveFiller object that is carried out
     pub fn new_pavefiller(PF: &crate::ffi::BOPAlgo_PaveFiller) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgoAPI_Fuse_ctor_pavefiller(PF)) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Fuse.hxx`:47 - `BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse()`
     /// Constructor with two shapes
     /// <S1>  -argument
     /// <S2>  -tool
@@ -1794,6 +1866,7 @@ impl Fuse {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_Fuse.hxx`:57 - `BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse()`
     /// Constructor with two shapes
     /// <S1>  -argument
     /// <S2>  -tool
@@ -2059,6 +2132,7 @@ impl Fuse {
 // From BRepAlgoAPI_Section.hxx
 // ========================
 
+/// **Source:** `BRepAlgoAPI_Section.hxx`:38 - `BRepAlgoAPI_Section`
 /// The algorithm is to build a Section operation between arguments and tools.
 /// The result of Section operation consists of vertices and edges.
 /// The result of Section operation contains:
@@ -2075,17 +2149,20 @@ unsafe impl crate::CppDeletable for Section {
 }
 
 impl Section {
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:44 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgoAPI_Section_ctor()) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:49 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
     /// Empty constructor
     /// <PF> - PaveFiller object that is carried out
     pub fn new_pavefiller(PF: &crate::ffi::BOPAlgo_PaveFiller) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgoAPI_Section_ctor_pavefiller(PF)) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:57 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
     /// Constructor with two shapes
     /// <S1>  -argument
     /// <S2>  -tool
@@ -2104,6 +2181,7 @@ impl Section {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:68 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
     /// Constructor with two shapes
     /// <S1>  -argument
     /// <S2>  -tool
@@ -2124,6 +2202,7 @@ impl Section {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:79 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
     /// Constructor with two shapes
     /// <S1>  - argument
     /// <Pl>  - tool
@@ -2142,6 +2221,7 @@ impl Section {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:89 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
     /// Constructor with two shapes
     /// <S1>  - argument
     /// <Sf>  - tool
@@ -2162,6 +2242,7 @@ impl Section {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:99 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
     /// Constructor with two shapes
     /// <Sf>  - argument
     /// <S2>  - tool
@@ -2182,6 +2263,7 @@ impl Section {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:109 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
     /// Constructor with two shapes
     /// <Sf1>  - argument
     /// <Sf2>  - tool
@@ -2200,6 +2282,7 @@ impl Section {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:57 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
     /// Constructor with two shapes
     /// <S1>  -argument
     /// <S2>  -tool
@@ -2213,6 +2296,7 @@ impl Section {
         Self::new_shape2_bool(S1, S2, true)
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:68 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
     /// Constructor with two shapes
     /// <S1>  -argument
     /// <S2>  -tool
@@ -2228,6 +2312,7 @@ impl Section {
         Self::new_shape2_pavefiller_bool(S1, S2, aDSF, true)
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:79 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
     /// Constructor with two shapes
     /// <S1>  - argument
     /// <Pl>  - tool
@@ -2241,6 +2326,7 @@ impl Section {
         Self::new_shape_pln_bool(S1, Pl, true)
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:89 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
     /// Constructor with two shapes
     /// <S1>  - argument
     /// <Sf>  - tool
@@ -2254,6 +2340,7 @@ impl Section {
         Self::new_shape_handlegeomsurface_bool(S1, Sf, true)
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:99 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
     /// Constructor with two shapes
     /// <Sf>  - argument
     /// <S2>  - tool
@@ -2267,6 +2354,7 @@ impl Section {
         Self::new_handlegeomsurface_shape_bool(Sf, S2, true)
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:109 - `BRepAlgoAPI_Section::BRepAlgoAPI_Section()`
     /// Constructor with two shapes
     /// <Sf1>  - argument
     /// <Sf2>  - tool
@@ -2280,6 +2368,7 @@ impl Section {
         Self::new_handlegeomsurface2_bool(Sf1, Sf2, true)
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:116 - `BRepAlgoAPI_Section::Init1()`
     /// initialize the argument
     /// <S1>  - argument
     /// Obsolete
@@ -2287,6 +2376,7 @@ impl Section {
         unsafe { crate::ffi::BRepAlgoAPI_Section_init1_shape(self as *mut Self, S1) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:121 - `BRepAlgoAPI_Section::Init1()`
     /// initialize the argument
     /// <Pl>  - argument
     /// Obsolete
@@ -2294,6 +2384,7 @@ impl Section {
         unsafe { crate::ffi::BRepAlgoAPI_Section_init1_pln(self as *mut Self, Pl) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:126 - `BRepAlgoAPI_Section::Init1()`
     /// initialize the argument
     /// <Sf>  - argument
     /// Obsolete
@@ -2301,6 +2392,7 @@ impl Section {
         unsafe { crate::ffi::BRepAlgoAPI_Section_init1_handlegeomsurface(self as *mut Self, Sf) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:131 - `BRepAlgoAPI_Section::Init2()`
     /// initialize the tool
     /// <S2>  - tool
     /// Obsolete
@@ -2308,6 +2400,7 @@ impl Section {
         unsafe { crate::ffi::BRepAlgoAPI_Section_init2_shape(self as *mut Self, S2) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:136 - `BRepAlgoAPI_Section::Init2()`
     /// initialize the tool
     /// <Pl>  - tool
     /// Obsolete
@@ -2315,6 +2408,7 @@ impl Section {
         unsafe { crate::ffi::BRepAlgoAPI_Section_init2_pln(self as *mut Self, Pl) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:141 - `BRepAlgoAPI_Section::Init2()`
     /// initialize the tool
     /// <Sf>  - tool
     /// Obsolete
@@ -2322,10 +2416,12 @@ impl Section {
         unsafe { crate::ffi::BRepAlgoAPI_Section_init2_handlegeomsurface(self as *mut Self, Sf) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:143 - `BRepAlgoAPI_Section::Approximation()`
     pub fn approximation(&mut self, B: bool) {
         unsafe { crate::ffi::BRepAlgoAPI_Section_approximation(self as *mut Self, B) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:153 - `BRepAlgoAPI_Section::ComputePCurveOn1()`
     /// Indicates whether the P-Curve should be (or not)
     /// performed on the argument.
     /// By default, no parametric 2D curve (pcurve) is defined for the
@@ -2338,6 +2434,7 @@ impl Section {
         unsafe { crate::ffi::BRepAlgoAPI_Section_compute_p_curve_on1(self as *mut Self, B) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:163 - `BRepAlgoAPI_Section::ComputePCurveOn2()`
     /// Indicates whether the P-Curve should be (or not)
     /// performed on the tool.
     /// By default, no parametric 2D curve (pcurve) is defined for the
@@ -2350,6 +2447,7 @@ impl Section {
         unsafe { crate::ffi::BRepAlgoAPI_Section_compute_p_curve_on2(self as *mut Self, B) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:168 - `BRepAlgoAPI_Section::Build()`
     /// Performs the algorithm
     /// Filling interference Data Structure (if it is necessary)
     /// Building the result of the operation.
@@ -2357,6 +2455,7 @@ impl Section {
         unsafe { crate::ffi::BRepAlgoAPI_Section_build(self as *mut Self, theRange) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:179 - `BRepAlgoAPI_Section::HasAncestorFaceOn1()`
     /// get the face of the first part giving section edge <E>.
     /// Returns True on the 3 following conditions :
     /// 1/ <E> is an edge returned by the Shape() metwod.
@@ -2373,6 +2472,7 @@ impl Section {
         unsafe { crate::ffi::BRepAlgoAPI_Section_has_ancestor_face_on1(self as *const Self, E, F) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Section.hxx`:200 - `BRepAlgoAPI_Section::HasAncestorFaceOn2()`
     /// Identifies the ancestor faces of
     /// the intersection edge E resulting from the last
     /// computation performed in this framework, that is, the faces of
@@ -2654,6 +2754,7 @@ impl Section {
 // From BRepAlgoAPI_Splitter.hxx
 // ========================
 
+/// **Source:** `BRepAlgoAPI_Splitter.hxx`:51 - `BRepAlgoAPI_Splitter`
 /// The class contains API level of the **Splitter** algorithm,
 /// which allows splitting a group of arbitrary shapes by the
 /// other group of arbitrary shapes.<br>
@@ -2690,12 +2791,14 @@ unsafe impl crate::CppDeletable for Splitter {
 }
 
 impl Splitter {
+    /// **Source:** `BRepAlgoAPI_Splitter.hxx`:58 - `BRepAlgoAPI_Splitter::BRepAlgoAPI_Splitter()`
     /// @name Constructors
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgoAPI_Splitter_ctor()) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Splitter.hxx`:61 - `BRepAlgoAPI_Splitter::BRepAlgoAPI_Splitter()`
     /// Constructor with already prepared intersection tool - PaveFiller
     pub fn new_pavefiller(thePF: &crate::ffi::BOPAlgo_PaveFiller) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2703,17 +2806,20 @@ impl Splitter {
         }
     }
 
+    /// **Source:** `BRepAlgoAPI_Splitter.hxx`:65 - `BRepAlgoAPI_Splitter::SetTools()`
     /// @name Setters/Getters for the Tools
     /// Sets the Tool arguments
     pub fn set_tools(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         unsafe { crate::ffi::BRepAlgoAPI_Splitter_set_tools(self as *mut Self, theLS) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Splitter.hxx`:68 - `BRepAlgoAPI_Splitter::Tools()`
     /// Returns the Tool arguments
     pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Splitter_tools(self as *const Self)) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Splitter.hxx`:74 - `BRepAlgoAPI_Splitter::Build()`
     /// @name Performing the operation
     /// Performs the Split operation.
     /// Performs the intersection of the argument shapes (both objects and tools)

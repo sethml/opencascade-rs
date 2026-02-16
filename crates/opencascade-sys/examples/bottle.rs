@@ -68,7 +68,7 @@ pub fn main() {
     let mut brep_transform =
         b_rep_builder_api::Transform::new_shape_trsf(wire.shape(), &trsf);
     let mirrored_shape = brep_transform.shape();
-    let mirrored_wire = unsafe { &*topo_ds::wire(mirrored_shape) };
+    let mirrored_wire = topo_ds::wire(mirrored_shape);
 
     let mut make_wire = b_rep_builder_api::MakeWire::new();
     make_wire.add_wire(wire.wire());
@@ -95,7 +95,7 @@ pub fn main() {
     );
 
     while edge_explorer.more() {
-        let edge = unsafe { &*topo_ds::edge(edge_explorer.current()) };
+        let edge = topo_ds::edge(edge_explorer.current());
         make_fillet.add_real_edge(thickness / 12.0, edge);
         edge_explorer.next();
     }
@@ -129,7 +129,7 @@ pub fn main() {
 
     while face_explorer.more() {
         let current = face_explorer.current();
-        let face = unsafe { &*topo_ds::face(current) };
+        let face = topo_ds::face(current);
         let surface = b_rep::Tool::surface_face(face);
 
         // Check if this face is a Geom_Plane
@@ -242,10 +242,8 @@ pub fn main() {
         edge_2_on_surf_2.edge(),
     );
 
-    unsafe {
-        b_rep_lib::build_curves3d_shape(threading_wire_1.shape() as *const _);
-        b_rep_lib::build_curves3d_shape(threading_wire_2.shape() as *const _);
-    }
+    b_rep_lib::build_curves3d_shape(threading_wire_1.shape());
+    b_rep_lib::build_curves3d_shape(threading_wire_2.shape());
 
     // Create Threading
     let mut threading_loft = b_rep_offset_api::ThruSections::new_bool2_real(true, false, 1.0e-06);

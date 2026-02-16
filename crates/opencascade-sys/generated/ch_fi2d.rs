@@ -73,6 +73,7 @@ impl TryFrom<i32> for ConstructionError {
 // From ChFi2d_Builder.hxx
 // ========================
 
+/// **Source:** `ChFi2d_Builder.hxx`:39 - `ChFi2d_Builder`
 /// This  class contains  the algorithm  used to build
 /// fillet on planar wire.
 pub use crate::ffi::ChFi2d_Builder as Builder;
@@ -84,20 +85,24 @@ unsafe impl crate::CppDeletable for Builder {
 }
 
 impl Builder {
+    /// **Source:** `ChFi2d_Builder.hxx`:44 - `ChFi2d_Builder::ChFi2d_Builder()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_Builder_ctor()) }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:48 - `ChFi2d_Builder::ChFi2d_Builder()`
     /// The face  <F> can be build  on a closed or an open
     /// wire.
     pub fn new_face(F: &crate::ffi::TopoDS_Face) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_Builder_ctor_face(F)) }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:50 - `ChFi2d_Builder::Init()`
     pub fn init_face(&mut self, F: &crate::ffi::TopoDS_Face) {
         unsafe { crate::ffi::ChFi2d_Builder_init_face(self as *mut Self, F) }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:52 - `ChFi2d_Builder::Init()`
     pub fn init_face2(
         &mut self,
         RefFace: &crate::ffi::TopoDS_Face,
@@ -106,6 +111,7 @@ impl Builder {
         unsafe { crate::ffi::ChFi2d_Builder_init_face2(self as *mut Self, RefFace, ModFace) }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:59 - `ChFi2d_Builder::AddFillet()`
     /// Add  a fillet  of   radius  <Radius> on  the  wire
     /// between the two edges connected to the vertex <V>.
     /// <AddFillet> returns the  fillet edge. The returned
@@ -125,6 +131,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:64 - `ChFi2d_Builder::ModifyFillet()`
     /// modify the fillet radius and return the new fillet
     /// edge. this    edge has sense  only if   the status
     /// <status> is <IsDone>.
@@ -142,6 +149,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:68 - `ChFi2d_Builder::RemoveFillet()`
     /// removes the fillet <Fillet> and returns the vertex
     /// connecting the two adjacent edges to  this fillet.
     pub fn remove_fillet(
@@ -156,6 +164,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:74 - `ChFi2d_Builder::AddChamfer()`
     /// Add a chamfer on  the  wire between the two  edges
     /// connected <E1> and  <E2>. <AddChamfer> returns the
     /// chamfer  edge. This  edge  has  sense only if  the
@@ -178,6 +187,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:86 - `ChFi2d_Builder::AddChamfer()`
     /// Add  a chamfer on the   wire between the two edges
     /// connected to the vertex <V>. The chamfer will make
     /// an  angle <Ang> with the edge  <E>, and one of its
@@ -203,6 +213,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:95 - `ChFi2d_Builder::ModifyChamfer()`
     /// modify the chamfer <Chamfer>  and returns  the new
     /// chamfer edge.
     /// This edge as sense only  if the status <status> is
@@ -227,6 +238,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:105 - `ChFi2d_Builder::ModifyChamfer()`
     /// modify the  chamfer <Chamfer>  and returns the new
     /// chamfer edge. This    edge as sense  only   if the
     /// status <status>   is  <IsDone>.
@@ -249,6 +261,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:113 - `ChFi2d_Builder::RemoveChamfer()`
     /// removes   the chamfer  <Chamfer>   and returns the
     /// vertex connecting  the two adjacent  edges to this
     /// chamfer.
@@ -264,43 +277,52 @@ impl Builder {
         }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:116 - `ChFi2d_Builder::Result()`
     /// returns the modified face
     pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_Builder_result(self as *const Self)) }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:118 - `ChFi2d_Builder::IsModified()`
     pub fn is_modified(&self, E: &crate::ffi::TopoDS_Edge) -> bool {
         unsafe { crate::ffi::ChFi2d_Builder_is_modified(self as *const Self, E) }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:121 - `ChFi2d_Builder::FilletEdges()`
     /// returns the list of new edges
     pub fn fillet_edges(&self) -> &crate::ffi::TopTools_SequenceOfShape {
         unsafe { &*(crate::ffi::ChFi2d_Builder_fillet_edges(self as *const Self)) }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:123 - `ChFi2d_Builder::NbFillet()`
     pub fn nb_fillet(&self) -> i32 {
         unsafe { crate::ffi::ChFi2d_Builder_nb_fillet(self as *const Self) }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:126 - `ChFi2d_Builder::ChamferEdges()`
     /// returns the list of new edges
     pub fn chamfer_edges(&self) -> &crate::ffi::TopTools_SequenceOfShape {
         unsafe { &*(crate::ffi::ChFi2d_Builder_chamfer_edges(self as *const Self)) }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:128 - `ChFi2d_Builder::NbChamfer()`
     pub fn nb_chamfer(&self) -> i32 {
         unsafe { crate::ffi::ChFi2d_Builder_nb_chamfer(self as *const Self) }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:130 - `ChFi2d_Builder::HasDescendant()`
     pub fn has_descendant(&self, E: &crate::ffi::TopoDS_Edge) -> bool {
         unsafe { crate::ffi::ChFi2d_Builder_has_descendant(self as *const Self, E) }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:134 - `ChFi2d_Builder::DescendantEdge()`
     /// returns the modified edge if <E> has descendant or
     /// <E> in the other case.
     pub fn descendant_edge(&self, E: &crate::ffi::TopoDS_Edge) -> &crate::ffi::TopoDS_Edge {
         unsafe { &*(crate::ffi::ChFi2d_Builder_descendant_edge(self as *const Self, E)) }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:139 - `ChFi2d_Builder::BasisEdge()`
     /// Returns the parent edge of  <E>
     /// Warning: If <E>is a basis edge,  the returned edge would be
     /// equal to <E>
@@ -308,6 +330,7 @@ impl Builder {
         unsafe { &*(crate::ffi::ChFi2d_Builder_basis_edge(self as *const Self, E)) }
     }
 
+    /// **Source:** `ChFi2d_Builder.hxx`:141 - `ChFi2d_Builder::Status()`
     pub fn status(&self) -> crate::ch_fi2d::ConstructionError {
         unsafe {
             crate::ch_fi2d::ConstructionError::try_from(crate::ffi::ChFi2d_Builder_status(

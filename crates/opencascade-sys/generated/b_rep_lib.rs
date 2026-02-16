@@ -6,17 +6,55 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{
-    BRepLib_plane_handlegeomplane_2 as plane_handlegeomplane_2, BRepLib_precision_2 as precision_2,
-    BRepLib_precision_real_2 as precision_real_2,
-};
+/// **Source:** `BRepLib.hxx` - `BRepLib::Precision`
+/// Computes the max distance between edge
+/// and its 2d representation on the face.
+/// Sets the default precision.  The current Precision
+/// is returned.
+pub fn precision_real_2(P: f64) {
+    unsafe { crate::ffi::BRepLib_precision_real_2(P) }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::Precision`
+/// Returns the default precision.
+pub fn precision_2() -> f64 {
+    unsafe { crate::ffi::BRepLib_precision_2() }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::Plane`
+/// Sets the current plane to P.
+pub fn plane_handlegeomplane_2(P: &crate::ffi::HandleGeomPlane) {
+    unsafe { crate::ffi::BRepLib_plane_handlegeomplane_2(P) }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::Plane`
+/// Returns the current plane.
 pub fn plane_2() -> crate::OwnedPtr<crate::ffi::HandleGeomPlane> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_plane_2()) }
 }
-pub use crate::ffi::{
-    BRepLib_check_same_range as check_same_range,
-    BRepLib_same_range_edge_real as same_range_edge_real,
-};
+/// **Source:** `BRepLib.hxx` - `BRepLib::CheckSameRange`
+/// checks if the Edge is same range IGNORING
+/// the same range flag of the edge
+/// Confusion argument is to compare real numbers
+/// idenpendently of any model space tolerance
+pub fn check_same_range(E: &crate::ffi::TopoDS_Edge, Confusion: f64) -> bool {
+    unsafe { crate::ffi::BRepLib_check_same_range(E, Confusion) }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::SameRange`
+/// will make all the curve representation have
+/// the same range domain for the parameters.
+/// This will IGNORE the same range flag value
+/// to proceed.
+/// If there is a 3D curve there it will the
+/// range of that curve. If not the first curve representation
+/// encountered in the list will give its range to
+/// the all the other curves.
+pub fn same_range_edge_real(E: &crate::ffi::TopoDS_Edge, Tolerance: f64) {
+    unsafe { crate::ffi::BRepLib_same_range_edge_real(E, Tolerance) }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::BuildCurve3d`
+/// Computes the 3d curve for the edge  <E> if it does
+/// not exist. Returns True  if the curve was computed
+/// or  existed. Returns False  if there is no  planar
+/// pcurve or the computation failed.
+/// <MaxSegment> >= 30 in approximation
 pub fn build_curve3d_edge_real_shape_int2(
     E: &crate::ffi::TopoDS_Edge,
     Tolerance: f64,
@@ -34,6 +72,10 @@ pub fn build_curve3d_edge_real_shape_int2(
         )
     }
 }
+/// **Source:** `BRepLib.hxx` - `BRepLib::BuildCurves3d`
+/// Computes  the 3d curves  for all the  edges of <S>
+/// return False if one of the computation failed.
+/// <MaxSegment> >= 30 in approximation
 pub fn build_curves3d_shape_real_shape_int2(
     S: &crate::ffi::TopoDS_Shape,
     Tolerance: f64,
@@ -51,14 +93,88 @@ pub fn build_curves3d_shape_real_shape_int2(
         )
     }
 }
-pub use crate::ffi::{
-    BRepLib_build_curves3d_shape as build_curves3d_shape,
-    BRepLib_build_p_curve_for_edge_on_plane_edge_face as build_p_curve_for_edge_on_plane_edge_face,
-    BRepLib_build_p_curve_for_edge_on_plane_edge_face_handlegeom2dcurve_bool as build_p_curve_for_edge_on_plane_edge_face_handlegeom2dcurve_bool,
-    BRepLib_same_parameter_edge_real as same_parameter_edge_real,
-    BRepLib_update_edge_tol as update_edge_tol,
-    BRepLib_update_edge_tolerance as update_edge_tolerance,
-};
+/// **Source:** `BRepLib.hxx` - `BRepLib::BuildCurves3d`
+/// Computes  the 3d curves  for all the  edges of <S>
+/// return False if one of the computation failed.
+pub fn build_curves3d_shape(S: &crate::ffi::TopoDS_Shape) -> bool {
+    unsafe { crate::ffi::BRepLib_build_curves3d_shape(S) }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::BuildPCurveForEdgeOnPlane`
+/// Builds pcurve of edge on face if the surface is plane, and updates the edge.
+pub fn build_p_curve_for_edge_on_plane_edge_face(
+    theE: &crate::ffi::TopoDS_Edge,
+    theF: &crate::ffi::TopoDS_Face,
+) {
+    unsafe { crate::ffi::BRepLib_build_p_curve_for_edge_on_plane_edge_face(theE, theF) }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::BuildPCurveForEdgeOnPlane`
+/// Builds pcurve of edge on face if the surface is plane, but does not update the edge.
+/// The output are the pcurve and the flag telling that pcurve was built.
+pub fn build_p_curve_for_edge_on_plane_edge_face_handlegeom2dcurve_bool(
+    theE: &crate::ffi::TopoDS_Edge,
+    theF: &crate::ffi::TopoDS_Face,
+    aC2D: &mut crate::ffi::HandleGeom2dCurve,
+    bToUpdate: &mut bool,
+) {
+    unsafe {
+        crate::ffi::BRepLib_build_p_curve_for_edge_on_plane_edge_face_handlegeom2dcurve_bool(
+            theE, theF, aC2D, bToUpdate,
+        )
+    }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::UpdateEdgeTol`
+/// Checks if the edge has a  Tolerance smaller than -- --
+/// -- -- MaxToleranceToCheck  if  so it will compute  the
+/// radius    of  -- the   cylindrical  pipe  surface that
+/// MinToleranceRequest is the minimum tolerance before it
+/// is useful to start testing.
+/// Usually it should be around 10e-5
+/// contains all -- the curve representation of the edge
+/// returns True if the Edge tolerance had to be updated
+pub fn update_edge_tol(
+    E: &crate::ffi::TopoDS_Edge,
+    MinToleranceRequest: f64,
+    MaxToleranceToCheck: f64,
+) -> bool {
+    unsafe { crate::ffi::BRepLib_update_edge_tol(E, MinToleranceRequest, MaxToleranceToCheck) }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::UpdateEdgeTolerance`
+/// -- Checks all the edges of the shape whose -- -- --
+/// Tolerance  is  smaller than  MaxToleranceToCheck --
+/// Returns True if at  least  one edge was updated --
+/// MinToleranceRequest is the minimum tolerance before
+/// --  it -- is  useful to start  testing.
+/// Usually it should be around -- 10e-5--
+///
+/// Warning :The  method is  very  slow  as it  checks all.
+/// Use  only  in interfaces or  processing assimilate batch
+pub fn update_edge_tolerance(
+    S: &crate::ffi::TopoDS_Shape,
+    MinToleranceRequest: f64,
+    MaxToleranceToCheck: f64,
+) -> bool {
+    unsafe {
+        crate::ffi::BRepLib_update_edge_tolerance(S, MinToleranceRequest, MaxToleranceToCheck)
+    }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::SameParameter`
+/// Computes new 2d curve(s)  for the edge <theEdge> to have
+/// the same parameter  as  the  3d curve.
+/// The algorithm is not done if the flag SameParameter
+/// was True  on the  Edge.
+pub fn same_parameter_edge_real(theEdge: &crate::ffi::TopoDS_Edge, Tolerance: f64) {
+    unsafe { crate::ffi::BRepLib_same_parameter_edge_real(theEdge, Tolerance) }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::SameParameter`
+/// Computes new 2d curve(s)  for the edge <theEdge> to have
+/// the same parameter  as  the  3d curve.
+/// The algorithm is not done if the flag SameParameter
+/// was True  on the  Edge.<br>
+/// theNewTol is a new tolerance of vertices of the input edge
+/// (not applied inside the algorithm, but pre-computed).
+/// If IsUseOldEdge is true then the input edge will be modified,
+/// otherwise the new copy of input edge will be created.
+/// Returns the new edge as a result, can be ignored if IsUseOldEdge is true.
 pub fn same_parameter_edge_real2_bool(
     theEdge: &crate::ffi::TopoDS_Edge,
     theTolerance: f64,
@@ -74,14 +190,84 @@ pub fn same_parameter_edge_real2_bool(
         ))
     }
 }
-pub use crate::ffi::{
-    BRepLib_orient_closed_solid as orient_closed_solid,
-    BRepLib_same_parameter_shape_real_bool as same_parameter_shape_real_bool,
-    BRepLib_same_parameter_shape_reshape_real_bool as same_parameter_shape_reshape_real_bool,
-    BRepLib_update_inner_tolerances as update_inner_tolerances,
-    BRepLib_update_tolerances_shape_bool as update_tolerances_shape_bool,
-    BRepLib_update_tolerances_shape_reshape_bool as update_tolerances_shape_reshape_bool,
-};
+/// **Source:** `BRepLib.hxx` - `BRepLib::SameParameter`
+/// Computes new 2d curve(s) for all the edges of  <S>
+/// to have the same parameter  as  the  3d curve.
+/// The algorithm is not done if the flag SameParameter
+/// was True  on an  Edge.
+pub fn same_parameter_shape_real_bool(S: &crate::ffi::TopoDS_Shape, Tolerance: f64, forced: bool) {
+    unsafe { crate::ffi::BRepLib_same_parameter_shape_real_bool(S, Tolerance, forced) }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::SameParameter`
+/// Computes new 2d curve(s) for all the edges of  <S>
+/// to have the same parameter  as  the  3d curve.
+/// The algorithm is not done if the flag SameParameter
+/// was True  on an  Edge.<br>
+/// theReshaper is used to record the modifications of input shape <S> to prevent any
+/// modifications on the shape itself.
+/// Thus the input shape (and its subshapes) will not be modified, instead the reshaper will
+/// contain a modified empty-copies of original subshapes as substitutions.
+pub fn same_parameter_shape_reshape_real_bool(
+    S: &crate::ffi::TopoDS_Shape,
+    theReshaper: &mut crate::ffi::BRepTools_ReShape,
+    Tolerance: f64,
+    forced: bool,
+) {
+    unsafe {
+        crate::ffi::BRepLib_same_parameter_shape_reshape_real_bool(
+            S,
+            theReshaper,
+            Tolerance,
+            forced,
+        )
+    }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::UpdateTolerances`
+/// Replaces tolerance   of  FACE EDGE VERTEX  by  the
+/// tolerance Max of their connected handling shapes.
+/// It is not necessary to use this call after
+/// SameParameter. (called in)
+pub fn update_tolerances_shape_bool(S: &crate::ffi::TopoDS_Shape, verifyFaceTolerance: bool) {
+    unsafe { crate::ffi::BRepLib_update_tolerances_shape_bool(S, verifyFaceTolerance) }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::UpdateTolerances`
+/// Replaces tolerance   of  FACE EDGE VERTEX  by  the
+/// tolerance Max of their connected handling shapes.
+/// It is not necessary to use this call after
+/// SameParameter. (called in)<br>
+/// theReshaper is used to record the modifications of input shape <S> to prevent any
+/// modifications on the shape itself.
+/// Thus the input shape (and its subshapes) will not be modified, instead the reshaper will
+/// contain a modified empty-copies of original subshapes as substitutions.
+pub fn update_tolerances_shape_reshape_bool(
+    S: &crate::ffi::TopoDS_Shape,
+    theReshaper: &mut crate::ffi::BRepTools_ReShape,
+    verifyFaceTolerance: bool,
+) {
+    unsafe {
+        crate::ffi::BRepLib_update_tolerances_shape_reshape_bool(
+            S,
+            theReshaper,
+            verifyFaceTolerance,
+        )
+    }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::UpdateInnerTolerances`
+/// Checks tolerances of edges (including inner points) and vertices
+/// of a shape and updates them to satisfy "SameParameter" condition
+pub fn update_inner_tolerances(S: &crate::ffi::TopoDS_Shape) {
+    unsafe { crate::ffi::BRepLib_update_inner_tolerances(S) }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::OrientClosedSolid`
+/// Orients the solid forward  and the  shell with the
+/// orientation to have  matter in the solid. Returns
+/// False if the solid is unOrientable (open or incoherent)
+pub fn orient_closed_solid(solid: &mut crate::ffi::TopoDS_Solid) -> bool {
+    unsafe { crate::ffi::BRepLib_orient_closed_solid(solid) }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::ContinuityOfFaces`
+/// Returns the order of continuity between two faces
+/// connected by an edge
 pub fn continuity_of_faces(
     theEdge: &crate::ffi::TopoDS_Edge,
     theFace1: &crate::ffi::TopoDS_Face,
@@ -98,17 +284,137 @@ pub fn continuity_of_faces(
         .unwrap()
     }
 }
-pub use crate::ffi::{
-    BRepLib_encode_regularity_edge_face2_real as encode_regularity_edge_face2_real,
-    BRepLib_encode_regularity_shape_listofshape_real as encode_regularity_shape_listofshape_real,
-    BRepLib_encode_regularity_shape_real as encode_regularity_shape_real,
-    BRepLib_ensure_normal_consistency as ensure_normal_consistency,
-    BRepLib_extend_face as extend_face,
-    BRepLib_find_valid_range_curve_real2_pnt_real2_pnt_real3 as find_valid_range_curve_real2_pnt_real2_pnt_real3,
-    BRepLib_find_valid_range_edge_real2 as find_valid_range_edge_real2,
-    BRepLib_reverse_sort_faces as reverse_sort_faces, BRepLib_sort_faces as sort_faces,
-    BRepLib_update_deflection as update_deflection,
-};
+/// **Source:** `BRepLib.hxx` - `BRepLib::EncodeRegularity`
+/// Encodes the Regularity of edges on a Shape.
+/// Warning: <TolAng> is an angular tolerance, expressed in Rad.
+/// Warning: If the edges's regularity are coded before, nothing
+/// is done.
+pub fn encode_regularity_shape_real(S: &crate::ffi::TopoDS_Shape, TolAng: f64) {
+    unsafe { crate::ffi::BRepLib_encode_regularity_shape_real(S, TolAng) }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::EncodeRegularity`
+/// Encodes the Regularity of edges in list <LE> on the shape <S>
+/// Warning: <TolAng> is an angular tolerance, expressed in Rad.
+/// Warning: If the edges's regularity are coded before, nothing
+/// is done.
+pub fn encode_regularity_shape_listofshape_real(
+    S: &crate::ffi::TopoDS_Shape,
+    LE: &crate::ffi::TopTools_ListOfShape,
+    TolAng: f64,
+) {
+    unsafe { crate::ffi::BRepLib_encode_regularity_shape_listofshape_real(S, LE, TolAng) }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::EncodeRegularity`
+/// Encodes the Regularity between <F1> and <F2> by <E>
+/// Warning: <TolAng> is an angular tolerance, expressed in Rad.
+/// Warning: If the edge's regularity is coded before, nothing
+/// is done.
+pub fn encode_regularity_edge_face2_real(
+    E: &mut crate::ffi::TopoDS_Edge,
+    F1: &crate::ffi::TopoDS_Face,
+    F2: &crate::ffi::TopoDS_Face,
+    TolAng: f64,
+) {
+    unsafe { crate::ffi::BRepLib_encode_regularity_edge_face2_real(E, F1, F2, TolAng) }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::SortFaces`
+/// Sorts in  LF the Faces of   S on the  complexity of
+/// their                  surfaces
+/// (Plane,Cylinder,Cone,Sphere,Torus,other)
+pub fn sort_faces(S: &crate::ffi::TopoDS_Shape, LF: &mut crate::ffi::TopTools_ListOfShape) {
+    unsafe { crate::ffi::BRepLib_sort_faces(S, LF) }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::ReverseSortFaces`
+/// Sorts in  LF  the   Faces  of S   on the reverse
+/// complexity       of       their      surfaces
+/// (other,Torus,Sphere,Cone,Cylinder,Plane)
+pub fn reverse_sort_faces(S: &crate::ffi::TopoDS_Shape, LF: &mut crate::ffi::TopTools_ListOfShape) {
+    unsafe { crate::ffi::BRepLib_reverse_sort_faces(S, LF) }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::EnsureNormalConsistency`
+/// Corrects the normals in Poly_Triangulation of faces,
+/// in such way that normals at nodes lying along smooth
+/// edges have the same value on both adjacent triangulations.
+/// Returns TRUE if any correction is done.
+pub fn ensure_normal_consistency(
+    S: &crate::ffi::TopoDS_Shape,
+    theAngTol: f64,
+    ForceComputeNormals: bool,
+) -> bool {
+    unsafe { crate::ffi::BRepLib_ensure_normal_consistency(S, theAngTol, ForceComputeNormals) }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::UpdateDeflection`
+/// Updates value of deflection in Poly_Triangulation of faces
+/// by the maximum deviation measured on existing triangulation.
+pub fn update_deflection(S: &crate::ffi::TopoDS_Shape) {
+    unsafe { crate::ffi::BRepLib_update_deflection(S) }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::FindValidRange`
+/// For an edge defined by 3d curve and tolerance and vertices defined by points,
+/// parameters on curve and tolerances,
+/// finds a range of curve between vertices not covered by vertices tolerances.
+/// Returns false if there is no such range. Otherwise, sets theFirst and
+/// theLast as its bounds.
+pub fn find_valid_range_curve_real2_pnt_real2_pnt_real3(
+    theCurve: &crate::ffi::Adaptor3d_Curve,
+    theTolE: f64,
+    theParV1: f64,
+    thePntV1: &crate::ffi::gp_Pnt,
+    theTolV1: f64,
+    theParV2: f64,
+    thePntV2: &crate::ffi::gp_Pnt,
+    theTolV2: f64,
+    theFirst: &mut f64,
+    theLast: &mut f64,
+) -> bool {
+    unsafe {
+        crate::ffi::BRepLib_find_valid_range_curve_real2_pnt_real2_pnt_real3(
+            theCurve, theTolE, theParV1, thePntV1, theTolV1, theParV2, thePntV2, theTolV2,
+            theFirst, theLast,
+        )
+    }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::FindValidRange`
+/// Finds a range of 3d curve of the edge not covered by vertices tolerances.
+/// Returns false if there is no such range. Otherwise, sets theFirst and
+/// theLast as its bounds.
+pub fn find_valid_range_edge_real2(
+    theEdge: &crate::ffi::TopoDS_Edge,
+    theFirst: &mut f64,
+    theLast: &mut f64,
+) -> bool {
+    unsafe { crate::ffi::BRepLib_find_valid_range_edge_real2(theEdge, theFirst, theLast) }
+}
+/// **Source:** `BRepLib.hxx` - `BRepLib::ExtendFace`
+/// Enlarges the face on the given value.
+/// @param[in] theF  The face to extend
+/// @param[in] theExtVal  The extension value
+/// @param[in] theExtUMin  Defines whether to extend the face in UMin direction
+/// @param[in] theExtUMax  Defines whether to extend the face in UMax direction
+/// @param[in] theExtVMin  Defines whether to extend the face in VMin direction
+/// @param[in] theExtVMax  Defines whether to extend the face in VMax direction
+/// @param[in] theFExtended  The extended face
+pub fn extend_face(
+    theF: &crate::ffi::TopoDS_Face,
+    theExtVal: f64,
+    theExtUMin: bool,
+    theExtUMax: bool,
+    theExtVMin: bool,
+    theExtVMax: bool,
+    theFExtended: &mut crate::ffi::TopoDS_Face,
+) {
+    unsafe {
+        crate::ffi::BRepLib_extend_face(
+            theF,
+            theExtVal,
+            theExtUMin,
+            theExtUMax,
+            theExtVMin,
+            theExtVMax,
+            theFExtended,
+        )
+    }
+}
 
 /// Errors that can occur at edge construction.
 /// no error
@@ -283,6 +589,7 @@ impl TryFrom<i32> for WireError {
 // From BRepLib_CheckCurveOnSurface.hxx
 // ========================
 
+/// **Source:** `BRepLib_CheckCurveOnSurface.hxx`:23 - `BRepLib_CheckCurveOnSurface`
 /// Computes the max distance between edge and its 2d representation on the face.
 /// This class is not intended to process non-sameparameter edges.
 pub use crate::ffi::BRepLib_CheckCurveOnSurface as CheckCurveOnSurface;
@@ -294,11 +601,13 @@ unsafe impl crate::CppDeletable for CheckCurveOnSurface {
 }
 
 impl CheckCurveOnSurface {
+    /// **Source:** `BRepLib_CheckCurveOnSurface.hxx`:29 - `BRepLib_CheckCurveOnSurface::BRepLib_CheckCurveOnSurface()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_CheckCurveOnSurface_ctor()) }
     }
 
+    /// **Source:** `BRepLib_CheckCurveOnSurface.hxx`:35 - `BRepLib_CheckCurveOnSurface::BRepLib_CheckCurveOnSurface()`
     /// Constructor
     pub fn new_edge_face(
         theEdge: &crate::ffi::TopoDS_Edge,
@@ -311,22 +620,26 @@ impl CheckCurveOnSurface {
         }
     }
 
+    /// **Source:** `BRepLib_CheckCurveOnSurface.hxx`:39 - `BRepLib_CheckCurveOnSurface::Init()`
     /// Sets the data for the algorithm
     pub fn init(&mut self, theEdge: &crate::ffi::TopoDS_Edge, theFace: &crate::ffi::TopoDS_Face) {
         unsafe { crate::ffi::BRepLib_CheckCurveOnSurface_init(self as *mut Self, theEdge, theFace) }
     }
 
+    /// **Source:** `BRepLib_CheckCurveOnSurface.hxx`:43 - `BRepLib_CheckCurveOnSurface::Perform()`
     /// Performs the calculation
     /// If myIsParallel == Standard_True then computation will be performed in parallel.
     pub fn perform(&mut self) {
         unsafe { crate::ffi::BRepLib_CheckCurveOnSurface_perform(self as *mut Self) }
     }
 
+    /// **Source:** `BRepLib_CheckCurveOnSurface.hxx`:46 - `BRepLib_CheckCurveOnSurface::IsDone()`
     /// Returns true if the max distance has been found
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepLib_CheckCurveOnSurface_is_done(self as *const Self) }
     }
 
+    /// **Source:** `BRepLib_CheckCurveOnSurface.hxx`:49 - `BRepLib_CheckCurveOnSurface::SetParallel()`
     /// Sets parallel flag
     pub fn set_parallel(&mut self, theIsParallel: bool) {
         unsafe {
@@ -334,11 +647,13 @@ impl CheckCurveOnSurface {
         }
     }
 
+    /// **Source:** `BRepLib_CheckCurveOnSurface.hxx`:52 - `BRepLib_CheckCurveOnSurface::IsParallel()`
     /// Returns true if parallel flag is set
     pub fn is_parallel(&mut self) -> bool {
         unsafe { crate::ffi::BRepLib_CheckCurveOnSurface_is_parallel(self as *mut Self) }
     }
 
+    /// **Source:** `BRepLib_CheckCurveOnSurface.hxx`:60 - `BRepLib_CheckCurveOnSurface::ErrorStatus()`
     /// Returns error status
     /// The possible values are:
     /// 0 - OK;
@@ -349,11 +664,13 @@ impl CheckCurveOnSurface {
         unsafe { crate::ffi::BRepLib_CheckCurveOnSurface_error_status(self as *const Self) }
     }
 
+    /// **Source:** `BRepLib_CheckCurveOnSurface.hxx`:63 - `BRepLib_CheckCurveOnSurface::MaxDistance()`
     /// Returns max distance
     pub fn max_distance(&self) -> f64 {
         unsafe { crate::ffi::BRepLib_CheckCurveOnSurface_max_distance(self as *const Self) }
     }
 
+    /// **Source:** `BRepLib_CheckCurveOnSurface.hxx`:66 - `BRepLib_CheckCurveOnSurface::MaxParameter()`
     /// Returns parameter in which the distance is maximal
     pub fn max_parameter(&self) -> f64 {
         unsafe { crate::ffi::BRepLib_CheckCurveOnSurface_max_parameter(self as *const Self) }
@@ -364,6 +681,7 @@ impl CheckCurveOnSurface {
 // From BRepLib_Command.hxx
 // ========================
 
+/// **Source:** `BRepLib_Command.hxx`:35 - `BRepLib_Command`
 /// Root class for all commands in BRepLib.
 ///
 /// Provides :
@@ -382,10 +700,12 @@ unsafe impl crate::CppDeletable for Command {
 }
 
 impl Command {
+    /// **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepLib_Command_is_done(self as *const Self) }
     }
 
+    /// **Source:** `BRepLib_Command.hxx`:45 - `BRepLib_Command::Check()`
     /// Raises NotDone if done is false.
     pub fn check(&self) {
         unsafe { crate::ffi::BRepLib_Command_check(self as *const Self) }
@@ -396,6 +716,7 @@ impl Command {
 // From BRepLib_FindSurface.hxx
 // ========================
 
+/// **Source:** `BRepLib_FindSurface.hxx`:48 - `BRepLib_FindSurface`
 /// Provides an  algorithm to find  a Surface  through a
 /// set of edges.
 ///
@@ -425,10 +746,12 @@ unsafe impl crate::CppDeletable for FindSurface {
 }
 
 impl FindSurface {
+    /// **Source:** `BRepLib_FindSurface.hxx`:53 - `BRepLib_FindSurface::BRepLib_FindSurface()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_FindSurface_ctor()) }
     }
 
+    /// **Source:** `BRepLib_FindSurface.hxx`:63 - `BRepLib_FindSurface::BRepLib_FindSurface()`
     /// Computes the Surface from the edges of  <S> with the
     /// given tolerance.
     /// if <OnlyPlane> is true, the computed surface will be
@@ -450,6 +773,7 @@ impl FindSurface {
         }
     }
 
+    /// **Source:** `BRepLib_FindSurface.hxx`:63 - `BRepLib_FindSurface::BRepLib_FindSurface()`
     /// Computes the Surface from the edges of  <S> with the
     /// given tolerance.
     /// if <OnlyPlane> is true, the computed surface will be
@@ -466,6 +790,7 @@ impl FindSurface {
         Self::new_shape_real_bool2(S, Tol, OnlyPlane, false)
     }
 
+    /// **Source:** `BRepLib_FindSurface.hxx`:63 - `BRepLib_FindSurface::BRepLib_FindSurface()`
     /// Computes the Surface from the edges of  <S> with the
     /// given tolerance.
     /// if <OnlyPlane> is true, the computed surface will be
@@ -478,6 +803,7 @@ impl FindSurface {
         Self::new_shape_real_bool2(S, Tol, false, false)
     }
 
+    /// **Source:** `BRepLib_FindSurface.hxx`:63 - `BRepLib_FindSurface::BRepLib_FindSurface()`
     /// Computes the Surface from the edges of  <S> with the
     /// given tolerance.
     /// if <OnlyPlane> is true, the computed surface will be
@@ -490,6 +816,7 @@ impl FindSurface {
         Self::new_shape_real_bool2(S, -1.0, false, false)
     }
 
+    /// **Source:** `BRepLib_FindSurface.hxx`:76 - `BRepLib_FindSurface::Init()`
     /// Computes the Surface from the edges of  <S> with the
     /// given tolerance.
     /// if <OnlyPlane> is true, the computed surface will be
@@ -510,28 +837,34 @@ impl FindSurface {
         }
     }
 
+    /// **Source:** `BRepLib_FindSurface.hxx`:81 - `BRepLib_FindSurface::Found()`
     pub fn found(&self) -> bool {
         unsafe { crate::ffi::BRepLib_FindSurface_found(self as *const Self) }
     }
 
+    /// **Source:** `BRepLib_FindSurface.hxx`:83 - `BRepLib_FindSurface::Surface()`
     pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepLib_FindSurface_surface(self as *const Self))
         }
     }
 
+    /// **Source:** `BRepLib_FindSurface.hxx`:85 - `BRepLib_FindSurface::Tolerance()`
     pub fn tolerance(&self) -> f64 {
         unsafe { crate::ffi::BRepLib_FindSurface_tolerance(self as *const Self) }
     }
 
+    /// **Source:** `BRepLib_FindSurface.hxx`:87 - `BRepLib_FindSurface::ToleranceReached()`
     pub fn tolerance_reached(&self) -> f64 {
         unsafe { crate::ffi::BRepLib_FindSurface_tolerance_reached(self as *const Self) }
     }
 
+    /// **Source:** `BRepLib_FindSurface.hxx`:89 - `BRepLib_FindSurface::Existed()`
     pub fn existed(&self) -> bool {
         unsafe { crate::ffi::BRepLib_FindSurface_existed(self as *const Self) }
     }
 
+    /// **Source:** `BRepLib_FindSurface.hxx`:91 - `BRepLib_FindSurface::Location()`
     pub fn location(&self) -> crate::OwnedPtr<crate::ffi::TopLoc_Location> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepLib_FindSurface_location(self as *const Self))
@@ -543,6 +876,7 @@ impl FindSurface {
 // From BRepLib_FuseEdges.hxx
 // ========================
 
+/// **Source:** `BRepLib_FuseEdges.hxx`:43 - `BRepLib_FuseEdges`
 /// This class can detect  vertices in a face that can
 /// be considered useless and then perform the fuse of
 /// the  edges and remove  the  useless vertices.  By
@@ -561,6 +895,7 @@ unsafe impl crate::CppDeletable for FuseEdges {
 }
 
 impl FuseEdges {
+    /// **Source:** `BRepLib_FuseEdges.hxx`:50 - `BRepLib_FuseEdges::BRepLib_FuseEdges()`
     /// Initialise members  and build  construction of map
     /// of ancestors.
     pub fn new_shape_bool(
@@ -574,39 +909,46 @@ impl FuseEdges {
         }
     }
 
+    /// **Source:** `BRepLib_FuseEdges.hxx`:50 - `BRepLib_FuseEdges::BRepLib_FuseEdges()`
     /// Initialise members  and build  construction of map
     /// of ancestors.
     pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
         Self::new_shape_bool(theShape, false)
     }
 
+    /// **Source:** `BRepLib_FuseEdges.hxx`:54 - `BRepLib_FuseEdges::AvoidEdges()`
     /// set edges to avoid being fused
     pub fn avoid_edges(&mut self, theMapEdg: &crate::ffi::TopTools_IndexedMapOfShape) {
         unsafe { crate::ffi::BRepLib_FuseEdges_avoid_edges(self as *mut Self, theMapEdg) }
     }
 
+    /// **Source:** `BRepLib_FuseEdges.hxx`:58 - `BRepLib_FuseEdges::SetConcatBSpl()`
     /// set mode to enable concatenation G1 BSpline edges in one
     /// End  Modified  by  IFV  19.04.07
     pub fn set_concat_b_spl(&mut self, theConcatBSpl: bool) {
         unsafe { crate::ffi::BRepLib_FuseEdges_set_concat_b_spl(self as *mut Self, theConcatBSpl) }
     }
 
+    /// **Source:** `BRepLib_FuseEdges.hxx`:73 - `BRepLib_FuseEdges::Faces()`
     /// returns the map of modified faces.
     pub fn faces(&mut self, theMapFac: &mut crate::ffi::TopTools_DataMapOfShapeShape) {
         unsafe { crate::ffi::BRepLib_FuseEdges_faces(self as *mut Self, theMapFac) }
     }
 
+    /// **Source:** `BRepLib_FuseEdges.hxx`:77 - `BRepLib_FuseEdges::Shape()`
     /// returns myShape modified with the list of internal
     /// edges removed from it.
     pub fn shape(&mut self) -> &mut crate::ffi::TopoDS_Shape {
         unsafe { &mut *(crate::ffi::BRepLib_FuseEdges_shape(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepLib_FuseEdges.hxx`:80 - `BRepLib_FuseEdges::NbVertices()`
     /// returns the number of vertices candidate to be removed
     pub fn nb_vertices(&mut self) -> i32 {
         unsafe { crate::ffi::BRepLib_FuseEdges_nb_vertices(self as *mut Self) }
     }
 
+    /// **Source:** `BRepLib_FuseEdges.hxx`:84 - `BRepLib_FuseEdges::Perform()`
     /// Using  map of list of connex  edges, fuse each list to
     /// one edge and then update myShape
     pub fn perform(&mut self) {
@@ -618,6 +960,7 @@ impl FuseEdges {
 // From BRepLib_MakeEdge.hxx
 // ========================
 
+/// **Source:** `BRepLib_MakeEdge.hxx`:69 - `BRepLib_MakeEdge`
 /// Provides methods to build edges.
 ///
 /// The   methods have  the  following   syntax, where
@@ -658,10 +1001,12 @@ unsafe impl crate::CppDeletable for MakeEdge {
 }
 
 impl MakeEdge {
+    /// **Source:** `BRepLib_MakeEdge.hxx`:74 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge_ctor()) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:76 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_vertex2(
         V1: &crate::ffi::TopoDS_Vertex,
         V2: &crate::ffi::TopoDS_Vertex,
@@ -669,18 +1014,22 @@ impl MakeEdge {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge_ctor_vertex2(V1, V2)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:78 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_pnt2(P1: &crate::ffi::gp_Pnt, P2: &crate::ffi::gp_Pnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge_ctor_pnt2(P1, P2)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:80 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_lin(L: &crate::ffi::gp_Lin) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge_ctor_lin(L)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:82 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_lin_real2(L: &crate::ffi::gp_Lin, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge_ctor_lin_real2(L, p1, p2)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:84 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_lin_pnt2(
         L: &crate::ffi::gp_Lin,
         P1: &crate::ffi::gp_Pnt,
@@ -689,6 +1038,7 @@ impl MakeEdge {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge_ctor_lin_pnt2(L, P1, P2)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:86 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_lin_vertex2(
         L: &crate::ffi::gp_Lin,
         V1: &crate::ffi::TopoDS_Vertex,
@@ -699,16 +1049,19 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:90 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_circ(L: &crate::ffi::gp_Circ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge_ctor_circ(L)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:92 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_circ_real2(L: &crate::ffi::gp_Circ, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge_ctor_circ_real2(L, p1, p2))
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:96 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_circ_pnt2(
         L: &crate::ffi::gp_Circ,
         P1: &crate::ffi::gp_Pnt,
@@ -717,6 +1070,7 @@ impl MakeEdge {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge_ctor_circ_pnt2(L, P1, P2)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:98 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_circ_vertex2(
         L: &crate::ffi::gp_Circ,
         V1: &crate::ffi::TopoDS_Vertex,
@@ -727,16 +1081,19 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:102 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_elips(L: &crate::ffi::gp_Elips) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge_ctor_elips(L)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:104 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_elips_real2(L: &crate::ffi::gp_Elips, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge_ctor_elips_real2(L, p1, p2))
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:108 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_elips_pnt2(
         L: &crate::ffi::gp_Elips,
         P1: &crate::ffi::gp_Pnt,
@@ -747,6 +1104,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:110 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_elips_vertex2(
         L: &crate::ffi::gp_Elips,
         V1: &crate::ffi::TopoDS_Vertex,
@@ -757,16 +1115,19 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:114 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_hypr(L: &crate::ffi::gp_Hypr) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge_ctor_hypr(L)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:116 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_hypr_real2(L: &crate::ffi::gp_Hypr, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge_ctor_hypr_real2(L, p1, p2))
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:120 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_hypr_pnt2(
         L: &crate::ffi::gp_Hypr,
         P1: &crate::ffi::gp_Pnt,
@@ -775,6 +1136,7 @@ impl MakeEdge {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge_ctor_hypr_pnt2(L, P1, P2)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:122 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_hypr_vertex2(
         L: &crate::ffi::gp_Hypr,
         V1: &crate::ffi::TopoDS_Vertex,
@@ -785,16 +1147,19 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:126 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_parab(L: &crate::ffi::gp_Parab) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge_ctor_parab(L)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:128 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_parab_real2(L: &crate::ffi::gp_Parab, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge_ctor_parab_real2(L, p1, p2))
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:132 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_parab_pnt2(
         L: &crate::ffi::gp_Parab,
         P1: &crate::ffi::gp_Pnt,
@@ -805,6 +1170,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:134 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_parab_vertex2(
         L: &crate::ffi::gp_Parab,
         V1: &crate::ffi::TopoDS_Vertex,
@@ -815,10 +1181,12 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:138 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_handlegeomcurve(L: &crate::ffi::HandleGeomCurve) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge_ctor_handlegeomcurve(L)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:140 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_handlegeomcurve_real2(
         L: &crate::ffi::HandleGeomCurve,
         p1: f64,
@@ -831,6 +1199,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:144 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_handlegeomcurve_pnt2(
         L: &crate::ffi::HandleGeomCurve,
         P1: &crate::ffi::gp_Pnt,
@@ -843,6 +1212,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:146 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_handlegeomcurve_vertex2(
         L: &crate::ffi::HandleGeomCurve,
         V1: &crate::ffi::TopoDS_Vertex,
@@ -855,6 +1225,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:150 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_handlegeomcurve_pnt2_real2(
         L: &crate::ffi::HandleGeomCurve,
         P1: &crate::ffi::gp_Pnt,
@@ -869,6 +1240,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:156 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_handlegeomcurve_vertex2_real2(
         L: &crate::ffi::HandleGeomCurve,
         V1: &crate::ffi::TopoDS_Vertex,
@@ -883,6 +1255,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:162 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_handlegeom2dcurve_handlegeomsurface(
         L: &crate::ffi::HandleGeom2dCurve,
         S: &crate::ffi::HandleGeomSurface,
@@ -894,6 +1267,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:164 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_handlegeom2dcurve_handlegeomsurface_real2(
         L: &crate::ffi::HandleGeom2dCurve,
         S: &crate::ffi::HandleGeomSurface,
@@ -909,6 +1283,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:169 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_handlegeom2dcurve_handlegeomsurface_pnt2(
         L: &crate::ffi::HandleGeom2dCurve,
         S: &crate::ffi::HandleGeomSurface,
@@ -924,6 +1299,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:174 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_handlegeom2dcurve_handlegeomsurface_vertex2(
         L: &crate::ffi::HandleGeom2dCurve,
         S: &crate::ffi::HandleGeomSurface,
@@ -939,6 +1315,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:179 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_handlegeom2dcurve_handlegeomsurface_pnt2_real2(
         L: &crate::ffi::HandleGeom2dCurve,
         S: &crate::ffi::HandleGeomSurface,
@@ -956,6 +1333,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:186 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn new_handlegeom2dcurve_handlegeomsurface_vertex2_real2(
         L: &crate::ffi::HandleGeom2dCurve,
         S: &crate::ffi::HandleGeomSurface,
@@ -973,10 +1351,12 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:193 - `BRepLib_MakeEdge::Init()`
     pub fn init_handlegeomcurve(&mut self, C: &crate::ffi::HandleGeomCurve) {
         unsafe { crate::ffi::BRepLib_MakeEdge_init_handlegeomcurve(self as *mut Self, C) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:195 - `BRepLib_MakeEdge::Init()`
     pub fn init_handlegeomcurve_real2(
         &mut self,
         C: &crate::ffi::HandleGeomCurve,
@@ -988,6 +1368,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:199 - `BRepLib_MakeEdge::Init()`
     pub fn init_handlegeomcurve_pnt2(
         &mut self,
         C: &crate::ffi::HandleGeomCurve,
@@ -999,6 +1380,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:201 - `BRepLib_MakeEdge::Init()`
     pub fn init_handlegeomcurve_vertex2(
         &mut self,
         C: &crate::ffi::HandleGeomCurve,
@@ -1010,6 +1392,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:205 - `BRepLib_MakeEdge::Init()`
     pub fn init_handlegeomcurve_pnt2_real2(
         &mut self,
         C: &crate::ffi::HandleGeomCurve,
@@ -1030,6 +1413,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:211 - `BRepLib_MakeEdge::Init()`
     pub fn init_handlegeomcurve_vertex2_real2(
         &mut self,
         C: &crate::ffi::HandleGeomCurve,
@@ -1050,6 +1434,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:217 - `BRepLib_MakeEdge::Init()`
     pub fn init_handlegeom2dcurve_handlegeomsurface(
         &mut self,
         C: &crate::ffi::HandleGeom2dCurve,
@@ -1064,6 +1449,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:219 - `BRepLib_MakeEdge::Init()`
     pub fn init_handlegeom2dcurve_handlegeomsurface_real2(
         &mut self,
         C: &crate::ffi::HandleGeom2dCurve,
@@ -1082,6 +1468,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:224 - `BRepLib_MakeEdge::Init()`
     pub fn init_handlegeom2dcurve_handlegeomsurface_pnt2(
         &mut self,
         C: &crate::ffi::HandleGeom2dCurve,
@@ -1100,6 +1487,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:229 - `BRepLib_MakeEdge::Init()`
     pub fn init_handlegeom2dcurve_handlegeomsurface_vertex2(
         &mut self,
         C: &crate::ffi::HandleGeom2dCurve,
@@ -1118,6 +1506,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:234 - `BRepLib_MakeEdge::Init()`
     pub fn init_handlegeom2dcurve_handlegeomsurface_pnt2_real2(
         &mut self,
         C: &crate::ffi::HandleGeom2dCurve,
@@ -1140,6 +1529,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:241 - `BRepLib_MakeEdge::Init()`
     pub fn init_handlegeom2dcurve_handlegeomsurface_vertex2_real2(
         &mut self,
         C: &crate::ffi::HandleGeom2dCurve,
@@ -1162,6 +1552,7 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:249 - `BRepLib_MakeEdge::Error()`
     /// Returns the error description when NotDone.
     pub fn error(&self) -> crate::b_rep_lib::EdgeError {
         unsafe {
@@ -1172,15 +1563,18 @@ impl MakeEdge {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:251 - `BRepLib_MakeEdge::Edge()`
     pub fn edge(&mut self) -> &crate::ffi::TopoDS_Edge {
         unsafe { &*(crate::ffi::BRepLib_MakeEdge_edge(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:255 - `BRepLib_MakeEdge::Vertex1()`
     /// Returns the first vertex of the edge. May be Null.
     pub fn vertex1(&self) -> &crate::ffi::TopoDS_Vertex {
         unsafe { &*(crate::ffi::BRepLib_MakeEdge_vertex1(self as *const Self)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge.hxx`:258 - `BRepLib_MakeEdge::Vertex2()`
     /// Returns the second vertex of the edge. May be Null.
     pub fn vertex2(&self) -> &crate::ffi::TopoDS_Vertex {
         unsafe { &*(crate::ffi::BRepLib_MakeEdge_vertex2(self as *const Self)) }
@@ -1272,6 +1666,7 @@ impl MakeEdge {
 // From BRepLib_MakeEdge2d.hxx
 // ========================
 
+/// **Source:** `BRepLib_MakeEdge2d.hxx`:67 - `BRepLib_MakeEdge2d`
 /// Provides methods to build edges.
 ///
 /// The   methods have  the  following   syntax, where
@@ -1312,6 +1707,7 @@ unsafe impl crate::CppDeletable for MakeEdge2d {
 }
 
 impl MakeEdge2d {
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:72 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_vertex2(
         V1: &crate::ffi::TopoDS_Vertex,
         V2: &crate::ffi::TopoDS_Vertex,
@@ -1319,6 +1715,7 @@ impl MakeEdge2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge2d_ctor_vertex2(V1, V2)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:74 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_pnt2d2(
         P1: &crate::ffi::gp_Pnt2d,
         P2: &crate::ffi::gp_Pnt2d,
@@ -1326,16 +1723,19 @@ impl MakeEdge2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge2d_ctor_pnt2d2(P1, P2)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:76 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_lin2d(L: &crate::ffi::gp_Lin2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge2d_ctor_lin2d(L)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:78 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_lin2d_real2(L: &crate::ffi::gp_Lin2d, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge2d_ctor_lin2d_real2(L, p1, p2))
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:82 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_lin2d_pnt2d2(
         L: &crate::ffi::gp_Lin2d,
         P1: &crate::ffi::gp_Pnt2d,
@@ -1346,6 +1746,7 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:84 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_lin2d_vertex2(
         L: &crate::ffi::gp_Lin2d,
         V1: &crate::ffi::TopoDS_Vertex,
@@ -1356,16 +1757,19 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:88 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_circ2d(L: &crate::ffi::gp_Circ2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge2d_ctor_circ2d(L)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:90 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_circ2d_real2(L: &crate::ffi::gp_Circ2d, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge2d_ctor_circ2d_real2(L, p1, p2))
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:94 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_circ2d_pnt2d2(
         L: &crate::ffi::gp_Circ2d,
         P1: &crate::ffi::gp_Pnt2d,
@@ -1376,6 +1780,7 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:96 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_circ2d_vertex2(
         L: &crate::ffi::gp_Circ2d,
         V1: &crate::ffi::TopoDS_Vertex,
@@ -1386,10 +1791,12 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:100 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_elips2d(L: &crate::ffi::gp_Elips2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge2d_ctor_elips2d(L)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:102 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_elips2d_real2(
         L: &crate::ffi::gp_Elips2d,
         p1: f64,
@@ -1400,6 +1807,7 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:106 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_elips2d_pnt2d2(
         L: &crate::ffi::gp_Elips2d,
         P1: &crate::ffi::gp_Pnt2d,
@@ -1410,6 +1818,7 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:108 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_elips2d_vertex2(
         L: &crate::ffi::gp_Elips2d,
         V1: &crate::ffi::TopoDS_Vertex,
@@ -1422,16 +1831,19 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:112 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_hypr2d(L: &crate::ffi::gp_Hypr2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge2d_ctor_hypr2d(L)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:114 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_hypr2d_real2(L: &crate::ffi::gp_Hypr2d, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge2d_ctor_hypr2d_real2(L, p1, p2))
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:118 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_hypr2d_pnt2d2(
         L: &crate::ffi::gp_Hypr2d,
         P1: &crate::ffi::gp_Pnt2d,
@@ -1442,6 +1854,7 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:120 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_hypr2d_vertex2(
         L: &crate::ffi::gp_Hypr2d,
         V1: &crate::ffi::TopoDS_Vertex,
@@ -1452,10 +1865,12 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:124 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_parab2d(L: &crate::ffi::gp_Parab2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge2d_ctor_parab2d(L)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:126 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_parab2d_real2(
         L: &crate::ffi::gp_Parab2d,
         p1: f64,
@@ -1466,6 +1881,7 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:130 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_parab2d_pnt2d2(
         L: &crate::ffi::gp_Parab2d,
         P1: &crate::ffi::gp_Pnt2d,
@@ -1476,6 +1892,7 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:132 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_parab2d_vertex2(
         L: &crate::ffi::gp_Parab2d,
         V1: &crate::ffi::TopoDS_Vertex,
@@ -1488,12 +1905,14 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:136 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_handlegeom2dcurve(L: &crate::ffi::HandleGeom2dCurve) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeEdge2d_ctor_handlegeom2dcurve(L))
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:138 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_handlegeom2dcurve_real2(
         L: &crate::ffi::HandleGeom2dCurve,
         p1: f64,
@@ -1506,6 +1925,7 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:142 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_handlegeom2dcurve_pnt2d2(
         L: &crate::ffi::HandleGeom2dCurve,
         P1: &crate::ffi::gp_Pnt2d,
@@ -1518,6 +1938,7 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:146 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_handlegeom2dcurve_vertex2(
         L: &crate::ffi::HandleGeom2dCurve,
         V1: &crate::ffi::TopoDS_Vertex,
@@ -1530,6 +1951,7 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:150 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_handlegeom2dcurve_pnt2d2_real2(
         L: &crate::ffi::HandleGeom2dCurve,
         P1: &crate::ffi::gp_Pnt2d,
@@ -1546,6 +1968,7 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:156 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn new_handlegeom2dcurve_vertex2_real2(
         L: &crate::ffi::HandleGeom2dCurve,
         V1: &crate::ffi::TopoDS_Vertex,
@@ -1562,10 +1985,12 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:162 - `BRepLib_MakeEdge2d::Init()`
     pub fn init_handlegeom2dcurve(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
         unsafe { crate::ffi::BRepLib_MakeEdge2d_init_handlegeom2dcurve(self as *mut Self, C) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:164 - `BRepLib_MakeEdge2d::Init()`
     pub fn init_handlegeom2dcurve_real2(
         &mut self,
         C: &crate::ffi::HandleGeom2dCurve,
@@ -1582,6 +2007,7 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:168 - `BRepLib_MakeEdge2d::Init()`
     pub fn init_handlegeom2dcurve_pnt2d2(
         &mut self,
         C: &crate::ffi::HandleGeom2dCurve,
@@ -1598,6 +2024,7 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:170 - `BRepLib_MakeEdge2d::Init()`
     pub fn init_handlegeom2dcurve_vertex2(
         &mut self,
         C: &crate::ffi::HandleGeom2dCurve,
@@ -1614,6 +2041,7 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:174 - `BRepLib_MakeEdge2d::Init()`
     pub fn init_handlegeom2dcurve_pnt2d2_real2(
         &mut self,
         C: &crate::ffi::HandleGeom2dCurve,
@@ -1634,6 +2062,7 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:180 - `BRepLib_MakeEdge2d::Init()`
     pub fn init_handlegeom2dcurve_vertex2_real2(
         &mut self,
         C: &crate::ffi::HandleGeom2dCurve,
@@ -1654,6 +2083,7 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:187 - `BRepLib_MakeEdge2d::Error()`
     /// Returns the error description when NotDone.
     pub fn error(&self) -> crate::b_rep_lib::EdgeError {
         unsafe {
@@ -1664,15 +2094,18 @@ impl MakeEdge2d {
         }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:189 - `BRepLib_MakeEdge2d::Edge()`
     pub fn edge(&mut self) -> &crate::ffi::TopoDS_Edge {
         unsafe { &*(crate::ffi::BRepLib_MakeEdge2d_edge(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:193 - `BRepLib_MakeEdge2d::Vertex1()`
     /// Returns the first vertex of the edge. May be Null.
     pub fn vertex1(&self) -> &crate::ffi::TopoDS_Vertex {
         unsafe { &*(crate::ffi::BRepLib_MakeEdge2d_vertex1(self as *const Self)) }
     }
 
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:196 - `BRepLib_MakeEdge2d::Vertex2()`
     /// Returns the second vertex of the edge. May be Null.
     pub fn vertex2(&self) -> &crate::ffi::TopoDS_Vertex {
         unsafe { &*(crate::ffi::BRepLib_MakeEdge2d_vertex2(self as *const Self)) }
@@ -1768,6 +2201,7 @@ impl MakeEdge2d {
 // From BRepLib_MakeFace.hxx
 // ========================
 
+/// **Source:** `BRepLib_MakeFace.hxx`:61 - `BRepLib_MakeFace`
 /// Provides methods to build faces.
 ///
 /// A face may be built :
@@ -1802,41 +2236,49 @@ unsafe impl crate::CppDeletable for MakeFace {
 }
 
 impl MakeFace {
+    /// **Source:** `BRepLib_MakeFace.hxx`:67 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Not done.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeFace_ctor()) }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:70 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Load a face. Useful to add wires.
     pub fn new_face(F: &crate::ffi::TopoDS_Face) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeFace_ctor_face(F)) }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:73 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a plane.
     pub fn new_pln(P: &crate::ffi::gp_Pln) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeFace_ctor_pln(P)) }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:76 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a cylinder.
     pub fn new_cylinder(C: &crate::ffi::gp_Cylinder) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeFace_ctor_cylinder(C)) }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:79 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a cone.
     pub fn new_cone(C: &crate::ffi::gp_Cone) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeFace_ctor_cone(C)) }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:82 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a sphere.
     pub fn new_sphere(S: &crate::ffi::gp_Sphere) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeFace_ctor_sphere(S)) }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:85 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a torus.
     pub fn new_torus(C: &crate::ffi::gp_Torus) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeFace_ctor_torus(C)) }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:89 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a Surface. Accepts tolerance value (TolDegen)
     /// for resolution of degenerated edges.
     pub fn new_handlegeomsurface_real(
@@ -1850,6 +2292,7 @@ impl MakeFace {
         }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:92 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a plane.
     pub fn new_pln_real4(
         P: &crate::ffi::gp_Pln,
@@ -1865,6 +2308,7 @@ impl MakeFace {
         }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:99 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a cylinder.
     pub fn new_cylinder_real4(
         C: &crate::ffi::gp_Cylinder,
@@ -1880,6 +2324,7 @@ impl MakeFace {
         }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:106 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a cone.
     pub fn new_cone_real4(
         C: &crate::ffi::gp_Cone,
@@ -1895,6 +2340,7 @@ impl MakeFace {
         }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:113 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a sphere.
     pub fn new_sphere_real4(
         S: &crate::ffi::gp_Sphere,
@@ -1910,6 +2356,7 @@ impl MakeFace {
         }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:120 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a torus.
     pub fn new_torus_real4(
         C: &crate::ffi::gp_Torus,
@@ -1925,6 +2372,7 @@ impl MakeFace {
         }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:129 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a Surface. Accepts min & max parameters
     /// to construct the face's bounds. Also accepts tolerance value (TolDegen)
     /// for resolution of degenerated edges.
@@ -1943,6 +2391,7 @@ impl MakeFace {
         }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:140 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Find a surface from the wire and make a face.
     /// if <OnlyPlane> is true, the computed surface will be
     /// a plane. If it is not possible to find a plane, the
@@ -1953,6 +2402,7 @@ impl MakeFace {
         }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:144 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a plane and a wire.
     pub fn new_pln_wire_bool(
         P: &crate::ffi::gp_Pln,
@@ -1964,6 +2414,7 @@ impl MakeFace {
         }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:149 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a cylinder and a wire.
     pub fn new_cylinder_wire_bool(
         C: &crate::ffi::gp_Cylinder,
@@ -1977,6 +2428,7 @@ impl MakeFace {
         }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:154 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a cone and a wire.
     pub fn new_cone_wire_bool(
         C: &crate::ffi::gp_Cone,
@@ -1990,6 +2442,7 @@ impl MakeFace {
         }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:159 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a sphere and a wire.
     pub fn new_sphere_wire_bool(
         S: &crate::ffi::gp_Sphere,
@@ -2003,6 +2456,7 @@ impl MakeFace {
         }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:164 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a torus and a wire.
     pub fn new_torus_wire_bool(
         C: &crate::ffi::gp_Torus,
@@ -2016,6 +2470,7 @@ impl MakeFace {
         }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:169 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a Surface and a wire.
     pub fn new_handlegeomsurface_wire_bool(
         S: &crate::ffi::HandleGeomSurface,
@@ -2029,6 +2484,7 @@ impl MakeFace {
         }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:174 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Adds the wire <W> in the face <F>
     pub fn new_face_wire(
         F: &crate::ffi::TopoDS_Face,
@@ -2037,6 +2493,7 @@ impl MakeFace {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeFace_ctor_face_wire(F, W)) }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:140 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Find a surface from the wire and make a face.
     /// if <OnlyPlane> is true, the computed surface will be
     /// a plane. If it is not possible to find a plane, the
@@ -2045,6 +2502,7 @@ impl MakeFace {
         Self::new_wire_bool(W, false)
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:144 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a plane and a wire.
     pub fn new_pln_wire(
         P: &crate::ffi::gp_Pln,
@@ -2053,6 +2511,7 @@ impl MakeFace {
         Self::new_pln_wire_bool(P, W, true)
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:149 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a cylinder and a wire.
     pub fn new_cylinder_wire(
         C: &crate::ffi::gp_Cylinder,
@@ -2061,6 +2520,7 @@ impl MakeFace {
         Self::new_cylinder_wire_bool(C, W, true)
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:154 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a cone and a wire.
     pub fn new_cone_wire(
         C: &crate::ffi::gp_Cone,
@@ -2069,6 +2529,7 @@ impl MakeFace {
         Self::new_cone_wire_bool(C, W, true)
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:159 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a sphere and a wire.
     pub fn new_sphere_wire(
         S: &crate::ffi::gp_Sphere,
@@ -2077,6 +2538,7 @@ impl MakeFace {
         Self::new_sphere_wire_bool(S, W, true)
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:164 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a torus and a wire.
     pub fn new_torus_wire(
         C: &crate::ffi::gp_Torus,
@@ -2085,6 +2547,7 @@ impl MakeFace {
         Self::new_torus_wire_bool(C, W, true)
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:169 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     /// Make a face from a Surface and a wire.
     pub fn new_handlegeomsurface_wire(
         S: &crate::ffi::HandleGeomSurface,
@@ -2093,11 +2556,13 @@ impl MakeFace {
         Self::new_handlegeomsurface_wire_bool(S, W, true)
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:177 - `BRepLib_MakeFace::Init()`
     /// Load the face.
     pub fn init_face(&mut self, F: &crate::ffi::TopoDS_Face) {
         unsafe { crate::ffi::BRepLib_MakeFace_init_face(self as *mut Self, F) }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:183 - `BRepLib_MakeFace::Init()`
     /// Creates the face  from the  surface. If Bound is
     /// True a wire is made from the natural bounds.
     /// Accepts tolerance value (TolDegen) for resolution
@@ -2118,6 +2583,7 @@ impl MakeFace {
         }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:190 - `BRepLib_MakeFace::Init()`
     /// Creates the face from the surface and the min-max
     /// values. Accepts tolerance value (TolDegen) for resolution
     /// of degenerated edges.
@@ -2143,11 +2609,13 @@ impl MakeFace {
         }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:198 - `BRepLib_MakeFace::Add()`
     /// Adds the wire <W> in the current face.
     pub fn add(&mut self, W: &crate::ffi::TopoDS_Wire) {
         unsafe { crate::ffi::BRepLib_MakeFace_add(self as *mut Self, W) }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:200 - `BRepLib_MakeFace::Error()`
     pub fn error(&self) -> crate::b_rep_lib::FaceError {
         unsafe {
             crate::b_rep_lib::FaceError::try_from(crate::ffi::BRepLib_MakeFace_error(
@@ -2157,11 +2625,13 @@ impl MakeFace {
         }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:203 - `BRepLib_MakeFace::Face()`
     /// Returns the new face.
     pub fn face(&self) -> &crate::ffi::TopoDS_Face {
         unsafe { &*(crate::ffi::BRepLib_MakeFace_face(self as *const Self)) }
     }
 
+    /// **Source:** `BRepLib_MakeFace.hxx`:211 - `BRepLib_MakeFace::IsDegenerated()`
     /// Checks the specified curve is degenerated
     /// according to specified tolerance.
     /// Returns <theActTol> less than <theMaxTol>, which shows
@@ -2261,6 +2731,7 @@ impl MakeFace {
 // From BRepLib_MakePolygon.hxx
 // ========================
 
+/// **Source:** `BRepLib_MakePolygon.hxx`:44 - `BRepLib_MakePolygon`
 /// Class to build polygonal wires.
 ///
 /// A polygonal wire may be build from
@@ -2285,15 +2756,18 @@ unsafe impl crate::CppDeletable for MakePolygon {
 }
 
 impl MakePolygon {
+    /// **Source:** `BRepLib_MakePolygon.hxx`:50 - `BRepLib_MakePolygon::BRepLib_MakePolygon()`
     /// Creates an empty MakePolygon.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakePolygon_ctor()) }
     }
 
+    /// **Source:** `BRepLib_MakePolygon.hxx`:52 - `BRepLib_MakePolygon::BRepLib_MakePolygon()`
     pub fn new_pnt2(P1: &crate::ffi::gp_Pnt, P2: &crate::ffi::gp_Pnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakePolygon_ctor_pnt2(P1, P2)) }
     }
 
+    /// **Source:** `BRepLib_MakePolygon.hxx`:54 - `BRepLib_MakePolygon::BRepLib_MakePolygon()`
     pub fn new_pnt3_bool(
         P1: &crate::ffi::gp_Pnt,
         P2: &crate::ffi::gp_Pnt,
@@ -2307,6 +2781,7 @@ impl MakePolygon {
         }
     }
 
+    /// **Source:** `BRepLib_MakePolygon.hxx`:59 - `BRepLib_MakePolygon::BRepLib_MakePolygon()`
     pub fn new_pnt4_bool(
         P1: &crate::ffi::gp_Pnt,
         P2: &crate::ffi::gp_Pnt,
@@ -2321,6 +2796,7 @@ impl MakePolygon {
         }
     }
 
+    /// **Source:** `BRepLib_MakePolygon.hxx`:65 - `BRepLib_MakePolygon::BRepLib_MakePolygon()`
     pub fn new_vertex2(
         V1: &crate::ffi::TopoDS_Vertex,
         V2: &crate::ffi::TopoDS_Vertex,
@@ -2328,6 +2804,7 @@ impl MakePolygon {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakePolygon_ctor_vertex2(V1, V2)) }
     }
 
+    /// **Source:** `BRepLib_MakePolygon.hxx`:67 - `BRepLib_MakePolygon::BRepLib_MakePolygon()`
     pub fn new_vertex3_bool(
         V1: &crate::ffi::TopoDS_Vertex,
         V2: &crate::ffi::TopoDS_Vertex,
@@ -2341,6 +2818,7 @@ impl MakePolygon {
         }
     }
 
+    /// **Source:** `BRepLib_MakePolygon.hxx`:72 - `BRepLib_MakePolygon::BRepLib_MakePolygon()`
     pub fn new_vertex4_bool(
         V1: &crate::ffi::TopoDS_Vertex,
         V2: &crate::ffi::TopoDS_Vertex,
@@ -2355,6 +2833,7 @@ impl MakePolygon {
         }
     }
 
+    /// **Source:** `BRepLib_MakePolygon.hxx`:54 - `BRepLib_MakePolygon::BRepLib_MakePolygon()`
     pub fn new_pnt3(
         P1: &crate::ffi::gp_Pnt,
         P2: &crate::ffi::gp_Pnt,
@@ -2363,6 +2842,7 @@ impl MakePolygon {
         Self::new_pnt3_bool(P1, P2, P3, false)
     }
 
+    /// **Source:** `BRepLib_MakePolygon.hxx`:59 - `BRepLib_MakePolygon::BRepLib_MakePolygon()`
     pub fn new_pnt4(
         P1: &crate::ffi::gp_Pnt,
         P2: &crate::ffi::gp_Pnt,
@@ -2372,6 +2852,7 @@ impl MakePolygon {
         Self::new_pnt4_bool(P1, P2, P3, P4, false)
     }
 
+    /// **Source:** `BRepLib_MakePolygon.hxx`:67 - `BRepLib_MakePolygon::BRepLib_MakePolygon()`
     pub fn new_vertex3(
         V1: &crate::ffi::TopoDS_Vertex,
         V2: &crate::ffi::TopoDS_Vertex,
@@ -2380,6 +2861,7 @@ impl MakePolygon {
         Self::new_vertex3_bool(V1, V2, V3, false)
     }
 
+    /// **Source:** `BRepLib_MakePolygon.hxx`:72 - `BRepLib_MakePolygon::BRepLib_MakePolygon()`
     pub fn new_vertex4(
         V1: &crate::ffi::TopoDS_Vertex,
         V2: &crate::ffi::TopoDS_Vertex,
@@ -2389,37 +2871,45 @@ impl MakePolygon {
         Self::new_vertex4_bool(V1, V2, V3, V4, false)
     }
 
+    /// **Source:** `BRepLib_MakePolygon.hxx`:78 - `BRepLib_MakePolygon::Add()`
     pub fn add_pnt(&mut self, P: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::BRepLib_MakePolygon_add_pnt(self as *mut Self, P) }
     }
 
+    /// **Source:** `BRepLib_MakePolygon.hxx`:80 - `BRepLib_MakePolygon::Add()`
     pub fn add_vertex(&mut self, V: &crate::ffi::TopoDS_Vertex) {
         unsafe { crate::ffi::BRepLib_MakePolygon_add_vertex(self as *mut Self, V) }
     }
 
+    /// **Source:** `BRepLib_MakePolygon.hxx`:84 - `BRepLib_MakePolygon::Added()`
     /// Returns  True if  the last   vertex  or point  was
     /// successfully added.
     pub fn added(&self) -> bool {
         unsafe { crate::ffi::BRepLib_MakePolygon_added(self as *const Self) }
     }
 
+    /// **Source:** `BRepLib_MakePolygon.hxx`:86 - `BRepLib_MakePolygon::Close()`
     pub fn close(&mut self) {
         unsafe { crate::ffi::BRepLib_MakePolygon_close(self as *mut Self) }
     }
 
+    /// **Source:** `BRepLib_MakePolygon.hxx`:88 - `BRepLib_MakePolygon::FirstVertex()`
     pub fn first_vertex(&self) -> &crate::ffi::TopoDS_Vertex {
         unsafe { &*(crate::ffi::BRepLib_MakePolygon_first_vertex(self as *const Self)) }
     }
 
+    /// **Source:** `BRepLib_MakePolygon.hxx`:90 - `BRepLib_MakePolygon::LastVertex()`
     pub fn last_vertex(&self) -> &crate::ffi::TopoDS_Vertex {
         unsafe { &*(crate::ffi::BRepLib_MakePolygon_last_vertex(self as *const Self)) }
     }
 
+    /// **Source:** `BRepLib_MakePolygon.hxx`:93 - `BRepLib_MakePolygon::Edge()`
     /// Returns the last edge added to the polygon.
     pub fn edge(&self) -> &crate::ffi::TopoDS_Edge {
         unsafe { &*(crate::ffi::BRepLib_MakePolygon_edge(self as *const Self)) }
     }
 
+    /// **Source:** `BRepLib_MakePolygon.hxx`:96 - `BRepLib_MakePolygon::Wire()`
     pub fn wire(&mut self) -> &crate::ffi::TopoDS_Wire {
         unsafe { &*(crate::ffi::BRepLib_MakePolygon_wire(self as *mut Self)) }
     }
@@ -2516,6 +3006,7 @@ impl MakePolygon {
 // From BRepLib_MakeShape.hxx
 // ========================
 
+/// **Source:** `BRepLib_MakeShape.hxx`:36 - `BRepLib_MakeShape`
 /// This    is  the  root     class for     all  shape
 /// constructions.  It stores the result.
 ///
@@ -2530,16 +3021,19 @@ unsafe impl crate::CppDeletable for MakeShape {
 }
 
 impl MakeShape {
+    /// **Source:** `BRepLib_MakeShape.hxx`:43 - `BRepLib_MakeShape::Build()`
     /// This is  called by  Shape().  It does  nothing but
     /// may be redefined.
     pub fn build(&mut self) {
         unsafe { crate::ffi::BRepLib_MakeShape_build(self as *mut Self) }
     }
 
+    /// **Source:** `BRepLib_MakeShape.hxx`:45 - `BRepLib_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepLib_MakeShape_shape(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepLib_MakeShape.hxx`:50 - `BRepLib_MakeShape::FaceStatus()`
     /// returns the status of the Face after
     /// the shape creation.
     pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> crate::b_rep_lib::ShapeModification {
@@ -2551,11 +3045,13 @@ impl MakeShape {
         }
     }
 
+    /// **Source:** `BRepLib_MakeShape.hxx`:53 - `BRepLib_MakeShape::HasDescendants()`
     /// Returns True if the Face generates new topology.
     pub fn has_descendants(&self, F: &crate::ffi::TopoDS_Face) -> bool {
         unsafe { crate::ffi::BRepLib_MakeShape_has_descendants(self as *const Self, F) }
     }
 
+    /// **Source:** `BRepLib_MakeShape.hxx`:56 - `BRepLib_MakeShape::DescendantFaces()`
     /// returns the list of generated Faces.
     pub fn descendant_faces(
         &mut self,
@@ -2564,17 +3060,20 @@ impl MakeShape {
         unsafe { &*(crate::ffi::BRepLib_MakeShape_descendant_faces(self as *mut Self, F)) }
     }
 
+    /// **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
     /// returns the number of surfaces
     /// after the shape creation.
     pub fn nb_surfaces(&self) -> i32 {
         unsafe { crate::ffi::BRepLib_MakeShape_nb_surfaces(self as *const Self) }
     }
 
+    /// **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
     /// Return the faces created for surface I.
     pub fn new_faces(&mut self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepLib_MakeShape_new_faces(self as *mut Self, I)) }
     }
 
+    /// **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
     /// returns a list of the created faces
     /// from the edge <E>.
     pub fn faces_from_edges(
@@ -2609,6 +3108,7 @@ impl MakeShape {
 // From BRepLib_MakeShell.hxx
 // ========================
 
+/// **Source:** `BRepLib_MakeShell.hxx`:34 - `BRepLib_MakeShell`
 /// Provides methods to build shells.
 ///
 /// Build a shell from a set of faces.
@@ -2623,11 +3123,13 @@ unsafe impl crate::CppDeletable for MakeShell {
 }
 
 impl MakeShell {
+    /// **Source:** `BRepLib_MakeShell.hxx`:40 - `BRepLib_MakeShell::BRepLib_MakeShell()`
     /// Not done.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeShell_ctor()) }
     }
 
+    /// **Source:** `BRepLib_MakeShell.hxx`:42 - `BRepLib_MakeShell::BRepLib_MakeShell()`
     pub fn new_handlegeomsurface_bool(
         S: &crate::ffi::HandleGeomSurface,
         Segment: bool,
@@ -2639,6 +3141,7 @@ impl MakeShell {
         }
     }
 
+    /// **Source:** `BRepLib_MakeShell.hxx`:45 - `BRepLib_MakeShell::BRepLib_MakeShell()`
     pub fn new_handlegeomsurface_real4_bool(
         S: &crate::ffi::HandleGeomSurface,
         UMin: f64,
@@ -2656,10 +3159,12 @@ impl MakeShell {
         }
     }
 
+    /// **Source:** `BRepLib_MakeShell.hxx`:42 - `BRepLib_MakeShell::BRepLib_MakeShell()`
     pub fn new_handlegeomsurface(S: &crate::ffi::HandleGeomSurface) -> crate::OwnedPtr<Self> {
         Self::new_handlegeomsurface_bool(S, false)
     }
 
+    /// **Source:** `BRepLib_MakeShell.hxx`:45 - `BRepLib_MakeShell::BRepLib_MakeShell()`
     pub fn new_handlegeomsurface_real4(
         S: &crate::ffi::HandleGeomSurface,
         UMin: f64,
@@ -2670,6 +3175,7 @@ impl MakeShell {
         Self::new_handlegeomsurface_real4_bool(S, UMin, UMax, VMin, VMax, false)
     }
 
+    /// **Source:** `BRepLib_MakeShell.hxx`:54 - `BRepLib_MakeShell::Init()`
     /// Creates the shell from the surface  and the min-max
     /// values.
     pub fn init(
@@ -2694,6 +3200,7 @@ impl MakeShell {
         }
     }
 
+    /// **Source:** `BRepLib_MakeShell.hxx`:61 - `BRepLib_MakeShell::Error()`
     pub fn error(&self) -> crate::b_rep_lib::ShellError {
         unsafe {
             crate::b_rep_lib::ShellError::try_from(crate::ffi::BRepLib_MakeShell_error(
@@ -2703,6 +3210,7 @@ impl MakeShell {
         }
     }
 
+    /// **Source:** `BRepLib_MakeShell.hxx`:64 - `BRepLib_MakeShell::Shell()`
     /// Returns the new Shell.
     pub fn shell(&self) -> &crate::ffi::TopoDS_Shell {
         unsafe { &*(crate::ffi::BRepLib_MakeShell_shell(self as *const Self)) }
@@ -2794,6 +3302,7 @@ impl MakeShell {
 // From BRepLib_MakeSolid.hxx
 // ========================
 
+/// **Source:** `BRepLib_MakeSolid.hxx`:31 - `BRepLib_MakeSolid`
 /// Makes a solid from compsolid  or  shells.
 pub use crate::ffi::BRepLib_MakeSolid as MakeSolid;
 
@@ -2804,21 +3313,25 @@ unsafe impl crate::CppDeletable for MakeSolid {
 }
 
 impl MakeSolid {
+    /// **Source:** `BRepLib_MakeSolid.hxx`:37 - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
     /// Solid covers whole space.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeSolid_ctor()) }
     }
 
+    /// **Source:** `BRepLib_MakeSolid.hxx`:40 - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
     /// Make a solid from a CompSolid.
     pub fn new_compsolid(S: &crate::ffi::TopoDS_CompSolid) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeSolid_ctor_compsolid(S)) }
     }
 
+    /// **Source:** `BRepLib_MakeSolid.hxx`:43 - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
     /// Make a solid from a shell.
     pub fn new_shell(S: &crate::ffi::TopoDS_Shell) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeSolid_ctor_shell(S)) }
     }
 
+    /// **Source:** `BRepLib_MakeSolid.hxx`:46 - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
     /// Make a solid from two shells.
     pub fn new_shell2(
         S1: &crate::ffi::TopoDS_Shell,
@@ -2827,6 +3340,7 @@ impl MakeSolid {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeSolid_ctor_shell2(S1, S2)) }
     }
 
+    /// **Source:** `BRepLib_MakeSolid.hxx`:49 - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
     /// Make a solid from three shells.
     pub fn new_shell3(
         S1: &crate::ffi::TopoDS_Shell,
@@ -2836,11 +3350,13 @@ impl MakeSolid {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeSolid_ctor_shell3(S1, S2, S3)) }
     }
 
+    /// **Source:** `BRepLib_MakeSolid.hxx`:54 - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
     /// Make a solid from a solid. Useful for adding later.
     pub fn new_solid(So: &crate::ffi::TopoDS_Solid) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeSolid_ctor_solid(So)) }
     }
 
+    /// **Source:** `BRepLib_MakeSolid.hxx`:57 - `BRepLib_MakeSolid::BRepLib_MakeSolid()`
     /// Add a shell to a solid.
     pub fn new_solid_shell(
         So: &crate::ffi::TopoDS_Solid,
@@ -2849,16 +3365,19 @@ impl MakeSolid {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeSolid_ctor_solid_shell(So, S)) }
     }
 
+    /// **Source:** `BRepLib_MakeSolid.hxx`:60 - `BRepLib_MakeSolid::Add()`
     /// Add the shell to the current solid.
     pub fn add(&mut self, S: &crate::ffi::TopoDS_Shell) {
         unsafe { crate::ffi::BRepLib_MakeSolid_add(self as *mut Self, S) }
     }
 
+    /// **Source:** `BRepLib_MakeSolid.hxx`:63 - `BRepLib_MakeSolid::Solid()`
     /// Returns the new Solid.
     pub fn solid(&mut self) -> &crate::ffi::TopoDS_Solid {
         unsafe { &*(crate::ffi::BRepLib_MakeSolid_solid(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepLib_MakeSolid.hxx`:68 - `BRepLib_MakeSolid::FaceStatus()`
     /// returns the status of the Face after
     /// the shape creation.
     pub fn face_status(&self, F: &crate::ffi::TopoDS_Face) -> crate::b_rep_lib::ShapeModification {
@@ -2946,6 +3465,7 @@ impl MakeSolid {
 // From BRepLib_MakeVertex.hxx
 // ========================
 
+/// **Source:** `BRepLib_MakeVertex.hxx`:28 - `BRepLib_MakeVertex`
 /// Provides methods to build vertices.
 pub use crate::ffi::BRepLib_MakeVertex as MakeVertex;
 
@@ -2956,10 +3476,12 @@ unsafe impl crate::CppDeletable for MakeVertex {
 }
 
 impl MakeVertex {
+    /// **Source:** `BRepLib_MakeVertex.hxx`:33 - `BRepLib_MakeVertex::BRepLib_MakeVertex()`
     pub fn new_pnt(P: &crate::ffi::gp_Pnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeVertex_ctor_pnt(P)) }
     }
 
+    /// **Source:** `BRepLib_MakeVertex.hxx`:35 - `BRepLib_MakeVertex::Vertex()`
     pub fn vertex(&mut self) -> &crate::ffi::TopoDS_Vertex {
         unsafe { &*(crate::ffi::BRepLib_MakeVertex_vertex(self as *mut Self)) }
     }
@@ -3054,6 +3576,7 @@ impl MakeVertex {
 // From BRepLib_MakeWire.hxx
 // ========================
 
+/// **Source:** `BRepLib_MakeWire.hxx`:78 - `BRepLib_MakeWire`
 /// Provides methods to build wires.
 ///
 /// A wire may be built :
@@ -3105,16 +3628,19 @@ unsafe impl crate::CppDeletable for MakeWire {
 }
 
 impl MakeWire {
+    /// **Source:** `BRepLib_MakeWire.hxx`:84 - `BRepLib_MakeWire::BRepLib_MakeWire()`
     /// NotDone MakeWire.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeWire_ctor()) }
     }
 
+    /// **Source:** `BRepLib_MakeWire.hxx`:87 - `BRepLib_MakeWire::BRepLib_MakeWire()`
     /// Make a Wire from an edge.
     pub fn new_edge(E: &crate::ffi::TopoDS_Edge) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeWire_ctor_edge(E)) }
     }
 
+    /// **Source:** `BRepLib_MakeWire.hxx`:90 - `BRepLib_MakeWire::BRepLib_MakeWire()`
     /// Make a Wire from two edges.
     pub fn new_edge2(
         E1: &crate::ffi::TopoDS_Edge,
@@ -3123,6 +3649,7 @@ impl MakeWire {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeWire_ctor_edge2(E1, E2)) }
     }
 
+    /// **Source:** `BRepLib_MakeWire.hxx`:93 - `BRepLib_MakeWire::BRepLib_MakeWire()`
     /// Make a Wire from three edges.
     pub fn new_edge3(
         E1: &crate::ffi::TopoDS_Edge,
@@ -3132,6 +3659,7 @@ impl MakeWire {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeWire_ctor_edge3(E1, E2, E3)) }
     }
 
+    /// **Source:** `BRepLib_MakeWire.hxx`:98 - `BRepLib_MakeWire::BRepLib_MakeWire()`
     /// Make a Wire from four edges.
     pub fn new_edge4(
         E1: &crate::ffi::TopoDS_Edge,
@@ -3144,11 +3672,13 @@ impl MakeWire {
         }
     }
 
+    /// **Source:** `BRepLib_MakeWire.hxx`:104 - `BRepLib_MakeWire::BRepLib_MakeWire()`
     /// Make a Wire from a Wire. Useful for adding later.
     pub fn new_wire(W: &crate::ffi::TopoDS_Wire) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeWire_ctor_wire(W)) }
     }
 
+    /// **Source:** `BRepLib_MakeWire.hxx`:107 - `BRepLib_MakeWire::BRepLib_MakeWire()`
     /// Add an edge to a wire.
     pub fn new_wire_edge(
         W: &crate::ffi::TopoDS_Wire,
@@ -3157,16 +3687,19 @@ impl MakeWire {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_MakeWire_ctor_wire_edge(W, E)) }
     }
 
+    /// **Source:** `BRepLib_MakeWire.hxx`:110 - `BRepLib_MakeWire::Add()`
     /// Add the edge <E> to the current wire.
     pub fn add_edge(&mut self, E: &crate::ffi::TopoDS_Edge) {
         unsafe { crate::ffi::BRepLib_MakeWire_add_edge(self as *mut Self, E) }
     }
 
+    /// **Source:** `BRepLib_MakeWire.hxx`:113 - `BRepLib_MakeWire::Add()`
     /// Add the edges of <W> to the current wire.
     pub fn add_wire(&mut self, W: &crate::ffi::TopoDS_Wire) {
         unsafe { crate::ffi::BRepLib_MakeWire_add_wire(self as *mut Self, W) }
     }
 
+    /// **Source:** `BRepLib_MakeWire.hxx`:118 - `BRepLib_MakeWire::Add()`
     /// Add the edges of <L> to the current wire.
     /// The edges are not to be consecutive.  But they are
     /// to be all connected geometrically or topologically.
@@ -3174,6 +3707,7 @@ impl MakeWire {
         unsafe { crate::ffi::BRepLib_MakeWire_add_listofshape(self as *mut Self, L) }
     }
 
+    /// **Source:** `BRepLib_MakeWire.hxx`:120 - `BRepLib_MakeWire::Error()`
     pub fn error(&self) -> crate::b_rep_lib::WireError {
         unsafe {
             crate::b_rep_lib::WireError::try_from(crate::ffi::BRepLib_MakeWire_error(
@@ -3183,16 +3717,19 @@ impl MakeWire {
         }
     }
 
+    /// **Source:** `BRepLib_MakeWire.hxx`:123 - `BRepLib_MakeWire::Wire()`
     /// Returns the new wire.
     pub fn wire(&mut self) -> &crate::ffi::TopoDS_Wire {
         unsafe { &*(crate::ffi::BRepLib_MakeWire_wire(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepLib_MakeWire.hxx`:127 - `BRepLib_MakeWire::Edge()`
     /// Returns the last edge added to the wire.
     pub fn edge(&self) -> &crate::ffi::TopoDS_Edge {
         unsafe { &*(crate::ffi::BRepLib_MakeWire_edge(self as *const Self)) }
     }
 
+    /// **Source:** `BRepLib_MakeWire.hxx`:130 - `BRepLib_MakeWire::Vertex()`
     /// Returns the last connecting vertex.
     pub fn vertex(&self) -> &crate::ffi::TopoDS_Vertex {
         unsafe { &*(crate::ffi::BRepLib_MakeWire_vertex(self as *const Self)) }
@@ -3284,6 +3821,7 @@ impl MakeWire {
 // From BRepLib_PointCloudShape.hxx
 // ========================
 
+/// **Source:** `BRepLib_PointCloudShape.hxx`:28 - `BRepLib_PointCloudShape`
 /// This tool is intended to get points from shape with specified distance from shape along normal.
 /// Can be used to simulation of points obtained in result of laser scan of shape.
 /// There are 2 ways for generation points by shape:
@@ -3299,38 +3837,45 @@ unsafe impl crate::CppDeletable for PointCloudShape {
 }
 
 impl PointCloudShape {
+    /// **Source:** `BRepLib_PointCloudShape.hxx`:41 - `BRepLib_PointCloudShape::Shape()`
     /// Return loaded shape.
     pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepLib_PointCloudShape_shape(self as *const Self)) }
     }
 
+    /// **Source:** `BRepLib_PointCloudShape.hxx`:44 - `BRepLib_PointCloudShape::SetShape()`
     /// Set shape.
     pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BRepLib_PointCloudShape_set_shape(self as *mut Self, theShape) }
     }
 
+    /// **Source:** `BRepLib_PointCloudShape.hxx`:47 - `BRepLib_PointCloudShape::Tolerance()`
     /// Return tolerance.
     pub fn tolerance(&self) -> f64 {
         unsafe { crate::ffi::BRepLib_PointCloudShape_tolerance(self as *const Self) }
     }
 
+    /// **Source:** `BRepLib_PointCloudShape.hxx`:50 - `BRepLib_PointCloudShape::SetTolerance()`
     /// Set tolerance.
     pub fn set_tolerance(&mut self, theTol: f64) {
         unsafe { crate::ffi::BRepLib_PointCloudShape_set_tolerance(self as *mut Self, theTol) }
     }
 
+    /// **Source:** `BRepLib_PointCloudShape.hxx`:54 - `BRepLib_PointCloudShape::GetDistance()`
     /// Returns value of the distance to define deflection of points from shape along normal to shape;
     /// 0.0 by default.
     pub fn get_distance(&self) -> f64 {
         unsafe { crate::ffi::BRepLib_PointCloudShape_get_distance(self as *const Self) }
     }
 
+    /// **Source:** `BRepLib_PointCloudShape.hxx`:58 - `BRepLib_PointCloudShape::SetDistance()`
     /// Sets value of the distance to define deflection of points from shape along normal to shape.
     /// Negative values of theDist parameter are ignored.
     pub fn set_distance(&mut self, theDist: f64) {
         unsafe { crate::ffi::BRepLib_PointCloudShape_set_distance(self as *mut Self, theDist) }
     }
 
+    /// **Source:** `BRepLib_PointCloudShape.hxx`:61 - `BRepLib_PointCloudShape::NbPointsByDensity()`
     /// Returns size of the point cloud for specified density.
     pub fn nb_points_by_density(&mut self, theDensity: f64) -> i32 {
         unsafe {
@@ -3338,6 +3883,7 @@ impl PointCloudShape {
         }
     }
 
+    /// **Source:** `BRepLib_PointCloudShape.hxx`:64 - `BRepLib_PointCloudShape::NbPointsByTriangulation()`
     /// Returns size of the point cloud for using triangulation.
     pub fn nb_points_by_triangulation(&self) -> i32 {
         unsafe {
@@ -3345,6 +3891,7 @@ impl PointCloudShape {
         }
     }
 
+    /// **Source:** `BRepLib_PointCloudShape.hxx`:71 - `BRepLib_PointCloudShape::GeneratePointsByDensity()`
     /// Computes points with specified density for initial shape.
     /// If parameter Density is equal to 0 then density will be computed automatically by criterion:
     /// - 10 points per minimal unreduced face area.
@@ -3359,6 +3906,7 @@ impl PointCloudShape {
         }
     }
 
+    /// **Source:** `BRepLib_PointCloudShape.hxx`:74 - `BRepLib_PointCloudShape::GeneratePointsByTriangulation()`
     /// Get points from triangulation existing in the shape.
     pub fn generate_points_by_triangulation(&mut self) -> bool {
         unsafe {
@@ -3371,6 +3919,7 @@ impl PointCloudShape {
 // From BRepLib_ToolTriangulatedShape.hxx
 // ========================
 
+/// **Source:** `BRepLib_ToolTriangulatedShape.hxx`:24 - `BRepLib_ToolTriangulatedShape`
 /// Provides methods for calculating normals to Poly_Triangulation of TopoDS_Face.
 pub use crate::ffi::BRepLib_ToolTriangulatedShape as ToolTriangulatedShape;
 
@@ -3381,11 +3930,13 @@ unsafe impl crate::CppDeletable for ToolTriangulatedShape {
 }
 
 impl ToolTriangulatedShape {
+    /// **Source:** `BRepLib_ToolTriangulatedShape.hxx` - `BRepLib_ToolTriangulatedShape::BRepLib_ToolTriangulatedShape()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepLib_ToolTriangulatedShape_ctor()) }
     }
 
+    /// **Source:** `BRepLib_ToolTriangulatedShape.hxx`:31 - `BRepLib_ToolTriangulatedShape::ComputeNormals()`
     /// Computes nodal normals for Poly_Triangulation structure using UV coordinates and surface.
     /// Does nothing if triangulation already defines normals.
     /// @param[in] theFace the face
@@ -3401,6 +3952,7 @@ impl ToolTriangulatedShape {
         }
     }
 
+    /// **Source:** `BRepLib_ToolTriangulatedShape.hxx`:42 - `BRepLib_ToolTriangulatedShape::ComputeNormals()`
     /// Computes nodal normals for Poly_Triangulation structure using UV coordinates and surface.
     /// Does nothing if triangulation already defines normals.
     /// @param[in] theFace the face
@@ -3421,6 +3973,7 @@ impl ToolTriangulatedShape {
 // From BRepLib_ValidateEdge.hxx
 // ========================
 
+/// **Source:** `BRepLib_ValidateEdge.hxx`:26 - `BRepLib_ValidateEdge`
 /// Computes the max distance between 3D-curve and curve on surface.
 /// This class uses 2 methods: approximate using finite
 /// number of points (default) and exact
@@ -3433,6 +3986,7 @@ unsafe impl crate::CppDeletable for ValidateEdge {
 }
 
 impl ValidateEdge {
+    /// **Source:** `BRepLib_ValidateEdge.hxx`:39 - `BRepLib_ValidateEdge::SetExactMethod()`
     /// Sets method to calculate distance: Calculating in finite number of points (if theIsExact
     /// is false, faster, but possible not correct result) or exact calculating by using
     /// BRepLib_CheckCurveOnSurface class (if theIsExact is true, slowly, but more correctly).
@@ -3442,11 +3996,13 @@ impl ValidateEdge {
         unsafe { crate::ffi::BRepLib_ValidateEdge_set_exact_method(self as *mut Self, theIsExact) }
     }
 
+    /// **Source:** `BRepLib_ValidateEdge.hxx`:42 - `BRepLib_ValidateEdge::IsExactMethod()`
     /// Returns true if exact method selected
     pub fn is_exact_method(&mut self) -> bool {
         unsafe { crate::ffi::BRepLib_ValidateEdge_is_exact_method(self as *mut Self) }
     }
 
+    /// **Source:** `BRepLib_ValidateEdge.hxx`:45 - `BRepLib_ValidateEdge::SetParallel()`
     /// Sets parallel flag
     pub fn set_parallel(&mut self, theIsMultiThread: bool) {
         unsafe {
@@ -3454,11 +4010,13 @@ impl ValidateEdge {
         }
     }
 
+    /// **Source:** `BRepLib_ValidateEdge.hxx`:48 - `BRepLib_ValidateEdge::IsParallel()`
     /// Returns true if parallel flag is set
     pub fn is_parallel(&mut self) -> bool {
         unsafe { crate::ffi::BRepLib_ValidateEdge_is_parallel(self as *mut Self) }
     }
 
+    /// **Source:** `BRepLib_ValidateEdge.hxx`:51 - `BRepLib_ValidateEdge::SetControlPointsNumber()`
     /// Set control points number (if you need a value other than 22)
     pub fn set_control_points_number(&mut self, theControlPointsNumber: i32) {
         unsafe {
@@ -3469,6 +4027,7 @@ impl ValidateEdge {
         }
     }
 
+    /// **Source:** `BRepLib_ValidateEdge.hxx`:59 - `BRepLib_ValidateEdge::SetExitIfToleranceExceeded()`
     /// Sets limit to compute a distance in the Process() function. If the distance greater than
     /// theToleranceForChecking the Process() function stopped. Use this in case checking of
     /// tolerance for best performcnce. Has no effect in case using exact method.
@@ -3481,6 +4040,7 @@ impl ValidateEdge {
         }
     }
 
+    /// **Source:** `BRepLib_ValidateEdge.hxx`:66 - `BRepLib_ValidateEdge::Process()`
     /// Computes the max distance for the 3d curve <myReferenceCurve>
     /// and curve on surface <myOtherCurve>. If the SetExitIfToleranceExceeded()
     /// function was called before <myCalculatedDistance> contains first
@@ -3490,11 +4050,13 @@ impl ValidateEdge {
         unsafe { crate::ffi::BRepLib_ValidateEdge_process(self as *mut Self) }
     }
 
+    /// **Source:** `BRepLib_ValidateEdge.hxx`:69 - `BRepLib_ValidateEdge::IsDone()`
     /// Returns true if the distance has been found for all points
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepLib_ValidateEdge_is_done(self as *const Self) }
     }
 
+    /// **Source:** `BRepLib_ValidateEdge.hxx`:72 - `BRepLib_ValidateEdge::CheckTolerance()`
     /// Returns true if computed distance is less than <theToleranceToCheck>
     pub fn check_tolerance(&mut self, theToleranceToCheck: f64) -> bool {
         unsafe {
@@ -3502,11 +4064,13 @@ impl ValidateEdge {
         }
     }
 
+    /// **Source:** `BRepLib_ValidateEdge.hxx`:75 - `BRepLib_ValidateEdge::GetMaxDistance()`
     /// Returns max distance
     pub fn get_max_distance(&mut self) -> f64 {
         unsafe { crate::ffi::BRepLib_ValidateEdge_get_max_distance(self as *mut Self) }
     }
 
+    /// **Source:** `BRepLib_ValidateEdge.hxx`:78 - `BRepLib_ValidateEdge::UpdateTolerance()`
     /// Increase <theToleranceToUpdate> if max distance is greater than <theToleranceToUpdate>
     pub fn update_tolerance(&mut self, theToleranceToUpdate: &mut f64) {
         unsafe {

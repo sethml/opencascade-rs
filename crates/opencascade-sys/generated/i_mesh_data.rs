@@ -62,6 +62,7 @@ impl TryFrom<i32> for Status {
 // From IMeshData_Curve.hxx
 // ========================
 
+/// **Source:** `IMeshData_Curve.hxx`:26 - `IMeshData_Curve`
 /// Interface class representing discrete 3d curve of edge.
 /// Indexation of points starts from zero.
 pub use crate::ffi::IMeshData_Curve as Curve;
@@ -73,6 +74,7 @@ unsafe impl crate::CppDeletable for Curve {
 }
 
 impl Curve {
+    /// **Source:** `IMeshData_Curve.hxx`:33 - `IMeshData_Curve::InsertPoint()`
     /// Inserts new discretization point at the given position.
     pub fn insert_point(
         &mut self,
@@ -90,6 +92,7 @@ impl Curve {
         }
     }
 
+    /// **Source:** `IMeshData_Curve.hxx`:38 - `IMeshData_Curve::AddPoint()`
     /// Adds new discretization point to curve.
     pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt, theParamOnCurve: f64) {
         unsafe {
@@ -97,24 +100,29 @@ impl Curve {
         }
     }
 
+    /// **Source:** `IMeshData_Curve.hxx`:42 - `IMeshData_Curve::GetPoint()`
     /// Returns discretization point with the given index.
     pub fn get_point(&mut self, theIndex: i32) -> &mut crate::ffi::gp_Pnt {
         unsafe { &mut *(crate::ffi::IMeshData_Curve_get_point(self as *mut Self, theIndex)) }
     }
 
+    /// **Source:** `IMeshData_Curve.hxx`:45 - `IMeshData_Curve::RemovePoint()`
     /// Removes point with the given index.
     pub fn remove_point(&mut self, theIndex: i32) {
         unsafe { crate::ffi::IMeshData_Curve_remove_point(self as *mut Self, theIndex) }
     }
 
+    /// **Source:** `IMeshData_Curve.hxx`:47 - `IMeshData_Curve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshData_Curve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshData_Curve.hxx`:47 - `IMeshData_Curve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IMeshData_Curve_get_type_name() }
     }
 
+    /// **Source:** `IMeshData_Curve.hxx`:47 - `IMeshData_Curve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshData_Curve_get_type_descriptor()) }
     }
@@ -153,6 +161,7 @@ impl Curve {
 // From IMeshData_Edge.hxx
 // ========================
 
+/// **Source:** `IMeshData_Edge.hxx`:26 - `IMeshData_Edge`
 /// Interface class representing discrete model of an edge.
 pub use crate::ffi::IMeshData_Edge as Edge;
 
@@ -163,77 +172,92 @@ unsafe impl crate::CppDeletable for Edge {
 }
 
 impl Edge {
+    /// **Source:** `IMeshData_Edge.hxx`:33 - `IMeshData_Edge::GetEdge()`
     /// Returns TopoDS_Edge attached to model.
     pub fn get_edge(&self) -> &crate::ffi::TopoDS_Edge {
         unsafe { &*(crate::ffi::IMeshData_Edge_get_edge(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshData_Edge.hxx`:36 - `IMeshData_Edge::PCurvesNb()`
     /// Returns number of pcurves assigned to current edge.
     pub fn p_curves_nb(&self) -> i32 {
         unsafe { crate::ffi::IMeshData_Edge_p_curves_nb(self as *const Self) }
     }
 
+    /// **Source:** `IMeshData_Edge.hxx`:53 - `IMeshData_Edge::Clear()`
     /// Clears curve and all pcurves assigned to the edge from discretization.
     pub fn clear(&mut self, isKeepEndPoints: bool) {
         unsafe { crate::ffi::IMeshData_Edge_clear(self as *mut Self, isKeepEndPoints) }
     }
 
+    /// **Source:** `IMeshData_Edge.hxx`:63 - `IMeshData_Edge::IsFree()`
     /// Returns true in case if the edge is free one, i.e. it does not have pcurves.
     pub fn is_free(&self) -> bool {
         unsafe { crate::ffi::IMeshData_Edge_is_free(self as *const Self) }
     }
 
+    /// **Source:** `IMeshData_Edge.hxx`:72 - `IMeshData_Edge::GetAngularDeflection()`
     /// Gets value of angular deflection for the discrete model.
     pub fn get_angular_deflection(&self) -> f64 {
         unsafe { crate::ffi::IMeshData_Edge_get_angular_deflection(self as *const Self) }
     }
 
+    /// **Source:** `IMeshData_Edge.hxx`:75 - `IMeshData_Edge::SetAngularDeflection()`
     /// Sets value of angular deflection for the discrete model.
     pub fn set_angular_deflection(&mut self, theValue: f64) {
         unsafe { crate::ffi::IMeshData_Edge_set_angular_deflection(self as *mut Self, theValue) }
     }
 
+    /// **Source:** `IMeshData_Edge.hxx`:79 - `IMeshData_Edge::GetSameParam()`
     /// Returns same param flag.
     /// By default equals to flag stored in topological shape.
     pub fn get_same_param(&self) -> bool {
         unsafe { crate::ffi::IMeshData_Edge_get_same_param(self as *const Self) }
     }
 
+    /// **Source:** `IMeshData_Edge.hxx`:82 - `IMeshData_Edge::SetSameParam()`
     /// Updates same param flag.
     pub fn set_same_param(&mut self, theValue: bool) {
         unsafe { crate::ffi::IMeshData_Edge_set_same_param(self as *mut Self, theValue) }
     }
 
+    /// **Source:** `IMeshData_Edge.hxx`:86 - `IMeshData_Edge::GetSameRange()`
     /// Returns same range flag.
     /// By default equals to flag stored in topological shape.
     pub fn get_same_range(&self) -> bool {
         unsafe { crate::ffi::IMeshData_Edge_get_same_range(self as *const Self) }
     }
 
+    /// **Source:** `IMeshData_Edge.hxx`:89 - `IMeshData_Edge::SetSameRange()`
     /// Updates same range flag.
     pub fn set_same_range(&mut self, theValue: bool) {
         unsafe { crate::ffi::IMeshData_Edge_set_same_range(self as *mut Self, theValue) }
     }
 
+    /// **Source:** `IMeshData_Edge.hxx`:93 - `IMeshData_Edge::GetDegenerated()`
     /// Returns degenerative flag.
     /// By default equals to flag stored in topological shape.
     pub fn get_degenerated(&self) -> bool {
         unsafe { crate::ffi::IMeshData_Edge_get_degenerated(self as *const Self) }
     }
 
+    /// **Source:** `IMeshData_Edge.hxx`:96 - `IMeshData_Edge::SetDegenerated()`
     /// Updates degenerative flag.
     pub fn set_degenerated(&mut self, theValue: bool) {
         unsafe { crate::ffi::IMeshData_Edge_set_degenerated(self as *mut Self, theValue) }
     }
 
+    /// **Source:** `IMeshData_Edge.hxx`:98 - `IMeshData_Edge::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshData_Edge_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshData_Edge.hxx`:98 - `IMeshData_Edge::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IMeshData_Edge_get_type_name() }
     }
 
+    /// **Source:** `IMeshData_Edge.hxx`:98 - `IMeshData_Edge::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshData_Edge_get_type_descriptor()) }
     }
@@ -322,6 +346,7 @@ impl Edge {
 // From IMeshData_Face.hxx
 // ========================
 
+/// **Source:** `IMeshData_Face.hxx`:32 - `IMeshData_Face`
 /// Interface class representing discrete model of a face.
 /// Face model contains one or several wires.
 /// First wire is always outer one.
@@ -334,29 +359,35 @@ unsafe impl crate::CppDeletable for Face {
 }
 
 impl Face {
+    /// **Source:** `IMeshData_Face.hxx`:39 - `IMeshData_Face::WiresNb()`
     /// Returns number of wires.
     pub fn wires_nb(&self) -> i32 {
         unsafe { crate::ffi::IMeshData_Face_wires_nb(self as *const Self) }
     }
 
+    /// **Source:** `IMeshData_Face.hxx`:54 - `IMeshData_Face::GetFace()`
     /// Returns TopoDS_Face attached to model.
     pub fn get_face(&self) -> &crate::ffi::TopoDS_Face {
         unsafe { &*(crate::ffi::IMeshData_Face_get_face(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshData_Face.hxx`:57 - `IMeshData_Face::IsValid()`
     /// Returns whether the face discrete model is valid.
     pub fn is_valid(&self) -> bool {
         unsafe { crate::ffi::IMeshData_Face_is_valid(self as *const Self) }
     }
 
+    /// **Source:** `IMeshData_Face.hxx`:63 - `IMeshData_Face::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshData_Face_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshData_Face.hxx`:63 - `IMeshData_Face::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IMeshData_Face_get_type_name() }
     }
 
+    /// **Source:** `IMeshData_Face.hxx`:63 - `IMeshData_Face::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshData_Face_get_type_descriptor()) }
     }
@@ -445,6 +476,7 @@ impl Face {
 // From IMeshData_Model.hxx
 // ========================
 
+/// **Source:** `IMeshData_Model.hxx`:28 - `IMeshData_Model`
 /// Interface class representing discrete model of a shape.
 pub use crate::ffi::IMeshData_Model as Model;
 
@@ -455,31 +487,37 @@ unsafe impl crate::CppDeletable for Model {
 }
 
 impl Model {
+    /// **Source:** `IMeshData_Model.hxx`:35 - `IMeshData_Model::GetMaxSize()`
     /// Returns maximum size of shape model.
     pub fn get_max_size(&self) -> f64 {
         unsafe { crate::ffi::IMeshData_Model_get_max_size(self as *const Self) }
     }
 
+    /// **Source:** `IMeshData_Model.hxx`:37 - `IMeshData_Model::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshData_Model_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshData_Model.hxx`:41 - `IMeshData_Model::FacesNb()`
     /// @name discrete faces
     /// Returns number of faces in discrete model.
     pub fn faces_nb(&self) -> i32 {
         unsafe { crate::ffi::IMeshData_Model_faces_nb(self as *const Self) }
     }
 
+    /// **Source:** `IMeshData_Model.hxx`:52 - `IMeshData_Model::EdgesNb()`
     /// @name discrete edges
     /// Returns number of edges in discrete model.
     pub fn edges_nb(&self) -> i32 {
         unsafe { crate::ffi::IMeshData_Model_edges_nb(self as *const Self) }
     }
 
+    /// **Source:** `IMeshData_Model.hxx`:37 - `IMeshData_Model::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IMeshData_Model_get_type_name() }
     }
 
+    /// **Source:** `IMeshData_Model.hxx`:37 - `IMeshData_Model::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshData_Model_get_type_descriptor()) }
     }
@@ -509,6 +547,7 @@ impl Model {
 // From IMeshData_PCurve.hxx
 // ========================
 
+/// **Source:** `IMeshData_PCurve.hxx`:27 - `IMeshData_PCurve`
 /// Interface class representing pcurve of edge associated with discrete face.
 /// Indexation of points starts from zero.
 pub use crate::ffi::IMeshData_PCurve as PCurve;
@@ -520,6 +559,7 @@ unsafe impl crate::CppDeletable for PCurve {
 }
 
 impl PCurve {
+    /// **Source:** `IMeshData_PCurve.hxx`:34 - `IMeshData_PCurve::InsertPoint()`
     /// Inserts new discretization point at the given position.
     pub fn insert_point(
         &mut self,
@@ -537,6 +577,7 @@ impl PCurve {
         }
     }
 
+    /// **Source:** `IMeshData_PCurve.hxx`:39 - `IMeshData_PCurve::AddPoint()`
     /// Adds new discretization point to pcurve.
     pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d, theParamOnPCurve: f64) {
         unsafe {
@@ -544,31 +585,37 @@ impl PCurve {
         }
     }
 
+    /// **Source:** `IMeshData_PCurve.hxx`:43 - `IMeshData_PCurve::GetPoint()`
     /// Returns discretization point with the given index.
     pub fn get_point(&mut self, theIndex: i32) -> &mut crate::ffi::gp_Pnt2d {
         unsafe { &mut *(crate::ffi::IMeshData_PCurve_get_point(self as *mut Self, theIndex)) }
     }
 
+    /// **Source:** `IMeshData_PCurve.hxx`:46 - `IMeshData_PCurve::GetIndex()`
     /// Returns index in mesh corresponded to discretization point with the given index.
     pub fn get_index(&mut self, theIndex: i32) -> &mut i32 {
         unsafe { &mut *(crate::ffi::IMeshData_PCurve_get_index(self as *mut Self, theIndex)) }
     }
 
+    /// **Source:** `IMeshData_PCurve.hxx`:49 - `IMeshData_PCurve::RemovePoint()`
     /// Removes point with the given index.
     pub fn remove_point(&mut self, theIndex: i32) {
         unsafe { crate::ffi::IMeshData_PCurve_remove_point(self as *mut Self, theIndex) }
     }
 
+    /// **Source:** `IMeshData_PCurve.hxx`:52 - `IMeshData_PCurve::IsForward()`
     /// Returns forward flag of this pcurve.
     pub fn is_forward(&self) -> bool {
         unsafe { crate::ffi::IMeshData_PCurve_is_forward(self as *const Self) }
     }
 
+    /// **Source:** `IMeshData_PCurve.hxx`:55 - `IMeshData_PCurve::IsInternal()`
     /// Returns internal flag of this pcurve.
     pub fn is_internal(&self) -> bool {
         unsafe { crate::ffi::IMeshData_PCurve_is_internal(self as *const Self) }
     }
 
+    /// **Source:** `IMeshData_PCurve.hxx`:58 - `IMeshData_PCurve::GetOrientation()`
     /// Returns orientation of the edge associated with current pcurve.
     pub fn get_orientation(&self) -> crate::top_abs::Orientation {
         unsafe {
@@ -579,14 +626,17 @@ impl PCurve {
         }
     }
 
+    /// **Source:** `IMeshData_PCurve.hxx`:63 - `IMeshData_PCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshData_PCurve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshData_PCurve.hxx`:63 - `IMeshData_PCurve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IMeshData_PCurve_get_type_name() }
     }
 
+    /// **Source:** `IMeshData_PCurve.hxx`:63 - `IMeshData_PCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshData_PCurve_get_type_descriptor()) }
     }
@@ -625,6 +675,7 @@ impl PCurve {
 // From IMeshData_ParametersList.hxx
 // ========================
 
+/// **Source:** `IMeshData_ParametersList.hxx`:23 - `IMeshData_ParametersList`
 /// Interface class representing list of parameters on curve.
 pub use crate::ffi::IMeshData_ParametersList as ParametersList;
 
@@ -635,6 +686,7 @@ unsafe impl crate::CppDeletable for ParametersList {
 }
 
 impl ParametersList {
+    /// **Source:** `IMeshData_ParametersList.hxx`:30 - `IMeshData_ParametersList::GetParameter()`
     /// Returns parameter with the given index.
     pub fn get_parameter(&mut self, theIndex: i32) -> &mut f64 {
         unsafe {
@@ -642,24 +694,29 @@ impl ParametersList {
         }
     }
 
+    /// **Source:** `IMeshData_ParametersList.hxx`:33 - `IMeshData_ParametersList::ParametersNb()`
     /// Returns number of parameters.
     pub fn parameters_nb(&self) -> i32 {
         unsafe { crate::ffi::IMeshData_ParametersList_parameters_nb(self as *const Self) }
     }
 
+    /// **Source:** `IMeshData_ParametersList.hxx`:36 - `IMeshData_ParametersList::Clear()`
     /// Clears parameters list.
     pub fn clear(&mut self, isKeepEndPoints: bool) {
         unsafe { crate::ffi::IMeshData_ParametersList_clear(self as *mut Self, isKeepEndPoints) }
     }
 
+    /// **Source:** `IMeshData_ParametersList.hxx`:38 - `IMeshData_ParametersList::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshData_ParametersList_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshData_ParametersList.hxx`:38 - `IMeshData_ParametersList::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IMeshData_ParametersList_get_type_name() }
     }
 
+    /// **Source:** `IMeshData_ParametersList.hxx`:38 - `IMeshData_ParametersList::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshData_ParametersList_get_type_descriptor()) }
     }
@@ -689,6 +746,7 @@ impl HandleIMeshDataParametersList {
 // From IMeshData_Shape.hxx
 // ========================
 
+/// **Source:** `IMeshData_Shape.hxx`:24 - `IMeshData_Shape`
 /// Interface class representing model with associated TopoDS_Shape.
 /// Intended for inheritance by structures and algorithms keeping
 /// reference TopoDS_Shape.
@@ -701,24 +759,29 @@ unsafe impl crate::CppDeletable for Shape {
 }
 
 impl Shape {
+    /// **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     /// Assigns shape to discrete shape.
     pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::IMeshData_Shape_set_shape(self as *mut Self, theShape) }
     }
 
+    /// **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
     /// Returns shape assigned to discrete shape.
     pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::IMeshData_Shape_get_shape(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshData_Shape.hxx`:36 - `IMeshData_Shape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshData_Shape_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshData_Shape.hxx`:36 - `IMeshData_Shape::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IMeshData_Shape_get_type_name() }
     }
 
+    /// **Source:** `IMeshData_Shape.hxx`:36 - `IMeshData_Shape::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshData_Shape_get_type_descriptor()) }
     }
@@ -755,6 +818,7 @@ impl HandleIMeshDataShape {
 // From IMeshData_StatusOwner.hxx
 // ========================
 
+/// **Source:** `IMeshData_StatusOwner.hxx`:22 - `IMeshData_StatusOwner`
 /// Extension interface class providing status functionality.
 pub use crate::ffi::IMeshData_StatusOwner as StatusOwner;
 
@@ -765,26 +829,31 @@ unsafe impl crate::CppDeletable for StatusOwner {
 }
 
 impl StatusOwner {
+    /// **Source:** `IMeshData_StatusOwner.hxx`:29 - `IMeshData_StatusOwner::IsEqual()`
     /// Returns true in case if status is strictly equal to the given value.
     pub fn is_equal(&self, theValue: i32) -> bool {
         unsafe { crate::ffi::IMeshData_StatusOwner_is_equal(self as *const Self, theValue) }
     }
 
+    /// **Source:** `IMeshData_StatusOwner.hxx`:32 - `IMeshData_StatusOwner::IsSet()`
     /// Returns true in case if status is set.
     pub fn is_set(&self, theValue: i32) -> bool {
         unsafe { crate::ffi::IMeshData_StatusOwner_is_set(self as *const Self, theValue) }
     }
 
+    /// **Source:** `IMeshData_StatusOwner.hxx`:38 - `IMeshData_StatusOwner::SetStatus()`
     /// Adds status to status flags of a face.
     pub fn set_status(&mut self, theValue: i32) {
         unsafe { crate::ffi::IMeshData_StatusOwner_set_status(self as *mut Self, theValue) }
     }
 
+    /// **Source:** `IMeshData_StatusOwner.hxx`:41 - `IMeshData_StatusOwner::UnsetStatus()`
     /// Adds status to status flags of a face.
     pub fn unset_status(&mut self, theValue: i32) {
         unsafe { crate::ffi::IMeshData_StatusOwner_unset_status(self as *mut Self, theValue) }
     }
 
+    /// **Source:** `IMeshData_StatusOwner.hxx`:44 - `IMeshData_StatusOwner::GetStatusMask()`
     /// Returns complete status mask.
     pub fn get_status_mask(&self) -> i32 {
         unsafe { crate::ffi::IMeshData_StatusOwner_get_status_mask(self as *const Self) }
@@ -795,6 +864,7 @@ impl StatusOwner {
 // From IMeshData_TessellatedShape.hxx
 // ========================
 
+/// **Source:** `IMeshData_TessellatedShape.hxx`:24 - `IMeshData_TessellatedShape`
 /// Interface class representing shaped model with deflection.
 pub use crate::ffi::IMeshData_TessellatedShape as TessellatedShape;
 
@@ -805,11 +875,13 @@ unsafe impl crate::CppDeletable for TessellatedShape {
 }
 
 impl TessellatedShape {
+    /// **Source:** `IMeshData_TessellatedShape.hxx`:31 - `IMeshData_TessellatedShape::GetDeflection()`
     /// Gets deflection value for the discrete model.
     pub fn get_deflection(&self) -> f64 {
         unsafe { crate::ffi::IMeshData_TessellatedShape_get_deflection(self as *const Self) }
     }
 
+    /// **Source:** `IMeshData_TessellatedShape.hxx`:34 - `IMeshData_TessellatedShape::SetDeflection()`
     /// Sets deflection value for the discrete model.
     pub fn set_deflection(&mut self, theValue: f64) {
         unsafe {
@@ -817,14 +889,17 @@ impl TessellatedShape {
         }
     }
 
+    /// **Source:** `IMeshData_TessellatedShape.hxx`:36 - `IMeshData_TessellatedShape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshData_TessellatedShape_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshData_TessellatedShape.hxx`:36 - `IMeshData_TessellatedShape::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IMeshData_TessellatedShape_get_type_name() }
     }
 
+    /// **Source:** `IMeshData_TessellatedShape.hxx`:36 - `IMeshData_TessellatedShape::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshData_TessellatedShape_get_type_descriptor()) }
     }
@@ -862,6 +937,7 @@ impl TessellatedShape {
 // From IMeshData_Wire.hxx
 // ========================
 
+/// **Source:** `IMeshData_Wire.hxx`:28 - `IMeshData_Wire`
 /// Interface class representing discrete model of a wire.
 /// Wire should represent an ordered set of edges.
 pub use crate::ffi::IMeshData_Wire as Wire;
@@ -873,16 +949,19 @@ unsafe impl crate::CppDeletable for Wire {
 }
 
 impl Wire {
+    /// **Source:** `IMeshData_Wire.hxx`:35 - `IMeshData_Wire::GetWire()`
     /// Returns TopoDS_Face attached to model.
     pub fn get_wire(&self) -> &crate::ffi::TopoDS_Wire {
         unsafe { &*(crate::ffi::IMeshData_Wire_get_wire(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshData_Wire.hxx`:38 - `IMeshData_Wire::EdgesNb()`
     /// Returns number of edges.
     pub fn edges_nb(&self) -> i32 {
         unsafe { crate::ffi::IMeshData_Wire_edges_nb(self as *const Self) }
     }
 
+    /// **Source:** `IMeshData_Wire.hxx`:50 - `IMeshData_Wire::GetEdgeOrientation()`
     /// Returns True if orientation of discrete edge with the given index is forward.
     pub fn get_edge_orientation(&self, theIndex: i32) -> crate::top_abs::Orientation {
         unsafe {
@@ -894,14 +973,17 @@ impl Wire {
         }
     }
 
+    /// **Source:** `IMeshData_Wire.hxx`:53 - `IMeshData_Wire::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshData_Wire_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshData_Wire.hxx`:53 - `IMeshData_Wire::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IMeshData_Wire_get_type_name() }
     }
 
+    /// **Source:** `IMeshData_Wire.hxx`:53 - `IMeshData_Wire::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshData_Wire_get_type_descriptor()) }
     }

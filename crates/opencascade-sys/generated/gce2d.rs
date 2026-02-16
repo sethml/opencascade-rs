@@ -10,6 +10,7 @@
 // From GCE2d_MakeArcOfCircle.hxx
 // ========================
 
+/// **Source:** `GCE2d_MakeArcOfCircle.hxx`:38 - `GCE2d_MakeArcOfCircle`
 /// Implements construction algorithms for an arc of
 /// circle in the plane. The result is a Geom2d_TrimmedCurve curve.
 /// A MakeArcOfCircle object provides a framework for:
@@ -26,6 +27,7 @@ unsafe impl crate::CppDeletable for MakeArcOfCircle {
 }
 
 impl MakeArcOfCircle {
+    /// **Source:** `GCE2d_MakeArcOfCircle.hxx`:47 - `GCE2d_MakeArcOfCircle::GCE2d_MakeArcOfCircle()`
     /// Makes an arc of circle (TrimmedCurve from Geom2d) from
     /// a circle between two parameters Alpha1 and Alpha2.
     /// The two parameters are angles. The parameters are
@@ -43,6 +45,7 @@ impl MakeArcOfCircle {
         }
     }
 
+    /// **Source:** `GCE2d_MakeArcOfCircle.hxx`:55 - `GCE2d_MakeArcOfCircle::GCE2d_MakeArcOfCircle()`
     /// Makes an arc of circle (TrimmedCurve from Geom2d) from
     /// a circle between point <P> and the parameter
     /// Alpha. Alpha is given in radians.
@@ -61,6 +64,7 @@ impl MakeArcOfCircle {
         }
     }
 
+    /// **Source:** `GCE2d_MakeArcOfCircle.hxx`:62 - `GCE2d_MakeArcOfCircle::GCE2d_MakeArcOfCircle()`
     /// Makes an arc of circle (TrimmedCurve from Geom2d) from
     /// a circle between two points P1 and P2.
     pub fn new_circ2d_pnt2d2_bool(
@@ -76,6 +80,7 @@ impl MakeArcOfCircle {
         }
     }
 
+    /// **Source:** `GCE2d_MakeArcOfCircle.hxx`:70 - `GCE2d_MakeArcOfCircle::GCE2d_MakeArcOfCircle()`
     /// Makes an arc of circle (TrimmedCurve from Geom2d) from
     /// three points P1,P2,P3 between two points P1 and P3,
     /// and passing through the point P2.
@@ -89,6 +94,7 @@ impl MakeArcOfCircle {
         }
     }
 
+    /// **Source:** `GCE2d_MakeArcOfCircle.hxx`:75 - `GCE2d_MakeArcOfCircle::GCE2d_MakeArcOfCircle()`
     /// Makes an arc of circle (TrimmedCurve from Geom2d) from
     /// two points P1,P2 and the tangente to the solution at
     /// the point P1.
@@ -104,6 +110,7 @@ impl MakeArcOfCircle {
         }
     }
 
+    /// **Source:** `GCE2d_MakeArcOfCircle.hxx`:47 - `GCE2d_MakeArcOfCircle::GCE2d_MakeArcOfCircle()`
     /// Makes an arc of circle (TrimmedCurve from Geom2d) from
     /// a circle between two parameters Alpha1 and Alpha2.
     /// The two parameters are angles. The parameters are
@@ -116,6 +123,7 @@ impl MakeArcOfCircle {
         Self::new_circ2d_real2_bool(Circ, Alpha1, Alpha2, true)
     }
 
+    /// **Source:** `GCE2d_MakeArcOfCircle.hxx`:55 - `GCE2d_MakeArcOfCircle::GCE2d_MakeArcOfCircle()`
     /// Makes an arc of circle (TrimmedCurve from Geom2d) from
     /// a circle between point <P> and the parameter
     /// Alpha. Alpha is given in radians.
@@ -127,6 +135,7 @@ impl MakeArcOfCircle {
         Self::new_circ2d_pnt2d_real_bool(Circ, P, Alpha, true)
     }
 
+    /// **Source:** `GCE2d_MakeArcOfCircle.hxx`:62 - `GCE2d_MakeArcOfCircle::GCE2d_MakeArcOfCircle()`
     /// Makes an arc of circle (TrimmedCurve from Geom2d) from
     /// a circle between two points P1 and P2.
     pub fn new_circ2d_pnt2d2(
@@ -137,6 +146,7 @@ impl MakeArcOfCircle {
         Self::new_circ2d_pnt2d2_bool(Circ, P1, P2, true)
     }
 
+    /// **Source:** `GCE2d_MakeArcOfCircle.hxx`:79 - `GCE2d_MakeArcOfCircle::Value()`
     /// Returns the constructed arc of circle.
     /// Exceptions StdFail_NotDone if no arc of circle is constructed.
     pub fn value(&self) -> &crate::ffi::HandleGeom2dTrimmedCurve {
@@ -163,6 +173,7 @@ impl MakeArcOfCircle {
 // From GCE2d_MakeArcOfEllipse.hxx
 // ========================
 
+/// **Source:** `GCE2d_MakeArcOfEllipse.hxx`:37 - `GCE2d_MakeArcOfEllipse`
 /// Implements construction algorithms for an arc of
 /// ellipse in the plane. The result is a Geom2d_TrimmedCurve curve.
 /// A MakeArcOfEllipse object provides a framework for:
@@ -179,6 +190,7 @@ unsafe impl crate::CppDeletable for MakeArcOfEllipse {
 }
 
 impl MakeArcOfEllipse {
+    /// **Source:** `GCE2d_MakeArcOfEllipse.hxx`:44 - `GCE2d_MakeArcOfEllipse::GCE2d_MakeArcOfEllipse()`
     /// Make an arc of Ellipse (TrimmedCurve from Geom2d) from
     /// a Ellipse between two parameters Alpha1 and Alpha2.
     pub fn new_elips2d_real2_bool(
@@ -194,6 +206,7 @@ impl MakeArcOfEllipse {
         }
     }
 
+    /// **Source:** `GCE2d_MakeArcOfEllipse.hxx`:52 - `GCE2d_MakeArcOfEllipse::GCE2d_MakeArcOfEllipse()`
     /// Make an arc of Ellipse (TrimmedCurve from Geom2d) from
     /// a Ellipse between point <P> and the parameter
     /// Alpha.
@@ -212,6 +225,7 @@ impl MakeArcOfEllipse {
         }
     }
 
+    /// **Source:** `GCE2d_MakeArcOfEllipse.hxx`:65 - `GCE2d_MakeArcOfEllipse::GCE2d_MakeArcOfEllipse()`
     /// Make an arc of Ellipse (TrimmedCurve from Geom2d) from
     /// a Ellipse between two points P1 and P2.
     /// Please, note: The orientation of the arc is:
@@ -233,6 +247,7 @@ impl MakeArcOfEllipse {
         }
     }
 
+    /// **Source:** `GCE2d_MakeArcOfEllipse.hxx`:44 - `GCE2d_MakeArcOfEllipse::GCE2d_MakeArcOfEllipse()`
     /// Make an arc of Ellipse (TrimmedCurve from Geom2d) from
     /// a Ellipse between two parameters Alpha1 and Alpha2.
     pub fn new_elips2d_real2(
@@ -243,6 +258,7 @@ impl MakeArcOfEllipse {
         Self::new_elips2d_real2_bool(Elips, Alpha1, Alpha2, true)
     }
 
+    /// **Source:** `GCE2d_MakeArcOfEllipse.hxx`:52 - `GCE2d_MakeArcOfEllipse::GCE2d_MakeArcOfEllipse()`
     /// Make an arc of Ellipse (TrimmedCurve from Geom2d) from
     /// a Ellipse between point <P> and the parameter
     /// Alpha.
@@ -254,6 +270,7 @@ impl MakeArcOfEllipse {
         Self::new_elips2d_pnt2d_real_bool(Elips, P, Alpha, true)
     }
 
+    /// **Source:** `GCE2d_MakeArcOfEllipse.hxx`:65 - `GCE2d_MakeArcOfEllipse::GCE2d_MakeArcOfEllipse()`
     /// Make an arc of Ellipse (TrimmedCurve from Geom2d) from
     /// a Ellipse between two points P1 and P2.
     /// Please, note: The orientation of the arc is:
@@ -270,6 +287,7 @@ impl MakeArcOfEllipse {
         Self::new_elips2d_pnt2d2_bool(Elips, P1, P2, true)
     }
 
+    /// **Source:** `GCE2d_MakeArcOfEllipse.hxx`:71 - `GCE2d_MakeArcOfEllipse::Value()`
     /// Returns the constructed arc of ellipse.
     pub fn value(&self) -> &crate::ffi::HandleGeom2dTrimmedCurve {
         unsafe { &*(crate::ffi::GCE2d_MakeArcOfEllipse_value(self as *const Self)) }
@@ -295,6 +313,7 @@ impl MakeArcOfEllipse {
 // From GCE2d_MakeArcOfHyperbola.hxx
 // ========================
 
+/// **Source:** `GCE2d_MakeArcOfHyperbola.hxx`:37 - `GCE2d_MakeArcOfHyperbola`
 /// Implements construction algorithms for an arc of
 /// hyperbola in the plane. The result is a Geom2d_TrimmedCurve curve.
 /// A MakeArcOfHyperbola object provides a framework for:
@@ -311,6 +330,7 @@ unsafe impl crate::CppDeletable for MakeArcOfHyperbola {
 }
 
 impl MakeArcOfHyperbola {
+    /// **Source:** `GCE2d_MakeArcOfHyperbola.hxx`:44 - `GCE2d_MakeArcOfHyperbola::GCE2d_MakeArcOfHyperbola()`
     /// Makes an arc of Hyperbola (TrimmedCurve from Geom2d) from
     /// a Hyperbola between two parameters Alpha1 and Alpha2.
     pub fn new_hypr2d_real2_bool(
@@ -326,6 +346,7 @@ impl MakeArcOfHyperbola {
         }
     }
 
+    /// **Source:** `GCE2d_MakeArcOfHyperbola.hxx`:52 - `GCE2d_MakeArcOfHyperbola::GCE2d_MakeArcOfHyperbola()`
     /// Makes an arc of Hyperbola (TrimmedCurve from Geom2d) from
     /// a Hyperbola between point <P> and the parameter
     /// Alpha.
@@ -344,6 +365,7 @@ impl MakeArcOfHyperbola {
         }
     }
 
+    /// **Source:** `GCE2d_MakeArcOfHyperbola.hxx`:64 - `GCE2d_MakeArcOfHyperbola::GCE2d_MakeArcOfHyperbola()`
     /// Makes an arc of Hyperbola (TrimmedCurve from Geom2d) from
     /// a Hyperbola between two points P1 and P2.
     /// Note: the orientation of the arc of hyperbola is:
@@ -364,6 +386,7 @@ impl MakeArcOfHyperbola {
         }
     }
 
+    /// **Source:** `GCE2d_MakeArcOfHyperbola.hxx`:44 - `GCE2d_MakeArcOfHyperbola::GCE2d_MakeArcOfHyperbola()`
     /// Makes an arc of Hyperbola (TrimmedCurve from Geom2d) from
     /// a Hyperbola between two parameters Alpha1 and Alpha2.
     pub fn new_hypr2d_real2(
@@ -374,6 +397,7 @@ impl MakeArcOfHyperbola {
         Self::new_hypr2d_real2_bool(Hypr, Alpha1, Alpha2, true)
     }
 
+    /// **Source:** `GCE2d_MakeArcOfHyperbola.hxx`:52 - `GCE2d_MakeArcOfHyperbola::GCE2d_MakeArcOfHyperbola()`
     /// Makes an arc of Hyperbola (TrimmedCurve from Geom2d) from
     /// a Hyperbola between point <P> and the parameter
     /// Alpha.
@@ -385,6 +409,7 @@ impl MakeArcOfHyperbola {
         Self::new_hypr2d_pnt2d_real_bool(Hypr, P, Alpha, true)
     }
 
+    /// **Source:** `GCE2d_MakeArcOfHyperbola.hxx`:64 - `GCE2d_MakeArcOfHyperbola::GCE2d_MakeArcOfHyperbola()`
     /// Makes an arc of Hyperbola (TrimmedCurve from Geom2d) from
     /// a Hyperbola between two points P1 and P2.
     /// Note: the orientation of the arc of hyperbola is:
@@ -400,6 +425,7 @@ impl MakeArcOfHyperbola {
         Self::new_hypr2d_pnt2d2_bool(Hypr, P1, P2, true)
     }
 
+    /// **Source:** `GCE2d_MakeArcOfHyperbola.hxx`:70 - `GCE2d_MakeArcOfHyperbola::Value()`
     /// Returns the constructed arc of hyperbola.
     pub fn value(&self) -> &crate::ffi::HandleGeom2dTrimmedCurve {
         unsafe { &*(crate::ffi::GCE2d_MakeArcOfHyperbola_value(self as *const Self)) }
@@ -425,6 +451,7 @@ impl MakeArcOfHyperbola {
 // From GCE2d_MakeArcOfParabola.hxx
 // ========================
 
+/// **Source:** `GCE2d_MakeArcOfParabola.hxx`:37 - `GCE2d_MakeArcOfParabola`
 /// Implements construction algorithms for an arc of
 /// parabola in the plane. The result is a Geom2d_TrimmedCurve curve.
 /// A MakeArcOfParabola object provides a framework for:
@@ -441,6 +468,7 @@ unsafe impl crate::CppDeletable for MakeArcOfParabola {
 }
 
 impl MakeArcOfParabola {
+    /// **Source:** `GCE2d_MakeArcOfParabola.hxx`:44 - `GCE2d_MakeArcOfParabola::GCE2d_MakeArcOfParabola()`
     /// Make an arc of Parabola (TrimmedCurve from Geom2d) from
     /// a Parabola between two parameters Alpha1 and Alpha2.
     pub fn new_parab2d_real2_bool(
@@ -456,6 +484,7 @@ impl MakeArcOfParabola {
         }
     }
 
+    /// **Source:** `GCE2d_MakeArcOfParabola.hxx`:52 - `GCE2d_MakeArcOfParabola::GCE2d_MakeArcOfParabola()`
     /// Make an arc of Parabola (TrimmedCurve from Geom2d) from
     /// a Parabola between point <P> and the parameter
     /// Alpha.
@@ -474,6 +503,7 @@ impl MakeArcOfParabola {
         }
     }
 
+    /// **Source:** `GCE2d_MakeArcOfParabola.hxx`:64 - `GCE2d_MakeArcOfParabola::GCE2d_MakeArcOfParabola()`
     /// Make an arc of Parabola (TrimmedCurve from Geom2d) from
     /// a Parabola between two points P1 and P2.
     /// Please, note: the orientation of the arc of parabola is:
@@ -494,6 +524,7 @@ impl MakeArcOfParabola {
         }
     }
 
+    /// **Source:** `GCE2d_MakeArcOfParabola.hxx`:44 - `GCE2d_MakeArcOfParabola::GCE2d_MakeArcOfParabola()`
     /// Make an arc of Parabola (TrimmedCurve from Geom2d) from
     /// a Parabola between two parameters Alpha1 and Alpha2.
     pub fn new_parab2d_real2(
@@ -504,6 +535,7 @@ impl MakeArcOfParabola {
         Self::new_parab2d_real2_bool(Parab, Alpha1, Alpha2, true)
     }
 
+    /// **Source:** `GCE2d_MakeArcOfParabola.hxx`:52 - `GCE2d_MakeArcOfParabola::GCE2d_MakeArcOfParabola()`
     /// Make an arc of Parabola (TrimmedCurve from Geom2d) from
     /// a Parabola between point <P> and the parameter
     /// Alpha.
@@ -515,6 +547,7 @@ impl MakeArcOfParabola {
         Self::new_parab2d_pnt2d_real_bool(Parab, P, Alpha, true)
     }
 
+    /// **Source:** `GCE2d_MakeArcOfParabola.hxx`:64 - `GCE2d_MakeArcOfParabola::GCE2d_MakeArcOfParabola()`
     /// Make an arc of Parabola (TrimmedCurve from Geom2d) from
     /// a Parabola between two points P1 and P2.
     /// Please, note: the orientation of the arc of parabola is:
@@ -530,6 +563,7 @@ impl MakeArcOfParabola {
         Self::new_parab2d_pnt2d2_bool(Parab, P1, P2, true)
     }
 
+    /// **Source:** `GCE2d_MakeArcOfParabola.hxx`:70 - `GCE2d_MakeArcOfParabola::Value()`
     /// Returns the constructed arc of parabola.
     pub fn value(&self) -> &crate::ffi::HandleGeom2dTrimmedCurve {
         unsafe { &*(crate::ffi::GCE2d_MakeArcOfParabola_value(self as *const Self)) }
@@ -555,6 +589,7 @@ impl MakeArcOfParabola {
 // From GCE2d_MakeCircle.hxx
 // ========================
 
+/// **Source:** `GCE2d_MakeCircle.hxx`:43 - `GCE2d_MakeCircle`
 /// This class implements the following algorithms used
 /// to create Circle from Geom2d.
 ///
@@ -575,11 +610,13 @@ unsafe impl crate::CppDeletable for MakeCircle {
 }
 
 impl MakeCircle {
+    /// **Source:** `GCE2d_MakeCircle.hxx`:49 - `GCE2d_MakeCircle::GCE2d_MakeCircle()`
     /// creates a circle from a non persistent one.
     pub fn new_circ2d(C: &crate::ffi::gp_Circ2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeCircle_ctor_circ2d(C)) }
     }
 
+    /// **Source:** `GCE2d_MakeCircle.hxx`:55 - `GCE2d_MakeCircle::GCE2d_MakeCircle()`
     /// A is the "XAxis" of the circle which defines the origin
     /// of parametrization.
     /// It is not forbidden to create a circle with Radius = 0.0
@@ -596,6 +633,7 @@ impl MakeCircle {
         }
     }
 
+    /// **Source:** `GCE2d_MakeCircle.hxx`:63 - `GCE2d_MakeCircle::GCE2d_MakeCircle()`
     /// A is the local coordinate system of the circle which defines
     /// the origin of parametrization.
     /// It is not forbidden to create a circle with Radius = 0.0
@@ -606,6 +644,7 @@ impl MakeCircle {
         }
     }
 
+    /// **Source:** `GCE2d_MakeCircle.hxx`:70 - `GCE2d_MakeCircle::GCE2d_MakeCircle()`
     /// Make a Circle from Geom2d <TheCirc> parallel to another
     /// Circ <Circ> with a distance <Dist>.
     /// If Dist is greater than zero the result is enclosing
@@ -617,6 +656,7 @@ impl MakeCircle {
         }
     }
 
+    /// **Source:** `GCE2d_MakeCircle.hxx`:74 - `GCE2d_MakeCircle::GCE2d_MakeCircle()`
     /// Make a Circle from Geom2d <TheCirc> parallel to another
     /// Circ <Circ> and passing through a Pnt <Point>.
     pub fn new_circ2d_pnt2d(
@@ -628,6 +668,7 @@ impl MakeCircle {
         }
     }
 
+    /// **Source:** `GCE2d_MakeCircle.hxx`:78 - `GCE2d_MakeCircle::GCE2d_MakeCircle()`
     /// Make a Circ from gp <TheCirc> passing through 3
     /// Pnt2d <P1>,<P2>,<P3>.
     pub fn new_pnt2d3(
@@ -638,6 +679,7 @@ impl MakeCircle {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeCircle_ctor_pnt2d3(P1, P2, P3)) }
     }
 
+    /// **Source:** `GCE2d_MakeCircle.hxx`:81 - `GCE2d_MakeCircle::GCE2d_MakeCircle()`
     /// Make a Circ from geom2d <TheCirc> by its center an radius.
     pub fn new_pnt2d_real_bool(
         P: &crate::ffi::gp_Pnt2d,
@@ -651,6 +693,7 @@ impl MakeCircle {
         }
     }
 
+    /// **Source:** `GCE2d_MakeCircle.hxx`:97 - `GCE2d_MakeCircle::GCE2d_MakeCircle()`
     /// Makes a Circle from geom2d <TheCirc> with its center
     /// <Center> and a point giving the radius.
     /// If Sense is true the local coordinate system of
@@ -675,6 +718,7 @@ impl MakeCircle {
         }
     }
 
+    /// **Source:** `GCE2d_MakeCircle.hxx`:55 - `GCE2d_MakeCircle::GCE2d_MakeCircle()`
     /// A is the "XAxis" of the circle which defines the origin
     /// of parametrization.
     /// It is not forbidden to create a circle with Radius = 0.0
@@ -683,11 +727,13 @@ impl MakeCircle {
         Self::new_ax2d_real_bool(A, Radius, true)
     }
 
+    /// **Source:** `GCE2d_MakeCircle.hxx`:81 - `GCE2d_MakeCircle::GCE2d_MakeCircle()`
     /// Make a Circ from geom2d <TheCirc> by its center an radius.
     pub fn new_pnt2d_real(P: &crate::ffi::gp_Pnt2d, Radius: f64) -> crate::OwnedPtr<Self> {
         Self::new_pnt2d_real_bool(P, Radius, true)
     }
 
+    /// **Source:** `GCE2d_MakeCircle.hxx`:97 - `GCE2d_MakeCircle::GCE2d_MakeCircle()`
     /// Makes a Circle from geom2d <TheCirc> with its center
     /// <Center> and a point giving the radius.
     /// If Sense is true the local coordinate system of
@@ -707,6 +753,7 @@ impl MakeCircle {
         Self::new_pnt2d2_bool(Center, Point, true)
     }
 
+    /// **Source:** `GCE2d_MakeCircle.hxx`:103 - `GCE2d_MakeCircle::Value()`
     /// Returns the constructed circle.
     /// Exceptions StdFail_NotDone if no circle is constructed.
     pub fn value(&self) -> &crate::ffi::HandleGeom2dCircle {
@@ -733,6 +780,7 @@ impl MakeCircle {
 // From GCE2d_MakeEllipse.hxx
 // ========================
 
+/// **Source:** `GCE2d_MakeEllipse.hxx`:43 - `GCE2d_MakeEllipse`
 /// This class implements the following algorithms used to
 /// create Ellipse from Geom2d.
 /// * Create an Ellipse from two apex  and the center.
@@ -753,11 +801,13 @@ unsafe impl crate::CppDeletable for MakeEllipse {
 }
 
 impl MakeEllipse {
+    /// **Source:** `GCE2d_MakeEllipse.hxx`:49 - `GCE2d_MakeEllipse::GCE2d_MakeEllipse()`
     /// Creates an ellipse from a non persistent one from package gp
     pub fn new_elips2d(E: &crate::ffi::gp_Elips2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeEllipse_ctor_elips2d(E)) }
     }
 
+    /// **Source:** `GCE2d_MakeEllipse.hxx`:59 - `GCE2d_MakeEllipse::GCE2d_MakeEllipse()`
     /// MajorAxis is the local coordinate system of the ellipse.
     /// It is the "XAxis". The minor axis  is the YAxis of the
     /// ellipse.
@@ -782,6 +832,7 @@ impl MakeEllipse {
         }
     }
 
+    /// **Source:** `GCE2d_MakeEllipse.hxx`:69 - `GCE2d_MakeEllipse::GCE2d_MakeEllipse()`
     /// Axis is the local coordinate system of the ellipse.
     /// It is not forbidden to create an ellipse with MajorRadius =
     /// MinorRadius.
@@ -801,6 +852,7 @@ impl MakeEllipse {
         }
     }
 
+    /// **Source:** `GCE2d_MakeEllipse.hxx`:82 - `GCE2d_MakeEllipse::GCE2d_MakeEllipse()`
     /// Make an Ellipse centered on the point Center, where
     /// -   the major axis of the ellipse is defined by Center and S1,
     /// -   its major radius is the distance between Center and S1, and
@@ -820,6 +872,7 @@ impl MakeEllipse {
         }
     }
 
+    /// **Source:** `GCE2d_MakeEllipse.hxx`:59 - `GCE2d_MakeEllipse::GCE2d_MakeEllipse()`
     /// MajorAxis is the local coordinate system of the ellipse.
     /// It is the "XAxis". The minor axis  is the YAxis of the
     /// ellipse.
@@ -836,6 +889,7 @@ impl MakeEllipse {
         Self::new_ax2d_real2_bool(MajorAxis, MajorRadius, MinorRadius, true)
     }
 
+    /// **Source:** `GCE2d_MakeEllipse.hxx`:86 - `GCE2d_MakeEllipse::Value()`
     /// Returns the constructed ellipse.
     /// Exceptions StdFail_NotDone if no ellipse is constructed.
     pub fn value(&self) -> &crate::ffi::HandleGeom2dEllipse {
@@ -862,6 +916,7 @@ impl MakeEllipse {
 // From GCE2d_MakeHyperbola.hxx
 // ========================
 
+/// **Source:** `GCE2d_MakeHyperbola.hxx`:58 - `GCE2d_MakeHyperbola`
 /// This class implements the following algorithms used to
 /// create Hyperbola from Geom2d.
 /// * Create an Hyperbola from two apex  and the center.
@@ -897,11 +952,13 @@ unsafe impl crate::CppDeletable for MakeHyperbola {
 }
 
 impl MakeHyperbola {
+    /// **Source:** `GCE2d_MakeHyperbola.hxx`:64 - `GCE2d_MakeHyperbola::GCE2d_MakeHyperbola()`
     /// Creates  an Hyperbola from a non persistent one from package gp
     pub fn new_hypr2d(H: &crate::ffi::gp_Hypr2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeHyperbola_ctor_hypr2d(H)) }
     }
 
+    /// **Source:** `GCE2d_MakeHyperbola.hxx`:71 - `GCE2d_MakeHyperbola::GCE2d_MakeHyperbola()`
     /// MajorAxis is the "XAxis" of the hyperbola.
     /// The major radius of the hyperbola is on this "XAxis" and
     /// the minor radius is on the "YAxis" of the hyperbola.
@@ -923,6 +980,7 @@ impl MakeHyperbola {
         }
     }
 
+    /// **Source:** `GCE2d_MakeHyperbola.hxx`:81 - `GCE2d_MakeHyperbola::GCE2d_MakeHyperbola()`
     /// Axis is the local coordinate system of the hyperbola.
     /// The major radius of the hyperbola is on this "XAxis" and
     /// the minor radius is on the "YAxis" of the hyperbola.
@@ -942,6 +1000,7 @@ impl MakeHyperbola {
         }
     }
 
+    /// **Source:** `GCE2d_MakeHyperbola.hxx`:102 - `GCE2d_MakeHyperbola::GCE2d_MakeHyperbola()`
     /// Creates a hyperbol centered on the origin of the coordinate system
     /// Axis, with major and minor radii MajorRadius and
     /// MinorRadius, where the major axis is the "X Axis"
@@ -969,6 +1028,7 @@ impl MakeHyperbola {
         }
     }
 
+    /// **Source:** `GCE2d_MakeHyperbola.hxx`:108 - `GCE2d_MakeHyperbola::Value()`
     /// Returns the constructed hyperbola.
     /// Exceptions: StdFail_NotDone if no hyperbola is constructed.
     pub fn value(&self) -> &crate::ffi::HandleGeom2dHyperbola {
@@ -995,6 +1055,7 @@ impl MakeHyperbola {
 // From GCE2d_MakeLine.hxx
 // ========================
 
+/// **Source:** `GCE2d_MakeLine.hxx`:37 - `GCE2d_MakeLine`
 /// This class implements the following algorithms used
 /// to create a Line from Geom2d.
 /// * Create a Line parallel to another and passing
@@ -1009,17 +1070,20 @@ unsafe impl crate::CppDeletable for MakeLine {
 }
 
 impl MakeLine {
+    /// **Source:** `GCE2d_MakeLine.hxx`:44 - `GCE2d_MakeLine::GCE2d_MakeLine()`
     /// Creates a line located in 2D space with the axis placement A.
     /// The Location of A is the origin of the line.
     pub fn new_ax2d(A: &crate::ffi::gp_Ax2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeLine_ctor_ax2d(A)) }
     }
 
+    /// **Source:** `GCE2d_MakeLine.hxx`:47 - `GCE2d_MakeLine::GCE2d_MakeLine()`
     /// Creates a line from a non persistent line from package gp.
     pub fn new_lin2d(L: &crate::ffi::gp_Lin2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeLine_ctor_lin2d(L)) }
     }
 
+    /// **Source:** `GCE2d_MakeLine.hxx`:50 - `GCE2d_MakeLine::GCE2d_MakeLine()`
     /// P is the origin and V is the direction of the line.
     pub fn new_pnt2d_dir2d(
         P: &crate::ffi::gp_Pnt2d,
@@ -1028,6 +1092,7 @@ impl MakeLine {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeLine_ctor_pnt2d_dir2d(P, V)) }
     }
 
+    /// **Source:** `GCE2d_MakeLine.hxx`:54 - `GCE2d_MakeLine::GCE2d_MakeLine()`
     /// Make a Line from Geom2d <TheLin> parallel to another
     /// Lin <Lin> and passing through a Pnt <Point>.
     pub fn new_lin2d_pnt2d(
@@ -1039,12 +1104,14 @@ impl MakeLine {
         }
     }
 
+    /// **Source:** `GCE2d_MakeLine.hxx`:58 - `GCE2d_MakeLine::GCE2d_MakeLine()`
     /// Make a Line from Geom2d <TheLin> parallel to another
     /// Lin <Lin> at a distance <Dist>.
     pub fn new_lin2d_real(Lin: &crate::ffi::gp_Lin2d, Dist: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeLine_ctor_lin2d_real(Lin, Dist)) }
     }
 
+    /// **Source:** `GCE2d_MakeLine.hxx`:66 - `GCE2d_MakeLine::GCE2d_MakeLine()`
     /// Make a Line from Geom2d <TheLin> passing through 2
     /// Pnt <P1>,<P2>.
     /// It returns false if <p1> and <P2> are confused.
@@ -1058,6 +1125,7 @@ impl MakeLine {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeLine_ctor_pnt2d2(P1, P2)) }
     }
 
+    /// **Source:** `GCE2d_MakeLine.hxx`:70 - `GCE2d_MakeLine::Value()`
     /// Returns the constructed line.
     /// Exceptions StdFail_NotDone if no line is constructed.
     pub fn value(&self) -> &crate::ffi::HandleGeom2dLine {
@@ -1084,6 +1152,7 @@ impl MakeLine {
 // From GCE2d_MakeMirror.hxx
 // ========================
 
+/// **Source:** `GCE2d_MakeMirror.hxx`:37 - `GCE2d_MakeMirror`
 /// This class implements elementary construction algorithms for a
 /// symmetrical transformation in 2D space about a point
 /// or axis. The result is a Geom2d_Transformation transformation.
@@ -1100,18 +1169,22 @@ unsafe impl crate::CppDeletable for MakeMirror {
 }
 
 impl MakeMirror {
+    /// **Source:** `GCE2d_MakeMirror.hxx`:42 - `GCE2d_MakeMirror::GCE2d_MakeMirror()`
     pub fn new_pnt2d(Point: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeMirror_ctor_pnt2d(Point)) }
     }
 
+    /// **Source:** `GCE2d_MakeMirror.hxx`:44 - `GCE2d_MakeMirror::GCE2d_MakeMirror()`
     pub fn new_ax2d(Axis: &crate::ffi::gp_Ax2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeMirror_ctor_ax2d(Axis)) }
     }
 
+    /// **Source:** `GCE2d_MakeMirror.hxx`:46 - `GCE2d_MakeMirror::GCE2d_MakeMirror()`
     pub fn new_lin2d(Line: &crate::ffi::gp_Lin2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeMirror_ctor_lin2d(Line)) }
     }
 
+    /// **Source:** `GCE2d_MakeMirror.hxx`:50 - `GCE2d_MakeMirror::GCE2d_MakeMirror()`
     /// Make a symmetry transformation af axis defined by
     /// <Point> and <Direc>.
     pub fn new_pnt2d_dir2d(
@@ -1123,6 +1196,7 @@ impl MakeMirror {
         }
     }
 
+    /// **Source:** `GCE2d_MakeMirror.hxx`:53 - `GCE2d_MakeMirror::Value()`
     /// Returns the constructed transformation.
     pub fn value(&self) -> &crate::ffi::HandleGeom2dTransformation {
         unsafe { &*(crate::ffi::GCE2d_MakeMirror_value(self as *const Self)) }
@@ -1133,6 +1207,7 @@ impl MakeMirror {
 // From GCE2d_MakeParabola.hxx
 // ========================
 
+/// **Source:** `GCE2d_MakeParabola.hxx`:48 - `GCE2d_MakeParabola`
 /// This class implements the following algorithms used to
 /// create Parabola from Geom2d.
 /// * Create an Parabola from two apex  and the center.
@@ -1158,11 +1233,13 @@ unsafe impl crate::CppDeletable for MakeParabola {
 }
 
 impl MakeParabola {
+    /// **Source:** `GCE2d_MakeParabola.hxx`:54 - `GCE2d_MakeParabola::GCE2d_MakeParabola()`
     /// Creates a parabola from a non persistent one.
     pub fn new_parab2d(Prb: &crate::ffi::gp_Parab2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeParabola_ctor_parab2d(Prb)) }
     }
 
+    /// **Source:** `GCE2d_MakeParabola.hxx`:60 - `GCE2d_MakeParabola::GCE2d_MakeParabola()`
     /// Creates a parabola with its local coordinate system and it's focal
     /// length "Focal".
     /// The "Location" point of "Axis" is the vertex of the parabola
@@ -1173,6 +1250,7 @@ impl MakeParabola {
         }
     }
 
+    /// **Source:** `GCE2d_MakeParabola.hxx`:67 - `GCE2d_MakeParabola::GCE2d_MakeParabola()`
     /// Creates a parabola with its "MirrorAxis" and it's focal length "Focal".
     /// MirrorAxis is the axis of symmetry of the curve, it is the
     /// "XAxis". The "YAxis" is parallel to the directrix of the
@@ -1190,6 +1268,7 @@ impl MakeParabola {
         }
     }
 
+    /// **Source:** `GCE2d_MakeParabola.hxx`:77 - `GCE2d_MakeParabola::GCE2d_MakeParabola()`
     /// D is the directrix of the parabola and F the focus point.
     /// The symmetry axis "XAxis" of the parabola is normal to the
     /// directrix and pass through the focus point F, but its
@@ -1208,6 +1287,7 @@ impl MakeParabola {
         }
     }
 
+    /// **Source:** `GCE2d_MakeParabola.hxx`:97 - `GCE2d_MakeParabola::GCE2d_MakeParabola()`
     /// Make a parabola with focal point S1 and
     /// center O
     /// The branch of the parabola returned will have <S1> as
@@ -1231,6 +1311,7 @@ impl MakeParabola {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeParabola_ctor_pnt2d2(S1, O)) }
     }
 
+    /// **Source:** `GCE2d_MakeParabola.hxx`:77 - `GCE2d_MakeParabola::GCE2d_MakeParabola()`
     /// D is the directrix of the parabola and F the focus point.
     /// The symmetry axis "XAxis" of the parabola is normal to the
     /// directrix and pass through the focus point F, but its
@@ -1244,6 +1325,7 @@ impl MakeParabola {
         Self::new_ax2d_pnt2d_bool(D, F, true)
     }
 
+    /// **Source:** `GCE2d_MakeParabola.hxx`:101 - `GCE2d_MakeParabola::Value()`
     /// Returns the constructed parabola.
     /// Exceptions StdFail_NotDone if no parabola is constructed.
     pub fn value(&self) -> &crate::ffi::HandleGeom2dParabola {
@@ -1270,6 +1352,7 @@ impl MakeParabola {
 // From GCE2d_MakeRotation.hxx
 // ========================
 
+/// **Source:** `GCE2d_MakeRotation.hxx`:34 - `GCE2d_MakeRotation`
 /// This class implements an elementary construction algorithm for
 /// a rotation in 2D space. The result is a Geom2d_Transformation transformation.
 /// A MakeRotation object provides a framework for:
@@ -1285,6 +1368,7 @@ unsafe impl crate::CppDeletable for MakeRotation {
 }
 
 impl MakeRotation {
+    /// **Source:** `GCE2d_MakeRotation.hxx`:40 - `GCE2d_MakeRotation::GCE2d_MakeRotation()`
     /// Constructs a rotation through angle Angle about the center Point.
     pub fn new_pnt2d_real(Point: &crate::ffi::gp_Pnt2d, Angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1292,6 +1376,7 @@ impl MakeRotation {
         }
     }
 
+    /// **Source:** `GCE2d_MakeRotation.hxx`:43 - `GCE2d_MakeRotation::Value()`
     /// Returns the constructed transformation.
     pub fn value(&self) -> &crate::ffi::HandleGeom2dTransformation {
         unsafe { &*(crate::ffi::GCE2d_MakeRotation_value(self as *const Self)) }
@@ -1302,6 +1387,7 @@ impl MakeRotation {
 // From GCE2d_MakeScale.hxx
 // ========================
 
+/// **Source:** `GCE2d_MakeScale.hxx`:35 - `GCE2d_MakeScale`
 /// This class implements an elementary construction algorithm for
 /// a scaling transformation in 2D space. The result is a
 /// Geom2d_Transformation transformation.
@@ -1318,6 +1404,7 @@ unsafe impl crate::CppDeletable for MakeScale {
 }
 
 impl MakeScale {
+    /// **Source:** `GCE2d_MakeScale.hxx`:43 - `GCE2d_MakeScale::GCE2d_MakeScale()`
     /// Constructs a scaling transformation with
     /// -   Point as the center of the transformation, and
     /// -   Scale as the scale factor.
@@ -1327,6 +1414,7 @@ impl MakeScale {
         }
     }
 
+    /// **Source:** `GCE2d_MakeScale.hxx`:46 - `GCE2d_MakeScale::Value()`
     /// Returns the constructed transformation.
     pub fn value(&self) -> &crate::ffi::HandleGeom2dTransformation {
         unsafe { &*(crate::ffi::GCE2d_MakeScale_value(self as *const Self)) }
@@ -1337,6 +1425,7 @@ impl MakeScale {
 // From GCE2d_MakeSegment.hxx
 // ========================
 
+/// **Source:** `GCE2d_MakeSegment.hxx`:39 - `GCE2d_MakeSegment`
 /// Implements construction algorithms for a line
 /// segment in the plane. The result is a
 /// Geom2d_TrimmedCurve curve.
@@ -1354,6 +1443,7 @@ unsafe impl crate::CppDeletable for MakeSegment {
 }
 
 impl MakeSegment {
+    /// **Source:** `GCE2d_MakeSegment.hxx`:46 - `GCE2d_MakeSegment::GCE2d_MakeSegment()`
     /// Make a segment of Line from the 2 points <P1> and <P2>.
     /// Status is "ConfusedPoints" if <P1> and <P2> are confused.
     pub fn new_pnt2d2(
@@ -1363,6 +1453,7 @@ impl MakeSegment {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeSegment_ctor_pnt2d2(P1, P2)) }
     }
 
+    /// **Source:** `GCE2d_MakeSegment.hxx`:52 - `GCE2d_MakeSegment::GCE2d_MakeSegment()`
     /// Make a segment of Line from the point <P1> with
     /// the direction <P> and ended by the projection of
     /// <P2> on the line <P1,V>.
@@ -1379,6 +1470,7 @@ impl MakeSegment {
         }
     }
 
+    /// **Source:** `GCE2d_MakeSegment.hxx`:57 - `GCE2d_MakeSegment::GCE2d_MakeSegment()`
     /// Make a segment of Line from the line <Line>
     /// between the two parameters U1 and U2.
     /// Status is "SameParameters" if <U1> is equal <U2>.
@@ -1388,6 +1480,7 @@ impl MakeSegment {
         }
     }
 
+    /// **Source:** `GCE2d_MakeSegment.hxx`:64 - `GCE2d_MakeSegment::GCE2d_MakeSegment()`
     /// Make a segment of Line from the line <Line>
     /// between the point <Point> and the parameter Ulast.
     /// It returns NullObject if <U1> is equal <U2>.
@@ -1403,6 +1496,7 @@ impl MakeSegment {
         }
     }
 
+    /// **Source:** `GCE2d_MakeSegment.hxx`:78 - `GCE2d_MakeSegment::GCE2d_MakeSegment()`
     /// Make a segment of Line from the line <Line>
     /// between the two points <P1> and <P2>.
     /// It returns NullObject if <P1> and <P2> are confused.
@@ -1423,6 +1517,7 @@ impl MakeSegment {
         }
     }
 
+    /// **Source:** `GCE2d_MakeSegment.hxx`:82 - `GCE2d_MakeSegment::Value()`
     /// Returns the constructed line segment.
     /// Exceptions StdFail_NotDone if no line segment is constructed.
     pub fn value(&self) -> &crate::ffi::HandleGeom2dTrimmedCurve {
@@ -1449,6 +1544,7 @@ impl MakeSegment {
 // From GCE2d_MakeTranslation.hxx
 // ========================
 
+/// **Source:** `GCE2d_MakeTranslation.hxx`:35 - `GCE2d_MakeTranslation`
 /// This class implements elementary construction algorithms for a
 /// translation in 2D space. The result is a
 /// Geom2d_Transformation transformation.
@@ -1465,11 +1561,13 @@ unsafe impl crate::CppDeletable for MakeTranslation {
 }
 
 impl MakeTranslation {
+    /// **Source:** `GCE2d_MakeTranslation.hxx`:41 - `GCE2d_MakeTranslation::GCE2d_MakeTranslation()`
     /// Constructs a translation along the vector Vect.
     pub fn new_vec2d(Vect: &crate::ffi::gp_Vec2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeTranslation_ctor_vec2d(Vect)) }
     }
 
+    /// **Source:** `GCE2d_MakeTranslation.hxx`:45 - `GCE2d_MakeTranslation::GCE2d_MakeTranslation()`
     /// Constructs a translation along the vector
     /// (Point1,Point2) defined from the point Point1 to the point Point2.
     pub fn new_pnt2d2(
@@ -1481,6 +1579,7 @@ impl MakeTranslation {
         }
     }
 
+    /// **Source:** `GCE2d_MakeTranslation.hxx`:48 - `GCE2d_MakeTranslation::Value()`
     /// Returns the constructed transformation.
     pub fn value(&self) -> &crate::ffi::HandleGeom2dTransformation {
         unsafe { &*(crate::ffi::GCE2d_MakeTranslation_value(self as *const Self)) }
@@ -1491,6 +1590,7 @@ impl MakeTranslation {
 // From GCE2d_Root.hxx
 // ========================
 
+/// **Source:** `GCE2d_Root.hxx`:32 - `GCE2d_Root`
 /// This class implements the common services for
 /// all classes of gce which report error.
 pub use crate::ffi::GCE2d_Root as Root;
@@ -1502,11 +1602,13 @@ unsafe impl crate::CppDeletable for Root {
 }
 
 impl Root {
+    /// **Source:** `GCE2d_Root.hxx` - `GCE2d_Root::GCE2d_Root()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_Root_ctor()) }
     }
 
+    /// **Source:** `GCE2d_Root.hxx`:38 - `GCE2d_Root::IsDone()`
     /// Returns true if the construction is successful.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GCE2d_Root_is_done(self as *const Self) }

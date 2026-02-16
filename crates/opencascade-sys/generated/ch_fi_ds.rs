@@ -143,6 +143,7 @@ impl TryFrom<i32> for ChamfMode {
 // From ChFiDS_CircSection.hxx
 // ========================
 
+/// **Source:** `ChFiDS_CircSection.hxx`:28 - `ChFiDS_CircSection`
 /// A Section of fillet.
 pub use crate::ffi::ChFiDS_CircSection as CircSection;
 
@@ -153,22 +154,27 @@ unsafe impl crate::CppDeletable for CircSection {
 }
 
 impl CircSection {
+    /// **Source:** `ChFiDS_CircSection.hxx`:33 - `ChFiDS_CircSection::ChFiDS_CircSection()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_CircSection_ctor()) }
     }
 
+    /// **Source:** `ChFiDS_CircSection.hxx`:35 - `ChFiDS_CircSection::Set()`
     pub fn set_circ_real2(&mut self, C: &crate::ffi::gp_Circ, F: f64, L: f64) {
         unsafe { crate::ffi::ChFiDS_CircSection_set_circ_real2(self as *mut Self, C, F, L) }
     }
 
+    /// **Source:** `ChFiDS_CircSection.hxx`:37 - `ChFiDS_CircSection::Set()`
     pub fn set_lin_real2(&mut self, C: &crate::ffi::gp_Lin, F: f64, L: f64) {
         unsafe { crate::ffi::ChFiDS_CircSection_set_lin_real2(self as *mut Self, C, F, L) }
     }
 
+    /// **Source:** `ChFiDS_CircSection.hxx`:39 - `ChFiDS_CircSection::Get()`
     pub fn get_circ_real2(&self, C: &mut crate::ffi::gp_Circ, F: &mut f64, L: &mut f64) {
         unsafe { crate::ffi::ChFiDS_CircSection_get_circ_real2(self as *const Self, C, F, L) }
     }
 
+    /// **Source:** `ChFiDS_CircSection.hxx`:41 - `ChFiDS_CircSection::Get()`
     pub fn get_lin_real2(&self, C: &mut crate::ffi::gp_Lin, F: &mut f64, L: &mut f64) {
         unsafe { crate::ffi::ChFiDS_CircSection_get_lin_real2(self as *const Self, C, F, L) }
     }
@@ -178,6 +184,7 @@ impl CircSection {
 // From ChFiDS_CommonPoint.hxx
 // ========================
 
+/// **Source:** `ChFiDS_CommonPoint.hxx`:34 - `ChFiDS_CommonPoint`
 /// point    start/end of  fillet common  to  2 adjacent  filets
 /// and  to an edge on  one of 2 faces participating
 /// in  the construction of  the  fillet
@@ -190,16 +197,19 @@ unsafe impl crate::CppDeletable for CommonPoint {
 }
 
 impl CommonPoint {
+    /// **Source:** `ChFiDS_CommonPoint.hxx`:40 - `ChFiDS_CommonPoint::ChFiDS_CommonPoint()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_CommonPoint_ctor()) }
     }
 
+    /// **Source:** `ChFiDS_CommonPoint.hxx`:43 - `ChFiDS_CommonPoint::Reset()`
     /// default value for all fields
     pub fn reset(&mut self) {
         unsafe { crate::ffi::ChFiDS_CommonPoint_reset(self as *mut Self) }
     }
 
+    /// **Source:** `ChFiDS_CommonPoint.hxx`:48 - `ChFiDS_CommonPoint::SetVertex()`
     /// Sets the values of a point which is a vertex on
     /// the initial facet of restriction of one
     /// of the surface.
@@ -207,6 +217,7 @@ impl CommonPoint {
         unsafe { crate::ffi::ChFiDS_CommonPoint_set_vertex(self as *mut Self, theVertex) }
     }
 
+    /// **Source:** `ChFiDS_CommonPoint.hxx`:56 - `ChFiDS_CommonPoint::SetArc()`
     /// Sets the values of a point which is on the arc
     /// A, at parameter Param.
     pub fn set_arc(
@@ -221,38 +232,45 @@ impl CommonPoint {
         }
     }
 
+    /// **Source:** `ChFiDS_CommonPoint.hxx`:62 - `ChFiDS_CommonPoint::SetParameter()`
     /// Sets the value of the parameter on the spine
     pub fn set_parameter(&mut self, Param: f64) {
         unsafe { crate::ffi::ChFiDS_CommonPoint_set_parameter(self as *mut Self, Param) }
     }
 
+    /// **Source:** `ChFiDS_CommonPoint.hxx`:66 - `ChFiDS_CommonPoint::SetPoint()`
     /// Set the 3d point for a commonpoint that is not
     /// a vertex or on an arc.
     pub fn set_point(&mut self, thePoint: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::ChFiDS_CommonPoint_set_point(self as *mut Self, thePoint) }
     }
 
+    /// **Source:** `ChFiDS_CommonPoint.hxx`:69 - `ChFiDS_CommonPoint::SetVector()`
     /// Set the output 3d  vector
     pub fn set_vector(&mut self, theVector: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::ChFiDS_CommonPoint_set_vector(self as *mut Self, theVector) }
     }
 
+    /// **Source:** `ChFiDS_CommonPoint.hxx`:76 - `ChFiDS_CommonPoint::SetTolerance()`
     /// This method set the fuzziness on the point.
     pub fn set_tolerance(&mut self, Tol: f64) {
         unsafe { crate::ffi::ChFiDS_CommonPoint_set_tolerance(self as *mut Self, Tol) }
     }
 
+    /// **Source:** `ChFiDS_CommonPoint.hxx`:85 - `ChFiDS_CommonPoint::Tolerance()`
     /// This method returns the fuzziness on the point.
     pub fn tolerance(&self) -> f64 {
         unsafe { crate::ffi::ChFiDS_CommonPoint_tolerance(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_CommonPoint.hxx`:89 - `ChFiDS_CommonPoint::IsVertex()`
     /// Returns TRUE if the point is a vertex on the initial
     /// restriction facet of the surface.
     pub fn is_vertex(&self) -> bool {
         unsafe { crate::ffi::ChFiDS_CommonPoint_is_vertex(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_CommonPoint.hxx`:95 - `ChFiDS_CommonPoint::Vertex()`
     /// Returns the information about the point when it is
     /// on the domain of the first patch, i-e when the function
     /// IsVertex returns True.
@@ -261,18 +279,21 @@ impl CommonPoint {
         unsafe { &*(crate::ffi::ChFiDS_CommonPoint_vertex(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_CommonPoint.hxx`:106 - `ChFiDS_CommonPoint::IsOnArc()`
     /// Returns TRUE if the point is a on an edge of the initial
     /// restriction facet of the surface.
     pub fn is_on_arc(&self) -> bool {
         unsafe { crate::ffi::ChFiDS_CommonPoint_is_on_arc(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_CommonPoint.hxx`:110 - `ChFiDS_CommonPoint::Arc()`
     /// Returns the arc of restriction containing the
     /// vertex.
     pub fn arc(&self) -> &crate::ffi::TopoDS_Edge {
         unsafe { &*(crate::ffi::ChFiDS_CommonPoint_arc(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_CommonPoint.hxx`:114 - `ChFiDS_CommonPoint::TransitionOnArc()`
     /// Returns the transition of the point on the arc
     /// returned by Arc().
     pub fn transition_on_arc(&self) -> crate::top_abs::Orientation {
@@ -284,27 +305,32 @@ impl CommonPoint {
         }
     }
 
+    /// **Source:** `ChFiDS_CommonPoint.hxx`:118 - `ChFiDS_CommonPoint::ParameterOnArc()`
     /// Returns the parameter of the point on the
     /// arc returned by the method Arc().
     pub fn parameter_on_arc(&self) -> f64 {
         unsafe { crate::ffi::ChFiDS_CommonPoint_parameter_on_arc(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_CommonPoint.hxx`:121 - `ChFiDS_CommonPoint::Parameter()`
     /// Returns the parameter on the spine
     pub fn parameter(&self) -> f64 {
         unsafe { crate::ffi::ChFiDS_CommonPoint_parameter(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_CommonPoint.hxx`:124 - `ChFiDS_CommonPoint::Point()`
     /// Returns the 3d point
     pub fn point(&self) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::ChFiDS_CommonPoint_point(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_CommonPoint.hxx`:127 - `ChFiDS_CommonPoint::HasVector()`
     /// Returns TRUE if the output vector is  stored.
     pub fn has_vector(&self) -> bool {
         unsafe { crate::ffi::ChFiDS_CommonPoint_has_vector(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_CommonPoint.hxx`:130 - `ChFiDS_CommonPoint::Vector()`
     /// Returns the output  3d vector
     pub fn vector(&self) -> &crate::ffi::gp_Vec {
         unsafe { &*(crate::ffi::ChFiDS_CommonPoint_vector(self as *const Self)) }
@@ -315,6 +341,7 @@ impl CommonPoint {
 // From ChFiDS_ElSpine.hxx
 // ========================
 
+/// **Source:** `ChFiDS_ElSpine.hxx`:47 - `ChFiDS_ElSpine`
 /// Elementary  Spine for cheminements and approximations.
 pub use crate::ffi::ChFiDS_ElSpine as ElSpine;
 
@@ -325,14 +352,17 @@ unsafe impl crate::CppDeletable for ElSpine {
 }
 
 impl ElSpine {
+    /// **Source:** `ChFiDS_ElSpine.hxx`:51 - `ChFiDS_ElSpine::ChFiDS_ElSpine()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_ctor()) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:49 - `ChFiDS_ElSpine::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ChFiDS_ElSpine_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:54 - `ChFiDS_ElSpine::ShallowCopy()`
     /// Shallow copy of adaptor
     pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
         unsafe {
@@ -340,22 +370,27 @@ impl ElSpine {
         }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:56 - `ChFiDS_ElSpine::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         unsafe { crate::ffi::ChFiDS_ElSpine_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:58 - `ChFiDS_ElSpine::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         unsafe { crate::ffi::ChFiDS_ElSpine_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:60 - `ChFiDS_ElSpine::GetSavedFirstParameter()`
     pub fn get_saved_first_parameter(&self) -> f64 {
         unsafe { crate::ffi::ChFiDS_ElSpine_get_saved_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:62 - `ChFiDS_ElSpine::GetSavedLastParameter()`
     pub fn get_saved_last_parameter(&self) -> f64 {
         unsafe { crate::ffi::ChFiDS_ElSpine_get_saved_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:64 - `ChFiDS_ElSpine::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         unsafe {
             crate::geom_abs::Shape::try_from(crate::ffi::ChFiDS_ElSpine_continuity(
@@ -365,10 +400,12 @@ impl ElSpine {
         }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:66 - `ChFiDS_ElSpine::NbIntervals()`
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::ChFiDS_ElSpine_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:74 - `ChFiDS_ElSpine::Trim()`
     /// Returns    a  curve equivalent   of  <me>  between
     /// parameters <First>  and <Last>. <Tol>  is used  to
     /// test for 3d points confusion.
@@ -388,10 +425,12 @@ impl ElSpine {
         }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:79 - `ChFiDS_ElSpine::Resolution()`
     pub fn resolution(&self, R3d: f64) -> f64 {
         unsafe { crate::ffi::ChFiDS_ElSpine_resolution(self as *const Self, R3d) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:81 - `ChFiDS_ElSpine::GetType()`
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         unsafe {
             crate::geom_abs::CurveType::try_from(crate::ffi::ChFiDS_ElSpine_get_type(
@@ -401,32 +440,39 @@ impl ElSpine {
         }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:83 - `ChFiDS_ElSpine::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         unsafe { crate::ffi::ChFiDS_ElSpine_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:85 - `ChFiDS_ElSpine::SetPeriodic()`
     pub fn set_periodic(&mut self, I: bool) {
         unsafe { crate::ffi::ChFiDS_ElSpine_set_periodic(self as *mut Self, I) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:87 - `ChFiDS_ElSpine::Period()`
     pub fn period(&self) -> f64 {
         unsafe { crate::ffi::ChFiDS_ElSpine_period(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:89 - `ChFiDS_ElSpine::Value()`
     pub fn value(&self, AbsC: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_value(self as *const Self, AbsC))
         }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:91 - `ChFiDS_ElSpine::D0()`
     pub fn d0(&self, AbsC: f64, P: &mut crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::ChFiDS_ElSpine_d0(self as *const Self, AbsC, P) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:93 - `ChFiDS_ElSpine::D1()`
     pub fn d1(&self, AbsC: f64, P: &mut crate::ffi::gp_Pnt, V1: &mut crate::ffi::gp_Vec) {
         unsafe { crate::ffi::ChFiDS_ElSpine_d1(self as *const Self, AbsC, P, V1) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:97 - `ChFiDS_ElSpine::D2()`
     pub fn d2(
         &self,
         AbsC: f64,
@@ -437,6 +483,7 @@ impl ElSpine {
         unsafe { crate::ffi::ChFiDS_ElSpine_d2(self as *const Self, AbsC, P, V1, V2) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:102 - `ChFiDS_ElSpine::D3()`
     pub fn d3(
         &self,
         AbsC: f64,
@@ -448,114 +495,140 @@ impl ElSpine {
         unsafe { crate::ffi::ChFiDS_ElSpine_d3(self as *const Self, AbsC, P, V1, V2, V3) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:108 - `ChFiDS_ElSpine::FirstParameter()`
     pub fn first_parameter_real(&mut self, P: f64) {
         unsafe { crate::ffi::ChFiDS_ElSpine_first_parameter_real(self as *mut Self, P) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:110 - `ChFiDS_ElSpine::LastParameter()`
     pub fn last_parameter_real(&mut self, P: f64) {
         unsafe { crate::ffi::ChFiDS_ElSpine_last_parameter_real(self as *mut Self, P) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:112 - `ChFiDS_ElSpine::SaveFirstParameter()`
     pub fn save_first_parameter(&mut self) {
         unsafe { crate::ffi::ChFiDS_ElSpine_save_first_parameter(self as *mut Self) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:114 - `ChFiDS_ElSpine::SaveLastParameter()`
     pub fn save_last_parameter(&mut self) {
         unsafe { crate::ffi::ChFiDS_ElSpine_save_last_parameter(self as *mut Self) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:116 - `ChFiDS_ElSpine::SetOrigin()`
     pub fn set_origin(&mut self, O: f64) {
         unsafe { crate::ffi::ChFiDS_ElSpine_set_origin(self as *mut Self, O) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:118 - `ChFiDS_ElSpine::FirstPointAndTgt()`
     pub fn first_point_and_tgt(&self, P: &mut crate::ffi::gp_Pnt, T: &mut crate::ffi::gp_Vec) {
         unsafe { crate::ffi::ChFiDS_ElSpine_first_point_and_tgt(self as *const Self, P, T) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:120 - `ChFiDS_ElSpine::LastPointAndTgt()`
     pub fn last_point_and_tgt(&self, P: &mut crate::ffi::gp_Pnt, T: &mut crate::ffi::gp_Vec) {
         unsafe { crate::ffi::ChFiDS_ElSpine_last_point_and_tgt(self as *const Self, P, T) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:122 - `ChFiDS_ElSpine::NbVertices()`
     pub fn nb_vertices(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_ElSpine_nb_vertices(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:124 - `ChFiDS_ElSpine::VertexWithTangent()`
     pub fn vertex_with_tangent(&self, Index: i32) -> &crate::ffi::gp_Ax1 {
         unsafe { &*(crate::ffi::ChFiDS_ElSpine_vertex_with_tangent(self as *const Self, Index)) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:126 - `ChFiDS_ElSpine::SetFirstPointAndTgt()`
     pub fn set_first_point_and_tgt(&mut self, P: &crate::ffi::gp_Pnt, T: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::ChFiDS_ElSpine_set_first_point_and_tgt(self as *mut Self, P, T) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:128 - `ChFiDS_ElSpine::SetLastPointAndTgt()`
     pub fn set_last_point_and_tgt(&mut self, P: &crate::ffi::gp_Pnt, T: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::ChFiDS_ElSpine_set_last_point_and_tgt(self as *mut Self, P, T) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:130 - `ChFiDS_ElSpine::AddVertexWithTangent()`
     pub fn add_vertex_with_tangent(&mut self, anAx1: &crate::ffi::gp_Ax1) {
         unsafe { crate::ffi::ChFiDS_ElSpine_add_vertex_with_tangent(self as *mut Self, anAx1) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:132 - `ChFiDS_ElSpine::SetCurve()`
     pub fn set_curve(&mut self, C: &crate::ffi::HandleGeomCurve) {
         unsafe { crate::ffi::ChFiDS_ElSpine_set_curve(self as *mut Self, C) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:134 - `ChFiDS_ElSpine::Previous()`
     pub fn previous(&self) -> &crate::ffi::HandleChFiDSSurfData {
         unsafe { &*(crate::ffi::ChFiDS_ElSpine_previous(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:136 - `ChFiDS_ElSpine::ChangePrevious()`
     pub fn change_previous(&mut self) -> &mut crate::ffi::HandleChFiDSSurfData {
         unsafe { &mut *(crate::ffi::ChFiDS_ElSpine_change_previous(self as *mut Self)) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:138 - `ChFiDS_ElSpine::Next()`
     pub fn next(&self) -> &crate::ffi::HandleChFiDSSurfData {
         unsafe { &*(crate::ffi::ChFiDS_ElSpine_next(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:140 - `ChFiDS_ElSpine::ChangeNext()`
     pub fn change_next(&mut self) -> &mut crate::ffi::HandleChFiDSSurfData {
         unsafe { &mut *(crate::ffi::ChFiDS_ElSpine_change_next(self as *mut Self)) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:142 - `ChFiDS_ElSpine::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_line(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:144 - `ChFiDS_ElSpine::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_circle(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:146 - `ChFiDS_ElSpine::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_ellipse(self as *const Self))
         }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:148 - `ChFiDS_ElSpine::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_hyperbola(self as *const Self))
         }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:150 - `ChFiDS_ElSpine::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_parabola(self as *const Self))
         }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:152 - `ChFiDS_ElSpine::Bezier()`
     pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_bezier(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:154 - `ChFiDS_ElSpine::BSpline()`
     pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_b_spline(self as *const Self))
         }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:49 - `ChFiDS_ElSpine::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::ChFiDS_ElSpine_get_type_name() }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:49 - `ChFiDS_ElSpine::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ChFiDS_ElSpine_get_type_descriptor()) }
     }
@@ -620,6 +693,7 @@ impl ElSpine {
 // From ChFiDS_FaceInterference.hxx
 // ========================
 
+/// **Source:** `ChFiDS_FaceInterference.hxx`:31 - `ChFiDS_FaceInterference`
 /// interference face/fillet
 pub use crate::ffi::ChFiDS_FaceInterference as FaceInterference;
 
@@ -630,10 +704,12 @@ unsafe impl crate::CppDeletable for FaceInterference {
 }
 
 impl FaceInterference {
+    /// **Source:** `ChFiDS_FaceInterference.hxx`:36 - `ChFiDS_FaceInterference::ChFiDS_FaceInterference()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_FaceInterference_ctor()) }
     }
 
+    /// **Source:** `ChFiDS_FaceInterference.hxx`:38 - `ChFiDS_FaceInterference::SetInterference()`
     pub fn set_interference(
         &mut self,
         LineIndex: i32,
@@ -652,32 +728,39 @@ impl FaceInterference {
         }
     }
 
+    /// **Source:** `ChFiDS_FaceInterference.hxx`:43 - `ChFiDS_FaceInterference::SetTransition()`
     pub fn set_transition(&mut self, Trans: crate::top_abs::Orientation) {
         unsafe {
             crate::ffi::ChFiDS_FaceInterference_set_transition(self as *mut Self, Trans.into())
         }
     }
 
+    /// **Source:** `ChFiDS_FaceInterference.hxx`:45 - `ChFiDS_FaceInterference::SetFirstParameter()`
     pub fn set_first_parameter(&mut self, U1: f64) {
         unsafe { crate::ffi::ChFiDS_FaceInterference_set_first_parameter(self as *mut Self, U1) }
     }
 
+    /// **Source:** `ChFiDS_FaceInterference.hxx`:47 - `ChFiDS_FaceInterference::SetLastParameter()`
     pub fn set_last_parameter(&mut self, U1: f64) {
         unsafe { crate::ffi::ChFiDS_FaceInterference_set_last_parameter(self as *mut Self, U1) }
     }
 
+    /// **Source:** `ChFiDS_FaceInterference.hxx`:49 - `ChFiDS_FaceInterference::SetParameter()`
     pub fn set_parameter(&mut self, U1: f64, IsFirst: bool) {
         unsafe { crate::ffi::ChFiDS_FaceInterference_set_parameter(self as *mut Self, U1, IsFirst) }
     }
 
+    /// **Source:** `ChFiDS_FaceInterference.hxx`:51 - `ChFiDS_FaceInterference::LineIndex()`
     pub fn line_index(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_FaceInterference_line_index(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_FaceInterference.hxx`:53 - `ChFiDS_FaceInterference::SetLineIndex()`
     pub fn set_line_index(&mut self, I: i32) {
         unsafe { crate::ffi::ChFiDS_FaceInterference_set_line_index(self as *mut Self, I) }
     }
 
+    /// **Source:** `ChFiDS_FaceInterference.hxx`:55 - `ChFiDS_FaceInterference::Transition()`
     pub fn transition(&self) -> crate::top_abs::Orientation {
         unsafe {
             crate::top_abs::Orientation::try_from(crate::ffi::ChFiDS_FaceInterference_transition(
@@ -687,34 +770,41 @@ impl FaceInterference {
         }
     }
 
+    /// **Source:** `ChFiDS_FaceInterference.hxx`:57 - `ChFiDS_FaceInterference::PCurveOnFace()`
     pub fn p_curve_on_face(&self) -> &crate::ffi::HandleGeom2dCurve {
         unsafe { &*(crate::ffi::ChFiDS_FaceInterference_p_curve_on_face(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_FaceInterference.hxx`:59 - `ChFiDS_FaceInterference::PCurveOnSurf()`
     pub fn p_curve_on_surf(&self) -> &crate::ffi::HandleGeom2dCurve {
         unsafe { &*(crate::ffi::ChFiDS_FaceInterference_p_curve_on_surf(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_FaceInterference.hxx`:61 - `ChFiDS_FaceInterference::ChangePCurveOnFace()`
     pub fn change_p_curve_on_face(&mut self) -> &mut crate::ffi::HandleGeom2dCurve {
         unsafe {
             &mut *(crate::ffi::ChFiDS_FaceInterference_change_p_curve_on_face(self as *mut Self))
         }
     }
 
+    /// **Source:** `ChFiDS_FaceInterference.hxx`:63 - `ChFiDS_FaceInterference::ChangePCurveOnSurf()`
     pub fn change_p_curve_on_surf(&mut self) -> &mut crate::ffi::HandleGeom2dCurve {
         unsafe {
             &mut *(crate::ffi::ChFiDS_FaceInterference_change_p_curve_on_surf(self as *mut Self))
         }
     }
 
+    /// **Source:** `ChFiDS_FaceInterference.hxx`:65 - `ChFiDS_FaceInterference::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         unsafe { crate::ffi::ChFiDS_FaceInterference_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_FaceInterference.hxx`:67 - `ChFiDS_FaceInterference::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         unsafe { crate::ffi::ChFiDS_FaceInterference_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_FaceInterference.hxx`:69 - `ChFiDS_FaceInterference::Parameter()`
     pub fn parameter(&self, IsFirst: bool) -> f64 {
         unsafe { crate::ffi::ChFiDS_FaceInterference_parameter(self as *const Self, IsFirst) }
     }
@@ -724,6 +814,7 @@ impl FaceInterference {
 // From ChFiDS_HData.hxx
 // ========================
 
+/// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData`
 pub use crate::ffi::ChFiDS_HData as HData;
 
 unsafe impl crate::CppDeletable for HData {
@@ -733,10 +824,12 @@ unsafe impl crate::CppDeletable for HData {
 }
 
 impl HData {
+    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChFiDS_HData()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_HData_ctor()) }
     }
 
+    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChFiDS_HData()`
     pub fn new_sequenceofsurfdata(
         theOther: &crate::ffi::ChFiDS_SequenceOfSurfData,
     ) -> crate::OwnedPtr<Self> {
@@ -745,14 +838,17 @@ impl HData {
         }
     }
 
+    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ChFiDS_HData_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::ChFiDS_HData_get_type_name() }
     }
 
+    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ChFiDS_HData_get_type_descriptor()) }
     }
@@ -787,6 +883,7 @@ impl HandleChFiDSHData {
 // From ChFiDS_Map.hxx
 // ========================
 
+/// **Source:** `ChFiDS_Map.hxx`:31 - `ChFiDS_Map`
 /// Encapsulation of IndexedDataMapOfShapeListOfShape.
 pub use crate::ffi::ChFiDS_Map as Map;
 
@@ -797,11 +894,13 @@ unsafe impl crate::CppDeletable for Map {
 }
 
 impl Map {
+    /// **Source:** `ChFiDS_Map.hxx`:37 - `ChFiDS_Map::ChFiDS_Map()`
     /// Create an empty Map
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_Map_ctor()) }
     }
 
+    /// **Source:** `ChFiDS_Map.hxx`:41 - `ChFiDS_Map::Fill()`
     /// Fills the map with the subshapes of type T1 as keys
     /// and the list of ancestors  of type T2 as items.
     pub fn fill(
@@ -813,14 +912,17 @@ impl Map {
         unsafe { crate::ffi::ChFiDS_Map_fill(self as *mut Self, S, T1.into(), T2.into()) }
     }
 
+    /// **Source:** `ChFiDS_Map.hxx`:45 - `ChFiDS_Map::Contains()`
     pub fn contains(&self, S: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::ChFiDS_Map_contains(self as *const Self, S) }
     }
 
+    /// **Source:** `ChFiDS_Map.hxx`:47 - `ChFiDS_Map::FindFromKey()`
     pub fn find_from_key(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::ChFiDS_Map_find_from_key(self as *const Self, S)) }
     }
 
+    /// **Source:** `ChFiDS_Map.hxx`:51 - `ChFiDS_Map::FindFromIndex()`
     pub fn find_from_index(&self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::ChFiDS_Map_find_from_index(self as *const Self, I)) }
     }
@@ -830,6 +932,7 @@ impl Map {
 // From ChFiDS_Regul.hxx
 // ========================
 
+/// **Source:** `ChFiDS_Regul.hxx`:27 - `ChFiDS_Regul`
 /// Storage of  a curve  and its 2 faces or surfaces of  support.
 pub use crate::ffi::ChFiDS_Regul as Regul;
 
@@ -840,38 +943,47 @@ unsafe impl crate::CppDeletable for Regul {
 }
 
 impl Regul {
+    /// **Source:** `ChFiDS_Regul.hxx`:32 - `ChFiDS_Regul::ChFiDS_Regul()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_Regul_ctor()) }
     }
 
+    /// **Source:** `ChFiDS_Regul.hxx`:34 - `ChFiDS_Regul::SetCurve()`
     pub fn set_curve(&mut self, IC: i32) {
         unsafe { crate::ffi::ChFiDS_Regul_set_curve(self as *mut Self, IC) }
     }
 
+    /// **Source:** `ChFiDS_Regul.hxx`:36 - `ChFiDS_Regul::SetS1()`
     pub fn set_s1(&mut self, IS1: i32, IsFace: bool) {
         unsafe { crate::ffi::ChFiDS_Regul_set_s1(self as *mut Self, IS1, IsFace) }
     }
 
+    /// **Source:** `ChFiDS_Regul.hxx`:39 - `ChFiDS_Regul::SetS2()`
     pub fn set_s2(&mut self, IS2: i32, IsFace: bool) {
         unsafe { crate::ffi::ChFiDS_Regul_set_s2(self as *mut Self, IS2, IsFace) }
     }
 
+    /// **Source:** `ChFiDS_Regul.hxx`:42 - `ChFiDS_Regul::IsSurface1()`
     pub fn is_surface1(&self) -> bool {
         unsafe { crate::ffi::ChFiDS_Regul_is_surface1(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_Regul.hxx`:44 - `ChFiDS_Regul::IsSurface2()`
     pub fn is_surface2(&self) -> bool {
         unsafe { crate::ffi::ChFiDS_Regul_is_surface2(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_Regul.hxx`:46 - `ChFiDS_Regul::Curve()`
     pub fn curve(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_Regul_curve(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_Regul.hxx`:48 - `ChFiDS_Regul::S1()`
     pub fn s1(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_Regul_s1(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_Regul.hxx`:50 - `ChFiDS_Regul::S2()`
     pub fn s2(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_Regul_s2(self as *const Self) }
     }
@@ -881,6 +993,7 @@ impl Regul {
 // From ChFiDS_SecHArray1.hxx
 // ========================
 
+/// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1`
 pub use crate::ffi::ChFiDS_SecHArray1 as SecHArray1;
 
 unsafe impl crate::CppDeletable for SecHArray1 {
@@ -890,16 +1003,19 @@ unsafe impl crate::CppDeletable for SecHArray1 {
 }
 
 impl SecHArray1 {
+    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_SecHArray1_ctor()) }
     }
 
+    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_SecHArray1_ctor_int2(theLower, theUpper))
         }
     }
 
+    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
     pub fn new_int2_circsection(
         theLower: i32,
         theUpper: i32,
@@ -912,6 +1028,7 @@ impl SecHArray1 {
         }
     }
 
+    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
     pub fn new_circsection_int2_bool(
         theBegin: &crate::ffi::ChFiDS_CircSection,
         theLower: i32,
@@ -925,18 +1042,22 @@ impl SecHArray1 {
         }
     }
 
+    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
     pub fn new_secarray1(theOther: &crate::ffi::ChFiDS_SecArray1) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_SecHArray1_ctor_secarray1(theOther)) }
     }
 
+    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ChFiDS_SecHArray1_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::ChFiDS_SecHArray1_get_type_name() }
     }
 
+    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ChFiDS_SecHArray1_get_type_descriptor()) }
     }
@@ -975,6 +1096,7 @@ impl HandleChFiDSSecHArray1 {
 // From ChFiDS_Stripe.hxx
 // ========================
 
+/// **Source:** `ChFiDS_Stripe.hxx`:34 - `ChFiDS_Stripe`
 /// Data characterising a band of fillet.
 pub use crate::ffi::ChFiDS_Stripe as Stripe;
 
@@ -985,19 +1107,23 @@ unsafe impl crate::CppDeletable for Stripe {
 }
 
 impl Stripe {
+    /// **Source:** `ChFiDS_Stripe.hxx`:38 - `ChFiDS_Stripe::ChFiDS_Stripe()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_Stripe_ctor()) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:41 - `ChFiDS_Stripe::Reset()`
     /// Reset everything except Spine.
     pub fn reset(&mut self) {
         unsafe { crate::ffi::ChFiDS_Stripe_reset(self as *mut Self) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:43 - `ChFiDS_Stripe::SetOfSurfData()`
     pub fn set_of_surf_data(&self) -> &crate::ffi::HandleChFiDSHData {
         unsafe { &*(crate::ffi::ChFiDS_Stripe_set_of_surf_data(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:47 - `ChFiDS_Stripe::OrientationOnFace1()`
     pub fn orientation_on_face1(&self) -> crate::top_abs::Orientation {
         unsafe {
             crate::top_abs::Orientation::try_from(crate::ffi::ChFiDS_Stripe_orientation_on_face1(
@@ -1007,6 +1133,7 @@ impl Stripe {
         }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:49 - `ChFiDS_Stripe::OrientationOnFace2()`
     pub fn orientation_on_face2(&self) -> crate::top_abs::Orientation {
         unsafe {
             crate::top_abs::Orientation::try_from(crate::ffi::ChFiDS_Stripe_orientation_on_face2(
@@ -1016,14 +1143,17 @@ impl Stripe {
         }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:51 - `ChFiDS_Stripe::Choix()`
     pub fn choix(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_Stripe_choix(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:53 - `ChFiDS_Stripe::ChangeSetOfSurfData()`
     pub fn change_set_of_surf_data(&mut self) -> &mut crate::ffi::HandleChFiDSHData {
         unsafe { &mut *(crate::ffi::ChFiDS_Stripe_change_set_of_surf_data(self as *mut Self)) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:57 - `ChFiDS_Stripe::OrientationOnFace1()`
     pub fn orientation_on_face1_orientation(&mut self, Or1: crate::top_abs::Orientation) {
         unsafe {
             crate::ffi::ChFiDS_Stripe_orientation_on_face1_orientation(
@@ -1033,6 +1163,7 @@ impl Stripe {
         }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:59 - `ChFiDS_Stripe::OrientationOnFace2()`
     pub fn orientation_on_face2_orientation(&mut self, Or2: crate::top_abs::Orientation) {
         unsafe {
             crate::ffi::ChFiDS_Stripe_orientation_on_face2_orientation(
@@ -1042,58 +1173,72 @@ impl Stripe {
         }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:61 - `ChFiDS_Stripe::Choix()`
     pub fn choix_int(&mut self, C: i32) {
         unsafe { crate::ffi::ChFiDS_Stripe_choix_int(self as *mut Self, C) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:63 - `ChFiDS_Stripe::FirstParameters()`
     pub fn first_parameters(&self, Pdeb: &mut f64, Pfin: &mut f64) {
         unsafe { crate::ffi::ChFiDS_Stripe_first_parameters(self as *const Self, Pdeb, Pfin) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:65 - `ChFiDS_Stripe::LastParameters()`
     pub fn last_parameters(&self, Pdeb: &mut f64, Pfin: &mut f64) {
         unsafe { crate::ffi::ChFiDS_Stripe_last_parameters(self as *const Self, Pdeb, Pfin) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:67 - `ChFiDS_Stripe::ChangeFirstParameters()`
     pub fn change_first_parameters(&mut self, Pdeb: f64, Pfin: f64) {
         unsafe { crate::ffi::ChFiDS_Stripe_change_first_parameters(self as *mut Self, Pdeb, Pfin) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:69 - `ChFiDS_Stripe::ChangeLastParameters()`
     pub fn change_last_parameters(&mut self, Pdeb: f64, Pfin: f64) {
         unsafe { crate::ffi::ChFiDS_Stripe_change_last_parameters(self as *mut Self, Pdeb, Pfin) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:71 - `ChFiDS_Stripe::FirstCurve()`
     pub fn first_curve(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_Stripe_first_curve(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:73 - `ChFiDS_Stripe::LastCurve()`
     pub fn last_curve(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_Stripe_last_curve(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:75 - `ChFiDS_Stripe::ChangeFirstCurve()`
     pub fn change_first_curve(&mut self, Index: i32) {
         unsafe { crate::ffi::ChFiDS_Stripe_change_first_curve(self as *mut Self, Index) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:77 - `ChFiDS_Stripe::ChangeLastCurve()`
     pub fn change_last_curve(&mut self, Index: i32) {
         unsafe { crate::ffi::ChFiDS_Stripe_change_last_curve(self as *mut Self, Index) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:79 - `ChFiDS_Stripe::FirstPCurve()`
     pub fn first_p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
         unsafe { &*(crate::ffi::ChFiDS_Stripe_first_p_curve(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:81 - `ChFiDS_Stripe::LastPCurve()`
     pub fn last_p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
         unsafe { &*(crate::ffi::ChFiDS_Stripe_last_p_curve(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:83 - `ChFiDS_Stripe::ChangeFirstPCurve()`
     pub fn change_first_p_curve(&mut self) -> &mut crate::ffi::HandleGeom2dCurve {
         unsafe { &mut *(crate::ffi::ChFiDS_Stripe_change_first_p_curve(self as *mut Self)) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:85 - `ChFiDS_Stripe::ChangeLastPCurve()`
     pub fn change_last_p_curve(&mut self) -> &mut crate::ffi::HandleGeom2dCurve {
         unsafe { &mut *(crate::ffi::ChFiDS_Stripe_change_last_p_curve(self as *mut Self)) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:87 - `ChFiDS_Stripe::FirstPCurveOrientation()`
     pub fn first_p_curve_orientation(&self) -> crate::top_abs::Orientation {
         unsafe {
             crate::top_abs::Orientation::try_from(
@@ -1103,6 +1248,7 @@ impl Stripe {
         }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:89 - `ChFiDS_Stripe::LastPCurveOrientation()`
     pub fn last_p_curve_orientation(&self) -> crate::top_abs::Orientation {
         unsafe {
             crate::top_abs::Orientation::try_from(
@@ -1112,6 +1258,7 @@ impl Stripe {
         }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:91 - `ChFiDS_Stripe::FirstPCurveOrientation()`
     pub fn first_p_curve_orientation_orientation(&mut self, O: crate::top_abs::Orientation) {
         unsafe {
             crate::ffi::ChFiDS_Stripe_first_p_curve_orientation_orientation(
@@ -1121,6 +1268,7 @@ impl Stripe {
         }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:93 - `ChFiDS_Stripe::LastPCurveOrientation()`
     pub fn last_p_curve_orientation_orientation(&mut self, O: crate::top_abs::Orientation) {
         unsafe {
             crate::ffi::ChFiDS_Stripe_last_p_curve_orientation_orientation(
@@ -1130,66 +1278,81 @@ impl Stripe {
         }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:95 - `ChFiDS_Stripe::IndexFirstPointOnS1()`
     pub fn index_first_point_on_s1(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_Stripe_index_first_point_on_s1(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:97 - `ChFiDS_Stripe::IndexFirstPointOnS2()`
     pub fn index_first_point_on_s2(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_Stripe_index_first_point_on_s2(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:99 - `ChFiDS_Stripe::IndexLastPointOnS1()`
     pub fn index_last_point_on_s1(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_Stripe_index_last_point_on_s1(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:101 - `ChFiDS_Stripe::IndexLastPointOnS2()`
     pub fn index_last_point_on_s2(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_Stripe_index_last_point_on_s2(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:103 - `ChFiDS_Stripe::ChangeIndexFirstPointOnS1()`
     pub fn change_index_first_point_on_s1(&mut self, Index: i32) {
         unsafe {
             crate::ffi::ChFiDS_Stripe_change_index_first_point_on_s1(self as *mut Self, Index)
         }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:105 - `ChFiDS_Stripe::ChangeIndexFirstPointOnS2()`
     pub fn change_index_first_point_on_s2(&mut self, Index: i32) {
         unsafe {
             crate::ffi::ChFiDS_Stripe_change_index_first_point_on_s2(self as *mut Self, Index)
         }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:107 - `ChFiDS_Stripe::ChangeIndexLastPointOnS1()`
     pub fn change_index_last_point_on_s1(&mut self, Index: i32) {
         unsafe { crate::ffi::ChFiDS_Stripe_change_index_last_point_on_s1(self as *mut Self, Index) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:109 - `ChFiDS_Stripe::ChangeIndexLastPointOnS2()`
     pub fn change_index_last_point_on_s2(&mut self, Index: i32) {
         unsafe { crate::ffi::ChFiDS_Stripe_change_index_last_point_on_s2(self as *mut Self, Index) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:111 - `ChFiDS_Stripe::Parameters()`
     pub fn parameters(&self, First: bool, Pdeb: &mut f64, Pfin: &mut f64) {
         unsafe { crate::ffi::ChFiDS_Stripe_parameters(self as *const Self, First, Pdeb, Pfin) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:115 - `ChFiDS_Stripe::SetParameters()`
     pub fn set_parameters(&mut self, First: bool, Pdeb: f64, Pfin: f64) {
         unsafe { crate::ffi::ChFiDS_Stripe_set_parameters(self as *mut Self, First, Pdeb, Pfin) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:119 - `ChFiDS_Stripe::Curve()`
     pub fn curve(&self, First: bool) -> i32 {
         unsafe { crate::ffi::ChFiDS_Stripe_curve(self as *const Self, First) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:121 - `ChFiDS_Stripe::SetCurve()`
     pub fn set_curve(&mut self, Index: i32, First: bool) {
         unsafe { crate::ffi::ChFiDS_Stripe_set_curve(self as *mut Self, Index, First) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:123 - `ChFiDS_Stripe::PCurve()`
     pub fn p_curve(&self, First: bool) -> &crate::ffi::HandleGeom2dCurve {
         unsafe { &*(crate::ffi::ChFiDS_Stripe_p_curve(self as *const Self, First)) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:125 - `ChFiDS_Stripe::ChangePCurve()`
     pub fn change_p_curve(&mut self, First: bool) -> &mut crate::ffi::HandleGeom2dCurve {
         unsafe { &mut *(crate::ffi::ChFiDS_Stripe_change_p_curve(self as *mut Self, First)) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:127 - `ChFiDS_Stripe::Orientation()`
     pub fn orientation_int(&self, OnS: i32) -> crate::top_abs::Orientation {
         unsafe {
             crate::top_abs::Orientation::try_from(crate::ffi::ChFiDS_Stripe_orientation_int(
@@ -1200,6 +1363,7 @@ impl Stripe {
         }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:129 - `ChFiDS_Stripe::SetOrientation()`
     pub fn set_orientation_orientation_int(&mut self, Or: crate::top_abs::Orientation, OnS: i32) {
         unsafe {
             crate::ffi::ChFiDS_Stripe_set_orientation_orientation_int(
@@ -1210,6 +1374,7 @@ impl Stripe {
         }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:131 - `ChFiDS_Stripe::Orientation()`
     pub fn orientation_bool(&self, First: bool) -> crate::top_abs::Orientation {
         unsafe {
             crate::top_abs::Orientation::try_from(crate::ffi::ChFiDS_Stripe_orientation_bool(
@@ -1220,6 +1385,7 @@ impl Stripe {
         }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:133 - `ChFiDS_Stripe::SetOrientation()`
     pub fn set_orientation_orientation_bool(
         &mut self,
         Or: crate::top_abs::Orientation,
@@ -1234,40 +1400,49 @@ impl Stripe {
         }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:135 - `ChFiDS_Stripe::IndexPoint()`
     pub fn index_point(&self, First: bool, OnS: i32) -> i32 {
         unsafe { crate::ffi::ChFiDS_Stripe_index_point(self as *const Self, First, OnS) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:138 - `ChFiDS_Stripe::SetIndexPoint()`
     pub fn set_index_point(&mut self, Index: i32, First: bool, OnS: i32) {
         unsafe { crate::ffi::ChFiDS_Stripe_set_index_point(self as *mut Self, Index, First, OnS) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:142 - `ChFiDS_Stripe::SolidIndex()`
     pub fn solid_index(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_Stripe_solid_index(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:144 - `ChFiDS_Stripe::SetSolidIndex()`
     pub fn set_solid_index(&mut self, Index: i32) {
         unsafe { crate::ffi::ChFiDS_Stripe_set_solid_index(self as *mut Self, Index) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:147 - `ChFiDS_Stripe::InDS()`
     /// Set nb of SurfData's at end put in DS
     pub fn in_ds(&mut self, First: bool, Nb: i32) {
         unsafe { crate::ffi::ChFiDS_Stripe_in_ds(self as *mut Self, First, Nb) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:150 - `ChFiDS_Stripe::IsInDS()`
     /// Returns nb of SurfData's at end being in DS
     pub fn is_in_ds(&self, First: bool) -> i32 {
         unsafe { crate::ffi::ChFiDS_Stripe_is_in_ds(self as *const Self, First) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:152 - `ChFiDS_Stripe::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ChFiDS_Stripe_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:152 - `ChFiDS_Stripe::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::ChFiDS_Stripe_get_type_name() }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:152 - `ChFiDS_Stripe::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ChFiDS_Stripe_get_type_descriptor()) }
     }
@@ -1304,6 +1479,7 @@ impl HandleChFiDSStripe {
 // From ChFiDS_StripeMap.hxx
 // ========================
 
+/// **Source:** `ChFiDS_StripeMap.hxx`:31 - `ChFiDS_StripeMap`
 /// encapsulation of IndexedDataMapOfVertexListOfStripe
 pub use crate::ffi::ChFiDS_StripeMap as StripeMap;
 
@@ -1314,22 +1490,27 @@ unsafe impl crate::CppDeletable for StripeMap {
 }
 
 impl StripeMap {
+    /// **Source:** `ChFiDS_StripeMap.hxx`:36 - `ChFiDS_StripeMap::ChFiDS_StripeMap()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_StripeMap_ctor()) }
     }
 
+    /// **Source:** `ChFiDS_StripeMap.hxx`:38 - `ChFiDS_StripeMap::Add()`
     pub fn add(&mut self, V: &crate::ffi::TopoDS_Vertex, F: &crate::ffi::HandleChFiDSStripe) {
         unsafe { crate::ffi::ChFiDS_StripeMap_add(self as *mut Self, V, F) }
     }
 
+    /// **Source:** `ChFiDS_StripeMap.hxx`:40 - `ChFiDS_StripeMap::Extent()`
     pub fn extent(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_StripeMap_extent(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_StripeMap.hxx`:50 - `ChFiDS_StripeMap::FindKey()`
     pub fn find_key(&self, I: i32) -> &crate::ffi::TopoDS_Vertex {
         unsafe { &*(crate::ffi::ChFiDS_StripeMap_find_key(self as *const Self, I)) }
     }
 
+    /// **Source:** `ChFiDS_StripeMap.hxx`:52 - `ChFiDS_StripeMap::Clear()`
     pub fn clear(&mut self) {
         unsafe { crate::ffi::ChFiDS_StripeMap_clear(self as *mut Self) }
     }
@@ -1339,6 +1520,7 @@ impl StripeMap {
 // From ChFiDS_SurfData.hxx
 // ========================
 
+/// **Source:** `ChFiDS_SurfData.hxx`:35 - `ChFiDS_SurfData`
 /// data structure for all information related to  the
 /// fillet and to 2 faces vis a vis
 pub use crate::ffi::ChFiDS_SurfData as SurfData;
@@ -1350,42 +1532,52 @@ unsafe impl crate::CppDeletable for SurfData {
 }
 
 impl SurfData {
+    /// **Source:** `ChFiDS_SurfData.hxx`:39 - `ChFiDS_SurfData::ChFiDS_SurfData()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_SurfData_ctor()) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:41 - `ChFiDS_SurfData::Copy()`
     pub fn copy(&mut self, Other: &crate::ffi::HandleChFiDSSurfData) {
         unsafe { crate::ffi::ChFiDS_SurfData_copy(self as *mut Self, Other) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:43 - `ChFiDS_SurfData::IndexOfS1()`
     pub fn index_of_s1(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_SurfData_index_of_s1(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:45 - `ChFiDS_SurfData::IndexOfS2()`
     pub fn index_of_s2(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_SurfData_index_of_s2(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:47 - `ChFiDS_SurfData::IsOnCurve1()`
     pub fn is_on_curve1(&self) -> bool {
         unsafe { crate::ffi::ChFiDS_SurfData_is_on_curve1(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:49 - `ChFiDS_SurfData::IsOnCurve2()`
     pub fn is_on_curve2(&self) -> bool {
         unsafe { crate::ffi::ChFiDS_SurfData_is_on_curve2(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:51 - `ChFiDS_SurfData::IndexOfC1()`
     pub fn index_of_c1(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_SurfData_index_of_c1(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:53 - `ChFiDS_SurfData::IndexOfC2()`
     pub fn index_of_c2(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_SurfData_index_of_c2(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:55 - `ChFiDS_SurfData::Surf()`
     pub fn surf(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_SurfData_surf(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:57 - `ChFiDS_SurfData::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         unsafe {
             crate::top_abs::Orientation::try_from(crate::ffi::ChFiDS_SurfData_orientation(
@@ -1395,142 +1587,176 @@ impl SurfData {
         }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:59 - `ChFiDS_SurfData::InterferenceOnS1()`
     pub fn interference_on_s1(&self) -> &crate::ffi::ChFiDS_FaceInterference {
         unsafe { &*(crate::ffi::ChFiDS_SurfData_interference_on_s1(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:61 - `ChFiDS_SurfData::InterferenceOnS2()`
     pub fn interference_on_s2(&self) -> &crate::ffi::ChFiDS_FaceInterference {
         unsafe { &*(crate::ffi::ChFiDS_SurfData_interference_on_s2(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:63 - `ChFiDS_SurfData::VertexFirstOnS1()`
     pub fn vertex_first_on_s1(&self) -> &crate::ffi::ChFiDS_CommonPoint {
         unsafe { &*(crate::ffi::ChFiDS_SurfData_vertex_first_on_s1(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:65 - `ChFiDS_SurfData::VertexFirstOnS2()`
     pub fn vertex_first_on_s2(&self) -> &crate::ffi::ChFiDS_CommonPoint {
         unsafe { &*(crate::ffi::ChFiDS_SurfData_vertex_first_on_s2(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:67 - `ChFiDS_SurfData::VertexLastOnS1()`
     pub fn vertex_last_on_s1(&self) -> &crate::ffi::ChFiDS_CommonPoint {
         unsafe { &*(crate::ffi::ChFiDS_SurfData_vertex_last_on_s1(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:69 - `ChFiDS_SurfData::VertexLastOnS2()`
     pub fn vertex_last_on_s2(&self) -> &crate::ffi::ChFiDS_CommonPoint {
         unsafe { &*(crate::ffi::ChFiDS_SurfData_vertex_last_on_s2(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:71 - `ChFiDS_SurfData::ChangeIndexOfS1()`
     pub fn change_index_of_s1(&mut self, Index: i32) {
         unsafe { crate::ffi::ChFiDS_SurfData_change_index_of_s1(self as *mut Self, Index) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:73 - `ChFiDS_SurfData::ChangeIndexOfS2()`
     pub fn change_index_of_s2(&mut self, Index: i32) {
         unsafe { crate::ffi::ChFiDS_SurfData_change_index_of_s2(self as *mut Self, Index) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:75 - `ChFiDS_SurfData::ChangeSurf()`
     pub fn change_surf(&mut self, Index: i32) {
         unsafe { crate::ffi::ChFiDS_SurfData_change_surf(self as *mut Self, Index) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:77 - `ChFiDS_SurfData::SetIndexOfC1()`
     pub fn set_index_of_c1(&mut self, Index: i32) {
         unsafe { crate::ffi::ChFiDS_SurfData_set_index_of_c1(self as *mut Self, Index) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:79 - `ChFiDS_SurfData::SetIndexOfC2()`
     pub fn set_index_of_c2(&mut self, Index: i32) {
         unsafe { crate::ffi::ChFiDS_SurfData_set_index_of_c2(self as *mut Self, Index) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:83 - `ChFiDS_SurfData::ChangeInterferenceOnS1()`
     pub fn change_interference_on_s1(&mut self) -> &mut crate::ffi::ChFiDS_FaceInterference {
         unsafe { &mut *(crate::ffi::ChFiDS_SurfData_change_interference_on_s1(self as *mut Self)) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:85 - `ChFiDS_SurfData::ChangeInterferenceOnS2()`
     pub fn change_interference_on_s2(&mut self) -> &mut crate::ffi::ChFiDS_FaceInterference {
         unsafe { &mut *(crate::ffi::ChFiDS_SurfData_change_interference_on_s2(self as *mut Self)) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:87 - `ChFiDS_SurfData::ChangeVertexFirstOnS1()`
     pub fn change_vertex_first_on_s1(&mut self) -> &mut crate::ffi::ChFiDS_CommonPoint {
         unsafe { &mut *(crate::ffi::ChFiDS_SurfData_change_vertex_first_on_s1(self as *mut Self)) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:89 - `ChFiDS_SurfData::ChangeVertexFirstOnS2()`
     pub fn change_vertex_first_on_s2(&mut self) -> &mut crate::ffi::ChFiDS_CommonPoint {
         unsafe { &mut *(crate::ffi::ChFiDS_SurfData_change_vertex_first_on_s2(self as *mut Self)) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:91 - `ChFiDS_SurfData::ChangeVertexLastOnS1()`
     pub fn change_vertex_last_on_s1(&mut self) -> &mut crate::ffi::ChFiDS_CommonPoint {
         unsafe { &mut *(crate::ffi::ChFiDS_SurfData_change_vertex_last_on_s1(self as *mut Self)) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:93 - `ChFiDS_SurfData::ChangeVertexLastOnS2()`
     pub fn change_vertex_last_on_s2(&mut self) -> &mut crate::ffi::ChFiDS_CommonPoint {
         unsafe { &mut *(crate::ffi::ChFiDS_SurfData_change_vertex_last_on_s2(self as *mut Self)) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:95 - `ChFiDS_SurfData::Interference()`
     pub fn interference(&self, OnS: i32) -> &crate::ffi::ChFiDS_FaceInterference {
         unsafe { &*(crate::ffi::ChFiDS_SurfData_interference(self as *const Self, OnS)) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:97 - `ChFiDS_SurfData::ChangeInterference()`
     pub fn change_interference(&mut self, OnS: i32) -> &mut crate::ffi::ChFiDS_FaceInterference {
         unsafe { &mut *(crate::ffi::ChFiDS_SurfData_change_interference(self as *mut Self, OnS)) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:99 - `ChFiDS_SurfData::Index()`
     pub fn index(&self, OfS: i32) -> i32 {
         unsafe { crate::ffi::ChFiDS_SurfData_index(self as *const Self, OfS) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:103 - `ChFiDS_SurfData::Vertex()`
     /// returns one of the four vertices  whether First is true
     /// or wrong and OnS equals 1 or 2.
     pub fn vertex(&self, First: bool, OnS: i32) -> &crate::ffi::ChFiDS_CommonPoint {
         unsafe { &*(crate::ffi::ChFiDS_SurfData_vertex(self as *const Self, First, OnS)) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:108 - `ChFiDS_SurfData::ChangeVertex()`
     /// returns one of the four vertices  whether First is true
     /// or wrong and OnS equals 1 or 2.
     pub fn change_vertex(&mut self, First: bool, OnS: i32) -> &mut crate::ffi::ChFiDS_CommonPoint {
         unsafe { &mut *(crate::ffi::ChFiDS_SurfData_change_vertex(self as *mut Self, First, OnS)) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:111 - `ChFiDS_SurfData::IsOnCurve()`
     pub fn is_on_curve(&self, OnS: i32) -> bool {
         unsafe { crate::ffi::ChFiDS_SurfData_is_on_curve(self as *const Self, OnS) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:113 - `ChFiDS_SurfData::IndexOfC()`
     pub fn index_of_c(&self, OnS: i32) -> i32 {
         unsafe { crate::ffi::ChFiDS_SurfData_index_of_c(self as *const Self, OnS) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:115 - `ChFiDS_SurfData::FirstSpineParam()`
     pub fn first_spine_param(&self) -> f64 {
         unsafe { crate::ffi::ChFiDS_SurfData_first_spine_param(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:117 - `ChFiDS_SurfData::LastSpineParam()`
     pub fn last_spine_param(&self) -> f64 {
         unsafe { crate::ffi::ChFiDS_SurfData_last_spine_param(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:119 - `ChFiDS_SurfData::FirstSpineParam()`
     pub fn first_spine_param_real(&mut self, Par: f64) {
         unsafe { crate::ffi::ChFiDS_SurfData_first_spine_param_real(self as *mut Self, Par) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:121 - `ChFiDS_SurfData::LastSpineParam()`
     pub fn last_spine_param_real(&mut self, Par: f64) {
         unsafe { crate::ffi::ChFiDS_SurfData_last_spine_param_real(self as *mut Self, Par) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:123 - `ChFiDS_SurfData::FirstExtensionValue()`
     pub fn first_extension_value(&self) -> f64 {
         unsafe { crate::ffi::ChFiDS_SurfData_first_extension_value(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:125 - `ChFiDS_SurfData::LastExtensionValue()`
     pub fn last_extension_value(&self) -> f64 {
         unsafe { crate::ffi::ChFiDS_SurfData_last_extension_value(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:127 - `ChFiDS_SurfData::FirstExtensionValue()`
     pub fn first_extension_value_real(&mut self, Extend: f64) {
         unsafe { crate::ffi::ChFiDS_SurfData_first_extension_value_real(self as *mut Self, Extend) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:129 - `ChFiDS_SurfData::LastExtensionValue()`
     pub fn last_extension_value_real(&mut self, Extend: f64) {
         unsafe { crate::ffi::ChFiDS_SurfData_last_extension_value_real(self as *mut Self, Extend) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:135 - `ChFiDS_SurfData::ResetSimul()`
     pub fn reset_simul(&mut self) {
         unsafe { crate::ffi::ChFiDS_SurfData_reset_simul(self as *mut Self) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:137 - `ChFiDS_SurfData::Get2dPoints()`
     pub fn get2d_points_bool_int(
         &self,
         First: bool,
@@ -1545,6 +1771,7 @@ impl SurfData {
         }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:140 - `ChFiDS_SurfData::Get2dPoints()`
     pub fn get2d_points_pnt2d4(
         &self,
         P2df1: &mut crate::ffi::gp_Pnt2d,
@@ -1563,6 +1790,7 @@ impl SurfData {
         }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:145 - `ChFiDS_SurfData::Set2dPoints()`
     pub fn set2d_points(
         &mut self,
         P2df1: &crate::ffi::gp_Pnt2d,
@@ -1575,30 +1803,37 @@ impl SurfData {
         }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:150 - `ChFiDS_SurfData::TwistOnS1()`
     pub fn twist_on_s1(&self) -> bool {
         unsafe { crate::ffi::ChFiDS_SurfData_twist_on_s1(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:152 - `ChFiDS_SurfData::TwistOnS2()`
     pub fn twist_on_s2(&self) -> bool {
         unsafe { crate::ffi::ChFiDS_SurfData_twist_on_s2(self as *const Self) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:154 - `ChFiDS_SurfData::TwistOnS1()`
     pub fn twist_on_s1_bool(&mut self, T: bool) {
         unsafe { crate::ffi::ChFiDS_SurfData_twist_on_s1_bool(self as *mut Self, T) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:156 - `ChFiDS_SurfData::TwistOnS2()`
     pub fn twist_on_s2_bool(&mut self, T: bool) {
         unsafe { crate::ffi::ChFiDS_SurfData_twist_on_s2_bool(self as *mut Self, T) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:158 - `ChFiDS_SurfData::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ChFiDS_SurfData_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:158 - `ChFiDS_SurfData::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::ChFiDS_SurfData_get_type_name() }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:158 - `ChFiDS_SurfData::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ChFiDS_SurfData_get_type_descriptor()) }
     }

@@ -10,6 +10,7 @@
 // From ShapeBuild_ReShape.hxx
 // ========================
 
+/// **Source:** `ShapeBuild_ReShape.hxx`:49 - `ShapeBuild_ReShape`
 /// Rebuilds a Shape by making pre-defined substitutions on some
 /// of its components
 ///
@@ -31,11 +32,13 @@ unsafe impl crate::CppDeletable for ReShape {
 }
 
 impl ReShape {
+    /// **Source:** `ShapeBuild_ReShape.hxx`:54 - `ShapeBuild_ReShape::ShapeBuild_ReShape()`
     /// Returns an empty Reshape
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_ReShape_ctor()) }
     }
 
+    /// **Source:** `ShapeBuild_ReShape.hxx`:70 - `ShapeBuild_ReShape::Apply()`
     /// Applies the substitutions requests to a shape
     ///
     /// <until> gives the level of type until which requests are taken
@@ -66,6 +69,7 @@ impl ReShape {
         }
     }
 
+    /// **Source:** `ShapeBuild_ReShape.hxx`:86 - `ShapeBuild_ReShape::Apply()`
     /// Applies the substitutions requests to a shape.
     ///
     /// <until> gives the level of type until which requests are taken
@@ -92,6 +96,7 @@ impl ReShape {
         }
     }
 
+    /// **Source:** `ShapeBuild_ReShape.hxx`:97 - `ShapeBuild_ReShape::Status()`
     /// Returns a complete substitution status for a shape
     /// 0  : not recorded,   <newsh> = original <shape>
     /// < 0: to be removed,  <newsh> is NULL
@@ -110,6 +115,7 @@ impl ReShape {
         }
     }
 
+    /// **Source:** `ShapeBuild_ReShape.hxx`:109 - `ShapeBuild_ReShape::Status()`
     /// Queries the status of last call to Apply(shape,enum)
     /// OK   : no (sub)shapes replaced or removed
     /// DONE1: source (starting) shape replaced
@@ -121,14 +127,17 @@ impl ReShape {
         unsafe { crate::ffi::ShapeBuild_ReShape_status_status(self as *const Self, status.into()) }
     }
 
+    /// **Source:** `ShapeBuild_ReShape.hxx`:111 - `ShapeBuild_ReShape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ShapeBuild_ReShape_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `ShapeBuild_ReShape.hxx`:111 - `ShapeBuild_ReShape::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::ShapeBuild_ReShape_get_type_name() }
     }
 
+    /// **Source:** `ShapeBuild_ReShape.hxx`:111 - `ShapeBuild_ReShape::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ShapeBuild_ReShape_get_type_descriptor()) }
     }

@@ -6,9 +6,17 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{
-    math_gauss_points_max as gauss_points_max, math_kronrod_points_max as kronrod_points_max,
-};
+/// **Source:** `math.hxx` - `math::GaussPointsMax`
+pub fn gauss_points_max() -> i32 {
+    unsafe { crate::ffi::math_gauss_points_max() }
+}
+/// **Source:** `math.hxx` - `math::KronrodPointsMax`
+/// Returns the maximal number of points for that the values
+/// are stored in the table. If the number is greater then
+/// KronrodPointsMax, the points will be computed.
+pub fn kronrod_points_max() -> i32 {
+    unsafe { crate::ffi::math_kronrod_points_max() }
+}
 
 /// C++ enum: `math_Status`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -46,6 +54,7 @@ impl TryFrom<i32> for Status {
 // From math_BFGS.hxx
 // ========================
 
+/// **Source:** `math_BFGS.hxx`:37 - `math_BFGS`
 /// This class implements the Broyden-Fletcher-Goldfarb-Shanno variant of
 /// Davidson-Fletcher-Powell minimization algorithm of a function of
 /// multiple variables.Knowledge of the function's gradient is required.
@@ -63,6 +72,7 @@ unsafe impl crate::CppDeletable for BFGS {
 }
 
 impl BFGS {
+    /// **Source:** `math_BFGS.hxx`:49 - `math_BFGS::math_BFGS()`
     /// Initializes the computation of the minimum of a function with
     /// NbVariables.
     /// Tolerance, ZEPS and NbIterations are described in the method Perform.
@@ -86,6 +96,7 @@ impl BFGS {
         }
     }
 
+    /// **Source:** `math_BFGS.hxx`:49 - `math_BFGS::math_BFGS()`
     /// Initializes the computation of the minimum of a function with
     /// NbVariables.
     /// Tolerance, ZEPS and NbIterations are described in the method Perform.
@@ -101,6 +112,7 @@ impl BFGS {
         Self::new_int_real_int_real(NbVariables, Tolerance, NbIterations, 1.0e-12)
     }
 
+    /// **Source:** `math_BFGS.hxx`:49 - `math_BFGS::math_BFGS()`
     /// Initializes the computation of the minimum of a function with
     /// NbVariables.
     /// Tolerance, ZEPS and NbIterations are described in the method Perform.
@@ -112,6 +124,7 @@ impl BFGS {
         Self::new_int_real_int_real(NbVariables, Tolerance, 200, 1.0e-12)
     }
 
+    /// **Source:** `math_BFGS.hxx`:49 - `math_BFGS::math_BFGS()`
     /// Initializes the computation of the minimum of a function with
     /// NbVariables.
     /// Tolerance, ZEPS and NbIterations are described in the method Perform.
@@ -123,6 +136,7 @@ impl BFGS {
         Self::new_int_real_int_real(NbVariables, 1.0e-8, 200, 1.0e-12)
     }
 
+    /// **Source:** `math_BFGS.hxx`:74 - `math_BFGS::IsSolutionReached()`
     /// This method is called at the end of each iteration to check if the
     /// solution is found.
     /// It can be redefined in a sub-class to implement a specific test to
@@ -134,17 +148,20 @@ impl BFGS {
         unsafe { crate::ffi::math_BFGS_is_solution_reached(self as *const Self, F) }
     }
 
+    /// **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_BFGS_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_BFGS.hxx`:92 - `math_BFGS::Minimum()`
     /// returns the value of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn minimum(&self) -> f64 {
         unsafe { crate::ffi::math_BFGS_minimum(self as *const Self) }
     }
 
+    /// **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
     /// Returns the number of iterations really done in the
     /// calculation of the minimum.
     /// The exception NotDone is raised if the minimum was not found.
@@ -157,6 +174,7 @@ impl BFGS {
 // From math_BissecNewton.hxx
 // ========================
 
+/// **Source:** `math_BissecNewton.hxx`:32 - `math_BissecNewton`
 /// This class implements a combination of Newton-Raphson and bissection
 /// methods to find the root of the function between two bounds.
 /// Knowledge of the derivative is required.
@@ -169,12 +187,14 @@ unsafe impl crate::CppDeletable for BissecNewton {
 }
 
 impl BissecNewton {
+    /// **Source:** `math_BissecNewton.hxx`:39 - `math_BissecNewton::math_BissecNewton()`
     /// Constructor.
     /// @param theXTolerance - algorithm tolerance.
     pub fn new_real(theXTolerance: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_BissecNewton_ctor_real(theXTolerance)) }
     }
 
+    /// **Source:** `math_BissecNewton.hxx`:48 - `math_BissecNewton::Perform()`
     /// A combination of Newton-Raphson and bissection methods is done to find
     /// the root of the function F between the bounds Bound1 and Bound2
     /// on the function F.
@@ -200,6 +220,7 @@ impl BissecNewton {
         }
     }
 
+    /// **Source:** `math_BissecNewton.hxx`:57 - `math_BissecNewton::IsSolutionReached()`
     /// This method is called at the end of each iteration to check if the
     /// solution has been found.
     /// It can be redefined in a sub-class to implement a specific test to
@@ -211,23 +232,27 @@ impl BissecNewton {
         unsafe { crate::ffi::math_BissecNewton_is_solution_reached(self as *mut Self, theFunction) }
     }
 
+    /// **Source:** `math_BissecNewton.hxx`:60 - `math_BissecNewton::IsDone()`
     /// Tests is the root has been successfully found.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_BissecNewton_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_BissecNewton.hxx`:64 - `math_BissecNewton::Root()`
     /// returns the value of the root.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn root(&self) -> f64 {
         unsafe { crate::ffi::math_BissecNewton_root(self as *const Self) }
     }
 
+    /// **Source:** `math_BissecNewton.hxx`:68 - `math_BissecNewton::Derivative()`
     /// returns the value of the derivative at the root.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn derivative(&self) -> f64 {
         unsafe { crate::ffi::math_BissecNewton_derivative(self as *const Self) }
     }
 
+    /// **Source:** `math_BissecNewton.hxx`:72 - `math_BissecNewton::Value()`
     /// returns the value of the function at the root.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn value(&self) -> f64 {
@@ -239,6 +264,7 @@ impl BissecNewton {
 // From math_BracketMinimum.hxx
 // ========================
 
+/// **Source:** `math_BracketMinimum.hxx`:37 - `math_BracketMinimum`
 /// Given two distinct initial points, BracketMinimum
 /// implements the computation of three points (a, b, c) which
 /// bracket the minimum of the function and verify A less than
@@ -257,11 +283,13 @@ unsafe impl crate::CppDeletable for BracketMinimum {
 }
 
 impl BracketMinimum {
+    /// **Source:** `math_BracketMinimum.hxx`:43 - `math_BracketMinimum::math_BracketMinimum()`
     /// Constructor preparing A and B parameters only. It does not perform the job.
     pub fn new_real2(A: f64, B: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_BracketMinimum_ctor_real2(A, B)) }
     }
 
+    /// **Source:** `math_BracketMinimum.hxx`:50 - `math_BracketMinimum::math_BracketMinimum()`
     /// Given two initial values this class computes a
     /// bracketing triplet of abscissae Ax, Bx, Cx
     /// (such that Bx is between Ax and Cx, F(Bx) is
@@ -277,6 +305,7 @@ impl BracketMinimum {
         }
     }
 
+    /// **Source:** `math_BracketMinimum.hxx`:60 - `math_BracketMinimum::math_BracketMinimum()`
     /// Given two initial values this class computes a
     /// bracketing triplet of abscissae Ax, Bx, Cx
     /// (such that Bx is between Ax and Cx, F(Bx) is
@@ -296,6 +325,7 @@ impl BracketMinimum {
         }
     }
 
+    /// **Source:** `math_BracketMinimum.hxx`:71 - `math_BracketMinimum::math_BracketMinimum()`
     /// Given two initial values this class computes a
     /// bracketing triplet of abscissae Ax, Bx, Cx
     /// (such that Bx is between Ax and Cx, F(Bx) is
@@ -316,6 +346,7 @@ impl BracketMinimum {
         }
     }
 
+    /// **Source:** `math_BracketMinimum.hxx`:80 - `math_BracketMinimum::SetLimits()`
     /// Set limits of the parameter. By default no limits are applied to the parameter change.
     /// If no minimum is found in limits then IsDone() will return false. The user
     /// is in charge of providing A and B to be in limits.
@@ -323,26 +354,31 @@ impl BracketMinimum {
         unsafe { crate::ffi::math_BracketMinimum_set_limits(self as *mut Self, theLeft, theRight) }
     }
 
+    /// **Source:** `math_BracketMinimum.hxx`:83 - `math_BracketMinimum::SetFA()`
     /// Set function value at A
     pub fn set_fa(&mut self, theValue: f64) {
         unsafe { crate::ffi::math_BracketMinimum_set_fa(self as *mut Self, theValue) }
     }
 
+    /// **Source:** `math_BracketMinimum.hxx`:86 - `math_BracketMinimum::SetFB()`
     /// Set function value at B
     pub fn set_fb(&mut self, theValue: f64) {
         unsafe { crate::ffi::math_BracketMinimum_set_fb(self as *mut Self, theValue) }
     }
 
+    /// **Source:** `math_BracketMinimum.hxx`:89 - `math_BracketMinimum::Perform()`
     /// The method performing the job. It is called automatically by constructors with the function.
     pub fn perform(&mut self, F: &mut crate::ffi::math_Function) {
         unsafe { crate::ffi::math_BracketMinimum_perform(self as *mut Self, F) }
     }
 
+    /// **Source:** `math_BracketMinimum.hxx`:92 - `math_BracketMinimum::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_BracketMinimum_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_BracketMinimum.hxx`:97 - `math_BracketMinimum::Values()`
     /// Returns the bracketed triplet of abscissae.
     /// Exceptions
     /// StdFail_NotDone if the algorithm fails (and IsDone returns false).
@@ -350,6 +386,7 @@ impl BracketMinimum {
         unsafe { crate::ffi::math_BracketMinimum_values(self as *const Self, A, B, C) }
     }
 
+    /// **Source:** `math_BracketMinimum.hxx`:102 - `math_BracketMinimum::FunctionValues()`
     /// returns the bracketed triplet function values.
     /// Exceptions
     /// StdFail_NotDone if the algorithm fails (and IsDone returns false).
@@ -362,6 +399,7 @@ impl BracketMinimum {
 // From math_BracketedRoot.hxx
 // ========================
 
+/// **Source:** `math_BracketedRoot.hxx`:30 - `math_BracketedRoot`
 /// This class implements the Brent method to find the root of a function
 /// located within two bounds. No knowledge of the derivative is required.
 pub use crate::ffi::math_BracketedRoot as BracketedRoot;
@@ -373,6 +411,7 @@ unsafe impl crate::CppDeletable for BracketedRoot {
 }
 
 impl BracketedRoot {
+    /// **Source:** `math_BracketedRoot.hxx`:42 - `math_BracketedRoot::math_BracketedRoot()`
     /// The Brent method is used to find the root of the function F between
     /// the bounds Bound1 and Bound2 on the function F.
     /// If F(Bound1)*F(Bound2) >0 the Brent method fails.
@@ -400,6 +439,7 @@ impl BracketedRoot {
         }
     }
 
+    /// **Source:** `math_BracketedRoot.hxx`:42 - `math_BracketedRoot::math_BracketedRoot()`
     /// The Brent method is used to find the root of the function F between
     /// the bounds Bound1 and Bound2 on the function F.
     /// If F(Bound1)*F(Bound2) >0 the Brent method fails.
@@ -417,6 +457,7 @@ impl BracketedRoot {
         Self::new_function_real3_int_real(F, Bound1, Bound2, Tolerance, NbIterations, 1.0e-12)
     }
 
+    /// **Source:** `math_BracketedRoot.hxx`:42 - `math_BracketedRoot::math_BracketedRoot()`
     /// The Brent method is used to find the root of the function F between
     /// the bounds Bound1 and Bound2 on the function F.
     /// If F(Bound1)*F(Bound2) >0 the Brent method fails.
@@ -433,23 +474,27 @@ impl BracketedRoot {
         Self::new_function_real3_int_real(F, Bound1, Bound2, Tolerance, 100, 1.0e-12)
     }
 
+    /// **Source:** `math_BracketedRoot.hxx`:50 - `math_BracketedRoot::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_BracketedRoot_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_BracketedRoot.hxx`:54 - `math_BracketedRoot::Root()`
     /// returns the value of the root.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn root(&self) -> f64 {
         unsafe { crate::ffi::math_BracketedRoot_root(self as *const Self) }
     }
 
+    /// **Source:** `math_BracketedRoot.hxx`:58 - `math_BracketedRoot::Value()`
     /// returns the value of the function at the root.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn value(&self) -> f64 {
         unsafe { crate::ffi::math_BracketedRoot_value(self as *const Self) }
     }
 
+    /// **Source:** `math_BracketedRoot.hxx`:63 - `math_BracketedRoot::NbIterations()`
     /// returns the number of iterations really done during the
     /// computation of the Root.
     /// Exception NotDone is raised if the minimum was not found.
@@ -462,6 +507,7 @@ impl BracketedRoot {
 // From math_BrentMinimum.hxx
 // ========================
 
+/// **Source:** `math_BrentMinimum.hxx`:31 - `math_BrentMinimum`
 /// This class implements the Brent's method to find the minimum of
 /// a function of a single variable.
 /// No knowledge of the derivative is required.
@@ -474,6 +520,7 @@ unsafe impl crate::CppDeletable for BrentMinimum {
 }
 
 impl BrentMinimum {
+    /// **Source:** `math_BrentMinimum.hxx`:38 - `math_BrentMinimum::math_BrentMinimum()`
     /// This constructor should be used in a sub-class to initialize
     /// correctly all the fields of this class.
     pub fn new_real_int_real(TolX: f64, NbIterations: i32, ZEPS: f64) -> crate::OwnedPtr<Self> {
@@ -486,6 +533,7 @@ impl BrentMinimum {
         }
     }
 
+    /// **Source:** `math_BrentMinimum.hxx`:45 - `math_BrentMinimum::math_BrentMinimum()`
     /// This constructor should be used in a sub-class to initialize
     /// correctly all the fields of this class.
     /// It has to be used if F(Bx) is known.
@@ -505,18 +553,21 @@ impl BrentMinimum {
         }
     }
 
+    /// **Source:** `math_BrentMinimum.hxx`:38 - `math_BrentMinimum::math_BrentMinimum()`
     /// This constructor should be used in a sub-class to initialize
     /// correctly all the fields of this class.
     pub fn new_real_int(TolX: f64, NbIterations: i32) -> crate::OwnedPtr<Self> {
         Self::new_real_int_real(TolX, NbIterations, 1.0e-12)
     }
 
+    /// **Source:** `math_BrentMinimum.hxx`:38 - `math_BrentMinimum::math_BrentMinimum()`
     /// This constructor should be used in a sub-class to initialize
     /// correctly all the fields of this class.
     pub fn new_real(TolX: f64) -> crate::OwnedPtr<Self> {
         Self::new_real_int_real(TolX, 100, 1.0e-12)
     }
 
+    /// **Source:** `math_BrentMinimum.hxx`:45 - `math_BrentMinimum::math_BrentMinimum()`
     /// This constructor should be used in a sub-class to initialize
     /// correctly all the fields of this class.
     /// It has to be used if F(Bx) is known.
@@ -524,6 +575,7 @@ impl BrentMinimum {
         Self::new_real2_int_real(TolX, Fbx, NbIterations, 1.0e-12)
     }
 
+    /// **Source:** `math_BrentMinimum.hxx`:45 - `math_BrentMinimum::math_BrentMinimum()`
     /// This constructor should be used in a sub-class to initialize
     /// correctly all the fields of this class.
     /// It has to be used if F(Bx) is known.
@@ -531,6 +583,7 @@ impl BrentMinimum {
         Self::new_real2_int_real(TolX, Fbx, 100, 1.0e-12)
     }
 
+    /// **Source:** `math_BrentMinimum.hxx`:57 - `math_BrentMinimum::Perform()`
     /// Brent minimization is performed on function F from a given
     /// bracketing triplet of abscissas Ax, Bx, Cx (such that Bx is
     /// between Ax and Cx, F(Bx) is less than both F(Bx) and F(Cx))
@@ -539,6 +592,7 @@ impl BrentMinimum {
         unsafe { crate::ffi::math_BrentMinimum_perform(self as *mut Self, F, Ax, Bx, Cx) }
     }
 
+    /// **Source:** `math_BrentMinimum.hxx`:66 - `math_BrentMinimum::IsSolutionReached()`
     /// This method is called at the end of each iteration to check if the
     /// solution is found.
     /// It can be redefined in a sub-class to implement a specific test to
@@ -547,23 +601,27 @@ impl BrentMinimum {
         unsafe { crate::ffi::math_BrentMinimum_is_solution_reached(self as *mut Self, theFunction) }
     }
 
+    /// **Source:** `math_BrentMinimum.hxx`:69 - `math_BrentMinimum::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_BrentMinimum_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_BrentMinimum.hxx`:73 - `math_BrentMinimum::Location()`
     /// returns the location value of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn location(&self) -> f64 {
         unsafe { crate::ffi::math_BrentMinimum_location(self as *const Self) }
     }
 
+    /// **Source:** `math_BrentMinimum.hxx`:77 - `math_BrentMinimum::Minimum()`
     /// returns the value of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn minimum(&self) -> f64 {
         unsafe { crate::ffi::math_BrentMinimum_minimum(self as *const Self) }
     }
 
+    /// **Source:** `math_BrentMinimum.hxx`:82 - `math_BrentMinimum::NbIterations()`
     /// returns the number of iterations really done during the
     /// computation of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
@@ -576,6 +634,7 @@ impl BrentMinimum {
 // From math_BullardGenerator.hxx
 // ========================
 
+/// **Source:** `math_BullardGenerator.hxx`:22 - `math_BullardGenerator`
 /// Fast random number generator (the algorithm proposed by Ian C. Bullard).
 pub use crate::ffi::math_BullardGenerator as BullardGenerator;
 
@@ -586,26 +645,31 @@ unsafe impl crate::CppDeletable for BullardGenerator {
 }
 
 impl BullardGenerator {
+    /// **Source:** `math_BullardGenerator.hxx`:26 - `math_BullardGenerator::math_BullardGenerator()`
     /// Creates new Xorshift 64-bit RNG.
     pub fn new_uint(theSeed: u32) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_BullardGenerator_ctor_uint(theSeed)) }
     }
 
+    /// **Source:** `math_BullardGenerator.hxx`:26 - `math_BullardGenerator::math_BullardGenerator()`
     /// Creates new Xorshift 64-bit RNG.
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_uint(1)
     }
 
+    /// **Source:** `math_BullardGenerator.hxx`:33 - `math_BullardGenerator::SetSeed()`
     /// Setup new seed / reset defaults.
     pub fn set_seed(&mut self, theSeed: u32) {
         unsafe { crate::ffi::math_BullardGenerator_set_seed(self as *mut Self, theSeed) }
     }
 
+    /// **Source:** `math_BullardGenerator.hxx`:40 - `math_BullardGenerator::NextInt()`
     /// Generates new 64-bit integer value.
     pub fn next_int(&mut self) -> u32 {
         unsafe { crate::ffi::math_BullardGenerator_next_int(self as *mut Self) }
     }
 
+    /// **Source:** `math_BullardGenerator.hxx`:51 - `math_BullardGenerator::NextReal()`
     /// Generates new floating-point value.
     pub fn next_real(&mut self) -> f64 {
         unsafe { crate::ffi::math_BullardGenerator_next_real(self as *mut Self) }
@@ -616,6 +680,7 @@ impl BullardGenerator {
 // From math_ComputeGaussPointsAndWeights.hxx
 // ========================
 
+/// **Source:** `math_ComputeGaussPointsAndWeights.hxx`:27 - `math_ComputeGaussPointsAndWeights`
 pub use crate::ffi::math_ComputeGaussPointsAndWeights as ComputeGaussPointsAndWeights;
 
 unsafe impl crate::CppDeletable for ComputeGaussPointsAndWeights {
@@ -625,6 +690,7 @@ unsafe impl crate::CppDeletable for ComputeGaussPointsAndWeights {
 }
 
 impl ComputeGaussPointsAndWeights {
+    /// **Source:** `math_ComputeGaussPointsAndWeights.hxx`:32 - `math_ComputeGaussPointsAndWeights::math_ComputeGaussPointsAndWeights()`
     pub fn new_int(Number: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::math_ComputeGaussPointsAndWeights_ctor_int(
@@ -633,6 +699,7 @@ impl ComputeGaussPointsAndWeights {
         }
     }
 
+    /// **Source:** `math_ComputeGaussPointsAndWeights.hxx`:34 - `math_ComputeGaussPointsAndWeights::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_ComputeGaussPointsAndWeights_is_done(self as *const Self) }
     }
@@ -642,6 +709,7 @@ impl ComputeGaussPointsAndWeights {
 // From math_ComputeKronrodPointsAndWeights.hxx
 // ========================
 
+/// **Source:** `math_ComputeKronrodPointsAndWeights.hxx`:27 - `math_ComputeKronrodPointsAndWeights`
 pub use crate::ffi::math_ComputeKronrodPointsAndWeights as ComputeKronrodPointsAndWeights;
 
 unsafe impl crate::CppDeletable for ComputeKronrodPointsAndWeights {
@@ -651,6 +719,7 @@ unsafe impl crate::CppDeletable for ComputeKronrodPointsAndWeights {
 }
 
 impl ComputeKronrodPointsAndWeights {
+    /// **Source:** `math_ComputeKronrodPointsAndWeights.hxx`:32 - `math_ComputeKronrodPointsAndWeights::math_ComputeKronrodPointsAndWeights()`
     pub fn new_int(Number: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::math_ComputeKronrodPointsAndWeights_ctor_int(
@@ -659,6 +728,7 @@ impl ComputeKronrodPointsAndWeights {
         }
     }
 
+    /// **Source:** `math_ComputeKronrodPointsAndWeights.hxx`:34 - `math_ComputeKronrodPointsAndWeights::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_ComputeKronrodPointsAndWeights_is_done(self as *const Self) }
     }
@@ -668,6 +738,7 @@ impl ComputeKronrodPointsAndWeights {
 // From math_Crout.hxx
 // ========================
 
+/// **Source:** `math_Crout.hxx`:33 - `math_Crout`
 /// This class implements the Crout algorithm used to solve a
 /// system A*X = B where A is a symmetric matrix. It can be used to
 /// invert a symmetric matrix.
@@ -682,6 +753,7 @@ unsafe impl crate::CppDeletable for Crout {
 }
 
 impl Crout {
+    /// **Source:** `math_Crout.hxx`:47 - `math_Crout::math_Crout()`
     /// Given an input matrix A, this algorithm inverts A by the
     /// Crout algorithm. The user can give only the inferior
     /// triangle for the implementation.
@@ -695,6 +767,7 @@ impl Crout {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_Crout_ctor_matrix_real(A, MinPivot)) }
     }
 
+    /// **Source:** `math_Crout.hxx`:47 - `math_Crout::math_Crout()`
     /// Given an input matrix A, this algorithm inverts A by the
     /// Crout algorithm. The user can give only the inferior
     /// triangle for the implementation.
@@ -708,11 +781,13 @@ impl Crout {
         Self::new_matrix_real(A, 1.0e-20)
     }
 
+    /// **Source:** `math_Crout.hxx`:50 - `math_Crout::IsDone()`
     /// Returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_Crout_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_Crout.hxx`:63 - `math_Crout::Inverse()`
     /// returns the inverse matrix of A. Only the inferior
     /// triangle is returned.
     /// Exception NotDone is raised if NotDone.
@@ -720,6 +795,7 @@ impl Crout {
         unsafe { &*(crate::ffi::math_Crout_inverse(self as *const Self)) }
     }
 
+    /// **Source:** `math_Crout.hxx`:68 - `math_Crout::Invert()`
     /// returns in Inv the inverse matrix of A. Only the inferior
     /// triangle is returned.
     /// Exception NotDone is raised if NotDone.
@@ -727,6 +803,7 @@ impl Crout {
         unsafe { crate::ffi::math_Crout_invert(self as *const Self, Inv) }
     }
 
+    /// **Source:** `math_Crout.hxx`:74 - `math_Crout::Determinant()`
     /// Returns the value of the determinant of the previously LU
     /// decomposed matrix A. Zero is returned if the matrix A is considered as singular.
     /// Exceptions
@@ -740,6 +817,7 @@ impl Crout {
 // From math_DirectPolynomialRoots.hxx
 // ========================
 
+/// **Source:** `math_DirectPolynomialRoots.hxx`:30 - `math_DirectPolynomialRoots`
 /// This class implements the calculation of all the real roots of a real
 /// polynomial of degree <= 4 using a direct method. Once found,
 /// the roots are polished using the Newton method.
@@ -752,6 +830,7 @@ unsafe impl crate::CppDeletable for DirectPolynomialRoots {
 }
 
 impl DirectPolynomialRoots {
+    /// **Source:** `math_DirectPolynomialRoots.hxx`:37 - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
     /// computes all the real roots of the polynomial
     /// Ax4 + Bx3 + Cx2 + Dx + E using a direct method.
     pub fn new_real5(A: f64, B: f64, C: f64, D: f64, E: f64) -> crate::OwnedPtr<Self> {
@@ -762,6 +841,7 @@ impl DirectPolynomialRoots {
         }
     }
 
+    /// **Source:** `math_DirectPolynomialRoots.hxx`:45 - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
     /// computes all the real roots of the polynomial
     /// Ax3 + Bx2 + Cx + D using a direct method.
     pub fn new_real4(A: f64, B: f64, C: f64, D: f64) -> crate::OwnedPtr<Self> {
@@ -770,6 +850,7 @@ impl DirectPolynomialRoots {
         }
     }
 
+    /// **Source:** `math_DirectPolynomialRoots.hxx`:52 - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
     /// computes all the real roots of the polynomial
     /// Ax2 + Bx + C using a direct method.
     pub fn new_real3(A: f64, B: f64, C: f64) -> crate::OwnedPtr<Self> {
@@ -778,6 +859,7 @@ impl DirectPolynomialRoots {
         }
     }
 
+    /// **Source:** `math_DirectPolynomialRoots.hxx`:57 - `math_DirectPolynomialRoots::math_DirectPolynomialRoots()`
     /// computes the real root of the polynomial Ax + B.
     pub fn new_real2(A: f64, B: f64) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -785,22 +867,26 @@ impl DirectPolynomialRoots {
         }
     }
 
+    /// **Source:** `math_DirectPolynomialRoots.hxx`:60 - `math_DirectPolynomialRoots::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_DirectPolynomialRoots_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_DirectPolynomialRoots.hxx`:63 - `math_DirectPolynomialRoots::InfiniteRoots()`
     /// Returns true if there is an infinity of roots, otherwise returns false.
     pub fn infinite_roots(&self) -> bool {
         unsafe { crate::ffi::math_DirectPolynomialRoots_infinite_roots(self as *const Self) }
     }
 
+    /// **Source:** `math_DirectPolynomialRoots.hxx`:67 - `math_DirectPolynomialRoots::NbSolutions()`
     /// returns the number of solutions.
     /// An exception is raised if there are an infinity of roots.
     pub fn nb_solutions(&self) -> i32 {
         unsafe { crate::ffi::math_DirectPolynomialRoots_nb_solutions(self as *const Self) }
     }
 
+    /// **Source:** `math_DirectPolynomialRoots.hxx`:73 - `math_DirectPolynomialRoots::Value()`
     /// returns the value of the Nieme root.
     /// An exception is raised if there are an infinity of roots.
     /// Exception RangeError is raised if Nieme is < 1
@@ -814,6 +900,7 @@ impl DirectPolynomialRoots {
 // From math_DoubleTab.hxx
 // ========================
 
+/// **Source:** `math_DoubleTab.hxx`:27 - `math_DoubleTab`
 pub use crate::ffi::math_DoubleTab as DoubleTab;
 
 unsafe impl crate::CppDeletable for DoubleTab {
@@ -823,6 +910,7 @@ unsafe impl crate::CppDeletable for DoubleTab {
 }
 
 impl DoubleTab {
+    /// **Source:** `math_DoubleTab.hxx`:32 - `math_DoubleTab::math_DoubleTab()`
     pub fn new_int4(
         LowerRow: i32,
         UpperRow: i32,
@@ -836,30 +924,37 @@ impl DoubleTab {
         }
     }
 
+    /// **Source:** `math_DoubleTab.hxx`:45 - `math_DoubleTab::math_DoubleTab()`
     pub fn new_doubletab(Other: &crate::ffi::math_DoubleTab) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_DoubleTab_ctor_doubletab(Other)) }
     }
 
+    /// **Source:** `math_DoubleTab.hxx`:43 - `math_DoubleTab::Init()`
     pub fn init(&mut self, InitValue: f64) {
         unsafe { crate::ffi::math_DoubleTab_init(self as *mut Self, InitValue) }
     }
 
+    /// **Source:** `math_DoubleTab.hxx`:47 - `math_DoubleTab::Copy()`
     pub fn copy(&self, Other: &mut crate::ffi::math_DoubleTab) {
         unsafe { crate::ffi::math_DoubleTab_copy(self as *const Self, Other) }
     }
 
+    /// **Source:** `math_DoubleTab.hxx`:49 - `math_DoubleTab::SetLowerRow()`
     pub fn set_lower_row(&mut self, LowerRow: i32) {
         unsafe { crate::ffi::math_DoubleTab_set_lower_row(self as *mut Self, LowerRow) }
     }
 
+    /// **Source:** `math_DoubleTab.hxx`:51 - `math_DoubleTab::SetLowerCol()`
     pub fn set_lower_col(&mut self, LowerCol: i32) {
         unsafe { crate::ffi::math_DoubleTab_set_lower_col(self as *mut Self, LowerCol) }
     }
 
+    /// **Source:** `math_DoubleTab.hxx`:53 - `math_DoubleTab::Value()`
     pub fn value(&mut self, RowIndex: i32, ColIndex: i32) -> &mut f64 {
         unsafe { &mut *(crate::ffi::math_DoubleTab_value(self as *mut Self, RowIndex, ColIndex)) }
     }
 
+    /// **Source:** `math_DoubleTab.hxx`:60 - `math_DoubleTab::Free()`
     pub fn free(&mut self) {
         unsafe { crate::ffi::math_DoubleTab_free(self as *mut Self) }
     }
@@ -869,6 +964,7 @@ impl DoubleTab {
 // From math_EigenValuesSearcher.hxx
 // ========================
 
+/// **Source:** `math_EigenValuesSearcher.hxx`:32 - `math_EigenValuesSearcher`
 /// This class finds eigen values and vectors of
 /// real symmetric tridiagonal matrix
 pub use crate::ffi::math_EigenValuesSearcher as EigenValuesSearcher;
@@ -880,6 +976,7 @@ unsafe impl crate::CppDeletable for EigenValuesSearcher {
 }
 
 impl EigenValuesSearcher {
+    /// **Source:** `math_EigenValuesSearcher.hxx`:37 - `math_EigenValuesSearcher::math_EigenValuesSearcher()`
     pub fn new_array1ofreal2(
         Diagonal: &crate::ffi::TColStd_Array1OfReal,
         Subdiagonal: &crate::ffi::TColStd_Array1OfReal,
@@ -892,17 +989,20 @@ impl EigenValuesSearcher {
         }
     }
 
+    /// **Source:** `math_EigenValuesSearcher.hxx`:42 - `math_EigenValuesSearcher::IsDone()`
     /// Returns Standard_True if computation is performed
     /// successfully.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_EigenValuesSearcher_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_EigenValuesSearcher.hxx`:45 - `math_EigenValuesSearcher::Dimension()`
     /// Returns the dimension of matrix
     pub fn dimension(&self) -> i32 {
         unsafe { crate::ffi::math_EigenValuesSearcher_dimension(self as *const Self) }
     }
 
+    /// **Source:** `math_EigenValuesSearcher.hxx`:49 - `math_EigenValuesSearcher::EigenValue()`
     /// Returns the Index_th eigen value of matrix
     /// Index must be in [1, Dimension()]
     pub fn eigen_value(&self, Index: i32) -> f64 {
@@ -914,6 +1014,7 @@ impl EigenValuesSearcher {
 // From math_FRPR.hxx
 // ========================
 
+/// **Source:** `math_FRPR.hxx`:31 - `math_FRPR`
 /// this class implements the Fletcher-Reeves-Polak_Ribiere minimization
 /// algorithm of a function of multiple variables.
 /// Knowledge of the function's gradient is required.
@@ -926,6 +1027,7 @@ unsafe impl crate::CppDeletable for FRPR {
 }
 
 impl FRPR {
+    /// **Source:** `math_FRPR.hxx`:38 - `math_FRPR::math_FRPR()`
     /// Initializes the computation of the minimum of F.
     /// Warning: constructor does not perform computations.
     pub fn new_multiplevarfunctionwithgradient_real_int_real(
@@ -946,6 +1048,7 @@ impl FRPR {
         }
     }
 
+    /// **Source:** `math_FRPR.hxx`:38 - `math_FRPR::math_FRPR()`
     /// Initializes the computation of the minimum of F.
     /// Warning: constructor does not perform computations.
     pub fn new_multiplevarfunctionwithgradient_real_int(
@@ -961,6 +1064,7 @@ impl FRPR {
         )
     }
 
+    /// **Source:** `math_FRPR.hxx`:38 - `math_FRPR::math_FRPR()`
     /// Initializes the computation of the minimum of F.
     /// Warning: constructor does not perform computations.
     pub fn new_multiplevarfunctionwithgradient_real(
@@ -975,6 +1079,7 @@ impl FRPR {
         )
     }
 
+    /// **Source:** `math_FRPR.hxx`:54 - `math_FRPR::IsSolutionReached()`
     /// The solution F = Fi is found when:
     /// 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1)) + ZEPS.
     /// The maximum number of iterations allowed is given by NbIterations.
@@ -985,17 +1090,20 @@ impl FRPR {
         unsafe { crate::ffi::math_FRPR_is_solution_reached(self as *mut Self, theFunction) }
     }
 
+    /// **Source:** `math_FRPR.hxx`:57 - `math_FRPR::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_FRPR_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_FRPR.hxx`:71 - `math_FRPR::Minimum()`
     /// returns the value of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn minimum(&self) -> f64 {
         unsafe { crate::ffi::math_FRPR_minimum(self as *const Self) }
     }
 
+    /// **Source:** `math_FRPR.hxx`:86 - `math_FRPR::NbIterations()`
     /// returns the number of iterations really done during the
     /// computation of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
@@ -1008,6 +1116,7 @@ impl FRPR {
 // From math_Function.hxx
 // ========================
 
+/// **Source:** `math_Function.hxx`:29 - `math_Function`
 /// This abstract class describes the virtual functions
 /// associated with a Function of a single variable.
 pub use crate::ffi::math_Function as Function;
@@ -1019,6 +1128,7 @@ unsafe impl crate::CppDeletable for Function {
 }
 
 impl Function {
+    /// **Source:** `math_Function.hxx`:41 - `math_Function::Value()`
     /// Computes the value of the function <F> for a given value of
     /// variable <X>.
     /// returns True if the computation was done successfully,
@@ -1027,6 +1137,7 @@ impl Function {
         unsafe { crate::ffi::math_Function_value(self as *mut Self, X, F) }
     }
 
+    /// **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     /// returns the state of the function corresponding to the
     /// latest call of any methods associated with the function.
     /// This function is called by each of the algorithms
@@ -1050,6 +1161,7 @@ impl Function {
 // From math_FunctionAllRoots.hxx
 // ========================
 
+/// **Source:** `math_FunctionAllRoots.hxx`:36 - `math_FunctionAllRoots`
 /// This algorithm uses a sample of the function to find
 /// all intervals on which the function is null, and afterwards
 /// uses the FunctionRoots algorithm to find the points
@@ -1064,6 +1176,7 @@ unsafe impl crate::CppDeletable for FunctionAllRoots {
 }
 
 impl FunctionAllRoots {
+    /// **Source:** `math_FunctionAllRoots.hxx`:49 - `math_FunctionAllRoots::math_FunctionAllRoots()`
     /// The algorithm uses the sample to find intervals on which
     /// the function is null. An interval is found if, for at least
     /// two consecutive points of the sample, Ui and Ui+1, we get
@@ -1088,11 +1201,13 @@ impl FunctionAllRoots {
         }
     }
 
+    /// **Source:** `math_FunctionAllRoots.hxx`:56 - `math_FunctionAllRoots::IsDone()`
     /// Returns True if the computation has been done successfully.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_FunctionAllRoots_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_FunctionAllRoots.hxx`:61 - `math_FunctionAllRoots::NbIntervals()`
     /// Returns the number of intervals on which the function
     /// is Null.
     /// An exception is raised if IsDone returns False.
@@ -1100,6 +1215,7 @@ impl FunctionAllRoots {
         unsafe { crate::ffi::math_FunctionAllRoots_nb_intervals(self as *const Self) }
     }
 
+    /// **Source:** `math_FunctionAllRoots.hxx`:66 - `math_FunctionAllRoots::GetInterval()`
     /// Returns the interval of parameter of range Index.
     /// An exception is raised if IsDone returns False;
     /// An exception is raised if Index<=0 or Index >Nbintervals.
@@ -1107,6 +1223,7 @@ impl FunctionAllRoots {
         unsafe { crate::ffi::math_FunctionAllRoots_get_interval(self as *const Self, Index, A, B) }
     }
 
+    /// **Source:** `math_FunctionAllRoots.hxx`:71 - `math_FunctionAllRoots::GetIntervalState()`
     /// returns the State Number associated to the interval Index.
     /// An exception is raised if IsDone returns False;
     /// An exception is raised if Index<=0 or Index >Nbintervals.
@@ -1121,12 +1238,14 @@ impl FunctionAllRoots {
         }
     }
 
+    /// **Source:** `math_FunctionAllRoots.hxx`:77 - `math_FunctionAllRoots::NbPoints()`
     /// returns the number of points where the function is Null.
     /// An exception is raised if IsDone returns False.
     pub fn nb_points(&self) -> i32 {
         unsafe { crate::ffi::math_FunctionAllRoots_nb_points(self as *const Self) }
     }
 
+    /// **Source:** `math_FunctionAllRoots.hxx`:82 - `math_FunctionAllRoots::GetPoint()`
     /// Returns the parameter of the point of range Index.
     /// An exception is raised if IsDone returns False;
     /// An exception is raised if Index<=0 or Index >NbPoints.
@@ -1134,6 +1253,7 @@ impl FunctionAllRoots {
         unsafe { crate::ffi::math_FunctionAllRoots_get_point(self as *const Self, Index) }
     }
 
+    /// **Source:** `math_FunctionAllRoots.hxx`:87 - `math_FunctionAllRoots::GetPointState()`
     /// returns the State Number associated to the point Index.
     /// An exception is raised if IsDone returns False;
     /// An exception is raised if Index<=0 or Index >Nbintervals.
@@ -1146,6 +1266,7 @@ impl FunctionAllRoots {
 // From math_FunctionRoot.hxx
 // ========================
 
+/// **Source:** `math_FunctionRoot.hxx`:32 - `math_FunctionRoot`
 /// This class implements the computation of a root of a function of
 /// a single variable which is near an initial guess using a minimization
 /// algorithm.Knowledge of the derivative is required. The
@@ -1159,6 +1280,7 @@ unsafe impl crate::CppDeletable for FunctionRoot {
 }
 
 impl FunctionRoot {
+    /// **Source:** `math_FunctionRoot.hxx`:43 - `math_FunctionRoot::math_FunctionRoot()`
     /// The Newton-Raphson method is done to find the root of the function F
     /// from the initial guess Guess.The tolerance required on
     /// the root is given by Tolerance. Iterations are stopped if
@@ -1183,6 +1305,7 @@ impl FunctionRoot {
         }
     }
 
+    /// **Source:** `math_FunctionRoot.hxx`:55 - `math_FunctionRoot::math_FunctionRoot()`
     /// The Newton-Raphson method is done to find the root of the function F
     /// from the initial guess Guess.
     /// The tolerance required on the root is given by Tolerance.
@@ -1212,6 +1335,7 @@ impl FunctionRoot {
         }
     }
 
+    /// **Source:** `math_FunctionRoot.hxx`:43 - `math_FunctionRoot::math_FunctionRoot()`
     /// The Newton-Raphson method is done to find the root of the function F
     /// from the initial guess Guess.The tolerance required on
     /// the root is given by Tolerance. Iterations are stopped if
@@ -1226,6 +1350,7 @@ impl FunctionRoot {
         Self::new_functionwithderivative_real2_int(F, Guess, Tolerance, 100)
     }
 
+    /// **Source:** `math_FunctionRoot.hxx`:55 - `math_FunctionRoot::math_FunctionRoot()`
     /// The Newton-Raphson method is done to find the root of the function F
     /// from the initial guess Guess.
     /// The tolerance required on the root is given by Tolerance.
@@ -1243,29 +1368,34 @@ impl FunctionRoot {
         Self::new_functionwithderivative_real4_int(F, Guess, Tolerance, A, B, 100)
     }
 
+    /// **Source:** `math_FunctionRoot.hxx`:63 - `math_FunctionRoot::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_FunctionRoot_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_FunctionRoot.hxx`:67 - `math_FunctionRoot::Root()`
     /// returns the value of the root.
     /// Exception NotDone is raised if the root was not found.
     pub fn root(&self) -> f64 {
         unsafe { crate::ffi::math_FunctionRoot_root(self as *const Self) }
     }
 
+    /// **Source:** `math_FunctionRoot.hxx`:71 - `math_FunctionRoot::Derivative()`
     /// returns the value of the derivative at the root.
     /// Exception NotDone is raised if the root was not found.
     pub fn derivative(&self) -> f64 {
         unsafe { crate::ffi::math_FunctionRoot_derivative(self as *const Self) }
     }
 
+    /// **Source:** `math_FunctionRoot.hxx`:75 - `math_FunctionRoot::Value()`
     /// returns the value of the function at the root.
     /// Exception NotDone is raised if the root was not found.
     pub fn value(&self) -> f64 {
         unsafe { crate::ffi::math_FunctionRoot_value(self as *const Self) }
     }
 
+    /// **Source:** `math_FunctionRoot.hxx`:80 - `math_FunctionRoot::NbIterations()`
     /// returns the number of iterations really done on the
     /// computation of the Root.
     /// Exception NotDone is raised if the root was not found.
@@ -1278,6 +1408,7 @@ impl FunctionRoot {
 // From math_FunctionRoots.hxx
 // ========================
 
+/// **Source:** `math_FunctionRoots.hxx`:32 - `math_FunctionRoots`
 /// This class implements an algorithm which finds all the real roots of
 /// a function with derivative within a given range.
 /// Knowledge of the derivative is required.
@@ -1290,6 +1421,7 @@ unsafe impl crate::CppDeletable for FunctionRoots {
 }
 
 impl FunctionRoots {
+    /// **Source:** `math_FunctionRoots.hxx`:43 - `math_FunctionRoots::math_FunctionRoots()`
     /// Calculates all the real roots of a function F-K within the range
     /// A..B. without conditions on A and B
     /// A solution X is found when
@@ -1315,6 +1447,7 @@ impl FunctionRoots {
         }
     }
 
+    /// **Source:** `math_FunctionRoots.hxx`:43 - `math_FunctionRoots::math_FunctionRoots()`
     /// Calculates all the real roots of a function F-K within the range
     /// A..B. without conditions on A and B
     /// A solution X is found when
@@ -1335,6 +1468,7 @@ impl FunctionRoots {
         )
     }
 
+    /// **Source:** `math_FunctionRoots.hxx`:43 - `math_FunctionRoots::math_FunctionRoots()`
     /// Calculates all the real roots of a function F-K within the range
     /// A..B. without conditions on A and B
     /// A solution X is found when
@@ -1352,6 +1486,7 @@ impl FunctionRoots {
         Self::new_functionwithderivative_real2_int_real4(F, A, B, NbSample, EpsX, EpsF, 0.0, 0.0)
     }
 
+    /// **Source:** `math_FunctionRoots.hxx`:43 - `math_FunctionRoots::math_FunctionRoots()`
     /// Calculates all the real roots of a function F-K within the range
     /// A..B. without conditions on A and B
     /// A solution X is found when
@@ -1368,6 +1503,7 @@ impl FunctionRoots {
         Self::new_functionwithderivative_real2_int_real4(F, A, B, NbSample, EpsX, 0.0, 0.0, 0.0)
     }
 
+    /// **Source:** `math_FunctionRoots.hxx`:43 - `math_FunctionRoots::math_FunctionRoots()`
     /// Calculates all the real roots of a function F-K within the range
     /// A..B. without conditions on A and B
     /// A solution X is found when
@@ -1383,11 +1519,13 @@ impl FunctionRoots {
         Self::new_functionwithderivative_real2_int_real4(F, A, B, NbSample, 0.0, 0.0, 0.0, 0.0)
     }
 
+    /// **Source:** `math_FunctionRoots.hxx`:53 - `math_FunctionRoots::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_FunctionRoots_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_FunctionRoots.hxx`:58 - `math_FunctionRoots::IsAllNull()`
     /// returns true if the function is considered as null between A and B.
     /// Exceptions
     /// StdFail_NotDone if the algorithm fails (and IsDone returns false).
@@ -1395,6 +1533,7 @@ impl FunctionRoots {
         unsafe { crate::ffi::math_FunctionRoots_is_all_null(self as *const Self) }
     }
 
+    /// **Source:** `math_FunctionRoots.hxx`:63 - `math_FunctionRoots::NbSolutions()`
     /// Returns the number of solutions found.
     /// Exceptions
     /// StdFail_NotDone if the algorithm fails (and IsDone returns false).
@@ -1402,6 +1541,7 @@ impl FunctionRoots {
         unsafe { crate::ffi::math_FunctionRoots_nb_solutions(self as *const Self) }
     }
 
+    /// **Source:** `math_FunctionRoots.hxx`:68 - `math_FunctionRoots::Value()`
     /// Returns the Nth value of the root of function F.
     /// Exceptions
     /// StdFail_NotDone if the algorithm fails (and IsDone returns false).
@@ -1409,6 +1549,7 @@ impl FunctionRoots {
         unsafe { crate::ffi::math_FunctionRoots_value(self as *const Self, Nieme) }
     }
 
+    /// **Source:** `math_FunctionRoots.hxx`:73 - `math_FunctionRoots::StateNumber()`
     /// returns the StateNumber  of the Nieme root.
     /// Exception RangeError is raised if Nieme is < 1
     /// or Nieme > NbSolutions.
@@ -1421,6 +1562,7 @@ impl FunctionRoots {
 // From math_FunctionSample.hxx
 // ========================
 
+/// **Source:** `math_FunctionSample.hxx`:29 - `math_FunctionSample`
 /// This class gives a default sample (constant difference
 /// of parameter) for a function defined between
 /// two bound A,B.
@@ -1433,22 +1575,26 @@ unsafe impl crate::CppDeletable for FunctionSample {
 }
 
 impl FunctionSample {
+    /// **Source:** `math_FunctionSample.hxx`:34 - `math_FunctionSample::math_FunctionSample()`
     pub fn new_real2_int(A: f64, B: f64, N: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::math_FunctionSample_ctor_real2_int(A, B, N))
         }
     }
 
+    /// **Source:** `math_FunctionSample.hxx`:39 - `math_FunctionSample::Bounds()`
     /// Returns the bounds of parameters.
     pub fn bounds(&self, A: &mut f64, B: &mut f64) {
         unsafe { crate::ffi::math_FunctionSample_bounds(self as *const Self, A, B) }
     }
 
+    /// **Source:** `math_FunctionSample.hxx`:42 - `math_FunctionSample::NbPoints()`
     /// Returns the number of sample points.
     pub fn nb_points(&self) -> i32 {
         unsafe { crate::ffi::math_FunctionSample_nb_points(self as *const Self) }
     }
 
+    /// **Source:** `math_FunctionSample.hxx`:47 - `math_FunctionSample::GetParameter()`
     /// Returns the value of parameter of the point of
     /// range Index : A + ((Index-1)/(NbPoints-1))*B.
     /// An exception is raised if Index<=0 or Index>NbPoints.
@@ -1461,6 +1607,7 @@ impl FunctionSample {
 // From math_FunctionSet.hxx
 // ========================
 
+/// **Source:** `math_FunctionSet.hxx`:28 - `math_FunctionSet`
 /// This abstract class describes the virtual functions associated to
 /// a set on N Functions of M independent variables.
 pub use crate::ffi::math_FunctionSet as FunctionSet;
@@ -1472,16 +1619,19 @@ unsafe impl crate::CppDeletable for FunctionSet {
 }
 
 impl FunctionSet {
+    /// **Source:** `math_FunctionSet.hxx`:34 - `math_FunctionSet::NbVariables()`
     /// Returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::math_FunctionSet_nb_variables(self as *const Self) }
     }
 
+    /// **Source:** `math_FunctionSet.hxx`:37 - `math_FunctionSet::NbEquations()`
     /// Returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         unsafe { crate::ffi::math_FunctionSet_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     /// Returns the state of the function corresponding to the
     /// latestcall of any methods associated with the function.
     /// This function is called by each of the algorithms
@@ -1505,6 +1655,7 @@ impl FunctionSet {
 // From math_FunctionSetRoot.hxx
 // ========================
 
+/// **Source:** `math_FunctionSetRoot.hxx`:36 - `math_FunctionSetRoot`
 /// The math_FunctionSetRoot class calculates the root
 /// of a set of N functions of M variables (N<M, N=M or N>M). Knowing
 /// an initial guess of the solution and using a minimization algorithm, a search
@@ -1521,6 +1672,7 @@ unsafe impl crate::CppDeletable for FunctionSetRoot {
 }
 
 impl FunctionSetRoot {
+    /// **Source:** `math_FunctionSetRoot.hxx`:45 - `math_FunctionSetRoot::math_FunctionSetRoot()`
     /// is used in a sub-class to initialize correctly all the fields
     /// of this class.
     /// The range (1, F.NbVariables()) must be especially
@@ -1541,6 +1693,7 @@ impl FunctionSetRoot {
         }
     }
 
+    /// **Source:** `math_FunctionSetRoot.hxx`:55 - `math_FunctionSetRoot::math_FunctionSetRoot()`
     /// is used in a sub-class to initialize correctly all the fields
     /// of this class.
     /// The range (1, F.NbVariables()) must be especially
@@ -1561,6 +1714,7 @@ impl FunctionSetRoot {
         }
     }
 
+    /// **Source:** `math_FunctionSetRoot.hxx`:45 - `math_FunctionSetRoot::math_FunctionSetRoot()`
     /// is used in a sub-class to initialize correctly all the fields
     /// of this class.
     /// The range (1, F.NbVariables()) must be especially
@@ -1572,6 +1726,7 @@ impl FunctionSetRoot {
         Self::new_functionsetwithderivatives_vector_int(F, Tolerance, 100)
     }
 
+    /// **Source:** `math_FunctionSetRoot.hxx`:55 - `math_FunctionSetRoot::math_FunctionSetRoot()`
     /// is used in a sub-class to initialize correctly all the fields
     /// of this class.
     /// The range (1, F.NbVariables()) must be especially
@@ -1584,6 +1739,7 @@ impl FunctionSetRoot {
         Self::new_functionsetwithderivatives_int(F, 100)
     }
 
+    /// **Source:** `math_FunctionSetRoot.hxx`:69 - `math_FunctionSetRoot::IsSolutionReached()`
     /// This routine is called at the end of each iteration
     /// to check if the solution was found. It can be redefined
     /// in a sub-class to implement a specific test to stop the iterations.
@@ -1596,11 +1752,13 @@ impl FunctionSetRoot {
         unsafe { crate::ffi::math_FunctionSetRoot_is_solution_reached(self as *mut Self, arg0) }
     }
 
+    /// **Source:** `math_FunctionSetRoot.hxx`:100 - `math_FunctionSetRoot::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_FunctionSetRoot_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_FunctionSetRoot.hxx`:105 - `math_FunctionSetRoot::NbIterations()`
     /// Returns the number of iterations really done
     /// during the computation of the root.
     /// Exception NotDone is raised if the root was not found.
@@ -1608,18 +1766,21 @@ impl FunctionSetRoot {
         unsafe { crate::ffi::math_FunctionSetRoot_nb_iterations(self as *const Self) }
     }
 
+    /// **Source:** `math_FunctionSetRoot.hxx`:113 - `math_FunctionSetRoot::StateNumber()`
     /// returns the stateNumber (as returned by
     /// F.GetStateNumber()) associated to the root found.
     pub fn state_number(&self) -> i32 {
         unsafe { crate::ffi::math_FunctionSetRoot_state_number(self as *const Self) }
     }
 
+    /// **Source:** `math_FunctionSetRoot.hxx`:135 - `math_FunctionSetRoot::Derivative()`
     /// Returns the matrix value of the derivative at the root.
     /// Exception NotDone is raised if the root was not found.
     pub fn derivative(&self) -> &crate::ffi::math_Matrix {
         unsafe { &*(crate::ffi::math_FunctionSetRoot_derivative(self as *const Self)) }
     }
 
+    /// **Source:** `math_FunctionSetRoot.hxx`:146 - `math_FunctionSetRoot::Derivative()`
     /// outputs the matrix value of the derivative
     /// at the root in Der.
     /// Exception NotDone is raised if the root was not found.
@@ -1629,6 +1790,7 @@ impl FunctionSetRoot {
         unsafe { crate::ffi::math_FunctionSetRoot_derivative_matrix(self as *const Self, Der) }
     }
 
+    /// **Source:** `math_FunctionSetRoot.hxx`:174 - `math_FunctionSetRoot::IsDivergent()`
     pub fn is_divergent(&self) -> bool {
         unsafe { crate::ffi::math_FunctionSetRoot_is_divergent(self as *const Self) }
     }
@@ -1638,6 +1800,7 @@ impl FunctionSetRoot {
 // From math_FunctionSetWithDerivatives.hxx
 // ========================
 
+/// **Source:** `math_FunctionSetWithDerivatives.hxx`:30 - `math_FunctionSetWithDerivatives`
 /// This abstract class describes the virtual functions associated
 /// with a set of N Functions each of M independent variables.
 pub use crate::ffi::math_FunctionSetWithDerivatives as FunctionSetWithDerivatives;
@@ -1649,11 +1812,13 @@ unsafe impl crate::CppDeletable for FunctionSetWithDerivatives {
 }
 
 impl FunctionSetWithDerivatives {
+    /// **Source:** `math_FunctionSetWithDerivatives.hxx`:36 - `math_FunctionSetWithDerivatives::NbVariables()`
     /// Returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::math_FunctionSetWithDerivatives_nb_variables(self as *const Self) }
     }
 
+    /// **Source:** `math_FunctionSetWithDerivatives.hxx`:39 - `math_FunctionSetWithDerivatives::NbEquations()`
     /// Returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         unsafe { crate::ffi::math_FunctionSetWithDerivatives_nb_equations(self as *const Self) }
@@ -1687,6 +1852,7 @@ impl FunctionSetWithDerivatives {
 // From math_FunctionWithDerivative.hxx
 // ========================
 
+/// **Source:** `math_FunctionWithDerivative.hxx`:31 - `math_FunctionWithDerivative`
 /// This abstract class describes the virtual functions associated with
 /// a function of a single variable for which the first derivative is
 /// available.
@@ -1699,6 +1865,7 @@ unsafe impl crate::CppDeletable for FunctionWithDerivative {
 }
 
 impl FunctionWithDerivative {
+    /// **Source:** `math_FunctionWithDerivative.hxx`:39 - `math_FunctionWithDerivative::Value()`
     /// Computes the value <F>of the function for the variable <X>.
     /// Returns True if the calculation were successfully done,
     /// False otherwise.
@@ -1706,6 +1873,7 @@ impl FunctionWithDerivative {
         unsafe { crate::ffi::math_FunctionWithDerivative_value(self as *mut Self, X, F) }
     }
 
+    /// **Source:** `math_FunctionWithDerivative.hxx`:45 - `math_FunctionWithDerivative::Derivative()`
     /// Computes the derivative <D> of the function
     /// for the variable <X>.
     /// Returns True if the calculation were successfully done,
@@ -1714,6 +1882,7 @@ impl FunctionWithDerivative {
         unsafe { crate::ffi::math_FunctionWithDerivative_derivative(self as *mut Self, X, D) }
     }
 
+    /// **Source:** `math_FunctionWithDerivative.hxx`:51 - `math_FunctionWithDerivative::Values()`
     /// Computes the value <F> and the derivative <D> of the
     /// function for the variable <X>.
     /// Returns True if the calculation were successfully done,
@@ -1746,6 +1915,7 @@ impl FunctionWithDerivative {
 // From math_Gauss.hxx
 // ========================
 
+/// **Source:** `math_Gauss.hxx`:36 - `math_Gauss`
 /// This class implements the Gauss LU decomposition (Crout algorithm)
 /// with partial pivoting (rows interchange) of a square matrix and
 /// the different possible derived calculation :
@@ -1761,6 +1931,7 @@ unsafe impl crate::CppDeletable for Gauss {
 }
 
 impl Gauss {
+    /// **Source:** `math_Gauss.hxx`:48 - `math_Gauss::math_Gauss()`
     /// Given an input n X n matrix A this constructor performs its LU
     /// decomposition with partial pivoting (interchange of rows).
     /// This LU decomposition is stored internally and may be used to
@@ -1782,11 +1953,13 @@ impl Gauss {
         }
     }
 
+    /// **Source:** `math_Gauss.hxx`:53 - `math_Gauss::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_Gauss_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_Gauss.hxx`:75 - `math_Gauss::Determinant()`
     /// This routine returns the value of the determinant of the previously LU
     /// decomposed matrix A.
     /// Exception NotDone may be raised if the decomposition of A was not done
@@ -1795,6 +1968,7 @@ impl Gauss {
         unsafe { crate::ffi::math_Gauss_determinant(self as *const Self) }
     }
 
+    /// **Source:** `math_Gauss.hxx`:81 - `math_Gauss::Invert()`
     /// This routine outputs Inv the inverse of the previously LU decomposed
     /// matrix A.
     /// Exception DimensionError is raised if the ranges of B are not
@@ -1808,6 +1982,7 @@ impl Gauss {
 // From math_GaussLeastSquare.hxx
 // ========================
 
+/// **Source:** `math_GaussLeastSquare.hxx`:34 - `math_GaussLeastSquare`
 /// This class implements the least square solution of a set of
 /// n linear equations of m unknowns (n >= m) using the gauss LU
 /// decomposition algorithm.
@@ -1822,6 +1997,7 @@ unsafe impl crate::CppDeletable for GaussLeastSquare {
 }
 
 impl GaussLeastSquare {
+    /// **Source:** `math_GaussLeastSquare.hxx`:46 - `math_GaussLeastSquare::math_GaussLeastSquare()`
     /// Given an input n X m matrix A with n >= m this constructor
     /// performs the LU decomposition with partial pivoting
     /// (interchange of rows) of the matrix AA = A.Transposed() * A;
@@ -1837,6 +2013,7 @@ impl GaussLeastSquare {
         }
     }
 
+    /// **Source:** `math_GaussLeastSquare.hxx`:46 - `math_GaussLeastSquare::math_GaussLeastSquare()`
     /// Given an input n X m matrix A with n >= m this constructor
     /// performs the LU decomposition with partial pivoting
     /// (interchange of rows) of the matrix AA = A.Transposed() * A;
@@ -1848,6 +2025,7 @@ impl GaussLeastSquare {
         Self::new_matrix_real(A, 1.0e-20)
     }
 
+    /// **Source:** `math_GaussLeastSquare.hxx`:50 - `math_GaussLeastSquare::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.e
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_GaussLeastSquare_is_done(self as *const Self) }
@@ -1858,6 +2036,7 @@ impl GaussLeastSquare {
 // From math_GaussMultipleIntegration.hxx
 // ========================
 
+/// **Source:** `math_GaussMultipleIntegration.hxx`:31 - `math_GaussMultipleIntegration`
 /// This class implements the integration of a function of multiple
 /// variables between the parameter bounds Lower[a..b] and Upper[a..b].
 /// Warning: Each element of Order must be inferior or equal to 61.
@@ -1870,6 +2049,7 @@ unsafe impl crate::CppDeletable for GaussMultipleIntegration {
 }
 
 impl GaussMultipleIntegration {
+    /// **Source:** `math_GaussMultipleIntegration.hxx`:39 - `math_GaussMultipleIntegration::math_GaussMultipleIntegration()`
     /// The Gauss-Legendre integration with Order = points of
     /// integration for each unknown, is done on the function F
     /// between the bounds Lower and Upper.
@@ -1884,11 +2064,13 @@ impl GaussMultipleIntegration {
         }
     }
 
+    /// **Source:** `math_GaussMultipleIntegration.hxx`:45 - `math_GaussMultipleIntegration::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_GaussMultipleIntegration_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_GaussMultipleIntegration.hxx`:48 - `math_GaussMultipleIntegration::Value()`
     /// returns the value of the integral.
     pub fn value(&self) -> f64 {
         unsafe { crate::ffi::math_GaussMultipleIntegration_value(self as *const Self) }
@@ -1899,6 +2081,7 @@ impl GaussMultipleIntegration {
 // From math_GaussSetIntegration.hxx
 // ========================
 
+/// **Source:** `math_GaussSetIntegration.hxx`:32 - `math_GaussSetIntegration`
 /// -- This class implements the integration of a set of N
 /// functions of M  variables variables between the
 /// parameter bounds Lower[a..b] and Upper[a..b].
@@ -1912,6 +2095,7 @@ unsafe impl crate::CppDeletable for GaussSetIntegration {
 }
 
 impl GaussSetIntegration {
+    /// **Source:** `math_GaussSetIntegration.hxx`:40 - `math_GaussSetIntegration::math_GaussSetIntegration()`
     /// The Gauss-Legendre integration with Order = points of
     /// integration for each unknown, is done on the function F
     /// between the bounds Lower and Upper.
@@ -1930,6 +2114,7 @@ impl GaussSetIntegration {
         }
     }
 
+    /// **Source:** `math_GaussSetIntegration.hxx`:46 - `math_GaussSetIntegration::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_GaussSetIntegration_is_done(self as *const Self) }
@@ -1940,6 +2125,7 @@ impl GaussSetIntegration {
 // From math_GaussSingleIntegration.hxx
 // ========================
 
+/// **Source:** `math_GaussSingleIntegration.hxx`:30 - `math_GaussSingleIntegration`
 /// This class implements the integration of a function of a single variable
 /// between the parameter bounds Lower and Upper.
 /// Warning: Order must be inferior or equal to 61.
@@ -1952,10 +2138,12 @@ unsafe impl crate::CppDeletable for GaussSingleIntegration {
 }
 
 impl GaussSingleIntegration {
+    /// **Source:** `math_GaussSingleIntegration.hxx`:35 - `math_GaussSingleIntegration::math_GaussSingleIntegration()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_GaussSingleIntegration_ctor()) }
     }
 
+    /// **Source:** `math_GaussSingleIntegration.hxx`:39 - `math_GaussSingleIntegration::math_GaussSingleIntegration()`
     /// The Gauss-Legendre integration with N = Order points of integration,
     /// is done on the function F between the bounds Lower and Upper.
     pub fn new_function_real2_int(
@@ -1973,6 +2161,7 @@ impl GaussSingleIntegration {
         }
     }
 
+    /// **Source:** `math_GaussSingleIntegration.hxx`:47 - `math_GaussSingleIntegration::math_GaussSingleIntegration()`
     /// The Gauss-Legendre integration with N = Order points of integration  and
     /// given tolerance = Tol is done on the function F between the bounds
     /// Lower and Upper.
@@ -1992,11 +2181,13 @@ impl GaussSingleIntegration {
         }
     }
 
+    /// **Source:** `math_GaussSingleIntegration.hxx`:54 - `math_GaussSingleIntegration::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_GaussSingleIntegration_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_GaussSingleIntegration.hxx`:57 - `math_GaussSingleIntegration::Value()`
     /// returns the value of the integral.
     pub fn value(&self) -> f64 {
         unsafe { crate::ffi::math_GaussSingleIntegration_value(self as *const Self) }
@@ -2007,6 +2198,7 @@ impl GaussSingleIntegration {
 // From math_GlobOptMin.hxx
 // ========================
 
+/// **Source:** `math_GlobOptMin.hxx`:50 - `math_GlobOptMin`
 /// This class represents Evtushenko's algorithm of global optimization based on non-uniform mesh.
 /// Article: Yu. Evtushenko. Numerical methods for finding global extreme (case of a non-uniform
 /// mesh). U.S.S.R. Comput. Maths. Math. Phys., Vol. 11, N 6, pp. 38-54.
@@ -2042,6 +2234,7 @@ unsafe impl crate::CppDeletable for GlobOptMin {
 }
 
 impl GlobOptMin {
+    /// **Source:** `math_GlobOptMin.hxx`:88 - `math_GlobOptMin::SetTol()`
     /// Method to set tolerances.
     /// @param theDiscretizationTol - parameter space discretization tolerance.
     /// @param theSameTol - functional value space indifference tolerance.
@@ -2051,6 +2244,7 @@ impl GlobOptMin {
         }
     }
 
+    /// **Source:** `math_GlobOptMin.hxx`:94 - `math_GlobOptMin::GetTol()`
     /// Method to get tolerances.
     /// @param theDiscretizationTol - parameter space discretization tolerance.
     /// @param theSameTol - functional value space indifference tolerance.
@@ -2060,20 +2254,24 @@ impl GlobOptMin {
         }
     }
 
+    /// **Source:** `math_GlobOptMin.hxx`:97 - `math_GlobOptMin::Perform()`
     /// @param isFindSingleSolution - defines whether to find single solution or all solutions.
     pub fn perform(&mut self, isFindSingleSolution: bool) {
         unsafe { crate::ffi::math_GlobOptMin_perform(self as *mut Self, isFindSingleSolution) }
     }
 
+    /// **Source:** `math_GlobOptMin.hxx`:103 - `math_GlobOptMin::SetContinuity()`
     /// Set / Get continuity of local borders splits (0 ~ C0, 1 ~ C1, 2 ~ C2).
     pub fn set_continuity(&mut self, theCont: i32) {
         unsafe { crate::ffi::math_GlobOptMin_set_continuity(self as *mut Self, theCont) }
     }
 
+    /// **Source:** `math_GlobOptMin.hxx`:105 - `math_GlobOptMin::GetContinuity()`
     pub fn get_continuity(&self) -> i32 {
         unsafe { crate::ffi::math_GlobOptMin_get_continuity(self as *const Self) }
     }
 
+    /// **Source:** `math_GlobOptMin.hxx`:108 - `math_GlobOptMin::SetFunctionalMinimalValue()`
     /// Set / Get functional minimal value.
     pub fn set_functional_minimal_value(&mut self, theMinimalValue: f64) {
         unsafe {
@@ -2084,30 +2282,36 @@ impl GlobOptMin {
         }
     }
 
+    /// **Source:** `math_GlobOptMin.hxx`:113 - `math_GlobOptMin::GetFunctionalMinimalValue()`
     pub fn get_functional_minimal_value(&self) -> f64 {
         unsafe { crate::ffi::math_GlobOptMin_get_functional_minimal_value(self as *const Self) }
     }
 
+    /// **Source:** `math_GlobOptMin.hxx`:117 - `math_GlobOptMin::SetLipConstState()`
     /// Set / Get Lipchitz constant modification state.
     /// True means that the constant is locked and unlocked otherwise.
     pub fn set_lip_const_state(&mut self, theFlag: bool) {
         unsafe { crate::ffi::math_GlobOptMin_set_lip_const_state(self as *mut Self, theFlag) }
     }
 
+    /// **Source:** `math_GlobOptMin.hxx`:119 - `math_GlobOptMin::GetLipConstState()`
     pub fn get_lip_const_state(&self) -> bool {
         unsafe { crate::ffi::math_GlobOptMin_get_lip_const_state(self as *const Self) }
     }
 
+    /// **Source:** `math_GlobOptMin.hxx`:122 - `math_GlobOptMin::isDone()`
     /// Return computation state of the algorithm.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_GlobOptMin_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_GlobOptMin.hxx`:125 - `math_GlobOptMin::GetF()`
     /// Get best functional value.
     pub fn get_f(&self) -> f64 {
         unsafe { crate::ffi::math_GlobOptMin_get_f(self as *const Self) }
     }
 
+    /// **Source:** `math_GlobOptMin.hxx`:128 - `math_GlobOptMin::NbExtrema()`
     /// Return count of global extremas.
     pub fn nb_extrema(&self) -> i32 {
         unsafe { crate::ffi::math_GlobOptMin_nb_extrema(self as *const Self) }
@@ -2118,6 +2322,7 @@ impl GlobOptMin {
 // From math_Householder.hxx
 // ========================
 
+/// **Source:** `math_Householder.hxx`:37 - `math_Householder`
 /// This class implements the least square solution of a set of
 /// linear equations of m unknowns (n >= m) using the Householder
 /// method. It solves A.X = B.
@@ -2136,6 +2341,7 @@ unsafe impl crate::CppDeletable for Householder {
 }
 
 impl Householder {
+    /// **Source:** `math_Householder.hxx`:49 - `math_Householder::math_Householder()`
     /// Given an input matrix A with n>= m, given an input matrix B
     /// this constructor performs the least square resolution of
     /// the set of linear equations A.X = B for each column of B.
@@ -2153,6 +2359,7 @@ impl Householder {
         }
     }
 
+    /// **Source:** `math_Householder.hxx`:60 - `math_Householder::math_Householder()`
     /// Given an input matrix A with n>= m, given an input matrix B
     /// this constructor performs the least square resolution of
     /// the set of linear equations A.X = B for each column of B.
@@ -2176,6 +2383,7 @@ impl Householder {
         }
     }
 
+    /// **Source:** `math_Householder.hxx`:75 - `math_Householder::math_Householder()`
     /// Given an input matrix A with n>= m, given an input vector B
     /// this constructor performs the least square resolution of
     /// the set of linear equations A.X = B.
@@ -2195,6 +2403,7 @@ impl Householder {
         }
     }
 
+    /// **Source:** `math_Householder.hxx`:49 - `math_Householder::math_Householder()`
     /// Given an input matrix A with n>= m, given an input matrix B
     /// this constructor performs the least square resolution of
     /// the set of linear equations A.X = B for each column of B.
@@ -2209,6 +2418,7 @@ impl Householder {
         Self::new_matrix2_real(A, B, 1.0e-20)
     }
 
+    /// **Source:** `math_Householder.hxx`:60 - `math_Householder::math_Householder()`
     /// Given an input matrix A with n>= m, given an input matrix B
     /// this constructor performs the least square resolution of
     /// the set of linear equations A.X = B for each column of B.
@@ -2227,6 +2437,7 @@ impl Householder {
         Self::new_matrix2_int4_real(A, B, lowerArow, upperArow, lowerAcol, upperAcol, 1.0e-20)
     }
 
+    /// **Source:** `math_Householder.hxx`:75 - `math_Householder::math_Householder()`
     /// Given an input matrix A with n>= m, given an input vector B
     /// this constructor performs the least square resolution of
     /// the set of linear equations A.X = B.
@@ -2241,11 +2452,13 @@ impl Householder {
         Self::new_matrix_vector_real(A, B, 1.0e-20)
     }
 
+    /// **Source:** `math_Householder.hxx`:80 - `math_Householder::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_Householder_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_Householder.hxx`:94 - `math_Householder::AllValues()`
     /// Returns the matrix sol of all the solutions of the system
     /// A.X = B.
     /// Exception NotDone is raised is the resolution has not be
@@ -2259,6 +2472,7 @@ impl Householder {
 // From math_Jacobi.hxx
 // ========================
 
+/// **Source:** `math_Jacobi.hxx`:31 - `math_Jacobi`
 /// This class implements the Jacobi method to find the eigenvalues and
 /// the eigenvectors of a real symmetric square matrix.
 /// A sort of eigenvalues is done.
@@ -2271,6 +2485,7 @@ unsafe impl crate::CppDeletable for Jacobi {
 }
 
 impl Jacobi {
+    /// **Source:** `math_Jacobi.hxx`:40 - `math_Jacobi::math_Jacobi()`
     /// Given a Real n X n matrix A, this constructor computes all its
     /// eigenvalues and eigenvectors using the Jacobi method.
     /// The exception NotSquare is raised if the matrix is not square.
@@ -2279,11 +2494,13 @@ impl Jacobi {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_Jacobi_ctor_matrix(A)) }
     }
 
+    /// **Source:** `math_Jacobi.hxx`:43 - `math_Jacobi::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_Jacobi_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_Jacobi.hxx`:52 - `math_Jacobi::Value()`
     /// returns the eigenvalue number Num.
     /// Eigenvalues are in the range (1..n).
     /// Exception NotDone is raised if calculation is not done successfully.
@@ -2291,6 +2508,7 @@ impl Jacobi {
         unsafe { crate::ffi::math_Jacobi_value(self as *const Self, Num) }
     }
 
+    /// **Source:** `math_Jacobi.hxx`:56 - `math_Jacobi::Vectors()`
     /// returns the eigenvectors matrix.
     /// Exception NotDone is raised if calculation is not done successfully.
     pub fn vectors(&self) -> &crate::ffi::math_Matrix {
@@ -2302,6 +2520,7 @@ impl Jacobi {
 // From math_KronrodSingleIntegration.hxx
 // ========================
 
+/// **Source:** `math_KronrodSingleIntegration.hxx`:28 - `math_KronrodSingleIntegration`
 /// This class implements the Gauss-Kronrod method of
 /// integral computation.
 pub use crate::ffi::math_KronrodSingleIntegration as KronrodSingleIntegration;
@@ -2313,11 +2532,13 @@ unsafe impl crate::CppDeletable for KronrodSingleIntegration {
 }
 
 impl KronrodSingleIntegration {
+    /// **Source:** `math_KronrodSingleIntegration.hxx`:34 - `math_KronrodSingleIntegration::math_KronrodSingleIntegration()`
     /// An empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_KronrodSingleIntegration_ctor()) }
     }
 
+    /// **Source:** `math_KronrodSingleIntegration.hxx`:38 - `math_KronrodSingleIntegration::math_KronrodSingleIntegration()`
     /// Constructor. Takes the function, the lower and upper bound
     /// values, the initial number of Kronrod points
     pub fn new_function_real2_int(
@@ -2338,6 +2559,7 @@ impl KronrodSingleIntegration {
         }
     }
 
+    /// **Source:** `math_KronrodSingleIntegration.hxx`:47 - `math_KronrodSingleIntegration::math_KronrodSingleIntegration()`
     /// Constructor. Takes the function, the lower and upper bound
     /// values, the initial number of Kronrod points, the
     /// tolerance value and the maximal number of iterations as
@@ -2364,6 +2586,7 @@ impl KronrodSingleIntegration {
         }
     }
 
+    /// **Source:** `math_KronrodSingleIntegration.hxx`:59 - `math_KronrodSingleIntegration::Perform()`
     /// Computation of the integral. Takes the function,
     /// the lower and upper bound values, the initial number
     /// of Kronrod points, the relative tolerance value and the
@@ -2387,6 +2610,7 @@ impl KronrodSingleIntegration {
         }
     }
 
+    /// **Source:** `math_KronrodSingleIntegration.hxx`:73 - `math_KronrodSingleIntegration::Perform()`
     /// Computation of the integral. Takes the function,
     /// the lower and upper bound values, the initial number
     /// of Kronrod points, the relative tolerance value and the
@@ -2418,33 +2642,39 @@ impl KronrodSingleIntegration {
         }
     }
 
+    /// **Source:** `math_KronrodSingleIntegration.hxx`:82 - `math_KronrodSingleIntegration::IsDone()`
     /// Returns Standard_True if computation is performed
     /// successfully.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_KronrodSingleIntegration_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_KronrodSingleIntegration.hxx`:85 - `math_KronrodSingleIntegration::Value()`
     /// Returns the value of the integral.
     pub fn value(&self) -> f64 {
         unsafe { crate::ffi::math_KronrodSingleIntegration_value(self as *const Self) }
     }
 
+    /// **Source:** `math_KronrodSingleIntegration.hxx`:88 - `math_KronrodSingleIntegration::ErrorReached()`
     /// Returns the value of the relative error reached.
     pub fn error_reached(&self) -> f64 {
         unsafe { crate::ffi::math_KronrodSingleIntegration_error_reached(self as *const Self) }
     }
 
+    /// **Source:** `math_KronrodSingleIntegration.hxx`:91 - `math_KronrodSingleIntegration::AbsolutError()`
     /// Returns the value of the relative error reached.
     pub fn absolut_error(&self) -> f64 {
         unsafe { crate::ffi::math_KronrodSingleIntegration_absolut_error(self as *const Self) }
     }
 
+    /// **Source:** `math_KronrodSingleIntegration.hxx`:95 - `math_KronrodSingleIntegration::OrderReached()`
     /// Returns the number of Kronrod points
     /// for which the result is computed.
     pub fn order_reached(&self) -> i32 {
         unsafe { crate::ffi::math_KronrodSingleIntegration_order_reached(self as *const Self) }
     }
 
+    /// **Source:** `math_KronrodSingleIntegration.hxx`:99 - `math_KronrodSingleIntegration::NbIterReached()`
     /// Returns the number of iterations
     /// that were made to compute result.
     pub fn nb_iter_reached(&self) -> i32 {
@@ -2456,6 +2686,7 @@ impl KronrodSingleIntegration {
 // From math_Matrix.hxx
 // ========================
 
+/// **Source:** `math_Matrix.hxx`:74 - `math_Matrix`
 /// This class implements the real matrix abstract data type.
 /// Matrixes can have an arbitrary range which must be defined
 /// at the declaration and cannot be changed after this declaration
@@ -2504,6 +2735,7 @@ unsafe impl crate::CppDeletable for Matrix {
 }
 
 impl Matrix {
+    /// **Source:** `math_Matrix.hxx`:88 - `math_Matrix::math_Matrix()`
     /// Constructs a non-initialized  matrix of range [LowerRow..UpperRow,
     /// LowerCol..UpperCol]
     /// For the constructed matrix:
@@ -2524,6 +2756,7 @@ impl Matrix {
         }
     }
 
+    /// **Source:** `math_Matrix.hxx`:96 - `math_Matrix::math_Matrix()`
     /// constructs a non-initialized matrix of range [LowerRow..UpperRow,
     /// LowerCol..UpperCol]
     /// whose values are all initialized with the value InitialValue.
@@ -2545,17 +2778,20 @@ impl Matrix {
         }
     }
 
+    /// **Source:** `math_Matrix.hxx`:113 - `math_Matrix::math_Matrix()`
     /// constructs a matrix for copy in initialization.
     /// An exception is raised if the matrixes have not the same dimensions.
     pub fn new_matrix(Other: &crate::ffi::math_Matrix) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_ctor_matrix(Other)) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:116 - `math_Matrix::Init()`
     /// Initialize all the elements of a matrix to InitialValue.
     pub fn init(&mut self, InitialValue: f64) {
         unsafe { crate::ffi::math_Matrix_init(self as *mut Self, InitialValue) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:125 - `math_Matrix::RowNumber()`
     /// Returns the number of rows  of this matrix.
     /// Note that for a matrix A you always have the following relations:
     /// - A.RowNumber() = A.UpperRow() -   A.LowerRow() + 1
@@ -2567,6 +2803,7 @@ impl Matrix {
         unsafe { crate::ffi::math_Matrix_row_number(self as *const Self) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:134 - `math_Matrix::ColNumber()`
     /// Returns the number of rows  of this matrix.
     /// Note that for a matrix A you always have the following relations:
     /// - A.RowNumber() = A.UpperRow() -   A.LowerRow() + 1
@@ -2578,42 +2815,49 @@ impl Matrix {
         unsafe { crate::ffi::math_Matrix_col_number(self as *const Self) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:138 - `math_Matrix::LowerRow()`
     /// Returns the value of the Lower index of the row
     /// range of a matrix.
     pub fn lower_row(&self) -> i32 {
         unsafe { crate::ffi::math_Matrix_lower_row(self as *const Self) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:142 - `math_Matrix::UpperRow()`
     /// Returns the Upper index of the row range
     /// of a matrix.
     pub fn upper_row(&self) -> i32 {
         unsafe { crate::ffi::math_Matrix_upper_row(self as *const Self) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:146 - `math_Matrix::LowerCol()`
     /// Returns the value of the Lower index of the
     /// column range of a matrix.
     pub fn lower_col(&self) -> i32 {
         unsafe { crate::ffi::math_Matrix_lower_col(self as *const Self) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:150 - `math_Matrix::UpperCol()`
     /// Returns the value of the upper index of the
     /// column range of a matrix.
     pub fn upper_col(&self) -> i32 {
         unsafe { crate::ffi::math_Matrix_upper_col(self as *const Self) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:154 - `math_Matrix::Determinant()`
     /// Computes the determinant of a matrix.
     /// An exception is raised if the matrix is not a square matrix.
     pub fn determinant(&self) -> f64 {
         unsafe { crate::ffi::math_Matrix_determinant(self as *const Self) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:158 - `math_Matrix::Transpose()`
     /// Transposes a given matrix.
     /// An exception is raised if the matrix is not a square matrix.
     pub fn transpose(&mut self) {
         unsafe { crate::ffi::math_Matrix_transpose(self as *mut Self) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:163 - `math_Matrix::Invert()`
     /// Inverts a matrix using Gauss algorithm.
     /// Exception NotSquare is raised if the matrix is not square.
     /// Exception SingularMatrix is raised if the matrix is singular.
@@ -2621,6 +2865,7 @@ impl Matrix {
         unsafe { crate::ffi::math_Matrix_invert(self as *mut Self) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:182 - `math_Matrix::Multiply()`
     /// Sets this matrix to the product of the matrix Left, and the matrix Right.
     /// Example
     /// math_Matrix A (1, 3, 1, 3);
@@ -2642,6 +2887,7 @@ impl Matrix {
         unsafe { crate::ffi::math_Matrix_multiply_real(self as *mut Self, Right) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:188 - `math_Matrix::Multiplied()`
     /// multiplies all the elements of a matrix by the
     /// value <Right>.
     pub fn multiplied_real(&self, Right: f64) -> crate::OwnedPtr<crate::ffi::math_Matrix> {
@@ -2653,6 +2899,7 @@ impl Matrix {
         }
     }
 
+    /// **Source:** `math_Matrix.hxx`:213 - `math_Matrix::TMultiplied()`
     /// Sets this matrix to the product of the
     /// transposed matrix TLeft, and the matrix Right.
     /// Example
@@ -2680,12 +2927,14 @@ impl Matrix {
         }
     }
 
+    /// **Source:** `math_Matrix.hxx`:218 - `math_Matrix::Divide()`
     /// divides all the elements of a matrix by the value <Right>.
     /// An exception is raised if <Right> = 0.
     pub fn divide(&mut self, Right: f64) {
         unsafe { crate::ffi::math_Matrix_divide(self as *mut Self, Right) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:224 - `math_Matrix::Divided()`
     /// divides all the elements of a matrix by the value <Right>.
     /// An exception is raised if <Right> = 0.
     pub fn divided(&self, Right: f64) -> crate::OwnedPtr<crate::ffi::math_Matrix> {
@@ -2694,6 +2943,7 @@ impl Matrix {
         }
     }
 
+    /// **Source:** `math_Matrix.hxx`:237 - `math_Matrix::Add()`
     /// adds the matrix <Right> to a matrix.
     /// An exception is raised if the dimensions are different.
     /// Warning
@@ -2704,6 +2954,7 @@ impl Matrix {
         unsafe { crate::ffi::math_Matrix_add_matrix(self as *mut Self, Right) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:243 - `math_Matrix::Added()`
     /// adds the matrix <Right> to a matrix.
     /// An exception is raised if the dimensions are different.
     pub fn added(
@@ -2715,12 +2966,14 @@ impl Matrix {
         }
     }
 
+    /// **Source:** `math_Matrix.hxx`:249 - `math_Matrix::Add()`
     /// sets a  matrix to the addition of <Left> and <Right>.
     /// An exception is raised if the dimensions are different.
     pub fn add_matrix2(&mut self, Left: &crate::ffi::math_Matrix, Right: &crate::ffi::math_Matrix) {
         unsafe { crate::ffi::math_Matrix_add_matrix2(self as *mut Self, Left, Right) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:257 - `math_Matrix::Subtract()`
     /// Subtracts the matrix <Right> from <me>.
     /// An exception is raised if the dimensions are different.
     /// Warning
@@ -2731,6 +2984,7 @@ impl Matrix {
         unsafe { crate::ffi::math_Matrix_subtract_matrix(self as *mut Self, Right) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:263 - `math_Matrix::Subtracted()`
     /// Returns the result of the subtraction of <Right> from <me>.
     /// An exception is raised if the dimensions are different.
     pub fn subtracted(
@@ -2745,6 +2999,7 @@ impl Matrix {
         }
     }
 
+    /// **Source:** `math_Matrix.hxx`:282 - `math_Matrix::Set()`
     /// Sets the values of this matrix,
     /// -   from index I1 to index I2 on the row dimension, and
     /// -   from index J1 to index J2 on the column dimension,
@@ -2761,24 +3016,28 @@ impl Matrix {
         unsafe { crate::ffi::math_Matrix_set(self as *mut Self, I1, I2, J1, J2, M) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:303 - `math_Matrix::SetDiag()`
     /// Sets the diagonal of a matrix to the value <Value>.
     /// An exception is raised if the matrix is not square.
     pub fn set_diag(&mut self, Value: f64) {
         unsafe { crate::ffi::math_Matrix_set_diag(self as *mut Self, Value) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:313 - `math_Matrix::SwapRow()`
     /// Swaps the rows of index Row1 and Row2.
     /// An exception is raised if <Row1> or <Row2> is out of range.
     pub fn swap_row(&mut self, Row1: i32, Row2: i32) {
         unsafe { crate::ffi::math_Matrix_swap_row(self as *mut Self, Row1, Row2) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:317 - `math_Matrix::SwapCol()`
     /// Swaps the columns of index <Col1> and <Col2>.
     /// An exception is raised if <Col1> or <Col2> is out of range.
     pub fn swap_col(&mut self, Col1: i32, Col2: i32) {
         unsafe { crate::ffi::math_Matrix_swap_col(self as *mut Self, Col1, Col2) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:321 - `math_Matrix::Transposed()`
     /// Teturns the transposed of a matrix.
     /// An exception is raised if the matrix is not a square matrix.
     pub fn transposed(&self) -> crate::OwnedPtr<crate::ffi::math_Matrix> {
@@ -2787,6 +3046,7 @@ impl Matrix {
         }
     }
 
+    /// **Source:** `math_Matrix.hxx`:326 - `math_Matrix::Inverse()`
     /// Returns the inverse of a matrix.
     /// Exception NotSquare is raised if the matrix is not square.
     /// Exception SingularMatrix is raised if the matrix is singular.
@@ -2794,6 +3054,7 @@ impl Matrix {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_inverse(self as *const Self)) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:331 - `math_Matrix::TMultiply()`
     /// Returns the product of the transpose of a matrix with
     /// the matrix <Right>.
     /// An exception is raised if the dimensions are different.
@@ -2809,6 +3070,7 @@ impl Matrix {
         }
     }
 
+    /// **Source:** `math_Matrix.hxx`:340 - `math_Matrix::Multiply()`
     /// Computes a matrix as the product of 2 matrixes.
     /// An exception is raised if the dimensions are different.
     pub fn multiply_matrix2(
@@ -2819,6 +3081,7 @@ impl Matrix {
         unsafe { crate::ffi::math_Matrix_multiply_matrix2(self as *mut Self, Left, Right) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:345 - `math_Matrix::TMultiply()`
     /// Computes a matrix to the product of the transpose of
     /// the matrix <TLeft> with the matrix <Right>.
     /// An exception is raised if the dimensions are different.
@@ -2830,6 +3093,7 @@ impl Matrix {
         unsafe { crate::ffi::math_Matrix_t_multiply_matrix2(self as *mut Self, TLeft, Right) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:350 - `math_Matrix::Subtract()`
     /// Sets a matrix to the Subtraction of the matrix <Right>
     /// from the matrix <Left>.
     /// An exception is raised if the dimensions are different.
@@ -2841,6 +3105,7 @@ impl Matrix {
         unsafe { crate::ffi::math_Matrix_subtract_matrix2(self as *mut Self, Left, Right) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:356 - `math_Matrix::Value()`
     /// Accesses (in read or write mode) the value of index <Row>
     /// and <Col> of a matrix.
     /// An exception is raised if <Row> and <Col> are not
@@ -2849,12 +3114,14 @@ impl Matrix {
         unsafe { &mut *(crate::ffi::math_Matrix_value(self as *mut Self, Row, Col)) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:371 - `math_Matrix::Multiply()`
     /// Returns the product of 2 matrices.
     /// An exception is raised if the dimensions are different.
     pub fn multiply_matrix(&mut self, Right: &crate::ffi::math_Matrix) {
         unsafe { crate::ffi::math_Matrix_multiply_matrix(self as *mut Self, Right) }
     }
 
+    /// **Source:** `math_Matrix.hxx`:377 - `math_Matrix::Multiplied()`
     /// Returns the product of 2 matrices.
     /// An exception is raised if the dimensions are different.
     pub fn multiplied_matrix(
@@ -2869,6 +3136,7 @@ impl Matrix {
         }
     }
 
+    /// **Source:** `math_Matrix.hxx`:393 - `math_Matrix::Opposite()`
     /// Returns the opposite of a matrix.
     /// An exception is raised if the dimensions are different.
     pub fn opposite(&mut self) -> crate::OwnedPtr<crate::ffi::math_Matrix> {
@@ -2880,6 +3148,7 @@ impl Matrix {
 // From math_MultipleVarFunction.hxx
 // ========================
 
+/// **Source:** `math_MultipleVarFunction.hxx`:27 - `math_MultipleVarFunction`
 /// Describes the virtual functions associated with a multiple variable function.
 pub use crate::ffi::math_MultipleVarFunction as MultipleVarFunction;
 
@@ -2890,11 +3159,13 @@ unsafe impl crate::CppDeletable for MultipleVarFunction {
 }
 
 impl MultipleVarFunction {
+    /// **Source:** `math_MultipleVarFunction.hxx`:33 - `math_MultipleVarFunction::NbVariables()`
     /// Returns the number of variables of the function
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::math_MultipleVarFunction_nb_variables(self as *const Self) }
     }
 
+    /// **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     /// return the state of the function corresponding to the latestt
     /// call of any methods associated to the function. This
     /// function is called by each of the algorithms described
@@ -2918,6 +3189,7 @@ impl MultipleVarFunction {
 // From math_MultipleVarFunctionWithGradient.hxx
 // ========================
 
+/// **Source:** `math_MultipleVarFunctionWithGradient.hxx`:29 - `math_MultipleVarFunctionWithGradient`
 /// The abstract class MultipleVarFunctionWithGradient
 /// describes the virtual functions associated with a multiple variable function.
 pub use crate::ffi::math_MultipleVarFunctionWithGradient as MultipleVarFunctionWithGradient;
@@ -2929,6 +3201,7 @@ unsafe impl crate::CppDeletable for MultipleVarFunctionWithGradient {
 }
 
 impl MultipleVarFunctionWithGradient {
+    /// **Source:** `math_MultipleVarFunctionWithGradient.hxx`:35 - `math_MultipleVarFunctionWithGradient::NbVariables()`
     /// Returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
         unsafe {
@@ -2968,6 +3241,7 @@ impl MultipleVarFunctionWithGradient {
 // From math_MultipleVarFunctionWithHessian.hxx
 // ========================
 
+/// **Source:** `math_MultipleVarFunctionWithHessian.hxx`:28 - `math_MultipleVarFunctionWithHessian`
 pub use crate::ffi::math_MultipleVarFunctionWithHessian as MultipleVarFunctionWithHessian;
 
 unsafe impl crate::CppDeletable for MultipleVarFunctionWithHessian {
@@ -2977,6 +3251,7 @@ unsafe impl crate::CppDeletable for MultipleVarFunctionWithHessian {
 }
 
 impl MultipleVarFunctionWithHessian {
+    /// **Source:** `math_MultipleVarFunctionWithHessian.hxx`:34 - `math_MultipleVarFunctionWithHessian::NbVariables()`
     /// returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::math_MultipleVarFunctionWithHessian_nb_variables(self as *const Self) }
@@ -3030,6 +3305,7 @@ impl MultipleVarFunctionWithHessian {
 // From math_NewtonFunctionRoot.hxx
 // ========================
 
+/// **Source:** `math_NewtonFunctionRoot.hxx`:29 - `math_NewtonFunctionRoot`
 /// This class implements the calculation of a root of a function of
 /// a single variable starting from an initial near guess using the
 /// Newton algorithm. Knowledge of the derivative is required.
@@ -3042,6 +3318,7 @@ unsafe impl crate::CppDeletable for NewtonFunctionRoot {
 }
 
 impl NewtonFunctionRoot {
+    /// **Source:** `math_NewtonFunctionRoot.hxx`:40 - `math_NewtonFunctionRoot::math_NewtonFunctionRoot()`
     /// The Newton method is done to find the root of the function F
     /// from the initial guess Guess.
     /// The tolerance required on the root is given by Tolerance.
@@ -3068,6 +3345,7 @@ impl NewtonFunctionRoot {
         }
     }
 
+    /// **Source:** `math_NewtonFunctionRoot.hxx`:53 - `math_NewtonFunctionRoot::math_NewtonFunctionRoot()`
     /// The Newton method is done to find the root of the function F
     /// from the initial guess Guess.
     /// The solution must be inside the interval [A, B].
@@ -3099,6 +3377,7 @@ impl NewtonFunctionRoot {
         }
     }
 
+    /// **Source:** `math_NewtonFunctionRoot.hxx`:63 - `math_NewtonFunctionRoot::math_NewtonFunctionRoot()`
     /// is used in a sub-class to initialize correctly all the fields
     /// of this class.
     pub fn new_real4_int(
@@ -3119,6 +3398,7 @@ impl NewtonFunctionRoot {
         }
     }
 
+    /// **Source:** `math_NewtonFunctionRoot.hxx`:40 - `math_NewtonFunctionRoot::math_NewtonFunctionRoot()`
     /// The Newton method is done to find the root of the function F
     /// from the initial guess Guess.
     /// The tolerance required on the root is given by Tolerance.
@@ -3134,6 +3414,7 @@ impl NewtonFunctionRoot {
         Self::new_functionwithderivative_real3_int(F, Guess, EpsX, EpsF, 100)
     }
 
+    /// **Source:** `math_NewtonFunctionRoot.hxx`:53 - `math_NewtonFunctionRoot::math_NewtonFunctionRoot()`
     /// The Newton method is done to find the root of the function F
     /// from the initial guess Guess.
     /// The solution must be inside the interval [A, B].
@@ -3152,40 +3433,47 @@ impl NewtonFunctionRoot {
         Self::new_functionwithderivative_real5_int(F, Guess, EpsX, EpsF, A, B, 100)
     }
 
+    /// **Source:** `math_NewtonFunctionRoot.hxx`:63 - `math_NewtonFunctionRoot::math_NewtonFunctionRoot()`
     /// is used in a sub-class to initialize correctly all the fields
     /// of this class.
     pub fn new_real4(A: f64, B: f64, EpsX: f64, EpsF: f64) -> crate::OwnedPtr<Self> {
         Self::new_real4_int(A, B, EpsX, EpsF, 100)
     }
 
+    /// **Source:** `math_NewtonFunctionRoot.hxx`:70 - `math_NewtonFunctionRoot::Perform()`
     /// is used internally by the constructors.
     pub fn perform(&mut self, F: &mut crate::ffi::math_FunctionWithDerivative, Guess: f64) {
         unsafe { crate::ffi::math_NewtonFunctionRoot_perform(self as *mut Self, F, Guess) }
     }
 
+    /// **Source:** `math_NewtonFunctionRoot.hxx`:73 - `math_NewtonFunctionRoot::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_NewtonFunctionRoot_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_NewtonFunctionRoot.hxx`:77 - `math_NewtonFunctionRoot::Root()`
     /// Returns the value of the root of function <F>.
     /// Exception NotDone is raised if the root was not found.
     pub fn root(&self) -> f64 {
         unsafe { crate::ffi::math_NewtonFunctionRoot_root(self as *const Self) }
     }
 
+    /// **Source:** `math_NewtonFunctionRoot.hxx`:81 - `math_NewtonFunctionRoot::Derivative()`
     /// returns the value of the derivative at the root.
     /// Exception NotDone is raised if the root was not found.
     pub fn derivative(&self) -> f64 {
         unsafe { crate::ffi::math_NewtonFunctionRoot_derivative(self as *const Self) }
     }
 
+    /// **Source:** `math_NewtonFunctionRoot.hxx`:85 - `math_NewtonFunctionRoot::Value()`
     /// returns the value of the function at the root.
     /// Exception NotDone is raised if the root was not found.
     pub fn value(&self) -> f64 {
         unsafe { crate::ffi::math_NewtonFunctionRoot_value(self as *const Self) }
     }
 
+    /// **Source:** `math_NewtonFunctionRoot.hxx`:90 - `math_NewtonFunctionRoot::NbIterations()`
     /// Returns the number of iterations really done on the
     /// computation of the Root.
     /// Exception NotDone is raised if the root was not found.
@@ -3198,6 +3486,7 @@ impl NewtonFunctionRoot {
 // From math_NewtonFunctionSetRoot.hxx
 // ========================
 
+/// **Source:** `math_NewtonFunctionSetRoot.hxx`:34 - `math_NewtonFunctionSetRoot`
 /// This class computes the root of a set of N functions of N variables,
 /// knowing an initial guess at the solution and using the
 /// Newton Raphson algorithm. Knowledge of all the partial
@@ -3211,6 +3500,7 @@ unsafe impl crate::CppDeletable for NewtonFunctionSetRoot {
 }
 
 impl NewtonFunctionSetRoot {
+    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:42 - `math_NewtonFunctionSetRoot::math_NewtonFunctionSetRoot()`
     /// Initialize correctly all the fields of this class.
     /// The range (1, F.NbVariables()) must be especially respected for
     /// all vectors and matrix declarations.
@@ -3225,6 +3515,7 @@ impl NewtonFunctionSetRoot {
         }
     }
 
+    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:52 - `math_NewtonFunctionSetRoot::math_NewtonFunctionSetRoot()`
     /// This constructor should be used in a sub-class to initialize
     /// correctly all the fields of this class.
     /// The range (1, F.NbVariables()) must be especially respected for
@@ -3246,6 +3537,7 @@ impl NewtonFunctionSetRoot {
         }
     }
 
+    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:42 - `math_NewtonFunctionSetRoot::math_NewtonFunctionSetRoot()`
     /// Initialize correctly all the fields of this class.
     /// The range (1, F.NbVariables()) must be especially respected for
     /// all vectors and matrix declarations.
@@ -3262,6 +3554,7 @@ impl NewtonFunctionSetRoot {
         )
     }
 
+    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:52 - `math_NewtonFunctionSetRoot::math_NewtonFunctionSetRoot()`
     /// This constructor should be used in a sub-class to initialize
     /// correctly all the fields of this class.
     /// The range (1, F.NbVariables()) must be especially respected for
@@ -3274,6 +3567,7 @@ impl NewtonFunctionSetRoot {
         Self::new_functionsetwithderivatives_real_int(theFunction, theFTolerance, 100)
     }
 
+    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:82 - `math_NewtonFunctionSetRoot::IsSolutionReached()`
     /// This method is called at the end of each iteration to check if the
     /// solution is found.
     /// Vectors DeltaX, Fvalues and Jacobian Matrix are consistent with the
@@ -3286,23 +3580,27 @@ impl NewtonFunctionSetRoot {
         unsafe { crate::ffi::math_NewtonFunctionSetRoot_is_solution_reached(self as *mut Self, F) }
     }
 
+    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:85 - `math_NewtonFunctionSetRoot::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_NewtonFunctionSetRoot_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:100 - `math_NewtonFunctionSetRoot::StateNumber()`
     /// Outputs the state number associated with the solution
     /// vector root.
     pub fn state_number(&self) -> i32 {
         unsafe { crate::ffi::math_NewtonFunctionSetRoot_state_number(self as *const Self) }
     }
 
+    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:104 - `math_NewtonFunctionSetRoot::Derivative()`
     /// Returns the matrix value of the derivative at the root.
     /// Exception NotDone is raised if the root was not found.
     pub fn derivative(&self) -> &crate::ffi::math_Matrix {
         unsafe { &*(crate::ffi::math_NewtonFunctionSetRoot_derivative(self as *const Self)) }
     }
 
+    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:111 - `math_NewtonFunctionSetRoot::Derivative()`
     /// Outputs the matrix value of the derivative at the root in
     /// Der.
     /// Exception NotDone is raised if the root was not found.
@@ -3314,6 +3612,7 @@ impl NewtonFunctionSetRoot {
         }
     }
 
+    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:128 - `math_NewtonFunctionSetRoot::NbIterations()`
     /// Returns the number of iterations really done
     /// during the computation of the Root.
     /// Exception NotDone is raised if the root was not found.
@@ -3326,6 +3625,7 @@ impl NewtonFunctionSetRoot {
 // From math_NewtonMinimum.hxx
 // ========================
 
+/// **Source:** `math_NewtonMinimum.hxx`:31 - `math_NewtonMinimum`
 pub use crate::ffi::math_NewtonMinimum as NewtonMinimum;
 
 unsafe impl crate::CppDeletable for NewtonMinimum {
@@ -3335,6 +3635,7 @@ unsafe impl crate::CppDeletable for NewtonMinimum {
 }
 
 impl NewtonMinimum {
+    /// **Source:** `math_NewtonMinimum.hxx`:41 - `math_NewtonMinimum::math_NewtonMinimum()`
     /// The tolerance required on the solution is given by Tolerance.
     /// Iteration are  stopped if (!WithSingularity) and H(F(Xi)) is not definite
     /// positive (if the smaller eigenvalue of H < Convexity)
@@ -3352,6 +3653,7 @@ impl NewtonMinimum {
         }
     }
 
+    /// **Source:** `math_NewtonMinimum.hxx`:41 - `math_NewtonMinimum::math_NewtonMinimum()`
     /// The tolerance required on the solution is given by Tolerance.
     /// Iteration are  stopped if (!WithSingularity) and H(F(Xi)) is not definite
     /// positive (if the smaller eigenvalue of H < Convexity)
@@ -3372,6 +3674,7 @@ impl NewtonMinimum {
         )
     }
 
+    /// **Source:** `math_NewtonMinimum.hxx`:41 - `math_NewtonMinimum::math_NewtonMinimum()`
     /// The tolerance required on the solution is given by Tolerance.
     /// Iteration are  stopped if (!WithSingularity) and H(F(Xi)) is not definite
     /// positive (if the smaller eigenvalue of H < Convexity)
@@ -3391,6 +3694,7 @@ impl NewtonMinimum {
         )
     }
 
+    /// **Source:** `math_NewtonMinimum.hxx`:41 - `math_NewtonMinimum::math_NewtonMinimum()`
     /// The tolerance required on the solution is given by Tolerance.
     /// Iteration are  stopped if (!WithSingularity) and H(F(Xi)) is not definite
     /// positive (if the smaller eigenvalue of H < Convexity)
@@ -3409,6 +3713,7 @@ impl NewtonMinimum {
         )
     }
 
+    /// **Source:** `math_NewtonMinimum.hxx`:57 - `math_NewtonMinimum::IsConverged()`
     /// This method is called at the end of each iteration to check the convergence:
     /// || Xi+1 - Xi || < Tolerance or || F(Xi+1) - F(Xi)|| < Tolerance * || F(Xi) ||
     /// It can be redefined in a sub-class to implement a specific test.
@@ -3416,22 +3721,26 @@ impl NewtonMinimum {
         unsafe { crate::ffi::math_NewtonMinimum_is_converged(self as *const Self) }
     }
 
+    /// **Source:** `math_NewtonMinimum.hxx`:60 - `math_NewtonMinimum::IsDone()`
     /// Tests if an error has occurred.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_NewtonMinimum_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_NewtonMinimum.hxx`:63 - `math_NewtonMinimum::IsConvex()`
     /// Tests if the Function is convexe during optimization.
     pub fn is_convex(&self) -> bool {
         unsafe { crate::ffi::math_NewtonMinimum_is_convex(self as *const Self) }
     }
 
+    /// **Source:** `math_NewtonMinimum.hxx`:81 - `math_NewtonMinimum::Minimum()`
     /// returns the value of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn minimum(&self) -> f64 {
         unsafe { crate::ffi::math_NewtonMinimum_minimum(self as *const Self) }
     }
 
+    /// **Source:** `math_NewtonMinimum.hxx`:97 - `math_NewtonMinimum::NbIterations()`
     /// returns the number of iterations really done in the
     /// calculation of the minimum.
     /// The exception NotDone is raised if an error has occurred.
@@ -3439,6 +3748,7 @@ impl NewtonMinimum {
         unsafe { crate::ffi::math_NewtonMinimum_nb_iterations(self as *const Self) }
     }
 
+    /// **Source:** `math_NewtonMinimum.hxx`:101 - `math_NewtonMinimum::GetStatus()`
     /// Returns the Status of computation.
     /// The exception NotDone is raised if an error has occurred.
     pub fn get_status(&self) -> crate::math::Status {
@@ -3455,6 +3765,7 @@ impl NewtonMinimum {
 // From math_NotSquare.hxx
 // ========================
 
+/// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare`
 pub use crate::ffi::math_NotSquare as NotSquare;
 
 unsafe impl crate::CppDeletable for NotSquare {
@@ -3464,14 +3775,17 @@ unsafe impl crate::CppDeletable for NotSquare {
 }
 
 impl NotSquare {
+    /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::math_NotSquare()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_NotSquare_ctor()) }
     }
 
+    /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::math_NotSquare()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_NotSquare_ctor_charptr(theMessage)) }
     }
 
+    /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::math_NotSquare()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -3484,18 +3798,22 @@ impl NotSquare {
         }
     }
 
+    /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::math_NotSquare_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::math_NotSquare_raise(theMessage) }
     }
 
+    /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::math_NotSquare_get_type_name() }
     }
 
+    /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::math_NotSquare_get_type_descriptor()) }
     }
@@ -3505,6 +3823,7 @@ impl NotSquare {
 // From math_PSO.hxx
 // ========================
 
+/// **Source:** `math_PSO.hxx`:55 - `math_PSO`
 /// In this class implemented variation of Particle Swarm Optimization (PSO) method.
 /// A. Ismael F. Vaz, L. N. Vicente
 /// "A particle swarm pattern search method for bound constrained global optimization"
@@ -3547,6 +3866,7 @@ unsafe impl crate::CppDeletable for PSO {
 // From math_PSOParticlesPool.hxx
 // ========================
 
+/// **Source:** `math_PSOParticlesPool.hxx`:24 - `PSO_Particle`
 /// Describes particle pool for using in PSO algorithm.
 /// Indexes:
 /// 0 <= aDimidx <= myDimensionCount - 1
@@ -3559,11 +3879,13 @@ unsafe impl crate::CppDeletable for Particle {
 }
 
 impl Particle {
+    /// **Source:** `math_PSOParticlesPool.hxx`:32 - `PSO_Particle::PSO_Particle()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::PSO_Particle_ctor()) }
     }
 }
 
+/// **Source:** `math_PSOParticlesPool.hxx`:47 - `math_PSOParticlesPool`
 pub use crate::ffi::math_PSOParticlesPool as PSOParticlesPool;
 
 unsafe impl crate::CppDeletable for PSOParticlesPool {
@@ -3573,6 +3895,7 @@ unsafe impl crate::CppDeletable for PSOParticlesPool {
 }
 
 impl PSOParticlesPool {
+    /// **Source:** `math_PSOParticlesPool.hxx`:50 - `math_PSOParticlesPool::math_PSOParticlesPool()`
     pub fn new_int2(theParticlesCount: i32, theDimensionCount: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::math_PSOParticlesPool_ctor_int2(
@@ -3587,6 +3910,7 @@ impl PSOParticlesPool {
 // From math_Powell.hxx
 // ========================
 
+/// **Source:** `math_Powell.hxx`:32 - `math_Powell`
 /// This class implements the Powell method to find the minimum of
 /// function of multiple variables (the gradient does not have to be known).
 pub use crate::ffi::math_Powell as Powell;
@@ -3598,6 +3922,7 @@ unsafe impl crate::CppDeletable for Powell {
 }
 
 impl Powell {
+    /// **Source:** `math_Powell.hxx`:38 - `math_Powell::math_Powell()`
     /// Constructor. Initialize new entity.
     pub fn new_multiplevarfunction_real_int_real(
         theFunction: &crate::ffi::math_MultipleVarFunction,
@@ -3617,6 +3942,7 @@ impl Powell {
         }
     }
 
+    /// **Source:** `math_Powell.hxx`:38 - `math_Powell::math_Powell()`
     /// Constructor. Initialize new entity.
     pub fn new_multiplevarfunction_real_int(
         theFunction: &crate::ffi::math_MultipleVarFunction,
@@ -3631,6 +3957,7 @@ impl Powell {
         )
     }
 
+    /// **Source:** `math_Powell.hxx`:38 - `math_Powell::math_Powell()`
     /// Constructor. Initialize new entity.
     pub fn new_multiplevarfunction_real(
         theFunction: &crate::ffi::math_MultipleVarFunction,
@@ -3639,6 +3966,7 @@ impl Powell {
         Self::new_multiplevarfunction_real_int_real(theFunction, theTolerance, 200, 1.0e-12)
     }
 
+    /// **Source:** `math_Powell.hxx`:58 - `math_Powell::IsSolutionReached()`
     /// Solution F = Fi is found when:
     /// 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1)) + ZEPS.
     /// The maximum number of iterations allowed is given by NbIterations.
@@ -3649,17 +3977,20 @@ impl Powell {
         unsafe { crate::ffi::math_Powell_is_solution_reached(self as *mut Self, theFunction) }
     }
 
+    /// **Source:** `math_Powell.hxx`:61 - `math_Powell::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_Powell_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_Powell.hxx`:75 - `math_Powell::Minimum()`
     /// Returns the value of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn minimum(&self) -> f64 {
         unsafe { crate::ffi::math_Powell_minimum(self as *const Self) }
     }
 
+    /// **Source:** `math_Powell.hxx`:80 - `math_Powell::NbIterations()`
     /// Returns the number of iterations really done during the
     /// computation of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
@@ -3672,6 +4003,7 @@ impl Powell {
 // From math_SVD.hxx
 // ========================
 
+/// **Source:** `math_SVD.hxx`:33 - `math_SVD`
 /// SVD implements the solution of a set of N linear equations
 /// of M unknowns without condition on N or M. The Singular
 /// Value Decomposition algorithm is used. For singular or
@@ -3686,17 +4018,20 @@ unsafe impl crate::CppDeletable for SVD {
 }
 
 impl SVD {
+    /// **Source:** `math_SVD.hxx`:40 - `math_SVD::math_SVD()`
     /// Given as input an n X m matrix A with n < m, n = m or n > m
     /// this constructor performs the Singular Value Decomposition.
     pub fn new_matrix(A: &crate::ffi::math_Matrix) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_SVD_ctor_matrix(A)) }
     }
 
+    /// **Source:** `math_SVD.hxx`:43 - `math_SVD::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_SVD_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_SVD.hxx`:62 - `math_SVD::PseudoInverse()`
     /// Computes the inverse Inv of matrix A such as A * Inverse = Identity.
     /// Exceptions
     /// StdFail_NotDone if the algorithm fails (and IsDone returns false).
@@ -3711,6 +4046,7 @@ impl SVD {
 // From math_SingularMatrix.hxx
 // ========================
 
+/// **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix`
 pub use crate::ffi::math_SingularMatrix as SingularMatrix;
 
 unsafe impl crate::CppDeletable for SingularMatrix {
@@ -3720,16 +4056,19 @@ unsafe impl crate::CppDeletable for SingularMatrix {
 }
 
 impl SingularMatrix {
+    /// **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::math_SingularMatrix()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_SingularMatrix_ctor()) }
     }
 
+    /// **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::math_SingularMatrix()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::math_SingularMatrix_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::math_SingularMatrix()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -3742,18 +4081,22 @@ impl SingularMatrix {
         }
     }
 
+    /// **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::math_SingularMatrix_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::math_SingularMatrix_raise(theMessage) }
     }
 
+    /// **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::math_SingularMatrix_get_type_name() }
     }
 
+    /// **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::math_SingularMatrix_get_type_descriptor()) }
     }
@@ -3763,6 +4106,7 @@ impl SingularMatrix {
 // From math_TrigonometricEquationFunction.hxx
 // ========================
 
+/// **Source:** `math_TrigonometricEquationFunction.hxx`:25 - `math_TrigonometricEquationFunction`
 /// This is function, which corresponds trigonometric equation
 /// a*Cos(x)*Cos(x) + 2*b*Cos(x)*Sin(x) + c*Cos(x) + d*Sin(x) + e = 0
 /// See class math_TrigonometricFunctionRoots
@@ -3775,6 +4119,7 @@ unsafe impl crate::CppDeletable for TrigonometricEquationFunction {
 }
 
 impl TrigonometricEquationFunction {
+    /// **Source:** `math_TrigonometricEquationFunction.hxx`:34 - `math_TrigonometricEquationFunction::math_TrigonometricEquationFunction()`
     pub fn new_real5(A: f64, B: f64, C: f64, D: f64, E: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::math_TrigonometricEquationFunction_ctor_real5(
@@ -3783,16 +4128,19 @@ impl TrigonometricEquationFunction {
         }
     }
 
+    /// **Source:** `math_TrigonometricEquationFunction.hxx`:47 - `math_TrigonometricEquationFunction::Value()`
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         unsafe { crate::ffi::math_TrigonometricEquationFunction_value(self as *mut Self, X, F) }
     }
 
+    /// **Source:** `math_TrigonometricEquationFunction.hxx`:55 - `math_TrigonometricEquationFunction::Derivative()`
     pub fn derivative(&mut self, X: f64, D: &mut f64) -> bool {
         unsafe {
             crate::ffi::math_TrigonometricEquationFunction_derivative(self as *mut Self, X, D)
         }
     }
 
+    /// **Source:** `math_TrigonometricEquationFunction.hxx`:65 - `math_TrigonometricEquationFunction::Values()`
     pub fn values(&mut self, X: f64, F: &mut f64, D: &mut f64) -> bool {
         unsafe { crate::ffi::math_TrigonometricEquationFunction_values(self as *mut Self, X, F, D) }
     }
@@ -3843,6 +4191,7 @@ impl TrigonometricEquationFunction {
 // From math_TrigonometricFunctionRoots.hxx
 // ========================
 
+/// **Source:** `math_TrigonometricFunctionRoots.hxx`:31 - `math_TrigonometricFunctionRoots`
 /// This class implements the solutions of the equation
 /// a*Cos(x)*Cos(x) + 2*b*Cos(x)*Sin(x) + c*Cos(x) + d*Sin(x) + e
 /// The degree of this equation can be 4, 3 or 2.
@@ -3855,6 +4204,7 @@ unsafe impl crate::CppDeletable for TrigonometricFunctionRoots {
 }
 
 impl TrigonometricFunctionRoots {
+    /// **Source:** `math_TrigonometricFunctionRoots.hxx`:40 - `math_TrigonometricFunctionRoots::math_TrigonometricFunctionRoots()`
     /// Given coefficients a, b, c, d , e, this constructor
     /// performs the resolution of the equation above.
     /// The solutions must be contained in [InfBound, SupBound].
@@ -3875,6 +4225,7 @@ impl TrigonometricFunctionRoots {
         }
     }
 
+    /// **Source:** `math_TrigonometricFunctionRoots.hxx`:52 - `math_TrigonometricFunctionRoots::math_TrigonometricFunctionRoots()`
     /// Given the two coefficients d and e, it performs
     /// the resolution of d*sin(x) + e = 0.
     /// The solutions must be contained in [InfBound, SupBound].
@@ -3887,6 +4238,7 @@ impl TrigonometricFunctionRoots {
         }
     }
 
+    /// **Source:** `math_TrigonometricFunctionRoots.hxx`:61 - `math_TrigonometricFunctionRoots::math_TrigonometricFunctionRoots()`
     /// Given the three coefficients c, d and e, it performs
     /// the resolution of c*Cos(x) + d*sin(x) + e = 0.
     /// The solutions must be contained in [InfBound, SupBound].
@@ -3905,16 +4257,19 @@ impl TrigonometricFunctionRoots {
         }
     }
 
+    /// **Source:** `math_TrigonometricFunctionRoots.hxx`:68 - `math_TrigonometricFunctionRoots::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_TrigonometricFunctionRoots_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_TrigonometricFunctionRoots.hxx`:71 - `math_TrigonometricFunctionRoots::InfiniteRoots()`
     /// Returns true if there is an infinity of roots, otherwise returns false.
     pub fn infinite_roots(&self) -> bool {
         unsafe { crate::ffi::math_TrigonometricFunctionRoots_infinite_roots(self as *const Self) }
     }
 
+    /// **Source:** `math_TrigonometricFunctionRoots.hxx`:77 - `math_TrigonometricFunctionRoots::Value()`
     /// Returns the solution of range Index.
     /// An exception is raised if NotDone.
     /// An exception is raised if Index>NbSolutions.
@@ -3923,6 +4278,7 @@ impl TrigonometricFunctionRoots {
         unsafe { crate::ffi::math_TrigonometricFunctionRoots_value(self as *const Self, Index) }
     }
 
+    /// **Source:** `math_TrigonometricFunctionRoots.hxx`:82 - `math_TrigonometricFunctionRoots::NbSolutions()`
     /// Returns the number of solutions found.
     /// An exception is raised if NotDone.
     /// An exception is raised if there is an infinity of solutions.
@@ -3935,6 +4291,7 @@ impl TrigonometricFunctionRoots {
 // From math_Uzawa.hxx
 // ========================
 
+/// **Source:** `math_Uzawa.hxx`:38 - `math_Uzawa`
 /// This class implements a system resolution C*X = B with
 /// an approach solution X0. There are no conditions on the
 /// number of equations. The algorithm used is the Uzawa
@@ -3954,6 +4311,7 @@ unsafe impl crate::CppDeletable for Uzawa {
 }
 
 impl Uzawa {
+    /// **Source:** `math_Uzawa.hxx`:53 - `math_Uzawa::math_Uzawa()`
     /// Given an input matrix Cont, two input vectors Secont
     /// and StartingPoint, it solves Cont*X = Secont (only
     /// = equations) with a minimization of Norme(X-X0).
@@ -3984,6 +4342,7 @@ impl Uzawa {
         }
     }
 
+    /// **Source:** `math_Uzawa.hxx`:74 - `math_Uzawa::math_Uzawa()`
     /// Given an input matrix Cont, two input vectors Secont
     /// and StartingPoint, it solves Cont*X = Secont (the Nce
     /// first equations are equal equations and the Nci last
@@ -4022,6 +4381,7 @@ impl Uzawa {
         }
     }
 
+    /// **Source:** `math_Uzawa.hxx`:53 - `math_Uzawa::math_Uzawa()`
     /// Given an input matrix Cont, two input vectors Secont
     /// and StartingPoint, it solves Cont*X = Secont (only
     /// = equations) with a minimization of Norme(X-X0).
@@ -4042,6 +4402,7 @@ impl Uzawa {
         Self::new_matrix_vector2_real2_int(Cont, Secont, StartingPoint, EpsLix, EpsLic, 500)
     }
 
+    /// **Source:** `math_Uzawa.hxx`:53 - `math_Uzawa::math_Uzawa()`
     /// Given an input matrix Cont, two input vectors Secont
     /// and StartingPoint, it solves Cont*X = Secont (only
     /// = equations) with a minimization of Norme(X-X0).
@@ -4061,6 +4422,7 @@ impl Uzawa {
         Self::new_matrix_vector2_real2_int(Cont, Secont, StartingPoint, EpsLix, 1.0e-06, 500)
     }
 
+    /// **Source:** `math_Uzawa.hxx`:53 - `math_Uzawa::math_Uzawa()`
     /// Given an input matrix Cont, two input vectors Secont
     /// and StartingPoint, it solves Cont*X = Secont (only
     /// = equations) with a minimization of Norme(X-X0).
@@ -4079,6 +4441,7 @@ impl Uzawa {
         Self::new_matrix_vector2_real2_int(Cont, Secont, StartingPoint, 1.0e-06, 1.0e-06, 500)
     }
 
+    /// **Source:** `math_Uzawa.hxx`:74 - `math_Uzawa::math_Uzawa()`
     /// Given an input matrix Cont, two input vectors Secont
     /// and StartingPoint, it solves Cont*X = Secont (the Nce
     /// first equations are equal equations and the Nci last
@@ -4114,6 +4477,7 @@ impl Uzawa {
         )
     }
 
+    /// **Source:** `math_Uzawa.hxx`:74 - `math_Uzawa::math_Uzawa()`
     /// Given an input matrix Cont, two input vectors Secont
     /// and StartingPoint, it solves Cont*X = Secont (the Nce
     /// first equations are equal equations and the Nci last
@@ -4148,6 +4512,7 @@ impl Uzawa {
         )
     }
 
+    /// **Source:** `math_Uzawa.hxx`:74 - `math_Uzawa::math_Uzawa()`
     /// Given an input matrix Cont, two input vectors Secont
     /// and StartingPoint, it solves Cont*X = Secont (the Nce
     /// first equations are equal equations and the Nci last
@@ -4181,17 +4546,20 @@ impl Uzawa {
         )
     }
 
+    /// **Source:** `math_Uzawa.hxx`:84 - `math_Uzawa::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_Uzawa_is_done(self as *const Self) }
     }
 
+    /// **Source:** `math_Uzawa.hxx`:104 - `math_Uzawa::NbIterations()`
     /// returns the number of iterations really done.
     /// An exception is raised if NotDone.
     pub fn nb_iterations(&self) -> i32 {
         unsafe { crate::ffi::math_Uzawa_nb_iterations(self as *const Self) }
     }
 
+    /// **Source:** `math_Uzawa.hxx`:109 - `math_Uzawa::InverseCont()`
     /// returns the inverse matrix of (C * Transposed(C)).
     /// This result is needed for the computation of the gradient
     /// when approximating a curve.
@@ -4204,6 +4572,7 @@ impl Uzawa {
 // From math_ValueAndWeight.hxx
 // ========================
 
+/// **Source:** `math_ValueAndWeight.hxx`:23 - `math_ValueAndWeight`
 /// Simple container storing two reals: value and weight
 pub use crate::ffi::math_ValueAndWeight as ValueAndWeight;
 
@@ -4214,10 +4583,12 @@ unsafe impl crate::CppDeletable for ValueAndWeight {
 }
 
 impl ValueAndWeight {
+    /// **Source:** `math_ValueAndWeight.hxx`:28 - `math_ValueAndWeight::math_ValueAndWeight()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_ValueAndWeight_ctor()) }
     }
 
+    /// **Source:** `math_ValueAndWeight.hxx`:34 - `math_ValueAndWeight::math_ValueAndWeight()`
     pub fn new_real2(theValue: f64, theWeight: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::math_ValueAndWeight_ctor_real2(
@@ -4226,10 +4597,12 @@ impl ValueAndWeight {
         }
     }
 
+    /// **Source:** `math_ValueAndWeight.hxx`:40 - `math_ValueAndWeight::Value()`
     pub fn value(&self) -> f64 {
         unsafe { crate::ffi::math_ValueAndWeight_value(self as *const Self) }
     }
 
+    /// **Source:** `math_ValueAndWeight.hxx`:42 - `math_ValueAndWeight::Weight()`
     pub fn weight(&self) -> f64 {
         unsafe { crate::ffi::math_ValueAndWeight_weight(self as *const Self) }
     }

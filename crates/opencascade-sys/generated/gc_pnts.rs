@@ -68,6 +68,7 @@ impl TryFrom<i32> for DeflectionType {
 // From GCPnts_AbscissaPoint.hxx
 // ========================
 
+/// **Source:** `GCPnts_AbscissaPoint.hxx`:33 - `GCPnts_AbscissaPoint`
 /// Provides an algorithm to compute a point on a curve
 /// situated at a given distance from another point on the curve,
 /// the distance being measured along the curve (curvilinear abscissa on the curve).
@@ -85,11 +86,13 @@ unsafe impl crate::CppDeletable for AbscissaPoint {
 }
 
 impl AbscissaPoint {
+    /// **Source:** `GCPnts_AbscissaPoint.hxx`:76 - `GCPnts_AbscissaPoint::GCPnts_AbscissaPoint()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCPnts_AbscissaPoint_ctor()) }
     }
 
+    /// **Source:** `GCPnts_AbscissaPoint.hxx`:80 - `GCPnts_AbscissaPoint::GCPnts_AbscissaPoint()`
     /// The algorithm computes a point on a curve at the
     /// distance theAbscissa from the point of parameter theU0.
     pub fn new_curve_real2(
@@ -106,6 +109,7 @@ impl AbscissaPoint {
         }
     }
 
+    /// **Source:** `GCPnts_AbscissaPoint.hxx`:87 - `GCPnts_AbscissaPoint::GCPnts_AbscissaPoint()`
     /// The algorithm computes a point on a curve at
     /// the distance theAbscissa from the point of parameter
     /// theU0 with the given tolerance.
@@ -125,6 +129,7 @@ impl AbscissaPoint {
         }
     }
 
+    /// **Source:** `GCPnts_AbscissaPoint.hxx`:95 - `GCPnts_AbscissaPoint::GCPnts_AbscissaPoint()`
     /// The algorithm computes a point on a curve at
     /// the distance theAbscissa from the point of parameter
     /// theU0 with the given tolerance.
@@ -144,6 +149,7 @@ impl AbscissaPoint {
         }
     }
 
+    /// **Source:** `GCPnts_AbscissaPoint.hxx`:102 - `GCPnts_AbscissaPoint::GCPnts_AbscissaPoint()`
     /// The algorithm computes a point on a curve at the
     /// distance theAbscissa from the point of parameter theU0.
     pub fn new_curve2d_real2(
@@ -160,6 +166,7 @@ impl AbscissaPoint {
         }
     }
 
+    /// **Source:** `GCPnts_AbscissaPoint.hxx`:110 - `GCPnts_AbscissaPoint::GCPnts_AbscissaPoint()`
     /// The algorithm computes a point on a curve at the
     /// distance theAbscissa from the point of parameter theU0.
     /// theUi is the starting value used in the iterative process
@@ -180,6 +187,7 @@ impl AbscissaPoint {
         }
     }
 
+    /// **Source:** `GCPnts_AbscissaPoint.hxx`:119 - `GCPnts_AbscissaPoint::GCPnts_AbscissaPoint()`
     /// The algorithm computes a point on a curve at the
     /// distance theAbscissa from the point of parameter theU0.
     /// theUi is the starting value used in the iterative process
@@ -200,6 +208,7 @@ impl AbscissaPoint {
         }
     }
 
+    /// **Source:** `GCPnts_AbscissaPoint.hxx`:128 - `GCPnts_AbscissaPoint::GCPnts_AbscissaPoint()`
     /// The algorithm computes a point on a curve at the
     /// distance theAbscissa from the point of parameter theU0.
     /// theUi is the starting value used in the iterative process
@@ -222,6 +231,7 @@ impl AbscissaPoint {
         }
     }
 
+    /// **Source:** `GCPnts_AbscissaPoint.hxx`:138 - `GCPnts_AbscissaPoint::GCPnts_AbscissaPoint()`
     /// The algorithm computes a point on a curve at the
     /// distance theAbscissa from the point of parameter theU0.
     /// theUi is the starting value used in the iterative process
@@ -244,6 +254,7 @@ impl AbscissaPoint {
         }
     }
 
+    /// **Source:** `GCPnts_AbscissaPoint.hxx`:148 - `GCPnts_AbscissaPoint::IsDone()`
     /// True if the computation was successful, False otherwise.
     /// IsDone is a protection against:
     /// -   non-convergence of the algorithm
@@ -252,6 +263,7 @@ impl AbscissaPoint {
         unsafe { crate::ffi::GCPnts_AbscissaPoint_is_done(self as *const Self) }
     }
 
+    /// **Source:** `GCPnts_AbscissaPoint.hxx`:155 - `GCPnts_AbscissaPoint::Parameter()`
     /// Returns the parameter on the curve of the point
     /// solution of this algorithm.
     /// Exceptions
@@ -261,31 +273,37 @@ impl AbscissaPoint {
         unsafe { crate::ffi::GCPnts_AbscissaPoint_parameter(self as *const Self) }
     }
 
+    /// **Source:** `GCPnts_AbscissaPoint.hxx`:39 - `GCPnts_AbscissaPoint::Length()`
     /// Computes the length of the 3D Curve.
     pub fn length_curve(theC: &crate::ffi::Adaptor3d_Curve) -> f64 {
         unsafe { crate::ffi::GCPnts_AbscissaPoint_length_curve(theC) }
     }
 
+    /// **Source:** `GCPnts_AbscissaPoint.hxx`:42 - `GCPnts_AbscissaPoint::Length()`
     /// Computes the length of the 2D Curve.
     pub fn length_curve2d(theC: &crate::ffi::Adaptor2d_Curve2d) -> f64 {
         unsafe { crate::ffi::GCPnts_AbscissaPoint_length_curve2d(theC) }
     }
 
+    /// **Source:** `GCPnts_AbscissaPoint.hxx`:45 - `GCPnts_AbscissaPoint::Length()`
     /// Computes the length of the 3D Curve with the given tolerance.
     pub fn length_curve_real(theC: &crate::ffi::Adaptor3d_Curve, theTol: f64) -> f64 {
         unsafe { crate::ffi::GCPnts_AbscissaPoint_length_curve_real(theC, theTol) }
     }
 
+    /// **Source:** `GCPnts_AbscissaPoint.hxx`:49 - `GCPnts_AbscissaPoint::Length()`
     /// Computes the length of the 2D Curve with the given tolerance.
     pub fn length_curve2d_real(theC: &crate::ffi::Adaptor2d_Curve2d, theTol: f64) -> f64 {
         unsafe { crate::ffi::GCPnts_AbscissaPoint_length_curve2d_real(theC, theTol) }
     }
 
+    /// **Source:** `GCPnts_AbscissaPoint.hxx`:53 - `GCPnts_AbscissaPoint::Length()`
     /// Computes the length of the 3D Curve.
     pub fn length_curve_real2(theC: &crate::ffi::Adaptor3d_Curve, theU1: f64, theU2: f64) -> f64 {
         unsafe { crate::ffi::GCPnts_AbscissaPoint_length_curve_real2(theC, theU1, theU2) }
     }
 
+    /// **Source:** `GCPnts_AbscissaPoint.hxx`:58 - `GCPnts_AbscissaPoint::Length()`
     /// Computes the length of the 2D Curve.
     pub fn length_curve2d_real2(
         theC: &crate::ffi::Adaptor2d_Curve2d,
@@ -295,6 +313,7 @@ impl AbscissaPoint {
         unsafe { crate::ffi::GCPnts_AbscissaPoint_length_curve2d_real2(theC, theU1, theU2) }
     }
 
+    /// **Source:** `GCPnts_AbscissaPoint.hxx`:63 - `GCPnts_AbscissaPoint::Length()`
     /// Computes the length of the 3D Curve with the given tolerance.
     pub fn length_curve_real3(
         theC: &crate::ffi::Adaptor3d_Curve,
@@ -305,6 +324,7 @@ impl AbscissaPoint {
         unsafe { crate::ffi::GCPnts_AbscissaPoint_length_curve_real3(theC, theU1, theU2, theTol) }
     }
 
+    /// **Source:** `GCPnts_AbscissaPoint.hxx`:69 - `GCPnts_AbscissaPoint::Length()`
     /// Computes the length of the Curve with the given tolerance.
     pub fn length_curve2d_real3(
         theC: &crate::ffi::Adaptor2d_Curve2d,
@@ -320,6 +340,7 @@ impl AbscissaPoint {
 // From GCPnts_DistFunction.hxx
 // ========================
 
+/// **Source:** `GCPnts_DistFunction.hxx`:25 - `GCPnts_DistFunction`
 /// Class to define function, which calculates square distance between point on curve
 /// C(u), U1 <= u <= U2 and line passing through points C(U1) and C(U2)
 /// This function is used in any minimization algorithm to define maximal deviation between curve
@@ -333,6 +354,7 @@ unsafe impl crate::CppDeletable for DistFunction {
 }
 
 impl DistFunction {
+    /// **Source:** `GCPnts_DistFunction.hxx`:28 - `GCPnts_DistFunction::GCPnts_DistFunction()`
     pub fn new_curve_real2(
         theCurve: &crate::ffi::Adaptor3d_Curve,
         U1: f64,
@@ -345,12 +367,14 @@ impl DistFunction {
         }
     }
 
+    /// **Source:** `GCPnts_DistFunction.hxx`:32 - `GCPnts_DistFunction::GCPnts_DistFunction()`
     pub fn new_distfunction(theOther: &crate::ffi::GCPnts_DistFunction) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GCPnts_DistFunction_ctor_distfunction(theOther))
         }
     }
 
+    /// **Source:** `GCPnts_DistFunction.hxx`:34 - `GCPnts_DistFunction::Value()`
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         unsafe { crate::ffi::GCPnts_DistFunction_value(self as *mut Self, X, F) }
     }
@@ -371,6 +395,7 @@ impl DistFunction {
     }
 }
 
+/// **Source:** `GCPnts_DistFunction.hxx`:48 - `GCPnts_DistFunctionMV`
 /// The same as class GCPnts_DistFunction, but it can be used in minimization algorithms that
 /// requires multi variable function
 pub use crate::ffi::GCPnts_DistFunctionMV as DistFunctionMV;
@@ -382,6 +407,7 @@ unsafe impl crate::CppDeletable for DistFunctionMV {
 }
 
 impl DistFunctionMV {
+    /// **Source:** `GCPnts_DistFunction.hxx`:51 - `GCPnts_DistFunctionMV::GCPnts_DistFunctionMV()`
     pub fn new_distfunction(
         theCurvLinDist: &mut crate::ffi::GCPnts_DistFunction,
     ) -> crate::OwnedPtr<Self> {
@@ -392,6 +418,7 @@ impl DistFunctionMV {
         }
     }
 
+    /// **Source:** `GCPnts_DistFunction.hxx`:55 - `GCPnts_DistFunctionMV::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::GCPnts_DistFunctionMV_nb_variables(self as *const Self) }
     }
@@ -422,6 +449,7 @@ impl DistFunctionMV {
 // From GCPnts_DistFunction2d.hxx
 // ========================
 
+/// **Source:** `GCPnts_DistFunction2d.hxx`:25 - `GCPnts_DistFunction2d`
 /// Class to define function, which calculates square distance between point on curve
 /// C(u), U1 <= u <= U2 and line passing through points C(U1) and C(U2)
 /// This function is used in any minimisation algorithm to define maximal deviation between curve
@@ -435,6 +463,7 @@ unsafe impl crate::CppDeletable for DistFunction2d {
 }
 
 impl DistFunction2d {
+    /// **Source:** `GCPnts_DistFunction2d.hxx`:28 - `GCPnts_DistFunction2d::GCPnts_DistFunction2d()`
     pub fn new_curve2d_real2(
         theCurve: &crate::ffi::Adaptor2d_Curve2d,
         U1: f64,
@@ -447,6 +476,7 @@ impl DistFunction2d {
         }
     }
 
+    /// **Source:** `GCPnts_DistFunction2d.hxx`:32 - `GCPnts_DistFunction2d::GCPnts_DistFunction2d()`
     pub fn new_distfunction2d(
         theOther: &crate::ffi::GCPnts_DistFunction2d,
     ) -> crate::OwnedPtr<Self> {
@@ -457,6 +487,7 @@ impl DistFunction2d {
         }
     }
 
+    /// **Source:** `GCPnts_DistFunction2d.hxx`:34 - `GCPnts_DistFunction2d::Value()`
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         unsafe { crate::ffi::GCPnts_DistFunction2d_value(self as *mut Self, X, F) }
     }
@@ -477,6 +508,7 @@ impl DistFunction2d {
     }
 }
 
+/// **Source:** `GCPnts_DistFunction2d.hxx`:49 - `GCPnts_DistFunction2dMV`
 /// The same as class GCPnts_DistFunction2d,
 /// but it can be used in minimization algorithms that
 /// requires multi variable function
@@ -489,6 +521,7 @@ unsafe impl crate::CppDeletable for DistFunction2dMV {
 }
 
 impl DistFunction2dMV {
+    /// **Source:** `GCPnts_DistFunction2d.hxx`:52 - `GCPnts_DistFunction2dMV::GCPnts_DistFunction2dMV()`
     pub fn new_distfunction2d(
         theCurvLinDist: &mut crate::ffi::GCPnts_DistFunction2d,
     ) -> crate::OwnedPtr<Self> {
@@ -499,6 +532,7 @@ impl DistFunction2dMV {
         }
     }
 
+    /// **Source:** `GCPnts_DistFunction2d.hxx`:56 - `GCPnts_DistFunction2dMV::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::GCPnts_DistFunction2dMV_nb_variables(self as *const Self) }
     }
@@ -529,6 +563,7 @@ impl DistFunction2dMV {
 // From GCPnts_QuasiUniformAbscissa.hxx
 // ========================
 
+/// **Source:** `GCPnts_QuasiUniformAbscissa.hxx`:31 - `GCPnts_QuasiUniformAbscissa`
 /// This class provides an algorithm to compute a uniform abscissa
 /// distribution of points on a curve, i.e. a sequence of equidistant points.
 /// The distance between two consecutive points is measured along the curve.
@@ -543,12 +578,14 @@ unsafe impl crate::CppDeletable for QuasiUniformAbscissa {
 }
 
 impl QuasiUniformAbscissa {
+    /// **Source:** `GCPnts_QuasiUniformAbscissa.hxx`:38 - `GCPnts_QuasiUniformAbscissa::GCPnts_QuasiUniformAbscissa()`
     /// Constructs an empty algorithm.
     /// To define the problem to be solved, use the function Initialize.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCPnts_QuasiUniformAbscissa_ctor()) }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformAbscissa.hxx`:43 - `GCPnts_QuasiUniformAbscissa::GCPnts_QuasiUniformAbscissa()`
     /// Computes a uniform abscissa distribution of points
     /// -   on the curve where Abscissa is the curvilinear distance between
     /// two consecutive points of the distribution.
@@ -564,6 +601,7 @@ impl QuasiUniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformAbscissa.hxx`:75 - `GCPnts_QuasiUniformAbscissa::GCPnts_QuasiUniformAbscissa()`
     /// Computes a uniform abscissa distribution of points
     /// on the part of curve limited by the two parameter values theU1 and theU2,
     /// where Abscissa is the curvilinear distance between
@@ -609,6 +647,7 @@ impl QuasiUniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformAbscissa.hxx`:98 - `GCPnts_QuasiUniformAbscissa::GCPnts_QuasiUniformAbscissa()`
     /// Computes a uniform abscissa distribution of points on the 2D curve.
     /// @param[in] theC  input 2D curve
     /// @param[in] theNbPoints  defines the number of desired points
@@ -624,6 +663,7 @@ impl QuasiUniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformAbscissa.hxx`:106 - `GCPnts_QuasiUniformAbscissa::GCPnts_QuasiUniformAbscissa()`
     /// Computes a Uniform abscissa distribution of points on a part of the 2D curve.
     /// @param[in] theC  input 2D curve
     /// @param[in] theNbPoints  defines the number of desired points
@@ -647,6 +687,7 @@ impl QuasiUniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformAbscissa.hxx`:83 - `GCPnts_QuasiUniformAbscissa::Initialize()`
     /// Initialize the algorithms with 3D curve and target number of points.
     /// @param[in] theC  input 3D curve
     /// @param[in] theNbPoints  defines the number of desired points
@@ -660,6 +701,7 @@ impl QuasiUniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformAbscissa.hxx`:90 - `GCPnts_QuasiUniformAbscissa::Initialize()`
     /// Initialize the algorithms with 3D curve, target number of points and curve parameter range.
     /// @param[in] theC  input 3D curve
     /// @param[in] theNbPoints  defines the number of desired points
@@ -683,6 +725,7 @@ impl QuasiUniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformAbscissa.hxx`:114 - `GCPnts_QuasiUniformAbscissa::Initialize()`
     /// Initialize the algorithms with 2D curve and target number of points.
     /// @param[in] theC  input 2D curve
     /// @param[in] theNbPoints  defines the number of desired points
@@ -700,6 +743,7 @@ impl QuasiUniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformAbscissa.hxx`:122 - `GCPnts_QuasiUniformAbscissa::Initialize()`
     /// Initialize the algorithms with 2D curve, target number of points and curve parameter range.
     /// @param[in] theC  input 2D curve
     /// @param[in] theNbPoints  defines the number of desired points
@@ -723,6 +767,7 @@ impl QuasiUniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformAbscissa.hxx`:131 - `GCPnts_QuasiUniformAbscissa::IsDone()`
     /// Returns true if the computation was successful.
     /// IsDone is a protection against:
     /// -   non-convergence of the algorithm
@@ -731,6 +776,7 @@ impl QuasiUniformAbscissa {
         unsafe { crate::ffi::GCPnts_QuasiUniformAbscissa_is_done(self as *const Self) }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformAbscissa.hxx`:145 - `GCPnts_QuasiUniformAbscissa::NbPoints()`
     /// Returns the number of points of the distribution
     /// computed by this algorithm.
     /// This value is either:
@@ -747,6 +793,7 @@ impl QuasiUniformAbscissa {
         unsafe { crate::ffi::GCPnts_QuasiUniformAbscissa_nb_points(self as *const Self) }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformAbscissa.hxx`:161 - `GCPnts_QuasiUniformAbscissa::Parameter()`
     /// Returns the parameter of the point of index Index in
     /// the distribution computed by this algorithm.
     /// Warning
@@ -766,6 +813,7 @@ impl QuasiUniformAbscissa {
 // From GCPnts_QuasiUniformDeflection.hxx
 // ========================
 
+/// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:40 - `GCPnts_QuasiUniformDeflection`
 /// This class computes a distribution of points on a curve.
 /// The points may respect the deflection.
 /// The algorithm is not based on the classical prediction (with second derivative of curve),
@@ -786,12 +834,14 @@ unsafe impl crate::CppDeletable for QuasiUniformDeflection {
 }
 
 impl QuasiUniformDeflection {
+    /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:47 - `GCPnts_QuasiUniformDeflection::GCPnts_QuasiUniformDeflection()`
     /// Constructs an empty algorithm.
     /// To define the problem to be solved, use the function Initialize().
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCPnts_QuasiUniformDeflection_ctor()) }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:50 - `GCPnts_QuasiUniformDeflection::GCPnts_QuasiUniformDeflection()`
     /// Computes a QuasiUniform Deflection distribution of points on the Curve.
     pub fn new_curve_real_shape(
         theC: &crate::ffi::Adaptor3d_Curve,
@@ -809,6 +859,7 @@ impl QuasiUniformDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:55 - `GCPnts_QuasiUniformDeflection::GCPnts_QuasiUniformDeflection()`
     /// Computes a QuasiUniform Deflection distribution of points on the Curve.
     pub fn new_curve2d_real_shape(
         theC: &crate::ffi::Adaptor2d_Curve2d,
@@ -826,6 +877,7 @@ impl QuasiUniformDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:60 - `GCPnts_QuasiUniformDeflection::GCPnts_QuasiUniformDeflection()`
     /// Computes a QuasiUniform Deflection distribution of points on a part of the Curve.
     pub fn new_curve_real3_shape(
         theC: &crate::ffi::Adaptor3d_Curve,
@@ -847,6 +899,7 @@ impl QuasiUniformDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:106 - `GCPnts_QuasiUniformDeflection::GCPnts_QuasiUniformDeflection()`
     /// Computes a QuasiUniform Deflection distribution of points on a part of the Curve.
     /// This and the above algorithms compute a distribution of points:
     /// -   on the curve theC, or
@@ -907,6 +960,7 @@ impl QuasiUniformDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:113 - `GCPnts_QuasiUniformDeflection::Initialize()`
     /// Initialize the algorithms with 3D curve and deflection.
     pub fn initialize_curve_real_shape(
         &mut self,
@@ -924,6 +978,7 @@ impl QuasiUniformDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:118 - `GCPnts_QuasiUniformDeflection::Initialize()`
     /// Initialize the algorithms with 2D curve and deflection.
     pub fn initialize_curve2d_real_shape(
         &mut self,
@@ -941,6 +996,7 @@ impl QuasiUniformDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:123 - `GCPnts_QuasiUniformDeflection::Initialize()`
     /// Initialize the algorithms with 3D curve, deflection and parameter range.
     pub fn initialize_curve_real3_shape(
         &mut self,
@@ -962,6 +1018,7 @@ impl QuasiUniformDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:170 - `GCPnts_QuasiUniformDeflection::Initialize()`
     /// Initialize the algorithms with theC, theDeflection, theU1, theU2.
     /// This and the above algorithms initialize (or reinitialize)
     /// this algorithm and compute a distribution of points:
@@ -1023,6 +1080,7 @@ impl QuasiUniformDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:180 - `GCPnts_QuasiUniformDeflection::IsDone()`
     /// Returns true if the computation was successful.
     /// IsDone is a protection against:
     /// -   non-convergence of the algorithm
@@ -1031,6 +1089,7 @@ impl QuasiUniformDeflection {
         unsafe { crate::ffi::GCPnts_QuasiUniformDeflection_is_done(self as *const Self) }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:187 - `GCPnts_QuasiUniformDeflection::NbPoints()`
     /// Returns the number of points of the distribution
     /// computed by this algorithm.
     /// Exceptions
@@ -1040,6 +1099,7 @@ impl QuasiUniformDeflection {
         unsafe { crate::ffi::GCPnts_QuasiUniformDeflection_nb_points(self as *const Self) }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:203 - `GCPnts_QuasiUniformDeflection::Parameter()`
     /// Returns the parameter of the point of index Index in
     /// the distribution computed by this algorithm.
     /// Warning
@@ -1054,6 +1114,7 @@ impl QuasiUniformDeflection {
         unsafe { crate::ffi::GCPnts_QuasiUniformDeflection_parameter(self as *const Self, Index) }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:219 - `GCPnts_QuasiUniformDeflection::Value()`
     /// Returns the point of index Index in the distribution
     /// computed by this algorithm.
     /// Warning
@@ -1073,6 +1134,7 @@ impl QuasiUniformDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_QuasiUniformDeflection.hxx`:229 - `GCPnts_QuasiUniformDeflection::Deflection()`
     /// Returns the deflection between the curve and the
     /// polygon resulting from the points of the distribution
     /// computed by this algorithm.
@@ -1090,6 +1152,7 @@ impl QuasiUniformDeflection {
 // From GCPnts_TangentialDeflection.hxx
 // ========================
 
+/// **Source:** `GCPnts_TangentialDeflection.hxx`:62 - `GCPnts_TangentialDeflection`
 /// Computes a set of  points on a curve from package
 /// Adaptor3d  such  as between  two successive   points
 /// P1(u1)and P2(u2) :
@@ -1133,12 +1196,14 @@ unsafe impl crate::CppDeletable for TangentialDeflection {
 }
 
 impl TangentialDeflection {
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:69 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
     /// Empty constructor.
     /// @sa Initialize()
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCPnts_TangentialDeflection_ctor()) }
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:78 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
     /// Constructor for 3D curve.
     /// @param[in] theC  3d curve
     /// @param[in] theAngularDeflection    angular deflection in radians
@@ -1168,6 +1233,7 @@ impl TangentialDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:94 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
     /// Constructor for 3D curve with restricted range.
     /// @param[in] theC  3d curve
     /// @param[in] theFirstParameter  first parameter on curve
@@ -1203,6 +1269,7 @@ impl TangentialDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:110 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
     /// Constructor for 2D curve.
     /// @param[in] theC  2d curve
     /// @param[in] theAngularDeflection    angular deflection in radians
@@ -1232,6 +1299,7 @@ impl TangentialDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:126 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
     /// Constructor for 2D curve with restricted range.
     /// @param[in] theC  2d curve
     /// @param[in] theFirstParameter  first parameter on curve
@@ -1267,6 +1335,7 @@ impl TangentialDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:78 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
     /// Constructor for 3D curve.
     /// @param[in] theC  3d curve
     /// @param[in] theAngularDeflection    angular deflection in radians
@@ -1291,6 +1360,7 @@ impl TangentialDeflection {
         )
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:78 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
     /// Constructor for 3D curve.
     /// @param[in] theC  3d curve
     /// @param[in] theAngularDeflection    angular deflection in radians
@@ -1314,6 +1384,7 @@ impl TangentialDeflection {
         )
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:78 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
     /// Constructor for 3D curve.
     /// @param[in] theC  3d curve
     /// @param[in] theAngularDeflection    angular deflection in radians
@@ -1336,6 +1407,7 @@ impl TangentialDeflection {
         )
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:94 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
     /// Constructor for 3D curve with restricted range.
     /// @param[in] theC  3d curve
     /// @param[in] theFirstParameter  first parameter on curve
@@ -1366,6 +1438,7 @@ impl TangentialDeflection {
         )
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:94 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
     /// Constructor for 3D curve with restricted range.
     /// @param[in] theC  3d curve
     /// @param[in] theFirstParameter  first parameter on curve
@@ -1395,6 +1468,7 @@ impl TangentialDeflection {
         )
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:94 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
     /// Constructor for 3D curve with restricted range.
     /// @param[in] theC  3d curve
     /// @param[in] theFirstParameter  first parameter on curve
@@ -1423,6 +1497,7 @@ impl TangentialDeflection {
         )
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:110 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
     /// Constructor for 2D curve.
     /// @param[in] theC  2d curve
     /// @param[in] theAngularDeflection    angular deflection in radians
@@ -1447,6 +1522,7 @@ impl TangentialDeflection {
         )
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:110 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
     /// Constructor for 2D curve.
     /// @param[in] theC  2d curve
     /// @param[in] theAngularDeflection    angular deflection in radians
@@ -1470,6 +1546,7 @@ impl TangentialDeflection {
         )
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:110 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
     /// Constructor for 2D curve.
     /// @param[in] theC  2d curve
     /// @param[in] theAngularDeflection    angular deflection in radians
@@ -1492,6 +1569,7 @@ impl TangentialDeflection {
         )
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:126 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
     /// Constructor for 2D curve with restricted range.
     /// @param[in] theC  2d curve
     /// @param[in] theFirstParameter  first parameter on curve
@@ -1522,6 +1600,7 @@ impl TangentialDeflection {
         )
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:126 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
     /// Constructor for 2D curve with restricted range.
     /// @param[in] theC  2d curve
     /// @param[in] theFirstParameter  first parameter on curve
@@ -1551,6 +1630,7 @@ impl TangentialDeflection {
         )
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:126 - `GCPnts_TangentialDeflection::GCPnts_TangentialDeflection()`
     /// Constructor for 2D curve with restricted range.
     /// @param[in] theC  2d curve
     /// @param[in] theFirstParameter  first parameter on curve
@@ -1579,6 +1659,7 @@ impl TangentialDeflection {
         )
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:142 - `GCPnts_TangentialDeflection::Initialize()`
     /// Initialize algorithm for 3D curve.
     /// @param[in] theC  3d curve
     /// @param[in] theAngularDeflection    angular deflection in radians
@@ -1608,6 +1689,7 @@ impl TangentialDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:158 - `GCPnts_TangentialDeflection::Initialize()`
     /// Initialize algorithm for 3D curve with restricted range.
     /// @param[in] theC  3d curve
     /// @param[in] theFirstParameter  first parameter on curve
@@ -1643,6 +1725,7 @@ impl TangentialDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:174 - `GCPnts_TangentialDeflection::Initialize()`
     /// Initialize algorithm for 2D curve.
     /// @param[in] theC  2d curve
     /// @param[in] theAngularDeflection    angular deflection in radians
@@ -1672,6 +1755,7 @@ impl TangentialDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:190 - `GCPnts_TangentialDeflection::Initialize()`
     /// Initialize algorithm for 2D curve with restricted range.
     /// @param[in] theC  2d curve
     /// @param[in] theFirstParameter  first parameter on curve
@@ -1707,6 +1791,7 @@ impl TangentialDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:202 - `GCPnts_TangentialDeflection::AddPoint()`
     /// Add point to already calculated points (or replace existing)
     /// Returns index of new added point
     /// or founded with parametric tolerance (replaced if theIsReplace is true)
@@ -1726,14 +1811,17 @@ impl TangentialDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:206 - `GCPnts_TangentialDeflection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         unsafe { crate::ffi::GCPnts_TangentialDeflection_nb_points(self as *const Self) }
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:208 - `GCPnts_TangentialDeflection::Parameter()`
     pub fn parameter(&self, I: i32) -> f64 {
         unsafe { crate::ffi::GCPnts_TangentialDeflection_parameter(self as *const Self, I) }
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:210 - `GCPnts_TangentialDeflection::Value()`
     pub fn value(&self, I: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GCPnts_TangentialDeflection_value(
@@ -1743,6 +1831,7 @@ impl TangentialDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_TangentialDeflection.hxx`:213 - `GCPnts_TangentialDeflection::ArcAngularStep()`
     /// Computes angular step for the arc using the given parameters.
     pub fn arc_angular_step(
         theRadius: f64,
@@ -1765,6 +1854,7 @@ impl TangentialDeflection {
 // From GCPnts_UniformAbscissa.hxx
 // ========================
 
+/// **Source:** `GCPnts_UniformAbscissa.hxx`:28 - `GCPnts_UniformAbscissa`
 /// This class allows to compute a uniform distribution of points
 /// on a curve (i.e. the points will all be equally distant).
 pub use crate::ffi::GCPnts_UniformAbscissa as UniformAbscissa;
@@ -1776,11 +1866,13 @@ unsafe impl crate::CppDeletable for UniformAbscissa {
 }
 
 impl UniformAbscissa {
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:34 - `GCPnts_UniformAbscissa::GCPnts_UniformAbscissa()`
     /// creation of a indefinite UniformAbscissa
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCPnts_UniformAbscissa_ctor()) }
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:41 - `GCPnts_UniformAbscissa::GCPnts_UniformAbscissa()`
     /// Computes a uniform abscissa distribution of points on the 3D curve.
     /// @param[in] theC  input curve
     /// @param[in] theAbscissa  abscissa (distance between two consecutive points)
@@ -1800,6 +1892,7 @@ impl UniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:52 - `GCPnts_UniformAbscissa::GCPnts_UniformAbscissa()`
     /// Computes a Uniform abscissa distribution of points on a part of the 3D Curve.
     /// @param[in] theC  input curve
     /// @param[in] theAbscissa  abscissa (distance between two consecutive points)
@@ -1825,6 +1918,7 @@ impl UniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:63 - `GCPnts_UniformAbscissa::GCPnts_UniformAbscissa()`
     /// Computes a uniform abscissa distribution of points on the 3D Curve.
     /// @param[in] theC  input curve
     /// @param[in] theNbPoints  defines the number of desired points
@@ -1844,6 +1938,7 @@ impl UniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:74 - `GCPnts_UniformAbscissa::GCPnts_UniformAbscissa()`
     /// Computes a Uniform abscissa distribution of points on a part of the 3D Curve.
     /// @param[in] theC  input curve
     /// @param[in] theNbPoints  defines the number of desired points
@@ -1869,6 +1964,7 @@ impl UniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:130 - `GCPnts_UniformAbscissa::GCPnts_UniformAbscissa()`
     /// Computes a uniform abscissa distribution of points on the 2D curve.
     /// @param[in] theC  input curve
     /// @param[in] theAbscissa  abscissa (distance between two consecutive points)
@@ -1888,6 +1984,7 @@ impl UniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:141 - `GCPnts_UniformAbscissa::GCPnts_UniformAbscissa()`
     /// Computes a Uniform abscissa distribution of points on a part of the 2D Curve.
     /// @param[in] theC  input curve
     /// @param[in] theAbscissa  abscissa (distance between two consecutive points)
@@ -1913,6 +2010,7 @@ impl UniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:152 - `GCPnts_UniformAbscissa::GCPnts_UniformAbscissa()`
     /// Computes a uniform abscissa distribution of points on the 2D Curve.
     /// @param[in] theC  input curve
     /// @param[in] theNbPoints  defines the number of desired points
@@ -1932,6 +2030,7 @@ impl UniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:163 - `GCPnts_UniformAbscissa::GCPnts_UniformAbscissa()`
     /// Computes a Uniform abscissa distribution of points on a part of the 2D Curve.
     /// @param[in] theC  input curve
     /// @param[in] theNbPoints  defines the number of desired points
@@ -1957,6 +2056,7 @@ impl UniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:41 - `GCPnts_UniformAbscissa::GCPnts_UniformAbscissa()`
     /// Computes a uniform abscissa distribution of points on the 3D curve.
     /// @param[in] theC  input curve
     /// @param[in] theAbscissa  abscissa (distance between two consecutive points)
@@ -1969,6 +2069,7 @@ impl UniformAbscissa {
         Self::new_curve_real2(theC, theAbscissa, -1.0)
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:52 - `GCPnts_UniformAbscissa::GCPnts_UniformAbscissa()`
     /// Computes a Uniform abscissa distribution of points on a part of the 3D Curve.
     /// @param[in] theC  input curve
     /// @param[in] theAbscissa  abscissa (distance between two consecutive points)
@@ -1985,6 +2086,7 @@ impl UniformAbscissa {
         Self::new_curve_real4(theC, theAbscissa, theU1, theU2, -1.0)
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:63 - `GCPnts_UniformAbscissa::GCPnts_UniformAbscissa()`
     /// Computes a uniform abscissa distribution of points on the 3D Curve.
     /// @param[in] theC  input curve
     /// @param[in] theNbPoints  defines the number of desired points
@@ -1997,6 +2099,7 @@ impl UniformAbscissa {
         Self::new_curve_int_real(theC, theNbPoints, -1.0)
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:74 - `GCPnts_UniformAbscissa::GCPnts_UniformAbscissa()`
     /// Computes a Uniform abscissa distribution of points on a part of the 3D Curve.
     /// @param[in] theC  input curve
     /// @param[in] theNbPoints  defines the number of desired points
@@ -2013,6 +2116,7 @@ impl UniformAbscissa {
         Self::new_curve_int_real3(theC, theNbPoints, theU1, theU2, -1.0)
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:130 - `GCPnts_UniformAbscissa::GCPnts_UniformAbscissa()`
     /// Computes a uniform abscissa distribution of points on the 2D curve.
     /// @param[in] theC  input curve
     /// @param[in] theAbscissa  abscissa (distance between two consecutive points)
@@ -2025,6 +2129,7 @@ impl UniformAbscissa {
         Self::new_curve2d_real2(theC, theAbscissa, -1.0)
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:141 - `GCPnts_UniformAbscissa::GCPnts_UniformAbscissa()`
     /// Computes a Uniform abscissa distribution of points on a part of the 2D Curve.
     /// @param[in] theC  input curve
     /// @param[in] theAbscissa  abscissa (distance between two consecutive points)
@@ -2041,6 +2146,7 @@ impl UniformAbscissa {
         Self::new_curve2d_real4(theC, theAbscissa, theU1, theU2, -1.0)
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:152 - `GCPnts_UniformAbscissa::GCPnts_UniformAbscissa()`
     /// Computes a uniform abscissa distribution of points on the 2D Curve.
     /// @param[in] theC  input curve
     /// @param[in] theNbPoints  defines the number of desired points
@@ -2053,6 +2159,7 @@ impl UniformAbscissa {
         Self::new_curve2d_int_real(theC, theNbPoints, -1.0)
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:163 - `GCPnts_UniformAbscissa::GCPnts_UniformAbscissa()`
     /// Computes a Uniform abscissa distribution of points on a part of the 2D Curve.
     /// @param[in] theC  input curve
     /// @param[in] theNbPoints  defines the number of desired points
@@ -2069,6 +2176,7 @@ impl UniformAbscissa {
         Self::new_curve2d_int_real3(theC, theNbPoints, theU1, theU2, -1.0)
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:85 - `GCPnts_UniformAbscissa::Initialize()`
     /// Initialize the algorithms with 3D curve, Abscissa, and Tolerance.
     /// @param[in] theC  input curve
     /// @param[in] theAbscissa  abscissa (distance between two consecutive points)
@@ -2090,6 +2198,7 @@ impl UniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:96 - `GCPnts_UniformAbscissa::Initialize()`
     /// Initialize the algorithms with 3D curve, Abscissa, Tolerance, and parameter range.
     /// @param[in] theC  input curve
     /// @param[in] theAbscissa  abscissa (distance between two consecutive points)
@@ -2117,6 +2226,7 @@ impl UniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:107 - `GCPnts_UniformAbscissa::Initialize()`
     /// Initialize the algorithms with 3D curve, number of points, and Tolerance.
     /// @param[in] theC  input curve
     /// @param[in] theNbPoints  defines the number of desired points
@@ -2138,6 +2248,7 @@ impl UniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:118 - `GCPnts_UniformAbscissa::Initialize()`
     /// Initialize the algorithms with 3D curve, number of points, Tolerance, and parameter range.
     /// @param[in] theC  input curve
     /// @param[in] theNbPoints  defines the number of desired points
@@ -2165,6 +2276,7 @@ impl UniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:174 - `GCPnts_UniformAbscissa::Initialize()`
     /// Initialize the algorithms with 2D curve, Abscissa, and Tolerance.
     /// @param[in] theC  input curve
     /// @param[in] theAbscissa  abscissa (distance between two consecutive points)
@@ -2186,6 +2298,7 @@ impl UniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:185 - `GCPnts_UniformAbscissa::Initialize()`
     /// Initialize the algorithms with 2D curve, Abscissa, Tolerance, and parameter range.
     /// @param[in] theC  input curve
     /// @param[in] theAbscissa  abscissa (distance between two consecutive points)
@@ -2213,6 +2326,7 @@ impl UniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:196 - `GCPnts_UniformAbscissa::Initialize()`
     /// Initialize the algorithms with 2D curve, number of points, and Tolerance.
     /// @param[in] theC  input curve
     /// @param[in] theNbPoints  defines the number of desired points
@@ -2234,6 +2348,7 @@ impl UniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:207 - `GCPnts_UniformAbscissa::Initialize()`
     /// Initialize the algorithms with 2D curve, number of points, Tolerance, and parameter range.
     /// @param[in] theC  input curve
     /// @param[in] theNbPoints  defines the number of desired points
@@ -2261,19 +2376,23 @@ impl UniformAbscissa {
         }
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:213 - `GCPnts_UniformAbscissa::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GCPnts_UniformAbscissa_is_done(self as *const Self) }
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:215 - `GCPnts_UniformAbscissa::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         unsafe { crate::ffi::GCPnts_UniformAbscissa_nb_points(self as *const Self) }
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:222 - `GCPnts_UniformAbscissa::Parameter()`
     /// returns the computed Parameter of index <Index>.
     pub fn parameter(&self, Index: i32) -> f64 {
         unsafe { crate::ffi::GCPnts_UniformAbscissa_parameter(self as *const Self, Index) }
     }
 
+    /// **Source:** `GCPnts_UniformAbscissa.hxx`:229 - `GCPnts_UniformAbscissa::Abscissa()`
     /// Returns the current abscissa, i.e. the distance between two consecutive points.
     pub fn abscissa(&self) -> f64 {
         unsafe { crate::ffi::GCPnts_UniformAbscissa_abscissa(self as *const Self) }
@@ -2284,6 +2403,7 @@ impl UniformAbscissa {
 // From GCPnts_UniformDeflection.hxx
 // ========================
 
+/// **Source:** `GCPnts_UniformDeflection.hxx`:36 - `GCPnts_UniformDeflection`
 /// Provides an algorithm to compute a distribution of
 /// points on a 'C2' continuous curve.
 /// The algorithm respects a criterion of maximum deflection between
@@ -2301,12 +2421,14 @@ unsafe impl crate::CppDeletable for UniformDeflection {
 }
 
 impl UniformDeflection {
+    /// **Source:** `GCPnts_UniformDeflection.hxx`:43 - `GCPnts_UniformDeflection::GCPnts_UniformDeflection()`
     /// Constructs an empty algorithm.
     /// To define the problem to be solved, use the function Initialize.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCPnts_UniformDeflection_ctor()) }
     }
 
+    /// **Source:** `GCPnts_UniformDeflection.hxx`:49 - `GCPnts_UniformDeflection::GCPnts_UniformDeflection()`
     /// Computes a uniform Deflection distribution of points on the curve.
     /// @param[in] theC  input 3D curve
     /// @param[in] theDeflection  target deflection
@@ -2325,6 +2447,7 @@ impl UniformDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_UniformDeflection.hxx`:57 - `GCPnts_UniformDeflection::GCPnts_UniformDeflection()`
     /// Computes a uniform Deflection distribution of points on the curve.
     /// @param[in] theC  input 2D curve
     /// @param[in] theDeflection  target deflection
@@ -2343,6 +2466,7 @@ impl UniformDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_UniformDeflection.hxx`:67 - `GCPnts_UniformDeflection::GCPnts_UniformDeflection()`
     /// Computes a Uniform Deflection distribution of points on a part of the curve.
     /// @param[in] theC  input 3D curve
     /// @param[in] theDeflection  target deflection
@@ -2367,6 +2491,7 @@ impl UniformDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_UniformDeflection.hxx`:79 - `GCPnts_UniformDeflection::GCPnts_UniformDeflection()`
     /// Computes a Uniform Deflection distribution of points on a part of the curve.
     /// @param[in] theC  input 2D curve
     /// @param[in] theDeflection  target deflection
@@ -2391,6 +2516,7 @@ impl UniformDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_UniformDeflection.hxx`:49 - `GCPnts_UniformDeflection::GCPnts_UniformDeflection()`
     /// Computes a uniform Deflection distribution of points on the curve.
     /// @param[in] theC  input 3D curve
     /// @param[in] theDeflection  target deflection
@@ -2402,6 +2528,7 @@ impl UniformDeflection {
         Self::new_curve_real_bool(theC, theDeflection, true)
     }
 
+    /// **Source:** `GCPnts_UniformDeflection.hxx`:57 - `GCPnts_UniformDeflection::GCPnts_UniformDeflection()`
     /// Computes a uniform Deflection distribution of points on the curve.
     /// @param[in] theC  input 2D curve
     /// @param[in] theDeflection  target deflection
@@ -2413,6 +2540,7 @@ impl UniformDeflection {
         Self::new_curve2d_real_bool(theC, theDeflection, true)
     }
 
+    /// **Source:** `GCPnts_UniformDeflection.hxx`:67 - `GCPnts_UniformDeflection::GCPnts_UniformDeflection()`
     /// Computes a Uniform Deflection distribution of points on a part of the curve.
     /// @param[in] theC  input 3D curve
     /// @param[in] theDeflection  target deflection
@@ -2428,6 +2556,7 @@ impl UniformDeflection {
         Self::new_curve_real3_bool(theC, theDeflection, theU1, theU2, true)
     }
 
+    /// **Source:** `GCPnts_UniformDeflection.hxx`:79 - `GCPnts_UniformDeflection::GCPnts_UniformDeflection()`
     /// Computes a Uniform Deflection distribution of points on a part of the curve.
     /// @param[in] theC  input 2D curve
     /// @param[in] theDeflection  target deflection
@@ -2443,6 +2572,7 @@ impl UniformDeflection {
         Self::new_curve2d_real3_bool(theC, theDeflection, theU1, theU2, true)
     }
 
+    /// **Source:** `GCPnts_UniformDeflection.hxx`:86 - `GCPnts_UniformDeflection::Initialize()`
     /// Initialize the algorithms with 3D curve and deflection.
     pub fn initialize_curve_real_bool(
         &mut self,
@@ -2460,6 +2590,7 @@ impl UniformDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_UniformDeflection.hxx`:91 - `GCPnts_UniformDeflection::Initialize()`
     /// Initialize the algorithms with 2D curve and deflection.
     pub fn initialize_curve2d_real_bool(
         &mut self,
@@ -2477,6 +2608,7 @@ impl UniformDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_UniformDeflection.hxx`:96 - `GCPnts_UniformDeflection::Initialize()`
     /// Initialize the algorithms with 3D curve, deflection, parameter range.
     pub fn initialize_curve_real3_bool(
         &mut self,
@@ -2498,6 +2630,7 @@ impl UniformDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_UniformDeflection.hxx`:140 - `GCPnts_UniformDeflection::Initialize()`
     /// Initialize the algorithms with curve, deflection, parameter range.
     /// This and the above methods initialize (or reinitialize) this algorithm and
     /// compute a distribution of points:
@@ -2556,6 +2689,7 @@ impl UniformDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_UniformDeflection.hxx`:150 - `GCPnts_UniformDeflection::IsDone()`
     /// Returns true if the computation was successful.
     /// IsDone is a protection against:
     /// -   non-convergence of the algorithm
@@ -2564,6 +2698,7 @@ impl UniformDeflection {
         unsafe { crate::ffi::GCPnts_UniformDeflection_is_done(self as *const Self) }
     }
 
+    /// **Source:** `GCPnts_UniformDeflection.hxx`:157 - `GCPnts_UniformDeflection::NbPoints()`
     /// Returns the number of points of the distribution
     /// computed by this algorithm.
     /// Exceptions
@@ -2573,6 +2708,7 @@ impl UniformDeflection {
         unsafe { crate::ffi::GCPnts_UniformDeflection_nb_points(self as *const Self) }
     }
 
+    /// **Source:** `GCPnts_UniformDeflection.hxx`:173 - `GCPnts_UniformDeflection::Parameter()`
     /// Returns the parameter of the point of index Index in
     /// the distribution computed by this algorithm.
     /// Warning
@@ -2587,6 +2723,7 @@ impl UniformDeflection {
         unsafe { crate::ffi::GCPnts_UniformDeflection_parameter(self as *const Self, Index) }
     }
 
+    /// **Source:** `GCPnts_UniformDeflection.hxx`:189 - `GCPnts_UniformDeflection::Value()`
     /// Returns the point of index Index in the distribution
     /// computed by this algorithm.
     /// Warning
@@ -2606,6 +2743,7 @@ impl UniformDeflection {
         }
     }
 
+    /// **Source:** `GCPnts_UniformDeflection.hxx`:199 - `GCPnts_UniformDeflection::Deflection()`
     /// Returns the deflection between the curve and the
     /// polygon resulting from the points of the distribution
     /// computed by this algorithm.

@@ -68,6 +68,7 @@ impl TryFrom<i32> for Situation {
 // From IntSurf_PntOn2S.hxx
 // ========================
 
+/// **Source:** `IntSurf_PntOn2S.hxx`:32 - `IntSurf_PntOn2S`
 /// This class defines the geometric information
 /// for an intersection point between 2 surfaces :
 /// The coordinates ( Pnt from gp ), and two
@@ -81,16 +82,19 @@ unsafe impl crate::CppDeletable for PntOn2S {
 }
 
 impl PntOn2S {
+    /// **Source:** `IntSurf_PntOn2S.hxx`:38 - `IntSurf_PntOn2S::IntSurf_PntOn2S()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_PntOn2S_ctor()) }
     }
 
+    /// **Source:** `IntSurf_PntOn2S.hxx`:41 - `IntSurf_PntOn2S::SetValue()`
     /// Sets the value of the point in 3d space.
     pub fn set_value_pnt(&mut self, Pt: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::IntSurf_PntOn2S_set_value_pnt(self as *mut Self, Pt) }
     }
 
+    /// **Source:** `IntSurf_PntOn2S.hxx`:45 - `IntSurf_PntOn2S::SetValue()`
     /// Sets the values of the point in 3d space, and
     /// in the parametric space of one of the surface.
     pub fn set_value_pnt_bool_real2(
@@ -111,6 +115,7 @@ impl PntOn2S {
         }
     }
 
+    /// **Source:** `IntSurf_PntOn2S.hxx`:52 - `IntSurf_PntOn2S::SetValue()`
     /// Sets the values of the point in 3d space, and
     /// in the parametric space of each surface.
     pub fn set_value_pnt_real4(
@@ -126,6 +131,7 @@ impl PntOn2S {
         }
     }
 
+    /// **Source:** `IntSurf_PntOn2S.hxx`:60 - `IntSurf_PntOn2S::SetValue()`
     /// Set the values of the point in the parametric
     /// space of one of the surface.
     pub fn set_value_bool_real2(&mut self, OnFirst: bool, U: f64, V: f64) {
@@ -134,17 +140,20 @@ impl PntOn2S {
         }
     }
 
+    /// **Source:** `IntSurf_PntOn2S.hxx`:66 - `IntSurf_PntOn2S::SetValue()`
     /// Set the values of the point in the parametric
     /// space of one of the surface.
     pub fn set_value_real4(&mut self, U1: f64, V1: f64, U2: f64, V2: f64) {
         unsafe { crate::ffi::IntSurf_PntOn2S_set_value_real4(self as *mut Self, U1, V1, U2, V2) }
     }
 
+    /// **Source:** `IntSurf_PntOn2S.hxx`:72 - `IntSurf_PntOn2S::Value()`
     /// Returns the point in 3d space.
     pub fn value(&self) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::IntSurf_PntOn2S_value(self as *const Self)) }
     }
 
+    /// **Source:** `IntSurf_PntOn2S.hxx`:75 - `IntSurf_PntOn2S::ValueOnSurface()`
     /// Returns the point in 2d space of one of the surfaces.
     pub fn value_on_surface(&self, OnFirst: bool) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
         unsafe {
@@ -155,16 +164,19 @@ impl PntOn2S {
         }
     }
 
+    /// **Source:** `IntSurf_PntOn2S.hxx`:78 - `IntSurf_PntOn2S::ParametersOnS1()`
     /// Returns the parameters of the point on the first surface.
     pub fn parameters_on_s1(&self, U1: &mut f64, V1: &mut f64) {
         unsafe { crate::ffi::IntSurf_PntOn2S_parameters_on_s1(self as *const Self, U1, V1) }
     }
 
+    /// **Source:** `IntSurf_PntOn2S.hxx`:81 - `IntSurf_PntOn2S::ParametersOnS2()`
     /// Returns the parameters of the point on the second surface.
     pub fn parameters_on_s2(&self, U2: &mut f64, V2: &mut f64) {
         unsafe { crate::ffi::IntSurf_PntOn2S_parameters_on_s2(self as *const Self, U2, V2) }
     }
 
+    /// **Source:** `IntSurf_PntOn2S.hxx`:85 - `IntSurf_PntOn2S::ParametersOnSurface()`
     /// Returns the parameters of the point in the
     /// parametric space of one of the surface.
     pub fn parameters_on_surface(&self, OnFirst: bool, U: &mut f64, V: &mut f64) {
@@ -173,11 +185,13 @@ impl PntOn2S {
         }
     }
 
+    /// **Source:** `IntSurf_PntOn2S.hxx`:90 - `IntSurf_PntOn2S::Parameters()`
     /// Returns the parameters of the point on both surfaces.
     pub fn parameters(&self, U1: &mut f64, V1: &mut f64, U2: &mut f64, V2: &mut f64) {
         unsafe { crate::ffi::IntSurf_PntOn2S_parameters(self as *const Self, U1, V1, U2, V2) }
     }
 
+    /// **Source:** `IntSurf_PntOn2S.hxx`:95 - `IntSurf_PntOn2S::IsSame()`
     /// Returns TRUE if 2D- and 3D-coordinates of theOterPoint are equal to
     /// corresponding coordinates of me (with given tolerance).
     /// If theTol2D < 0.0 we will compare 3D-points only.
@@ -202,6 +216,7 @@ impl PntOn2S {
 // From IntSurf_Transition.hxx
 // ========================
 
+/// **Source:** `IntSurf_Transition.hxx`:31 - `IntSurf_Transition`
 /// Definition of the transition at the intersection
 /// between an intersection line and a restriction curve
 /// on a surface.
@@ -214,11 +229,13 @@ unsafe impl crate::CppDeletable for Transition {
 }
 
 impl Transition {
+    /// **Source:** `IntSurf_Transition.hxx`:37 - `IntSurf_Transition::IntSurf_Transition()`
     /// Empty constructor. Creates an UNDECIDED transition.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Transition_ctor()) }
     }
 
+    /// **Source:** `IntSurf_Transition.hxx`:40 - `IntSurf_Transition::IntSurf_Transition()`
     /// Create a IN or OUT transition
     pub fn new_bool_typetrans(
         Tangent: bool,
@@ -232,6 +249,7 @@ impl Transition {
         }
     }
 
+    /// **Source:** `IntSurf_Transition.hxx`:43 - `IntSurf_Transition::IntSurf_Transition()`
     /// Create a TOUCH transition.
     pub fn new_bool_situation_bool(
         Tangent: bool,
@@ -247,6 +265,7 @@ impl Transition {
         }
     }
 
+    /// **Source:** `IntSurf_Transition.hxx`:48 - `IntSurf_Transition::SetValue()`
     /// Set the values of an IN or OUT transition.
     pub fn set_value_bool_typetrans(&mut self, Tangent: bool, Type: crate::int_surf::TypeTrans) {
         unsafe {
@@ -258,6 +277,7 @@ impl Transition {
         }
     }
 
+    /// **Source:** `IntSurf_Transition.hxx`:51 - `IntSurf_Transition::SetValue()`
     /// Set the values of a TOUCH transition.
     pub fn set_value_bool_situation_bool(
         &mut self,
@@ -275,11 +295,13 @@ impl Transition {
         }
     }
 
+    /// **Source:** `IntSurf_Transition.hxx`:56 - `IntSurf_Transition::SetValue()`
     /// Set the values of an UNDECIDED transition.
     pub fn set_value(&mut self) {
         unsafe { crate::ffi::IntSurf_Transition_set_value(self as *mut Self) }
     }
 
+    /// **Source:** `IntSurf_Transition.hxx`:64 - `IntSurf_Transition::TransitionType()`
     /// Returns the type of Transition (in/out/touch/undecided)
     /// for the arc given by value. This the transition of
     /// the intersection line compared to the Arc of restriction,
@@ -295,6 +317,7 @@ impl Transition {
         }
     }
 
+    /// **Source:** `IntSurf_Transition.hxx`:69 - `IntSurf_Transition::IsTangent()`
     /// Returns TRUE if the point is tangent to the arc
     /// given by Value.
     /// An exception is raised if TransitionType returns UNDECIDED.
@@ -302,6 +325,7 @@ impl Transition {
         unsafe { crate::ffi::IntSurf_Transition_is_tangent(self as *const Self) }
     }
 
+    /// **Source:** `IntSurf_Transition.hxx`:78 - `IntSurf_Transition::Situation()`
     /// Returns a significant value if TransitionType returns
     /// TOUCH. In this case, the function returns :
     /// INSIDE when the intersection line remains inside the Arc,
@@ -318,6 +342,7 @@ impl Transition {
         }
     }
 
+    /// **Source:** `IntSurf_Transition.hxx`:87 - `IntSurf_Transition::IsOpposite()`
     /// returns a significant value if TransitionType returns
     /// TOUCH.
     /// In this case, the function returns true when

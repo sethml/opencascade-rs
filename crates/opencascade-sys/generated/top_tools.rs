@@ -6,7 +6,14 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::TopTools_dummy as dummy;
+/// **Source:** `TopTools.hxx` - `TopTools::Dummy`
+/// This is to bypass an extraction bug. It will force
+/// the  inclusion    of  Standard_Integer.hxx  itself
+/// including Standard_OStream.hxx  at   the   correct
+/// position.
+pub fn dummy(I: i32) {
+    unsafe { crate::ffi::TopTools_dummy(I) }
+}
 
 /// Defined TopTools format version
 /// C++ enum: `TopTools_FormatVersion`
@@ -519,6 +526,7 @@ unsafe impl crate::CppDeletable for SequenceOfShape {
 // From TopTools_HArray1OfListOfShape.hxx
 // ========================
 
+/// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape`
 pub use crate::ffi::TopTools_HArray1OfListOfShape as HArray1OfListOfShape;
 
 unsafe impl crate::CppDeletable for HArray1OfListOfShape {
@@ -528,10 +536,12 @@ unsafe impl crate::CppDeletable for HArray1OfListOfShape {
 }
 
 impl HArray1OfListOfShape {
+    /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape::TopTools_HArray1OfListOfShape()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopTools_HArray1OfListOfShape_ctor()) }
     }
 
+    /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape::TopTools_HArray1OfListOfShape()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopTools_HArray1OfListOfShape_ctor_int2(
@@ -540,6 +550,7 @@ impl HArray1OfListOfShape {
         }
     }
 
+    /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape::TopTools_HArray1OfListOfShape()`
     pub fn new_array1oflistofshape(
         theOther: &crate::ffi::TopTools_Array1OfListOfShape,
     ) -> crate::OwnedPtr<Self> {
@@ -550,14 +561,17 @@ impl HArray1OfListOfShape {
         }
     }
 
+    /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopTools_HArray1OfListOfShape_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TopTools_HArray1OfListOfShape_get_type_name() }
     }
 
+    /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopTools_HArray1OfListOfShape_get_type_descriptor()) }
     }
@@ -598,6 +612,7 @@ impl HandleTopToolsHArray1OfListOfShape {
 // From TopTools_HArray1OfShape.hxx
 // ========================
 
+/// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape`
 pub use crate::ffi::TopTools_HArray1OfShape as HArray1OfShape;
 
 unsafe impl crate::CppDeletable for HArray1OfShape {
@@ -607,10 +622,12 @@ unsafe impl crate::CppDeletable for HArray1OfShape {
 }
 
 impl HArray1OfShape {
+    /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::TopTools_HArray1OfShape()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopTools_HArray1OfShape_ctor()) }
     }
 
+    /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::TopTools_HArray1OfShape()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopTools_HArray1OfShape_ctor_int2(
@@ -619,6 +636,7 @@ impl HArray1OfShape {
         }
     }
 
+    /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::TopTools_HArray1OfShape()`
     pub fn new_int2_shape(
         theLower: i32,
         theUpper: i32,
@@ -631,6 +649,7 @@ impl HArray1OfShape {
         }
     }
 
+    /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::TopTools_HArray1OfShape()`
     pub fn new_shape_int2_bool(
         theBegin: &crate::ffi::TopoDS_Shape,
         theLower: i32,
@@ -644,6 +663,7 @@ impl HArray1OfShape {
         }
     }
 
+    /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::TopTools_HArray1OfShape()`
     pub fn new_array1ofshape(
         theOther: &crate::ffi::TopTools_Array1OfShape,
     ) -> crate::OwnedPtr<Self> {
@@ -654,14 +674,17 @@ impl HArray1OfShape {
         }
     }
 
+    /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopTools_HArray1OfShape_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TopTools_HArray1OfShape_get_type_name() }
     }
 
+    /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopTools_HArray1OfShape_get_type_descriptor()) }
     }
@@ -700,6 +723,7 @@ impl HandleTopToolsHArray1OfShape {
 // From TopTools_HArray2OfShape.hxx
 // ========================
 
+/// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape`
 pub use crate::ffi::TopTools_HArray2OfShape as HArray2OfShape;
 
 unsafe impl crate::CppDeletable for HArray2OfShape {
@@ -709,6 +733,7 @@ unsafe impl crate::CppDeletable for HArray2OfShape {
 }
 
 impl HArray2OfShape {
+    /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`
     pub fn new_int4(
         theRowLow: i32,
         theRowUpp: i32,
@@ -722,6 +747,7 @@ impl HArray2OfShape {
         }
     }
 
+    /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`
     pub fn new_int4_shape(
         theRowLow: i32,
         theRowUpp: i32,
@@ -736,6 +762,7 @@ impl HArray2OfShape {
         }
     }
 
+    /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`
     pub fn new_array2ofshape(
         theOther: &crate::ffi::TopTools_Array2OfShape,
     ) -> crate::OwnedPtr<Self> {
@@ -746,14 +773,17 @@ impl HArray2OfShape {
         }
     }
 
+    /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopTools_HArray2OfShape_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TopTools_HArray2OfShape_get_type_name() }
     }
 
+    /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopTools_HArray2OfShape_get_type_descriptor()) }
     }
@@ -792,6 +822,7 @@ impl HandleTopToolsHArray2OfShape {
 // From TopTools_HSequenceOfShape.hxx
 // ========================
 
+/// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape`
 pub use crate::ffi::TopTools_HSequenceOfShape as HSequenceOfShape;
 
 unsafe impl crate::CppDeletable for HSequenceOfShape {
@@ -801,10 +832,12 @@ unsafe impl crate::CppDeletable for HSequenceOfShape {
 }
 
 impl HSequenceOfShape {
+    /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::TopTools_HSequenceOfShape()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopTools_HSequenceOfShape_ctor()) }
     }
 
+    /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::TopTools_HSequenceOfShape()`
     pub fn new_sequenceofshape(
         theOther: &crate::ffi::TopTools_SequenceOfShape,
     ) -> crate::OwnedPtr<Self> {
@@ -815,14 +848,17 @@ impl HSequenceOfShape {
         }
     }
 
+    /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::Sequence()`
     pub fn sequence(&self) -> &crate::ffi::TopTools_SequenceOfShape {
         unsafe { &*(crate::ffi::TopTools_HSequenceOfShape_sequence(self as *const Self)) }
     }
 
+    /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::Append()`
     pub fn append_shape(&mut self, theItem: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::TopTools_HSequenceOfShape_append_shape(self as *mut Self, theItem) }
     }
 
+    /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::Append()`
     pub fn append_sequenceofshape(
         &mut self,
         theSequence: &mut crate::ffi::TopTools_SequenceOfShape,
@@ -835,18 +871,22 @@ impl HSequenceOfShape {
         }
     }
 
+    /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::ChangeSequence()`
     pub fn change_sequence(&mut self) -> &mut crate::ffi::TopTools_SequenceOfShape {
         unsafe { &mut *(crate::ffi::TopTools_HSequenceOfShape_change_sequence(self as *mut Self)) }
     }
 
+    /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopTools_HSequenceOfShape_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TopTools_HSequenceOfShape_get_type_name() }
     }
 
+    /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopTools_HSequenceOfShape_get_type_descriptor()) }
     }
@@ -905,6 +945,7 @@ impl HandleTopToolsHSequenceOfShape {
 // From TopTools_LocationSet.hxx
 // ========================
 
+/// **Source:** `TopTools_LocationSet.hxx`:39 - `TopTools_LocationSet`
 /// The class LocationSet stores a set of location in
 /// a relocatable state.
 ///
@@ -922,27 +963,32 @@ unsafe impl crate::CppDeletable for LocationSet {
 }
 
 impl LocationSet {
+    /// **Source:** `TopTools_LocationSet.hxx`:45 - `TopTools_LocationSet::TopTools_LocationSet()`
     /// Returns an empty set of locations.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopTools_LocationSet_ctor()) }
     }
 
+    /// **Source:** `TopTools_LocationSet.hxx`:48 - `TopTools_LocationSet::Clear()`
     /// Clears the content of the set.
     pub fn clear(&mut self) {
         unsafe { crate::ffi::TopTools_LocationSet_clear(self as *mut Self) }
     }
 
+    /// **Source:** `TopTools_LocationSet.hxx`:52 - `TopTools_LocationSet::Add()`
     /// Incorporate a new Location in the  set and returns
     /// its index.
     pub fn add(&mut self, L: &crate::ffi::TopLoc_Location) -> i32 {
         unsafe { crate::ffi::TopTools_LocationSet_add(self as *mut Self, L) }
     }
 
+    /// **Source:** `TopTools_LocationSet.hxx`:55 - `TopTools_LocationSet::Location()`
     /// Returns the location of index <I>.
     pub fn location(&self, I: i32) -> &crate::ffi::TopLoc_Location {
         unsafe { &*(crate::ffi::TopTools_LocationSet_location(self as *const Self, I)) }
     }
 
+    /// **Source:** `TopTools_LocationSet.hxx`:58 - `TopTools_LocationSet::Index()`
     /// Returns the index of <L>.
     pub fn index(&self, L: &crate::ffi::TopLoc_Location) -> i32 {
         unsafe { crate::ffi::TopTools_LocationSet_index(self as *const Self, L) }
@@ -953,6 +999,7 @@ impl LocationSet {
 // From TopTools_MutexForShapeProvider.hxx
 // ========================
 
+/// **Source:** `TopTools_MutexForShapeProvider.hxx`:28 - `TopTools_MutexForShapeProvider`
 /// Class TopTools_MutexForShapeProvider
 /// This class is used to create and store mutexes associated with shapes.
 pub use crate::ffi::TopTools_MutexForShapeProvider as MutexForShapeProvider;
@@ -964,11 +1011,13 @@ unsafe impl crate::CppDeletable for MutexForShapeProvider {
 }
 
 impl MutexForShapeProvider {
+    /// **Source:** `TopTools_MutexForShapeProvider.hxx`:32 - `TopTools_MutexForShapeProvider::TopTools_MutexForShapeProvider()`
     /// Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopTools_MutexForShapeProvider_ctor()) }
     }
 
+    /// **Source:** `TopTools_MutexForShapeProvider.hxx`:38 - `TopTools_MutexForShapeProvider::CreateMutexesForSubShapes()`
     /// Creates and associates mutexes with each sub-shape of type theType in theShape.
     pub fn create_mutexes_for_sub_shapes(
         &mut self,
@@ -984,6 +1033,7 @@ impl MutexForShapeProvider {
         }
     }
 
+    /// **Source:** `TopTools_MutexForShapeProvider.hxx`:42 - `TopTools_MutexForShapeProvider::CreateMutexForShape()`
     /// Creates and associates mutex with theShape
     pub fn create_mutex_for_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
         unsafe {
@@ -994,6 +1044,7 @@ impl MutexForShapeProvider {
         }
     }
 
+    /// **Source:** `TopTools_MutexForShapeProvider.hxx`:49 - `TopTools_MutexForShapeProvider::RemoveAllMutexes()`
     /// Removes all mutexes
     pub fn remove_all_mutexes(&mut self) {
         unsafe { crate::ffi::TopTools_MutexForShapeProvider_remove_all_mutexes(self as *mut Self) }
@@ -1004,6 +1055,7 @@ impl MutexForShapeProvider {
 // From TopTools_ShapeSet.hxx
 // ========================
 
+/// **Source:** `TopTools_ShapeSet.hxx`:39 - `TopTools_ShapeSet`
 /// A ShapeSets    contains  a  Shape    and all   its
 /// sub-shapes and locations.  It  can be dump,  write
 /// and read.
@@ -1018,62 +1070,74 @@ unsafe impl crate::CppDeletable for ShapeSet {
 }
 
 impl ShapeSet {
+    /// **Source:** `TopTools_ShapeSet.hxx`:45 - `TopTools_ShapeSet::TopTools_ShapeSet()`
     /// Builds an empty ShapeSet.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopTools_ShapeSet_ctor()) }
     }
 
+    /// **Source:** `TopTools_ShapeSet.hxx`:50 - `TopTools_ShapeSet::SetFormatNb()`
     /// Sets the TopTools_FormatVersion
     pub fn set_format_nb(&mut self, theFormatNb: i32) {
         unsafe { crate::ffi::TopTools_ShapeSet_set_format_nb(self as *mut Self, theFormatNb) }
     }
 
+    /// **Source:** `TopTools_ShapeSet.hxx`:53 - `TopTools_ShapeSet::FormatNb()`
     /// Returns the TopTools_FormatVersion
     pub fn format_nb(&self) -> i32 {
         unsafe { crate::ffi::TopTools_ShapeSet_format_nb(self as *const Self) }
     }
 
+    /// **Source:** `TopTools_ShapeSet.hxx`:57 - `TopTools_ShapeSet::Clear()`
     /// Clears the content of the set.  This method can be
     /// redefined.
     pub fn clear(&mut self) {
         unsafe { crate::ffi::TopTools_ShapeSet_clear(self as *mut Self) }
     }
 
+    /// **Source:** `TopTools_ShapeSet.hxx`:61 - `TopTools_ShapeSet::Add()`
     /// Stores <S> and its sub-shape. Returns the index of <S>.
     /// The method AddGeometry is called on each sub-shape.
     pub fn add(&mut self, S: &crate::ffi::TopoDS_Shape) -> i32 {
         unsafe { crate::ffi::TopTools_ShapeSet_add(self as *mut Self, S) }
     }
 
+    /// **Source:** `TopTools_ShapeSet.hxx`:64 - `TopTools_ShapeSet::Shape()`
     /// Returns the sub-shape of index <I>.
     pub fn shape(&self, I: i32) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::TopTools_ShapeSet_shape(self as *const Self, I)) }
     }
 
+    /// **Source:** `TopTools_ShapeSet.hxx`:67 - `TopTools_ShapeSet::Index()`
     /// Returns the index of <S>.
     pub fn index(&self, S: &crate::ffi::TopoDS_Shape) -> i32 {
         unsafe { crate::ffi::TopTools_ShapeSet_index(self as *const Self, S) }
     }
 
+    /// **Source:** `TopTools_ShapeSet.hxx`:69 - `TopTools_ShapeSet::Locations()`
     pub fn locations(&self) -> &crate::ffi::TopTools_LocationSet {
         unsafe { &*(crate::ffi::TopTools_ShapeSet_locations(self as *const Self)) }
     }
 
+    /// **Source:** `TopTools_ShapeSet.hxx`:71 - `TopTools_ShapeSet::ChangeLocations()`
     pub fn change_locations(&mut self) -> &mut crate::ffi::TopTools_LocationSet {
         unsafe { &mut *(crate::ffi::TopTools_ShapeSet_change_locations(self as *mut Self)) }
     }
 
+    /// **Source:** `TopTools_ShapeSet.hxx`:79 - `TopTools_ShapeSet::DumpExtent()`
     /// Dumps the number of objects in me in the string S
     /// (Number of shapes of each type)
     pub fn dump_extent(&self, S: &mut crate::ffi::TCollection_AsciiString) {
         unsafe { crate::ffi::TopTools_ShapeSet_dump_extent(self as *const Self, S) }
     }
 
+    /// **Source:** `TopTools_ShapeSet.hxx`:139 - `TopTools_ShapeSet::AddGeometry()`
     /// Stores the geometry of <S>.
     pub fn add_geometry(&mut self, S: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::TopTools_ShapeSet_add_geometry(self as *mut Self, S) }
     }
 
+    /// **Source:** `TopTools_ShapeSet.hxx`:171 - `TopTools_ShapeSet::AddShapes()`
     /// Inserts  the shape <S2> in  the  shape <S1>.  This
     /// method must be   redefined  to  use   the  correct
     /// builder.
@@ -1081,6 +1145,7 @@ impl ShapeSet {
         unsafe { crate::ffi::TopTools_ShapeSet_add_shapes(self as *mut Self, S1, S2) }
     }
 
+    /// **Source:** `TopTools_ShapeSet.hxx`:178 - `TopTools_ShapeSet::Check()`
     /// This method is   called after  each  new  completed
     /// shape. <T> is the  type. <S> is  the shape. In this
     /// class it does nothing, but it gives the opportunity
@@ -1090,6 +1155,7 @@ impl ShapeSet {
         unsafe { crate::ffi::TopTools_ShapeSet_check(self as *mut Self, T.into(), S) }
     }
 
+    /// **Source:** `TopTools_ShapeSet.hxx`:181 - `TopTools_ShapeSet::NbShapes()`
     /// Returns number of shapes read from file.
     pub fn nb_shapes(&self) -> i32 {
         unsafe { crate::ffi::TopTools_ShapeSet_nb_shapes(self as *const Self) }

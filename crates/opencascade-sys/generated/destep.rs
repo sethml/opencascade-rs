@@ -10,6 +10,7 @@
 // From DESTEP_Parameters.hxx
 // ========================
 
+/// **Source:** `DESTEP_Parameters.hxx`:23 - `DESTEP_Parameters`
 pub use crate::ffi::DESTEP_Parameters as Parameters;
 
 unsafe impl crate::CppDeletable for Parameters {
@@ -19,15 +20,18 @@ unsafe impl crate::CppDeletable for Parameters {
 }
 
 impl Parameters {
+    /// **Source:** `DESTEP_Parameters.hxx`:125 - `DESTEP_Parameters::DESTEP_Parameters()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::DESTEP_Parameters_ctor()) }
     }
 
+    /// **Source:** `DESTEP_Parameters.hxx`:128 - `DESTEP_Parameters::InitFromStatic()`
     /// Initialize parameters
     pub fn init_from_static(&mut self) {
         unsafe { crate::ffi::DESTEP_Parameters_init_from_static(self as *mut Self) }
     }
 
+    /// **Source:** `DESTEP_Parameters.hxx`:131 - `DESTEP_Parameters::Reset()`
     /// Reset used parameters
     pub fn reset(&mut self) {
         unsafe { crate::ffi::DESTEP_Parameters_reset(self as *mut Self) }

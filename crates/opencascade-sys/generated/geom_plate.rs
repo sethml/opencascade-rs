@@ -10,6 +10,7 @@
 // From GeomPlate_BuildPlateSurface.hxx
 // ========================
 
+/// **Source:** `GeomPlate_BuildPlateSurface.hxx`:53 - `GeomPlate_BuildPlateSurface`
 /// This class provides an algorithm for constructing such a plate surface that
 /// it conforms to given curve and/or point constraints.
 /// The algorithm accepts or constructs an initial surface
@@ -28,6 +29,7 @@ unsafe impl crate::CppDeletable for BuildPlateSurface {
 }
 
 impl BuildPlateSurface {
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     /// Constructor  compatible  with  the  old  version
     /// with this constructor the constraint are given in a Array of Curve on Surface
     /// The array NbPoints  contains the number of points for each constraint.
@@ -55,6 +57,7 @@ impl BuildPlateSurface {
         }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     pub fn new_handlegeomsurface_int3_real4_bool(
         Surf: &crate::ffi::HandleGeomSurface,
         Degree: i32,
@@ -83,6 +86,7 @@ impl BuildPlateSurface {
         }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:115 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     /// Initializes the BuildPlateSurface framework for
     /// deforming plate surfaces using curve and point
     /// constraints. You use the first constructor if you have
@@ -133,6 +137,7 @@ impl BuildPlateSurface {
         }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     /// Constructor  compatible  with  the  old  version
     /// with this constructor the constraint are given in a Array of Curve on Surface
     /// The array NbPoints  contains the number of points for each constraint.
@@ -157,6 +162,7 @@ impl BuildPlateSurface {
         Self::new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, TolAng, TolCurv, false)
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     /// Constructor  compatible  with  the  old  version
     /// with this constructor the constraint are given in a Array of Curve on Surface
     /// The array NbPoints  contains the number of points for each constraint.
@@ -180,6 +186,7 @@ impl BuildPlateSurface {
         Self::new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, TolAng, 0.1, false)
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     /// Constructor  compatible  with  the  old  version
     /// with this constructor the constraint are given in a Array of Curve on Surface
     /// The array NbPoints  contains the number of points for each constraint.
@@ -202,6 +209,7 @@ impl BuildPlateSurface {
         Self::new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, 0.01, 0.1, false)
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     /// Constructor  compatible  with  the  old  version
     /// with this constructor the constraint are given in a Array of Curve on Surface
     /// The array NbPoints  contains the number of points for each constraint.
@@ -223,6 +231,7 @@ impl BuildPlateSurface {
         Self::new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, 0.0001, 0.01, 0.1, false)
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     /// Constructor  compatible  with  the  old  version
     /// with this constructor the constraint are given in a Array of Curve on Surface
     /// The array NbPoints  contains the number of points for each constraint.
@@ -243,6 +252,7 @@ impl BuildPlateSurface {
         Self::new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, 0.00001, 0.0001, 0.01, 0.1, false)
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     /// Constructor  compatible  with  the  old  version
     /// with this constructor the constraint are given in a Array of Curve on Surface
     /// The array NbPoints  contains the number of points for each constraint.
@@ -262,6 +272,7 @@ impl BuildPlateSurface {
         Self::new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, 3, 0.00001, 0.0001, 0.01, 0.1, false)
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     pub fn new_handlegeomsurface_int3_real4(
         Surf: &crate::ffi::HandleGeomSurface,
         Degree: i32,
@@ -277,6 +288,7 @@ impl BuildPlateSurface {
         )
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     pub fn new_handlegeomsurface_int3_real3(
         Surf: &crate::ffi::HandleGeomSurface,
         Degree: i32,
@@ -291,6 +303,7 @@ impl BuildPlateSurface {
         )
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     pub fn new_handlegeomsurface_int3_real2(
         Surf: &crate::ffi::HandleGeomSurface,
         Degree: i32,
@@ -304,6 +317,7 @@ impl BuildPlateSurface {
         )
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     pub fn new_handlegeomsurface_int3_real(
         Surf: &crate::ffi::HandleGeomSurface,
         Degree: i32,
@@ -316,6 +330,7 @@ impl BuildPlateSurface {
         )
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     pub fn new_handlegeomsurface_int3(
         Surf: &crate::ffi::HandleGeomSurface,
         Degree: i32,
@@ -327,6 +342,7 @@ impl BuildPlateSurface {
         )
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     pub fn new_handlegeomsurface_int2(
         Surf: &crate::ffi::HandleGeomSurface,
         Degree: i32,
@@ -337,6 +353,7 @@ impl BuildPlateSurface {
         )
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     pub fn new_handlegeomsurface_int(
         Surf: &crate::ffi::HandleGeomSurface,
         Degree: i32,
@@ -346,12 +363,14 @@ impl BuildPlateSurface {
         )
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     pub fn new_handlegeomsurface(Surf: &crate::ffi::HandleGeomSurface) -> crate::OwnedPtr<Self> {
         Self::new_handlegeomsurface_int3_real4_bool(
             Surf, 3, 10, 3, 0.00001, 0.0001, 0.01, 0.1, false,
         )
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:115 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     /// Initializes the BuildPlateSurface framework for
     /// deforming plate surfaces using curve and point
     /// constraints. You use the first constructor if you have
@@ -390,6 +409,7 @@ impl BuildPlateSurface {
         Self::new_int3_real4_bool(Degree, NbPtsOnCur, NbIter, Tol2d, Tol3d, TolAng, TolCurv, false)
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:115 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     /// Initializes the BuildPlateSurface framework for
     /// deforming plate surfaces using curve and point
     /// constraints. You use the first constructor if you have
@@ -427,6 +447,7 @@ impl BuildPlateSurface {
         Self::new_int3_real4_bool(Degree, NbPtsOnCur, NbIter, Tol2d, Tol3d, TolAng, 0.1, false)
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:115 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     /// Initializes the BuildPlateSurface framework for
     /// deforming plate surfaces using curve and point
     /// constraints. You use the first constructor if you have
@@ -463,6 +484,7 @@ impl BuildPlateSurface {
         Self::new_int3_real4_bool(Degree, NbPtsOnCur, NbIter, Tol2d, Tol3d, 0.01, 0.1, false)
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:115 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     /// Initializes the BuildPlateSurface framework for
     /// deforming plate surfaces using curve and point
     /// constraints. You use the first constructor if you have
@@ -498,6 +520,7 @@ impl BuildPlateSurface {
         Self::new_int3_real4_bool(Degree, NbPtsOnCur, NbIter, Tol2d, 0.0001, 0.01, 0.1, false)
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:115 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     /// Initializes the BuildPlateSurface framework for
     /// deforming plate surfaces using curve and point
     /// constraints. You use the first constructor if you have
@@ -528,6 +551,7 @@ impl BuildPlateSurface {
         Self::new_int3_real4_bool(Degree, NbPtsOnCur, NbIter, 0.00001, 0.0001, 0.01, 0.1, false)
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:115 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     /// Initializes the BuildPlateSurface framework for
     /// deforming plate surfaces using curve and point
     /// constraints. You use the first constructor if you have
@@ -558,6 +582,7 @@ impl BuildPlateSurface {
         Self::new_int3_real4_bool(Degree, NbPtsOnCur, 3, 0.00001, 0.0001, 0.01, 0.1, false)
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:115 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     /// Initializes the BuildPlateSurface framework for
     /// deforming plate surfaces using curve and point
     /// constraints. You use the first constructor if you have
@@ -588,6 +613,7 @@ impl BuildPlateSurface {
         Self::new_int3_real4_bool(Degree, 10, 3, 0.00001, 0.0001, 0.01, 0.1, false)
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:115 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     /// Initializes the BuildPlateSurface framework for
     /// deforming plate surfaces using curve and point
     /// constraints. You use the first constructor if you have
@@ -618,11 +644,13 @@ impl BuildPlateSurface {
         Self::new_int3_real4_bool(3, 10, 3, 0.00001, 0.0001, 0.01, 0.1, false)
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:125 - `GeomPlate_BuildPlateSurface::Init()`
     /// Resets all constraints
     pub fn init(&mut self) {
         unsafe { crate::ffi::GeomPlate_BuildPlateSurface_init(self as *mut Self) }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:128 - `GeomPlate_BuildPlateSurface::LoadInitSurface()`
     /// Loads the initial Surface
     pub fn load_init_surface(&mut self, Surf: &crate::ffi::HandleGeomSurface) {
         unsafe {
@@ -630,6 +658,7 @@ impl BuildPlateSurface {
         }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:131 - `GeomPlate_BuildPlateSurface::Add()`
     /// Adds the linear constraint cont.
     pub fn add_handlegeomplatecurveconstraint(
         &mut self,
@@ -643,12 +672,14 @@ impl BuildPlateSurface {
         }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:133 - `GeomPlate_BuildPlateSurface::SetNbBounds()`
     pub fn set_nb_bounds(&mut self, NbBounds: i32) {
         unsafe {
             crate::ffi::GeomPlate_BuildPlateSurface_set_nb_bounds(self as *mut Self, NbBounds)
         }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:136 - `GeomPlate_BuildPlateSurface::Add()`
     /// Adds the point constraint cont.
     pub fn add_handlegeomplatepointconstraint(
         &mut self,
@@ -662,6 +693,7 @@ impl BuildPlateSurface {
         }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:144 - `GeomPlate_BuildPlateSurface::Perform()`
     /// Calls the algorithm and computes the plate surface using
     /// the loaded constraints. If no initial surface is given, the
     /// algorithm automatically computes one.
@@ -672,6 +704,7 @@ impl BuildPlateSurface {
         unsafe { crate::ffi::GeomPlate_BuildPlateSurface_perform(self as *mut Self, theProgress) }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:147 - `GeomPlate_BuildPlateSurface::CurveConstraint()`
     /// returns the CurveConstraints of order order
     pub fn curve_constraint(
         &self,
@@ -685,6 +718,7 @@ impl BuildPlateSurface {
         }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:151 - `GeomPlate_BuildPlateSurface::PointConstraint()`
     /// returns the PointConstraint of order order
     pub fn point_constraint(
         &self,
@@ -698,11 +732,13 @@ impl BuildPlateSurface {
         }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:161 - `GeomPlate_BuildPlateSurface::IsDone()`
     /// Tests whether computation of the plate has been completed.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::GeomPlate_BuildPlateSurface_is_done(self as *const Self) }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:169 - `GeomPlate_BuildPlateSurface::SurfInit()`
     /// Returns the initial surface
     pub fn surf_init(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
@@ -712,6 +748,7 @@ impl BuildPlateSurface {
         }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:177 - `GeomPlate_BuildPlateSurface::Sense()`
     /// Allows you to ensure that the array of curves returned by
     /// Curves2d has the correct orientation. Returns the
     /// orientation of the curves in the array returned by
@@ -726,6 +763,7 @@ impl BuildPlateSurface {
         }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:181 - `GeomPlate_BuildPlateSurface::Curves2d()`
     /// Extracts the array of curves on the plate surface which
     /// correspond to the curve constraints set in Add.
     pub fn curves2d(&self) -> crate::OwnedPtr<crate::ffi::HandleTColGeom2dHArray1OfCurve> {
@@ -736,6 +774,7 @@ impl BuildPlateSurface {
         }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:187 - `GeomPlate_BuildPlateSurface::Order()`
     /// Returns the order of the curves in the array returned by
     /// Curves2d. Computation changes this order.
     /// Consequently, this method returns the order of the
@@ -748,31 +787,37 @@ impl BuildPlateSurface {
         }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:190 - `GeomPlate_BuildPlateSurface::G0Error()`
     /// Returns the max distance between the result and the constraints
     pub fn g0_error(&self) -> f64 {
         unsafe { crate::ffi::GeomPlate_BuildPlateSurface_g0_error(self as *const Self) }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:193 - `GeomPlate_BuildPlateSurface::G1Error()`
     /// Returns  the max angle between the result and the constraints
     pub fn g1_error(&self) -> f64 {
         unsafe { crate::ffi::GeomPlate_BuildPlateSurface_g1_error(self as *const Self) }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:196 - `GeomPlate_BuildPlateSurface::G2Error()`
     /// Returns  the max difference of curvature between the result and the constraints
     pub fn g2_error(&self) -> f64 {
         unsafe { crate::ffi::GeomPlate_BuildPlateSurface_g2_error(self as *const Self) }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:199 - `GeomPlate_BuildPlateSurface::G0Error()`
     /// Returns   the max distance between the result and the constraint Index
     pub fn g0_error_int(&mut self, Index: i32) -> f64 {
         unsafe { crate::ffi::GeomPlate_BuildPlateSurface_g0_error_int(self as *mut Self, Index) }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:202 - `GeomPlate_BuildPlateSurface::G1Error()`
     /// Returns the max angle between the result and the constraint Index
     pub fn g1_error_int(&mut self, Index: i32) -> f64 {
         unsafe { crate::ffi::GeomPlate_BuildPlateSurface_g1_error_int(self as *mut Self, Index) }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:205 - `GeomPlate_BuildPlateSurface::G2Error()`
     /// Returns the max difference of curvature between the result and the constraint Index
     pub fn g2_error_int(&mut self, Index: i32) -> f64 {
         unsafe { crate::ffi::GeomPlate_BuildPlateSurface_g2_error_int(self as *mut Self, Index) }
@@ -783,6 +828,7 @@ impl BuildPlateSurface {
 // From GeomPlate_CurveConstraint.hxx
 // ========================
 
+/// **Source:** `GeomPlate_CurveConstraint.hxx`:32 - `GeomPlate_CurveConstraint`
 /// Defines curves as constraints to be used to deform a surface.
 pub use crate::ffi::GeomPlate_CurveConstraint as CurveConstraint;
 
@@ -793,11 +839,13 @@ unsafe impl crate::CppDeletable for CurveConstraint {
 }
 
 impl CurveConstraint {
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:37 - `GeomPlate_CurveConstraint::GeomPlate_CurveConstraint()`
     /// Initializes an empty curve constraint object.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_CurveConstraint_ctor()) }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:48 - `GeomPlate_CurveConstraint::GeomPlate_CurveConstraint()`
     /// Create a constraint
     /// Order is the order of the constraint. The possible values for order are -1,0,1,2.
     /// Order i means constraints Gi
@@ -824,6 +872,7 @@ impl CurveConstraint {
         }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:48 - `GeomPlate_CurveConstraint::GeomPlate_CurveConstraint()`
     /// Create a constraint
     /// Order is the order of the constraint. The possible values for order are -1,0,1,2.
     /// Order i means constraints Gi
@@ -843,6 +892,7 @@ impl CurveConstraint {
         Self::new_handleadaptor3dcurve_int2_real3(Boundary, Order, NPt, TolDist, TolAng, 0.1)
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:48 - `GeomPlate_CurveConstraint::GeomPlate_CurveConstraint()`
     /// Create a constraint
     /// Order is the order of the constraint. The possible values for order are -1,0,1,2.
     /// Order i means constraints Gi
@@ -861,6 +911,7 @@ impl CurveConstraint {
         Self::new_handleadaptor3dcurve_int2_real3(Boundary, Order, NPt, TolDist, 0.01, 0.1)
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:48 - `GeomPlate_CurveConstraint::GeomPlate_CurveConstraint()`
     /// Create a constraint
     /// Order is the order of the constraint. The possible values for order are -1,0,1,2.
     /// Order i means constraints Gi
@@ -878,6 +929,7 @@ impl CurveConstraint {
         Self::new_handleadaptor3dcurve_int2_real3(Boundary, Order, NPt, 0.0001, 0.01, 0.1)
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:48 - `GeomPlate_CurveConstraint::GeomPlate_CurveConstraint()`
     /// Create a constraint
     /// Order is the order of the constraint. The possible values for order are -1,0,1,2.
     /// Order i means constraints Gi
@@ -894,6 +946,7 @@ impl CurveConstraint {
         Self::new_handleadaptor3dcurve_int2_real3(Boundary, Order, 10, 0.0001, 0.01, 0.1)
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:58 - `GeomPlate_CurveConstraint::SetOrder()`
     /// Allows you to set the order of continuity required for
     /// the constraints: G0, G1, and G2, controlled
     /// respectively by G0Criterion G1Criterion and G2Criterion.
@@ -901,11 +954,13 @@ impl CurveConstraint {
         unsafe { crate::ffi::GeomPlate_CurveConstraint_set_order(self as *mut Self, Order) }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:61 - `GeomPlate_CurveConstraint::Order()`
     /// Returns the order of constraint, one of G0, G1 or G2.
     pub fn order(&self) -> i32 {
         unsafe { crate::ffi::GeomPlate_CurveConstraint_order(self as *const Self) }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:67 - `GeomPlate_CurveConstraint::NbPoints()`
     /// Returns the number of points on the curve used as a
     /// constraint. The default setting is 10. This parameter
     /// affects computation time, which increases by the cube of
@@ -914,6 +969,7 @@ impl CurveConstraint {
         unsafe { crate::ffi::GeomPlate_CurveConstraint_nb_points(self as *const Self) }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:73 - `GeomPlate_CurveConstraint::SetNbPoints()`
     /// Allows you to set the number of points on the curve
     /// constraint. The default setting is 10. This parameter
     /// affects computation time, which increases by the cube of
@@ -922,6 +978,7 @@ impl CurveConstraint {
         unsafe { crate::ffi::GeomPlate_CurveConstraint_set_nb_points(self as *mut Self, NewNb) }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:80 - `GeomPlate_CurveConstraint::SetG0Criterion()`
     /// Allows you to set the G0 criterion. This is the law
     /// defining the greatest distance allowed between the
     /// constraint and the target surface for each point of the
@@ -931,6 +988,7 @@ impl CurveConstraint {
         unsafe { crate::ffi::GeomPlate_CurveConstraint_set_g0_criterion(self as *mut Self, G0Crit) }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:87 - `GeomPlate_CurveConstraint::SetG1Criterion()`
     /// Allows you to set the G1 criterion. This is the law
     /// defining the greatest angle allowed between the
     /// constraint and the target surface. If this criterion is not
@@ -940,10 +998,12 @@ impl CurveConstraint {
         unsafe { crate::ffi::GeomPlate_CurveConstraint_set_g1_criterion(self as *mut Self, G1Crit) }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:89 - `GeomPlate_CurveConstraint::SetG2Criterion()`
     pub fn set_g2_criterion(&mut self, G2Crit: &crate::ffi::HandleLawFunction) {
         unsafe { crate::ffi::GeomPlate_CurveConstraint_set_g2_criterion(self as *mut Self, G2Crit) }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:94 - `GeomPlate_CurveConstraint::G0Criterion()`
     /// Returns the G0 criterion at the parametric point U on
     /// the curve. This is the greatest distance allowed between
     /// the constraint and the target surface at U.
@@ -951,6 +1011,7 @@ impl CurveConstraint {
         unsafe { crate::ffi::GeomPlate_CurveConstraint_g0_criterion(self as *const Self, U) }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:100 - `GeomPlate_CurveConstraint::G1Criterion()`
     /// Returns the G1 criterion at the parametric point U on
     /// the curve. This is the greatest angle allowed between
     /// the constraint and the target surface at U.
@@ -959,6 +1020,7 @@ impl CurveConstraint {
         unsafe { crate::ffi::GeomPlate_CurveConstraint_g1_criterion(self as *const Self, U) }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:106 - `GeomPlate_CurveConstraint::G2Criterion()`
     /// Returns the G2 criterion at the parametric point U on
     /// the curve. This is the greatest difference in curvature
     /// allowed between the constraint and the target surface at U.
@@ -967,26 +1029,32 @@ impl CurveConstraint {
         unsafe { crate::ffi::GeomPlate_CurveConstraint_g2_criterion(self as *const Self, U) }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:108 - `GeomPlate_CurveConstraint::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         unsafe { crate::ffi::GeomPlate_CurveConstraint_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:110 - `GeomPlate_CurveConstraint::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         unsafe { crate::ffi::GeomPlate_CurveConstraint_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:112 - `GeomPlate_CurveConstraint::Length()`
     pub fn length(&self) -> f64 {
         unsafe { crate::ffi::GeomPlate_CurveConstraint_length(self as *const Self) }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:114 - `GeomPlate_CurveConstraint::LPropSurf()`
     pub fn l_prop_surf(&mut self, U: f64) -> &mut crate::ffi::GeomLProp_SLProps {
         unsafe { &mut *(crate::ffi::GeomPlate_CurveConstraint_l_prop_surf(self as *mut Self, U)) }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:116 - `GeomPlate_CurveConstraint::D0()`
     pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::GeomPlate_CurveConstraint_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:118 - `GeomPlate_CurveConstraint::D1()`
     pub fn d1(
         &self,
         U: f64,
@@ -997,6 +1065,7 @@ impl CurveConstraint {
         unsafe { crate::ffi::GeomPlate_CurveConstraint_d1(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:120 - `GeomPlate_CurveConstraint::D2()`
     pub fn d2(
         &self,
         U: f64,
@@ -1012,6 +1081,7 @@ impl CurveConstraint {
         }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:128 - `GeomPlate_CurveConstraint::Curve3d()`
     pub fn curve3d(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_CurveConstraint_curve3d(
@@ -1020,6 +1090,7 @@ impl CurveConstraint {
         }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:131 - `GeomPlate_CurveConstraint::SetCurve2dOnSurf()`
     /// loads a 2d curve associated the surface resulting of the constraints
     pub fn set_curve2d_on_surf(&mut self, Curve2d: &crate::ffi::HandleGeom2dCurve) {
         unsafe {
@@ -1027,6 +1098,7 @@ impl CurveConstraint {
         }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:134 - `GeomPlate_CurveConstraint::Curve2dOnSurf()`
     /// Returns a 2d curve associated the surface resulting of the constraints
     pub fn curve2d_on_surf(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
         unsafe {
@@ -1036,6 +1108,7 @@ impl CurveConstraint {
         }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:138 - `GeomPlate_CurveConstraint::SetProjectedCurve()`
     /// loads a 2d curve  resulting from the normal projection of
     /// the curve on the initial surface
     pub fn set_projected_curve(
@@ -1054,6 +1127,7 @@ impl CurveConstraint {
         }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:144 - `GeomPlate_CurveConstraint::ProjectedCurve()`
     /// Returns the projected curve resulting from the normal projection of the
     /// curve on the initial surface
     pub fn projected_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
@@ -1064,14 +1138,17 @@ impl CurveConstraint {
         }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:146 - `GeomPlate_CurveConstraint::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomPlate_CurveConstraint_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:146 - `GeomPlate_CurveConstraint::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::GeomPlate_CurveConstraint_get_type_name() }
     }
 
+    /// **Source:** `GeomPlate_CurveConstraint.hxx`:146 - `GeomPlate_CurveConstraint::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomPlate_CurveConstraint_get_type_descriptor()) }
     }
@@ -1112,6 +1189,7 @@ impl HandleGeomPlateCurveConstraint {
 // From GeomPlate_HArray1OfHCurve.hxx
 // ========================
 
+/// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve`
 pub use crate::ffi::GeomPlate_HArray1OfHCurve as HArray1OfHCurve;
 
 unsafe impl crate::CppDeletable for HArray1OfHCurve {
@@ -1121,10 +1199,12 @@ unsafe impl crate::CppDeletable for HArray1OfHCurve {
 }
 
 impl HArray1OfHCurve {
+    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::GeomPlate_HArray1OfHCurve()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfHCurve_ctor()) }
     }
 
+    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::GeomPlate_HArray1OfHCurve()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfHCurve_ctor_int2(
@@ -1133,6 +1213,7 @@ impl HArray1OfHCurve {
         }
     }
 
+    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::GeomPlate_HArray1OfHCurve()`
     pub fn new_array1ofhcurve(
         theOther: &crate::ffi::GeomPlate_Array1OfHCurve,
     ) -> crate::OwnedPtr<Self> {
@@ -1143,14 +1224,17 @@ impl HArray1OfHCurve {
         }
     }
 
+    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomPlate_HArray1OfHCurve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::GeomPlate_HArray1OfHCurve_get_type_name() }
     }
 
+    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomPlate_HArray1OfHCurve_get_type_descriptor()) }
     }
@@ -1191,6 +1275,7 @@ impl HandleGeomPlateHArray1OfHCurve {
 // From GeomPlate_HArray1OfSequenceOfReal.hxx
 // ========================
 
+/// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal`
 pub use crate::ffi::GeomPlate_HArray1OfSequenceOfReal as HArray1OfSequenceOfReal;
 
 unsafe impl crate::CppDeletable for HArray1OfSequenceOfReal {
@@ -1200,10 +1285,12 @@ unsafe impl crate::CppDeletable for HArray1OfSequenceOfReal {
 }
 
 impl HArray1OfSequenceOfReal {
+    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::GeomPlate_HArray1OfSequenceOfReal()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_ctor()) }
     }
 
+    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::GeomPlate_HArray1OfSequenceOfReal()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_ctor_int2(
@@ -1212,6 +1299,7 @@ impl HArray1OfSequenceOfReal {
         }
     }
 
+    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::GeomPlate_HArray1OfSequenceOfReal()`
     pub fn new_array1ofsequenceofreal(
         theOther: &crate::ffi::GeomPlate_Array1OfSequenceOfReal,
     ) -> crate::OwnedPtr<Self> {
@@ -1222,16 +1310,19 @@ impl HArray1OfSequenceOfReal {
         }
     }
 
+    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
             &*(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_dynamic_type(self as *const Self))
         }
     }
 
+    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::GeomPlate_HArray1OfSequenceOfReal_get_type_name() }
     }
 
+    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_get_type_descriptor()) }
     }
@@ -1274,6 +1365,7 @@ impl HandleGeomPlateHArray1OfSequenceOfReal {
 // From GeomPlate_HSequenceOfCurveConstraint.hxx
 // ========================
 
+/// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint`
 pub use crate::ffi::GeomPlate_HSequenceOfCurveConstraint as HSequenceOfCurveConstraint;
 
 unsafe impl crate::CppDeletable for HSequenceOfCurveConstraint {
@@ -1283,12 +1375,14 @@ unsafe impl crate::CppDeletable for HSequenceOfCurveConstraint {
 }
 
 impl HSequenceOfCurveConstraint {
+    /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::GeomPlate_HSequenceOfCurveConstraint()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HSequenceOfCurveConstraint_ctor())
         }
     }
 
+    /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::GeomPlate_HSequenceOfCurveConstraint()`
     pub fn new_sequenceofcurveconstraint(
         theOther: &crate::ffi::GeomPlate_SequenceOfCurveConstraint,
     ) -> crate::OwnedPtr<Self> {
@@ -1301,16 +1395,19 @@ impl HSequenceOfCurveConstraint {
         }
     }
 
+    /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
             &*(crate::ffi::GeomPlate_HSequenceOfCurveConstraint_dynamic_type(self as *const Self))
         }
     }
 
+    /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::GeomPlate_HSequenceOfCurveConstraint_get_type_name() }
     }
 
+    /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomPlate_HSequenceOfCurveConstraint_get_type_descriptor()) }
     }
@@ -1355,6 +1452,7 @@ impl HandleGeomPlateHSequenceOfCurveConstraint {
 // From GeomPlate_HSequenceOfPointConstraint.hxx
 // ========================
 
+/// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint`
 pub use crate::ffi::GeomPlate_HSequenceOfPointConstraint as HSequenceOfPointConstraint;
 
 unsafe impl crate::CppDeletable for HSequenceOfPointConstraint {
@@ -1364,12 +1462,14 @@ unsafe impl crate::CppDeletable for HSequenceOfPointConstraint {
 }
 
 impl HSequenceOfPointConstraint {
+    /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::GeomPlate_HSequenceOfPointConstraint()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HSequenceOfPointConstraint_ctor())
         }
     }
 
+    /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::GeomPlate_HSequenceOfPointConstraint()`
     pub fn new_sequenceofpointconstraint(
         theOther: &crate::ffi::GeomPlate_SequenceOfPointConstraint,
     ) -> crate::OwnedPtr<Self> {
@@ -1382,16 +1482,19 @@ impl HSequenceOfPointConstraint {
         }
     }
 
+    /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
             &*(crate::ffi::GeomPlate_HSequenceOfPointConstraint_dynamic_type(self as *const Self))
         }
     }
 
+    /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::GeomPlate_HSequenceOfPointConstraint_get_type_name() }
     }
 
+    /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomPlate_HSequenceOfPointConstraint_get_type_descriptor()) }
     }
@@ -1436,6 +1539,7 @@ impl HandleGeomPlateHSequenceOfPointConstraint {
 // From GeomPlate_PointConstraint.hxx
 // ========================
 
+/// **Source:** `GeomPlate_PointConstraint.hxx`:35 - `GeomPlate_PointConstraint`
 /// Defines points as constraints to be used to deform a surface.
 pub use crate::ffi::GeomPlate_PointConstraint as PointConstraint;
 
@@ -1446,6 +1550,7 @@ unsafe impl crate::CppDeletable for PointConstraint {
 }
 
 impl PointConstraint {
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:52 - `GeomPlate_PointConstraint::GeomPlate_PointConstraint()`
     /// Constructs a point constraint object defined by  Pt, a 3D point
     /// Order gives the order of constraint, one of:
     /// -   -1 i.e. none, or 0 i.e.G0 when assigned to Pt
@@ -1471,6 +1576,7 @@ impl PointConstraint {
         }
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:73 - `GeomPlate_PointConstraint::GeomPlate_PointConstraint()`
     /// Constructs a point constraint object defined by
     /// the intersection point of U and V on the surface Surf.
     /// Order gives the order of constraint, one of:
@@ -1506,6 +1612,7 @@ impl PointConstraint {
         }
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:52 - `GeomPlate_PointConstraint::GeomPlate_PointConstraint()`
     /// Constructs a point constraint object defined by  Pt, a 3D point
     /// Order gives the order of constraint, one of:
     /// -   -1 i.e. none, or 0 i.e.G0 when assigned to Pt
@@ -1523,6 +1630,7 @@ impl PointConstraint {
         Self::new_pnt_int_real(Pt, Order, 0.0001)
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:73 - `GeomPlate_PointConstraint::GeomPlate_PointConstraint()`
     /// Constructs a point constraint object defined by
     /// the intersection point of U and V on the surface Surf.
     /// Order gives the order of constraint, one of:
@@ -1551,6 +1659,7 @@ impl PointConstraint {
         Self::new_real2_handlegeomsurface_int_real3(U, V, Surf, Order, TolDist, TolAng, 0.1)
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:73 - `GeomPlate_PointConstraint::GeomPlate_PointConstraint()`
     /// Constructs a point constraint object defined by
     /// the intersection point of U and V on the surface Surf.
     /// Order gives the order of constraint, one of:
@@ -1578,6 +1687,7 @@ impl PointConstraint {
         Self::new_real2_handlegeomsurface_int_real3(U, V, Surf, Order, TolDist, 0.01, 0.1)
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:73 - `GeomPlate_PointConstraint::GeomPlate_PointConstraint()`
     /// Constructs a point constraint object defined by
     /// the intersection point of U and V on the surface Surf.
     /// Order gives the order of constraint, one of:
@@ -1604,16 +1714,19 @@ impl PointConstraint {
         Self::new_real2_handlegeomsurface_int_real3(U, V, Surf, Order, 0.0001, 0.01, 0.1)
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:81 - `GeomPlate_PointConstraint::SetOrder()`
     pub fn set_order(&mut self, Order: i32) {
         unsafe { crate::ffi::GeomPlate_PointConstraint_set_order(self as *mut Self, Order) }
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:85 - `GeomPlate_PointConstraint::Order()`
     /// Returns the order of constraint: G0, G1, and G2,
     /// controlled respectively by G0Criterion G1Criterion and G2Criterion.
     pub fn order(&self) -> i32 {
         unsafe { crate::ffi::GeomPlate_PointConstraint_order(self as *const Self) }
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:91 - `GeomPlate_PointConstraint::SetG0Criterion()`
     /// Allows you to set the G0 criterion. This is the law
     /// defining the greatest distance allowed between the
     /// constraint and the target surface. If this criterion is not
@@ -1624,6 +1737,7 @@ impl PointConstraint {
         }
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:98 - `GeomPlate_PointConstraint::SetG1Criterion()`
     /// Allows you to set the G1 criterion. This is the law
     /// defining the greatest angle allowed between the
     /// constraint and the target surface. If this criterion is not
@@ -1633,6 +1747,7 @@ impl PointConstraint {
         unsafe { crate::ffi::GeomPlate_PointConstraint_set_g1_criterion(self as *mut Self, TolAng) }
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:106 - `GeomPlate_PointConstraint::SetG2Criterion()`
     /// Allows you to set the G2 criterion. This is the law
     /// defining the greatest difference in curvature allowed
     /// between the constraint and the target surface. If this
@@ -1645,12 +1760,14 @@ impl PointConstraint {
         }
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:110 - `GeomPlate_PointConstraint::G0Criterion()`
     /// Returns the G0 criterion. This is the greatest distance
     /// allowed between the constraint and the target surface.
     pub fn g0_criterion(&self) -> f64 {
         unsafe { crate::ffi::GeomPlate_PointConstraint_g0_criterion(self as *const Self) }
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:115 - `GeomPlate_PointConstraint::G1Criterion()`
     /// Returns the G1 criterion. This is the greatest angle
     /// allowed between the constraint and the target surface.
     /// Raises   ConstructionError if  the  point  is  not  on  the  surface.
@@ -1658,6 +1775,7 @@ impl PointConstraint {
         unsafe { crate::ffi::GeomPlate_PointConstraint_g1_criterion(self as *const Self) }
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:120 - `GeomPlate_PointConstraint::G2Criterion()`
     /// Returns the G2 criterion. This is the greatest difference
     /// in curvature allowed between the constraint and the target surface.
     /// Raises   ConstructionError if  the  point  is  not  on  the  surface
@@ -1665,10 +1783,12 @@ impl PointConstraint {
         unsafe { crate::ffi::GeomPlate_PointConstraint_g2_criterion(self as *const Self) }
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:122 - `GeomPlate_PointConstraint::D0()`
     pub fn d0(&self, P: &mut crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::GeomPlate_PointConstraint_d0(self as *const Self, P) }
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:124 - `GeomPlate_PointConstraint::D1()`
     pub fn d1(
         &self,
         P: &mut crate::ffi::gp_Pnt,
@@ -1678,6 +1798,7 @@ impl PointConstraint {
         unsafe { crate::ffi::GeomPlate_PointConstraint_d1(self as *const Self, P, V1, V2) }
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:126 - `GeomPlate_PointConstraint::D2()`
     pub fn d2(
         &self,
         P: &mut crate::ffi::gp_Pnt,
@@ -1692,14 +1813,17 @@ impl PointConstraint {
         }
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:129 - `GeomPlate_PointConstraint::HasPnt2dOnSurf()`
     pub fn has_pnt2d_on_surf(&self) -> bool {
         unsafe { crate::ffi::GeomPlate_PointConstraint_has_pnt2d_on_surf(self as *const Self) }
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:131 - `GeomPlate_PointConstraint::SetPnt2dOnSurf()`
     pub fn set_pnt2d_on_surf(&mut self, Pnt: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::GeomPlate_PointConstraint_set_pnt2d_on_surf(self as *mut Self, Pnt) }
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:133 - `GeomPlate_PointConstraint::Pnt2dOnSurf()`
     pub fn pnt2d_on_surf(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_PointConstraint_pnt2d_on_surf(
@@ -1708,18 +1832,22 @@ impl PointConstraint {
         }
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:135 - `GeomPlate_PointConstraint::LPropSurf()`
     pub fn l_prop_surf(&mut self) -> &mut crate::ffi::GeomLProp_SLProps {
         unsafe { &mut *(crate::ffi::GeomPlate_PointConstraint_l_prop_surf(self as *mut Self)) }
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:137 - `GeomPlate_PointConstraint::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomPlate_PointConstraint_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:137 - `GeomPlate_PointConstraint::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::GeomPlate_PointConstraint_get_type_name() }
     }
 
+    /// **Source:** `GeomPlate_PointConstraint.hxx`:137 - `GeomPlate_PointConstraint::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomPlate_PointConstraint_get_type_descriptor()) }
     }

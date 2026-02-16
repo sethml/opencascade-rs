@@ -108,6 +108,7 @@ impl TryFrom<i32> for DefList {
 // From IGESData_BasicEditor.hxx
 // ========================
 
+/// **Source:** `IGESData_BasicEditor.hxx`:42 - `IGESData_BasicEditor`
 /// This class provides various functions of basic edition,
 /// such as :
 /// - setting header unit (WARNING : DOES NOT convert entities)
@@ -126,17 +127,20 @@ unsafe impl crate::CppDeletable for BasicEditor {
 }
 
 impl BasicEditor {
+    /// **Source:** `IGESData_BasicEditor.hxx`:48 - `IGESData_BasicEditor::IGESData_BasicEditor()`
     /// Creates an empty Basic Editor which should be initialized via Init() method.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_BasicEditor_ctor()) }
     }
 
+    /// **Source:** `IGESData_BasicEditor.hxx`:69 - `IGESData_BasicEditor::SetUnitFlag()`
     /// Sets a new unit from its flag (param 14 of Global Section)
     /// Returns True if done, False if <flag> is incorrect
     pub fn set_unit_flag(&mut self, flag: i32) -> bool {
         unsafe { crate::ffi::IGESData_BasicEditor_set_unit_flag(self as *mut Self, flag) }
     }
 
+    /// **Source:** `IGESData_BasicEditor.hxx`:75 - `IGESData_BasicEditor::SetUnitValue()`
     /// Sets a new unit from its value in meters (rounded to the
     /// closest one, max gap 1%)
     /// Returns True if done, False if <val> is too far from a
@@ -145,6 +149,7 @@ impl BasicEditor {
         unsafe { crate::ffi::IGESData_BasicEditor_set_unit_value(self as *mut Self, val) }
     }
 
+    /// **Source:** `IGESData_BasicEditor.hxx`:81 - `IGESData_BasicEditor::SetUnitName()`
     /// Sets a new unit from its name (param 15 of Global Section)
     /// Returns True if done, False if <name> is incorrect
     /// Remark : if <flag> has been set to 3 (user defined), <name>
@@ -153,6 +158,7 @@ impl BasicEditor {
         unsafe { crate::ffi::IGESData_BasicEditor_set_unit_name(self as *mut Self, name) }
     }
 
+    /// **Source:** `IGESData_BasicEditor.hxx`:89 - `IGESData_BasicEditor::ApplyUnit()`
     /// Applies unit value to convert header data : Resolution,
     /// MaxCoord, MaxLineWeight
     /// Applies unit only once after SetUnit... has been called,
@@ -163,6 +169,7 @@ impl BasicEditor {
         unsafe { crate::ffi::IGESData_BasicEditor_apply_unit(self as *mut Self, enforce) }
     }
 
+    /// **Source:** `IGESData_BasicEditor.hxx`:95 - `IGESData_BasicEditor::ComputeStatus()`
     /// Performs the re-computation of status on the whole model
     /// (Subordinate Status and Use Flag of each IGES Entity), which
     /// can have required values according the way they are referenced
@@ -171,6 +178,7 @@ impl BasicEditor {
         unsafe { crate::ffi::IGESData_BasicEditor_compute_status(self as *mut Self) }
     }
 
+    /// **Source:** `IGESData_BasicEditor.hxx`:105 - `IGESData_BasicEditor::AutoCorrect()`
     /// Performs auto-correction on an IGESEntity
     /// Returns True if something has changed, False if nothing done.
     ///
@@ -183,48 +191,57 @@ impl BasicEditor {
         unsafe { crate::ffi::IGESData_BasicEditor_auto_correct(self as *mut Self, ent) }
     }
 
+    /// **Source:** `IGESData_BasicEditor.hxx`:109 - `IGESData_BasicEditor::AutoCorrectModel()`
     /// Performs auto-correction on the whole Model
     /// Returns the count of modified entities
     pub fn auto_correct_model(&mut self) -> i32 {
         unsafe { crate::ffi::IGESData_BasicEditor_auto_correct_model(self as *mut Self) }
     }
 
+    /// **Source:** `IGESData_BasicEditor.hxx`:113 - `IGESData_BasicEditor::UnitNameFlag()`
     /// From the name of unit, computes flag number, 0 if incorrect
     /// (in this case, user defined entity remains possible)
     pub fn unit_name_flag(name: *const std::ffi::c_char) -> i32 {
         unsafe { crate::ffi::IGESData_BasicEditor_unit_name_flag(name) }
     }
 
+    /// **Source:** `IGESData_BasicEditor.hxx`:116 - `IGESData_BasicEditor::UnitFlagValue()`
     /// From the flag of unit, determines value in MM, 0 if incorrect
     pub fn unit_flag_value(flag: i32) -> f64 {
         unsafe { crate::ffi::IGESData_BasicEditor_unit_flag_value(flag) }
     }
 
+    /// **Source:** `IGESData_BasicEditor.hxx`:119 - `IGESData_BasicEditor::UnitFlagName()`
     /// From the flag of unit, determines its name, "" if incorrect
     pub fn unit_flag_name(flag: i32) -> *const std::ffi::c_char {
         unsafe { crate::ffi::IGESData_BasicEditor_unit_flag_name(flag) }
     }
 
+    /// **Source:** `IGESData_BasicEditor.hxx`:122 - `IGESData_BasicEditor::IGESVersionName()`
     /// From the flag of IGES version, returns name, "" if incorrect
     pub fn iges_version_name(flag: i32) -> *const std::ffi::c_char {
         unsafe { crate::ffi::IGESData_BasicEditor_iges_version_name(flag) }
     }
 
+    /// **Source:** `IGESData_BasicEditor.hxx`:125 - `IGESData_BasicEditor::IGESVersionMax()`
     /// Returns the maximum allowed value for IGESVersion Flag
     pub fn iges_version_max() -> i32 {
         unsafe { crate::ffi::IGESData_BasicEditor_iges_version_max() }
     }
 
+    /// **Source:** `IGESData_BasicEditor.hxx`:128 - `IGESData_BasicEditor::DraftingName()`
     /// From the flag of drafting standard, returns name, "" if incorrect
     pub fn drafting_name(flag: i32) -> *const std::ffi::c_char {
         unsafe { crate::ffi::IGESData_BasicEditor_drafting_name(flag) }
     }
 
+    /// **Source:** `IGESData_BasicEditor.hxx`:131 - `IGESData_BasicEditor::DraftingMax()`
     /// Returns the maximum allowed value for Drafting Flag
     pub fn drafting_max() -> i32 {
         unsafe { crate::ffi::IGESData_BasicEditor_drafting_max() }
     }
 
+    /// **Source:** `IGESData_BasicEditor.hxx`:135 - `IGESData_BasicEditor::GetFlagByValue()`
     /// Returns Flag corresponding to the scaling theValue.
     /// Returns 0 if there's no such flag.
     pub fn get_flag_by_value(theValue: f64) -> i32 {
@@ -236,6 +253,7 @@ impl BasicEditor {
 // From IGESData_DefSwitch.hxx
 // ========================
 
+/// **Source:** `IGESData_DefSwitch.hxx`:31 - `IGESData_DefSwitch`
 /// description of a directory component which can be either
 /// undefined (let Void), defined as a Reference to an entity,
 /// or as a Rank, integer value addressing a builtin table
@@ -250,26 +268,31 @@ unsafe impl crate::CppDeletable for DefSwitch {
 }
 
 impl DefSwitch {
+    /// **Source:** `IGESData_DefSwitch.hxx`:37 - `IGESData_DefSwitch::IGESData_DefSwitch()`
     /// creates a DefSwitch as Void
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_DefSwitch_ctor()) }
     }
 
+    /// **Source:** `IGESData_DefSwitch.hxx`:40 - `IGESData_DefSwitch::SetVoid()`
     /// sets DefSwitch to "Void" status (in file : Integer = 0)
     pub fn set_void(&mut self) {
         unsafe { crate::ffi::IGESData_DefSwitch_set_void(self as *mut Self) }
     }
 
+    /// **Source:** `IGESData_DefSwitch.hxx`:43 - `IGESData_DefSwitch::SetReference()`
     /// sets DefSwitch to "Reference" Status (in file : Integer < 0)
     pub fn set_reference(&mut self) {
         unsafe { crate::ffi::IGESData_DefSwitch_set_reference(self as *mut Self) }
     }
 
+    /// **Source:** `IGESData_DefSwitch.hxx`:46 - `IGESData_DefSwitch::SetRank()`
     /// sets DefSwitch to "Rank" with a Value (in file : Integer > 0)
     pub fn set_rank(&mut self, val: i32) {
         unsafe { crate::ffi::IGESData_DefSwitch_set_rank(self as *mut Self, val) }
     }
 
+    /// **Source:** `IGESData_DefSwitch.hxx`:49 - `IGESData_DefSwitch::DefType()`
     /// returns DefType status (Void,Reference,Rank)
     pub fn def_type(&self) -> crate::iges_data::DefType {
         unsafe {
@@ -280,6 +303,7 @@ impl DefSwitch {
         }
     }
 
+    /// **Source:** `IGESData_DefSwitch.hxx`:52 - `IGESData_DefSwitch::Value()`
     /// returns Value as Integer (sensefull for a Rank)
     pub fn value(&self) -> i32 {
         unsafe { crate::ffi::IGESData_DefSwitch_value(self as *const Self) }
@@ -290,6 +314,7 @@ impl DefSwitch {
 // From IGESData_HArray1OfIGESEntity.hxx
 // ========================
 
+/// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity`
 pub use crate::ffi::IGESData_HArray1OfIGESEntity as HArray1OfIGESEntity;
 
 unsafe impl crate::CppDeletable for HArray1OfIGESEntity {
@@ -299,10 +324,12 @@ unsafe impl crate::CppDeletable for HArray1OfIGESEntity {
 }
 
 impl HArray1OfIGESEntity {
+    /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::IGESData_HArray1OfIGESEntity()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_HArray1OfIGESEntity_ctor()) }
     }
 
+    /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::IGESData_HArray1OfIGESEntity()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESData_HArray1OfIGESEntity_ctor_int2(
@@ -311,6 +338,7 @@ impl HArray1OfIGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::IGESData_HArray1OfIGESEntity()`
     pub fn new_array1ofigesentity(
         theOther: &crate::ffi::IGESData_Array1OfIGESEntity,
     ) -> crate::OwnedPtr<Self> {
@@ -321,14 +349,17 @@ impl HArray1OfIGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESData_HArray1OfIGESEntity_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IGESData_HArray1OfIGESEntity_get_type_name() }
     }
 
+    /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESData_HArray1OfIGESEntity_get_type_descriptor()) }
     }
@@ -369,6 +400,7 @@ impl HandleIGESDataHArray1OfIGESEntity {
 // From IGESData_IGESEntity.hxx
 // ========================
 
+/// **Source:** `IGESData_IGESEntity.hxx`:46 - `IGESData_IGESEntity`
 /// defines root of IGES Entity definition, including Directory
 /// Part, lists of (optional) Properties and Associativities
 pub use crate::ffi::IGESData_IGESEntity as IGESEntity;
@@ -380,17 +412,20 @@ unsafe impl crate::CppDeletable for IGESEntity {
 }
 
 impl IGESEntity {
+    /// **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
     /// gives IGES Type Number (often coupled with Form Number)
     pub fn type_number(&self) -> i32 {
         unsafe { crate::ffi::IGESData_IGESEntity_type_number(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
     /// Returns the form number for that
     /// type of an IGES entity. The default form number is 0.
     pub fn form_number(&self) -> i32 {
         unsafe { crate::ffi::IGESData_IGESEntity_form_number(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:66 - `IGESData_IGESEntity::DirFieldEntity()`
     /// Returns the Entity which has been recorded for a given
     /// Field Number, i.e. without any cast. Maps with :
     /// 3 : Structure   4 : LineFont     5 : LevelList     6 : View
@@ -409,12 +444,14 @@ impl IGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
     /// returns True if an IGESEntity is defined with a Structure
     /// (it is normally reserved for certain classes, such as Macros)
     pub fn has_structure(&self) -> bool {
         unsafe { crate::ffi::IGESData_IGESEntity_has_structure(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
     /// Returns Structure (used by some types of IGES Entities only)
     /// Returns a Null Handle if Structure is not defined
     pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
@@ -425,6 +462,7 @@ impl IGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
     /// Returns the definition status of LineFont
     pub fn def_line_font(&self) -> crate::iges_data::DefType {
         unsafe {
@@ -435,12 +473,14 @@ impl IGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
     /// Returns LineFont definition as an Integer (if defined as Rank)
     /// If LineFont is defined as an Entity, returns a negative value
     pub fn rank_line_font(&self) -> i32 {
         unsafe { crate::ffi::IGESData_IGESEntity_rank_line_font(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
     /// Returns the definition status of Level
     pub fn def_level(&self) -> crate::iges_data::DefList {
         unsafe {
@@ -451,12 +491,14 @@ impl IGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
     /// Returns the level the entity
     /// belongs to. Returns -1 if the entity belongs to more than one  level.
     pub fn level(&self) -> i32 {
         unsafe { crate::ffi::IGESData_IGESEntity_level(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
     /// Returns the definition status of
     /// the view. This can be: none, one or several.
     pub fn def_view(&self) -> crate::iges_data::DefList {
@@ -468,47 +510,56 @@ impl IGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
     /// Returns True if a Transformation Matrix is defined
     pub fn has_transf(&self) -> bool {
         unsafe { crate::ffi::IGESData_IGESEntity_has_transf(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
     /// Returns True if a LabelDisplay mode is defined for this entity
     pub fn has_label_display(&self) -> bool {
         unsafe { crate::ffi::IGESData_IGESEntity_has_label_display(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
     /// gives Blank Status (0 visible, 1 blanked)
     pub fn blank_status(&self) -> i32 {
         unsafe { crate::ffi::IGESData_IGESEntity_blank_status(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
     /// gives Subordinate Switch (0-1-2-3)
     pub fn subordinate_status(&self) -> i32 {
         unsafe { crate::ffi::IGESData_IGESEntity_subordinate_status(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
     /// gives Entity's Use Flag (0 to 5)
     pub fn use_flag(&self) -> i32 {
         unsafe { crate::ffi::IGESData_IGESEntity_use_flag(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
     /// gives Hierarchy status (0-1-2)
     pub fn hierarchy_status(&self) -> i32 {
         unsafe { crate::ffi::IGESData_IGESEntity_hierarchy_status(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
     /// Returns the LineWeight Number (0  not defined), see also LineWeight
     pub fn line_weight_number(&self) -> i32 {
         unsafe { crate::ffi::IGESData_IGESEntity_line_weight_number(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
     /// Returns the true Line Weight, computed from LineWeightNumber and
     /// Global Parameter in the Model by call to SetLineWeight
     pub fn line_weight(&self) -> f64 {
         unsafe { crate::ffi::IGESData_IGESEntity_line_weight(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
     /// Returns the definition status of Color.
     pub fn def_color(&self) -> crate::iges_data::DefType {
         unsafe {
@@ -519,6 +570,7 @@ impl IGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
     /// Returns the color definition as
     /// an integer value if the color was defined as a rank.
     /// Warning A negative value is returned if the color was defined as an entity.
@@ -526,6 +578,7 @@ impl IGESEntity {
         unsafe { crate::ffi::IGESData_IGESEntity_rank_color(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:169 - `IGESData_IGESEntity::CResValues()`
     /// returns "reserved" alphanumeric values res1 and res2
     /// res1 and res2 have to be reserved as Character[9 at least]
     /// (remark : their content is changed)
@@ -539,12 +592,14 @@ impl IGESEntity {
         unsafe { crate::ffi::IGESData_IGESEntity_c_res_values(self as *const Self, res1, res2) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
     /// Returns true if a short label is defined.
     /// A short label is a non-blank 8-character string.
     pub fn has_short_label(&self) -> bool {
         unsafe { crate::ffi::IGESData_IGESEntity_has_short_label(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
     /// Returns the label value for this IGES entity as a string.
     /// Warning If the label is blank, this string is null.
     pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
@@ -555,18 +610,21 @@ impl IGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
     /// Returns true if a subscript number is defined.
     /// A subscript number is an integer used to identify a label.
     pub fn has_sub_script_number(&self) -> bool {
         unsafe { crate::ffi::IGESData_IGESEntity_has_sub_script_number(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
     /// Returns the integer subscript number used to identify this IGES entity.
     /// Warning 0 is returned if no subscript number is defined for this IGES entity.
     pub fn sub_script_number(&self) -> i32 {
         unsafe { crate::ffi::IGESData_IGESEntity_sub_script_number(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:190 - `IGESData_IGESEntity::InitDirFieldEntity()`
     /// Initializes a directory field as an Entity of any kind
     /// See DirFieldEntity for more details
     pub fn init_dir_field_entity(
@@ -579,6 +637,7 @@ impl IGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     /// Initializes the Status of Directory Part
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         unsafe {
@@ -592,6 +651,7 @@ impl IGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
     /// Sets a new Label to an IGES Entity
     /// If <sub> is given, it sets value of SubScriptNumber
     /// else, SubScriptNumber is erased
@@ -599,6 +659,7 @@ impl IGESEntity {
         unsafe { crate::ffi::IGESData_IGESEntity_set_label(self as *mut Self, label, sub) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
     /// Returns True if an entity has one and only one parent, defined
     /// by a SingleParentEntity Type Associativity (explicit sharing).
     /// Thus, implicit sharing remains defined at model level
@@ -607,6 +668,7 @@ impl IGESEntity {
         unsafe { crate::ffi::IGESData_IGESEntity_has_one_parent(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
     /// Returns the Unique Parent (in the sense given by HasOneParent)
     /// Error if there is none or several
     pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
@@ -617,6 +679,7 @@ impl IGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:250 - `IGESData_IGESEntity::Location()`
     /// Returns Location given by Transf in Directory Part (see above)
     /// It must be considered for local definition : if the Entity is
     /// set in a "Parent", that one can add its one Location, but this
@@ -629,6 +692,7 @@ impl IGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
     /// Returns Location considered for Vectors, i.e. without its
     /// Translation Part. As Location, it gives local definition.
     pub fn vector_location(&self) -> crate::OwnedPtr<crate::ffi::gp_GTrsf> {
@@ -639,6 +703,7 @@ impl IGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
     /// Returns Location by taking in account a Parent which has its
     /// own Location : that one will be combined to that of <me>
     /// The Parent is considered only if HasOneParent is True,
@@ -651,12 +716,14 @@ impl IGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
     /// says if a Name is defined, as Short Label or as Name Property
     /// (Property is looked first, else ShortLabel is considered)
     pub fn has_name(&self) -> bool {
         unsafe { crate::ffi::IGESData_IGESEntity_has_name(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
     /// returns Name value as a String (Property Name or ShortLabel)
     /// if SubNumber is defined, it is concatenated after ShortLabel
     /// as follows label(number). Ignored with a Property Name
@@ -668,6 +735,7 @@ impl IGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
     /// Returns True if the Entity is defined with an Associativity
     /// list, even empty (that is, file contains its length 0)
     /// Else, the file contained NO idencation at all about this list.
@@ -675,11 +743,13 @@ impl IGESEntity {
         unsafe { crate::ffi::IGESData_IGESEntity_are_present_associativities(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
     /// gives number of recorded associativities (0  no list defined)
     pub fn nb_associativities(&self) -> i32 {
         unsafe { crate::ffi::IGESData_IGESEntity_nb_associativities(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
     /// gives how many Associativities have a given type
     pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
         unsafe {
@@ -687,6 +757,7 @@ impl IGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
     /// returns the Associativity of a given Type (if only one exists)
     /// Error if none or more than one
     pub fn typed_associativity(
@@ -701,16 +772,19 @@ impl IGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
     /// Sets "me" in the Associativity list of another Entity
     pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         unsafe { crate::ffi::IGESData_IGESEntity_associate(self as *const Self, ent) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
     /// Resets "me" from the Associativity list of another Entity
     pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         unsafe { crate::ffi::IGESData_IGESEntity_dissociate(self as *const Self, ent) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
     /// Returns True if the Entity is defined with a Property list,
     /// even empty (that is, file contains its length 0)
     /// Else, the file contained NO idencation at all about this list
@@ -718,16 +792,19 @@ impl IGESEntity {
         unsafe { crate::ffi::IGESData_IGESEntity_are_present_properties(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
     /// Gives number of recorded properties (0  no list defined)
     pub fn nb_properties(&self) -> i32 {
         unsafe { crate::ffi::IGESData_IGESEntity_nb_properties(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
     /// gives how many Properties have a given type
     pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
         unsafe { crate::ffi::IGESData_IGESEntity_nb_typed_properties(self as *const Self, atype) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
     /// returns the Property of a given Type
     /// Error if none or more than one
     pub fn typed_property(
@@ -744,16 +821,19 @@ impl IGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
     /// Adds a Property in the list
     pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         unsafe { crate::ffi::IGESData_IGESEntity_add_property(self as *mut Self, ent) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
     /// Removes a Property from the list
     pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         unsafe { crate::ffi::IGESData_IGESEntity_remove_property(self as *mut Self, ent) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     /// computes and sets "true" line weight according IGES rules from
     /// global data MaxLineWeight (maxv) and LineWeightGrad (gradw),
     /// or sets it to defw (Default) if LineWeightNumber is null
@@ -763,14 +843,17 @@ impl IGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:333 - `IGESData_IGESEntity::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESData_IGESEntity_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:333 - `IGESData_IGESEntity::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IGESData_IGESEntity_get_type_name() }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:333 - `IGESData_IGESEntity::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESData_IGESEntity_get_type_descriptor()) }
     }
@@ -809,6 +892,7 @@ impl HandleIGESDataIGESEntity {
 // From IGESData_SpecificLib.hxx
 // ========================
 
+/// **Source:** `IGESData_SpecificLib.hxx`:33 - `IGESData_SpecificLib`
 pub use crate::ffi::IGESData_SpecificLib as SpecificLib;
 
 unsafe impl crate::CppDeletable for SpecificLib {
@@ -818,12 +902,14 @@ unsafe impl crate::CppDeletable for SpecificLib {
 }
 
 impl SpecificLib {
+    /// **Source:** `IGESData_SpecificLib.hxx`:51 - `IGESData_SpecificLib::IGESData_SpecificLib()`
     /// Creates an empty Library : it will later by filled by method
     /// AddProtocol
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_SpecificLib_ctor()) }
     }
 
+    /// **Source:** `IGESData_SpecificLib.hxx`:61 - `IGESData_SpecificLib::Clear()`
     /// Clears the list of Modules of a library (can be used to
     /// redefine the order of Modules before action : Clear then
     /// refill the Library by calls to AddProtocol)
@@ -831,22 +917,26 @@ impl SpecificLib {
         unsafe { crate::ffi::IGESData_SpecificLib_clear(self as *mut Self) }
     }
 
+    /// **Source:** `IGESData_SpecificLib.hxx`:65 - `IGESData_SpecificLib::SetComplete()`
     /// Sets a library to be defined with the complete Global list
     /// (all the couples Protocol/Modules recorded in it)
     pub fn set_complete(&mut self) {
         unsafe { crate::ffi::IGESData_SpecificLib_set_complete(self as *mut Self) }
     }
 
+    /// **Source:** `IGESData_SpecificLib.hxx`:78 - `IGESData_SpecificLib::Start()`
     /// Starts Iteration on the Modules (sets it on the first one)
     pub fn start(&mut self) {
         unsafe { crate::ffi::IGESData_SpecificLib_start(self as *mut Self) }
     }
 
+    /// **Source:** `IGESData_SpecificLib.hxx`:81 - `IGESData_SpecificLib::More()`
     /// Returns True if there are more Modules to iterate on
     pub fn more(&self) -> bool {
         unsafe { crate::ffi::IGESData_SpecificLib_more(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_SpecificLib.hxx`:85 - `IGESData_SpecificLib::Next()`
     /// Iterates by getting the next Module in the list
     /// If there is none, the exception will be raised by Value
     pub fn next(&mut self) {

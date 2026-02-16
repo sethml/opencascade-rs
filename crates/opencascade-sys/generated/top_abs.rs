@@ -6,6 +6,25 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `TopAbs.hxx` - `TopAbs::Compose`
+/// Compose  the Orientation    <Or1>  and  <Or2>.    This
+/// composition is not symmetric (if  you switch <Or1> and
+/// <Or2> the result  is different). It assumes that <Or1>
+/// is the Orientation of a Shape S1 containing a Shape S2
+/// of Orientation   Or2.  The result    is the  cumulated
+/// orientation of S2 in S1.  The composition law is :
+///
+/// \ Or2     FORWARD  REVERSED INTERNAL EXTERNAL
+/// Or1       -------------------------------------
+/// FORWARD   | FORWARD  REVERSED INTERNAL EXTERNAL
+/// |
+/// REVERSED  | REVERSED FORWARD  INTERNAL EXTERNAL
+/// |
+/// INTERNAL  | INTERNAL INTERNAL INTERNAL INTERNAL
+/// |
+/// EXTERNAL  | EXTERNAL EXTERNAL EXTERNAL EXTERNAL
+/// Note: The top corner in the table is the most important
+/// for the purposes of Open CASCADE topology and shape sharing.
 pub fn compose(
     Or1: crate::top_abs::Orientation,
     Or2: crate::top_abs::Orientation,
@@ -15,20 +34,54 @@ pub fn compose(
             .unwrap()
     }
 }
+/// **Source:** `TopAbs.hxx` - `TopAbs::Reverse`
+/// xchanges the interior/exterior status of the two
+/// sides. This is what happens when the sense of
+/// direction is reversed. The following rules apply:
+///
+/// FORWARD          REVERSED
+/// REVERSED         FORWARD
+/// INTERNAL         INTERNAL
+/// EXTERNAL         EXTERNAL
+///
+/// Reverse exchange the material sides.
 pub fn reverse_orientation(Or: crate::top_abs::Orientation) -> crate::top_abs::Orientation {
     unsafe {
         crate::top_abs::Orientation::try_from(crate::ffi::TopAbs_reverse_orientation(Or.into()))
             .unwrap()
     }
 }
+/// **Source:** `TopAbs.hxx` - `TopAbs::Complement`
+/// Reverses the interior/exterior status of each side of
+/// the object. So, to take the complement of an object
+/// means to reverse the interior/exterior status of its
+/// boundary, i.e. inside becomes outside.
+/// The method returns the complementary orientation,
+/// following the rules in the table below:
+/// FORWARD          REVERSED
+/// REVERSED         FORWARD
+/// INTERNAL         EXTERNAL
+/// EXTERNAL         INTERNAL
+///
+/// Complement  complements   the  material  side.  Inside
+/// becomes outside.
 pub fn complement(Or: crate::top_abs::Orientation) -> crate::top_abs::Orientation {
     unsafe {
         crate::top_abs::Orientation::try_from(crate::ffi::TopAbs_complement(Or.into())).unwrap()
     }
 }
+/// **Source:** `TopAbs.hxx` - `TopAbs::ShapeTypeToString`
+/// Returns the string name for a given shape type.
+/// @param theType shape type
+/// @return string identifier from the list COMPOUND, COMPSOLID, SOLID, SHELL, FACE, WIRE, EDGE,
+/// VERTEX, SHAPE
 pub fn shape_type_to_string(theType: crate::top_abs::ShapeEnum) -> *const std::ffi::c_char {
     unsafe { crate::ffi::TopAbs_shape_type_to_string(theType.into()) }
 }
+/// **Source:** `TopAbs.hxx` - `TopAbs::ShapeTypeFromString`
+/// Returns the shape type from the given string identifier (using case-insensitive comparison).
+/// @param theTypeString string identifier
+/// @return shape type or TopAbs_SHAPE if string identifier is invalid
 pub fn shape_type_from_string(theTypeString: *const std::ffi::c_char) -> crate::top_abs::ShapeEnum {
     unsafe {
         crate::top_abs::ShapeEnum::try_from(crate::ffi::TopAbs_shape_type_from_string(
@@ -37,11 +90,20 @@ pub fn shape_type_from_string(theTypeString: *const std::ffi::c_char) -> crate::
         .unwrap()
     }
 }
+/// **Source:** `TopAbs.hxx` - `TopAbs::ShapeOrientationToString`
+/// Returns the string name for a given shape orientation.
+/// @param theOrientation shape orientation
+/// @return string identifier from the list FORWARD, REVERSED, INTERNAL, EXTERNAL
 pub fn shape_orientation_to_string(
     theOrientation: crate::top_abs::Orientation,
 ) -> *const std::ffi::c_char {
     unsafe { crate::ffi::TopAbs_shape_orientation_to_string(theOrientation.into()) }
 }
+/// **Source:** `TopAbs.hxx` - `TopAbs::ShapeOrientationFromString`
+/// Returns the shape orientation from the given string identifier (using case-insensitive
+/// comparison).
+/// @param theOrientationString string identifier
+/// @return shape orientation or TopAbs_FORWARD if string identifier is invalid
 pub fn shape_orientation_from_string(
     theOrientationString: *const std::ffi::c_char,
 ) -> crate::top_abs::Orientation {

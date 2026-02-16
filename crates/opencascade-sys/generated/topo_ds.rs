@@ -6,19 +6,142 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{
-    TopoDS_comp_solid as comp_solid, TopoDS_comp_solid_mut as comp_solid_mut,
-    TopoDS_compound as compound, TopoDS_compound_mut as compound_mut, TopoDS_edge as edge,
-    TopoDS_edge_mut as edge_mut, TopoDS_face as face, TopoDS_face_mut as face_mut,
-    TopoDS_shell as shell, TopoDS_shell_mut as shell_mut, TopoDS_solid as solid,
-    TopoDS_solid_mut as solid_mut, TopoDS_vertex as vertex, TopoDS_vertex_mut as vertex_mut,
-    TopoDS_wire as wire, TopoDS_wire_mut as wire_mut,
-};
+/// **Source:** `TopoDS.hxx` - `TopoDS::Vertex`
+/// Casts shape theShape to the more specialized return type, Vertex.
+/// @param theShape the shape to be cast
+/// @return the casted shape as TopoDS_Vertex
+/// @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+pub fn vertex(theShape: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Vertex {
+    unsafe { &*(crate::ffi::TopoDS_vertex(theShape)) }
+}
+/// **Source:** `TopoDS.hxx` - `TopoDS::Vertex`
+/// Casts shape theShape to the more specialized return type, Vertex.
+/// @param theShape the shape to be cast
+/// @return the casted shape as TopoDS_Vertex
+/// @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+pub fn vertex_mut(theShape: &mut crate::ffi::TopoDS_Shape) -> &mut crate::ffi::TopoDS_Vertex {
+    unsafe { &mut *(crate::ffi::TopoDS_vertex_mut(theShape)) }
+}
+/// **Source:** `TopoDS.hxx` - `TopoDS::Edge`
+/// Casts shape theShape to the more specialized return type, Edge.
+/// @param theShape the shape to be cast
+/// @return the casted shape as TopoDS_Edge
+/// @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+pub fn edge(theShape: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Edge {
+    unsafe { &*(crate::ffi::TopoDS_edge(theShape)) }
+}
+/// **Source:** `TopoDS.hxx` - `TopoDS::Edge`
+/// Casts shape theShape to the more specialized return type, Edge.
+/// @param theShape the shape to be cast
+/// @return the casted shape as TopoDS_Edge
+/// @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+pub fn edge_mut(theShape: &mut crate::ffi::TopoDS_Shape) -> &mut crate::ffi::TopoDS_Edge {
+    unsafe { &mut *(crate::ffi::TopoDS_edge_mut(theShape)) }
+}
+/// **Source:** `TopoDS.hxx` - `TopoDS::Wire`
+/// Casts shape theShape to the more specialized return type, Wire.
+/// @param theShape the shape to be cast
+/// @return the casted shape as TopoDS_Wire
+/// @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+pub fn wire(theShape: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Wire {
+    unsafe { &*(crate::ffi::TopoDS_wire(theShape)) }
+}
+/// **Source:** `TopoDS.hxx` - `TopoDS::Wire`
+/// Casts shape theShape to the more specialized return type, Wire.
+/// @param theShape the shape to be cast
+/// @return the casted shape as TopoDS_Wire
+/// @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+pub fn wire_mut(theShape: &mut crate::ffi::TopoDS_Shape) -> &mut crate::ffi::TopoDS_Wire {
+    unsafe { &mut *(crate::ffi::TopoDS_wire_mut(theShape)) }
+}
+/// **Source:** `TopoDS.hxx` - `TopoDS::Face`
+/// Casts shape theShape to the more specialized return type, Face.
+/// @param theShape the shape to be cast
+/// @return the casted shape as TopoDS_Face
+/// @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+pub fn face(theShape: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Face {
+    unsafe { &*(crate::ffi::TopoDS_face(theShape)) }
+}
+/// **Source:** `TopoDS.hxx` - `TopoDS::Face`
+/// Casts shape theShape to the more specialized return type, Face.
+/// @param theShape the shape to be cast
+/// @return the casted shape as TopoDS_Face
+/// @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+pub fn face_mut(theShape: &mut crate::ffi::TopoDS_Shape) -> &mut crate::ffi::TopoDS_Face {
+    unsafe { &mut *(crate::ffi::TopoDS_face_mut(theShape)) }
+}
+/// **Source:** `TopoDS.hxx` - `TopoDS::Shell`
+/// Casts shape theShape to the more specialized return type, Shell.
+/// @param theShape the shape to be cast
+/// @return the casted shape as TopoDS_Shell
+/// @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+pub fn shell(theShape: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Shell {
+    unsafe { &*(crate::ffi::TopoDS_shell(theShape)) }
+}
+/// **Source:** `TopoDS.hxx` - `TopoDS::Shell`
+/// Casts shape theShape to the more specialized return type, Shell.
+/// @param theShape the shape to be cast
+/// @return the casted shape as TopoDS_Shell
+/// @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+pub fn shell_mut(theShape: &mut crate::ffi::TopoDS_Shape) -> &mut crate::ffi::TopoDS_Shell {
+    unsafe { &mut *(crate::ffi::TopoDS_shell_mut(theShape)) }
+}
+/// **Source:** `TopoDS.hxx` - `TopoDS::Solid`
+/// Casts shape theShape to the more specialized return type, Solid.
+/// @param theShape the shape to be cast
+/// @return the casted shape as TopoDS_Solid
+/// @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+pub fn solid(theShape: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Solid {
+    unsafe { &*(crate::ffi::TopoDS_solid(theShape)) }
+}
+/// **Source:** `TopoDS.hxx` - `TopoDS::Solid`
+/// Casts shape theShape to the more specialized return type, Solid.
+/// @param theShape the shape to be cast
+/// @return the casted shape as TopoDS_Solid
+/// @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+pub fn solid_mut(theShape: &mut crate::ffi::TopoDS_Shape) -> &mut crate::ffi::TopoDS_Solid {
+    unsafe { &mut *(crate::ffi::TopoDS_solid_mut(theShape)) }
+}
+/// **Source:** `TopoDS.hxx` - `TopoDS::CompSolid`
+/// Casts shape theShape to the more specialized return type, CompSolid.
+/// @param theShape the shape to be cast
+/// @return the casted shape as TopoDS_CompSolid
+/// @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+pub fn comp_solid(theShape: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_CompSolid {
+    unsafe { &*(crate::ffi::TopoDS_comp_solid(theShape)) }
+}
+/// **Source:** `TopoDS.hxx` - `TopoDS::CompSolid`
+/// Casts shape theShape to the more specialized return type, CompSolid.
+/// @param theShape the shape to be cast
+/// @return the casted shape as TopoDS_CompSolid
+/// @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+pub fn comp_solid_mut(
+    theShape: &mut crate::ffi::TopoDS_Shape,
+) -> &mut crate::ffi::TopoDS_CompSolid {
+    unsafe { &mut *(crate::ffi::TopoDS_comp_solid_mut(theShape)) }
+}
+/// **Source:** `TopoDS.hxx` - `TopoDS::Compound`
+/// Casts shape theShape to the more specialized return type, Compound.
+/// @param theShape the shape to be cast
+/// @return the casted shape as TopoDS_Compound
+/// @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+pub fn compound(theShape: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Compound {
+    unsafe { &*(crate::ffi::TopoDS_compound(theShape)) }
+}
+/// **Source:** `TopoDS.hxx` - `TopoDS::Compound`
+/// Casts shape theShape to the more specialized return type, Compound.
+/// @param theShape the shape to be cast
+/// @return the casted shape as TopoDS_Compound
+/// @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
+pub fn compound_mut(theShape: &mut crate::ffi::TopoDS_Shape) -> &mut crate::ffi::TopoDS_Compound {
+    unsafe { &mut *(crate::ffi::TopoDS_compound_mut(theShape)) }
+}
 
 // ========================
 // From TopoDS_AlertWithShape.hxx
 // ========================
 
+/// **Source:** `TopoDS_AlertWithShape.hxx`:23 - `TopoDS_AlertWithShape`
 /// Alert object storing TopoDS shape in its field
 pub use crate::ffi::TopoDS_AlertWithShape as AlertWithShape;
 
@@ -29,39 +152,47 @@ unsafe impl crate::CppDeletable for AlertWithShape {
 }
 
 impl AlertWithShape {
+    /// **Source:** `TopoDS_AlertWithShape.hxx`:27 - `TopoDS_AlertWithShape::TopoDS_AlertWithShape()`
     /// Constructor with shape argument
     pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_AlertWithShape_ctor_shape(theShape)) }
     }
 
+    /// **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     /// Returns contained shape
     pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::TopoDS_AlertWithShape_get_shape(self as *const Self)) }
     }
 
+    /// **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
     /// Sets the shape
     pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::TopoDS_AlertWithShape_set_shape(self as *mut Self, theShape) }
     }
 
+    /// **Source:** `TopoDS_AlertWithShape.hxx`:36 - `TopoDS_AlertWithShape::SupportsMerge()`
     /// Returns false.
     pub fn supports_merge(&self) -> bool {
         unsafe { crate::ffi::TopoDS_AlertWithShape_supports_merge(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     /// Returns false.
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe { crate::ffi::TopoDS_AlertWithShape_merge(self as *mut Self, theTarget) }
     }
 
+    /// **Source:** `TopoDS_AlertWithShape.hxx`:43 - `TopoDS_AlertWithShape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_AlertWithShape_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TopoDS_AlertWithShape.hxx`:43 - `TopoDS_AlertWithShape::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TopoDS_AlertWithShape_get_type_name() }
     }
 
+    /// **Source:** `TopoDS_AlertWithShape.hxx`:43 - `TopoDS_AlertWithShape::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_AlertWithShape_get_type_descriptor()) }
     }
@@ -90,6 +221,7 @@ impl AlertWithShape {
 // From TopoDS_Builder.hxx
 // ========================
 
+/// **Source:** `TopoDS_Builder.hxx`:71 - `TopoDS_Builder`
 /// A  Builder is used   to  create  Topological  Data
 /// Structures.It is the root of the Builder class hierarchy.
 ///
@@ -138,36 +270,43 @@ unsafe impl crate::CppDeletable for Builder {
 }
 
 impl Builder {
+    /// **Source:** `TopoDS_Builder.hxx` - `TopoDS_Builder::TopoDS_Builder()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_Builder_ctor()) }
     }
 
+    /// **Source:** `TopoDS_Builder.hxx`:77 - `TopoDS_Builder::MakeWire()`
     /// Make an empty Wire.
     pub fn make_wire(&self, W: &mut crate::ffi::TopoDS_Wire) {
         unsafe { crate::ffi::TopoDS_Builder_make_wire(self as *const Self, W) }
     }
 
+    /// **Source:** `TopoDS_Builder.hxx`:80 - `TopoDS_Builder::MakeShell()`
     /// Make an empty Shell.
     pub fn make_shell(&self, S: &mut crate::ffi::TopoDS_Shell) {
         unsafe { crate::ffi::TopoDS_Builder_make_shell(self as *const Self, S) }
     }
 
+    /// **Source:** `TopoDS_Builder.hxx`:83 - `TopoDS_Builder::MakeSolid()`
     /// Make a Solid covering the whole 3D space.
     pub fn make_solid(&self, S: &mut crate::ffi::TopoDS_Solid) {
         unsafe { crate::ffi::TopoDS_Builder_make_solid(self as *const Self, S) }
     }
 
+    /// **Source:** `TopoDS_Builder.hxx`:86 - `TopoDS_Builder::MakeCompSolid()`
     /// Make an empty Composite Solid.
     pub fn make_comp_solid(&self, C: &mut crate::ffi::TopoDS_CompSolid) {
         unsafe { crate::ffi::TopoDS_Builder_make_comp_solid(self as *const Self, C) }
     }
 
+    /// **Source:** `TopoDS_Builder.hxx`:89 - `TopoDS_Builder::MakeCompound()`
     /// Make an empty Compound.
     pub fn make_compound(&self, C: &mut crate::ffi::TopoDS_Compound) {
         unsafe { crate::ffi::TopoDS_Builder_make_compound(self as *const Self, C) }
     }
 
+    /// **Source:** `TopoDS_Builder.hxx`:95 - `TopoDS_Builder::Add()`
     /// Add the Shape C in the Shape S.
     /// Exceptions
     /// - TopoDS_FrozenShape if S is not free and cannot be modified.
@@ -176,6 +315,7 @@ impl Builder {
         unsafe { crate::ffi::TopoDS_Builder_add(self as *const Self, S, C) }
     }
 
+    /// **Source:** `TopoDS_Builder.hxx`:100 - `TopoDS_Builder::Remove()`
     /// Remove the Shape C from the Shape S.
     /// Exceptions
     /// TopoDS_FrozenShape if S is frozen and cannot be modified.
@@ -195,6 +335,7 @@ impl Builder {
 // From TopoDS_CompSolid.hxx
 // ========================
 
+/// **Source:** `TopoDS_CompSolid.hxx`:31 - `TopoDS_CompSolid`
 /// Describes a composite solid which
 /// - references an underlying composite solid with the
 /// potential to be given a location and an orientation
@@ -213,6 +354,7 @@ unsafe impl crate::CppDeletable for CompSolid {
 }
 
 impl CompSolid {
+    /// **Source:** `TopoDS_CompSolid.hxx`:37 - `TopoDS_CompSolid::TopoDS_CompSolid()`
     /// Constructs an Undefined CompSolid.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_CompSolid_ctor()) }
@@ -457,6 +599,7 @@ impl CompSolid {
 // From TopoDS_Compound.hxx
 // ========================
 
+/// **Source:** `TopoDS_Compound.hxx`:31 - `TopoDS_Compound`
 /// Describes a compound which
 /// - references an underlying compound with the
 /// potential to be given a location and an orientation
@@ -475,6 +618,7 @@ unsafe impl crate::CppDeletable for Compound {
 }
 
 impl Compound {
+    /// **Source:** `TopoDS_Compound.hxx`:37 - `TopoDS_Compound::TopoDS_Compound()`
     /// Constructs an Undefined Compound.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_Compound_ctor()) }
@@ -719,6 +863,7 @@ impl Compound {
 // From TopoDS_Edge.hxx
 // ========================
 
+/// **Source:** `TopoDS_Edge.hxx`:30 - `TopoDS_Edge`
 /// Describes an edge which
 /// - references an underlying edge with the potential to
 /// be given a location and an orientation
@@ -736,6 +881,7 @@ unsafe impl crate::CppDeletable for Edge {
 }
 
 impl Edge {
+    /// **Source:** `TopoDS_Edge.hxx`:36 - `TopoDS_Edge::TopoDS_Edge()`
     /// Undefined Edge.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_Edge_ctor()) }
@@ -976,6 +1122,7 @@ impl Edge {
 // From TopoDS_Face.hxx
 // ========================
 
+/// **Source:** `TopoDS_Face.hxx`:29 - `TopoDS_Face`
 /// Describes a face which
 /// - references an underlying face with the potential to
 /// be given a location and an orientation
@@ -992,6 +1139,7 @@ unsafe impl crate::CppDeletable for Face {
 }
 
 impl Face {
+    /// **Source:** `TopoDS_Face.hxx`:35 - `TopoDS_Face::TopoDS_Face()`
     /// Undefined Face.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_Face_ctor()) }
@@ -1232,6 +1380,7 @@ impl Face {
 // From TopoDS_FrozenShape.hxx
 // ========================
 
+/// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape`
 /// An  attempt was  made to   modify  a Shape  already
 /// shared or protected.
 pub use crate::ffi::TopoDS_FrozenShape as FrozenShape;
@@ -1243,16 +1392,19 @@ unsafe impl crate::CppDeletable for FrozenShape {
 }
 
 impl FrozenShape {
+    /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::TopoDS_FrozenShape()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_FrozenShape_ctor()) }
     }
 
+    /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::TopoDS_FrozenShape()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopoDS_FrozenShape_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::TopoDS_FrozenShape()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -1265,18 +1417,22 @@ impl FrozenShape {
         }
     }
 
+    /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_FrozenShape_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::TopoDS_FrozenShape_raise(theMessage) }
     }
 
+    /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TopoDS_FrozenShape_get_type_name() }
     }
 
+    /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_FrozenShape_get_type_descriptor()) }
     }
@@ -1293,6 +1449,7 @@ impl FrozenShape {
 // From TopoDS_HShape.hxx
 // ========================
 
+/// **Source:** `TopoDS_HShape.hxx`:29 - `TopoDS_HShape`
 /// Class to manipulate a Shape with  handle.
 pub use crate::ffi::TopoDS_HShape as HShape;
 
@@ -1303,26 +1460,31 @@ unsafe impl crate::CppDeletable for HShape {
 }
 
 impl HShape {
+    /// **Source:** `TopoDS_HShape.hxx`:34 - `TopoDS_HShape::TopoDS_HShape()`
     /// Constructs an empty shape object
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_HShape_ctor()) }
     }
 
+    /// **Source:** `TopoDS_HShape.hxx`:37 - `TopoDS_HShape::TopoDS_HShape()`
     /// Constructs a shape object defined by the shape aShape.
     pub fn new_shape(aShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_HShape_ctor_shape(aShape)) }
     }
 
+    /// **Source:** `TopoDS_HShape.hxx`:40 - `TopoDS_HShape::Shape()`
     /// Loads this shape with the shape aShape
     pub fn shape_shape(&mut self, aShape: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::TopoDS_HShape_shape_shape(self as *mut Self, aShape) }
     }
 
+    /// **Source:** `TopoDS_HShape.hxx`:43 - `TopoDS_HShape::Shape()`
     /// Returns a reference to a constant TopoDS_Shape based on this shape.
     pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::TopoDS_HShape_shape(self as *const Self)) }
     }
 
+    /// **Source:** `TopoDS_HShape.hxx`:51 - `TopoDS_HShape::ChangeShape()`
     /// Exchanges the TopoDS_Shape object defining this
     /// shape for another one referencing the same underlying shape
     /// Accesses the list of shapes within the underlying
@@ -1333,14 +1495,17 @@ impl HShape {
         unsafe { &mut *(crate::ffi::TopoDS_HShape_change_shape(self as *mut Self)) }
     }
 
+    /// **Source:** `TopoDS_HShape.hxx`:53 - `TopoDS_HShape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_HShape_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TopoDS_HShape.hxx`:53 - `TopoDS_HShape::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TopoDS_HShape_get_type_name() }
     }
 
+    /// **Source:** `TopoDS_HShape.hxx`:53 - `TopoDS_HShape::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_HShape_get_type_descriptor()) }
     }
@@ -1384,6 +1549,7 @@ impl HandleTopoDSHShape {
 // From TopoDS_Iterator.hxx
 // ========================
 
+/// **Source:** `TopoDS_Iterator.hxx`:31 - `TopoDS_Iterator`
 /// Iterates on the underlying shape underlying a given
 /// TopoDS_Shape object, providing access to its
 /// component sub-shapes. Each component shape is
@@ -1398,11 +1564,13 @@ unsafe impl crate::CppDeletable for Iterator {
 }
 
 impl Iterator {
+    /// **Source:** `TopoDS_Iterator.hxx`:37 - `TopoDS_Iterator::TopoDS_Iterator()`
     /// Creates an empty Iterator.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_Iterator_ctor()) }
     }
 
+    /// **Source:** `TopoDS_Iterator.hxx`:49 - `TopoDS_Iterator::TopoDS_Iterator()`
     /// Creates an Iterator on <S> sub-shapes.
     /// Note:
     /// - If cumOri is true, the function composes all
@@ -1422,6 +1590,7 @@ impl Iterator {
         }
     }
 
+    /// **Source:** `TopoDS_Iterator.hxx`:49 - `TopoDS_Iterator::TopoDS_Iterator()`
     /// Creates an Iterator on <S> sub-shapes.
     /// Note:
     /// - If cumOri is true, the function composes all
@@ -1433,6 +1602,7 @@ impl Iterator {
         Self::new_shape_bool2(S, cumOri, true)
     }
 
+    /// **Source:** `TopoDS_Iterator.hxx`:49 - `TopoDS_Iterator::TopoDS_Iterator()`
     /// Creates an Iterator on <S> sub-shapes.
     /// Note:
     /// - If cumOri is true, the function composes all
@@ -1444,6 +1614,7 @@ impl Iterator {
         Self::new_shape_bool2(S, true, true)
     }
 
+    /// **Source:** `TopoDS_Iterator.hxx`:63 - `TopoDS_Iterator::Initialize()`
     /// Initializes this iterator with shape S.
     /// Note:
     /// - If cumOri is true, the function composes all
@@ -1455,12 +1626,14 @@ impl Iterator {
         unsafe { crate::ffi::TopoDS_Iterator_initialize(self as *mut Self, S, cumOri, cumLoc) }
     }
 
+    /// **Source:** `TopoDS_Iterator.hxx`:69 - `TopoDS_Iterator::More()`
     /// Returns true if there is another sub-shape in the
     /// shape which this iterator is scanning.
     pub fn more(&self) -> bool {
         unsafe { crate::ffi::TopoDS_Iterator_more(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_Iterator.hxx`:75 - `TopoDS_Iterator::Next()`
     /// Moves on to the next sub-shape in the shape which
     /// this iterator is scanning.
     /// Exceptions
@@ -1469,6 +1642,7 @@ impl Iterator {
         unsafe { crate::ffi::TopoDS_Iterator_next(self as *mut Self) }
     }
 
+    /// **Source:** `TopoDS_Iterator.hxx`:81 - `TopoDS_Iterator::Value()`
     /// Returns the current sub-shape in the shape which
     /// this iterator is scanning.
     /// Exceptions
@@ -1489,6 +1663,7 @@ impl Iterator {
 // From TopoDS_LockedShape.hxx
 // ========================
 
+/// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape`
 /// An attempt was made to modify a geometry of Shape already
 /// shared or protected.
 pub use crate::ffi::TopoDS_LockedShape as LockedShape;
@@ -1500,16 +1675,19 @@ unsafe impl crate::CppDeletable for LockedShape {
 }
 
 impl LockedShape {
+    /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::TopoDS_LockedShape()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_LockedShape_ctor()) }
     }
 
+    /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::TopoDS_LockedShape()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopoDS_LockedShape_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::TopoDS_LockedShape()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -1522,18 +1700,22 @@ impl LockedShape {
         }
     }
 
+    /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_LockedShape_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::TopoDS_LockedShape_raise(theMessage) }
     }
 
+    /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TopoDS_LockedShape_get_type_name() }
     }
 
+    /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_LockedShape_get_type_descriptor()) }
     }
@@ -1550,6 +1732,7 @@ impl LockedShape {
 // From TopoDS_Shape.hxx
 // ========================
 
+/// **Source:** `TopoDS_Shape.hxx`:40 - `TopoDS_Shape`
 /// Describes a shape which
 /// - references an underlying shape with the potential
 /// to be given a location and an orientation
@@ -1569,11 +1752,13 @@ unsafe impl crate::CppDeletable for Shape {
 }
 
 impl Shape {
+    /// **Source:** `TopoDS_Shape.hxx`:46 - `TopoDS_Shape::TopoDS_Shape()`
     /// Creates a NULL Shape referring to nothing.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_Shape_ctor()) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:78 - `TopoDS_Shape::IsNull()`
     /// Returns true if this shape is null. In other words, it
     /// references no underlying shape with the potential to
     /// be given a location and an orientation.
@@ -1581,17 +1766,20 @@ impl Shape {
         unsafe { crate::ffi::TopoDS_Shape_is_null(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:82 - `TopoDS_Shape::Nullify()`
     /// Destroys the reference to the underlying shape
     /// stored in this shape. As a result, this shape becomes null.
     pub fn nullify(&mut self) {
         unsafe { crate::ffi::TopoDS_Shape_nullify(self as *mut Self) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:90 - `TopoDS_Shape::Location()`
     /// Returns the shape local coordinate system.
     pub fn location(&self) -> &crate::ffi::TopLoc_Location {
         unsafe { &*(crate::ffi::TopoDS_Shape_location(self as *const Self)) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:95 - `TopoDS_Shape::Location()`
     /// Sets the shape local coordinate system.
     /// @param theLoc the new local coordinate system.
     /// @param theRaiseExc flag to raise exception in case of transformation with scale or negative.
@@ -1605,6 +1793,7 @@ impl Shape {
         }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:110 - `TopoDS_Shape::Located()`
     /// Returns a  shape  similar to <me> with the local
     /// coordinate system set to <Loc>.
     /// @param theLoc the new local coordinate system.
@@ -1624,6 +1813,7 @@ impl Shape {
         }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:119 - `TopoDS_Shape::Orientation()`
     /// Returns the shape orientation.
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         unsafe {
@@ -1634,6 +1824,7 @@ impl Shape {
         }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:122 - `TopoDS_Shape::Orientation()`
     /// Sets the shape orientation.
     pub fn orientation_orientation(&mut self, theOrient: crate::top_abs::Orientation) {
         unsafe {
@@ -1641,6 +1832,7 @@ impl Shape {
         }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:126 - `TopoDS_Shape::Oriented()`
     /// Returns  a    shape  similar  to  <me>   with  the
     /// orientation set to <Or>.
     pub fn oriented(
@@ -1655,11 +1847,13 @@ impl Shape {
         }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:134 - `TopoDS_Shape::TShape()`
     /// Returns a handle to the actual shape implementation.
     pub fn t_shape(&self) -> &crate::ffi::HandleTopoDSTShape {
         unsafe { &*(crate::ffi::TopoDS_Shape_t_shape(self as *const Self)) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:141 - `TopoDS_Shape::ShapeType()`
     /// Returns the value of the TopAbs_ShapeEnum
     /// enumeration that corresponds to this shape, for
     /// example VERTEX, EDGE, and so on.
@@ -1674,86 +1868,103 @@ impl Shape {
         }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:144 - `TopoDS_Shape::Free()`
     /// Returns the free flag.
     pub fn free(&self) -> bool {
         unsafe { crate::ffi::TopoDS_Shape_free(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:147 - `TopoDS_Shape::Free()`
     /// Sets the free flag.
     pub fn free_bool(&mut self, theIsFree: bool) {
         unsafe { crate::ffi::TopoDS_Shape_free_bool(self as *mut Self, theIsFree) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:150 - `TopoDS_Shape::Locked()`
     /// Returns the locked flag.
     pub fn locked(&self) -> bool {
         unsafe { crate::ffi::TopoDS_Shape_locked(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:153 - `TopoDS_Shape::Locked()`
     /// Sets the locked flag.
     pub fn locked_bool(&mut self, theIsLocked: bool) {
         unsafe { crate::ffi::TopoDS_Shape_locked_bool(self as *mut Self, theIsLocked) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:156 - `TopoDS_Shape::Modified()`
     /// Returns the modification flag.
     pub fn modified(&self) -> bool {
         unsafe { crate::ffi::TopoDS_Shape_modified(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:159 - `TopoDS_Shape::Modified()`
     /// Sets the modification flag.
     pub fn modified_bool(&mut self, theIsModified: bool) {
         unsafe { crate::ffi::TopoDS_Shape_modified_bool(self as *mut Self, theIsModified) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:162 - `TopoDS_Shape::Checked()`
     /// Returns the checked flag.
     pub fn checked(&self) -> bool {
         unsafe { crate::ffi::TopoDS_Shape_checked(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:165 - `TopoDS_Shape::Checked()`
     /// Sets the checked flag.
     pub fn checked_bool(&mut self, theIsChecked: bool) {
         unsafe { crate::ffi::TopoDS_Shape_checked_bool(self as *mut Self, theIsChecked) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:168 - `TopoDS_Shape::Orientable()`
     /// Returns the orientability flag.
     pub fn orientable(&self) -> bool {
         unsafe { crate::ffi::TopoDS_Shape_orientable(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:171 - `TopoDS_Shape::Orientable()`
     /// Sets the orientability flag.
     pub fn orientable_bool(&mut self, theIsOrientable: bool) {
         unsafe { crate::ffi::TopoDS_Shape_orientable_bool(self as *mut Self, theIsOrientable) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:174 - `TopoDS_Shape::Closed()`
     /// Returns the closedness flag.
     pub fn closed(&self) -> bool {
         unsafe { crate::ffi::TopoDS_Shape_closed(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:177 - `TopoDS_Shape::Closed()`
     /// Sets the closedness flag.
     pub fn closed_bool(&mut self, theIsClosed: bool) {
         unsafe { crate::ffi::TopoDS_Shape_closed_bool(self as *mut Self, theIsClosed) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:180 - `TopoDS_Shape::Infinite()`
     /// Returns the infinity flag.
     pub fn infinite(&self) -> bool {
         unsafe { crate::ffi::TopoDS_Shape_infinite(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:183 - `TopoDS_Shape::Infinite()`
     /// Sets the infinity flag.
     pub fn infinite_bool(&mut self, theIsInfinite: bool) {
         unsafe { crate::ffi::TopoDS_Shape_infinite_bool(self as *mut Self, theIsInfinite) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:186 - `TopoDS_Shape::Convex()`
     /// Returns the convexness flag.
     pub fn convex(&self) -> bool {
         unsafe { crate::ffi::TopoDS_Shape_convex(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:189 - `TopoDS_Shape::Convex()`
     /// Sets the convexness flag.
     pub fn convex_bool(&mut self, theIsConvex: bool) {
         unsafe { crate::ffi::TopoDS_Shape_convex_bool(self as *mut Self, theIsConvex) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:194 - `TopoDS_Shape::Move()`
     /// Multiplies the Shape location by thePosition.
     /// @param thePosition the transformation to apply.
     /// @param theRaiseExc flag to raise exception in case of transformation with scale or negative.
@@ -1761,6 +1972,7 @@ impl Shape {
         unsafe { crate::ffi::TopoDS_Shape_move_(self as *mut Self, thePosition, theRaiseExc) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:208 - `TopoDS_Shape::Moved()`
     /// Returns a shape similar to <me> with a location multiplied by thePosition.
     /// @param thePosition the transformation to apply.
     /// @param theRaiseExc flag to raise exception in case of transformation with scale or negative.
@@ -1779,12 +1991,14 @@ impl Shape {
         }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:218 - `TopoDS_Shape::Reverse()`
     /// Reverses the orientation, using the Reverse method
     /// from the TopAbs package.
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::TopoDS_Shape_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:223 - `TopoDS_Shape::Reversed()`
     /// Returns    a shape  similar    to  <me>  with  the
     /// orientation  reversed, using  the   Reverse method
     /// from the TopAbs package.
@@ -1792,12 +2006,14 @@ impl Shape {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_Shape_reversed(self as *const Self)) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:232 - `TopoDS_Shape::Complement()`
     /// Complements the orientation, using the  Complement
     /// method from the TopAbs package.
     pub fn complement(&mut self) {
         unsafe { crate::ffi::TopoDS_Shape_complement(self as *mut Self) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:237 - `TopoDS_Shape::Complemented()`
     /// Returns  a   shape  similar  to   <me>   with  the
     /// orientation complemented,  using   the  Complement
     /// method from the TopAbs package.
@@ -1807,12 +2023,14 @@ impl Shape {
         }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:246 - `TopoDS_Shape::Compose()`
     /// Updates the Shape Orientation by composition with theOrient,
     /// using the Compose method from the TopAbs package.
     pub fn compose(&mut self, theOrient: crate::top_abs::Orientation) {
         unsafe { crate::ffi::TopoDS_Shape_compose(self as *mut Self, theOrient.into()) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:251 - `TopoDS_Shape::Composed()`
     /// Returns  a  shape   similar   to  <me>   with  the
     /// orientation composed with theOrient, using the
     /// Compose method from the TopAbs package.
@@ -1828,12 +2046,14 @@ impl Shape {
         }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:260 - `TopoDS_Shape::NbChildren()`
     /// Returns the number of direct sub-shapes (children).
     /// @sa TopoDS_Iterator for accessing sub-shapes
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::TopoDS_Shape_nb_children(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:265 - `TopoDS_Shape::IsPartner()`
     /// Returns True if two shapes  are partners, i.e.  if
     /// they   share   the   same  TShape.  Locations  and
     /// Orientations may differ.
@@ -1841,6 +2061,7 @@ impl Shape {
         unsafe { crate::ffi::TopoDS_Shape_is_partner(self as *const Self, theOther) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:273 - `TopoDS_Shape::IsSame()`
     /// Returns True if two shapes are same, i.e.  if they
     /// share  the  same TShape  with the same  Locations.
     /// Orientations may differ.
@@ -1848,6 +2069,7 @@ impl Shape {
         unsafe { crate::ffi::TopoDS_Shape_is_same(self as *const Self, theOther) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:281 - `TopoDS_Shape::IsEqual()`
     /// Returns True if two shapes are equal, i.e. if they
     /// share the same TShape with  the same Locations and
     /// Orientations.
@@ -1855,11 +2077,13 @@ impl Shape {
         unsafe { crate::ffi::TopoDS_Shape_is_equal(self as *const Self, theOther) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:290 - `TopoDS_Shape::IsNotEqual()`
     /// Negation of the IsEqual method.
     pub fn is_not_equal(&self, theOther: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::TopoDS_Shape_is_not_equal(self as *const Self, theOther) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopy()`
     /// Replace   <me> by  a  new   Shape with the    same
     /// Orientation and Location and a new TShape with the
     /// same geometry and no sub-shapes.
@@ -1867,6 +2091,7 @@ impl Shape {
         unsafe { crate::ffi::TopoDS_Shape_empty_copy(self as *mut Self) }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:302 - `TopoDS_Shape::EmptyCopied()`
     /// Returns a new Shape with the  same Orientation and
     /// Location and  a new TShape  with the same geometry
     /// and no sub-shapes.
@@ -1876,6 +2101,7 @@ impl Shape {
         }
     }
 
+    /// **Source:** `TopoDS_Shape.hxx`:309 - `TopoDS_Shape::TShape()`
     pub fn t_shape_handletopodstshape(&mut self, theTShape: &crate::ffi::HandleTopoDSTShape) {
         unsafe { crate::ffi::TopoDS_Shape_t_shape_handletopodstshape(self as *mut Self, theTShape) }
     }
@@ -1890,6 +2116,7 @@ impl Shape {
 // From TopoDS_Shell.hxx
 // ========================
 
+/// **Source:** `TopoDS_Shell.hxx`:29 - `TopoDS_Shell`
 /// Describes a shell which
 /// - references an underlying shell with the potential to
 /// be given a location and an orientation
@@ -1906,6 +2133,7 @@ unsafe impl crate::CppDeletable for Shell {
 }
 
 impl Shell {
+    /// **Source:** `TopoDS_Shell.hxx`:35 - `TopoDS_Shell::TopoDS_Shell()`
     /// Constructs an Undefined Shell.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_Shell_ctor()) }
@@ -2146,6 +2374,7 @@ impl Shell {
 // From TopoDS_Solid.hxx
 // ========================
 
+/// **Source:** `TopoDS_Solid.hxx`:30 - `TopoDS_Solid`
 /// Describes a solid shape which
 /// - references an underlying solid shape with the
 /// potential to be given a location and an orientation
@@ -2163,6 +2392,7 @@ unsafe impl crate::CppDeletable for Solid {
 }
 
 impl Solid {
+    /// **Source:** `TopoDS_Solid.hxx`:36 - `TopoDS_Solid::TopoDS_Solid()`
     /// Constructs an Undefined Solid.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_Solid_ctor()) }
@@ -2403,6 +2633,7 @@ impl Solid {
 // From TopoDS_TCompSolid.hxx
 // ========================
 
+/// **Source:** `TopoDS_TCompSolid.hxx`:29 - `TopoDS_TCompSolid`
 /// A set of solids connected by their faces.
 pub use crate::ffi::TopoDS_TCompSolid as TCompSolid;
 
@@ -2413,11 +2644,13 @@ unsafe impl crate::CppDeletable for TCompSolid {
 }
 
 impl TCompSolid {
+    /// **Source:** `TopoDS_TCompSolid.hxx`:33 - `TopoDS_TCompSolid::TopoDS_TCompSolid()`
     /// Creates an empty TCompSolid.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TCompSolid_ctor()) }
     }
 
+    /// **Source:** `TopoDS_TCompSolid.hxx`:39 - `TopoDS_TCompSolid::ShapeType()`
     /// returns COMPSOLID
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         unsafe {
@@ -2428,6 +2661,7 @@ impl TCompSolid {
         }
     }
 
+    /// **Source:** `TopoDS_TCompSolid.hxx`:42 - `TopoDS_TCompSolid::EmptyCopy()`
     /// Returns an empty TCompSolid.
     pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         unsafe {
@@ -2435,14 +2669,17 @@ impl TCompSolid {
         }
     }
 
+    /// **Source:** `TopoDS_TCompSolid.hxx`:44 - `TopoDS_TCompSolid::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_TCompSolid_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TopoDS_TCompSolid.hxx`:44 - `TopoDS_TCompSolid::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TopoDS_TCompSolid_get_type_name() }
     }
 
+    /// **Source:** `TopoDS_TCompSolid.hxx`:44 - `TopoDS_TCompSolid::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_TCompSolid_get_type_descriptor()) }
     }
@@ -2514,6 +2751,7 @@ impl TCompSolid {
 // From TopoDS_TCompound.hxx
 // ========================
 
+/// **Source:** `TopoDS_TCompound.hxx`:29 - `TopoDS_TCompound`
 /// A TCompound is an all-purpose set of Shapes.
 pub use crate::ffi::TopoDS_TCompound as TCompound;
 
@@ -2524,11 +2762,13 @@ unsafe impl crate::CppDeletable for TCompound {
 }
 
 impl TCompound {
+    /// **Source:** `TopoDS_TCompound.hxx`:33 - `TopoDS_TCompound::TopoDS_TCompound()`
     /// Creates an empty TCompound.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TCompound_ctor()) }
     }
 
+    /// **Source:** `TopoDS_TCompound.hxx`:40 - `TopoDS_TCompound::ShapeType()`
     /// Returns COMPOUND.
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         unsafe {
@@ -2539,6 +2779,7 @@ impl TCompound {
         }
     }
 
+    /// **Source:** `TopoDS_TCompound.hxx`:43 - `TopoDS_TCompound::EmptyCopy()`
     /// Returns an empty TCompound.
     pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         unsafe {
@@ -2546,14 +2787,17 @@ impl TCompound {
         }
     }
 
+    /// **Source:** `TopoDS_TCompound.hxx`:45 - `TopoDS_TCompound::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_TCompound_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TopoDS_TCompound.hxx`:45 - `TopoDS_TCompound::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TopoDS_TCompound_get_type_name() }
     }
 
+    /// **Source:** `TopoDS_TCompound.hxx`:45 - `TopoDS_TCompound::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_TCompound_get_type_descriptor()) }
     }
@@ -2625,6 +2869,7 @@ impl TCompound {
 // From TopoDS_TEdge.hxx
 // ========================
 
+/// **Source:** `TopoDS_TEdge.hxx`:30 - `TopoDS_TEdge`
 /// A topological part  of a  curve  in 2D or 3D,  the
 /// boundary    is   a   set  of oriented    Vertices.
 pub use crate::ffi::TopoDS_TEdge as TEdge;
@@ -2636,6 +2881,7 @@ unsafe impl crate::CppDeletable for TEdge {
 }
 
 impl TEdge {
+    /// **Source:** `TopoDS_TEdge.hxx`:34 - `TopoDS_TEdge::ShapeType()`
     /// Returns  EDGE.
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         unsafe {
@@ -2646,14 +2892,17 @@ impl TEdge {
         }
     }
 
+    /// **Source:** `TopoDS_TEdge.hxx`:36 - `TopoDS_TEdge::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_TEdge_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TopoDS_TEdge.hxx`:36 - `TopoDS_TEdge::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TopoDS_TEdge_get_type_name() }
     }
 
+    /// **Source:** `TopoDS_TEdge.hxx`:36 - `TopoDS_TEdge::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_TEdge_get_type_descriptor()) }
     }
@@ -2727,6 +2976,7 @@ impl TEdge {
 // From TopoDS_TFace.hxx
 // ========================
 
+/// **Source:** `TopoDS_TFace.hxx`:31 - `TopoDS_TFace`
 /// A  topological part  of a surface   or  of the  2D
 /// space.  The  boundary  is  a   set of  wires   and
 /// vertices.
@@ -2739,11 +2989,13 @@ unsafe impl crate::CppDeletable for TFace {
 }
 
 impl TFace {
+    /// **Source:** `TopoDS_TFace.hxx`:35 - `TopoDS_TFace::TopoDS_TFace()`
     /// Creates an empty TFace.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TFace_ctor()) }
     }
 
+    /// **Source:** `TopoDS_TFace.hxx`:41 - `TopoDS_TFace::ShapeType()`
     /// returns FACE.
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         unsafe {
@@ -2754,6 +3006,7 @@ impl TFace {
         }
     }
 
+    /// **Source:** `TopoDS_TFace.hxx`:44 - `TopoDS_TFace::EmptyCopy()`
     /// Returns an empty TFace.
     pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         unsafe {
@@ -2761,14 +3014,17 @@ impl TFace {
         }
     }
 
+    /// **Source:** `TopoDS_TFace.hxx`:46 - `TopoDS_TFace::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_TFace_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TopoDS_TFace.hxx`:46 - `TopoDS_TFace::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TopoDS_TFace_get_type_name() }
     }
 
+    /// **Source:** `TopoDS_TFace.hxx`:46 - `TopoDS_TFace::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_TFace_get_type_descriptor()) }
     }
@@ -2838,6 +3094,7 @@ impl TFace {
 // From TopoDS_TShape.hxx
 // ========================
 
+/// **Source:** `TopoDS_TShape.hxx`:54 - `TopoDS_TShape`
 /// A TShape  is a topological  structure describing a
 /// set of points in a 2D or 3D space.
 ///
@@ -2872,86 +3129,103 @@ unsafe impl crate::CppDeletable for TShape {
 }
 
 impl TShape {
+    /// **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
     /// Returns the free flag.
     pub fn free(&self) -> bool {
         unsafe { crate::ffi::TopoDS_TShape_free(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:62 - `TopoDS_TShape::Free()`
     /// Sets the free flag.
     pub fn free_bool(&mut self, theIsFree: bool) {
         unsafe { crate::ffi::TopoDS_TShape_free_bool(self as *mut Self, theIsFree) }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:65 - `TopoDS_TShape::Locked()`
     /// Returns the locked flag.
     pub fn locked(&self) -> bool {
         unsafe { crate::ffi::TopoDS_TShape_locked(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:68 - `TopoDS_TShape::Locked()`
     /// Sets the locked flag.
     pub fn locked_bool(&mut self, theIsLocked: bool) {
         unsafe { crate::ffi::TopoDS_TShape_locked_bool(self as *mut Self, theIsLocked) }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:71 - `TopoDS_TShape::Modified()`
     /// Returns the modification flag.
     pub fn modified(&self) -> bool {
         unsafe { crate::ffi::TopoDS_TShape_modified(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:74 - `TopoDS_TShape::Modified()`
     /// Sets the modification flag.
     pub fn modified_bool(&mut self, theIsModified: bool) {
         unsafe { crate::ffi::TopoDS_TShape_modified_bool(self as *mut Self, theIsModified) }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:86 - `TopoDS_TShape::Checked()`
     /// Returns the checked flag.
     pub fn checked(&self) -> bool {
         unsafe { crate::ffi::TopoDS_TShape_checked(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:89 - `TopoDS_TShape::Checked()`
     /// Sets the checked flag.
     pub fn checked_bool(&mut self, theIsChecked: bool) {
         unsafe { crate::ffi::TopoDS_TShape_checked_bool(self as *mut Self, theIsChecked) }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:95 - `TopoDS_TShape::Orientable()`
     /// Returns the orientability flag.
     pub fn orientable(&self) -> bool {
         unsafe { crate::ffi::TopoDS_TShape_orientable(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:98 - `TopoDS_TShape::Orientable()`
     /// Sets the orientability flag.
     pub fn orientable_bool(&mut self, theIsOrientable: bool) {
         unsafe { crate::ffi::TopoDS_TShape_orientable_bool(self as *mut Self, theIsOrientable) }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:104 - `TopoDS_TShape::Closed()`
     /// Returns the closedness flag.
     pub fn closed(&self) -> bool {
         unsafe { crate::ffi::TopoDS_TShape_closed(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:107 - `TopoDS_TShape::Closed()`
     /// Sets the closedness flag.
     pub fn closed_bool(&mut self, theIsClosed: bool) {
         unsafe { crate::ffi::TopoDS_TShape_closed_bool(self as *mut Self, theIsClosed) }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:110 - `TopoDS_TShape::Infinite()`
     /// Returns the infinity flag.
     pub fn infinite(&self) -> bool {
         unsafe { crate::ffi::TopoDS_TShape_infinite(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:113 - `TopoDS_TShape::Infinite()`
     /// Sets the infinity flag.
     pub fn infinite_bool(&mut self, theIsInfinite: bool) {
         unsafe { crate::ffi::TopoDS_TShape_infinite_bool(self as *mut Self, theIsInfinite) }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:119 - `TopoDS_TShape::Convex()`
     /// Returns the convexness flag.
     pub fn convex(&self) -> bool {
         unsafe { crate::ffi::TopoDS_TShape_convex(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:122 - `TopoDS_TShape::Convex()`
     /// Sets the convexness flag.
     pub fn convex_bool(&mut self, theIsConvex: bool) {
         unsafe { crate::ffi::TopoDS_TShape_convex_bool(self as *mut Self, theIsConvex) }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:126 - `TopoDS_TShape::ShapeType()`
     /// Returns the type as a term of the ShapeEnum enum :
     /// VERTEX, EDGE, WIRE, FACE, ....
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
@@ -2963,6 +3237,7 @@ impl TShape {
         }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:129 - `TopoDS_TShape::EmptyCopy()`
     /// Returns a copy  of the  TShape  with no sub-shapes.
     pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         unsafe {
@@ -2970,20 +3245,24 @@ impl TShape {
         }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::NbChildren()`
     /// Returns the number of direct sub-shapes (children).
     /// @sa TopoDS_Iterator for accessing sub-shapes
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::TopoDS_TShape_nb_children(self as *const Self) }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:142 - `TopoDS_TShape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_TShape_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:142 - `TopoDS_TShape::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TopoDS_TShape_get_type_name() }
     }
 
+    /// **Source:** `TopoDS_TShape.hxx`:142 - `TopoDS_TShape::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_TShape_get_type_descriptor()) }
     }
@@ -3013,6 +3292,7 @@ impl HandleTopoDSTShape {
 // From TopoDS_TShell.hxx
 // ========================
 
+/// **Source:** `TopoDS_TShell.hxx`:29 - `TopoDS_TShell`
 /// A set of faces connected by their edges.
 pub use crate::ffi::TopoDS_TShell as TShell;
 
@@ -3023,11 +3303,13 @@ unsafe impl crate::CppDeletable for TShell {
 }
 
 impl TShell {
+    /// **Source:** `TopoDS_TShell.hxx`:33 - `TopoDS_TShell::TopoDS_TShell()`
     /// Creates an empty TShell.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TShell_ctor()) }
     }
 
+    /// **Source:** `TopoDS_TShell.hxx`:39 - `TopoDS_TShell::ShapeType()`
     /// Returns SHELL.
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         unsafe {
@@ -3038,6 +3320,7 @@ impl TShell {
         }
     }
 
+    /// **Source:** `TopoDS_TShell.hxx`:42 - `TopoDS_TShell::EmptyCopy()`
     /// Returns an empty TShell.
     pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         unsafe {
@@ -3045,14 +3328,17 @@ impl TShell {
         }
     }
 
+    /// **Source:** `TopoDS_TShell.hxx`:44 - `TopoDS_TShell::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_TShell_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TopoDS_TShell.hxx`:44 - `TopoDS_TShell::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TopoDS_TShell_get_type_name() }
     }
 
+    /// **Source:** `TopoDS_TShell.hxx`:44 - `TopoDS_TShell::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_TShell_get_type_descriptor()) }
     }
@@ -3124,6 +3410,7 @@ impl TShell {
 // From TopoDS_TSolid.hxx
 // ========================
 
+/// **Source:** `TopoDS_TSolid.hxx`:30 - `TopoDS_TSolid`
 /// A Topological part of 3D space, bounded by shells,
 /// edges and vertices.
 pub use crate::ffi::TopoDS_TSolid as TSolid;
@@ -3135,11 +3422,13 @@ unsafe impl crate::CppDeletable for TSolid {
 }
 
 impl TSolid {
+    /// **Source:** `TopoDS_TSolid.hxx`:34 - `TopoDS_TSolid::TopoDS_TSolid()`
     /// Creates an empty TSolid.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TSolid_ctor()) }
     }
 
+    /// **Source:** `TopoDS_TSolid.hxx`:41 - `TopoDS_TSolid::ShapeType()`
     /// returns SOLID.
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         unsafe {
@@ -3150,6 +3439,7 @@ impl TSolid {
         }
     }
 
+    /// **Source:** `TopoDS_TSolid.hxx`:44 - `TopoDS_TSolid::EmptyCopy()`
     /// Returns an empty TSolid.
     pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         unsafe {
@@ -3157,14 +3447,17 @@ impl TSolid {
         }
     }
 
+    /// **Source:** `TopoDS_TSolid.hxx`:46 - `TopoDS_TSolid::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_TSolid_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TopoDS_TSolid.hxx`:46 - `TopoDS_TSolid::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TopoDS_TSolid_get_type_name() }
     }
 
+    /// **Source:** `TopoDS_TSolid.hxx`:46 - `TopoDS_TSolid::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_TSolid_get_type_descriptor()) }
     }
@@ -3236,6 +3529,7 @@ impl TSolid {
 // From TopoDS_TVertex.hxx
 // ========================
 
+/// **Source:** `TopoDS_TVertex.hxx`:34 - `TopoDS_TVertex`
 /// A  Vertex is a topological  point in  two or three
 /// dimensions.
 pub use crate::ffi::TopoDS_TVertex as TVertex;
@@ -3247,6 +3541,7 @@ unsafe impl crate::CppDeletable for TVertex {
 }
 
 impl TVertex {
+    /// **Source:** `TopoDS_TVertex.hxx`:38 - `TopoDS_TVertex::ShapeType()`
     /// Returns VERTEX.
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         unsafe {
@@ -3257,14 +3552,17 @@ impl TVertex {
         }
     }
 
+    /// **Source:** `TopoDS_TVertex.hxx`:40 - `TopoDS_TVertex::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_TVertex_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TopoDS_TVertex.hxx`:40 - `TopoDS_TVertex::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TopoDS_TVertex_get_type_name() }
     }
 
+    /// **Source:** `TopoDS_TVertex.hxx`:40 - `TopoDS_TVertex::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_TVertex_get_type_descriptor()) }
     }
@@ -3338,6 +3636,7 @@ impl TVertex {
 // From TopoDS_TWire.hxx
 // ========================
 
+/// **Source:** `TopoDS_TWire.hxx`:29 - `TopoDS_TWire`
 /// A set of edges connected by their vertices.
 pub use crate::ffi::TopoDS_TWire as TWire;
 
@@ -3348,11 +3647,13 @@ unsafe impl crate::CppDeletable for TWire {
 }
 
 impl TWire {
+    /// **Source:** `TopoDS_TWire.hxx`:33 - `TopoDS_TWire::TopoDS_TWire()`
     /// Creates an empty TWire.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TWire_ctor()) }
     }
 
+    /// **Source:** `TopoDS_TWire.hxx`:39 - `TopoDS_TWire::ShapeType()`
     /// Returns WIRE.
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         unsafe {
@@ -3363,6 +3664,7 @@ impl TWire {
         }
     }
 
+    /// **Source:** `TopoDS_TWire.hxx`:42 - `TopoDS_TWire::EmptyCopy()`
     /// Returns an empty TWire.
     pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         unsafe {
@@ -3370,14 +3672,17 @@ impl TWire {
         }
     }
 
+    /// **Source:** `TopoDS_TWire.hxx`:44 - `TopoDS_TWire::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_TWire_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TopoDS_TWire.hxx`:44 - `TopoDS_TWire::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TopoDS_TWire_get_type_name() }
     }
 
+    /// **Source:** `TopoDS_TWire.hxx`:44 - `TopoDS_TWire::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_TWire_get_type_descriptor()) }
     }
@@ -3447,6 +3752,7 @@ impl TWire {
 // From TopoDS_UnCompatibleShapes.hxx
 // ========================
 
+/// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes`
 /// An incorrect insertion was attempted.
 pub use crate::ffi::TopoDS_UnCompatibleShapes as UnCompatibleShapes;
 
@@ -3457,10 +3763,12 @@ unsafe impl crate::CppDeletable for UnCompatibleShapes {
 }
 
 impl UnCompatibleShapes {
+    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::TopoDS_UnCompatibleShapes()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_UnCompatibleShapes_ctor()) }
     }
 
+    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::TopoDS_UnCompatibleShapes()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopoDS_UnCompatibleShapes_ctor_charptr(
@@ -3469,6 +3777,7 @@ impl UnCompatibleShapes {
         }
     }
 
+    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::TopoDS_UnCompatibleShapes()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -3481,18 +3790,22 @@ impl UnCompatibleShapes {
         }
     }
 
+    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_UnCompatibleShapes_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::TopoDS_UnCompatibleShapes_raise(theMessage) }
     }
 
+    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TopoDS_UnCompatibleShapes_get_type_name() }
     }
 
+    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopoDS_UnCompatibleShapes_get_type_descriptor()) }
     }
@@ -3511,6 +3824,7 @@ impl UnCompatibleShapes {
 // From TopoDS_Vertex.hxx
 // ========================
 
+/// **Source:** `TopoDS_Vertex.hxx`:30 - `TopoDS_Vertex`
 /// Describes a vertex which
 /// - references an underlying vertex with the potential
 /// to be given a location and an orientation
@@ -3528,6 +3842,7 @@ unsafe impl crate::CppDeletable for Vertex {
 }
 
 impl Vertex {
+    /// **Source:** `TopoDS_Vertex.hxx`:36 - `TopoDS_Vertex::TopoDS_Vertex()`
     /// Undefined Vertex.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_Vertex_ctor()) }
@@ -3770,6 +4085,7 @@ impl Vertex {
 // From TopoDS_Wire.hxx
 // ========================
 
+/// **Source:** `TopoDS_Wire.hxx`:29 - `TopoDS_Wire`
 /// Describes a wire which
 /// - references an underlying wire with the potential to
 /// be given a location and an orientation
@@ -3786,6 +4102,7 @@ unsafe impl crate::CppDeletable for Wire {
 }
 
 impl Wire {
+    /// **Source:** `TopoDS_Wire.hxx`:35 - `TopoDS_Wire::TopoDS_Wire()`
     /// Undefined Wire.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_Wire_ctor()) }

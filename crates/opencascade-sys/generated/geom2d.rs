@@ -10,6 +10,7 @@
 // From Geom2d_AxisPlacement.hxx
 // ========================
 
+/// **Source:** `Geom2d_AxisPlacement.hxx`:45 - `Geom2d_AxisPlacement`
 /// Describes an axis in 2D space.
 /// An axis is defined by:
 /// - its origin, also termed the "Location point" of the axis,
@@ -32,11 +33,13 @@ unsafe impl crate::CppDeletable for AxisPlacement {
 }
 
 impl AxisPlacement {
+    /// **Source:** `Geom2d_AxisPlacement.hxx`:50 - `Geom2d_AxisPlacement::Geom2d_AxisPlacement()`
     /// Constructs an axis by conversion of the gp_Ax2d axis A.
     pub fn new_ax2d(A: &crate::ffi::gp_Ax2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_AxisPlacement_ctor_ax2d(A)) }
     }
 
+    /// **Source:** `Geom2d_AxisPlacement.hxx`:53 - `Geom2d_AxisPlacement::Geom2d_AxisPlacement()`
     /// Constructs an axis from a given origin P and unit vector V.
     pub fn new_pnt2d_dir2d(
         P: &crate::ffi::gp_Pnt2d,
@@ -47,10 +50,12 @@ impl AxisPlacement {
         }
     }
 
+    /// **Source:** `Geom2d_AxisPlacement.hxx`:55 - `Geom2d_AxisPlacement::Reverse()`
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::Geom2d_AxisPlacement_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom2d_AxisPlacement.hxx`:61 - `Geom2d_AxisPlacement::Reversed()`
     /// Reverses the unit vector of this axis.
     /// Note:
     /// - Reverse assigns the result to this axis, while
@@ -63,21 +68,25 @@ impl AxisPlacement {
         }
     }
 
+    /// **Source:** `Geom2d_AxisPlacement.hxx`:64 - `Geom2d_AxisPlacement::SetAxis()`
     /// Changes the complete definition of the axis placement.
     pub fn set_axis(&mut self, A: &crate::ffi::gp_Ax2d) {
         unsafe { crate::ffi::Geom2d_AxisPlacement_set_axis(self as *mut Self, A) }
     }
 
+    /// **Source:** `Geom2d_AxisPlacement.hxx`:67 - `Geom2d_AxisPlacement::SetDirection()`
     /// Changes the "Direction" of the axis placement.
     pub fn set_direction(&mut self, V: &crate::ffi::gp_Dir2d) {
         unsafe { crate::ffi::Geom2d_AxisPlacement_set_direction(self as *mut Self, V) }
     }
 
+    /// **Source:** `Geom2d_AxisPlacement.hxx`:70 - `Geom2d_AxisPlacement::SetLocation()`
     /// Changes the "Location" point (origin) of the axis placement.
     pub fn set_location(&mut self, P: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::Geom2d_AxisPlacement_set_location(self as *mut Self, P) }
     }
 
+    /// **Source:** `Geom2d_AxisPlacement.hxx`:75 - `Geom2d_AxisPlacement::Angle()`
     /// Computes the angle between the "Direction" of
     /// two axis placement in radians.
     /// The result is comprised between -Pi and Pi.
@@ -85,6 +94,7 @@ impl AxisPlacement {
         unsafe { crate::ffi::Geom2d_AxisPlacement_angle(self as *const Self, Other) }
     }
 
+    /// **Source:** `Geom2d_AxisPlacement.hxx`:78 - `Geom2d_AxisPlacement::Ax2d()`
     /// Converts this axis into a gp_Ax2d axis.
     pub fn ax2d(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax2d> {
         unsafe {
@@ -92,6 +102,7 @@ impl AxisPlacement {
         }
     }
 
+    /// **Source:** `Geom2d_AxisPlacement.hxx`:82 - `Geom2d_AxisPlacement::Direction()`
     /// Returns the "Direction" of <me>.
     /// -C++: return const&
     pub fn direction(&self) -> crate::OwnedPtr<crate::ffi::gp_Dir2d> {
@@ -102,6 +113,7 @@ impl AxisPlacement {
         }
     }
 
+    /// **Source:** `Geom2d_AxisPlacement.hxx`:86 - `Geom2d_AxisPlacement::Location()`
     /// Returns the "Location" point (origin) of the axis placement.
     /// -C++: return const&
     pub fn location(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
@@ -112,11 +124,13 @@ impl AxisPlacement {
         }
     }
 
+    /// **Source:** `Geom2d_AxisPlacement.hxx`:89 - `Geom2d_AxisPlacement::Transform()`
     /// Applies the transformation T to this axis.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::Geom2d_AxisPlacement_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom2d_AxisPlacement.hxx`:92 - `Geom2d_AxisPlacement::Copy()`
     /// Creates a new object which is a copy of this axis.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
@@ -124,14 +138,17 @@ impl AxisPlacement {
         }
     }
 
+    /// **Source:** `Geom2d_AxisPlacement.hxx`:94 - `Geom2d_AxisPlacement::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_AxisPlacement_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_AxisPlacement.hxx`:94 - `Geom2d_AxisPlacement::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_AxisPlacement_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_AxisPlacement.hxx`:94 - `Geom2d_AxisPlacement::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_AxisPlacement_get_type_descriptor()) }
     }
@@ -280,6 +297,7 @@ impl HandleGeom2dAxisPlacement {
 // From Geom2d_BSplineCurve.hxx
 // ========================
 
+/// **Source:** `Geom2d_BSplineCurve.hxx`:132 - `Geom2d_BSplineCurve`
 /// Describes a BSpline curve.
 /// A BSpline curve can be:
 /// - uniform or non-uniform,
@@ -379,6 +397,7 @@ unsafe impl crate::CppDeletable for BSplineCurve {
 }
 
 impl BSplineCurve {
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:161 - `Geom2d_BSplineCurve::Geom2d_BSplineCurve()`
     /// Creates a  non-rational B_spline curve   on  the
     /// basis <Knots, Multiplicities> of degree <Degree>.
     /// The following conditions must be verified.
@@ -416,6 +435,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:192 - `Geom2d_BSplineCurve::Geom2d_BSplineCurve()`
     /// Creates  a rational B_spline  curve  on the basis
     /// <Knots, Multiplicities> of degree <Degree>.
     /// The following conditions must be verified.
@@ -454,6 +474,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:161 - `Geom2d_BSplineCurve::Geom2d_BSplineCurve()`
     /// Creates a  non-rational B_spline curve   on  the
     /// basis <Knots, Multiplicities> of degree <Degree>.
     /// The following conditions must be verified.
@@ -494,6 +515,7 @@ impl BSplineCurve {
         )
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:192 - `Geom2d_BSplineCurve::Geom2d_BSplineCurve()`
     /// Creates  a rational B_spline  curve  on the basis
     /// <Knots, Multiplicities> of degree <Degree>.
     /// The following conditions must be verified.
@@ -536,6 +558,7 @@ impl BSplineCurve {
         )
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:207 - `Geom2d_BSplineCurve::IncreaseDegree()`
     /// Increases the degree of this BSpline curve to
     /// Degree. As a result, the poles, weights and
     /// multiplicities tables are modified; the knots table is
@@ -548,6 +571,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_increase_degree(self as *mut Self, Degree) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:216 - `Geom2d_BSplineCurve::IncreaseMultiplicity()`
     /// Increases the multiplicity  of the knot <Index> to
     /// <M>.
     ///
@@ -561,6 +585,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:232 - `Geom2d_BSplineCurve::IncreaseMultiplicity()`
     /// Increases  the  multiplicities   of  the knots  in
     /// [I1,I2] to <M>.
     ///
@@ -581,6 +606,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:249 - `Geom2d_BSplineCurve::IncrementMultiplicity()`
     /// Increases by M the multiplicity of the knots of indexes
     /// I1 to I2 in the knots table of this BSpline curve. For
     /// each knot, the resulting multiplicity is limited to the
@@ -600,6 +626,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:272 - `Geom2d_BSplineCurve::InsertKnot()`
     /// Inserts a knot value in the sequence of knots.  If
     /// <U>  is an  existing knot     the multiplicity  is
     /// increased by <M>.
@@ -630,6 +657,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:315 - `Geom2d_BSplineCurve::RemoveKnot()`
     /// Reduces the multiplicity of the knot of index Index
     /// to M. If M is equal to 0, the knot is removed.
     /// With a modification of this type, the array of poles is also modified.
@@ -652,6 +680,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:325 - `Geom2d_BSplineCurve::InsertPoleAfter()`
     /// The new pole is inserted after the pole of range Index.
     /// If the curve was non rational it can become rational.
     ///
@@ -664,6 +693,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:335 - `Geom2d_BSplineCurve::InsertPoleBefore()`
     /// The new pole is inserted before the pole of range Index.
     /// If the curve was non rational it can become rational.
     ///
@@ -676,6 +706,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:346 - `Geom2d_BSplineCurve::RemovePole()`
     /// Removes the pole of range Index
     /// If the curve was rational it can become non rational.
     ///
@@ -687,6 +718,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_remove_pole(self as *mut Self, Index) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:354 - `Geom2d_BSplineCurve::Reverse()`
     /// Reverses the orientation of this BSpline curve. As a result
     /// - the knots and poles tables are modified;
     /// - the start point of the initial curve becomes the end
@@ -697,6 +729,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:361 - `Geom2d_BSplineCurve::ReversedParameter()`
     /// Computes the parameter on the reversed curve for
     /// the point of parameter U on this BSpline curve.
     /// The returned value is: UFirst + ULast - U,
@@ -706,6 +739,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:386 - `Geom2d_BSplineCurve::Segment()`
     /// Modifies this BSpline curve by segmenting it
     /// between U1 and U2. Either of these values can be
     /// outside the bounds of the curve, but U2 must be greater than U1.
@@ -733,6 +767,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_segment(self as *mut Self, U1, U2, theTolerance) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:402 - `Geom2d_BSplineCurve::SetKnot()`
     /// Modifies this BSpline curve by assigning the value K
     /// to the knot of index Index in the knots table. This is a
     /// relatively local modification because K must be such that:
@@ -749,6 +784,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_set_knot_int_real(self as *mut Self, Index, K) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:428 - `Geom2d_BSplineCurve::SetKnot()`
     /// Modifies this BSpline curve by assigning the value K
     /// to the knot of index Index in the knots table. This is a
     /// relatively local modification because K must be such that:
@@ -770,6 +806,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:439 - `Geom2d_BSplineCurve::PeriodicNormalization()`
     /// Computes the parameter normalized within the
     /// "first" period of this BSpline curve, if it is periodic:
     /// the returned value is in the range Param1 and
@@ -781,6 +818,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_periodic_normalization(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:452 - `Geom2d_BSplineCurve::SetPeriodic()`
     /// Changes this BSpline curve into a periodic curve.
     /// To become periodic, the curve must first be closed.
     /// Next, the knot sequence must be periodic. For this,
@@ -796,6 +834,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_set_periodic(self as *mut Self) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:461 - `Geom2d_BSplineCurve::SetOrigin()`
     /// Assigns the knot of index Index in the knots table as
     /// the origin of this periodic BSpline curve. As a
     /// consequence, the knots and poles tables are modified.
@@ -807,6 +846,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_set_origin(self as *mut Self, Index) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:472 - `Geom2d_BSplineCurve::SetNotPeriodic()`
     /// Changes this BSpline curve into a non-periodic
     /// curve. If this curve is already non-periodic, it is not modified.
     /// Note that the poles and knots tables are modified.
@@ -820,6 +860,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_set_not_periodic(self as *mut Self) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:480 - `Geom2d_BSplineCurve::SetPole()`
     /// Modifies this BSpline curve by assigning P to the
     /// pole of index Index in the poles table.
     /// Exceptions
@@ -830,6 +871,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_set_pole_int_pnt2d(self as *mut Self, Index, P) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:492 - `Geom2d_BSplineCurve::SetPole()`
     /// Modifies this BSpline curve by assigning P to the
     /// pole of index Index in the poles table.
     /// The second syntax also allows you to modify the
@@ -851,6 +893,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:503 - `Geom2d_BSplineCurve::SetWeight()`
     /// Assigns the weight Weight to the pole of index Index of the poles table.
     /// If the curve was non rational it can become rational.
     /// If the curve was rational it can become non rational.
@@ -862,6 +905,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_set_weight(self as *mut Self, Index, Weight) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:521 - `Geom2d_BSplineCurve::MovePoint()`
     /// Moves the point of parameter U of this BSpline
     /// curve to P. Index1 and Index2 are the indexes in the
     /// table of poles of this BSpline curve of the first and
@@ -900,6 +944,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:539 - `Geom2d_BSplineCurve::MovePointAndTangent()`
     /// Move a point with parameter U to P.
     /// and makes it tangent at U be Tangent.
     /// StartingCondition = -1 means first can move
@@ -935,6 +980,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:550 - `Geom2d_BSplineCurve::IsCN()`
     /// Returns true if the degree of continuity of this
     /// BSpline curve is at least N. A BSpline curve is at least GeomAbs_C0.
     /// Exceptions Standard_RangeError if N is negative.
@@ -942,6 +988,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_is_cn(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:558 - `Geom2d_BSplineCurve::IsG1()`
     /// Check if curve has at least G1 continuity in interval [theTf, theTl]
     /// Returns true if IsCN(1)
     /// or
@@ -954,6 +1001,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:568 - `Geom2d_BSplineCurve::IsClosed()`
     /// Returns true if the distance between the first point and the
     /// last point of the curve is lower or equal to Resolution
     /// from package gp.
@@ -964,17 +1012,20 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_is_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:571 - `Geom2d_BSplineCurve::IsPeriodic()`
     /// Returns True if the curve is periodic.
     pub fn is_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom2d_BSplineCurve_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:575 - `Geom2d_BSplineCurve::IsRational()`
     /// Returns True if the weights are not identical.
     /// The tolerance criterion is Epsilon of the class Real.
     pub fn is_rational(&self) -> bool {
         unsafe { crate::ffi::Geom2d_BSplineCurve_is_rational(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:589 - `Geom2d_BSplineCurve::Continuity()`
     /// Returns the global continuity of the curve :
     /// C0 : only geometric continuity,
     /// C1 : continuity of the first derivative all along the Curve,
@@ -996,6 +1047,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:595 - `Geom2d_BSplineCurve::Degree()`
     /// Returns the degree of this BSpline curve.
     /// In this class the degree of the basis normalized B-spline
     /// functions cannot be greater than "MaxDegree"
@@ -1004,15 +1056,18 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_degree(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:597 - `Geom2d_BSplineCurve::D0()`
     pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::Geom2d_BSplineCurve_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:600 - `Geom2d_BSplineCurve::D1()`
     /// Raised if the continuity of the curve is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V1: &mut crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::Geom2d_BSplineCurve_d1(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:603 - `Geom2d_BSplineCurve::D2()`
     /// Raised if the continuity of the curve is not C2.
     pub fn d2(
         &self,
@@ -1024,6 +1079,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_d2(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:620 - `Geom2d_BSplineCurve::D3()`
     /// For this BSpline curve, computes
     /// - the point P of parameter U, or
     /// - the point P and one or more of the following values:
@@ -1047,6 +1103,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:647 - `Geom2d_BSplineCurve::DN()`
     /// For the point of parameter U of this BSpline curve,
     /// computes the vector corresponding to the Nth derivative.
     /// Warning
@@ -1074,6 +1131,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:651 - `Geom2d_BSplineCurve::LocalValue()`
     /// Raised if FromK1 = ToK2.
     pub fn local_value(
         &self,
@@ -1091,11 +1149,13 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:656 - `Geom2d_BSplineCurve::LocalD0()`
     /// Raised if FromK1 = ToK2.
     pub fn local_d0(&self, U: f64, FromK1: i32, ToK2: i32, P: &mut crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::Geom2d_BSplineCurve_local_d0(self as *const Self, U, FromK1, ToK2, P) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:664 - `Geom2d_BSplineCurve::LocalD1()`
     /// Raised if the local continuity of the curve is not C1
     /// between the knot K1 and the knot K2.
     /// Raised if FromK1 = ToK2.
@@ -1112,6 +1172,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:673 - `Geom2d_BSplineCurve::LocalD2()`
     /// Raised if the local continuity of the curve is not C2
     /// between the knot K1 and the knot K2.
     /// Raised if FromK1 = ToK2.
@@ -1137,6 +1198,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:683 - `Geom2d_BSplineCurve::LocalD3()`
     /// Raised if the local continuity of the curve is not C3
     /// between the knot K1 and the knot K2.
     /// Raised if FromK1 = ToK2.
@@ -1164,6 +1226,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:695 - `Geom2d_BSplineCurve::LocalDN()`
     /// Raised if the local continuity of the curve is not CN
     /// between the knot K1 and the knot K2.
     /// Raised if FromK1 = ToK2.
@@ -1186,6 +1249,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:705 - `Geom2d_BSplineCurve::EndPoint()`
     /// Returns the last point of the curve.
     /// Warnings :
     /// The last point of the curve is different from the last
@@ -1199,6 +1263,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:712 - `Geom2d_BSplineCurve::FirstUKnotIndex()`
     /// For a B-spline curve the first parameter (which gives the start
     /// point of the curve) is a knot value but if the multiplicity of
     /// the first knot index is lower than Degree + 1 it is not the
@@ -1208,12 +1273,14 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_first_u_knot_index(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:716 - `Geom2d_BSplineCurve::FirstParameter()`
     /// Computes the parametric value of the start point of the curve.
     /// It is a knot value.
     pub fn first_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_BSplineCurve_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:723 - `Geom2d_BSplineCurve::Knot()`
     /// Returns the knot of range Index. When there is a knot
     /// with a multiplicity greater than 1 the knot is not repeated.
     /// The method Multiplicity can be used to get the multiplicity
@@ -1223,6 +1290,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_knot(self as *const Self, Index) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:763 - `Geom2d_BSplineCurve::KnotDistribution()`
     /// Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier.
     /// If all the knots differ by a positive constant from the
     /// preceding knot the BSpline Curve can be :
@@ -1243,6 +1311,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:771 - `Geom2d_BSplineCurve::LastUKnotIndex()`
     /// For a BSpline curve the last parameter (which gives the
     /// end point of the curve) is a knot value but if the
     /// multiplicity of the last knot index is lower than
@@ -1253,12 +1322,14 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_last_u_knot_index(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:775 - `Geom2d_BSplineCurve::LastParameter()`
     /// Computes the parametric value of the end point of the curve.
     /// It is a knot value.
     pub fn last_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_BSplineCurve_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:787 - `Geom2d_BSplineCurve::LocateU()`
     /// Locates the parametric value U in the sequence of knots.
     /// If "WithKnotRepetition" is True we consider the knot's
     /// representation with repetition of multiple knot value,
@@ -1289,29 +1360,34 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:795 - `Geom2d_BSplineCurve::Multiplicity()`
     /// Returns the multiplicity of the knots of range Index.
     /// Raised if Index < 1 or Index > NbKnots
     pub fn multiplicity(&self, Index: i32) -> i32 {
         unsafe { crate::ffi::Geom2d_BSplineCurve_multiplicity(self as *const Self, Index) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:807 - `Geom2d_BSplineCurve::NbKnots()`
     /// Returns the number of knots. This method returns the number of
     /// knot without repetition of multiple knots.
     pub fn nb_knots(&self) -> i32 {
         unsafe { crate::ffi::Geom2d_BSplineCurve_nb_knots(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:810 - `Geom2d_BSplineCurve::NbPoles()`
     /// Returns the number of poles
     pub fn nb_poles(&self) -> i32 {
         unsafe { crate::ffi::Geom2d_BSplineCurve_nb_poles(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:814 - `Geom2d_BSplineCurve::Pole()`
     /// Returns the pole of range Index.
     /// Raised if Index < 1 or Index > NbPoles.
     pub fn pole(&self, Index: i32) -> &crate::ffi::gp_Pnt2d {
         unsafe { &*(crate::ffi::Geom2d_BSplineCurve_pole(self as *const Self, Index)) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:819 - `Geom2d_BSplineCurve::Poles()`
     /// Returns the poles of the B-spline curve;
     ///
     /// Raised if the length of P is not equal to the number of poles.
@@ -1319,11 +1395,13 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_poles_array1ofpnt2d(self as *const Self, P) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:822 - `Geom2d_BSplineCurve::Poles()`
     /// Returns the poles of the B-spline curve;
     pub fn poles(&self) -> &crate::ffi::TColgp_Array1OfPnt2d {
         unsafe { &*(crate::ffi::Geom2d_BSplineCurve_poles(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:828 - `Geom2d_BSplineCurve::StartPoint()`
     /// Returns the start point of the curve.
     /// Warnings :
     /// This point is different from the first pole of the curve if the
@@ -1336,17 +1414,20 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:832 - `Geom2d_BSplineCurve::Weight()`
     /// Returns the weight of the pole of range Index .
     /// Raised if Index < 1 or Index > NbPoles.
     pub fn weight(&self, Index: i32) -> f64 {
         unsafe { crate::ffi::Geom2d_BSplineCurve_weight(self as *const Self, Index) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:843 - `Geom2d_BSplineCurve::Transform()`
     /// Applies the transformation T to this BSpline curve.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::Geom2d_BSplineCurve_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:856 - `Geom2d_BSplineCurve::Resolution()`
     /// Computes for this BSpline curve the parametric
     /// tolerance UTolerance for a given tolerance
     /// Tolerance3D (relative to dimensions in the plane).
@@ -1360,6 +1441,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:859 - `Geom2d_BSplineCurve::Copy()`
     /// Creates a new object which is a copy of this BSpline curve.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
@@ -1367,20 +1449,24 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:865 - `Geom2d_BSplineCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_BSplineCurve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:847 - `Geom2d_BSplineCurve::MaxDegree()`
     /// Returns the value of the maximum degree of the normalized
     /// B-spline basis functions in this package.
     pub fn max_degree() -> i32 {
         unsafe { crate::ffi::Geom2d_BSplineCurve_max_degree() }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:865 - `Geom2d_BSplineCurve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_BSplineCurve_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:865 - `Geom2d_BSplineCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_BSplineCurve_get_type_descriptor()) }
     }
@@ -1614,6 +1700,7 @@ impl HandleGeom2dBSplineCurve {
 // From Geom2d_BezierCurve.hxx
 // ========================
 
+/// **Source:** `Geom2d_BezierCurve.hxx`:90 - `Geom2d_BezierCurve`
 /// Describes a rational or non-rational Bezier curve
 /// - a non-rational Bezier curve is defined by a table
 /// of poles (also called control points),
@@ -1675,6 +1762,7 @@ unsafe impl crate::CppDeletable for BezierCurve {
 }
 
 impl BezierCurve {
+    /// **Source:** `Geom2d_BezierCurve.hxx`:98 - `Geom2d_BezierCurve::Geom2d_BezierCurve()`
     /// Creates a non rational Bezier curve with a set of poles :
     /// CurvePoles.  The weights are defaulted to all being 1.
     /// Raises ConstructionError if the number of poles is greater than MaxDegree + 1
@@ -1687,6 +1775,7 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:108 - `Geom2d_BezierCurve::Geom2d_BezierCurve()`
     /// Creates a rational Bezier curve with the set of poles
     /// CurvePoles and the set of weights  PoleWeights .
     /// If all the weights are identical the curve is considered
@@ -1709,6 +1798,7 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:115 - `Geom2d_BezierCurve::Increase()`
     /// Increases the degree of a bezier curve. Degree is the new
     /// degree of <me>.
     /// raises ConstructionError if Degree is greater than MaxDegree or lower than 2
@@ -1717,6 +1807,7 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom2d_BezierCurve_increase(self as *mut Self, Degree) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:124 - `Geom2d_BezierCurve::InsertPoleAfter()`
     /// Inserts a pole with its weight in the set of poles after the
     /// pole of range Index. If the curve was non rational it can
     /// become rational if all the weights are not identical.
@@ -1730,6 +1821,7 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:135 - `Geom2d_BezierCurve::InsertPoleBefore()`
     /// Inserts a pole with its weight in the set of poles after
     /// the pole of range Index. If the curve was non rational it
     /// can become rational if all the weights are not identical.
@@ -1743,6 +1835,7 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:142 - `Geom2d_BezierCurve::RemovePole()`
     /// Removes the pole of range Index.
     /// If the curve was rational it can become non rational.
     /// Raised if Index is not in the range [1, NbPoles]
@@ -1750,12 +1843,14 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom2d_BezierCurve_remove_pole(self as *mut Self, Index) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:146 - `Geom2d_BezierCurve::Reverse()`
     /// Reverses the direction of parametrization of <me>
     /// Value (NewU) =  Value (1 - OldU)
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::Geom2d_BezierCurve_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:152 - `Geom2d_BezierCurve::ReversedParameter()`
     /// Returns the  parameter on the  reversed  curve for
     /// the point of parameter U on <me>.
     ///
@@ -1764,6 +1859,7 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom2d_BezierCurve_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:165 - `Geom2d_BezierCurve::Segment()`
     /// Segments the curve between U1 and U2 which can be out
     /// of the bounds of the curve. The curve is oriented from U1
     /// to U2.
@@ -1779,6 +1875,7 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom2d_BezierCurve_segment(self as *mut Self, U1, U2) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:171 - `Geom2d_BezierCurve::SetPole()`
     /// Substitutes the pole of range index with P.
     /// If the curve <me> is rational the weight of range Index
     /// is not modified.
@@ -1787,6 +1884,7 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom2d_BezierCurve_set_pole_int_pnt2d(self as *mut Self, Index, P) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:180 - `Geom2d_BezierCurve::SetPole()`
     /// Substitutes the pole and the weights of range Index.
     /// If the curve <me> is not rational it can become rational
     /// if all the weights are not identical.
@@ -1805,6 +1903,7 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:191 - `Geom2d_BezierCurve::SetWeight()`
     /// Changes the weight of the pole of range Index.
     /// If the curve <me> is not rational it can become rational
     /// if all the weights are not identical.
@@ -1816,6 +1915,7 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom2d_BezierCurve_set_weight(self as *mut Self, Index, Weight) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:196 - `Geom2d_BezierCurve::IsClosed()`
     /// Returns True if the distance between the first point
     /// and the last point of the curve is lower or equal to
     /// the Resolution from package gp.
@@ -1823,23 +1923,27 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom2d_BezierCurve_is_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:199 - `Geom2d_BezierCurve::IsCN()`
     /// Continuity of the curve, returns True.
     pub fn is_cn(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom2d_BezierCurve_is_cn(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:203 - `Geom2d_BezierCurve::IsPeriodic()`
     /// Returns False. A BezierCurve cannot be periodic in this
     /// package
     pub fn is_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom2d_BezierCurve_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:207 - `Geom2d_BezierCurve::IsRational()`
     /// Returns false if all the weights are identical. The tolerance
     /// criterion is Resolution from package gp.
     pub fn is_rational(&self) -> bool {
         unsafe { crate::ffi::Geom2d_BezierCurve_is_rational(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:210 - `Geom2d_BezierCurve::Continuity()`
     /// Returns GeomAbs_CN, which is the continuity of any Bezier curve.
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         unsafe {
@@ -1850,6 +1954,7 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:215 - `Geom2d_BezierCurve::Degree()`
     /// Returns the polynomial degree of the curve. It is the number
     /// of poles less one.  In this package the Degree of a Bezier
     /// curve cannot be greater than "MaxDegree".
@@ -1857,14 +1962,17 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom2d_BezierCurve_degree(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:217 - `Geom2d_BezierCurve::D0()`
     pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::Geom2d_BezierCurve_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:219 - `Geom2d_BezierCurve::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V1: &mut crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::Geom2d_BezierCurve_d1(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:221 - `Geom2d_BezierCurve::D2()`
     pub fn d2(
         &self,
         U: f64,
@@ -1875,6 +1983,7 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom2d_BezierCurve_d2(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:226 - `Geom2d_BezierCurve::D3()`
     pub fn d3(
         &self,
         U: f64,
@@ -1886,6 +1995,7 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom2d_BezierCurve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:240 - `Geom2d_BezierCurve::DN()`
     /// For this Bezier curve, computes
     /// - the point P of parameter U, or
     /// - the point P and one or more of the following values:
@@ -1900,6 +2010,7 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:244 - `Geom2d_BezierCurve::EndPoint()`
     /// Returns the end point or start point of this Bezier curve.
     pub fn end_point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
         unsafe {
@@ -1907,29 +2018,34 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:248 - `Geom2d_BezierCurve::FirstParameter()`
     /// Returns the value of the first  parameter of this
     /// Bezier curve. This is  0.0, which gives the start point of this Bezier curve.
     pub fn first_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_BezierCurve_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:252 - `Geom2d_BezierCurve::LastParameter()`
     /// Returns the value of the last  parameter of this
     /// Bezier curve. This is  1.0, which gives the end point of this Bezier curve.
     pub fn last_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_BezierCurve_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:255 - `Geom2d_BezierCurve::NbPoles()`
     /// Returns the number of poles for this Bezier curve.
     pub fn nb_poles(&self) -> i32 {
         unsafe { crate::ffi::Geom2d_BezierCurve_nb_poles(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:259 - `Geom2d_BezierCurve::Pole()`
     /// Returns the pole of range Index.
     /// Raised if Index is not in the range [1, NbPoles]
     pub fn pole(&self, Index: i32) -> &crate::ffi::gp_Pnt2d {
         unsafe { &*(crate::ffi::Geom2d_BezierCurve_pole(self as *const Self, Index)) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:264 - `Geom2d_BezierCurve::Poles()`
     /// Returns all the poles of the curve.
     ///
     /// Raised if the length of P is not equal to the number of poles.
@@ -1937,11 +2053,13 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom2d_BezierCurve_poles_array1ofpnt2d(self as *const Self, P) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:267 - `Geom2d_BezierCurve::Poles()`
     /// Returns all the poles of the curve.
     pub fn poles(&self) -> &crate::ffi::TColgp_Array1OfPnt2d {
         unsafe { &*(crate::ffi::Geom2d_BezierCurve_poles(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:271 - `Geom2d_BezierCurve::StartPoint()`
     /// Returns Value (U=1), it is the first control point
     /// of the curve.
     pub fn start_point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
@@ -1952,17 +2070,20 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:275 - `Geom2d_BezierCurve::Weight()`
     /// Returns the weight of range Index.
     /// Raised if Index is not in the range [1, NbPoles]
     pub fn weight(&self, Index: i32) -> f64 {
         unsafe { crate::ffi::Geom2d_BezierCurve_weight(self as *const Self, Index) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:291 - `Geom2d_BezierCurve::Transform()`
     /// Applies the transformation T to this Bezier curve.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::Geom2d_BezierCurve_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:304 - `Geom2d_BezierCurve::Resolution()`
     /// Computes for this Bezier curve the parametric
     /// tolerance UTolerance for a given tolerance
     /// Tolerance3D (relative to dimensions in the plane).
@@ -1976,6 +2097,7 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:307 - `Geom2d_BezierCurve::Copy()`
     /// Creates a new object which is a copy of this Bezier curve.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
@@ -1983,20 +2105,24 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:313 - `Geom2d_BezierCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_BezierCurve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:295 - `Geom2d_BezierCurve::MaxDegree()`
     /// Returns the value of the maximum polynomial degree of a
     /// BezierCurve. This value is 25.
     pub fn max_degree() -> i32 {
         unsafe { crate::ffi::Geom2d_BezierCurve_max_degree() }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:313 - `Geom2d_BezierCurve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_BezierCurve_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:313 - `Geom2d_BezierCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_BezierCurve_get_type_descriptor()) }
     }
@@ -2226,6 +2352,7 @@ impl HandleGeom2dBezierCurve {
 // From Geom2d_BoundedCurve.hxx
 // ========================
 
+/// **Source:** `Geom2d_BoundedCurve.hxx`:45 - `Geom2d_BoundedCurve`
 /// The abstract class BoundedCurve describes the
 /// common behavior of bounded curves in 2D space. A
 /// bounded curve is limited by two finite values of the
@@ -2251,6 +2378,7 @@ unsafe impl crate::CppDeletable for BoundedCurve {
 }
 
 impl BoundedCurve {
+    /// **Source:** `Geom2d_BoundedCurve.hxx`:52 - `Geom2d_BoundedCurve::EndPoint()`
     /// Returns the end point of the curve.
     /// The end point is the value of the curve for the
     /// "LastParameter" of the curve.
@@ -2262,6 +2390,7 @@ impl BoundedCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BoundedCurve.hxx`:57 - `Geom2d_BoundedCurve::StartPoint()`
     /// Returns the start point of the curve.
     /// The start point is the value of the curve for the
     /// "FirstParameter" of the curve.
@@ -2273,14 +2402,17 @@ impl BoundedCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BoundedCurve.hxx`:63 - `Geom2d_BoundedCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_BoundedCurve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_BoundedCurve.hxx`:63 - `Geom2d_BoundedCurve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_BoundedCurve_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_BoundedCurve.hxx`:63 - `Geom2d_BoundedCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_BoundedCurve_get_type_descriptor()) }
     }
@@ -2589,6 +2721,7 @@ impl HandleGeom2dBoundedCurve {
 // From Geom2d_CartesianPoint.hxx
 // ========================
 
+/// **Source:** `Geom2d_CartesianPoint.hxx`:34 - `Geom2d_CartesianPoint`
 /// Describes a point in 2D space. A
 /// Geom2d_CartesianPoint is defined by a gp_Pnt2d
 /// point, with its two Cartesian coordinates X and Y.
@@ -2601,40 +2734,48 @@ unsafe impl crate::CppDeletable for CartesianPoint {
 }
 
 impl CartesianPoint {
+    /// **Source:** `Geom2d_CartesianPoint.hxx`:39 - `Geom2d_CartesianPoint::Geom2d_CartesianPoint()`
     /// Returns a persistent copy of P.
     pub fn new_pnt2d(P: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_CartesianPoint_ctor_pnt2d(P)) }
     }
 
+    /// **Source:** `Geom2d_CartesianPoint.hxx`:41 - `Geom2d_CartesianPoint::Geom2d_CartesianPoint()`
     pub fn new_real2(X: f64, Y: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_CartesianPoint_ctor_real2(X, Y)) }
     }
 
+    /// **Source:** `Geom2d_CartesianPoint.hxx`:44 - `Geom2d_CartesianPoint::SetCoord()`
     /// Set <me> to X, Y coordinates.
     pub fn set_coord(&mut self, X: f64, Y: f64) {
         unsafe { crate::ffi::Geom2d_CartesianPoint_set_coord(self as *mut Self, X, Y) }
     }
 
+    /// **Source:** `Geom2d_CartesianPoint.hxx`:47 - `Geom2d_CartesianPoint::SetPnt2d()`
     /// Set <me> to P.X(), P.Y() coordinates.
     pub fn set_pnt2d(&mut self, P: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::Geom2d_CartesianPoint_set_pnt2d(self as *mut Self, P) }
     }
 
+    /// **Source:** `Geom2d_CartesianPoint.hxx`:50 - `Geom2d_CartesianPoint::SetX()`
     /// Changes the X coordinate of me.
     pub fn set_x(&mut self, X: f64) {
         unsafe { crate::ffi::Geom2d_CartesianPoint_set_x(self as *mut Self, X) }
     }
 
+    /// **Source:** `Geom2d_CartesianPoint.hxx`:53 - `Geom2d_CartesianPoint::SetY()`
     /// Changes the Y coordinate of me.
     pub fn set_y(&mut self, Y: f64) {
         unsafe { crate::ffi::Geom2d_CartesianPoint_set_y(self as *mut Self, Y) }
     }
 
+    /// **Source:** `Geom2d_CartesianPoint.hxx`:56 - `Geom2d_CartesianPoint::Coord()`
     /// Returns the coordinates of <me>.
     pub fn coord(&self, X: &mut f64, Y: &mut f64) {
         unsafe { crate::ffi::Geom2d_CartesianPoint_coord(self as *const Self, X, Y) }
     }
 
+    /// **Source:** `Geom2d_CartesianPoint.hxx`:61 - `Geom2d_CartesianPoint::Pnt2d()`
     /// Returns a non persistent cartesian point with
     /// the same coordinates as <me>.
     /// -C++: return const&
@@ -2644,34 +2785,41 @@ impl CartesianPoint {
         }
     }
 
+    /// **Source:** `Geom2d_CartesianPoint.hxx`:64 - `Geom2d_CartesianPoint::X()`
     /// Returns the X coordinate of <me>.
     pub fn x(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_CartesianPoint_x(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_CartesianPoint.hxx`:67 - `Geom2d_CartesianPoint::Y()`
     /// Returns the Y coordinate of <me>.
     pub fn y(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_CartesianPoint_y(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_CartesianPoint.hxx`:69 - `Geom2d_CartesianPoint::Transform()`
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::Geom2d_CartesianPoint_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom2d_CartesianPoint.hxx`:71 - `Geom2d_CartesianPoint::Copy()`
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2d_CartesianPoint_copy(self as *const Self))
         }
     }
 
+    /// **Source:** `Geom2d_CartesianPoint.hxx`:77 - `Geom2d_CartesianPoint::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_CartesianPoint_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_CartesianPoint.hxx`:77 - `Geom2d_CartesianPoint::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_CartesianPoint_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_CartesianPoint.hxx`:77 - `Geom2d_CartesianPoint::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_CartesianPoint_get_type_descriptor()) }
     }
@@ -2851,6 +2999,7 @@ impl HandleGeom2dCartesianPoint {
 // From Geom2d_Circle.hxx
 // ========================
 
+/// **Source:** `Geom2d_Circle.hxx`:63 - `Geom2d_Circle`
 /// Describes a circle in the plane (2D space).
 /// A circle is defined by its radius and, as with any conic
 /// curve, is positioned in the plane with a coordinate
@@ -2887,11 +3036,13 @@ unsafe impl crate::CppDeletable for Circle {
 }
 
 impl Circle {
+    /// **Source:** `Geom2d_Circle.hxx`:68 - `Geom2d_Circle::Geom2d_Circle()`
     /// Constructs a circle by conversion of the gp_Circ2d circle C.
     pub fn new_circ2d(C: &crate::ffi::gp_Circ2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Circle_ctor_circ2d(C)) }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:76 - `Geom2d_Circle::Geom2d_Circle()`
     /// Constructs a circle of radius Radius, whose center is the origin of axis
     /// A; A is the "X Axis" of the local coordinate system
     /// of the circle; this coordinate system is direct if
@@ -2910,6 +3061,7 @@ impl Circle {
         }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:86 - `Geom2d_Circle::Geom2d_Circle()`
     /// Constructs a circle
     /// of radius Radius, where the coordinate system A
     /// locates the circle and defines its orientation in the plane such that:
@@ -2920,6 +3072,7 @@ impl Circle {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Circle_ctor_ax22d_real(A, Radius)) }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:76 - `Geom2d_Circle::Geom2d_Circle()`
     /// Constructs a circle of radius Radius, whose center is the origin of axis
     /// A; A is the "X Axis" of the local coordinate system
     /// of the circle; this coordinate system is direct if
@@ -2930,26 +3083,31 @@ impl Circle {
         Self::new_ax2d_real_bool(A, Radius, true)
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:89 - `Geom2d_Circle::SetCirc2d()`
     /// Converts the gp_Circ2d circle C into this circle.
     pub fn set_circ2d(&mut self, C: &crate::ffi::gp_Circ2d) {
         unsafe { crate::ffi::Geom2d_Circle_set_circ2d(self as *mut Self, C) }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:91 - `Geom2d_Circle::SetRadius()`
     pub fn set_radius(&mut self, R: f64) {
         unsafe { crate::ffi::Geom2d_Circle_set_radius(self as *mut Self, R) }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:95 - `Geom2d_Circle::Circ2d()`
     /// Returns the non persistent circle from gp with the same
     /// geometric properties as <me>.
     pub fn circ2d(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Circle_circ2d(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:98 - `Geom2d_Circle::Radius()`
     /// Returns the radius of this circle.
     pub fn radius(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Circle_radius(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:103 - `Geom2d_Circle::ReversedParameter()`
     /// Computes the parameter on the reversed circle for
     /// the point of parameter U on this circle.
     /// For a circle, the returned value is: 2.*Pi - U.
@@ -2957,31 +3115,37 @@ impl Circle {
         unsafe { crate::ffi::Geom2d_Circle_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:106 - `Geom2d_Circle::Eccentricity()`
     /// Returns 0., which is the eccentricity of any circle.
     pub fn eccentricity(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Circle_eccentricity(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:109 - `Geom2d_Circle::FirstParameter()`
     /// Returns 0.0
     pub fn first_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Circle_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:112 - `Geom2d_Circle::LastParameter()`
     /// Returns 2*PI.
     pub fn last_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Circle_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:115 - `Geom2d_Circle::IsClosed()`
     /// returns True.
     pub fn is_closed(&self) -> bool {
         unsafe { crate::ffi::Geom2d_Circle_is_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:118 - `Geom2d_Circle::IsPeriodic()`
     /// returns True. The period of a circle is 2.*Pi.
     pub fn is_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom2d_Circle_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:124 - `Geom2d_Circle::D0()`
     /// Returns in P the point of parameter U.
     /// P = C + R * Cos (U) * XDir + R * Sin (U) * YDir
     /// where C is the center of the circle , XDir the XDirection and
@@ -2990,11 +3154,13 @@ impl Circle {
         unsafe { crate::ffi::Geom2d_Circle_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:127 - `Geom2d_Circle::D1()`
     /// Returns the point P of parameter U and the first derivative V1.
     pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V1: &mut crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::Geom2d_Circle_d1(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:131 - `Geom2d_Circle::D2()`
     /// Returns the point P of parameter U, the first and second
     /// derivatives V1 and V2.
     pub fn d2(
@@ -3007,6 +3173,7 @@ impl Circle {
         unsafe { crate::ffi::Geom2d_Circle_d2(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:138 - `Geom2d_Circle::D3()`
     /// Returns the point P of parameter u, the first second and third
     /// derivatives V1 V2 and V3.
     pub fn d3(
@@ -3020,6 +3187,7 @@ impl Circle {
         unsafe { crate::ffi::Geom2d_Circle_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:147 - `Geom2d_Circle::DN()`
     /// For the point of parameter U of this circle, computes
     /// the vector corresponding to the Nth derivative.
     /// Exceptions: Standard_RangeError if N is less than 1.
@@ -3029,24 +3197,29 @@ impl Circle {
         }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:151 - `Geom2d_Circle::Transform()`
     /// Applies the transformation T to this circle.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::Geom2d_Circle_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:154 - `Geom2d_Circle::Copy()`
     /// Creates a new object which is a copy of this circle.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Circle_copy(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:160 - `Geom2d_Circle::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Circle_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:160 - `Geom2d_Circle::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_Circle_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_Circle.hxx`:160 - `Geom2d_Circle::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Circle_get_type_descriptor()) }
     }
@@ -3335,6 +3508,7 @@ impl HandleGeom2dCircle {
 // From Geom2d_Conic.hxx
 // ========================
 
+/// **Source:** `Geom2d_Conic.hxx`:41 - `Geom2d_Conic`
 /// The abstract class Conic describes the common
 /// behavior of conic curves in 2D space and, in
 /// particular, their general characteristics. The Geom2d
@@ -3359,12 +3533,14 @@ unsafe impl crate::CppDeletable for Conic {
 }
 
 impl Conic {
+    /// **Source:** `Geom2d_Conic.hxx`:46 - `Geom2d_Conic::SetAxis()`
     /// Modifies this conic, redefining its local coordinate system
     /// partially, by assigning theA as its axis
     pub fn set_axis(&mut self, theA: &crate::ffi::gp_Ax22d) {
         unsafe { crate::ffi::Geom2d_Conic_set_axis(self as *mut Self, theA) }
     }
 
+    /// **Source:** `Geom2d_Conic.hxx`:54 - `Geom2d_Conic::SetXAxis()`
     /// Assigns the origin and unit vector of axis theA to the
     /// origin of the local coordinate system of this conic and X Direction.
     /// The other unit vector of the local coordinate system
@@ -3375,6 +3551,7 @@ impl Conic {
         unsafe { crate::ffi::Geom2d_Conic_set_x_axis(self as *mut Self, theAX) }
     }
 
+    /// **Source:** `Geom2d_Conic.hxx`:62 - `Geom2d_Conic::SetYAxis()`
     /// Assigns the origin and unit vector of axis theA to the
     /// origin of the local coordinate system of this conic and Y Direction.
     /// The other unit vector of the local coordinate system
@@ -3385,12 +3562,14 @@ impl Conic {
         unsafe { crate::ffi::Geom2d_Conic_set_y_axis(self as *mut Self, theAY) }
     }
 
+    /// **Source:** `Geom2d_Conic.hxx`:66 - `Geom2d_Conic::SetLocation()`
     /// Modifies this conic, redefining its local coordinate
     /// system partially, by assigning theP as its origin.
     pub fn set_location(&mut self, theP: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::Geom2d_Conic_set_location(self as *mut Self, theP) }
     }
 
+    /// **Source:** `Geom2d_Conic.hxx`:73 - `Geom2d_Conic::XAxis()`
     /// Returns the "XAxis" of the conic.
     /// This axis defines the origin of parametrization of the conic.
     /// This axis and the "Yaxis" define the local coordinate system
@@ -3400,12 +3579,14 @@ impl Conic {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Conic_x_axis(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Conic.hxx`:77 - `Geom2d_Conic::YAxis()`
     /// Returns the "YAxis" of the conic.
     /// The "YAxis" is perpendicular to the "Xaxis".
     pub fn y_axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Conic_y_axis(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Conic.hxx`:84 - `Geom2d_Conic::Eccentricity()`
     /// returns the eccentricity value of the conic e.
     /// e = 0 for a circle
     /// 0 < e < 1 for an ellipse  (e = 0 if MajorRadius = MinorRadius)
@@ -3415,6 +3596,7 @@ impl Conic {
         unsafe { crate::ffi::Geom2d_Conic_eccentricity(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Conic.hxx`:89 - `Geom2d_Conic::Location()`
     /// Returns the location point of the conic.
     /// For the circle, the ellipse and the hyperbola it is the center of
     /// the conic. For the parabola it is the vertex of the parabola.
@@ -3422,23 +3604,27 @@ impl Conic {
         unsafe { &*(crate::ffi::Geom2d_Conic_location(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Conic.hxx`:92 - `Geom2d_Conic::Position()`
     /// Returns the local coordinates system of the conic.
     pub fn position(&self) -> &crate::ffi::gp_Ax22d {
         unsafe { &*(crate::ffi::Geom2d_Conic_position(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Conic.hxx`:96 - `Geom2d_Conic::Reverse()`
     /// Reverses the direction of parameterization of <me>.
     /// The local coordinate system of the conic is modified.
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::Geom2d_Conic_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom2d_Conic.hxx`:100 - `Geom2d_Conic::ReversedParameter()`
     /// Returns the  parameter on the  reversed  curve for
     /// the point of parameter U on <me>.
     pub fn reversed_parameter(&self, U: f64) -> f64 {
         unsafe { crate::ffi::Geom2d_Conic_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom2d_Conic.hxx`:104 - `Geom2d_Conic::Continuity()`
     /// Returns GeomAbs_CN which is the global continuity of any conic.
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         unsafe {
@@ -3449,19 +3635,23 @@ impl Conic {
         }
     }
 
+    /// **Source:** `Geom2d_Conic.hxx`:107 - `Geom2d_Conic::IsCN()`
     /// Returns True, the order of continuity of a conic is infinite.
     pub fn is_cn(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom2d_Conic_is_cn(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom2d_Conic.hxx`:113 - `Geom2d_Conic::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Conic_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Conic.hxx`:113 - `Geom2d_Conic::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_Conic_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_Conic.hxx`:113 - `Geom2d_Conic::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Conic_get_type_descriptor()) }
     }
@@ -3732,6 +3922,7 @@ impl HandleGeom2dConic {
 // From Geom2d_Curve.hxx
 // ========================
 
+/// **Source:** `Geom2d_Curve.hxx`:60 - `Geom2d_Curve`
 /// The abstract class Curve describes the common
 /// behavior of curves in 2D space. The Geom2d
 /// package provides numerous concrete classes of
@@ -3767,6 +3958,7 @@ unsafe impl crate::CppDeletable for Curve {
 }
 
 impl Curve {
+    /// **Source:** `Geom2d_Curve.hxx`:70 - `Geom2d_Curve::Reverse()`
     /// Changes the direction of parametrization of <me>.
     /// The "FirstParameter" and the "LastParameter" are not changed
     /// but the orientation  of the curve is modified. If the curve
@@ -3777,6 +3969,7 @@ impl Curve {
         unsafe { crate::ffi::Geom2d_Curve_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom2d_Curve.hxx`:77 - `Geom2d_Curve::ReversedParameter()`
     /// Computes the parameter on the reversed curve for
     /// the point of parameter U on this curve.
     /// Note: The point of parameter U on this curve is
@@ -3786,6 +3979,7 @@ impl Curve {
         unsafe { crate::ffi::Geom2d_Curve_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom2d_Curve.hxx`:83 - `Geom2d_Curve::TransformedParameter()`
     /// Computes the parameter on the curve transformed by
     /// T for the point of parameter U on this curve.
     /// Note: this function generally returns U but it can be
@@ -3794,6 +3988,7 @@ impl Curve {
         unsafe { crate::ffi::Geom2d_Curve_transformed_parameter(self as *const Self, U, T) }
     }
 
+    /// **Source:** `Geom2d_Curve.hxx`:94 - `Geom2d_Curve::ParametricTransformation()`
     /// Returns the coefficient required to compute the
     /// parametric transformation of this curve when
     /// transformation T is applied. This coefficient is the
@@ -3806,6 +4001,7 @@ impl Curve {
         unsafe { crate::ffi::Geom2d_Curve_parametric_transformation(self as *const Self, T) }
     }
 
+    /// **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::Reversed()`
     /// Creates a reversed duplicate Changes the orientation of this curve. The first and
     /// last parameters are not changed, but the parametric
     /// direction of the curve is reversed.
@@ -3819,6 +4015,7 @@ impl Curve {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Curve_reversed(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Curve.hxx`:111 - `Geom2d_Curve::FirstParameter()`
     /// Returns the value of the first parameter.
     /// Warnings :
     /// It can be RealFirst or RealLast from package Standard
@@ -3827,6 +4024,7 @@ impl Curve {
         unsafe { crate::ffi::Geom2d_Curve_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Curve.hxx`:117 - `Geom2d_Curve::LastParameter()`
     /// Value of the last parameter.
     /// Warnings :
     /// It can be RealFirst or RealLast from package Standard
@@ -3835,6 +4033,7 @@ impl Curve {
         unsafe { crate::ffi::Geom2d_Curve_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Curve.hxx`:128 - `Geom2d_Curve::IsClosed()`
     /// Returns true if the curve is closed.
     /// Examples :
     /// Some curves such as circle are always closed, others such as line
@@ -3848,6 +4047,7 @@ impl Curve {
         unsafe { crate::ffi::Geom2d_Curve_is_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Curve.hxx`:145 - `Geom2d_Curve::IsPeriodic()`
     /// Returns true if the parameter of the curve is periodic.
     /// It is possible only if the curve is closed and if the
     /// following relation is satisfied :
@@ -3867,12 +4067,14 @@ impl Curve {
         unsafe { crate::ffi::Geom2d_Curve_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Curve.hxx`:149 - `Geom2d_Curve::Period()`
     /// Returns the period of this curve.
     /// raises if the curve is not periodic
     pub fn period(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Curve_period(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Curve.hxx`:159 - `Geom2d_Curve::Continuity()`
     /// It is the global continuity of the curve :
     /// C0 : only geometric continuity,
     /// C1 : continuity of the first derivative all along the Curve,
@@ -3890,12 +4092,14 @@ impl Curve {
         }
     }
 
+    /// **Source:** `Geom2d_Curve.hxx`:163 - `Geom2d_Curve::IsCN()`
     /// Returns true if the degree of continuity of this curve is at least N.
     /// Exceptions Standard_RangeError if N is less than 0.
     pub fn is_cn(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom2d_Curve_is_cn(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom2d_Curve.hxx`:174 - `Geom2d_Curve::D0()`
     /// Returns in P the point of parameter U.
     /// If the curve is periodic  then the returned point is P(U) with
     /// U = Ustart + (U - Uend)  where Ustart and Uend are the
@@ -3909,12 +4113,14 @@ impl Curve {
         unsafe { crate::ffi::Geom2d_Curve_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `Geom2d_Curve.hxx`:178 - `Geom2d_Curve::D1()`
     /// Returns the point P of parameter U and the first derivative V1.
     /// Raised if the continuity of the curve is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V1: &mut crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::Geom2d_Curve_d1(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `Geom2d_Curve.hxx`:183 - `Geom2d_Curve::D2()`
     /// Returns the point P of parameter U, the first and second
     /// derivatives V1 and V2.
     /// Raised if the continuity of the curve is not C2.
@@ -3928,6 +4134,7 @@ impl Curve {
         unsafe { crate::ffi::Geom2d_Curve_d2(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `Geom2d_Curve.hxx`:191 - `Geom2d_Curve::D3()`
     /// Returns the point P of parameter U, the first, the second
     /// and the third derivative.
     /// Raised if the continuity of the curve is not C3.
@@ -3942,6 +4149,7 @@ impl Curve {
         unsafe { crate::ffi::Geom2d_Curve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
+    /// **Source:** `Geom2d_Curve.hxx`:206 - `Geom2d_Curve::DN()`
     /// For the point of parameter U of this curve, computes
     /// the vector corresponding to the Nth derivative.
     /// Exceptions
@@ -3955,6 +4163,7 @@ impl Curve {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Curve_dn(self as *const Self, U, N)) }
     }
 
+    /// **Source:** `Geom2d_Curve.hxx`:219 - `Geom2d_Curve::Value()`
     /// Computes the point of parameter U on <me>.
     /// If the curve is periodic  then the returned point is P(U) with
     /// U = Ustart + (U - Uend)  where Ustart and Uend are the
@@ -3970,14 +4179,17 @@ impl Curve {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Curve_value(self as *const Self, U)) }
     }
 
+    /// **Source:** `Geom2d_Curve.hxx`:225 - `Geom2d_Curve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Curve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Curve.hxx`:225 - `Geom2d_Curve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_Curve_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_Curve.hxx`:225 - `Geom2d_Curve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Curve_get_type_descriptor()) }
     }
@@ -4127,6 +4339,7 @@ impl HandleGeom2dCurve {
 // From Geom2d_Direction.hxx
 // ========================
 
+/// **Source:** `Geom2d_Direction.hxx`:33 - `Geom2d_Direction`
 /// The class Direction specifies a vector that is never null.
 /// It is a unit vector.
 pub use crate::ffi::Geom2d_Direction as Direction;
@@ -4138,6 +4351,7 @@ unsafe impl crate::CppDeletable for Direction {
 }
 
 impl Direction {
+    /// **Source:** `Geom2d_Direction.hxx`:40 - `Geom2d_Direction::Geom2d_Direction()`
     /// Creates a unit vector with it 2 cartesian coordinates.
     ///
     /// Raised if Sqrt( X*X + Y*Y) <= Resolution from gp.
@@ -4145,11 +4359,13 @@ impl Direction {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Direction_ctor_real2(X, Y)) }
     }
 
+    /// **Source:** `Geom2d_Direction.hxx`:43 - `Geom2d_Direction::Geom2d_Direction()`
     /// Creates a persistent copy of <me>.
     pub fn new_dir2d(V: &crate::ffi::gp_Dir2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Direction_ctor_dir2d(V)) }
     }
 
+    /// **Source:** `Geom2d_Direction.hxx`:50 - `Geom2d_Direction::SetCoord()`
     /// Assigns the coordinates X and Y to this unit vector,
     /// then normalizes it.
     /// Exceptions
@@ -4159,11 +4375,13 @@ impl Direction {
         unsafe { crate::ffi::Geom2d_Direction_set_coord(self as *mut Self, X, Y) }
     }
 
+    /// **Source:** `Geom2d_Direction.hxx`:53 - `Geom2d_Direction::SetDir2d()`
     /// Converts the gp_Dir2d unit vector V into this unit vector.
     pub fn set_dir2d(&mut self, V: &crate::ffi::gp_Dir2d) {
         unsafe { crate::ffi::Geom2d_Direction_set_dir2d(self as *mut Self, V) }
     }
 
+    /// **Source:** `Geom2d_Direction.hxx`:60 - `Geom2d_Direction::SetX()`
     /// Assigns a value to the X coordinate of this unit vector, then normalizes it.
     /// Exceptions
     /// Standard_ConstructionError if the value assigned
@@ -4173,6 +4391,7 @@ impl Direction {
         unsafe { crate::ffi::Geom2d_Direction_set_x(self as *mut Self, X) }
     }
 
+    /// **Source:** `Geom2d_Direction.hxx`:67 - `Geom2d_Direction::SetY()`
     /// Assigns a value to the Y coordinate of this unit vector, then normalizes it.
     /// Exceptions
     /// Standard_ConstructionError if the value assigned
@@ -4182,6 +4401,7 @@ impl Direction {
         unsafe { crate::ffi::Geom2d_Direction_set_y(self as *mut Self, Y) }
     }
 
+    /// **Source:** `Geom2d_Direction.hxx`:70 - `Geom2d_Direction::Dir2d()`
     /// Converts this unit vector into a gp_Dir2d unit vector.
     pub fn dir2d(&self) -> crate::OwnedPtr<crate::ffi::gp_Dir2d> {
         unsafe {
@@ -4189,39 +4409,47 @@ impl Direction {
         }
     }
 
+    /// **Source:** `Geom2d_Direction.hxx`:73 - `Geom2d_Direction::Magnitude()`
     /// returns 1.0
     pub fn magnitude(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Direction_magnitude(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Direction.hxx`:76 - `Geom2d_Direction::SquareMagnitude()`
     /// returns 1.0
     pub fn square_magnitude(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Direction_square_magnitude(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Direction.hxx`:79 - `Geom2d_Direction::Crossed()`
     /// Computes the cross product between <me> and <Other>.
     pub fn crossed(&self, Other: &crate::ffi::HandleGeom2dVector) -> f64 {
         unsafe { crate::ffi::Geom2d_Direction_crossed(self as *const Self, Other) }
     }
 
+    /// **Source:** `Geom2d_Direction.hxx`:84 - `Geom2d_Direction::Transform()`
     /// Applies the transformation T to this unit vector, then normalizes it.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::Geom2d_Direction_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom2d_Direction.hxx`:87 - `Geom2d_Direction::Copy()`
     /// Creates a new object which is a copy of this unit vector.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Direction_copy(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Direction.hxx`:89 - `Geom2d_Direction::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Direction_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Direction.hxx`:89 - `Geom2d_Direction::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_Direction_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_Direction.hxx`:89 - `Geom2d_Direction::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Direction_get_type_descriptor()) }
     }
@@ -4433,6 +4661,7 @@ impl HandleGeom2dDirection {
 // From Geom2d_Ellipse.hxx
 // ========================
 
+/// **Source:** `Geom2d_Ellipse.hxx`:65 - `Geom2d_Ellipse`
 /// Describes an ellipse in the plane (2D space).
 /// An ellipse is defined by its major and minor radii and,
 /// as with any conic curve, is positioned in the plane
@@ -4471,11 +4700,13 @@ unsafe impl crate::CppDeletable for Ellipse {
 }
 
 impl Ellipse {
+    /// **Source:** `Geom2d_Ellipse.hxx`:70 - `Geom2d_Ellipse::Geom2d_Ellipse()`
     /// Creates an ellipse by conversion of the gp_Elips2d ellipse E.
     pub fn new_elips2d(E: &crate::ffi::gp_Elips2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Ellipse_ctor_elips2d(E)) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:87 - `Geom2d_Ellipse::Geom2d_Ellipse()`
     /// Creates an ellipse defined by its major and minor radii,
     /// MajorRadius and MinorRadius, and positioned
     /// in the plane by its major axis MajorAxis; the
@@ -4507,6 +4738,7 @@ impl Ellipse {
         }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:110 - `Geom2d_Ellipse::Geom2d_Ellipse()`
     /// Creates an ellipse defined by its major and minor radii,
     /// MajorRadius and MinorRadius, where the
     /// coordinate system Axis locates the ellipse and
@@ -4539,6 +4771,7 @@ impl Ellipse {
         }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:87 - `Geom2d_Ellipse::Geom2d_Ellipse()`
     /// Creates an ellipse defined by its major and minor radii,
     /// MajorRadius and MinorRadius, and positioned
     /// in the plane by its major axis MajorAxis; the
@@ -4562,11 +4795,13 @@ impl Ellipse {
         Self::new_ax2d_real2_bool(MajorAxis, MajorRadius, MinorRadius, true)
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:115 - `Geom2d_Ellipse::SetElips2d()`
     /// Converts the gp_Elips2d ellipse E into this ellipse.
     pub fn set_elips2d(&mut self, E: &crate::ffi::gp_Elips2d) {
         unsafe { crate::ffi::Geom2d_Ellipse_set_elips2d(self as *mut Self, E) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:123 - `Geom2d_Ellipse::SetMajorRadius()`
     /// Assigns a value to the major radius of this ellipse.
     /// Exceptions
     /// Standard_ConstructionError if:
@@ -4577,6 +4812,7 @@ impl Ellipse {
         unsafe { crate::ffi::Geom2d_Ellipse_set_major_radius(self as *mut Self, MajorRadius) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:131 - `Geom2d_Ellipse::SetMinorRadius()`
     /// Assigns a value to the minor radius of this ellipse.
     /// Exceptions
     /// Standard_ConstructionError if:
@@ -4587,6 +4823,7 @@ impl Ellipse {
         unsafe { crate::ffi::Geom2d_Ellipse_set_minor_radius(self as *mut Self, MinorRadius) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:134 - `Geom2d_Ellipse::Elips2d()`
     /// Converts this ellipse into a gp_Elips2d ellipse.
     pub fn elips2d(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips2d> {
         unsafe {
@@ -4594,6 +4831,7 @@ impl Ellipse {
         }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:139 - `Geom2d_Ellipse::ReversedParameter()`
     /// Computes the parameter on the reversed ellipse for
     /// the point of parameter U on this ellipse.
     /// For an ellipse, the returned value is: 2.*Pi - U.
@@ -4601,6 +4839,7 @@ impl Ellipse {
         unsafe { crate::ffi::Geom2d_Ellipse_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:152 - `Geom2d_Ellipse::Directrix1()`
     /// Computes the directrices of this ellipse.
     /// This directrix is the line normal to the XAxis of the ellipse
     /// in the local plane (Z = 0) at a distance d = MajorRadius / e
@@ -4618,6 +4857,7 @@ impl Ellipse {
         }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:158 - `Geom2d_Ellipse::Directrix2()`
     /// This line is obtained by the symmetrical transformation
     /// of "Directrix1" with respect to the "YAxis" of the ellipse.
     /// Raises ConstructionError if Eccentricity = 0.0. (The ellipse degenerates into a
@@ -4628,6 +4868,7 @@ impl Ellipse {
         }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:164 - `Geom2d_Ellipse::Eccentricity()`
     /// Returns the eccentricity of the ellipse  between 0.0 and 1.0
     /// If f is the distance between the center of the ellipse and
     /// the Focus1 then the eccentricity e = f / MajorRadius.
@@ -4636,34 +4877,40 @@ impl Ellipse {
         unsafe { crate::ffi::Geom2d_Ellipse_eccentricity(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:168 - `Geom2d_Ellipse::Focal()`
     /// Computes the focal distance. The focal distance is the distance between the center
     /// and a focus of the ellipse.
     pub fn focal(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Ellipse_focal(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:172 - `Geom2d_Ellipse::Focus1()`
     /// Returns the first focus of the ellipse. This focus is on the
     /// positive side of the "XAxis" of the ellipse.
     pub fn focus1(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Ellipse_focus1(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:176 - `Geom2d_Ellipse::Focus2()`
     /// Returns the second focus of the ellipse. This focus is on
     /// the negative side of the "XAxis" of the ellipse.
     pub fn focus2(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Ellipse_focus2(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:179 - `Geom2d_Ellipse::MajorRadius()`
     /// Returns the major radius of this ellipse.
     pub fn major_radius(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Ellipse_major_radius(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:182 - `Geom2d_Ellipse::MinorRadius()`
     /// Returns the minor radius of this ellipse.
     pub fn minor_radius(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Ellipse_minor_radius(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:188 - `Geom2d_Ellipse::Parameter()`
     /// Computes the parameter of this ellipse. This value is
     /// given by the formula p = (1 - e * e) * MajorRadius where e is the eccentricity
     /// of the ellipse.
@@ -4672,6 +4919,7 @@ impl Ellipse {
         unsafe { crate::ffi::Geom2d_Ellipse_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:193 - `Geom2d_Ellipse::FirstParameter()`
     /// Returns the value of the first parameter of this
     /// ellipse. This is  0.0, which gives the start point of this ellipse.
     /// The start point and end point of an ellipse are coincident.
@@ -4679,6 +4927,7 @@ impl Ellipse {
         unsafe { crate::ffi::Geom2d_Ellipse_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:198 - `Geom2d_Ellipse::LastParameter()`
     /// Returns the value of the  last parameter of this
     /// ellipse. This is  2.*Pi, which gives the end point of this ellipse.
     /// The start point and end point of an ellipse are coincident.
@@ -4686,16 +4935,19 @@ impl Ellipse {
         unsafe { crate::ffi::Geom2d_Ellipse_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:201 - `Geom2d_Ellipse::IsClosed()`
     /// return True.
     pub fn is_closed(&self) -> bool {
         unsafe { crate::ffi::Geom2d_Ellipse_is_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:204 - `Geom2d_Ellipse::IsPeriodic()`
     /// return True.
     pub fn is_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom2d_Ellipse_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:210 - `Geom2d_Ellipse::D0()`
     /// Returns in P the point of parameter U.
     /// P = C + MajorRadius * Cos (U) * XDir + MinorRadius * Sin (U) * YDir
     /// where C is the center of the ellipse , XDir the direction of
@@ -4704,10 +4956,12 @@ impl Ellipse {
         unsafe { crate::ffi::Geom2d_Ellipse_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:212 - `Geom2d_Ellipse::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V1: &mut crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::Geom2d_Ellipse_d1(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:216 - `Geom2d_Ellipse::D2()`
     /// Returns the point P of parameter U. The vectors V1 and V2
     /// are the first and second derivatives at this point.
     pub fn d2(
@@ -4720,6 +4974,7 @@ impl Ellipse {
         unsafe { crate::ffi::Geom2d_Ellipse_d2(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:223 - `Geom2d_Ellipse::D3()`
     /// Returns the point P of parameter U, the first second and
     /// third derivatives V1 V2 and V3.
     pub fn d3(
@@ -4733,6 +4988,7 @@ impl Ellipse {
         unsafe { crate::ffi::Geom2d_Ellipse_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:232 - `Geom2d_Ellipse::DN()`
     /// For the point of parameter U of this ellipse,
     /// computes the vector corresponding to the Nth derivative.
     /// Exceptions Standard_RangeError if N is less than 1.
@@ -4742,24 +4998,29 @@ impl Ellipse {
         }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:236 - `Geom2d_Ellipse::Transform()`
     /// Applies the transformation T to this ellipse.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::Geom2d_Ellipse_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:239 - `Geom2d_Ellipse::Copy()`
     /// Creates a new object which is a copy of this ellipse.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Ellipse_copy(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:245 - `Geom2d_Ellipse::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Ellipse_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:245 - `Geom2d_Ellipse::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_Ellipse_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_Ellipse.hxx`:245 - `Geom2d_Ellipse::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Ellipse_get_type_descriptor()) }
     }
@@ -5048,6 +5309,7 @@ impl HandleGeom2dEllipse {
 // From Geom2d_Geometry.hxx
 // ========================
 
+/// **Source:** `Geom2d_Geometry.hxx`:56 - `Geom2d_Geometry`
 /// The general abstract class Geometry in 2D space describes
 /// the common behaviour of all the geometric entities.
 ///
@@ -5080,6 +5342,7 @@ unsafe impl crate::CppDeletable for Geometry {
 }
 
 impl Geometry {
+    /// **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     /// Performs the symmetrical transformation of a Geometry
     /// with respect to the point P which is the center of the
     /// symmetry and assigns the result to this geometric object.
@@ -5087,33 +5350,39 @@ impl Geometry {
         unsafe { crate::ffi::Geom2d_Geometry_mirror_pnt2d(self as *mut Self, P) }
     }
 
+    /// **Source:** `Geom2d_Geometry.hxx`:67 - `Geom2d_Geometry::Mirror()`
     /// Performs the symmetrical transformation of a Geometry
     /// with respect to an axis placement which is the axis of the symmetry.
     pub fn mirror_ax2d(&mut self, A: &crate::ffi::gp_Ax2d) {
         unsafe { crate::ffi::Geom2d_Geometry_mirror_ax2d(self as *mut Self, A) }
     }
 
+    /// **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     /// Rotates a Geometry. P is the center of the rotation.
     /// Ang is the angular value of the rotation in radians.
     pub fn rotate(&mut self, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
         unsafe { crate::ffi::Geom2d_Geometry_rotate(self as *mut Self, P, Ang) }
     }
 
+    /// **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     /// Scales a Geometry. S is the scaling value.
     pub fn scale(&mut self, P: &crate::ffi::gp_Pnt2d, S: f64) {
         unsafe { crate::ffi::Geom2d_Geometry_scale(self as *mut Self, P, S) }
     }
 
+    /// **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     /// Translates a Geometry.  V is the vector of the translation.
     pub fn translate_vec2d(&mut self, V: &crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::Geom2d_Geometry_translate_vec2d(self as *mut Self, V) }
     }
 
+    /// **Source:** `Geom2d_Geometry.hxx`:80 - `Geom2d_Geometry::Translate()`
     /// Translates a Geometry from the point P1 to the point P2.
     pub fn translate_pnt2d2(&mut self, P1: &crate::ffi::gp_Pnt2d, P2: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::Geom2d_Geometry_translate_pnt2d2(self as *mut Self, P1, P2) }
     }
 
+    /// **Source:** `Geom2d_Geometry.hxx`:90 - `Geom2d_Geometry::Transform()`
     /// Transformation of a geometric object. This transformation
     /// can be a translation, a rotation, a symmetry, a scaling
     /// or a complex transformation obtained by combination of
@@ -5126,6 +5395,7 @@ impl Geometry {
         unsafe { crate::ffi::Geom2d_Geometry_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom2d_Geometry.hxx`:92 - `Geom2d_Geometry::Mirrored()`
     pub fn mirrored_pnt2d(
         &self,
         P: &crate::ffi::gp_Pnt2d,
@@ -5138,6 +5408,7 @@ impl Geometry {
         }
     }
 
+    /// **Source:** `Geom2d_Geometry.hxx`:94 - `Geom2d_Geometry::Mirrored()`
     pub fn mirrored_ax2d(
         &self,
         A: &crate::ffi::gp_Ax2d,
@@ -5150,6 +5421,7 @@ impl Geometry {
         }
     }
 
+    /// **Source:** `Geom2d_Geometry.hxx`:96 - `Geom2d_Geometry::Rotated()`
     pub fn rotated(
         &self,
         P: &crate::ffi::gp_Pnt2d,
@@ -5164,6 +5436,7 @@ impl Geometry {
         }
     }
 
+    /// **Source:** `Geom2d_Geometry.hxx`:99 - `Geom2d_Geometry::Scaled()`
     pub fn scaled(
         &self,
         P: &crate::ffi::gp_Pnt2d,
@@ -5174,6 +5447,7 @@ impl Geometry {
         }
     }
 
+    /// **Source:** `Geom2d_Geometry.hxx`:102 - `Geom2d_Geometry::Transformed()`
     pub fn transformed(
         &self,
         T: &crate::ffi::gp_Trsf2d,
@@ -5186,6 +5460,7 @@ impl Geometry {
         }
     }
 
+    /// **Source:** `Geom2d_Geometry.hxx`:104 - `Geom2d_Geometry::Translated()`
     pub fn translated_vec2d(
         &self,
         V: &crate::ffi::gp_Vec2d,
@@ -5198,6 +5473,7 @@ impl Geometry {
         }
     }
 
+    /// **Source:** `Geom2d_Geometry.hxx`:106 - `Geom2d_Geometry::Translated()`
     pub fn translated_pnt2d2(
         &self,
         P1: &crate::ffi::gp_Pnt2d,
@@ -5212,18 +5488,22 @@ impl Geometry {
         }
     }
 
+    /// **Source:** `Geom2d_Geometry.hxx`:109 - `Geom2d_Geometry::Copy()`
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Geometry_copy(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Geometry.hxx`:115 - `Geom2d_Geometry::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Geometry_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Geometry.hxx`:115 - `Geom2d_Geometry::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_Geometry_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_Geometry.hxx`:115 - `Geom2d_Geometry::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Geometry_get_type_descriptor()) }
     }
@@ -5253,6 +5533,7 @@ impl HandleGeom2dGeometry {
 // From Geom2d_Hyperbola.hxx
 // ========================
 
+/// **Source:** `Geom2d_Hyperbola.hxx`:86 - `Geom2d_Hyperbola`
 /// Describes a branch of a hyperbola in the plane (2D space).
 /// A hyperbola is defined by its major and minor radii
 /// and, as with any conic curve, is positioned in the
@@ -5312,11 +5593,13 @@ unsafe impl crate::CppDeletable for Hyperbola {
 }
 
 impl Hyperbola {
+    /// **Source:** `Geom2d_Hyperbola.hxx`:91 - `Geom2d_Hyperbola::Geom2d_Hyperbola()`
     /// Creates  an Hyperbola from a non persistent one from package gp
     pub fn new_hypr2d(H: &crate::ffi::gp_Hypr2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Hyperbola_ctor_hypr2d(H)) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:98 - `Geom2d_Hyperbola::Geom2d_Hyperbola()`
     /// MajorAxis is the "XAxis" of the hyperbola.
     /// The YAxis is in the direct sense if "Sense" is True;
     /// The major radius of the hyperbola is on this "XAxis" and
@@ -5338,6 +5621,7 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:108 - `Geom2d_Hyperbola::Geom2d_Hyperbola()`
     /// The XDirection of "Axis" is the "XAxis" of the hyperbola and
     /// the YDirection of "Axis" is the "YAxis".
     /// The major radius of the hyperbola is on this "XAxis" and
@@ -5357,6 +5641,7 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:98 - `Geom2d_Hyperbola::Geom2d_Hyperbola()`
     /// MajorAxis is the "XAxis" of the hyperbola.
     /// The YAxis is in the direct sense if "Sense" is True;
     /// The major radius of the hyperbola is on this "XAxis" and
@@ -5370,11 +5655,13 @@ impl Hyperbola {
         Self::new_ax2d_real2_bool(MajorAxis, MajorRadius, MinorRadius, true)
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:113 - `Geom2d_Hyperbola::SetHypr2d()`
     /// Converts the gp_Hypr2d hyperbola H into this hyperbola.
     pub fn set_hypr2d(&mut self, H: &crate::ffi::gp_Hypr2d) {
         unsafe { crate::ffi::Geom2d_Hyperbola_set_hypr2d(self as *mut Self, H) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:120 - `Geom2d_Hyperbola::SetMajorRadius()`
     /// Assigns a value to the major or minor radius of this hyperbola.
     /// Exceptions
     /// Standard_ConstructionError if:
@@ -5384,6 +5671,7 @@ impl Hyperbola {
         unsafe { crate::ffi::Geom2d_Hyperbola_set_major_radius(self as *mut Self, MajorRadius) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:127 - `Geom2d_Hyperbola::SetMinorRadius()`
     /// Assigns a value to the major or minor radius of this hyperbola.
     /// Exceptions
     /// Standard_ConstructionError if:
@@ -5393,6 +5681,7 @@ impl Hyperbola {
         unsafe { crate::ffi::Geom2d_Hyperbola_set_minor_radius(self as *mut Self, MinorRadius) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:130 - `Geom2d_Hyperbola::Hypr2d()`
     /// Converts this hyperbola into a gp_Hypr2d one.
     pub fn hypr2d(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr2d> {
         unsafe {
@@ -5400,6 +5689,7 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:135 - `Geom2d_Hyperbola::ReversedParameter()`
     /// Computes the parameter on the reversed hyperbola,
     /// for the point of parameter U on this hyperbola.
     /// For a hyperbola, the returned value is -U.
@@ -5407,26 +5697,31 @@ impl Hyperbola {
         unsafe { crate::ffi::Geom2d_Hyperbola_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:138 - `Geom2d_Hyperbola::FirstParameter()`
     /// Returns RealFirst from Standard.
     pub fn first_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Hyperbola_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:141 - `Geom2d_Hyperbola::LastParameter()`
     /// returns RealLast from Standard.
     pub fn last_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Hyperbola_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:144 - `Geom2d_Hyperbola::IsClosed()`
     /// Returns False.
     pub fn is_closed(&self) -> bool {
         unsafe { crate::ffi::Geom2d_Hyperbola_is_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:147 - `Geom2d_Hyperbola::IsPeriodic()`
     /// return False for an hyperbola.
     pub fn is_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom2d_Hyperbola_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:155 - `Geom2d_Hyperbola::Asymptote1()`
     /// In the local coordinate system of the hyperbola the
     /// equation of the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0
     /// and the equation of the first asymptote is Y = (B/A)*X
@@ -5439,6 +5734,7 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:163 - `Geom2d_Hyperbola::Asymptote2()`
     /// In the local coordinate system of the hyperbola the
     /// equation of the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0
     /// and the equation of the first asymptote is Y = -(B/A)*X.
@@ -5451,6 +5747,7 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:169 - `Geom2d_Hyperbola::ConjugateBranch1()`
     /// Computes the first conjugate branch relative to this hyperbola.
     /// Note: The diagram given under the class purpose
     /// indicates where these two branches of hyperbola are
@@ -5463,6 +5760,7 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:175 - `Geom2d_Hyperbola::ConjugateBranch2()`
     /// Computes the second conjugate branch relative to this hyperbola.
     /// Note: The diagram given under the class purpose
     /// indicates where these two branches of hyperbola are
@@ -5475,6 +5773,7 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:184 - `Geom2d_Hyperbola::Directrix1()`
     /// This directrix is the line normal to the XAxis of the hyperbola
     /// in the local plane (Z = 0) at a distance d = MajorRadius / e
     /// from the center of the hyperbola, where e is the eccentricity of
@@ -5488,6 +5787,7 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:188 - `Geom2d_Hyperbola::Directrix2()`
     /// This line is obtained by the symmetrical transformation
     /// of "Directrix1" with respect to the "YAxis" of the hyperbola.
     pub fn directrix2(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax2d> {
@@ -5496,6 +5796,7 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:194 - `Geom2d_Hyperbola::Eccentricity()`
     /// Returns the eccentricity of the hyperbola (e > 1).
     /// If f is the distance between the location of the hyperbola
     /// and the Focus1 then the eccentricity e = f / MajorRadius.
@@ -5504,12 +5805,14 @@ impl Hyperbola {
         unsafe { crate::ffi::Geom2d_Hyperbola_eccentricity(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:198 - `Geom2d_Hyperbola::Focal()`
     /// Computes the focal distance. It is the distance between the
     /// two focus of the hyperbola.
     pub fn focal(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Hyperbola_focal(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:202 - `Geom2d_Hyperbola::Focus1()`
     /// Returns the first focus of the hyperbola. This focus is on the
     /// positive side of the "XAxis" of the hyperbola.
     pub fn focus1(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
@@ -5518,6 +5821,7 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:206 - `Geom2d_Hyperbola::Focus2()`
     /// Returns the second focus of the hyperbola. This focus is on the
     /// negative side of the "XAxis" of the hyperbola.
     pub fn focus2(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
@@ -5526,6 +5830,7 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:212 - `Geom2d_Hyperbola::MajorRadius()`
     /// Returns the major or minor radius of this hyperbola.
     /// The major radius is also the distance between the
     /// center of the hyperbola and the apex of the main
@@ -5534,6 +5839,7 @@ impl Hyperbola {
         unsafe { crate::ffi::Geom2d_Hyperbola_major_radius(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:218 - `Geom2d_Hyperbola::MinorRadius()`
     /// Returns the major or minor radius of this hyperbola.
     /// The minor radius is also the distance between the
     /// center of the hyperbola and the apex of a conjugate
@@ -5542,6 +5848,7 @@ impl Hyperbola {
         unsafe { crate::ffi::Geom2d_Hyperbola_minor_radius(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:239 - `Geom2d_Hyperbola::OtherBranch()`
     /// Computes the "other" branch of this hyperbola. This
     /// is a symmetrical branch with respect to the center of this hyperbola.
     /// Note: The diagram given under the class purpose
@@ -5569,6 +5876,7 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:249 - `Geom2d_Hyperbola::Parameter()`
     /// Computes the parameter of this hyperbola.
     /// The parameter is:
     /// p = (e*e - 1) * MajorRadius
@@ -5581,6 +5889,7 @@ impl Hyperbola {
         unsafe { crate::ffi::Geom2d_Hyperbola_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:256 - `Geom2d_Hyperbola::D0()`
     /// Returns in P the point of parameter U.
     /// P = C + MajorRadius * Cosh (U) * XDir +
     /// MinorRadius * Sinh (U) * YDir
@@ -5590,11 +5899,13 @@ impl Hyperbola {
         unsafe { crate::ffi::Geom2d_Hyperbola_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:259 - `Geom2d_Hyperbola::D1()`
     /// Returns the point P of parameter U and the first derivative V1.
     pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V1: &mut crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::Geom2d_Hyperbola_d1(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:263 - `Geom2d_Hyperbola::D2()`
     /// Returns the point P of parameter U, the first and second
     /// derivatives V1 and V2.
     pub fn d2(
@@ -5607,6 +5918,7 @@ impl Hyperbola {
         unsafe { crate::ffi::Geom2d_Hyperbola_d2(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:270 - `Geom2d_Hyperbola::D3()`
     /// Returns the point P of parameter U, the first second and
     /// third derivatives V1 V2 and V3.
     pub fn d3(
@@ -5620,6 +5932,7 @@ impl Hyperbola {
         unsafe { crate::ffi::Geom2d_Hyperbola_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:279 - `Geom2d_Hyperbola::DN()`
     /// For the point of parameter U of this hyperbola,
     /// computes the vector corresponding to the Nth derivative.
     /// Exceptions Standard_RangeError if N is less than 1.
@@ -5629,24 +5942,29 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:283 - `Geom2d_Hyperbola::Transform()`
     /// Applies the transformation T to this hyperbola.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::Geom2d_Hyperbola_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:286 - `Geom2d_Hyperbola::Copy()`
     /// Creates a new object which is a copy of this hyperbola.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Hyperbola_copy(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:292 - `Geom2d_Hyperbola::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Hyperbola_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:292 - `Geom2d_Hyperbola::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_Hyperbola_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_Hyperbola.hxx`:292 - `Geom2d_Hyperbola::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Hyperbola_get_type_descriptor()) }
     }
@@ -5935,6 +6253,7 @@ impl HandleGeom2dHyperbola {
 // From Geom2d_Line.hxx
 // ========================
 
+/// **Source:** `Geom2d_Line.hxx`:53 - `Geom2d_Line`
 /// Describes an infinite line in the plane (2D space).
 /// A line is defined and positioned in the plane with an
 /// axis (gp_Ax2d object) which gives it an origin and a unit vector.
@@ -5960,17 +6279,20 @@ unsafe impl crate::CppDeletable for Line {
 }
 
 impl Line {
+    /// **Source:** `Geom2d_Line.hxx`:59 - `Geom2d_Line::Geom2d_Line()`
     /// Creates a line located in 2D space with the axis placement A.
     /// The Location of A is the origin of the line.
     pub fn new_ax2d(A: &crate::ffi::gp_Ax2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Line_ctor_ax2d(A)) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:62 - `Geom2d_Line::Geom2d_Line()`
     /// Creates a line by conversion of the gp_Lin2d line L.
     pub fn new_lin2d(L: &crate::ffi::gp_Lin2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Line_ctor_lin2d(L)) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:67 - `Geom2d_Line::Geom2d_Line()`
     /// Constructs a line passing through point P and parallel to
     /// vector V (P and V are, respectively, the origin
     /// and the unit vector of the positioning axis of the line).
@@ -5981,52 +6303,62 @@ impl Line {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Line_ctor_pnt2d_dir2d(P, V)) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:70 - `Geom2d_Line::SetLin2d()`
     /// Set <me> so that <me> has the same geometric properties as L.
     pub fn set_lin2d(&mut self, L: &crate::ffi::gp_Lin2d) {
         unsafe { crate::ffi::Geom2d_Line_set_lin2d(self as *mut Self, L) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:73 - `Geom2d_Line::SetDirection()`
     /// changes the direction of the line.
     pub fn set_direction(&mut self, V: &crate::ffi::gp_Dir2d) {
         unsafe { crate::ffi::Geom2d_Line_set_direction(self as *mut Self, V) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:76 - `Geom2d_Line::Direction()`
     /// changes the direction of the line.
     pub fn direction(&self) -> &crate::ffi::gp_Dir2d {
         unsafe { &*(crate::ffi::Geom2d_Line_direction(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:79 - `Geom2d_Line::SetLocation()`
     /// Changes the "Location" point (origin) of the line.
     pub fn set_location(&mut self, P: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::Geom2d_Line_set_location(self as *mut Self, P) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:82 - `Geom2d_Line::Location()`
     /// Changes the "Location" point (origin) of the line.
     pub fn location(&self) -> &crate::ffi::gp_Pnt2d {
         unsafe { &*(crate::ffi::Geom2d_Line_location(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:85 - `Geom2d_Line::SetPosition()`
     /// Changes the "Location" and a the "Direction" of <me>.
     pub fn set_position(&mut self, A: &crate::ffi::gp_Ax2d) {
         unsafe { crate::ffi::Geom2d_Line_set_position(self as *mut Self, A) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:87 - `Geom2d_Line::Position()`
     pub fn position(&self) -> &crate::ffi::gp_Ax2d {
         unsafe { &*(crate::ffi::Geom2d_Line_position(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:91 - `Geom2d_Line::Lin2d()`
     /// Returns non persistent line from gp with the same geometric
     /// properties as <me>
     pub fn lin2d(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Line_lin2d(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:95 - `Geom2d_Line::Reverse()`
     /// Changes the orientation of this line. As a result, the
     /// unit vector of the positioning axis of this line is reversed.
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::Geom2d_Line_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:100 - `Geom2d_Line::ReversedParameter()`
     /// Computes the parameter on the reversed line for the
     /// point of parameter U on this line.
     /// For a line, the returned value is -U.
@@ -6034,26 +6366,31 @@ impl Line {
         unsafe { crate::ffi::Geom2d_Line_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:103 - `Geom2d_Line::FirstParameter()`
     /// Returns RealFirst  from  Standard.
     pub fn first_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Line_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:106 - `Geom2d_Line::LastParameter()`
     /// Returns RealLast  from Standard
     pub fn last_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Line_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:109 - `Geom2d_Line::IsClosed()`
     /// Returns False
     pub fn is_closed(&self) -> bool {
         unsafe { crate::ffi::Geom2d_Line_is_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:112 - `Geom2d_Line::IsPeriodic()`
     /// Returns False
     pub fn is_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom2d_Line_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:115 - `Geom2d_Line::Continuity()`
     /// Returns GeomAbs_CN, which is the global continuity of any line.
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         unsafe {
@@ -6064,16 +6401,19 @@ impl Line {
         }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:118 - `Geom2d_Line::Distance()`
     /// Computes the distance between <me> and the point P.
     pub fn distance(&self, P: &crate::ffi::gp_Pnt2d) -> f64 {
         unsafe { crate::ffi::Geom2d_Line_distance(self as *const Self, P) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:121 - `Geom2d_Line::IsCN()`
     /// Returns True.
     pub fn is_cn(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom2d_Line_is_cn(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:126 - `Geom2d_Line::D0()`
     /// Returns in P the point of parameter U.
     /// P (U) = O + U * Dir where O is the "Location" point of the
     /// line and Dir the direction of the line.
@@ -6081,11 +6421,13 @@ impl Line {
         unsafe { crate::ffi::Geom2d_Line_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:129 - `Geom2d_Line::D1()`
     /// Returns the point P of parameter u and the first derivative V1.
     pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V1: &mut crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::Geom2d_Line_d1(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:134 - `Geom2d_Line::D2()`
     /// Returns the point P of parameter U, the first and second
     /// derivatives V1 and V2. V2 is a vector with null magnitude
     /// for a line.
@@ -6099,6 +6441,7 @@ impl Line {
         unsafe { crate::ffi::Geom2d_Line_d2(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:140 - `Geom2d_Line::D3()`
     /// V2 and V3 are vectors with null magnitude for a line.
     pub fn d3(
         &self,
@@ -6111,6 +6454,7 @@ impl Line {
         unsafe { crate::ffi::Geom2d_Line_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:151 - `Geom2d_Line::DN()`
     /// For the point of parameter U of this line, computes
     /// the vector corresponding to the Nth derivative.
     /// Note: if N is greater than or equal to 2, the result is a
@@ -6120,11 +6464,13 @@ impl Line {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Line_dn(self as *const Self, U, N)) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:155 - `Geom2d_Line::Transform()`
     /// Applies the transformation T to this line.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::Geom2d_Line_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:161 - `Geom2d_Line::TransformedParameter()`
     /// Computes the parameter on the line transformed by
     /// T for the point of parameter U on this line.
     /// For a line, the returned value is equal to U multiplied
@@ -6133,6 +6479,7 @@ impl Line {
         unsafe { crate::ffi::Geom2d_Line_transformed_parameter(self as *const Self, U, T) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:172 - `Geom2d_Line::ParametricTransformation()`
     /// Returns the coefficient required to compute the
     /// parametric transformation of this line when
     /// transformation T is applied. This coefficient is the
@@ -6144,19 +6491,23 @@ impl Line {
         unsafe { crate::ffi::Geom2d_Line_parametric_transformation(self as *const Self, T) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:176 - `Geom2d_Line::Copy()`
     /// Creates a new object, which is a copy of this line.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Line_copy(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:182 - `Geom2d_Line::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Line_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:182 - `Geom2d_Line::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_Line_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_Line.hxx`:182 - `Geom2d_Line::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Line_get_type_descriptor()) }
     }
@@ -6342,6 +6693,7 @@ impl HandleGeom2dLine {
 // From Geom2d_OffsetCurve.hxx
 // ========================
 
+/// **Source:** `Geom2d_OffsetCurve.hxx`:73 - `Geom2d_OffsetCurve`
 /// This class implements the basis services for the creation,
 /// edition, modification and evaluation of planar offset curve.
 /// The offset curve is obtained by offsetting by distance along
@@ -6388,6 +6740,7 @@ unsafe impl crate::CppDeletable for OffsetCurve {
 }
 
 impl OffsetCurve {
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:97 - `Geom2d_OffsetCurve::Geom2d_OffsetCurve()`
     /// Constructs a curve offset from the basis curve C,
     /// where Offset is the distance between the offset
     /// curve and the basis curve at any point.
@@ -6424,6 +6777,7 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:97 - `Geom2d_OffsetCurve::Geom2d_OffsetCurve()`
     /// Constructs a curve offset from the basis curve C,
     /// where Offset is the distance between the offset
     /// curve and the basis curve at any point.
@@ -6451,6 +6805,7 @@ impl OffsetCurve {
         Self::new_handlegeom2dcurve_real_bool(C, Offset, false)
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:109 - `Geom2d_OffsetCurve::Reverse()`
     /// Changes the direction of parametrization of <me>.
     /// As a result:
     /// - the basis curve is reversed,
@@ -6463,12 +6818,14 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom2d_OffsetCurve_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:113 - `Geom2d_OffsetCurve::ReversedParameter()`
     /// Computes the parameter on the reversed curve for
     /// the point of parameter U on this offset curve.
     pub fn reversed_parameter(&self, U: f64) -> f64 {
         unsafe { crate::ffi::Geom2d_OffsetCurve_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:122 - `Geom2d_OffsetCurve::SetBasisCurve()`
     /// Changes this offset curve by assigning C as the
     /// basis curve from which it is built.
     /// If isNotCheckC0 = TRUE checking if basis curve has C0-continuity
@@ -6482,11 +6839,13 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:126 - `Geom2d_OffsetCurve::SetOffsetValue()`
     /// Changes this offset curve by assigning D as the offset value.
     pub fn set_offset_value(&mut self, D: f64) {
         unsafe { crate::ffi::Geom2d_OffsetCurve_set_offset_value(self as *mut Self, D) }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:129 - `Geom2d_OffsetCurve::BasisCurve()`
     /// Returns the basis curve of this offset curve. The basis curve can be an offset curve.
     pub fn basis_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
         unsafe {
@@ -6496,6 +6855,7 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:155 - `Geom2d_OffsetCurve::Continuity()`
     /// Continuity of the Offset curve :
     /// C0 : only geometric continuity,
     /// C1 : continuity of the first derivative all along the Curve,
@@ -6529,6 +6889,7 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:160 - `Geom2d_OffsetCurve::D0()`
     /// Warning! this should not be called
     /// if the basis curve is not at least C1. Nevertheless
     /// if used on portion where the curve is C1, it is OK
@@ -6536,6 +6897,7 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom2d_OffsetCurve_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:166 - `Geom2d_OffsetCurve::D1()`
     /// Warning! this should not be called
     /// if the continuity of the basis curve is not C2.
     /// Nevertheless, it's OK to use it  on portion
@@ -6544,6 +6906,7 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom2d_OffsetCurve_d1(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:172 - `Geom2d_OffsetCurve::D2()`
     /// Warning!  This  should  not  be called
     /// if the continuity of the basis curve is not C3.
     /// Nevertheless, it's OK to use it  on portion
@@ -6558,6 +6921,7 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom2d_OffsetCurve_d2(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:181 - `Geom2d_OffsetCurve::D3()`
     /// Warning! This should not be called
     /// if the continuity of the basis curve is not C4.
     /// Nevertheless, it's OK to use it  on portion
@@ -6573,6 +6937,7 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom2d_OffsetCurve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:203 - `Geom2d_OffsetCurve::DN()`
     /// The returned vector gives the value of the derivative
     /// for the order of derivation N.
     /// Warning! this should not be called
@@ -6595,6 +6960,7 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:211 - `Geom2d_OffsetCurve::FirstParameter()`
     /// Returns the value of the first parameter of this
     /// offset curve. The first parameter corresponds to the
     /// start point of the curve.
@@ -6604,6 +6970,7 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom2d_OffsetCurve_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:218 - `Geom2d_OffsetCurve::LastParameter()`
     /// Returns the value of the last parameter of this
     /// offset curve. The last parameter
     /// corresponds to the end point.
@@ -6613,11 +6980,13 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom2d_OffsetCurve_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:221 - `Geom2d_OffsetCurve::Offset()`
     /// Returns the offset value of this offset curve.
     pub fn offset(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_OffsetCurve_offset(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:226 - `Geom2d_OffsetCurve::IsClosed()`
     /// Returns True if the distance between the start point
     /// and the end point of the curve is lower or equal to
     /// Resolution from package gp.
@@ -6625,6 +6994,7 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom2d_OffsetCurve_is_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:235 - `Geom2d_OffsetCurve::IsCN()`
     /// Is the order of continuity of the curve N ?
     /// Warnings :
     /// This method answer True if the continuity of the basis curve
@@ -6636,6 +7006,7 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom2d_OffsetCurve_is_cn(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:241 - `Geom2d_OffsetCurve::IsPeriodic()`
     /// Is the parametrization of a curve is periodic ?
     /// If the basis curve is a circle or an ellipse the corresponding
     /// OffsetCurve is periodic. If the basis curve can't be periodic
@@ -6644,6 +7015,7 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom2d_OffsetCurve_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:247 - `Geom2d_OffsetCurve::Period()`
     /// Returns the period of this offset curve, i.e. the period
     /// of the basis curve of this offset curve.
     /// Exceptions
@@ -6652,12 +7024,14 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom2d_OffsetCurve_period(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:251 - `Geom2d_OffsetCurve::Transform()`
     /// Applies the transformation T to this offset curve.
     /// Note: the basis curve is also modified.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::Geom2d_OffsetCurve_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:263 - `Geom2d_OffsetCurve::TransformedParameter()`
     /// Returns the  parameter on the  transformed  curve for
     /// the transform of the point of parameter U on <me>.
     ///
@@ -6672,6 +7046,7 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom2d_OffsetCurve_transformed_parameter(self as *const Self, U, T) }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:278 - `Geom2d_OffsetCurve::ParametricTransformation()`
     /// Returns a  coefficient to compute the parameter on
     /// the transformed  curve  for  the transform  of the
     /// point on <me>.
@@ -6687,6 +7062,7 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom2d_OffsetCurve_parametric_transformation(self as *const Self, T) }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:282 - `Geom2d_OffsetCurve::Copy()`
     /// Creates a new object, which is a copy of this offset curve.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
@@ -6694,6 +7070,7 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:285 - `Geom2d_OffsetCurve::GetBasisCurveContinuity()`
     /// Returns continuity of the basis curve.
     pub fn get_basis_curve_continuity(&self) -> crate::geom_abs::Shape {
         unsafe {
@@ -6704,14 +7081,17 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:291 - `Geom2d_OffsetCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_OffsetCurve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:291 - `Geom2d_OffsetCurve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_OffsetCurve_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_OffsetCurve.hxx`:291 - `Geom2d_OffsetCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_OffsetCurve_get_type_descriptor()) }
     }
@@ -6896,6 +7276,7 @@ impl HandleGeom2dOffsetCurve {
 // From Geom2d_Parabola.hxx
 // ========================
 
+/// **Source:** `Geom2d_Parabola.hxx`:61 - `Geom2d_Parabola`
 /// Describes a parabola in the plane (2D space).
 /// A parabola is defined by its focal length (i.e. the
 /// distance between its focus and its apex) and is
@@ -6930,11 +7311,13 @@ unsafe impl crate::CppDeletable for Parabola {
 }
 
 impl Parabola {
+    /// **Source:** `Geom2d_Parabola.hxx`:66 - `Geom2d_Parabola::Geom2d_Parabola()`
     /// Creates a parabola from a non persistent one.
     pub fn new_parab2d(Prb: &crate::ffi::gp_Parab2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Parabola_ctor_parab2d(Prb)) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:75 - `Geom2d_Parabola::Geom2d_Parabola()`
     /// Creates a parabola with its "MirrorAxis" and it's focal
     /// length "Focal".
     /// MirrorAxis is the axis of symmetry of the curve, it is the
@@ -6954,6 +7337,7 @@ impl Parabola {
         }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:86 - `Geom2d_Parabola::Geom2d_Parabola()`
     /// Creates a parabola with its Axis and it's focal
     /// length "Focal".
     /// The XDirection of Axis is the axis of symmetry of the curve,
@@ -6967,6 +7351,7 @@ impl Parabola {
         }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:94 - `Geom2d_Parabola::Geom2d_Parabola()`
     /// D is the directrix of the parabola and F the focus point.
     /// The symmetry axis "XAxis" of the parabola is normal to the
     /// directrix and pass through the focus point F, but its
@@ -6980,6 +7365,7 @@ impl Parabola {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Parabola_ctor_ax2d_pnt2d(D, F)) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:75 - `Geom2d_Parabola::Geom2d_Parabola()`
     /// Creates a parabola with its "MirrorAxis" and it's focal
     /// length "Focal".
     /// MirrorAxis is the axis of symmetry of the curve, it is the
@@ -6991,17 +7377,20 @@ impl Parabola {
         Self::new_ax2d_real_bool(MirrorAxis, Focal, true)
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:98 - `Geom2d_Parabola::SetFocal()`
     /// Assigns the value Focal to the focal length of this parabola.
     /// Exceptions Standard_ConstructionError if Focal is negative.
     pub fn set_focal(&mut self, Focal: f64) {
         unsafe { crate::ffi::Geom2d_Parabola_set_focal(self as *mut Self, Focal) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:101 - `Geom2d_Parabola::SetParab2d()`
     /// Converts the gp_Parab2d parabola Prb into this parabola.
     pub fn set_parab2d(&mut self, Prb: &crate::ffi::gp_Parab2d) {
         unsafe { crate::ffi::Geom2d_Parabola_set_parab2d(self as *mut Self, Prb) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:105 - `Geom2d_Parabola::Parab2d()`
     /// Returns the non persistent parabola from gp with the same
     /// geometric properties as <me>.
     pub fn parab2d(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab2d> {
@@ -7010,6 +7399,7 @@ impl Parabola {
         }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:110 - `Geom2d_Parabola::ReversedParameter()`
     /// Computes the parameter on the reversed parabola
     /// for the point of parameter U on this parabola.
     /// For a parabola, the returned value is -U.
@@ -7017,26 +7407,31 @@ impl Parabola {
         unsafe { crate::ffi::Geom2d_Parabola_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:113 - `Geom2d_Parabola::FirstParameter()`
     /// Returns RealFirst from Standard.
     pub fn first_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Parabola_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:116 - `Geom2d_Parabola::LastParameter()`
     /// Returns  RealLast from Standard.
     pub fn last_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Parabola_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:119 - `Geom2d_Parabola::IsClosed()`
     /// Returns False
     pub fn is_closed(&self) -> bool {
         unsafe { crate::ffi::Geom2d_Parabola_is_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:122 - `Geom2d_Parabola::IsPeriodic()`
     /// Returns False
     pub fn is_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom2d_Parabola_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:127 - `Geom2d_Parabola::Directrix()`
     /// The directrix is parallel to the "YAxis" of the parabola.
     /// The "Location" point of the directrix is the intersection
     /// point between the directrix and the symmetry axis ("XAxis") of the parabola.
@@ -7046,23 +7441,27 @@ impl Parabola {
         }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:130 - `Geom2d_Parabola::Eccentricity()`
     /// Returns the eccentricity e = 1.0
     pub fn eccentricity(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Parabola_eccentricity(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:134 - `Geom2d_Parabola::Focus()`
     /// Computes the focus of this parabola The focus is on the
     /// positive side of the "X Axis" of the local coordinate system of the parabola.
     pub fn focus(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Parabola_focus(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:138 - `Geom2d_Parabola::Focal()`
     /// Computes the focal length of this parabola.
     /// The focal length is the distance between the apex and the focus of the parabola.
     pub fn focal(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Parabola_focal(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:145 - `Geom2d_Parabola::Parameter()`
     /// Computes the parameter of this parabola, which is
     /// the distance between its focus and its directrix. This
     /// distance is twice the focal length.
@@ -7072,6 +7471,7 @@ impl Parabola {
         unsafe { crate::ffi::Geom2d_Parabola_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:153 - `Geom2d_Parabola::D0()`
     /// Returns in P the point of parameter U.
     /// If U = 0 the returned point is the origin of the XAxis and
     /// the YAxis of the parabola and it is the vertex of the parabola.
@@ -7082,11 +7482,13 @@ impl Parabola {
         unsafe { crate::ffi::Geom2d_Parabola_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:156 - `Geom2d_Parabola::D1()`
     /// Returns the point P of parameter U and the first derivative V1.
     pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V1: &mut crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::Geom2d_Parabola_d1(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:160 - `Geom2d_Parabola::D2()`
     /// Returns the point P of parameter U, the first and second
     /// derivatives V1 and V2.
     pub fn d2(
@@ -7099,6 +7501,7 @@ impl Parabola {
         unsafe { crate::ffi::Geom2d_Parabola_d2(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:167 - `Geom2d_Parabola::D3()`
     /// Returns the point P of parameter U, the first second and third
     /// derivatives V1 V2 and V3.
     pub fn d3(
@@ -7112,6 +7515,7 @@ impl Parabola {
         unsafe { crate::ffi::Geom2d_Parabola_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:176 - `Geom2d_Parabola::DN()`
     /// For the point of parameter U of this parabola,
     /// computes the vector corresponding to the Nth derivative.
     /// Exceptions Standard_RangeError if N is less than 1.
@@ -7121,11 +7525,13 @@ impl Parabola {
         }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:180 - `Geom2d_Parabola::Transform()`
     /// Applies the transformation T to this parabola.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::Geom2d_Parabola_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:186 - `Geom2d_Parabola::TransformedParameter()`
     /// Computes the parameter on the transformed
     /// parabola, for the point of parameter U on this parabola.
     /// For a parabola, the returned value is equal to U
@@ -7134,6 +7540,7 @@ impl Parabola {
         unsafe { crate::ffi::Geom2d_Parabola_transformed_parameter(self as *const Self, U, T) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:201 - `Geom2d_Parabola::ParametricTransformation()`
     /// Returns a  coefficient to compute the parameter on
     /// the transformed  curve  for  the transform  of the
     /// point on <me>.
@@ -7149,19 +7556,23 @@ impl Parabola {
         unsafe { crate::ffi::Geom2d_Parabola_parametric_transformation(self as *const Self, T) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:204 - `Geom2d_Parabola::Copy()`
     /// Creates a new object, which is a copy of this parabola.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Parabola_copy(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:210 - `Geom2d_Parabola::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Parabola_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:210 - `Geom2d_Parabola::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_Parabola_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_Parabola.hxx`:210 - `Geom2d_Parabola::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Parabola_get_type_descriptor()) }
     }
@@ -7436,6 +7847,7 @@ impl HandleGeom2dParabola {
 // From Geom2d_Point.hxx
 // ========================
 
+/// **Source:** `Geom2d_Point.hxx`:34 - `Geom2d_Point`
 /// The abstract class Point describes the common
 /// behavior of geometric points in 2D space.
 /// The Geom2d package also provides the concrete
@@ -7449,44 +7861,53 @@ unsafe impl crate::CppDeletable for Point {
 }
 
 impl Point {
+    /// **Source:** `Geom2d_Point.hxx`:39 - `Geom2d_Point::Coord()`
     /// returns the Coordinates of <me>.
     pub fn coord(&self, X: &mut f64, Y: &mut f64) {
         unsafe { crate::ffi::Geom2d_Point_coord(self as *const Self, X, Y) }
     }
 
+    /// **Source:** `Geom2d_Point.hxx`:42 - `Geom2d_Point::Pnt2d()`
     /// returns a non persistent copy of <me>
     pub fn pnt2d(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Point_pnt2d(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Point.hxx`:45 - `Geom2d_Point::X()`
     /// returns the X coordinate of <me>.
     pub fn x(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Point_x(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Point.hxx`:48 - `Geom2d_Point::Y()`
     /// returns  the Y coordinate of <me>.
     pub fn y(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Point_y(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Point.hxx`:51 - `Geom2d_Point::Distance()`
     /// computes the distance between <me> and <Other>.
     pub fn distance(&self, Other: &crate::ffi::HandleGeom2dPoint) -> f64 {
         unsafe { crate::ffi::Geom2d_Point_distance(self as *const Self, Other) }
     }
 
+    /// **Source:** `Geom2d_Point.hxx`:54 - `Geom2d_Point::SquareDistance()`
     /// computes the square distance between <me> and <Other>.
     pub fn square_distance(&self, Other: &crate::ffi::HandleGeom2dPoint) -> f64 {
         unsafe { crate::ffi::Geom2d_Point_square_distance(self as *const Self, Other) }
     }
 
+    /// **Source:** `Geom2d_Point.hxx`:60 - `Geom2d_Point::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Point_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Point.hxx`:60 - `Geom2d_Point::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_Point_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_Point.hxx`:60 - `Geom2d_Point::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Point_get_type_descriptor()) }
     }
@@ -7636,6 +8057,7 @@ impl HandleGeom2dPoint {
 // From Geom2d_Transformation.hxx
 // ========================
 
+/// **Source:** `Geom2d_Transformation.hxx`:66 - `Geom2d_Transformation`
 /// The class Transformation allows to create Translation,
 /// Rotation, Symmetry, Scaling and complex transformations
 /// obtained by combination of the previous elementary
@@ -7677,16 +8099,19 @@ unsafe impl crate::CppDeletable for Transformation {
 }
 
 impl Transformation {
+    /// **Source:** `Geom2d_Transformation.hxx`:71 - `Geom2d_Transformation::Geom2d_Transformation()`
     /// Creates an identity transformation.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Transformation_ctor()) }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:74 - `Geom2d_Transformation::Geom2d_Transformation()`
     /// Creates a persistent copy of T.
     pub fn new_trsf2d(T: &crate::ffi::gp_Trsf2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Transformation_ctor_trsf2d(T)) }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:79 - `Geom2d_Transformation::SetMirror()`
     /// Makes the transformation into a symmetrical transformation
     /// with respect to a point P.
     /// P is the center of the symmetry.
@@ -7694,6 +8119,7 @@ impl Transformation {
         unsafe { crate::ffi::Geom2d_Transformation_set_mirror_pnt2d(self as *mut Self, P) }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:84 - `Geom2d_Transformation::SetMirror()`
     /// Makes the transformation into a symmetrical transformation
     /// with respect to an axis A.
     /// A is the center of the axial symmetry.
@@ -7701,18 +8127,21 @@ impl Transformation {
         unsafe { crate::ffi::Geom2d_Transformation_set_mirror_ax2d(self as *mut Self, A) }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:88 - `Geom2d_Transformation::SetRotation()`
     /// Assigns to this transformation the geometric
     /// properties of a rotation at angle Ang (in radians) about point P.
     pub fn set_rotation(&mut self, P: &crate::ffi::gp_Pnt2d, Ang: f64) {
         unsafe { crate::ffi::Geom2d_Transformation_set_rotation(self as *mut Self, P, Ang) }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:92 - `Geom2d_Transformation::SetScale()`
     /// Makes the transformation into a scale. P is the center of
     /// the scale and S is the scaling value.
     pub fn set_scale(&mut self, P: &crate::ffi::gp_Pnt2d, S: f64) {
         unsafe { crate::ffi::Geom2d_Transformation_set_scale(self as *mut Self, P, S) }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:96 - `Geom2d_Transformation::SetTransformation()`
     /// Makes a transformation allowing passage from the coordinate
     /// system "FromSystem1" to the coordinate system "ToSystem2".
     pub fn set_transformation_ax2d2(
@@ -7729,6 +8158,7 @@ impl Transformation {
         }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:102 - `Geom2d_Transformation::SetTransformation()`
     /// Makes the transformation allowing passage from the basic
     /// coordinate system
     /// {P(0.,0.,0.), VX (1.,0.,0.), VY (0.,1.,0.)}
@@ -7739,12 +8169,14 @@ impl Transformation {
         }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:106 - `Geom2d_Transformation::SetTranslation()`
     /// Makes the transformation into a translation.
     /// V is the vector of the translation.
     pub fn set_translation_vec2d(&mut self, V: &crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::Geom2d_Transformation_set_translation_vec2d(self as *mut Self, V) }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:110 - `Geom2d_Transformation::SetTranslation()`
     /// Makes the transformation into a translation from the point
     /// P1 to the point P2.
     pub fn set_translation_pnt2d2(&mut self, P1: &crate::ffi::gp_Pnt2d, P2: &crate::ffi::gp_Pnt2d) {
@@ -7753,12 +8185,14 @@ impl Transformation {
         }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:114 - `Geom2d_Transformation::SetTrsf2d()`
     /// Makes the transformation into a transformation T from
     /// package gp.
     pub fn set_trsf2d(&mut self, T: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::Geom2d_Transformation_set_trsf2d(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:119 - `Geom2d_Transformation::IsNegative()`
     /// Checks whether this transformation is an indirect
     /// transformation: returns true if the determinant of the
     /// matrix of the vectorial part of the transformation is less than 0.
@@ -7766,6 +8200,7 @@ impl Transformation {
         unsafe { crate::ffi::Geom2d_Transformation_is_negative(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:126 - `Geom2d_Transformation::Form()`
     /// Returns the nature of this transformation as a value
     /// of the gp_TrsfForm enumeration.
     /// Returns the nature of the transformation. It can be
@@ -7780,11 +8215,13 @@ impl Transformation {
         }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:129 - `Geom2d_Transformation::ScaleFactor()`
     /// Returns the scale value of the transformation.
     pub fn scale_factor(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Transformation_scale_factor(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:134 - `Geom2d_Transformation::Trsf2d()`
     /// Converts this transformation into a gp_Trsf2d transformation.
     /// Returns a non persistent copy of <me>.
     /// -C++: return const&
@@ -7794,6 +8231,7 @@ impl Transformation {
         }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:142 - `Geom2d_Transformation::Value()`
     /// Returns the coefficients of the global matrix of transformation.
     /// It is a 2 rows X 3 columns matrix.
     ///
@@ -7804,6 +8242,7 @@ impl Transformation {
         unsafe { crate::ffi::Geom2d_Transformation_value(self as *const Self, Row, Col) }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:150 - `Geom2d_Transformation::Invert()`
     /// Computes the inverse of this transformation.
     /// and  assigns the result to this transformatio
     ///
@@ -7814,6 +8253,7 @@ impl Transformation {
         unsafe { crate::ffi::Geom2d_Transformation_invert(self as *mut Self) }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:155 - `Geom2d_Transformation::Inverted()`
     /// Computes the inverse of this transformation and creates a new one.
     /// Raises ConstructionError  if the transformation is singular. This means that
     /// the ScaleFactor is lower or equal to Resolution from package gp.
@@ -7825,6 +8265,7 @@ impl Transformation {
         }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:160 - `Geom2d_Transformation::Multiplied()`
     /// Computes the transformation composed with Other and <me>.
     /// <me> * Other.
     /// Returns a new transformation
@@ -7840,6 +8281,7 @@ impl Transformation {
         }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:176 - `Geom2d_Transformation::Multiply()`
     /// Computes the transformation composed with Other and <me> .
     /// <me> = <me> * Other.
     ///
@@ -7851,11 +8293,13 @@ impl Transformation {
         unsafe { crate::ffi::Geom2d_Transformation_multiply(self as *mut Self, Other) }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:181 - `Geom2d_Transformation::Power()`
     /// Raised if N < 0 and if the transformation is not inversible
     pub fn power(&mut self, N: i32) {
         unsafe { crate::ffi::Geom2d_Transformation_power(self as *mut Self, N) }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:184 - `Geom2d_Transformation::Powered()`
     /// Raised if N < 0 and if the transformation is not inversible
     pub fn powered(&self, N: i32) -> crate::OwnedPtr<crate::ffi::HandleGeom2dTransformation> {
         unsafe {
@@ -7866,17 +8310,20 @@ impl Transformation {
         }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:188 - `Geom2d_Transformation::PreMultiply()`
     /// Computes the matrix of the transformation composed with
     /// <me> and Other.     <me> = Other * <me>
     pub fn pre_multiply(&mut self, Other: &crate::ffi::HandleGeom2dTransformation) {
         unsafe { crate::ffi::Geom2d_Transformation_pre_multiply(self as *mut Self, Other) }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:191 - `Geom2d_Transformation::Transforms()`
     /// Applies the transformation <me> to the triplet {X, Y}.
     pub fn transforms(&self, X: &mut f64, Y: &mut f64) {
         unsafe { crate::ffi::Geom2d_Transformation_transforms(self as *const Self, X, Y) }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:194 - `Geom2d_Transformation::Copy()`
     /// Creates a new object, which is a copy of this transformation.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dTransformation> {
         unsafe {
@@ -7884,14 +8331,17 @@ impl Transformation {
         }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:196 - `Geom2d_Transformation::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Transformation_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:196 - `Geom2d_Transformation::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_Transformation_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_Transformation.hxx`:196 - `Geom2d_Transformation::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Transformation_get_type_descriptor()) }
     }
@@ -7930,6 +8380,7 @@ impl HandleGeom2dTransformation {
 // From Geom2d_TrimmedCurve.hxx
 // ========================
 
+/// **Source:** `Geom2d_TrimmedCurve.hxx`:42 - `Geom2d_TrimmedCurve`
 /// Defines a portion of a curve limited by two values of
 /// parameters inside the parametric domain of the curve.
 /// The trimmed curve is defined by:
@@ -7946,6 +8397,7 @@ unsafe impl crate::CppDeletable for TrimmedCurve {
 }
 
 impl TrimmedCurve {
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:78 - `Geom2d_TrimmedCurve::Geom2d_TrimmedCurve()`
     /// Creates a trimmed curve from the basis curve C limited between
     /// U1 and U2.
     ///
@@ -7998,6 +8450,7 @@ impl TrimmedCurve {
         }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:78 - `Geom2d_TrimmedCurve::Geom2d_TrimmedCurve()`
     /// Creates a trimmed curve from the basis curve C limited between
     /// U1 and U2.
     ///
@@ -8039,6 +8492,7 @@ impl TrimmedCurve {
         Self::new_handlegeom2dcurve_real2_bool2(C, U1, U2, Sense, true)
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:78 - `Geom2d_TrimmedCurve::Geom2d_TrimmedCurve()`
     /// Creates a trimmed curve from the basis curve C limited between
     /// U1 and U2.
     ///
@@ -8079,6 +8533,7 @@ impl TrimmedCurve {
         Self::new_handlegeom2dcurve_real2_bool2(C, U1, U2, true, true)
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:96 - `Geom2d_TrimmedCurve::Reverse()`
     /// Changes the direction of parametrization of <me>. The first and
     /// the last parametric values are modified. The "StartPoint"
     /// of the initial curve becomes the "EndPoint" of the reversed
@@ -8095,6 +8550,7 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom2d_TrimmedCurve_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:102 - `Geom2d_TrimmedCurve::ReversedParameter()`
     /// Returns the  parameter on the  reversed  curve for
     /// the point of parameter U on <me>.
     ///
@@ -8103,6 +8559,7 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom2d_TrimmedCurve_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:121 - `Geom2d_TrimmedCurve::SetTrim()`
     /// Changes this trimmed curve, by redefining the
     /// parameter values U1 and U2, which limit its basis curve.
     /// Note: If the basis curve is periodic, the trimmed curve
@@ -8132,6 +8589,7 @@ impl TrimmedCurve {
         }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:131 - `Geom2d_TrimmedCurve::BasisCurve()`
     /// Returns the basis curve.
     /// Warning
     /// This function does not return a constant reference.
@@ -8145,6 +8603,7 @@ impl TrimmedCurve {
         }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:139 - `Geom2d_TrimmedCurve::Continuity()`
     /// Returns the global continuity of the basis curve of this trimmed curve.
     /// C0 : only geometric continuity,
     /// C1 : continuity of the first derivative all along the Curve,
@@ -8160,6 +8619,7 @@ impl TrimmedCurve {
         }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:149 - `Geom2d_TrimmedCurve::IsCN()`
     /// --- Purpose
     /// Returns True if the order of continuity of the
     /// trimmed curve is N. A trimmed curve is at least "C0" continuous.
@@ -8172,6 +8632,7 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom2d_TrimmedCurve_is_cn(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:153 - `Geom2d_TrimmedCurve::EndPoint()`
     /// Returns the end point of <me>. This point is the
     /// evaluation of the curve for the "LastParameter".
     pub fn end_point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
@@ -8182,6 +8643,7 @@ impl TrimmedCurve {
         }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:158 - `Geom2d_TrimmedCurve::FirstParameter()`
     /// Returns the value of the first parameter of <me>.
     /// The first parameter is the parameter of the "StartPoint"
     /// of the trimmed curve.
@@ -8189,6 +8651,7 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom2d_TrimmedCurve_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:163 - `Geom2d_TrimmedCurve::IsClosed()`
     /// Returns True if the distance between the StartPoint and
     /// the EndPoint is lower or equal to Resolution from package
     /// gp.
@@ -8196,11 +8659,13 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom2d_TrimmedCurve_is_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:166 - `Geom2d_TrimmedCurve::IsPeriodic()`
     /// Always returns FALSE (independently of the type of basis curve).
     pub fn is_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom2d_TrimmedCurve_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:171 - `Geom2d_TrimmedCurve::Period()`
     /// Returns the period of the basis curve of this trimmed curve.
     /// Exceptions
     /// Standard_NoSuchObject if the basis curve is not periodic.
@@ -8208,6 +8673,7 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom2d_TrimmedCurve_period(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:176 - `Geom2d_TrimmedCurve::LastParameter()`
     /// Returns the value of the last parameter of <me>.
     /// The last parameter is the parameter of the "EndPoint" of the
     /// trimmed curve.
@@ -8215,6 +8681,7 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom2d_TrimmedCurve_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:185 - `Geom2d_TrimmedCurve::StartPoint()`
     /// Returns the start point of <me>.
     /// This point is the evaluation of the curve from the
     /// "FirstParameter".
@@ -8230,6 +8697,7 @@ impl TrimmedCurve {
         }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:190 - `Geom2d_TrimmedCurve::D0()`
     /// If the basis curve is an OffsetCurve sometimes it is not
     /// possible to do the evaluation of the curve at the parameter
     /// U (see class OffsetCurve).
@@ -8237,11 +8705,13 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom2d_TrimmedCurve_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:193 - `Geom2d_TrimmedCurve::D1()`
     /// Raised if the continuity of the curve is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V1: &mut crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::Geom2d_TrimmedCurve_d1(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:196 - `Geom2d_TrimmedCurve::D2()`
     /// Raised if the continuity of the curve is not C2.
     pub fn d2(
         &self,
@@ -8253,6 +8723,7 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom2d_TrimmedCurve_d2(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:202 - `Geom2d_TrimmedCurve::D3()`
     /// Raised if the continuity of the curve is not C3.
     pub fn d3(
         &self,
@@ -8265,6 +8736,7 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom2d_TrimmedCurve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:218 - `Geom2d_TrimmedCurve::DN()`
     /// For the point of parameter U of this trimmed curve,
     /// computes the vector corresponding to the Nth derivative.
     /// Warning
@@ -8281,12 +8753,14 @@ impl TrimmedCurve {
         }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:223 - `Geom2d_TrimmedCurve::Transform()`
     /// Applies the transformation T to this trimmed curve.
     /// Warning The basis curve is also modified.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::Geom2d_TrimmedCurve_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:235 - `Geom2d_TrimmedCurve::TransformedParameter()`
     /// Returns the  parameter on the  transformed  curve for
     /// the transform of the point of parameter U on <me>.
     ///
@@ -8301,6 +8775,7 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom2d_TrimmedCurve_transformed_parameter(self as *const Self, U, T) }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:250 - `Geom2d_TrimmedCurve::ParametricTransformation()`
     /// Returns a  coefficient to compute the parameter on
     /// the transformed  curve  for  the transform  of the
     /// point on <me>.
@@ -8316,6 +8791,7 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom2d_TrimmedCurve_parametric_transformation(self as *const Self, T) }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:254 - `Geom2d_TrimmedCurve::Copy()`
     /// Creates a new object, which is a copy of this trimmed curve.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
@@ -8323,14 +8799,17 @@ impl TrimmedCurve {
         }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:260 - `Geom2d_TrimmedCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_TrimmedCurve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:260 - `Geom2d_TrimmedCurve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_TrimmedCurve_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_TrimmedCurve.hxx`:260 - `Geom2d_TrimmedCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_TrimmedCurve_get_type_descriptor()) }
     }
@@ -8538,6 +9017,7 @@ impl HandleGeom2dTrimmedCurve {
 // From Geom2d_UndefinedDerivative.hxx
 // ========================
 
+/// **Source:** `Geom2d_UndefinedDerivative.hxx`:36 - `Geom2d_UndefinedDerivative`
 pub use crate::ffi::Geom2d_UndefinedDerivative as UndefinedDerivative;
 
 unsafe impl crate::CppDeletable for UndefinedDerivative {
@@ -8547,10 +9027,12 @@ unsafe impl crate::CppDeletable for UndefinedDerivative {
 }
 
 impl UndefinedDerivative {
+    /// **Source:** `Geom2d_UndefinedDerivative.hxx`:36 - `Geom2d_UndefinedDerivative::Geom2d_UndefinedDerivative()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_UndefinedDerivative_ctor()) }
     }
 
+    /// **Source:** `Geom2d_UndefinedDerivative.hxx`:36 - `Geom2d_UndefinedDerivative::Geom2d_UndefinedDerivative()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2d_UndefinedDerivative_ctor_charptr(
@@ -8559,6 +9041,7 @@ impl UndefinedDerivative {
         }
     }
 
+    /// **Source:** `Geom2d_UndefinedDerivative.hxx`:36 - `Geom2d_UndefinedDerivative::Geom2d_UndefinedDerivative()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -8571,18 +9054,22 @@ impl UndefinedDerivative {
         }
     }
 
+    /// **Source:** `Geom2d_UndefinedDerivative.hxx`:36 - `Geom2d_UndefinedDerivative::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_UndefinedDerivative_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_UndefinedDerivative.hxx`:36 - `Geom2d_UndefinedDerivative::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Geom2d_UndefinedDerivative_raise(theMessage) }
     }
 
+    /// **Source:** `Geom2d_UndefinedDerivative.hxx`:36 - `Geom2d_UndefinedDerivative::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_UndefinedDerivative_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_UndefinedDerivative.hxx`:36 - `Geom2d_UndefinedDerivative::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_UndefinedDerivative_get_type_descriptor()) }
     }
@@ -8592,6 +9079,7 @@ impl UndefinedDerivative {
 // From Geom2d_UndefinedValue.hxx
 // ========================
 
+/// **Source:** `Geom2d_UndefinedValue.hxx`:36 - `Geom2d_UndefinedValue`
 pub use crate::ffi::Geom2d_UndefinedValue as UndefinedValue;
 
 unsafe impl crate::CppDeletable for UndefinedValue {
@@ -8601,16 +9089,19 @@ unsafe impl crate::CppDeletable for UndefinedValue {
 }
 
 impl UndefinedValue {
+    /// **Source:** `Geom2d_UndefinedValue.hxx`:36 - `Geom2d_UndefinedValue::Geom2d_UndefinedValue()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_UndefinedValue_ctor()) }
     }
 
+    /// **Source:** `Geom2d_UndefinedValue.hxx`:36 - `Geom2d_UndefinedValue::Geom2d_UndefinedValue()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2d_UndefinedValue_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Geom2d_UndefinedValue.hxx`:36 - `Geom2d_UndefinedValue::Geom2d_UndefinedValue()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -8623,18 +9114,22 @@ impl UndefinedValue {
         }
     }
 
+    /// **Source:** `Geom2d_UndefinedValue.hxx`:36 - `Geom2d_UndefinedValue::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_UndefinedValue_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_UndefinedValue.hxx`:36 - `Geom2d_UndefinedValue::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Geom2d_UndefinedValue_raise(theMessage) }
     }
 
+    /// **Source:** `Geom2d_UndefinedValue.hxx`:36 - `Geom2d_UndefinedValue::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_UndefinedValue_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_UndefinedValue.hxx`:36 - `Geom2d_UndefinedValue::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_UndefinedValue_get_type_descriptor()) }
     }
@@ -8644,6 +9139,7 @@ impl UndefinedValue {
 // From Geom2d_Vector.hxx
 // ========================
 
+/// **Source:** `Geom2d_Vector.hxx`:34 - `Geom2d_Vector`
 /// The abstract class Vector describes the common
 /// behavior of vectors in 2D space.
 /// The Geom2d package provides two concrete
@@ -8658,11 +9154,13 @@ unsafe impl crate::CppDeletable for Vector {
 }
 
 impl Vector {
+    /// **Source:** `Geom2d_Vector.hxx`:39 - `Geom2d_Vector::Reverse()`
     /// Reverses the vector <me>.
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::Geom2d_Vector_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom2d_Vector.hxx`:42 - `Geom2d_Vector::Reversed()`
     /// Returns a copy of <me> reversed.
     pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dVector> {
         unsafe {
@@ -8670,6 +9168,7 @@ impl Vector {
         }
     }
 
+    /// **Source:** `Geom2d_Vector.hxx`:50 - `Geom2d_Vector::Angle()`
     /// Computes the angular value, in radians, between this
     /// vector and vector Other. The result is a value
     /// between -Pi and Pi. The orientation is from this
@@ -8680,54 +9179,65 @@ impl Vector {
         unsafe { crate::ffi::Geom2d_Vector_angle(self as *const Self, Other) }
     }
 
+    /// **Source:** `Geom2d_Vector.hxx`:53 - `Geom2d_Vector::Coord()`
     /// Returns the coordinates of <me>.
     pub fn coord(&self, X: &mut f64, Y: &mut f64) {
         unsafe { crate::ffi::Geom2d_Vector_coord(self as *const Self, X, Y) }
     }
 
+    /// **Source:** `Geom2d_Vector.hxx`:56 - `Geom2d_Vector::Magnitude()`
     /// Returns the  Magnitude of <me>.
     pub fn magnitude(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Vector_magnitude(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Vector.hxx`:59 - `Geom2d_Vector::SquareMagnitude()`
     /// Returns the square magnitude of <me>.
     pub fn square_magnitude(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Vector_square_magnitude(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Vector.hxx`:62 - `Geom2d_Vector::X()`
     /// Returns the X coordinate of <me>.
     pub fn x(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Vector_x(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Vector.hxx`:65 - `Geom2d_Vector::Y()`
     /// Returns the Y coordinate of <me>.
     pub fn y(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_Vector_y(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_Vector.hxx`:68 - `Geom2d_Vector::Crossed()`
     /// Cross product of <me> with the vector <Other>.
     pub fn crossed(&self, Other: &crate::ffi::HandleGeom2dVector) -> f64 {
         unsafe { crate::ffi::Geom2d_Vector_crossed(self as *const Self, Other) }
     }
 
+    /// **Source:** `Geom2d_Vector.hxx`:71 - `Geom2d_Vector::Dot()`
     /// Returns the scalar product of 2 Vectors.
     pub fn dot(&self, Other: &crate::ffi::HandleGeom2dVector) -> f64 {
         unsafe { crate::ffi::Geom2d_Vector_dot(self as *const Self, Other) }
     }
 
+    /// **Source:** `Geom2d_Vector.hxx`:74 - `Geom2d_Vector::Vec2d()`
     /// Returns a non persistent copy of <me>.
     pub fn vec2d(&self) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Vector_vec2d(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Vector.hxx`:76 - `Geom2d_Vector::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Vector_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_Vector.hxx`:76 - `Geom2d_Vector::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_Vector_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_Vector.hxx`:76 - `Geom2d_Vector::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_Vector_get_type_descriptor()) }
     }
@@ -8877,6 +9387,7 @@ impl HandleGeom2dVector {
 // From Geom2d_VectorWithMagnitude.hxx
 // ========================
 
+/// **Source:** `Geom2d_VectorWithMagnitude.hxx`:34 - `Geom2d_VectorWithMagnitude`
 /// Defines a vector with magnitude.
 /// A vector with magnitude can have a zero length.
 pub use crate::ffi::Geom2d_VectorWithMagnitude as VectorWithMagnitude;
@@ -8888,11 +9399,13 @@ unsafe impl crate::CppDeletable for VectorWithMagnitude {
 }
 
 impl VectorWithMagnitude {
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:39 - `Geom2d_VectorWithMagnitude::Geom2d_VectorWithMagnitude()`
     /// Creates a persistent copy of V.
     pub fn new_vec2d(V: &crate::ffi::gp_Vec2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_VectorWithMagnitude_ctor_vec2d(V)) }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:42 - `Geom2d_VectorWithMagnitude::Geom2d_VectorWithMagnitude()`
     /// Creates a vector with two cartesian coordinates.
     pub fn new_real2(X: f64, Y: f64) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -8900,6 +9413,7 @@ impl VectorWithMagnitude {
         }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:46 - `Geom2d_VectorWithMagnitude::Geom2d_VectorWithMagnitude()`
     /// Creates a vector from the point P1 to the point P2.
     /// The magnitude of the vector is the distance between P1 and P2
     pub fn new_pnt2d2(
@@ -8911,40 +9425,48 @@ impl VectorWithMagnitude {
         }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:49 - `Geom2d_VectorWithMagnitude::SetCoord()`
     /// Set <me> to X, Y coordinates.
     pub fn set_coord(&mut self, X: f64, Y: f64) {
         unsafe { crate::ffi::Geom2d_VectorWithMagnitude_set_coord(self as *mut Self, X, Y) }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:51 - `Geom2d_VectorWithMagnitude::SetVec2d()`
     pub fn set_vec2d(&mut self, V: &crate::ffi::gp_Vec2d) {
         unsafe { crate::ffi::Geom2d_VectorWithMagnitude_set_vec2d(self as *mut Self, V) }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:54 - `Geom2d_VectorWithMagnitude::SetX()`
     /// Changes the X coordinate of <me>.
     pub fn set_x(&mut self, X: f64) {
         unsafe { crate::ffi::Geom2d_VectorWithMagnitude_set_x(self as *mut Self, X) }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:57 - `Geom2d_VectorWithMagnitude::SetY()`
     /// Changes the Y coordinate of <me>
     pub fn set_y(&mut self, Y: f64) {
         unsafe { crate::ffi::Geom2d_VectorWithMagnitude_set_y(self as *mut Self, Y) }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:60 - `Geom2d_VectorWithMagnitude::Magnitude()`
     /// Returns the magnitude of <me>.
     pub fn magnitude(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_VectorWithMagnitude_magnitude(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:63 - `Geom2d_VectorWithMagnitude::SquareMagnitude()`
     /// Returns the square magnitude of <me>.
     pub fn square_magnitude(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_VectorWithMagnitude_square_magnitude(self as *const Self) }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:66 - `Geom2d_VectorWithMagnitude::Add()`
     /// Adds the Vector Other to <me>.
     pub fn add(&mut self, Other: &crate::ffi::HandleGeom2dVector) {
         unsafe { crate::ffi::Geom2d_VectorWithMagnitude_add(self as *mut Self, Other) }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:71 - `Geom2d_VectorWithMagnitude::Added()`
     /// Adds the vector Other to <me>.
     pub fn added(
         &self,
@@ -8958,17 +9480,20 @@ impl VectorWithMagnitude {
         }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:82 - `Geom2d_VectorWithMagnitude::Crossed()`
     /// Computes the cross product  between <me> and Other
     /// <me> ^ Other. A new vector is returned.
     pub fn crossed(&self, Other: &crate::ffi::HandleGeom2dVector) -> f64 {
         unsafe { crate::ffi::Geom2d_VectorWithMagnitude_crossed(self as *const Self, Other) }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:87 - `Geom2d_VectorWithMagnitude::Divide()`
     /// Divides <me> by a scalar.
     pub fn divide(&mut self, Scalar: f64) {
         unsafe { crate::ffi::Geom2d_VectorWithMagnitude_divide(self as *mut Self, Scalar) }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:92 - `Geom2d_VectorWithMagnitude::Divided()`
     /// Divides <me> by a scalar. A new vector is returned.
     pub fn divided(
         &self,
@@ -8982,6 +9507,7 @@ impl VectorWithMagnitude {
         }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:105 - `Geom2d_VectorWithMagnitude::Multiplied()`
     /// Computes the product of the vector <me> by a scalar.
     /// A new vector is returned.
     ///
@@ -8999,11 +9525,13 @@ impl VectorWithMagnitude {
         }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:109 - `Geom2d_VectorWithMagnitude::Multiply()`
     /// Computes the product of the vector <me> by a scalar.
     pub fn multiply(&mut self, Scalar: f64) {
         unsafe { crate::ffi::Geom2d_VectorWithMagnitude_multiply(self as *mut Self, Scalar) }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:117 - `Geom2d_VectorWithMagnitude::Normalize()`
     /// Normalizes <me>.
     ///
     /// Raised if the magnitude of the vector is lower or equal to
@@ -9012,6 +9540,7 @@ impl VectorWithMagnitude {
         unsafe { crate::ffi::Geom2d_VectorWithMagnitude_normalize(self as *mut Self) }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:123 - `Geom2d_VectorWithMagnitude::Normalized()`
     /// Returns a copy of <me> Normalized.
     ///
     /// Raised if the magnitude of the vector is lower or equal to
@@ -9024,11 +9553,13 @@ impl VectorWithMagnitude {
         }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:126 - `Geom2d_VectorWithMagnitude::Subtract()`
     /// Subtracts the Vector Other to <me>.
     pub fn subtract(&mut self, Other: &crate::ffi::HandleGeom2dVector) {
         unsafe { crate::ffi::Geom2d_VectorWithMagnitude_subtract(self as *mut Self, Other) }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:131 - `Geom2d_VectorWithMagnitude::Subtracted()`
     /// Subtracts the vector Other to <me>. A new vector is returned.
     pub fn subtracted(
         &self,
@@ -9042,11 +9573,13 @@ impl VectorWithMagnitude {
         }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:141 - `Geom2d_VectorWithMagnitude::Transform()`
     /// Applies the transformation T to this vector.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf2d) {
         unsafe { crate::ffi::Geom2d_VectorWithMagnitude_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:144 - `Geom2d_VectorWithMagnitude::Copy()`
     /// Creates a new object which is a copy of this vector.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
@@ -9056,14 +9589,17 @@ impl VectorWithMagnitude {
         }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:146 - `Geom2d_VectorWithMagnitude::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_VectorWithMagnitude_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:146 - `Geom2d_VectorWithMagnitude::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom2d_VectorWithMagnitude_get_type_name() }
     }
 
+    /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:146 - `Geom2d_VectorWithMagnitude::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom2d_VectorWithMagnitude_get_type_descriptor()) }
     }

@@ -10,6 +10,7 @@
 // From XSControl_Controller.hxx
 // ========================
 
+/// **Source:** `XSControl_Controller.hxx`:60 - `XSControl_Controller`
 /// This class allows a general X-STEP engine to run generic
 /// functions on any interface norm, in the same way. It includes
 /// the transfer operations. I.e. it gathers the already available
@@ -34,6 +35,7 @@ unsafe impl crate::CppDeletable for Controller {
 }
 
 impl Controller {
+    /// **Source:** `XSControl_Controller.hxx`:66 - `XSControl_Controller::SetNames()`
     /// Changes names
     /// if a name is empty, the formerly set one remains
     /// Remark : Does not call Record or AutoRecord
@@ -47,18 +49,21 @@ impl Controller {
         }
     }
 
+    /// **Source:** `XSControl_Controller.hxx`:71 - `XSControl_Controller::AutoRecord()`
     /// Records <me> is a general dictionary under Short and Long
     /// Names (see method Name)
     pub fn auto_record(&self) {
         unsafe { crate::ffi::XSControl_Controller_auto_record(self as *const Self) }
     }
 
+    /// **Source:** `XSControl_Controller.hxx`:79 - `XSControl_Controller::Record()`
     /// Records <me> in a general dictionary under a name
     /// Error if <name> already used for another one
     pub fn record(&self, name: *const std::ffi::c_char) {
         unsafe { crate::ffi::XSControl_Controller_record(self as *const Self, name) }
     }
 
+    /// **Source:** `XSControl_Controller.hxx`:88 - `XSControl_Controller::Name()`
     /// Returns a name, as given when initializing :
     /// rsc = False (D) : True Name attached to the Norm (long name)
     /// rsc = True : Name of the resource set (i.e. short name)
@@ -66,12 +71,14 @@ impl Controller {
         unsafe { crate::ffi::XSControl_Controller_name(self as *const Self, rsc) }
     }
 
+    /// **Source:** `XSControl_Controller.hxx`:102 - `XSControl_Controller::WorkLibrary()`
     /// Returns the WorkLibrary attached to the Norm. Remark that it
     /// has to be in phase with the Protocol  (read from field)
     pub fn work_library(&self) -> &crate::ffi::HandleIFSelectWorkLibrary {
         unsafe { &*(crate::ffi::XSControl_Controller_work_library(self as *const Self)) }
     }
 
+    /// **Source:** `XSControl_Controller.hxx`:106 - `XSControl_Controller::NewModel()`
     /// Creates a new empty Model ready to receive data of the Norm
     /// Used to write data from Imagine to an interface file
     pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
@@ -82,6 +89,7 @@ impl Controller {
         }
     }
 
+    /// **Source:** `XSControl_Controller.hxx`:122 - `XSControl_Controller::SetModeWrite()`
     /// Sets minimum and maximum values for modetrans (write)
     /// Erases formerly recorded bounds and values
     /// Actually only for shape
@@ -97,6 +105,7 @@ impl Controller {
         }
     }
 
+    /// **Source:** `XSControl_Controller.hxx`:127 - `XSControl_Controller::SetModeWriteHelp()`
     /// Attaches a short line of help to a value of modetrans (write)
     pub fn set_mode_write_help(
         &mut self,
@@ -114,6 +123,7 @@ impl Controller {
         }
     }
 
+    /// **Source:** `XSControl_Controller.hxx`:135 - `XSControl_Controller::ModeWriteBounds()`
     /// Returns recorded min and max values for modetrans (write)
     /// Actually only for shapes
     /// Returns True if bounds are set, False else (then, free value)
@@ -128,6 +138,7 @@ impl Controller {
         }
     }
 
+    /// **Source:** `XSControl_Controller.hxx`:141 - `XSControl_Controller::IsModeWrite()`
     /// Tells if a value of <modetrans> is a good value(within bounds)
     /// Actually only for shapes
     pub fn is_mode_write(&self, modetrans: i32, shape: bool) -> bool {
@@ -136,6 +147,7 @@ impl Controller {
         }
     }
 
+    /// **Source:** `XSControl_Controller.hxx`:147 - `XSControl_Controller::ModeWriteHelp()`
     /// Returns the help line recorded for a value of modetrans
     /// empty if help not defined or not within bounds or if values are free
     pub fn mode_write_help(&self, modetrans: i32, shape: bool) -> *const std::ffi::c_char {
@@ -144,6 +156,7 @@ impl Controller {
         }
     }
 
+    /// **Source:** `XSControl_Controller.hxx`:177 - `XSControl_Controller::RecognizeWriteShape()`
     /// Tells if a shape is valid for a transfer to a model
     /// Asks the ActorWrite (through a ShapeMapper)
     pub fn recognize_write_shape(&self, shape: &crate::ffi::TopoDS_Shape, modetrans: i32) -> bool {
@@ -156,10 +169,12 @@ impl Controller {
         }
     }
 
+    /// **Source:** `XSControl_Controller.hxx`:219 - `XSControl_Controller::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::XSControl_Controller_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `XSControl_Controller.hxx`:83 - `XSControl_Controller::Recorded()`
     /// Returns the Controller attached to a given name
     /// Returns a Null Handle if <name> is unknown
     pub fn recorded(
@@ -168,10 +183,12 @@ impl Controller {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_Controller_recorded(name)) }
     }
 
+    /// **Source:** `XSControl_Controller.hxx`:219 - `XSControl_Controller::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::XSControl_Controller_get_type_name() }
     }
 
+    /// **Source:** `XSControl_Controller.hxx`:219 - `XSControl_Controller::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::XSControl_Controller_get_type_descriptor()) }
     }
@@ -201,6 +218,7 @@ impl HandleXSControlController {
 // From XSControl_Reader.hxx
 // ========================
 
+/// **Source:** `XSControl_Reader.hxx`:72 - `XSControl_Reader`
 /// A groundwork to convert a shape to data which complies
 /// with a particular norm. This data can be that of a whole
 /// model or that of a specific list of entities in the model.
@@ -241,24 +259,28 @@ unsafe impl crate::CppDeletable for Reader {
 }
 
 impl Reader {
+    /// **Source:** `XSControl_Reader.hxx`:79 - `XSControl_Reader::XSControl_Reader()`
     /// Creates a Reader from scratch (creates an empty WorkSession)
     /// A WorkSession or a Controller must be provided before running
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_Reader_ctor()) }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:83 - `XSControl_Reader::XSControl_Reader()`
     /// Creates a Reader from scratch, with a norm name which
     /// identifies a Controller
     pub fn new_charptr(norm: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_Reader_ctor_charptr(norm)) }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:96 - `XSControl_Reader::SetNorm()`
     /// Sets a specific norm to <me>
     /// Returns True if done, False if <norm> is not available
     pub fn set_norm(&mut self, norm: *const std::ffi::c_char) -> bool {
         unsafe { crate::ffi::XSControl_Reader_set_norm(self as *mut Self, norm) }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:107 - `XSControl_Reader::ReadFile()`
     /// Loads a file and returns the read status
     /// Zero for a Model which complies with the Controller
     pub fn read_file(
@@ -274,6 +296,7 @@ impl Reader {
         }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:114 - `XSControl_Reader::Model()`
     /// Returns the model. It can then be consulted (header, product)
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
         unsafe {
@@ -281,6 +304,7 @@ impl Reader {
         }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:143 - `XSControl_Reader::GiveList()`
     /// Returns a list of entities from the IGES or STEP file
     /// according to the following rules:
     /// - if first and second are empty strings, the whole file is selected.
@@ -322,6 +346,7 @@ impl Reader {
         }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:158 - `XSControl_Reader::NbRootsForTransfer()`
     /// Determines the list of root entities which are candidate for
     /// a transfer to a Shape, and returns the number
     /// of entities in the list
@@ -329,6 +354,7 @@ impl Reader {
         unsafe { crate::ffi::XSControl_Reader_nb_roots_for_transfer(self as *mut Self) }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:168 - `XSControl_Reader::TransferOneRoot()`
     /// Translates a root identified by the rank num in the model.
     /// false is returned if no shape is produced.
     pub fn transfer_one_root(
@@ -341,6 +367,7 @@ impl Reader {
         }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:175 - `XSControl_Reader::TransferOne()`
     /// Translates an IGES or STEP
     /// entity identified by the rank num in the model.
     /// false is returned if no shape is produced.
@@ -352,6 +379,7 @@ impl Reader {
         unsafe { crate::ffi::XSControl_Reader_transfer_one(self as *mut Self, num, theProgress) }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:190 - `XSControl_Reader::TransferList()`
     /// Translates a list of entities.
     /// Returns the number of IGES or STEP entities that were
     /// successfully translated. The list can be produced with GiveList.
@@ -364,6 +392,7 @@ impl Reader {
         unsafe { crate::ffi::XSControl_Reader_transfer_list(self as *mut Self, list, theProgress) }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:197 - `XSControl_Reader::TransferRoots()`
     /// Translates all translatable
     /// roots and returns the number of successful translations.
     /// Warning - This function clears existing output shapes first.
@@ -371,17 +400,20 @@ impl Reader {
         unsafe { crate::ffi::XSControl_Reader_transfer_roots(self as *mut Self, theProgress) }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:201 - `XSControl_Reader::ClearShapes()`
     /// Clears the list of shapes that
     /// may have accumulated in calls to TransferOne or TransferRoot.C
     pub fn clear_shapes(&mut self) {
         unsafe { crate::ffi::XSControl_Reader_clear_shapes(self as *mut Self) }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:204 - `XSControl_Reader::NbShapes()`
     /// Returns the number of shapes produced by translation.
     pub fn nb_shapes(&self) -> i32 {
         unsafe { crate::ffi::XSControl_Reader_nb_shapes(self as *const Self) }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:210 - `XSControl_Reader::Shape()`
     /// Returns the shape resulting
     /// from a translation and identified by the rank num.
     /// num equals 1 by default. In other words, the first shape
@@ -392,6 +424,7 @@ impl Reader {
         }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:217 - `XSControl_Reader::OneShape()`
     /// Returns all of the results in
     /// a single shape which is:
     /// - a null shape if there are no results,
@@ -403,6 +436,7 @@ impl Reader {
         }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:225 - `XSControl_Reader::PrintCheckLoad()`
     /// Prints the check list attached to loaded data, on the Standard
     /// Trace File (starts at std::cout)
     /// All messages or fails only, according to <failsonly>
@@ -419,6 +453,7 @@ impl Reader {
         }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:239 - `XSControl_Reader::PrintCheckTransfer()`
     /// Displays check results for the
     /// last translation of IGES or STEP entities to Open CASCADE
     /// entities. Only fail messages are displayed if failsonly is
@@ -435,6 +470,7 @@ impl Reader {
         }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:275 - `XSControl_Reader::PrintStatsTransfer()`
     /// Displays the statistics for
     /// the last translation. what defines the kind of
     /// statistics that are displayed as follows:
@@ -468,6 +504,7 @@ impl Reader {
         }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:284 - `XSControl_Reader::GetStatsTransfer()`
     /// Gives statistics about Transfer
     pub fn get_stats_transfer(
         &self,

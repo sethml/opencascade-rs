@@ -6,35 +6,276 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{
-    BRepTools_activate_triangulation as activate_triangulation,
-    BRepTools_add_uv_bounds_face_box2d as add_uv_bounds_face_box2d,
-    BRepTools_add_uv_bounds_face_edge_box2d as add_uv_bounds_face_edge_box2d,
-    BRepTools_add_uv_bounds_face_wire_box2d as add_uv_bounds_face_wire_box2d,
-    BRepTools_clean as clean, BRepTools_clean_geometry as clean_geometry,
-    BRepTools_compare_edge2 as compare_edge2, BRepTools_compare_vertex2 as compare_vertex2,
-    BRepTools_remove_unused_p_curves as remove_unused_p_curves,
-    BRepTools_triangulation as triangulation,
-    BRepTools_unload_all_triangulations as unload_all_triangulations,
-    BRepTools_unload_triangulation as unload_triangulation,
-    BRepTools_update_compound as update_compound, BRepTools_update_compsolid as update_compsolid,
-    BRepTools_update_edge as update_edge, BRepTools_update_face as update_face,
-    BRepTools_update_face_uv_points as update_face_uv_points,
-    BRepTools_update_shape as update_shape, BRepTools_update_shell as update_shell,
-    BRepTools_update_solid as update_solid, BRepTools_update_vertex as update_vertex,
-    BRepTools_update_wire as update_wire,
-    BRepTools_uv_bounds_face_edge_real4 as uv_bounds_face_edge_real4,
-    BRepTools_uv_bounds_face_real4 as uv_bounds_face_real4,
-    BRepTools_uv_bounds_face_wire_real4 as uv_bounds_face_wire_real4,
-};
+/// **Source:** `BRepTools.hxx` - `BRepTools::UVBounds`
+/// Returns in UMin,  UMax, VMin,  VMax  the  bounding
+/// values in the parametric space of F.
+pub fn uv_bounds_face_real4(
+    F: &crate::ffi::TopoDS_Face,
+    UMin: &mut f64,
+    UMax: &mut f64,
+    VMin: &mut f64,
+    VMax: &mut f64,
+) {
+    unsafe { crate::ffi::BRepTools_uv_bounds_face_real4(F, UMin, UMax, VMin, VMax) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::UVBounds`
+/// Returns in UMin,  UMax, VMin,  VMax  the  bounding
+/// values of the wire in the parametric space of F.
+pub fn uv_bounds_face_wire_real4(
+    F: &crate::ffi::TopoDS_Face,
+    W: &crate::ffi::TopoDS_Wire,
+    UMin: &mut f64,
+    UMax: &mut f64,
+    VMin: &mut f64,
+    VMax: &mut f64,
+) {
+    unsafe { crate::ffi::BRepTools_uv_bounds_face_wire_real4(F, W, UMin, UMax, VMin, VMax) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::UVBounds`
+/// Returns in UMin,  UMax, VMin,  VMax  the  bounding
+/// values of the edge in the parametric space of F.
+pub fn uv_bounds_face_edge_real4(
+    F: &crate::ffi::TopoDS_Face,
+    E: &crate::ffi::TopoDS_Edge,
+    UMin: &mut f64,
+    UMax: &mut f64,
+    VMin: &mut f64,
+    VMax: &mut f64,
+) {
+    unsafe { crate::ffi::BRepTools_uv_bounds_face_edge_real4(F, E, UMin, UMax, VMin, VMax) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::AddUVBounds`
+/// Adds  to  the box <B>  the bounding values in  the
+/// parametric space of F.
+pub fn add_uv_bounds_face_box2d(F: &crate::ffi::TopoDS_Face, B: &mut crate::ffi::Bnd_Box2d) {
+    unsafe { crate::ffi::BRepTools_add_uv_bounds_face_box2d(F, B) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::AddUVBounds`
+/// Adds  to the box  <B>  the bounding  values of the
+/// wire in the parametric space of F.
+pub fn add_uv_bounds_face_wire_box2d(
+    F: &crate::ffi::TopoDS_Face,
+    W: &crate::ffi::TopoDS_Wire,
+    B: &mut crate::ffi::Bnd_Box2d,
+) {
+    unsafe { crate::ffi::BRepTools_add_uv_bounds_face_wire_box2d(F, W, B) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::AddUVBounds`
+/// Adds to  the box <B>  the  bounding values  of the
+/// edge in the parametric space of F.
+pub fn add_uv_bounds_face_edge_box2d(
+    F: &crate::ffi::TopoDS_Face,
+    E: &crate::ffi::TopoDS_Edge,
+    B: &mut crate::ffi::Bnd_Box2d,
+) {
+    unsafe { crate::ffi::BRepTools_add_uv_bounds_face_edge_box2d(F, E, B) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::Update`
+/// Update a vertex (nothing is done)
+pub fn update_vertex(V: &crate::ffi::TopoDS_Vertex) {
+    unsafe { crate::ffi::BRepTools_update_vertex(V) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::Update`
+/// Update an edge, compute 2d bounding boxes.
+pub fn update_edge(E: &crate::ffi::TopoDS_Edge) {
+    unsafe { crate::ffi::BRepTools_update_edge(E) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::Update`
+/// Update a wire (nothing is done)
+pub fn update_wire(W: &crate::ffi::TopoDS_Wire) {
+    unsafe { crate::ffi::BRepTools_update_wire(W) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::Update`
+/// Update a Face, update UV points.
+pub fn update_face(F: &crate::ffi::TopoDS_Face) {
+    unsafe { crate::ffi::BRepTools_update_face(F) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::Update`
+/// Update a shell (nothing is done)
+pub fn update_shell(S: &crate::ffi::TopoDS_Shell) {
+    unsafe { crate::ffi::BRepTools_update_shell(S) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::Update`
+/// Update a solid (nothing is done)
+pub fn update_solid(S: &crate::ffi::TopoDS_Solid) {
+    unsafe { crate::ffi::BRepTools_update_solid(S) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::Update`
+/// Update a composite solid (nothing is done)
+pub fn update_compsolid(C: &crate::ffi::TopoDS_CompSolid) {
+    unsafe { crate::ffi::BRepTools_update_compsolid(C) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::Update`
+/// Update a compound (nothing is done)
+pub fn update_compound(C: &crate::ffi::TopoDS_Compound) {
+    unsafe { crate::ffi::BRepTools_update_compound(C) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::Update`
+/// Update a shape, call the correct update.
+pub fn update_shape(S: &crate::ffi::TopoDS_Shape) {
+    unsafe { crate::ffi::BRepTools_update_shape(S) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::UpdateFaceUVPoints`
+/// For each edge of the face <F> reset the UV points
+/// to the bounding points of the parametric curve of the
+/// edge on the face.
+pub fn update_face_uv_points(theF: &crate::ffi::TopoDS_Face) {
+    unsafe { crate::ffi::BRepTools_update_face_uv_points(theF) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::Clean`
+/// Removes all cached polygonal representation of the shape,
+/// i.e. the triangulations of the faces of <S> and polygons on
+/// triangulations and polygons 3d of the edges.
+/// In case polygonal representation is the only available representation
+/// for the shape (shape does not have geometry) it is not removed.
+/// @param[in] theShape   the shape to clean
+/// @param[in] theForce   allows removing all polygonal representations from the shape,
+/// including polygons on triangulations irrelevant for the faces of the
+/// given shape.
+pub fn clean(theShape: &crate::ffi::TopoDS_Shape, theForce: bool) {
+    unsafe { crate::ffi::BRepTools_clean(theShape, theForce) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::CleanGeometry`
+/// Removes geometry (curves and surfaces) from all edges and faces of the shape
+pub fn clean_geometry(theShape: &crate::ffi::TopoDS_Shape) {
+    unsafe { crate::ffi::BRepTools_clean_geometry(theShape) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::RemoveUnusedPCurves`
+/// Removes all the pcurves of the edges of <S> that
+/// refer to surfaces not belonging to any face of <S>
+pub fn remove_unused_p_curves(S: &crate::ffi::TopoDS_Shape) {
+    unsafe { crate::ffi::BRepTools_remove_unused_p_curves(S) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::Triangulation`
+/// Verifies that each Face from the shape has got a triangulation with a deflection smaller or
+/// equal to specified one and the Edges a discretization on this triangulation.
+/// @param[in] theShape    shape to verify
+/// @param[in] theLinDefl  maximum allowed linear deflection
+/// @param[in] theToCheckFreeEdges  if TRUE, then free Edges are required to have 3D polygon
+/// @return FALSE if input Shape contains Faces without triangulation,
+/// or that triangulation has worse (greater) deflection than specified one,
+/// or Edges in Shape lack polygons on triangulation
+/// or free Edges in Shape lack 3D polygons
+pub fn triangulation(
+    theShape: &crate::ffi::TopoDS_Shape,
+    theLinDefl: f64,
+    theToCheckFreeEdges: bool,
+) -> bool {
+    unsafe { crate::ffi::BRepTools_triangulation(theShape, theLinDefl, theToCheckFreeEdges) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::UnloadTriangulation`
+/// Releases triangulation data for each face of the shape if there is deferred storage to load it
+/// later
+/// @param[in] theShape             shape to unload triangulations
+/// @param[in] theTriangulationIdx  index defining what triangulation should be unloaded. Starts
+/// from 0.
+/// -1 is used in specific case to unload currently already active triangulation.
+/// If some face doesn't contain triangulation with this index, nothing will be unloaded
+/// for it. Exception will be thrown in case of invalid negative index
+/// @return TRUE if at least one triangulation is unloaded.
+pub fn unload_triangulation(theShape: &crate::ffi::TopoDS_Shape, theTriangulationIdx: i32) -> bool {
+    unsafe { crate::ffi::BRepTools_unload_triangulation(theShape, theTriangulationIdx) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::ActivateTriangulation`
+/// Activates triangulation data for each face of the shape
+/// from some deferred storage using specified shared input file system
+/// @param[in] theShape               shape to activate triangulations
+/// @param[in] theTriangulationIdx    index defining what triangulation should be activated.
+/// Starts from 0.
+/// Exception will be thrown in case of invalid negative index
+/// @param[in] theToActivateStrictly  flag to activate exactly triangulation with defined
+/// theTriangulationIdx index.
+/// In TRUE case if some face doesn't contain triangulation with this index, active
+/// triangulation will not be changed for it. Else the last available triangulation will be
+/// activated.
+/// @return TRUE if at least one active triangulation was changed.
+pub fn activate_triangulation(
+    theShape: &crate::ffi::TopoDS_Shape,
+    theTriangulationIdx: i32,
+    theToActivateStrictly: bool,
+) -> bool {
+    unsafe {
+        crate::ffi::BRepTools_activate_triangulation(
+            theShape,
+            theTriangulationIdx,
+            theToActivateStrictly,
+        )
+    }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::UnloadAllTriangulations`
+/// Releases all available triangulations for each face of the shape if there is deferred storage
+/// to load them later
+/// @param[in] theShape       shape to unload triangulations
+/// @return TRUE if at least one triangulation is unloaded.
+pub fn unload_all_triangulations(theShape: &crate::ffi::TopoDS_Shape) -> bool {
+    unsafe { crate::ffi::BRepTools_unload_all_triangulations(theShape) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::Compare`
+/// Returns  True if  the    distance between the  two
+/// vertices is lower than their tolerance.
+pub fn compare_vertex2(V1: &crate::ffi::TopoDS_Vertex, V2: &crate::ffi::TopoDS_Vertex) -> bool {
+    unsafe { crate::ffi::BRepTools_compare_vertex2(V1, V2) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::Compare`
+/// Returns  True if  the    distance between the  two
+/// edges is lower than their tolerance.
+pub fn compare_edge2(E1: &crate::ffi::TopoDS_Edge, E2: &crate::ffi::TopoDS_Edge) -> bool {
+    unsafe { crate::ffi::BRepTools_compare_edge2(E1, E2) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::OuterWire`
+/// Returns the outer most wire of <F>. Returns a Null
+/// wire if <F> has no wires.
 pub fn outer_wire(F: &crate::ffi::TopoDS_Face) -> crate::OwnedPtr<crate::ffi::TopoDS_Wire> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_outer_wire(F)) }
 }
-pub use crate::ffi::{
-    BRepTools_detect_closedness as detect_closedness,
-    BRepTools_is_really_closed as is_really_closed, BRepTools_map3_d_edges as map3_d_edges,
-    BRepTools_write_shape_charptr_progressrange as write_shape_charptr_progressrange,
-};
+/// **Source:** `BRepTools.hxx` - `BRepTools::Map3DEdges`
+/// Stores in the map  <M> all the 3D topology edges
+/// of <S>.
+pub fn map3_d_edges(S: &crate::ffi::TopoDS_Shape, M: &mut crate::ffi::TopTools_IndexedMapOfShape) {
+    unsafe { crate::ffi::BRepTools_map3_d_edges(S, M) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::IsReallyClosed`
+/// Verifies that the edge  <E> is found two  times on
+/// the face <F> before calling BRep_Tool::IsClosed.
+pub fn is_really_closed(E: &crate::ffi::TopoDS_Edge, F: &crate::ffi::TopoDS_Face) -> bool {
+    unsafe { crate::ffi::BRepTools_is_really_closed(E, F) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::DetectClosedness`
+/// Detect closedness of face in U and V directions
+pub fn detect_closedness(
+    theFace: &crate::ffi::TopoDS_Face,
+    theUclosed: &mut bool,
+    theVclosed: &mut bool,
+) {
+    unsafe { crate::ffi::BRepTools_detect_closedness(theFace, theUclosed, theVclosed) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::Write`
+/// Writes the shape to the file in an ASCII format TopTools_FormatVersion_VERSION_1.
+/// This alias writes shape with triangulation data.
+/// @param[in] theShape  the shape to write
+/// @param[in] theFile   the path to file to output shape into
+/// @param theProgress the range of progress indicator to fill in
+pub fn write_shape_charptr_progressrange(
+    theShape: &crate::ffi::TopoDS_Shape,
+    theFile: *const std::ffi::c_char,
+    theProgress: &crate::ffi::Message_ProgressRange,
+) -> bool {
+    unsafe {
+        crate::ffi::BRepTools_write_shape_charptr_progressrange(theShape, theFile, theProgress)
+    }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::Write`
+/// Writes the shape to the file in an ASCII format of specified version.
+/// @param[in] theShape          the shape to write
+/// @param[in] theFile           the path to file to output shape into
+/// @param[in] theWithTriangles  flag which specifies whether to save shape with (TRUE) or without
+/// (FALSE) triangles;
+/// has no effect on triangulation-only geometry
+/// @param[in] theWithNormals    flag which specifies whether to save triangulation with (TRUE) or
+/// without (FALSE) normals;
+/// has no effect on triangulation-only geometry
+/// @param[in] theVersion        the TopTools format version
+/// @param theProgress the range of progress indicator to fill in
 pub fn write_shape_charptr_bool2_formatversion_progressrange(
     theShape: &crate::ffi::TopoDS_Shape,
     theFile: *const std::ffi::c_char,
@@ -54,9 +295,37 @@ pub fn write_shape_charptr_bool2_formatversion_progressrange(
         )
     }
 }
-pub use crate::ffi::{
-    BRepTools_eval_and_update_tol as eval_and_update_tol, BRepTools_read as read,
-};
+/// **Source:** `BRepTools.hxx` - `BRepTools::Read`
+/// Reads a Shape  from <File>,  returns it in  <Sh>.
+/// <B> is used to build the shape.
+pub fn read(
+    Sh: &mut crate::ffi::TopoDS_Shape,
+    File: *const std::ffi::c_char,
+    B: &crate::ffi::BRep_Builder,
+    theProgress: &crate::ffi::Message_ProgressRange,
+) -> bool {
+    unsafe { crate::ffi::BRepTools_read(Sh, File, B, theProgress) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::EvalAndUpdateTol`
+/// Evals real tolerance of edge  <theE>.
+/// <theC3d>, <theC2d>, <theS>, <theF>, <theL> are
+/// correspondently 3d curve of edge, 2d curve on surface <theS> and
+/// rang of edge
+/// If calculated tolerance is more then current edge tolerance, edge is updated.
+/// Method returns actual tolerance of edge
+pub fn eval_and_update_tol(
+    theE: &crate::ffi::TopoDS_Edge,
+    theC3d: &crate::ffi::HandleGeomCurve,
+    theC2d: &crate::ffi::HandleGeom2dCurve,
+    theS: &crate::ffi::HandleGeomSurface,
+    theF: f64,
+    theL: f64,
+) -> f64 {
+    unsafe { crate::ffi::BRepTools_eval_and_update_tol(theE, theC3d, theC2d, theS, theF, theL) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::OriEdgeInFace`
+/// returns the cumul  of the orientation  of <Edge>
+/// and thc containing wire in <Face>
 pub fn ori_edge_in_face(
     theEdge: &crate::ffi::TopoDS_Edge,
     theFace: &crate::ffi::TopoDS_Face,
@@ -68,14 +337,33 @@ pub fn ori_edge_in_face(
         .unwrap()
     }
 }
-pub use crate::ffi::{
-    BRepTools_check_locations as check_locations, BRepTools_remove_internals as remove_internals,
-};
+/// **Source:** `BRepTools.hxx` - `BRepTools::RemoveInternals`
+/// Removes internal sub-shapes from the shape.
+/// The check on internal status is based on orientation of sub-shapes,
+/// classification is not performed.
+/// Before removal of internal sub-shapes the algorithm checks if such
+/// removal is not going to break topological connectivity between sub-shapes.
+/// The flag <theForce> if set to true disables the connectivity check and clears
+/// the given shape from all sub-shapes with internal orientation.
+pub fn remove_internals(theS: &mut crate::ffi::TopoDS_Shape, theForce: bool) {
+    unsafe { crate::ffi::BRepTools_remove_internals(theS, theForce) }
+}
+/// **Source:** `BRepTools.hxx` - `BRepTools::CheckLocations`
+/// Check all locations of shape according criterium:
+/// aTrsf.IsNegative() || (Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec())
+/// All sub-shapes having such locations are put in list theProblemShapes
+pub fn check_locations(
+    theS: &crate::ffi::TopoDS_Shape,
+    theProblemShapes: &mut crate::ffi::TopTools_ListOfShape,
+) {
+    unsafe { crate::ffi::BRepTools_check_locations(theS, theProblemShapes) }
+}
 
 // ========================
 // From BRepTools_CopyModification.hxx
 // ========================
 
+/// **Source:** `BRepTools_CopyModification.hxx`:23 - `BRepTools_CopyModification`
 /// Tool class implementing necessary functionality for copying geometry and triangulation.
 pub use crate::ffi::BRepTools_CopyModification as CopyModification;
 
@@ -86,6 +374,7 @@ unsafe impl crate::CppDeletable for CopyModification {
 }
 
 impl CopyModification {
+    /// **Source:** `BRepTools_CopyModification.hxx`:29 - `BRepTools_CopyModification::BRepTools_CopyModification()`
     /// Constructor.
     /// \param[in] theCopyGeom  indicates that the geometry (surfaces and curves) should be copied
     /// \param[in] theCopyMesh  indicates that the triangulation should be copied
@@ -98,6 +387,7 @@ impl CopyModification {
         }
     }
 
+    /// **Source:** `BRepTools_CopyModification.hxx`:29 - `BRepTools_CopyModification::BRepTools_CopyModification()`
     /// Constructor.
     /// \param[in] theCopyGeom  indicates that the geometry (surfaces and curves) should be copied
     /// \param[in] theCopyMesh  indicates that the triangulation should be copied
@@ -105,6 +395,7 @@ impl CopyModification {
         Self::new_bool2(theCopyGeom, true)
     }
 
+    /// **Source:** `BRepTools_CopyModification.hxx`:29 - `BRepTools_CopyModification::BRepTools_CopyModification()`
     /// Constructor.
     /// \param[in] theCopyGeom  indicates that the geometry (surfaces and curves) should be copied
     /// \param[in] theCopyMesh  indicates that the triangulation should be copied
@@ -112,6 +403,7 @@ impl CopyModification {
         Self::new_bool2(true, true)
     }
 
+    /// **Source:** `BRepTools_CopyModification.hxx`:39 - `BRepTools_CopyModification::NewSurface()`
     /// Returns true if theFace has been modified.
     /// If the face has been modified:
     /// - theSurf is the new geometry of the face,
@@ -140,6 +432,7 @@ impl CopyModification {
         }
     }
 
+    /// **Source:** `BRepTools_CopyModification.hxx`:53 - `BRepTools_CopyModification::NewCurve()`
     /// Returns true if theEdge has been modified.
     /// If the edge has been modified:
     /// - theCurve is the new geometric support of the edge,
@@ -165,6 +458,7 @@ impl CopyModification {
         }
     }
 
+    /// **Source:** `BRepTools_CopyModification.hxx`:64 - `BRepTools_CopyModification::NewPoint()`
     /// Returns true if theVertex has been modified.
     /// If the vertex has been modified:
     /// - thePnt is the new geometry of the vertex, and
@@ -187,6 +481,7 @@ impl CopyModification {
         }
     }
 
+    /// **Source:** `BRepTools_CopyModification.hxx`:74 - `BRepTools_CopyModification::NewCurve2d()`
     /// Returns true if theEdge has a new curve on surface on theFace.
     /// If a new curve exists:
     /// - theCurve is the new geometric support of the edge,
@@ -215,6 +510,7 @@ impl CopyModification {
         }
     }
 
+    /// **Source:** `BRepTools_CopyModification.hxx`:87 - `BRepTools_CopyModification::NewParameter()`
     /// Returns true if theVertex has a new parameter on theEdge.
     /// If a new parameter exists:
     /// - thePnt is the parameter, and
@@ -239,6 +535,7 @@ impl CopyModification {
         }
     }
 
+    /// **Source:** `BRepTools_CopyModification.hxx`:96 - `BRepTools_CopyModification::Continuity()`
     /// Returns the continuity of theNewEdge between theNewFace1 and theNewFace2.
     ///
     /// theNewEdge is the new edge created from theEdge.  theNewFace1
@@ -266,6 +563,7 @@ impl CopyModification {
         }
     }
 
+    /// **Source:** `BRepTools_CopyModification.hxx`:106 - `BRepTools_CopyModification::NewTriangulation()`
     /// Returns true if the face has been modified according to changed triangulation.
     /// If the face has been modified:
     /// - theTri is a new triangulation on the face
@@ -283,6 +581,7 @@ impl CopyModification {
         }
     }
 
+    /// **Source:** `BRepTools_CopyModification.hxx`:113 - `BRepTools_CopyModification::NewPolygon()`
     /// Returns true if the edge has been modified according to changed polygon.
     /// If the edge has been modified:
     /// - thePoly is a new polygon
@@ -296,6 +595,7 @@ impl CopyModification {
         }
     }
 
+    /// **Source:** `BRepTools_CopyModification.hxx`:120 - `BRepTools_CopyModification::NewPolygonOnTriangulation()`
     /// Returns true if the edge has been modified according to changed polygon on triangulation.
     /// If the edge has been modified:
     /// - thePoly is a new polygon on triangulation
@@ -315,14 +615,17 @@ impl CopyModification {
         }
     }
 
+    /// **Source:** `BRepTools_CopyModification.hxx`:124 - `BRepTools_CopyModification::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepTools_CopyModification_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepTools_CopyModification.hxx`:124 - `BRepTools_CopyModification::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepTools_CopyModification_get_type_name() }
     }
 
+    /// **Source:** `BRepTools_CopyModification.hxx`:124 - `BRepTools_CopyModification::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepTools_CopyModification_get_type_descriptor()) }
     }
@@ -350,6 +653,7 @@ impl CopyModification {
 // From BRepTools_GTrsfModification.hxx
 // ========================
 
+/// **Source:** `BRepTools_GTrsfModification.hxx`:41 - `BRepTools_GTrsfModification`
 /// Defines a modification of the  geometry by a  GTrsf
 /// from gp. All methods return True and transform the
 /// geometry.
@@ -362,15 +666,18 @@ unsafe impl crate::CppDeletable for GTrsfModification {
 }
 
 impl GTrsfModification {
+    /// **Source:** `BRepTools_GTrsfModification.hxx`:45 - `BRepTools_GTrsfModification::BRepTools_GTrsfModification()`
     pub fn new_gtrsf(T: &crate::ffi::gp_GTrsf) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_GTrsfModification_ctor_gtrsf(T)) }
     }
 
+    /// **Source:** `BRepTools_GTrsfModification.hxx`:48 - `BRepTools_GTrsfModification::GTrsf()`
     /// Gives an access on the GTrsf.
     pub fn g_trsf(&mut self) -> &mut crate::ffi::gp_GTrsf {
         unsafe { &mut *(crate::ffi::BRepTools_GTrsfModification_g_trsf(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepTools_GTrsfModification.hxx`:61 - `BRepTools_GTrsfModification::NewSurface()`
     /// Returns Standard_True  if  the face  <F> has  been
     /// modified.  In this  case, <S> is the new geometric
     /// support of  the  face, <L> the  new location,<Tol>
@@ -404,6 +711,7 @@ impl GTrsfModification {
         }
     }
 
+    /// **Source:** `BRepTools_GTrsfModification.hxx`:74 - `BRepTools_GTrsfModification::NewCurve()`
     /// Returns Standard_True  if  the edge  <E> has  been
     /// modified.  In this case,  <C> is the new geometric
     /// support of the  edge, <L> the  new location, <Tol>
@@ -422,6 +730,7 @@ impl GTrsfModification {
         }
     }
 
+    /// **Source:** `BRepTools_GTrsfModification.hxx`:84 - `BRepTools_GTrsfModification::NewPoint()`
     /// Returns  Standard_True if the  vertex <V> has been
     /// modified.  In this  case, <P> is the new geometric
     /// support of the vertex,   <Tol> the new  tolerance.
@@ -436,6 +745,7 @@ impl GTrsfModification {
         unsafe { crate::ffi::BRepTools_GTrsfModification_new_point(self as *mut Self, V, P, Tol) }
     }
 
+    /// **Source:** `BRepTools_GTrsfModification.hxx`:94 - `BRepTools_GTrsfModification::NewCurve2d()`
     /// Returns Standard_True if  the edge  <E> has a  new
     /// curve on surface on the face <F>.In this case, <C>
     /// is the new geometric support of  the edge, <L> the
@@ -464,6 +774,7 @@ impl GTrsfModification {
         }
     }
 
+    /// **Source:** `BRepTools_GTrsfModification.hxx`:106 - `BRepTools_GTrsfModification::NewParameter()`
     /// Returns Standard_True if the Vertex  <V> has a new
     /// parameter on the  edge <E>. In  this case,  <P> is
     /// the parameter,    <Tol>  the     new    tolerance.
@@ -481,6 +792,7 @@ impl GTrsfModification {
         }
     }
 
+    /// **Source:** `BRepTools_GTrsfModification.hxx`:117 - `BRepTools_GTrsfModification::Continuity()`
     /// Returns the  continuity of  <NewE> between <NewF1>
     /// and <NewF2>.
     ///
@@ -510,6 +822,7 @@ impl GTrsfModification {
         }
     }
 
+    /// **Source:** `BRepTools_GTrsfModification.hxx`:127 - `BRepTools_GTrsfModification::NewTriangulation()`
     /// Returns true if the face has been modified according to changed triangulation.
     /// If the face has been modified:
     /// - theTri is a new triangulation on the face
@@ -527,6 +840,7 @@ impl GTrsfModification {
         }
     }
 
+    /// **Source:** `BRepTools_GTrsfModification.hxx`:134 - `BRepTools_GTrsfModification::NewPolygon()`
     /// Returns true if the edge has been modified according to changed polygon.
     /// If the edge has been modified:
     /// - thePoly is a new polygon
@@ -540,6 +854,7 @@ impl GTrsfModification {
         }
     }
 
+    /// **Source:** `BRepTools_GTrsfModification.hxx`:141 - `BRepTools_GTrsfModification::NewPolygonOnTriangulation()`
     /// Returns true if the edge has been modified according to changed polygon on triangulation.
     /// If the edge has been modified:
     /// - thePoly is a new polygon on triangulation
@@ -559,14 +874,17 @@ impl GTrsfModification {
         }
     }
 
+    /// **Source:** `BRepTools_GTrsfModification.hxx`:145 - `BRepTools_GTrsfModification::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepTools_GTrsfModification_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepTools_GTrsfModification.hxx`:145 - `BRepTools_GTrsfModification::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepTools_GTrsfModification_get_type_name() }
     }
 
+    /// **Source:** `BRepTools_GTrsfModification.hxx`:145 - `BRepTools_GTrsfModification::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepTools_GTrsfModification_get_type_descriptor()) }
     }
@@ -594,6 +912,7 @@ impl GTrsfModification {
 // From BRepTools_History.hxx
 // ========================
 
+/// **Source:** `BRepTools_History.hxx`:89 - `BRepTools_History`
 /// The history keeps the following relations between the input shapes
 /// (S1, ..., Sm) and output shapes (T1, ..., Tn):
 /// 1) an output shape Tj is generated from an input shape Si: Tj <= G(Si);
@@ -665,12 +984,14 @@ unsafe impl crate::CppDeletable for History {
 }
 
 impl History {
+    /// **Source:** `BRepTools_History.hxx`:93 - `BRepTools_History::BRepTools_History()`
     /// @name Constructors for History creation
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_History_ctor()) }
     }
 
+    /// **Source:** `BRepTools_History.hxx`:154 - `BRepTools_History::AddGenerated()`
     /// Methods to set the history.
     /// Set the second shape as generated one from the first shape.
     pub fn add_generated(
@@ -683,6 +1004,7 @@ impl History {
         }
     }
 
+    /// **Source:** `BRepTools_History.hxx`:158 - `BRepTools_History::AddModified()`
     /// Set the second shape as modified one from the first shape.
     pub fn add_modified(
         &mut self,
@@ -694,11 +1016,13 @@ impl History {
         }
     }
 
+    /// **Source:** `BRepTools_History.hxx`:161 - `BRepTools_History::Remove()`
     /// Set the shape as removed one.
     pub fn remove(&mut self, theRemoved: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BRepTools_History_remove(self as *mut Self, theRemoved) }
     }
 
+    /// **Source:** `BRepTools_History.hxx`:164 - `BRepTools_History::ReplaceGenerated()`
     /// Set the second shape as the only generated one from the first one.
     pub fn replace_generated(
         &mut self,
@@ -714,6 +1038,7 @@ impl History {
         }
     }
 
+    /// **Source:** `BRepTools_History.hxx`:168 - `BRepTools_History::ReplaceModified()`
     /// Set the second shape as the only modified one from the first one.
     pub fn replace_modified(
         &mut self,
@@ -729,11 +1054,13 @@ impl History {
         }
     }
 
+    /// **Source:** `BRepTools_History.hxx`:172 - `BRepTools_History::Clear()`
     /// Clears the history.
     pub fn clear(&mut self) {
         unsafe { crate::ffi::BRepTools_History_clear(self as *mut Self) }
     }
 
+    /// **Source:** `BRepTools_History.hxx`:181 - `BRepTools_History::Generated()`
     /// Methods to read the history.
     /// Returns all shapes generated from the shape.
     pub fn generated(
@@ -743,6 +1070,7 @@ impl History {
         unsafe { &*(crate::ffi::BRepTools_History_generated(self as *const Self, theInitial)) }
     }
 
+    /// **Source:** `BRepTools_History.hxx`:184 - `BRepTools_History::Modified()`
     /// Returns all shapes modified from the shape.
     pub fn modified(
         &self,
@@ -751,26 +1079,31 @@ impl History {
         unsafe { &*(crate::ffi::BRepTools_History_modified(self as *const Self, theInitial)) }
     }
 
+    /// **Source:** `BRepTools_History.hxx`:187 - `BRepTools_History::IsRemoved()`
     /// Returns 'true' if the shape is removed.
     pub fn is_removed(&self, theInitial: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepTools_History_is_removed(self as *const Self, theInitial) }
     }
 
+    /// **Source:** `BRepTools_History.hxx`:190 - `BRepTools_History::HasGenerated()`
     /// Returns 'true' if there any shapes with Generated elements present
     pub fn has_generated(&self) -> bool {
         unsafe { crate::ffi::BRepTools_History_has_generated(self as *const Self) }
     }
 
+    /// **Source:** `BRepTools_History.hxx`:193 - `BRepTools_History::HasModified()`
     /// Returns 'true' if there any Modified shapes present
     pub fn has_modified(&self) -> bool {
         unsafe { crate::ffi::BRepTools_History_has_modified(self as *const Self) }
     }
 
+    /// **Source:** `BRepTools_History.hxx`:196 - `BRepTools_History::HasRemoved()`
     /// Returns 'true' if there any removed shapes present
     pub fn has_removed(&self) -> bool {
         unsafe { crate::ffi::BRepTools_History_has_removed(self as *const Self) }
     }
 
+    /// **Source:** `BRepTools_History.hxx`:200 - `BRepTools_History::Merge()`
     /// A method to merge a next history to this history.
     /// Merges the next history to this history.
     pub fn merge_handlebreptoolshistory(
@@ -785,26 +1118,31 @@ impl History {
         }
     }
 
+    /// **Source:** `BRepTools_History.hxx`:203 - `BRepTools_History::Merge()`
     /// Merges the next history to this history.
     pub fn merge_history(&mut self, theHistory23: &crate::ffi::BRepTools_History) {
         unsafe { crate::ffi::BRepTools_History_merge_history(self as *mut Self, theHistory23) }
     }
 
+    /// **Source:** `BRepTools_History.hxx`:229 - `BRepTools_History::DynamicType()`
     /// Define the OCCT RTTI for the type.
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepTools_History_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepTools_History.hxx`:145 - `BRepTools_History::IsSupportedType()`
     /// Returns 'true' if the type of the shape is supported by the history.
     pub fn is_supported_type(theShape: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepTools_History_is_supported_type(theShape) }
     }
 
+    /// **Source:** `BRepTools_History.hxx`:229 - `BRepTools_History::get_type_name()`
     /// Define the OCCT RTTI for the type.
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepTools_History_get_type_name() }
     }
 
+    /// **Source:** `BRepTools_History.hxx`:229 - `BRepTools_History::get_type_descriptor()`
     /// Define the OCCT RTTI for the type.
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepTools_History_get_type_descriptor()) }
@@ -844,6 +1182,7 @@ impl HandleBRepToolsHistory {
 // From BRepTools_Modification.hxx
 // ========================
 
+/// **Source:** `BRepTools_Modification.hxx`:44 - `BRepTools_Modification`
 /// Defines geometric modifications to a shape, i.e.
 /// changes to faces, edges and vertices.
 pub use crate::ffi::BRepTools_Modification as Modification;
@@ -855,6 +1194,7 @@ unsafe impl crate::CppDeletable for Modification {
 }
 
 impl Modification {
+    /// **Source:** `BRepTools_Modification.hxx`:61 - `BRepTools_Modification::NewSurface()`
     /// Returns true if the face, F, has been modified.
     /// If the face has been modified:
     /// - S is the new geometry of the face,
@@ -890,6 +1230,7 @@ impl Modification {
         }
     }
 
+    /// **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
     /// Returns true if the face has been modified according to changed triangulation.
     /// If the face has been modified:
     /// - T is a new triangulation on the face
@@ -901,6 +1242,7 @@ impl Modification {
         unsafe { crate::ffi::BRepTools_Modification_new_triangulation(self as *mut Self, F, T) }
     }
 
+    /// **Source:** `BRepTools_Modification.hxx`:81 - `BRepTools_Modification::NewCurve()`
     /// Returns true if the edge, E, has been modified.
     /// If the edge has been modified:
     /// - C is the new geometry associated with the edge,
@@ -918,6 +1260,7 @@ impl Modification {
         unsafe { crate::ffi::BRepTools_Modification_new_curve(self as *mut Self, E, C, L, Tol) }
     }
 
+    /// **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
     /// Returns true if the edge has been modified according to changed polygon.
     /// If the edge has been modified:
     /// - P is a new polygon
@@ -929,6 +1272,7 @@ impl Modification {
         unsafe { crate::ffi::BRepTools_Modification_new_polygon(self as *mut Self, E, P) }
     }
 
+    /// **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
     /// Returns true if the edge has been modified according to changed polygon on triangulation.
     /// If the edge has been modified:
     /// - P is a new polygon on triangulation
@@ -948,6 +1292,7 @@ impl Modification {
         }
     }
 
+    /// **Source:** `BRepTools_Modification.hxx`:106 - `BRepTools_Modification::NewPoint()`
     /// Returns true if the vertex V has been modified.
     /// If V has been modified:
     /// - P is the new geometry of the vertex, and
@@ -963,6 +1308,7 @@ impl Modification {
         unsafe { crate::ffi::BRepTools_Modification_new_point(self as *mut Self, V, P, Tol) }
     }
 
+    /// **Source:** `BRepTools_Modification.hxx`:120 - `BRepTools_Modification::NewCurve2d()`
     /// Returns true if the edge, E, has a new curve on
     /// surface on the face, F.
     /// If a new curve exists:
@@ -995,6 +1341,7 @@ impl Modification {
         }
     }
 
+    /// **Source:** `BRepTools_Modification.hxx`:133 - `BRepTools_Modification::NewParameter()`
     /// Returns true if the vertex V has a new parameter on the edge E.
     /// If a new parameter exists:
     /// - P is the parameter, and
@@ -1011,6 +1358,7 @@ impl Modification {
         unsafe { crate::ffi::BRepTools_Modification_new_parameter(self as *mut Self, V, E, P, Tol) }
     }
 
+    /// **Source:** `BRepTools_Modification.hxx`:143 - `BRepTools_Modification::Continuity()`
     /// Returns the  continuity of  <NewE> between <NewF1>
     /// and <NewF2>.
     /// <NewE> is the new  edge created from <E>.  <NewF1>
@@ -1039,14 +1387,17 @@ impl Modification {
         }
     }
 
+    /// **Source:** `BRepTools_Modification.hxx`:150 - `BRepTools_Modification::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepTools_Modification_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepTools_Modification.hxx`:150 - `BRepTools_Modification::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepTools_Modification_get_type_name() }
     }
 
+    /// **Source:** `BRepTools_Modification.hxx`:150 - `BRepTools_Modification::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepTools_Modification_get_type_descriptor()) }
     }
@@ -1076,6 +1427,7 @@ impl HandleBRepToolsModification {
 // From BRepTools_Modifier.hxx
 // ========================
 
+/// **Source:** `BRepTools_Modifier.hxx`:41 - `BRepTools_Modifier`
 /// Performs geometric modifications on a shape.
 pub use crate::ffi::BRepTools_Modifier as Modifier;
 
@@ -1086,6 +1438,7 @@ unsafe impl crate::CppDeletable for Modifier {
 }
 
 impl Modifier {
+    /// **Source:** `BRepTools_Modifier.hxx`:47 - `BRepTools_Modifier::BRepTools_Modifier()`
     /// Creates an empty Modifier.
     pub fn new_bool(theMutableInput: bool) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1093,11 +1446,13 @@ impl Modifier {
         }
     }
 
+    /// **Source:** `BRepTools_Modifier.hxx`:50 - `BRepTools_Modifier::BRepTools_Modifier()`
     /// Creates a modifier on the shape <S>.
     pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_Modifier_ctor_shape(S)) }
     }
 
+    /// **Source:** `BRepTools_Modifier.hxx`:54 - `BRepTools_Modifier::BRepTools_Modifier()`
     /// Creates a modifier on  the shape <S>, and performs
     /// the modifications described by <M>.
     pub fn new_shape_handlebreptoolsmodification(
@@ -1111,16 +1466,19 @@ impl Modifier {
         }
     }
 
+    /// **Source:** `BRepTools_Modifier.hxx`:47 - `BRepTools_Modifier::BRepTools_Modifier()`
     /// Creates an empty Modifier.
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_bool(false)
     }
 
+    /// **Source:** `BRepTools_Modifier.hxx`:58 - `BRepTools_Modifier::Init()`
     /// Initializes the modifier with the shape <S>.
     pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BRepTools_Modifier_init(self as *mut Self, S) }
     }
 
+    /// **Source:** `BRepTools_Modifier.hxx`:61 - `BRepTools_Modifier::Perform()`
     /// Performs the modifications described by <M>.
     pub fn perform(
         &mut self,
@@ -1130,17 +1488,20 @@ impl Modifier {
         unsafe { crate::ffi::BRepTools_Modifier_perform(self as *mut Self, M, theProgress) }
     }
 
+    /// **Source:** `BRepTools_Modifier.hxx`:66 - `BRepTools_Modifier::IsDone()`
     /// Returns Standard_True if the modification has
     /// been computed successfully.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepTools_Modifier_is_done(self as *const Self) }
     }
 
+    /// **Source:** `BRepTools_Modifier.hxx`:69 - `BRepTools_Modifier::IsMutableInput()`
     /// Returns the current mutable input state
     pub fn is_mutable_input(&self) -> bool {
         unsafe { crate::ffi::BRepTools_Modifier_is_mutable_input(self as *const Self) }
     }
 
+    /// **Source:** `BRepTools_Modifier.hxx`:74 - `BRepTools_Modifier::SetMutableInput()`
     /// Sets the mutable input state
     /// If true then the input (original) shape can be modified
     /// during modification process
@@ -1150,6 +1511,7 @@ impl Modifier {
         }
     }
 
+    /// **Source:** `BRepTools_Modifier.hxx`:77 - `BRepTools_Modifier::ModifiedShape()`
     /// Returns the modified shape corresponding to <S>.
     pub fn modified_shape(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepTools_Modifier_modified_shape(self as *const Self, S)) }
@@ -1160,6 +1522,7 @@ impl Modifier {
 // From BRepTools_NurbsConvertModification.hxx
 // ========================
 
+/// **Source:** `BRepTools_NurbsConvertModification.hxx`:43 - `BRepTools_NurbsConvertModification`
 /// Defines a modification of the  geometry by a  Trsf
 /// from gp. All methods return True and transform the
 /// geometry.
@@ -1172,10 +1535,12 @@ unsafe impl crate::CppDeletable for NurbsConvertModification {
 }
 
 impl NurbsConvertModification {
+    /// **Source:** `BRepTools_NurbsConvertModification.hxx`:47 - `BRepTools_NurbsConvertModification::BRepTools_NurbsConvertModification()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_NurbsConvertModification_ctor()) }
     }
 
+    /// **Source:** `BRepTools_NurbsConvertModification.hxx`:60 - `BRepTools_NurbsConvertModification::NewSurface()`
     /// Returns Standard_True  if  the face  <F> has  been
     /// modified.  In this  case, <S> is the new geometric
     /// support of  the  face, <L> the  new location,<Tol>
@@ -1209,6 +1574,7 @@ impl NurbsConvertModification {
         }
     }
 
+    /// **Source:** `BRepTools_NurbsConvertModification.hxx`:73 - `BRepTools_NurbsConvertModification::NewCurve()`
     /// Returns Standard_True  if  the edge  <E> has  been
     /// modified.  In this case,  <C> is the new geometric
     /// support of the  edge, <L> the  new location, <Tol>
@@ -1233,6 +1599,7 @@ impl NurbsConvertModification {
         }
     }
 
+    /// **Source:** `BRepTools_NurbsConvertModification.hxx`:83 - `BRepTools_NurbsConvertModification::NewPoint()`
     /// Returns  Standard_True if the  vertex <V> has been
     /// modified.  In this  case, <P> is the new geometric
     /// support of the vertex,   <Tol> the new  tolerance.
@@ -1249,6 +1616,7 @@ impl NurbsConvertModification {
         }
     }
 
+    /// **Source:** `BRepTools_NurbsConvertModification.hxx`:93 - `BRepTools_NurbsConvertModification::NewCurve2d()`
     /// Returns Standard_True if  the edge  <E> has a  new
     /// curve on surface on the face <F>.In this case, <C>
     /// is the new geometric support of  the edge, <L> the
@@ -1277,6 +1645,7 @@ impl NurbsConvertModification {
         }
     }
 
+    /// **Source:** `BRepTools_NurbsConvertModification.hxx`:105 - `BRepTools_NurbsConvertModification::NewParameter()`
     /// Returns Standard_True if the Vertex  <V> has a new
     /// parameter on the  edge <E>. In  this case,  <P> is
     /// the parameter,    <Tol>  the     new    tolerance.
@@ -1300,6 +1669,7 @@ impl NurbsConvertModification {
         }
     }
 
+    /// **Source:** `BRepTools_NurbsConvertModification.hxx`:116 - `BRepTools_NurbsConvertModification::Continuity()`
     /// Returns the  continuity of  <NewE> between <NewF1>
     /// and <NewF2>.
     ///
@@ -1331,6 +1701,7 @@ impl NurbsConvertModification {
         }
     }
 
+    /// **Source:** `BRepTools_NurbsConvertModification.hxx`:126 - `BRepTools_NurbsConvertModification::NewTriangulation()`
     /// Returns true if the face has been modified according to changed triangulation.
     /// If the face has been modified:
     /// - theTri is a new triangulation on the face
@@ -1348,6 +1719,7 @@ impl NurbsConvertModification {
         }
     }
 
+    /// **Source:** `BRepTools_NurbsConvertModification.hxx`:133 - `BRepTools_NurbsConvertModification::NewPolygon()`
     /// Returns true if the edge has been modified according to changed polygon.
     /// If the edge has been modified:
     /// - thePoly is a new polygon
@@ -1365,6 +1737,7 @@ impl NurbsConvertModification {
         }
     }
 
+    /// **Source:** `BRepTools_NurbsConvertModification.hxx`:140 - `BRepTools_NurbsConvertModification::NewPolygonOnTriangulation()`
     /// Returns true if the edge has been modified according to changed polygon on triangulation.
     /// If the edge has been modified:
     /// - thePoly is a new polygon on triangulation
@@ -1384,6 +1757,7 @@ impl NurbsConvertModification {
         }
     }
 
+    /// **Source:** `BRepTools_NurbsConvertModification.hxx`:144 - `BRepTools_NurbsConvertModification::GetUpdatedEdges()`
     pub fn get_updated_edges(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BRepTools_NurbsConvertModification_get_updated_edges(
@@ -1392,16 +1766,19 @@ impl NurbsConvertModification {
         }
     }
 
+    /// **Source:** `BRepTools_NurbsConvertModification.hxx`:146 - `BRepTools_NurbsConvertModification::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
             &*(crate::ffi::BRepTools_NurbsConvertModification_dynamic_type(self as *const Self))
         }
     }
 
+    /// **Source:** `BRepTools_NurbsConvertModification.hxx`:146 - `BRepTools_NurbsConvertModification::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepTools_NurbsConvertModification_get_type_name() }
     }
 
+    /// **Source:** `BRepTools_NurbsConvertModification.hxx`:146 - `BRepTools_NurbsConvertModification::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepTools_NurbsConvertModification_get_type_descriptor()) }
     }
@@ -1447,6 +1824,7 @@ impl NurbsConvertModification {
 // From BRepTools_PurgeLocations.hxx
 // ========================
 
+/// **Source:** `BRepTools_PurgeLocations.hxx`:25 - `BRepTools_PurgeLocations`
 /// Removes location datums, which satisfy conditions:
 /// aTrsf.IsNegative() || (Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec())
 /// from all locations of shape and its subshapes
@@ -1459,24 +1837,29 @@ unsafe impl crate::CppDeletable for PurgeLocations {
 }
 
 impl PurgeLocations {
+    /// **Source:** `BRepTools_PurgeLocations.hxx`:29 - `BRepTools_PurgeLocations::BRepTools_PurgeLocations()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_PurgeLocations_ctor()) }
     }
 
+    /// **Source:** `BRepTools_PurgeLocations.hxx`:32 - `BRepTools_PurgeLocations::Perform()`
     /// Removes all locations correspondingly to criterium from theShape.
     pub fn perform(&mut self, theShape: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepTools_PurgeLocations_perform(self as *mut Self, theShape) }
     }
 
+    /// **Source:** `BRepTools_PurgeLocations.hxx`:35 - `BRepTools_PurgeLocations::GetResult()`
     /// Returns shape with removed locations.
     pub fn get_result(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepTools_PurgeLocations_get_result(self as *const Self)) }
     }
 
+    /// **Source:** `BRepTools_PurgeLocations.hxx`:37 - `BRepTools_PurgeLocations::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepTools_PurgeLocations_is_done(self as *const Self) }
     }
 
+    /// **Source:** `BRepTools_PurgeLocations.hxx`:40 - `BRepTools_PurgeLocations::ModifiedShape()`
     /// Returns modified shape obtained from initial shape.
     pub fn modified_shape(
         &self,
@@ -1495,6 +1878,7 @@ impl PurgeLocations {
 // From BRepTools_Quilt.hxx
 // ========================
 
+/// **Source:** `BRepTools_Quilt.hxx`:43 - `BRepTools_Quilt`
 /// A Tool to glue faces at common edges and reconstruct shells.
 ///
 /// The user designate pairs of common edges using the method Bind.
@@ -1519,10 +1903,12 @@ unsafe impl crate::CppDeletable for Quilt {
 }
 
 impl Quilt {
+    /// **Source:** `BRepTools_Quilt.hxx`:48 - `BRepTools_Quilt::BRepTools_Quilt()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_Quilt_ctor()) }
     }
 
+    /// **Source:** `BRepTools_Quilt.hxx`:66 - `BRepTools_Quilt::Bind()`
     /// Binds <Enew> to   be  the  new edge  instead   of
     /// <Eold>.
     ///
@@ -1543,6 +1929,7 @@ impl Quilt {
         unsafe { crate::ffi::BRepTools_Quilt_bind_edge2(self as *mut Self, Eold, Enew) }
     }
 
+    /// **Source:** `BRepTools_Quilt.hxx`:72 - `BRepTools_Quilt::Bind()`
     /// Binds <VNew> to be a new vertex instead of <Vold>.
     ///
     /// The faces  of  the added  shape containing  <Vold>
@@ -1555,23 +1942,27 @@ impl Quilt {
         unsafe { crate::ffi::BRepTools_Quilt_bind_vertex2(self as *mut Self, Vold, Vnew) }
     }
 
+    /// **Source:** `BRepTools_Quilt.hxx`:76 - `BRepTools_Quilt::Add()`
     /// Add   the faces of  <S>  to  the Quilt,  the faces
     /// containing bounded edges are copied.
     pub fn add(&mut self, S: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BRepTools_Quilt_add(self as *mut Self, S) }
     }
 
+    /// **Source:** `BRepTools_Quilt.hxx`:80 - `BRepTools_Quilt::IsCopied()`
     /// Returns   True if <S> has   been  copied (<S> is a
     /// vertex, an edge or a face)
     pub fn is_copied(&self, S: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepTools_Quilt_is_copied(self as *const Self, S) }
     }
 
+    /// **Source:** `BRepTools_Quilt.hxx`:83 - `BRepTools_Quilt::Copy()`
     /// Returns the shape substituted to <S> in the Quilt.
     pub fn copy(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepTools_Quilt_copy(self as *const Self, S)) }
     }
 
+    /// **Source:** `BRepTools_Quilt.hxx`:88 - `BRepTools_Quilt::Shells()`
     /// Returns a Compound of shells made from the current
     /// set of faces. The shells will be flagged as closed
     /// or not closed.
@@ -1586,6 +1977,7 @@ impl Quilt {
 // From BRepTools_ReShape.hxx
 // ========================
 
+/// **Source:** `BRepTools_ReShape.hxx`:52 - `BRepTools_ReShape`
 /// Rebuilds a Shape by making pre-defined substitutions on some
 /// of its components
 ///
@@ -1609,21 +2001,25 @@ unsafe impl crate::CppDeletable for ReShape {
 }
 
 impl ReShape {
+    /// **Source:** `BRepTools_ReShape.hxx`:56 - `BRepTools_ReShape::BRepTools_ReShape()`
     /// Returns an empty Reshape
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_ReShape_ctor()) }
     }
 
+    /// **Source:** `BRepTools_ReShape.hxx`:59 - `BRepTools_ReShape::Clear()`
     /// Clears all substitutions requests
     pub fn clear(&mut self) {
         unsafe { crate::ffi::BRepTools_ReShape_clear(self as *mut Self) }
     }
 
+    /// **Source:** `BRepTools_ReShape.hxx`:62 - `BRepTools_ReShape::Remove()`
     /// Sets a request to Remove a Shape whatever the orientation
     pub fn remove(&mut self, shape: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BRepTools_ReShape_remove(self as *mut Self, shape) }
     }
 
+    /// **Source:** `BRepTools_ReShape.hxx`:65 - `BRepTools_ReShape::Replace()`
     /// Sets a request to Replace a Shape by a new one.
     pub fn replace(
         &mut self,
@@ -1633,11 +2029,13 @@ impl ReShape {
         unsafe { crate::ffi::BRepTools_ReShape_replace(self as *mut Self, shape, newshape) }
     }
 
+    /// **Source:** `BRepTools_ReShape.hxx`:94 - `BRepTools_ReShape::IsRecorded()`
     /// Tells if a shape is recorded for Replace/Remove
     pub fn is_recorded(&self, shape: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepTools_ReShape_is_recorded(self as *const Self, shape) }
     }
 
+    /// **Source:** `BRepTools_ReShape.hxx`:100 - `BRepTools_ReShape::Value()`
     /// Returns the new value for an individual shape
     /// If not recorded, returns the original shape itself
     /// If to be Removed, returns a Null Shape
@@ -1654,6 +2052,7 @@ impl ReShape {
         }
     }
 
+    /// **Source:** `BRepTools_ReShape.hxx`:109 - `BRepTools_ReShape::Status()`
     /// Returns a complete substitution status for a shape
     /// 0  : not recorded,   <newsh> = original <shape>
     /// < 0: to be removed,  <newsh> is NULL
@@ -1670,6 +2069,7 @@ impl ReShape {
         unsafe { crate::ffi::BRepTools_ReShape_status(self as *mut Self, shape, newsh, last) }
     }
 
+    /// **Source:** `BRepTools_ReShape.hxx`:123 - `BRepTools_ReShape::Apply()`
     /// Applies the substitutions requests to a shape.
     ///
     /// theUntil gives the level of type until which requests are taken into account.
@@ -1694,12 +2094,14 @@ impl ReShape {
         }
     }
 
+    /// **Source:** `BRepTools_ReShape.hxx`:128 - `BRepTools_ReShape::ModeConsiderLocation()`
     /// Returns (modifiable) the flag which defines whether Location of shape take into account
     /// during replacing shapes.
     pub fn mode_consider_location(&mut self) -> &mut bool {
         unsafe { &mut *(crate::ffi::BRepTools_ReShape_mode_consider_location(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepTools_ReShape.hxx`:134 - `BRepTools_ReShape::CopyVertex()`
     pub fn copy_vertex_vertex_real(
         &mut self,
         theV: &crate::ffi::TopoDS_Vertex,
@@ -1714,6 +2116,7 @@ impl ReShape {
         }
     }
 
+    /// **Source:** `BRepTools_ReShape.hxx`:142 - `BRepTools_ReShape::CopyVertex()`
     pub fn copy_vertex_vertex_pnt_real(
         &mut self,
         theV: &crate::ffi::TopoDS_Vertex,
@@ -1730,10 +2133,12 @@ impl ReShape {
         }
     }
 
+    /// **Source:** `BRepTools_ReShape.hxx`:148 - `BRepTools_ReShape::IsNewShape()`
     pub fn is_new_shape(&self, theShape: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepTools_ReShape_is_new_shape(self as *const Self, theShape) }
     }
 
+    /// **Source:** `BRepTools_ReShape.hxx`:151 - `BRepTools_ReShape::History()`
     /// Returns the history of the substituted shapes.
     pub fn history(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
         unsafe {
@@ -1741,14 +2146,17 @@ impl ReShape {
         }
     }
 
+    /// **Source:** `BRepTools_ReShape.hxx`:153 - `BRepTools_ReShape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepTools_ReShape_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepTools_ReShape.hxx`:153 - `BRepTools_ReShape::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepTools_ReShape_get_type_name() }
     }
 
+    /// **Source:** `BRepTools_ReShape.hxx`:153 - `BRepTools_ReShape::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepTools_ReShape_get_type_descriptor()) }
     }
@@ -1787,6 +2195,7 @@ impl HandleBRepToolsReShape {
 // From BRepTools_ShapeSet.hxx
 // ========================
 
+/// **Source:** `BRepTools_ShapeSet.hxx`:40 - `BRepTools_ShapeSet`
 /// Contains a Shape and all  its subshapes, locations
 /// and geometries.
 ///
@@ -1800,6 +2209,7 @@ unsafe impl crate::CppDeletable for ShapeSet {
 }
 
 impl ShapeSet {
+    /// **Source:** `BRepTools_ShapeSet.hxx`:47 - `BRepTools_ShapeSet::BRepTools_ShapeSet()`
     /// Builds an empty ShapeSet.
     /// @param theWithTriangles flag to write triangulation data
     pub fn new_bool2(theWithTriangles: bool, theWithNormals: bool) -> crate::OwnedPtr<Self> {
@@ -1811,6 +2221,7 @@ impl ShapeSet {
         }
     }
 
+    /// **Source:** `BRepTools_ShapeSet.hxx`:52 - `BRepTools_ShapeSet::BRepTools_ShapeSet()`
     /// Builds an empty ShapeSet.
     /// @param theWithTriangles flag to write triangulation data
     pub fn new_builder_bool2(
@@ -1827,18 +2238,21 @@ impl ShapeSet {
         }
     }
 
+    /// **Source:** `BRepTools_ShapeSet.hxx`:47 - `BRepTools_ShapeSet::BRepTools_ShapeSet()`
     /// Builds an empty ShapeSet.
     /// @param theWithTriangles flag to write triangulation data
     pub fn new_bool(theWithTriangles: bool) -> crate::OwnedPtr<Self> {
         Self::new_bool2(theWithTriangles, false)
     }
 
+    /// **Source:** `BRepTools_ShapeSet.hxx`:47 - `BRepTools_ShapeSet::BRepTools_ShapeSet()`
     /// Builds an empty ShapeSet.
     /// @param theWithTriangles flag to write triangulation data
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_bool2(true, false)
     }
 
+    /// **Source:** `BRepTools_ShapeSet.hxx`:52 - `BRepTools_ShapeSet::BRepTools_ShapeSet()`
     /// Builds an empty ShapeSet.
     /// @param theWithTriangles flag to write triangulation data
     pub fn new_builder_bool(
@@ -1848,22 +2262,26 @@ impl ShapeSet {
         Self::new_builder_bool2(theBuilder, theWithTriangles, false)
     }
 
+    /// **Source:** `BRepTools_ShapeSet.hxx`:52 - `BRepTools_ShapeSet::BRepTools_ShapeSet()`
     /// Builds an empty ShapeSet.
     /// @param theWithTriangles flag to write triangulation data
     pub fn new_builder(theBuilder: &crate::ffi::BRep_Builder) -> crate::OwnedPtr<Self> {
         Self::new_builder_bool2(theBuilder, true, false)
     }
 
+    /// **Source:** `BRepTools_ShapeSet.hxx`:59 - `BRepTools_ShapeSet::IsWithTriangles()`
     /// Return true if shape should be stored with triangles.
     pub fn is_with_triangles(&self) -> bool {
         unsafe { crate::ffi::BRepTools_ShapeSet_is_with_triangles(self as *const Self) }
     }
 
+    /// **Source:** `BRepTools_ShapeSet.hxx`:62 - `BRepTools_ShapeSet::IsWithNormals()`
     /// Return true if shape should be stored triangulation with normals.
     pub fn is_with_normals(&self) -> bool {
         unsafe { crate::ffi::BRepTools_ShapeSet_is_with_normals(self as *const Self) }
     }
 
+    /// **Source:** `BRepTools_ShapeSet.hxx`:66 - `BRepTools_ShapeSet::SetWithTriangles()`
     /// Define if shape will be stored with triangles.
     /// Ignored (always written) if face defines only triangulation (no surface).
     pub fn set_with_triangles(&mut self, theWithTriangles: bool) {
@@ -1872,6 +2290,7 @@ impl ShapeSet {
         }
     }
 
+    /// **Source:** `BRepTools_ShapeSet.hxx`:73 - `BRepTools_ShapeSet::SetWithNormals()`
     /// Define if shape will be stored triangulation with normals.
     /// Ignored (always written) if face defines only triangulation (no surface).
     pub fn set_with_normals(&mut self, theWithNormals: bool) {
@@ -1880,16 +2299,19 @@ impl ShapeSet {
         }
     }
 
+    /// **Source:** `BRepTools_ShapeSet.hxx`:76 - `BRepTools_ShapeSet::Clear()`
     /// Clears the content of the set.
     pub fn clear(&mut self) {
         unsafe { crate::ffi::BRepTools_ShapeSet_clear(self as *mut Self) }
     }
 
+    /// **Source:** `BRepTools_ShapeSet.hxx`:79 - `BRepTools_ShapeSet::AddGeometry()`
     /// Stores the geometry of <S>.
     pub fn add_geometry(&mut self, S: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BRepTools_ShapeSet_add_geometry(self as *mut Self, S) }
     }
 
+    /// **Source:** `BRepTools_ShapeSet.hxx`:113 - `BRepTools_ShapeSet::AddShapes()`
     /// Inserts  the shape <S2> in  the  shape <S1>.  This
     /// method must be   redefined  to  use   the  correct
     /// builder.
@@ -1897,6 +2319,7 @@ impl ShapeSet {
         unsafe { crate::ffi::BRepTools_ShapeSet_add_shapes(self as *mut Self, S1, S2) }
     }
 
+    /// **Source:** `BRepTools_ShapeSet.hxx`:116 - `BRepTools_ShapeSet::Check()`
     pub fn check(&mut self, T: crate::top_abs::ShapeEnum, S: &mut crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BRepTools_ShapeSet_check(self as *mut Self, T.into(), S) }
     }
@@ -1967,6 +2390,7 @@ impl ShapeSet {
 // From BRepTools_Substitution.hxx
 // ========================
 
+/// **Source:** `BRepTools_Substitution.hxx`:37 - `BRepTools_Substitution`
 /// A tool to substitute subshapes by other shapes.
 ///
 /// The user use the method Substitute to define the
@@ -1986,15 +2410,18 @@ unsafe impl crate::CppDeletable for Substitution {
 }
 
 impl Substitution {
+    /// **Source:** `BRepTools_Substitution.hxx`:42 - `BRepTools_Substitution::BRepTools_Substitution()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_Substitution_ctor()) }
     }
 
+    /// **Source:** `BRepTools_Substitution.hxx`:45 - `BRepTools_Substitution::Clear()`
     /// Reset all the fields.
     pub fn clear(&mut self) {
         unsafe { crate::ffi::BRepTools_Substitution_clear(self as *mut Self) }
     }
 
+    /// **Source:** `BRepTools_Substitution.hxx`:55 - `BRepTools_Substitution::Substitute()`
     /// <Oldshape> will be replaced by <NewShapes>.
     ///
     /// <NewShapes> can be empty , in this case <OldShape>
@@ -2013,6 +2440,7 @@ impl Substitution {
         }
     }
 
+    /// **Source:** `BRepTools_Substitution.hxx`:62 - `BRepTools_Substitution::Build()`
     /// Build NewShape from <S> if its subshapes has modified.
     ///
     /// The methods <IsCopied> and <Copy> allows you to keep
@@ -2021,11 +2449,13 @@ impl Substitution {
         unsafe { crate::ffi::BRepTools_Substitution_build(self as *mut Self, S) }
     }
 
+    /// **Source:** `BRepTools_Substitution.hxx`:65 - `BRepTools_Substitution::IsCopied()`
     /// Returns   True if <S> has   been  replaced .
     pub fn is_copied(&self, S: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepTools_Substitution_is_copied(self as *const Self, S) }
     }
 
+    /// **Source:** `BRepTools_Substitution.hxx`:68 - `BRepTools_Substitution::Copy()`
     /// Returns the set of shapes substituted to <S>.
     pub fn copy(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepTools_Substitution_copy(self as *const Self, S)) }
@@ -2036,6 +2466,7 @@ impl Substitution {
 // From BRepTools_TrsfModification.hxx
 // ========================
 
+/// **Source:** `BRepTools_TrsfModification.hxx`:41 - `BRepTools_TrsfModification`
 /// Describes a modification that uses a gp_Trsf to
 /// change the geometry of a shape. All functions return
 /// true and transform the geometry of the shape.
@@ -2048,21 +2479,25 @@ unsafe impl crate::CppDeletable for TrsfModification {
 }
 
 impl TrsfModification {
+    /// **Source:** `BRepTools_TrsfModification.hxx`:45 - `BRepTools_TrsfModification::BRepTools_TrsfModification()`
     pub fn new_trsf(T: &crate::ffi::gp_Trsf) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_TrsfModification_ctor_trsf(T)) }
     }
 
+    /// **Source:** `BRepTools_TrsfModification.hxx`:49 - `BRepTools_TrsfModification::Trsf()`
     /// Provides access to the gp_Trsf associated with this
     /// modification. The transformation can be changed.
     pub fn trsf(&mut self) -> &mut crate::ffi::gp_Trsf {
         unsafe { &mut *(crate::ffi::BRepTools_TrsfModification_trsf(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepTools_TrsfModification.hxx`:52 - `BRepTools_TrsfModification::IsCopyMesh()`
     /// Sets a flag to indicate the need to copy mesh.
     pub fn is_copy_mesh(&mut self) -> &mut bool {
         unsafe { &mut *(crate::ffi::BRepTools_TrsfModification_is_copy_mesh(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepTools_TrsfModification.hxx`:65 - `BRepTools_TrsfModification::NewSurface()`
     /// Returns true if the face F has been modified.
     /// If the face has been modified:
     /// - S is the new geometry of the face,
@@ -2096,6 +2531,7 @@ impl TrsfModification {
         }
     }
 
+    /// **Source:** `BRepTools_TrsfModification.hxx`:76 - `BRepTools_TrsfModification::NewTriangulation()`
     /// Returns true if the face has been modified according to changed triangulation.
     /// If the face has been modified:
     /// - T is a new triangulation on the face
@@ -2107,6 +2543,7 @@ impl TrsfModification {
         unsafe { crate::ffi::BRepTools_TrsfModification_new_triangulation(self as *mut Self, F, T) }
     }
 
+    /// **Source:** `BRepTools_TrsfModification.hxx`:81 - `BRepTools_TrsfModification::NewPolygon()`
     /// Returns true if the edge has been modified according to changed polygon.
     /// If the edge has been modified:
     /// - P is a new polygon
@@ -2118,6 +2555,7 @@ impl TrsfModification {
         unsafe { crate::ffi::BRepTools_TrsfModification_new_polygon(self as *mut Self, E, P) }
     }
 
+    /// **Source:** `BRepTools_TrsfModification.hxx`:87 - `BRepTools_TrsfModification::NewPolygonOnTriangulation()`
     /// Returns true if the edge has been modified according to changed polygon on triangulation.
     /// If the edge has been modified:
     /// - P is a new polygon on triangulation
@@ -2137,6 +2575,7 @@ impl TrsfModification {
         }
     }
 
+    /// **Source:** `BRepTools_TrsfModification.hxx`:96 - `BRepTools_TrsfModification::NewCurve()`
     /// Always returns true indicating that the edge E is always modified.
     /// - C is the new geometric support of the edge,
     /// - L is the new location, and
@@ -2151,6 +2590,7 @@ impl TrsfModification {
         unsafe { crate::ffi::BRepTools_TrsfModification_new_curve(self as *mut Self, E, C, L, Tol) }
     }
 
+    /// **Source:** `BRepTools_TrsfModification.hxx`:107 - `BRepTools_TrsfModification::NewPoint()`
     /// Returns true if the vertex V has been modified.
     /// If the vertex has been modified:
     /// - P is the new geometry of the vertex, and
@@ -2166,6 +2606,7 @@ impl TrsfModification {
         unsafe { crate::ffi::BRepTools_TrsfModification_new_point(self as *mut Self, V, P, Tol) }
     }
 
+    /// **Source:** `BRepTools_TrsfModification.hxx`:118 - `BRepTools_TrsfModification::NewCurve2d()`
     /// Returns true if the edge E has a new curve on surface on the face F.
     /// If a new curve exists:
     /// - C is the new geometric support of the edge,
@@ -2195,6 +2636,7 @@ impl TrsfModification {
         }
     }
 
+    /// **Source:** `BRepTools_TrsfModification.hxx`:131 - `BRepTools_TrsfModification::NewParameter()`
     /// Returns true if the Vertex V has a new parameter on the edge E.
     /// If a new parameter exists:
     /// - P is the parameter, and
@@ -2213,6 +2655,7 @@ impl TrsfModification {
         }
     }
 
+    /// **Source:** `BRepTools_TrsfModification.hxx`:142 - `BRepTools_TrsfModification::Continuity()`
     /// Returns the  continuity of  <NewE> between <NewF1>
     /// and <NewF2>.
     ///
@@ -2242,14 +2685,17 @@ impl TrsfModification {
         }
     }
 
+    /// **Source:** `BRepTools_TrsfModification.hxx`:149 - `BRepTools_TrsfModification::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepTools_TrsfModification_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepTools_TrsfModification.hxx`:149 - `BRepTools_TrsfModification::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepTools_TrsfModification_get_type_name() }
     }
 
+    /// **Source:** `BRepTools_TrsfModification.hxx`:149 - `BRepTools_TrsfModification::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepTools_TrsfModification_get_type_descriptor()) }
     }
@@ -2277,6 +2723,7 @@ impl TrsfModification {
 // From BRepTools_WireExplorer.hxx
 // ========================
 
+/// **Source:** `BRepTools_WireExplorer.hxx`:44 - `BRepTools_WireExplorer`
 /// The WireExplorer is a tool to explore the edges of
 /// a wire in a connection order.
 ///
@@ -2299,16 +2746,19 @@ unsafe impl crate::CppDeletable for WireExplorer {
 }
 
 impl WireExplorer {
+    /// **Source:** `BRepTools_WireExplorer.hxx`:50 - `BRepTools_WireExplorer::BRepTools_WireExplorer()`
     /// Constructs an empty explorer (which can be initialized using Init)
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_WireExplorer_ctor()) }
     }
 
+    /// **Source:** `BRepTools_WireExplorer.hxx`:53 - `BRepTools_WireExplorer::BRepTools_WireExplorer()`
     /// IInitializes an exploration  of the wire <W>.
     pub fn new_wire(W: &crate::ffi::TopoDS_Wire) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_WireExplorer_ctor_wire(W)) }
     }
 
+    /// **Source:** `BRepTools_WireExplorer.hxx`:58 - `BRepTools_WireExplorer::BRepTools_WireExplorer()`
     /// Initializes an exploration  of the wire <W>.
     /// F is used to select the edge connected to the
     /// previous in the parametric representation of <F>.
@@ -2321,11 +2771,13 @@ impl WireExplorer {
         }
     }
 
+    /// **Source:** `BRepTools_WireExplorer.hxx`:61 - `BRepTools_WireExplorer::Init()`
     /// Initializes an exploration of the wire <W>.
     pub fn init_wire(&mut self, W: &crate::ffi::TopoDS_Wire) {
         unsafe { crate::ffi::BRepTools_WireExplorer_init_wire(self as *mut Self, W) }
     }
 
+    /// **Source:** `BRepTools_WireExplorer.hxx`:66 - `BRepTools_WireExplorer::Init()`
     /// Initializes an exploration of the wire <W>.
     /// F is used to select the edge connected to the
     /// previous in the parametric representation of <F>.
@@ -2333,6 +2785,7 @@ impl WireExplorer {
         unsafe { crate::ffi::BRepTools_WireExplorer_init_wire_face(self as *mut Self, W, F) }
     }
 
+    /// **Source:** `BRepTools_WireExplorer.hxx`:72 - `BRepTools_WireExplorer::Init()`
     /// Initializes an exploration of the wire <W>.
     /// F is used to select the edge connected to the
     /// previous in the parametric representation of <F>.
@@ -2359,21 +2812,25 @@ impl WireExplorer {
         }
     }
 
+    /// **Source:** `BRepTools_WireExplorer.hxx`:80 - `BRepTools_WireExplorer::More()`
     /// Returns True if there  is a current  edge.
     pub fn more(&self) -> bool {
         unsafe { crate::ffi::BRepTools_WireExplorer_more(self as *const Self) }
     }
 
+    /// **Source:** `BRepTools_WireExplorer.hxx`:83 - `BRepTools_WireExplorer::Next()`
     /// Proceeds to the next edge.
     pub fn next(&mut self) {
         unsafe { crate::ffi::BRepTools_WireExplorer_next(self as *mut Self) }
     }
 
+    /// **Source:** `BRepTools_WireExplorer.hxx`:86 - `BRepTools_WireExplorer::Current()`
     /// Returns the current edge.
     pub fn current(&self) -> &crate::ffi::TopoDS_Edge {
         unsafe { &*(crate::ffi::BRepTools_WireExplorer_current(self as *const Self)) }
     }
 
+    /// **Source:** `BRepTools_WireExplorer.hxx`:89 - `BRepTools_WireExplorer::Orientation()`
     /// Returns an Orientation for the current edge.
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         unsafe {
@@ -2384,12 +2841,14 @@ impl WireExplorer {
         }
     }
 
+    /// **Source:** `BRepTools_WireExplorer.hxx`:93 - `BRepTools_WireExplorer::CurrentVertex()`
     /// Returns the vertex connecting the current  edge to
     /// the previous one.
     pub fn current_vertex(&self) -> &crate::ffi::TopoDS_Vertex {
         unsafe { &*(crate::ffi::BRepTools_WireExplorer_current_vertex(self as *const Self)) }
     }
 
+    /// **Source:** `BRepTools_WireExplorer.hxx`:96 - `BRepTools_WireExplorer::Clear()`
     /// Clears the content of the explorer.
     pub fn clear(&mut self) {
         unsafe { crate::ffi::BRepTools_WireExplorer_clear(self as *mut Self) }

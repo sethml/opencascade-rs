@@ -10,6 +10,7 @@
 // From IGESControl_ActorWrite.hxx
 // ========================
 
+/// **Source:** `IGESControl_ActorWrite.hxx`:33 - `IGESControl_ActorWrite`
 /// Actor to write Shape to IGES
 pub use crate::ffi::IGESControl_ActorWrite as ActorWrite;
 
@@ -20,18 +21,22 @@ unsafe impl crate::CppDeletable for ActorWrite {
 }
 
 impl ActorWrite {
+    /// **Source:** `IGESControl_ActorWrite.hxx`:36 - `IGESControl_ActorWrite::IGESControl_ActorWrite()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESControl_ActorWrite_ctor()) }
     }
 
+    /// **Source:** `IGESControl_ActorWrite.hxx`:51 - `IGESControl_ActorWrite::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESControl_ActorWrite_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IGESControl_ActorWrite.hxx`:51 - `IGESControl_ActorWrite::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IGESControl_ActorWrite_get_type_name() }
     }
 
+    /// **Source:** `IGESControl_ActorWrite.hxx`:51 - `IGESControl_ActorWrite::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESControl_ActorWrite_get_type_descriptor()) }
     }
@@ -121,6 +126,7 @@ impl ActorWrite {
 // From IGESControl_AlgoContainer.hxx
 // ========================
 
+/// **Source:** `IGESControl_AlgoContainer.hxx`:27 - `IGESControl_AlgoContainer`
 pub use crate::ffi::IGESControl_AlgoContainer as AlgoContainer;
 
 unsafe impl crate::CppDeletable for AlgoContainer {
@@ -130,19 +136,23 @@ unsafe impl crate::CppDeletable for AlgoContainer {
 }
 
 impl AlgoContainer {
+    /// **Source:** `IGESControl_AlgoContainer.hxx`:32 - `IGESControl_AlgoContainer::IGESControl_AlgoContainer()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESControl_AlgoContainer_ctor()) }
     }
 
+    /// **Source:** `IGESControl_AlgoContainer.hxx`:34 - `IGESControl_AlgoContainer::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESControl_AlgoContainer_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IGESControl_AlgoContainer.hxx`:34 - `IGESControl_AlgoContainer::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IGESControl_AlgoContainer_get_type_name() }
     }
 
+    /// **Source:** `IGESControl_AlgoContainer.hxx`:34 - `IGESControl_AlgoContainer::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESControl_AlgoContainer_get_type_descriptor()) }
     }
@@ -188,6 +198,7 @@ impl AlgoContainer {
 // From IGESControl_Controller.hxx
 // ========================
 
+/// **Source:** `IGESControl_Controller.hxx`:36 - `IGESControl_Controller`
 /// Controller for IGES-5.1
 pub use crate::ffi::IGESControl_Controller as Controller;
 
@@ -198,6 +209,7 @@ unsafe impl crate::CppDeletable for Controller {
 }
 
 impl Controller {
+    /// **Source:** `IGESControl_Controller.hxx`:43 - `IGESControl_Controller::IGESControl_Controller()`
     /// Initializes the use of IGES Norm (the first time) and returns
     /// a Controller for IGES-5.1
     /// If <modefnes> is True, sets it to internal FNES format
@@ -205,6 +217,7 @@ impl Controller {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Controller_ctor_bool(modefnes)) }
     }
 
+    /// **Source:** `IGESControl_Controller.hxx`:43 - `IGESControl_Controller::IGESControl_Controller()`
     /// Initializes the use of IGES Norm (the first time) and returns
     /// a Controller for IGES-5.1
     /// If <modefnes> is True, sets it to internal FNES format
@@ -212,6 +225,7 @@ impl Controller {
         Self::new_bool(false)
     }
 
+    /// **Source:** `IGESControl_Controller.hxx`:47 - `IGESControl_Controller::NewModel()`
     /// Creates a new empty Model ready to receive data of the Norm.
     /// It is taken from IGES Template Model
     pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
@@ -222,10 +236,12 @@ impl Controller {
         }
     }
 
+    /// **Source:** `IGESControl_Controller.hxx`:77 - `IGESControl_Controller::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESControl_Controller_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IGESControl_Controller.hxx`:73 - `IGESControl_Controller::Init()`
     /// Standard Initialisation. It creates a Controller for IGES and
     /// records it to various names, available to select it later
     /// Returns True when done, False if could not be done
@@ -234,10 +250,12 @@ impl Controller {
         unsafe { crate::ffi::IGESControl_Controller_init() }
     }
 
+    /// **Source:** `IGESControl_Controller.hxx`:77 - `IGESControl_Controller::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IGESControl_Controller_get_type_name() }
     }
 
+    /// **Source:** `IGESControl_Controller.hxx`:77 - `IGESControl_Controller::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESControl_Controller_get_type_descriptor()) }
     }
@@ -319,6 +337,7 @@ impl Controller {
 // From IGESControl_IGESBoundary.hxx
 // ========================
 
+/// **Source:** `IGESControl_IGESBoundary.hxx`:36 - `IGESControl_IGESBoundary`
 /// Translates IGES boundary entity (types 141, 142 and 508)
 /// in Advanced Data Exchange.
 /// Redefines translation and treatment methods from inherited
@@ -332,11 +351,13 @@ unsafe impl crate::CppDeletable for IGESBoundary {
 }
 
 impl IGESBoundary {
+    /// **Source:** `IGESControl_IGESBoundary.hxx`:41 - `IGESControl_IGESBoundary::IGESControl_IGESBoundary()`
     /// Creates an object and calls inherited constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESControl_IGESBoundary_ctor()) }
     }
 
+    /// **Source:** `IGESControl_IGESBoundary.hxx`:44 - `IGESControl_IGESBoundary::IGESControl_IGESBoundary()`
     /// Creates an object and calls inherited constructor.
     pub fn new_curveandsurface(
         CS: &crate::ffi::IGESToBRep_CurveAndSurface,
@@ -346,6 +367,7 @@ impl IGESBoundary {
         }
     }
 
+    /// **Source:** `IGESControl_IGESBoundary.hxx`:53 - `IGESControl_IGESBoundary::Check()`
     /// Checks result of translation of IGES boundary entities
     /// (types 141, 142 or 508).
     /// Checks consistency of 2D and 3D representations and keeps
@@ -365,14 +387,17 @@ impl IGESBoundary {
         }
     }
 
+    /// **Source:** `IGESControl_IGESBoundary.hxx`:58 - `IGESControl_IGESBoundary::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESControl_IGESBoundary_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IGESControl_IGESBoundary.hxx`:58 - `IGESControl_IGESBoundary::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IGESControl_IGESBoundary_get_type_name() }
     }
 
+    /// **Source:** `IGESControl_IGESBoundary.hxx`:58 - `IGESControl_IGESBoundary::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESControl_IGESBoundary_get_type_descriptor()) }
     }
@@ -423,6 +448,7 @@ impl IGESBoundary {
 // From IGESControl_Reader.hxx
 // ========================
 
+/// **Source:** `IGESControl_Reader.hxx`:65 - `IGESControl_Reader`
 /// Reads IGES files, checks them and translates their contents into Open CASCADE models.
 /// The IGES data can be that of a whole model or that of a specific list of entities in the model.
 /// As in XSControl_Reader, you specify the list using a selection.
@@ -467,21 +493,25 @@ unsafe impl crate::CppDeletable for Reader {
 }
 
 impl Reader {
+    /// **Source:** `IGESControl_Reader.hxx`:71 - `IGESControl_Reader::IGESControl_Reader()`
     /// Creates a Reader from scratch
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Reader_ctor()) }
     }
 
+    /// **Source:** `IGESControl_Reader.hxx`:79 - `IGESControl_Reader::SetReadVisible()`
     /// Set the transion of ALL Roots (if theReadOnlyVisible is False)
     /// or of Visible Roots (if theReadOnlyVisible is True)
     pub fn set_read_visible(&mut self, ReadRoot: bool) {
         unsafe { crate::ffi::IGESControl_Reader_set_read_visible(self as *mut Self, ReadRoot) }
     }
 
+    /// **Source:** `IGESControl_Reader.hxx`:81 - `IGESControl_Reader::GetReadVisible()`
     pub fn get_read_visible(&self) -> bool {
         unsafe { crate::ffi::IGESControl_Reader_get_read_visible(self as *const Self) }
     }
 
+    /// **Source:** `IGESControl_Reader.hxx`:90 - `IGESControl_Reader::NbRootsForTransfer()`
     /// Determines the list of root entities from Model which are candidate for
     /// a transfer to a Shape (type of entities is PRODUCT)
     /// <theReadOnlyVisible> is taken into account to define roots
@@ -489,6 +519,7 @@ impl Reader {
         unsafe { crate::ffi::IGESControl_Reader_nb_roots_for_transfer(self as *mut Self) }
     }
 
+    /// **Source:** `IGESControl_Reader.hxx`:93 - `IGESControl_Reader::PrintTransferInfo()`
     /// Prints Statistics and check list for Transfer
     pub fn print_transfer_info(
         &self,
@@ -661,6 +692,7 @@ impl Reader {
 // From IGESControl_ToolContainer.hxx
 // ========================
 
+/// **Source:** `IGESControl_ToolContainer.hxx`:28 - `IGESControl_ToolContainer`
 pub use crate::ffi::IGESControl_ToolContainer as ToolContainer;
 
 unsafe impl crate::CppDeletable for ToolContainer {
@@ -670,11 +702,13 @@ unsafe impl crate::CppDeletable for ToolContainer {
 }
 
 impl ToolContainer {
+    /// **Source:** `IGESControl_ToolContainer.hxx`:33 - `IGESControl_ToolContainer::IGESControl_ToolContainer()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESControl_ToolContainer_ctor()) }
     }
 
+    /// **Source:** `IGESControl_ToolContainer.hxx`:36 - `IGESControl_ToolContainer::IGESBoundary()`
     /// Returns IGESControl_IGESBoundary
     pub fn iges_boundary(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepIGESBoundary> {
         unsafe {
@@ -684,14 +718,17 @@ impl ToolContainer {
         }
     }
 
+    /// **Source:** `IGESControl_ToolContainer.hxx`:38 - `IGESControl_ToolContainer::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESControl_ToolContainer_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IGESControl_ToolContainer.hxx`:38 - `IGESControl_ToolContainer::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IGESControl_ToolContainer_get_type_name() }
     }
 
+    /// **Source:** `IGESControl_ToolContainer.hxx`:38 - `IGESControl_ToolContainer::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESControl_ToolContainer_get_type_descriptor()) }
     }
@@ -721,6 +758,7 @@ impl ToolContainer {
 // From IGESControl_Writer.hxx
 // ========================
 
+/// **Source:** `IGESControl_Writer.hxx`:48 - `IGESControl_Writer`
 /// This class creates and writes
 /// IGES files from CAS.CADE models. An IGES file can be written to
 /// an existing IGES file or to a new one.
@@ -740,6 +778,7 @@ unsafe impl crate::CppDeletable for Writer {
 }
 
 impl Writer {
+    /// **Source:** `IGESControl_Writer.hxx`:58 - `IGESControl_Writer::IGESControl_Writer()`
     /// Creates a writer object with the
     /// default unit (millimeters) and write mode (Face).
     /// IGESControl_Writer (const Standard_CString unit,
@@ -748,6 +787,7 @@ impl Writer {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Writer_ctor()) }
     }
 
+    /// **Source:** `IGESControl_Writer.hxx`:67 - `IGESControl_Writer::IGESControl_Writer()`
     /// Creates a writer with given
     /// values for units and for write mode.
     /// theUnit may be any unit that is accepted by the IGES standard.
@@ -766,6 +806,7 @@ impl Writer {
         }
     }
 
+    /// **Source:** `IGESControl_Writer.hxx`:67 - `IGESControl_Writer::IGESControl_Writer()`
     /// Creates a writer with given
     /// values for units and for write mode.
     /// theUnit may be any unit that is accepted by the IGES standard.
@@ -777,6 +818,7 @@ impl Writer {
         Self::new_charptr_int(theUnit, 0)
     }
 
+    /// **Source:** `IGESControl_Writer.hxx`:90 - `IGESControl_Writer::AddShape()`
     /// Translates a Shape to IGES Entities and adds them to the model
     /// Returns True if done, False if Shape not suitable for IGES or null
     pub fn add_shape(
@@ -787,11 +829,13 @@ impl Writer {
         unsafe { crate::ffi::IGESControl_Writer_add_shape(self as *mut Self, sh, theProgress) }
     }
 
+    /// **Source:** `IGESControl_Writer.hxx`:100 - `IGESControl_Writer::AddEntity()`
     /// Adds an IGES entity (and the ones it references) to the model
     pub fn add_entity(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
         unsafe { crate::ffi::IGESControl_Writer_add_entity(self as *mut Self, ent) }
     }
 
+    /// **Source:** `IGESControl_Writer.hxx`:105 - `IGESControl_Writer::ComputeModel()`
     /// Computes the entities found in
     /// the model, which is ready to be written.
     /// This contrasts with the default computation of headers only.
@@ -799,6 +843,7 @@ impl Writer {
         unsafe { crate::ffi::IGESControl_Writer_compute_model(self as *mut Self) }
     }
 
+    /// **Source:** `IGESControl_Writer.hxx`:117 - `IGESControl_Writer::Write()`
     /// Prepares and writes an IGES model
     /// either to an OStream, S or to a file name,CString.
     /// Returns True if the operation was performed correctly and

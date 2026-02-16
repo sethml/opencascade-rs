@@ -55,6 +55,7 @@ impl TryFrom<i32> for TransitionOnCurve {
 // From IntCurveSurface_HInter.hxx
 // ========================
 
+/// **Source:** `IntCurveSurface_HInter.hxx`:46 - `IntCurveSurface_HInter`
 pub use crate::ffi::IntCurveSurface_HInter as HInter;
 
 unsafe impl crate::CppDeletable for HInter {
@@ -64,11 +65,13 @@ unsafe impl crate::CppDeletable for HInter {
 }
 
 impl HInter {
+    /// **Source:** `IntCurveSurface_HInter.hxx`:52 - `IntCurveSurface_HInter::IntCurveSurface_HInter()`
     /// Empty Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_HInter_ctor()) }
     }
 
+    /// **Source:** `IntCurveSurface_HInter.hxx`:56 - `IntCurveSurface_HInter::Perform()`
     /// Compute the Intersection between the curve and the
     /// surface
     pub fn perform(
@@ -123,6 +126,7 @@ impl HInter {
 // From IntCurveSurface_IntersectionPoint.hxx
 // ========================
 
+/// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:29 - `IntCurveSurface_IntersectionPoint`
 /// Definition of an interserction point between a
 /// curve and a surface.
 pub use crate::ffi::IntCurveSurface_IntersectionPoint as IntersectionPoint;
@@ -134,11 +138,13 @@ unsafe impl crate::CppDeletable for IntersectionPoint {
 }
 
 impl IntersectionPoint {
+    /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:35 - `IntCurveSurface_IntersectionPoint::IntCurveSurface_IntersectionPoint()`
     /// Empty Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_IntersectionPoint_ctor()) }
     }
 
+    /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:38 - `IntCurveSurface_IntersectionPoint::IntCurveSurface_IntersectionPoint()`
     /// Create an IntersectionPoint.
     pub fn new_pnt_real3_transitiononcurve(
         P: &crate::ffi::gp_Pnt,
@@ -160,6 +166,7 @@ impl IntersectionPoint {
         }
     }
 
+    /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:45 - `IntCurveSurface_IntersectionPoint::SetValues()`
     /// Set the fields of the current IntersectionPoint.
     pub fn set_values(
         &mut self,
@@ -181,6 +188,7 @@ impl IntersectionPoint {
         }
     }
 
+    /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:52 - `IntCurveSurface_IntersectionPoint::Values()`
     /// Get the fields of the current IntersectionPoint.
     pub fn values(
         &self,
@@ -202,26 +210,31 @@ impl IntersectionPoint {
         }
     }
 
+    /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:59 - `IntCurveSurface_IntersectionPoint::Pnt()`
     /// returns the geometric point.
     pub fn pnt(&self) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::IntCurveSurface_IntersectionPoint_pnt(self as *const Self)) }
     }
 
+    /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:62 - `IntCurveSurface_IntersectionPoint::U()`
     /// returns the U parameter on the surface.
     pub fn u(&self) -> f64 {
         unsafe { crate::ffi::IntCurveSurface_IntersectionPoint_u(self as *const Self) }
     }
 
+    /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:65 - `IntCurveSurface_IntersectionPoint::V()`
     /// returns the V parameter on the surface.
     pub fn v(&self) -> f64 {
         unsafe { crate::ffi::IntCurveSurface_IntersectionPoint_v(self as *const Self) }
     }
 
+    /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:68 - `IntCurveSurface_IntersectionPoint::W()`
     /// returns the parameter on the curve.
     pub fn w(&self) -> f64 {
         unsafe { crate::ffi::IntCurveSurface_IntersectionPoint_w(self as *const Self) }
     }
 
+    /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:71 - `IntCurveSurface_IntersectionPoint::Transition()`
     /// returns the Transition of the point.
     pub fn transition(&self) -> crate::int_curve_surface::TransitionOnCurve {
         unsafe {
@@ -232,6 +245,7 @@ impl IntersectionPoint {
         }
     }
 
+    /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:74 - `IntCurveSurface_IntersectionPoint::Dump()`
     /// Dump all the fields.
     pub fn dump(&self) {
         unsafe { crate::ffi::IntCurveSurface_IntersectionPoint_dump(self as *const Self) }
@@ -242,6 +256,7 @@ impl IntersectionPoint {
 // From IntCurveSurface_IntersectionSegment.hxx
 // ========================
 
+/// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:29 - `IntCurveSurface_IntersectionSegment`
 /// A IntersectionSegment describes a segment of curve
 /// (w1,w2) where distance(C(w),Surface) is less than a
 /// given tolerances.
@@ -254,10 +269,12 @@ unsafe impl crate::CppDeletable for IntersectionSegment {
 }
 
 impl IntersectionSegment {
+    /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:34 - `IntCurveSurface_IntersectionSegment::IntCurveSurface_IntersectionSegment()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_IntersectionSegment_ctor()) }
     }
 
+    /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:36 - `IntCurveSurface_IntersectionSegment::IntCurveSurface_IntersectionSegment()`
     pub fn new_intersectionpoint2(
         P1: &crate::ffi::IntCurveSurface_IntersectionPoint,
         P2: &crate::ffi::IntCurveSurface_IntersectionPoint,
@@ -269,6 +286,7 @@ impl IntersectionSegment {
         }
     }
 
+    /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:39 - `IntCurveSurface_IntersectionSegment::SetValues()`
     pub fn set_values(
         &mut self,
         P1: &crate::ffi::IntCurveSurface_IntersectionPoint,
@@ -279,6 +297,7 @@ impl IntersectionSegment {
         }
     }
 
+    /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:42 - `IntCurveSurface_IntersectionSegment::Values()`
     pub fn values(
         &self,
         P1: &mut crate::ffi::IntCurveSurface_IntersectionPoint,
@@ -289,6 +308,7 @@ impl IntersectionSegment {
         }
     }
 
+    /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:45 - `IntCurveSurface_IntersectionSegment::FirstPoint()`
     pub fn first_point_intersectionpoint(
         &self,
         P1: &mut crate::ffi::IntCurveSurface_IntersectionPoint,
@@ -301,6 +321,7 @@ impl IntersectionSegment {
         }
     }
 
+    /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:47 - `IntCurveSurface_IntersectionSegment::SecondPoint()`
     pub fn second_point_intersectionpoint(
         &self,
         P2: &mut crate::ffi::IntCurveSurface_IntersectionPoint,
@@ -313,18 +334,21 @@ impl IntersectionSegment {
         }
     }
 
+    /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:49 - `IntCurveSurface_IntersectionSegment::FirstPoint()`
     pub fn first_point(&self) -> &crate::ffi::IntCurveSurface_IntersectionPoint {
         unsafe {
             &*(crate::ffi::IntCurveSurface_IntersectionSegment_first_point(self as *const Self))
         }
     }
 
+    /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:51 - `IntCurveSurface_IntersectionSegment::SecondPoint()`
     pub fn second_point(&self) -> &crate::ffi::IntCurveSurface_IntersectionPoint {
         unsafe {
             &*(crate::ffi::IntCurveSurface_IntersectionSegment_second_point(self as *const Self))
         }
     }
 
+    /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:53 - `IntCurveSurface_IntersectionSegment::Dump()`
     pub fn dump(&self) {
         unsafe { crate::ffi::IntCurveSurface_IntersectionSegment_dump(self as *const Self) }
     }

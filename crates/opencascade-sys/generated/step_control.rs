@@ -60,6 +60,7 @@ impl TryFrom<i32> for StepModelType {
 // From STEPControl_ActorRead.hxx
 // ========================
 
+/// **Source:** `STEPControl_ActorRead.hxx`:62 - `STEPControl_ActorRead`
 /// This class performs the transfer of an Entity from
 /// AP214 and AP203, either Geometric or Topologic.
 ///
@@ -74,6 +75,7 @@ unsafe impl crate::CppDeletable for ActorRead {
 }
 
 impl ActorRead {
+    /// **Source:** `STEPControl_ActorRead.hxx`:66 - `STEPControl_ActorRead::STEPControl_ActorRead()`
     pub fn new_handleinterfaceinterfacemodel(
         theModel: &crate::ffi::HandleInterfaceInterfaceModel,
     ) -> crate::OwnedPtr<Self> {
@@ -84,19 +86,23 @@ impl ActorRead {
         }
     }
 
+    /// **Source:** `STEPControl_ActorRead.hxx`:97 - `STEPControl_ActorRead::SetModel()`
     /// Set model
     pub fn set_model(&mut self, theModel: &crate::ffi::HandleInterfaceInterfaceModel) {
         unsafe { crate::ffi::STEPControl_ActorRead_set_model(self as *mut Self, theModel) }
     }
 
+    /// **Source:** `STEPControl_ActorRead.hxx`:120 - `STEPControl_ActorRead::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::STEPControl_ActorRead_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `STEPControl_ActorRead.hxx`:120 - `STEPControl_ActorRead::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::STEPControl_ActorRead_get_type_name() }
     }
 
+    /// **Source:** `STEPControl_ActorRead.hxx`:120 - `STEPControl_ActorRead::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::STEPControl_ActorRead_get_type_descriptor()) }
     }
@@ -183,6 +189,7 @@ impl ActorRead {
 // From STEPControl_ActorWrite.hxx
 // ========================
 
+/// **Source:** `STEPControl_ActorWrite.hxx`:41 - `STEPControl_ActorWrite`
 /// This class performs the transfer of a Shape from TopoDS
 /// to AP203 or AP214 (CD2 or DIS)
 pub use crate::ffi::STEPControl_ActorWrite as ActorWrite;
@@ -194,14 +201,17 @@ unsafe impl crate::CppDeletable for ActorWrite {
 }
 
 impl ActorWrite {
+    /// **Source:** `STEPControl_ActorWrite.hxx`:45 - `STEPControl_ActorWrite::STEPControl_ActorWrite()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorWrite_ctor()) }
     }
 
+    /// **Source:** `STEPControl_ActorWrite.hxx`:81 - `STEPControl_ActorWrite::SetMode()`
     pub fn set_mode(&mut self, M: crate::step_control::StepModelType) {
         unsafe { crate::ffi::STEPControl_ActorWrite_set_mode(self as *mut Self, M.into()) }
     }
 
+    /// **Source:** `STEPControl_ActorWrite.hxx`:83 - `STEPControl_ActorWrite::Mode()`
     pub fn mode(&self) -> crate::step_control::StepModelType {
         unsafe {
             crate::step_control::StepModelType::try_from(crate::ffi::STEPControl_ActorWrite_mode(
@@ -211,26 +221,32 @@ impl ActorWrite {
         }
     }
 
+    /// **Source:** `STEPControl_ActorWrite.hxx`:85 - `STEPControl_ActorWrite::SetGroupMode()`
     pub fn set_group_mode(&mut self, mode: i32) {
         unsafe { crate::ffi::STEPControl_ActorWrite_set_group_mode(self as *mut Self, mode) }
     }
 
+    /// **Source:** `STEPControl_ActorWrite.hxx`:87 - `STEPControl_ActorWrite::GroupMode()`
     pub fn group_mode(&self) -> i32 {
         unsafe { crate::ffi::STEPControl_ActorWrite_group_mode(self as *const Self) }
     }
 
+    /// **Source:** `STEPControl_ActorWrite.hxx`:89 - `STEPControl_ActorWrite::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol: f64) {
         unsafe { crate::ffi::STEPControl_ActorWrite_set_tolerance(self as *mut Self, Tol) }
     }
 
+    /// **Source:** `STEPControl_ActorWrite.hxx`:99 - `STEPControl_ActorWrite::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::STEPControl_ActorWrite_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `STEPControl_ActorWrite.hxx`:99 - `STEPControl_ActorWrite::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::STEPControl_ActorWrite_get_type_name() }
     }
 
+    /// **Source:** `STEPControl_ActorWrite.hxx`:99 - `STEPControl_ActorWrite::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::STEPControl_ActorWrite_get_type_descriptor()) }
     }
@@ -320,6 +336,7 @@ impl ActorWrite {
 // From STEPControl_Controller.hxx
 // ========================
 
+/// **Source:** `STEPControl_Controller.hxx`:35 - `STEPControl_Controller`
 /// defines basic controller for STEP processor
 pub use crate::ffi::STEPControl_Controller as Controller;
 
@@ -330,12 +347,14 @@ unsafe impl crate::CppDeletable for Controller {
 }
 
 impl Controller {
+    /// **Source:** `STEPControl_Controller.hxx`:41 - `STEPControl_Controller::STEPControl_Controller()`
     /// Initializes the use of STEP Norm (the first time) and
     /// returns a Controller
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Controller_ctor()) }
     }
 
+    /// **Source:** `STEPControl_Controller.hxx`:45 - `STEPControl_Controller::NewModel()`
     /// Creates a new empty Model ready to receive data of the Norm.
     /// It is taken from STEP Template Model
     pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
@@ -346,10 +365,12 @@ impl Controller {
         }
     }
 
+    /// **Source:** `STEPControl_Controller.hxx`:71 - `STEPControl_Controller::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::STEPControl_Controller_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `STEPControl_Controller.hxx`:69 - `STEPControl_Controller::Init()`
     /// Standard Initialisation. It creates a Controller for STEP
     /// and records it to various names, available to select it later
     /// Returns True when done, False if could not be done
@@ -357,10 +378,12 @@ impl Controller {
         unsafe { crate::ffi::STEPControl_Controller_init() }
     }
 
+    /// **Source:** `STEPControl_Controller.hxx`:71 - `STEPControl_Controller::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::STEPControl_Controller_get_type_name() }
     }
 
+    /// **Source:** `STEPControl_Controller.hxx`:71 - `STEPControl_Controller::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::STEPControl_Controller_get_type_descriptor()) }
     }
@@ -442,6 +465,7 @@ impl Controller {
 // From STEPControl_Reader.hxx
 // ========================
 
+/// **Source:** `STEPControl_Reader.hxx`:69 - `STEPControl_Reader`
 /// Reads STEP files, checks them and translates their contents
 /// into Open CASCADE models. The STEP data can be that of
 /// a whole model or that of a specific list of entities in the model.
@@ -486,11 +510,13 @@ unsafe impl crate::CppDeletable for Reader {
 }
 
 impl Reader {
+    /// **Source:** `STEPControl_Reader.hxx`:75 - `STEPControl_Reader::STEPControl_Reader()`
     /// Creates a reader object with an empty STEP model.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Reader_ctor()) }
     }
 
+    /// **Source:** `STEPControl_Reader.hxx`:88 - `STEPControl_Reader::ReadFile()`
     /// Loads a file and returns the read status
     /// Zero for a Model which compies with the Controller
     pub fn read_file_charptr(
@@ -505,6 +531,7 @@ impl Reader {
         }
     }
 
+    /// **Source:** `STEPControl_Reader.hxx`:98 - `STEPControl_Reader::ReadFile()`
     /// Loads a file and returns the read status
     /// Zero for a Model which compies with the Controller
     pub fn read_file_charptr_parameters(
@@ -524,6 +551,7 @@ impl Reader {
         }
     }
 
+    /// **Source:** `STEPControl_Reader.hxx`:111 - `STEPControl_Reader::TransferRoot()`
     /// Transfers a root given its rank in the list of candidate roots
     /// Default is the first one
     /// Returns True if a shape has resulted, false else
@@ -536,12 +564,14 @@ impl Reader {
         unsafe { crate::ffi::STEPControl_Reader_transfer_root(self as *mut Self, num, theProgress) }
     }
 
+    /// **Source:** `STEPControl_Reader.hxx`:116 - `STEPControl_Reader::NbRootsForTransfer()`
     /// Determines the list of root entities from Model which are candidate for
     /// a transfer to a Shape (type of entities is PRODUCT)
     pub fn nb_roots_for_transfer(&mut self) -> i32 {
         unsafe { crate::ffi::STEPControl_Reader_nb_roots_for_transfer(self as *mut Self) }
     }
 
+    /// **Source:** `STEPControl_Reader.hxx`:126 - `STEPControl_Reader::SetSystemLengthUnit()`
     /// Sets system length unit used by transfer process.
     /// Performs only if a model is not NULL
     pub fn set_system_length_unit(&mut self, theLengthUnit: f64) {
@@ -550,6 +580,7 @@ impl Reader {
         }
     }
 
+    /// **Source:** `STEPControl_Reader.hxx`:130 - `STEPControl_Reader::SystemLengthUnit()`
     /// Returns system length unit used by transfer process.
     /// Performs only if a model is not NULL
     pub fn system_length_unit(&self) -> f64 {
@@ -713,6 +744,7 @@ impl Reader {
 // From STEPControl_Writer.hxx
 // ========================
 
+/// **Source:** `STEPControl_Writer.hxx`:45 - `STEPControl_Writer`
 /// This class creates and writes
 /// STEP files from Open CASCADE models. A STEP file can be
 /// written to an existing STEP file or to a new one.
@@ -727,11 +759,13 @@ unsafe impl crate::CppDeletable for Writer {
 }
 
 impl Writer {
+    /// **Source:** `STEPControl_Writer.hxx`:51 - `STEPControl_Writer::STEPControl_Writer()`
     /// Creates a Writer from scratch
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Writer_ctor()) }
     }
 
+    /// **Source:** `STEPControl_Writer.hxx`:61 - `STEPControl_Writer::SetTolerance()`
     /// Sets a length-measure value that
     /// will be written to uncertainty-measure-with-unit
     /// when the next shape is translated.
@@ -739,11 +773,13 @@ impl Writer {
         unsafe { crate::ffi::STEPControl_Writer_set_tolerance(self as *mut Self, Tol) }
     }
 
+    /// **Source:** `STEPControl_Writer.hxx`:64 - `STEPControl_Writer::UnsetTolerance()`
     /// Unsets the tolerance formerly forced by SetTolerance
     pub fn unset_tolerance(&mut self) {
         unsafe { crate::ffi::STEPControl_Writer_unset_tolerance(self as *mut Self) }
     }
 
+    /// **Source:** `STEPControl_Writer.hxx`:92 - `STEPControl_Writer::Transfer()`
     /// Translates shape sh to a STEP
     /// entity. mode defines the STEP entity type to be output:
     /// - STEPControlStd_AsIs translates a shape to its highest possible
@@ -777,6 +813,7 @@ impl Writer {
         }
     }
 
+    /// **Source:** `STEPControl_Writer.hxx`:99 - `STEPControl_Writer::Transfer()`
     /// Translates shape sh to a STEP entity
     pub fn transfer_shape_stepmodeltype_parameters_bool_progressrange(
         &mut self,
@@ -791,6 +828,7 @@ impl Writer {
         }
     }
 
+    /// **Source:** `STEPControl_Writer.hxx`:106 - `STEPControl_Writer::Write()`
     /// Writes a STEP model in the file identified by filename.
     pub fn write(
         &mut self,
@@ -805,6 +843,7 @@ impl Writer {
         }
     }
 
+    /// **Source:** `STEPControl_Writer.hxx`:131 - `STEPControl_Writer::PrintStatsTransfer()`
     /// Displays the statistics for the
     /// last translation. what defines the kind of statistics that are displayed:
     /// - 0 gives general statistics   (number of translated roots,

@@ -6,12 +6,23 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::StlAPI_write_shape_charptr_bool as write_shape_charptr_bool;
+/// **Source:** `StlAPI.hxx` - `StlAPI::Write`
+/// Convert and write shape to STL format.
+/// File is written in binary if aAsciiMode is False otherwise it is written in Ascii (by
+/// default).
+pub fn write_shape_charptr_bool(
+    theShape: &crate::ffi::TopoDS_Shape,
+    theFile: *const std::ffi::c_char,
+    theAsciiMode: bool,
+) -> bool {
+    unsafe { crate::ffi::StlAPI_write_shape_charptr_bool(theShape, theFile, theAsciiMode) }
+}
 
 // ========================
 // From StlAPI_Reader.hxx
 // ========================
 
+/// **Source:** `StlAPI_Reader.hxx`:27 - `StlAPI_Reader`
 /// Reading from stereolithography format.
 /// Reads STL file and creates a shape composed of triangular faces, one per facet.
 /// IMPORTANT: This approach is very inefficient, especially for large files.
@@ -25,11 +36,13 @@ unsafe impl crate::CppDeletable for Reader {
 }
 
 impl Reader {
+    /// **Source:** `StlAPI_Reader.hxx` - `StlAPI_Reader::StlAPI_Reader()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StlAPI_Reader_ctor()) }
     }
 
+    /// **Source:** `StlAPI_Reader.hxx`:32 - `StlAPI_Reader::Read()`
     /// Reads STL file to the TopoDS_Shape (each triangle is converted to the face).
     /// @return True if reading is successful
     pub fn read(
@@ -45,6 +58,7 @@ impl Reader {
 // From StlAPI_Writer.hxx
 // ========================
 
+/// **Source:** `StlAPI_Writer.hxx`:27 - `StlAPI_Writer`
 /// This class creates and writes
 /// STL files from Open CASCADE shapes. An STL file can be written to an existing STL file or to a
 /// new one.
@@ -57,11 +71,13 @@ unsafe impl crate::CppDeletable for Writer {
 }
 
 impl Writer {
+    /// **Source:** `StlAPI_Writer.hxx`:33 - `StlAPI_Writer::StlAPI_Writer()`
     /// Creates a writer object with default parameters: ASCIIMode.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StlAPI_Writer_ctor()) }
     }
 
+    /// **Source:** `StlAPI_Writer.hxx`:39 - `StlAPI_Writer::ASCIIMode()`
     /// Returns the address to the flag defining the mode for writing the file.
     /// This address may be used to either read or change the flag.
     /// If the mode returns True (default value) the generated file is an ASCII file.
@@ -70,6 +86,7 @@ impl Writer {
         unsafe { &mut *(crate::ffi::StlAPI_Writer_ascii_mode(self as *mut Self)) }
     }
 
+    /// **Source:** `StlAPI_Writer.hxx`:44 - `StlAPI_Writer::Write()`
     /// Converts a given shape to STL format and writes it to file with a given filename.
     /// \return the error state.
     pub fn write(

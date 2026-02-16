@@ -6,4 +6,8 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::NCollection_Primes_next_prime_for_map as next_prime_for_map;
+/// **Source:** `NCollection_Primes.hxx` - `NCollection_Primes::NextPrimeForMap`
+/// Returns the next prime number greater than or equal to theN.
+pub fn next_prime_for_map(theN: i32) -> i32 {
+    unsafe { crate::ffi::NCollection_Primes_next_prime_for_map(theN) }
+}

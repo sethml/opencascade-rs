@@ -10,6 +10,7 @@
 // From IGESToBRep_AlgoContainer.hxx
 // ========================
 
+/// **Source:** `IGESToBRep_AlgoContainer.hxx`:28 - `IGESToBRep_AlgoContainer`
 pub use crate::ffi::IGESToBRep_AlgoContainer as AlgoContainer;
 
 unsafe impl crate::CppDeletable for AlgoContainer {
@@ -19,16 +20,19 @@ unsafe impl crate::CppDeletable for AlgoContainer {
 }
 
 impl AlgoContainer {
+    /// **Source:** `IGESToBRep_AlgoContainer.hxx`:33 - `IGESToBRep_AlgoContainer::IGESToBRep_AlgoContainer()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_AlgoContainer_ctor()) }
     }
 
+    /// **Source:** `IGESToBRep_AlgoContainer.hxx`:36 - `IGESToBRep_AlgoContainer::SetToolContainer()`
     /// Sets ToolContainer
     pub fn set_tool_container(&mut self, TC: &crate::ffi::HandleIGESToBRepToolContainer) {
         unsafe { crate::ffi::IGESToBRep_AlgoContainer_set_tool_container(self as *mut Self, TC) }
     }
 
+    /// **Source:** `IGESToBRep_AlgoContainer.hxx`:39 - `IGESToBRep_AlgoContainer::ToolContainer()`
     /// Returns ToolContainer
     pub fn tool_container(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepToolContainer> {
         unsafe {
@@ -38,14 +42,17 @@ impl AlgoContainer {
         }
     }
 
+    /// **Source:** `IGESToBRep_AlgoContainer.hxx`:41 - `IGESToBRep_AlgoContainer::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESToBRep_AlgoContainer_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IGESToBRep_AlgoContainer.hxx`:41 - `IGESToBRep_AlgoContainer::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IGESToBRep_AlgoContainer_get_type_name() }
     }
 
+    /// **Source:** `IGESToBRep_AlgoContainer.hxx`:41 - `IGESToBRep_AlgoContainer::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESToBRep_AlgoContainer_get_type_descriptor()) }
     }
@@ -86,6 +93,7 @@ impl HandleIGESToBRepAlgoContainer {
 // From IGESToBRep_CurveAndSurface.hxx
 // ========================
 
+/// **Source:** `IGESToBRep_CurveAndSurface.hxx`:35 - `IGESToBRep_CurveAndSurface`
 /// Provides methods to transfer CurveAndSurface from IGES to CASCADE.
 pub use crate::ffi::IGESToBRep_CurveAndSurface as CurveAndSurface;
 
@@ -96,6 +104,7 @@ unsafe impl crate::CppDeletable for CurveAndSurface {
 }
 
 impl CurveAndSurface {
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:43 - `IGESToBRep_CurveAndSurface::IGESToBRep_CurveAndSurface()`
     /// Creates  a tool CurveAndSurface  ready  to  run, with
     /// epsilons  set  to  1.E-04,  myModeTopo  to  True,  the
     /// optimization of  the continuity to False.
@@ -103,6 +112,7 @@ impl CurveAndSurface {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_CurveAndSurface_ctor()) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:46 - `IGESToBRep_CurveAndSurface::IGESToBRep_CurveAndSurface()`
     /// Creates a tool CurveAndSurface ready to run.
     pub fn new_real3_bool3(
         eps: f64,
@@ -119,52 +129,62 @@ impl CurveAndSurface {
         }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:55 - `IGESToBRep_CurveAndSurface::Init()`
     /// Initializes the field of the tool CurveAndSurface with
     /// default creating values.
     pub fn init(&mut self) {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_init(self as *mut Self) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:58 - `IGESToBRep_CurveAndSurface::SetEpsilon()`
     /// Changes the value of "myEps"
     pub fn set_epsilon(&mut self, eps: f64) {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_set_epsilon(self as *mut Self, eps) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:61 - `IGESToBRep_CurveAndSurface::GetEpsilon()`
     /// Returns the value of "myEps"
     pub fn get_epsilon(&self) -> f64 {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_epsilon(self as *const Self) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:64 - `IGESToBRep_CurveAndSurface::SetEpsCoeff()`
     /// Changes the value of "myEpsCoeff"
     pub fn set_eps_coeff(&mut self, eps: f64) {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_set_eps_coeff(self as *mut Self, eps) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:67 - `IGESToBRep_CurveAndSurface::GetEpsCoeff()`
     /// Returns the value of "myEpsCoeff"
     pub fn get_eps_coeff(&self) -> f64 {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_eps_coeff(self as *const Self) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:70 - `IGESToBRep_CurveAndSurface::SetEpsGeom()`
     /// Changes the value of "myEpsGeom"
     pub fn set_eps_geom(&mut self, eps: f64) {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_set_eps_geom(self as *mut Self, eps) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:73 - `IGESToBRep_CurveAndSurface::GetEpsGeom()`
     /// Returns the value of "myEpsGeom"
     pub fn get_eps_geom(&self) -> f64 {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_eps_geom(self as *const Self) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:76 - `IGESToBRep_CurveAndSurface::SetMinTol()`
     /// Changes the value of "myMinTol"
     pub fn set_min_tol(&mut self, mintol: f64) {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_set_min_tol(self as *mut Self, mintol) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:79 - `IGESToBRep_CurveAndSurface::SetMaxTol()`
     /// Changes the value of "myMaxTol"
     pub fn set_max_tol(&mut self, maxtol: f64) {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_set_max_tol(self as *mut Self, maxtol) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:86 - `IGESToBRep_CurveAndSurface::UpdateMinMaxTol()`
     /// Sets values of "myMinTol" and "myMaxTol" as follows
     /// myMaxTol = Max ("read.maxprecision.val", myEpsGeom * myUnitFactor)
     /// myMinTol = Precision::Confusion()
@@ -174,36 +194,43 @@ impl CurveAndSurface {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_update_min_max_tol(self as *mut Self) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:89 - `IGESToBRep_CurveAndSurface::GetMinTol()`
     /// Returns the value of "myMinTol"
     pub fn get_min_tol(&self) -> f64 {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_min_tol(self as *const Self) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:92 - `IGESToBRep_CurveAndSurface::GetMaxTol()`
     /// Returns the value of "myMaxTol"
     pub fn get_max_tol(&self) -> f64 {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_max_tol(self as *const Self) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:95 - `IGESToBRep_CurveAndSurface::SetModeApprox()`
     /// Changes the value of "myModeApprox"
     pub fn set_mode_approx(&mut self, mode: bool) {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_set_mode_approx(self as *mut Self, mode) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:98 - `IGESToBRep_CurveAndSurface::GetModeApprox()`
     /// Returns the value of "myModeApprox"
     pub fn get_mode_approx(&self) -> bool {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_mode_approx(self as *const Self) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:101 - `IGESToBRep_CurveAndSurface::SetModeTransfer()`
     /// Changes the value of "myModeIsTopo"
     pub fn set_mode_transfer(&mut self, mode: bool) {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_set_mode_transfer(self as *mut Self, mode) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:104 - `IGESToBRep_CurveAndSurface::GetModeTransfer()`
     /// Returns the value of "myModeIsTopo"
     pub fn get_mode_transfer(&self) -> bool {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_mode_transfer(self as *const Self) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:107 - `IGESToBRep_CurveAndSurface::SetOptimized()`
     /// Changes the value of "myContIsOpti"
     pub fn set_optimized(&mut self, optimized: bool) {
         unsafe {
@@ -211,21 +238,25 @@ impl CurveAndSurface {
         }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:110 - `IGESToBRep_CurveAndSurface::GetOptimized()`
     /// Returns the value of "myContIsOpti"
     pub fn get_optimized(&self) -> bool {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_optimized(self as *const Self) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:113 - `IGESToBRep_CurveAndSurface::GetUnitFactor()`
     /// Returns the value of " myUnitFactor"
     pub fn get_unit_factor(&self) -> f64 {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_unit_factor(self as *const Self) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:116 - `IGESToBRep_CurveAndSurface::SetSurfaceCurve()`
     /// Changes the value of "mySurfaceCurve"
     pub fn set_surface_curve(&mut self, ival: i32) {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_set_surface_curve(self as *mut Self, ival) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:121 - `IGESToBRep_CurveAndSurface::GetSurfaceCurve()`
     /// Returns the value of "mySurfaceCurve" 0 = value in
     /// file, 2 = keep 2d and compute 3d, 3 = keep 3d and
     /// compute 2d
@@ -233,6 +264,7 @@ impl CurveAndSurface {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_surface_curve(self as *const Self) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
     /// Changes the value of "myContinuity"
     /// if continuity = 0 do nothing else
     /// if continuity = 1 try C1
@@ -243,11 +275,13 @@ impl CurveAndSurface {
         }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:136 - `IGESToBRep_CurveAndSurface::GetContinuity()`
     /// Returns the value of "myContinuity"
     pub fn get_continuity(&self) -> i32 {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_continuity(self as *const Self) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:148 - `IGESToBRep_CurveAndSurface::TransferCurveAndSurface()`
     /// Returns the result of the transfert of any IGES Curve
     /// or Surface Entity.  If  the transfer has  failed,  this
     /// member return a NullEntity.
@@ -267,6 +301,7 @@ impl CurveAndSurface {
         }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:155 - `IGESToBRep_CurveAndSurface::TransferGeometry()`
     /// Returns the result of the transfert the geometry of
     /// any IGESEntity.  If  the transfer has  failed,  this
     /// member return a NullEntity.
@@ -284,6 +319,7 @@ impl CurveAndSurface {
         }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:159 - `IGESToBRep_CurveAndSurface::SendFail()`
     /// Records a new Fail message
     pub fn send_fail(
         &mut self,
@@ -293,6 +329,7 @@ impl CurveAndSurface {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_send_fail(self as *mut Self, start, amsg) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:162 - `IGESToBRep_CurveAndSurface::SendWarning()`
     /// Records a new Warning message
     pub fn send_warning(
         &mut self,
@@ -304,6 +341,7 @@ impl CurveAndSurface {
         }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:166 - `IGESToBRep_CurveAndSurface::SendMsg()`
     /// Records a new Information message from the definition
     /// of a Msg (Original+Value)
     pub fn send_msg(
@@ -314,6 +352,7 @@ impl CurveAndSurface {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_send_msg(self as *mut Self, start, amsg) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:170 - `IGESToBRep_CurveAndSurface::HasShapeResult()`
     /// Returns True if start was already treated and has a result in "myMap"
     /// else returns False.
     pub fn has_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
@@ -322,6 +361,7 @@ impl CurveAndSurface {
         }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:174 - `IGESToBRep_CurveAndSurface::GetShapeResult()`
     /// Returns the result of the transfer of the IGESEntity "start" contained
     /// in "myMap" . (if HasShapeResult is True).
     pub fn get_shape_result_handleigesdataigesentity(
@@ -338,6 +378,7 @@ impl CurveAndSurface {
         }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:177 - `IGESToBRep_CurveAndSurface::SetShapeResult()`
     /// set in "myMap" the result of the transfer of the IGESEntity "start".
     pub fn set_shape_result(
         &mut self,
@@ -353,6 +394,7 @@ impl CurveAndSurface {
         }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:182 - `IGESToBRep_CurveAndSurface::NbShapeResult()`
     /// Returns the number of shapes results contained in "myMap" for the
     /// IGESEntity start ( type VertexList or EdgeList).
     pub fn nb_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> i32 {
@@ -361,6 +403,7 @@ impl CurveAndSurface {
         }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:186 - `IGESToBRep_CurveAndSurface::GetShapeResult()`
     /// Returns the numth result of the IGESEntity start (type VertexList or
     /// EdgeList) in "myMap". (if NbShapeResult is not null).
     pub fn get_shape_result_handleigesdataigesentity_int(
@@ -373,6 +416,7 @@ impl CurveAndSurface {
         }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:191 - `IGESToBRep_CurveAndSurface::AddShapeResult()`
     /// set in "myMap" the result of the transfer of the entity of the
     /// IGESEntity start ( type VertexList or EdgeList).
     pub fn add_shape_result(
@@ -389,10 +433,12 @@ impl CurveAndSurface {
         }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:194 - `IGESToBRep_CurveAndSurface::SetSurface()`
     pub fn set_surface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_set_surface(self as *mut Self, theSurface) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:196 - `IGESToBRep_CurveAndSurface::Surface()`
     pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_CurveAndSurface_surface(
@@ -401,6 +447,7 @@ impl CurveAndSurface {
         }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:198 - `IGESToBRep_CurveAndSurface::GetUVResolution()`
     pub fn get_uv_resolution(&mut self) -> f64 {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_uv_resolution(self as *mut Self) }
     }
@@ -410,6 +457,7 @@ impl CurveAndSurface {
 // From IGESToBRep_IGESBoundary.hxx
 // ========================
 
+/// **Source:** `IGESToBRep_IGESBoundary.hxx`:40 - `IGESToBRep_IGESBoundary`
 /// This class is intended to translate IGES boundary entity
 /// (142-CurveOnSurface, 141-Boundary or 508-Loop) into the wire.
 /// Methods Transfer are virtual and are redefined in Advanced
@@ -424,11 +472,13 @@ unsafe impl crate::CppDeletable for IGESBoundary {
 }
 
 impl IGESBoundary {
+    /// **Source:** `IGESToBRep_IGESBoundary.hxx`:45 - `IGESToBRep_IGESBoundary::IGESToBRep_IGESBoundary()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_IGESBoundary_ctor()) }
     }
 
+    /// **Source:** `IGESToBRep_IGESBoundary.hxx`:48 - `IGESToBRep_IGESBoundary::IGESToBRep_IGESBoundary()`
     /// Empty constructor
     pub fn new_curveandsurface(
         CS: &crate::ffi::IGESToBRep_CurveAndSurface,
@@ -438,6 +488,7 @@ impl IGESBoundary {
         }
     }
 
+    /// **Source:** `IGESToBRep_IGESBoundary.hxx`:58 - `IGESToBRep_IGESBoundary::Init()`
     /// Inits the object with parameters common for all
     /// types of IGES boundaries.
     /// <CS>: object to be used for retrieving translation parameters
@@ -468,6 +519,7 @@ impl IGESBoundary {
         }
     }
 
+    /// **Source:** `IGESToBRep_IGESBoundary.hxx`:89 - `IGESToBRep_IGESBoundary::Transfer()`
     /// Translates 141 and 142 entities.
     /// Returns True if the curve has been successfully translated,
     /// otherwise returns False.
@@ -505,6 +557,7 @@ impl IGESBoundary {
         }
     }
 
+    /// **Source:** `IGESToBRep_IGESBoundary.hxx`:128 - `IGESToBRep_IGESBoundary::Check()`
     /// Checks result of translation of IGES boundary entities
     /// (types 141, 142 or 508).
     /// Checks consistency of 2D and 3D representations and keeps
@@ -525,14 +578,17 @@ impl IGESBoundary {
         }
     }
 
+    /// **Source:** `IGESToBRep_IGESBoundary.hxx`:133 - `IGESToBRep_IGESBoundary::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESToBRep_IGESBoundary_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IGESToBRep_IGESBoundary.hxx`:133 - `IGESToBRep_IGESBoundary::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IGESToBRep_IGESBoundary_get_type_name() }
     }
 
+    /// **Source:** `IGESToBRep_IGESBoundary.hxx`:133 - `IGESToBRep_IGESBoundary::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESToBRep_IGESBoundary_get_type_descriptor()) }
     }
@@ -571,6 +627,7 @@ impl HandleIGESToBRepIGESBoundary {
 // From IGESToBRep_ToolContainer.hxx
 // ========================
 
+/// **Source:** `IGESToBRep_ToolContainer.hxx`:28 - `IGESToBRep_ToolContainer`
 pub use crate::ffi::IGESToBRep_ToolContainer as ToolContainer;
 
 unsafe impl crate::CppDeletable for ToolContainer {
@@ -580,11 +637,13 @@ unsafe impl crate::CppDeletable for ToolContainer {
 }
 
 impl ToolContainer {
+    /// **Source:** `IGESToBRep_ToolContainer.hxx`:33 - `IGESToBRep_ToolContainer::IGESToBRep_ToolContainer()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_ToolContainer_ctor()) }
     }
 
+    /// **Source:** `IGESToBRep_ToolContainer.hxx`:36 - `IGESToBRep_ToolContainer::IGESBoundary()`
     /// Returns IGESToBRep_IGESBoundary
     pub fn iges_boundary(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepIGESBoundary> {
         unsafe {
@@ -594,14 +653,17 @@ impl ToolContainer {
         }
     }
 
+    /// **Source:** `IGESToBRep_ToolContainer.hxx`:38 - `IGESToBRep_ToolContainer::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESToBRep_ToolContainer_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IGESToBRep_ToolContainer.hxx`:38 - `IGESToBRep_ToolContainer::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IGESToBRep_ToolContainer_get_type_name() }
     }
 
+    /// **Source:** `IGESToBRep_ToolContainer.hxx`:38 - `IGESToBRep_ToolContainer::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESToBRep_ToolContainer_get_type_descriptor()) }
     }

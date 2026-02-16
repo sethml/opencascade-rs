@@ -10,6 +10,7 @@
 // From Bisector_Bisec.hxx
 // ========================
 
+/// **Source:** `Bisector_Bisec.hxx`:51 - `Bisector_Bisec`
 /// Bisec provides the bisecting line between two elements
 /// This line is trimmed by a point <P> and it's contained in the domain
 /// defined by the two vectors <V1>, <V2> and <Sense>.
@@ -39,10 +40,12 @@ unsafe impl crate::CppDeletable for Bisec {
 }
 
 impl Bisec {
+    /// **Source:** `Bisector_Bisec.hxx`:56 - `Bisector_Bisec::Bisector_Bisec()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bisector_Bisec_ctor()) }
     }
 
+    /// **Source:** `Bisector_Bisec.hxx`:62 - `Bisector_Bisec::Perform()`
     /// Performs  the bisecting line  between the  curves
     /// <Cu1> and <Cu2>.
     /// <oncurve> is True if the point <P> is common to <Cu1>
@@ -64,6 +67,7 @@ impl Bisec {
         }
     }
 
+    /// **Source:** `Bisector_Bisec.hxx`:75 - `Bisector_Bisec::Perform()`
     /// Performs  the bisecting line  between the  curve
     /// <Cu1> and the point <Pnt>.
     /// <oncurve> is True if the point <P> is the point <Pnt>.
@@ -83,6 +87,7 @@ impl Bisec {
         }
     }
 
+    /// **Source:** `Bisector_Bisec.hxx`:87 - `Bisector_Bisec::Perform()`
     /// Performs  the bisecting line  between the  curve
     /// <Cu> and the point <Pnt>.
     /// <oncurve> is True if the point <P> is the point <Pnt>.
@@ -102,6 +107,7 @@ impl Bisec {
         }
     }
 
+    /// **Source:** `Bisector_Bisec.hxx`:98 - `Bisector_Bisec::Perform()`
     /// Performs  the bisecting line  between the two points
     /// <Pnt1>  and <Pnt2>.
     pub fn perform_handlegeom2dpoint2_pnt2d_vec2d2_real2_bool(
@@ -130,11 +136,13 @@ impl Bisec {
         }
     }
 
+    /// **Source:** `Bisector_Bisec.hxx`:108 - `Bisector_Bisec::Value()`
     /// Returns the Curve of <me>.
     pub fn value(&self) -> &crate::ffi::HandleGeom2dTrimmedCurve {
         unsafe { &*(crate::ffi::Bisector_Bisec_value(self as *const Self)) }
     }
 
+    /// **Source:** `Bisector_Bisec.hxx`:111 - `Bisector_Bisec::ChangeValue()`
     /// Returns the Curve of <me>.
     pub fn change_value(&mut self) -> &crate::ffi::HandleGeom2dTrimmedCurve {
         unsafe { &*(crate::ffi::Bisector_Bisec_change_value(self as *mut Self)) }

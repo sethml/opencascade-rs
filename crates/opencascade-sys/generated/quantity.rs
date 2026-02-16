@@ -1121,6 +1121,7 @@ impl TryFrom<i32> for TypeOfColor {
 // From Quantity_Color.hxx
 // ========================
 
+/// **Source:** `Quantity_Color.hxx`:37 - `Quantity_Color`
 /// This class allows the definition of an RGB color as triplet of 3 normalized floating point
 /// values (red, green, blue).
 ///
@@ -1138,11 +1139,13 @@ unsafe impl crate::CppDeletable for Color {
 }
 
 impl Color {
+    /// **Source:** `Quantity_Color.hxx`:43 - `Quantity_Color::Quantity_Color()`
     /// Creates Quantity_NOC_YELLOW color (for historical reasons).
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Quantity_Color_ctor()) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:49 - `Quantity_Color::Quantity_Color()`
     /// Creates the color from enumeration value.
     pub fn new_nameofcolor(theName: crate::quantity::NameOfColor) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1150,6 +1153,7 @@ impl Color {
         }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:56 - `Quantity_Color::Quantity_Color()`
     /// Creates a color according to the definition system theType.
     /// Throws exception if values are out of range.
     pub fn new_real3_typeofcolor(
@@ -1168,6 +1172,7 @@ impl Color {
         }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:65 - `Quantity_Color::Name()`
     /// Returns the name of the nearest color from the Quantity_NameOfColor enumeration.
     pub fn name(&self) -> crate::quantity::NameOfColor {
         unsafe {
@@ -1178,6 +1183,7 @@ impl Color {
         }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:68 - `Quantity_Color::SetValues()`
     /// Updates the color from specified named color.
     pub fn set_values_nameofcolor(&mut self, theName: crate::quantity::NameOfColor) {
         unsafe {
@@ -1185,6 +1191,7 @@ impl Color {
         }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:81 - `Quantity_Color::Values()`
     /// Returns in theC1, theC2 and theC3 the components of this color
     /// according to the color system definition theType.
     pub fn values(
@@ -1205,6 +1212,7 @@ impl Color {
         }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:88 - `Quantity_Color::SetValues()`
     /// Updates a color according to the mode specified by theType.
     /// Throws exception if values are out of range.
     pub fn set_values_real3_typeofcolor(
@@ -1225,21 +1233,25 @@ impl Color {
         }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:94 - `Quantity_Color::Red()`
     /// Returns the Red component (quantity of red) of the color within range [0.0; 1.0].
     pub fn red(&self) -> f64 {
         unsafe { crate::ffi::Quantity_Color_red(self as *const Self) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:97 - `Quantity_Color::Green()`
     /// Returns the Green component (quantity of green) of the color within range [0.0; 1.0].
     pub fn green(&self) -> f64 {
         unsafe { crate::ffi::Quantity_Color_green(self as *const Self) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:100 - `Quantity_Color::Blue()`
     /// Returns the Blue component (quantity of blue) of the color within range [0.0; 1.0].
     pub fn blue(&self) -> f64 {
         unsafe { crate::ffi::Quantity_Color_blue(self as *const Self) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:105 - `Quantity_Color::Hue()`
     /// Returns the Hue component (hue angle) of the color
     /// in degrees within range [0.0; 360.0], 0.0 being Red.
     /// -1.0 is a special value reserved for grayscale color (S should be 0.0)
@@ -1247,11 +1259,13 @@ impl Color {
         unsafe { crate::ffi::Quantity_Color_hue(self as *const Self) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:108 - `Quantity_Color::Light()`
     /// Returns the Light component (value of the lightness) of the color within range [0.0; 1.0].
     pub fn light(&self) -> f64 {
         unsafe { crate::ffi::Quantity_Color_light(self as *const Self) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:113 - `Quantity_Color::ChangeIntensity()`
     /// Increases or decreases the intensity (variation of the lightness).
     /// The delta is a percentage. Any value greater than zero will increase the intensity.
     /// The variation is expressed as a percentage of the current value.
@@ -1259,12 +1273,14 @@ impl Color {
         unsafe { crate::ffi::Quantity_Color_change_intensity(self as *mut Self, theDelta) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:117 - `Quantity_Color::Saturation()`
     /// Returns the Saturation component (value of the saturation) of the color within range
     /// [0.0; 1.0].
     pub fn saturation(&self) -> f64 {
         unsafe { crate::ffi::Quantity_Color_saturation(self as *const Self) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:122 - `Quantity_Color::ChangeContrast()`
     /// Increases or decreases the contrast (variation of the saturation).
     /// The delta is a percentage. Any value greater than zero will increase the contrast.
     /// The variation is expressed as a percentage of the current value.
@@ -1272,27 +1288,32 @@ impl Color {
         unsafe { crate::ffi::Quantity_Color_change_contrast(self as *mut Self, theDelta) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:125 - `Quantity_Color::IsDifferent()`
     /// Returns TRUE if the distance between two colors is greater than Epsilon().
     pub fn is_different(&self, theOther: &crate::ffi::Quantity_Color) -> bool {
         unsafe { crate::ffi::Quantity_Color_is_different(self as *const Self, theOther) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:137 - `Quantity_Color::IsEqual()`
     /// Returns TRUE if the distance between two colors is no greater than Epsilon().
     pub fn is_equal(&self, theOther: &crate::ffi::Quantity_Color) -> bool {
         unsafe { crate::ffi::Quantity_Color_is_equal(self as *const Self, theOther) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:147 - `Quantity_Color::Distance()`
     /// Returns the distance between two colors. It's a value between 0 and the square root of 3 (the
     /// black/white distance).
     pub fn distance(&self, theColor: &crate::ffi::Quantity_Color) -> f64 {
         unsafe { crate::ffi::Quantity_Color_distance(self as *const Self, theColor) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:155 - `Quantity_Color::SquareDistance()`
     /// Returns the square of distance between two colors.
     pub fn square_distance(&self, theColor: &crate::ffi::Quantity_Color) -> f64 {
         unsafe { crate::ffi::Quantity_Color_square_distance(self as *const Self, theColor) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:167 - `Quantity_Color::Delta()`
     /// Returns the percentage change of contrast and intensity between this and another color.
     /// <DC> and <DI> are percentages, either positive or negative.
     /// The calculation is with respect to this color.
@@ -1302,6 +1323,7 @@ impl Color {
         unsafe { crate::ffi::Quantity_Color_delta(self as *const Self, theColor, DC, DI) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:176 - `Quantity_Color::DeltaE2000()`
     /// Returns the value of the perceptual difference between this color
     /// and @p theOther, computed using the CIEDE2000 formula.
     /// The difference is in range [0, 100.], with 1 approximately corresponding
@@ -1311,6 +1333,7 @@ impl Color {
         unsafe { crate::ffi::Quantity_Color_delta_e2000(self as *const Self, theOther) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:180 - `Quantity_Color::Name()`
     /// Returns the color from Quantity_NameOfColor enumeration nearest to specified RGB values.
     pub fn name_real3(theR: f64, theG: f64, theB: f64) -> crate::quantity::NameOfColor {
         unsafe {
@@ -1321,11 +1344,13 @@ impl Color {
         }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:189 - `Quantity_Color::StringName()`
     /// Returns the name of the color identified by the given Quantity_NameOfColor enumeration value.
     pub fn string_name(theColor: crate::quantity::NameOfColor) -> *const std::ffi::c_char {
         unsafe { crate::ffi::Quantity_Color_string_name(theColor.into()) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:194 - `Quantity_Color::ColorFromName()`
     /// Finds color from predefined names.
     /// For example, the name of the color which corresponds to "BLACK" is Quantity_NOC_BLACK.
     /// Returns FALSE if name is unknown.
@@ -1336,6 +1361,7 @@ impl Color {
         unsafe { crate::ffi::Quantity_Color_color_from_name_charptr_nameofcolor(theName, theColor) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:201 - `Quantity_Color::ColorFromName()`
     /// Finds color from predefined names.
     /// @param theColorNameString the color name
     /// @param theColor a found color
@@ -1349,6 +1375,7 @@ impl Color {
         }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:221 - `Quantity_Color::ColorFromHex()`
     /// Parses the string as a hex color (like "#FF0" for short sRGB color, or "#FFFF00" for sRGB
     /// color)
     /// @param theHexColorString the string to be parsed
@@ -1361,6 +1388,7 @@ impl Color {
         unsafe { crate::ffi::Quantity_Color_color_from_hex(theHexColorString, theColor) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:225 - `Quantity_Color::ColorToHex()`
     /// Returns hex sRGB string in format "#FFAAFF".
     pub fn color_to_hex(
         theColor: &crate::ffi::Quantity_Color,
@@ -1374,6 +1402,7 @@ impl Color {
         }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:284 - `Quantity_Color::Color2argb()`
     /// Convert the color value to ARGB integer value, with alpha equals to 0.
     /// So the output is formatted as 0x00RRGGBB.
     /// Note that this unpacking does NOT involve non-linear sRGB -> linear RGB conversion,
@@ -1384,6 +1413,7 @@ impl Color {
         unsafe { crate::ffi::Quantity_Color_color2argb(theColor, theARGB) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:296 - `Quantity_Color::Argb2color()`
     /// Convert integer ARGB value to Color. Alpha bits are ignored.
     /// Note that this packing does NOT involve linear -> non-linear sRGB conversion,
     /// as would be usually expected to preserve higher (for human eye) color precision in 4 bytes.
@@ -1391,40 +1421,47 @@ impl Color {
         unsafe { crate::ffi::Quantity_Color_argb2color(theARGB, theColor) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:310 - `Quantity_Color::Convert_LinearRGB_To_sRGB()`
     /// Convert linear RGB component into sRGB using OpenGL specs formula (double precision), also
     /// known as gamma correction.
     pub fn convert_linear_rgb_to_s_rgb_real(theLinearValue: f64) -> f64 {
         unsafe { crate::ffi::Quantity_Color_convert_linear_rgb_to_s_rgb_real(theLinearValue) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:318 - `Quantity_Color::Convert_LinearRGB_To_sRGB()`
     /// Convert linear RGB component into sRGB using OpenGL specs formula (single precision), also
     /// known as gamma correction.
     pub fn convert_linear_rgb_to_s_rgb_float(theLinearValue: f32) -> f32 {
         unsafe { crate::ffi::Quantity_Color_convert_linear_rgb_to_s_rgb_float(theLinearValue) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:326 - `Quantity_Color::Convert_sRGB_To_LinearRGB()`
     /// Convert sRGB component into linear RGB using OpenGL specs formula (double precision), also
     /// known as gamma correction.
     pub fn convert_s_rgb_to_linear_rgb_real(thesRGBValue: f64) -> f64 {
         unsafe { crate::ffi::Quantity_Color_convert_s_rgb_to_linear_rgb_real(thesRGBValue) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:334 - `Quantity_Color::Convert_sRGB_To_LinearRGB()`
     /// Convert sRGB component into linear RGB using OpenGL specs formula (single precision), also
     /// known as gamma correction.
     pub fn convert_s_rgb_to_linear_rgb_float(thesRGBValue: f32) -> f32 {
         unsafe { crate::ffi::Quantity_Color_convert_s_rgb_to_linear_rgb_float(thesRGBValue) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:359 - `Quantity_Color::Convert_LinearRGB_To_sRGB_approx22()`
     /// Convert linear RGB component into sRGB using approximated uniform gamma coefficient 2.2.
     pub fn convert_linear_rgb_to_s_rgb_approx22(theLinearValue: f32) -> f32 {
         unsafe { crate::ffi::Quantity_Color_convert_linear_rgb_to_s_rgb_approx22(theLinearValue) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:365 - `Quantity_Color::Convert_sRGB_To_LinearRGB_approx22()`
     /// Convert sRGB component into linear RGB using approximated uniform gamma coefficient 2.2
     pub fn convert_s_rgb_to_linear_rgb_approx22(thesRGBValue: f32) -> f32 {
         unsafe { crate::ffi::Quantity_Color_convert_s_rgb_to_linear_rgb_approx22(thesRGBValue) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:389 - `Quantity_Color::HlsRgb()`
     /// Converts HLS components into sRGB ones.
     pub fn hls_rgb(
         theH: f64,
@@ -1437,6 +1474,7 @@ impl Color {
         unsafe { crate::ffi::Quantity_Color_hls_rgb(theH, theL, theS, theR, theG, theB) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:404 - `Quantity_Color::RgbHls()`
     /// Converts sRGB components into HLS ones.
     pub fn rgb_hls(
         theR: f64,
@@ -1449,11 +1487,13 @@ impl Color {
         unsafe { crate::ffi::Quantity_Color_rgb_hls(theR, theG, theB, theH, theL, theS) }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:420 - `Quantity_Color::Epsilon()`
     /// Returns the value used to compare two colors for equality; 0.0001 by default.
     pub fn epsilon() -> f64 {
         unsafe { crate::ffi::Quantity_Color_epsilon() }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:423 - `Quantity_Color::SetEpsilon()`
     /// Set the value used to compare two colors for equality.
     pub fn set_epsilon(theEpsilon: f64) {
         unsafe { crate::ffi::Quantity_Color_set_epsilon(theEpsilon) }

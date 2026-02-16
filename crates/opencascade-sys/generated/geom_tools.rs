@@ -10,6 +10,7 @@
 // From GeomTools_Curve2dSet.hxx
 // ========================
 
+/// **Source:** `GeomTools_Curve2dSet.hxx`:33 - `GeomTools_Curve2dSet`
 /// Stores a set of Curves from Geom2d.
 pub use crate::ffi::GeomTools_Curve2dSet as Curve2dSet;
 
@@ -20,22 +21,26 @@ unsafe impl crate::CppDeletable for Curve2dSet {
 }
 
 impl Curve2dSet {
+    /// **Source:** `GeomTools_Curve2dSet.hxx`:39 - `GeomTools_Curve2dSet::GeomTools_Curve2dSet()`
     /// Returns an empty set of Curves.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomTools_Curve2dSet_ctor()) }
     }
 
+    /// **Source:** `GeomTools_Curve2dSet.hxx`:42 - `GeomTools_Curve2dSet::Clear()`
     /// Clears the content of the set.
     pub fn clear(&mut self) {
         unsafe { crate::ffi::GeomTools_Curve2dSet_clear(self as *mut Self) }
     }
 
+    /// **Source:** `GeomTools_Curve2dSet.hxx`:46 - `GeomTools_Curve2dSet::Add()`
     /// Incorporate a new Curve in the  set and returns
     /// its index.
     pub fn add(&mut self, C: &crate::ffi::HandleGeom2dCurve) -> i32 {
         unsafe { crate::ffi::GeomTools_Curve2dSet_add(self as *mut Self, C) }
     }
 
+    /// **Source:** `GeomTools_Curve2dSet.hxx`:49 - `GeomTools_Curve2dSet::Curve2d()`
     /// Returns the Curve of index <I>.
     pub fn curve2d(&self, I: i32) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
         unsafe {
@@ -46,6 +51,7 @@ impl Curve2dSet {
         }
     }
 
+    /// **Source:** `GeomTools_Curve2dSet.hxx`:52 - `GeomTools_Curve2dSet::Index()`
     /// Returns the index of <L>.
     pub fn index(&self, C: &crate::ffi::HandleGeom2dCurve) -> i32 {
         unsafe { crate::ffi::GeomTools_Curve2dSet_index(self as *const Self, C) }
@@ -56,6 +62,7 @@ impl Curve2dSet {
 // From GeomTools_CurveSet.hxx
 // ========================
 
+/// **Source:** `GeomTools_CurveSet.hxx`:33 - `GeomTools_CurveSet`
 /// Stores a set of Curves from Geom.
 pub use crate::ffi::GeomTools_CurveSet as CurveSet;
 
@@ -66,22 +73,26 @@ unsafe impl crate::CppDeletable for CurveSet {
 }
 
 impl CurveSet {
+    /// **Source:** `GeomTools_CurveSet.hxx`:39 - `GeomTools_CurveSet::GeomTools_CurveSet()`
     /// Returns an empty set of Curves.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomTools_CurveSet_ctor()) }
     }
 
+    /// **Source:** `GeomTools_CurveSet.hxx`:42 - `GeomTools_CurveSet::Clear()`
     /// Clears the content of the set.
     pub fn clear(&mut self) {
         unsafe { crate::ffi::GeomTools_CurveSet_clear(self as *mut Self) }
     }
 
+    /// **Source:** `GeomTools_CurveSet.hxx`:46 - `GeomTools_CurveSet::Add()`
     /// Incorporate a new Curve in the  set and returns
     /// its index.
     pub fn add(&mut self, C: &crate::ffi::HandleGeomCurve) -> i32 {
         unsafe { crate::ffi::GeomTools_CurveSet_add(self as *mut Self, C) }
     }
 
+    /// **Source:** `GeomTools_CurveSet.hxx`:49 - `GeomTools_CurveSet::Curve()`
     /// Returns the Curve of index <I>.
     pub fn curve(&self, I: i32) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
         unsafe {
@@ -89,6 +100,7 @@ impl CurveSet {
         }
     }
 
+    /// **Source:** `GeomTools_CurveSet.hxx`:52 - `GeomTools_CurveSet::Index()`
     /// Returns the index of <L>.
     pub fn index(&self, C: &crate::ffi::HandleGeomCurve) -> i32 {
         unsafe { crate::ffi::GeomTools_CurveSet_index(self as *const Self, C) }
@@ -99,6 +111,7 @@ impl CurveSet {
 // From GeomTools_SurfaceSet.hxx
 // ========================
 
+/// **Source:** `GeomTools_SurfaceSet.hxx`:33 - `GeomTools_SurfaceSet`
 /// Stores a set of Surfaces from Geom.
 pub use crate::ffi::GeomTools_SurfaceSet as SurfaceSet;
 
@@ -109,22 +122,26 @@ unsafe impl crate::CppDeletable for SurfaceSet {
 }
 
 impl SurfaceSet {
+    /// **Source:** `GeomTools_SurfaceSet.hxx`:39 - `GeomTools_SurfaceSet::GeomTools_SurfaceSet()`
     /// Returns an empty set of Surfaces.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomTools_SurfaceSet_ctor()) }
     }
 
+    /// **Source:** `GeomTools_SurfaceSet.hxx`:42 - `GeomTools_SurfaceSet::Clear()`
     /// Clears the content of the set.
     pub fn clear(&mut self) {
         unsafe { crate::ffi::GeomTools_SurfaceSet_clear(self as *mut Self) }
     }
 
+    /// **Source:** `GeomTools_SurfaceSet.hxx`:46 - `GeomTools_SurfaceSet::Add()`
     /// Incorporate a new Surface in the  set and returns
     /// its index.
     pub fn add(&mut self, S: &crate::ffi::HandleGeomSurface) -> i32 {
         unsafe { crate::ffi::GeomTools_SurfaceSet_add(self as *mut Self, S) }
     }
 
+    /// **Source:** `GeomTools_SurfaceSet.hxx`:49 - `GeomTools_SurfaceSet::Surface()`
     /// Returns the Surface of index <I>.
     pub fn surface(&self, I: i32) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
@@ -135,6 +152,7 @@ impl SurfaceSet {
         }
     }
 
+    /// **Source:** `GeomTools_SurfaceSet.hxx`:52 - `GeomTools_SurfaceSet::Index()`
     /// Returns the index of <L>.
     pub fn index(&self, S: &crate::ffi::HandleGeomSurface) -> i32 {
         unsafe { crate::ffi::GeomTools_SurfaceSet_index(self as *const Self, S) }

@@ -44,6 +44,7 @@ impl TryFrom<i32> for Direction {
 // From BRepPrim_Builder.hxx
 // ========================
 
+/// **Source:** `BRepPrim_Builder.hxx`:37 - `BRepPrim_Builder`
 /// implements the abstract Builder with the BRep Builder
 pub use crate::ffi::BRepPrim_Builder as Builder;
 
@@ -54,54 +55,64 @@ unsafe impl crate::CppDeletable for Builder {
 }
 
 impl Builder {
+    /// **Source:** `BRepPrim_Builder.hxx`:44 - `BRepPrim_Builder::BRepPrim_Builder()`
     /// Creates an empty, useless  Builder. Necesseray for
     /// compilation.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Builder_ctor()) }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:47 - `BRepPrim_Builder::BRepPrim_Builder()`
     /// Creates from a Builder.
     pub fn new_builder(B: &crate::ffi::BRep_Builder) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Builder_ctor_builder(B)) }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:49 - `BRepPrim_Builder::Builder()`
     pub fn builder(&self) -> &crate::ffi::BRep_Builder {
         unsafe { &*(crate::ffi::BRepPrim_Builder_builder(self as *const Self)) }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:52 - `BRepPrim_Builder::MakeShell()`
     /// Make a empty Shell.
     pub fn make_shell(&self, S: &mut crate::ffi::TopoDS_Shell) {
         unsafe { crate::ffi::BRepPrim_Builder_make_shell(self as *const Self, S) }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:56 - `BRepPrim_Builder::MakeFace()`
     /// Returns in   <F> a  Face  built  with   the  plane
     /// equation <P>. Used by all primitives.
     pub fn make_face(&self, F: &mut crate::ffi::TopoDS_Face, P: &crate::ffi::gp_Pln) {
         unsafe { crate::ffi::BRepPrim_Builder_make_face(self as *const Self, F, P) }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:59 - `BRepPrim_Builder::MakeWire()`
     /// Returns in <W> an empty Wire.
     pub fn make_wire(&self, W: &mut crate::ffi::TopoDS_Wire) {
         unsafe { crate::ffi::BRepPrim_Builder_make_wire(self as *const Self, W) }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:62 - `BRepPrim_Builder::MakeDegeneratedEdge()`
     /// Returns in <E> a degenerated edge.
     pub fn make_degenerated_edge(&self, E: &mut crate::ffi::TopoDS_Edge) {
         unsafe { crate::ffi::BRepPrim_Builder_make_degenerated_edge(self as *const Self, E) }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:66 - `BRepPrim_Builder::MakeEdge()`
     /// Returns   in <E>  an  Edge  built  with  the  line
     /// equation  <L>.
     pub fn make_edge_edge_lin(&self, E: &mut crate::ffi::TopoDS_Edge, L: &crate::ffi::gp_Lin) {
         unsafe { crate::ffi::BRepPrim_Builder_make_edge_edge_lin(self as *const Self, E, L) }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:70 - `BRepPrim_Builder::MakeEdge()`
     /// Returns  in <E>   an  Edge  built  with the circle
     /// equation  <C>.
     pub fn make_edge_edge_circ(&self, E: &mut crate::ffi::TopoDS_Edge, C: &crate::ffi::gp_Circ) {
         unsafe { crate::ffi::BRepPrim_Builder_make_edge_edge_circ(self as *const Self, E, C) }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:75 - `BRepPrim_Builder::SetPCurve()`
     /// Sets the line <L> to be the curve representing the
     /// edge <E> in the parametric space of the surface of
     /// <F>.
@@ -116,6 +127,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:80 - `BRepPrim_Builder::SetPCurve()`
     /// Sets the    lines  <L1,L2>  to   be     the curves
     /// representing the edge <E>  in the parametric space
     /// of the closed surface of <F>.
@@ -137,6 +149,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:88 - `BRepPrim_Builder::SetPCurve()`
     /// Sets the  circle <C> to  be the curve representing
     /// the  edge <E>  in   the  parametric  space of  the
     /// surface of <F>.
@@ -151,16 +164,19 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:91 - `BRepPrim_Builder::MakeVertex()`
     /// Returns in <V> a Vertex built with the point <P>.
     pub fn make_vertex(&self, V: &mut crate::ffi::TopoDS_Vertex, P: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::BRepPrim_Builder_make_vertex(self as *const Self, V, P) }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:94 - `BRepPrim_Builder::ReverseFace()`
     /// Reverses the Face <F>.
     pub fn reverse_face(&self, F: &mut crate::ffi::TopoDS_Face) {
         unsafe { crate::ffi::BRepPrim_Builder_reverse_face(self as *const Self, F) }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:99 - `BRepPrim_Builder::AddEdgeVertex()`
     /// Adds the Vertex <V> in the Edge <E>.  <P> is the
     /// parameter of the vertex on the  edge.  If direct
     /// is False the Vertex is reversed.
@@ -182,6 +198,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:107 - `BRepPrim_Builder::AddEdgeVertex()`
     /// Adds  the Vertex <V>  in the Edge <E>.   <P1,P2>
     /// are the  parameters of the  vertex on the closed
     /// edge.
@@ -203,6 +220,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:114 - `BRepPrim_Builder::SetParameters()`
     /// <P1,P2> are the parameters of the  vertex on the
     /// edge.  The edge is a closed curve.
     pub fn set_parameters(
@@ -215,6 +233,7 @@ impl Builder {
         unsafe { crate::ffi::BRepPrim_Builder_set_parameters(self as *const Self, E, V, P1, P2) }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:121 - `BRepPrim_Builder::AddWireEdge()`
     /// Adds the Edge <E> in the  Wire <W>, if direct is
     /// False the Edge is reversed.
     pub fn add_wire_edge(
@@ -226,34 +245,40 @@ impl Builder {
         unsafe { crate::ffi::BRepPrim_Builder_add_wire_edge(self as *const Self, W, E, direct) }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:126 - `BRepPrim_Builder::AddFaceWire()`
     /// Adds the Wire <W> in  the Face <F>.
     pub fn add_face_wire(&self, F: &mut crate::ffi::TopoDS_Face, W: &crate::ffi::TopoDS_Wire) {
         unsafe { crate::ffi::BRepPrim_Builder_add_face_wire(self as *const Self, F, W) }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:129 - `BRepPrim_Builder::AddShellFace()`
     /// Adds the Face <F>  in the Shell <Sh>.
     pub fn add_shell_face(&self, Sh: &mut crate::ffi::TopoDS_Shell, F: &crate::ffi::TopoDS_Face) {
         unsafe { crate::ffi::BRepPrim_Builder_add_shell_face(self as *const Self, Sh, F) }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:133 - `BRepPrim_Builder::CompleteEdge()`
     /// This is called once an edge is completed. It gives
     /// the opportunity to perform any post treatment.
     pub fn complete_edge(&self, E: &mut crate::ffi::TopoDS_Edge) {
         unsafe { crate::ffi::BRepPrim_Builder_complete_edge(self as *const Self, E) }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:137 - `BRepPrim_Builder::CompleteWire()`
     /// This is called once a wire is  completed. It gives
     /// the opportunity to perform any post treatment.
     pub fn complete_wire(&self, W: &mut crate::ffi::TopoDS_Wire) {
         unsafe { crate::ffi::BRepPrim_Builder_complete_wire(self as *const Self, W) }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:141 - `BRepPrim_Builder::CompleteFace()`
     /// This is called once a face is  completed. It gives
     /// the opportunity to perform any post treatment.
     pub fn complete_face(&self, F: &mut crate::ffi::TopoDS_Face) {
         unsafe { crate::ffi::BRepPrim_Builder_complete_face(self as *const Self, F) }
     }
 
+    /// **Source:** `BRepPrim_Builder.hxx`:145 - `BRepPrim_Builder::CompleteShell()`
     /// This is called once a shell is  completed. It gives
     /// the opportunity to perform any post treatment.
     pub fn complete_shell(&self, S: &mut crate::ffi::TopoDS_Shell) {
@@ -265,6 +290,7 @@ impl Builder {
 // From BRepPrim_Cone.hxx
 // ========================
 
+/// **Source:** `BRepPrim_Cone.hxx`:30 - `BRepPrim_Cone`
 /// Implement the cone primitive.
 pub use crate::ffi::BRepPrim_Cone as Cone;
 
@@ -275,6 +301,7 @@ unsafe impl crate::CppDeletable for Cone {
 }
 
 impl Cone {
+    /// **Source:** `BRepPrim_Cone.hxx`:46 - `BRepPrim_Cone::BRepPrim_Cone()`
     /// the STEP definition
     /// Angle = semi-angle of the cone
     /// Position : the coordinate system
@@ -299,21 +326,25 @@ impl Cone {
         }
     }
 
+    /// **Source:** `BRepPrim_Cone.hxx`:52 - `BRepPrim_Cone::BRepPrim_Cone()`
     /// infinite cone at origin on Z negative
     pub fn new_real(Angle: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Cone_ctor_real(Angle)) }
     }
 
+    /// **Source:** `BRepPrim_Cone.hxx`:55 - `BRepPrim_Cone::BRepPrim_Cone()`
     /// infinite cone at Apex on Z negative
     pub fn new_real_pnt(Angle: f64, Apex: &crate::ffi::gp_Pnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Cone_ctor_real_pnt(Angle, Apex)) }
     }
 
+    /// **Source:** `BRepPrim_Cone.hxx`:58 - `BRepPrim_Cone::BRepPrim_Cone()`
     /// infinite cone with Axes
     pub fn new_real_ax2(Angle: f64, Axes: &crate::ffi::gp_Ax2) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Cone_ctor_real_ax2(Angle, Axes)) }
     }
 
+    /// **Source:** `BRepPrim_Cone.hxx`:70 - `BRepPrim_Cone::BRepPrim_Cone()`
     /// create a  Cone at origin  on Z axis, of height  H,
     /// radius R1 at Z = 0, R2 at  Z = H, X is  the origin
     /// of angles.  If R1 or  R2 is 0   there is  an apex.
@@ -328,6 +359,7 @@ impl Cone {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Cone_ctor_real3(R1, R2, H)) }
     }
 
+    /// **Source:** `BRepPrim_Cone.hxx`:75 - `BRepPrim_Cone::BRepPrim_Cone()`
     /// same as above but at a given point
     pub fn new_pnt_real3(
         Center: &crate::ffi::gp_Pnt,
@@ -340,6 +372,7 @@ impl Cone {
         }
     }
 
+    /// **Source:** `BRepPrim_Cone.hxx`:81 - `BRepPrim_Cone::BRepPrim_Cone()`
     /// same as above with given axes system.
     pub fn new_ax2_real3(
         Axes: &crate::ffi::gp_Ax2,
@@ -352,6 +385,7 @@ impl Cone {
         }
     }
 
+    /// **Source:** `BRepPrim_Cone.hxx`:46 - `BRepPrim_Cone::BRepPrim_Cone()`
     /// the STEP definition
     /// Angle = semi-angle of the cone
     /// Position : the coordinate system
@@ -371,6 +405,7 @@ impl Cone {
         Self::new_real_ax2_real2(Angle, Position, Height, 0.0)
     }
 
+    /// **Source:** `BRepPrim_Cone.hxx`:88 - `BRepPrim_Cone::MakeEmptyLateralFace()`
     /// The surface normal should be directed  towards the
     /// outside.
     pub fn make_empty_lateral_face(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
@@ -647,6 +682,7 @@ impl Cone {
 // From BRepPrim_Cylinder.hxx
 // ========================
 
+/// **Source:** `BRepPrim_Cylinder.hxx`:30 - `BRepPrim_Cylinder`
 /// Cylinder primitive.
 pub use crate::ffi::BRepPrim_Cylinder as Cylinder;
 
@@ -657,6 +693,7 @@ unsafe impl crate::CppDeletable for Cylinder {
 }
 
 impl Cylinder {
+    /// **Source:** `BRepPrim_Cylinder.hxx`:43 - `BRepPrim_Cylinder::BRepPrim_Cylinder()`
     /// the STEP definition
     /// Position : center of a Face and Axis
     /// Radius : radius of cylinder
@@ -677,11 +714,13 @@ impl Cylinder {
         }
     }
 
+    /// **Source:** `BRepPrim_Cylinder.hxx`:48 - `BRepPrim_Cylinder::BRepPrim_Cylinder()`
     /// infinite Cylinder at origin on Z negative
     pub fn new_real(Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Cylinder_ctor_real(Radius)) }
     }
 
+    /// **Source:** `BRepPrim_Cylinder.hxx`:51 - `BRepPrim_Cylinder::BRepPrim_Cylinder()`
     /// infinite Cylinder at Center on Z negative
     pub fn new_pnt_real(Center: &crate::ffi::gp_Pnt, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -689,6 +728,7 @@ impl Cylinder {
         }
     }
 
+    /// **Source:** `BRepPrim_Cylinder.hxx`:54 - `BRepPrim_Cylinder::BRepPrim_Cylinder()`
     /// infinite Cylinder at Axes on Z negative
     pub fn new_ax2_real(Axes: &crate::ffi::gp_Ax2, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -696,6 +736,7 @@ impl Cylinder {
         }
     }
 
+    /// **Source:** `BRepPrim_Cylinder.hxx`:61 - `BRepPrim_Cylinder::BRepPrim_Cylinder()`
     /// create a Cylinder  at origin on Z  axis, of
     /// height H and radius R
     /// Error  : Radius  < Resolution
@@ -705,6 +746,7 @@ impl Cylinder {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Cylinder_ctor_real2(R, H)) }
     }
 
+    /// **Source:** `BRepPrim_Cylinder.hxx`:64 - `BRepPrim_Cylinder::BRepPrim_Cylinder()`
     /// same as above but at a given point
     pub fn new_pnt_real2(Center: &crate::ffi::gp_Pnt, R: f64, H: f64) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -712,6 +754,7 @@ impl Cylinder {
         }
     }
 
+    /// **Source:** `BRepPrim_Cylinder.hxx`:70 - `BRepPrim_Cylinder::MakeEmptyLateralFace()`
     /// The surface normal should be directed  towards the
     /// outside.
     pub fn make_empty_lateral_face(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
@@ -997,6 +1040,7 @@ impl Cylinder {
 // From BRepPrim_GWedge.hxx
 // ========================
 
+/// **Source:** `BRepPrim_GWedge.hxx`:56 - `BRepPrim_GWedge`
 /// A wedge is defined by:
 ///
 /// Axes: an Axis2 (coordinate system)
@@ -1025,11 +1069,13 @@ unsafe impl crate::CppDeletable for GWedge {
 }
 
 impl GWedge {
+    /// **Source:** `BRepPrim_GWedge.hxx`:62 - `BRepPrim_GWedge::BRepPrim_GWedge()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_GWedge_ctor()) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:75 - `BRepPrim_GWedge::BRepPrim_GWedge()`
     /// Creates a GWedge algorithm. <Axes> is the axis
     /// system for the primitive.
     ///
@@ -1055,6 +1101,7 @@ impl GWedge {
         }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:93 - `BRepPrim_GWedge::BRepPrim_GWedge()`
     /// Creates a GWedge primitive. <Axes> is the axis
     /// system for the primitive.
     ///
@@ -1082,6 +1129,7 @@ impl GWedge {
         }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:106 - `BRepPrim_GWedge::BRepPrim_GWedge()`
     /// Create a GWedge primitive. <Axes> is the axis
     /// system for the primitive.
     ///
@@ -1109,93 +1157,111 @@ impl GWedge {
         }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:120 - `BRepPrim_GWedge::Axes()`
     /// Returns the coordinates system from <me>.
     pub fn axes(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax2> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_GWedge_axes(self as *const Self)) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:123 - `BRepPrim_GWedge::GetXMin()`
     /// Returns Xmin value from <me>.
     pub fn get_x_min(&self) -> f64 {
         unsafe { crate::ffi::BRepPrim_GWedge_get_x_min(self as *const Self) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:126 - `BRepPrim_GWedge::GetYMin()`
     /// Returns YMin value from <me>.
     pub fn get_y_min(&self) -> f64 {
         unsafe { crate::ffi::BRepPrim_GWedge_get_y_min(self as *const Self) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:129 - `BRepPrim_GWedge::GetZMin()`
     /// Returns ZMin value from <me>.
     pub fn get_z_min(&self) -> f64 {
         unsafe { crate::ffi::BRepPrim_GWedge_get_z_min(self as *const Self) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:132 - `BRepPrim_GWedge::GetZ2Min()`
     /// Returns Z2Min value from <me>.
     pub fn get_z2_min(&self) -> f64 {
         unsafe { crate::ffi::BRepPrim_GWedge_get_z2_min(self as *const Self) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:135 - `BRepPrim_GWedge::GetX2Min()`
     /// Returns X2Min value from <me>.
     pub fn get_x2_min(&self) -> f64 {
         unsafe { crate::ffi::BRepPrim_GWedge_get_x2_min(self as *const Self) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:138 - `BRepPrim_GWedge::GetXMax()`
     /// Returns XMax value from <me>.
     pub fn get_x_max(&self) -> f64 {
         unsafe { crate::ffi::BRepPrim_GWedge_get_x_max(self as *const Self) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:141 - `BRepPrim_GWedge::GetYMax()`
     /// Returns YMax value from <me>.
     pub fn get_y_max(&self) -> f64 {
         unsafe { crate::ffi::BRepPrim_GWedge_get_y_max(self as *const Self) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:144 - `BRepPrim_GWedge::GetZMax()`
     /// Returns ZMax value from <me>.
     pub fn get_z_max(&self) -> f64 {
         unsafe { crate::ffi::BRepPrim_GWedge_get_z_max(self as *const Self) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:147 - `BRepPrim_GWedge::GetZ2Max()`
     /// Returns Z2Max value from <me>.
     pub fn get_z2_max(&self) -> f64 {
         unsafe { crate::ffi::BRepPrim_GWedge_get_z2_max(self as *const Self) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:150 - `BRepPrim_GWedge::GetX2Max()`
     /// Returns X2Max value from <me>.
     pub fn get_x2_max(&self) -> f64 {
         unsafe { crate::ffi::BRepPrim_GWedge_get_x2_max(self as *const Self) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:154 - `BRepPrim_GWedge::Open()`
     /// Opens <me> in <d1> direction. A face and its edges
     /// or vertices are said nonexistent.
     pub fn open(&mut self, d1: crate::b_rep_prim::Direction) {
         unsafe { crate::ffi::BRepPrim_GWedge_open(self as *mut Self, d1.into()) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:158 - `BRepPrim_GWedge::Close()`
     /// Closes <me> in <d1> direction. A face and its
     /// edges or vertices are said existent.
     pub fn close(&mut self, d1: crate::b_rep_prim::Direction) {
         unsafe { crate::ffi::BRepPrim_GWedge_close(self as *mut Self, d1.into()) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:161 - `BRepPrim_GWedge::IsInfinite()`
     /// Returns True if <me> is open in <d1> direction.
     pub fn is_infinite(&self, d1: crate::b_rep_prim::Direction) -> bool {
         unsafe { crate::ffi::BRepPrim_GWedge_is_infinite(self as *const Self, d1.into()) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:164 - `BRepPrim_GWedge::Shell()`
     /// Returns the Shell containing the Faces of <me>.
     pub fn shell(&mut self) -> &crate::ffi::TopoDS_Shell {
         unsafe { &*(crate::ffi::BRepPrim_GWedge_shell(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:167 - `BRepPrim_GWedge::HasFace()`
     /// Returns True if <me> has a Face in <d1> direction.
     pub fn has_face(&self, d1: crate::b_rep_prim::Direction) -> bool {
         unsafe { crate::ffi::BRepPrim_GWedge_has_face(self as *const Self, d1.into()) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:170 - `BRepPrim_GWedge::Face()`
     /// Returns the Face of <me> located in <d1> direction.
     pub fn face(&mut self, d1: crate::b_rep_prim::Direction) -> &crate::ffi::TopoDS_Face {
         unsafe { &*(crate::ffi::BRepPrim_GWedge_face(self as *mut Self, d1.into())) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:174 - `BRepPrim_GWedge::Plane()`
     /// Returns the plane of the Face of <me> located in
     /// <d1> direction.
     pub fn plane(
@@ -1210,16 +1276,19 @@ impl GWedge {
         }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:177 - `BRepPrim_GWedge::HasWire()`
     /// Returns True if <me> has a Wire in <d1> direction.
     pub fn has_wire(&self, d1: crate::b_rep_prim::Direction) -> bool {
         unsafe { crate::ffi::BRepPrim_GWedge_has_wire(self as *const Self, d1.into()) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:180 - `BRepPrim_GWedge::Wire()`
     /// Returns the Wire of <me> located in <d1> direction.
     pub fn wire(&mut self, d1: crate::b_rep_prim::Direction) -> &crate::ffi::TopoDS_Wire {
         unsafe { &*(crate::ffi::BRepPrim_GWedge_wire(self as *mut Self, d1.into())) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:183 - `BRepPrim_GWedge::HasEdge()`
     /// Returns True if <me> has an Edge in <d1><d2> direction.
     pub fn has_edge(
         &self,
@@ -1229,6 +1298,7 @@ impl GWedge {
         unsafe { crate::ffi::BRepPrim_GWedge_has_edge(self as *const Self, d1.into(), d2.into()) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:187 - `BRepPrim_GWedge::Edge()`
     /// Returns the Edge of <me> located in <d1><d2> direction.
     pub fn edge(
         &mut self,
@@ -1238,6 +1308,7 @@ impl GWedge {
         unsafe { &*(crate::ffi::BRepPrim_GWedge_edge(self as *mut Self, d1.into(), d2.into())) }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:191 - `BRepPrim_GWedge::Line()`
     /// Returns the line of the Edge of <me> located in
     /// <d1><d2> direction.
     pub fn line(
@@ -1254,6 +1325,7 @@ impl GWedge {
         }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:195 - `BRepPrim_GWedge::HasVertex()`
     /// Returns True if <me> has a Vertex in <d1><d2><d3>
     /// direction.
     pub fn has_vertex(
@@ -1272,6 +1344,7 @@ impl GWedge {
         }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:201 - `BRepPrim_GWedge::Vertex()`
     /// Returns the Vertex of <me> located in <d1><d2><d3>
     /// direction.
     pub fn vertex(
@@ -1290,6 +1363,7 @@ impl GWedge {
         }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:207 - `BRepPrim_GWedge::Point()`
     /// Returns the point of the Vertex of <me> located in
     /// <d1><d2><d3> direction.
     pub fn point(
@@ -1308,6 +1382,7 @@ impl GWedge {
         }
     }
 
+    /// **Source:** `BRepPrim_GWedge.hxx`:213 - `BRepPrim_GWedge::IsDegeneratedShape()`
     /// Checks a shape on degeneracy
     /// @return TRUE if a shape is degenerated
     pub fn is_degenerated_shape(&mut self) -> bool {
@@ -1319,6 +1394,7 @@ impl GWedge {
 // From BRepPrim_OneAxis.hxx
 // ========================
 
+/// **Source:** `BRepPrim_OneAxis.hxx`:63 - `BRepPrim_OneAxis`
 /// Algorithm to  build  primitives with  one  axis of
 /// revolution.
 ///
@@ -1359,6 +1435,7 @@ unsafe impl crate::CppDeletable for OneAxis {
 }
 
 impl OneAxis {
+    /// **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
     /// The MeridianOffset is added  to the  parameters on
     /// the meridian curve and  to  the  V values  of  the
     /// pcurves. This is  used for the sphere for example,
@@ -1370,39 +1447,48 @@ impl OneAxis {
         }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
     /// Returns the Ax2 from <me>.
     pub fn axes(&self) -> &crate::ffi::gp_Ax2 {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_axes(self as *const Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:78 - `BRepPrim_OneAxis::Axes()`
     pub fn axes_ax2(&mut self, A: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::BRepPrim_OneAxis_axes_ax2(self as *mut Self, A) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
     pub fn angle(&self) -> f64 {
         unsafe { crate::ffi::BRepPrim_OneAxis_angle(self as *const Self) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:82 - `BRepPrim_OneAxis::Angle()`
     pub fn angle_real(&mut self, A: f64) {
         unsafe { crate::ffi::BRepPrim_OneAxis_angle_real(self as *mut Self, A) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
     pub fn v_min(&self) -> f64 {
         unsafe { crate::ffi::BRepPrim_OneAxis_v_min(self as *const Self) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:86 - `BRepPrim_OneAxis::VMin()`
     pub fn v_min_real(&mut self, V: f64) {
         unsafe { crate::ffi::BRepPrim_OneAxis_v_min_real(self as *mut Self, V) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max(&self) -> f64 {
         unsafe { crate::ffi::BRepPrim_OneAxis_v_max(self as *const Self) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:90 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max_real(&mut self, V: f64) {
         unsafe { crate::ffi::BRepPrim_OneAxis_v_max_real(self as *mut Self, V) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:97 - `BRepPrim_OneAxis::MakeEmptyLateralFace()`
     /// Returns a face with  no edges.  The surface is the
     /// lateral surface with normals pointing outward. The
     /// U parameter is the angle with the  origin on the X
@@ -1416,6 +1502,7 @@ impl OneAxis {
         }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:102 - `BRepPrim_OneAxis::MakeEmptyMeridianEdge()`
     /// Returns  an  edge with  a 3D curve   made from the
     /// meridian  in the XZ  plane rotated by <Ang> around
     /// the Z-axis. Ang may be 0 or myAngle.
@@ -1428,6 +1515,7 @@ impl OneAxis {
         }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:107 - `BRepPrim_OneAxis::SetMeridianPCurve()`
     /// Sets the  parametric curve of the  edge <E> in the
     /// face  <F> to be  the   2d representation  of   the
     /// meridian.
@@ -1439,6 +1527,7 @@ impl OneAxis {
         unsafe { crate::ffi::BRepPrim_OneAxis_set_meridian_p_curve(self as *const Self, E, F) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:111 - `BRepPrim_OneAxis::MeridianValue()`
     /// Returns the meridian point at parameter <V> in the
     /// plane XZ.
     pub fn meridian_value(&self, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
@@ -1450,6 +1539,7 @@ impl OneAxis {
         }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
     /// Returns True if the point of  parameter <V> on the
     /// meridian is on the Axis. Default implementation is
     /// Abs(MeridianValue(V).X()) < Precision::Confusion()
@@ -1457,6 +1547,7 @@ impl OneAxis {
         unsafe { crate::ffi::BRepPrim_OneAxis_meridian_on_axis(self as *const Self, V) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:122 - `BRepPrim_OneAxis::MeridianClosed()`
     /// Returns True  if the  meridian is  closed. Default
     /// implementation                                  is
     /// MeridianValue(VMin).IsEqual(MeridianValue(VMax),
@@ -1465,18 +1556,21 @@ impl OneAxis {
         unsafe { crate::ffi::BRepPrim_OneAxis_meridian_closed(self as *const Self) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:126 - `BRepPrim_OneAxis::VMaxInfinite()`
     /// Returns  True   if  VMax    is  infinite.  Default
     /// Precision::IsPositiveInfinite(VMax);
     pub fn v_max_infinite(&self) -> bool {
         unsafe { crate::ffi::BRepPrim_OneAxis_v_max_infinite(self as *const Self) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:130 - `BRepPrim_OneAxis::VMinInfinite()`
     /// Returns  True   if  VMin    is  infinite.  Default
     /// Precision::IsNegativeInfinite(VMax);
     pub fn v_min_infinite(&self) -> bool {
         unsafe { crate::ffi::BRepPrim_OneAxis_v_min_infinite(self as *const Self) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:137 - `BRepPrim_OneAxis::HasTop()`
     /// Returns True if  there is  a top  face.
     ///
     /// That is neither : VMaxInfinite()
@@ -1486,6 +1580,7 @@ impl OneAxis {
         unsafe { crate::ffi::BRepPrim_OneAxis_has_top(self as *const Self) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:144 - `BRepPrim_OneAxis::HasBottom()`
     /// Returns   True if there is   a bottom  face.
     ///
     /// That is neither : VMinInfinite()
@@ -1495,6 +1590,7 @@ impl OneAxis {
         unsafe { crate::ffi::BRepPrim_OneAxis_has_bottom(self as *const Self) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:149 - `BRepPrim_OneAxis::HasSides()`
     /// Returns True if  there are Start   and  End faces.
     ///
     /// That is : 2*PI  - Angle > Precision::Angular()
@@ -1502,170 +1598,200 @@ impl OneAxis {
         unsafe { crate::ffi::BRepPrim_OneAxis_has_sides(self as *const Self) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:153 - `BRepPrim_OneAxis::Shell()`
     /// Returns the Shell containing all the  Faces of the
     /// primitive.
     pub fn shell(&mut self) -> &crate::ffi::TopoDS_Shell {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_shell(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:157 - `BRepPrim_OneAxis::LateralFace()`
     /// Returns  the lateral Face.   It is oriented toward
     /// the outside of the primitive.
     pub fn lateral_face(&mut self) -> &crate::ffi::TopoDS_Face {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_lateral_face(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:161 - `BRepPrim_OneAxis::TopFace()`
     /// Returns the   top planar  Face.    It  is Oriented
     /// toward the +Z axis (outside).
     pub fn top_face(&mut self) -> &crate::ffi::TopoDS_Face {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_top_face(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:165 - `BRepPrim_OneAxis::BottomFace()`
     /// Returns  the Bottom planar Face.   It is  Oriented
     /// toward the -Z axis (outside).
     pub fn bottom_face(&mut self) -> &crate::ffi::TopoDS_Face {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_bottom_face(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:169 - `BRepPrim_OneAxis::StartFace()`
     /// Returns  the  Face   starting   the slice, it   is
     /// oriented toward the exterior of the primitive.
     pub fn start_face(&mut self) -> &crate::ffi::TopoDS_Face {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_start_face(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:173 - `BRepPrim_OneAxis::EndFace()`
     /// Returns the Face ending the slice, it  is oriented
     /// toward the exterior of the primitive.
     pub fn end_face(&mut self) -> &crate::ffi::TopoDS_Face {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_end_face(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:176 - `BRepPrim_OneAxis::LateralWire()`
     /// Returns  the wire in the lateral face.
     pub fn lateral_wire(&mut self) -> &crate::ffi::TopoDS_Wire {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_lateral_wire(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:180 - `BRepPrim_OneAxis::LateralStartWire()`
     /// Returns the   wire in the   lateral  face with the
     /// start edge.
     pub fn lateral_start_wire(&mut self) -> &crate::ffi::TopoDS_Wire {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_lateral_start_wire(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:184 - `BRepPrim_OneAxis::LateralEndWire()`
     /// Returns the wire with in lateral face with the end
     /// edge.
     pub fn lateral_end_wire(&mut self) -> &crate::ffi::TopoDS_Wire {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_lateral_end_wire(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:187 - `BRepPrim_OneAxis::TopWire()`
     /// Returns the wire in the top face.
     pub fn top_wire(&mut self) -> &crate::ffi::TopoDS_Wire {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_top_wire(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:190 - `BRepPrim_OneAxis::BottomWire()`
     /// Returns the wire in the bottom face.
     pub fn bottom_wire(&mut self) -> &crate::ffi::TopoDS_Wire {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_bottom_wire(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:193 - `BRepPrim_OneAxis::StartWire()`
     /// Returns the wire  in the  start face.
     pub fn start_wire(&mut self) -> &crate::ffi::TopoDS_Wire {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_start_wire(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:197 - `BRepPrim_OneAxis::AxisStartWire()`
     /// Returns  the wire   in the  start   face  with the
     /// AxisEdge.
     pub fn axis_start_wire(&mut self) -> &crate::ffi::TopoDS_Wire {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_axis_start_wire(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:200 - `BRepPrim_OneAxis::EndWire()`
     /// Returns the Wire in   the end face.
     pub fn end_wire(&mut self) -> &crate::ffi::TopoDS_Wire {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_end_wire(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:204 - `BRepPrim_OneAxis::AxisEndWire()`
     /// Returns  the Wire  in  the   end   face  with  the
     /// AxisEdge.
     pub fn axis_end_wire(&mut self) -> &crate::ffi::TopoDS_Wire {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_axis_end_wire(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:208 - `BRepPrim_OneAxis::AxisEdge()`
     /// Returns the Edge built along the Axis and oriented
     /// on +Z of the Axis.
     pub fn axis_edge(&mut self) -> &crate::ffi::TopoDS_Edge {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_axis_edge(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:211 - `BRepPrim_OneAxis::StartEdge()`
     /// Returns the   Edge at angle 0.
     pub fn start_edge(&mut self) -> &crate::ffi::TopoDS_Edge {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_start_edge(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:215 - `BRepPrim_OneAxis::EndEdge()`
     /// Returns the  Edge at  angle Angle.  If !HasSides()
     /// the StartEdge and the EndEdge are the same edge.
     pub fn end_edge(&mut self) -> &crate::ffi::TopoDS_Edge {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_end_edge(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:219 - `BRepPrim_OneAxis::StartTopEdge()`
     /// Returns the linear Edge between start Face and top
     /// Face.
     pub fn start_top_edge(&mut self) -> &crate::ffi::TopoDS_Edge {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_start_top_edge(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:223 - `BRepPrim_OneAxis::StartBottomEdge()`
     /// Returns the linear  Edge between  start  Face  and
     /// bottom Face.
     pub fn start_bottom_edge(&mut self) -> &crate::ffi::TopoDS_Edge {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_start_bottom_edge(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:227 - `BRepPrim_OneAxis::EndTopEdge()`
     /// Returns the linear Edge  between end Face and  top
     /// Face.
     pub fn end_top_edge(&mut self) -> &crate::ffi::TopoDS_Edge {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_end_top_edge(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:231 - `BRepPrim_OneAxis::EndBottomEdge()`
     /// Returns  the  linear  Edge  between end  Face  and
     /// bottom Face.
     pub fn end_bottom_edge(&mut self) -> &crate::ffi::TopoDS_Edge {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_end_bottom_edge(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:235 - `BRepPrim_OneAxis::TopEdge()`
     /// Returns the edge at VMax. If  MeridianClosed() the
     /// TopEdge and the BottomEdge are the same edge.
     pub fn top_edge(&mut self) -> &crate::ffi::TopoDS_Edge {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_top_edge(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:239 - `BRepPrim_OneAxis::BottomEdge()`
     /// Returns the edge  at VMin. If MeridianClosed() the
     /// TopEdge and the BottomEdge are the same edge.
     pub fn bottom_edge(&mut self) -> &crate::ffi::TopoDS_Edge {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_bottom_edge(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:242 - `BRepPrim_OneAxis::AxisTopVertex()`
     /// Returns the Vertex at the Top altitude on the axis.
     pub fn axis_top_vertex(&mut self) -> &crate::ffi::TopoDS_Vertex {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_axis_top_vertex(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:246 - `BRepPrim_OneAxis::AxisBottomVertex()`
     /// Returns the Vertex  at the Bottom  altitude on the
     /// axis.
     pub fn axis_bottom_vertex(&mut self) -> &crate::ffi::TopoDS_Vertex {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_axis_bottom_vertex(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:249 - `BRepPrim_OneAxis::TopStartVertex()`
     /// Returns the vertex (0,VMax)
     pub fn top_start_vertex(&mut self) -> &crate::ffi::TopoDS_Vertex {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_top_start_vertex(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:252 - `BRepPrim_OneAxis::TopEndVertex()`
     /// Returns the vertex (angle,VMax)
     pub fn top_end_vertex(&mut self) -> &crate::ffi::TopoDS_Vertex {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_top_end_vertex(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:255 - `BRepPrim_OneAxis::BottomStartVertex()`
     /// Returns the vertex (0,VMin)
     pub fn bottom_start_vertex(&mut self) -> &crate::ffi::TopoDS_Vertex {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_bottom_start_vertex(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrim_OneAxis.hxx`:258 - `BRepPrim_OneAxis::BottomEndVertex()`
     /// Returns the vertex (angle,VMax)
     pub fn bottom_end_vertex(&mut self) -> &crate::ffi::TopoDS_Vertex {
         unsafe { &*(crate::ffi::BRepPrim_OneAxis_bottom_end_vertex(self as *mut Self)) }
@@ -1676,6 +1802,7 @@ impl OneAxis {
 // From BRepPrim_Revolution.hxx
 // ========================
 
+/// **Source:** `BRepPrim_Revolution.hxx`:35 - `BRepPrim_Revolution`
 /// Implement  the OneAxis algorithm   for a revolution
 /// surface.
 pub use crate::ffi::BRepPrim_Revolution as Revolution;
@@ -1687,6 +1814,7 @@ unsafe impl crate::CppDeletable for Revolution {
 }
 
 impl Revolution {
+    /// **Source:** `BRepPrim_Revolution.hxx`:43 - `BRepPrim_Revolution::BRepPrim_Revolution()`
     /// Create a  revolution body <M>  is the  meridian nd
     /// must   be in the XZ  plane   of <A>. <PM>  is  the
     /// meridian in the XZ plane.
@@ -1706,6 +1834,7 @@ impl Revolution {
         }
     }
 
+    /// **Source:** `BRepPrim_Revolution.hxx`:51 - `BRepPrim_Revolution::MakeEmptyLateralFace()`
     /// The surface normal should be directed  towards the
     /// outside.
     pub fn make_empty_lateral_face(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
@@ -1716,6 +1845,7 @@ impl Revolution {
         }
     }
 
+    /// **Source:** `BRepPrim_Revolution.hxx`:56 - `BRepPrim_Revolution::MakeEmptyMeridianEdge()`
     /// Returns  an  edge with  a 3D curve   made from the
     /// meridian  in the XZ  plane rotated by <Ang> around
     /// the Z-axis. Ang may be 0 or myAngle.
@@ -1728,6 +1858,7 @@ impl Revolution {
         }
     }
 
+    /// **Source:** `BRepPrim_Revolution.hxx`:60 - `BRepPrim_Revolution::MeridianValue()`
     /// Returns the meridian point at parameter <V> in the
     /// plane XZ.
     pub fn meridian_value(&self, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
@@ -1739,6 +1870,7 @@ impl Revolution {
         }
     }
 
+    /// **Source:** `BRepPrim_Revolution.hxx`:65 - `BRepPrim_Revolution::SetMeridianPCurve()`
     /// Sets the  parametric urve of  the edge <E>  in the
     /// face <F>   to be  the  2d  representation  of  the
     /// meridian.
@@ -1984,6 +2116,7 @@ impl Revolution {
 // From BRepPrim_Sphere.hxx
 // ========================
 
+/// **Source:** `BRepPrim_Sphere.hxx`:30 - `BRepPrim_Sphere`
 /// Implements the sphere primitive
 pub use crate::ffi::BRepPrim_Sphere as Sphere;
 
@@ -1994,6 +2127,7 @@ unsafe impl crate::CppDeletable for Sphere {
 }
 
 impl Sphere {
+    /// **Source:** `BRepPrim_Sphere.hxx`:38 - `BRepPrim_Sphere::BRepPrim_Sphere()`
     /// Creates a Sphere at  origin with  Radius. The axes
     /// of the sphere are the  reference axes. An error is
     /// raised if the radius is < Resolution.
@@ -2001,6 +2135,7 @@ impl Sphere {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Sphere_ctor_real(Radius)) }
     }
 
+    /// **Source:** `BRepPrim_Sphere.hxx`:43 - `BRepPrim_Sphere::BRepPrim_Sphere()`
     /// Creates a Sphere with Center and Radius.
     /// Axes are the reference axes.
     /// This is the STEP constructor.
@@ -2010,6 +2145,7 @@ impl Sphere {
         }
     }
 
+    /// **Source:** `BRepPrim_Sphere.hxx`:46 - `BRepPrim_Sphere::BRepPrim_Sphere()`
     /// Creates a sphere with given axes system.
     pub fn new_ax2_real(Axes: &crate::ffi::gp_Ax2, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2017,6 +2153,7 @@ impl Sphere {
         }
     }
 
+    /// **Source:** `BRepPrim_Sphere.hxx`:50 - `BRepPrim_Sphere::MakeEmptyLateralFace()`
     /// The surface normal should be directed  towards the
     /// outside.
     pub fn make_empty_lateral_face(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
@@ -2298,6 +2435,7 @@ impl Sphere {
 // From BRepPrim_Torus.hxx
 // ========================
 
+/// **Source:** `BRepPrim_Torus.hxx`:30 - `BRepPrim_Torus`
 /// Implements the torus primitive
 pub use crate::ffi::BRepPrim_Torus as Torus;
 
@@ -2308,6 +2446,7 @@ unsafe impl crate::CppDeletable for Torus {
 }
 
 impl Torus {
+    /// **Source:** `BRepPrim_Torus.hxx`:41 - `BRepPrim_Torus::BRepPrim_Torus()`
     /// the STEP definition
     /// Position : center and axes
     /// Major, Minor : Radii
@@ -2326,11 +2465,13 @@ impl Torus {
         }
     }
 
+    /// **Source:** `BRepPrim_Torus.hxx`:46 - `BRepPrim_Torus::BRepPrim_Torus()`
     /// Torus centered at origin
     pub fn new_real2(Major: f64, Minor: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Torus_ctor_real2(Major, Minor)) }
     }
 
+    /// **Source:** `BRepPrim_Torus.hxx`:49 - `BRepPrim_Torus::BRepPrim_Torus()`
     /// Torus at Center
     pub fn new_pnt_real2(
         Center: &crate::ffi::gp_Pnt,
@@ -2344,6 +2485,7 @@ impl Torus {
         }
     }
 
+    /// **Source:** `BRepPrim_Torus.hxx`:55 - `BRepPrim_Torus::MakeEmptyLateralFace()`
     /// The surface normal should be directed  towards the
     /// outside.
     pub fn make_empty_lateral_face(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
@@ -2623,6 +2765,7 @@ impl Torus {
 // From BRepPrim_Wedge.hxx
 // ========================
 
+/// **Source:** `BRepPrim_Wedge.hxx`:28 - `BRepPrim_Wedge`
 /// Provides constructors without Builders.
 pub use crate::ffi::BRepPrim_Wedge as Wedge;
 
@@ -2633,11 +2776,13 @@ unsafe impl crate::CppDeletable for Wedge {
 }
 
 impl Wedge {
+    /// **Source:** `BRepPrim_Wedge.hxx`:34 - `BRepPrim_Wedge::BRepPrim_Wedge()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Wedge_ctor()) }
     }
 
+    /// **Source:** `BRepPrim_Wedge.hxx`:47 - `BRepPrim_Wedge::BRepPrim_Wedge()`
     /// Creates a  Wedge  algorithm.   <Axes> is  the axis
     /// system for the primitive.
     ///
@@ -2660,6 +2805,7 @@ impl Wedge {
         }
     }
 
+    /// **Source:** `BRepPrim_Wedge.hxx`:64 - `BRepPrim_Wedge::BRepPrim_Wedge()`
     /// Creates  a Wedge  primitive. <Axes> is   the  axis
     /// system for the primitive.
     ///
@@ -2686,6 +2832,7 @@ impl Wedge {
         }
     }
 
+    /// **Source:** `BRepPrim_Wedge.hxx`:76 - `BRepPrim_Wedge::BRepPrim_Wedge()`
     /// Create  a Wedge primitive.   <Axes>  is  the  axis
     /// system for the primitive.
     ///

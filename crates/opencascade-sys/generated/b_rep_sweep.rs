@@ -10,6 +10,7 @@
 // From BRepSweep_Builder.hxx
 // ========================
 
+/// **Source:** `BRepSweep_Builder.hxx`:29 - `BRepSweep_Builder`
 /// implements the abstract Builder with the BRep Builder
 pub use crate::ffi::BRepSweep_Builder as Builder;
 
@@ -20,40 +21,48 @@ unsafe impl crate::CppDeletable for Builder {
 }
 
 impl Builder {
+    /// **Source:** `BRepSweep_Builder.hxx`:35 - `BRepSweep_Builder::BRepSweep_Builder()`
     /// Creates a Builder.
     pub fn new_builder(aBuilder: &crate::ffi::BRep_Builder) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Builder_ctor_builder(aBuilder)) }
     }
 
+    /// **Source:** `BRepSweep_Builder.hxx`:37 - `BRepSweep_Builder::Builder()`
     pub fn builder(&self) -> &crate::ffi::BRep_Builder {
         unsafe { &*(crate::ffi::BRepSweep_Builder_builder(self as *const Self)) }
     }
 
+    /// **Source:** `BRepSweep_Builder.hxx`:40 - `BRepSweep_Builder::MakeCompound()`
     /// Returns an empty Compound.
     pub fn make_compound(&self, aCompound: &mut crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BRepSweep_Builder_make_compound(self as *const Self, aCompound) }
     }
 
+    /// **Source:** `BRepSweep_Builder.hxx`:43 - `BRepSweep_Builder::MakeCompSolid()`
     /// Returns an empty CompSolid.
     pub fn make_comp_solid(&self, aCompSolid: &mut crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BRepSweep_Builder_make_comp_solid(self as *const Self, aCompSolid) }
     }
 
+    /// **Source:** `BRepSweep_Builder.hxx`:46 - `BRepSweep_Builder::MakeSolid()`
     /// Returns an empty Solid.
     pub fn make_solid(&self, aSolid: &mut crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BRepSweep_Builder_make_solid(self as *const Self, aSolid) }
     }
 
+    /// **Source:** `BRepSweep_Builder.hxx`:49 - `BRepSweep_Builder::MakeShell()`
     /// Returns an empty Shell.
     pub fn make_shell(&self, aShell: &mut crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BRepSweep_Builder_make_shell(self as *const Self, aShell) }
     }
 
+    /// **Source:** `BRepSweep_Builder.hxx`:52 - `BRepSweep_Builder::MakeWire()`
     /// Returns an empty Wire.
     pub fn make_wire(&self, aWire: &mut crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BRepSweep_Builder_make_wire(self as *const Self, aWire) }
     }
 
+    /// **Source:** `BRepSweep_Builder.hxx`:56 - `BRepSweep_Builder::Add()`
     /// Adds the Shape 1 in the Shape 2, set to
     /// <Orient> orientation.
     pub fn add_shape2_orientation(
@@ -72,6 +81,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRepSweep_Builder.hxx`:61 - `BRepSweep_Builder::Add()`
     /// Adds the Shape 1 in the Shape 2.
     pub fn add_shape2(
         &self,
@@ -86,6 +96,7 @@ impl Builder {
 // From BRepSweep_NumLinearRegularSweep.hxx
 // ========================
 
+/// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:68 - `BRepSweep_NumLinearRegularSweep`
 /// This  a generic  class  is  used   to build Sweept
 /// primitives   with    a  generating  "shape"  and a
 /// directing "line".
@@ -132,6 +143,7 @@ unsafe impl crate::CppDeletable for NumLinearRegularSweep {
 }
 
 impl NumLinearRegularSweep {
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:75 - `BRepSweep_NumLinearRegularSweep::MakeEmptyVertex()`
     /// Builds the vertex addressed by [aGenV,aDirV], with its
     /// geometric part, but without subcomponents.
     pub fn make_empty_vertex(
@@ -150,6 +162,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:81 - `BRepSweep_NumLinearRegularSweep::MakeEmptyDirectingEdge()`
     /// Builds the edge addressed by [aGenV,aDirE], with its
     /// geometric part, but without subcomponents.
     pub fn make_empty_directing_edge(
@@ -168,6 +181,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:86 - `BRepSweep_NumLinearRegularSweep::MakeEmptyGeneratingEdge()`
     /// Builds the edge addressed by [aGenE,aDirV], with its
     /// geometric part, but without subcomponents.
     pub fn make_empty_generating_edge(
@@ -186,6 +200,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:92 - `BRepSweep_NumLinearRegularSweep::SetParameters()`
     /// Sets the  parameters of the new  vertex  on the new
     /// face. The new face and  new vertex where generated
     /// from aGenF, aGenV and aDirV .
@@ -209,6 +224,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:101 - `BRepSweep_NumLinearRegularSweep::SetDirectingParameter()`
     /// Sets the  parameter of the new  vertex  on the new
     /// edge. The new edge and  new vertex where generated
     /// from aGenV aDirE, and aDirV.
@@ -232,6 +248,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:110 - `BRepSweep_NumLinearRegularSweep::SetGeneratingParameter()`
     /// Sets the  parameter of the new  vertex  on the new
     /// edge. The new edge and  new vertex where generated
     /// from aGenE, aGenV and aDirV .
@@ -255,6 +272,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:121 - `BRepSweep_NumLinearRegularSweep::MakeEmptyFace()`
     /// Builds the face  addressed by  [aGenS,aDirS], with
     /// its geometric part, but without subcomponents. The
     /// couple aGenS, aDirS  can be a "generating face and
@@ -274,6 +292,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:127 - `BRepSweep_NumLinearRegularSweep::SetPCurve()`
     /// Sets the PCurve for a new edge on a new face. The
     /// new edge and  the  new face were generated  using
     /// aGenF, aGenE and aDirV.
@@ -299,6 +318,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:137 - `BRepSweep_NumLinearRegularSweep::SetGeneratingPCurve()`
     /// Sets the PCurve for a new edge on a new face. The
     /// new edge and  the  new face were generated  using
     /// aGenE, aDirE and aDirV.
@@ -324,6 +344,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:147 - `BRepSweep_NumLinearRegularSweep::SetDirectingPCurve()`
     /// Sets the PCurve for a new edge on a new face. The
     /// new edge and  the  new face were generated  using
     /// aGenE, aDirE and aGenV.
@@ -349,6 +370,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:158 - `BRepSweep_NumLinearRegularSweep::DirectSolid()`
     /// Returns the Orientation of the  shell in the solid
     /// generated by the face aGenS  with  the edge aDirS.
     /// It is  REVERSED  if the surface is  swept  in  the
@@ -370,6 +392,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:164 - `BRepSweep_NumLinearRegularSweep::GGDShapeIsToAdd()`
     /// Returns   true   if  aNewSubShape    (addressed by
     /// aSubGenS  and aDirS)  must  be added  in aNewShape
     /// (addressed by aGenS and aDirS).
@@ -393,6 +416,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:173 - `BRepSweep_NumLinearRegularSweep::GDDShapeIsToAdd()`
     /// Returns   true   if  aNewSubShape    (addressed by
     /// aGenS  and aSubDirS)  must  be added  in aNewShape
     /// (addressed by aGenS and aDirS).
@@ -416,6 +440,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:184 - `BRepSweep_NumLinearRegularSweep::SeparatedWires()`
     /// In  some  particular  cases  the   topology  of  a
     /// generated  face must be  composed  of  independent
     /// closed wires,  in this case  this function returns
@@ -440,6 +465,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:194 - `BRepSweep_NumLinearRegularSweep::SplitShell()`
     /// In  some  particular  cases  the   topology  of  a
     /// generated  Shell must be  composed  of  independent
     /// closed Shells,  in this case  this function returns
@@ -456,6 +482,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:199 - `BRepSweep_NumLinearRegularSweep::SetContinuity()`
     /// Called to propagate the continuity of  every vertex
     /// between two edges of the  generating wire  aGenS on
     /// the generated edge and faces.
@@ -473,6 +500,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:206 - `BRepSweep_NumLinearRegularSweep::HasShape()`
     /// Returns true   if aDirS   and aGenS  addresses   a
     /// resulting Shape. In some  specific cases the shape
     /// can  be    geometrically   inexsistant,  then this
@@ -487,6 +515,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:210 - `BRepSweep_NumLinearRegularSweep::IsInvariant()`
     /// Returns true if aGenS cannot be transformed.
     pub fn is_invariant(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe {
@@ -494,6 +523,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:214 - `BRepSweep_NumLinearRegularSweep::Shape()`
     /// Returns the resulting  Shape indexed by aDirS  and
     /// aGenS.
     pub fn shape_shape_numshape(
@@ -512,6 +542,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:218 - `BRepSweep_NumLinearRegularSweep::Shape()`
     /// Returns  the resulting Shape  indexed by myDirWire
     /// and aGenS.
     pub fn shape_shape(
@@ -526,12 +557,14 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:222 - `BRepSweep_NumLinearRegularSweep::IsUsed()`
     /// Returns true if the initial shape aGenS
     /// is used in result shape
     pub fn is_used(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_NumLinearRegularSweep_is_used(self as *const Self, aGenS) }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:226 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
     /// Returns true if the shape, generated from theS
     /// is used in result shape
     pub fn gen_is_used(&self, theS: &crate::ffi::TopoDS_Shape) -> bool {
@@ -540,6 +573,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:230 - `BRepSweep_NumLinearRegularSweep::Shape()`
     /// Returns the resulting  Shape indexed by  myDirWire
     /// and myGenShape.
     pub fn shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
@@ -550,6 +584,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:234 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
     /// Returns the resulting Shape  indexed by the  first
     /// Vertex  of myDirWire and myGenShape.
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
@@ -560,6 +595,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:238 - `BRepSweep_NumLinearRegularSweep::LastShape()`
     /// Returns the  resulting Shape  indexed by the  last
     /// Vertex of myDirWire and myGenShape.
     pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
@@ -570,6 +606,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:242 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
     /// Returns the resulting Shape  indexed by the  first
     /// Vertex  of myDirWire and aGenS.
     pub fn first_shape_shape(
@@ -586,6 +623,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:246 - `BRepSweep_NumLinearRegularSweep::LastShape()`
     /// Returns the  resulting Shape  indexed by the  last
     /// Vertex of myDirWire and aGenS.
     pub fn last_shape_shape(
@@ -600,6 +638,7 @@ impl NumLinearRegularSweep {
         }
     }
 
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:248 - `BRepSweep_NumLinearRegularSweep::Closed()`
     pub fn closed(&self) -> bool {
         unsafe { crate::ffi::BRepSweep_NumLinearRegularSweep_closed(self as *const Self) }
     }
@@ -609,6 +648,7 @@ impl NumLinearRegularSweep {
 // From BRepSweep_Prism.hxx
 // ========================
 
+/// **Source:** `BRepSweep_Prism.hxx`:34 - `BRepSweep_Prism`
 /// Provides natural constructors to build BRepSweep
 /// translated swept Primitives.
 pub use crate::ffi::BRepSweep_Prism as Prism;
@@ -620,6 +660,7 @@ unsafe impl crate::CppDeletable for Prism {
 }
 
 impl Prism {
+    /// **Source:** `BRepSweep_Prism.hxx`:42 - `BRepSweep_Prism::BRepSweep_Prism()`
     /// Builds the prism of base S and vector V. If C is true,
     /// S is copied. If Canonize is true then generated surfaces
     /// are attempted to be canonized in simple types
@@ -636,6 +677,7 @@ impl Prism {
         }
     }
 
+    /// **Source:** `BRepSweep_Prism.hxx`:52 - `BRepSweep_Prism::BRepSweep_Prism()`
     /// Builds a semi-infinite or an infinite prism of base S.
     /// If Copy is true S is copied.  If Inf is true the prism
     /// is infinite, if Inf is false the  prism is infinite in
@@ -655,6 +697,7 @@ impl Prism {
         }
     }
 
+    /// **Source:** `BRepSweep_Prism.hxx`:42 - `BRepSweep_Prism::BRepSweep_Prism()`
     /// Builds the prism of base S and vector V. If C is true,
     /// S is copied. If Canonize is true then generated surfaces
     /// are attempted to be canonized in simple types
@@ -666,6 +709,7 @@ impl Prism {
         Self::new_shape_vec_bool2(S, V, Copy, true)
     }
 
+    /// **Source:** `BRepSweep_Prism.hxx`:42 - `BRepSweep_Prism::BRepSweep_Prism()`
     /// Builds the prism of base S and vector V. If C is true,
     /// S is copied. If Canonize is true then generated surfaces
     /// are attempted to be canonized in simple types
@@ -676,6 +720,7 @@ impl Prism {
         Self::new_shape_vec_bool2(S, V, false, true)
     }
 
+    /// **Source:** `BRepSweep_Prism.hxx`:52 - `BRepSweep_Prism::BRepSweep_Prism()`
     /// Builds a semi-infinite or an infinite prism of base S.
     /// If Copy is true S is copied.  If Inf is true the prism
     /// is infinite, if Inf is false the  prism is infinite in
@@ -690,6 +735,7 @@ impl Prism {
         Self::new_shape_dir_bool3(S, D, Inf, Copy, true)
     }
 
+    /// **Source:** `BRepSweep_Prism.hxx`:52 - `BRepSweep_Prism::BRepSweep_Prism()`
     /// Builds a semi-infinite or an infinite prism of base S.
     /// If Copy is true S is copied.  If Inf is true the prism
     /// is infinite, if Inf is false the  prism is infinite in
@@ -703,6 +749,7 @@ impl Prism {
         Self::new_shape_dir_bool3(S, D, Inf, false, true)
     }
 
+    /// **Source:** `BRepSweep_Prism.hxx`:52 - `BRepSweep_Prism::BRepSweep_Prism()`
     /// Builds a semi-infinite or an infinite prism of base S.
     /// If Copy is true S is copied.  If Inf is true the prism
     /// is infinite, if Inf is false the  prism is infinite in
@@ -715,11 +762,13 @@ impl Prism {
         Self::new_shape_dir_bool3(S, D, true, false, true)
     }
 
+    /// **Source:** `BRepSweep_Prism.hxx`:59 - `BRepSweep_Prism::Shape()`
     /// Returns the TopoDS Shape attached to the prism.
     pub fn shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Prism_shape(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepSweep_Prism.hxx`:63 - `BRepSweep_Prism::Shape()`
     /// Returns    the  TopoDS  Shape   generated  with  aGenS
     /// (subShape  of the generating shape).
     pub fn shape_shape(
@@ -734,6 +783,7 @@ impl Prism {
         }
     }
 
+    /// **Source:** `BRepSweep_Prism.hxx`:66 - `BRepSweep_Prism::FirstShape()`
     /// Returns the  TopoDS  Shape of the bottom of the prism.
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
@@ -741,6 +791,7 @@ impl Prism {
         }
     }
 
+    /// **Source:** `BRepSweep_Prism.hxx`:71 - `BRepSweep_Prism::FirstShape()`
     /// Returns the TopoDS Shape of the bottom  of the  prism.
     /// generated  with  aGenS  (subShape  of  the  generating
     /// shape).
@@ -756,6 +807,7 @@ impl Prism {
         }
     }
 
+    /// **Source:** `BRepSweep_Prism.hxx`:74 - `BRepSweep_Prism::LastShape()`
     /// Returns the TopoDS Shape of the top of the prism.
     pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
@@ -763,6 +815,7 @@ impl Prism {
         }
     }
 
+    /// **Source:** `BRepSweep_Prism.hxx`:79 - `BRepSweep_Prism::LastShape()`
     /// Returns the  TopoDS  Shape of the top  of  the  prism.
     /// generated  with  aGenS  (subShape  of  the  generating
     /// shape).
@@ -778,18 +831,21 @@ impl Prism {
         }
     }
 
+    /// **Source:** `BRepSweep_Prism.hxx`:83 - `BRepSweep_Prism::Vec()`
     /// Returns the Vector of the Prism,  if it is an infinite
     /// prism the Vec is unitar.
     pub fn vec(&self) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Prism_vec(self as *const Self)) }
     }
 
+    /// **Source:** `BRepSweep_Prism.hxx`:87 - `BRepSweep_Prism::IsUsed()`
     /// Returns true if the
     /// aGenS is used in resulting shape
     pub fn is_used(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Prism_is_used(self as *const Self, aGenS) }
     }
 
+    /// **Source:** `BRepSweep_Prism.hxx`:91 - `BRepSweep_Prism::GenIsUsed()`
     /// Returns true if the shape, generated from theS
     /// is used in result shape
     pub fn gen_is_used(&self, theS: &crate::ffi::TopoDS_Shape) -> bool {
@@ -801,6 +857,7 @@ impl Prism {
 // From BRepSweep_Revol.hxx
 // ========================
 
+/// **Source:** `BRepSweep_Revol.hxx`:33 - `BRepSweep_Revol`
 /// Provides natural constructors to build BRepSweep
 /// rotated swept Primitives.
 pub use crate::ffi::BRepSweep_Revol as Revol;
@@ -812,6 +869,7 @@ unsafe impl crate::CppDeletable for Revol {
 }
 
 impl Revol {
+    /// **Source:** `BRepSweep_Revol.hxx`:40 - `BRepSweep_Revol::BRepSweep_Revol()`
     /// Builds the Revol of meridian S axis A  and angle D. If
     /// C is true S is copied.
     pub fn new_shape_ax1_real_bool(
@@ -827,6 +885,7 @@ impl Revol {
         }
     }
 
+    /// **Source:** `BRepSweep_Revol.hxx`:47 - `BRepSweep_Revol::BRepSweep_Revol()`
     /// Builds the Revol of meridian S  axis A and angle 2*Pi.
     /// If C is true S is copied.
     pub fn new_shape_ax1_bool(
@@ -839,6 +898,7 @@ impl Revol {
         }
     }
 
+    /// **Source:** `BRepSweep_Revol.hxx`:40 - `BRepSweep_Revol::BRepSweep_Revol()`
     /// Builds the Revol of meridian S axis A  and angle D. If
     /// C is true S is copied.
     pub fn new_shape_ax1_real(
@@ -849,6 +909,7 @@ impl Revol {
         Self::new_shape_ax1_real_bool(S, A, D, false)
     }
 
+    /// **Source:** `BRepSweep_Revol.hxx`:47 - `BRepSweep_Revol::BRepSweep_Revol()`
     /// Builds the Revol of meridian S  axis A and angle 2*Pi.
     /// If C is true S is copied.
     pub fn new_shape_ax1(
@@ -858,11 +919,13 @@ impl Revol {
         Self::new_shape_ax1_bool(S, A, false)
     }
 
+    /// **Source:** `BRepSweep_Revol.hxx`:52 - `BRepSweep_Revol::Shape()`
     /// Returns the TopoDS Shape attached to the Revol.
     pub fn shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Revol_shape(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepSweep_Revol.hxx`:56 - `BRepSweep_Revol::Shape()`
     /// Returns    the  TopoDS  Shape   generated  with  aGenS
     /// (subShape  of the generating shape).
     pub fn shape_shape(
@@ -877,6 +940,7 @@ impl Revol {
         }
     }
 
+    /// **Source:** `BRepSweep_Revol.hxx`:60 - `BRepSweep_Revol::FirstShape()`
     /// Returns the first shape of the revol  (coinciding with
     /// the generating shape).
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
@@ -885,6 +949,7 @@ impl Revol {
         }
     }
 
+    /// **Source:** `BRepSweep_Revol.hxx`:64 - `BRepSweep_Revol::FirstShape()`
     /// Returns the first shape of the revol  (coinciding with
     /// the generating shape).
     pub fn first_shape_shape(
@@ -899,6 +964,7 @@ impl Revol {
         }
     }
 
+    /// **Source:** `BRepSweep_Revol.hxx`:67 - `BRepSweep_Revol::LastShape()`
     /// Returns the TopoDS Shape of the top of the prism.
     pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
@@ -906,6 +972,7 @@ impl Revol {
         }
     }
 
+    /// **Source:** `BRepSweep_Revol.hxx`:72 - `BRepSweep_Revol::LastShape()`
     /// Returns the  TopoDS  Shape of the top  of  the  prism.
     /// generated  with  aGenS  (subShape  of  the  generating
     /// shape).
@@ -921,16 +988,19 @@ impl Revol {
         }
     }
 
+    /// **Source:** `BRepSweep_Revol.hxx`:75 - `BRepSweep_Revol::Axe()`
     /// returns the axis
     pub fn axe(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Revol_axe(self as *const Self)) }
     }
 
+    /// **Source:** `BRepSweep_Revol.hxx`:78 - `BRepSweep_Revol::Angle()`
     /// returns the angle.
     pub fn angle(&self) -> f64 {
         unsafe { crate::ffi::BRepSweep_Revol_angle(self as *const Self) }
     }
 
+    /// **Source:** `BRepSweep_Revol.hxx`:81 - `BRepSweep_Revol::IsUsed()`
     /// Returns true if the aGenS is used in resulting Shape
     pub fn is_used(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Revol_is_used(self as *const Self, aGenS) }
@@ -941,6 +1011,7 @@ impl Revol {
 // From BRepSweep_Rotation.hxx
 // ========================
 
+/// **Source:** `BRepSweep_Rotation.hxx`:34 - `BRepSweep_Rotation`
 /// Provides   an  algorithm   to   build  object   by
 /// Rotation sweep.
 pub use crate::ffi::BRepSweep_Rotation as Rotation;
@@ -952,6 +1023,7 @@ unsafe impl crate::CppDeletable for Rotation {
 }
 
 impl Rotation {
+    /// **Source:** `BRepSweep_Rotation.hxx`:41 - `BRepSweep_Rotation::BRepSweep_Rotation()`
     /// Creates a topology  by rotating <S>  around A with the
     /// angle D.
     pub fn new_shape_numshape_location_ax1_real_bool(
@@ -971,6 +1043,7 @@ impl Rotation {
         }
     }
 
+    /// **Source:** `BRepSweep_Rotation.hxx`:50 - `BRepSweep_Rotation::MakeEmptyVertex()`
     /// Builds the vertex addressed by [aGenV,aDirV], with its
     /// geometric part, but without subcomponents.
     pub fn make_empty_vertex(
@@ -987,6 +1060,7 @@ impl Rotation {
         }
     }
 
+    /// **Source:** `BRepSweep_Rotation.hxx`:55 - `BRepSweep_Rotation::MakeEmptyDirectingEdge()`
     /// Builds the edge addressed by [aGenV,aDirE], with its
     /// geometric part, but without subcomponents.
     pub fn make_empty_directing_edge(
@@ -1003,6 +1077,7 @@ impl Rotation {
         }
     }
 
+    /// **Source:** `BRepSweep_Rotation.hxx`:61 - `BRepSweep_Rotation::MakeEmptyGeneratingEdge()`
     /// Builds the edge addressed by [aGenE,aDirV], with its
     /// geometric part, but without subcomponents.
     pub fn make_empty_generating_edge(
@@ -1019,6 +1094,7 @@ impl Rotation {
         }
     }
 
+    /// **Source:** `BRepSweep_Rotation.hxx`:68 - `BRepSweep_Rotation::SetParameters()`
     /// Sets the  parameters of the new  vertex  on the new
     /// face. The new face and  new vertex where generated
     /// from aGenF, aGenV and aDirV .
@@ -1042,6 +1118,7 @@ impl Rotation {
         }
     }
 
+    /// **Source:** `BRepSweep_Rotation.hxx`:77 - `BRepSweep_Rotation::SetDirectingParameter()`
     /// Sets the  parameter of the new  vertex  on the new
     /// edge. The new edge and  new vertex where generated
     /// from aGenV aDirE, and aDirV.
@@ -1065,6 +1142,7 @@ impl Rotation {
         }
     }
 
+    /// **Source:** `BRepSweep_Rotation.hxx`:86 - `BRepSweep_Rotation::SetGeneratingParameter()`
     /// Sets the  parameter of the new  vertex  on the new
     /// edge. The new edge and  new vertex where generated
     /// from aGenE, aGenV and aDirV .
@@ -1088,6 +1166,7 @@ impl Rotation {
         }
     }
 
+    /// **Source:** `BRepSweep_Rotation.hxx`:97 - `BRepSweep_Rotation::MakeEmptyFace()`
     /// Builds the face  addressed by [aGenS,aDirS],  with
     /// its geometric part, but without subcomponents. The
     /// couple aGenS, aDirS can be  a "generating face and
@@ -1107,6 +1186,7 @@ impl Rotation {
         }
     }
 
+    /// **Source:** `BRepSweep_Rotation.hxx`:103 - `BRepSweep_Rotation::SetPCurve()`
     /// Sets the PCurve for a new edge on a new face. The
     /// new edge and  the  new face were generated  using
     /// aGenF, aGenE and aDirV.
@@ -1132,6 +1212,7 @@ impl Rotation {
         }
     }
 
+    /// **Source:** `BRepSweep_Rotation.hxx`:113 - `BRepSweep_Rotation::SetGeneratingPCurve()`
     /// Sets the PCurve for a new edge on a new face. The
     /// new edge and  the  new face were generated  using
     /// aGenE, aDirE and aDirV.
@@ -1157,6 +1238,7 @@ impl Rotation {
         }
     }
 
+    /// **Source:** `BRepSweep_Rotation.hxx`:123 - `BRepSweep_Rotation::SetDirectingPCurve()`
     /// Sets the PCurve for a new edge on a new face. The
     /// new edge and  the  new face were generated  using
     /// aGenE, aDirE and aGenV.
@@ -1182,6 +1264,7 @@ impl Rotation {
         }
     }
 
+    /// **Source:** `BRepSweep_Rotation.hxx`:134 - `BRepSweep_Rotation::DirectSolid()`
     /// Returns the Orientation of the  shell in the solid
     /// generated by the face aGenS  with  the edge aDirS.
     /// It is  REVERSED  if the surface is  swept  in  the
@@ -1201,6 +1284,7 @@ impl Rotation {
         }
     }
 
+    /// **Source:** `BRepSweep_Rotation.hxx`:141 - `BRepSweep_Rotation::GGDShapeIsToAdd()`
     /// Returns   true   if  aNewSubShape    (addressed by
     /// aSubGenS  and aDirS)  must  be added  in aNewShape
     /// (addressed by aGenS and aDirS).
@@ -1224,6 +1308,7 @@ impl Rotation {
         }
     }
 
+    /// **Source:** `BRepSweep_Rotation.hxx`:151 - `BRepSweep_Rotation::GDDShapeIsToAdd()`
     /// Returns   true   if  aNewSubShape    (addressed by
     /// aGenS  and aSubDirS)  must  be added  in aNewShape
     /// (addressed by aGenS and aDirS).
@@ -1247,6 +1332,7 @@ impl Rotation {
         }
     }
 
+    /// **Source:** `BRepSweep_Rotation.hxx`:163 - `BRepSweep_Rotation::SeparatedWires()`
     /// In   some  particular  cases  the  topology  of  a
     /// generated  face  must  be  composed of independent
     /// closed wires, in  this  case this function returns
@@ -1272,6 +1358,7 @@ impl Rotation {
         }
     }
 
+    /// **Source:** `BRepSweep_Rotation.hxx`:173 - `BRepSweep_Rotation::SplitShell()`
     /// In  some  particular  cases  the   topology  of  a
     /// generated  Shell must be  composed  of  independent
     /// closed Shells,  in this case  this function returns
@@ -1288,6 +1375,7 @@ impl Rotation {
         }
     }
 
+    /// **Source:** `BRepSweep_Rotation.hxx`:180 - `BRepSweep_Rotation::HasShape()`
     /// Returns true   if aDirS   and aGenS  addresses   a
     /// resulting Shape. In some  specific cases the shape
     /// can  be    geometrically   inexsistant,  then this
@@ -1300,12 +1388,14 @@ impl Rotation {
         unsafe { crate::ffi::BRepSweep_Rotation_has_shape(self as *const Self, aGenS, aDirS) }
     }
 
+    /// **Source:** `BRepSweep_Rotation.hxx`:185 - `BRepSweep_Rotation::IsInvariant()`
     /// Returns true when   the geometry of  aGenS  is not
     /// modified  by the rotation.
     pub fn is_invariant(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Rotation_is_invariant(self as *const Self, aGenS) }
     }
 
+    /// **Source:** `BRepSweep_Rotation.hxx`:188 - `BRepSweep_Rotation::Axe()`
     /// returns the axis
     pub fn axe(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
         unsafe {
@@ -1313,6 +1403,7 @@ impl Rotation {
         }
     }
 
+    /// **Source:** `BRepSweep_Rotation.hxx`:191 - `BRepSweep_Rotation::Angle()`
     /// returns the angle.
     pub fn angle(&self) -> f64 {
         unsafe { crate::ffi::BRepSweep_Rotation_angle(self as *const Self) }
@@ -1424,6 +1515,7 @@ impl Rotation {
 // From BRepSweep_Tool.hxx
 // ========================
 
+/// **Source:** `BRepSweep_Tool.hxx`:31 - `BRepSweep_Tool`
 /// Provides  the  indexation and type  analysis  services
 /// required by the TopoDS generating Shape of BRepSweep.
 pub use crate::ffi::BRepSweep_Tool as Tool;
@@ -1435,6 +1527,7 @@ unsafe impl crate::CppDeletable for Tool {
 }
 
 impl Tool {
+    /// **Source:** `BRepSweep_Tool.hxx`:39 - `BRepSweep_Tool::BRepSweep_Tool()`
     /// Initialize the tool  with <aShape>.  The IndexTool
     /// must prepare an indexation for  all  the subshapes
     /// of this shape.
@@ -1442,16 +1535,19 @@ impl Tool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Tool_ctor_shape(aShape)) }
     }
 
+    /// **Source:** `BRepSweep_Tool.hxx`:42 - `BRepSweep_Tool::NbShapes()`
     /// Returns the number of subshapes in the shape.
     pub fn nb_shapes(&self) -> i32 {
         unsafe { crate::ffi::BRepSweep_Tool_nb_shapes(self as *const Self) }
     }
 
+    /// **Source:** `BRepSweep_Tool.hxx`:45 - `BRepSweep_Tool::Index()`
     /// Returns the index of <aShape>.
     pub fn index(&self, aShape: &crate::ffi::TopoDS_Shape) -> i32 {
         unsafe { crate::ffi::BRepSweep_Tool_index(self as *const Self, aShape) }
     }
 
+    /// **Source:** `BRepSweep_Tool.hxx`:48 - `BRepSweep_Tool::Shape()`
     /// Returns the Shape at Index anIdex.
     pub fn shape(&self, anIndex: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
@@ -1462,6 +1558,7 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRepSweep_Tool.hxx`:51 - `BRepSweep_Tool::Type()`
     /// Returns the type of <aShape>.
     pub fn type_(&self, aShape: &crate::ffi::TopoDS_Shape) -> crate::top_abs::ShapeEnum {
         unsafe {
@@ -1473,6 +1570,7 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRepSweep_Tool.hxx`:54 - `BRepSweep_Tool::Orientation()`
     /// Returns the Orientation of <aShape>.
     pub fn orientation(&self, aShape: &crate::ffi::TopoDS_Shape) -> crate::top_abs::Orientation {
         unsafe {
@@ -1484,6 +1582,7 @@ impl Tool {
         }
     }
 
+    /// **Source:** `BRepSweep_Tool.hxx`:57 - `BRepSweep_Tool::SetOrientation()`
     /// Set the Orientation of <aShape> with Or.
     pub fn set_orientation(
         &self,
@@ -1500,6 +1599,7 @@ impl Tool {
 // From BRepSweep_Translation.hxx
 // ========================
 
+/// **Source:** `BRepSweep_Translation.hxx`:34 - `BRepSweep_Translation`
 /// Provides   an  algorithm   to   build  object   by
 /// translation sweep.
 pub use crate::ffi::BRepSweep_Translation as Translation;
@@ -1511,6 +1611,7 @@ unsafe impl crate::CppDeletable for Translation {
 }
 
 impl Translation {
+    /// **Source:** `BRepSweep_Translation.hxx`:43 - `BRepSweep_Translation::BRepSweep_Translation()`
     /// Creates  a  topology by  translating <S>  with the
     /// vector  <V>. If  C  is   true S Sucomponents   are
     /// copied. If Canonize is true then generated surfaces
@@ -1532,6 +1633,7 @@ impl Translation {
         }
     }
 
+    /// **Source:** `BRepSweep_Translation.hxx`:43 - `BRepSweep_Translation::BRepSweep_Translation()`
     /// Creates  a  topology by  translating <S>  with the
     /// vector  <V>. If  C  is   true S Sucomponents   are
     /// copied. If Canonize is true then generated surfaces
@@ -1546,6 +1648,7 @@ impl Translation {
         Self::new_shape_numshape_location_vec_bool2(S, N, L, V, C, true)
     }
 
+    /// **Source:** `BRepSweep_Translation.hxx`:52 - `BRepSweep_Translation::MakeEmptyVertex()`
     /// Builds the vertex addressed by [aGenV,aDirV], with its
     /// geometric part, but without subcomponents.
     pub fn make_empty_vertex(
@@ -1562,6 +1665,7 @@ impl Translation {
         }
     }
 
+    /// **Source:** `BRepSweep_Translation.hxx`:57 - `BRepSweep_Translation::MakeEmptyDirectingEdge()`
     /// Builds the edge addressed by [aGenV,aDirE], with its
     /// geometric part, but without subcomponents.
     pub fn make_empty_directing_edge(
@@ -1578,6 +1682,7 @@ impl Translation {
         }
     }
 
+    /// **Source:** `BRepSweep_Translation.hxx`:62 - `BRepSweep_Translation::MakeEmptyGeneratingEdge()`
     /// Builds the edge addressed by [aGenE,aDirV], with its
     /// geometric part, but without subcomponents.
     pub fn make_empty_generating_edge(
@@ -1594,6 +1699,7 @@ impl Translation {
         }
     }
 
+    /// **Source:** `BRepSweep_Translation.hxx`:68 - `BRepSweep_Translation::SetParameters()`
     /// Sets the  parameters of the new  vertex  on the new
     /// face. The new face and  new vertex where generated
     /// from aGenF, aGenV and aDirV .
@@ -1617,6 +1723,7 @@ impl Translation {
         }
     }
 
+    /// **Source:** `BRepSweep_Translation.hxx`:77 - `BRepSweep_Translation::SetDirectingParameter()`
     /// Sets the  parameter of the new  vertex  on the new
     /// edge. The new edge and  new vertex where generated
     /// from aGenV aDirE, and aDirV.
@@ -1640,6 +1747,7 @@ impl Translation {
         }
     }
 
+    /// **Source:** `BRepSweep_Translation.hxx`:86 - `BRepSweep_Translation::SetGeneratingParameter()`
     /// Sets the  parameter of the new  vertex  on the new
     /// edge. The new edge and  new vertex where generated
     /// from aGenE, aGenV and aDirV .
@@ -1663,6 +1771,7 @@ impl Translation {
         }
     }
 
+    /// **Source:** `BRepSweep_Translation.hxx`:97 - `BRepSweep_Translation::MakeEmptyFace()`
     /// Builds the  face addressed  by [aGenS,aDirS], with
     /// its geometric part, but without subcomponents. The
     /// couple aGenS, aDirS can  be a "generating face and
@@ -1682,6 +1791,7 @@ impl Translation {
         }
     }
 
+    /// **Source:** `BRepSweep_Translation.hxx`:103 - `BRepSweep_Translation::SetPCurve()`
     /// Sets the PCurve for a new edge on a new face. The
     /// new edge and  the  new face were generated  using
     /// aGenF, aGenE and aDirV.
@@ -1707,6 +1817,7 @@ impl Translation {
         }
     }
 
+    /// **Source:** `BRepSweep_Translation.hxx`:113 - `BRepSweep_Translation::SetGeneratingPCurve()`
     /// Sets the PCurve for a new edge on a new face. The
     /// new edge and  the  new face were generated  using
     /// aGenE, aDirE and aDirV.
@@ -1732,6 +1843,7 @@ impl Translation {
         }
     }
 
+    /// **Source:** `BRepSweep_Translation.hxx`:123 - `BRepSweep_Translation::SetDirectingPCurve()`
     /// Sets the PCurve for a new edge on a new face. The
     /// new edge and  the  new face were generated  using
     /// aGenE, aDirE and aGenV.
@@ -1757,6 +1869,7 @@ impl Translation {
         }
     }
 
+    /// **Source:** `BRepSweep_Translation.hxx`:134 - `BRepSweep_Translation::DirectSolid()`
     /// Returns the Orientation of the  shell in the solid
     /// generated by the face aGenS  with  the edge aDirS.
     /// It is  REVERSED  if the surface is  swept  in  the
@@ -1776,6 +1889,7 @@ impl Translation {
         }
     }
 
+    /// **Source:** `BRepSweep_Translation.hxx`:140 - `BRepSweep_Translation::GGDShapeIsToAdd()`
     /// Returns   true   if  aNewSubShape    (addressed by
     /// aSubGenS  and aDirS)  must  be added  in aNewShape
     /// (addressed by aGenS and aDirS).
@@ -1799,6 +1913,7 @@ impl Translation {
         }
     }
 
+    /// **Source:** `BRepSweep_Translation.hxx`:149 - `BRepSweep_Translation::GDDShapeIsToAdd()`
     /// Returns   true   if  aNewSubShape    (addressed by
     /// aGenS  and aSubDirS)  must  be added  in aNewShape
     /// (addressed by aGenS and aDirS).
@@ -1822,6 +1937,7 @@ impl Translation {
         }
     }
 
+    /// **Source:** `BRepSweep_Translation.hxx`:160 - `BRepSweep_Translation::SeparatedWires()`
     /// In  some  particular  cases  the   topology  of  a
     /// generated  face must be  composed  of  independent
     /// closed wires,  in this case  this function returns
@@ -1847,6 +1963,7 @@ impl Translation {
         }
     }
 
+    /// **Source:** `BRepSweep_Translation.hxx`:170 - `BRepSweep_Translation::HasShape()`
     /// Returns true   if aDirS   and aGenS  addresses   a
     /// resulting Shape. In some  specific cases the shape
     /// can  be    geometrically   inexsistant,  then this
@@ -1859,12 +1976,14 @@ impl Translation {
         unsafe { crate::ffi::BRepSweep_Translation_has_shape(self as *const Self, aGenS, aDirS) }
     }
 
+    /// **Source:** `BRepSweep_Translation.hxx`:175 - `BRepSweep_Translation::IsInvariant()`
     /// Returns  always     false   because    here    the
     /// transformation is a translation.
     pub fn is_invariant(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Translation_is_invariant(self as *const Self, aGenS) }
     }
 
+    /// **Source:** `BRepSweep_Translation.hxx`:179 - `BRepSweep_Translation::Vec()`
     /// Returns the Vector of the Prism,  if it is an infinite
     /// prism the Vec is unitar.
     pub fn vec(&self) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
@@ -2000,6 +2119,7 @@ impl Translation {
 // From BRepSweep_Trsf.hxx
 // ========================
 
+/// **Source:** `BRepSweep_Trsf.hxx`:43 - `BRepSweep_Trsf`
 /// This class is inherited from NumLinearRegularSweep
 /// to  implement the  simple   swept primitives built
 /// moving a Shape with a Trsf.  It  often is possible
@@ -2022,6 +2142,7 @@ unsafe impl crate::CppDeletable for Trsf {
 }
 
 impl Trsf {
+    /// **Source:** `BRepSweep_Trsf.hxx`:51 - `BRepSweep_Trsf::Init()`
     /// ends  the  construction  of the   swept  primitive
     /// calling the virtual geometric functions that can't
     /// be called in the initialize.
@@ -2029,6 +2150,7 @@ impl Trsf {
         unsafe { crate::ffi::BRepSweep_Trsf_init(self as *mut Self) }
     }
 
+    /// **Source:** `BRepSweep_Trsf.hxx`:55 - `BRepSweep_Trsf::Process()`
     /// function called to analyze the way of construction
     /// of the shapes generated by aGenS and aDirV.
     pub fn process(
@@ -2039,6 +2161,7 @@ impl Trsf {
         unsafe { crate::ffi::BRepSweep_Trsf_process(self as *mut Self, aGenS, aDirV) }
     }
 
+    /// **Source:** `BRepSweep_Trsf.hxx`:59 - `BRepSweep_Trsf::MakeEmptyVertex()`
     /// Builds the vertex addressed by [aGenV,aDirV], with its
     /// geometric part, but without subcomponents.
     pub fn make_empty_vertex(
@@ -2055,6 +2178,7 @@ impl Trsf {
         }
     }
 
+    /// **Source:** `BRepSweep_Trsf.hxx`:64 - `BRepSweep_Trsf::MakeEmptyDirectingEdge()`
     /// Builds the edge addressed by [aGenV,aDirE], with its
     /// geometric part, but without subcomponents.
     pub fn make_empty_directing_edge(
@@ -2071,6 +2195,7 @@ impl Trsf {
         }
     }
 
+    /// **Source:** `BRepSweep_Trsf.hxx`:69 - `BRepSweep_Trsf::MakeEmptyGeneratingEdge()`
     /// Builds the edge addressed by [aGenE,aDirV], with its
     /// geometric part, but without subcomponents.
     pub fn make_empty_generating_edge(
@@ -2087,6 +2212,7 @@ impl Trsf {
         }
     }
 
+    /// **Source:** `BRepSweep_Trsf.hxx`:75 - `BRepSweep_Trsf::SetParameters()`
     /// Sets the  parameters of the new  vertex  on the new
     /// face. The new face and  new vertex where generated
     /// from aGenF, aGenV and aDirV .
@@ -2110,6 +2236,7 @@ impl Trsf {
         }
     }
 
+    /// **Source:** `BRepSweep_Trsf.hxx`:84 - `BRepSweep_Trsf::SetDirectingParameter()`
     /// Sets the  parameter of the new  vertex  on the new
     /// edge. The new edge and  new vertex where generated
     /// from aGenV aDirE, and aDirV.
@@ -2133,6 +2260,7 @@ impl Trsf {
         }
     }
 
+    /// **Source:** `BRepSweep_Trsf.hxx`:93 - `BRepSweep_Trsf::SetGeneratingParameter()`
     /// Sets the  parameter of the new  vertex  on the new
     /// edge. The new edge and  new vertex where generated
     /// from aGenE, aGenV and aDirV .
@@ -2156,6 +2284,7 @@ impl Trsf {
         }
     }
 
+    /// **Source:** `BRepSweep_Trsf.hxx`:104 - `BRepSweep_Trsf::MakeEmptyFace()`
     /// Builds  the face addressed  by [aGenS,aDirS], with
     /// its geometric part, but without subcomponents. The
     /// couple aGenS, aDirS can be  a "generating face and
@@ -2175,6 +2304,7 @@ impl Trsf {
         }
     }
 
+    /// **Source:** `BRepSweep_Trsf.hxx`:110 - `BRepSweep_Trsf::SetPCurve()`
     /// Sets the PCurve for a new edge on a new face. The
     /// new edge and  the  new face were generated  using
     /// aGenF, aGenE and aDirV.
@@ -2200,6 +2330,7 @@ impl Trsf {
         }
     }
 
+    /// **Source:** `BRepSweep_Trsf.hxx`:120 - `BRepSweep_Trsf::SetGeneratingPCurve()`
     /// Sets the PCurve for a new edge on a new face. The
     /// new edge and  the  new face were generated  using
     /// aGenE, aDirE and aDirV.
@@ -2225,6 +2356,7 @@ impl Trsf {
         }
     }
 
+    /// **Source:** `BRepSweep_Trsf.hxx`:130 - `BRepSweep_Trsf::SetDirectingPCurve()`
     /// Sets the PCurve for a new edge on a new face. The
     /// new edge and  the  new face were generated  using
     /// aGenE, aDirE and aGenV.
@@ -2250,6 +2382,7 @@ impl Trsf {
         }
     }
 
+    /// **Source:** `BRepSweep_Trsf.hxx`:140 - `BRepSweep_Trsf::GGDShapeIsToAdd()`
     /// Returns   true   if  aNewSubShape    (addressed by
     /// aSubGenS  and aDirS)  must  be added  in aNewShape
     /// (addressed by aGenS and aDirS).
@@ -2273,6 +2406,7 @@ impl Trsf {
         }
     }
 
+    /// **Source:** `BRepSweep_Trsf.hxx`:149 - `BRepSweep_Trsf::GDDShapeIsToAdd()`
     /// Returns   true   if  aNewSubShape    (addressed by
     /// aGenS  and aSubDirS)  must  be added  in aNewShape
     /// (addressed by aGenS and aDirS).
@@ -2296,6 +2430,7 @@ impl Trsf {
         }
     }
 
+    /// **Source:** `BRepSweep_Trsf.hxx`:160 - `BRepSweep_Trsf::SeparatedWires()`
     /// In  some  particular  cases  the   topology  of  a
     /// generated  face must be  composed  of  independent
     /// closed wires,  in this case  this function returns
@@ -2320,6 +2455,7 @@ impl Trsf {
         }
     }
 
+    /// **Source:** `BRepSweep_Trsf.hxx`:170 - `BRepSweep_Trsf::HasShape()`
     /// Returns true   if aDirS   and aGenS  addresses   a
     /// resulting Shape. In some  specific cases the shape
     /// can  be    geometrically   inexsistant,  then this
@@ -2332,12 +2468,14 @@ impl Trsf {
         unsafe { crate::ffi::BRepSweep_Trsf_has_shape(self as *const Self, aGenS, aDirS) }
     }
 
+    /// **Source:** `BRepSweep_Trsf.hxx`:175 - `BRepSweep_Trsf::IsInvariant()`
     /// Returns  true if  the geometry   of  aGenS is  not
     /// modified by the trsf of the BRepSweep Trsf.
     pub fn is_invariant(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Trsf_is_invariant(self as *const Self, aGenS) }
     }
 
+    /// **Source:** `BRepSweep_Trsf.hxx`:180 - `BRepSweep_Trsf::SetContinuity()`
     /// Called to propagate the continuity of  every vertex
     /// between two edges of the  generating wire  aGenS on
     /// the generated edge and faces.

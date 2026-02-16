@@ -156,6 +156,7 @@ impl TryFrom<i32> for CheckStatus {
 // From BOPAlgo_Algo.hxx
 // ========================
 
+/// **Source:** `BOPAlgo_Algo.hxx`:88 - `BOPAlgo_ParallelAlgo`
 /// Additional root class to provide interface to be launched from parallel vector.
 /// It already has the range as a field, and has to be used with caution to create
 /// scope from the range only once.
@@ -168,6 +169,7 @@ unsafe impl crate::CppDeletable for ParallelAlgo {
 }
 
 impl ParallelAlgo {
+    /// **Source:** `BOPAlgo_Algo.hxx`:98 - `BOPAlgo_ParallelAlgo::SetProgressRange()`
     /// Sets the range for a single run
     pub fn set_progress_range(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BOPAlgo_ParallelAlgo_set_progress_range(self as *mut Self, theRange) }
@@ -276,6 +278,7 @@ impl ParallelAlgo {
     }
 }
 
+/// **Source:** `BOPAlgo_Algo.hxx`:110 - `BOPAlgo_PISteps`
 /// Class for representing the relative contribution of each step of
 /// the operation to the whole progress
 pub use crate::ffi::BOPAlgo_PISteps as PISteps;
@@ -287,16 +290,19 @@ unsafe impl crate::CppDeletable for PISteps {
 }
 
 impl PISteps {
+    /// **Source:** `BOPAlgo_Algo.hxx`:114 - `BOPAlgo_PISteps::BOPAlgo_PISteps()`
     /// Constructor
     pub fn new_int(theNbOp: i32) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_PISteps_ctor_int(theNbOp)) }
     }
 
+    /// **Source:** `BOPAlgo_Algo.hxx`:127 - `BOPAlgo_PISteps::SetStep()`
     /// Assign the value theStep to theOperation
     pub fn set_step(&mut self, theOperation: i32, theStep: f64) {
         unsafe { crate::ffi::BOPAlgo_PISteps_set_step(self as *mut Self, theOperation, theStep) }
     }
 
+    /// **Source:** `BOPAlgo_Algo.hxx`:136 - `BOPAlgo_PISteps::GetStep()`
     /// Returns the step assigned to the operation
     pub fn get_step(&mut self, theOperation: i32) -> f64 {
         unsafe { crate::ffi::BOPAlgo_PISteps_get_step(self as *mut Self, theOperation) }
@@ -307,6 +313,7 @@ impl PISteps {
 // From BOPAlgo_BOP.hxx
 // ========================
 
+/// **Source:** `BOPAlgo_BOP.hxx`:63 - `BOPAlgo_BOP`
 ///
 /// The class represents the Building part of the Boolean Operations
 /// algorithm.<br>
@@ -349,11 +356,13 @@ unsafe impl crate::CppDeletable for BOP {
 }
 
 impl BOP {
+    /// **Source:** `BOPAlgo_BOP.hxx`:69 - `BOPAlgo_BOP::BOPAlgo_BOP()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_BOP_ctor()) }
     }
 
+    /// **Source:** `BOPAlgo_BOP.hxx`:72 - `BOPAlgo_BOP::BOPAlgo_BOP()`
     pub fn new_handlencollectionbaseallocator(
         theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
     ) -> crate::OwnedPtr<Self> {
@@ -364,15 +373,18 @@ impl BOP {
         }
     }
 
+    /// **Source:** `BOPAlgo_BOP.hxx`:75 - `BOPAlgo_BOP::Clear()`
     /// Clears internal fields and arguments
     pub fn clear(&mut self) {
         unsafe { crate::ffi::BOPAlgo_BOP_clear(self as *mut Self) }
     }
 
+    /// **Source:** `BOPAlgo_BOP.hxx`:77 - `BOPAlgo_BOP::SetOperation()`
     pub fn set_operation(&mut self, theOperation: crate::bop_algo::Operation) {
         unsafe { crate::ffi::BOPAlgo_BOP_set_operation(self as *mut Self, theOperation.into()) }
     }
 
+    /// **Source:** `BOPAlgo_BOP.hxx`:79 - `BOPAlgo_BOP::Operation()`
     pub fn operation(&self) -> crate::bop_algo::Operation {
         unsafe {
             crate::bop_algo::Operation::try_from(crate::ffi::BOPAlgo_BOP_operation(
@@ -382,6 +394,7 @@ impl BOP {
         }
     }
 
+    /// **Source:** `BOPAlgo_BOP.hxx`:81 - `BOPAlgo_BOP::Perform()`
     pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BOPAlgo_BOP_perform(self as *mut Self, theRange) }
     }
@@ -659,6 +672,7 @@ impl BOP {
 // From BOPAlgo_Builder.hxx
 // ========================
 
+/// **Source:** `BOPAlgo_Builder.hxx`:74 - `BOPAlgo_Builder`
 ///
 /// The class is a General Fuse algorithm - base algorithm for the
 /// algorithms in the Boolean Component. Its main purpose is to build
@@ -700,11 +714,13 @@ unsafe impl crate::CppDeletable for Builder {
 }
 
 impl Builder {
+    /// **Source:** `BOPAlgo_Builder.hxx`:80 - `BOPAlgo_Builder::BOPAlgo_Builder()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_Builder_ctor()) }
     }
 
+    /// **Source:** `BOPAlgo_Builder.hxx`:83 - `BOPAlgo_Builder::BOPAlgo_Builder()`
     pub fn new_handlencollectionbaseallocator(
         theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
     ) -> crate::OwnedPtr<Self> {
@@ -715,27 +731,32 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BOPAlgo_Builder.hxx`:86 - `BOPAlgo_Builder::Clear()`
     /// Clears the content of the algorithm.
     pub fn clear(&mut self) {
         unsafe { crate::ffi::BOPAlgo_Builder_clear(self as *mut Self) }
     }
 
+    /// **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
     /// @name Arguments
     /// Adds the argument to the operation.
     pub fn add_argument(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BOPAlgo_Builder_add_argument(self as *mut Self, theShape) }
     }
 
+    /// **Source:** `BOPAlgo_Builder.hxx`:102 - `BOPAlgo_Builder::SetArguments()`
     /// Sets the list of arguments for the operation.
     pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         unsafe { crate::ffi::BOPAlgo_Builder_set_arguments(self as *mut Self, theLS) }
     }
 
+    /// **Source:** `BOPAlgo_Builder.hxx`:105 - `BOPAlgo_Builder::Arguments()`
     /// Returns the list of arguments.
     pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_Builder_arguments(self as *const Self)) }
     }
 
+    /// **Source:** `BOPAlgo_Builder.hxx`:114 - `BOPAlgo_Builder::SetNonDestructive()`
     /// @name Options
     /// Sets the flag that defines the mode of treatment.
     /// In non-destructive mode the argument shapes are not modified. Instead
@@ -747,6 +768,7 @@ impl Builder {
         unsafe { crate::ffi::BOPAlgo_Builder_set_non_destructive(self as *mut Self, theFlag) }
     }
 
+    /// **Source:** `BOPAlgo_Builder.hxx`:119 - `BOPAlgo_Builder::NonDestructive()`
     /// Returns the flag that defines the mode of treatment.
     /// In non-destructive mode the argument shapes are not modified. Instead
     /// a copy of a sub-shape is created in the result if it is needed to be updated.
@@ -754,11 +776,13 @@ impl Builder {
         unsafe { crate::ffi::BOPAlgo_Builder_non_destructive(self as *const Self) }
     }
 
+    /// **Source:** `BOPAlgo_Builder.hxx`:122 - `BOPAlgo_Builder::SetGlue()`
     /// Sets the glue option for the algorithm
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         unsafe { crate::ffi::BOPAlgo_Builder_set_glue(self as *mut Self, theGlue.into()) }
     }
 
+    /// **Source:** `BOPAlgo_Builder.hxx`:125 - `BOPAlgo_Builder::Glue()`
     /// Returns the glue option of the algorithm
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
         unsafe {
@@ -769,17 +793,20 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BOPAlgo_Builder.hxx`:128 - `BOPAlgo_Builder::SetCheckInverted()`
     /// Enables/Disables the check of the input solids for inverted status
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         unsafe { crate::ffi::BOPAlgo_Builder_set_check_inverted(self as *mut Self, theCheck) }
     }
 
+    /// **Source:** `BOPAlgo_Builder.hxx`:132 - `BOPAlgo_Builder::CheckInverted()`
     /// Returns the flag defining whether the check for input solids on inverted status
     /// should be performed or not.
     pub fn check_inverted(&self) -> bool {
         unsafe { crate::ffi::BOPAlgo_Builder_check_inverted(self as *const Self) }
     }
 
+    /// **Source:** `BOPAlgo_Builder.hxx`:137 - `BOPAlgo_Builder::Perform()`
     /// @name Performing the operation
     /// Performs the operation.
     /// The intersection will be performed also.
@@ -787,6 +814,7 @@ impl Builder {
         unsafe { crate::ffi::BOPAlgo_Builder_perform(self as *mut Self, theRange) }
     }
 
+    /// **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
     /// @name BOPs on open solids
     /// Builds the result shape according to the given states for the objects
     /// and tools. These states can be unambiguously converted into the Boolean operation type.
@@ -841,6 +869,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BOPAlgo_Builder.hxx`:213 - `BOPAlgo_Builder::BuildBOP()`
     /// Builds the result of Boolean operation of given type
     /// basing on the result of Builder operation (GF or any other).
     ///
@@ -874,6 +903,7 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
     /// Returns the map of Same Domain (SD) shapes - coinciding shapes
     /// from different arguments.
     pub fn shapes_sd(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
@@ -1044,6 +1074,7 @@ impl Builder {
 // From BOPAlgo_BuilderShape.hxx
 // ========================
 
+/// **Source:** `BOPAlgo_BuilderShape.hxx`:40 - `BOPAlgo_BuilderShape`
 /// Root class for algorithms that has shape as result.
 ///
 /// The class provides the History mechanism, which allows
@@ -1059,12 +1090,14 @@ unsafe impl crate::CppDeletable for BuilderShape {
 }
 
 impl BuilderShape {
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
     /// @name Getting the result
     /// Returns the result of algorithm
     pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BOPAlgo_BuilderShape_shape(self as *const Self)) }
     }
 
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
     /// @name History methods
     /// Returns the list of shapes Modified from the shape theS.
     pub fn modified(
@@ -1074,6 +1107,7 @@ impl BuilderShape {
         unsafe { &*(crate::ffi::BOPAlgo_BuilderShape_modified(self as *mut Self, theS)) }
     }
 
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
     /// Returns the list of shapes Generated from the shape theS.
     pub fn generated(
         &mut self,
@@ -1082,6 +1116,7 @@ impl BuilderShape {
         unsafe { &*(crate::ffi::BOPAlgo_BuilderShape_generated(self as *mut Self, theS)) }
     }
 
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
     /// Returns true if the shape theS has been deleted.
     /// In this case the shape will have no Modified elements,
     /// but can have Generated elements.
@@ -1089,21 +1124,25 @@ impl BuilderShape {
         unsafe { crate::ffi::BOPAlgo_BuilderShape_is_deleted(self as *mut Self, theS) }
     }
 
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
     /// Returns true if any of the input shapes has been modified during operation.
     pub fn has_modified(&self) -> bool {
         unsafe { crate::ffi::BOPAlgo_BuilderShape_has_modified(self as *const Self) }
     }
 
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
     /// Returns true if any of the input shapes has generated shapes during operation.
     pub fn has_generated(&self) -> bool {
         unsafe { crate::ffi::BOPAlgo_BuilderShape_has_generated(self as *const Self) }
     }
 
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
     /// Returns true if any of the input shapes has been deleted during operation.
     pub fn has_deleted(&self) -> bool {
         unsafe { crate::ffi::BOPAlgo_BuilderShape_has_deleted(self as *const Self) }
     }
 
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
     /// History Tool
     pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsHistory> {
         unsafe {
@@ -1111,6 +1150,7 @@ impl BuilderShape {
         }
     }
 
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     /// @name Enabling/Disabling the history collection.
     /// Allows disabling the history collection
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
@@ -1119,6 +1159,7 @@ impl BuilderShape {
         }
     }
 
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
     /// Returns flag of history availability
     pub fn has_history(&self) -> bool {
         unsafe { crate::ffi::BOPAlgo_BuilderShape_has_history(self as *const Self) }
@@ -1231,6 +1272,7 @@ impl BuilderShape {
 // From BOPAlgo_CheckResult.hxx
 // ========================
 
+/// **Source:** `BOPAlgo_CheckResult.hxx`:29 - `BOPAlgo_CheckResult`
 /// contains information about faulty shapes and faulty types
 /// can't be processed by Boolean Operations
 pub use crate::ffi::BOPAlgo_CheckResult as CheckResult;
@@ -1242,51 +1284,61 @@ unsafe impl crate::CppDeletable for CheckResult {
 }
 
 impl CheckResult {
+    /// **Source:** `BOPAlgo_CheckResult.hxx`:35 - `BOPAlgo_CheckResult::BOPAlgo_CheckResult()`
     /// empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_CheckResult_ctor()) }
     }
 
+    /// **Source:** `BOPAlgo_CheckResult.hxx`:38 - `BOPAlgo_CheckResult::SetShape1()`
     /// sets ancestor shape (object) for faulty sub-shapes
     pub fn set_shape1(&mut self, TheShape: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BOPAlgo_CheckResult_set_shape1(self as *mut Self, TheShape) }
     }
 
+    /// **Source:** `BOPAlgo_CheckResult.hxx`:41 - `BOPAlgo_CheckResult::AddFaultyShape1()`
     /// adds faulty sub-shapes from object to a list
     pub fn add_faulty_shape1(&mut self, TheShape: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BOPAlgo_CheckResult_add_faulty_shape1(self as *mut Self, TheShape) }
     }
 
+    /// **Source:** `BOPAlgo_CheckResult.hxx`:44 - `BOPAlgo_CheckResult::SetShape2()`
     /// sets ancestor shape (tool) for faulty sub-shapes
     pub fn set_shape2(&mut self, TheShape: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BOPAlgo_CheckResult_set_shape2(self as *mut Self, TheShape) }
     }
 
+    /// **Source:** `BOPAlgo_CheckResult.hxx`:47 - `BOPAlgo_CheckResult::AddFaultyShape2()`
     /// adds faulty sub-shapes from tool to a list
     pub fn add_faulty_shape2(&mut self, TheShape: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BOPAlgo_CheckResult_add_faulty_shape2(self as *mut Self, TheShape) }
     }
 
+    /// **Source:** `BOPAlgo_CheckResult.hxx`:50 - `BOPAlgo_CheckResult::GetShape1()`
     /// returns ancestor shape (object) for faulties
     pub fn get_shape1(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BOPAlgo_CheckResult_get_shape1(self as *const Self)) }
     }
 
+    /// **Source:** `BOPAlgo_CheckResult.hxx`:53 - `BOPAlgo_CheckResult::GetShape2()`
     /// returns ancestor shape (tool) for faulties
     pub fn get_shape2(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BOPAlgo_CheckResult_get_shape2(self as *const Self)) }
     }
 
+    /// **Source:** `BOPAlgo_CheckResult.hxx`:56 - `BOPAlgo_CheckResult::GetFaultyShapes1()`
     /// returns list of faulty shapes for object
     pub fn get_faulty_shapes1(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_CheckResult_get_faulty_shapes1(self as *const Self)) }
     }
 
+    /// **Source:** `BOPAlgo_CheckResult.hxx`:59 - `BOPAlgo_CheckResult::GetFaultyShapes2()`
     /// returns list of faulty shapes for tool
     pub fn get_faulty_shapes2(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_CheckResult_get_faulty_shapes2(self as *const Self)) }
     }
 
+    /// **Source:** `BOPAlgo_CheckResult.hxx`:62 - `BOPAlgo_CheckResult::SetCheckStatus()`
     /// set status of faulty
     pub fn set_check_status(&mut self, TheStatus: crate::bop_algo::CheckStatus) {
         unsafe {
@@ -1294,6 +1346,7 @@ impl CheckResult {
         }
     }
 
+    /// **Source:** `BOPAlgo_CheckResult.hxx`:65 - `BOPAlgo_CheckResult::GetCheckStatus()`
     /// gets status of faulty
     pub fn get_check_status(&self) -> crate::bop_algo::CheckStatus {
         unsafe {
@@ -1304,41 +1357,49 @@ impl CheckResult {
         }
     }
 
+    /// **Source:** `BOPAlgo_CheckResult.hxx`:68 - `BOPAlgo_CheckResult::SetMaxDistance1()`
     /// Sets max distance for the first shape
     pub fn set_max_distance1(&mut self, theDist: f64) {
         unsafe { crate::ffi::BOPAlgo_CheckResult_set_max_distance1(self as *mut Self, theDist) }
     }
 
+    /// **Source:** `BOPAlgo_CheckResult.hxx`:71 - `BOPAlgo_CheckResult::SetMaxDistance2()`
     /// Sets max distance for the second shape
     pub fn set_max_distance2(&mut self, theDist: f64) {
         unsafe { crate::ffi::BOPAlgo_CheckResult_set_max_distance2(self as *mut Self, theDist) }
     }
 
+    /// **Source:** `BOPAlgo_CheckResult.hxx`:74 - `BOPAlgo_CheckResult::SetMaxParameter1()`
     /// Sets the parameter for the first shape
     pub fn set_max_parameter1(&mut self, thePar: f64) {
         unsafe { crate::ffi::BOPAlgo_CheckResult_set_max_parameter1(self as *mut Self, thePar) }
     }
 
+    /// **Source:** `BOPAlgo_CheckResult.hxx`:77 - `BOPAlgo_CheckResult::SetMaxParameter2()`
     /// Sets the parameter for the second shape
     pub fn set_max_parameter2(&mut self, thePar: f64) {
         unsafe { crate::ffi::BOPAlgo_CheckResult_set_max_parameter2(self as *mut Self, thePar) }
     }
 
+    /// **Source:** `BOPAlgo_CheckResult.hxx`:80 - `BOPAlgo_CheckResult::GetMaxDistance1()`
     /// Returns the distance for the first shape
     pub fn get_max_distance1(&self) -> f64 {
         unsafe { crate::ffi::BOPAlgo_CheckResult_get_max_distance1(self as *const Self) }
     }
 
+    /// **Source:** `BOPAlgo_CheckResult.hxx`:83 - `BOPAlgo_CheckResult::GetMaxDistance2()`
     /// Returns the distance for the second shape
     pub fn get_max_distance2(&self) -> f64 {
         unsafe { crate::ffi::BOPAlgo_CheckResult_get_max_distance2(self as *const Self) }
     }
 
+    /// **Source:** `BOPAlgo_CheckResult.hxx`:86 - `BOPAlgo_CheckResult::GetMaxParameter1()`
     /// Returns the parameter for the fircst shape
     pub fn get_max_parameter1(&self) -> f64 {
         unsafe { crate::ffi::BOPAlgo_CheckResult_get_max_parameter1(self as *const Self) }
     }
 
+    /// **Source:** `BOPAlgo_CheckResult.hxx`:89 - `BOPAlgo_CheckResult::GetMaxParameter2()`
     /// Returns the parameter for the second shape
     pub fn get_max_parameter2(&self) -> f64 {
         unsafe { crate::ffi::BOPAlgo_CheckResult_get_max_parameter2(self as *const Self) }
@@ -1349,6 +1410,7 @@ impl CheckResult {
 // From BOPAlgo_Options.hxx
 // ========================
 
+/// **Source:** `BOPAlgo_Options.hxx`:36 - `BOPAlgo_Options`
 /// The class provides the following options for the algorithms in Boolean Component:
 /// - *Memory allocation tool* - tool for memory allocations;
 /// - *Error and warning reporting* - allows recording warnings and errors occurred
@@ -1368,11 +1430,13 @@ unsafe impl crate::CppDeletable for Options {
 }
 
 impl Options {
+    /// **Source:** `BOPAlgo_Options.hxx`:42 - `BOPAlgo_Options::BOPAlgo_Options()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_Options_ctor()) }
     }
 
+    /// **Source:** `BOPAlgo_Options.hxx`:45 - `BOPAlgo_Options::BOPAlgo_Options()`
     /// Constructor with allocator
     pub fn new_handlencollectionbaseallocator(
         theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
@@ -1384,57 +1448,68 @@ impl Options {
         }
     }
 
+    /// **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     /// Returns allocator
     pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
         unsafe { &*(crate::ffi::BOPAlgo_Options_allocator(self as *const Self)) }
     }
 
+    /// **Source:** `BOPAlgo_Options.hxx`:55 - `BOPAlgo_Options::Clear()`
     /// Clears all warnings and errors, and any data cached by the algorithm.
     /// User defined options are not cleared.
     pub fn clear(&mut self) {
         unsafe { crate::ffi::BOPAlgo_Options_clear(self as *mut Self) }
     }
 
+    /// **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     /// Adds the alert as error (fail)
     pub fn add_error(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
         unsafe { crate::ffi::BOPAlgo_Options_add_error(self as *mut Self, theAlert) }
     }
 
+    /// **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     /// Adds the alert as warning
     pub fn add_warning(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
         unsafe { crate::ffi::BOPAlgo_Options_add_warning(self as *mut Self, theAlert) }
     }
 
+    /// **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
     /// Returns true if algorithm has failed
     pub fn has_errors(&self) -> bool {
         unsafe { crate::ffi::BOPAlgo_Options_has_errors(self as *const Self) }
     }
 
+    /// **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     /// Returns true if algorithm has generated error of specified type
     pub fn has_error(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::BOPAlgo_Options_has_error(self as *const Self, theType) }
     }
 
+    /// **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
     /// Returns true if algorithm has generated some warning alerts
     pub fn has_warnings(&self) -> bool {
         unsafe { crate::ffi::BOPAlgo_Options_has_warnings(self as *const Self) }
     }
 
+    /// **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     /// Returns true if algorithm has generated warning of specified type
     pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::BOPAlgo_Options_has_warning(self as *const Self, theType) }
     }
 
+    /// **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     /// Returns report collecting all errors and warnings
     pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
         unsafe { &*(crate::ffi::BOPAlgo_Options_get_report(self as *const Self)) }
     }
 
+    /// **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     /// Clears the warnings of the algorithm
     pub fn clear_warnings(&mut self) {
         unsafe { crate::ffi::BOPAlgo_Options_clear_warnings(self as *mut Self) }
     }
 
+    /// **Source:** `BOPAlgo_Options.hxx`:114 - `BOPAlgo_Options::SetRunParallel()`
     /// Set the flag of parallel processing
     /// if <theFlag> is true  the parallel processing is switched on
     /// if <theFlag> is false the parallel processing is switched off
@@ -1442,36 +1517,43 @@ impl Options {
         unsafe { crate::ffi::BOPAlgo_Options_set_run_parallel(self as *mut Self, theFlag) }
     }
 
+    /// **Source:** `BOPAlgo_Options.hxx`:117 - `BOPAlgo_Options::RunParallel()`
     /// Returns the flag of parallel processing
     pub fn run_parallel(&self) -> bool {
         unsafe { crate::ffi::BOPAlgo_Options_run_parallel(self as *const Self) }
     }
 
+    /// **Source:** `BOPAlgo_Options.hxx`:123 - `BOPAlgo_Options::SetFuzzyValue()`
     /// Sets the additional tolerance
     pub fn set_fuzzy_value(&mut self, theFuzz: f64) {
         unsafe { crate::ffi::BOPAlgo_Options_set_fuzzy_value(self as *mut Self, theFuzz) }
     }
 
+    /// **Source:** `BOPAlgo_Options.hxx`:126 - `BOPAlgo_Options::FuzzyValue()`
     /// Returns the additional tolerance
     pub fn fuzzy_value(&self) -> f64 {
         unsafe { crate::ffi::BOPAlgo_Options_fuzzy_value(self as *const Self) }
     }
 
+    /// **Source:** `BOPAlgo_Options.hxx`:132 - `BOPAlgo_Options::SetUseOBB()`
     /// Enables/Disables the usage of OBB
     pub fn set_use_obb(&mut self, theUseOBB: bool) {
         unsafe { crate::ffi::BOPAlgo_Options_set_use_obb(self as *mut Self, theUseOBB) }
     }
 
+    /// **Source:** `BOPAlgo_Options.hxx`:135 - `BOPAlgo_Options::UseOBB()`
     /// Returns the flag defining usage of OBB
     pub fn use_obb(&self) -> bool {
         unsafe { crate::ffi::BOPAlgo_Options_use_obb(self as *const Self) }
     }
 
+    /// **Source:** `BOPAlgo_Options.hxx`:106 - `BOPAlgo_Options::GetParallelMode()`
     /// Gets the global parallel mode
     pub fn get_parallel_mode() -> bool {
         unsafe { crate::ffi::BOPAlgo_Options_get_parallel_mode() }
     }
 
+    /// **Source:** `BOPAlgo_Options.hxx`:109 - `BOPAlgo_Options::SetParallelMode()`
     /// Sets the global parallel mode
     pub fn set_parallel_mode(theNewMode: bool) {
         unsafe { crate::ffi::BOPAlgo_Options_set_parallel_mode(theNewMode) }
@@ -1482,6 +1564,7 @@ impl Options {
 // From BOPAlgo_RemoveFeatures.hxx
 // ========================
 
+/// **Source:** `BOPAlgo_RemoveFeatures.hxx`:147 - `BOPAlgo_RemoveFeatures`
 /// The RemoveFeatures algorithm is intended for reconstruction of
 /// the shape by removal of the unwanted parts from it. These parts can
 /// be holes, protrusions, spikes, fillets etc.
@@ -1607,12 +1690,14 @@ unsafe impl crate::CppDeletable for RemoveFeatures {
 }
 
 impl RemoveFeatures {
+    /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:154 - `BOPAlgo_RemoveFeatures::BOPAlgo_RemoveFeatures()`
     /// @name Constructors
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_RemoveFeatures_ctor()) }
     }
 
+    /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:163 - `BOPAlgo_RemoveFeatures::SetShape()`
     /// @name Setting input data for the algorithm
     /// Sets the shape for processing.
     /// @param[in] theShape  The shape to remove the faces from.
@@ -1621,17 +1706,20 @@ impl RemoveFeatures {
         unsafe { crate::ffi::BOPAlgo_RemoveFeatures_set_shape(self as *mut Self, theShape) }
     }
 
+    /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:166 - `BOPAlgo_RemoveFeatures::InputShape()`
     /// Returns the input shape
     pub fn input_shape(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BOPAlgo_RemoveFeatures_input_shape(self as *const Self)) }
     }
 
+    /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:170 - `BOPAlgo_RemoveFeatures::AddFaceToRemove()`
     /// Adds the face to remove from the input shape.
     /// @param[in] theFace  The shape to extract the faces for removal.
     pub fn add_face_to_remove(&mut self, theFace: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BOPAlgo_RemoveFeatures_add_face_to_remove(self as *mut Self, theFace) }
     }
 
+    /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:174 - `BOPAlgo_RemoveFeatures::AddFacesToRemove()`
     /// Adds the faces to remove from the input shape.
     /// @param[in] theFaces  The list of shapes to extract the faces for removal.
     pub fn add_faces_to_remove(&mut self, theFaces: &crate::ffi::TopTools_ListOfShape) {
@@ -1640,18 +1728,21 @@ impl RemoveFeatures {
         }
     }
 
+    /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:183 - `BOPAlgo_RemoveFeatures::FacesToRemove()`
     /// Returns the list of faces which have been requested for removal
     /// from the input shape.
     pub fn faces_to_remove(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_RemoveFeatures_faces_to_remove(self as *const Self)) }
     }
 
+    /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:187 - `BOPAlgo_RemoveFeatures::Perform()`
     /// @name Performing the operation
     /// Performs the operation
     pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BOPAlgo_RemoveFeatures_perform(self as *mut Self, theRange) }
     }
 
+    /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:193 - `BOPAlgo_RemoveFeatures::Clear()`
     /// @name Clearing the contents of the algorithm
     /// Clears the contents of the algorithm from previous run,
     /// allowing reusing it for following removals.
@@ -1850,6 +1941,7 @@ impl RemoveFeatures {
 // From BOPAlgo_ToolsProvider.hxx
 // ========================
 
+/// **Source:** `BOPAlgo_ToolsProvider.hxx`:25 - `BOPAlgo_ToolsProvider`
 /// Auxiliary class providing API to operate tool arguments.
 pub use crate::ffi::BOPAlgo_ToolsProvider as ToolsProvider;
 
@@ -1860,11 +1952,13 @@ unsafe impl crate::CppDeletable for ToolsProvider {
 }
 
 impl ToolsProvider {
+    /// **Source:** `BOPAlgo_ToolsProvider.hxx`:31 - `BOPAlgo_ToolsProvider::BOPAlgo_ToolsProvider()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_ToolsProvider_ctor()) }
     }
 
+    /// **Source:** `BOPAlgo_ToolsProvider.hxx`:33 - `BOPAlgo_ToolsProvider::BOPAlgo_ToolsProvider()`
     pub fn new_handlencollectionbaseallocator(
         theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
     ) -> crate::OwnedPtr<Self> {
@@ -1875,21 +1969,25 @@ impl ToolsProvider {
         }
     }
 
+    /// **Source:** `BOPAlgo_ToolsProvider.hxx`:36 - `BOPAlgo_ToolsProvider::Clear()`
     /// Clears internal fields and arguments
     pub fn clear(&mut self) {
         unsafe { crate::ffi::BOPAlgo_ToolsProvider_clear(self as *mut Self) }
     }
 
+    /// **Source:** `BOPAlgo_ToolsProvider.hxx`:39 - `BOPAlgo_ToolsProvider::AddTool()`
     /// Adds Tool argument of the operation
     pub fn add_tool(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BOPAlgo_ToolsProvider_add_tool(self as *mut Self, theShape) }
     }
 
+    /// **Source:** `BOPAlgo_ToolsProvider.hxx`:42 - `BOPAlgo_ToolsProvider::SetTools()`
     /// Adds the Tool arguments of the operation
     pub fn set_tools(&mut self, theShapes: &crate::ffi::TopTools_ListOfShape) {
         unsafe { crate::ffi::BOPAlgo_ToolsProvider_set_tools(self as *mut Self, theShapes) }
     }
 
+    /// **Source:** `BOPAlgo_ToolsProvider.hxx`:45 - `BOPAlgo_ToolsProvider::Tools()`
     /// Returns the Tool arguments of the operation
     pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_tools(self as *const Self)) }

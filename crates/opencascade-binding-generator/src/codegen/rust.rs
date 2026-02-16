@@ -305,18 +305,7 @@ fn generate_unified_functions_from_bindings(
             &format!("{}::{}", func.namespace, func.short_name),
         );
         writeln!(out, "    /// {}", source_attr).unwrap();
-        if let Some(ref comment) = func.doc_comment {
-            writeln!(out, "    ///").unwrap();
-            for line in comment.lines() {
-                let trimmed = line.trim();
-                if trimmed.is_empty() {
-                    writeln!(out, "    ///").unwrap();
-                } else {
-                    writeln!(out, "    /// {}", trimmed).unwrap();
-                }
-            }
-        }
-        writeln!(out, "    pub fn {}({}){};", func.cpp_wrapper_name, params_str, ret_str).unwrap();
+        writeln!(out, "    pub fn {}({}){};\n", func.cpp_wrapper_name, params_str, ret_str).unwrap();
     }
     out
 }
@@ -463,14 +452,33 @@ fn emit_rust_enum(output: &mut String, resolved: &crate::resolver::ResolvedEnum)
     writeln!(output).unwrap();
 }
 
-/// Emit a wrapper function for a free function that uses value enum types
-/// or needs OwnedPtr wrapping.
-/// Uses pre-computed FunctionBinding for all type information.
+/// Emit a wrapper function for a free function in the public module.
+/// All free functions are real functions (not pub use re-exports) so that
+/// IDE "go to definition" lands in the public module, not ffi::.
+/// Includes source attribution and doc comments.
 fn emit_free_function_wrapper(
     output: &mut String,
     func: &super::bindings::FunctionBinding,
 ) {
     use std::fmt::Write;
+
+    // Source attribution + doc comment
+    let source_attr = format_source_attribution(
+        &func.source_header,
+        None,
+        &format!("{}::{}", func.namespace, func.short_name),
+    );
+    writeln!(output, "/// {}", source_attr).unwrap();
+    if let Some(ref comment) = func.doc_comment {
+        for line in comment.lines() {
+            let trimmed = line.trim();
+            if trimmed.is_empty() {
+                writeln!(output, "///").unwrap();
+            } else {
+                writeln!(output, "/// {}", trimmed).unwrap();
+            }
+        }
+    }
 
     // Build parameter list using pre-computed re-export types
     let params: Vec<String> = func.params.iter()
@@ -496,12 +504,21 @@ fn emit_free_function_wrapper(
     // Build call expression
     let call_expr = format!("crate::ffi::{}({})", func.cpp_wrapper_name, args.join(", "));
 
-    // Build body with enum return conversion or OwnedPtr wrapping
+    // Build body with proper conversions: enum returns, OwnedPtr wrapping, and pointer-to-reference
+    let reexport_rt = func.return_type.as_ref().map(|rt| rt.rust_reexport_type.as_str());
     let body = if let Some(ref rt) = func.return_type {
         if let Some(ref rust_type) = rt.enum_rust_type {
             format!("{}::try_from({}).unwrap()", rust_type, call_expr)
         } else if rt.needs_unique_ptr {
             format!("crate::OwnedPtr::from_raw({})", call_expr)
+        } else if let Some(rtype) = reexport_rt {
+            if rtype.starts_with("&mut ") {
+                format!("&mut *({})", call_expr)
+            } else if rtype.starts_with('&') {
+                format!("&*({})", call_expr)
+            } else {
+                call_expr
+            }
         } else {
             call_expr
         }
@@ -542,23 +559,9 @@ pub fn generate_module_reexports(
 
     // Generate re-exports for free functions from pre-computed FunctionBindings.
     for func in module_fn_bindings {
-        // Check if this function uses any value enum types or needs wrapping
-        let has_enum_params = func.params.iter().any(|p| p.enum_rust_type.is_some());
-        let has_enum_return = func.return_type.as_ref()
-            .map(|rt| rt.enum_rust_type.is_some())
-            .unwrap_or(false);
-        let has_owned_ptr_return = func.return_type.as_ref()
-            .map(|rt| rt.needs_unique_ptr)
-            .unwrap_or(false);
-
-        if has_enum_params || has_enum_return || has_owned_ptr_return {
-            // Generate a wrapper function that converts enum types or wraps return
-            emit_free_function_wrapper(&mut output, func);
-        } else if func.cpp_wrapper_name != func.rust_ffi_name {
-            output.push_str(&format!("pub use crate::ffi::{} as {};\n", func.cpp_wrapper_name, func.rust_ffi_name));
-        } else {
-            output.push_str(&format!("pub use crate::ffi::{};\n", func.rust_ffi_name));
-        }
+        // All free functions become real wrapper functions (not pub use re-exports)
+        // so IDE "go to definition" lands in the public module.
+        emit_free_function_wrapper(&mut output, func);
     }
 
     if !module_fn_bindings.is_empty() {

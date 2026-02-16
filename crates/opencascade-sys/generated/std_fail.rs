@@ -10,6 +10,7 @@
 // From StdFail_NotDone.hxx
 // ========================
 
+/// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone`
 pub use crate::ffi::StdFail_NotDone as NotDone;
 
 unsafe impl crate::CppDeletable for NotDone {
@@ -19,14 +20,17 @@ unsafe impl crate::CppDeletable for NotDone {
 }
 
 impl NotDone {
+    /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::StdFail_NotDone()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StdFail_NotDone_ctor()) }
     }
 
+    /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::StdFail_NotDone()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StdFail_NotDone_ctor_charptr(theMessage)) }
     }
 
+    /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::StdFail_NotDone()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -39,18 +43,22 @@ impl NotDone {
         }
     }
 
+    /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::StdFail_NotDone_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::StdFail_NotDone_raise(theMessage) }
     }
 
+    /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::StdFail_NotDone_get_type_name() }
     }
 
+    /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::StdFail_NotDone_get_type_descriptor()) }
     }

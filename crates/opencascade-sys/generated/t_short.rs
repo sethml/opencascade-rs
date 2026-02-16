@@ -10,6 +10,7 @@
 // From TShort_HArray1OfShortReal.hxx
 // ========================
 
+/// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal`
 pub use crate::ffi::TShort_HArray1OfShortReal as HArray1OfShortReal;
 
 unsafe impl crate::CppDeletable for HArray1OfShortReal {
@@ -19,10 +20,12 @@ unsafe impl crate::CppDeletable for HArray1OfShortReal {
 }
 
 impl HArray1OfShortReal {
+    /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TShort_HArray1OfShortReal_ctor()) }
     }
 
+    /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TShort_HArray1OfShortReal_ctor_int2(
@@ -31,6 +34,7 @@ impl HArray1OfShortReal {
         }
     }
 
+    /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
     pub fn new_int2_float(theLower: i32, theUpper: i32, theValue: &f32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TShort_HArray1OfShortReal_ctor_int2_float(
@@ -39,6 +43,7 @@ impl HArray1OfShortReal {
         }
     }
 
+    /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
     pub fn new_float_int2_bool(
         theBegin: &f32,
         theLower: i32,
@@ -52,6 +57,7 @@ impl HArray1OfShortReal {
         }
     }
 
+    /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
     pub fn new_array1ofshortreal(
         theOther: &crate::ffi::TShort_Array1OfShortReal,
     ) -> crate::OwnedPtr<Self> {
@@ -62,14 +68,17 @@ impl HArray1OfShortReal {
         }
     }
 
+    /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TShort_HArray1OfShortReal_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::TShort_HArray1OfShortReal_get_type_name() }
     }
 
+    /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TShort_HArray1OfShortReal_get_type_descriptor()) }
     }

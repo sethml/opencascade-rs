@@ -10,6 +10,7 @@
 // From BRepFilletAPI_LocalOperation.hxx
 // ========================
 
+/// **Source:** `BRepFilletAPI_LocalOperation.hxx`:31 - `BRepFilletAPI_LocalOperation`
 /// Construction of fillets on the edges of a Shell.
 pub use crate::ffi::BRepFilletAPI_LocalOperation as LocalOperation;
 
@@ -20,49 +21,58 @@ unsafe impl crate::CppDeletable for LocalOperation {
 }
 
 impl LocalOperation {
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:38 - `BRepFilletAPI_LocalOperation::Add()`
     /// Adds a  contour in  the  builder  (builds a
     /// contour  of tangent edges).
     pub fn add(&mut self, E: &crate::ffi::TopoDS_Edge) {
         unsafe { crate::ffi::BRepFilletAPI_LocalOperation_add(self as *mut Self, E) }
     }
 
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:42 - `BRepFilletAPI_LocalOperation::ResetContour()`
     /// Reset the contour of index IC, there is nomore
     /// information in the contour.
     pub fn reset_contour(&mut self, IC: i32) {
         unsafe { crate::ffi::BRepFilletAPI_LocalOperation_reset_contour(self as *mut Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:45 - `BRepFilletAPI_LocalOperation::NbContours()`
     /// Number of contours.
     pub fn nb_contours(&self) -> i32 {
         unsafe { crate::ffi::BRepFilletAPI_LocalOperation_nb_contours(self as *const Self) }
     }
 
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:49 - `BRepFilletAPI_LocalOperation::Contour()`
     /// Returns the index of  the  contour containing the edge
     /// E, returns 0 if E doesn't belong to any contour.
     pub fn contour(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
         unsafe { crate::ffi::BRepFilletAPI_LocalOperation_contour(self as *const Self, E) }
     }
 
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:52 - `BRepFilletAPI_LocalOperation::NbEdges()`
     /// Number of Edges in the contour I.
     pub fn nb_edges(&self, I: i32) -> i32 {
         unsafe { crate::ffi::BRepFilletAPI_LocalOperation_nb_edges(self as *const Self, I) }
     }
 
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:55 - `BRepFilletAPI_LocalOperation::Edge()`
     /// Returns the Edge J in the contour I.
     pub fn edge(&self, I: i32, J: i32) -> &crate::ffi::TopoDS_Edge {
         unsafe { &*(crate::ffi::BRepFilletAPI_LocalOperation_edge(self as *const Self, I, J)) }
     }
 
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:59 - `BRepFilletAPI_LocalOperation::Remove()`
     /// remove the contour containing the Edge E.
     pub fn remove(&mut self, E: &crate::ffi::TopoDS_Edge) {
         unsafe { crate::ffi::BRepFilletAPI_LocalOperation_remove(self as *mut Self, E) }
     }
 
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:62 - `BRepFilletAPI_LocalOperation::Length()`
     /// returns the length the contour of index IC.
     pub fn length(&self, IC: i32) -> f64 {
         unsafe { crate::ffi::BRepFilletAPI_LocalOperation_length(self as *const Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:65 - `BRepFilletAPI_LocalOperation::FirstVertex()`
     /// Returns the first Vertex of the contour of index IC.
     pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
         unsafe {
@@ -73,6 +83,7 @@ impl LocalOperation {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:68 - `BRepFilletAPI_LocalOperation::LastVertex()`
     /// Returns the last Vertex of the contour of index IC.
     pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
         unsafe {
@@ -83,12 +94,14 @@ impl LocalOperation {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:72 - `BRepFilletAPI_LocalOperation::Abscissa()`
     /// returns the abscissa of the vertex V on
     /// the contour of index IC.
     pub fn abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
         unsafe { crate::ffi::BRepFilletAPI_LocalOperation_abscissa(self as *const Self, IC, V) }
     }
 
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:77 - `BRepFilletAPI_LocalOperation::RelativeAbscissa()`
     /// returns the relative abscissa([0.,1.]) of the
     /// vertex V on the contour of index IC.
     pub fn relative_abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
@@ -97,6 +110,7 @@ impl LocalOperation {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:82 - `BRepFilletAPI_LocalOperation::ClosedAndTangent()`
     /// returns true if the contour of index IC is closed
     /// an tangent.
     pub fn closed_and_tangent(&self, IC: i32) -> bool {
@@ -105,11 +119,13 @@ impl LocalOperation {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:85 - `BRepFilletAPI_LocalOperation::Closed()`
     /// returns true if the contour of index IC is closed
     pub fn closed(&self, IC: i32) -> bool {
         unsafe { crate::ffi::BRepFilletAPI_LocalOperation_closed(self as *const Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:91 - `BRepFilletAPI_LocalOperation::Reset()`
     /// Reset all the fields updated   by Build operation  and
     /// leave the  algorithm in  the  same state  than  before
     /// build    call.  It   allows   contours    and   radius
@@ -118,14 +134,17 @@ impl LocalOperation {
         unsafe { crate::ffi::BRepFilletAPI_LocalOperation_reset(self as *mut Self) }
     }
 
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:93 - `BRepFilletAPI_LocalOperation::Simulate()`
     pub fn simulate(&mut self, IC: i32) {
         unsafe { crate::ffi::BRepFilletAPI_LocalOperation_simulate(self as *mut Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:95 - `BRepFilletAPI_LocalOperation::NbSurf()`
     pub fn nb_surf(&self, IC: i32) -> i32 {
         unsafe { crate::ffi::BRepFilletAPI_LocalOperation_nb_surf(self as *const Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:97 - `BRepFilletAPI_LocalOperation::Sect()`
     pub fn sect(&self, IC: i32, IS: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSecHArray1> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_LocalOperation_sect(
@@ -222,6 +241,7 @@ impl LocalOperation {
 // From BRepFilletAPI_MakeChamfer.hxx
 // ========================
 
+/// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:44 - `BRepFilletAPI_MakeChamfer`
 /// Describes functions to build chamfers on edges of a shell or solid.
 /// Chamfered Edge of a Shell or Solid
 /// A MakeChamfer object provides a framework for:
@@ -238,12 +258,14 @@ unsafe impl crate::CppDeletable for MakeChamfer {
 }
 
 impl MakeChamfer {
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:51 - `BRepFilletAPI_MakeChamfer::BRepFilletAPI_MakeChamfer()`
     /// Initializes an algorithm for computing chamfers on the shape S.
     /// The edges on which chamfers are built are defined using the Add function.
     pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeChamfer_ctor_shape(S)) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:56 - `BRepFilletAPI_MakeChamfer::Add()`
     /// Adds edge E to the table of edges used by this
     /// algorithm to build chamfers, where the parameters
     /// of the chamfer must be set after the
@@ -251,6 +273,7 @@ impl MakeChamfer {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_add_edge(self as *mut Self, E) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:70 - `BRepFilletAPI_MakeChamfer::Add()`
     /// Adds edge E to the table of edges used by this
     /// algorithm to build chamfers, where
     /// the parameters of the chamfer are given by
@@ -267,6 +290,7 @@ impl MakeChamfer {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_add_real_edge(self as *mut Self, Dis, E) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:80 - `BRepFilletAPI_MakeChamfer::SetDist()`
     /// Sets the distances Dis1 and Dis2 which give the
     /// parameters of the chamfer along the contour of index
     /// IC generated using the Add function in the internal
@@ -279,10 +303,12 @@ impl MakeChamfer {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_set_dist(self as *mut Self, Dis, IC, F) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:84 - `BRepFilletAPI_MakeChamfer::GetDist()`
     pub fn get_dist(&self, IC: i32, Dis: &mut f64) {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_get_dist(self as *const Self, IC, Dis) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:99 - `BRepFilletAPI_MakeChamfer::Add()`
     /// Adds edge E to the table of edges used by this
     /// algorithm to build chamfers, where
     /// the parameters of the chamfer are given by the two
@@ -314,6 +340,7 @@ impl MakeChamfer {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:112 - `BRepFilletAPI_MakeChamfer::SetDists()`
     /// Sets the distances Dis1 and Dis2 which give the
     /// parameters of the chamfer along the contour of index
     /// IC generated using the Add function in the internal
@@ -328,6 +355,7 @@ impl MakeChamfer {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:122 - `BRepFilletAPI_MakeChamfer::Dists()`
     /// Returns the distances Dis1 and Dis2 which give the
     /// parameters of the chamfer along the contour of index IC
     /// in the internal data structure of this algorithm.
@@ -337,6 +365,7 @@ impl MakeChamfer {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_dists(self as *const Self, IC, Dis1, Dis2) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:129 - `BRepFilletAPI_MakeChamfer::AddDA()`
     /// Adds a  fillet contour in  the  builder  (builds a
     /// contour  of tangent edges to <E> and sets the
     /// distance <Dis1> and angle <Angle> ( parameters of the chamfer ) ).
@@ -350,6 +379,7 @@ impl MakeChamfer {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_add_da(self as *mut Self, Dis, Angle, E, F) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:138 - `BRepFilletAPI_MakeChamfer::SetDistAngle()`
     /// set the distance <Dis> and <Angle> of the fillet
     /// contour of index <IC> in the DS with <Dis> on <F>.
     /// if the face <F> is not one of common faces
@@ -366,6 +396,7 @@ impl MakeChamfer {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:145 - `BRepFilletAPI_MakeChamfer::GetDistAngle()`
     /// gives the distances <Dis> and <Angle> of the fillet
     /// contour of index <IC> in the DS
     pub fn get_dist_angle(&self, IC: i32, Dis: &mut f64, Angle: &mut f64) {
@@ -379,26 +410,31 @@ impl MakeChamfer {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:150 - `BRepFilletAPI_MakeChamfer::SetMode()`
     /// Sets the mode of chamfer
     pub fn set_mode(&mut self, theMode: crate::ch_fi_ds::ChamfMode) {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_set_mode(self as *mut Self, theMode.into()) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:153 - `BRepFilletAPI_MakeChamfer::IsSymetric()`
     /// return True if chamfer symmetric false else.
     pub fn is_symetric(&self, IC: i32) -> bool {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_is_symetric(self as *const Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:156 - `BRepFilletAPI_MakeChamfer::IsTwoDistances()`
     /// return True if chamfer is made with two distances false else.
     pub fn is_two_distances(&self, IC: i32) -> bool {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_is_two_distances(self as *const Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:159 - `BRepFilletAPI_MakeChamfer::IsDistanceAngle()`
     /// return True if chamfer is made with distance and angle false else.
     pub fn is_distance_angle(&self, IC: i32) -> bool {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_is_distance_angle(self as *const Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:166 - `BRepFilletAPI_MakeChamfer::ResetContour()`
     /// Erases the chamfer parameters on the contour of
     /// index IC in the internal data structure of this algorithm.
     /// Use the SetDists function to reset this data.
@@ -408,12 +444,14 @@ impl MakeChamfer {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_reset_contour(self as *mut Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:170 - `BRepFilletAPI_MakeChamfer::NbContours()`
     /// Returns the number of contours generated using the
     /// Add function in the internal data structure of this algorithm.
     pub fn nb_contours(&self) -> i32 {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_nb_contours(self as *const Self) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:178 - `BRepFilletAPI_MakeChamfer::Contour()`
     /// Returns the index of the contour in the internal data
     /// structure of this algorithm, which contains the edge E of the shape.
     /// This function returns 0 if the edge E does not belong to any contour.
@@ -424,6 +462,7 @@ impl MakeChamfer {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_contour(self as *const Self, E) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:184 - `BRepFilletAPI_MakeChamfer::NbEdges()`
     /// Returns the number of edges in the contour of index I in
     /// the internal data structure of this algorithm.
     /// Warning
@@ -432,6 +471,7 @@ impl MakeChamfer {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_nb_edges(self as *const Self, I) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:192 - `BRepFilletAPI_MakeChamfer::Edge()`
     /// Returns the edge of index J in the contour of index I in
     /// the internal data structure of this algorithm.
     /// Warning
@@ -442,6 +482,7 @@ impl MakeChamfer {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeChamfer_edge(self as *const Self, I, J)) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:200 - `BRepFilletAPI_MakeChamfer::Remove()`
     /// Removes the contour in the internal data structure of
     /// this algorithm which contains the edge E of the shape.
     /// Warning
@@ -451,6 +492,7 @@ impl MakeChamfer {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_remove(self as *mut Self, E) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:206 - `BRepFilletAPI_MakeChamfer::Length()`
     /// Returns the length of the contour of index IC in the
     /// internal data structure of this algorithm.
     /// Warning
@@ -459,6 +501,7 @@ impl MakeChamfer {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_length(self as *const Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:212 - `BRepFilletAPI_MakeChamfer::FirstVertex()`
     /// Returns the first vertex of the contour of index IC
     /// in the internal data structure of this algorithm.
     /// Warning
@@ -472,6 +515,7 @@ impl MakeChamfer {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:218 - `BRepFilletAPI_MakeChamfer::LastVertex()`
     /// Returns the last vertex of the contour of index IC
     /// in the internal data structure of this algorithm.
     /// Warning
@@ -485,6 +529,7 @@ impl MakeChamfer {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:226 - `BRepFilletAPI_MakeChamfer::Abscissa()`
     /// Returns the curvilinear abscissa of the vertex V on the
     /// contour of index IC in the internal data structure of this algorithm.
     /// Warning
@@ -495,6 +540,7 @@ impl MakeChamfer {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_abscissa(self as *const Self, IC, V) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:236 - `BRepFilletAPI_MakeChamfer::RelativeAbscissa()`
     /// Returns the relative curvilinear abscissa (i.e. between 0
     /// and 1) of the vertex V on the contour of index IC in the
     /// internal data structure of this algorithm.
@@ -508,6 +554,7 @@ impl MakeChamfer {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:244 - `BRepFilletAPI_MakeChamfer::ClosedAndTangent()`
     /// eturns true if the contour of index IC in the internal
     /// data structure of this algorithm is closed and tangential at the point of closure.
     /// Warning
@@ -516,6 +563,7 @@ impl MakeChamfer {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_closed_and_tangent(self as *const Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:250 - `BRepFilletAPI_MakeChamfer::Closed()`
     /// Returns true if the contour of index IC in the internal
     /// data structure of this algorithm is closed.
     /// Warning
@@ -524,6 +572,7 @@ impl MakeChamfer {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_closed(self as *const Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:270 - `BRepFilletAPI_MakeChamfer::Build()`
     /// Builds the chamfers on all the contours in the internal
     /// data structure of this algorithm and constructs the resulting shape.
     /// Use the function IsDone to verify that the chamfered
@@ -546,6 +595,7 @@ impl MakeChamfer {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_build(self as *mut Self, theRange) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:276 - `BRepFilletAPI_MakeChamfer::Reset()`
     /// Reinitializes this algorithm, thus canceling the effects of the Build function.
     /// This function allows modifications to be made to the
     /// contours and chamfer parameters in order to rebuild the shape.
@@ -553,6 +603,7 @@ impl MakeChamfer {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_reset(self as *mut Self) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:283 - `BRepFilletAPI_MakeChamfer::Generated()`
     /// Returns the  list   of shapes generated   from the
     /// shape <EorV>.
     pub fn generated(
@@ -562,24 +613,29 @@ impl MakeChamfer {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeChamfer_generated(self as *mut Self, EorV)) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:288 - `BRepFilletAPI_MakeChamfer::Modified()`
     /// Returns the list  of shapes modified from the shape
     /// <F>.
     pub fn modified(&mut self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeChamfer_modified(self as *mut Self, F)) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:291 - `BRepFilletAPI_MakeChamfer::IsDeleted()`
     pub fn is_deleted(&mut self, F: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_is_deleted(self as *mut Self, F) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:293 - `BRepFilletAPI_MakeChamfer::Simulate()`
     pub fn simulate(&mut self, IC: i32) {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_simulate(self as *mut Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:295 - `BRepFilletAPI_MakeChamfer::NbSurf()`
     pub fn nb_surf(&self, IC: i32) -> i32 {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_nb_surf(self as *const Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:297 - `BRepFilletAPI_MakeChamfer::Sect()`
     pub fn sect(&self, IC: i32, IS: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSecHArray1> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeChamfer_sect(
@@ -664,6 +720,7 @@ impl MakeChamfer {
 // From BRepFilletAPI_MakeFillet.hxx
 // ========================
 
+/// **Source:** `BRepFilletAPI_MakeFillet.hxx`:48 - `BRepFilletAPI_MakeFillet`
 /// Describes functions to build fillets on the broken edges of a shell or solid.
 /// A MakeFillet object provides a framework for:
 /// -   initializing the construction algorithm with a given shape,
@@ -679,6 +736,7 @@ unsafe impl crate::CppDeletable for MakeFillet {
 }
 
 impl MakeFillet {
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:61 - `BRepFilletAPI_MakeFillet::BRepFilletAPI_MakeFillet()`
     /// Initializes   the computation    of   the  fillets.
     /// <FShape> sets   the type   of fillet  surface. The
     /// default value is ChFi3d_Rational (classical  nurbs
@@ -699,6 +757,7 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:64 - `BRepFilletAPI_MakeFillet::SetParams()`
     pub fn set_params(
         &mut self,
         Tang: f64,
@@ -721,6 +780,7 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:77 - `BRepFilletAPI_MakeFillet::SetContinuity()`
     /// Changes     the      parameters     of  continiuity
     /// InternalContinuity to produce fillet'surfaces with
     /// an continuity   Ci (i=0,1 or    2).
@@ -741,6 +801,7 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:83 - `BRepFilletAPI_MakeFillet::Add()`
     /// Adds a  fillet contour in  the  builder  (builds a
     /// contour  of tangent edges).
     /// The Radius must be set after.
@@ -748,6 +809,7 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_add_edge(self as *mut Self, E) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:88 - `BRepFilletAPI_MakeFillet::Add()`
     /// Adds a  fillet description in  the  builder
     /// - builds a contour  of tangent edges,
     /// - sets the radius.
@@ -755,6 +817,7 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_add_real_edge(self as *mut Self, Radius, E) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:94 - `BRepFilletAPI_MakeFillet::Add()`
     /// Adds a  fillet description in  the  builder
     /// - builds a contour  of tangent edges,
     /// - sets a linear radius evolution law between
@@ -763,6 +826,7 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_add_real2_edge(self as *mut Self, R1, R2, E) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:99 - `BRepFilletAPI_MakeFillet::Add()`
     /// Adds a  fillet description in  the  builder
     /// - builds a contour  of tangent edges,
     /// - sest the radius evolution law.
@@ -776,6 +840,7 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:108 - `BRepFilletAPI_MakeFillet::Add()`
     /// Adds a  fillet description in  the  builder
     /// - builds a contour  of tangent edges,
     /// - sets the radius evolution law interpolating the values
@@ -793,6 +858,7 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:114 - `BRepFilletAPI_MakeFillet::SetRadius()`
     /// Sets the parameters of the fillet
     /// along the contour of index IC generated using the Add function
     /// in the internal data structure of
@@ -808,6 +874,7 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:123 - `BRepFilletAPI_MakeFillet::SetRadius()`
     /// Sets the parameters of the fillet
     /// along the contour of index IC generated using the Add function
     /// in the internal data structure of this algorithm, where the radius of the
@@ -825,6 +892,7 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:133 - `BRepFilletAPI_MakeFillet::SetRadius()`
     /// Sets the parameters of the fillet
     /// along the contour of index IC generated using the Add function
     /// in the internal data structure of this algorithm, where the radius of the
@@ -846,6 +914,7 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:148 - `BRepFilletAPI_MakeFillet::SetRadius()`
     /// Sets the parameters of the fillet
     /// along the contour of index IC generated using the Add function
     /// in the internal data structure of this algorithm,
@@ -873,6 +942,7 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:157 - `BRepFilletAPI_MakeFillet::ResetContour()`
     /// Erases the radius information on the contour of index
     /// IC in the internal data structure of this algorithm.
     /// Use the SetRadius function to reset this data.
@@ -882,6 +952,7 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_reset_contour(self as *mut Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:164 - `BRepFilletAPI_MakeFillet::IsConstant()`
     /// Returns true if the radius of the fillet along the contour of index IC
     /// in the internal data structure of this algorithm is constant,
     /// Warning
@@ -891,6 +962,7 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_is_constant_int(self as *mut Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:172 - `BRepFilletAPI_MakeFillet::Radius()`
     /// Returns the radius of the fillet along the contour of index IC in the
     /// internal data structure of this algorithm
     /// Warning
@@ -901,6 +973,7 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_radius_int(self as *mut Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:180 - `BRepFilletAPI_MakeFillet::IsConstant()`
     /// Returns true if the radius of the fillet along the edge E of the
     /// contour of index IC in the internal data structure of
     /// this algorithm is constant.
@@ -913,6 +986,7 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:188 - `BRepFilletAPI_MakeFillet::Radius()`
     /// Returns the radius of the fillet along the edge E of the contour of index
     /// IC in the internal data structure of this algorithm.
     /// Warning
@@ -923,6 +997,7 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_radius_int_edge(self as *mut Self, IC, E) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:191 - `BRepFilletAPI_MakeFillet::SetRadius()`
     /// Assigns Radius as the radius of the fillet on the edge E
     pub fn set_radius_real_int_edge(&mut self, Radius: f64, IC: i32, E: &crate::ffi::TopoDS_Edge) {
         unsafe {
@@ -935,6 +1010,7 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:195 - `BRepFilletAPI_MakeFillet::SetRadius()`
     pub fn set_radius_real_int_vertex(
         &mut self,
         Radius: f64,
@@ -951,6 +1027,7 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:199 - `BRepFilletAPI_MakeFillet::GetBounds()`
     pub fn get_bounds(
         &mut self,
         IC: i32,
@@ -961,6 +1038,7 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_get_bounds(self as *mut Self, IC, E, F, L) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:204 - `BRepFilletAPI_MakeFillet::GetLaw()`
     pub fn get_law(
         &mut self,
         IC: i32,
@@ -975,6 +1053,7 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:206 - `BRepFilletAPI_MakeFillet::SetLaw()`
     pub fn set_law(
         &mut self,
         IC: i32,
@@ -984,6 +1063,7 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_set_law(self as *mut Self, IC, E, L) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:211 - `BRepFilletAPI_MakeFillet::SetFilletShape()`
     /// Assigns FShape as the type of fillet shape built by this algorithm.
     pub fn set_fillet_shape(&mut self, FShape: crate::ch_fi3d::FilletShape) {
         unsafe {
@@ -991,6 +1071,7 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:214 - `BRepFilletAPI_MakeFillet::GetFilletShape()`
     /// Returns the type of fillet shape built by this algorithm.
     pub fn get_fillet_shape(&self) -> crate::ch_fi3d::FilletShape {
         unsafe {
@@ -1001,12 +1082,14 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:218 - `BRepFilletAPI_MakeFillet::NbContours()`
     /// Returns the number of contours generated using the
     /// Add function in the internal data structure of this algorithm.
     pub fn nb_contours(&self) -> i32 {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_nb_contours(self as *const Self) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:226 - `BRepFilletAPI_MakeFillet::Contour()`
     /// Returns the index of the contour in the internal data
     /// structure of this algorithm which contains the edge E of the shape.
     /// This function returns 0 if the edge E does not belong to any contour.
@@ -1017,6 +1100,7 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_contour(self as *const Self, E) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:232 - `BRepFilletAPI_MakeFillet::NbEdges()`
     /// Returns the number of edges in the contour of index I in
     /// the internal data structure of this algorithm.
     /// Warning
@@ -1025,6 +1109,7 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_nb_edges(self as *const Self, I) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:240 - `BRepFilletAPI_MakeFillet::Edge()`
     /// Returns the edge of index J in the contour of index I in
     /// the internal data structure of this algorithm.
     /// Warning
@@ -1035,6 +1120,7 @@ impl MakeFillet {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeFillet_edge(self as *const Self, I, J)) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:248 - `BRepFilletAPI_MakeFillet::Remove()`
     /// Removes the contour in the internal data structure of
     /// this algorithm which contains the edge E of the shape.
     /// Warning
@@ -1044,6 +1130,7 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_remove(self as *mut Self, E) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:254 - `BRepFilletAPI_MakeFillet::Length()`
     /// Returns the length of the contour of index IC in the
     /// internal data structure of this algorithm.
     /// Warning
@@ -1052,6 +1139,7 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_length(self as *const Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:260 - `BRepFilletAPI_MakeFillet::FirstVertex()`
     /// Returns the first vertex of the contour of index IC
     /// in the internal data structure of this algorithm.
     /// Warning
@@ -1065,6 +1153,7 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:266 - `BRepFilletAPI_MakeFillet::LastVertex()`
     /// Returns the  last vertex of the contour of index IC
     /// in the internal data structure of this algorithm.
     /// Warning
@@ -1078,6 +1167,7 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:274 - `BRepFilletAPI_MakeFillet::Abscissa()`
     /// Returns the curvilinear abscissa of the vertex V on the
     /// contour of index IC in the internal data structure of this algorithm.
     /// Warning
@@ -1088,6 +1178,7 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_abscissa(self as *const Self, IC, V) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:284 - `BRepFilletAPI_MakeFillet::RelativeAbscissa()`
     /// Returns the relative curvilinear abscissa (i.e. between 0
     /// and 1) of the vertex V on the contour of index IC in the
     /// internal data structure of this algorithm.
@@ -1101,6 +1192,7 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:293 - `BRepFilletAPI_MakeFillet::ClosedAndTangent()`
     /// Returns true if the contour of index IC in the internal
     /// data structure of this algorithm is closed and tangential
     /// at the point of closure.
@@ -1110,6 +1202,7 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_closed_and_tangent(self as *const Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:299 - `BRepFilletAPI_MakeFillet::Closed()`
     /// Returns true if the contour of index IC in the internal
     /// data structure of this algorithm is closed.
     /// Warning
@@ -1118,6 +1211,7 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_closed(self as *const Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:319 - `BRepFilletAPI_MakeFillet::Build()`
     /// Builds the fillets on all the contours in the internal data
     /// structure of this algorithm and constructs the resulting shape.
     /// Use the function IsDone to verify that the filleted shape
@@ -1140,6 +1234,7 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_build(self as *mut Self, theRange) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:325 - `BRepFilletAPI_MakeFillet::Reset()`
     /// Reinitializes this algorithm, thus canceling the effects of the Build function.
     /// This function allows modifications to be made to the
     /// contours and fillet parameters in order to rebuild the shape.
@@ -1147,6 +1242,7 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_reset(self as *mut Self) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:332 - `BRepFilletAPI_MakeFillet::Generated()`
     /// Returns the  list   of shapes generated   from the
     /// shape <EorV>.
     pub fn generated(
@@ -1156,35 +1252,42 @@ impl MakeFillet {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeFillet_generated(self as *mut Self, EorV)) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:337 - `BRepFilletAPI_MakeFillet::Modified()`
     /// Returns the list  of shapes modified from the shape
     /// <F>.
     pub fn modified(&mut self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeFillet_modified(self as *mut Self, F)) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:340 - `BRepFilletAPI_MakeFillet::IsDeleted()`
     pub fn is_deleted(&mut self, F: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_is_deleted(self as *mut Self, F) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:344 - `BRepFilletAPI_MakeFillet::NbSurfaces()`
     /// returns the number of surfaces
     /// after the shape creation.
     pub fn nb_surfaces(&self) -> i32 {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_nb_surfaces(self as *const Self) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:347 - `BRepFilletAPI_MakeFillet::NewFaces()`
     /// Return the faces created for surface <I>.
     pub fn new_faces(&mut self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeFillet_new_faces(self as *mut Self, I)) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:349 - `BRepFilletAPI_MakeFillet::Simulate()`
     pub fn simulate(&mut self, IC: i32) {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_simulate(self as *mut Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:351 - `BRepFilletAPI_MakeFillet::NbSurf()`
     pub fn nb_surf(&self, IC: i32) -> i32 {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_nb_surf(self as *const Self, IC) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:353 - `BRepFilletAPI_MakeFillet::Sect()`
     pub fn sect(&self, IC: i32, IS: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSecHArray1> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeFillet_sect(
@@ -1195,12 +1298,14 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:358 - `BRepFilletAPI_MakeFillet::NbFaultyContours()`
     /// Returns the number of contours where the computation
     /// of the fillet failed
     pub fn nb_faulty_contours(&self) -> i32 {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_nb_faulty_contours(self as *const Self) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:364 - `BRepFilletAPI_MakeFillet::FaultyContour()`
     /// for each I in [1.. NbFaultyContours] returns the index IC of
     /// the contour where the computation of the fillet failed.
     /// the method NbEdges(IC) gives the number of edges in the contour IC
@@ -1209,6 +1314,7 @@ impl MakeFillet {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_faulty_contour(self as *const Self, I) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:368 - `BRepFilletAPI_MakeFillet::NbComputedSurfaces()`
     /// returns the number of surfaces which have been
     /// computed on the contour IC
     pub fn nb_computed_surfaces(&self, IC: i32) -> i32 {
@@ -1217,6 +1323,7 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:371 - `BRepFilletAPI_MakeFillet::ComputedSurface()`
     /// returns the surface number IS concerning the contour IC
     pub fn computed_surface(
         &self,
@@ -1232,11 +1339,13 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:375 - `BRepFilletAPI_MakeFillet::NbFaultyVertices()`
     /// returns the number of vertices where the computation failed
     pub fn nb_faulty_vertices(&self) -> i32 {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_nb_faulty_vertices(self as *const Self) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:378 - `BRepFilletAPI_MakeFillet::FaultyVertex()`
     /// returns the vertex where the computation failed
     pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
         unsafe {
@@ -1247,12 +1356,14 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:382 - `BRepFilletAPI_MakeFillet::HasResult()`
     /// returns true if a part of the result has been computed
     /// if the filling in a corner failed a shape with a hole is returned
     pub fn has_result(&self) -> bool {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_has_result(self as *const Self) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:385 - `BRepFilletAPI_MakeFillet::BadShape()`
     /// if (HasResult()) returns the partial result
     pub fn bad_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
@@ -1262,6 +1373,7 @@ impl MakeFillet {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:395 - `BRepFilletAPI_MakeFillet::StripeStatus()`
     /// returns the status concerning the contour IC in case of error
     /// ChFiDS_Ok : the computation is Ok
     /// ChFiDS_StartsolFailure : the computation can't start, perhaps the
@@ -1353,6 +1465,7 @@ impl MakeFillet {
 // From BRepFilletAPI_MakeFillet2d.hxx
 // ========================
 
+/// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:51 - `BRepFilletAPI_MakeFillet2d`
 /// Describes functions to build fillets and chamfers on the
 /// vertices of a planar face.
 /// Fillets and Chamfers on the Vertices of a Planar Face
@@ -1374,6 +1487,7 @@ unsafe impl crate::CppDeletable for MakeFillet2d {
 }
 
 impl MakeFillet2d {
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:67 - `BRepFilletAPI_MakeFillet2d::BRepFilletAPI_MakeFillet2d()`
     /// Initializes an empty algorithm for computing fillets and
     /// chamfers. The face on which the fillets and
     /// chamfers are built is defined using the Init function.
@@ -1389,6 +1503,7 @@ impl MakeFillet2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeFillet2d_ctor()) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:78 - `BRepFilletAPI_MakeFillet2d::BRepFilletAPI_MakeFillet2d()`
     /// Initializes an algorithm for computing fillets and chamfers on the face F.
     /// The vertices on which fillets or chamfers are built are
     /// defined using the AddFillet or AddChamfer function.
@@ -1402,6 +1517,7 @@ impl MakeFillet2d {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeFillet2d_ctor_face(F)) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:88 - `BRepFilletAPI_MakeFillet2d::Init()`
     /// Initializes this algorithm for constructing fillets or
     /// chamfers with the face F.
     /// Warning
@@ -1414,6 +1530,7 @@ impl MakeFillet2d {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_init_face(self as *mut Self, F) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:93 - `BRepFilletAPI_MakeFillet2d::Init()`
     /// This initialize method allow to init the builder
     /// from a face RefFace and another face ModFace which derive from RefFace.
     /// This  is useful to modify a fillet or a chamfer already created on ModFace.
@@ -1427,6 +1544,7 @@ impl MakeFillet2d {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:113 - `BRepFilletAPI_MakeFillet2d::AddFillet()`
     /// Adds a fillet of radius Radius between the two edges
     /// adjacent to the vertex V on the face modified by this
     /// algorithm. The two edges do not need to be rectilinear.
@@ -1459,6 +1577,7 @@ impl MakeFillet2d {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:130 - `BRepFilletAPI_MakeFillet2d::ModifyFillet()`
     /// Assigns the radius Radius to the fillet Fillet already
     /// built on the face modified by this algorithm.
     /// This function returns the new fillet and modifies the existing face.
@@ -1488,6 +1607,7 @@ impl MakeFillet2d {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:141 - `BRepFilletAPI_MakeFillet2d::RemoveFillet()`
     /// Removes the fillet Fillet already built on the face
     /// modified by this algorithm.
     /// This function returns the vertex connecting the two
@@ -1509,6 +1629,7 @@ impl MakeFillet2d {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:153 - `BRepFilletAPI_MakeFillet2d::AddChamfer()`
     /// Adds a chamfer on the face modified by this algorithm
     /// between the two adjacent edges E1 and E2, where
     /// the extremities of the chamfer are on E1 and E2 at
@@ -1539,6 +1660,7 @@ impl MakeFillet2d {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:185 - `BRepFilletAPI_MakeFillet2d::AddChamfer()`
     /// Adds a chamfer on the face modified by this algorithm
     /// between the two edges connected by the vertex V,
     /// where E is one of the two edges. The chamfer makes
@@ -1586,6 +1708,7 @@ impl MakeFillet2d {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:195 - `BRepFilletAPI_MakeFillet2d::ModifyChamfer()`
     /// Modifies the chamfer Chamfer on the face modified
     /// by this algorithm, where:
     /// E1 and E2 are the two adjacent edges on which
@@ -1613,6 +1736,7 @@ impl MakeFillet2d {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:228 - `BRepFilletAPI_MakeFillet2d::ModifyChamfer()`
     /// Modifies the chamfer Chamfer on the face modified
     /// by this algorithm, where:
     /// E is one of the two adjacent edges on which
@@ -1660,6 +1784,7 @@ impl MakeFillet2d {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:242 - `BRepFilletAPI_MakeFillet2d::RemoveChamfer()`
     /// Removes the chamfer Chamfer already built on the face
     /// modified by this algorithm.
     /// This function returns the vertex connecting the two
@@ -1681,6 +1806,7 @@ impl MakeFillet2d {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:248 - `BRepFilletAPI_MakeFillet2d::IsModified()`
     /// Returns true if the edge E on the face modified by this
     /// algorithm is chamfered or filleted.
     /// Warning
@@ -1689,47 +1815,56 @@ impl MakeFillet2d {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_is_modified(self as *const Self, E) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:251 - `BRepFilletAPI_MakeFillet2d::FilletEdges()`
     /// Returns the table of fillets on the face modified by this algorithm.
     pub fn fillet_edges(&self) -> &crate::ffi::TopTools_SequenceOfShape {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeFillet2d_fillet_edges(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:254 - `BRepFilletAPI_MakeFillet2d::NbFillet()`
     /// Returns the number of fillets on the face modified by this algorithm.
     pub fn nb_fillet(&self) -> i32 {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_nb_fillet(self as *const Self) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:257 - `BRepFilletAPI_MakeFillet2d::ChamferEdges()`
     /// Returns the table of chamfers on the face modified by this algorithm.
     pub fn chamfer_edges(&self) -> &crate::ffi::TopTools_SequenceOfShape {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeFillet2d_chamfer_edges(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:260 - `BRepFilletAPI_MakeFillet2d::NbChamfer()`
     /// Returns the number of chamfers on the face modified by this algorithm.
     pub fn nb_chamfer(&self) -> i32 {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_nb_chamfer(self as *const Self) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:264 - `BRepFilletAPI_MakeFillet2d::Modified()`
     /// Returns the list  of shapes modified from the shape
     /// <S>.
     pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeFillet2d_modified(self as *mut Self, S)) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:269 - `BRepFilletAPI_MakeFillet2d::NbCurves()`
     /// returns the number of new curves
     /// after the shape creation.
     pub fn nb_curves(&self) -> i32 {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_nb_curves(self as *const Self) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:272 - `BRepFilletAPI_MakeFillet2d::NewEdges()`
     /// Return the Edges created for curve I.
     pub fn new_edges(&mut self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeFillet2d_new_edges(self as *mut Self, I)) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:274 - `BRepFilletAPI_MakeFillet2d::HasDescendant()`
     pub fn has_descendant(&self, E: &crate::ffi::TopoDS_Edge) -> bool {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_has_descendant(self as *const Self, E) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:282 - `BRepFilletAPI_MakeFillet2d::DescendantEdge()`
     /// Returns the chamfered or filleted edge built from the
     /// edge E on the face modified by this algorithm. If E has
     /// not been modified, this function returns E.
@@ -1742,6 +1877,7 @@ impl MakeFillet2d {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:289 - `BRepFilletAPI_MakeFillet2d::BasisEdge()`
     /// Returns the basis edge on the face modified by this
     /// algorithm from which the chamfered or filleted edge E is
     /// built. If E has not been modified, this function returns E.
@@ -1751,6 +1887,7 @@ impl MakeFillet2d {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeFillet2d_basis_edge(self as *const Self, E)) }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:291 - `BRepFilletAPI_MakeFillet2d::Status()`
     pub fn status(&self) -> crate::ch_fi2d::ConstructionError {
         unsafe {
             crate::ch_fi2d::ConstructionError::try_from(
@@ -1760,6 +1897,7 @@ impl MakeFillet2d {
         }
     }
 
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:294 - `BRepFilletAPI_MakeFillet2d::Build()`
     /// Update the result and set the Done flag
     pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_build(self as *mut Self, theRange) }

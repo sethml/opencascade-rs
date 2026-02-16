@@ -39,6 +39,7 @@ impl TryFrom<i32> for CellFilterAction {
 // From NCollection_AccAllocator.hxx
 // ========================
 
+/// **Source:** `NCollection_AccAllocator.hxx`:41 - `NCollection_AccAllocator`
 ///
 /// Class  NCollection_AccAllocator  -  accumulating  memory  allocator.  This
 /// class  allocates  memory on request returning the pointer to the allocated
@@ -66,6 +67,7 @@ unsafe impl crate::CppDeletable for AccAllocator {
 }
 
 impl AccAllocator {
+    /// **Source:** `NCollection_AccAllocator.hxx`:57 - `NCollection_AccAllocator::NCollection_AccAllocator()`
     /// Constructor
     pub fn new_size(theBlockSize: usize) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -73,14 +75,17 @@ impl AccAllocator {
         }
     }
 
+    /// **Source:** `NCollection_AccAllocator.hxx`:205 - `NCollection_AccAllocator::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NCollection_AccAllocator_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `NCollection_AccAllocator.hxx`:205 - `NCollection_AccAllocator::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::NCollection_AccAllocator_get_type_name() }
     }
 
+    /// **Source:** `NCollection_AccAllocator.hxx`:205 - `NCollection_AccAllocator::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NCollection_AccAllocator_get_type_descriptor()) }
     }
@@ -90,6 +95,7 @@ impl AccAllocator {
 // From NCollection_AlignedAllocator.hxx
 // ========================
 
+/// **Source:** `NCollection_AlignedAllocator.hxx`:23 - `NCollection_AlignedAllocator`
 /// NCollection allocator with managed memory alignment capabilities.
 pub use crate::ffi::NCollection_AlignedAllocator as AlignedAllocator;
 
@@ -100,6 +106,7 @@ unsafe impl crate::CppDeletable for AlignedAllocator {
 }
 
 impl AlignedAllocator {
+    /// **Source:** `NCollection_AlignedAllocator.hxx`:29 - `NCollection_AlignedAllocator::NCollection_AlignedAllocator()`
     /// Constructor. The alignment should be specified explicitly:
     /// 16 bytes for SSE instructions
     /// 32 bytes for AVX instructions
@@ -111,14 +118,17 @@ impl AlignedAllocator {
         }
     }
 
+    /// **Source:** `NCollection_AlignedAllocator.hxx`:48 - `NCollection_AlignedAllocator::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NCollection_AlignedAllocator_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `NCollection_AlignedAllocator.hxx`:48 - `NCollection_AlignedAllocator::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::NCollection_AlignedAllocator_get_type_name() }
     }
 
+    /// **Source:** `NCollection_AlignedAllocator.hxx`:48 - `NCollection_AlignedAllocator::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NCollection_AlignedAllocator_get_type_descriptor()) }
     }
@@ -128,6 +138,7 @@ impl AlignedAllocator {
 // From NCollection_BaseAllocator.hxx
 // ========================
 
+/// **Source:** `NCollection_BaseAllocator.hxx`:45 - `NCollection_BaseAllocator`
 ///
 /// Purpose:     Basic class for memory allocation wizards.
 /// Defines  the  interface  for devising  different  allocators
@@ -148,10 +159,12 @@ unsafe impl crate::CppDeletable for BaseAllocator {
 }
 
 impl BaseAllocator {
+    /// **Source:** `NCollection_BaseAllocator.hxx`:69 - `NCollection_BaseAllocator::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NCollection_BaseAllocator_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `NCollection_BaseAllocator.hxx`:57 - `NCollection_BaseAllocator::CommonBaseAllocator()`
     /// CommonBaseAllocator
     /// This method is designed to have the only one BaseAllocator (to avoid
     /// useless copying of collections). However one can use operator new to
@@ -160,10 +173,12 @@ impl BaseAllocator {
         unsafe { &*(crate::ffi::NCollection_BaseAllocator_common_base_allocator()) }
     }
 
+    /// **Source:** `NCollection_BaseAllocator.hxx`:69 - `NCollection_BaseAllocator::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::NCollection_BaseAllocator_get_type_name() }
     }
 
+    /// **Source:** `NCollection_BaseAllocator.hxx`:69 - `NCollection_BaseAllocator::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NCollection_BaseAllocator_get_type_descriptor()) }
     }
@@ -204,6 +219,7 @@ impl HandleNCollectionBaseAllocator {
 // From NCollection_BaseList.hxx
 // ========================
 
+/// **Source:** `NCollection_BaseList.hxx`:36 - `NCollection_BaseList`
 pub use crate::ffi::NCollection_BaseList as BaseList;
 
 unsafe impl crate::CppDeletable for BaseList {
@@ -213,14 +229,17 @@ unsafe impl crate::CppDeletable for BaseList {
 }
 
 impl BaseList {
+    /// **Source:** `NCollection_BaseList.hxx`:100 - `NCollection_BaseList::Extent()`
     pub fn extent(&self) -> i32 {
         unsafe { crate::ffi::NCollection_BaseList_extent(self as *const Self) }
     }
 
+    /// **Source:** `NCollection_BaseList.hxx`:104 - `NCollection_BaseList::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         unsafe { crate::ffi::NCollection_BaseList_is_empty(self as *const Self) }
     }
 
+    /// **Source:** `NCollection_BaseList.hxx`:108 - `NCollection_BaseList::Allocator()`
     /// Returns attached allocator
     pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
         unsafe { &*(crate::ffi::NCollection_BaseList_allocator(self as *const Self)) }
@@ -231,6 +250,7 @@ impl BaseList {
 // From NCollection_BasePointerVector.hxx
 // ========================
 
+/// **Source:** `NCollection_BasePointerVector.hxx`:29 - `NCollection_BasePointerVector`
 /// Simplified class for vector of pointers of void.
 /// Offers basic functionality to scalable inserts,
 /// resizes and erasing last.
@@ -247,11 +267,13 @@ unsafe impl crate::CppDeletable for BasePointerVector {
 }
 
 impl BasePointerVector {
+    /// **Source:** `NCollection_BasePointerVector.hxx`:38 - `NCollection_BasePointerVector::NCollection_BasePointerVector()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::NCollection_BasePointerVector_ctor()) }
     }
 
+    /// **Source:** `NCollection_BasePointerVector.hxx`:41 - `NCollection_BasePointerVector::NCollection_BasePointerVector()`
     /// Copy data from another vector
     pub fn new_basepointervector(
         theOther: &crate::ffi::NCollection_BasePointerVector,
@@ -263,26 +285,31 @@ impl BasePointerVector {
         }
     }
 
+    /// **Source:** `NCollection_BasePointerVector.hxx`:50 - `NCollection_BasePointerVector::IsEmpty()`
     /// Checks for an empty status
     pub fn is_empty(&self) -> bool {
         unsafe { crate::ffi::NCollection_BasePointerVector_is_empty(self as *const Self) }
     }
 
+    /// **Source:** `NCollection_BasePointerVector.hxx`:53 - `NCollection_BasePointerVector::Size()`
     /// Gets used size
     pub fn size(&self) -> usize {
         unsafe { crate::ffi::NCollection_BasePointerVector_size(self as *const Self) }
     }
 
+    /// **Source:** `NCollection_BasePointerVector.hxx`:56 - `NCollection_BasePointerVector::Capacity()`
     /// Gets available capacity
     pub fn capacity(&self) -> usize {
         unsafe { crate::ffi::NCollection_BasePointerVector_capacity(self as *const Self) }
     }
 
+    /// **Source:** `NCollection_BasePointerVector.hxx`:59 - `NCollection_BasePointerVector::RemoveLast()`
     /// Erases last element, decrements size.
     pub fn remove_last(&mut self) {
         unsafe { crate::ffi::NCollection_BasePointerVector_remove_last(self as *mut Self) }
     }
 
+    /// **Source:** `NCollection_BasePointerVector.hxx`:62 - `NCollection_BasePointerVector::Clear()`
     /// Resets the size
     pub fn clear(&mut self, theReleaseMemory: bool) {
         unsafe {
@@ -295,6 +322,7 @@ impl BasePointerVector {
 // From NCollection_Buffer.hxx
 // ========================
 
+/// **Source:** `NCollection_Buffer.hxx`:23 - `NCollection_Buffer`
 /// Low-level buffer object.
 pub use crate::ffi::NCollection_Buffer as Buffer;
 
@@ -305,45 +333,54 @@ unsafe impl crate::CppDeletable for Buffer {
 }
 
 impl Buffer {
+    /// **Source:** `NCollection_Buffer.hxx`:60 - `NCollection_Buffer::IsEmpty()`
     /// @return true if buffer is not allocated
     pub fn is_empty(&self) -> bool {
         unsafe { crate::ffi::NCollection_Buffer_is_empty(self as *const Self) }
     }
 
+    /// **Source:** `NCollection_Buffer.hxx`:63 - `NCollection_Buffer::Size()`
     /// Return buffer length in bytes.
     pub fn size(&self) -> usize {
         unsafe { crate::ffi::NCollection_Buffer_size(self as *const Self) }
     }
 
+    /// **Source:** `NCollection_Buffer.hxx`:66 - `NCollection_Buffer::Allocator()`
     /// @return buffer allocator
     pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
         unsafe { &*(crate::ffi::NCollection_Buffer_allocator(self as *const Self)) }
     }
 
+    /// **Source:** `NCollection_Buffer.hxx`:69 - `NCollection_Buffer::SetAllocator()`
     /// Assign new buffer allocator with de-allocation of buffer.
     pub fn set_allocator(&mut self, theAlloc: &crate::ffi::HandleNCollectionBaseAllocator) {
         unsafe { crate::ffi::NCollection_Buffer_set_allocator(self as *mut Self, theAlloc) }
     }
 
+    /// **Source:** `NCollection_Buffer.hxx`:77 - `NCollection_Buffer::Allocate()`
     /// Allocate the buffer.
     /// @param theSize buffer length in bytes
     pub fn allocate(&mut self, theSize: usize) -> bool {
         unsafe { crate::ffi::NCollection_Buffer_allocate(self as *mut Self, theSize) }
     }
 
+    /// **Source:** `NCollection_Buffer.hxx`:95 - `NCollection_Buffer::Free()`
     /// De-allocate buffer.
     pub fn free(&mut self) {
         unsafe { crate::ffi::NCollection_Buffer_free(self as *mut Self) }
     }
 
+    /// **Source:** `NCollection_Buffer.hxx`:120 - `NCollection_Buffer::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NCollection_Buffer_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `NCollection_Buffer.hxx`:120 - `NCollection_Buffer::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::NCollection_Buffer_get_type_name() }
     }
 
+    /// **Source:** `NCollection_Buffer.hxx`:120 - `NCollection_Buffer::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NCollection_Buffer_get_type_descriptor()) }
     }
@@ -382,6 +419,7 @@ impl HandleNCollectionBuffer {
 // From NCollection_HeapAllocator.hxx
 // ========================
 
+/// **Source:** `NCollection_HeapAllocator.hxx`:25 - `NCollection_HeapAllocator`
 ///
 /// Allocator that uses the global dynamic heap (malloc / free).
 pub use crate::ffi::NCollection_HeapAllocator as HeapAllocator;
@@ -393,14 +431,17 @@ unsafe impl crate::CppDeletable for HeapAllocator {
 }
 
 impl HeapAllocator {
+    /// **Source:** `NCollection_HeapAllocator.hxx`:47 - `NCollection_HeapAllocator::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NCollection_HeapAllocator_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `NCollection_HeapAllocator.hxx`:47 - `NCollection_HeapAllocator::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::NCollection_HeapAllocator_get_type_name() }
     }
 
+    /// **Source:** `NCollection_HeapAllocator.hxx`:47 - `NCollection_HeapAllocator::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NCollection_HeapAllocator_get_type_descriptor()) }
     }
@@ -410,6 +451,7 @@ impl HeapAllocator {
 // From NCollection_IncAllocator.hxx
 // ========================
 
+/// **Source:** `NCollection_IncAllocator.hxx`:49 - `NCollection_IncAllocator`
 ///
 /// Class NCollection_IncAllocator - incremental memory  allocator. This class
 /// allocates  memory  on  request  returning  the  pointer  to  an  allocated
@@ -442,6 +484,7 @@ unsafe impl crate::CppDeletable for IncAllocator {
 }
 
 impl IncAllocator {
+    /// **Source:** `NCollection_IncAllocator.hxx`:61 - `NCollection_IncAllocator::NCollection_IncAllocator()`
     /// Constructor.
     /// Note that this constructor does NOT setup mutex for using allocator concurrently from
     /// different threads, see SetThreadSafe() method.
@@ -457,6 +500,7 @@ impl IncAllocator {
         }
     }
 
+    /// **Source:** `NCollection_IncAllocator.hxx`:64 - `NCollection_IncAllocator::SetThreadSafe()`
     /// Setup mutex for thread-safe allocations.
     pub fn set_thread_safe(&mut self, theIsThreadSafe: bool) {
         unsafe {
@@ -464,6 +508,7 @@ impl IncAllocator {
         }
     }
 
+    /// **Source:** `NCollection_IncAllocator.hxx`:88 - `NCollection_IncAllocator::Reset()`
     /// Re-initialize the allocator so that the next Allocate call should
     /// start allocating in the very beginning as though the allocator is just
     /// constructed. Warning: make sure that all previously allocated data are
@@ -475,14 +520,17 @@ impl IncAllocator {
         unsafe { crate::ffi::NCollection_IncAllocator_reset(self as *mut Self, theReleaseMemory) }
     }
 
+    /// **Source:** `NCollection_IncAllocator.hxx`:144 - `NCollection_IncAllocator::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NCollection_IncAllocator_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `NCollection_IncAllocator.hxx`:144 - `NCollection_IncAllocator::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::NCollection_IncAllocator_get_type_name() }
     }
 
+    /// **Source:** `NCollection_IncAllocator.hxx`:144 - `NCollection_IncAllocator::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NCollection_IncAllocator_get_type_descriptor()) }
     }
@@ -492,6 +540,7 @@ impl IncAllocator {
 // From NCollection_WinHeapAllocator.hxx
 // ========================
 
+/// **Source:** `NCollection_WinHeapAllocator.hxx`:34 - `NCollection_WinHeapAllocator`
 /// This memory allocator creates dedicated heap for allocations.
 /// This technics available only on Windows platform
 /// (no alternative on Unix systems).
@@ -514,6 +563,7 @@ unsafe impl crate::CppDeletable for WinHeapAllocator {
 }
 
 impl WinHeapAllocator {
+    /// **Source:** `NCollection_WinHeapAllocator.hxx`:38 - `NCollection_WinHeapAllocator::NCollection_WinHeapAllocator()`
     /// Main constructor
     pub fn new_size(theInitSizeBytes: usize) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -523,14 +573,17 @@ impl WinHeapAllocator {
         }
     }
 
+    /// **Source:** `NCollection_WinHeapAllocator.hxx`:53 - `NCollection_WinHeapAllocator::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NCollection_WinHeapAllocator_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `NCollection_WinHeapAllocator.hxx`:53 - `NCollection_WinHeapAllocator::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::NCollection_WinHeapAllocator_get_type_name() }
     }
 
+    /// **Source:** `NCollection_WinHeapAllocator.hxx`:53 - `NCollection_WinHeapAllocator::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NCollection_WinHeapAllocator_get_type_descriptor()) }
     }

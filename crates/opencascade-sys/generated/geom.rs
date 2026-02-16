@@ -10,6 +10,7 @@
 // From Geom_Axis1Placement.hxx
 // ========================
 
+/// **Source:** `Geom_Axis1Placement.hxx`:45 - `Geom_Axis1Placement`
 /// Describes an axis in 3D space.
 /// An axis is defined by:
 /// - its origin, also termed the "Location point" of the axis,
@@ -32,27 +33,32 @@ unsafe impl crate::CppDeletable for Axis1Placement {
 }
 
 impl Axis1Placement {
+    /// **Source:** `Geom_Axis1Placement.hxx`:50 - `Geom_Axis1Placement::Geom_Axis1Placement()`
     /// Returns a transient copy of A1.
     pub fn new_ax1(A1: &crate::ffi::gp_Ax1) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Axis1Placement_ctor_ax1(A1)) }
     }
 
+    /// **Source:** `Geom_Axis1Placement.hxx`:54 - `Geom_Axis1Placement::Geom_Axis1Placement()`
     /// P is the origin of the axis placement and V is the direction
     /// of the axis placement.
     pub fn new_pnt_dir(P: &crate::ffi::gp_Pnt, V: &crate::ffi::gp_Dir) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Axis1Placement_ctor_pnt_dir(P, V)) }
     }
 
+    /// **Source:** `Geom_Axis1Placement.hxx`:57 - `Geom_Axis1Placement::Ax1()`
     /// Returns a non transient copy of <me>.
     pub fn ax1(&self) -> &crate::ffi::gp_Ax1 {
         unsafe { &*(crate::ffi::Geom_Axis1Placement_ax1(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Axis1Placement.hxx`:60 - `Geom_Axis1Placement::Reverse()`
     /// Reverses the direction of the axis placement.
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::Geom_Axis1Placement_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_Axis1Placement.hxx`:63 - `Geom_Axis1Placement::Reversed()`
     /// Returns a copy of <me> reversed.
     pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomAxis1Placement> {
         unsafe {
@@ -60,16 +66,19 @@ impl Axis1Placement {
         }
     }
 
+    /// **Source:** `Geom_Axis1Placement.hxx`:66 - `Geom_Axis1Placement::SetDirection()`
     /// Assigns V to the unit vector of this axis.
     pub fn set_direction(&mut self, V: &crate::ffi::gp_Dir) {
         unsafe { crate::ffi::Geom_Axis1Placement_set_direction(self as *mut Self, V) }
     }
 
+    /// **Source:** `Geom_Axis1Placement.hxx`:69 - `Geom_Axis1Placement::Transform()`
     /// Applies the transformation T to this axis.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_Axis1Placement_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_Axis1Placement.hxx`:72 - `Geom_Axis1Placement::Copy()`
     /// Creates a new object, which is a copy of this axis.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
@@ -77,14 +86,17 @@ impl Axis1Placement {
         }
     }
 
+    /// **Source:** `Geom_Axis1Placement.hxx`:74 - `Geom_Axis1Placement::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Axis1Placement_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Axis1Placement.hxx`:74 - `Geom_Axis1Placement::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_Axis1Placement_get_type_name() }
     }
 
+    /// **Source:** `Geom_Axis1Placement.hxx`:74 - `Geom_Axis1Placement::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Axis1Placement_get_type_descriptor()) }
     }
@@ -292,6 +304,7 @@ impl HandleGeomAxis1Placement {
 // From Geom_Axis2Placement.hxx
 // ========================
 
+/// **Source:** `Geom_Axis2Placement.hxx`:56 - `Geom_Axis2Placement`
 /// Describes a right-handed coordinate system in 3D space.
 /// A coordinate system is defined by:
 /// - its origin, also termed the "Location point" of the coordinate system,
@@ -326,11 +339,13 @@ unsafe impl crate::CppDeletable for Axis2Placement {
 }
 
 impl Axis2Placement {
+    /// **Source:** `Geom_Axis2Placement.hxx`:61 - `Geom_Axis2Placement::Geom_Axis2Placement()`
     /// Returns a transient copy of A2.
     pub fn new_ax2(A2: &crate::ffi::gp_Ax2) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Axis2Placement_ctor_ax2(A2)) }
     }
 
+    /// **Source:** `Geom_Axis2Placement.hxx`:69 - `Geom_Axis2Placement::Geom_Axis2Placement()`
     /// P is the origin of the axis placement, N is the main
     /// direction of the axis placement and Vx is the "XDirection".
     /// If the two directions N and Vx are not orthogonal the
@@ -347,12 +362,14 @@ impl Axis2Placement {
         }
     }
 
+    /// **Source:** `Geom_Axis2Placement.hxx`:73 - `Geom_Axis2Placement::SetAx2()`
     /// Assigns the origin and the three unit vectors of A2 to
     /// this coordinate system.
     pub fn set_ax2(&mut self, A2: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::Geom_Axis2Placement_set_ax2(self as *mut Self, A2) }
     }
 
+    /// **Source:** `Geom_Axis2Placement.hxx`:82 - `Geom_Axis2Placement::SetDirection()`
     /// Changes the main direction of the axis placement.
     /// The "Xdirection" is modified :
     /// New XDirection = V ^ (Previous_Xdirection ^ V).
@@ -364,6 +381,7 @@ impl Axis2Placement {
         unsafe { crate::ffi::Geom_Axis2Placement_set_direction(self as *mut Self, V) }
     }
 
+    /// **Source:** `Geom_Axis2Placement.hxx`:90 - `Geom_Axis2Placement::SetXDirection()`
     /// Changes the "XDirection" of the axis placement, Vx is the
     /// new "XDirection". If Vx is not normal to the main direction
     /// then "XDirection" is computed as follow :
@@ -374,6 +392,7 @@ impl Axis2Placement {
         unsafe { crate::ffi::Geom_Axis2Placement_set_x_direction(self as *mut Self, Vx) }
     }
 
+    /// **Source:** `Geom_Axis2Placement.hxx`:99 - `Geom_Axis2Placement::SetYDirection()`
     /// Changes the "YDirection" of the axis placement, Vy is the
     /// new "YDirection". If Vy is not normal to the main direction
     /// then "YDirection" is computed as follow :
@@ -385,6 +404,7 @@ impl Axis2Placement {
         unsafe { crate::ffi::Geom_Axis2Placement_set_y_direction(self as *mut Self, Vy) }
     }
 
+    /// **Source:** `Geom_Axis2Placement.hxx`:102 - `Geom_Axis2Placement::Ax2()`
     /// Returns a non transient copy of <me>.
     pub fn ax2(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax2> {
         unsafe {
@@ -392,16 +412,19 @@ impl Axis2Placement {
         }
     }
 
+    /// **Source:** `Geom_Axis2Placement.hxx`:105 - `Geom_Axis2Placement::XDirection()`
     /// Returns the "XDirection". This is a unit vector.
     pub fn x_direction(&self) -> &crate::ffi::gp_Dir {
         unsafe { &*(crate::ffi::Geom_Axis2Placement_x_direction(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Axis2Placement.hxx`:108 - `Geom_Axis2Placement::YDirection()`
     /// Returns the "YDirection". This is a unit vector.
     pub fn y_direction(&self) -> &crate::ffi::gp_Dir {
         unsafe { &*(crate::ffi::Geom_Axis2Placement_y_direction(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Axis2Placement.hxx`:115 - `Geom_Axis2Placement::Transform()`
     /// Transforms an axis placement with a Trsf.
     /// The "Location" point, the "XDirection" and the
     /// "YDirection" are transformed with T.  The resulting
@@ -411,6 +434,7 @@ impl Axis2Placement {
         unsafe { crate::ffi::Geom_Axis2Placement_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_Axis2Placement.hxx`:118 - `Geom_Axis2Placement::Copy()`
     /// Creates a new object which is a copy of this coordinate system.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
@@ -418,14 +442,17 @@ impl Axis2Placement {
         }
     }
 
+    /// **Source:** `Geom_Axis2Placement.hxx`:120 - `Geom_Axis2Placement::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Axis2Placement_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Axis2Placement.hxx`:120 - `Geom_Axis2Placement::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_Axis2Placement_get_type_name() }
     }
 
+    /// **Source:** `Geom_Axis2Placement.hxx`:120 - `Geom_Axis2Placement::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Axis2Placement_get_type_descriptor()) }
     }
@@ -633,6 +660,7 @@ impl HandleGeomAxis2Placement {
 // From Geom_AxisPlacement.hxx
 // ========================
 
+/// **Source:** `Geom_AxisPlacement.hxx`:57 - `Geom_AxisPlacement`
 /// The abstract class AxisPlacement describes the
 /// common behavior of positioning systems in 3D space,
 /// such as axis or coordinate systems.
@@ -668,6 +696,7 @@ unsafe impl crate::CppDeletable for AxisPlacement {
 }
 
 impl AxisPlacement {
+    /// **Source:** `Geom_AxisPlacement.hxx`:71 - `Geom_AxisPlacement::SetAxis()`
     /// Assigns A1 as the "main Axis" of this positioning system. This modifies
     /// - its origin, and
     /// - its "main Direction".
@@ -682,6 +711,7 @@ impl AxisPlacement {
         unsafe { crate::ffi::Geom_AxisPlacement_set_axis(self as *mut Self, A1) }
     }
 
+    /// **Source:** `Geom_AxisPlacement.hxx`:80 - `Geom_AxisPlacement::SetDirection()`
     /// Changes the direction of the axis placement.
     /// If <me> is an axis placement two axis the main "Direction"
     /// is modified and the "XDirection" and "YDirection" are
@@ -693,11 +723,13 @@ impl AxisPlacement {
         unsafe { crate::ffi::Geom_AxisPlacement_set_direction(self as *mut Self, V) }
     }
 
+    /// **Source:** `Geom_AxisPlacement.hxx`:83 - `Geom_AxisPlacement::SetLocation()`
     /// Assigns the point P as the origin of this positioning  system.
     pub fn set_location(&mut self, P: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::Geom_AxisPlacement_set_location(self as *mut Self, P) }
     }
 
+    /// **Source:** `Geom_AxisPlacement.hxx`:88 - `Geom_AxisPlacement::Angle()`
     /// Computes the angular value, in radians, between the
     /// "main Direction" of this positioning system and that
     /// of positioning system Other. The result is a value between 0 and Pi.
@@ -705,6 +737,7 @@ impl AxisPlacement {
         unsafe { crate::ffi::Geom_AxisPlacement_angle(self as *const Self, Other) }
     }
 
+    /// **Source:** `Geom_AxisPlacement.hxx`:93 - `Geom_AxisPlacement::Axis()`
     /// Returns the main axis of the axis placement.
     /// For an "Axis2placement" it is the main axis (Location, Direction ).
     /// For an "Axis1Placement" this method returns a copy of <me>.
@@ -712,6 +745,7 @@ impl AxisPlacement {
         unsafe { &*(crate::ffi::Geom_AxisPlacement_axis(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_AxisPlacement.hxx`:96 - `Geom_AxisPlacement::Direction()`
     /// Returns the main "Direction" of an axis placement.
     pub fn direction(&self) -> crate::OwnedPtr<crate::ffi::gp_Dir> {
         unsafe {
@@ -719,6 +753,7 @@ impl AxisPlacement {
         }
     }
 
+    /// **Source:** `Geom_AxisPlacement.hxx`:99 - `Geom_AxisPlacement::Location()`
     /// Returns the Location point (origin) of the axis placement.
     pub fn location(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
@@ -726,14 +761,17 @@ impl AxisPlacement {
         }
     }
 
+    /// **Source:** `Geom_AxisPlacement.hxx`:101 - `Geom_AxisPlacement::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_AxisPlacement_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_AxisPlacement.hxx`:101 - `Geom_AxisPlacement::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_AxisPlacement_get_type_name() }
     }
 
+    /// **Source:** `Geom_AxisPlacement.hxx`:101 - `Geom_AxisPlacement::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_AxisPlacement_get_type_descriptor()) }
     }
@@ -885,6 +923,7 @@ impl HandleGeomAxisPlacement {
 // From Geom_BSplineCurve.hxx
 // ========================
 
+/// **Source:** `Geom_BSplineCurve.hxx`:128 - `Geom_BSplineCurve`
 /// Definition of the B_spline curve.
 /// A B-spline curve can be
 /// Uniform  or non-uniform
@@ -980,6 +1019,7 @@ unsafe impl crate::CppDeletable for BSplineCurve {
 }
 
 impl BSplineCurve {
+    /// **Source:** `Geom_BSplineCurve.hxx`:134 - `Geom_BSplineCurve::Geom_BSplineCurve()`
     /// Creates a  non-rational B_spline curve   on  the
     /// basis <Knots, Multiplicities> of degree <Degree>.
     pub fn new_array1ofpnt_array1ofreal_array1ofinteger_int_bool(
@@ -994,6 +1034,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:167 - `Geom_BSplineCurve::Geom_BSplineCurve()`
     /// Creates  a rational B_spline  curve  on the basis
     /// <Knots, Multiplicities> of degree <Degree>.
     /// Raises ConstructionError subject to the following conditions
@@ -1035,6 +1076,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:134 - `Geom_BSplineCurve::Geom_BSplineCurve()`
     /// Creates a  non-rational B_spline curve   on  the
     /// basis <Knots, Multiplicities> of degree <Degree>.
     pub fn new_array1ofpnt_array1ofreal_array1ofinteger_int(
@@ -1052,6 +1094,7 @@ impl BSplineCurve {
         )
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:167 - `Geom_BSplineCurve::Geom_BSplineCurve()`
     /// Creates  a rational B_spline  curve  on the basis
     /// <Knots, Multiplicities> of degree <Degree>.
     /// Raises ConstructionError subject to the following conditions
@@ -1098,6 +1141,7 @@ impl BSplineCurve {
         )
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:167 - `Geom_BSplineCurve::Geom_BSplineCurve()`
     /// Creates  a rational B_spline  curve  on the basis
     /// <Knots, Multiplicities> of degree <Degree>.
     /// Raises ConstructionError subject to the following conditions
@@ -1143,6 +1187,7 @@ impl BSplineCurve {
         )
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:183 - `Geom_BSplineCurve::IncreaseDegree()`
     /// Increases the degree of this BSpline curve to
     /// Degree. As a result, the poles, weights and
     /// multiplicities tables are modified; the knots table is
@@ -1155,6 +1200,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_increase_degree(self as *mut Self, Degree) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:192 - `Geom_BSplineCurve::IncreaseMultiplicity()`
     /// Increases the multiplicity  of the knot <Index> to
     /// <M>.
     ///
@@ -1168,6 +1214,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:201 - `Geom_BSplineCurve::IncreaseMultiplicity()`
     /// Increases  the  multiplicities   of  the knots  in
     /// [I1,I2] to <M>.
     ///
@@ -1181,6 +1228,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:213 - `Geom_BSplineCurve::IncrementMultiplicity()`
     /// Increment  the  multiplicities   of  the knots  in
     /// [I1,I2] by <M>.
     ///
@@ -1195,6 +1243,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:230 - `Geom_BSplineCurve::InsertKnot()`
     /// Inserts a knot value in the sequence of knots.  If
     /// <U>  is an  existing knot     the multiplicity  is
     /// increased by <M>.
@@ -1220,6 +1269,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:279 - `Geom_BSplineCurve::RemoveKnot()`
     /// Reduces the multiplicity of the knot of index Index
     /// to M. If M is equal to 0, the knot is removed.
     /// With a modification of this type, the array of poles is also modified.
@@ -1245,6 +1295,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_remove_knot(self as *mut Self, Index, M, Tolerance) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:289 - `Geom_BSplineCurve::Reverse()`
     /// Changes the direction of parametrization of <me>. The Knot
     /// sequence is modified, the FirstParameter and the
     /// LastParameter are not modified. The StartPoint of the
@@ -1255,6 +1306,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:295 - `Geom_BSplineCurve::ReversedParameter()`
     /// Returns the  parameter on the  reversed  curve for
     /// the point of parameter U on <me>.
     ///
@@ -1263,6 +1315,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:315 - `Geom_BSplineCurve::Segment()`
     /// Modifies this BSpline curve by segmenting it between
     /// U1 and U2. Either of these values can be outside the
     /// bounds of the curve, but U2 must be greater than U1.
@@ -1285,6 +1338,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_segment(self as *mut Self, U1, U2, theTolerance) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:333 - `Geom_BSplineCurve::SetKnot()`
     /// Modifies this BSpline curve by assigning the value K
     /// to the knot of index Index in the knots table. This is a
     /// relatively local modification because K must be such that:
@@ -1303,6 +1357,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_set_knot_int_real(self as *mut Self, Index, K) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:352 - `Geom_BSplineCurve::SetKnot()`
     /// Changes the knot of range Index with its multiplicity.
     /// You can increase the multiplicity of a knot but it is
     /// not allowed to decrease the multiplicity of an existing knot.
@@ -1317,6 +1372,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:359 - `Geom_BSplineCurve::PeriodicNormalization()`
     /// returns the parameter normalized within
     /// the period if the curve is periodic : otherwise
     /// does not do anything
@@ -1324,6 +1380,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_periodic_normalization(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:372 - `Geom_BSplineCurve::SetPeriodic()`
     /// Changes this BSpline curve into a periodic curve.
     /// To become periodic, the curve must first be closed.
     /// Next, the knot sequence must be periodic. For this,
@@ -1339,6 +1396,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_set_periodic(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:380 - `Geom_BSplineCurve::SetOrigin()`
     /// Assigns the knot of index Index in the knots table as
     /// the origin of this periodic BSpline curve. As a
     /// consequence, the knots and poles tables are modified.
@@ -1349,6 +1407,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_set_origin_int(self as *mut Self, Index) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:386 - `Geom_BSplineCurve::SetOrigin()`
     /// Set the origin of a periodic curve at Knot U. If U
     /// is  not a  knot  of  the  BSpline  a  new knot  is
     /// inserted. KnotVector and poles are modified.
@@ -1357,6 +1416,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_set_origin_real2(self as *mut Self, U, Tol) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:397 - `Geom_BSplineCurve::SetNotPeriodic()`
     /// Changes this BSpline curve into a non-periodic
     /// curve. If this curve is already non-periodic, it is not modified.
     /// Note: the poles and knots tables are modified.
@@ -1370,6 +1430,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_set_not_periodic(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:405 - `Geom_BSplineCurve::SetPole()`
     /// Modifies this BSpline curve by assigning P to the pole
     /// of index Index in the poles table.
     /// Exceptions
@@ -1380,6 +1441,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_set_pole_int_pnt(self as *mut Self, Index, P) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:417 - `Geom_BSplineCurve::SetPole()`
     /// Modifies this BSpline curve by assigning P to the pole
     /// of index Index in the poles table.
     /// This syntax also allows you to modify the
@@ -1396,6 +1458,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:427 - `Geom_BSplineCurve::SetWeight()`
     /// Changes the weight for the pole of range Index.
     /// If the curve was non rational it can become rational.
     /// If the curve was rational it can become non rational.
@@ -1406,6 +1469,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_set_weight(self as *mut Self, Index, Weight) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:443 - `Geom_BSplineCurve::MovePoint()`
     /// Moves the point of parameter U of this BSpline curve
     /// to P. Index1 and Index2 are the indexes in the table
     /// of poles of this BSpline curve of the first and last
@@ -1442,6 +1506,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:461 - `Geom_BSplineCurve::MovePointAndTangent()`
     /// Move a point with parameter U to P.
     /// and makes it tangent at U be Tangent.
     /// StartingCondition = -1 means first can move
@@ -1477,12 +1542,14 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:471 - `Geom_BSplineCurve::IsCN()`
     /// Returns the continuity of the curve, the curve is at least C0.
     /// Raised if N < 0.
     pub fn is_cn(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom_BSplineCurve_is_cn(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:479 - `Geom_BSplineCurve::IsG1()`
     /// Check if curve has at least G1 continuity in interval [theTf, theTl]
     /// Returns true if IsCN(1)
     /// or
@@ -1493,6 +1560,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_is_g1(self as *const Self, theTf, theTl, theAngTol) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:489 - `Geom_BSplineCurve::IsClosed()`
     /// Returns true if the distance between the first point and the
     /// last point of the curve is lower or equal to Resolution
     /// from package gp.
@@ -1503,17 +1571,20 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_is_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:492 - `Geom_BSplineCurve::IsPeriodic()`
     /// Returns True if the curve is periodic.
     pub fn is_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_BSplineCurve_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:496 - `Geom_BSplineCurve::IsRational()`
     /// Returns True if the weights are not identical.
     /// The tolerance criterion is Epsilon of the class Real.
     pub fn is_rational(&self) -> bool {
         unsafe { crate::ffi::Geom_BSplineCurve_is_rational(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:510 - `Geom_BSplineCurve::Continuity()`
     /// Returns the global continuity of the curve :
     /// C0 : only geometric continuity,
     /// C1 : continuity of the first derivative all along the Curve,
@@ -1535,6 +1606,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:516 - `Geom_BSplineCurve::Degree()`
     /// Returns the degree of this BSpline curve.
     /// The degree of a Geom_BSplineCurve curve cannot
     /// be greater than Geom_BSplineCurve::MaxDegree().
@@ -1543,16 +1615,19 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_degree(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:519 - `Geom_BSplineCurve::D0()`
     /// Returns in P the point of parameter U.
     pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::Geom_BSplineCurve_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:522 - `Geom_BSplineCurve::D1()`
     /// Raised if the continuity of the curve is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V1: &mut crate::ffi::gp_Vec) {
         unsafe { crate::ffi::Geom_BSplineCurve_d1(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:525 - `Geom_BSplineCurve::D2()`
     /// Raised if the continuity of the curve is not C2.
     pub fn d2(
         &self,
@@ -1564,6 +1639,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_d2(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:531 - `Geom_BSplineCurve::D3()`
     /// Raised if the continuity of the curve is not C3.
     pub fn d3(
         &self,
@@ -1576,6 +1652,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:559 - `Geom_BSplineCurve::DN()`
     /// For the point of parameter U of this BSpline curve,
     /// computes the vector corresponding to the Nth derivative.
     /// Warning
@@ -1604,6 +1681,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:563 - `Geom_BSplineCurve::LocalValue()`
     /// Raised if FromK1 = ToK2.
     pub fn local_value(
         &self,
@@ -1621,11 +1699,13 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:568 - `Geom_BSplineCurve::LocalD0()`
     /// Raised if FromK1 = ToK2.
     pub fn local_d0(&self, U: f64, FromK1: i32, ToK2: i32, P: &mut crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::Geom_BSplineCurve_local_d0(self as *const Self, U, FromK1, ToK2, P) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:576 - `Geom_BSplineCurve::LocalD1()`
     /// Raised if the local continuity of the curve is not C1
     /// between the knot K1 and the knot K2.
     /// Raised if FromK1 = ToK2.
@@ -1642,6 +1722,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:585 - `Geom_BSplineCurve::LocalD2()`
     /// Raised if the local continuity of the curve is not C2
     /// between the knot K1 and the knot K2.
     /// Raised if FromK1 = ToK2.
@@ -1659,6 +1740,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:595 - `Geom_BSplineCurve::LocalD3()`
     /// Raised if the local continuity of the curve is not C3
     /// between the knot K1 and the knot K2.
     /// Raised if FromK1 = ToK2.
@@ -1686,6 +1768,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:607 - `Geom_BSplineCurve::LocalDN()`
     /// Raised if the local continuity of the curve is not CN
     /// between the knot K1 and the knot K2.
     /// Raised if FromK1 = ToK2.
@@ -1708,6 +1791,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:617 - `Geom_BSplineCurve::EndPoint()`
     /// Returns the last point of the curve.
     /// Warnings :
     /// The last point of the curve is different from the last
@@ -1719,6 +1803,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:627 - `Geom_BSplineCurve::FirstUKnotIndex()`
     /// Returns the index in the knot array of the knot
     /// corresponding to the first or last parameter of this BSpline curve.
     /// For a BSpline curve, the first (or last) parameter
@@ -1731,6 +1816,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_first_u_knot_index(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:632 - `Geom_BSplineCurve::FirstParameter()`
     /// Returns the value of the first parameter of this
     /// BSpline curve. This is a knot value.
     /// The first parameter is the one of the start point of the BSpline curve.
@@ -1738,6 +1824,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:639 - `Geom_BSplineCurve::Knot()`
     /// Returns the knot of range Index. When there is a knot
     /// with a multiplicity greater than 1 the knot is not repeated.
     /// The method Multiplicity can be used to get the multiplicity
@@ -1747,6 +1834,7 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_knot(self as *const Self, Index) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:728 - `Geom_BSplineCurve::KnotDistribution()`
     /// Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier.
     /// If all the knots differ by a positive constant from the
     /// preceding knot the BSpline Curve can be :
@@ -1767,6 +1855,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:736 - `Geom_BSplineCurve::LastUKnotIndex()`
     /// For a BSpline curve the last parameter (which gives the
     /// end point of the curve) is a knot value but if the
     /// multiplicity of the last knot index is lower than
@@ -1777,12 +1866,14 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_last_u_knot_index(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:740 - `Geom_BSplineCurve::LastParameter()`
     /// Computes the parametric value of the end point of the curve.
     /// It is a knot value.
     pub fn last_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom_BSplineCurve_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:752 - `Geom_BSplineCurve::LocateU()`
     /// Locates the parametric value U in the sequence of knots.
     /// If "WithKnotRepetition" is True we consider the knot's
     /// representation with repetition of multiple knot value,
@@ -1813,29 +1904,34 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:760 - `Geom_BSplineCurve::Multiplicity()`
     /// Returns the multiplicity of the knots of range Index.
     /// Raised if Index < 1 or Index > NbKnots
     pub fn multiplicity(&self, Index: i32) -> i32 {
         unsafe { crate::ffi::Geom_BSplineCurve_multiplicity(self as *const Self, Index) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:772 - `Geom_BSplineCurve::NbKnots()`
     /// Returns the number of knots. This method returns the number of
     /// knot without repetition of multiple knots.
     pub fn nb_knots(&self) -> i32 {
         unsafe { crate::ffi::Geom_BSplineCurve_nb_knots(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:775 - `Geom_BSplineCurve::NbPoles()`
     /// Returns the number of poles
     pub fn nb_poles(&self) -> i32 {
         unsafe { crate::ffi::Geom_BSplineCurve_nb_poles(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:779 - `Geom_BSplineCurve::Pole()`
     /// Returns the pole of range Index.
     /// Raised if Index < 1 or Index > NbPoles.
     pub fn pole(&self, Index: i32) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::Geom_BSplineCurve_pole(self as *const Self, Index)) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:784 - `Geom_BSplineCurve::Poles()`
     /// Returns the poles of the B-spline curve;
     ///
     /// Raised if the length of P is not equal to the number of poles.
@@ -1843,11 +1939,13 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_poles_array1ofpnt(self as *const Self, P) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:787 - `Geom_BSplineCurve::Poles()`
     /// Returns the poles of the B-spline curve;
     pub fn poles(&self) -> &crate::ffi::TColgp_Array1OfPnt {
         unsafe { &*(crate::ffi::Geom_BSplineCurve_poles(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:793 - `Geom_BSplineCurve::StartPoint()`
     /// Returns the start point of the curve.
     /// Warnings :
     /// This point is different from the first pole of the curve if the
@@ -1860,17 +1958,20 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:797 - `Geom_BSplineCurve::Weight()`
     /// Returns the weight of the pole of range Index .
     /// Raised if Index < 1 or Index > NbPoles.
     pub fn weight(&self, Index: i32) -> f64 {
         unsafe { crate::ffi::Geom_BSplineCurve_weight(self as *const Self, Index) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:808 - `Geom_BSplineCurve::Transform()`
     /// Applies the transformation T to this BSpline curve.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_BSplineCurve_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:820 - `Geom_BSplineCurve::Resolution()`
     /// Computes for this BSpline curve the parametric
     /// tolerance UTolerance for a given 3D tolerance Tolerance3D.
     /// If f(t) is the equation of this BSpline curve,
@@ -1883,6 +1984,7 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:823 - `Geom_BSplineCurve::Copy()`
     /// Creates a new object which is a copy of this BSpline curve.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
@@ -1890,25 +1992,30 @@ impl BSplineCurve {
         }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:826 - `Geom_BSplineCurve::IsEqual()`
     /// Compare two Bspline curve on identity;
     pub fn is_equal(&self, theOther: &crate::ffi::HandleGeomBSplineCurve, thePreci: f64) -> bool {
         unsafe { crate::ffi::Geom_BSplineCurve_is_equal(self as *const Self, theOther, thePreci) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:833 - `Geom_BSplineCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_BSplineCurve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:812 - `Geom_BSplineCurve::MaxDegree()`
     /// Returns the value of the maximum degree of the normalized
     /// B-spline basis functions in this package.
     pub fn max_degree() -> i32 {
         unsafe { crate::ffi::Geom_BSplineCurve_max_degree() }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:833 - `Geom_BSplineCurve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_BSplineCurve_get_type_name() }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:833 - `Geom_BSplineCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_BSplineCurve_get_type_descriptor()) }
     }
@@ -2131,6 +2238,7 @@ impl HandleGeomBSplineCurve {
 // From Geom_BSplineSurface.hxx
 // ========================
 
+/// **Source:** `Geom_BSplineSurface.hxx`:157 - `Geom_BSplineSurface`
 /// Describes a BSpline surface.
 /// In each parametric direction, a BSpline surface can be:
 /// - uniform or non-uniform,
@@ -2251,6 +2359,7 @@ unsafe impl crate::CppDeletable for BSplineSurface {
 }
 
 impl BSplineSurface {
+    /// **Source:** `Geom_BSplineSurface.hxx`:180 - `Geom_BSplineSurface::Geom_BSplineSurface()`
     /// Creates  a non-rational b-spline surface (weights
     /// default value is 1.).
     /// The following conditions must be verified.
@@ -2286,6 +2395,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:220 - `Geom_BSplineSurface::Geom_BSplineSurface()`
     /// Creates  a non-rational b-spline surface (weights
     /// default value is 1.).
     ///
@@ -2333,6 +2443,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:180 - `Geom_BSplineSurface::Geom_BSplineSurface()`
     /// Creates  a non-rational b-spline surface (weights
     /// default value is 1.).
     /// The following conditions must be verified.
@@ -2367,6 +2478,7 @@ impl BSplineSurface {
         )
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:180 - `Geom_BSplineSurface::Geom_BSplineSurface()`
     /// Creates  a non-rational b-spline surface (weights
     /// default value is 1.).
     /// The following conditions must be verified.
@@ -2400,6 +2512,7 @@ impl BSplineSurface {
         )
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:220 - `Geom_BSplineSurface::Geom_BSplineSurface()`
     /// Creates  a non-rational b-spline surface (weights
     /// default value is 1.).
     ///
@@ -2446,6 +2559,7 @@ impl BSplineSurface {
         )
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:220 - `Geom_BSplineSurface::Geom_BSplineSurface()`
     /// Creates  a non-rational b-spline surface (weights
     /// default value is 1.).
     ///
@@ -2491,6 +2605,7 @@ impl BSplineSurface {
         )
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:239 - `Geom_BSplineSurface::ExchangeUV()`
     /// Exchanges the u and v parametric directions on
     /// this BSpline surface.
     /// As a consequence:
@@ -2503,6 +2618,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_exchange_uv(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:259 - `Geom_BSplineSurface::SetUPeriodic()`
     /// Sets the surface U periodic.
     /// Modifies this surface to be periodic in the U
     /// parametric direction.
@@ -2525,6 +2641,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_set_u_periodic(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:279 - `Geom_BSplineSurface::SetVPeriodic()`
     /// Sets the surface V periodic.
     /// Modifies this surface to be periodic in the V
     /// parametric direction.
@@ -2547,6 +2664,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_set_v_periodic(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:284 - `Geom_BSplineSurface::PeriodicNormalization()`
     /// returns the parameter normalized within
     /// the period if the surface is periodic : otherwise
     /// does not do anything
@@ -2554,6 +2672,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_periodic_normalization(self as *const Self, U, V) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:295 - `Geom_BSplineSurface::SetUOrigin()`
     /// Assigns the knot of index Index in the knots table in
     /// the corresponding parametric direction to be the
     /// origin of this periodic BSpline surface. As a
@@ -2567,6 +2686,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_set_u_origin(self as *mut Self, Index) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:306 - `Geom_BSplineSurface::SetVOrigin()`
     /// Assigns the knot of index Index in the knots table in
     /// the corresponding parametric direction to be the
     /// origin of this periodic BSpline surface. As a
@@ -2580,6 +2700,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_set_v_origin(self as *mut Self, Index) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:313 - `Geom_BSplineSurface::SetUNotPeriodic()`
     /// Sets the surface U not periodic.
     /// Changes this BSpline surface into a non-periodic
     /// surface along U direction.
@@ -2589,6 +2710,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_set_u_not_periodic(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:320 - `Geom_BSplineSurface::SetVNotPeriodic()`
     /// Sets the surface V not periodic.
     /// Changes this BSpline surface into a non-periodic
     /// surface along V direction.
@@ -2598,6 +2720,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_set_v_not_periodic(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:328 - `Geom_BSplineSurface::UReverse()`
     /// Changes the orientation of this BSpline surface in the
     /// U parametric direction. The bounds of the
     /// surface are not changed but the given parametric
@@ -2608,6 +2731,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_u_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:336 - `Geom_BSplineSurface::VReverse()`
     /// Changes the orientation of this BSpline surface in the
     /// V parametric direction. The bounds of the
     /// surface are not changed but the given parametric
@@ -2618,6 +2742,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_v_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:346 - `Geom_BSplineSurface::UReversedParameter()`
     /// Computes the u parameter on the modified
     /// surface, produced by reversing its U parametric
     /// direction, for the point of u parameter U,  on this BSpline surface.
@@ -2630,6 +2755,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_u_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:356 - `Geom_BSplineSurface::VReversedParameter()`
     /// Computes the v parameter on the modified
     /// surface, produced by reversing its V parametric
     /// direction, for the point of v parameter V on this BSpline surface.
@@ -2642,6 +2768,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_v_reversed_parameter(self as *const Self, V) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:370 - `Geom_BSplineSurface::IncreaseDegree()`
     /// Increases the degrees of this BSpline surface to
     /// UDegree and VDegree in the u and v parametric
     /// directions respectively. As a result, the tables of poles,
@@ -2660,6 +2787,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:438 - `Geom_BSplineSurface::RemoveUKnot()`
     /// Reduces to M the multiplicity of the knot of index
     /// Index in the U parametric direction. If M is 0, the knot is removed.
     /// With a modification of this type, the table of poles is also modified.
@@ -2683,6 +2811,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:459 - `Geom_BSplineSurface::RemoveVKnot()`
     /// Reduces to M the multiplicity of the knot of index
     /// Index in the V parametric direction. If M is 0, the knot is removed.
     /// With a modification of this type, the table of poles is also modified.
@@ -2706,6 +2835,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:472 - `Geom_BSplineSurface::IncreaseUMultiplicity()`
     /// Increases the multiplicity of the knot of range UIndex
     /// in the UKnots sequence.
     /// M is the new multiplicity. M must be greater than the
@@ -2725,6 +2855,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:487 - `Geom_BSplineSurface::IncreaseUMultiplicity()`
     /// Increases until order M the multiplicity of the set of knots
     /// FromI1,...., ToI2 in the U direction. This method can be used
     /// to make a B_spline surface into a PiecewiseBezier B_spline
@@ -2748,6 +2879,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:499 - `Geom_BSplineSurface::IncrementUMultiplicity()`
     /// Increments the multiplicity of the consecutives uknots FromI1..ToI2
     /// by step.   The multiplicity of each knot FromI1,.....,ToI2 must be
     /// lower or equal to the UDegree of the B_spline.
@@ -2767,6 +2899,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:511 - `Geom_BSplineSurface::IncreaseVMultiplicity()`
     /// Increases the multiplicity of a knot in the V direction.
     /// M is the new multiplicity.
     ///
@@ -2785,6 +2918,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:525 - `Geom_BSplineSurface::IncreaseVMultiplicity()`
     /// Increases until order M the multiplicity of the set of knots
     /// FromI1,...., ToI2 in the V direction. This method can be used to
     /// make a BSplineSurface into a PiecewiseBezier B_spline
@@ -2807,6 +2941,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:537 - `Geom_BSplineSurface::IncrementVMultiplicity()`
     /// Increments the multiplicity of the consecutives vknots FromI1..ToI2
     /// by step.  The multiplicity of each knot FromI1,.....,ToI2 must be
     /// lower or equal to the VDegree of the B_spline.
@@ -2826,6 +2961,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:550 - `Geom_BSplineSurface::InsertUKnot()`
     /// Inserts a knot value in the sequence of UKnots. If U is a knot
     /// value this method increases the multiplicity of the knot if the
     /// previous multiplicity was lower than M else it does nothing. The
@@ -2847,6 +2983,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:565 - `Geom_BSplineSurface::InsertVKnot()`
     /// Inserts a knot value in the sequence of VKnots. If V is a knot
     /// value this method increases the multiplicity of the knot if the
     /// previous multiplicity was lower than M otherwise it does nothing.
@@ -2869,6 +3006,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:587 - `Geom_BSplineSurface::Segment()`
     /// Segments the surface between U1 and U2 in the U-Direction.
     /// between V1 and V2 in the V-Direction.
     /// The control points are modified, the first and the last point
@@ -2908,6 +3046,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:614 - `Geom_BSplineSurface::CheckAndSegment()`
     /// Segments the surface between U1 and U2 in the U-Direction.
     /// between V1 and V2 in the V-Direction.
     ///
@@ -2950,6 +3089,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:626 - `Geom_BSplineSurface::SetUKnot()`
     /// Substitutes the UKnots of range UIndex with K.
     ///
     /// Raised if UIndex < 1 or UIndex > NbUKnots
@@ -2959,6 +3099,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_set_u_knot_int_real(self as *mut Self, UIndex, K) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:645 - `Geom_BSplineSurface::SetUKnot()`
     /// Changes the value of the UKnots of range UIndex and
     /// increases its multiplicity.
     ///
@@ -2974,6 +3115,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:654 - `Geom_BSplineSurface::SetVKnot()`
     /// Substitutes the VKnots of range VIndex with K.
     ///
     /// Raised if VIndex < 1 or VIndex > NbVKnots
@@ -2983,6 +3125,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_set_v_knot_int_real(self as *mut Self, VIndex, K) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:673 - `Geom_BSplineSurface::SetVKnot()`
     /// Changes the value of the VKnots of range VIndex and increases
     /// its multiplicity.
     ///
@@ -2998,6 +3141,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:687 - `Geom_BSplineSurface::LocateU()`
     /// Locates the parametric value U in the sequence of UKnots.
     /// If "WithKnotRepetition" is True we consider the knot's
     /// representation with repetition of multiple knot value,
@@ -3028,6 +3172,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:707 - `Geom_BSplineSurface::LocateV()`
     /// Locates the parametric value V in the sequence of knots.
     /// If "WithKnotRepetition" is True we consider the knot's
     /// representation with repetition of multiple knot value,
@@ -3062,6 +3207,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:719 - `Geom_BSplineSurface::SetPole()`
     /// Substitutes the pole of range (UIndex, VIndex) with P.
     /// If the surface is rational the weight of range (UIndex, VIndex)
     /// is not modified.
@@ -3074,6 +3220,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:729 - `Geom_BSplineSurface::SetPole()`
     /// Substitutes the pole and the weight of range (UIndex, VIndex)
     /// with P and W.
     ///
@@ -3098,6 +3245,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:738 - `Geom_BSplineSurface::SetPoleCol()`
     /// Changes a column of poles or a part of this column.
     /// Raised if Vindex < 1 or VIndex > NbVPoles.
     ///
@@ -3106,6 +3254,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_set_pole_col(self as *mut Self, VIndex, CPoles) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:774 - `Geom_BSplineSurface::SetPoleRow()`
     /// Changes a row of poles or a part of this row.
     /// Raised if Uindex < 1 or UIndex > NbUPoles.
     ///
@@ -3114,6 +3263,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_set_pole_row(self as *mut Self, UIndex, CPoles) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:785 - `Geom_BSplineSurface::SetWeight()`
     /// Changes the weight of the pole of range UIndex, VIndex.
     /// If the surface was non rational it can become rational.
     /// If the surface was rational it can become non rational.
@@ -3129,6 +3279,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:826 - `Geom_BSplineSurface::MovePoint()`
     /// Move a point with parameter U and V to P.
     /// given u,v  as parameters)  to  reach a  new position
     /// UIndex1, UIndex2, VIndex1, VIndex2:
@@ -3176,6 +3327,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:841 - `Geom_BSplineSurface::IsUClosed()`
     /// Returns true if the first control points row and the last
     /// control points row are identical. The tolerance criterion
     /// is Resolution from package gp.
@@ -3183,6 +3335,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_is_u_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:846 - `Geom_BSplineSurface::IsVClosed()`
     /// Returns true if the first control points column and the
     /// last last control points column are identical.
     /// The tolerance criterion is Resolution from package gp.
@@ -3190,6 +3343,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_is_v_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:851 - `Geom_BSplineSurface::IsCNu()`
     /// Returns True if the order of continuity of the surface in the
     /// U direction  is N.
     /// Raised if N < 0.
@@ -3197,6 +3351,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_is_c_nu(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:856 - `Geom_BSplineSurface::IsCNv()`
     /// Returns True if the order of continuity of the surface
     /// in the V direction  is N.
     /// Raised if N < 0.
@@ -3204,6 +3359,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_is_c_nv(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:861 - `Geom_BSplineSurface::IsUPeriodic()`
     /// Returns True if the surface is closed in the U direction
     /// and if the B-spline has been turned into a periodic surface
     /// using the function SetUPeriodic.
@@ -3211,6 +3367,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_is_u_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:870 - `Geom_BSplineSurface::IsURational()`
     /// Returns False if for each row of weights all the weights
     /// are identical.
     /// The tolerance criterion is resolution from package gp.
@@ -3222,6 +3379,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_is_u_rational(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:875 - `Geom_BSplineSurface::IsVPeriodic()`
     /// Returns True if the surface is closed in the V direction
     /// and if the B-spline has been turned into a periodic
     /// surface using the function SetVPeriodic.
@@ -3229,6 +3387,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_is_v_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:884 - `Geom_BSplineSurface::IsVRational()`
     /// Returns False if for each column of weights all the weights
     /// are identical.
     /// The tolerance criterion is resolution from package gp.
@@ -3240,6 +3399,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_is_v_rational(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:892 - `Geom_BSplineSurface::Bounds()`
     /// Returns the parametric bounds of the surface.
     /// Warnings :
     /// These parametric values are the bounds of the array of
@@ -3250,6 +3410,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_bounds(self as *const Self, U1, U2, V1, V2) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:910 - `Geom_BSplineSurface::Continuity()`
     /// Returns the continuity of the surface :
     /// C0 : only geometric continuity,
     /// C1 : continuity of the first derivative all along the Surface,
@@ -3272,6 +3433,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:916 - `Geom_BSplineSurface::FirstUKnotIndex()`
     /// Computes the Index of the UKnots which gives the first
     /// parametric value of the surface in the U direction.
     /// The UIso curve corresponding to this value is a
@@ -3280,6 +3442,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_first_u_knot_index(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:922 - `Geom_BSplineSurface::FirstVKnotIndex()`
     /// Computes the Index of the VKnots which gives the
     /// first parametric value of the surface in the V direction.
     /// The VIso curve corresponding to this knot is a boundary
@@ -3288,6 +3451,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_first_v_knot_index(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:928 - `Geom_BSplineSurface::LastUKnotIndex()`
     /// Computes the Index of the UKnots which gives the
     /// last parametric value of the surface in the U direction.
     /// The UIso curve corresponding to this knot is a boundary
@@ -3296,6 +3460,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_last_u_knot_index(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:934 - `Geom_BSplineSurface::LastVKnotIndex()`
     /// Computes the Index of the VKnots which gives the
     /// last parametric value of the surface in the V direction.
     /// The VIso curve corresponding to this knot is a
@@ -3304,26 +3469,31 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_last_v_knot_index(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:937 - `Geom_BSplineSurface::NbUKnots()`
     /// Returns the number of knots in the U direction.
     pub fn nb_u_knots(&self) -> i32 {
         unsafe { crate::ffi::Geom_BSplineSurface_nb_u_knots(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:940 - `Geom_BSplineSurface::NbUPoles()`
     /// Returns number of poles in the U direction.
     pub fn nb_u_poles(&self) -> i32 {
         unsafe { crate::ffi::Geom_BSplineSurface_nb_u_poles(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:943 - `Geom_BSplineSurface::NbVKnots()`
     /// Returns the number of knots in the V direction.
     pub fn nb_v_knots(&self) -> i32 {
         unsafe { crate::ffi::Geom_BSplineSurface_nb_v_knots(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:946 - `Geom_BSplineSurface::NbVPoles()`
     /// Returns the number of poles in the V direction.
     pub fn nb_v_poles(&self) -> i32 {
         unsafe { crate::ffi::Geom_BSplineSurface_nb_v_poles(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:952 - `Geom_BSplineSurface::Pole()`
     /// Returns the pole of range (UIndex, VIndex).
     ///
     /// Raised if UIndex < 1 or UIndex > NbUPoles or VIndex < 1 or
@@ -3332,6 +3502,7 @@ impl BSplineSurface {
         unsafe { &*(crate::ffi::Geom_BSplineSurface_pole(self as *const Self, UIndex, VIndex)) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:959 - `Geom_BSplineSurface::Poles()`
     /// Returns the poles of the B-spline surface.
     ///
     /// Raised if the length of P in the U and V direction
@@ -3340,23 +3511,27 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_poles_array2ofpnt(self as *const Self, P) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:962 - `Geom_BSplineSurface::Poles()`
     /// Returns the poles of the B-spline surface.
     pub fn poles(&self) -> &crate::ffi::TColgp_Array2OfPnt {
         unsafe { &*(crate::ffi::Geom_BSplineSurface_poles(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:966 - `Geom_BSplineSurface::UDegree()`
     /// Returns the degree of the normalized B-splines Ni,n in the U
     /// direction.
     pub fn u_degree(&self) -> i32 {
         unsafe { crate::ffi::Geom_BSplineSurface_u_degree(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:970 - `Geom_BSplineSurface::UKnot()`
     /// Returns the Knot value of range UIndex.
     /// Raised if UIndex < 1 or UIndex > NbUKnots
     pub fn u_knot(&self, UIndex: i32) -> f64 {
         unsafe { crate::ffi::Geom_BSplineSurface_u_knot(self as *const Self, UIndex) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:985 - `Geom_BSplineSurface::UKnotDistribution()`
     /// Returns NonUniform or Uniform or QuasiUniform or
     /// PiecewiseBezier.  If all the knots differ by a
     /// positive constant from the preceding knot in the U
@@ -3379,6 +3554,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1015 - `Geom_BSplineSurface::UMultiplicity()`
     /// Returns the multiplicity value of knot of range UIndex in
     /// the u direction.
     /// Raised if UIndex < 1 or UIndex > NbUKnots.
@@ -3386,18 +3562,21 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_u_multiplicity(self as *const Self, UIndex) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1028 - `Geom_BSplineSurface::VDegree()`
     /// Returns the degree of the normalized B-splines Ni,d in the
     /// V direction.
     pub fn v_degree(&self) -> i32 {
         unsafe { crate::ffi::Geom_BSplineSurface_v_degree(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1032 - `Geom_BSplineSurface::VKnot()`
     /// Returns the Knot value of range VIndex.
     /// Raised if VIndex < 1 or VIndex > NbVKnots
     pub fn v_knot(&self, VIndex: i32) -> f64 {
         unsafe { crate::ffi::Geom_BSplineSurface_v_knot(self as *const Self, VIndex) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1047 - `Geom_BSplineSurface::VKnotDistribution()`
     /// Returns NonUniform or Uniform or QuasiUniform or
     /// PiecewiseBezier. If all the knots differ by a positive
     /// constant from the preceding knot in the V direction the
@@ -3420,6 +3599,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1077 - `Geom_BSplineSurface::VMultiplicity()`
     /// Returns the multiplicity value of knot of range VIndex in
     /// the v direction.
     /// Raised if VIndex < 1 or VIndex > NbVKnots
@@ -3427,6 +3607,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_v_multiplicity(self as *const Self, VIndex) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1092 - `Geom_BSplineSurface::Weight()`
     /// Returns the weight value of range UIndex, VIndex.
     ///
     /// Raised if UIndex < 1 or UIndex > NbUPoles or VIndex < 1
@@ -3435,10 +3616,12 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_weight(self as *const Self, UIndex, VIndex) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1105 - `Geom_BSplineSurface::D0()`
     pub fn d0(&self, U: f64, V: f64, P: &mut crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::Geom_BSplineSurface_d0(self as *const Self, U, V, P) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1110 - `Geom_BSplineSurface::D1()`
     /// Raised if the continuity of the surface is not C1.
     pub fn d1(
         &self,
@@ -3451,6 +3634,7 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1117 - `Geom_BSplineSurface::D2()`
     /// Raised if the continuity of the surface is not C2.
     pub fn d2(
         &self,
@@ -3478,6 +3662,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1127 - `Geom_BSplineSurface::D3()`
     /// Raised if the continuity of the surface is not C3.
     pub fn d3(
         &self,
@@ -3513,6 +3698,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1161 - `Geom_BSplineSurface::DN()`
     /// Nu is the order of derivation in the U parametric direction and
     /// Nv is the order of derivation in the V parametric direction.
     ///
@@ -3546,6 +3732,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1167 - `Geom_BSplineSurface::LocalD0()`
     /// Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2.
     pub fn local_d0(
         &self,
@@ -3571,6 +3758,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1178 - `Geom_BSplineSurface::LocalD1()`
     /// Raised if the local continuity of the surface is not C1
     /// between the knots FromUK1, ToUK2 and FromVK1, ToVK2.
     /// Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2.
@@ -3602,6 +3790,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1191 - `Geom_BSplineSurface::LocalD2()`
     /// Raised if the local continuity of the surface is not C2
     /// between the knots FromUK1, ToUK2 and FromVK1, ToVK2.
     /// Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2.
@@ -3639,6 +3828,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1207 - `Geom_BSplineSurface::LocalD3()`
     /// Raised if the local continuity of the surface is not C3
     /// between the knots FromUK1, ToUK2 and FromVK1, ToVK2.
     /// Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2.
@@ -3684,6 +3874,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1228 - `Geom_BSplineSurface::LocalDN()`
     /// Raised if the local continuity of the surface is not CNu
     /// between the knots FromUK1, ToUK2 and CNv between the knots
     /// FromVK1, ToVK2.
@@ -3714,6 +3905,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1243 - `Geom_BSplineSurface::LocalValue()`
     /// Computes the point of parameter U, V on the BSpline surface patch
     /// defines between the knots UK1 UK2, VK1, VK2. U can be out of the
     /// bounds [Knot UK1, Knot UK2] and V can be outof the bounds
@@ -3742,6 +3934,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1252 - `Geom_BSplineSurface::UIso()`
     /// Computes the U isoparametric curve.
     /// A B-spline curve is returned.
     pub fn u_iso_real(&self, U: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
@@ -3753,6 +3946,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1256 - `Geom_BSplineSurface::VIso()`
     /// Computes the V isoparametric curve.
     /// A B-spline curve is returned.
     pub fn v_iso_real(&self, V: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
@@ -3764,6 +3958,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1261 - `Geom_BSplineSurface::UIso()`
     /// Computes the U isoparametric curve.
     /// If CheckRational=False, no try to make it non-rational.
     /// A B-spline curve is returned.
@@ -3781,6 +3976,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1268 - `Geom_BSplineSurface::VIso()`
     /// Computes the V isoparametric curve.
     /// If CheckRational=False, no try to make it non-rational.
     /// A B-spline curve is returned.
@@ -3799,11 +3995,13 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1272 - `Geom_BSplineSurface::Transform()`
     /// Applies the transformation T to this BSpline surface.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_BSplineSurface_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1288 - `Geom_BSplineSurface::Resolution()`
     /// Computes two tolerance values for this BSpline
     /// surface, based on the given tolerance in 3D space
     /// Tolerance3D. The tolerances computed are:
@@ -3825,6 +4023,7 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1293 - `Geom_BSplineSurface::Copy()`
     /// Creates a new object which is a copy of this BSpline surface.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
@@ -3832,20 +4031,24 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1299 - `Geom_BSplineSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_BSplineSurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1276 - `Geom_BSplineSurface::MaxDegree()`
     /// Returns the value of the maximum degree of the normalized
     /// B-spline basis functions in the u and v directions.
     pub fn max_degree() -> i32 {
         unsafe { crate::ffi::Geom_BSplineSurface_max_degree() }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1299 - `Geom_BSplineSurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_BSplineSurface_get_type_name() }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1299 - `Geom_BSplineSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_BSplineSurface_get_type_descriptor()) }
     }
@@ -4102,6 +4305,7 @@ impl HandleGeomBSplineSurface {
 // From Geom_BezierCurve.hxx
 // ========================
 
+/// **Source:** `Geom_BezierCurve.hxx`:87 - `Geom_BezierCurve`
 /// Describes a rational or non-rational Bezier curve
 /// - a non-rational Bezier curve is defined by a table of
 /// poles (also called control points),
@@ -4160,6 +4364,7 @@ unsafe impl crate::CppDeletable for BezierCurve {
 }
 
 impl BezierCurve {
+    /// **Source:** `Geom_BezierCurve.hxx`:95 - `Geom_BezierCurve::Geom_BezierCurve()`
     /// Creates a non rational Bezier curve with a set of poles
     /// CurvePoles.  The weights are defaulted to all being 1.
     /// Raises ConstructionError if the number of poles is greater than MaxDegree + 1
@@ -4170,6 +4375,7 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:104 - `Geom_BezierCurve::Geom_BezierCurve()`
     /// Creates a rational Bezier curve with the set of poles
     /// CurvePoles and the set of weights  PoleWeights .
     /// If all the weights are identical the curve is considered
@@ -4189,6 +4395,7 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:111 - `Geom_BezierCurve::Increase()`
     /// Increases the degree of a bezier curve. Degree is the new
     /// degree of <me>. Raises ConstructionError
     /// if Degree is greater than MaxDegree or lower than 2
@@ -4197,6 +4404,7 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom_BezierCurve_increase(self as *mut Self, Degree) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:120 - `Geom_BezierCurve::InsertPoleAfter()`
     /// Inserts a pole P after the pole of range Index.
     /// If the curve <me> is rational the weight value for the new
     /// pole of range Index is 1.0.
@@ -4210,6 +4418,7 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:130 - `Geom_BezierCurve::InsertPoleAfter()`
     /// Inserts a pole with its weight in the set of poles after the
     /// pole of range Index. If the curve was non rational it can
     /// become rational if all the weights are not identical.
@@ -4234,6 +4443,7 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:141 - `Geom_BezierCurve::InsertPoleBefore()`
     /// Inserts a pole P before the pole of range Index.
     /// If the curve <me> is rational the weight value for the new
     /// pole of range Index is 1.0.
@@ -4247,6 +4457,7 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:152 - `Geom_BezierCurve::InsertPoleBefore()`
     /// Inserts a pole with its weight in the set of poles after
     /// the pole of range Index. If the curve was non rational it
     /// can become rational if all the weights are not identical.
@@ -4272,6 +4483,7 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:160 - `Geom_BezierCurve::RemovePole()`
     /// Removes the pole of range Index.
     /// If the curve was rational it can become non rational.
     /// Raised if Index is not in the range [1, NbPoles]
@@ -4280,12 +4492,14 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom_BezierCurve_remove_pole(self as *mut Self, Index) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:164 - `Geom_BezierCurve::Reverse()`
     /// Reverses the direction of parametrization of <me>
     /// Value (NewU) =  Value (1 - OldU)
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::Geom_BezierCurve_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:170 - `Geom_BezierCurve::ReversedParameter()`
     /// Returns the  parameter on the  reversed  curve for
     /// the point of parameter U on <me>.
     ///
@@ -4294,6 +4508,7 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom_BezierCurve_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:183 - `Geom_BezierCurve::Segment()`
     /// Segments the curve between U1 and U2 which can be out
     /// of the bounds of the curve. The curve is oriented from U1
     /// to U2.
@@ -4309,6 +4524,7 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom_BezierCurve_segment(self as *mut Self, U1, U2) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:189 - `Geom_BezierCurve::SetPole()`
     /// Substitutes the pole of range index with P.
     /// If the curve <me> is rational the weight of range Index
     /// is not modified.
@@ -4317,6 +4533,7 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom_BezierCurve_set_pole_int_pnt(self as *mut Self, Index, P) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:198 - `Geom_BezierCurve::SetPole()`
     /// Substitutes the pole and the weights of range Index.
     /// If the curve <me> is not rational it can become rational
     /// if all the weights are not identical.
@@ -4330,6 +4547,7 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:209 - `Geom_BezierCurve::SetWeight()`
     /// Changes the weight of the pole of range Index.
     /// If the curve <me> is not rational it can become rational
     /// if all the weights are not identical.
@@ -4341,6 +4559,7 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom_BezierCurve_set_weight(self as *mut Self, Index, Weight) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:214 - `Geom_BezierCurve::IsClosed()`
     /// Returns True if the distance between the first point
     /// and the last point of the curve is lower or equal to
     /// the Resolution from package gp.
@@ -4348,23 +4567,27 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom_BezierCurve_is_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:217 - `Geom_BezierCurve::IsCN()`
     /// Continuity of the curve, returns True.
     pub fn is_cn(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom_BezierCurve_is_cn(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:221 - `Geom_BezierCurve::IsPeriodic()`
     /// Returns True if the parametrization of a curve is periodic.
     /// (P(u) = P(u + T) T = constante)
     pub fn is_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_BezierCurve_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:225 - `Geom_BezierCurve::IsRational()`
     /// Returns false if all the weights are identical. The tolerance
     /// criterion is Resolution from package gp.
     pub fn is_rational(&self) -> bool {
         unsafe { crate::ffi::Geom_BezierCurve_is_rational(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:228 - `Geom_BezierCurve::Continuity()`
     /// a Bezier curve is CN
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         unsafe {
@@ -4375,6 +4598,7 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:235 - `Geom_BezierCurve::Degree()`
     /// Returns the polynomial degree of the curve.
     /// it is the number of poles - 1
     /// point P and derivatives (V1, V2, V3) computation
@@ -4384,14 +4608,17 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom_BezierCurve_degree(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:237 - `Geom_BezierCurve::D0()`
     pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::Geom_BezierCurve_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:239 - `Geom_BezierCurve::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V1: &mut crate::ffi::gp_Vec) {
         unsafe { crate::ffi::Geom_BezierCurve_d1(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:241 - `Geom_BezierCurve::D2()`
     pub fn d2(
         &self,
         U: f64,
@@ -4402,6 +4629,7 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom_BezierCurve_d2(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:253 - `Geom_BezierCurve::D3()`
     /// For this Bezier curve, computes
     /// - the point P of parameter U, or
     /// - the point P and one or more of the following values:
@@ -4420,6 +4648,7 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom_BezierCurve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:263 - `Geom_BezierCurve::DN()`
     /// For the point of parameter U of this Bezier curve,
     /// computes the vector corresponding to the Nth derivative.
     /// Note: the parameter U can be outside the bounds of the curve.
@@ -4430,6 +4659,7 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:267 - `Geom_BezierCurve::StartPoint()`
     /// Returns Value (U=0.), it is the first control point of the curve.
     pub fn start_point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
@@ -4437,6 +4667,7 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:270 - `Geom_BezierCurve::EndPoint()`
     /// Returns Value (U=1.), it is the last control point of the Bezier curve.
     pub fn end_point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
@@ -4444,29 +4675,34 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:274 - `Geom_BezierCurve::FirstParameter()`
     /// Returns the value of the first  parameter of this
     /// Bezier curve. This is 0.0, which gives the start point of this Bezier curve
     pub fn first_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom_BezierCurve_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:278 - `Geom_BezierCurve::LastParameter()`
     /// Returns the value of the last parameter of this
     /// Bezier curve. This is  1.0, which gives the end point of this Bezier curve.
     pub fn last_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom_BezierCurve_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:281 - `Geom_BezierCurve::NbPoles()`
     /// Returns the number of poles of this Bezier curve.
     pub fn nb_poles(&self) -> i32 {
         unsafe { crate::ffi::Geom_BezierCurve_nb_poles(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:285 - `Geom_BezierCurve::Pole()`
     /// Returns the pole of range Index.
     /// Raised if Index is not in the range [1, NbPoles]
     pub fn pole(&self, Index: i32) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::Geom_BezierCurve_pole(self as *const Self, Index)) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:290 - `Geom_BezierCurve::Poles()`
     /// Returns all the poles of the curve.
     ///
     /// Raised if the length of P is not equal to the number of poles.
@@ -4474,22 +4710,26 @@ impl BezierCurve {
         unsafe { crate::ffi::Geom_BezierCurve_poles_array1ofpnt(self as *const Self, P) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:293 - `Geom_BezierCurve::Poles()`
     /// Returns all the poles of the curve.
     pub fn poles(&self) -> &crate::ffi::TColgp_Array1OfPnt {
         unsafe { &*(crate::ffi::Geom_BezierCurve_poles(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:297 - `Geom_BezierCurve::Weight()`
     /// Returns the weight of range Index.
     /// Raised if Index is not in the range [1, NbPoles]
     pub fn weight(&self, Index: i32) -> f64 {
         unsafe { crate::ffi::Geom_BezierCurve_weight(self as *const Self, Index) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:313 - `Geom_BezierCurve::Transform()`
     /// Applies the transformation T to this Bezier curve.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_BezierCurve_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:324 - `Geom_BezierCurve::Resolution()`
     /// Computes for this Bezier curve the parametric
     /// tolerance UTolerance for a given 3D tolerance Tolerance3D.
     /// If f(t) is the equation of this Bezier curve,
@@ -4501,25 +4741,30 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:327 - `Geom_BezierCurve::Copy()`
     /// Creates a new object which is a copy of this Bezier curve.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_BezierCurve_copy(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:333 - `Geom_BezierCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_BezierCurve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:317 - `Geom_BezierCurve::MaxDegree()`
     /// Returns the value of the maximum polynomial degree
     /// of any Geom_BezierCurve curve. This value is 25.
     pub fn max_degree() -> i32 {
         unsafe { crate::ffi::Geom_BezierCurve_max_degree() }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:333 - `Geom_BezierCurve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_BezierCurve_get_type_name() }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:333 - `Geom_BezierCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_BezierCurve_get_type_descriptor()) }
     }
@@ -4740,6 +4985,7 @@ impl HandleGeomBezierCurve {
 // From Geom_BezierSurface.hxx
 // ========================
 
+/// **Source:** `Geom_BezierSurface.hxx`:110 - `Geom_BezierSurface`
 /// Describes a rational or non-rational Bezier surface.
 /// - A non-rational Bezier surface is defined by a table
 /// of poles (also known as control points).
@@ -4816,6 +5062,7 @@ unsafe impl crate::CppDeletable for BezierSurface {
 }
 
 impl BezierSurface {
+    /// **Source:** `Geom_BezierSurface.hxx`:128 - `Geom_BezierSurface::Geom_BezierSurface()`
     /// Creates a non-rational Bezier surface with a set of poles.
     /// Control points representation :
     /// SPoles(Uorigin,Vorigin) ...................SPoles(Uorigin,Vend)
@@ -4836,6 +5083,7 @@ impl BezierSurface {
         }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:145 - `Geom_BezierSurface::Geom_BezierSurface()`
     /// ---Purpose
     /// Creates a rational Bezier surface with a set of poles and a
     /// set of weights.
@@ -4863,6 +5111,7 @@ impl BezierSurface {
         }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:154 - `Geom_BezierSurface::ExchangeUV()`
     /// Exchanges the direction U and V on a Bezier surface
     /// As a consequence:
     /// - the poles and weights tables are transposed,
@@ -4873,6 +5122,7 @@ impl BezierSurface {
         unsafe { crate::ffi::Geom_BezierSurface_exchange_uv(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:161 - `Geom_BezierSurface::Increase()`
     /// Increases the degree of this Bezier surface in the two parametric directions.
     ///
     /// Raised if UDegree < UDegree <me>  or VDegree < VDegree <me>
@@ -4882,6 +5132,7 @@ impl BezierSurface {
         unsafe { crate::ffi::Geom_BezierSurface_increase(self as *mut Self, UDeg, VDeg) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:170 - `Geom_BezierSurface::InsertPoleColAfter()`
     /// Inserts a column of poles. If the surface is rational the weights
     /// values associated with CPoles are equal defaulted to 1.
     ///
@@ -4895,6 +5146,7 @@ impl BezierSurface {
         }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:193 - `Geom_BezierSurface::InsertPoleColBefore()`
     /// Inserts a column of poles. If the surface is rational the weights
     /// values associated with CPoles are equal defaulted to 1.
     ///
@@ -4908,6 +5160,7 @@ impl BezierSurface {
         }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:216 - `Geom_BezierSurface::InsertPoleRowAfter()`
     /// Inserts a row of poles. If the surface is rational the weights
     /// values associated with CPoles are equal defaulted to 1.
     ///
@@ -4921,6 +5174,7 @@ impl BezierSurface {
         }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:239 - `Geom_BezierSurface::InsertPoleRowBefore()`
     /// Inserts a row of poles. If the surface is rational the weights
     /// values associated with CPoles are equal defaulted to 1.
     ///
@@ -4934,6 +5188,7 @@ impl BezierSurface {
         }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:261 - `Geom_BezierSurface::RemovePoleCol()`
     /// Removes a column of poles.
     /// If the surface was rational it can become non-rational.
     ///
@@ -4944,6 +5199,7 @@ impl BezierSurface {
         unsafe { crate::ffi::Geom_BezierSurface_remove_pole_col(self as *mut Self, VIndex) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:269 - `Geom_BezierSurface::RemovePoleRow()`
     /// Removes a row of poles.
     /// If the surface was rational it can become non-rational.
     ///
@@ -4954,6 +5210,7 @@ impl BezierSurface {
         unsafe { crate::ffi::Geom_BezierSurface_remove_pole_row(self as *mut Self, UIndex) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:292 - `Geom_BezierSurface::Segment()`
     /// Modifies this Bezier surface by segmenting it
     /// between U1 and U2 in the u parametric direction,
     /// and between V1 and V2 in the v parametric
@@ -4979,6 +5236,7 @@ impl BezierSurface {
         unsafe { crate::ffi::Geom_BezierSurface_segment(self as *mut Self, U1, U2, V1, V2) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:303 - `Geom_BezierSurface::SetPole()`
     /// Modifies a pole value.
     /// If the surface is rational the weight of range (UIndex, VIndex)
     /// is not modified.
@@ -4991,6 +5249,7 @@ impl BezierSurface {
         }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:314 - `Geom_BezierSurface::SetPole()`
     /// Substitutes the pole and the weight of range UIndex, VIndex.
     /// If the surface <me> is not rational it can become rational.
     /// if the surface was rational it can become non-rational.
@@ -5016,6 +5275,7 @@ impl BezierSurface {
         }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:325 - `Geom_BezierSurface::SetPoleCol()`
     /// Modifies a column of poles.
     /// The length of CPoles can be lower but not greater than NbUPoles
     /// so you can modify just a part of the column.
@@ -5026,6 +5286,7 @@ impl BezierSurface {
         unsafe { crate::ffi::Geom_BezierSurface_set_pole_col(self as *mut Self, VIndex, CPoles) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:348 - `Geom_BezierSurface::SetPoleRow()`
     /// Modifies a row of poles.
     /// The length of CPoles can be lower but not greater than NbVPoles
     /// so you can modify just a part of the row.
@@ -5036,6 +5297,7 @@ impl BezierSurface {
         unsafe { crate::ffi::Geom_BezierSurface_set_pole_row(self as *mut Self, UIndex, CPoles) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:372 - `Geom_BezierSurface::SetWeight()`
     /// Modifies the weight of the pole of range UIndex, VIndex.
     /// If the surface was non-rational it can become rational.
     /// If the surface was rational it can become non-rational.
@@ -5049,6 +5311,7 @@ impl BezierSurface {
         }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:408 - `Geom_BezierSurface::UReverse()`
     /// Changes the orientation of this Bezier surface in the
     /// u  parametric direction. The bounds of the
     /// surface are not changed, but the given parametric
@@ -5057,6 +5320,7 @@ impl BezierSurface {
         unsafe { crate::ffi::Geom_BezierSurface_u_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:416 - `Geom_BezierSurface::UReversedParameter()`
     /// Computes the u (or v) parameter on the modified
     /// surface, produced by reversing its u (or v) parametric
     /// direction, for any point of u parameter U (or of v
@@ -5067,6 +5331,7 @@ impl BezierSurface {
         unsafe { crate::ffi::Geom_BezierSurface_u_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:423 - `Geom_BezierSurface::VReverse()`
     /// Changes the orientation of this Bezier surface in the
     /// v parametric direction. The bounds of the
     /// surface are not changed, but the given parametric
@@ -5076,6 +5341,7 @@ impl BezierSurface {
         unsafe { crate::ffi::Geom_BezierSurface_v_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:431 - `Geom_BezierSurface::VReversedParameter()`
     /// Computes the u (or v) parameter on the modified
     /// surface, produced by reversing its u (or v) parametric
     /// direction, for any point of u parameter U (or of v
@@ -5086,6 +5352,7 @@ impl BezierSurface {
         unsafe { crate::ffi::Geom_BezierSurface_v_reversed_parameter(self as *const Self, V) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:437 - `Geom_BezierSurface::Bounds()`
     /// Returns the parametric bounds U1, U2, V1 and V2 of
     /// this Bezier surface.
     /// In the case of a Bezier surface, this function returns
@@ -5094,6 +5361,7 @@ impl BezierSurface {
         unsafe { crate::ffi::Geom_BezierSurface_bounds(self as *const Self, U1, U2, V1, V2) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:444 - `Geom_BezierSurface::Continuity()`
     /// Returns the continuity of the surface CN : the order of
     /// continuity is infinite.
     pub fn continuity(&self) -> crate::geom_abs::Shape {
@@ -5105,10 +5373,12 @@ impl BezierSurface {
         }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:446 - `Geom_BezierSurface::D0()`
     pub fn d0(&self, U: f64, V: f64, P: &mut crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::Geom_BezierSurface_d0(self as *const Self, U, V, P) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:450 - `Geom_BezierSurface::D1()`
     pub fn d1(
         &self,
         U: f64,
@@ -5120,6 +5390,7 @@ impl BezierSurface {
         unsafe { crate::ffi::Geom_BezierSurface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:456 - `Geom_BezierSurface::D2()`
     pub fn d2(
         &self,
         U: f64,
@@ -5146,6 +5417,7 @@ impl BezierSurface {
         }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:473 - `Geom_BezierSurface::D3()`
     /// Computes P, the point of parameters (U, V) of this Bezier surface, and
     /// - one or more of the following sets of vectors:
     /// - D1U and D1V, the first derivative vectors at this point,
@@ -5188,6 +5460,7 @@ impl BezierSurface {
         }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:493 - `Geom_BezierSurface::DN()`
     /// Computes the derivative of order Nu in the u
     /// parametric direction, and Nv in the v parametric
     /// direction, at the point of parameters (U, V) of this Bezier surface.
@@ -5207,16 +5480,19 @@ impl BezierSurface {
         }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:499 - `Geom_BezierSurface::NbUPoles()`
     /// Returns the number of poles in the U direction.
     pub fn nb_u_poles(&self) -> i32 {
         unsafe { crate::ffi::Geom_BezierSurface_nb_u_poles(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:502 - `Geom_BezierSurface::NbVPoles()`
     /// Returns the number of poles in the V direction.
     pub fn nb_v_poles(&self) -> i32 {
         unsafe { crate::ffi::Geom_BezierSurface_nb_v_poles(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:507 - `Geom_BezierSurface::Pole()`
     /// Returns the pole of range UIndex, VIndex
     /// Raised if UIndex < 1 or UIndex > NbUPoles, or
     /// VIndex < 1 or VIndex > NbVPoles.
@@ -5224,6 +5500,7 @@ impl BezierSurface {
         unsafe { &*(crate::ffi::Geom_BezierSurface_pole(self as *const Self, UIndex, VIndex)) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:514 - `Geom_BezierSurface::Poles()`
     /// Returns the poles of the Bezier surface.
     ///
     /// Raised if the length of P in the U an V direction is not equal to
@@ -5232,17 +5509,20 @@ impl BezierSurface {
         unsafe { crate::ffi::Geom_BezierSurface_poles_array2ofpnt(self as *const Self, P) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:517 - `Geom_BezierSurface::Poles()`
     /// Returns the poles of the Bezier surface.
     pub fn poles(&self) -> &crate::ffi::TColgp_Array2OfPnt {
         unsafe { &*(crate::ffi::Geom_BezierSurface_poles(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:521 - `Geom_BezierSurface::UDegree()`
     /// Returns the degree of the surface in the U direction it is
     /// NbUPoles - 1
     pub fn u_degree(&self) -> i32 {
         unsafe { crate::ffi::Geom_BezierSurface_u_degree(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:525 - `Geom_BezierSurface::UIso()`
     /// Computes the U isoparametric curve. For a Bezier surface the
     /// UIso curve is a Bezier curve.
     pub fn u_iso(&self, U: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
@@ -5251,12 +5531,14 @@ impl BezierSurface {
         }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:529 - `Geom_BezierSurface::VDegree()`
     /// Returns the degree of the surface in the V direction it is
     /// NbVPoles - 1
     pub fn v_degree(&self) -> i32 {
         unsafe { crate::ffi::Geom_BezierSurface_v_degree(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:533 - `Geom_BezierSurface::VIso()`
     /// Computes the V isoparametric curve. For a Bezier surface the
     /// VIso  curve is a Bezier curve.
     pub fn v_iso(&self, V: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
@@ -5265,6 +5547,7 @@ impl BezierSurface {
         }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:539 - `Geom_BezierSurface::Weight()`
     /// Returns the weight of range UIndex, VIndex
     ///
     /// Raised if UIndex < 1 or UIndex > NbUPoles, or
@@ -5273,6 +5556,7 @@ impl BezierSurface {
         unsafe { crate::ffi::Geom_BezierSurface_weight(self as *const Self, UIndex, VIndex) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:559 - `Geom_BezierSurface::IsUClosed()`
     /// Returns True if the first control points row and the
     /// last control points row are identical. The tolerance
     /// criterion is Resolution from package gp.
@@ -5280,6 +5564,7 @@ impl BezierSurface {
         unsafe { crate::ffi::Geom_BezierSurface_is_u_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:564 - `Geom_BezierSurface::IsVClosed()`
     /// Returns True if the first control points column
     /// and the last control points column are identical.
     /// The tolerance criterion is Resolution from package gp.
@@ -5287,26 +5572,31 @@ impl BezierSurface {
         unsafe { crate::ffi::Geom_BezierSurface_is_v_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:567 - `Geom_BezierSurface::IsCNu()`
     /// Returns True, a Bezier surface is always  CN
     pub fn is_c_nu(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom_BezierSurface_is_c_nu(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:570 - `Geom_BezierSurface::IsCNv()`
     /// Returns True, a BezierSurface is always  CN
     pub fn is_c_nv(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom_BezierSurface_is_c_nv(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:573 - `Geom_BezierSurface::IsUPeriodic()`
     /// Returns False.
     pub fn is_u_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_BezierSurface_is_u_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:576 - `Geom_BezierSurface::IsVPeriodic()`
     /// Returns False.
     pub fn is_v_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_BezierSurface_is_v_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:584 - `Geom_BezierSurface::IsURational()`
     /// Returns False if the weights are identical in the U direction,
     /// The tolerance criterion is Resolution from package gp.
     /// Example :
@@ -5317,6 +5607,7 @@ impl BezierSurface {
         unsafe { crate::ffi::Geom_BezierSurface_is_u_rational(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:592 - `Geom_BezierSurface::IsVRational()`
     /// Returns False if the weights are identical in the V direction,
     /// The tolerance criterion is Resolution from package gp.
     /// Example :
@@ -5327,11 +5618,13 @@ impl BezierSurface {
         unsafe { crate::ffi::Geom_BezierSurface_is_v_rational(self as *const Self) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:595 - `Geom_BezierSurface::Transform()`
     /// Applies the transformation T to this Bezier surface.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_BezierSurface_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:611 - `Geom_BezierSurface::Resolution()`
     /// Computes two tolerance values for this Bezier
     /// surface, based on the given tolerance in 3D space
     /// Tolerance3D. The tolerances computed are:
@@ -5353,6 +5646,7 @@ impl BezierSurface {
         }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:616 - `Geom_BezierSurface::Copy()`
     /// Creates a new object which is a copy of this Bezier surface.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
@@ -5360,20 +5654,24 @@ impl BezierSurface {
         }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:622 - `Geom_BezierSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_BezierSurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:599 - `Geom_BezierSurface::MaxDegree()`
     /// Returns the value of the maximum polynomial degree of a
     /// Bezier surface. This value is 25.
     pub fn max_degree() -> i32 {
         unsafe { crate::ffi::Geom_BezierSurface_max_degree() }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:622 - `Geom_BezierSurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_BezierSurface_get_type_name() }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:622 - `Geom_BezierSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_BezierSurface_get_type_descriptor()) }
     }
@@ -5630,6 +5928,7 @@ impl HandleGeomBezierSurface {
 // From Geom_BoundedCurve.hxx
 // ========================
 
+/// **Source:** `Geom_BoundedCurve.hxx`:44 - `Geom_BoundedCurve`
 /// The abstract class BoundedCurve describes the
 /// common behavior of bounded curves in 3D space. A
 /// bounded curve is limited by two finite values of the
@@ -5654,6 +5953,7 @@ unsafe impl crate::CppDeletable for BoundedCurve {
 }
 
 impl BoundedCurve {
+    /// **Source:** `Geom_BoundedCurve.hxx`:49 - `Geom_BoundedCurve::EndPoint()`
     /// Returns the end point of the curve.
     pub fn end_point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
@@ -5661,6 +5961,7 @@ impl BoundedCurve {
         }
     }
 
+    /// **Source:** `Geom_BoundedCurve.hxx`:52 - `Geom_BoundedCurve::StartPoint()`
     /// Returns the start point of the curve.
     pub fn start_point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
@@ -5670,14 +5971,17 @@ impl BoundedCurve {
         }
     }
 
+    /// **Source:** `Geom_BoundedCurve.hxx`:58 - `Geom_BoundedCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_BoundedCurve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_BoundedCurve.hxx`:58 - `Geom_BoundedCurve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_BoundedCurve_get_type_name() }
     }
 
+    /// **Source:** `Geom_BoundedCurve.hxx`:58 - `Geom_BoundedCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_BoundedCurve_get_type_descriptor()) }
     }
@@ -5975,6 +6279,7 @@ impl HandleGeomBoundedCurve {
 // From Geom_BoundedSurface.hxx
 // ========================
 
+/// **Source:** `Geom_BoundedSurface.hxx`:53 - `Geom_BoundedSurface`
 /// The root class for bounded surfaces in 3D space. A
 /// bounded surface is defined by a rectangle in its 2D parametric space, i.e.
 /// - its u parameter, which ranges between two finite
@@ -6009,14 +6314,17 @@ unsafe impl crate::CppDeletable for BoundedSurface {
 }
 
 impl BoundedSurface {
+    /// **Source:** `Geom_BoundedSurface.hxx`:57 - `Geom_BoundedSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_BoundedSurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_BoundedSurface.hxx`:57 - `Geom_BoundedSurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_BoundedSurface_get_type_name() }
     }
 
+    /// **Source:** `Geom_BoundedSurface.hxx`:57 - `Geom_BoundedSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_BoundedSurface_get_type_descriptor()) }
     }
@@ -6438,6 +6746,7 @@ impl HandleGeomBoundedSurface {
 // From Geom_CartesianPoint.hxx
 // ========================
 
+/// **Source:** `Geom_CartesianPoint.hxx`:34 - `Geom_CartesianPoint`
 /// Describes a point in 3D space. A
 /// Geom_CartesianPoint is defined by a gp_Pnt point,
 /// with its three Cartesian coordinates X, Y and Z.
@@ -6450,46 +6759,55 @@ unsafe impl crate::CppDeletable for CartesianPoint {
 }
 
 impl CartesianPoint {
+    /// **Source:** `Geom_CartesianPoint.hxx`:39 - `Geom_CartesianPoint::Geom_CartesianPoint()`
     /// Returns a transient copy of P.
     pub fn new_pnt(P: &crate::ffi::gp_Pnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_CartesianPoint_ctor_pnt(P)) }
     }
 
+    /// **Source:** `Geom_CartesianPoint.hxx`:42 - `Geom_CartesianPoint::Geom_CartesianPoint()`
     /// Constructs a point defined by its three Cartesian coordinates X, Y and Z.
     pub fn new_real3(X: f64, Y: f64, Z: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_CartesianPoint_ctor_real3(X, Y, Z)) }
     }
 
+    /// **Source:** `Geom_CartesianPoint.hxx`:47 - `Geom_CartesianPoint::SetCoord()`
     /// Assigns the coordinates X, Y and Z to this point.
     pub fn set_coord(&mut self, X: f64, Y: f64, Z: f64) {
         unsafe { crate::ffi::Geom_CartesianPoint_set_coord(self as *mut Self, X, Y, Z) }
     }
 
+    /// **Source:** `Geom_CartesianPoint.hxx`:52 - `Geom_CartesianPoint::SetPnt()`
     /// Set <me> to P.X(), P.Y(), P.Z() coordinates.
     pub fn set_pnt(&mut self, P: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::Geom_CartesianPoint_set_pnt(self as *mut Self, P) }
     }
 
+    /// **Source:** `Geom_CartesianPoint.hxx`:55 - `Geom_CartesianPoint::SetX()`
     /// Changes the X coordinate of me.
     pub fn set_x(&mut self, X: f64) {
         unsafe { crate::ffi::Geom_CartesianPoint_set_x(self as *mut Self, X) }
     }
 
+    /// **Source:** `Geom_CartesianPoint.hxx`:58 - `Geom_CartesianPoint::SetY()`
     /// Changes the Y coordinate of me.
     pub fn set_y(&mut self, Y: f64) {
         unsafe { crate::ffi::Geom_CartesianPoint_set_y(self as *mut Self, Y) }
     }
 
+    /// **Source:** `Geom_CartesianPoint.hxx`:61 - `Geom_CartesianPoint::SetZ()`
     /// Changes the Z coordinate of me.
     pub fn set_z(&mut self, Z: f64) {
         unsafe { crate::ffi::Geom_CartesianPoint_set_z(self as *mut Self, Z) }
     }
 
+    /// **Source:** `Geom_CartesianPoint.hxx`:64 - `Geom_CartesianPoint::Coord()`
     /// Returns the coordinates of <me>.
     pub fn coord(&self, X: &mut f64, Y: &mut f64, Z: &mut f64) {
         unsafe { crate::ffi::Geom_CartesianPoint_coord(self as *const Self, X, Y, Z) }
     }
 
+    /// **Source:** `Geom_CartesianPoint.hxx`:70 - `Geom_CartesianPoint::Pnt()`
     /// Returns a non transient cartesian point with
     /// the same coordinates as <me>.
     pub fn pnt(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
@@ -6498,26 +6816,31 @@ impl CartesianPoint {
         }
     }
 
+    /// **Source:** `Geom_CartesianPoint.hxx`:73 - `Geom_CartesianPoint::X()`
     /// Returns the X coordinate of <me>.
     pub fn x(&self) -> f64 {
         unsafe { crate::ffi::Geom_CartesianPoint_x(self as *const Self) }
     }
 
+    /// **Source:** `Geom_CartesianPoint.hxx`:76 - `Geom_CartesianPoint::Y()`
     /// Returns the Y coordinate of <me>.
     pub fn y(&self) -> f64 {
         unsafe { crate::ffi::Geom_CartesianPoint_y(self as *const Self) }
     }
 
+    /// **Source:** `Geom_CartesianPoint.hxx`:79 - `Geom_CartesianPoint::Z()`
     /// Returns the Z coordinate of <me>.
     pub fn z(&self) -> f64 {
         unsafe { crate::ffi::Geom_CartesianPoint_z(self as *const Self) }
     }
 
+    /// **Source:** `Geom_CartesianPoint.hxx`:82 - `Geom_CartesianPoint::Transform()`
     /// Applies the transformation T to this point.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_CartesianPoint_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_CartesianPoint.hxx`:85 - `Geom_CartesianPoint::Copy()`
     /// Creates a new object which is a copy of this point.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
@@ -6525,14 +6848,17 @@ impl CartesianPoint {
         }
     }
 
+    /// **Source:** `Geom_CartesianPoint.hxx`:87 - `Geom_CartesianPoint::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_CartesianPoint_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_CartesianPoint.hxx`:87 - `Geom_CartesianPoint::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_CartesianPoint_get_type_name() }
     }
 
+    /// **Source:** `Geom_CartesianPoint.hxx`:87 - `Geom_CartesianPoint::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_CartesianPoint_get_type_descriptor()) }
     }
@@ -6710,6 +7036,7 @@ impl HandleGeomCartesianPoint {
 // From Geom_Circle.hxx
 // ========================
 
+/// **Source:** `Geom_Circle.hxx`:64 - `Geom_Circle`
 /// Describes a circle in 3D space.
 /// A circle is defined by its radius and, as with any conic
 /// curve, is positioned in space with a right-handed
@@ -6748,11 +7075,13 @@ unsafe impl crate::CppDeletable for Circle {
 }
 
 impl Circle {
+    /// **Source:** `Geom_Circle.hxx`:69 - `Geom_Circle::Geom_Circle()`
     /// Constructs a circle by conversion of the gp_Circ circle C.
     pub fn new_circ(C: &crate::ffi::gp_Circ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Circle_ctor_circ(C)) }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:79 - `Geom_Circle::Geom_Circle()`
     /// Constructs a circle of radius Radius, where A2 locates the circle and
     /// defines its orientation in 3D space such that:
     /// - the center of the circle is the origin of A2,
@@ -6765,11 +7094,13 @@ impl Circle {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Circle_ctor_ax2_real(A2, Radius)) }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:82 - `Geom_Circle::SetCirc()`
     /// Set <me> so that <me> has the same geometric properties as C.
     pub fn set_circ(&mut self, C: &crate::ffi::gp_Circ) {
         unsafe { crate::ffi::Geom_Circle_set_circ(self as *mut Self, C) }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:87 - `Geom_Circle::SetRadius()`
     /// Assigns the value R to the radius of this circle.
     /// Note: it is possible to have a circle with a radius equal to 0.0.
     /// Exceptions - Standard_ConstructionError if R is negative.
@@ -6777,17 +7108,20 @@ impl Circle {
         unsafe { crate::ffi::Geom_Circle_set_radius(self as *mut Self, R) }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:91 - `Geom_Circle::Circ()`
     /// returns the non transient circle from gp with the same
     /// geometric properties as <me>.
     pub fn circ(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Circle_circ(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:94 - `Geom_Circle::Radius()`
     /// Returns the radius of this circle.
     pub fn radius(&self) -> f64 {
         unsafe { crate::ffi::Geom_Circle_radius(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:99 - `Geom_Circle::ReversedParameter()`
     /// Computes the parameter on the reversed circle for
     /// the point of parameter U on this circle.
     /// For a circle, the returned value is: 2.*Pi - U.
@@ -6795,11 +7129,13 @@ impl Circle {
         unsafe { crate::ffi::Geom_Circle_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:102 - `Geom_Circle::Eccentricity()`
     /// Returns the eccentricity  e = 0 for a circle.
     pub fn eccentricity(&self) -> f64 {
         unsafe { crate::ffi::Geom_Circle_eccentricity(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:107 - `Geom_Circle::FirstParameter()`
     /// Returns the value of the first parameter of this
     /// circle. This is  0.0, which gives the start point of this circle, or
     /// The start point and end point of a circle are coincident.
@@ -6807,6 +7143,7 @@ impl Circle {
         unsafe { crate::ffi::Geom_Circle_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:112 - `Geom_Circle::LastParameter()`
     /// Returns the value of the last parameter of this
     /// circle. This is 2.*Pi, which gives the end point of this circle.
     /// The start point and end point of a circle are coincident.
@@ -6814,16 +7151,19 @@ impl Circle {
         unsafe { crate::ffi::Geom_Circle_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:115 - `Geom_Circle::IsClosed()`
     /// returns True.
     pub fn is_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_Circle_is_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:118 - `Geom_Circle::IsPeriodic()`
     /// returns True.
     pub fn is_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_Circle_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:124 - `Geom_Circle::D0()`
     /// Returns in P the point of parameter U.
     /// P = C + R * Cos (U) * XDir + R * Sin (U) * YDir
     /// where C is the center of the circle , XDir the XDirection and
@@ -6832,11 +7172,13 @@ impl Circle {
         unsafe { crate::ffi::Geom_Circle_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:127 - `Geom_Circle::D1()`
     /// Returns the point P of parameter U and the first derivative V1.
     pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V1: &mut crate::ffi::gp_Vec) {
         unsafe { crate::ffi::Geom_Circle_d1(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:131 - `Geom_Circle::D2()`
     /// Returns the point P of parameter U, the first and second
     /// derivatives V1 and V2.
     pub fn d2(
@@ -6849,6 +7191,7 @@ impl Circle {
         unsafe { crate::ffi::Geom_Circle_d2(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:138 - `Geom_Circle::D3()`
     /// Returns the point P of parameter u, the first second and third
     /// derivatives V1 V2 and V3.
     pub fn d3(
@@ -6862,6 +7205,7 @@ impl Circle {
         unsafe { crate::ffi::Geom_Circle_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:147 - `Geom_Circle::DN()`
     /// The returned vector gives the value of the derivative for the
     /// order of derivation N.
     /// Raised if N < 1.
@@ -6869,24 +7213,29 @@ impl Circle {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Circle_dn(self as *const Self, U, N)) }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:151 - `Geom_Circle::Transform()`
     /// Applies the transformation T to this circle.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_Circle_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:154 - `Geom_Circle::Copy()`
     /// Creates a new object which is a copy of this circle.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Circle_copy(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:160 - `Geom_Circle::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Circle_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:160 - `Geom_Circle::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_Circle_get_type_name() }
     }
 
+    /// **Source:** `Geom_Circle.hxx`:160 - `Geom_Circle::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Circle_get_type_descriptor()) }
     }
@@ -7167,6 +7516,7 @@ impl HandleGeomCircle {
 // From Geom_Conic.hxx
 // ========================
 
+/// **Source:** `Geom_Conic.hxx`:49 - `Geom_Conic`
 /// The abstract class Conic describes the common
 /// behavior of conic curves in 3D space and, in
 /// particular, their general characteristics. The Geom
@@ -7199,6 +7549,7 @@ unsafe impl crate::CppDeletable for Conic {
 }
 
 impl Conic {
+    /// **Source:** `Geom_Conic.hxx`:56 - `Geom_Conic::SetAxis()`
     /// Changes the orientation of the conic's plane. The normal
     /// axis to the plane is A1. The XAxis and the YAxis are recomputed.
     ///
@@ -7207,22 +7558,26 @@ impl Conic {
         unsafe { crate::ffi::Geom_Conic_set_axis(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `Geom_Conic.hxx`:59 - `Geom_Conic::SetLocation()`
     /// changes the location point of the conic.
     pub fn set_location(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::Geom_Conic_set_location(self as *mut Self, theP) }
     }
 
+    /// **Source:** `Geom_Conic.hxx`:62 - `Geom_Conic::SetPosition()`
     /// changes the local coordinate system of the conic.
     pub fn set_position(&mut self, theA2: &crate::ffi::gp_Ax2) {
         unsafe { crate::ffi::Geom_Conic_set_position(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `Geom_Conic.hxx`:66 - `Geom_Conic::Axis()`
     /// Returns the "main Axis" of this conic. This axis is
     /// normal to the plane of the conic.
     pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
         unsafe { &*(crate::ffi::Geom_Conic_axis(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Conic.hxx`:71 - `Geom_Conic::Location()`
     /// Returns the location point of the conic.
     /// For the circle, the ellipse and the hyperbola it is the center of
     /// the conic. For the parabola it is the Apex of the parabola.
@@ -7230,6 +7585,7 @@ impl Conic {
         unsafe { &*(crate::ffi::Geom_Conic_location(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Conic.hxx`:78 - `Geom_Conic::Position()`
     /// Returns the local coordinates system of the conic.
     /// The main direction of the Axis2Placement is normal to the
     /// plane of the conic. The X direction of the Axis2placement
@@ -7239,6 +7595,7 @@ impl Conic {
         unsafe { &*(crate::ffi::Geom_Conic_position(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Conic.hxx`:88 - `Geom_Conic::Eccentricity()`
     /// Returns the eccentricity value of the conic e.
     /// e = 0 for a circle
     /// 0 < e < 1 for an ellipse  (e = 0 if MajorRadius = MinorRadius)
@@ -7251,6 +7608,7 @@ impl Conic {
         unsafe { crate::ffi::Geom_Conic_eccentricity(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Conic.hxx`:94 - `Geom_Conic::XAxis()`
     /// Returns the XAxis of the conic.
     /// This axis defines the origin of parametrization of the conic.
     /// This axis is perpendicular to the Axis of the conic.
@@ -7259,6 +7617,7 @@ impl Conic {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Conic_x_axis(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Conic.hxx`:99 - `Geom_Conic::YAxis()`
     /// Returns the YAxis of the conic.
     /// The YAxis is perpendicular to the Xaxis.
     /// This axis and the Xaxis define the plane of the conic.
@@ -7266,18 +7625,21 @@ impl Conic {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Conic_y_axis(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Conic.hxx`:103 - `Geom_Conic::Reverse()`
     /// Reverses the direction of parameterization of <me>.
     /// The local coordinate system of the conic is modified.
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::Geom_Conic_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_Conic.hxx`:107 - `Geom_Conic::ReversedParameter()`
     /// Returns the  parameter on the  reversed  curve for
     /// the point of parameter U on <me>.
     pub fn reversed_parameter(&self, U: f64) -> f64 {
         unsafe { crate::ffi::Geom_Conic_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_Conic.hxx`:111 - `Geom_Conic::Continuity()`
     /// The continuity of the conic is Cn.
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         unsafe {
@@ -7286,20 +7648,24 @@ impl Conic {
         }
     }
 
+    /// **Source:** `Geom_Conic.hxx`:115 - `Geom_Conic::IsCN()`
     /// Returns True.
     /// Raised if N < 0.
     pub fn is_cn(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom_Conic_is_cn(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_Conic.hxx`:121 - `Geom_Conic::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Conic_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Conic.hxx`:121 - `Geom_Conic::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_Conic_get_type_name() }
     }
 
+    /// **Source:** `Geom_Conic.hxx`:121 - `Geom_Conic::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Conic_get_type_descriptor()) }
     }
@@ -7566,6 +7932,7 @@ impl HandleGeomConic {
 // From Geom_ConicalSurface.hxx
 // ========================
 
+/// **Source:** `Geom_ConicalSurface.hxx`:75 - `Geom_ConicalSurface`
 /// Describes a cone.
 /// A cone is defined by the half-angle (can be negative) at its apex, and
 /// is positioned in space by a coordinate system (a
@@ -7613,6 +7980,7 @@ unsafe impl crate::CppDeletable for ConicalSurface {
 }
 
 impl ConicalSurface {
+    /// **Source:** `Geom_ConicalSurface.hxx`:94 - `Geom_ConicalSurface::Geom_ConicalSurface()`
     /// A3 defines the local coordinate system of the conical surface.
     /// Ang is the conical surface semi-angle. Its absolute value is in range
     /// ]0, PI/2[.
@@ -7636,16 +8004,19 @@ impl ConicalSurface {
         }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:99 - `Geom_ConicalSurface::Geom_ConicalSurface()`
     /// Creates a ConicalSurface from a non transient gp_Cone.
     pub fn new_cone(C: &crate::ffi::gp_Cone) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_ConicalSurface_ctor_cone(C)) }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:102 - `Geom_ConicalSurface::SetCone()`
     /// Set <me> so that <me> has the same geometric properties as C.
     pub fn set_cone(&mut self, C: &crate::ffi::gp_Cone) {
         unsafe { crate::ffi::Geom_ConicalSurface_set_cone(self as *mut Self, C) }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:107 - `Geom_ConicalSurface::SetRadius()`
     /// Changes the radius of the conical surface in the placement plane (Z = 0, V = 0).
     /// The local coordinate system is not modified.
     /// Raised if R < 0.0
@@ -7653,6 +8024,7 @@ impl ConicalSurface {
         unsafe { crate::ffi::Geom_ConicalSurface_set_radius(self as *mut Self, R) }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:114 - `Geom_ConicalSurface::SetSemiAngle()`
     /// Changes the semi angle of the conical surface.
     /// Semi-angle can be negative. Its absolute value
     /// Abs(Ang) is in range ]0,PI/2[.
@@ -7662,6 +8034,7 @@ impl ConicalSurface {
         unsafe { crate::ffi::Geom_ConicalSurface_set_semi_angle(self as *mut Self, Ang) }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:117 - `Geom_ConicalSurface::Cone()`
     /// Returns a non transient cone with the same geometric properties as <me>.
     pub fn cone(&self) -> crate::OwnedPtr<crate::ffi::gp_Cone> {
         unsafe {
@@ -7669,11 +8042,13 @@ impl ConicalSurface {
         }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:120 - `Geom_ConicalSurface::UReversedParameter()`
     /// Eeturn 2.PI - U.
     pub fn u_reversed_parameter(&self, U: f64) -> f64 {
         unsafe { crate::ffi::Geom_ConicalSurface_u_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:127 - `Geom_ConicalSurface::VReversedParameter()`
     /// Computes the u (or v) parameter on the modified surface,
     /// when reversing its u (or v) parametric direction,
     /// for any point of u parameter U (or of v parameter V) on this cone.
@@ -7683,6 +8058,7 @@ impl ConicalSurface {
         unsafe { crate::ffi::Geom_ConicalSurface_v_reversed_parameter(self as *const Self, V) }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:135 - `Geom_ConicalSurface::VReverse()`
     /// Changes the orientation of this cone in the v parametric direction.
     /// The bounds of the surface are not changed but the v parametric direction is reversed.
     /// As a consequence, for a cone:
@@ -7693,6 +8069,7 @@ impl ConicalSurface {
         unsafe { crate::ffi::Geom_ConicalSurface_v_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:151 - `Geom_ConicalSurface::TransformParameters()`
     /// Computes the parameters on the transformed surface for
     /// the transform of the point of parameters U,V on <me>.
     /// @code
@@ -7713,6 +8090,7 @@ impl ConicalSurface {
         }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:169 - `Geom_ConicalSurface::ParametricTransformation()`
     /// Returns a 2d transformation used to find the new
     /// parameters of a point on the transformed surface.
     /// @code
@@ -7739,6 +8117,7 @@ impl ConicalSurface {
         }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:176 - `Geom_ConicalSurface::Apex()`
     /// Computes the apex of this cone. It is on the negative
     /// side of the axis of revolution of this cone if the
     /// half-angle at the apex is positive, and on the positive
@@ -7749,6 +8128,7 @@ impl ConicalSurface {
         }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:181 - `Geom_ConicalSurface::Bounds()`
     /// The conical surface is infinite in the V direction so
     /// V1 = Realfirst from Standard and V2 = RealLast.
     /// U1 = 0 and U2 = 2*PI.
@@ -7756,6 +8136,7 @@ impl ConicalSurface {
         unsafe { crate::ffi::Geom_ConicalSurface_bounds(self as *const Self, U1, U2, V1, V2) }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:193 - `Geom_ConicalSurface::Coefficients()`
     /// Returns the coefficients of the implicit equation of the
     /// quadric in the absolute cartesian coordinate system :
     /// These coefficients are normalized.
@@ -7793,6 +8174,7 @@ impl ConicalSurface {
         }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:212 - `Geom_ConicalSurface::RefRadius()`
     /// Returns the reference radius of this cone.
     /// The reference radius is the radius of the circle formed
     /// by the intersection of this cone and its reference
@@ -7805,32 +8187,38 @@ impl ConicalSurface {
         unsafe { crate::ffi::Geom_ConicalSurface_ref_radius(self as *const Self) }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:216 - `Geom_ConicalSurface::SemiAngle()`
     /// Returns the semi-angle at the apex of this cone.
     /// Attention! Semi-angle can be negative.
     pub fn semi_angle(&self) -> f64 {
         unsafe { crate::ffi::Geom_ConicalSurface_semi_angle(self as *const Self) }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:219 - `Geom_ConicalSurface::IsUClosed()`
     /// returns True.
     pub fn is_u_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_ConicalSurface_is_u_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:222 - `Geom_ConicalSurface::IsVClosed()`
     /// returns False.
     pub fn is_v_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_ConicalSurface_is_v_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:225 - `Geom_ConicalSurface::IsUPeriodic()`
     /// Returns True.
     pub fn is_u_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_ConicalSurface_is_u_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:228 - `Geom_ConicalSurface::IsVPeriodic()`
     /// Returns False.
     pub fn is_v_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_ConicalSurface_is_v_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:234 - `Geom_ConicalSurface::UIso()`
     /// Builds the U isoparametric line of this cone.
     /// The origin of this line is on the reference plane of this cone
     /// (i.e. the plane defined by the origin, "X Direction"
@@ -7841,6 +8229,7 @@ impl ConicalSurface {
         }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:245 - `Geom_ConicalSurface::VIso()`
     /// Builds the V isoparametric circle of this cone.
     /// It is the circle on this cone, located in the plane of Z
     /// coordinate V*cos(Semi-Angle) in the local coordinate system of this cone.
@@ -7856,6 +8245,7 @@ impl ConicalSurface {
         }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:255 - `Geom_ConicalSurface::D0()`
     /// Computes the point P (U, V) on the surface.
     /// @code
     /// P (U, V) = Loc +
@@ -7868,6 +8258,7 @@ impl ConicalSurface {
         unsafe { crate::ffi::Geom_ConicalSurface_d0(self as *const Self, U, V, P) }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:260 - `Geom_ConicalSurface::D1()`
     /// Computes the current point and the first derivatives in the directions U and V.
     pub fn d1(
         &self,
@@ -7880,6 +8271,7 @@ impl ConicalSurface {
         unsafe { crate::ffi::Geom_ConicalSurface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:267 - `Geom_ConicalSurface::D2()`
     /// Computes the current point, the first and the second derivatives in the directions U and V.
     pub fn d2(
         &self,
@@ -7907,6 +8299,7 @@ impl ConicalSurface {
         }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:278 - `Geom_ConicalSurface::D3()`
     /// Computes the current point, the first,the second and the third
     /// derivatives in the directions U and V.
     pub fn d3(
@@ -7943,6 +8336,7 @@ impl ConicalSurface {
         }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:298 - `Geom_ConicalSurface::DN()`
     /// Computes the derivative of order Nu in the u
     /// parametric direction, and Nv in the v parametric
     /// direction at the point of parameters (U, V) of this cone.
@@ -7962,11 +8356,13 @@ impl ConicalSurface {
         }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:304 - `Geom_ConicalSurface::Transform()`
     /// Applies the transformation T to this cone.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_ConicalSurface_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:307 - `Geom_ConicalSurface::Copy()`
     /// Creates a new object which is a copy of this cone.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
@@ -7974,14 +8370,17 @@ impl ConicalSurface {
         }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:312 - `Geom_ConicalSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_ConicalSurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:312 - `Geom_ConicalSurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_ConicalSurface_get_type_name() }
     }
 
+    /// **Source:** `Geom_ConicalSurface.hxx`:312 - `Geom_ConicalSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_ConicalSurface_get_type_descriptor()) }
     }
@@ -8268,6 +8667,7 @@ impl HandleGeomConicalSurface {
 // From Geom_Curve.hxx
 // ========================
 
+/// **Source:** `Geom_Curve.hxx`:59 - `Geom_Curve`
 /// The abstract class Curve describes the common
 /// behavior of curves in 3D space. The Geom package
 /// provides numerous concrete classes of derived
@@ -8302,6 +8702,7 @@ unsafe impl crate::CppDeletable for Curve {
 }
 
 impl Curve {
+    /// **Source:** `Geom_Curve.hxx`:69 - `Geom_Curve::Reverse()`
     /// Changes the direction of parametrization of <me>.
     /// The "FirstParameter" and the "LastParameter" are not changed
     /// but the orientation  of the curve is modified. If the curve
@@ -8312,6 +8713,7 @@ impl Curve {
         unsafe { crate::ffi::Geom_Curve_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_Curve.hxx`:79 - `Geom_Curve::ReversedParameter()`
     /// Returns the  parameter on the  reversed  curve for
     /// the point of parameter U on <me>.
     ///
@@ -8324,6 +8726,7 @@ impl Curve {
         unsafe { crate::ffi::Geom_Curve_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_Curve.hxx`:93 - `Geom_Curve::TransformedParameter()`
     /// Returns the  parameter on the  transformed  curve for
     /// the transform of the point of parameter U on <me>.
     ///
@@ -8340,6 +8743,7 @@ impl Curve {
         unsafe { crate::ffi::Geom_Curve_transformed_parameter(self as *const Self, U, T) }
     }
 
+    /// **Source:** `Geom_Curve.hxx`:109 - `Geom_Curve::ParametricTransformation()`
     /// Returns a  coefficient to compute the parameter on
     /// the transformed  curve  for  the transform  of the
     /// point on <me>.
@@ -8357,11 +8761,13 @@ impl Curve {
         unsafe { crate::ffi::Geom_Curve_parametric_transformation(self as *const Self, T) }
     }
 
+    /// **Source:** `Geom_Curve.hxx`:112 - `Geom_Curve::Reversed()`
     /// Returns a copy of <me> reversed.
     pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Curve_reversed(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Curve.hxx`:118 - `Geom_Curve::FirstParameter()`
     /// Returns the value of the first parameter.
     /// Warnings :
     /// It can be RealFirst from package Standard
@@ -8370,6 +8776,7 @@ impl Curve {
         unsafe { crate::ffi::Geom_Curve_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Curve.hxx`:124 - `Geom_Curve::LastParameter()`
     /// Returns the value of the last parameter.
     /// Warnings :
     /// It can be RealLast from package Standard
@@ -8378,6 +8785,7 @@ impl Curve {
         unsafe { crate::ffi::Geom_Curve_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Curve.hxx`:134 - `Geom_Curve::IsClosed()`
     /// Returns true if the curve is closed.
     /// Some curves such as circle are always closed, others such as line
     /// are never closed (by definition).
@@ -8390,6 +8798,7 @@ impl Curve {
         unsafe { crate::ffi::Geom_Curve_is_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Curve.hxx`:151 - `Geom_Curve::IsPeriodic()`
     /// Is the parametrization of the curve periodic ?
     /// It is possible only if the curve is closed and if the
     /// following relation is satisfied :
@@ -8409,12 +8818,14 @@ impl Curve {
         unsafe { crate::ffi::Geom_Curve_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Curve.hxx`:155 - `Geom_Curve::Period()`
     /// Returns the period of this curve.
     /// Exceptions Standard_NoSuchObject if this curve is not periodic.
     pub fn period(&self) -> f64 {
         unsafe { crate::ffi::Geom_Curve_period(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Curve.hxx`:165 - `Geom_Curve::Continuity()`
     /// It is the global continuity of the curve
     /// C0 : only geometric continuity,
     /// C1 : continuity of the first derivative all along the Curve,
@@ -8430,12 +8841,14 @@ impl Curve {
         }
     }
 
+    /// **Source:** `Geom_Curve.hxx`:169 - `Geom_Curve::IsCN()`
     /// Returns true if the degree of continuity of this curve is at least N.
     /// Exceptions -  Standard_RangeError if N is less than 0.
     pub fn is_cn(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom_Curve_is_cn(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_Curve.hxx`:180 - `Geom_Curve::D0()`
     /// Returns in P the point of parameter U.
     /// If the curve is periodic  then the returned point is P(U) with
     /// U = Ustart + (U - Uend)  where Ustart and Uend are the
@@ -8449,12 +8862,14 @@ impl Curve {
         unsafe { crate::ffi::Geom_Curve_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `Geom_Curve.hxx`:184 - `Geom_Curve::D1()`
     /// Returns the point P of parameter U and the first derivative V1.
     /// Raised if the continuity of the curve is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V1: &mut crate::ffi::gp_Vec) {
         unsafe { crate::ffi::Geom_Curve_d1(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `Geom_Curve.hxx`:189 - `Geom_Curve::D2()`
     /// Returns the point P of parameter U, the first and second
     /// derivatives V1 and V2.
     /// Raised if the continuity of the curve is not C2.
@@ -8468,6 +8883,7 @@ impl Curve {
         unsafe { crate::ffi::Geom_Curve_d2(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `Geom_Curve.hxx`:197 - `Geom_Curve::D3()`
     /// Returns the point P of parameter U, the first, the second
     /// and the third derivative.
     /// Raised if the continuity of the curve is not C3.
@@ -8482,6 +8898,7 @@ impl Curve {
         unsafe { crate::ffi::Geom_Curve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
+    /// **Source:** `Geom_Curve.hxx`:210 - `Geom_Curve::DN()`
     /// The returned vector gives the value of the derivative for the
     /// order of derivation N.
     /// Raised if the continuity of the curve is not CN.
@@ -8493,6 +8910,7 @@ impl Curve {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Curve_dn(self as *const Self, U, N)) }
     }
 
+    /// **Source:** `Geom_Curve.hxx`:221 - `Geom_Curve::Value()`
     /// Computes the point of parameter U on <me>.
     /// If the curve is periodic  then the returned point is P(U) with
     /// U = Ustart + (U - Uend)  where Ustart and Uend are the
@@ -8506,14 +8924,17 @@ impl Curve {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Curve_value(self as *const Self, U)) }
     }
 
+    /// **Source:** `Geom_Curve.hxx`:227 - `Geom_Curve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Curve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Curve.hxx`:227 - `Geom_Curve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_Curve_get_type_name() }
     }
 
+    /// **Source:** `Geom_Curve.hxx`:227 - `Geom_Curve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Curve_get_type_descriptor()) }
     }
@@ -8663,6 +9084,7 @@ impl HandleGeomCurve {
 // From Geom_CylindricalSurface.hxx
 // ========================
 
+/// **Source:** `Geom_CylindricalSurface.hxx`:68 - `Geom_CylindricalSurface`
 /// This class defines the infinite cylindrical surface.
 ///
 /// Every cylindrical surface is set by the following equation:
@@ -8703,6 +9125,7 @@ unsafe impl crate::CppDeletable for CylindricalSurface {
 }
 
 impl CylindricalSurface {
+    /// **Source:** `Geom_CylindricalSurface.hxx`:81 - `Geom_CylindricalSurface::Geom_CylindricalSurface()`
     /// A3 defines the local coordinate system of the cylindrical surface.
     /// The "ZDirection" of A3 defines the direction of the surface's axis of symmetry.
     /// At the creation the parametrization of the surface is defined
@@ -8718,22 +9141,26 @@ impl CylindricalSurface {
         }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:84 - `Geom_CylindricalSurface::Geom_CylindricalSurface()`
     /// Creates a CylindricalSurface from a non transient gp_Cylinder.
     pub fn new_cylinder(C: &crate::ffi::gp_Cylinder) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_CylindricalSurface_ctor_cylinder(C)) }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:87 - `Geom_CylindricalSurface::SetCylinder()`
     /// Set <me> so that <me> has the same geometric properties as C.
     pub fn set_cylinder(&mut self, C: &crate::ffi::gp_Cylinder) {
         unsafe { crate::ffi::Geom_CylindricalSurface_set_cylinder(self as *mut Self, C) }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:91 - `Geom_CylindricalSurface::SetRadius()`
     /// Changes the radius of the cylinder.
     /// Raised if R < 0.0
     pub fn set_radius(&mut self, R: f64) {
         unsafe { crate::ffi::Geom_CylindricalSurface_set_radius(self as *mut Self, R) }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:94 - `Geom_CylindricalSurface::Cylinder()`
     /// returns a non transient cylinder with the same geometric properties as <me>.
     pub fn cylinder(&self) -> crate::OwnedPtr<crate::ffi::gp_Cylinder> {
         unsafe {
@@ -8743,6 +9170,7 @@ impl CylindricalSurface {
         }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:99 - `Geom_CylindricalSurface::UReversedParameter()`
     /// Return the  parameter on the  Ureversed surface for
     /// the point of parameter U on <me>.
     /// Return 2.PI - U.
@@ -8750,6 +9178,7 @@ impl CylindricalSurface {
         unsafe { crate::ffi::Geom_CylindricalSurface_u_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:104 - `Geom_CylindricalSurface::VReversedParameter()`
     /// Return the  parameter on the  Vreversed surface for
     /// the point of parameter V on <me>.
     /// Return -V
@@ -8757,6 +9186,7 @@ impl CylindricalSurface {
         unsafe { crate::ffi::Geom_CylindricalSurface_v_reversed_parameter(self as *const Self, V) }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:120 - `Geom_CylindricalSurface::TransformParameters()`
     /// Computes the  parameters on the  transformed  surface for
     /// the transform of the point of parameters U,V on <me>.
     /// @code
@@ -8777,6 +9207,7 @@ impl CylindricalSurface {
         }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:138 - `Geom_CylindricalSurface::ParametricTransformation()`
     /// Returns a 2d transformation used to find the new
     /// parameters of a point on the transformed surface.
     /// @code
@@ -8805,6 +9236,7 @@ impl CylindricalSurface {
         }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:144 - `Geom_CylindricalSurface::Bounds()`
     /// The CylindricalSurface is infinite in the V direction so
     /// V1 = Realfirst, V2 = RealLast from package Standard.
     /// U1 = 0 and U2 = 2*PI.
@@ -8812,6 +9244,7 @@ impl CylindricalSurface {
         unsafe { crate::ffi::Geom_CylindricalSurface_bounds(self as *const Self, U1, U2, V1, V2) }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:155 - `Geom_CylindricalSurface::Coefficients()`
     /// Returns the coefficients of the implicit equation of the quadric
     /// in the absolute cartesian coordinate system :
     /// These coefficients are normalized.
@@ -8848,31 +9281,37 @@ impl CylindricalSurface {
         }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:167 - `Geom_CylindricalSurface::Radius()`
     /// Returns the radius of this cylinder.
     pub fn radius(&self) -> f64 {
         unsafe { crate::ffi::Geom_CylindricalSurface_radius(self as *const Self) }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:170 - `Geom_CylindricalSurface::IsUClosed()`
     /// Returns True.
     pub fn is_u_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_CylindricalSurface_is_u_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:173 - `Geom_CylindricalSurface::IsVClosed()`
     /// Returns False.
     pub fn is_v_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_CylindricalSurface_is_v_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:176 - `Geom_CylindricalSurface::IsUPeriodic()`
     /// Returns True.
     pub fn is_u_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_CylindricalSurface_is_u_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:179 - `Geom_CylindricalSurface::IsVPeriodic()`
     /// Returns False.
     pub fn is_v_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_CylindricalSurface_is_v_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:184 - `Geom_CylindricalSurface::UIso()`
     /// The UIso curve is a Line. The location point of this line is
     /// on the placement plane (XAxis, YAxis) of the surface.
     /// This line is parallel to the axis of symmetry of the surface.
@@ -8885,6 +9324,7 @@ impl CylindricalSurface {
         }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:189 - `Geom_CylindricalSurface::VIso()`
     /// The VIso curve is a circle. The start point of this circle
     /// (U = 0) is defined with the "XAxis" of the surface.
     /// The center of the circle is on the symmetry axis.
@@ -8897,6 +9337,7 @@ impl CylindricalSurface {
         }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:197 - `Geom_CylindricalSurface::D0()`
     /// Computes the  point P (U, V) on the surface.
     /// P (U, V) = Loc + Radius * (cos (U) * XDir + sin (U) * YDir) +
     /// V * ZDir
@@ -8907,6 +9348,7 @@ impl CylindricalSurface {
         unsafe { crate::ffi::Geom_CylindricalSurface_d0(self as *const Self, U, V, P) }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:203 - `Geom_CylindricalSurface::D1()`
     /// Computes the current point and the first derivatives in the
     /// directions U and V.
     pub fn d1(
@@ -8920,6 +9362,7 @@ impl CylindricalSurface {
         unsafe { crate::ffi::Geom_CylindricalSurface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:211 - `Geom_CylindricalSurface::D2()`
     /// Computes the current point, the first and the second derivatives
     /// in the directions U and V.
     pub fn d2(
@@ -8948,6 +9391,7 @@ impl CylindricalSurface {
         }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:222 - `Geom_CylindricalSurface::D3()`
     /// Computes the current point, the first, the second and the
     /// third   derivatives in the directions U and V.
     pub fn d3(
@@ -8984,6 +9428,7 @@ impl CylindricalSurface {
         }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:238 - `Geom_CylindricalSurface::DN()`
     /// Computes the derivative of order Nu in the direction u and Nv
     /// in the direction v.
     /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
@@ -8999,11 +9444,13 @@ impl CylindricalSurface {
         }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:244 - `Geom_CylindricalSurface::Transform()`
     /// Applies the transformation T to this cylinder.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_CylindricalSurface_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:247 - `Geom_CylindricalSurface::Copy()`
     /// Creates a new object which is a copy of this cylinder.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
@@ -9011,14 +9458,17 @@ impl CylindricalSurface {
         }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:253 - `Geom_CylindricalSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_CylindricalSurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:253 - `Geom_CylindricalSurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_CylindricalSurface_get_type_name() }
     }
 
+    /// **Source:** `Geom_CylindricalSurface.hxx`:253 - `Geom_CylindricalSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_CylindricalSurface_get_type_descriptor()) }
     }
@@ -9320,6 +9770,7 @@ impl HandleGeomCylindricalSurface {
 // From Geom_Direction.hxx
 // ========================
 
+/// **Source:** `Geom_Direction.hxx`:33 - `Geom_Direction`
 /// The class Direction specifies a vector that is never null.
 /// It is a unit vector.
 pub use crate::ffi::Geom_Direction as Direction;
@@ -9331,6 +9782,7 @@ unsafe impl crate::CppDeletable for Direction {
 }
 
 impl Direction {
+    /// **Source:** `Geom_Direction.hxx`:40 - `Geom_Direction::Geom_Direction()`
     /// Creates a unit vector with it 3 cartesian coordinates.
     ///
     /// Raised if Sqrt( X*X + Y*Y + Z*Z) <= Resolution from gp.
@@ -9338,11 +9790,13 @@ impl Direction {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Direction_ctor_real3(X, Y, Z)) }
     }
 
+    /// **Source:** `Geom_Direction.hxx`:45 - `Geom_Direction::Geom_Direction()`
     /// Creates a transient copy of <me>.
     pub fn new_dir(V: &crate::ffi::gp_Dir) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Direction_ctor_dir(V)) }
     }
 
+    /// **Source:** `Geom_Direction.hxx`:50 - `Geom_Direction::SetCoord()`
     /// Sets <me> to X,Y,Z coordinates.
     ///
     /// Raised if Sqrt( X*X + Y*Y + Z*Z) <= Resolution from gp.
@@ -9350,11 +9804,13 @@ impl Direction {
         unsafe { crate::ffi::Geom_Direction_set_coord(self as *mut Self, X, Y, Z) }
     }
 
+    /// **Source:** `Geom_Direction.hxx`:55 - `Geom_Direction::SetDir()`
     /// Converts the gp_Dir unit vector V into this unit vector.
     pub fn set_dir(&mut self, V: &crate::ffi::gp_Dir) {
         unsafe { crate::ffi::Geom_Direction_set_dir(self as *mut Self, V) }
     }
 
+    /// **Source:** `Geom_Direction.hxx`:60 - `Geom_Direction::SetX()`
     /// Changes the X coordinate of <me>.
     ///
     /// Raised if Sqrt( X*X + Y*Y + Z*Z) <= Resolution from gp.
@@ -9362,6 +9818,7 @@ impl Direction {
         unsafe { crate::ffi::Geom_Direction_set_x(self as *mut Self, X) }
     }
 
+    /// **Source:** `Geom_Direction.hxx`:65 - `Geom_Direction::SetY()`
     /// Changes the Y coordinate of <me>.
     ///
     /// Raised if Sqrt( X*X + Y*Y + Z*Z) <= Resolution from gp.
@@ -9369,6 +9826,7 @@ impl Direction {
         unsafe { crate::ffi::Geom_Direction_set_y(self as *mut Self, Y) }
     }
 
+    /// **Source:** `Geom_Direction.hxx`:70 - `Geom_Direction::SetZ()`
     /// Changes the Z coordinate of <me>.
     ///
     /// Raised if Sqrt( X*X + Y*Y + Z*Z) <= Resolution from gp.
@@ -9376,22 +9834,26 @@ impl Direction {
         unsafe { crate::ffi::Geom_Direction_set_z(self as *mut Self, Z) }
     }
 
+    /// **Source:** `Geom_Direction.hxx`:74 - `Geom_Direction::Dir()`
     /// Returns the non transient direction with the same
     /// coordinates as <me>.
     pub fn dir(&self) -> crate::OwnedPtr<crate::ffi::gp_Dir> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Direction_dir(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Direction.hxx`:77 - `Geom_Direction::Magnitude()`
     /// returns 1.0 which is the magnitude of any unit vector.
     pub fn magnitude(&self) -> f64 {
         unsafe { crate::ffi::Geom_Direction_magnitude(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Direction.hxx`:80 - `Geom_Direction::SquareMagnitude()`
     /// returns 1.0 which is the square magnitude of any unit vector.
     pub fn square_magnitude(&self) -> f64 {
         unsafe { crate::ffi::Geom_Direction_square_magnitude(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Direction.hxx`:86 - `Geom_Direction::Cross()`
     /// Computes the cross product between <me> and <Other>.
     ///
     /// Raised if the two vectors are parallel because it is
@@ -9400,6 +9862,7 @@ impl Direction {
         unsafe { crate::ffi::Geom_Direction_cross(self as *mut Self, Other) }
     }
 
+    /// **Source:** `Geom_Direction.hxx`:92 - `Geom_Direction::CrossCross()`
     /// Computes the triple vector product  <me> ^(V1 ^ V2).
     ///
     /// Raised if V1 and V2 are parallel or <me> and (V1 ^ V2) are
@@ -9412,6 +9875,7 @@ impl Direction {
         unsafe { crate::ffi::Geom_Direction_cross_cross(self as *mut Self, V1, V2) }
     }
 
+    /// **Source:** `Geom_Direction.hxx`:100 - `Geom_Direction::Crossed()`
     /// Computes the cross product between <me> and <Other>.
     /// A new direction is returned.
     ///
@@ -9429,6 +9893,7 @@ impl Direction {
         }
     }
 
+    /// **Source:** `Geom_Direction.hxx`:107 - `Geom_Direction::CrossCrossed()`
     /// Computes the triple vector product <me> ^(V1 ^ V2).
     ///
     /// Raised if V1 and V2 are parallel or <me> and (V1 ^ V2) are
@@ -9447,24 +9912,29 @@ impl Direction {
         }
     }
 
+    /// **Source:** `Geom_Direction.hxx`:112 - `Geom_Direction::Transform()`
     /// Applies the transformation T to this unit vector, then normalizes it.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_Direction_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_Direction.hxx`:115 - `Geom_Direction::Copy()`
     /// Creates a new object which is a copy of this unit vector.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Direction_copy(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Direction.hxx`:117 - `Geom_Direction::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Direction_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Direction.hxx`:117 - `Geom_Direction::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_Direction_get_type_name() }
     }
 
+    /// **Source:** `Geom_Direction.hxx`:117 - `Geom_Direction::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Direction_get_type_descriptor()) }
     }
@@ -9697,6 +10167,7 @@ impl HandleGeomDirection {
 // From Geom_ElementarySurface.hxx
 // ========================
 
+/// **Source:** `Geom_ElementarySurface.hxx`:63 - `Geom_ElementarySurface`
 /// Describes the common behavior of surfaces which
 /// have a simple parametric equation in a local
 /// coordinate system. The Geom package provides
@@ -9743,6 +10214,7 @@ unsafe impl crate::CppDeletable for ElementarySurface {
 }
 
 impl ElementarySurface {
+    /// **Source:** `Geom_ElementarySurface.hxx`:70 - `Geom_ElementarySurface::SetAxis()`
     /// Changes the main axis (ZAxis) of the elementary surface.
     ///
     /// Raised if the direction of A1 is parallel to the XAxis of the
@@ -9751,38 +10223,45 @@ impl ElementarySurface {
         unsafe { crate::ffi::Geom_ElementarySurface_set_axis(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `Geom_ElementarySurface.hxx`:74 - `Geom_ElementarySurface::SetLocation()`
     /// Changes the location of the local coordinates system of the
     /// surface.
     pub fn set_location(&mut self, theLoc: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::Geom_ElementarySurface_set_location(self as *mut Self, theLoc) }
     }
 
+    /// **Source:** `Geom_ElementarySurface.hxx`:77 - `Geom_ElementarySurface::SetPosition()`
     /// Changes the local coordinates system of the surface.
     pub fn set_position(&mut self, theAx3: &crate::ffi::gp_Ax3) {
         unsafe { crate::ffi::Geom_ElementarySurface_set_position(self as *mut Self, theAx3) }
     }
 
+    /// **Source:** `Geom_ElementarySurface.hxx`:80 - `Geom_ElementarySurface::Axis()`
     /// Returns the main axis of the surface (ZAxis).
     pub fn axis(&self) -> &crate::ffi::gp_Ax1 {
         unsafe { &*(crate::ffi::Geom_ElementarySurface_axis(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_ElementarySurface.hxx`:84 - `Geom_ElementarySurface::Location()`
     /// Returns the location point of the local coordinate system of the
     /// surface.
     pub fn location(&self) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::Geom_ElementarySurface_location(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_ElementarySurface.hxx`:87 - `Geom_ElementarySurface::Position()`
     /// Returns the local coordinates system of the surface.
     pub fn position(&self) -> &crate::ffi::gp_Ax3 {
         unsafe { &*(crate::ffi::Geom_ElementarySurface_position(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_ElementarySurface.hxx`:90 - `Geom_ElementarySurface::UReverse()`
     /// Reverses the U parametric direction of the surface.
     pub fn u_reverse(&mut self) {
         unsafe { crate::ffi::Geom_ElementarySurface_u_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_ElementarySurface.hxx`:98 - `Geom_ElementarySurface::UReversedParameter()`
     /// Return the  parameter on the  Ureversed surface for
     /// the point of parameter U on <me>.
     ///
@@ -9793,11 +10272,13 @@ impl ElementarySurface {
         unsafe { crate::ffi::Geom_ElementarySurface_u_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_ElementarySurface.hxx`:102 - `Geom_ElementarySurface::VReverse()`
     /// Reverses the V parametric direction of the surface.
     pub fn v_reverse(&mut self) {
         unsafe { crate::ffi::Geom_ElementarySurface_v_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_ElementarySurface.hxx`:110 - `Geom_ElementarySurface::VReversedParameter()`
     /// Return the  parameter on the  Vreversed surface for
     /// the point of parameter V on <me>.
     ///
@@ -9808,6 +10289,7 @@ impl ElementarySurface {
         unsafe { crate::ffi::Geom_ElementarySurface_v_reversed_parameter(self as *const Self, V) }
     }
 
+    /// **Source:** `Geom_ElementarySurface.hxx`:114 - `Geom_ElementarySurface::Continuity()`
     /// Returns GeomAbs_CN, the global continuity of any elementary surface.
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         unsafe {
@@ -9818,24 +10300,29 @@ impl ElementarySurface {
         }
     }
 
+    /// **Source:** `Geom_ElementarySurface.hxx`:117 - `Geom_ElementarySurface::IsCNu()`
     /// Returns True.
     pub fn is_c_nu(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom_ElementarySurface_is_c_nu(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_ElementarySurface.hxx`:120 - `Geom_ElementarySurface::IsCNv()`
     /// Returns True.
     pub fn is_c_nv(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom_ElementarySurface_is_c_nv(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_ElementarySurface.hxx`:126 - `Geom_ElementarySurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_ElementarySurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_ElementarySurface.hxx`:126 - `Geom_ElementarySurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_ElementarySurface_get_type_name() }
     }
 
+    /// **Source:** `Geom_ElementarySurface.hxx`:126 - `Geom_ElementarySurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_ElementarySurface_get_type_descriptor()) }
     }
@@ -10215,6 +10702,7 @@ impl HandleGeomElementarySurface {
 // From Geom_Ellipse.hxx
 // ========================
 
+/// **Source:** `Geom_Ellipse.hxx`:66 - `Geom_Ellipse`
 /// Describes an ellipse in 3D space.
 /// An ellipse is defined by its major and minor radii and,
 /// as with any conic curve, is positioned in space with a
@@ -10254,11 +10742,13 @@ unsafe impl crate::CppDeletable for Ellipse {
 }
 
 impl Ellipse {
+    /// **Source:** `Geom_Ellipse.hxx`:71 - `Geom_Ellipse::Geom_Ellipse()`
     /// Constructs an ellipse by conversion of the gp_Elips ellipse E.
     pub fn new_elips(E: &crate::ffi::gp_Elips) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Ellipse_ctor_elips(E)) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:92 - `Geom_Ellipse::Geom_Ellipse()`
     /// Constructs an ellipse
     /// defined by its major and minor radii, MajorRadius
     /// and MinorRadius, where A2 locates the ellipse
@@ -10292,28 +10782,33 @@ impl Ellipse {
         }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:97 - `Geom_Ellipse::SetElips()`
     /// Converts the gp_Elips ellipse E into this ellipse.
     pub fn set_elips(&mut self, E: &crate::ffi::gp_Elips) {
         unsafe { crate::ffi::Geom_Ellipse_set_elips(self as *mut Self, E) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:101 - `Geom_Ellipse::SetMajorRadius()`
     /// Assigns a value to the major radius of this ellipse.
     /// ConstructionError raised if MajorRadius < MinorRadius.
     pub fn set_major_radius(&mut self, MajorRadius: f64) {
         unsafe { crate::ffi::Geom_Ellipse_set_major_radius(self as *mut Self, MajorRadius) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:105 - `Geom_Ellipse::SetMinorRadius()`
     /// Assigns a value to the minor radius of this ellipse.
     /// ConstructionError raised if MajorRadius < MinorRadius or if MinorRadius < 0.
     pub fn set_minor_radius(&mut self, MinorRadius: f64) {
         unsafe { crate::ffi::Geom_Ellipse_set_minor_radius(self as *mut Self, MinorRadius) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:108 - `Geom_Ellipse::Elips()`
     /// returns the non transient ellipse from gp with the same
     pub fn elips(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Ellipse_elips(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:113 - `Geom_Ellipse::ReversedParameter()`
     /// Computes the parameter on the reversed ellipse for
     /// the point of parameter U on this ellipse.
     /// For an ellipse, the returned value is: 2.*Pi - U.
@@ -10321,6 +10816,7 @@ impl Ellipse {
         unsafe { crate::ffi::Geom_Ellipse_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:125 - `Geom_Ellipse::Directrix1()`
     /// This directrix is the line normal to the XAxis of the ellipse
     /// in the local plane (Z = 0) at a distance d = MajorRadius / e
     /// from the center of the ellipse, where e is the eccentricity of
@@ -10337,6 +10833,7 @@ impl Ellipse {
         }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:132 - `Geom_Ellipse::Directrix2()`
     /// This line is obtained by the symmetrical transformation
     /// of "Directrix1" with respect to the "YAxis" of the ellipse.
     ///
@@ -10348,6 +10845,7 @@ impl Ellipse {
         }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:138 - `Geom_Ellipse::Eccentricity()`
     /// Returns the eccentricity of the ellipse  between 0.0 and 1.0
     /// If f is the distance between the center of the ellipse and
     /// the Focus1 then the eccentricity e = f / MajorRadius.
@@ -10356,34 +10854,40 @@ impl Ellipse {
         unsafe { crate::ffi::Geom_Ellipse_eccentricity(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:142 - `Geom_Ellipse::Focal()`
     /// Computes the focal distance. It is the distance between the
     /// the two focus of the ellipse.
     pub fn focal(&self) -> f64 {
         unsafe { crate::ffi::Geom_Ellipse_focal(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:146 - `Geom_Ellipse::Focus1()`
     /// Returns the first focus of the ellipse. This focus is on the
     /// positive side of the "XAxis" of the ellipse.
     pub fn focus1(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Ellipse_focus1(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:150 - `Geom_Ellipse::Focus2()`
     /// Returns the second focus of the ellipse. This focus is on
     /// the negative side of the "XAxis" of the ellipse.
     pub fn focus2(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Ellipse_focus2(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:153 - `Geom_Ellipse::MajorRadius()`
     /// Returns the major  radius of this ellipse.
     pub fn major_radius(&self) -> f64 {
         unsafe { crate::ffi::Geom_Ellipse_major_radius(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:156 - `Geom_Ellipse::MinorRadius()`
     /// Returns the minor radius of this ellipse.
     pub fn minor_radius(&self) -> f64 {
         unsafe { crate::ffi::Geom_Ellipse_minor_radius(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:161 - `Geom_Ellipse::Parameter()`
     /// Returns p = (1 - e * e) * MajorRadius where e is the eccentricity
     /// of the ellipse.
     /// Returns 0 if MajorRadius = 0
@@ -10391,6 +10895,7 @@ impl Ellipse {
         unsafe { crate::ffi::Geom_Ellipse_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:167 - `Geom_Ellipse::FirstParameter()`
     /// Returns the value of the first parameter of this
     /// ellipse. This is respectively:
     /// - 0.0, which gives the start point of this ellipse, or
@@ -10399,6 +10904,7 @@ impl Ellipse {
         unsafe { crate::ffi::Geom_Ellipse_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:173 - `Geom_Ellipse::LastParameter()`
     /// Returns the value of the  last parameter of this
     /// ellipse. This is respectively:
     /// - 2.*Pi, which gives the end point of this ellipse.
@@ -10407,16 +10913,19 @@ impl Ellipse {
         unsafe { crate::ffi::Geom_Ellipse_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:176 - `Geom_Ellipse::IsClosed()`
     /// return True.
     pub fn is_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_Ellipse_is_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:179 - `Geom_Ellipse::IsPeriodic()`
     /// return True.
     pub fn is_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_Ellipse_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:185 - `Geom_Ellipse::D0()`
     /// Returns in P the point of parameter U.
     /// P = C + MajorRadius * Cos (U) * XDir + MinorRadius * Sin (U) * YDir
     /// where C is the center of the ellipse , XDir the direction of
@@ -10425,10 +10934,12 @@ impl Ellipse {
         unsafe { crate::ffi::Geom_Ellipse_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:187 - `Geom_Ellipse::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V1: &mut crate::ffi::gp_Vec) {
         unsafe { crate::ffi::Geom_Ellipse_d1(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:191 - `Geom_Ellipse::D2()`
     /// Returns the point P of parameter U. The vectors V1 and V2
     /// are the first and second derivatives at this point.
     pub fn d2(
@@ -10441,6 +10952,7 @@ impl Ellipse {
         unsafe { crate::ffi::Geom_Ellipse_d2(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:198 - `Geom_Ellipse::D3()`
     /// Returns the point P of parameter U, the first second and
     /// third derivatives V1 V2 and V3.
     pub fn d3(
@@ -10454,6 +10966,7 @@ impl Ellipse {
         unsafe { crate::ffi::Geom_Ellipse_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:207 - `Geom_Ellipse::DN()`
     /// For the point of parameter U of this ellipse, computes
     /// the vector corresponding to the Nth derivative.
     /// Exceptions Standard_RangeError if N is less than 1.
@@ -10461,24 +10974,29 @@ impl Ellipse {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Ellipse_dn(self as *const Self, U, N)) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:211 - `Geom_Ellipse::Transform()`
     /// Applies the transformation T to this ellipse.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_Ellipse_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:214 - `Geom_Ellipse::Copy()`
     /// Creates a new object which is a copy of this ellipse.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Ellipse_copy(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:220 - `Geom_Ellipse::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Ellipse_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:220 - `Geom_Ellipse::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_Ellipse_get_type_name() }
     }
 
+    /// **Source:** `Geom_Ellipse.hxx`:220 - `Geom_Ellipse::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Ellipse_get_type_descriptor()) }
     }
@@ -10761,6 +11279,7 @@ impl HandleGeomEllipse {
 // From Geom_Geometry.hxx
 // ========================
 
+/// **Source:** `Geom_Geometry.hxx`:51 - `Geom_Geometry`
 /// The abstract class Geometry for 3D space is the root
 /// class of all geometric objects from the Geom
 /// package. It describes the common behavior of these objects when:
@@ -10787,6 +11306,7 @@ unsafe impl crate::CppDeletable for Geometry {
 }
 
 impl Geometry {
+    /// **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
     /// Performs the symmetrical transformation of a Geometry
     /// with respect to the point P which is the center of the
     /// symmetry.
@@ -10794,6 +11314,7 @@ impl Geometry {
         unsafe { crate::ffi::Geom_Geometry_mirror_pnt(self as *mut Self, P) }
     }
 
+    /// **Source:** `Geom_Geometry.hxx`:63 - `Geom_Geometry::Mirror()`
     /// Performs the symmetrical transformation of a Geometry
     /// with respect to an axis placement which is the axis of the
     /// symmetry.
@@ -10801,6 +11322,7 @@ impl Geometry {
         unsafe { crate::ffi::Geom_Geometry_mirror_ax1(self as *mut Self, A1) }
     }
 
+    /// **Source:** `Geom_Geometry.hxx`:68 - `Geom_Geometry::Mirror()`
     /// Performs the symmetrical transformation of a Geometry
     /// with respect to a plane. The axis placement A2 locates
     /// the plane of the symmetry : (Location, XDirection, YDirection).
@@ -10808,27 +11330,32 @@ impl Geometry {
         unsafe { crate::ffi::Geom_Geometry_mirror_ax2(self as *mut Self, A2) }
     }
 
+    /// **Source:** `Geom_Geometry.hxx`:72 - `Geom_Geometry::Rotate()`
     /// Rotates a Geometry. A1 is the axis of the rotation.
     /// Ang is the angular value of the rotation in radians.
     pub fn rotate(&mut self, A1: &crate::ffi::gp_Ax1, Ang: f64) {
         unsafe { crate::ffi::Geom_Geometry_rotate(self as *mut Self, A1, Ang) }
     }
 
+    /// **Source:** `Geom_Geometry.hxx`:75 - `Geom_Geometry::Scale()`
     /// Scales a Geometry. S is the scaling value.
     pub fn scale(&mut self, P: &crate::ffi::gp_Pnt, S: f64) {
         unsafe { crate::ffi::Geom_Geometry_scale(self as *mut Self, P, S) }
     }
 
+    /// **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
     /// Translates a Geometry.  V is the vector of the translation.
     pub fn translate_vec(&mut self, V: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::Geom_Geometry_translate_vec(self as *mut Self, V) }
     }
 
+    /// **Source:** `Geom_Geometry.hxx`:81 - `Geom_Geometry::Translate()`
     /// Translates a Geometry from the point P1 to the point P2.
     pub fn translate_pnt2(&mut self, P1: &crate::ffi::gp_Pnt, P2: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::Geom_Geometry_translate_pnt2(self as *mut Self, P1, P2) }
     }
 
+    /// **Source:** `Geom_Geometry.hxx`:88 - `Geom_Geometry::Transform()`
     /// Transformation of a geometric object. This transformation
     /// can be a translation, a rotation, a symmetry, a scaling
     /// or a complex transformation obtained by combination of
@@ -10838,6 +11365,7 @@ impl Geometry {
         unsafe { crate::ffi::Geom_Geometry_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_Geometry.hxx`:90 - `Geom_Geometry::Mirrored()`
     pub fn mirrored_pnt(
         &self,
         P: &crate::ffi::gp_Pnt,
@@ -10850,6 +11378,7 @@ impl Geometry {
         }
     }
 
+    /// **Source:** `Geom_Geometry.hxx`:92 - `Geom_Geometry::Mirrored()`
     pub fn mirrored_ax1(
         &self,
         A1: &crate::ffi::gp_Ax1,
@@ -10862,6 +11391,7 @@ impl Geometry {
         }
     }
 
+    /// **Source:** `Geom_Geometry.hxx`:94 - `Geom_Geometry::Mirrored()`
     pub fn mirrored_ax2(
         &self,
         A2: &crate::ffi::gp_Ax2,
@@ -10874,6 +11404,7 @@ impl Geometry {
         }
     }
 
+    /// **Source:** `Geom_Geometry.hxx`:96 - `Geom_Geometry::Rotated()`
     pub fn rotated(
         &self,
         A1: &crate::ffi::gp_Ax1,
@@ -10888,6 +11419,7 @@ impl Geometry {
         }
     }
 
+    /// **Source:** `Geom_Geometry.hxx`:99 - `Geom_Geometry::Scaled()`
     pub fn scaled(
         &self,
         P: &crate::ffi::gp_Pnt,
@@ -10898,6 +11430,7 @@ impl Geometry {
         }
     }
 
+    /// **Source:** `Geom_Geometry.hxx`:102 - `Geom_Geometry::Transformed()`
     pub fn transformed(
         &self,
         T: &crate::ffi::gp_Trsf,
@@ -10907,6 +11440,7 @@ impl Geometry {
         }
     }
 
+    /// **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated_vec(
         &self,
         V: &crate::ffi::gp_Vec,
@@ -10919,6 +11453,7 @@ impl Geometry {
         }
     }
 
+    /// **Source:** `Geom_Geometry.hxx`:106 - `Geom_Geometry::Translated()`
     pub fn translated_pnt2(
         &self,
         P1: &crate::ffi::gp_Pnt,
@@ -10933,19 +11468,23 @@ impl Geometry {
         }
     }
 
+    /// **Source:** `Geom_Geometry.hxx`:110 - `Geom_Geometry::Copy()`
     /// Creates a new object which is a copy of this geometric object.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Geometry_copy(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Geometry.hxx`:116 - `Geom_Geometry::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Geometry_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Geometry.hxx`:116 - `Geom_Geometry::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_Geometry_get_type_name() }
     }
 
+    /// **Source:** `Geom_Geometry.hxx`:116 - `Geom_Geometry::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Geometry_get_type_descriptor()) }
     }
@@ -10975,6 +11514,7 @@ impl HandleGeomGeometry {
 // From Geom_HSequenceOfBSplineSurface.hxx
 // ========================
 
+/// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface`
 pub use crate::ffi::Geom_HSequenceOfBSplineSurface as HSequenceOfBSplineSurface;
 
 unsafe impl crate::CppDeletable for HSequenceOfBSplineSurface {
@@ -10984,10 +11524,12 @@ unsafe impl crate::CppDeletable for HSequenceOfBSplineSurface {
 }
 
 impl HSequenceOfBSplineSurface {
+    /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::Geom_HSequenceOfBSplineSurface()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_HSequenceOfBSplineSurface_ctor()) }
     }
 
+    /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::Geom_HSequenceOfBSplineSurface()`
     pub fn new_sequenceofbsplinesurface(
         theOther: &crate::ffi::Geom_SequenceOfBSplineSurface,
     ) -> crate::OwnedPtr<Self> {
@@ -10998,14 +11540,17 @@ impl HSequenceOfBSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_HSequenceOfBSplineSurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_HSequenceOfBSplineSurface_get_type_name() }
     }
 
+    /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_HSequenceOfBSplineSurface_get_type_descriptor()) }
     }
@@ -11048,6 +11593,7 @@ impl HandleGeomHSequenceOfBSplineSurface {
 // From Geom_Hyperbola.hxx
 // ========================
 
+/// **Source:** `Geom_Hyperbola.hxx`:86 - `Geom_Hyperbola`
 /// Describes a branch of a hyperbola in 3D space.
 /// A hyperbola is defined by its major and minor radii
 /// and, as with any conic curve, is positioned in space
@@ -11107,11 +11653,13 @@ unsafe impl crate::CppDeletable for Hyperbola {
 }
 
 impl Hyperbola {
+    /// **Source:** `Geom_Hyperbola.hxx`:91 - `Geom_Hyperbola::Geom_Hyperbola()`
     /// Constructs a hyperbola by conversion of the gp_Hypr hyperbola H.
     pub fn new_hypr(H: &crate::ffi::gp_Hypr) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Hyperbola_ctor_hypr(H)) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:108 - `Geom_Hyperbola::Geom_Hyperbola()`
     /// Constructs a hyperbola defined by its major and
     /// minor radii, MajorRadius and MinorRadius, where A2 locates the
     /// hyperbola and defines its orientation in 3D space such that:
@@ -11141,11 +11689,13 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:113 - `Geom_Hyperbola::SetHypr()`
     /// Converts the gp_Hypr hyperbola H into this hyperbola.
     pub fn set_hypr(&mut self, H: &crate::ffi::gp_Hypr) {
         unsafe { crate::ffi::Geom_Hyperbola_set_hypr(self as *mut Self, H) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:120 - `Geom_Hyperbola::SetMajorRadius()`
     /// Assigns a value to the major radius of this hyperbola.
     /// Exceptions
     /// Standard_ConstructionError if:
@@ -11155,6 +11705,7 @@ impl Hyperbola {
         unsafe { crate::ffi::Geom_Hyperbola_set_major_radius(self as *mut Self, MajorRadius) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:127 - `Geom_Hyperbola::SetMinorRadius()`
     /// Assigns a value to the minor radius of this hyperbola.
     /// Exceptions
     /// Standard_ConstructionError if:
@@ -11164,12 +11715,14 @@ impl Hyperbola {
         unsafe { crate::ffi::Geom_Hyperbola_set_minor_radius(self as *mut Self, MinorRadius) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:131 - `Geom_Hyperbola::Hypr()`
     /// returns the non transient parabola from gp with the same
     /// geometric properties as <me>.
     pub fn hypr(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Hyperbola_hypr(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:136 - `Geom_Hyperbola::ReversedParameter()`
     /// Computes the parameter on the reversed hyperbola,
     /// for the point of parameter U on this hyperbola.
     /// For a hyperbola, the returned value is: -U.
@@ -11177,26 +11730,31 @@ impl Hyperbola {
         unsafe { crate::ffi::Geom_Hyperbola_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:139 - `Geom_Hyperbola::FirstParameter()`
     /// Returns RealFirst from Standard.
     pub fn first_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom_Hyperbola_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:142 - `Geom_Hyperbola::LastParameter()`
     /// returns RealLast from Standard.
     pub fn last_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom_Hyperbola_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:145 - `Geom_Hyperbola::IsClosed()`
     /// Returns False.
     pub fn is_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_Hyperbola_is_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:148 - `Geom_Hyperbola::IsPeriodic()`
     /// return False for an hyperbola.
     pub fn is_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_Hyperbola_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:154 - `Geom_Hyperbola::Asymptote1()`
     /// In the local coordinate system of the hyperbola the equation of
     /// the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0 and the
     /// equation of the first asymptote is Y = (B/A)*X.
@@ -11207,6 +11765,7 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:160 - `Geom_Hyperbola::Asymptote2()`
     /// In the local coordinate system of the hyperbola the equation of
     /// the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0 and the
     /// equation of the first asymptote is Y = -(B/A)*X.
@@ -11217,6 +11776,7 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:164 - `Geom_Hyperbola::ConjugateBranch1()`
     /// This branch of hyperbola is on the positive side of the
     /// YAxis of <me>.
     pub fn conjugate_branch1(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr> {
@@ -11227,6 +11787,7 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:171 - `Geom_Hyperbola::ConjugateBranch2()`
     /// This branch of hyperbola is on the negative side of the
     /// YAxis of <me>.
     /// Note: The diagram given under the class purpose
@@ -11240,6 +11801,7 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:180 - `Geom_Hyperbola::Directrix1()`
     /// This directrix is the line normal to the XAxis of the hyperbola
     /// in the local plane (Z = 0) at a distance d = MajorRadius / e
     /// from the center of the hyperbola, where e is the eccentricity of
@@ -11253,6 +11815,7 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:184 - `Geom_Hyperbola::Directrix2()`
     /// This line is obtained by the symmetrical transformation
     /// of "directrix1" with respect to the YAxis of the hyperbola.
     pub fn directrix2(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
@@ -11261,6 +11824,7 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:190 - `Geom_Hyperbola::Eccentricity()`
     /// Returns the eccentricity of the hyperbola (e > 1).
     /// If f is the distance between the location of the hyperbola
     /// and the Focus1 then the eccentricity e = f / MajorRadius.
@@ -11269,24 +11833,28 @@ impl Hyperbola {
         unsafe { crate::ffi::Geom_Hyperbola_eccentricity(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:194 - `Geom_Hyperbola::Focal()`
     /// Computes the focal distance. It is the distance between the
     /// two focus of the hyperbola.
     pub fn focal(&self) -> f64 {
         unsafe { crate::ffi::Geom_Hyperbola_focal(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:198 - `Geom_Hyperbola::Focus1()`
     /// Returns the first focus of the hyperbola. This focus is on the
     /// positive side of the XAxis of the hyperbola.
     pub fn focus1(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Hyperbola_focus1(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:202 - `Geom_Hyperbola::Focus2()`
     /// Returns the second focus of the hyperbola. This focus is on the
     /// negative side of the XAxis of the hyperbola.
     pub fn focus2(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Hyperbola_focus2(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:208 - `Geom_Hyperbola::MajorRadius()`
     /// Returns the major or minor radius of this hyperbola.
     /// The major radius is also the distance between the
     /// center of the hyperbola and the apex of the main
@@ -11295,6 +11863,7 @@ impl Hyperbola {
         unsafe { crate::ffi::Geom_Hyperbola_major_radius(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:214 - `Geom_Hyperbola::MinorRadius()`
     /// Returns the major or minor radius of this hyperbola.
     /// The minor radius is also the distance between the
     /// center of the hyperbola and the apex of a conjugate
@@ -11303,6 +11872,7 @@ impl Hyperbola {
         unsafe { crate::ffi::Geom_Hyperbola_minor_radius(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:221 - `Geom_Hyperbola::OtherBranch()`
     /// Computes the "other" branch of this hyperbola. This
     /// is the symmetrical branch with respect to the center of this hyperbola.
     /// Note: The diagram given under the class purpose
@@ -11314,6 +11884,7 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:226 - `Geom_Hyperbola::Parameter()`
     /// Returns p = (e * e - 1) * MajorRadius where e is the
     /// eccentricity of the hyperbola.
     /// raised if MajorRadius = 0.0
@@ -11321,6 +11892,7 @@ impl Hyperbola {
         unsafe { crate::ffi::Geom_Hyperbola_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:233 - `Geom_Hyperbola::D0()`
     /// Returns in P the point of parameter U.
     /// P = C + MajorRadius * Cosh (U) * XDir +
     /// MinorRadius * Sinh (U) * YDir
@@ -11330,11 +11902,13 @@ impl Hyperbola {
         unsafe { crate::ffi::Geom_Hyperbola_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:236 - `Geom_Hyperbola::D1()`
     /// Returns the point P of parameter U and the first derivative V1.
     pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V1: &mut crate::ffi::gp_Vec) {
         unsafe { crate::ffi::Geom_Hyperbola_d1(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:240 - `Geom_Hyperbola::D2()`
     /// Returns the point P of parameter U, the first and second
     /// derivatives V1 and V2.
     pub fn d2(
@@ -11347,6 +11921,7 @@ impl Hyperbola {
         unsafe { crate::ffi::Geom_Hyperbola_d2(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:247 - `Geom_Hyperbola::D3()`
     /// Returns the point P of parameter U, the first second and
     /// third derivatives V1 V2 and V3.
     pub fn d3(
@@ -11360,6 +11935,7 @@ impl Hyperbola {
         unsafe { crate::ffi::Geom_Hyperbola_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:256 - `Geom_Hyperbola::DN()`
     /// The returned vector gives the value of the derivative for the
     /// order of derivation N.
     /// Raised if N < 1.
@@ -11369,24 +11945,29 @@ impl Hyperbola {
         }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:260 - `Geom_Hyperbola::Transform()`
     /// Applies the transformation T to this hyperbola.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_Hyperbola_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:263 - `Geom_Hyperbola::Copy()`
     /// Creates a new object which is a copy of this hyperbola.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Hyperbola_copy(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:269 - `Geom_Hyperbola::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Hyperbola_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:269 - `Geom_Hyperbola::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_Hyperbola_get_type_name() }
     }
 
+    /// **Source:** `Geom_Hyperbola.hxx`:269 - `Geom_Hyperbola::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Hyperbola_get_type_descriptor()) }
     }
@@ -11675,6 +12256,7 @@ impl HandleGeomHyperbola {
 // From Geom_Line.hxx
 // ========================
 
+/// **Source:** `Geom_Line.hxx`:47 - `Geom_Line`
 /// Describes an infinite line.
 /// A line is defined and positioned in space with an axis
 /// (gp_Ax1 object) which gives it an origin and a unit vector.
@@ -11694,17 +12276,20 @@ unsafe impl crate::CppDeletable for Line {
 }
 
 impl Line {
+    /// **Source:** `Geom_Line.hxx`:53 - `Geom_Line::Geom_Line()`
     /// Creates a line located in 3D space with the axis placement A1.
     /// The Location of A1 is the origin of the line.
     pub fn new_ax1(A1: &crate::ffi::gp_Ax1) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Line_ctor_ax1(A1)) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:56 - `Geom_Line::Geom_Line()`
     /// Creates a line from a non transient line from package gp.
     pub fn new_lin(L: &crate::ffi::gp_Lin) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Line_ctor_lin(L)) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:61 - `Geom_Line::Geom_Line()`
     /// Constructs a line passing through point P and parallel to vector V
     /// (P and V are, respectively, the origin and the unit
     /// vector of the positioning axis of the line).
@@ -11712,43 +12297,51 @@ impl Line {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Line_ctor_pnt_dir(P, V)) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:64 - `Geom_Line::SetLin()`
     /// Set <me> so that <me> has the same geometric properties as L.
     pub fn set_lin(&mut self, L: &crate::ffi::gp_Lin) {
         unsafe { crate::ffi::Geom_Line_set_lin(self as *mut Self, L) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:67 - `Geom_Line::SetDirection()`
     /// changes the direction of the line.
     pub fn set_direction(&mut self, V: &crate::ffi::gp_Dir) {
         unsafe { crate::ffi::Geom_Line_set_direction(self as *mut Self, V) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:70 - `Geom_Line::SetLocation()`
     /// changes the "Location" point (origin) of the line.
     pub fn set_location(&mut self, P: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::Geom_Line_set_location(self as *mut Self, P) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:73 - `Geom_Line::SetPosition()`
     /// changes the "Location" and a the "Direction" of <me>.
     pub fn set_position(&mut self, A1: &crate::ffi::gp_Ax1) {
         unsafe { crate::ffi::Geom_Line_set_position(self as *mut Self, A1) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:77 - `Geom_Line::Lin()`
     /// Returns non transient line from gp with the same geometric
     /// properties as <me>
     pub fn lin(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Line_lin(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:80 - `Geom_Line::Position()`
     /// Returns the positioning axis of this line; this is also its local coordinate system.
     pub fn position(&self) -> &crate::ffi::gp_Ax1 {
         unsafe { &*(crate::ffi::Geom_Line_position(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:84 - `Geom_Line::Reverse()`
     /// Changes the orientation of this line. As a result, the
     /// unit vector of the positioning axis of this line is reversed.
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::Geom_Line_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:89 - `Geom_Line::ReversedParameter()`
     /// Computes the parameter on the reversed line for the
     /// point of parameter U on this line.
     /// For a line, the returned value is -U.
@@ -11756,28 +12349,33 @@ impl Line {
         unsafe { crate::ffi::Geom_Line_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:93 - `Geom_Line::FirstParameter()`
     /// Returns the value of the first parameter of this
     /// line. This is Standard_Real::RealFirst().
     pub fn first_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom_Line_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:97 - `Geom_Line::LastParameter()`
     /// Returns the value of the last parameter of this
     /// line. This is  Standard_Real::RealLast().
     pub fn last_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom_Line_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:100 - `Geom_Line::IsClosed()`
     /// returns False
     pub fn is_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_Line_is_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:103 - `Geom_Line::IsPeriodic()`
     /// returns False
     pub fn is_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_Line_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:106 - `Geom_Line::Continuity()`
     /// Returns GeomAbs_CN, which is the global continuity of any line.
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         unsafe {
@@ -11786,12 +12384,14 @@ impl Line {
         }
     }
 
+    /// **Source:** `Geom_Line.hxx`:110 - `Geom_Line::IsCN()`
     /// returns True.
     /// Raised if N < 0.
     pub fn is_cn(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom_Line_is_cn(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:115 - `Geom_Line::D0()`
     /// Returns in P the point of parameter U.
     /// P (U) = O + U * Dir where O is the "Location" point of the
     /// line and Dir the direction of the line.
@@ -11799,11 +12399,13 @@ impl Line {
         unsafe { crate::ffi::Geom_Line_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:118 - `Geom_Line::D1()`
     /// Returns the point P of parameter u and the first derivative V1.
     pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V1: &mut crate::ffi::gp_Vec) {
         unsafe { crate::ffi::Geom_Line_d1(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:123 - `Geom_Line::D2()`
     /// Returns the point P of parameter U, the first and second
     /// derivatives V1 and V2. V2 is a vector with null magnitude
     /// for a line.
@@ -11817,6 +12419,7 @@ impl Line {
         unsafe { crate::ffi::Geom_Line_d2(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:129 - `Geom_Line::D3()`
     /// V2 and V3 are vectors with null magnitude for a line.
     pub fn d3(
         &self,
@@ -11829,6 +12432,7 @@ impl Line {
         unsafe { crate::ffi::Geom_Line_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:138 - `Geom_Line::DN()`
     /// The returned vector gives the value of the derivative for the
     /// order of derivation N.
     /// Raised if N < 1.
@@ -11836,11 +12440,13 @@ impl Line {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Line_dn(self as *const Self, U, N)) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:142 - `Geom_Line::Transform()`
     /// Applies the transformation T to this line.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_Line_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:154 - `Geom_Line::TransformedParameter()`
     /// Returns the  parameter on the  transformed  curve for
     /// the transform of the point of parameter U on <me>.
     ///
@@ -11855,6 +12461,7 @@ impl Line {
         unsafe { crate::ffi::Geom_Line_transformed_parameter(self as *const Self, U, T) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:169 - `Geom_Line::ParametricTransformation()`
     /// Returns a  coefficient to compute the parameter on
     /// the transformed  curve  for  the transform  of the
     /// point on <me>.
@@ -11870,19 +12477,23 @@ impl Line {
         unsafe { crate::ffi::Geom_Line_parametric_transformation(self as *const Self, T) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:173 - `Geom_Line::Copy()`
     /// Creates a new object which is a copy of this line.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Line_copy(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:179 - `Geom_Line::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Line_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Line.hxx`:179 - `Geom_Line::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_Line_get_type_name() }
     }
 
+    /// **Source:** `Geom_Line.hxx`:179 - `Geom_Line::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Line_get_type_descriptor()) }
     }
@@ -12063,6 +12674,7 @@ impl HandleGeomLine {
 // From Geom_OffsetCurve.hxx
 // ========================
 
+/// **Source:** `Geom_OffsetCurve.hxx`:78 - `Geom_OffsetCurve`
 /// This class implements the basis services for an offset curve
 /// in 3D space. The Offset curve in this package can be a self
 /// intersecting curve even if the basis curve does not
@@ -12113,6 +12725,7 @@ unsafe impl crate::CppDeletable for OffsetCurve {
 }
 
 impl OffsetCurve {
+    /// **Source:** `Geom_OffsetCurve.hxx`:99 - `Geom_OffsetCurve::Geom_OffsetCurve()`
     /// C is the basis curve, Offset is the distance between <me> and
     /// the basis curve at any point. V defines the fixed reference
     /// direction (offset direction). If P is a point on the basis
@@ -12148,6 +12761,7 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:99 - `Geom_OffsetCurve::Geom_OffsetCurve()`
     /// C is the basis curve, Offset is the distance between <me> and
     /// the basis curve at any point. V defines the fixed reference
     /// direction (offset direction). If P is a point on the basis
@@ -12173,6 +12787,7 @@ impl OffsetCurve {
         Self::new_handlegeomcurve_real_dir_bool(C, Offset, V, false)
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:112 - `Geom_OffsetCurve::Reverse()`
     /// Changes the orientation of this offset curve.
     /// As a result:
     /// - the basis curve is reversed,
@@ -12185,12 +12800,14 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom_OffsetCurve_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:116 - `Geom_OffsetCurve::ReversedParameter()`
     /// Computes the parameter on the reversed curve for
     /// the point of parameter U on this offset curve.
     pub fn reversed_parameter(&self, U: f64) -> f64 {
         unsafe { crate::ffi::Geom_OffsetCurve_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:124 - `Geom_OffsetCurve::SetBasisCurve()`
     /// Changes this offset curve by assigning C
     /// as the basis curve from which it is built.
     /// If isNotCheckC0 = TRUE checking if basis curve
@@ -12201,17 +12818,20 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom_OffsetCurve_set_basis_curve(self as *mut Self, C, isNotCheckC0) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:129 - `Geom_OffsetCurve::SetDirection()`
     /// Changes this offset curve by assigning V as the
     /// reference vector used to compute the offset direction.
     pub fn set_direction(&mut self, V: &crate::ffi::gp_Dir) {
         unsafe { crate::ffi::Geom_OffsetCurve_set_direction(self as *mut Self, V) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:132 - `Geom_OffsetCurve::SetOffsetValue()`
     /// Changes this offset curve by assigning D as the offset value.
     pub fn set_offset_value(&mut self, D: f64) {
         unsafe { crate::ffi::Geom_OffsetCurve_set_offset_value(self as *mut Self, D) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:136 - `Geom_OffsetCurve::BasisCurve()`
     /// Returns the basis curve of this offset curve.
     /// Note: The basis curve can be an offset curve.
     pub fn basis_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
@@ -12220,6 +12840,7 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:154 - `Geom_OffsetCurve::Continuity()`
     /// Returns the global continuity of this offset curve as a
     /// value of the GeomAbs_Shape enumeration.
     /// The degree of continuity of this offset curve is equal
@@ -12245,6 +12866,7 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:167 - `Geom_OffsetCurve::Direction()`
     /// Returns the reference vector of this offset curve.
     /// Value and derivatives
     /// Warnings :
@@ -12260,6 +12882,7 @@ impl OffsetCurve {
         unsafe { &*(crate::ffi::Geom_OffsetCurve_direction(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:172 - `Geom_OffsetCurve::D0()`
     /// Warning! this should not be called
     /// if the basis curve is not at least C1. Nevertheless
     /// if used on portion where the curve is C1, it is OK
@@ -12267,6 +12890,7 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom_OffsetCurve_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:178 - `Geom_OffsetCurve::D1()`
     /// Warning! this should not be called
     /// if the continuity of the basis curve is not C2.
     /// Nevertheless, it's OK to use it  on portion
@@ -12275,6 +12899,7 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom_OffsetCurve_d1(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:184 - `Geom_OffsetCurve::D2()`
     /// Warning! this should not be called
     /// if the continuity of the basis curve is not C3.
     /// Nevertheless, it's OK to use it  on portion
@@ -12289,6 +12914,7 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom_OffsetCurve_d2(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:189 - `Geom_OffsetCurve::D3()`
     pub fn d3(
         &self,
         U: f64,
@@ -12300,6 +12926,7 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom_OffsetCurve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:209 - `Geom_OffsetCurve::DN()`
     /// The returned vector gives the value of the derivative
     /// for the order of derivation N.
     ///
@@ -12320,6 +12947,7 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:217 - `Geom_OffsetCurve::FirstParameter()`
     /// Returns the value of the first parameter of this
     /// offset curve. The first parameter corresponds to the
     /// start point of the curve.
@@ -12329,6 +12957,7 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom_OffsetCurve_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:224 - `Geom_OffsetCurve::LastParameter()`
     /// Returns the value of the last parameter of this
     /// offset curve. The last parameter
     /// corresponds to the end point.
@@ -12338,11 +12967,13 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom_OffsetCurve_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:227 - `Geom_OffsetCurve::Offset()`
     /// Returns the offset value of this offset curve.
     pub fn offset(&self) -> f64 {
         unsafe { crate::ffi::Geom_OffsetCurve_offset(self as *const Self) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:232 - `Geom_OffsetCurve::IsClosed()`
     /// Returns True if the distance between the start point
     /// and the end point of the curve is lower or equal to
     /// Resolution from package gp.
@@ -12350,6 +12981,7 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom_OffsetCurve_is_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:241 - `Geom_OffsetCurve::IsCN()`
     /// Returns true if the degree of continuity of the basis
     /// curve of this offset curve is at least N + 1.
     /// This method answer True if the continuity of the basis curve
@@ -12361,12 +12993,14 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom_OffsetCurve_is_cn(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:245 - `Geom_OffsetCurve::IsPeriodic()`
     /// Returns true if this offset curve is periodic, i.e. if the
     /// basis curve of this offset curve is periodic.
     pub fn is_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_OffsetCurve_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:251 - `Geom_OffsetCurve::Period()`
     /// Returns the period of this offset curve, i.e. the period
     /// of the basis curve of this offset curve.
     /// Exceptions
@@ -12375,12 +13009,14 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom_OffsetCurve_period(self as *const Self) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:255 - `Geom_OffsetCurve::Transform()`
     /// Applies the transformation T to this offset curve.
     /// Note: the basis curve is also modified.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_OffsetCurve_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:263 - `Geom_OffsetCurve::TransformedParameter()`
     /// Returns the  parameter on the  transformed  curve for
     /// the transform of the point of parameter U on <me>.
     /// me->Transformed(T)->Value(me->TransformedParameter(U,T))
@@ -12391,6 +13027,7 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom_OffsetCurve_transformed_parameter(self as *const Self, U, T) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:275 - `Geom_OffsetCurve::ParametricTransformation()`
     /// Returns a  coefficient to compute the parameter on
     /// the transformed  curve  for  the transform  of the
     /// point on <me>.
@@ -12403,11 +13040,13 @@ impl OffsetCurve {
         unsafe { crate::ffi::Geom_OffsetCurve_parametric_transformation(self as *const Self, T) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:279 - `Geom_OffsetCurve::Copy()`
     /// Creates a new object which is a copy of this offset curve.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_OffsetCurve_copy(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:282 - `Geom_OffsetCurve::GetBasisCurveContinuity()`
     /// Returns continuity of the basis curve.
     pub fn get_basis_curve_continuity(&self) -> crate::geom_abs::Shape {
         unsafe {
@@ -12418,14 +13057,17 @@ impl OffsetCurve {
         }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:288 - `Geom_OffsetCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_OffsetCurve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:288 - `Geom_OffsetCurve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_OffsetCurve_get_type_name() }
     }
 
+    /// **Source:** `Geom_OffsetCurve.hxx`:288 - `Geom_OffsetCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_OffsetCurve_get_type_descriptor()) }
     }
@@ -12608,6 +13250,7 @@ impl HandleGeomOffsetCurve {
 // From Geom_OffsetSurface.hxx
 // ========================
 
+/// **Source:** `Geom_OffsetSurface.hxx`:60 - `Geom_OffsetSurface`
 /// Describes an offset surface in 3D space.
 /// An offset surface is defined by:
 /// - the basis surface to which it is parallel, and
@@ -12639,6 +13282,7 @@ unsafe impl crate::CppDeletable for OffsetSurface {
 }
 
 impl OffsetSurface {
+    /// **Source:** `Geom_OffsetSurface.hxx`:88 - `Geom_OffsetSurface::Geom_OffsetSurface()`
     /// Constructs a surface offset from the basis surface
     /// S, where Offset is the distance between the offset
     /// surface and the basis surface at any point.
@@ -12679,6 +13323,7 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:88 - `Geom_OffsetSurface::Geom_OffsetSurface()`
     /// Constructs a surface offset from the basis surface
     /// S, where Offset is the distance between the offset
     /// surface and the basis surface at any point.
@@ -12710,6 +13355,7 @@ impl OffsetSurface {
         Self::new_handlegeomsurface_real_bool(S, Offset, false)
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:101 - `Geom_OffsetSurface::SetBasisSurface()`
     /// Raised if S is not at least C1.
     /// Warnings :
     /// No check is done to verify that a unique normal direction is
@@ -12725,27 +13371,32 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:105 - `Geom_OffsetSurface::SetOffsetValue()`
     /// Changes this offset surface by assigning D as the offset value.
     pub fn set_offset_value(&mut self, D: f64) {
         unsafe { crate::ffi::Geom_OffsetSurface_set_offset_value(self as *mut Self, D) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:108 - `Geom_OffsetSurface::Offset()`
     /// Returns the offset value of this offset surface.
     pub fn offset(&self) -> f64 {
         unsafe { crate::ffi::Geom_OffsetSurface_offset(self as *const Self) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:112 - `Geom_OffsetSurface::BasisSurface()`
     /// Returns the basis surface of this offset surface.
     /// Note: The basis surface can be an offset surface.
     pub fn basis_surface(&self) -> &crate::ffi::HandleGeomSurface {
         unsafe { &*(crate::ffi::Geom_OffsetSurface_basis_surface(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:115 - `Geom_OffsetSurface::OsculatingSurface()`
     /// Returns osculating surface if base surface is B-spline or Bezier
     pub fn osculating_surface(&self) -> &crate::ffi::HandleGeomOsculatingSurface {
         unsafe { &*(crate::ffi::Geom_OffsetSurface_osculating_surface(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:120 - `Geom_OffsetSurface::UReverse()`
     /// Changes the orientation of this offset surface in the u
     /// parametric direction. The bounds of the surface
     /// are not changed but the given parametric direction is reversed.
@@ -12753,6 +13404,7 @@ impl OffsetSurface {
         unsafe { crate::ffi::Geom_OffsetSurface_u_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:126 - `Geom_OffsetSurface::UReversedParameter()`
     /// Computes the u  parameter on the modified
     /// surface, produced by reversing the u
     /// parametric direction of this offset surface, for any
@@ -12761,12 +13413,14 @@ impl OffsetSurface {
         unsafe { crate::ffi::Geom_OffsetSurface_u_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:130 - `Geom_OffsetSurface::VReverse()`
     /// Changes the orientation of this offset surface in the v parametric direction. The bounds of
     /// the surface are not changed but the given parametric direction is reversed.
     pub fn v_reverse(&mut self) {
         unsafe { crate::ffi::Geom_OffsetSurface_v_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:136 - `Geom_OffsetSurface::VReversedParameter()`
     /// Computes the  v parameter on the modified
     /// surface, produced by reversing the or v
     /// parametric direction of this offset surface, for any
@@ -12775,6 +13429,7 @@ impl OffsetSurface {
         unsafe { crate::ffi::Geom_OffsetSurface_v_reversed_parameter(self as *const Self, V) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:143 - `Geom_OffsetSurface::Bounds()`
     /// Returns the parametric bounds U1, U2, V1 and V2 of
     /// this offset surface.
     /// If the surface is infinite, this function can return:
@@ -12784,6 +13439,7 @@ impl OffsetSurface {
         unsafe { crate::ffi::Geom_OffsetSurface_bounds(self as *const Self, U1, U2, V1, V2) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:163 - `Geom_OffsetSurface::Continuity()`
     /// This method returns the continuity of the basis surface - 1.
     /// Continuity of the Offset surface :
     /// C0 : only geometric continuity,
@@ -12808,6 +13464,7 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:170 - `Geom_OffsetSurface::IsCNu()`
     /// This method answer True if the continuity of the basis surface
     /// is N + 1 in the U parametric direction. We suppose in this
     /// class that a unique normal is defined at any point on the basis
@@ -12817,6 +13474,7 @@ impl OffsetSurface {
         unsafe { crate::ffi::Geom_OffsetSurface_is_c_nu(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:177 - `Geom_OffsetSurface::IsCNv()`
     /// This method answer True if the continuity of the basis surface
     /// is N + 1 in the V parametric direction. We suppose in this
     /// class that a unique normal is defined at any point on the basis
@@ -12826,6 +13484,7 @@ impl OffsetSurface {
         unsafe { crate::ffi::Geom_OffsetSurface_is_c_nv(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:186 - `Geom_OffsetSurface::IsUClosed()`
     /// Checks whether this offset surface is closed in the u
     /// parametric direction.
     /// Returns true if, taking uFirst and uLast as
@@ -12837,6 +13496,7 @@ impl OffsetSurface {
         unsafe { crate::ffi::Geom_OffsetSurface_is_u_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:194 - `Geom_OffsetSurface::IsVClosed()`
     /// Checks whether this offset surface is closed in the u
     /// or v parametric direction. Returns true if taking vFirst and vLast as the
     /// parametric bounds in the v parametric direction, the
@@ -12847,6 +13507,7 @@ impl OffsetSurface {
         unsafe { crate::ffi::Geom_OffsetSurface_is_v_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:199 - `Geom_OffsetSurface::IsUPeriodic()`
     /// Returns true if this offset surface is periodic in the u
     /// parametric direction, i.e. if the basis
     /// surface of this offset surface is periodic in this direction.
@@ -12854,6 +13515,7 @@ impl OffsetSurface {
         unsafe { crate::ffi::Geom_OffsetSurface_is_u_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:205 - `Geom_OffsetSurface::UPeriod()`
     /// Returns the period of this offset surface in the u
     /// parametric direction respectively, i.e. the period of the
     /// basis surface of this offset surface in this parametric direction.
@@ -12862,6 +13524,7 @@ impl OffsetSurface {
         unsafe { crate::ffi::Geom_OffsetSurface_u_period(self as *const Self) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:210 - `Geom_OffsetSurface::IsVPeriodic()`
     /// Returns true if this offset surface is periodic in the v
     /// parametric direction, i.e. if the basis
     /// surface of this offset surface is periodic in this direction.
@@ -12869,6 +13532,7 @@ impl OffsetSurface {
         unsafe { crate::ffi::Geom_OffsetSurface_is_v_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:216 - `Geom_OffsetSurface::VPeriod()`
     /// Returns the period of this offset surface in the v
     /// parametric direction respectively, i.e. the period of the
     /// basis surface of this offset surface in this parametric direction.
@@ -12877,6 +13541,7 @@ impl OffsetSurface {
         unsafe { crate::ffi::Geom_OffsetSurface_v_period(self as *const Self) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:219 - `Geom_OffsetSurface::UIso()`
     /// Computes the U isoparametric curve.
     pub fn u_iso(&self, U: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
         unsafe {
@@ -12884,6 +13549,7 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:230 - `Geom_OffsetSurface::VIso()`
     /// Computes the V isoparametric curve.
     ///
     /// The following methods compute value and derivatives.
@@ -12899,6 +13565,7 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:253 - `Geom_OffsetSurface::D0()`
     /// @code
     /// P (U, V) = Pbasis + Offset * Ndir
     /// @endcode
@@ -12924,6 +13591,7 @@ impl OffsetSurface {
         unsafe { crate::ffi::Geom_OffsetSurface_d0(self as *const Self, U, V, P) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:258 - `Geom_OffsetSurface::D1()`
     /// Raised if the continuity of the basis surface is not C2.
     pub fn d1(
         &self,
@@ -12936,6 +13604,7 @@ impl OffsetSurface {
         unsafe { crate::ffi::Geom_OffsetSurface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:265 - `Geom_OffsetSurface::D2()`
     /// Raised if the continuity of the basis surface is not C3.
     pub fn d2(
         &self,
@@ -12963,6 +13632,7 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:275 - `Geom_OffsetSurface::D3()`
     /// Raised if the continuity of the basis surface is not C4.
     pub fn d3(
         &self,
@@ -12998,6 +13668,7 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:303 - `Geom_OffsetSurface::DN()`
     /// Computes the derivative of order Nu in the direction u and Nv in the direction v.
     ///
     /// Raised if the continuity of the basis surface is not CNu + 1
@@ -13025,12 +13696,14 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:310 - `Geom_OffsetSurface::Transform()`
     /// Applies the transformation T to this offset surface.
     /// Note: the basis surface is also modified.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_OffsetSurface_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:326 - `Geom_OffsetSurface::TransformParameters()`
     /// Computes the parameters on the transformed surface for
     /// the transform of the point of parameters U,V on <me>.
     /// @code
@@ -13049,6 +13722,7 @@ impl OffsetSurface {
         unsafe { crate::ffi::Geom_OffsetSurface_transform_parameters(self as *const Self, U, V, T) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:344 - `Geom_OffsetSurface::ParametricTransformation()`
     /// Returns a 2d transformation used to find the new
     /// parameters of a point on the transformed surface.
     /// @code
@@ -13075,6 +13749,7 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:348 - `Geom_OffsetSurface::Copy()`
     /// Creates a new object which is a copy of this offset surface.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
@@ -13082,6 +13757,7 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:354 - `Geom_OffsetSurface::Surface()`
     /// returns an  equivalent surface of the offset surface
     /// when  the basis surface   is a canonic  surface or a
     /// rectangular  limited surface on canonic surface or if
@@ -13092,6 +13768,7 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:361 - `Geom_OffsetSurface::UOsculatingSurface()`
     /// if Standard_True, L is  the local osculating surface
     /// along U at  the point U,V.   It means that  DL/DU is
     /// collinear to DS/DU .  If IsOpposite == Standard_True
@@ -13114,6 +13791,7 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:372 - `Geom_OffsetSurface::VOsculatingSurface()`
     /// if Standard_True, L is the local osculating surface
     /// along V at the point U,V.
     /// It means that  DL/DV is
@@ -13137,6 +13815,7 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:378 - `Geom_OffsetSurface::GetBasisSurfContinuity()`
     /// Returns continuity of the basis surface.
     pub fn get_basis_surf_continuity(&self) -> crate::geom_abs::Shape {
         unsafe {
@@ -13147,14 +13826,17 @@ impl OffsetSurface {
         }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:384 - `Geom_OffsetSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_OffsetSurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:384 - `Geom_OffsetSurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_OffsetSurface_get_type_name() }
     }
 
+    /// **Source:** `Geom_OffsetSurface.hxx`:384 - `Geom_OffsetSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_OffsetSurface_get_type_descriptor()) }
     }
@@ -13349,6 +14031,7 @@ impl HandleGeomOffsetSurface {
 // From Geom_OsculatingSurface.hxx
 // ========================
 
+/// **Source:** `Geom_OsculatingSurface.hxx`:37 - `Geom_OsculatingSurface`
 pub use crate::ffi::Geom_OsculatingSurface as OsculatingSurface;
 
 unsafe impl crate::CppDeletable for OsculatingSurface {
@@ -13358,10 +14041,12 @@ unsafe impl crate::CppDeletable for OsculatingSurface {
 }
 
 impl OsculatingSurface {
+    /// **Source:** `Geom_OsculatingSurface.hxx`:42 - `Geom_OsculatingSurface::Geom_OsculatingSurface()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_OsculatingSurface_ctor()) }
     }
 
+    /// **Source:** `Geom_OsculatingSurface.hxx`:48 - `Geom_OsculatingSurface::Geom_OsculatingSurface()`
     /// detects if the  surface has punctual U  or  V
     /// isoparametric  curve along on  the bounds of the surface
     /// relatively to the tolerance Tol and Builds the corresponding
@@ -13377,10 +14062,12 @@ impl OsculatingSurface {
         }
     }
 
+    /// **Source:** `Geom_OsculatingSurface.hxx`:50 - `Geom_OsculatingSurface::Init()`
     pub fn init(&mut self, BS: &crate::ffi::HandleGeomSurface, Tol: f64) {
         unsafe { crate::ffi::Geom_OsculatingSurface_init(self as *mut Self, BS, Tol) }
     }
 
+    /// **Source:** `Geom_OsculatingSurface.hxx`:52 - `Geom_OsculatingSurface::BasisSurface()`
     pub fn basis_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_OsculatingSurface_basis_surface(
@@ -13389,10 +14076,12 @@ impl OsculatingSurface {
         }
     }
 
+    /// **Source:** `Geom_OsculatingSurface.hxx`:54 - `Geom_OsculatingSurface::Tolerance()`
     pub fn tolerance(&self) -> f64 {
         unsafe { crate::ffi::Geom_OsculatingSurface_tolerance(self as *const Self) }
     }
 
+    /// **Source:** `Geom_OsculatingSurface.hxx`:58 - `Geom_OsculatingSurface::UOscSurf()`
     /// if Standard_True, L is the local osculating surface
     /// along U at the point U,V.
     pub fn u_osc_surf(
@@ -13405,6 +14094,7 @@ impl OsculatingSurface {
         unsafe { crate::ffi::Geom_OsculatingSurface_u_osc_surf(self as *const Self, U, V, t, L) }
     }
 
+    /// **Source:** `Geom_OsculatingSurface.hxx`:65 - `Geom_OsculatingSurface::VOscSurf()`
     /// if Standard_True, L is the local osculating surface
     /// along V at the point U,V.
     pub fn v_osc_surf(
@@ -13417,14 +14107,17 @@ impl OsculatingSurface {
         unsafe { crate::ffi::Geom_OsculatingSurface_v_osc_surf(self as *const Self, U, V, t, L) }
     }
 
+    /// **Source:** `Geom_OsculatingSurface.hxx`:74 - `Geom_OsculatingSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_OsculatingSurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_OsculatingSurface.hxx`:74 - `Geom_OsculatingSurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_OsculatingSurface_get_type_name() }
     }
 
+    /// **Source:** `Geom_OsculatingSurface.hxx`:74 - `Geom_OsculatingSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_OsculatingSurface_get_type_descriptor()) }
     }
@@ -13463,6 +14156,7 @@ impl HandleGeomOsculatingSurface {
 // From Geom_Parabola.hxx
 // ========================
 
+/// **Source:** `Geom_Parabola.hxx`:69 - `Geom_Parabola`
 /// Describes a parabola in 3D space.
 /// A parabola is defined by its focal length (i.e. the
 /// distance between its focus and its apex) and is
@@ -13505,11 +14199,13 @@ unsafe impl crate::CppDeletable for Parabola {
 }
 
 impl Parabola {
+    /// **Source:** `Geom_Parabola.hxx`:74 - `Geom_Parabola::Geom_Parabola()`
     /// Creates a parabola from a non transient one.
     pub fn new_parab(Prb: &crate::ffi::gp_Parab) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Parabola_ctor_parab(Prb)) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:83 - `Geom_Parabola::Geom_Parabola()`
     /// Creates a parabola with its local coordinate system "A2"
     /// and it's focal length "Focal".
     /// The XDirection of A2 defines the axis of symmetry of the
@@ -13521,6 +14217,7 @@ impl Parabola {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Parabola_ctor_ax2_real(A2, Focal)) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:93 - `Geom_Parabola::Geom_Parabola()`
     /// D is the directrix of the parabola and F the focus point.
     /// The symmetry axis (XAxis) of the parabola is normal to the
     /// directrix and pass through the focus point F, but its
@@ -13533,23 +14230,27 @@ impl Parabola {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Parabola_ctor_ax1_pnt(D, F)) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:97 - `Geom_Parabola::SetFocal()`
     /// Assigns the value Focal to the focal distance of this parabola.
     /// Exceptions Standard_ConstructionError if Focal is negative.
     pub fn set_focal(&mut self, Focal: f64) {
         unsafe { crate::ffi::Geom_Parabola_set_focal(self as *mut Self, Focal) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:100 - `Geom_Parabola::SetParab()`
     /// Converts the gp_Parab parabola Prb into this parabola.
     pub fn set_parab(&mut self, Prb: &crate::ffi::gp_Parab) {
         unsafe { crate::ffi::Geom_Parabola_set_parab(self as *mut Self, Prb) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:104 - `Geom_Parabola::Parab()`
     /// Returns the non transient parabola from gp with the same
     /// geometric properties as <me>.
     pub fn parab(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Parabola_parab(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:109 - `Geom_Parabola::ReversedParameter()`
     /// Computes the parameter on the reversed parabola,
     /// for the point of parameter U on this parabola.
     /// For a parabola, the returned value is: -U.
@@ -13557,6 +14258,7 @@ impl Parabola {
         unsafe { crate::ffi::Geom_Parabola_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:115 - `Geom_Parabola::FirstParameter()`
     /// Returns the value of the first or last parameter of this
     /// parabola. This is, respectively:
     /// - Standard_Real::RealFirst(), or
@@ -13565,6 +14267,7 @@ impl Parabola {
         unsafe { crate::ffi::Geom_Parabola_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:121 - `Geom_Parabola::LastParameter()`
     /// Returns the value of the first or last parameter of this
     /// parabola. This is, respectively:
     /// - Standard_Real::RealFirst(), or
@@ -13573,16 +14276,19 @@ impl Parabola {
         unsafe { crate::ffi::Geom_Parabola_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:124 - `Geom_Parabola::IsClosed()`
     /// Returns False
     pub fn is_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_Parabola_is_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:127 - `Geom_Parabola::IsPeriodic()`
     /// Returns False
     pub fn is_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_Parabola_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:136 - `Geom_Parabola::Directrix()`
     /// Computes the directrix of this parabola.
     /// This is a line normal to the axis of symmetry, in the
     /// plane of this parabola, located on the negative side
@@ -13596,11 +14302,13 @@ impl Parabola {
         }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:139 - `Geom_Parabola::Eccentricity()`
     /// Returns 1. (which is the eccentricity of any parabola).
     pub fn eccentricity(&self) -> f64 {
         unsafe { crate::ffi::Geom_Parabola_eccentricity(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:144 - `Geom_Parabola::Focus()`
     /// Computes the focus of this parabola. The focus is on the
     /// positive side of the "X Axis" of the local coordinate
     /// system of the parabola.
@@ -13608,6 +14316,7 @@ impl Parabola {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Parabola_focus(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:149 - `Geom_Parabola::Focal()`
     /// Computes the focal distance of this parabola
     /// The focal distance is the distance between the apex
     /// and the focus of the parabola.
@@ -13615,6 +14324,7 @@ impl Parabola {
         unsafe { crate::ffi::Geom_Parabola_focal(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:156 - `Geom_Parabola::Parameter()`
     /// Computes the parameter of this parabola which is the
     /// distance between its focus and its directrix. This
     /// distance is twice the focal length.
@@ -13624,6 +14334,7 @@ impl Parabola {
         unsafe { crate::ffi::Geom_Parabola_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:164 - `Geom_Parabola::D0()`
     /// Returns in P the point of parameter U.
     /// If U = 0 the returned point is the origin of the XAxis and
     /// the YAxis of the parabola and it is the vertex of the parabola.
@@ -13634,11 +14345,13 @@ impl Parabola {
         unsafe { crate::ffi::Geom_Parabola_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:167 - `Geom_Parabola::D1()`
     /// Returns the point P of parameter U and the first derivative V1.
     pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V1: &mut crate::ffi::gp_Vec) {
         unsafe { crate::ffi::Geom_Parabola_d1(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:171 - `Geom_Parabola::D2()`
     /// Returns the point P of parameter U, the first and second
     /// derivatives V1 and V2.
     pub fn d2(
@@ -13651,6 +14364,7 @@ impl Parabola {
         unsafe { crate::ffi::Geom_Parabola_d2(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:178 - `Geom_Parabola::D3()`
     /// Returns the point P of parameter U, the first second and third
     /// derivatives V1 V2 and V3.
     pub fn d3(
@@ -13664,6 +14378,7 @@ impl Parabola {
         unsafe { crate::ffi::Geom_Parabola_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:187 - `Geom_Parabola::DN()`
     /// For the point of parameter U of this parabola,
     /// computes the vector corresponding to the Nth derivative.
     /// Exceptions Standard_RangeError if N is less than 1.
@@ -13673,11 +14388,13 @@ impl Parabola {
         }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:191 - `Geom_Parabola::Transform()`
     /// Applies the transformation T to this parabola.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_Parabola_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:203 - `Geom_Parabola::TransformedParameter()`
     /// Returns the  parameter on the  transformed  curve for
     /// the transform of the point of parameter U on <me>.
     ///
@@ -13692,6 +14409,7 @@ impl Parabola {
         unsafe { crate::ffi::Geom_Parabola_transformed_parameter(self as *const Self, U, T) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:217 - `Geom_Parabola::ParametricTransformation()`
     /// Returns a  coefficient to compute the parameter on
     /// the transformed  curve  for  the transform  of the
     /// point on <me>.
@@ -13707,19 +14425,23 @@ impl Parabola {
         unsafe { crate::ffi::Geom_Parabola_parametric_transformation(self as *const Self, T) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:220 - `Geom_Parabola::Copy()`
     /// Creates a new object which is a copy of this parabola.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Parabola_copy(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:226 - `Geom_Parabola::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Parabola_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:226 - `Geom_Parabola::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_Parabola_get_type_name() }
     }
 
+    /// **Source:** `Geom_Parabola.hxx`:226 - `Geom_Parabola::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Parabola_get_type_descriptor()) }
     }
@@ -13994,6 +14716,7 @@ impl HandleGeomParabola {
 // From Geom_Plane.hxx
 // ========================
 
+/// **Source:** `Geom_Plane.hxx`:64 - `Geom_Plane`
 /// Describes a plane in 3D space.
 /// A plane is positioned in space by a coordinate system
 /// (a gp_Ax3 object) such that the plane is defined by
@@ -14029,6 +14752,7 @@ unsafe impl crate::CppDeletable for Plane {
 }
 
 impl Plane {
+    /// **Source:** `Geom_Plane.hxx`:73 - `Geom_Plane::Geom_Plane()`
     /// Creates a plane located in 3D space with an axis placement three axis.
     /// The "ZDirection" of "A3" is the direction normal
     /// to the plane.  The "Location" point of "A3" is the origin of the plane.
@@ -14038,17 +14762,20 @@ impl Plane {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Plane_ctor_ax3(A3)) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:76 - `Geom_Plane::Geom_Plane()`
     /// Creates a plane from a non transient plane from package gp.
     pub fn new_pln(Pl: &crate::ffi::gp_Pln) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Plane_ctor_pln(Pl)) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:80 - `Geom_Plane::Geom_Plane()`
     /// P is the "Location" point or origin of the plane.
     /// V is the direction normal to the plane.
     pub fn new_pnt_dir(P: &crate::ffi::gp_Pnt, V: &crate::ffi::gp_Dir) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Plane_ctor_pnt_dir(P, V)) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:87 - `Geom_Plane::Geom_Plane()`
     /// Creates a plane from its cartesian equation:
     /// @code
     /// Ax + By + Cz + D = 0.0
@@ -14058,16 +14785,19 @@ impl Plane {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Plane_ctor_real4(A, B, C, D)) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:93 - `Geom_Plane::SetPln()`
     /// Set <me> so that <me> has the same geometric properties as Pl.
     pub fn set_pln(&mut self, Pl: &crate::ffi::gp_Pln) {
         unsafe { crate::ffi::Geom_Plane_set_pln(self as *mut Self, Pl) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:96 - `Geom_Plane::Pln()`
     /// Converts this plane into a gp_Pln plane.
     pub fn pln(&self) -> crate::OwnedPtr<crate::ffi::gp_Pln> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Plane_pln(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:101 - `Geom_Plane::UReverse()`
     /// Changes the orientation of this plane in the u (or v) parametric direction.
     /// The bounds of the plane are not changed but the given parametric direction is reversed.
     /// Hence the orientation of the surface is reversed.
@@ -14075,6 +14805,7 @@ impl Plane {
         unsafe { crate::ffi::Geom_Plane_u_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:107 - `Geom_Plane::UReversedParameter()`
     /// Computes the u  parameter on the modified plane,
     /// produced when reversing the u parametric of this plane,
     /// for any point of u parameter U on this plane.
@@ -14083,6 +14814,7 @@ impl Plane {
         unsafe { crate::ffi::Geom_Plane_u_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:112 - `Geom_Plane::VReverse()`
     /// Changes the orientation of this plane in the u (or v) parametric direction.
     /// The bounds of the plane are not changed but the given parametric direction is reversed.
     /// Hence the orientation of the surface is reversed.
@@ -14090,6 +14822,7 @@ impl Plane {
         unsafe { crate::ffi::Geom_Plane_v_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:118 - `Geom_Plane::VReversedParameter()`
     /// Computes the v parameter on the modified plane,
     /// produced when reversing the v parametric of this plane,
     /// for any point of v parameter V on this plane.
@@ -14098,6 +14831,7 @@ impl Plane {
         unsafe { crate::ffi::Geom_Plane_v_reversed_parameter(self as *const Self, V) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:134 - `Geom_Plane::TransformParameters()`
     /// Computes the parameters on the transformed surface for
     /// the transform of the point of parameters U,V on <me>.
     /// @code
@@ -14116,6 +14850,7 @@ impl Plane {
         unsafe { crate::ffi::Geom_Plane_transform_parameters(self as *const Self, U, V, T) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:152 - `Geom_Plane::ParametricTransformation()`
     /// Returns a 2d transformation used to find the new
     /// parameters of a point on the transformed surface.
     /// @code
@@ -14142,6 +14877,7 @@ impl Plane {
         }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:159 - `Geom_Plane::Bounds()`
     /// Returns the parametric bounds U1, U2, V1 and V2 of this plane.
     /// Because a plane is an infinite surface, the following is always true:
     /// - U1 = V1 =   Standard_Real::RealFirst()
@@ -14150,6 +14886,7 @@ impl Plane {
         unsafe { crate::ffi::Geom_Plane_bounds(self as *const Self, U1, U2, V1, V2) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:168 - `Geom_Plane::Coefficients()`
     /// Computes the normalized coefficients of the plane's cartesian equation:
     /// @code
     /// Ax + By + Cz + D = 0.0
@@ -14158,38 +14895,45 @@ impl Plane {
         unsafe { crate::ffi::Geom_Plane_coefficients(self as *const Self, A, B, C, D) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:174 - `Geom_Plane::IsUClosed()`
     /// return False
     pub fn is_u_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_Plane_is_u_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:177 - `Geom_Plane::IsVClosed()`
     /// return False
     pub fn is_v_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_Plane_is_v_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:180 - `Geom_Plane::IsUPeriodic()`
     /// return False.
     pub fn is_u_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_Plane_is_u_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:183 - `Geom_Plane::IsVPeriodic()`
     /// return False.
     pub fn is_v_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_Plane_is_v_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:187 - `Geom_Plane::UIso()`
     /// Computes the U isoparametric curve.
     /// This is a Line parallel to the YAxis of the plane.
     pub fn u_iso(&self, U: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Plane_u_iso(self as *const Self, U)) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:191 - `Geom_Plane::VIso()`
     /// Computes the V isoparametric curve.
     /// This is a Line parallel to the XAxis of the plane.
     pub fn v_iso(&self, V: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Plane_v_iso(self as *const Self, V)) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:199 - `Geom_Plane::D0()`
     /// Computes the point P (U, V) on <me>.
     /// @code
     /// P = O + U * XDir + V * YDir.
@@ -14200,6 +14944,7 @@ impl Plane {
         unsafe { crate::ffi::Geom_Plane_d0(self as *const Self, U, V, P) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:204 - `Geom_Plane::D1()`
     /// Computes the current point and the first derivatives in the directions U and V.
     pub fn d1(
         &self,
@@ -14212,6 +14957,7 @@ impl Plane {
         unsafe { crate::ffi::Geom_Plane_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:212 - `Geom_Plane::D2()`
     /// Computes the current point, the first and the second
     /// derivatives in the directions U and V.
     pub fn d2(
@@ -14228,6 +14974,7 @@ impl Plane {
         unsafe { crate::ffi::Geom_Plane_d2(self as *const Self, U, V, P, D1U, D1V, D2U, D2V, D2UV) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:223 - `Geom_Plane::D3()`
     /// Computes the current point, the first,the second and the
     /// third derivatives in the directions U and V.
     pub fn d3(
@@ -14264,6 +15011,7 @@ impl Plane {
         }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:239 - `Geom_Plane::DN()`
     /// Computes the derivative of order Nu in the direction u
     /// and Nv in the direction v.
     /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
@@ -14273,24 +15021,29 @@ impl Plane {
         }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:245 - `Geom_Plane::Transform()`
     /// Applies the transformation T to this plane.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_Plane_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:248 - `Geom_Plane::Copy()`
     /// Creates a new object which is a copy of this plane.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Plane_copy(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:254 - `Geom_Plane::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Plane_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:254 - `Geom_Plane::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_Plane_get_type_name() }
     }
 
+    /// **Source:** `Geom_Plane.hxx`:254 - `Geom_Plane::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Plane_get_type_descriptor()) }
     }
@@ -14562,6 +15315,7 @@ impl HandleGeomPlane {
 // From Geom_Point.hxx
 // ========================
 
+/// **Source:** `Geom_Point.hxx`:34 - `Geom_Point`
 /// The abstract class Point describes the common
 /// behavior of geometric points in 3D space.
 /// The Geom package also provides the concrete class
@@ -14575,49 +15329,59 @@ unsafe impl crate::CppDeletable for Point {
 }
 
 impl Point {
+    /// **Source:** `Geom_Point.hxx`:39 - `Geom_Point::Coord()`
     /// returns the Coordinates of <me>.
     pub fn coord(&self, X: &mut f64, Y: &mut f64, Z: &mut f64) {
         unsafe { crate::ffi::Geom_Point_coord(self as *const Self, X, Y, Z) }
     }
 
+    /// **Source:** `Geom_Point.hxx`:44 - `Geom_Point::Pnt()`
     /// returns a non transient copy of <me>
     pub fn pnt(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Point_pnt(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Point.hxx`:47 - `Geom_Point::X()`
     /// returns the X coordinate of <me>.
     pub fn x(&self) -> f64 {
         unsafe { crate::ffi::Geom_Point_x(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Point.hxx`:50 - `Geom_Point::Y()`
     /// returns  the Y coordinate of <me>.
     pub fn y(&self) -> f64 {
         unsafe { crate::ffi::Geom_Point_y(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Point.hxx`:53 - `Geom_Point::Z()`
     /// returns the Z coordinate of <me>.
     pub fn z(&self) -> f64 {
         unsafe { crate::ffi::Geom_Point_z(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Point.hxx`:56 - `Geom_Point::Distance()`
     /// Computes the distance between <me> and <Other>.
     pub fn distance(&self, Other: &crate::ffi::HandleGeomPoint) -> f64 {
         unsafe { crate::ffi::Geom_Point_distance(self as *const Self, Other) }
     }
 
+    /// **Source:** `Geom_Point.hxx`:59 - `Geom_Point::SquareDistance()`
     /// Computes the square distance between <me> and <Other>.
     pub fn square_distance(&self, Other: &crate::ffi::HandleGeomPoint) -> f64 {
         unsafe { crate::ffi::Geom_Point_square_distance(self as *const Self, Other) }
     }
 
+    /// **Source:** `Geom_Point.hxx`:61 - `Geom_Point::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Point_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Point.hxx`:61 - `Geom_Point::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_Point_get_type_name() }
     }
 
+    /// **Source:** `Geom_Point.hxx`:61 - `Geom_Point::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Point_get_type_descriptor()) }
     }
@@ -14767,6 +15531,7 @@ impl HandleGeomPoint {
 // From Geom_RectangularTrimmedSurface.hxx
 // ========================
 
+/// **Source:** `Geom_RectangularTrimmedSurface.hxx`:56 - `Geom_RectangularTrimmedSurface`
 /// Describes a portion of a surface (a patch) limited
 /// by two values of the u parameter in the u
 /// parametric direction, and two values of the v
@@ -14795,6 +15560,7 @@ unsafe impl crate::CppDeletable for RectangularTrimmedSurface {
 }
 
 impl RectangularTrimmedSurface {
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:76 - `Geom_RectangularTrimmedSurface::Geom_RectangularTrimmedSurface()`
     /// The U parametric direction of the surface is oriented from U1
     /// to U2. The V parametric direction of the surface is oriented
     /// from V1 to V2.
@@ -14829,6 +15595,7 @@ impl RectangularTrimmedSurface {
         }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:105 - `Geom_RectangularTrimmedSurface::Geom_RectangularTrimmedSurface()`
     /// The basis surface S is only trim in one parametric direction.
     /// If UTrim = True the surface is trimmed in the U parametric
     /// direction else the surface is trimmed in the V parametric
@@ -14866,6 +15633,7 @@ impl RectangularTrimmedSurface {
         }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:76 - `Geom_RectangularTrimmedSurface::Geom_RectangularTrimmedSurface()`
     /// The U parametric direction of the surface is oriented from U1
     /// to U2. The V parametric direction of the surface is oriented
     /// from V1 to V2.
@@ -14893,6 +15661,7 @@ impl RectangularTrimmedSurface {
         Self::new_handlegeomsurface_real4_bool2(S, U1, U2, V1, V2, USense, true)
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:76 - `Geom_RectangularTrimmedSurface::Geom_RectangularTrimmedSurface()`
     /// The U parametric direction of the surface is oriented from U1
     /// to U2. The V parametric direction of the surface is oriented
     /// from V1 to V2.
@@ -14919,6 +15688,7 @@ impl RectangularTrimmedSurface {
         Self::new_handlegeomsurface_real4_bool2(S, U1, U2, V1, V2, true, true)
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:105 - `Geom_RectangularTrimmedSurface::Geom_RectangularTrimmedSurface()`
     /// The basis surface S is only trim in one parametric direction.
     /// If UTrim = True the surface is trimmed in the U parametric
     /// direction else the surface is trimmed in the V parametric
@@ -14949,6 +15719,7 @@ impl RectangularTrimmedSurface {
         Self::new_handlegeomsurface_real2_bool2(S, Param1, Param2, UTrim, true)
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:128 - `Geom_RectangularTrimmedSurface::SetTrim()`
     /// Modifies this patch by changing the trim values
     /// applied to the original surface
     /// The u parametric direction of
@@ -14988,6 +15759,7 @@ impl RectangularTrimmedSurface {
         }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:154 - `Geom_RectangularTrimmedSurface::SetTrim()`
     /// Modifies this patch by changing the trim values
     /// applied to the original surface
     /// The basis surface is trimmed only in one parametric direction: if UTrim
@@ -15019,6 +15791,7 @@ impl RectangularTrimmedSurface {
         }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:160 - `Geom_RectangularTrimmedSurface::BasisSurface()`
     /// Returns the Basis surface of <me>.
     pub fn basis_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
@@ -15028,6 +15801,7 @@ impl RectangularTrimmedSurface {
         }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:166 - `Geom_RectangularTrimmedSurface::UReverse()`
     /// Changes the orientation of this patch in the u
     /// parametric direction. The bounds of the surface are
     /// not changed, but the given parametric direction is
@@ -15036,6 +15810,7 @@ impl RectangularTrimmedSurface {
         unsafe { crate::ffi::Geom_RectangularTrimmedSurface_u_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:171 - `Geom_RectangularTrimmedSurface::UReversedParameter()`
     /// Computes the u  parameter on the modified
     /// surface, produced by when reversing its u
     /// parametric direction, for any point of u parameter U on this patch.
@@ -15045,6 +15820,7 @@ impl RectangularTrimmedSurface {
         }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:177 - `Geom_RectangularTrimmedSurface::VReverse()`
     /// Changes the orientation of this patch in the v
     /// parametric direction. The bounds of the surface are
     /// not changed, but the given parametric direction is
@@ -15053,6 +15829,7 @@ impl RectangularTrimmedSurface {
         unsafe { crate::ffi::Geom_RectangularTrimmedSurface_v_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:182 - `Geom_RectangularTrimmedSurface::VReversedParameter()`
     /// Computes the v  parameter on the modified
     /// surface, produced by when reversing its v
     /// parametric direction, for any point of v parameter V on this patch.
@@ -15062,6 +15839,7 @@ impl RectangularTrimmedSurface {
         }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:185 - `Geom_RectangularTrimmedSurface::Bounds()`
     /// Returns the parametric bounds U1, U2, V1 and V2 of this patch.
     pub fn bounds(&self, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64) {
         unsafe {
@@ -15069,6 +15847,7 @@ impl RectangularTrimmedSurface {
         }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:196 - `Geom_RectangularTrimmedSurface::Continuity()`
     /// Returns  the continuity of the surface :
     /// C0 : only geometric continuity,
     /// C1 : continuity of the first derivative all along the Surface,
@@ -15084,16 +15863,19 @@ impl RectangularTrimmedSurface {
         }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:199 - `Geom_RectangularTrimmedSurface::IsUClosed()`
     /// Returns true if this patch is closed in the given parametric direction.
     pub fn is_u_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_RectangularTrimmedSurface_is_u_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:202 - `Geom_RectangularTrimmedSurface::IsVClosed()`
     /// Returns true if this patch is closed in the given parametric direction.
     pub fn is_v_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_RectangularTrimmedSurface_is_v_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:207 - `Geom_RectangularTrimmedSurface::IsCNu()`
     /// Returns true if the order of derivation in the U parametric
     /// direction is N.
     /// Raised if N < 0.
@@ -15101,6 +15883,7 @@ impl RectangularTrimmedSurface {
         unsafe { crate::ffi::Geom_RectangularTrimmedSurface_is_c_nu(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:212 - `Geom_RectangularTrimmedSurface::IsCNv()`
     /// Returns true if the order of derivation in the V parametric
     /// direction is N.
     /// Raised if N < 0.
@@ -15108,12 +15891,14 @@ impl RectangularTrimmedSurface {
         unsafe { crate::ffi::Geom_RectangularTrimmedSurface_is_c_nv(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:216 - `Geom_RectangularTrimmedSurface::IsUPeriodic()`
     /// Returns true if this patch is periodic and not trimmed in the given
     /// parametric direction.
     pub fn is_u_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_RectangularTrimmedSurface_is_u_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:221 - `Geom_RectangularTrimmedSurface::UPeriod()`
     /// Returns the period of this patch in the u
     /// parametric direction.
     /// raises if the surface is not uperiodic.
@@ -15121,12 +15906,14 @@ impl RectangularTrimmedSurface {
         unsafe { crate::ffi::Geom_RectangularTrimmedSurface_u_period(self as *const Self) }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:225 - `Geom_RectangularTrimmedSurface::IsVPeriodic()`
     /// Returns true if this patch is periodic and not trimmed in the given
     /// parametric direction.
     pub fn is_v_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_RectangularTrimmedSurface_is_v_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:231 - `Geom_RectangularTrimmedSurface::VPeriod()`
     /// Returns the period of this patch in the v
     /// parametric direction.
     /// raises if the surface is not vperiodic.
@@ -15135,6 +15922,7 @@ impl RectangularTrimmedSurface {
         unsafe { crate::ffi::Geom_RectangularTrimmedSurface_v_period(self as *const Self) }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:234 - `Geom_RectangularTrimmedSurface::UIso()`
     /// computes the U isoparametric curve.
     pub fn u_iso(&self, U: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
         unsafe {
@@ -15145,6 +15933,7 @@ impl RectangularTrimmedSurface {
         }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:237 - `Geom_RectangularTrimmedSurface::VIso()`
     /// Computes the V isoparametric curve.
     pub fn v_iso(&self, V: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
         unsafe {
@@ -15155,11 +15944,13 @@ impl RectangularTrimmedSurface {
         }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:240 - `Geom_RectangularTrimmedSurface::D0()`
     /// Can be raised if the basis surface is an OffsetSurface.
     pub fn d0(&self, U: f64, V: f64, P: &mut crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::Geom_RectangularTrimmedSurface_d0(self as *const Self, U, V, P) }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:248 - `Geom_RectangularTrimmedSurface::D1()`
     /// The returned derivatives have the same orientation as the
     /// derivatives of the basis surface even if the trimmed surface
     /// has not the same parametric orientation.
@@ -15177,6 +15968,7 @@ impl RectangularTrimmedSurface {
         }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:258 - `Geom_RectangularTrimmedSurface::D2()`
     /// The returned derivatives have the same orientation as the
     /// derivatives of the basis surface even if the trimmed surface
     /// has not the same parametric orientation.
@@ -15207,6 +15999,7 @@ impl RectangularTrimmedSurface {
         }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:271 - `Geom_RectangularTrimmedSurface::D3()`
     /// The returned derivatives have the same orientation as the
     /// derivatives of the basis surface even if the trimmed surface
     /// has not the same parametric orientation.
@@ -15245,6 +16038,7 @@ impl RectangularTrimmedSurface {
         }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:290 - `Geom_RectangularTrimmedSurface::DN()`
     /// The returned derivative has the same orientation as the
     /// derivative of the basis surface even if the trimmed surface
     /// has not the same parametric orientation.
@@ -15263,6 +16057,7 @@ impl RectangularTrimmedSurface {
         }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:299 - `Geom_RectangularTrimmedSurface::Transform()`
     /// Applies the transformation T to this patch.
     /// Warning
     /// As a consequence, the basis surface included in the
@@ -15271,6 +16066,7 @@ impl RectangularTrimmedSurface {
         unsafe { crate::ffi::Geom_RectangularTrimmedSurface_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:315 - `Geom_RectangularTrimmedSurface::TransformParameters()`
     /// Computes the  parameters on the  transformed  surface for
     /// the transform of the point of parameters U,V on <me>.
     /// @code
@@ -15296,6 +16092,7 @@ impl RectangularTrimmedSurface {
         }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:334 - `Geom_RectangularTrimmedSurface::ParametricTransformation()`
     /// Returns a 2d transformation  used to find the  new
     /// parameters of a point on the transformed surface.
     /// @code
@@ -15325,6 +16122,7 @@ impl RectangularTrimmedSurface {
         }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:338 - `Geom_RectangularTrimmedSurface::Copy()`
     /// Creates a new object which is a copy of this patch.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
@@ -15334,14 +16132,17 @@ impl RectangularTrimmedSurface {
         }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:344 - `Geom_RectangularTrimmedSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_RectangularTrimmedSurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:344 - `Geom_RectangularTrimmedSurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_RectangularTrimmedSurface_get_type_name() }
     }
 
+    /// **Source:** `Geom_RectangularTrimmedSurface.hxx`:344 - `Geom_RectangularTrimmedSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_RectangularTrimmedSurface_get_type_descriptor()) }
     }
@@ -15599,6 +16400,7 @@ impl HandleGeomRectangularTrimmedSurface {
 // From Geom_SphericalSurface.hxx
 // ========================
 
+/// **Source:** `Geom_SphericalSurface.hxx`:75 - `Geom_SphericalSurface`
 /// Describes a sphere.
 /// A sphere is defined by its radius, and is positioned in
 /// space by a coordinate system (a gp_Ax3 object), the
@@ -15647,6 +16449,7 @@ unsafe impl crate::CppDeletable for SphericalSurface {
 }
 
 impl SphericalSurface {
+    /// **Source:** `Geom_SphericalSurface.hxx`:92 - `Geom_SphericalSurface::Geom_SphericalSurface()`
     /// A3 is the local coordinate system of the surface.
     /// At the creation the parametrization of the surface is defined
     /// such as the normal Vector (N = D1U ^ D1V) is directed away from
@@ -15666,23 +16469,27 @@ impl SphericalSurface {
         }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:96 - `Geom_SphericalSurface::Geom_SphericalSurface()`
     /// Creates a SphericalSurface from a non persistent Sphere from
     /// package gp.
     pub fn new_sphere(S: &crate::ffi::gp_Sphere) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_SphericalSurface_ctor_sphere(S)) }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:100 - `Geom_SphericalSurface::SetRadius()`
     /// Assigns the value R to the radius of this sphere.
     /// Exceptions Standard_ConstructionError if R is less than 0.0.
     pub fn set_radius(&mut self, R: f64) {
         unsafe { crate::ffi::Geom_SphericalSurface_set_radius(self as *mut Self, R) }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:103 - `Geom_SphericalSurface::SetSphere()`
     /// Converts the gp_Sphere S into this sphere.
     pub fn set_sphere(&mut self, S: &crate::ffi::gp_Sphere) {
         unsafe { crate::ffi::Geom_SphericalSurface_set_sphere(self as *mut Self, S) }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:107 - `Geom_SphericalSurface::Sphere()`
     /// Returns a non persistent sphere with the same geometric
     /// properties as <me>.
     pub fn sphere(&self) -> crate::OwnedPtr<crate::ffi::gp_Sphere> {
@@ -15691,6 +16498,7 @@ impl SphericalSurface {
         }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:113 - `Geom_SphericalSurface::UReversedParameter()`
     /// Computes the u parameter on the modified
     /// surface, when reversing its u  parametric
     /// direction, for any point of u parameter U on this sphere.
@@ -15699,6 +16507,7 @@ impl SphericalSurface {
         unsafe { crate::ffi::Geom_SphericalSurface_u_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:119 - `Geom_SphericalSurface::VReversedParameter()`
     /// Computes the v parameter on the modified
     /// surface, when reversing its v parametric
     /// direction, for any point of v parameter V on this sphere.
@@ -15707,17 +16516,20 @@ impl SphericalSurface {
         unsafe { crate::ffi::Geom_SphericalSurface_v_reversed_parameter(self as *const Self, V) }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:122 - `Geom_SphericalSurface::Area()`
     /// Computes the aera of the spherical surface.
     pub fn area(&self) -> f64 {
         unsafe { crate::ffi::Geom_SphericalSurface_area(self as *const Self) }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:126 - `Geom_SphericalSurface::Bounds()`
     /// Returns the parametric bounds U1, U2, V1 and V2 of this sphere.
     /// For a sphere: U1 = 0, U2 = 2*PI, V1 = -PI/2, V2 = PI/2.
     pub fn bounds(&self, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64) {
         unsafe { crate::ffi::Geom_SphericalSurface_bounds(self as *const Self, U1, U2, V1, V2) }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:136 - `Geom_SphericalSurface::Coefficients()`
     /// Returns the coefficients of the implicit equation of the
     /// quadric in the absolute cartesian coordinates system :
     /// These coefficients are normalized.
@@ -15753,6 +16565,7 @@ impl SphericalSurface {
         }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:153 - `Geom_SphericalSurface::Radius()`
     /// Computes the coefficients of the implicit equation of
     /// this quadric in the absolute Cartesian coordinate system:
     /// A1.X**2 + A2.Y**2 + A3.Z**2 + 2.(B1.X.Y + B2.X.Z + B3.Y.Z) +
@@ -15763,31 +16576,37 @@ impl SphericalSurface {
         unsafe { crate::ffi::Geom_SphericalSurface_radius(self as *const Self) }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:156 - `Geom_SphericalSurface::Volume()`
     /// Computes the volume of the spherical surface.
     pub fn volume(&self) -> f64 {
         unsafe { crate::ffi::Geom_SphericalSurface_volume(self as *const Self) }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:159 - `Geom_SphericalSurface::IsUClosed()`
     /// Returns True.
     pub fn is_u_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_SphericalSurface_is_u_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:162 - `Geom_SphericalSurface::IsVClosed()`
     /// Returns False.
     pub fn is_v_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_SphericalSurface_is_v_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:165 - `Geom_SphericalSurface::IsUPeriodic()`
     /// Returns True.
     pub fn is_u_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_SphericalSurface_is_u_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:168 - `Geom_SphericalSurface::IsVPeriodic()`
     /// Returns False.
     pub fn is_v_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_SphericalSurface_is_v_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:177 - `Geom_SphericalSurface::UIso()`
     /// Computes the U isoparametric curve.
     /// The U isoparametric curves of the surface are defined by the
     /// section of the spherical surface with plane obtained by rotation
@@ -15804,6 +16623,7 @@ impl SphericalSurface {
         }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:189 - `Geom_SphericalSurface::VIso()`
     /// Computes the V isoparametric curve.
     /// The V isoparametric curves of the surface  are defined by
     /// the section of the spherical surface with plane parallel to the
@@ -15823,6 +16643,7 @@ impl SphericalSurface {
         }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:197 - `Geom_SphericalSurface::D0()`
     /// Computes the  point P (U, V) on the surface.
     /// P (U, V) = Loc + Radius * Sin (V) * Zdir +
     /// Radius * Cos (V) * (cos (U) * XDir + sin (U) * YDir)
@@ -15833,6 +16654,7 @@ impl SphericalSurface {
         unsafe { crate::ffi::Geom_SphericalSurface_d0(self as *const Self, U, V, P) }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:203 - `Geom_SphericalSurface::D1()`
     /// Computes the current point and the first derivatives in the
     /// directions U and V.
     pub fn d1(
@@ -15846,6 +16668,7 @@ impl SphericalSurface {
         unsafe { crate::ffi::Geom_SphericalSurface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:211 - `Geom_SphericalSurface::D2()`
     /// Computes the current point, the first and the second derivatives
     /// in the directions U and V.
     pub fn d2(
@@ -15874,6 +16697,7 @@ impl SphericalSurface {
         }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:222 - `Geom_SphericalSurface::D3()`
     /// Computes the current point, the first,the second and the third
     /// derivatives in the directions U and V.
     pub fn d3(
@@ -15910,6 +16734,7 @@ impl SphericalSurface {
         }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:238 - `Geom_SphericalSurface::DN()`
     /// Computes the derivative of order Nu in the direction u
     /// and Nv in the direction v.
     /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
@@ -15925,11 +16750,13 @@ impl SphericalSurface {
         }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:244 - `Geom_SphericalSurface::Transform()`
     /// Applies the transformation T to this sphere.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_SphericalSurface_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:247 - `Geom_SphericalSurface::Copy()`
     /// Creates a new object which is a copy of this sphere.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
@@ -15937,14 +16764,17 @@ impl SphericalSurface {
         }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:253 - `Geom_SphericalSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_SphericalSurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:253 - `Geom_SphericalSurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_SphericalSurface_get_type_name() }
     }
 
+    /// **Source:** `Geom_SphericalSurface.hxx`:253 - `Geom_SphericalSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_SphericalSurface_get_type_descriptor()) }
     }
@@ -16269,6 +17099,7 @@ impl HandleGeomSphericalSurface {
 // From Geom_Surface.hxx
 // ========================
 
+/// **Source:** `Geom_Surface.hxx`:52 - `Geom_Surface`
 /// Describes the common behavior of surfaces in 3D space.
 /// The Geom package provides many implementations of concrete derived surfaces,
 /// such as planes, cylinders, cones, spheres and tori, surfaces of linear extrusion,
@@ -16300,12 +17131,14 @@ unsafe impl crate::CppDeletable for Surface {
 }
 
 impl Surface {
+    /// **Source:** `Geom_Surface.hxx`:58 - `Geom_Surface::UReverse()`
     /// Reverses the U direction of parametrization of <me>.
     /// The bounds of the surface are not modified.
     pub fn u_reverse(&mut self) {
         unsafe { crate::ffi::Geom_Surface_u_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
     /// Reverses the U direction of parametrization of <me>.
     /// The bounds of the surface are not modified.
     /// A copy of <me> is returned.
@@ -16315,6 +17148,7 @@ impl Surface {
         }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:74 - `Geom_Surface::UReversedParameter()`
     /// Returns the  parameter on the  Ureversed surface for
     /// the point of parameter U on <me>.
     /// @code
@@ -16328,12 +17162,14 @@ impl Surface {
         unsafe { crate::ffi::Geom_Surface_u_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:78 - `Geom_Surface::VReverse()`
     /// Reverses the V direction of parametrization of <me>.
     /// The bounds of the surface are not modified.
     pub fn v_reverse(&mut self) {
         unsafe { crate::ffi::Geom_Surface_v_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
     /// Reverses the V direction of parametrization of <me>.
     /// The bounds of the surface are not modified.
     /// A copy of <me> is returned.
@@ -16343,6 +17179,7 @@ impl Surface {
         }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:94 - `Geom_Surface::VReversedParameter()`
     /// Returns the  parameter on the  Vreversed surface for
     /// the point of parameter V on <me>.
     /// @code
@@ -16356,6 +17193,7 @@ impl Surface {
         unsafe { crate::ffi::Geom_Surface_v_reversed_parameter(self as *const Self, V) }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:113 - `Geom_Surface::TransformParameters()`
     /// Computes the  parameters on the  transformed  surface for
     /// the transform of the point of parameters U,V on <me>.
     /// @code
@@ -16377,6 +17215,7 @@ impl Surface {
         unsafe { crate::ffi::Geom_Surface_transform_parameters(self as *const Self, U, V, T) }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:135 - `Geom_Surface::ParametricTransformation()`
     /// Returns a 2d transformation  used to find the  new
     /// parameters of a point on the transformed surface.
     /// @code
@@ -16407,6 +17246,7 @@ impl Surface {
         }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:140 - `Geom_Surface::Bounds()`
     /// Returns the parametric bounds U1, U2, V1 and V2 of this surface.
     /// If the surface is infinite, this function can return a value
     /// equal to Precision::Infinite: instead of Standard_Real::LastReal.
@@ -16414,6 +17254,7 @@ impl Surface {
         unsafe { crate::ffi::Geom_Surface_bounds(self as *const Self, U1, U2, V1, V2) }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:151 - `Geom_Surface::IsUClosed()`
     /// Checks whether this surface is closed in the u parametric direction.
     /// Returns true if, in the u parametric direction:
     /// taking uFirst and uLast as the parametric bounds in
@@ -16424,6 +17265,7 @@ impl Surface {
         unsafe { crate::ffi::Geom_Surface_is_u_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:158 - `Geom_Surface::IsVClosed()`
     /// Checks whether this surface is closed in the u parametric direction.
     /// Returns true if, in the v parametric direction:
     /// taking vFirst and vLast as the parametric bounds in the v parametric direction,
@@ -16433,6 +17275,7 @@ impl Surface {
         unsafe { crate::ffi::Geom_Surface_is_v_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:168 - `Geom_Surface::IsUPeriodic()`
     /// Checks if this surface is periodic in the u parametric direction.
     /// Returns true if:
     /// - this surface is closed in the u parametric direction, and
@@ -16445,12 +17288,14 @@ impl Surface {
         unsafe { crate::ffi::Geom_Surface_is_u_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
     /// Returns the period of this surface in the u parametric direction.
     /// Raises if the surface is not uperiodic.
     pub fn u_period(&self) -> f64 {
         unsafe { crate::ffi::Geom_Surface_u_period(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:182 - `Geom_Surface::IsVPeriodic()`
     /// Checks if this surface is periodic in the v parametric direction.
     /// Returns true if:
     /// - this surface is closed in the v parametric direction, and
@@ -16463,22 +17308,26 @@ impl Surface {
         unsafe { crate::ffi::Geom_Surface_is_v_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
     /// Returns the period of this surface in the v parametric direction.
     /// raises if the surface is not vperiodic.
     pub fn v_period(&self) -> f64 {
         unsafe { crate::ffi::Geom_Surface_v_period(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:189 - `Geom_Surface::UIso()`
     /// Computes the U isoparametric curve.
     pub fn u_iso(&self, U: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Surface_u_iso(self as *const Self, U)) }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:192 - `Geom_Surface::VIso()`
     /// Computes the V isoparametric curve.
     pub fn v_iso(&self, V: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Surface_v_iso(self as *const Self, V)) }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:206 - `Geom_Surface::Continuity()`
     /// Returns the Global Continuity of the surface in direction U and V :
     /// - C0: only geometric continuity,
     /// - C1: continuity of the first derivative all along the surface,
@@ -16500,18 +17349,21 @@ impl Surface {
         }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:210 - `Geom_Surface::IsCNu()`
     /// Returns the order of continuity of the surface in the U parametric direction.
     /// Raised if N < 0.
     pub fn is_c_nu(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom_Surface_is_c_nu(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:214 - `Geom_Surface::IsCNv()`
     /// Returns the order of continuity of the surface in the V parametric direction.
     /// Raised if N < 0.
     pub fn is_c_nv(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom_Surface_is_c_nv(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:220 - `Geom_Surface::D0()`
     /// Computes the point of parameter U,V on the surface.
     ///
     /// Raised only for an "OffsetSurface" if it is not possible to
@@ -16520,6 +17372,7 @@ impl Surface {
         unsafe { crate::ffi::Geom_Surface_d0(self as *const Self, U, V, P) }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:228 - `Geom_Surface::D1()`
     /// Computes the point P and the first derivatives in the directions U and V at this point.
     /// Raised if the continuity of the surface is not C1.
     ///
@@ -16535,6 +17388,7 @@ impl Surface {
         unsafe { crate::ffi::Geom_Surface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:237 - `Geom_Surface::D2()`
     /// Computes the point P, the first and the second derivatives in
     /// the directions U and V at this point.
     /// Raised if the continuity of the surface is not C2.
@@ -16554,6 +17408,7 @@ impl Surface {
         }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:249 - `Geom_Surface::D3()`
     /// Computes the point P, the first,the second and the third
     /// derivatives in the directions U and V at this point.
     /// Raised if the continuity of the surface is not C2.
@@ -16591,6 +17446,7 @@ impl Surface {
         }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:267 - `Geom_Surface::DN()`
     /// Computes the derivative of order Nu in the direction U and Nv in the direction V at the point
     /// P(U, V).
     ///
@@ -16608,6 +17464,7 @@ impl Surface {
         }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
     /// Computes the point of parameter (U, V) on the surface.
     ///
     /// It is implemented with D0.
@@ -16620,14 +17477,17 @@ impl Surface {
         }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:284 - `Geom_Surface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Surface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:284 - `Geom_Surface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_Surface_get_type_name() }
     }
 
+    /// **Source:** `Geom_Surface.hxx`:284 - `Geom_Surface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Surface_get_type_descriptor()) }
     }
@@ -16777,6 +17637,7 @@ impl HandleGeomSurface {
 // From Geom_SurfaceOfLinearExtrusion.hxx
 // ========================
 
+/// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:65 - `Geom_SurfaceOfLinearExtrusion`
 /// Describes a surface of linear extrusion ("extruded
 /// surface"), e.g. a generalized cylinder. Such a surface
 /// is obtained by sweeping a curve (called the "extruded
@@ -16814,6 +17675,7 @@ unsafe impl crate::CppDeletable for SurfaceOfLinearExtrusion {
 }
 
 impl SurfaceOfLinearExtrusion {
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:80 - `Geom_SurfaceOfLinearExtrusion::Geom_SurfaceOfLinearExtrusion()`
     /// V is the direction of extrusion.
     /// C is the extruded curve.
     /// The form of a SurfaceOfLinearExtrusion can be :
@@ -16836,18 +17698,21 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:84 - `Geom_SurfaceOfLinearExtrusion::SetDirection()`
     /// Assigns V as the "direction of extrusion" for this
     /// surface of linear extrusion.
     pub fn set_direction(&mut self, V: &crate::ffi::gp_Dir) {
         unsafe { crate::ffi::Geom_SurfaceOfLinearExtrusion_set_direction(self as *mut Self, V) }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:88 - `Geom_SurfaceOfLinearExtrusion::SetBasisCurve()`
     /// Modifies this surface of linear extrusion by redefining
     /// its "basis curve" (the "extruded curve").
     pub fn set_basis_curve(&mut self, C: &crate::ffi::HandleGeomCurve) {
         unsafe { crate::ffi::Geom_SurfaceOfLinearExtrusion_set_basis_curve(self as *mut Self, C) }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:98 - `Geom_SurfaceOfLinearExtrusion::UReverse()`
     /// Changes the orientation of this surface of linear
     /// extrusion in the u  parametric direction. The
     /// bounds of the surface are not changed, but the given
@@ -16860,6 +17725,7 @@ impl SurfaceOfLinearExtrusion {
         unsafe { crate::ffi::Geom_SurfaceOfLinearExtrusion_u_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:107 - `Geom_SurfaceOfLinearExtrusion::UReversedParameter()`
     /// Computes the u parameter on the modified
     /// surface, produced by reversing its u  parametric
     /// direction, for any point of u parameter U  on this surface of linear extrusion.
@@ -16873,6 +17739,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:117 - `Geom_SurfaceOfLinearExtrusion::VReverse()`
     /// Changes the orientation of this surface of linear
     /// extrusion in the v parametric direction. The
     /// bounds of the surface are not changed, but the given
@@ -16885,6 +17752,7 @@ impl SurfaceOfLinearExtrusion {
         unsafe { crate::ffi::Geom_SurfaceOfLinearExtrusion_v_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:123 - `Geom_SurfaceOfLinearExtrusion::VReversedParameter()`
     /// Computes the v parameter on the modified
     /// surface, produced by reversing its u v parametric
     /// direction, for any point of v parameter V on this surface of linear extrusion.
@@ -16895,6 +17763,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:131 - `Geom_SurfaceOfLinearExtrusion::Bounds()`
     /// Returns the parametric bounds U1, U2, V1 and V2 of
     /// this surface of linear extrusion.
     /// A surface of linear extrusion is infinite in the v
@@ -16907,17 +17776,20 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:138 - `Geom_SurfaceOfLinearExtrusion::IsUClosed()`
     /// IsUClosed returns true if the "basis curve" of this
     /// surface of linear extrusion is closed.
     pub fn is_u_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_SurfaceOfLinearExtrusion_is_u_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:141 - `Geom_SurfaceOfLinearExtrusion::IsVClosed()`
     /// IsVClosed always returns false.
     pub fn is_v_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_SurfaceOfLinearExtrusion_is_v_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:146 - `Geom_SurfaceOfLinearExtrusion::IsCNu()`
     /// IsCNu returns true if the degree of continuity for the
     /// "basis curve" of this surface of linear extrusion is at least N.
     /// Raises RangeError if N < 0.
@@ -16925,22 +17797,26 @@ impl SurfaceOfLinearExtrusion {
         unsafe { crate::ffi::Geom_SurfaceOfLinearExtrusion_is_c_nu(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:149 - `Geom_SurfaceOfLinearExtrusion::IsCNv()`
     /// IsCNv always returns true.
     pub fn is_c_nv(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom_SurfaceOfLinearExtrusion_is_c_nv(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:153 - `Geom_SurfaceOfLinearExtrusion::IsUPeriodic()`
     /// IsUPeriodic returns true if the "basis curve" of this
     /// surface of linear extrusion is periodic.
     pub fn is_u_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_SurfaceOfLinearExtrusion_is_u_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:156 - `Geom_SurfaceOfLinearExtrusion::IsVPeriodic()`
     /// IsVPeriodic always returns false.
     pub fn is_v_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_SurfaceOfLinearExtrusion_is_v_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:162 - `Geom_SurfaceOfLinearExtrusion::UIso()`
     /// Computes the U isoparametric curve of this surface
     /// of linear extrusion. This is the line parallel to the
     /// direction of extrusion, passing through the point of
@@ -16954,6 +17830,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:168 - `Geom_SurfaceOfLinearExtrusion::VIso()`
     /// Computes the V isoparametric curve of this surface
     /// of linear extrusion. This curve is obtained by
     /// translating the extruded curve in the direction of
@@ -16967,6 +17844,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:175 - `Geom_SurfaceOfLinearExtrusion::D0()`
     /// Computes the  point P (U, V) on the surface.
     /// The parameter U is the parameter on the extruded curve.
     /// The parametrization V is a linear parametrization, and
@@ -16976,6 +17854,7 @@ impl SurfaceOfLinearExtrusion {
         unsafe { crate::ffi::Geom_SurfaceOfLinearExtrusion_d0(self as *const Self, U, V, P) }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:182 - `Geom_SurfaceOfLinearExtrusion::D1()`
     /// Computes the current point and the first derivatives in the
     /// directions U and V.
     /// Raises UndefinedDerivative if the continuity of the surface is not C1.
@@ -16992,6 +17871,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:192 - `Geom_SurfaceOfLinearExtrusion::D2()`
     /// --- Purpose ;
     /// Computes the current point, the first and the second derivatives
     /// in the directions U and V.
@@ -17022,6 +17902,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:204 - `Geom_SurfaceOfLinearExtrusion::D3()`
     /// Computes the current point, the first,the second and the third
     /// derivatives in the directions U and V.
     /// Raises UndefinedDerivative if the continuity of the surface is not C3.
@@ -17059,6 +17940,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:222 - `Geom_SurfaceOfLinearExtrusion::DN()`
     /// Computes the derivative of order Nu in the direction u
     /// and Nv in the direction v.
     /// Raises UndefinedDerivative if the continuity of the surface is not CNu in the u
@@ -17076,11 +17958,13 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:228 - `Geom_SurfaceOfLinearExtrusion::Transform()`
     /// Applies the transformation T to this surface of linear extrusion.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_SurfaceOfLinearExtrusion_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:246 - `Geom_SurfaceOfLinearExtrusion::TransformParameters()`
     /// Computes the  parameters on the  transformed  surface for
     /// the transform of the point of parameters U,V on <me>.
     /// @code
@@ -17108,6 +17992,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:267 - `Geom_SurfaceOfLinearExtrusion::ParametricTransformation()`
     /// Returns a 2d transformation  used to find the  new
     /// parameters of a point on the transformed surface.
     /// @code
@@ -17139,6 +18024,7 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:271 - `Geom_SurfaceOfLinearExtrusion::Copy()`
     /// Creates a new object which is a copy of this surface of linear extrusion.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
@@ -17148,14 +18034,17 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:277 - `Geom_SurfaceOfLinearExtrusion::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_SurfaceOfLinearExtrusion_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:277 - `Geom_SurfaceOfLinearExtrusion::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_SurfaceOfLinearExtrusion_get_type_name() }
     }
 
+    /// **Source:** `Geom_SurfaceOfLinearExtrusion.hxx`:277 - `Geom_SurfaceOfLinearExtrusion::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_SurfaceOfLinearExtrusion_get_type_descriptor()) }
     }
@@ -17439,6 +18328,7 @@ impl HandleGeomSurfaceOfLinearExtrusion {
 // From Geom_SurfaceOfRevolution.hxx
 // ========================
 
+/// **Source:** `Geom_SurfaceOfRevolution.hxx`:76 - `Geom_SurfaceOfRevolution`
 /// Describes a surface of revolution (revolved surface).
 /// Such a surface is obtained by rotating a curve (called
 /// the "meridian") through a complete revolution about
@@ -17485,6 +18375,7 @@ unsafe impl crate::CppDeletable for SurfaceOfRevolution {
 }
 
 impl SurfaceOfRevolution {
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:98 - `Geom_SurfaceOfRevolution::Geom_SurfaceOfRevolution()`
     /// C : is the meridian  or the referenced curve.
     /// A1 is the axis of revolution.
     /// The form of a SurfaceOfRevolution can be :
@@ -17514,6 +18405,7 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:104 - `Geom_SurfaceOfRevolution::SetAxis()`
     /// Changes the axis of revolution.
     /// Warnings :
     /// It is not checked that the axis is in the plane of the
@@ -17522,6 +18414,7 @@ impl SurfaceOfRevolution {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_set_axis(self as *mut Self, A1) }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:110 - `Geom_SurfaceOfRevolution::SetDirection()`
     /// Changes the direction of the revolution axis.
     /// Warnings :
     /// It is not checked that the axis is in the plane of the
@@ -17530,6 +18423,7 @@ impl SurfaceOfRevolution {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_set_direction(self as *mut Self, V) }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:118 - `Geom_SurfaceOfRevolution::SetBasisCurve()`
     /// Changes the revolved curve of the surface.
     /// Warnings :
     /// It is not checked that the curve C is planar and that the
@@ -17540,6 +18434,7 @@ impl SurfaceOfRevolution {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_set_basis_curve(self as *mut Self, C) }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:124 - `Geom_SurfaceOfRevolution::SetLocation()`
     /// Changes the location point of the revolution axis.
     /// Warnings :
     /// It is not checked that the axis is in the plane of the
@@ -17548,6 +18443,7 @@ impl SurfaceOfRevolution {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_set_location(self as *mut Self, P) }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:127 - `Geom_SurfaceOfRevolution::Axis()`
     /// Returns the revolution axis of the surface.
     pub fn axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
         unsafe {
@@ -17557,11 +18453,13 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:130 - `Geom_SurfaceOfRevolution::Location()`
     /// Returns the location point of the axis of revolution.
     pub fn location(&self) -> &crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::Geom_SurfaceOfRevolution_location(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:143 - `Geom_SurfaceOfRevolution::ReferencePlane()`
     /// Computes the position of the reference plane of the surface
     /// defined by the basis curve and the symmetry axis.
     /// The location point is the location point of the revolution's
@@ -17581,6 +18479,7 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:153 - `Geom_SurfaceOfRevolution::UReverse()`
     /// Changes the orientation of this surface of revolution
     /// in the u  parametric direction. The bounds of the
     /// surface are not changed but the given parametric
@@ -17593,6 +18492,7 @@ impl SurfaceOfRevolution {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_u_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:160 - `Geom_SurfaceOfRevolution::UReversedParameter()`
     /// Computes the u  parameter on the modified
     /// surface, when reversing its u  parametric
     /// direction, for any point of u parameter U  on this surface of revolution.
@@ -17602,6 +18502,7 @@ impl SurfaceOfRevolution {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_u_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:169 - `Geom_SurfaceOfRevolution::VReverse()`
     /// Changes the orientation of this surface of revolution
     /// in the v parametric direction. The bounds of the
     /// surface are not changed but the given parametric
@@ -17613,6 +18514,7 @@ impl SurfaceOfRevolution {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_v_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:178 - `Geom_SurfaceOfRevolution::VReversedParameter()`
     /// Computes the  v parameter on the modified
     /// surface, when reversing its  v parametric
     /// direction, for any point of v parameter V on this surface of revolution.
@@ -17624,6 +18526,7 @@ impl SurfaceOfRevolution {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_v_reversed_parameter(self as *const Self, V) }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:194 - `Geom_SurfaceOfRevolution::TransformParameters()`
     /// Computes the  parameters on the  transformed  surface for
     /// the transform of the point of parameters U,V on <me>.
     /// @code
@@ -17644,6 +18547,7 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:214 - `Geom_SurfaceOfRevolution::ParametricTransformation()`
     /// Returns a 2d transformation  used to find the  new
     /// parameters of a point on the transformed surface.
     /// @code
@@ -17674,28 +18578,33 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:219 - `Geom_SurfaceOfRevolution::Bounds()`
     /// Returns the parametric bounds U1, U2 , V1 and V2 of this surface.
     /// A surface of revolution is always complete, so U1 = 0, U2 = 2*PI.
     pub fn bounds(&self, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64) {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_bounds(self as *const Self, U1, U2, V1, V2) }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:225 - `Geom_SurfaceOfRevolution::IsUClosed()`
     /// IsUClosed always returns true.
     pub fn is_u_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_is_u_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:229 - `Geom_SurfaceOfRevolution::IsVClosed()`
     /// IsVClosed returns true if the meridian of this
     /// surface of revolution is closed.
     pub fn is_v_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_is_v_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:232 - `Geom_SurfaceOfRevolution::IsCNu()`
     /// IsCNu always returns true.
     pub fn is_c_nu(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_is_c_nu(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:237 - `Geom_SurfaceOfRevolution::IsCNv()`
     /// IsCNv returns true if the degree of continuity of the
     /// meridian of this surface of revolution is at least N.
     /// Raised if N < 0.
@@ -17703,17 +18612,20 @@ impl SurfaceOfRevolution {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_is_c_nv(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:240 - `Geom_SurfaceOfRevolution::IsUPeriodic()`
     /// Returns True.
     pub fn is_u_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_is_u_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:244 - `Geom_SurfaceOfRevolution::IsVPeriodic()`
     /// IsVPeriodic returns true if the meridian of this
     /// surface of revolution is periodic.
     pub fn is_v_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_is_v_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:249 - `Geom_SurfaceOfRevolution::UIso()`
     /// Computes the U isoparametric curve of this surface
     /// of revolution. It is the curve obtained by rotating the
     /// meridian through an angle U about the axis of revolution.
@@ -17726,6 +18638,7 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:254 - `Geom_SurfaceOfRevolution::VIso()`
     /// Computes the U isoparametric curve of this surface
     /// of revolution. It is the curve obtained by rotating the
     /// meridian through an angle U about the axis of revolution.
@@ -17738,6 +18651,7 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:260 - `Geom_SurfaceOfRevolution::D0()`
     /// Computes the  point P (U, V) on the surface.
     /// U is the angle of the rotation around the revolution axis.
     /// The direction of this axis gives the sense of rotation.
@@ -17746,6 +18660,7 @@ impl SurfaceOfRevolution {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_d0(self as *const Self, U, V, P) }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:267 - `Geom_SurfaceOfRevolution::D1()`
     /// Computes the current point and the first derivatives
     /// in the directions U and V.
     /// Raised if the continuity of the surface is not C1.
@@ -17760,6 +18675,7 @@ impl SurfaceOfRevolution {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:276 - `Geom_SurfaceOfRevolution::D2()`
     /// Computes the current point, the first and the second derivatives
     /// in the directions U and V.
     /// Raised if the continuity of the surface is not C2.
@@ -17789,6 +18705,7 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:288 - `Geom_SurfaceOfRevolution::D3()`
     /// Computes the current point, the first,the second and the third
     /// derivatives in the directions U and V.
     /// Raised if the continuity of the surface is not C3.
@@ -17826,6 +18743,7 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:315 - `Geom_SurfaceOfRevolution::DN()`
     /// Computes the derivative of order Nu in the direction u and
     /// Nv in the direction v.
     ///
@@ -17852,11 +18770,13 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:321 - `Geom_SurfaceOfRevolution::Transform()`
     /// Applies the transformation T to this surface of revolution.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:324 - `Geom_SurfaceOfRevolution::Copy()`
     /// Creates a new object which is a copy of this surface of revolution.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
@@ -17866,14 +18786,17 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:330 - `Geom_SurfaceOfRevolution::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_SurfaceOfRevolution_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:330 - `Geom_SurfaceOfRevolution::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_get_type_name() }
     }
 
+    /// **Source:** `Geom_SurfaceOfRevolution.hxx`:330 - `Geom_SurfaceOfRevolution::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_SurfaceOfRevolution_get_type_descriptor()) }
     }
@@ -18135,6 +19058,7 @@ impl HandleGeomSurfaceOfRevolution {
 // From Geom_SweptSurface.hxx
 // ========================
 
+/// **Source:** `Geom_SweptSurface.hxx`:36 - `Geom_SweptSurface`
 /// Describes the common behavior for surfaces
 /// constructed by sweeping a curve with another curve.
 /// The Geom package provides two concrete derived
@@ -18149,6 +19073,7 @@ unsafe impl crate::CppDeletable for SweptSurface {
 }
 
 impl SweptSurface {
+    /// **Source:** `Geom_SweptSurface.hxx`:48 - `Geom_SweptSurface::Continuity()`
     /// returns the continuity of the surface :
     /// C0 : only geometric continuity,
     /// C1 : continuity of the first derivative all along the surface,
@@ -18166,6 +19091,7 @@ impl SweptSurface {
         }
     }
 
+    /// **Source:** `Geom_SweptSurface.hxx`:54 - `Geom_SweptSurface::Direction()`
     /// Returns the reference direction of the swept surface.
     /// For a surface of revolution it is the direction of the
     /// revolution axis, for a surface of linear extrusion it is
@@ -18174,6 +19100,7 @@ impl SweptSurface {
         unsafe { &*(crate::ffi::Geom_SweptSurface_direction(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_SweptSurface.hxx`:59 - `Geom_SweptSurface::BasisCurve()`
     /// Returns the referenced curve of the surface.
     /// For a surface of revolution it is the revolution curve,
     /// for a surface of linear extrusion it is the extruded curve.
@@ -18185,14 +19112,17 @@ impl SweptSurface {
         }
     }
 
+    /// **Source:** `Geom_SweptSurface.hxx`:65 - `Geom_SweptSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_SweptSurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_SweptSurface.hxx`:65 - `Geom_SweptSurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_SweptSurface_get_type_name() }
     }
 
+    /// **Source:** `Geom_SweptSurface.hxx`:65 - `Geom_SweptSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_SweptSurface_get_type_descriptor()) }
     }
@@ -18604,6 +19534,7 @@ impl HandleGeomSweptSurface {
 // From Geom_ToroidalSurface.hxx
 // ========================
 
+/// **Source:** `Geom_ToroidalSurface.hxx`:81 - `Geom_ToroidalSurface`
 /// Describes a torus.
 /// A torus is defined by its major and minor radii, and
 /// positioned in space with a coordinate system (a
@@ -18657,6 +19588,7 @@ unsafe impl crate::CppDeletable for ToroidalSurface {
 }
 
 impl ToroidalSurface {
+    /// **Source:** `Geom_ToroidalSurface.hxx`:96 - `Geom_ToroidalSurface::Geom_ToroidalSurface()`
     /// A3 is the local coordinate system of the surface.
     /// The orientation of increasing V parametric value is defined
     /// by the rotation around the main axis (ZAxis) in the
@@ -18682,12 +19614,14 @@ impl ToroidalSurface {
         }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:102 - `Geom_ToroidalSurface::Geom_ToroidalSurface()`
     /// Creates a ToroidalSurface from a non transient Torus from
     /// package gp.
     pub fn new_torus(T: &crate::ffi::gp_Torus) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_ToroidalSurface_ctor_torus(T)) }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:110 - `Geom_ToroidalSurface::SetMajorRadius()`
     /// Modifies this torus by changing its major radius.
     /// Exceptions
     /// Standard_ConstructionError if:
@@ -18698,6 +19632,7 @@ impl ToroidalSurface {
         unsafe { crate::ffi::Geom_ToroidalSurface_set_major_radius(self as *mut Self, MajorRadius) }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:118 - `Geom_ToroidalSurface::SetMinorRadius()`
     /// Modifies this torus by changing its minor radius.
     /// Exceptions
     /// Standard_ConstructionError if:
@@ -18708,11 +19643,13 @@ impl ToroidalSurface {
         unsafe { crate::ffi::Geom_ToroidalSurface_set_minor_radius(self as *mut Self, MinorRadius) }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:121 - `Geom_ToroidalSurface::SetTorus()`
     /// Converts the gp_Torus torus T into this torus.
     pub fn set_torus(&mut self, T: &crate::ffi::gp_Torus) {
         unsafe { crate::ffi::Geom_ToroidalSurface_set_torus(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:125 - `Geom_ToroidalSurface::Torus()`
     /// Returns the non transient torus with the same geometric
     /// properties as <me>.
     pub fn torus(&self) -> crate::OwnedPtr<crate::ffi::gp_Torus> {
@@ -18721,6 +19658,7 @@ impl ToroidalSurface {
         }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:130 - `Geom_ToroidalSurface::UReversedParameter()`
     /// Return the  parameter on the  Ureversed surface for
     /// the point of parameter U on <me>.
     /// Return 2.PI - U.
@@ -18728,6 +19666,7 @@ impl ToroidalSurface {
         unsafe { crate::ffi::Geom_ToroidalSurface_u_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:135 - `Geom_ToroidalSurface::VReversedParameter()`
     /// Return the  parameter on the  Ureversed surface for
     /// the point of parameter U on <me>.
     /// Return 2.PI - U.
@@ -18735,52 +19674,62 @@ impl ToroidalSurface {
         unsafe { crate::ffi::Geom_ToroidalSurface_v_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:138 - `Geom_ToroidalSurface::Area()`
     /// Computes the aera of the surface.
     pub fn area(&self) -> f64 {
         unsafe { crate::ffi::Geom_ToroidalSurface_area(self as *const Self) }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:142 - `Geom_ToroidalSurface::Bounds()`
     /// Returns the parametric bounds U1, U2, V1 and V2 of this torus.
     /// For a torus: U1 = V1 = 0 and U2 = V2 = 2*PI .
     pub fn bounds(&self, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64) {
         unsafe { crate::ffi::Geom_ToroidalSurface_bounds(self as *const Self, U1, U2, V1, V2) }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:164 - `Geom_ToroidalSurface::MajorRadius()`
     /// Returns the major radius, or the minor radius, of this torus.
     pub fn major_radius(&self) -> f64 {
         unsafe { crate::ffi::Geom_ToroidalSurface_major_radius(self as *const Self) }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:167 - `Geom_ToroidalSurface::MinorRadius()`
     /// Returns the major radius, or the minor radius, of this torus.
     pub fn minor_radius(&self) -> f64 {
         unsafe { crate::ffi::Geom_ToroidalSurface_minor_radius(self as *const Self) }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:170 - `Geom_ToroidalSurface::Volume()`
     /// Computes the volume.
     pub fn volume(&self) -> f64 {
         unsafe { crate::ffi::Geom_ToroidalSurface_volume(self as *const Self) }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:173 - `Geom_ToroidalSurface::IsUClosed()`
     /// Returns True.
     pub fn is_u_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_ToroidalSurface_is_u_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:176 - `Geom_ToroidalSurface::IsVClosed()`
     /// Returns True.
     pub fn is_v_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_ToroidalSurface_is_v_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:179 - `Geom_ToroidalSurface::IsUPeriodic()`
     /// Returns True.
     pub fn is_u_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_ToroidalSurface_is_u_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:182 - `Geom_ToroidalSurface::IsVPeriodic()`
     /// Returns True.
     pub fn is_v_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_ToroidalSurface_is_v_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:192 - `Geom_ToroidalSurface::UIso()`
     /// Computes the U isoparametric curve.
     ///
     /// For a toroidal surface the UIso curve is a circle.
@@ -18798,6 +19747,7 @@ impl ToroidalSurface {
         }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:202 - `Geom_ToroidalSurface::VIso()`
     /// Computes the V isoparametric curve.
     ///
     /// For a ToroidalSurface the VIso curve is a circle.
@@ -18815,6 +19765,7 @@ impl ToroidalSurface {
         }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:211 - `Geom_ToroidalSurface::D0()`
     /// Computes the  point P (U, V) on the surface.
     /// P (U, V) = Loc + MinorRadius * Sin (V) * Zdir +
     /// (MajorRadius + MinorRadius * Cos(V)) *
@@ -18826,6 +19777,7 @@ impl ToroidalSurface {
         unsafe { crate::ffi::Geom_ToroidalSurface_d0(self as *const Self, U, V, P) }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:217 - `Geom_ToroidalSurface::D1()`
     /// Computes the current point and the first derivatives in
     /// the directions U and V.
     pub fn d1(
@@ -18839,6 +19791,7 @@ impl ToroidalSurface {
         unsafe { crate::ffi::Geom_ToroidalSurface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:225 - `Geom_ToroidalSurface::D2()`
     /// Computes the current point, the first and the second derivatives
     /// in the directions U and V.
     pub fn d2(
@@ -18867,6 +19820,7 @@ impl ToroidalSurface {
         }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:236 - `Geom_ToroidalSurface::D3()`
     /// Computes the current point, the first,the second and the
     /// third derivatives in the directions U and V.
     pub fn d3(
@@ -18903,6 +19857,7 @@ impl ToroidalSurface {
         }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:252 - `Geom_ToroidalSurface::DN()`
     /// Computes the derivative of order Nu in the direction u and
     /// Nv in the direction v.
     /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
@@ -18918,11 +19873,13 @@ impl ToroidalSurface {
         }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:258 - `Geom_ToroidalSurface::Transform()`
     /// Applies the transformation T to this torus.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_ToroidalSurface_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:261 - `Geom_ToroidalSurface::Copy()`
     /// Creates a new object which is a copy of this torus.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
@@ -18930,14 +19887,17 @@ impl ToroidalSurface {
         }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:267 - `Geom_ToroidalSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_ToroidalSurface_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:267 - `Geom_ToroidalSurface::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_ToroidalSurface_get_type_name() }
     }
 
+    /// **Source:** `Geom_ToroidalSurface.hxx`:267 - `Geom_ToroidalSurface::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_ToroidalSurface_get_type_descriptor()) }
     }
@@ -19258,6 +20218,7 @@ impl HandleGeomToroidalSurface {
 // From Geom_Transformation.hxx
 // ========================
 
+/// **Source:** `Geom_Transformation.hxx`:63 - `Geom_Transformation`
 /// Describes how to construct the following elementary transformations
 /// - translations,
 /// - rotations,
@@ -19301,20 +20262,24 @@ unsafe impl crate::CppDeletable for Transformation {
 }
 
 impl Transformation {
+    /// **Source:** `Geom_Transformation.hxx`:68 - `Geom_Transformation::Geom_Transformation()`
     /// Creates an identity transformation.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Transformation_ctor()) }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:71 - `Geom_Transformation::Geom_Transformation()`
     /// Creates a transient copy of T.
     pub fn new_trsf(T: &crate::ffi::gp_Trsf) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Transformation_ctor_trsf(T)) }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:65 - `Geom_Transformation::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Transformation_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:76 - `Geom_Transformation::SetMirror()`
     /// Makes the transformation into a symmetrical transformation
     /// with respect to a point P.
     /// P is the center of the symmetry.
@@ -19322,6 +20287,7 @@ impl Transformation {
         unsafe { crate::ffi::Geom_Transformation_set_mirror_pnt(self as *mut Self, thePnt) }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:81 - `Geom_Transformation::SetMirror()`
     /// Makes the transformation into a symmetrical transformation
     /// with respect to an axis A1.
     /// A1 is the center of the axial symmetry.
@@ -19329,6 +20295,7 @@ impl Transformation {
         unsafe { crate::ffi::Geom_Transformation_set_mirror_ax1(self as *mut Self, theA1) }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:87 - `Geom_Transformation::SetMirror()`
     /// Makes the transformation into a symmetrical transformation
     /// with respect to a plane.  The plane of the symmetry is
     /// defined with the axis placement A2. It is the plane
@@ -19337,6 +20304,7 @@ impl Transformation {
         unsafe { crate::ffi::Geom_Transformation_set_mirror_ax2(self as *mut Self, theA2) }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:92 - `Geom_Transformation::SetRotation()`
     /// Makes the transformation into a rotation.
     /// A1 is the axis rotation and Ang is the angular value
     /// of the rotation in radians.
@@ -19344,12 +20312,14 @@ impl Transformation {
         unsafe { crate::ffi::Geom_Transformation_set_rotation(self as *mut Self, theA1, theAng) }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:99 - `Geom_Transformation::SetScale()`
     /// Makes the transformation into a scale. P is the center of
     /// the scale and S is the scaling value.
     pub fn set_scale(&mut self, thePnt: &crate::ffi::gp_Pnt, theScale: f64) {
         unsafe { crate::ffi::Geom_Transformation_set_scale(self as *mut Self, thePnt, theScale) }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:117 - `Geom_Transformation::SetTransformation()`
     /// Makes a transformation allowing passage from the coordinate
     /// system "FromSystem1" to the coordinate system "ToSystem2".
     /// Example :
@@ -19377,6 +20347,7 @@ impl Transformation {
         }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:128 - `Geom_Transformation::SetTransformation()`
     /// Makes the transformation allowing passage from the basic
     /// coordinate system
     /// {P(0.,0.,0.), VX (1.,0.,0.), VY (0.,1.,0.), VZ (0., 0. ,1.) }
@@ -19389,23 +20360,27 @@ impl Transformation {
         }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:132 - `Geom_Transformation::SetTranslation()`
     /// Makes the transformation into a translation.
     /// V is the vector of the translation.
     pub fn set_translation_vec(&mut self, theVec: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::Geom_Transformation_set_translation_vec(self as *mut Self, theVec) }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:136 - `Geom_Transformation::SetTranslation()`
     /// Makes the transformation into a translation from the point
     /// P1 to the point P2.
     pub fn set_translation_pnt2(&mut self, P1: &crate::ffi::gp_Pnt, P2: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::Geom_Transformation_set_translation_pnt2(self as *mut Self, P1, P2) }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:139 - `Geom_Transformation::SetTrsf()`
     /// Converts the gp_Trsf transformation T into this transformation.
     pub fn set_trsf(&mut self, theTrsf: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_Transformation_set_trsf(self as *mut Self, theTrsf) }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:144 - `Geom_Transformation::IsNegative()`
     /// Checks whether this transformation is an indirect
     /// transformation: returns true if the determinant of the
     /// matrix of the vectorial part of the transformation is less than 0.
@@ -19413,6 +20388,7 @@ impl Transformation {
         unsafe { crate::ffi::Geom_Transformation_is_negative(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:148 - `Geom_Transformation::Form()`
     /// Returns the nature of this transformation as a value
     /// of the gp_TrsfForm enumeration.
     pub fn form(&self) -> crate::gp::TrsfForm {
@@ -19422,16 +20398,19 @@ impl Transformation {
         }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:151 - `Geom_Transformation::ScaleFactor()`
     /// Returns the scale value of the transformation.
     pub fn scale_factor(&self) -> f64 {
         unsafe { crate::ffi::Geom_Transformation_scale_factor(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:154 - `Geom_Transformation::Trsf()`
     /// Returns a non transient copy of <me>.
     pub fn trsf(&self) -> &crate::ffi::gp_Trsf {
         unsafe { &*(crate::ffi::Geom_Transformation_trsf(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:160 - `Geom_Transformation::Value()`
     /// Returns the coefficients of the global matrix of transformation.
     /// It is a 3 rows X 4 columns matrix.
     ///
@@ -19440,6 +20419,7 @@ impl Transformation {
         unsafe { crate::ffi::Geom_Transformation_value(self as *const Self, theRow, theCol) }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:168 - `Geom_Transformation::Invert()`
     /// Raised if the transformation is singular. This means that
     /// the ScaleFactor is lower or equal to Resolution from
     /// package gp.
@@ -19447,6 +20427,7 @@ impl Transformation {
         unsafe { crate::ffi::Geom_Transformation_invert(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:173 - `Geom_Transformation::Inverted()`
     /// Raised if the transformation is singular. This means that
     /// the ScaleFactor is lower or equal to Resolution from
     /// package gp.
@@ -19456,6 +20437,7 @@ impl Transformation {
         }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:178 - `Geom_Transformation::Multiplied()`
     /// Computes the transformation composed with Other and <me>.
     /// <me> * Other.
     /// Returns a new transformation
@@ -19471,12 +20453,14 @@ impl Transformation {
         }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:183 - `Geom_Transformation::Multiply()`
     /// Computes the transformation composed with Other and <me> .
     /// <me> = <me> * Other.
     pub fn multiply(&mut self, theOther: &crate::ffi::HandleGeomTransformation) {
         unsafe { crate::ffi::Geom_Transformation_multiply(self as *mut Self, theOther) }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:191 - `Geom_Transformation::Power()`
     /// Computes the following composition of transformations
     /// if N > 0  <me> * <me> * .......* <me>.
     /// if N = 0  Identity
@@ -19487,6 +20471,7 @@ impl Transformation {
         unsafe { crate::ffi::Geom_Transformation_power(self as *mut Self, N) }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:194 - `Geom_Transformation::Powered()`
     /// Raised if N < 0 and if the transformation is not inversible
     pub fn powered(&self, N: i32) -> crate::OwnedPtr<crate::ffi::HandleGeomTransformation> {
         unsafe {
@@ -19497,17 +20482,20 @@ impl Transformation {
         }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:198 - `Geom_Transformation::PreMultiply()`
     /// Computes the matrix of the transformation composed with
     /// <me> and Other.     <me> = Other * <me>
     pub fn pre_multiply(&mut self, Other: &crate::ffi::HandleGeomTransformation) {
         unsafe { crate::ffi::Geom_Transformation_pre_multiply(self as *mut Self, Other) }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:201 - `Geom_Transformation::Transforms()`
     /// Applies the transformation <me> to the triplet {X, Y, Z}.
     pub fn transforms(&self, theX: &mut f64, theY: &mut f64, theZ: &mut f64) {
         unsafe { crate::ffi::Geom_Transformation_transforms(self as *const Self, theX, theY, theZ) }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:207 - `Geom_Transformation::Copy()`
     /// Creates a new object which is a copy of this transformation.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomTransformation> {
         unsafe {
@@ -19515,10 +20503,12 @@ impl Transformation {
         }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:65 - `Geom_Transformation::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_Transformation_get_type_name() }
     }
 
+    /// **Source:** `Geom_Transformation.hxx`:65 - `Geom_Transformation::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Transformation_get_type_descriptor()) }
     }
@@ -19557,6 +20547,7 @@ impl HandleGeomTransformation {
 // From Geom_TrimmedCurve.hxx
 // ========================
 
+/// **Source:** `Geom_TrimmedCurve.hxx`:43 - `Geom_TrimmedCurve`
 /// Describes a portion of a curve (termed the "basis
 /// curve") limited by two parameter values inside the
 /// parametric domain of the basis curve.
@@ -19574,6 +20565,7 @@ unsafe impl crate::CppDeletable for TrimmedCurve {
 }
 
 impl TrimmedCurve {
+    /// **Source:** `Geom_TrimmedCurve.hxx`:82 - `Geom_TrimmedCurve::Geom_TrimmedCurve()`
     /// Constructs a trimmed curve from the basis curve C
     /// which is limited between parameter values U1 and U2.
     /// Note: - U1 can be greater or less than U2; in both cases,
@@ -19629,6 +20621,7 @@ impl TrimmedCurve {
         }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:82 - `Geom_TrimmedCurve::Geom_TrimmedCurve()`
     /// Constructs a trimmed curve from the basis curve C
     /// which is limited between parameter values U1 and U2.
     /// Note: - U1 can be greater or less than U2; in both cases,
@@ -19673,6 +20666,7 @@ impl TrimmedCurve {
         Self::new_handlegeomcurve_real2_bool2(C, U1, U2, Sense, true)
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:82 - `Geom_TrimmedCurve::Geom_TrimmedCurve()`
     /// Constructs a trimmed curve from the basis curve C
     /// which is limited between parameter values U1 and U2.
     /// Note: - U1 can be greater or less than U2; in both cases,
@@ -19716,6 +20710,7 @@ impl TrimmedCurve {
         Self::new_handlegeomcurve_real2_bool2(C, U1, U2, true, true)
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:102 - `Geom_TrimmedCurve::Reverse()`
     /// Changes the orientation of this trimmed curve.
     /// As a result:
     /// - the basis curve is reversed,
@@ -19734,12 +20729,14 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom_TrimmedCurve_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:106 - `Geom_TrimmedCurve::ReversedParameter()`
     /// Computes the parameter on the reversed curve for
     /// the point of parameter U on this trimmed curve.
     pub fn reversed_parameter(&self, U: f64) -> f64 {
         unsafe { crate::ffi::Geom_TrimmedCurve_reversed_parameter(self as *const Self, U) }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:126 - `Geom_TrimmedCurve::SetTrim()`
     /// Changes this trimmed curve, by redefining the
     /// parameter values U1 and U2 which limit its basis curve.
     /// Note: If the basis curve is periodic, the trimmed curve
@@ -19770,6 +20767,7 @@ impl TrimmedCurve {
         }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:136 - `Geom_TrimmedCurve::BasisCurve()`
     /// Returns the basis curve.
     /// Warning
     /// This function does not return a constant reference.
@@ -19783,6 +20781,7 @@ impl TrimmedCurve {
         }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:144 - `Geom_TrimmedCurve::Continuity()`
     /// Returns the continuity of the curve :
     /// C0 : only geometric continuity,
     /// C1 : continuity of the first derivative all along the Curve,
@@ -19798,6 +20797,7 @@ impl TrimmedCurve {
         }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:154 - `Geom_TrimmedCurve::IsCN()`
     /// Returns true if the degree of continuity of the basis
     /// curve of this trimmed curve is at least N. A trimmed
     /// curve is at least "C0" continuous.
@@ -19810,6 +20810,7 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom_TrimmedCurve_is_cn(self as *const Self, N) }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:158 - `Geom_TrimmedCurve::EndPoint()`
     /// Returns the end point of <me>. This point is the
     /// evaluation of the curve for the "LastParameter".
     pub fn end_point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
@@ -19818,6 +20819,7 @@ impl TrimmedCurve {
         }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:163 - `Geom_TrimmedCurve::FirstParameter()`
     /// Returns the value of the first parameter of <me>.
     /// The first parameter is the parameter of the "StartPoint"
     /// of the trimmed curve.
@@ -19825,17 +20827,20 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom_TrimmedCurve_first_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:167 - `Geom_TrimmedCurve::IsClosed()`
     /// Returns True if the distance between the StartPoint and
     /// the EndPoint is lower or equal to Resolution from package gp.
     pub fn is_closed(&self) -> bool {
         unsafe { crate::ffi::Geom_TrimmedCurve_is_closed(self as *const Self) }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:170 - `Geom_TrimmedCurve::IsPeriodic()`
     /// Always returns FALSE (independently of the type of basis curve).
     pub fn is_periodic(&self) -> bool {
         unsafe { crate::ffi::Geom_TrimmedCurve_is_periodic(self as *const Self) }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:175 - `Geom_TrimmedCurve::Period()`
     /// Returns the period of the basis curve of this trimmed curve.
     /// Exceptions
     /// Standard_NoSuchObject if the basis curve is not periodic.
@@ -19843,6 +20848,7 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom_TrimmedCurve_period(self as *const Self) }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:180 - `Geom_TrimmedCurve::LastParameter()`
     /// Returns the value of the last parameter of <me>.
     /// The last parameter is the parameter of the "EndPoint" of the
     /// trimmed curve.
@@ -19850,6 +20856,7 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom_TrimmedCurve_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:190 - `Geom_TrimmedCurve::StartPoint()`
     /// Returns the start point of <me>.
     /// This point is the evaluation of the curve from the
     /// "FirstParameter".
@@ -19866,6 +20873,7 @@ impl TrimmedCurve {
         }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:197 - `Geom_TrimmedCurve::D0()`
     /// Returns in P the point of parameter U.
     ///
     /// If the basis curve is an OffsetCurve sometimes it is not
@@ -19875,11 +20883,13 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom_TrimmedCurve_d0(self as *const Self, U, P) }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:200 - `Geom_TrimmedCurve::D1()`
     /// Raised if the continuity of the curve is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V1: &mut crate::ffi::gp_Vec) {
         unsafe { crate::ffi::Geom_TrimmedCurve_d1(self as *const Self, U, P, V1) }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:203 - `Geom_TrimmedCurve::D2()`
     /// Raised if the continuity of the curve is not C2.
     pub fn d2(
         &self,
@@ -19891,6 +20901,7 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom_TrimmedCurve_d2(self as *const Self, U, P, V1, V2) }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:209 - `Geom_TrimmedCurve::D3()`
     /// Raised if the continuity of the curve is not C3.
     pub fn d3(
         &self,
@@ -19903,6 +20914,7 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom_TrimmedCurve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:219 - `Geom_TrimmedCurve::DN()`
     /// N is the order of derivation.
     /// Raised if the continuity of the curve is not CN.
     /// Raised if N < 1.
@@ -19913,12 +20925,14 @@ impl TrimmedCurve {
         }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:224 - `Geom_TrimmedCurve::Transform()`
     /// Applies the transformation T to this trimmed curve.
     /// Warning The basis curve is also modified.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_TrimmedCurve_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:236 - `Geom_TrimmedCurve::TransformedParameter()`
     /// Returns the  parameter on the  transformed  curve for
     /// the transform of the point of parameter U on <me>.
     ///
@@ -19933,6 +20947,7 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom_TrimmedCurve_transformed_parameter(self as *const Self, U, T) }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:251 - `Geom_TrimmedCurve::ParametricTransformation()`
     /// Returns a  coefficient to compute the parameter on
     /// the transformed  curve  for  the transform  of the
     /// point on <me>.
@@ -19948,6 +20963,7 @@ impl TrimmedCurve {
         unsafe { crate::ffi::Geom_TrimmedCurve_parametric_transformation(self as *const Self, T) }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:255 - `Geom_TrimmedCurve::Copy()`
     /// Creates a new object which is a copy of this trimmed curve.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
@@ -19955,14 +20971,17 @@ impl TrimmedCurve {
         }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:261 - `Geom_TrimmedCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_TrimmedCurve_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:261 - `Geom_TrimmedCurve::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_TrimmedCurve_get_type_name() }
     }
 
+    /// **Source:** `Geom_TrimmedCurve.hxx`:261 - `Geom_TrimmedCurve::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_TrimmedCurve_get_type_descriptor()) }
     }
@@ -20166,6 +21185,7 @@ impl HandleGeomTrimmedCurve {
 // From Geom_UndefinedDerivative.hxx
 // ========================
 
+/// **Source:** `Geom_UndefinedDerivative.hxx`:36 - `Geom_UndefinedDerivative`
 pub use crate::ffi::Geom_UndefinedDerivative as UndefinedDerivative;
 
 unsafe impl crate::CppDeletable for UndefinedDerivative {
@@ -20175,16 +21195,19 @@ unsafe impl crate::CppDeletable for UndefinedDerivative {
 }
 
 impl UndefinedDerivative {
+    /// **Source:** `Geom_UndefinedDerivative.hxx`:36 - `Geom_UndefinedDerivative::Geom_UndefinedDerivative()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_UndefinedDerivative_ctor()) }
     }
 
+    /// **Source:** `Geom_UndefinedDerivative.hxx`:36 - `Geom_UndefinedDerivative::Geom_UndefinedDerivative()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_UndefinedDerivative_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Geom_UndefinedDerivative.hxx`:36 - `Geom_UndefinedDerivative::Geom_UndefinedDerivative()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -20197,18 +21220,22 @@ impl UndefinedDerivative {
         }
     }
 
+    /// **Source:** `Geom_UndefinedDerivative.hxx`:36 - `Geom_UndefinedDerivative::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_UndefinedDerivative_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_UndefinedDerivative.hxx`:36 - `Geom_UndefinedDerivative::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Geom_UndefinedDerivative_raise(theMessage) }
     }
 
+    /// **Source:** `Geom_UndefinedDerivative.hxx`:36 - `Geom_UndefinedDerivative::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_UndefinedDerivative_get_type_name() }
     }
 
+    /// **Source:** `Geom_UndefinedDerivative.hxx`:36 - `Geom_UndefinedDerivative::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_UndefinedDerivative_get_type_descriptor()) }
     }
@@ -20218,6 +21245,7 @@ impl UndefinedDerivative {
 // From Geom_UndefinedValue.hxx
 // ========================
 
+/// **Source:** `Geom_UndefinedValue.hxx`:36 - `Geom_UndefinedValue`
 pub use crate::ffi::Geom_UndefinedValue as UndefinedValue;
 
 unsafe impl crate::CppDeletable for UndefinedValue {
@@ -20227,16 +21255,19 @@ unsafe impl crate::CppDeletable for UndefinedValue {
 }
 
 impl UndefinedValue {
+    /// **Source:** `Geom_UndefinedValue.hxx`:36 - `Geom_UndefinedValue::Geom_UndefinedValue()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_UndefinedValue_ctor()) }
     }
 
+    /// **Source:** `Geom_UndefinedValue.hxx`:36 - `Geom_UndefinedValue::Geom_UndefinedValue()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_UndefinedValue_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Geom_UndefinedValue.hxx`:36 - `Geom_UndefinedValue::Geom_UndefinedValue()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -20249,18 +21280,22 @@ impl UndefinedValue {
         }
     }
 
+    /// **Source:** `Geom_UndefinedValue.hxx`:36 - `Geom_UndefinedValue::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_UndefinedValue_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_UndefinedValue.hxx`:36 - `Geom_UndefinedValue::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Geom_UndefinedValue_raise(theMessage) }
     }
 
+    /// **Source:** `Geom_UndefinedValue.hxx`:36 - `Geom_UndefinedValue::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_UndefinedValue_get_type_name() }
     }
 
+    /// **Source:** `Geom_UndefinedValue.hxx`:36 - `Geom_UndefinedValue::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_UndefinedValue_get_type_descriptor()) }
     }
@@ -20270,6 +21305,7 @@ impl UndefinedValue {
 // From Geom_Vector.hxx
 // ========================
 
+/// **Source:** `Geom_Vector.hxx`:33 - `Geom_Vector`
 /// The abstract class Vector describes the common
 /// behavior of vectors in 3D space.
 /// The Geom package provides two concrete classes of
@@ -20283,16 +21319,19 @@ unsafe impl crate::CppDeletable for Vector {
 }
 
 impl Vector {
+    /// **Source:** `Geom_Vector.hxx`:38 - `Geom_Vector::Reverse()`
     /// Reverses the vector <me>.
     pub fn reverse(&mut self) {
         unsafe { crate::ffi::Geom_Vector_reverse(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_Vector.hxx`:41 - `Geom_Vector::Reversed()`
     /// Returns a copy of <me> reversed.
     pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomVector> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Vector_reversed(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Vector.hxx`:51 - `Geom_Vector::Angle()`
     /// Computes the angular value, in radians, between this
     /// vector and vector Other. The result is a value between 0 and Pi.
     /// Exceptions
@@ -20305,6 +21344,7 @@ impl Vector {
         unsafe { crate::ffi::Geom_Vector_angle(self as *const Self, Other) }
     }
 
+    /// **Source:** `Geom_Vector.hxx`:67 - `Geom_Vector::AngleWithRef()`
     /// Computes the angular value, in radians, between this
     /// vector and vector Other. The result is a value
     /// between -Pi and Pi. The vector VRef defines the
@@ -20327,36 +21367,43 @@ impl Vector {
         unsafe { crate::ffi::Geom_Vector_angle_with_ref(self as *const Self, Other, VRef) }
     }
 
+    /// **Source:** `Geom_Vector.hxx`:71 - `Geom_Vector::Coord()`
     /// Returns the coordinates X, Y and Z of this vector.
     pub fn coord(&self, X: &mut f64, Y: &mut f64, Z: &mut f64) {
         unsafe { crate::ffi::Geom_Vector_coord(self as *const Self, X, Y, Z) }
     }
 
+    /// **Source:** `Geom_Vector.hxx`:74 - `Geom_Vector::Magnitude()`
     /// Returns the  Magnitude of <me>.
     pub fn magnitude(&self) -> f64 {
         unsafe { crate::ffi::Geom_Vector_magnitude(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Vector.hxx`:77 - `Geom_Vector::SquareMagnitude()`
     /// Returns the square magnitude of <me>.
     pub fn square_magnitude(&self) -> f64 {
         unsafe { crate::ffi::Geom_Vector_square_magnitude(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Vector.hxx`:80 - `Geom_Vector::X()`
     /// Returns the X coordinate of <me>.
     pub fn x(&self) -> f64 {
         unsafe { crate::ffi::Geom_Vector_x(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Vector.hxx`:83 - `Geom_Vector::Y()`
     /// Returns the Y coordinate of <me>.
     pub fn y(&self) -> f64 {
         unsafe { crate::ffi::Geom_Vector_y(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Vector.hxx`:86 - `Geom_Vector::Z()`
     /// Returns the Z coordinate of <me>.
     pub fn z(&self) -> f64 {
         unsafe { crate::ffi::Geom_Vector_z(self as *const Self) }
     }
 
+    /// **Source:** `Geom_Vector.hxx`:93 - `Geom_Vector::Cross()`
     /// Computes the cross product between <me> and <Other>.
     ///
     /// Raised if <me> is a "Direction" and if <me> and <Other>
@@ -20366,6 +21413,7 @@ impl Vector {
         unsafe { crate::ffi::Geom_Vector_cross(self as *mut Self, Other) }
     }
 
+    /// **Source:** `Geom_Vector.hxx`:101 - `Geom_Vector::Crossed()`
     /// Computes the cross product between <me> and <Other>.
     /// A new direction is returned.
     ///
@@ -20381,6 +21429,7 @@ impl Vector {
         }
     }
 
+    /// **Source:** `Geom_Vector.hxx`:107 - `Geom_Vector::CrossCross()`
     /// Computes the triple vector product  <me> ^(V1 ^ V2).
     ///
     /// Raised if <me> is a "Direction" and if V1 and V2 are parallel
@@ -20393,6 +21442,7 @@ impl Vector {
         unsafe { crate::ffi::Geom_Vector_cross_cross(self as *mut Self, V1, V2) }
     }
 
+    /// **Source:** `Geom_Vector.hxx`:114 - `Geom_Vector::CrossCrossed()`
     /// Computes the triple vector product <me> ^(V1 ^ V2).
     ///
     /// Raised if <me> is a direction and if V1 and V2 are
@@ -20411,11 +21461,13 @@ impl Vector {
         }
     }
 
+    /// **Source:** `Geom_Vector.hxx`:118 - `Geom_Vector::Dot()`
     /// Computes the scalar product of this vector and vector Other.
     pub fn dot(&self, Other: &crate::ffi::HandleGeomVector) -> f64 {
         unsafe { crate::ffi::Geom_Vector_dot(self as *const Self, Other) }
     }
 
+    /// **Source:** `Geom_Vector.hxx`:121 - `Geom_Vector::DotCross()`
     /// Computes the triple scalar product. Returns me . (V1 ^ V2)
     pub fn dot_cross(
         &self,
@@ -20425,19 +21477,23 @@ impl Vector {
         unsafe { crate::ffi::Geom_Vector_dot_cross(self as *const Self, V1, V2) }
     }
 
+    /// **Source:** `Geom_Vector.hxx`:125 - `Geom_Vector::Vec()`
     /// Converts this vector into a gp_Vec vector.
     pub fn vec(&self) -> &crate::ffi::gp_Vec {
         unsafe { &*(crate::ffi::Geom_Vector_vec(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Vector.hxx`:127 - `Geom_Vector::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Vector_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_Vector.hxx`:127 - `Geom_Vector::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_Vector_get_type_name() }
     }
 
+    /// **Source:** `Geom_Vector.hxx`:127 - `Geom_Vector::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_Vector_get_type_descriptor()) }
     }
@@ -20587,6 +21643,7 @@ impl HandleGeomVector {
 // From Geom_VectorWithMagnitude.hxx
 // ========================
 
+/// **Source:** `Geom_VectorWithMagnitude.hxx`:34 - `Geom_VectorWithMagnitude`
 /// Defines a vector with magnitude.
 /// A vector with magnitude can have a zero length.
 pub use crate::ffi::Geom_VectorWithMagnitude as VectorWithMagnitude;
@@ -20598,11 +21655,13 @@ unsafe impl crate::CppDeletable for VectorWithMagnitude {
 }
 
 impl VectorWithMagnitude {
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:39 - `Geom_VectorWithMagnitude::Geom_VectorWithMagnitude()`
     /// Creates a transient copy of V.
     pub fn new_vec(V: &crate::ffi::gp_Vec) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_VectorWithMagnitude_ctor_vec(V)) }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:42 - `Geom_VectorWithMagnitude::Geom_VectorWithMagnitude()`
     /// Creates a vector with three cartesian coordinates.
     pub fn new_real3(X: f64, Y: f64, Z: f64) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -20610,52 +21669,62 @@ impl VectorWithMagnitude {
         }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:48 - `Geom_VectorWithMagnitude::Geom_VectorWithMagnitude()`
     /// Creates a vector from the point P1 to the point P2.
     /// The magnitude of the vector is the distance between P1 and P2
     pub fn new_pnt2(P1: &crate::ffi::gp_Pnt, P2: &crate::ffi::gp_Pnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_VectorWithMagnitude_ctor_pnt2(P1, P2)) }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:51 - `Geom_VectorWithMagnitude::SetCoord()`
     /// Assigns the values X, Y and Z to the coordinates of this vector.
     pub fn set_coord(&mut self, X: f64, Y: f64, Z: f64) {
         unsafe { crate::ffi::Geom_VectorWithMagnitude_set_coord(self as *mut Self, X, Y, Z) }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:56 - `Geom_VectorWithMagnitude::SetVec()`
     /// Converts the gp_Vec vector V into this vector.
     pub fn set_vec(&mut self, V: &crate::ffi::gp_Vec) {
         unsafe { crate::ffi::Geom_VectorWithMagnitude_set_vec(self as *mut Self, V) }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:59 - `Geom_VectorWithMagnitude::SetX()`
     /// Changes the X coordinate of <me>.
     pub fn set_x(&mut self, X: f64) {
         unsafe { crate::ffi::Geom_VectorWithMagnitude_set_x(self as *mut Self, X) }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:62 - `Geom_VectorWithMagnitude::SetY()`
     /// Changes the Y coordinate of <me>
     pub fn set_y(&mut self, Y: f64) {
         unsafe { crate::ffi::Geom_VectorWithMagnitude_set_y(self as *mut Self, Y) }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:65 - `Geom_VectorWithMagnitude::SetZ()`
     /// Changes the Z coordinate of <me>.
     pub fn set_z(&mut self, Z: f64) {
         unsafe { crate::ffi::Geom_VectorWithMagnitude_set_z(self as *mut Self, Z) }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:68 - `Geom_VectorWithMagnitude::Magnitude()`
     /// Returns the magnitude of <me>.
     pub fn magnitude(&self) -> f64 {
         unsafe { crate::ffi::Geom_VectorWithMagnitude_magnitude(self as *const Self) }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:71 - `Geom_VectorWithMagnitude::SquareMagnitude()`
     /// Returns the square magnitude of <me>.
     pub fn square_magnitude(&self) -> f64 {
         unsafe { crate::ffi::Geom_VectorWithMagnitude_square_magnitude(self as *const Self) }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:74 - `Geom_VectorWithMagnitude::Add()`
     /// Adds the Vector Other to <me>.
     pub fn add(&mut self, Other: &crate::ffi::HandleGeomVector) {
         unsafe { crate::ffi::Geom_VectorWithMagnitude_add(self as *mut Self, Other) }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:77 - `Geom_VectorWithMagnitude::Added()`
     /// Adds the vector Other to <me>.
     pub fn added(
         &self,
@@ -20669,12 +21738,14 @@ impl VectorWithMagnitude {
         }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:82 - `Geom_VectorWithMagnitude::Cross()`
     /// Computes the cross product  between <me> and Other
     /// <me> ^ Other.
     pub fn cross(&mut self, Other: &crate::ffi::HandleGeomVector) {
         unsafe { crate::ffi::Geom_VectorWithMagnitude_cross(self as *mut Self, Other) }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:86 - `Geom_VectorWithMagnitude::Crossed()`
     /// Computes the cross product  between <me> and Other
     /// <me> ^ Other. A new vector is returned.
     pub fn crossed(
@@ -20689,6 +21760,7 @@ impl VectorWithMagnitude {
         }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:90 - `Geom_VectorWithMagnitude::CrossCross()`
     /// Computes the triple vector product  <me> ^ (V1 ^ V2).
     pub fn cross_cross(
         &mut self,
@@ -20698,6 +21770,7 @@ impl VectorWithMagnitude {
         unsafe { crate::ffi::Geom_VectorWithMagnitude_cross_cross(self as *mut Self, V1, V2) }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:95 - `Geom_VectorWithMagnitude::CrossCrossed()`
     /// Computes the triple vector product  <me> ^ (V1 ^ V2).
     /// A new vector is returned.
     pub fn cross_crossed(
@@ -20714,11 +21787,13 @@ impl VectorWithMagnitude {
         }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:100 - `Geom_VectorWithMagnitude::Divide()`
     /// Divides <me> by a scalar.
     pub fn divide(&mut self, Scalar: f64) {
         unsafe { crate::ffi::Geom_VectorWithMagnitude_divide(self as *mut Self, Scalar) }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:103 - `Geom_VectorWithMagnitude::Divided()`
     /// Divides <me> by a scalar. A new vector is returned.
     pub fn divided(
         &self,
@@ -20732,6 +21807,7 @@ impl VectorWithMagnitude {
         }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:108 - `Geom_VectorWithMagnitude::Multiplied()`
     /// Computes the product of the vector <me> by a scalar.
     /// A new vector is returned.
     pub fn multiplied(
@@ -20746,11 +21822,13 @@ impl VectorWithMagnitude {
         }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:112 - `Geom_VectorWithMagnitude::Multiply()`
     /// Computes the product of the vector <me> by a scalar.
     pub fn multiply(&mut self, Scalar: f64) {
         unsafe { crate::ffi::Geom_VectorWithMagnitude_multiply(self as *mut Self, Scalar) }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:118 - `Geom_VectorWithMagnitude::Normalize()`
     /// Normalizes <me>.
     ///
     /// Raised if the magnitude of the vector is lower or equal to
@@ -20759,6 +21837,7 @@ impl VectorWithMagnitude {
         unsafe { crate::ffi::Geom_VectorWithMagnitude_normalize(self as *mut Self) }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:124 - `Geom_VectorWithMagnitude::Normalized()`
     /// Returns a copy of <me> Normalized.
     ///
     /// Raised if the magnitude of the vector is lower or equal to
@@ -20771,11 +21850,13 @@ impl VectorWithMagnitude {
         }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:127 - `Geom_VectorWithMagnitude::Subtract()`
     /// Subtracts the Vector Other to <me>.
     pub fn subtract(&mut self, Other: &crate::ffi::HandleGeomVector) {
         unsafe { crate::ffi::Geom_VectorWithMagnitude_subtract(self as *mut Self, Other) }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:130 - `Geom_VectorWithMagnitude::Subtracted()`
     /// Subtracts the vector Other to <me>. A new vector is returned.
     pub fn subtracted(
         &self,
@@ -20789,11 +21870,13 @@ impl VectorWithMagnitude {
         }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:134 - `Geom_VectorWithMagnitude::Transform()`
     /// Applies the transformation T to this vector.
     pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
         unsafe { crate::ffi::Geom_VectorWithMagnitude_transform(self as *mut Self, T) }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:137 - `Geom_VectorWithMagnitude::Copy()`
     /// Creates a new object which is a copy of this vector.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
@@ -20803,14 +21886,17 @@ impl VectorWithMagnitude {
         }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:139 - `Geom_VectorWithMagnitude::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_VectorWithMagnitude_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:139 - `Geom_VectorWithMagnitude::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Geom_VectorWithMagnitude_get_type_name() }
     }
 
+    /// **Source:** `Geom_VectorWithMagnitude.hxx`:139 - `Geom_VectorWithMagnitude::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Geom_VectorWithMagnitude_get_type_descriptor()) }
     }

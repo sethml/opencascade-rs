@@ -42,6 +42,7 @@ impl TryFrom<i32> for MeshAlgoType {
 // From IMeshTools_Context.hxx
 // ========================
 
+/// **Source:** `IMeshTools_Context.hxx`:29 - `IMeshTools_Context`
 /// Interface class representing context of BRepMesh algorithm.
 /// Intended to cache discrete model and instances of tools for
 /// its processing.
@@ -54,23 +55,27 @@ unsafe impl crate::CppDeletable for Context {
 }
 
 impl Context {
+    /// **Source:** `IMeshTools_Context.hxx`:33 - `IMeshTools_Context::IMeshTools_Context()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IMeshTools_Context_ctor()) }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:40 - `IMeshTools_Context::BuildModel()`
     /// Builds model using assigned model builder.
     /// @return True on success, False elsewhere.
     pub fn build_model(&mut self) -> bool {
         unsafe { crate::ffi::IMeshTools_Context_build_model(self as *mut Self) }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:54 - `IMeshTools_Context::DiscretizeEdges()`
     /// Performs discretization of model edges using assigned edge discret algorithm.
     /// @return True on success, False elsewhere.
     pub fn discretize_edges(&mut self) -> bool {
         unsafe { crate::ffi::IMeshTools_Context_discretize_edges(self as *mut Self) }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:68 - `IMeshTools_Context::HealModel()`
     /// Performs healing of discrete model built by DiscretizeEdges() method
     /// using assigned healing algorithm.
     /// @return True on success, False elsewhere.
@@ -78,6 +83,7 @@ impl Context {
         unsafe { crate::ffi::IMeshTools_Context_heal_model(self as *mut Self) }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:83 - `IMeshTools_Context::PreProcessModel()`
     /// Performs pre-processing of discrete model using assigned algorithm.
     /// Performs auxiliary actions such as cleaning shape from old triangulation.
     /// @return True on success, False elsewhere.
@@ -85,28 +91,33 @@ impl Context {
         unsafe { crate::ffi::IMeshTools_Context_pre_process_model(self as *mut Self) }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:97 - `IMeshTools_Context::DiscretizeFaces()`
     /// Performs meshing of faces of discrete model using assigned meshing algorithm.
     /// @return True on success, False elsewhere.
     pub fn discretize_faces(&mut self, theRange: &crate::ffi::Message_ProgressRange) -> bool {
         unsafe { crate::ffi::IMeshTools_Context_discretize_faces(self as *mut Self, theRange) }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:110 - `IMeshTools_Context::PostProcessModel()`
     /// Performs post-processing of discrete model using assigned algorithm.
     /// @return True on success, False elsewhere.
     pub fn post_process_model(&mut self) -> bool {
         unsafe { crate::ffi::IMeshTools_Context_post_process_model(self as *mut Self) }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:123 - `IMeshTools_Context::Clean()`
     /// Cleans temporary context data.
     pub fn clean(&mut self) {
         unsafe { crate::ffi::IMeshTools_Context_clean(self as *mut Self) }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:141 - `IMeshTools_Context::GetEdgeDiscret()`
     /// Gets instance of a tool to be used to discretize edges of a model.
     pub fn get_edge_discret(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
         unsafe { &*(crate::ffi::IMeshTools_Context_get_edge_discret(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:144 - `IMeshTools_Context::SetEdgeDiscret()`
     /// Sets instance of a tool to be used to discretize edges of a model.
     pub fn set_edge_discret(&mut self, theEdgeDiscret: &crate::ffi::HandleIMeshToolsModelAlgo) {
         unsafe {
@@ -114,11 +125,13 @@ impl Context {
         }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:150 - `IMeshTools_Context::GetModelHealer()`
     /// Gets instance of a tool to be used to heal discrete model.
     pub fn get_model_healer(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
         unsafe { &*(crate::ffi::IMeshTools_Context_get_model_healer(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:153 - `IMeshTools_Context::SetModelHealer()`
     /// Sets instance of a tool to be used to heal discrete model.
     pub fn set_model_healer(&mut self, theModelHealer: &crate::ffi::HandleIMeshToolsModelAlgo) {
         unsafe {
@@ -126,11 +139,13 @@ impl Context {
         }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:159 - `IMeshTools_Context::GetPreProcessor()`
     /// Gets instance of pre-processing algorithm.
     pub fn get_pre_processor(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
         unsafe { &*(crate::ffi::IMeshTools_Context_get_pre_processor(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:162 - `IMeshTools_Context::SetPreProcessor()`
     /// Sets instance of pre-processing algorithm.
     pub fn set_pre_processor(&mut self, thePreProcessor: &crate::ffi::HandleIMeshToolsModelAlgo) {
         unsafe {
@@ -138,11 +153,13 @@ impl Context {
         }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:168 - `IMeshTools_Context::GetFaceDiscret()`
     /// Gets instance of meshing algorithm.
     pub fn get_face_discret(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
         unsafe { &*(crate::ffi::IMeshTools_Context_get_face_discret(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:171 - `IMeshTools_Context::SetFaceDiscret()`
     /// Sets instance of meshing algorithm.
     pub fn set_face_discret(&mut self, theFaceDiscret: &crate::ffi::HandleIMeshToolsModelAlgo) {
         unsafe {
@@ -150,11 +167,13 @@ impl Context {
         }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:177 - `IMeshTools_Context::GetPostProcessor()`
     /// Gets instance of post-processing algorithm.
     pub fn get_post_processor(&self) -> &crate::ffi::HandleIMeshToolsModelAlgo {
         unsafe { &*(crate::ffi::IMeshTools_Context_get_post_processor(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:180 - `IMeshTools_Context::SetPostProcessor()`
     /// Sets instance of post-processing algorithm.
     pub fn set_post_processor(&mut self, thePostProcessor: &crate::ffi::HandleIMeshToolsModelAlgo) {
         unsafe {
@@ -162,24 +181,29 @@ impl Context {
         }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:186 - `IMeshTools_Context::GetParameters()`
     /// Gets parameters to be used for meshing.
     pub fn get_parameters(&self) -> &crate::ffi::IMeshTools_Parameters {
         unsafe { &*(crate::ffi::IMeshTools_Context_get_parameters(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:189 - `IMeshTools_Context::ChangeParameters()`
     /// Gets reference to parameters to be used for meshing.
     pub fn change_parameters(&mut self) -> &mut crate::ffi::IMeshTools_Parameters {
         unsafe { &mut *(crate::ffi::IMeshTools_Context_change_parameters(self as *mut Self)) }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:194 - `IMeshTools_Context::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshTools_Context_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:194 - `IMeshTools_Context::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IMeshTools_Context_get_type_name() }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:194 - `IMeshTools_Context::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshTools_Context_get_type_descriptor()) }
     }
@@ -209,6 +233,7 @@ impl Context {
 // From IMeshTools_CurveTessellator.hxx
 // ========================
 
+/// **Source:** `IMeshTools_CurveTessellator.hxx`:25 - `IMeshTools_CurveTessellator`
 /// Interface class providing API for edge tessellation tools.
 pub use crate::ffi::IMeshTools_CurveTessellator as CurveTessellator;
 
@@ -219,11 +244,13 @@ unsafe impl crate::CppDeletable for CurveTessellator {
 }
 
 impl CurveTessellator {
+    /// **Source:** `IMeshTools_CurveTessellator.hxx`:32 - `IMeshTools_CurveTessellator::PointsNb()`
     /// Returns number of tessellation points.
     pub fn points_nb(&self) -> i32 {
         unsafe { crate::ffi::IMeshTools_CurveTessellator_points_nb(self as *const Self) }
     }
 
+    /// **Source:** `IMeshTools_CurveTessellator.hxx`:39 - `IMeshTools_CurveTessellator::Value()`
     /// Returns parameters of solution with the given index.
     /// @param theIndex index of tessellation point.
     /// @param thePoint tessellation point.
@@ -245,14 +272,17 @@ impl CurveTessellator {
         }
     }
 
+    /// **Source:** `IMeshTools_CurveTessellator.hxx`:43 - `IMeshTools_CurveTessellator::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshTools_CurveTessellator_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshTools_CurveTessellator.hxx`:43 - `IMeshTools_CurveTessellator::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IMeshTools_CurveTessellator_get_type_name() }
     }
 
+    /// **Source:** `IMeshTools_CurveTessellator.hxx`:43 - `IMeshTools_CurveTessellator::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshTools_CurveTessellator_get_type_descriptor()) }
     }
@@ -282,6 +312,7 @@ impl HandleIMeshToolsCurveTessellator {
 // From IMeshTools_MeshAlgo.hxx
 // ========================
 
+/// **Source:** `IMeshTools_MeshAlgo.hxx`:26 - `IMeshTools_MeshAlgo`
 /// Interface class providing API for algorithms intended to create mesh for discrete face.
 pub use crate::ffi::IMeshTools_MeshAlgo as MeshAlgo;
 
@@ -292,14 +323,17 @@ unsafe impl crate::CppDeletable for MeshAlgo {
 }
 
 impl MeshAlgo {
+    /// **Source:** `IMeshTools_MeshAlgo.hxx`:37 - `IMeshTools_MeshAlgo::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshTools_MeshAlgo_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshTools_MeshAlgo.hxx`:37 - `IMeshTools_MeshAlgo::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IMeshTools_MeshAlgo_get_type_name() }
     }
 
+    /// **Source:** `IMeshTools_MeshAlgo.hxx`:37 - `IMeshTools_MeshAlgo::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshTools_MeshAlgo_get_type_descriptor()) }
     }
@@ -329,6 +363,7 @@ impl HandleIMeshToolsMeshAlgo {
 // From IMeshTools_MeshAlgoFactory.hxx
 // ========================
 
+/// **Source:** `IMeshTools_MeshAlgoFactory.hxx`:27 - `IMeshTools_MeshAlgoFactory`
 /// Base interface for factories producing instances of triangulation
 /// algorithms taking into account type of surface of target face.
 pub use crate::ffi::IMeshTools_MeshAlgoFactory as MeshAlgoFactory;
@@ -340,6 +375,7 @@ unsafe impl crate::CppDeletable for MeshAlgoFactory {
 }
 
 impl MeshAlgoFactory {
+    /// **Source:** `IMeshTools_MeshAlgoFactory.hxx`:34 - `IMeshTools_MeshAlgoFactory::GetAlgo()`
     /// Creates instance of meshing algorithm for the given type of surface.
     pub fn get_algo(
         &self,
@@ -355,14 +391,17 @@ impl MeshAlgoFactory {
         }
     }
 
+    /// **Source:** `IMeshTools_MeshAlgoFactory.hxx`:38 - `IMeshTools_MeshAlgoFactory::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshTools_MeshAlgoFactory_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshTools_MeshAlgoFactory.hxx`:38 - `IMeshTools_MeshAlgoFactory::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IMeshTools_MeshAlgoFactory_get_type_name() }
     }
 
+    /// **Source:** `IMeshTools_MeshAlgoFactory.hxx`:38 - `IMeshTools_MeshAlgoFactory::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshTools_MeshAlgoFactory_get_type_descriptor()) }
     }
@@ -392,6 +431,7 @@ impl HandleIMeshToolsMeshAlgoFactory {
 // From IMeshTools_ModelAlgo.hxx
 // ========================
 
+/// **Source:** `IMeshTools_ModelAlgo.hxx`:26 - `IMeshTools_ModelAlgo`
 /// Interface class providing API for algorithms intended to update or modify discrete model.
 pub use crate::ffi::IMeshTools_ModelAlgo as ModelAlgo;
 
@@ -402,14 +442,17 @@ unsafe impl crate::CppDeletable for ModelAlgo {
 }
 
 impl ModelAlgo {
+    /// **Source:** `IMeshTools_ModelAlgo.hxx`:49 - `IMeshTools_ModelAlgo::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshTools_ModelAlgo_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshTools_ModelAlgo.hxx`:49 - `IMeshTools_ModelAlgo::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IMeshTools_ModelAlgo_get_type_name() }
     }
 
+    /// **Source:** `IMeshTools_ModelAlgo.hxx`:49 - `IMeshTools_ModelAlgo::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshTools_ModelAlgo_get_type_descriptor()) }
     }
@@ -439,6 +482,7 @@ impl HandleIMeshToolsModelAlgo {
 // From IMeshTools_ModelBuilder.hxx
 // ========================
 
+/// **Source:** `IMeshTools_ModelBuilder.hxx`:33 - `IMeshTools_ModelBuilder`
 /// Interface class represents API for tool building discrete model.
 ///
 /// The following statuses should be used by default:
@@ -454,14 +498,17 @@ unsafe impl crate::CppDeletable for ModelBuilder {
 }
 
 impl ModelBuilder {
+    /// **Source:** `IMeshTools_ModelBuilder.hxx`:59 - `IMeshTools_ModelBuilder::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshTools_ModelBuilder_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshTools_ModelBuilder.hxx`:59 - `IMeshTools_ModelBuilder::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IMeshTools_ModelBuilder_get_type_name() }
     }
 
+    /// **Source:** `IMeshTools_ModelBuilder.hxx`:59 - `IMeshTools_ModelBuilder::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshTools_ModelBuilder_get_type_descriptor()) }
     }
@@ -591,6 +638,7 @@ impl ModelBuilder {
 // From IMeshTools_Parameters.hxx
 // ========================
 
+/// **Source:** `IMeshTools_Parameters.hxx`:23 - `IMeshTools_Parameters`
 /// Structure storing meshing parameters
 pub use crate::ffi::IMeshTools_Parameters as Parameters;
 
@@ -601,11 +649,13 @@ unsafe impl crate::CppDeletable for Parameters {
 }
 
 impl Parameters {
+    /// **Source:** `IMeshTools_Parameters.hxx`:27 - `IMeshTools_Parameters::IMeshTools_Parameters()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IMeshTools_Parameters_ctor()) }
     }
 
+    /// **Source:** `IMeshTools_Parameters.hxx`:48 - `IMeshTools_Parameters::RelMinSize()`
     /// Returns factor used to compute default value of MinSize
     /// (minimum mesh edge length) from deflection
     pub fn rel_min_size() -> f64 {
@@ -617,6 +667,7 @@ impl Parameters {
 // From IMeshTools_ShapeVisitor.hxx
 // ========================
 
+/// **Source:** `IMeshTools_ShapeVisitor.hxx`:26 - `IMeshTools_ShapeVisitor`
 /// Interface class for shape visitor.
 pub use crate::ffi::IMeshTools_ShapeVisitor as ShapeVisitor;
 
@@ -627,24 +678,29 @@ unsafe impl crate::CppDeletable for ShapeVisitor {
 }
 
 impl ShapeVisitor {
+    /// **Source:** `IMeshTools_ShapeVisitor.hxx`:33 - `IMeshTools_ShapeVisitor::Visit()`
     /// Handles TopoDS_Face object.
     pub fn visit_face(&mut self, theFace: &crate::ffi::TopoDS_Face) {
         unsafe { crate::ffi::IMeshTools_ShapeVisitor_visit_face(self as *mut Self, theFace) }
     }
 
+    /// **Source:** `IMeshTools_ShapeVisitor.hxx`:36 - `IMeshTools_ShapeVisitor::Visit()`
     /// Handles TopoDS_Edge object.
     pub fn visit_edge(&mut self, theEdge: &crate::ffi::TopoDS_Edge) {
         unsafe { crate::ffi::IMeshTools_ShapeVisitor_visit_edge(self as *mut Self, theEdge) }
     }
 
+    /// **Source:** `IMeshTools_ShapeVisitor.hxx`:38 - `IMeshTools_ShapeVisitor::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshTools_ShapeVisitor_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `IMeshTools_ShapeVisitor.hxx`:38 - `IMeshTools_ShapeVisitor::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::IMeshTools_ShapeVisitor_get_type_name() }
     }
 
+    /// **Source:** `IMeshTools_ShapeVisitor.hxx`:38 - `IMeshTools_ShapeVisitor::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshTools_ShapeVisitor_get_type_descriptor()) }
     }

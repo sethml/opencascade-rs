@@ -6,7 +6,13 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::Standard_purge as purge;
+/// **Source:** `Standard.hxx` - `Standard::Purge`
+/// Deallocates the storage retained on the free list
+/// and clears the list.
+/// Returns non-zero if some memory has been actually freed.
+pub fn purge() -> i32 {
+    unsafe { crate::ffi::Standard_purge() }
+}
 
 /// Kind of key in Json string
 /// C++ enum: `Standard_JsonKey`
@@ -87,6 +93,7 @@ impl TryFrom<i32> for HandlerStatus {
 // From Standard_AbortiveTransaction.hxx
 // ========================
 
+/// **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction`
 pub use crate::ffi::Standard_AbortiveTransaction as AbortiveTransaction;
 
 unsafe impl crate::CppDeletable for AbortiveTransaction {
@@ -96,10 +103,12 @@ unsafe impl crate::CppDeletable for AbortiveTransaction {
 }
 
 impl AbortiveTransaction {
+    /// **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::Standard_AbortiveTransaction()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_AbortiveTransaction_ctor()) }
     }
 
+    /// **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::Standard_AbortiveTransaction()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_AbortiveTransaction_ctor_charptr(
@@ -108,6 +117,7 @@ impl AbortiveTransaction {
         }
     }
 
+    /// **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::Standard_AbortiveTransaction()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -120,18 +130,22 @@ impl AbortiveTransaction {
         }
     }
 
+    /// **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_AbortiveTransaction_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_AbortiveTransaction_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_AbortiveTransaction_get_type_name() }
     }
 
+    /// **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_AbortiveTransaction_get_type_descriptor()) }
     }
@@ -141,6 +155,7 @@ impl AbortiveTransaction {
 // From Standard_ArrayStreamBuffer.hxx
 // ========================
 
+/// **Source:** `Standard_ArrayStreamBuffer.hxx`:48 - `Standard_ArrayStreamBuffer`
 /// Custom buffer object implementing STL interface std::streambuf for streamed reading from
 /// allocated memory block. Implements minimal sub-set of methods for passing buffer to
 /// std::istream, including seek support.
@@ -171,6 +186,7 @@ unsafe impl crate::CppDeletable for ArrayStreamBuffer {
 }
 
 impl ArrayStreamBuffer {
+    /// **Source:** `Standard_ArrayStreamBuffer.hxx`:55 - `Standard_ArrayStreamBuffer::Standard_ArrayStreamBuffer()`
     /// Main constructor.
     /// Passed pointer is stored as is (memory is NOT copied nor released with destructor).
     /// @param theBegin pointer to the beginning of pre-allocated buffer
@@ -186,6 +202,7 @@ impl ArrayStreamBuffer {
         }
     }
 
+    /// **Source:** `Standard_ArrayStreamBuffer.hxx`:64 - `Standard_ArrayStreamBuffer::Init()`
     /// (Re)-initialize the stream.
     /// Passed pointer is stored as is (memory is NOT copied nor released with destructor).
     /// @param theBegin pointer to the beginning of pre-allocated buffer
@@ -199,6 +216,7 @@ impl ArrayStreamBuffer {
 // From Standard_CLocaleSentry.hxx
 // ========================
 
+/// **Source:** `Standard_CLocaleSentry.hxx`:57 - `Standard_CLocaleSentry`
 /// This class intended to temporary switch C locale and logically equivalent to setlocale(LC_ALL,
 /// "C"). It is intended to format text regardless of user locale settings (for import/export
 /// functionality). Thus following calls to sprintf, atoi and other functions will use "C" locale.
@@ -218,6 +236,7 @@ unsafe impl crate::CppDeletable for CLocaleSentry {
 }
 
 impl CLocaleSentry {
+    /// **Source:** `Standard_CLocaleSentry.hxx`:61 - `Standard_CLocaleSentry::Standard_CLocaleSentry()`
     /// Setup current C locale to "C".
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_CLocaleSentry_ctor()) }
@@ -228,6 +247,7 @@ impl CLocaleSentry {
 // From Standard_Condition.hxx
 // ========================
 
+/// **Source:** `Standard_Condition.hxx`:29 - `Standard_Condition`
 /// This is boolean flag intended for communication between threads.
 /// One thread sets this flag to TRUE to indicate some event happened
 /// and another thread either waits this event or checks periodically its state to perform job.
@@ -242,27 +262,32 @@ unsafe impl crate::CppDeletable for Condition {
 }
 
 impl Condition {
+    /// **Source:** `Standard_Condition.hxx`:34 - `Standard_Condition::Standard_Condition()`
     /// Default constructor.
     /// @param theIsSet Initial flag state
     pub fn new_bool(theIsSet: bool) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Condition_ctor_bool(theIsSet)) }
     }
 
+    /// **Source:** `Standard_Condition.hxx`:40 - `Standard_Condition::Set()`
     /// Set event into signaling state.
     pub fn set(&mut self) {
         unsafe { crate::ffi::Standard_Condition_set(self as *mut Self) }
     }
 
+    /// **Source:** `Standard_Condition.hxx`:43 - `Standard_Condition::Reset()`
     /// Reset event (unset signaling state)
     pub fn reset(&mut self) {
         unsafe { crate::ffi::Standard_Condition_reset(self as *mut Self) }
     }
 
+    /// **Source:** `Standard_Condition.hxx`:46 - `Standard_Condition::Wait()`
     /// Wait for Event (infinity).
     pub fn wait(&mut self) {
         unsafe { crate::ffi::Standard_Condition_wait(self as *mut Self) }
     }
 
+    /// **Source:** `Standard_Condition.hxx`:51 - `Standard_Condition::Wait()`
     /// Wait for signal requested time.
     /// @param theTimeMilliseconds wait limit in milliseconds
     /// @return true if get event
@@ -270,12 +295,14 @@ impl Condition {
         unsafe { crate::ffi::Standard_Condition_wait_int(self as *mut Self, theTimeMilliseconds) }
     }
 
+    /// **Source:** `Standard_Condition.hxx`:55 - `Standard_Condition::Check()`
     /// Do not wait for signal - just test it state.
     /// @return true if get event
     pub fn check(&mut self) -> bool {
         unsafe { crate::ffi::Standard_Condition_check(self as *mut Self) }
     }
 
+    /// **Source:** `Standard_Condition.hxx`:60 - `Standard_Condition::CheckReset()`
     /// Method perform two steps at-once - reset the event object
     /// and returns true if it was in signaling state.
     /// @return true if event object was in signaling state.
@@ -288,6 +315,7 @@ impl Condition {
 // From Standard_ConstructionError.hxx
 // ========================
 
+/// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError`
 pub use crate::ffi::Standard_ConstructionError as ConstructionError;
 
 unsafe impl crate::CppDeletable for ConstructionError {
@@ -297,10 +325,12 @@ unsafe impl crate::CppDeletable for ConstructionError {
 }
 
 impl ConstructionError {
+    /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::Standard_ConstructionError()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_ConstructionError_ctor()) }
     }
 
+    /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::Standard_ConstructionError()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_ConstructionError_ctor_charptr(
@@ -309,6 +339,7 @@ impl ConstructionError {
         }
     }
 
+    /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::Standard_ConstructionError()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -321,18 +352,22 @@ impl ConstructionError {
         }
     }
 
+    /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_ConstructionError_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_ConstructionError_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_ConstructionError_get_type_name() }
     }
 
+    /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_ConstructionError_get_type_descriptor()) }
     }
@@ -342,6 +377,7 @@ impl ConstructionError {
 // From Standard_DimensionError.hxx
 // ========================
 
+/// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError`
 pub use crate::ffi::Standard_DimensionError as DimensionError;
 
 unsafe impl crate::CppDeletable for DimensionError {
@@ -351,16 +387,19 @@ unsafe impl crate::CppDeletable for DimensionError {
 }
 
 impl DimensionError {
+    /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::Standard_DimensionError()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_DimensionError_ctor()) }
     }
 
+    /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::Standard_DimensionError()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_DimensionError_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::Standard_DimensionError()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -373,18 +412,22 @@ impl DimensionError {
         }
     }
 
+    /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_DimensionError_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_DimensionError_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_DimensionError_get_type_name() }
     }
 
+    /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_DimensionError_get_type_descriptor()) }
     }
@@ -394,6 +437,7 @@ impl DimensionError {
 // From Standard_DimensionMismatch.hxx
 // ========================
 
+/// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch`
 pub use crate::ffi::Standard_DimensionMismatch as DimensionMismatch;
 
 unsafe impl crate::CppDeletable for DimensionMismatch {
@@ -403,10 +447,12 @@ unsafe impl crate::CppDeletable for DimensionMismatch {
 }
 
 impl DimensionMismatch {
+    /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::Standard_DimensionMismatch()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_DimensionMismatch_ctor()) }
     }
 
+    /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::Standard_DimensionMismatch()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_DimensionMismatch_ctor_charptr(
@@ -415,6 +461,7 @@ impl DimensionMismatch {
         }
     }
 
+    /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::Standard_DimensionMismatch()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -427,18 +474,22 @@ impl DimensionMismatch {
         }
     }
 
+    /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_DimensionMismatch_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_DimensionMismatch_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_DimensionMismatch_get_type_name() }
     }
 
+    /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_DimensionMismatch_get_type_descriptor()) }
     }
@@ -448,6 +499,7 @@ impl DimensionMismatch {
 // From Standard_DivideByZero.hxx
 // ========================
 
+/// **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero`
 pub use crate::ffi::Standard_DivideByZero as DivideByZero;
 
 unsafe impl crate::CppDeletable for DivideByZero {
@@ -457,16 +509,19 @@ unsafe impl crate::CppDeletable for DivideByZero {
 }
 
 impl DivideByZero {
+    /// **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::Standard_DivideByZero()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_DivideByZero_ctor()) }
     }
 
+    /// **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::Standard_DivideByZero()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_DivideByZero_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::Standard_DivideByZero()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -479,18 +534,22 @@ impl DivideByZero {
         }
     }
 
+    /// **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_DivideByZero_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_DivideByZero_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_DivideByZero_get_type_name() }
     }
 
+    /// **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_DivideByZero_get_type_descriptor()) }
     }
@@ -500,6 +559,7 @@ impl DivideByZero {
 // From Standard_DomainError.hxx
 // ========================
 
+/// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError`
 pub use crate::ffi::Standard_DomainError as DomainError;
 
 unsafe impl crate::CppDeletable for DomainError {
@@ -509,16 +569,19 @@ unsafe impl crate::CppDeletable for DomainError {
 }
 
 impl DomainError {
+    /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::Standard_DomainError()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_DomainError_ctor()) }
     }
 
+    /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::Standard_DomainError()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_DomainError_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::Standard_DomainError()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -531,18 +594,22 @@ impl DomainError {
         }
     }
 
+    /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_DomainError_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_DomainError_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_DomainError_get_type_name() }
     }
 
+    /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_DomainError_get_type_descriptor()) }
     }
@@ -552,6 +619,7 @@ impl DomainError {
 // From Standard_Dump.hxx
 // ========================
 
+/// **Source:** `Standard_Dump.hxx`:309 - `Standard_DumpValue`
 /// Type for storing a dump value with the stream position
 pub use crate::ffi::Standard_DumpValue as DumpValue;
 
@@ -562,10 +630,12 @@ unsafe impl crate::CppDeletable for DumpValue {
 }
 
 impl DumpValue {
+    /// **Source:** `Standard_Dump.hxx`:311 - `Standard_DumpValue::Standard_DumpValue()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_DumpValue_ctor()) }
     }
 
+    /// **Source:** `Standard_Dump.hxx`:316 - `Standard_DumpValue::Standard_DumpValue()`
     pub fn new_asciistring_int(
         theValue: &crate::ffi::TCollection_AsciiString,
         theStartPos: i32,
@@ -579,6 +649,7 @@ impl DumpValue {
     }
 }
 
+/// **Source:** `Standard_Dump.hxx`:327 - `Standard_Dump`
 /// This interface has some tool methods for stream (in JSON format) processing.
 pub use crate::ffi::Standard_Dump as Dump;
 
@@ -589,32 +660,38 @@ unsafe impl crate::CppDeletable for Dump {
 }
 
 impl Dump {
+    /// **Source:** `Standard_Dump.hxx` - `Standard_Dump::Standard_Dump()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Dump_ctor()) }
     }
 
+    /// **Source:** `Standard_Dump.hxx`:370 - `Standard_Dump::HasChildKey()`
     /// Returns true if the value has bracket key
     pub fn has_child_key(theSourceValue: &crate::ffi::TCollection_AsciiString) -> bool {
         unsafe { crate::ffi::Standard_Dump_has_child_key(theSourceValue) }
     }
 
+    /// **Source:** `Standard_Dump.hxx`:374 - `Standard_Dump::JsonKeyToString()`
     /// Returns key value for enum type
     pub fn json_key_to_string(theKey: crate::standard::JsonKey) -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_Dump_json_key_to_string(theKey.into()) }
     }
 
+    /// **Source:** `Standard_Dump.hxx`:377 - `Standard_Dump::JsonKeyLength()`
     /// Returns length value for enum type
     pub fn json_key_length(theKey: crate::standard::JsonKey) -> i32 {
         unsafe { crate::ffi::Standard_Dump_json_key_length(theKey.into()) }
     }
 
+    /// **Source:** `Standard_Dump.hxx`:384 - `Standard_Dump::GetPointerPrefix()`
     /// Returns default prefix added for each pointer info string if short presentation of pointer
     /// used
     pub fn get_pointer_prefix() -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Dump_get_pointer_prefix()) }
     }
 
+    /// **Source:** `Standard_Dump.hxx`:425 - `Standard_Dump::ProcessStreamName()`
     /// Check whether the parameter name is equal to the name in the stream at position
     /// @param[in]  theStreamStr stream with values
     /// @param[in]  theName      stream key value
@@ -629,6 +706,7 @@ impl Dump {
         }
     }
 
+    /// **Source:** `Standard_Dump.hxx`:434 - `Standard_Dump::ProcessFieldName()`
     /// Check whether the field name is equal to the name in the stream at position
     /// @param[in]  theStreamStr stream with values
     /// @param[in]  theName      stream key field value
@@ -641,6 +719,7 @@ impl Dump {
         unsafe { crate::ffi::Standard_Dump_process_field_name(theStreamStr, theName, theStreamPos) }
     }
 
+    /// **Source:** `Standard_Dump.hxx`:443 - `Standard_Dump::InitRealValues()`
     /// Unite values in one value using template: value_1, value_2, ..., value_n
     /// @param[in]  theStreamStr stream with values
     /// @param[out] theStreamPos current position in the stream
@@ -653,6 +732,7 @@ impl Dump {
         unsafe { crate::ffi::Standard_Dump_init_real_values(theStreamStr, theStreamPos, theCount) }
     }
 
+    /// **Source:** `Standard_Dump.hxx`:453 - `Standard_Dump::InitValue()`
     /// Returns real value
     /// @param[in]  theStreamStr stream with values
     /// @param[out] theStreamPos current position in the stream
@@ -665,6 +745,7 @@ impl Dump {
         unsafe { crate::ffi::Standard_Dump_init_value(theStreamStr, theStreamPos, theValue) }
     }
 
+    /// **Source:** `Standard_Dump.hxx`:460 - `Standard_Dump::DumpFieldToName()`
     /// Convert field name into dump text value, removes "&" and "my" prefixes
     /// An example, for field myValue, theName is Value, for &myCLass, the name is Class
     /// @param theField a source value
@@ -679,6 +760,7 @@ impl Dump {
 // From Standard_ErrorHandler.hxx
 // ========================
 
+/// **Source:** `Standard_ErrorHandler.hxx`:82 - `Standard_ErrorHandler`
 /// Class implementing mechanics of conversion of signals to exceptions.
 ///
 /// Each instance of it stores data for jump placement, thread id,
@@ -695,28 +777,33 @@ unsafe impl crate::CppDeletable for ErrorHandler {
 }
 
 impl ErrorHandler {
+    /// **Source:** `Standard_ErrorHandler.hxx`:89 - `Standard_ErrorHandler::Standard_ErrorHandler()`
     /// Create a ErrorHandler (to be used with try{}catch(){}).
     /// It uses the "setjmp" and "longjmp" routines.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_ErrorHandler_ctor()) }
     }
 
+    /// **Source:** `Standard_ErrorHandler.hxx`:92 - `Standard_ErrorHandler::Destroy()`
     /// Unlinks and checks if there is a raised exception.
     pub fn destroy(&mut self) {
         unsafe { crate::ffi::Standard_ErrorHandler_destroy(self as *mut Self) }
     }
 
+    /// **Source:** `Standard_ErrorHandler.hxx`:98 - `Standard_ErrorHandler::Unlink()`
     /// Removes handler from the handlers list
     pub fn unlink(&mut self) {
         unsafe { crate::ffi::Standard_ErrorHandler_unlink(self as *mut Self) }
     }
 
+    /// **Source:** `Standard_ErrorHandler.hxx`:102 - `Standard_ErrorHandler::Catches()`
     /// Returns "True" if the caught exception has the same type
     /// or inherits from "aType"
     pub fn catches(&mut self, aType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::Standard_ErrorHandler_catches(self as *mut Self, aType) }
     }
 
+    /// **Source:** `Standard_ErrorHandler.hxx`:108 - `Standard_ErrorHandler::Error()`
     /// Returns the current Error.
     pub fn error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
         unsafe {
@@ -724,11 +811,13 @@ impl ErrorHandler {
         }
     }
 
+    /// **Source:** `Standard_ErrorHandler.hxx`:111 - `Standard_ErrorHandler::LastCaughtError()`
     /// Returns the caught exception.
     pub fn last_caught_error() -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_ErrorHandler_last_caught_error()) }
     }
 
+    /// **Source:** `Standard_ErrorHandler.hxx`:114 - `Standard_ErrorHandler::IsInTryBlock()`
     /// Test if the code is currently running in a try block
     pub fn is_in_try_block() -> bool {
         unsafe { crate::ffi::Standard_ErrorHandler_is_in_try_block() }
@@ -739,6 +828,7 @@ impl ErrorHandler {
 // From Standard_Failure.hxx
 // ========================
 
+/// **Source:** `Standard_Failure.hxx`:30 - `Standard_Failure`
 /// Forms the root of the entire exception hierarchy.
 pub use crate::ffi::Standard_Failure as Failure;
 
@@ -749,22 +839,26 @@ unsafe impl crate::CppDeletable for Failure {
 }
 
 impl Failure {
+    /// **Source:** `Standard_Failure.hxx`:34 - `Standard_Failure::Standard_Failure()`
     /// Creates a status object of type "Failure".
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Failure_ctor()) }
     }
 
+    /// **Source:** `Standard_Failure.hxx`:37 - `Standard_Failure::Standard_Failure()`
     /// Copy constructor
     pub fn new_failure(f: &crate::ffi::Standard_Failure) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Failure_ctor_failure(f)) }
     }
 
+    /// **Source:** `Standard_Failure.hxx`:41 - `Standard_Failure::Standard_Failure()`
     /// Creates a status object of type "Failure".
     /// @param[in] theDesc  exception description
     pub fn new_charptr(theDesc: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Failure_ctor_charptr(theDesc)) }
     }
 
+    /// **Source:** `Standard_Failure.hxx`:46 - `Standard_Failure::Standard_Failure()`
     /// Creates a status object of type "Failure" with stack trace.
     /// @param[in] theDesc  exception description
     /// @param[in] theStackTrace  associated stack trace
@@ -780,34 +874,41 @@ impl Failure {
         }
     }
 
+    /// **Source:** `Standard_Failure.hxx`:61 - `Standard_Failure::GetMessageString()`
     /// Returns error message
     pub fn get_message_string(&self) -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_Failure_get_message_string(self as *const Self) }
     }
 
+    /// **Source:** `Standard_Failure.hxx`:64 - `Standard_Failure::SetMessageString()`
     /// Sets error message
     pub fn set_message_string(&mut self, theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_Failure_set_message_string(self as *mut Self, theMessage) }
     }
 
+    /// **Source:** `Standard_Failure.hxx`:67 - `Standard_Failure::GetStackString()`
     /// Returns the stack trace string
     pub fn get_stack_string(&self) -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_Failure_get_stack_string(self as *const Self) }
     }
 
+    /// **Source:** `Standard_Failure.hxx`:70 - `Standard_Failure::SetStackString()`
     /// Sets the stack trace string
     pub fn set_stack_string(&mut self, theStack: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_Failure_set_stack_string(self as *mut Self, theStack) }
     }
 
+    /// **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         unsafe { crate::ffi::Standard_Failure_reraise(self as *mut Self) }
     }
 
+    /// **Source:** `Standard_Failure.hxx`:74 - `Standard_Failure::Reraise()`
     pub fn reraise_charptr(&mut self, aMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_Failure_reraise_charptr(self as *mut Self, aMessage) }
     }
 
+    /// **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     /// Used to throw CASCADE exception from C signal handler.
     /// On platforms that do not allow throwing C++ exceptions
     /// from this handler (e.g. Linux), uses longjump to get to
@@ -817,10 +918,12 @@ impl Failure {
         unsafe { crate::ffi::Standard_Failure_jump(self as *mut Self) }
     }
 
+    /// **Source:** `Standard_Failure.hxx`:114 - `Standard_Failure::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_Failure_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_Failure.hxx`:83 - `Standard_Failure::Raise()`
     /// Raises an exception of type "Failure" and associates
     /// an error message to it. The message can be printed
     /// in an exception handler.
@@ -828,6 +931,7 @@ impl Failure {
         unsafe { crate::ffi::Standard_Failure_raise(aMessage) }
     }
 
+    /// **Source:** `Standard_Failure.hxx`:93 - `Standard_Failure::NewInstance()`
     /// Used to construct an instance of the exception object as a handle.
     /// Shall be used to protect against possible construction of exception object in C stack,
     /// which is dangerous since some of methods require that object was allocated dynamically.
@@ -839,6 +943,7 @@ impl Failure {
         }
     }
 
+    /// **Source:** `Standard_Failure.hxx`:96 - `Standard_Failure::NewInstance()`
     /// Used to construct an instance of the exception object as a handle.
     pub fn new_instance_charptr2(
         theMessage: *const std::ffi::c_char,
@@ -852,21 +957,25 @@ impl Failure {
         }
     }
 
+    /// **Source:** `Standard_Failure.hxx`:101 - `Standard_Failure::DefaultStackTraceLength()`
     /// Returns the default length of stack trace to be captured by Standard_Failure constructor;
     /// 0 by default meaning no stack trace.
     pub fn default_stack_trace_length() -> i32 {
         unsafe { crate::ffi::Standard_Failure_default_stack_trace_length() }
     }
 
+    /// **Source:** `Standard_Failure.hxx`:104 - `Standard_Failure::SetDefaultStackTraceLength()`
     /// Sets default length of stack trace to be captured by Standard_Failure constructor.
     pub fn set_default_stack_trace_length(theNbStackTraces: i32) {
         unsafe { crate::ffi::Standard_Failure_set_default_stack_trace_length(theNbStackTraces) }
     }
 
+    /// **Source:** `Standard_Failure.hxx`:114 - `Standard_Failure::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_Failure_get_type_name() }
     }
 
+    /// **Source:** `Standard_Failure.hxx`:114 - `Standard_Failure::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_Failure_get_type_descriptor()) }
     }
@@ -903,6 +1012,7 @@ impl HandleStandardFailure {
 // From Standard_GUID.hxx
 // ========================
 
+/// **Source:** `Standard_GUID.hxx`:32 - `Standard_GUID`
 pub use crate::ffi::Standard_GUID as GUID;
 
 unsafe impl crate::CppDeletable for GUID {
@@ -912,10 +1022,12 @@ unsafe impl crate::CppDeletable for GUID {
 }
 
 impl GUID {
+    /// **Source:** `Standard_GUID.hxx`:37 - `Standard_GUID::Standard_GUID()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor()) }
     }
 
+    /// **Source:** `Standard_GUID.hxx`:43 - `Standard_GUID::Standard_GUID()`
     /// build a GUID from an ascii string with the
     /// following format:
     /// Length : 36 char
@@ -924,6 +1036,7 @@ impl GUID {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_charptr(aGuid)) }
     }
 
+    /// **Source:** `Standard_GUID.hxx`:49 - `Standard_GUID::Standard_GUID()`
     /// build a GUID from an unicode string with the
     /// following format:
     ///
@@ -932,6 +1045,7 @@ impl GUID {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_extstring(aGuid)) }
     }
 
+    /// **Source:** `Standard_GUID.hxx`:51 - `Standard_GUID::Standard_GUID()`
     pub fn new_int_extcharacter3_byte6(
         a32b: i32,
         a16b1: &crate::ffi::Standard_ExtCharacter,
@@ -951,26 +1065,32 @@ impl GUID {
         }
     }
 
+    /// **Source:** `Standard_GUID.hxx`:62 - `Standard_GUID::Standard_GUID()`
     pub fn new_uuid(aGuid: &crate::ffi::Standard_UUID) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_uuid(aGuid)) }
     }
 
+    /// **Source:** `Standard_GUID.hxx`:64 - `Standard_GUID::Standard_GUID()`
     pub fn new_guid(aGuid: &crate::ffi::Standard_GUID) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_guid(aGuid)) }
     }
 
+    /// **Source:** `Standard_GUID.hxx`:82 - `Standard_GUID::IsSame()`
     pub fn is_same(&self, uid: &crate::ffi::Standard_GUID) -> bool {
         unsafe { crate::ffi::Standard_GUID_is_same(self as *const Self, uid) }
     }
 
+    /// **Source:** `Standard_GUID.hxx`:86 - `Standard_GUID::IsNotSame()`
     pub fn is_not_same(&self, uid: &crate::ffi::Standard_GUID) -> bool {
         unsafe { crate::ffi::Standard_GUID_is_not_same(self as *const Self, uid) }
     }
 
+    /// **Source:** `Standard_GUID.hxx`:90 - `Standard_GUID::Assign()`
     pub fn assign(&mut self, uid: &crate::ffi::Standard_GUID) {
         unsafe { crate::ffi::Standard_GUID_assign(self as *mut Self, uid) }
     }
 
+    /// **Source:** `Standard_GUID.hxx`:105 - `Standard_GUID::CheckGUIDFormat()`
     /// Check the format of a GUID string.
     /// It checks the size, the position of the '-' and the correct size of fields.
     pub fn check_guid_format(aGuid: *const std::ffi::c_char) -> bool {
@@ -982,6 +1102,7 @@ impl GUID {
 // From Standard_ImmutableObject.hxx
 // ========================
 
+/// **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject`
 pub use crate::ffi::Standard_ImmutableObject as ImmutableObject;
 
 unsafe impl crate::CppDeletable for ImmutableObject {
@@ -991,16 +1112,19 @@ unsafe impl crate::CppDeletable for ImmutableObject {
 }
 
 impl ImmutableObject {
+    /// **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::Standard_ImmutableObject()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_ImmutableObject_ctor()) }
     }
 
+    /// **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::Standard_ImmutableObject()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_ImmutableObject_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::Standard_ImmutableObject()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -1013,18 +1137,22 @@ impl ImmutableObject {
         }
     }
 
+    /// **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_ImmutableObject_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_ImmutableObject_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_ImmutableObject_get_type_name() }
     }
 
+    /// **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_ImmutableObject_get_type_descriptor()) }
     }
@@ -1034,6 +1162,7 @@ impl ImmutableObject {
 // From Standard_LicenseError.hxx
 // ========================
 
+/// **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError`
 pub use crate::ffi::Standard_LicenseError as LicenseError;
 
 unsafe impl crate::CppDeletable for LicenseError {
@@ -1043,16 +1172,19 @@ unsafe impl crate::CppDeletable for LicenseError {
 }
 
 impl LicenseError {
+    /// **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::Standard_LicenseError()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_LicenseError_ctor()) }
     }
 
+    /// **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::Standard_LicenseError()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_LicenseError_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::Standard_LicenseError()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -1065,18 +1197,22 @@ impl LicenseError {
         }
     }
 
+    /// **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_LicenseError_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_LicenseError_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_LicenseError_get_type_name() }
     }
 
+    /// **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_LicenseError_get_type_descriptor()) }
     }
@@ -1086,6 +1222,7 @@ impl LicenseError {
 // From Standard_LicenseNotFound.hxx
 // ========================
 
+/// **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound`
 pub use crate::ffi::Standard_LicenseNotFound as LicenseNotFound;
 
 unsafe impl crate::CppDeletable for LicenseNotFound {
@@ -1095,16 +1232,19 @@ unsafe impl crate::CppDeletable for LicenseNotFound {
 }
 
 impl LicenseNotFound {
+    /// **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::Standard_LicenseNotFound()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_LicenseNotFound_ctor()) }
     }
 
+    /// **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::Standard_LicenseNotFound()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_LicenseNotFound_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::Standard_LicenseNotFound()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -1117,18 +1257,22 @@ impl LicenseNotFound {
         }
     }
 
+    /// **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_LicenseNotFound_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_LicenseNotFound_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_LicenseNotFound_get_type_name() }
     }
 
+    /// **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_LicenseNotFound_get_type_descriptor()) }
     }
@@ -1138,6 +1282,7 @@ impl LicenseNotFound {
 // From Standard_MMgrOpt.hxx
 // ========================
 
+/// **Source:** `Standard_MMgrOpt.hxx`:62 - `Standard_MMgrOpt`
 ///
 /// @brief Open CASCADE memory manager optimized for speed.
 ///
@@ -1186,6 +1331,7 @@ unsafe impl crate::CppDeletable for MMgrOpt {
 }
 
 impl MMgrOpt {
+    /// **Source:** `Standard_MMgrOpt.hxx`:68 - `Standard_MMgrOpt::Standard_MMgrOpt()`
     /// Constructor. If aClear is True, the allocated emmory will be
     /// nullified. For description of other parameters, see description
     /// of the class above.
@@ -1203,6 +1349,7 @@ impl MMgrOpt {
         }
     }
 
+    /// **Source:** `Standard_MMgrOpt.hxx`:68 - `Standard_MMgrOpt::Standard_MMgrOpt()`
     /// Constructor. If aClear is True, the allocated emmory will be
     /// nullified. For description of other parameters, see description
     /// of the class above.
@@ -1215,6 +1362,7 @@ impl MMgrOpt {
         Self::new_bool2_size_int_size(aClear, aMMap, aCellSize, aNbPages, 40000)
     }
 
+    /// **Source:** `Standard_MMgrOpt.hxx`:68 - `Standard_MMgrOpt::Standard_MMgrOpt()`
     /// Constructor. If aClear is True, the allocated emmory will be
     /// nullified. For description of other parameters, see description
     /// of the class above.
@@ -1222,6 +1370,7 @@ impl MMgrOpt {
         Self::new_bool2_size_int_size(aClear, aMMap, aCellSize, 10000, 40000)
     }
 
+    /// **Source:** `Standard_MMgrOpt.hxx`:68 - `Standard_MMgrOpt::Standard_MMgrOpt()`
     /// Constructor. If aClear is True, the allocated emmory will be
     /// nullified. For description of other parameters, see description
     /// of the class above.
@@ -1229,6 +1378,7 @@ impl MMgrOpt {
         Self::new_bool2_size_int_size(aClear, aMMap, 200, 10000, 40000)
     }
 
+    /// **Source:** `Standard_MMgrOpt.hxx`:68 - `Standard_MMgrOpt::Standard_MMgrOpt()`
     /// Constructor. If aClear is True, the allocated emmory will be
     /// nullified. For description of other parameters, see description
     /// of the class above.
@@ -1236,6 +1386,7 @@ impl MMgrOpt {
         Self::new_bool2_size_int_size(aClear, true, 200, 10000, 40000)
     }
 
+    /// **Source:** `Standard_MMgrOpt.hxx`:68 - `Standard_MMgrOpt::Standard_MMgrOpt()`
     /// Constructor. If aClear is True, the allocated emmory will be
     /// nullified. For description of other parameters, see description
     /// of the class above.
@@ -1243,6 +1394,7 @@ impl MMgrOpt {
         Self::new_bool2_size_int_size(true, true, 200, 10000, 40000)
     }
 
+    /// **Source:** `Standard_MMgrOpt.hxx`:92 - `Standard_MMgrOpt::Purge()`
     /// Release medium-sized blocks of memory in free lists to the system.
     /// Returns number of actually freed blocks
     pub fn purge(&mut self, isDestroyed: bool) -> i32 {
@@ -1254,6 +1406,7 @@ impl MMgrOpt {
 // From Standard_MMgrRoot.hxx
 // ========================
 
+/// **Source:** `Standard_MMgrRoot.hxx`:26 - `Standard_MMgrRoot`
 ///
 /// Root class for Open CASCADE mmemory managers.
 /// Defines only abstract interface functions.
@@ -1266,6 +1419,7 @@ unsafe impl crate::CppDeletable for MMgrRoot {
 }
 
 impl MMgrRoot {
+    /// **Source:** `Standard_MMgrRoot.hxx`:60 - `Standard_MMgrRoot::Purge()`
     /// Purge internally cached unused memory blocks (if any)
     /// by releasing them to the operating system.
     /// Must return non-zero if some memory has been actually released,
@@ -1289,6 +1443,7 @@ impl MMgrRoot {
 // From Standard_MultiplyDefined.hxx
 // ========================
 
+/// **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined`
 pub use crate::ffi::Standard_MultiplyDefined as MultiplyDefined;
 
 unsafe impl crate::CppDeletable for MultiplyDefined {
@@ -1298,16 +1453,19 @@ unsafe impl crate::CppDeletable for MultiplyDefined {
 }
 
 impl MultiplyDefined {
+    /// **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::Standard_MultiplyDefined()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_MultiplyDefined_ctor()) }
     }
 
+    /// **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::Standard_MultiplyDefined()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_MultiplyDefined_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::Standard_MultiplyDefined()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -1320,18 +1478,22 @@ impl MultiplyDefined {
         }
     }
 
+    /// **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_MultiplyDefined_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_MultiplyDefined_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_MultiplyDefined_get_type_name() }
     }
 
+    /// **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_MultiplyDefined_get_type_descriptor()) }
     }
@@ -1341,6 +1503,7 @@ impl MultiplyDefined {
 // From Standard_Mutex.hxx
 // ========================
 
+/// **Source:** `Standard_Mutex.hxx`:65 - `Standard_Mutex`
 ///
 /// @brief Mutex: a class to synchronize access to shared data.
 ///
@@ -1381,6 +1544,7 @@ unsafe impl crate::CppDeletable for Mutex {
 }
 
 impl Mutex {
+    /// **Source:** `Standard_Mutex.hxx`:136 - `Standard_Mutex::Standard_Mutex()`
     /// Constructor: creates a mutex object and initializes it.
     /// It is strongly recommended that mutexes were created as
     /// static objects whenever possible.
@@ -1388,12 +1552,14 @@ impl Mutex {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Mutex_ctor()) }
     }
 
+    /// **Source:** `Standard_Mutex.hxx`:143 - `Standard_Mutex::Lock()`
     /// Method to lock the mutex; waits until the mutex is released
     /// by other threads, locks it and then returns
     pub fn lock(&mut self) {
         unsafe { crate::ffi::Standard_Mutex_lock(self as *mut Self) }
     }
 
+    /// **Source:** `Standard_Mutex.hxx`:148 - `Standard_Mutex::TryLock()`
     /// Method to test the mutex; if the mutex is not hold by other thread,
     /// locks it and returns True; otherwise returns False without waiting
     /// mutex to be released.
@@ -1401,6 +1567,7 @@ impl Mutex {
         unsafe { crate::ffi::Standard_Mutex_try_lock(self as *mut Self) }
     }
 
+    /// **Source:** `Standard_Mutex.hxx`:151 - `Standard_Mutex::Unlock()`
     /// Method to unlock the mutex; releases it to other users
     pub fn unlock(&mut self) {
         unsafe { crate::ffi::Standard_Mutex_unlock(self as *mut Self) }
@@ -1411,6 +1578,7 @@ impl Mutex {
 // From Standard_NegativeValue.hxx
 // ========================
 
+/// **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue`
 pub use crate::ffi::Standard_NegativeValue as NegativeValue;
 
 unsafe impl crate::CppDeletable for NegativeValue {
@@ -1420,16 +1588,19 @@ unsafe impl crate::CppDeletable for NegativeValue {
 }
 
 impl NegativeValue {
+    /// **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::Standard_NegativeValue()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_NegativeValue_ctor()) }
     }
 
+    /// **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::Standard_NegativeValue()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NegativeValue_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::Standard_NegativeValue()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -1442,18 +1613,22 @@ impl NegativeValue {
         }
     }
 
+    /// **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_NegativeValue_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_NegativeValue_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_NegativeValue_get_type_name() }
     }
 
+    /// **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_NegativeValue_get_type_descriptor()) }
     }
@@ -1463,6 +1638,7 @@ impl NegativeValue {
 // From Standard_NoMoreObject.hxx
 // ========================
 
+/// **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject`
 pub use crate::ffi::Standard_NoMoreObject as NoMoreObject;
 
 unsafe impl crate::CppDeletable for NoMoreObject {
@@ -1472,16 +1648,19 @@ unsafe impl crate::CppDeletable for NoMoreObject {
 }
 
 impl NoMoreObject {
+    /// **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::Standard_NoMoreObject()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_NoMoreObject_ctor()) }
     }
 
+    /// **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::Standard_NoMoreObject()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NoMoreObject_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::Standard_NoMoreObject()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -1494,18 +1673,22 @@ impl NoMoreObject {
         }
     }
 
+    /// **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_NoMoreObject_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_NoMoreObject_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_NoMoreObject_get_type_name() }
     }
 
+    /// **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_NoMoreObject_get_type_descriptor()) }
     }
@@ -1515,6 +1698,7 @@ impl NoMoreObject {
 // From Standard_NoSuchObject.hxx
 // ========================
 
+/// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject`
 pub use crate::ffi::Standard_NoSuchObject as NoSuchObject;
 
 unsafe impl crate::CppDeletable for NoSuchObject {
@@ -1524,16 +1708,19 @@ unsafe impl crate::CppDeletable for NoSuchObject {
 }
 
 impl NoSuchObject {
+    /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::Standard_NoSuchObject()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_NoSuchObject_ctor()) }
     }
 
+    /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::Standard_NoSuchObject()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NoSuchObject_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::Standard_NoSuchObject()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -1546,18 +1733,22 @@ impl NoSuchObject {
         }
     }
 
+    /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_NoSuchObject_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_NoSuchObject_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_NoSuchObject_get_type_name() }
     }
 
+    /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_NoSuchObject_get_type_descriptor()) }
     }
@@ -1567,6 +1758,7 @@ impl NoSuchObject {
 // From Standard_NotImplemented.hxx
 // ========================
 
+/// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented`
 pub use crate::ffi::Standard_NotImplemented as NotImplemented;
 
 unsafe impl crate::CppDeletable for NotImplemented {
@@ -1576,16 +1768,19 @@ unsafe impl crate::CppDeletable for NotImplemented {
 }
 
 impl NotImplemented {
+    /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::Standard_NotImplemented()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_NotImplemented_ctor()) }
     }
 
+    /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::Standard_NotImplemented()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NotImplemented_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::Standard_NotImplemented()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -1598,18 +1793,22 @@ impl NotImplemented {
         }
     }
 
+    /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_NotImplemented_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_NotImplemented_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_NotImplemented_get_type_name() }
     }
 
+    /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_NotImplemented_get_type_descriptor()) }
     }
@@ -1619,6 +1818,7 @@ impl NotImplemented {
 // From Standard_NullObject.hxx
 // ========================
 
+/// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject`
 pub use crate::ffi::Standard_NullObject as NullObject;
 
 unsafe impl crate::CppDeletable for NullObject {
@@ -1628,16 +1828,19 @@ unsafe impl crate::CppDeletable for NullObject {
 }
 
 impl NullObject {
+    /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::Standard_NullObject()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_NullObject_ctor()) }
     }
 
+    /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::Standard_NullObject()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NullObject_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::Standard_NullObject()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -1650,18 +1853,22 @@ impl NullObject {
         }
     }
 
+    /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_NullObject_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_NullObject_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_NullObject_get_type_name() }
     }
 
+    /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_NullObject_get_type_descriptor()) }
     }
@@ -1671,6 +1878,7 @@ impl NullObject {
 // From Standard_NullValue.hxx
 // ========================
 
+/// **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue`
 pub use crate::ffi::Standard_NullValue as NullValue;
 
 unsafe impl crate::CppDeletable for NullValue {
@@ -1680,16 +1888,19 @@ unsafe impl crate::CppDeletable for NullValue {
 }
 
 impl NullValue {
+    /// **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::Standard_NullValue()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_NullValue_ctor()) }
     }
 
+    /// **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::Standard_NullValue()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NullValue_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::Standard_NullValue()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -1702,18 +1913,22 @@ impl NullValue {
         }
     }
 
+    /// **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_NullValue_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_NullValue_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_NullValue_get_type_name() }
     }
 
+    /// **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_NullValue_get_type_descriptor()) }
     }
@@ -1723,6 +1938,7 @@ impl NullValue {
 // From Standard_NumericError.hxx
 // ========================
 
+/// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError`
 pub use crate::ffi::Standard_NumericError as NumericError;
 
 unsafe impl crate::CppDeletable for NumericError {
@@ -1732,16 +1948,19 @@ unsafe impl crate::CppDeletable for NumericError {
 }
 
 impl NumericError {
+    /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::Standard_NumericError()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_NumericError_ctor()) }
     }
 
+    /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::Standard_NumericError()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_NumericError_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::Standard_NumericError()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -1754,18 +1973,22 @@ impl NumericError {
         }
     }
 
+    /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_NumericError_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_NumericError_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_NumericError_get_type_name() }
     }
 
+    /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_NumericError_get_type_descriptor()) }
     }
@@ -1775,6 +1998,7 @@ impl NumericError {
 // From Standard_OutOfMemory.hxx
 // ========================
 
+/// **Source:** `Standard_OutOfMemory.hxx`:48 - `Standard_OutOfMemory`
 /// Standard_OutOfMemory exception is defined explicitly and not by
 /// macro DEFINE_STANDARD_EXCEPTION, to avoid necessity of dynamic
 /// memory allocations during throwing and stack unwinding:
@@ -1797,6 +2021,7 @@ unsafe impl crate::CppDeletable for OutOfMemory {
 }
 
 impl OutOfMemory {
+    /// **Source:** `Standard_OutOfMemory.hxx`:54 - `Standard_OutOfMemory::Standard_OutOfMemory()`
     /// Constructor is kept public for backward compatibility
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1804,29 +2029,35 @@ impl OutOfMemory {
         }
     }
 
+    /// **Source:** `Standard_OutOfMemory.hxx`:57 - `Standard_OutOfMemory::GetMessageString()`
     /// Returns error message
     pub fn get_message_string(&self) -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_OutOfMemory_get_message_string(self as *const Self) }
     }
 
+    /// **Source:** `Standard_OutOfMemory.hxx`:60 - `Standard_OutOfMemory::SetMessageString()`
     /// Sets error message
     pub fn set_message_string(&mut self, aMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_OutOfMemory_set_message_string(self as *mut Self, aMessage) }
     }
 
+    /// **Source:** `Standard_OutOfMemory.hxx`:75 - `Standard_OutOfMemory::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_OutOfMemory_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_OutOfMemory.hxx`:63 - `Standard_OutOfMemory::Raise()`
     /// Raises exception with specified message string
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_OutOfMemory_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_OutOfMemory.hxx`:75 - `Standard_OutOfMemory::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_OutOfMemory_get_type_name() }
     }
 
+    /// **Source:** `Standard_OutOfMemory.hxx`:75 - `Standard_OutOfMemory::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_OutOfMemory_get_type_descriptor()) }
     }
@@ -1836,6 +2067,7 @@ impl OutOfMemory {
 // From Standard_OutOfRange.hxx
 // ========================
 
+/// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange`
 pub use crate::ffi::Standard_OutOfRange as OutOfRange;
 
 unsafe impl crate::CppDeletable for OutOfRange {
@@ -1845,16 +2077,19 @@ unsafe impl crate::CppDeletable for OutOfRange {
 }
 
 impl OutOfRange {
+    /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::Standard_OutOfRange()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_OutOfRange_ctor()) }
     }
 
+    /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::Standard_OutOfRange()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_OutOfRange_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::Standard_OutOfRange()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -1867,18 +2102,22 @@ impl OutOfRange {
         }
     }
 
+    /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_OutOfRange_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_OutOfRange_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_OutOfRange_get_type_name() }
     }
 
+    /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_OutOfRange_get_type_descriptor()) }
     }
@@ -1888,6 +2127,7 @@ impl OutOfRange {
 // From Standard_Overflow.hxx
 // ========================
 
+/// **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow`
 pub use crate::ffi::Standard_Overflow as Overflow;
 
 unsafe impl crate::CppDeletable for Overflow {
@@ -1897,14 +2137,17 @@ unsafe impl crate::CppDeletable for Overflow {
 }
 
 impl Overflow {
+    /// **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::Standard_Overflow()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Overflow_ctor()) }
     }
 
+    /// **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::Standard_Overflow()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Overflow_ctor_charptr(theMessage)) }
     }
 
+    /// **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::Standard_Overflow()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -1917,18 +2160,22 @@ impl Overflow {
         }
     }
 
+    /// **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_Overflow_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_Overflow_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_Overflow_get_type_name() }
     }
 
+    /// **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_Overflow_get_type_descriptor()) }
     }
@@ -1938,6 +2185,7 @@ impl Overflow {
 // From Standard_Persistent.hxx
 // ========================
 
+/// **Source:** `Standard_Persistent.hxx`:22 - `Standard_Persistent`
 /// Root of "persistent" classes, a legacy support of
 /// object oriented databases, now outdated.
 pub use crate::ffi::Standard_Persistent as Persistent;
@@ -1949,22 +2197,27 @@ unsafe impl crate::CppDeletable for Persistent {
 }
 
 impl Persistent {
+    /// **Source:** `Standard_Persistent.hxx`:27 - `Standard_Persistent::Standard_Persistent()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Persistent_ctor()) }
     }
 
+    /// **Source:** `Standard_Persistent.hxx`:33 - `Standard_Persistent::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_Persistent_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_Persistent.hxx`:35 - `Standard_Persistent::TypeNum()`
     pub fn type_num(&mut self) -> &mut i32 {
         unsafe { &mut *(crate::ffi::Standard_Persistent_type_num(self as *mut Self)) }
     }
 
+    /// **Source:** `Standard_Persistent.hxx`:33 - `Standard_Persistent::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_Persistent_get_type_name() }
     }
 
+    /// **Source:** `Standard_Persistent.hxx`:33 - `Standard_Persistent::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_Persistent_get_type_descriptor()) }
     }
@@ -2003,6 +2256,7 @@ impl HandleStandardPersistent {
 // From Standard_ProgramError.hxx
 // ========================
 
+/// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError`
 pub use crate::ffi::Standard_ProgramError as ProgramError;
 
 unsafe impl crate::CppDeletable for ProgramError {
@@ -2012,16 +2266,19 @@ unsafe impl crate::CppDeletable for ProgramError {
 }
 
 impl ProgramError {
+    /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::Standard_ProgramError()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_ProgramError_ctor()) }
     }
 
+    /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::Standard_ProgramError()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_ProgramError_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::Standard_ProgramError()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -2034,18 +2291,22 @@ impl ProgramError {
         }
     }
 
+    /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_ProgramError_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_ProgramError_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_ProgramError_get_type_name() }
     }
 
+    /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_ProgramError_get_type_descriptor()) }
     }
@@ -2055,6 +2316,7 @@ impl ProgramError {
 // From Standard_RangeError.hxx
 // ========================
 
+/// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError`
 pub use crate::ffi::Standard_RangeError as RangeError;
 
 unsafe impl crate::CppDeletable for RangeError {
@@ -2064,16 +2326,19 @@ unsafe impl crate::CppDeletable for RangeError {
 }
 
 impl RangeError {
+    /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::Standard_RangeError()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_RangeError_ctor()) }
     }
 
+    /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::Standard_RangeError()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_RangeError_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::Standard_RangeError()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -2086,18 +2351,22 @@ impl RangeError {
         }
     }
 
+    /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_RangeError_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_RangeError_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_RangeError_get_type_name() }
     }
 
+    /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_RangeError_get_type_descriptor()) }
     }
@@ -2107,6 +2376,7 @@ impl RangeError {
 // From Standard_ReadLineBuffer.hxx
 // ========================
 
+/// **Source:** `Standard_ReadLineBuffer.hxx`:21 - `Standard_ReadLineBuffer`
 /// Auxiliary tool for buffered reading of lines from input stream.
 pub use crate::ffi::Standard_ReadLineBuffer as ReadLineBuffer;
 
@@ -2117,6 +2387,7 @@ unsafe impl crate::CppDeletable for ReadLineBuffer {
 }
 
 impl ReadLineBuffer {
+    /// **Source:** `Standard_ReadLineBuffer.hxx`:26 - `Standard_ReadLineBuffer::Standard_ReadLineBuffer()`
     /// Constructor with initialization.
     /// @param theMaxBufferSizeBytes the length of buffer to read (in bytes)
     pub fn new_size(theMaxBufferSizeBytes: usize) -> crate::OwnedPtr<Self> {
@@ -2127,11 +2398,13 @@ impl ReadLineBuffer {
         }
     }
 
+    /// **Source:** `Standard_ReadLineBuffer.hxx`:41 - `Standard_ReadLineBuffer::Clear()`
     /// Clear buffer and cached values.
     pub fn clear(&mut self) {
         unsafe { crate::ffi::Standard_ReadLineBuffer_clear(self as *mut Self) }
     }
 
+    /// **Source:** `Standard_ReadLineBuffer.hxx`:261 - `Standard_ReadLineBuffer::IsMultilineMode()`
     /// Returns TRUE when the Multiline Mode is on; FALSE by default.
     /// Multiline modes joins several lines in file having \ at the end of line:
     /// @code
@@ -2143,6 +2416,7 @@ impl ReadLineBuffer {
         unsafe { crate::ffi::Standard_ReadLineBuffer_is_multiline_mode(self as *const Self) }
     }
 
+    /// **Source:** `Standard_ReadLineBuffer.hxx`:269 - `Standard_ReadLineBuffer::ToPutGapInMultiline()`
     /// Put gap space while merging lines within multiline syntax, so that the following sample:
     /// @code
     /// 1/2/3\      // line continuation character without this comment
@@ -2153,6 +2427,7 @@ impl ReadLineBuffer {
         unsafe { crate::ffi::Standard_ReadLineBuffer_to_put_gap_in_multiline(self as *const Self) }
     }
 
+    /// **Source:** `Standard_ReadLineBuffer.hxx`:274 - `Standard_ReadLineBuffer::SetMultilineMode()`
     /// Sets or unsets the multi-line mode.
     /// @param[in] theMultilineMode  multiline mode flag
     /// @param[in] theToPutGap       put gap space while connecting lines (no gap otherwise)
@@ -2171,6 +2446,7 @@ impl ReadLineBuffer {
 // From Standard_Transient.hxx
 // ========================
 
+/// **Source:** `Standard_Transient.hxx`:35 - `Standard_Transient`
 /// Abstract class which forms the root of the entire
 /// Transient class hierarchy.
 pub use crate::ffi::Standard_Transient as Transient;
@@ -2182,21 +2458,25 @@ unsafe impl crate::CppDeletable for Transient {
 }
 
 impl Transient {
+    /// **Source:** `Standard_Transient.hxx`:43 - `Standard_Transient::Standard_Transient()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Transient_ctor()) }
     }
 
+    /// **Source:** `Standard_Transient.hxx`:49 - `Standard_Transient::Standard_Transient()`
     /// Copy constructor -- does nothing
     pub fn new_transient(arg0: &crate::ffi::Standard_Transient) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Transient_ctor_transient(arg0)) }
     }
 
+    /// **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
     /// Returns a type descriptor about this object.
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_Transient_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     /// Returns a true value if this is an instance of Type.
     pub fn is_instance_handlestandardtype(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
@@ -2207,6 +2487,7 @@ impl Transient {
         }
     }
 
+    /// **Source:** `Standard_Transient.hxx`:78 - `Standard_Transient::IsInstance()`
     /// Returns a true value if this is an instance of TypeName.
     pub fn is_instance_charptr(&self, theTypeName: *const std::ffi::c_char) -> bool {
         unsafe {
@@ -2214,6 +2495,7 @@ impl Transient {
         }
     }
 
+    /// **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     /// Returns true if this is an instance of Type or an
     /// instance of any class that inherits from Type.
     /// Note that multiple inheritance is not supported by OCCT RTTI mechanism.
@@ -2223,6 +2505,7 @@ impl Transient {
         }
     }
 
+    /// **Source:** `Standard_Transient.hxx`:88 - `Standard_Transient::IsKind()`
     /// Returns true if this is an instance of TypeName or an
     /// instance of any class that inherits from TypeName.
     /// Note that multiple inheritance is not supported by OCCT RTTI mechanism.
@@ -2230,31 +2513,37 @@ impl Transient {
         unsafe { crate::ffi::Standard_Transient_is_kind_charptr(self as *const Self, theTypeName) }
     }
 
+    /// **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     /// Get the reference counter of this object
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::Standard_Transient_get_ref_count(self as *const Self) }
     }
 
+    /// **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     /// Increments the reference counter of this object
     pub fn increment_ref_counter(&mut self) {
         unsafe { crate::ffi::Standard_Transient_increment_ref_counter(self as *mut Self) }
     }
 
+    /// **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     /// Decrements the reference counter of this object;
     /// returns the decremented value
     pub fn decrement_ref_counter(&mut self) -> i32 {
         unsafe { crate::ffi::Standard_Transient_decrement_ref_counter(self as *mut Self) }
     }
 
+    /// **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     /// Memory deallocator for transient classes
     pub fn delete(&self) {
         unsafe { crate::ffi::Standard_Transient_delete(self as *const Self) }
     }
 
+    /// **Source:** `Standard_Transient.hxx`:65 - `Standard_Transient::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_Transient_get_type_name() }
     }
 
+    /// **Source:** `Standard_Transient.hxx`:68 - `Standard_Transient::get_type_descriptor()`
     /// Returns type descriptor of Standard_Transient class
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_Transient_get_type_descriptor()) }
@@ -2265,6 +2554,7 @@ impl Transient {
 // From Standard_Type.hxx
 // ========================
 
+/// **Source:** `Standard_Type.hxx`:120 - `Standard_Type`
 /// This class provides legacy interface (type descriptor) to run-time type
 /// information (RTTI) for OCCT classes inheriting from Standard_Transient.
 ///
@@ -2296,26 +2586,31 @@ unsafe impl crate::CppDeletable for Type {
 }
 
 impl Type {
+    /// **Source:** `Standard_Type.hxx`:124 - `Standard_Type::SystemName()`
     /// Returns the system type name of the class (typeinfo.name)
     pub fn system_name(&self) -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_Type_system_name(self as *const Self) }
     }
 
+    /// **Source:** `Standard_Type.hxx`:127 - `Standard_Type::Name()`
     /// Returns the given name of the class type (get_type_name)
     pub fn name(&self) -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_Type_name(self as *const Self) }
     }
 
+    /// **Source:** `Standard_Type.hxx`:130 - `Standard_Type::Size()`
     /// Returns the size of the class instance in bytes
     pub fn size(&self) -> usize {
         unsafe { crate::ffi::Standard_Type_size(self as *const Self) }
     }
 
+    /// **Source:** `Standard_Type.hxx`:133 - `Standard_Type::Parent()`
     /// Returns descriptor of the base class in the hierarchy
     pub fn parent(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_Type_parent(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_Type.hxx`:137 - `Standard_Type::SubType()`
     /// Returns True if this type is the same as theOther, or inherits from theOther.
     /// Note that multiple inheritance is not supported.
     pub fn sub_type_handlestandardtype(&self, theOther: &crate::ffi::HandleStandardType) -> bool {
@@ -2324,20 +2619,24 @@ impl Type {
         }
     }
 
+    /// **Source:** `Standard_Type.hxx`:141 - `Standard_Type::SubType()`
     /// Returns True if this type is the same as theOther, or inherits from theOther.
     /// Note that multiple inheritance is not supported.
     pub fn sub_type_charptr(&self, theOther: *const std::ffi::c_char) -> bool {
         unsafe { crate::ffi::Standard_Type_sub_type_charptr(self as *const Self, theOther) }
     }
 
+    /// **Source:** `Standard_Type.hxx`:174 - `Standard_Type::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_Type_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_Type.hxx`:174 - `Standard_Type::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_Type_get_type_name() }
     }
 
+    /// **Source:** `Standard_Type.hxx`:174 - `Standard_Type::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_Type_get_type_descriptor()) }
     }
@@ -2374,6 +2673,7 @@ impl HandleStandardType {
 // From Standard_TypeMismatch.hxx
 // ========================
 
+/// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch`
 pub use crate::ffi::Standard_TypeMismatch as TypeMismatch;
 
 unsafe impl crate::CppDeletable for TypeMismatch {
@@ -2383,16 +2683,19 @@ unsafe impl crate::CppDeletable for TypeMismatch {
 }
 
 impl TypeMismatch {
+    /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::Standard_TypeMismatch()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_TypeMismatch_ctor()) }
     }
 
+    /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::Standard_TypeMismatch()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_TypeMismatch_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::Standard_TypeMismatch()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -2405,18 +2708,22 @@ impl TypeMismatch {
         }
     }
 
+    /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_TypeMismatch_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_TypeMismatch_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_TypeMismatch_get_type_name() }
     }
 
+    /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_TypeMismatch_get_type_descriptor()) }
     }
@@ -2426,6 +2733,7 @@ impl TypeMismatch {
 // From Standard_Underflow.hxx
 // ========================
 
+/// **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow`
 pub use crate::ffi::Standard_Underflow as Underflow;
 
 unsafe impl crate::CppDeletable for Underflow {
@@ -2435,16 +2743,19 @@ unsafe impl crate::CppDeletable for Underflow {
 }
 
 impl Underflow {
+    /// **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::Standard_Underflow()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Underflow_ctor()) }
     }
 
+    /// **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::Standard_Underflow()`
     pub fn new_charptr(theMessage: *const std::ffi::c_char) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Standard_Underflow_ctor_charptr(theMessage))
         }
     }
 
+    /// **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::Standard_Underflow()`
     pub fn new_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
@@ -2457,18 +2768,22 @@ impl Underflow {
         }
     }
 
+    /// **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_Underflow_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::Raise()`
     pub fn raise(theMessage: *const std::ffi::c_char) {
         unsafe { crate::ffi::Standard_Underflow_raise(theMessage) }
     }
 
+    /// **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::Standard_Underflow_get_type_name() }
     }
 
+    /// **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_Underflow_get_type_descriptor()) }
     }

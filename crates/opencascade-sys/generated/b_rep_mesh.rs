@@ -76,6 +76,7 @@ impl TryFrom<i32> for FactoryError {
 // From BRepMesh_BaseMeshAlgo.hxx
 // ========================
 
+/// **Source:** `BRepMesh_BaseMeshAlgo.hxx`:29 - `BRepMesh_BaseMeshAlgo`
 /// Class provides base functionality for algorithms building face triangulation.
 /// Performs initialization of BRepMesh_DataStructureOfDelaun and nodes map structures.
 pub use crate::ffi::BRepMesh_BaseMeshAlgo as BaseMeshAlgo;
@@ -87,14 +88,17 @@ unsafe impl crate::CppDeletable for BaseMeshAlgo {
 }
 
 impl BaseMeshAlgo {
+    /// **Source:** `BRepMesh_BaseMeshAlgo.hxx`:46 - `BRepMesh_BaseMeshAlgo::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_BaseMeshAlgo_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_BaseMeshAlgo.hxx`:46 - `BRepMesh_BaseMeshAlgo::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_BaseMeshAlgo_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_BaseMeshAlgo.hxx`:46 - `BRepMesh_BaseMeshAlgo::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_BaseMeshAlgo_get_type_descriptor()) }
     }
@@ -116,6 +120,7 @@ impl BaseMeshAlgo {
 // From BRepMesh_BoundaryParamsRangeSplitter.hxx
 // ========================
 
+/// **Source:** `BRepMesh_BoundaryParamsRangeSplitter.hxx`:23 - `BRepMesh_BoundaryParamsRangeSplitter`
 /// Auxiliary class extending UV range splitter in order to generate
 /// internal nodes for NURBS surface.
 pub use crate::ffi::BRepMesh_BoundaryParamsRangeSplitter as BoundaryParamsRangeSplitter;
@@ -127,6 +132,7 @@ unsafe impl crate::CppDeletable for BoundaryParamsRangeSplitter {
 }
 
 impl BoundaryParamsRangeSplitter {
+    /// **Source:** `BRepMesh_BoundaryParamsRangeSplitter.hxx`:27 - `BRepMesh_BoundaryParamsRangeSplitter::BRepMesh_BoundaryParamsRangeSplitter()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -134,6 +140,7 @@ impl BoundaryParamsRangeSplitter {
         }
     }
 
+    /// **Source:** `BRepMesh_BoundaryParamsRangeSplitter.hxx`:33 - `BRepMesh_BoundaryParamsRangeSplitter::AddPoint()`
     /// Registers border point.
     pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
         unsafe {
@@ -239,6 +246,7 @@ impl BoundaryParamsRangeSplitter {
 // From BRepMesh_Circle.hxx
 // ========================
 
+/// **Source:** `BRepMesh_Circle.hxx`:23 - `BRepMesh_Circle`
 /// Describes a 2d circle with a size of only 3 Standard_Real
 /// numbers instead of gp who needs 7 Standard_Real numbers.
 pub use crate::ffi::BRepMesh_Circle as Circle;
@@ -250,11 +258,13 @@ unsafe impl crate::CppDeletable for Circle {
 }
 
 impl Circle {
+    /// **Source:** `BRepMesh_Circle.hxx`:29 - `BRepMesh_Circle::BRepMesh_Circle()`
     /// Default constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Circle_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_Circle.hxx`:37 - `BRepMesh_Circle::BRepMesh_Circle()`
     /// Constructor.
     /// @param theLocation location of a circle.
     /// @param theRadius radius of a circle.
@@ -267,23 +277,27 @@ impl Circle {
         }
     }
 
+    /// **Source:** `BRepMesh_Circle.hxx`:45 - `BRepMesh_Circle::SetLocation()`
     /// Sets location of a circle.
     /// @param theLocation location of a circle.
     pub fn set_location(&mut self, theLocation: &crate::ffi::gp_XY) {
         unsafe { crate::ffi::BRepMesh_Circle_set_location(self as *mut Self, theLocation) }
     }
 
+    /// **Source:** `BRepMesh_Circle.hxx`:49 - `BRepMesh_Circle::SetRadius()`
     /// Sets radius of a circle.
     /// @param theRadius radius of a circle.
     pub fn set_radius(&mut self, theRadius: f64) {
         unsafe { crate::ffi::BRepMesh_Circle_set_radius(self as *mut Self, theRadius) }
     }
 
+    /// **Source:** `BRepMesh_Circle.hxx`:52 - `BRepMesh_Circle::Location()`
     /// Returns location of a circle.
     pub fn location(&self) -> &crate::ffi::gp_XY {
         unsafe { &*(crate::ffi::BRepMesh_Circle_location(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_Circle.hxx`:55 - `BRepMesh_Circle::Radius()`
     /// Returns radius of a circle.
     pub fn radius(&self) -> &f64 {
         unsafe { &*(crate::ffi::BRepMesh_Circle_radius(self as *const Self)) }
@@ -294,6 +308,7 @@ impl Circle {
 // From BRepMesh_CircleTool.hxx
 // ========================
 
+/// **Source:** `BRepMesh_CircleTool.hxx`:32 - `BRepMesh_CircleTool`
 /// Create sort and destroy the circles used in triangulation. <br>
 pub use crate::ffi::BRepMesh_CircleTool as CircleTool;
 
@@ -304,18 +319,21 @@ unsafe impl crate::CppDeletable for CircleTool {
 }
 
 impl CircleTool {
+    /// **Source:** `BRepMesh_CircleTool.hxx`:49 - `BRepMesh_CircleTool::Init()`
     /// Initializes the tool.
     /// @param theReservedSize size to be reserved for vector of circles.
     pub fn init(&mut self, arg0: i32) {
         unsafe { crate::ffi::BRepMesh_CircleTool_init(self as *mut Self, arg0) }
     }
 
+    /// **Source:** `BRepMesh_CircleTool.hxx`:53 - `BRepMesh_CircleTool::SetCellSize()`
     /// Sets new size for cell filter.
     /// @param theSize cell size to be set for X and Y dimensions.
     pub fn set_cell_size_real(&mut self, theSize: f64) {
         unsafe { crate::ffi::BRepMesh_CircleTool_set_cell_size_real(self as *mut Self, theSize) }
     }
 
+    /// **Source:** `BRepMesh_CircleTool.hxx`:58 - `BRepMesh_CircleTool::SetCellSize()`
     /// Sets new size for cell filter.
     /// @param theSizeX cell size to be set for X dimension.
     /// @param theSizeY cell size to be set for Y dimension.
@@ -329,6 +347,7 @@ impl CircleTool {
         }
     }
 
+    /// **Source:** `BRepMesh_CircleTool.hxx`:68 - `BRepMesh_CircleTool::SetMinMaxSize()`
     /// Sets limits of inspection area.
     /// @param theMin bottom left corner of inspection area.
     /// @param theMax top right corner of inspection area.
@@ -338,11 +357,13 @@ impl CircleTool {
         }
     }
 
+    /// **Source:** `BRepMesh_CircleTool.hxx`:75 - `BRepMesh_CircleTool::IsEmpty()`
     /// Returns true if cell filter contains no circle.
     pub fn is_empty(&self) -> bool {
         unsafe { crate::ffi::BRepMesh_CircleTool_is_empty(self as *const Self) }
     }
 
+    /// **Source:** `BRepMesh_CircleTool.hxx`:80 - `BRepMesh_CircleTool::Bind()`
     /// Binds the circle to the tool.
     /// @param theIndex index a circle should be bound with.
     /// @param theCircle circle to be bound.
@@ -352,6 +373,7 @@ impl CircleTool {
         }
     }
 
+    /// **Source:** `BRepMesh_CircleTool.hxx`:103 - `BRepMesh_CircleTool::Bind()`
     /// Computes circle on three points and bind it to the tool.
     /// @param theIndex index a circle should be bound with.
     /// @param thePoint1 first point.
@@ -377,18 +399,21 @@ impl CircleTool {
         }
     }
 
+    /// **Source:** `BRepMesh_CircleTool.hxx`:110 - `BRepMesh_CircleTool::MocBind()`
     /// Binds implicit zero circle.
     /// @param theIndex index a zero circle should be bound with.
     pub fn moc_bind(&mut self, theIndex: i32) {
         unsafe { crate::ffi::BRepMesh_CircleTool_moc_bind(self as *mut Self, theIndex) }
     }
 
+    /// **Source:** `BRepMesh_CircleTool.hxx`:114 - `BRepMesh_CircleTool::Delete()`
     /// Deletes a circle from the tool.
     /// @param theIndex index of a circle to be removed.
     pub fn delete(&mut self, theIndex: i32) {
         unsafe { crate::ffi::BRepMesh_CircleTool_delete(self as *mut Self, theIndex) }
     }
 
+    /// **Source:** `BRepMesh_CircleTool.hxx`:90 - `BRepMesh_CircleTool::MakeCircle()`
     /// Computes circle on three points.
     /// @param thePoint1 first point.
     /// @param thePoint2 second point.
@@ -420,6 +445,7 @@ impl CircleTool {
 // From BRepMesh_Classifier.hxx
 // ========================
 
+/// **Source:** `BRepMesh_Classifier.hxx`:29 - `BRepMesh_Classifier`
 /// Auxiliary class intended for classification of points
 /// regarding internals of discrete face.
 pub use crate::ffi::BRepMesh_Classifier as Classifier;
@@ -431,11 +457,13 @@ unsafe impl crate::CppDeletable for Classifier {
 }
 
 impl Classifier {
+    /// **Source:** `BRepMesh_Classifier.hxx`:33 - `BRepMesh_Classifier::BRepMesh_Classifier()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Classifier_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_Classifier.hxx`:41 - `BRepMesh_Classifier::Perform()`
     /// Performs classification of the given point regarding to face internals.
     /// @param thePoint Point in parametric space to be classified.
     /// @return TopAbs_IN if point lies within face boundaries and TopAbs_OUT elsewhere.
@@ -449,14 +477,17 @@ impl Classifier {
         }
     }
 
+    /// **Source:** `BRepMesh_Classifier.hxx`:56 - `BRepMesh_Classifier::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_Classifier_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_Classifier.hxx`:56 - `BRepMesh_Classifier::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_Classifier_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_Classifier.hxx`:56 - `BRepMesh_Classifier::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_Classifier_get_type_descriptor()) }
     }
@@ -495,6 +526,7 @@ impl HandleBRepMeshClassifier {
 // From BRepMesh_ConeRangeSplitter.hxx
 // ========================
 
+/// **Source:** `BRepMesh_ConeRangeSplitter.hxx`:23 - `BRepMesh_ConeRangeSplitter`
 /// Auxiliary class extending default range splitter in
 /// order to generate internal nodes for conical surface.
 pub use crate::ffi::BRepMesh_ConeRangeSplitter as ConeRangeSplitter;
@@ -506,6 +538,7 @@ unsafe impl crate::CppDeletable for ConeRangeSplitter {
 }
 
 impl ConeRangeSplitter {
+    /// **Source:** `BRepMesh_ConeRangeSplitter.hxx`:27 - `BRepMesh_ConeRangeSplitter::BRepMesh_ConeRangeSplitter()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ConeRangeSplitter_ctor()) }
@@ -576,6 +609,7 @@ impl ConeRangeSplitter {
 // From BRepMesh_ConstrainedBaseMeshAlgo.hxx
 // ========================
 
+/// **Source:** `BRepMesh_ConstrainedBaseMeshAlgo.hxx`:25 - `BRepMesh_ConstrainedBaseMeshAlgo`
 /// Class provides base functionality to build face triangulation using Dealunay approach.
 /// Performs generation of mesh using raw data from model.
 pub use crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo as ConstrainedBaseMeshAlgo;
@@ -587,16 +621,19 @@ unsafe impl crate::CppDeletable for ConstrainedBaseMeshAlgo {
 }
 
 impl ConstrainedBaseMeshAlgo {
+    /// **Source:** `BRepMesh_ConstrainedBaseMeshAlgo.hxx`:34 - `BRepMesh_ConstrainedBaseMeshAlgo::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
             &*(crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_dynamic_type(self as *const Self))
         }
     }
 
+    /// **Source:** `BRepMesh_ConstrainedBaseMeshAlgo.hxx`:34 - `BRepMesh_ConstrainedBaseMeshAlgo::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_ConstrainedBaseMeshAlgo.hxx`:34 - `BRepMesh_ConstrainedBaseMeshAlgo::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_get_type_descriptor()) }
     }
@@ -642,6 +679,7 @@ impl ConstrainedBaseMeshAlgo {
 // From BRepMesh_Context.hxx
 // ========================
 
+/// **Source:** `BRepMesh_Context.hxx`:23 - `BRepMesh_Context`
 /// Class implementing default context of BRepMesh algorithm.
 /// Initializes context by default algorithms.
 pub use crate::ffi::BRepMesh_Context as Context;
@@ -653,6 +691,7 @@ unsafe impl crate::CppDeletable for Context {
 }
 
 impl Context {
+    /// **Source:** `BRepMesh_Context.hxx`:27 - `BRepMesh_Context::BRepMesh_Context()`
     /// Constructor.
     pub fn new_meshalgotype(
         theMeshType: crate::i_mesh_tools::MeshAlgoType,
@@ -664,14 +703,17 @@ impl Context {
         }
     }
 
+    /// **Source:** `BRepMesh_Context.hxx`:33 - `BRepMesh_Context::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_Context_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_Context.hxx`:33 - `BRepMesh_Context::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_Context_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_Context.hxx`:33 - `BRepMesh_Context::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_Context_get_type_descriptor()) }
     }
@@ -826,6 +868,7 @@ impl Context {
 // From BRepMesh_CurveTessellator.hxx
 // ========================
 
+/// **Source:** `BRepMesh_CurveTessellator.hxx`:30 - `BRepMesh_CurveTessellator`
 /// Auxiliary class performing tessellation of passed edge according to specified parameters.
 pub use crate::ffi::BRepMesh_CurveTessellator as CurveTessellator;
 
@@ -836,11 +879,13 @@ unsafe impl crate::CppDeletable for CurveTessellator {
 }
 
 impl CurveTessellator {
+    /// **Source:** `BRepMesh_CurveTessellator.hxx`:49 - `BRepMesh_CurveTessellator::PointsNb()`
     /// Returns number of tessellation points.
     pub fn points_nb(&self) -> i32 {
         unsafe { crate::ffi::BRepMesh_CurveTessellator_points_nb(self as *const Self) }
     }
 
+    /// **Source:** `BRepMesh_CurveTessellator.hxx`:56 - `BRepMesh_CurveTessellator::Value()`
     /// Returns parameters of solution with the given index.
     /// @param theIndex index of tessellation point.
     /// @param theParameter parameters on PCurve corresponded to the solution.
@@ -862,14 +907,17 @@ impl CurveTessellator {
         }
     }
 
+    /// **Source:** `BRepMesh_CurveTessellator.hxx`:61 - `BRepMesh_CurveTessellator::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_CurveTessellator_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_CurveTessellator.hxx`:61 - `BRepMesh_CurveTessellator::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_CurveTessellator_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_CurveTessellator.hxx`:61 - `BRepMesh_CurveTessellator::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_CurveTessellator_get_type_descriptor()) }
     }
@@ -899,6 +947,7 @@ impl CurveTessellator {
 // From BRepMesh_CustomBaseMeshAlgo.hxx
 // ========================
 
+/// **Source:** `BRepMesh_CustomBaseMeshAlgo.hxx`:27 - `BRepMesh_CustomBaseMeshAlgo`
 /// Class provides base functionality to build face triangulation using custom triangulation
 /// algorithm. Performs generation of mesh using raw data from model.
 pub use crate::ffi::BRepMesh_CustomBaseMeshAlgo as CustomBaseMeshAlgo;
@@ -910,14 +959,17 @@ unsafe impl crate::CppDeletable for CustomBaseMeshAlgo {
 }
 
 impl CustomBaseMeshAlgo {
+    /// **Source:** `BRepMesh_CustomBaseMeshAlgo.hxx`:36 - `BRepMesh_CustomBaseMeshAlgo::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_CustomBaseMeshAlgo_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_CustomBaseMeshAlgo.hxx`:36 - `BRepMesh_CustomBaseMeshAlgo::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_CustomBaseMeshAlgo_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_CustomBaseMeshAlgo.hxx`:36 - `BRepMesh_CustomBaseMeshAlgo::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_CustomBaseMeshAlgo_get_type_descriptor()) }
     }
@@ -979,6 +1031,7 @@ impl CustomBaseMeshAlgo {
 // From BRepMesh_CylinderRangeSplitter.hxx
 // ========================
 
+/// **Source:** `BRepMesh_CylinderRangeSplitter.hxx`:23 - `BRepMesh_CylinderRangeSplitter`
 /// Auxiliary class extending default range splitter in
 /// order to generate internal nodes for cylindrical surface.
 pub use crate::ffi::BRepMesh_CylinderRangeSplitter as CylinderRangeSplitter;
@@ -990,6 +1043,7 @@ unsafe impl crate::CppDeletable for CylinderRangeSplitter {
 }
 
 impl CylinderRangeSplitter {
+    /// **Source:** `BRepMesh_CylinderRangeSplitter.hxx`:27 - `BRepMesh_CylinderRangeSplitter::BRepMesh_CylinderRangeSplitter()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_CylinderRangeSplitter_ctor()) }
@@ -1065,6 +1119,7 @@ impl CylinderRangeSplitter {
 // From BRepMesh_DataStructureOfDelaun.hxx
 // ========================
 
+/// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:24 - `BRepMesh_DataStructureOfDelaun`
 /// Describes the data structure necessary for the mesh algorithms in
 /// two dimensions plane or on surface by meshing in UV space.
 pub use crate::ffi::BRepMesh_DataStructureOfDelaun as DataStructureOfDelaun;
@@ -1076,12 +1131,14 @@ unsafe impl crate::CppDeletable for DataStructureOfDelaun {
 }
 
 impl DataStructureOfDelaun {
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:36 - `BRepMesh_DataStructureOfDelaun::NbNodes()`
     /// @name API for accessing mesh nodes.
     /// Returns number of nodes.
     pub fn nb_nodes(&self) -> i32 {
         unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_nb_nodes(self as *const Self) }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:43 - `BRepMesh_DataStructureOfDelaun::AddNode()`
     /// Adds node to the mesh if it is not already in the mesh.
     /// @param theNode node to be added to the mesh.
     /// @param isForceAdd adds the given node to structure without
@@ -1097,6 +1154,7 @@ impl DataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:49 - `BRepMesh_DataStructureOfDelaun::IndexOf()`
     /// Finds the index of the given node.
     /// @param theNode node to find.
     /// @return index of the given element of zero if node is not in the mesh.
@@ -1106,6 +1164,7 @@ impl DataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:54 - `BRepMesh_DataStructureOfDelaun::GetNode()`
     /// Get node by the index.
     /// @param theIndex index of a node.
     /// @return node with the given index.
@@ -1115,6 +1174,7 @@ impl DataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:66 - `BRepMesh_DataStructureOfDelaun::SubstituteNode()`
     /// Substitutes the node with the given index by new one.
     /// @param theIndex index of node to be substituted.
     /// @param theNewNode substituting node.
@@ -1133,6 +1193,7 @@ impl DataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:74 - `BRepMesh_DataStructureOfDelaun::RemoveNode()`
     /// Removes node from the mesh in case if it has no connected links
     /// and its type is Free.
     /// @param theIndex index of node to be removed.
@@ -1148,12 +1209,14 @@ impl DataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:93 - `BRepMesh_DataStructureOfDelaun::NbLinks()`
     /// @name API for accessing mesh links.
     /// Returns number of links.
     pub fn nb_links(&self) -> i32 {
         unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_nb_links(self as *const Self) }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:98 - `BRepMesh_DataStructureOfDelaun::AddLink()`
     /// Adds link to the mesh if it is not already in the mesh.
     /// @param theLink link to be added to the mesh.
     /// @return index of the link in the structure.
@@ -1161,6 +1224,7 @@ impl DataStructureOfDelaun {
         unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_add_link(self as *mut Self, theLink) }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:103 - `BRepMesh_DataStructureOfDelaun::IndexOf()`
     /// Finds the index of the given link.
     /// @param theLink link to find.
     /// @return index of the given element of zero if link is not in the mesh.
@@ -1170,6 +1234,7 @@ impl DataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:111 - `BRepMesh_DataStructureOfDelaun::GetLink()`
     /// Get link by the index.
     /// @param theIndex index of a link.
     /// @return link with the given index.
@@ -1179,6 +1244,7 @@ impl DataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:123 - `BRepMesh_DataStructureOfDelaun::SubstituteLink()`
     /// Substitutes the link with the given index by new one.
     /// @param theIndex index of link to be substituted.
     /// @param theNewLink substituting link.
@@ -1197,6 +1263,7 @@ impl DataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:131 - `BRepMesh_DataStructureOfDelaun::RemoveLink()`
     /// Removes link from the mesh in case if it has no connected elements
     /// and its type is Free.
     /// @param theIndex index of link to be removed.
@@ -1212,6 +1279,7 @@ impl DataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:137 - `BRepMesh_DataStructureOfDelaun::ElementsConnectedTo()`
     /// Returns indices of elements connected to the link with the given index.
     /// @param theLinkIndex index of link whose data should be retrieved.
     /// @return indices of elements connected to the link.
@@ -1224,12 +1292,14 @@ impl DataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:144 - `BRepMesh_DataStructureOfDelaun::NbElements()`
     /// @name API for accessing mesh elements.
     /// Returns number of links.
     pub fn nb_elements(&self) -> i32 {
         unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_nb_elements(self as *const Self) }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:149 - `BRepMesh_DataStructureOfDelaun::AddElement()`
     /// Adds element to the mesh if it is not already in the mesh.
     /// @param theElement element to be added to the mesh.
     /// @return index of the element in the structure.
@@ -1239,6 +1309,7 @@ impl DataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:154 - `BRepMesh_DataStructureOfDelaun::GetElement()`
     /// Get element by the index.
     /// @param theIndex index of an element.
     /// @return element with the given index.
@@ -1248,6 +1319,7 @@ impl DataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:166 - `BRepMesh_DataStructureOfDelaun::SubstituteElement()`
     /// Substitutes the element with the given index by new one.
     /// @param theIndex index of element to be substituted.
     /// @param theNewLink substituting element.
@@ -1266,6 +1338,7 @@ impl DataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:171 - `BRepMesh_DataStructureOfDelaun::RemoveElement()`
     /// Removes element from the mesh.
     /// @param theIndex index of element to be removed.
     pub fn remove_element(&mut self, theIndex: i32) {
@@ -1274,36 +1347,43 @@ impl DataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:179 - `BRepMesh_DataStructureOfDelaun::Dump()`
     pub fn dump(&mut self, theFileNameStr: *const std::ffi::c_char) {
         unsafe {
             crate::ffi::BRepMesh_DataStructureOfDelaun_dump(self as *mut Self, theFileNameStr)
         }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:190 - `BRepMesh_DataStructureOfDelaun::Data()`
     /// Gives the data structure for initialization of cell size and tolerance.
     pub fn data(&mut self) -> &crate::ffi::HandleBRepMeshVertexTool {
         unsafe { &*(crate::ffi::BRepMesh_DataStructureOfDelaun_data(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:193 - `BRepMesh_DataStructureOfDelaun::ClearDomain()`
     /// Removes all elements.
     pub fn clear_domain(&mut self) {
         unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_clear_domain(self as *mut Self) }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:197 - `BRepMesh_DataStructureOfDelaun::ClearDeleted()`
     /// Substitutes deleted items by the last one from corresponding map
     /// to have only non-deleted elements, links or nodes in the structure.
     pub fn clear_deleted(&mut self) {
         unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_clear_deleted(self as *mut Self) }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:203 - `BRepMesh_DataStructureOfDelaun::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_DataStructureOfDelaun_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:203 - `BRepMesh_DataStructureOfDelaun::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:203 - `BRepMesh_DataStructureOfDelaun::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_DataStructureOfDelaun_get_type_descriptor()) }
     }
@@ -1346,6 +1426,7 @@ impl HandleBRepMeshDataStructureOfDelaun {
 // From BRepMesh_DefaultRangeSplitter.hxx
 // ========================
 
+/// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:25 - `BRepMesh_DefaultRangeSplitter`
 /// Default tool to define range of discrete face model and
 /// obtain grid points distributed within this range.
 pub use crate::ffi::BRepMesh_DefaultRangeSplitter as DefaultRangeSplitter;
@@ -1357,26 +1438,31 @@ unsafe impl crate::CppDeletable for DefaultRangeSplitter {
 }
 
 impl DefaultRangeSplitter {
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:29 - `BRepMesh_DefaultRangeSplitter::BRepMesh_DefaultRangeSplitter()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DefaultRangeSplitter_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     /// Registers border point.
     pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::BRepMesh_DefaultRangeSplitter_add_point(self as *mut Self, thePoint) }
     }
 
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:45 - `BRepMesh_DefaultRangeSplitter::AdjustRange()`
     /// Updates discrete range of surface according to its geometric range.
     pub fn adjust_range(&mut self) {
         unsafe { crate::ffi::BRepMesh_DefaultRangeSplitter_adjust_range(self as *mut Self) }
     }
 
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:48 - `BRepMesh_DefaultRangeSplitter::IsValid()`
     /// Returns True if computed range is valid.
     pub fn is_valid(&mut self) -> bool {
         unsafe { crate::ffi::BRepMesh_DefaultRangeSplitter_is_valid(self as *mut Self) }
     }
 
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
     /// Scales the given point from real parametric space
     /// to face basis and otherwise.
     /// @param thePoint point to be scaled.
@@ -1397,6 +1483,7 @@ impl DefaultRangeSplitter {
         }
     }
 
+    /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     /// Returns point in 3d space corresponded to the given
     /// point defined in parametric space of surface.
     pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
@@ -1413,6 +1500,7 @@ impl DefaultRangeSplitter {
 // From BRepMesh_Deflection.hxx
 // ========================
 
+/// **Source:** `BRepMesh_Deflection.hxx`:26 - `BRepMesh_Deflection`
 /// Auxiliary tool encompassing methods to compute deflection of shapes.
 pub use crate::ffi::BRepMesh_Deflection as Deflection;
 
@@ -1423,15 +1511,18 @@ unsafe impl crate::CppDeletable for Deflection {
 }
 
 impl Deflection {
+    /// **Source:** `BRepMesh_Deflection.hxx` - `BRepMesh_Deflection::BRepMesh_Deflection()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Deflection_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_Deflection.hxx`:66 - `BRepMesh_Deflection::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_Deflection_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_Deflection.hxx`:35 - `BRepMesh_Deflection::ComputeAbsoluteDeflection()`
     /// Returns absolute deflection for theShape with respect to the
     /// relative deflection and theMaxShapeSize.
     /// @param theShape shape for that the deflection should be computed.
@@ -1452,6 +1543,7 @@ impl Deflection {
         }
     }
 
+    /// **Source:** `BRepMesh_Deflection.hxx`:61 - `BRepMesh_Deflection::IsConsistent()`
     /// Checks if the deflection of current polygonal representation
     /// is consistent with the required deflection.
     /// @param[in] theCurrent  Current deflection.
@@ -1476,10 +1568,12 @@ impl Deflection {
         }
     }
 
+    /// **Source:** `BRepMesh_Deflection.hxx`:66 - `BRepMesh_Deflection::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_Deflection_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_Deflection.hxx`:66 - `BRepMesh_Deflection::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_Deflection_get_type_descriptor()) }
     }
@@ -1518,6 +1612,7 @@ impl HandleBRepMeshDeflection {
 // From BRepMesh_DelabellaBaseMeshAlgo.hxx
 // ========================
 
+/// **Source:** `BRepMesh_DelabellaBaseMeshAlgo.hxx`:23 - `BRepMesh_DelabellaBaseMeshAlgo`
 /// Class provides base functionality to build face triangulation using Delabella project.
 /// Performs generation of mesh using raw data from model.
 pub use crate::ffi::BRepMesh_DelabellaBaseMeshAlgo as DelabellaBaseMeshAlgo;
@@ -1529,19 +1624,23 @@ unsafe impl crate::CppDeletable for DelabellaBaseMeshAlgo {
 }
 
 impl DelabellaBaseMeshAlgo {
+    /// **Source:** `BRepMesh_DelabellaBaseMeshAlgo.hxx`:27 - `BRepMesh_DelabellaBaseMeshAlgo::BRepMesh_DelabellaBaseMeshAlgo()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_DelabellaBaseMeshAlgo.hxx`:32 - `BRepMesh_DelabellaBaseMeshAlgo::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_DelabellaBaseMeshAlgo.hxx`:32 - `BRepMesh_DelabellaBaseMeshAlgo::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_DelabellaBaseMeshAlgo.hxx`:32 - `BRepMesh_DelabellaBaseMeshAlgo::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_get_type_descriptor()) }
     }
@@ -1621,6 +1720,7 @@ impl DelabellaBaseMeshAlgo {
 // From BRepMesh_DelabellaMeshAlgoFactory.hxx
 // ========================
 
+/// **Source:** `BRepMesh_DelabellaMeshAlgoFactory.hxx`:24 - `BRepMesh_DelabellaMeshAlgoFactory`
 /// Implementation of IMeshTools_MeshAlgoFactory providing Delabella-based
 /// algorithms of different complexity depending on type of target surface.
 pub use crate::ffi::BRepMesh_DelabellaMeshAlgoFactory as DelabellaMeshAlgoFactory;
@@ -1632,11 +1732,13 @@ unsafe impl crate::CppDeletable for DelabellaMeshAlgoFactory {
 }
 
 impl DelabellaMeshAlgoFactory {
+    /// **Source:** `BRepMesh_DelabellaMeshAlgoFactory.hxx`:28 - `BRepMesh_DelabellaMeshAlgoFactory::BRepMesh_DelabellaMeshAlgoFactory()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_DelabellaMeshAlgoFactory.hxx`:34 - `BRepMesh_DelabellaMeshAlgoFactory::GetAlgo()`
     /// Creates instance of meshing algorithm for the given type of surface.
     pub fn get_algo(
         &self,
@@ -1652,16 +1754,19 @@ impl DelabellaMeshAlgoFactory {
         }
     }
 
+    /// **Source:** `BRepMesh_DelabellaMeshAlgoFactory.hxx`:38 - `BRepMesh_DelabellaMeshAlgoFactory::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
             &*(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_dynamic_type(self as *const Self))
         }
     }
 
+    /// **Source:** `BRepMesh_DelabellaMeshAlgoFactory.hxx`:38 - `BRepMesh_DelabellaMeshAlgoFactory::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_DelabellaMeshAlgoFactory.hxx`:38 - `BRepMesh_DelabellaMeshAlgoFactory::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_type_descriptor()) }
     }
@@ -1691,6 +1796,7 @@ impl DelabellaMeshAlgoFactory {
 // From BRepMesh_Delaun.hxx
 // ========================
 
+/// **Source:** `BRepMesh_Delaun.hxx`:34 - `BRepMesh_Delaun`
 /// Compute the Delaunay's triangulation with the algorithm of Watson.
 pub use crate::ffi::BRepMesh_Delaun as Delaun;
 
@@ -1701,6 +1807,7 @@ unsafe impl crate::CppDeletable for Delaun {
 }
 
 impl Delaun {
+    /// **Source:** `BRepMesh_Delaun.hxx`:40 - `BRepMesh_Delaun::BRepMesh_Delaun()`
     /// Creates instance of triangulator, but do not run the algorithm automatically.
     pub fn new_handlebrepmeshdatastructureofdelaun_int2_bool(
         theOldMesh: &crate::ffi::HandleBRepMeshDataStructureOfDelaun,
@@ -1720,6 +1827,7 @@ impl Delaun {
         }
     }
 
+    /// **Source:** `BRepMesh_Delaun.hxx`:66 - `BRepMesh_Delaun::InitCirclesTool()`
     /// Forces initialization of circles cell filter using working structure.
     pub fn init_circles_tool(&mut self, theCellsCountU: i32, theCellsCountV: i32) {
         unsafe {
@@ -1731,47 +1839,56 @@ impl Delaun {
         }
     }
 
+    /// **Source:** `BRepMesh_Delaun.hxx`:70 - `BRepMesh_Delaun::RemoveVertex()`
     /// Removes a vertex from the triangulation.
     pub fn remove_vertex(&mut self, theVertex: &crate::ffi::BRepMesh_Vertex) {
         unsafe { crate::ffi::BRepMesh_Delaun_remove_vertex(self as *mut Self, theVertex) }
     }
 
+    /// **Source:** `BRepMesh_Delaun.hxx`:78 - `BRepMesh_Delaun::UseEdge()`
     /// Modify mesh to use the edge.
     /// @return True if done
     pub fn use_edge(&mut self, theEdge: i32) -> bool {
         unsafe { crate::ffi::BRepMesh_Delaun_use_edge(self as *mut Self, theEdge) }
     }
 
+    /// **Source:** `BRepMesh_Delaun.hxx`:81 - `BRepMesh_Delaun::Result()`
     /// Gives the Mesh data structure.
     pub fn result(&self) -> &crate::ffi::HandleBRepMeshDataStructureOfDelaun {
         unsafe { &*(crate::ffi::BRepMesh_Delaun_result(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_Delaun.hxx`:84 - `BRepMesh_Delaun::ProcessConstraints()`
     /// Forces insertion of constraint edges into the base triangulation.
     pub fn process_constraints(&mut self) {
         unsafe { crate::ffi::BRepMesh_Delaun_process_constraints(self as *mut Self) }
     }
 
+    /// **Source:** `BRepMesh_Delaun.hxx`:102 - `BRepMesh_Delaun::GetVertex()`
     /// Gives vertex with the given index
     pub fn get_vertex(&self, theIndex: i32) -> &crate::ffi::BRepMesh_Vertex {
         unsafe { &*(crate::ffi::BRepMesh_Delaun_get_vertex(self as *const Self, theIndex)) }
     }
 
+    /// **Source:** `BRepMesh_Delaun.hxx`:108 - `BRepMesh_Delaun::GetEdge()`
     /// Gives edge with the given index
     pub fn get_edge(&self, theIndex: i32) -> &crate::ffi::BRepMesh_Edge {
         unsafe { &*(crate::ffi::BRepMesh_Delaun_get_edge(self as *const Self, theIndex)) }
     }
 
+    /// **Source:** `BRepMesh_Delaun.hxx`:114 - `BRepMesh_Delaun::GetTriangle()`
     /// Gives triangle with the given index
     pub fn get_triangle(&self, theIndex: i32) -> &crate::ffi::BRepMesh_Triangle {
         unsafe { &*(crate::ffi::BRepMesh_Delaun_get_triangle(self as *const Self, theIndex)) }
     }
 
+    /// **Source:** `BRepMesh_Delaun.hxx`:120 - `BRepMesh_Delaun::Circles()`
     /// Returns tool used to build mesh consistent to Delaunay criteria.
     pub fn circles(&self) -> &crate::ffi::BRepMesh_CircleTool {
         unsafe { &*(crate::ffi::BRepMesh_Delaun_circles(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_Delaun.hxx`:126 - `BRepMesh_Delaun::Contains()`
     /// Test is the given triangle contains the given vertex.
     /// @param theSqTolerance square tolerance to check closeness to some edge
     /// @param theEdgeOn If it is != 0 the vertex lies onto the edge index
@@ -1794,6 +1911,7 @@ impl Delaun {
         }
     }
 
+    /// **Source:** `BRepMesh_Delaun.hxx`:140 - `BRepMesh_Delaun::RemoveAuxElements()`
     /// Destruction of auxiliary triangles containing the given vertices.
     /// Removes auxiliary vertices also.
     /// @param theAuxVertices auxiliary vertices to be cleaned up.
@@ -1806,6 +1924,7 @@ impl Delaun {
 // From BRepMesh_DelaunayBaseMeshAlgo.hxx
 // ========================
 
+/// **Source:** `BRepMesh_DelaunayBaseMeshAlgo.hxx`:23 - `BRepMesh_DelaunayBaseMeshAlgo`
 /// Class provides base functionality to build face triangulation using Dealunay approach.
 /// Performs generation of mesh using raw data from model.
 pub use crate::ffi::BRepMesh_DelaunayBaseMeshAlgo as DelaunayBaseMeshAlgo;
@@ -1817,19 +1936,23 @@ unsafe impl crate::CppDeletable for DelaunayBaseMeshAlgo {
 }
 
 impl DelaunayBaseMeshAlgo {
+    /// **Source:** `BRepMesh_DelaunayBaseMeshAlgo.hxx`:27 - `BRepMesh_DelaunayBaseMeshAlgo::BRepMesh_DelaunayBaseMeshAlgo()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_DelaunayBaseMeshAlgo.hxx`:32 - `BRepMesh_DelaunayBaseMeshAlgo::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_DelaunayBaseMeshAlgo.hxx`:32 - `BRepMesh_DelaunayBaseMeshAlgo::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_DelaunayBaseMeshAlgo.hxx`:32 - `BRepMesh_DelaunayBaseMeshAlgo::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_get_type_descriptor()) }
     }
@@ -1891,6 +2014,7 @@ impl DelaunayBaseMeshAlgo {
 // From BRepMesh_DiscretRoot.hxx
 // ========================
 
+/// **Source:** `BRepMesh_DiscretRoot.hxx`:24 - `BRepMesh_DiscretRoot`
 /// This is a common interface for meshing algorithms
 /// instantiated by Mesh Factory and implemented by plugins.
 pub use crate::ffi::BRepMesh_DiscretRoot as DiscretRoot;
@@ -1902,33 +2026,40 @@ unsafe impl crate::CppDeletable for DiscretRoot {
 }
 
 impl DiscretRoot {
+    /// **Source:** `BRepMesh_DiscretRoot.hxx`:31 - `BRepMesh_DiscretRoot::SetShape()`
     /// Set the shape to triangulate.
     pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BRepMesh_DiscretRoot_set_shape(self as *mut Self, theShape) }
     }
 
+    /// **Source:** `BRepMesh_DiscretRoot.hxx`:33 - `BRepMesh_DiscretRoot::Shape()`
     pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepMesh_DiscretRoot_shape(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_DiscretRoot.hxx`:36 - `BRepMesh_DiscretRoot::IsDone()`
     /// Returns true if triangualtion was performed and has success.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::BRepMesh_DiscretRoot_is_done(self as *const Self) }
     }
 
+    /// **Source:** `BRepMesh_DiscretRoot.hxx`:39 - `BRepMesh_DiscretRoot::Perform()`
     /// Compute triangulation for set shape.
     pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BRepMesh_DiscretRoot_perform(self as *mut Self, theRange) }
     }
 
+    /// **Source:** `BRepMesh_DiscretRoot.hxx`:41 - `BRepMesh_DiscretRoot::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_DiscretRoot_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_DiscretRoot.hxx`:41 - `BRepMesh_DiscretRoot::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_DiscretRoot_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_DiscretRoot.hxx`:41 - `BRepMesh_DiscretRoot::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_DiscretRoot_get_type_descriptor()) }
     }
@@ -1958,6 +2089,7 @@ impl HandleBRepMeshDiscretRoot {
 // From BRepMesh_Edge.hxx
 // ========================
 
+/// **Source:** `BRepMesh_Edge.hxx`:23 - `BRepMesh_Edge`
 /// Light weighted structure representing link of the mesh.
 pub use crate::ffi::BRepMesh_Edge as Edge;
 
@@ -1968,11 +2100,13 @@ unsafe impl crate::CppDeletable for Edge {
 }
 
 impl Edge {
+    /// **Source:** `BRepMesh_Edge.hxx`:27 - `BRepMesh_Edge::BRepMesh_Edge()`
     /// Default constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Edge_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_Edge.hxx`:34 - `BRepMesh_Edge::BRepMesh_Edge()`
     /// Constructs a link between two vertices.
     pub fn new_int2_degreeoffreedom(
         theFirstNode: i32,
@@ -1988,6 +2122,7 @@ impl Edge {
         }
     }
 
+    /// **Source:** `BRepMesh_Edge.hxx`:43 - `BRepMesh_Edge::Movability()`
     /// Returns movability flag of the Link.
     pub fn movability(&self) -> crate::b_rep_mesh::DegreeOfFreedom {
         unsafe {
@@ -1998,12 +2133,14 @@ impl Edge {
         }
     }
 
+    /// **Source:** `BRepMesh_Edge.hxx`:47 - `BRepMesh_Edge::SetMovability()`
     /// Sets movability flag of the Link.
     /// @param theMovability flag to be set.
     pub fn set_movability(&mut self, theMovability: crate::b_rep_mesh::DegreeOfFreedom) {
         unsafe { crate::ffi::BRepMesh_Edge_set_movability(self as *mut Self, theMovability.into()) }
     }
 
+    /// **Source:** `BRepMesh_Edge.hxx`:52 - `BRepMesh_Edge::IsSameOrientation()`
     /// Checks if the given edge and this one have the same orientation.
     /// @param theOther edge to be checked against this one.
     /// \return TRUE if edges have the same orientation, FALSE if not.
@@ -2011,6 +2148,7 @@ impl Edge {
         unsafe { crate::ffi::BRepMesh_Edge_is_same_orientation(self as *const Self, theOther) }
     }
 
+    /// **Source:** `BRepMesh_Edge.hxx`:60 - `BRepMesh_Edge::IsEqual()`
     /// Checks for equality with another edge.
     /// @param theOther edge to be checked against this one.
     /// @return TRUE if equal, FALSE if not.
@@ -2043,6 +2181,7 @@ impl Edge {
 // From BRepMesh_EdgeDiscret.hxx
 // ========================
 
+/// **Source:** `BRepMesh_EdgeDiscret.hxx`:29 - `BRepMesh_EdgeDiscret`
 /// Class implements functionality of edge discret tool.
 /// Performs check of the edges for existing Poly_PolygonOnTriangulation.
 /// In case if it fits specified deflection, restores data structure using
@@ -2056,19 +2195,23 @@ unsafe impl crate::CppDeletable for EdgeDiscret {
 }
 
 impl EdgeDiscret {
+    /// **Source:** `BRepMesh_EdgeDiscret.hxx`:33 - `BRepMesh_EdgeDiscret::BRepMesh_EdgeDiscret()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_EdgeDiscret_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_EdgeDiscret.hxx`:70 - `BRepMesh_EdgeDiscret::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_EdgeDiscret_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_EdgeDiscret.hxx`:70 - `BRepMesh_EdgeDiscret::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_EdgeDiscret_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_EdgeDiscret.hxx`:70 - `BRepMesh_EdgeDiscret::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_EdgeDiscret_get_type_descriptor()) }
     }
@@ -2090,6 +2233,7 @@ impl EdgeDiscret {
 // From BRepMesh_EdgeTessellationExtractor.hxx
 // ========================
 
+/// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:26 - `BRepMesh_EdgeTessellationExtractor`
 /// Auxiliary class implements functionality retrieving tessellated
 /// representation of an edge stored in polygon.
 pub use crate::ffi::BRepMesh_EdgeTessellationExtractor as EdgeTessellationExtractor;
@@ -2101,11 +2245,13 @@ unsafe impl crate::CppDeletable for EdgeTessellationExtractor {
 }
 
 impl EdgeTessellationExtractor {
+    /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:37 - `BRepMesh_EdgeTessellationExtractor::PointsNb()`
     /// Returns number of tessellation points.
     pub fn points_nb(&self) -> i32 {
         unsafe { crate::ffi::BRepMesh_EdgeTessellationExtractor_points_nb(self as *const Self) }
     }
 
+    /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:44 - `BRepMesh_EdgeTessellationExtractor::Value()`
     /// Returns parameters of solution with the given index.
     /// @param theIndex index of tessellation point.
     /// @param theParameter parameters on PCurve corresponded to the solution.
@@ -2127,16 +2273,19 @@ impl EdgeTessellationExtractor {
         }
     }
 
+    /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:49 - `BRepMesh_EdgeTessellationExtractor::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
             &*(crate::ffi::BRepMesh_EdgeTessellationExtractor_dynamic_type(self as *const Self))
         }
     }
 
+    /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:49 - `BRepMesh_EdgeTessellationExtractor::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_EdgeTessellationExtractor_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:49 - `BRepMesh_EdgeTessellationExtractor::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_EdgeTessellationExtractor_get_type_descriptor()) }
     }
@@ -2164,6 +2313,7 @@ impl EdgeTessellationExtractor {
 // From BRepMesh_ExtrusionRangeSplitter.hxx
 // ========================
 
+/// **Source:** `BRepMesh_ExtrusionRangeSplitter.hxx`:22 - `BRepMesh_ExtrusionRangeSplitter`
 /// Auxiliary class analysing extrusion surface in order to generate internal nodes.
 pub use crate::ffi::BRepMesh_ExtrusionRangeSplitter as ExtrusionRangeSplitter;
 
@@ -2174,6 +2324,7 @@ unsafe impl crate::CppDeletable for ExtrusionRangeSplitter {
 }
 
 impl ExtrusionRangeSplitter {
+    /// **Source:** `BRepMesh_ExtrusionRangeSplitter.hxx`:26 - `BRepMesh_ExtrusionRangeSplitter::BRepMesh_ExtrusionRangeSplitter()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ExtrusionRangeSplitter_ctor()) }
@@ -2285,6 +2436,7 @@ impl ExtrusionRangeSplitter {
 // From BRepMesh_FaceChecker.hxx
 // ========================
 
+/// **Source:** `BRepMesh_FaceChecker.hxx`:29 - `BRepMesh_FaceChecker`
 /// Auxiliary class checking wires of target face for self-intersections.
 /// Explodes wires of discrete face on sets of segments using tessellation
 /// data stored in model. Each segment is then checked for intersection with
@@ -2298,20 +2450,24 @@ unsafe impl crate::CppDeletable for FaceChecker {
 }
 
 impl FaceChecker {
+    /// **Source:** `BRepMesh_FaceChecker.hxx`:69 - `BRepMesh_FaceChecker::Perform()`
     /// Performs check wires of the face for intersections.
     /// @return True if there is no intersection, False elsewhere.
     pub fn perform(&mut self) -> bool {
         unsafe { crate::ffi::BRepMesh_FaceChecker_perform(self as *mut Self) }
     }
 
+    /// **Source:** `BRepMesh_FaceChecker.hxx`:80 - `BRepMesh_FaceChecker::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_FaceChecker_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_FaceChecker.hxx`:80 - `BRepMesh_FaceChecker::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_FaceChecker_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_FaceChecker.hxx`:80 - `BRepMesh_FaceChecker::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_FaceChecker_get_type_descriptor()) }
     }
@@ -2350,6 +2506,7 @@ impl HandleBRepMeshFaceChecker {
 // From BRepMesh_FaceDiscret.hxx
 // ========================
 
+/// **Source:** `BRepMesh_FaceDiscret.hxx`:27 - `BRepMesh_FaceDiscret`
 /// Class implements functionality starting triangulation of model's faces.
 /// Each face is processed separately and can be executed in parallel mode.
 /// Uses mesh algo factory passed as initializer to create instance of triangulation
@@ -2363,6 +2520,7 @@ unsafe impl crate::CppDeletable for FaceDiscret {
 }
 
 impl FaceDiscret {
+    /// **Source:** `BRepMesh_FaceDiscret.hxx`:31 - `BRepMesh_FaceDiscret::BRepMesh_FaceDiscret()`
     /// Constructor.
     pub fn new_handleimeshtoolsmeshalgofactory(
         theAlgoFactory: &crate::ffi::HandleIMeshToolsMeshAlgoFactory,
@@ -2376,14 +2534,17 @@ impl FaceDiscret {
         }
     }
 
+    /// **Source:** `BRepMesh_FaceDiscret.hxx`:36 - `BRepMesh_FaceDiscret::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_FaceDiscret_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_FaceDiscret.hxx`:36 - `BRepMesh_FaceDiscret::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_FaceDiscret_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_FaceDiscret.hxx`:36 - `BRepMesh_FaceDiscret::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_FaceDiscret_get_type_descriptor()) }
     }
@@ -2405,6 +2566,7 @@ impl FaceDiscret {
 // From BRepMesh_GeomTool.hxx
 // ========================
 
+/// **Source:** `BRepMesh_GeomTool.hxx`:32 - `BRepMesh_GeomTool`
 /// Tool class accumulating common geometrical functions as well as
 /// functionality using shape geometry to produce data necessary for
 /// tessellation.
@@ -2419,6 +2581,7 @@ unsafe impl crate::CppDeletable for GeomTool {
 }
 
 impl GeomTool {
+    /// **Source:** `BRepMesh_GeomTool.hxx`:57 - `BRepMesh_GeomTool::BRepMesh_GeomTool()`
     /// Constructor.
     /// Initiates discretization of the given geometric curve.
     /// @param theCurve curve to be discretized.
@@ -2449,6 +2612,7 @@ impl GeomTool {
         }
     }
 
+    /// **Source:** `BRepMesh_GeomTool.hxx`:92 - `BRepMesh_GeomTool::AddPoint()`
     /// Adds point to already calculated points (or replaces existing).
     /// @param thePoint point to be added.
     /// @param theParam parameter on the curve corresponding to the given point.
@@ -2471,11 +2635,13 @@ impl GeomTool {
         }
     }
 
+    /// **Source:** `BRepMesh_GeomTool.hxx`:100 - `BRepMesh_GeomTool::NbPoints()`
     /// Returns number of discretization points.
     pub fn nb_points(&self) -> i32 {
         unsafe { crate::ffi::BRepMesh_GeomTool_nb_points(self as *const Self) }
     }
 
+    /// **Source:** `BRepMesh_GeomTool.hxx`:110 - `BRepMesh_GeomTool::Value()`
     /// Gets parameters of discretization point with the given index.
     /// @param theIndex index of discretization point.
     /// @param theIsoParam parameter on surface to be used as second coordinate
@@ -2504,6 +2670,7 @@ impl GeomTool {
         }
     }
 
+    /// **Source:** `BRepMesh_GeomTool.hxx`:183 - `BRepMesh_GeomTool::SquareDeflectionOfSegment()`
     /// Compute deflection of the given segment.
     pub fn square_deflection_of_segment(
         theFirstPoint: &crate::ffi::gp_Pnt,
@@ -2524,6 +2691,7 @@ impl GeomTool {
 // From BRepMesh_IncrementalMesh.hxx
 // ========================
 
+/// **Source:** `BRepMesh_IncrementalMesh.hxx`:23 - `BRepMesh_IncrementalMesh`
 /// Builds the mesh of a shape with respect of their
 /// correctly triangulated parts
 pub use crate::ffi::BRepMesh_IncrementalMesh as IncrementalMesh;
@@ -2535,12 +2703,14 @@ unsafe impl crate::CppDeletable for IncrementalMesh {
 }
 
 impl IncrementalMesh {
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:27 - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
     /// @name mesher API
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_IncrementalMesh_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:41 - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
     /// Constructor.
     /// Automatically calls method Perform.
     /// @param theShape shape to be meshed.
@@ -2570,6 +2740,7 @@ impl IncrementalMesh {
         }
     }
 
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:51 - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
     /// Constructor.
     /// Automatically calls method Perform.
     /// @param theShape shape to be meshed.
@@ -2590,6 +2761,7 @@ impl IncrementalMesh {
         }
     }
 
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:41 - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
     /// Constructor.
     /// Automatically calls method Perform.
     /// @param theShape shape to be meshed.
@@ -2614,6 +2786,7 @@ impl IncrementalMesh {
         )
     }
 
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:41 - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
     /// Constructor.
     /// Automatically calls method Perform.
     /// @param theShape shape to be meshed.
@@ -2631,6 +2804,7 @@ impl IncrementalMesh {
         Self::new_shape_real_bool_real_bool(theShape, theLinDeflection, isRelative, 0.5, false)
     }
 
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:41 - `BRepMesh_IncrementalMesh::BRepMesh_IncrementalMesh()`
     /// Constructor.
     /// Automatically calls method Perform.
     /// @param theShape shape to be meshed.
@@ -2647,52 +2821,62 @@ impl IncrementalMesh {
         Self::new_shape_real_bool_real_bool(theShape, theLinDeflection, false, 0.5, false)
     }
 
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:57 - `BRepMesh_IncrementalMesh::Perform()`
     /// Performs meshing of the shape.
     pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BRepMesh_IncrementalMesh_perform(self as *mut Self, theRange) }
     }
 
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:66 - `BRepMesh_IncrementalMesh::Parameters()`
     /// @name accessing to parameters.
     /// Returns meshing parameters
     pub fn parameters(&self) -> &crate::ffi::IMeshTools_Parameters {
         unsafe { &*(crate::ffi::BRepMesh_IncrementalMesh_parameters(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:69 - `BRepMesh_IncrementalMesh::ChangeParameters()`
     /// Returns modifiable meshing parameters
     pub fn change_parameters(&mut self) -> &mut crate::ffi::IMeshTools_Parameters {
         unsafe { &mut *(crate::ffi::BRepMesh_IncrementalMesh_change_parameters(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:72 - `BRepMesh_IncrementalMesh::IsModified()`
     /// Returns modified flag.
     pub fn is_modified(&self) -> bool {
         unsafe { crate::ffi::BRepMesh_IncrementalMesh_is_modified(self as *const Self) }
     }
 
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:75 - `BRepMesh_IncrementalMesh::GetStatusFlags()`
     /// Returns accumulated status flags faced during meshing.
     pub fn get_status_flags(&self) -> i32 {
         unsafe { crate::ffi::BRepMesh_IncrementalMesh_get_status_flags(self as *const Self) }
     }
 
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:129 - `BRepMesh_IncrementalMesh::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_IncrementalMesh_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:123 - `BRepMesh_IncrementalMesh::IsParallelDefault()`
     /// Returns multi-threading usage flag set by default in
     /// Discret() static method (thus applied only to Mesh Factories).
     pub fn is_parallel_default() -> bool {
         unsafe { crate::ffi::BRepMesh_IncrementalMesh_is_parallel_default() }
     }
 
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:127 - `BRepMesh_IncrementalMesh::SetParallelDefault()`
     /// Setup multi-threading usage flag set by default in
     /// Discret() static method (thus applied only to Mesh Factories).
     pub fn set_parallel_default(isInParallel: bool) {
         unsafe { crate::ffi::BRepMesh_IncrementalMesh_set_parallel_default(isInParallel) }
     }
 
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:129 - `BRepMesh_IncrementalMesh::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_IncrementalMesh_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_IncrementalMesh.hxx`:129 - `BRepMesh_IncrementalMesh::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_IncrementalMesh_get_type_descriptor()) }
     }
@@ -2735,6 +2919,7 @@ impl IncrementalMesh {
 // From BRepMesh_MeshAlgoFactory.hxx
 // ========================
 
+/// **Source:** `BRepMesh_MeshAlgoFactory.hxx`:24 - `BRepMesh_MeshAlgoFactory`
 /// Default implementation of IMeshTools_MeshAlgoFactory providing algorithms
 /// of different complexity depending on type of target surface.
 pub use crate::ffi::BRepMesh_MeshAlgoFactory as MeshAlgoFactory;
@@ -2746,11 +2931,13 @@ unsafe impl crate::CppDeletable for MeshAlgoFactory {
 }
 
 impl MeshAlgoFactory {
+    /// **Source:** `BRepMesh_MeshAlgoFactory.hxx`:28 - `BRepMesh_MeshAlgoFactory::BRepMesh_MeshAlgoFactory()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_MeshAlgoFactory_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_MeshAlgoFactory.hxx`:34 - `BRepMesh_MeshAlgoFactory::GetAlgo()`
     /// Creates instance of meshing algorithm for the given type of surface.
     pub fn get_algo(
         &self,
@@ -2766,14 +2953,17 @@ impl MeshAlgoFactory {
         }
     }
 
+    /// **Source:** `BRepMesh_MeshAlgoFactory.hxx`:38 - `BRepMesh_MeshAlgoFactory::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_MeshAlgoFactory_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_MeshAlgoFactory.hxx`:38 - `BRepMesh_MeshAlgoFactory::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_MeshAlgoFactory_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_MeshAlgoFactory.hxx`:38 - `BRepMesh_MeshAlgoFactory::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_MeshAlgoFactory_get_type_descriptor()) }
     }
@@ -2803,6 +2993,7 @@ impl MeshAlgoFactory {
 // From BRepMesh_MeshTool.hxx
 // ========================
 
+/// **Source:** `BRepMesh_MeshTool.hxx`:29 - `BRepMesh_MeshTool`
 /// Auxiliary tool providing API for manipulation with BRepMesh_DataStructureOfDelaun.
 pub use crate::ffi::BRepMesh_MeshTool as MeshTool;
 
@@ -2813,6 +3004,7 @@ unsafe impl crate::CppDeletable for MeshTool {
 }
 
 impl MeshTool {
+    /// **Source:** `BRepMesh_MeshTool.hxx`:77 - `BRepMesh_MeshTool::BRepMesh_MeshTool()`
     /// Constructor.
     /// Initializes tool by the given data structure.
     pub fn new_handlebrepmeshdatastructureofdelaun(
@@ -2827,11 +3019,13 @@ impl MeshTool {
         }
     }
 
+    /// **Source:** `BRepMesh_MeshTool.hxx`:83 - `BRepMesh_MeshTool::GetStructure()`
     /// Returns data structure manipulated by this tool.
     pub fn get_structure(&self) -> &crate::ffi::HandleBRepMeshDataStructureOfDelaun {
         unsafe { &*(crate::ffi::BRepMesh_MeshTool_get_structure(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_MeshTool.hxx`:90 - `BRepMesh_MeshTool::AddAndLegalizeTriangle()`
     /// Adds new triangle with specified nodes to mesh.
     /// Legalizes triangle in case if it violates circle criteria.
     pub fn add_and_legalize_triangle(&mut self, thePoint1: i32, thePoint2: i32, thePoint3: i32) {
@@ -2845,6 +3039,7 @@ impl MeshTool {
         }
     }
 
+    /// **Source:** `BRepMesh_MeshTool.hxx`:118 - `BRepMesh_MeshTool::AddLink()`
     /// Adds new link to mesh.
     /// Updates link index and link orientation parameters.
     pub fn add_link(
@@ -2865,11 +3060,13 @@ impl MeshTool {
         }
     }
 
+    /// **Source:** `BRepMesh_MeshTool.hxx`:131 - `BRepMesh_MeshTool::Legalize()`
     /// Performs legalization of triangles connected to the specified link.
     pub fn legalize(&mut self, theLinkIndex: i32) {
         unsafe { crate::ffi::BRepMesh_MeshTool_legalize(self as *mut Self, theLinkIndex) }
     }
 
+    /// **Source:** `BRepMesh_MeshTool.hxx`:135 - `BRepMesh_MeshTool::EraseItemsConnectedTo()`
     /// Erases all elements connected to the specified artificial node.
     /// In addition, erases the artificial node itself.
     pub fn erase_items_connected_to(&mut self, theNodeIndex: i32) {
@@ -2878,24 +3075,29 @@ impl MeshTool {
         }
     }
 
+    /// **Source:** `BRepMesh_MeshTool.hxx`:138 - `BRepMesh_MeshTool::CleanFrontierLinks()`
     /// Cleans frontier links from triangles to the right.
     pub fn clean_frontier_links(&mut self) {
         unsafe { crate::ffi::BRepMesh_MeshTool_clean_frontier_links(self as *mut Self) }
     }
 
+    /// **Source:** `BRepMesh_MeshTool.hxx`:151 - `BRepMesh_MeshTool::EraseFreeLinks()`
     /// Erases all links that have no elements connected to them.
     pub fn erase_free_links(&mut self) {
         unsafe { crate::ffi::BRepMesh_MeshTool_erase_free_links(self as *mut Self) }
     }
 
+    /// **Source:** `BRepMesh_MeshTool.hxx`:160 - `BRepMesh_MeshTool::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_MeshTool_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_MeshTool.hxx`:160 - `BRepMesh_MeshTool::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_MeshTool_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_MeshTool.hxx`:160 - `BRepMesh_MeshTool::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_MeshTool_get_type_descriptor()) }
     }
@@ -2934,6 +3136,7 @@ impl HandleBRepMeshMeshTool {
 // From BRepMesh_ModelBuilder.hxx
 // ========================
 
+/// **Source:** `BRepMesh_ModelBuilder.hxx`:29 - `BRepMesh_ModelBuilder`
 /// Class implements interface representing tool for discrete model building.
 ///
 /// The following statuses should be used by default:
@@ -2949,19 +3152,23 @@ unsafe impl crate::CppDeletable for ModelBuilder {
 }
 
 impl ModelBuilder {
+    /// **Source:** `BRepMesh_ModelBuilder.hxx`:33 - `BRepMesh_ModelBuilder::BRepMesh_ModelBuilder()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ModelBuilder_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_ModelBuilder.hxx`:38 - `BRepMesh_ModelBuilder::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_ModelBuilder_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_ModelBuilder.hxx`:38 - `BRepMesh_ModelBuilder::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_ModelBuilder_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_ModelBuilder.hxx`:38 - `BRepMesh_ModelBuilder::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_ModelBuilder_get_type_descriptor()) }
     }
@@ -3104,6 +3311,7 @@ impl ModelBuilder {
 // From BRepMesh_ModelHealer.hxx
 // ========================
 
+/// **Source:** `BRepMesh_ModelHealer.hxx`:36 - `BRepMesh_ModelHealer`
 /// Class implements functionality of model healer tool.
 /// Iterates over model's faces and checks consistency of their wires,
 /// i.e.whether wires are closed and do not contain self - intersections.
@@ -3125,19 +3333,23 @@ unsafe impl crate::CppDeletable for ModelHealer {
 }
 
 impl ModelHealer {
+    /// **Source:** `BRepMesh_ModelHealer.hxx`:40 - `BRepMesh_ModelHealer::BRepMesh_ModelHealer()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ModelHealer_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_ModelHealer.hxx`:51 - `BRepMesh_ModelHealer::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_ModelHealer_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_ModelHealer.hxx`:51 - `BRepMesh_ModelHealer::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_ModelHealer_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_ModelHealer.hxx`:51 - `BRepMesh_ModelHealer::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_ModelHealer_get_type_descriptor()) }
     }
@@ -3159,6 +3371,7 @@ impl ModelHealer {
 // From BRepMesh_ModelPostProcessor.hxx
 // ========================
 
+/// **Source:** `BRepMesh_ModelPostProcessor.hxx`:24 - `BRepMesh_ModelPostProcessor`
 /// Class implements functionality of model post-processing tool.
 /// Stores polygons on triangulations to TopoDS_Edge.
 pub use crate::ffi::BRepMesh_ModelPostProcessor as ModelPostProcessor;
@@ -3170,19 +3383,23 @@ unsafe impl crate::CppDeletable for ModelPostProcessor {
 }
 
 impl ModelPostProcessor {
+    /// **Source:** `BRepMesh_ModelPostProcessor.hxx`:28 - `BRepMesh_ModelPostProcessor::BRepMesh_ModelPostProcessor()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ModelPostProcessor_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_ModelPostProcessor.hxx`:33 - `BRepMesh_ModelPostProcessor::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_ModelPostProcessor_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_ModelPostProcessor.hxx`:33 - `BRepMesh_ModelPostProcessor::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_ModelPostProcessor_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_ModelPostProcessor.hxx`:33 - `BRepMesh_ModelPostProcessor::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_ModelPostProcessor_get_type_descriptor()) }
     }
@@ -3208,6 +3425,7 @@ impl ModelPostProcessor {
 // From BRepMesh_ModelPreProcessor.hxx
 // ========================
 
+/// **Source:** `BRepMesh_ModelPreProcessor.hxx`:25 - `BRepMesh_ModelPreProcessor`
 /// Class implements functionality of model pre-processing tool.
 /// Nullifies existing polygonal data in case if model elements
 /// have IMeshData_Outdated status.
@@ -3220,19 +3438,23 @@ unsafe impl crate::CppDeletable for ModelPreProcessor {
 }
 
 impl ModelPreProcessor {
+    /// **Source:** `BRepMesh_ModelPreProcessor.hxx`:29 - `BRepMesh_ModelPreProcessor::BRepMesh_ModelPreProcessor()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ModelPreProcessor_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_ModelPreProcessor.hxx`:34 - `BRepMesh_ModelPreProcessor::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_ModelPreProcessor_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_ModelPreProcessor.hxx`:34 - `BRepMesh_ModelPreProcessor::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_ModelPreProcessor_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_ModelPreProcessor.hxx`:34 - `BRepMesh_ModelPreProcessor::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_ModelPreProcessor_get_type_descriptor()) }
     }
@@ -3258,6 +3480,7 @@ impl ModelPreProcessor {
 // From BRepMesh_NURBSRangeSplitter.hxx
 // ========================
 
+/// **Source:** `BRepMesh_NURBSRangeSplitter.hxx`:25 - `BRepMesh_NURBSRangeSplitter`
 /// Auxiliary class extending UV range splitter in order to generate
 /// internal nodes for NURBS surface.
 pub use crate::ffi::BRepMesh_NURBSRangeSplitter as NURBSRangeSplitter;
@@ -3269,11 +3492,13 @@ unsafe impl crate::CppDeletable for NURBSRangeSplitter {
 }
 
 impl NURBSRangeSplitter {
+    /// **Source:** `BRepMesh_NURBSRangeSplitter.hxx`:29 - `BRepMesh_NURBSRangeSplitter::BRepMesh_NURBSRangeSplitter()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_NURBSRangeSplitter_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_NURBSRangeSplitter.hxx`:38 - `BRepMesh_NURBSRangeSplitter::AdjustRange()`
     /// Updates discrete range of surface according to its geometric range.
     pub fn adjust_range(&mut self) {
         unsafe { crate::ffi::BRepMesh_NURBSRangeSplitter_adjust_range(self as *mut Self) }
@@ -3357,6 +3582,7 @@ impl NURBSRangeSplitter {
 // From BRepMesh_OrientedEdge.hxx
 // ========================
 
+/// **Source:** `BRepMesh_OrientedEdge.hxx`:22 - `BRepMesh_OrientedEdge`
 /// Light weighted structure representing simple link.
 pub use crate::ffi::BRepMesh_OrientedEdge as OrientedEdge;
 
@@ -3367,11 +3593,13 @@ unsafe impl crate::CppDeletable for OrientedEdge {
 }
 
 impl OrientedEdge {
+    /// **Source:** `BRepMesh_OrientedEdge.hxx`:28 - `BRepMesh_OrientedEdge::BRepMesh_OrientedEdge()`
     /// Default constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_OrientedEdge_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_OrientedEdge.hxx`:35 - `BRepMesh_OrientedEdge::BRepMesh_OrientedEdge()`
     /// Constructs a link between two vertices.
     pub fn new_int2(theFirstNode: i32, theLastNode: i32) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3382,16 +3610,19 @@ impl OrientedEdge {
         }
     }
 
+    /// **Source:** `BRepMesh_OrientedEdge.hxx`:42 - `BRepMesh_OrientedEdge::FirstNode()`
     /// Returns index of first node of the Link.
     pub fn first_node(&self) -> i32 {
         unsafe { crate::ffi::BRepMesh_OrientedEdge_first_node(self as *const Self) }
     }
 
+    /// **Source:** `BRepMesh_OrientedEdge.hxx`:45 - `BRepMesh_OrientedEdge::LastNode()`
     /// Returns index of last node of the Link.
     pub fn last_node(&self) -> i32 {
         unsafe { crate::ffi::BRepMesh_OrientedEdge_last_node(self as *const Self) }
     }
 
+    /// **Source:** `BRepMesh_OrientedEdge.hxx`:50 - `BRepMesh_OrientedEdge::IsEqual()`
     /// Checks this and other edge for equality.
     /// @param theOther edge to be checked against this one.
     /// @return TRUE if edges have the same orientation, FALSE if not.
@@ -3404,6 +3635,7 @@ impl OrientedEdge {
 // From BRepMesh_PairOfIndex.hxx
 // ========================
 
+/// **Source:** `BRepMesh_PairOfIndex.hxx`:24 - `BRepMesh_PairOfIndex`
 /// This class represents a pair of integer indices to store
 /// element indices connected to link. It is restricted to
 /// store more than two indices in it.
@@ -3416,52 +3648,62 @@ unsafe impl crate::CppDeletable for PairOfIndex {
 }
 
 impl PairOfIndex {
+    /// **Source:** `BRepMesh_PairOfIndex.hxx`:28 - `BRepMesh_PairOfIndex::BRepMesh_PairOfIndex()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_PairOfIndex_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_PairOfIndex.hxx`:31 - `BRepMesh_PairOfIndex::Clear()`
     /// Clears indices.
     pub fn clear(&mut self) {
         unsafe { crate::ffi::BRepMesh_PairOfIndex_clear(self as *mut Self) }
     }
 
+    /// **Source:** `BRepMesh_PairOfIndex.hxx`:34 - `BRepMesh_PairOfIndex::Append()`
     /// Appends index to the pair.
     pub fn append(&mut self, theIndex: i32) {
         unsafe { crate::ffi::BRepMesh_PairOfIndex_append(self as *mut Self, theIndex) }
     }
 
+    /// **Source:** `BRepMesh_PairOfIndex.hxx`:48 - `BRepMesh_PairOfIndex::Prepend()`
     /// Prepends index to the pair.
     pub fn prepend(&mut self, theIndex: i32) {
         unsafe { crate::ffi::BRepMesh_PairOfIndex_prepend(self as *mut Self, theIndex) }
     }
 
+    /// **Source:** `BRepMesh_PairOfIndex.hxx`:58 - `BRepMesh_PairOfIndex::IsEmpty()`
     /// Returns is pair is empty.
     pub fn is_empty(&self) -> bool {
         unsafe { crate::ffi::BRepMesh_PairOfIndex_is_empty(self as *const Self) }
     }
 
+    /// **Source:** `BRepMesh_PairOfIndex.hxx`:66 - `BRepMesh_PairOfIndex::Extent()`
     /// Returns number of initialized indices.
     pub fn extent(&self) -> i32 {
         unsafe { crate::ffi::BRepMesh_PairOfIndex_extent(self as *const Self) }
     }
 
+    /// **Source:** `BRepMesh_PairOfIndex.hxx`:69 - `BRepMesh_PairOfIndex::FirstIndex()`
     /// Returns first index of pair.
     pub fn first_index(&self) -> i32 {
         unsafe { crate::ffi::BRepMesh_PairOfIndex_first_index(self as *const Self) }
     }
 
+    /// **Source:** `BRepMesh_PairOfIndex.hxx`:72 - `BRepMesh_PairOfIndex::LastIndex()`
     /// Returns last index of pair
     pub fn last_index(&self) -> i32 {
         unsafe { crate::ffi::BRepMesh_PairOfIndex_last_index(self as *const Self) }
     }
 
+    /// **Source:** `BRepMesh_PairOfIndex.hxx`:76 - `BRepMesh_PairOfIndex::Index()`
     /// Returns index corresponding to the given position in the pair.
     /// @param thePairPos position of index in the pair (1 or 2).
     pub fn index(&self, thePairPos: i32) -> i32 {
         unsafe { crate::ffi::BRepMesh_PairOfIndex_index(self as *const Self, thePairPos) }
     }
 
+    /// **Source:** `BRepMesh_PairOfIndex.hxx`:87 - `BRepMesh_PairOfIndex::SetIndex()`
     /// Sets index corresponding to the given position in the pair.
     /// @param thePairPos position of index in the pair (1 or 2).
     /// @param theIndex index to be stored.
@@ -3471,6 +3713,7 @@ impl PairOfIndex {
         }
     }
 
+    /// **Source:** `BRepMesh_PairOfIndex.hxx`:97 - `BRepMesh_PairOfIndex::RemoveIndex()`
     /// Remove index from the given position.
     /// @param thePairPos position of index in the pair (1 or 2).
     pub fn remove_index(&mut self, thePairPos: i32) {
@@ -3482,6 +3725,7 @@ impl PairOfIndex {
 // From BRepMesh_SelectorOfDataStructureOfDelaun.hxx
 // ========================
 
+/// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:27 - `BRepMesh_SelectorOfDataStructureOfDelaun`
 /// Describes a selector and an iterator on a
 /// selector of components of a mesh.
 pub use crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun as SelectorOfDataStructureOfDelaun;
@@ -3493,6 +3737,7 @@ unsafe impl crate::CppDeletable for SelectorOfDataStructureOfDelaun {
 }
 
 impl SelectorOfDataStructureOfDelaun {
+    /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:31 - `BRepMesh_SelectorOfDataStructureOfDelaun::BRepMesh_SelectorOfDataStructureOfDelaun()`
     /// Default constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3500,6 +3745,7 @@ impl SelectorOfDataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:35 - `BRepMesh_SelectorOfDataStructureOfDelaun::BRepMesh_SelectorOfDataStructureOfDelaun()`
     /// Constructor.
     /// Initializes selector by the mesh.
     pub fn new_handlebrepmeshdatastructureofdelaun(
@@ -3510,6 +3756,7 @@ impl SelectorOfDataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:39 - `BRepMesh_SelectorOfDataStructureOfDelaun::Initialize()`
     /// Initializes selector by the mesh.
     pub fn initialize(&mut self, theMesh: &crate::ffi::HandleBRepMeshDataStructureOfDelaun) {
         unsafe {
@@ -3520,6 +3767,7 @@ impl SelectorOfDataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:42 - `BRepMesh_SelectorOfDataStructureOfDelaun::NeighboursOf()`
     /// Selects all neighboring elements of the given node.
     pub fn neighbours_of_vertex(&mut self, theNode: &crate::ffi::BRepMesh_Vertex) {
         unsafe {
@@ -3530,6 +3778,7 @@ impl SelectorOfDataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:45 - `BRepMesh_SelectorOfDataStructureOfDelaun::NeighboursOfNode()`
     /// Selects all neighboring elements of node with the given index.
     pub fn neighbours_of_node(&mut self, theNodeIndex: i32) {
         unsafe {
@@ -3540,6 +3789,7 @@ impl SelectorOfDataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:48 - `BRepMesh_SelectorOfDataStructureOfDelaun::NeighboursOf()`
     /// Selects all neighboring elements of the given link.
     pub fn neighbours_of_edge(&mut self, theLink: &crate::ffi::BRepMesh_Edge) {
         unsafe {
@@ -3550,6 +3800,7 @@ impl SelectorOfDataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:51 - `BRepMesh_SelectorOfDataStructureOfDelaun::NeighboursOfLink()`
     /// Selects all neighboring elements of link with the given index.
     pub fn neighbours_of_link(&mut self, theLinkIndex: i32) {
         unsafe {
@@ -3560,6 +3811,7 @@ impl SelectorOfDataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:54 - `BRepMesh_SelectorOfDataStructureOfDelaun::NeighboursOf()`
     /// Selects all neighboring elements of the given element.
     pub fn neighbours_of_triangle(&mut self, theElement: &crate::ffi::BRepMesh_Triangle) {
         unsafe {
@@ -3570,6 +3822,7 @@ impl SelectorOfDataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:57 - `BRepMesh_SelectorOfDataStructureOfDelaun::NeighboursOfElement()`
     /// Selects all neighboring elements by nodes of the given element.
     pub fn neighbours_of_element(&mut self, theElementIndex: i32) {
         unsafe {
@@ -3580,6 +3833,7 @@ impl SelectorOfDataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:60 - `BRepMesh_SelectorOfDataStructureOfDelaun::NeighboursByEdgeOf()`
     /// Selects all neighboring elements by links of the given element.
     pub fn neighbours_by_edge_of(&mut self, theElement: &crate::ffi::BRepMesh_Triangle) {
         unsafe {
@@ -3590,6 +3844,7 @@ impl SelectorOfDataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:63 - `BRepMesh_SelectorOfDataStructureOfDelaun::NeighboursOf()`
     /// Adds a level of neighbours by edge to the selector.
     pub fn neighbours_of_selectorofdatastructureofdelaun(
         &mut self,
@@ -3600,6 +3855,7 @@ impl SelectorOfDataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:66 - `BRepMesh_SelectorOfDataStructureOfDelaun::AddNeighbours()`
     /// Adds a level of neighbours by edge the selector.
     pub fn add_neighbours(&mut self) {
         unsafe {
@@ -3607,6 +3863,7 @@ impl SelectorOfDataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:80 - `BRepMesh_SelectorOfDataStructureOfDelaun::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
             &*(crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_dynamic_type(
@@ -3615,10 +3872,12 @@ impl SelectorOfDataStructureOfDelaun {
         }
     }
 
+    /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:80 - `BRepMesh_SelectorOfDataStructureOfDelaun::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:80 - `BRepMesh_SelectorOfDataStructureOfDelaun::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_get_type_descriptor()) }
     }
@@ -3665,6 +3924,7 @@ impl HandleBRepMeshSelectorOfDataStructureOfDelaun {
 // From BRepMesh_ShapeTool.hxx
 // ========================
 
+/// **Source:** `BRepMesh_ShapeTool.hxx`:33 - `BRepMesh_ShapeTool`
 /// Auxiliary class providing functionality to compute,
 /// retrieve and store data to TopoDS and model shape.
 pub use crate::ffi::BRepMesh_ShapeTool as ShapeTool;
@@ -3676,21 +3936,25 @@ unsafe impl crate::CppDeletable for ShapeTool {
 }
 
 impl ShapeTool {
+    /// **Source:** `BRepMesh_ShapeTool.hxx` - `BRepMesh_ShapeTool::BRepMesh_ShapeTool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ShapeTool_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:140 - `BRepMesh_ShapeTool::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_ShapeTool_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:38 - `BRepMesh_ShapeTool::MaxFaceTolerance()`
     /// Returns maximum tolerance of the given face.
     /// Considers tolerances of edges and vertices contained in the given face.
     pub fn max_face_tolerance(theFace: &crate::ffi::TopoDS_Face) -> f64 {
         unsafe { crate::ffi::BRepMesh_ShapeTool_max_face_tolerance(theFace) }
     }
 
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:44 - `BRepMesh_ShapeTool::BoxMaxDimension()`
     /// Gets the maximum dimension of the given bounding box.
     /// If the given bounding box is void leaves the resulting value unchanged.
     /// @param theBox bounding box to be processed.
@@ -3699,6 +3963,7 @@ impl ShapeTool {
         unsafe { crate::ffi::BRepMesh_ShapeTool_box_max_dimension(theBox, theMaxDimension) }
     }
 
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:59 - `BRepMesh_ShapeTool::AddInFace()`
     /// Stores the given triangulation into the given face.
     /// @param theFace face to be updated by triangulation.
     /// @param theTriangulation triangulation to be stored into the face.
@@ -3709,12 +3974,14 @@ impl ShapeTool {
         unsafe { crate::ffi::BRepMesh_ShapeTool_add_in_face(theFace, theTriangulation) }
     }
 
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:64 - `BRepMesh_ShapeTool::NullifyFace()`
     /// Nullifies triangulation stored in the face.
     /// @param theFace face to be updated by null triangulation.
     pub fn nullify_face(theFace: &crate::ffi::TopoDS_Face) {
         unsafe { crate::ffi::BRepMesh_ShapeTool_nullify_face(theFace) }
     }
 
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:70 - `BRepMesh_ShapeTool::NullifyEdge()`
     /// Nullifies polygon on triangulation stored in the edge.
     /// @param theEdge edge to be updated by null polygon.
     /// @param theTriangulation triangulation the given edge is associated to.
@@ -3733,6 +4000,7 @@ impl ShapeTool {
         }
     }
 
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:77 - `BRepMesh_ShapeTool::NullifyEdge()`
     /// Nullifies 3d polygon stored in the edge.
     /// @param theEdge edge to be updated by null polygon.
     /// @param theLocation face location.
@@ -3743,6 +4011,7 @@ impl ShapeTool {
         unsafe { crate::ffi::BRepMesh_ShapeTool_nullify_edge_edge_location(theEdge, theLocation) }
     }
 
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:85 - `BRepMesh_ShapeTool::UpdateEdge()`
     /// Updates the given edge by the given tessellated representation.
     /// @param theEdge edge to be updated.
     /// @param thePolygon tessellated representation of the edge to be stored.
@@ -3759,6 +4028,7 @@ impl ShapeTool {
         }
     }
 
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:93 - `BRepMesh_ShapeTool::UpdateEdge()`
     /// Updates the given edge by the given tessellated representation.
     /// @param theEdge edge to be updated.
     /// @param thePolygon tessellated representation of the edge to be stored.
@@ -3771,6 +4041,7 @@ impl ShapeTool {
         }
     }
 
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:104 - `BRepMesh_ShapeTool::UpdateEdge()`
     /// Updates the given seam edge by the given tessellated representations.
     /// @param theEdge edge to be updated.
     /// @param thePolygon1 tessellated representation corresponding to
@@ -3791,6 +4062,7 @@ impl ShapeTool {
         }
     }
 
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:113 - `BRepMesh_ShapeTool::UseLocation()`
     /// Applies location to the given point and return result.
     /// @param thePnt point to be transformed.
     /// @param theLoc location to be applied.
@@ -3803,6 +4075,7 @@ impl ShapeTool {
         }
     }
 
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:116 - `BRepMesh_ShapeTool::UVPoints()`
     /// Gets the strict UV locations of the extremities of the edge using pcurve.
     pub fn uv_points(
         theEdge: &crate::ffi::TopoDS_Edge,
@@ -3822,6 +4095,7 @@ impl ShapeTool {
         }
     }
 
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:124 - `BRepMesh_ShapeTool::Range()`
     /// Gets the parametric range of the given edge on the given face.
     pub fn range_edge_face_handlegeom2dcurve_real2_bool(
         theEdge: &crate::ffi::TopoDS_Edge,
@@ -3843,6 +4117,7 @@ impl ShapeTool {
         }
     }
 
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:133 - `BRepMesh_ShapeTool::Range()`
     /// Gets the 3d range of the given edge.
     pub fn range_edge_handlegeomcurve_real2_bool(
         theEdge: &crate::ffi::TopoDS_Edge,
@@ -3862,10 +4137,12 @@ impl ShapeTool {
         }
     }
 
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:140 - `BRepMesh_ShapeTool::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_ShapeTool_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_ShapeTool.hxx`:140 - `BRepMesh_ShapeTool::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_ShapeTool_get_type_descriptor()) }
     }
@@ -3904,6 +4181,7 @@ impl HandleBRepMeshShapeTool {
 // From BRepMesh_ShapeVisitor.hxx
 // ========================
 
+/// **Source:** `BRepMesh_ShapeVisitor.hxx`:34 - `BRepMesh_ShapeVisitor`
 /// Builds discrete model of a shape by adding faces and free edges.
 /// Computes deflection for corresponded shape and checks whether it
 /// fits existing polygonal representation. If not, cleans shape from
@@ -3917,24 +4195,29 @@ unsafe impl crate::CppDeletable for ShapeVisitor {
 }
 
 impl ShapeVisitor {
+    /// **Source:** `BRepMesh_ShapeVisitor.hxx`:44 - `BRepMesh_ShapeVisitor::Visit()`
     /// Handles TopoDS_Face object.
     pub fn visit_face(&mut self, theFace: &crate::ffi::TopoDS_Face) {
         unsafe { crate::ffi::BRepMesh_ShapeVisitor_visit_face(self as *mut Self, theFace) }
     }
 
+    /// **Source:** `BRepMesh_ShapeVisitor.hxx`:47 - `BRepMesh_ShapeVisitor::Visit()`
     /// Handles TopoDS_Edge object.
     pub fn visit_edge(&mut self, theEdge: &crate::ffi::TopoDS_Edge) {
         unsafe { crate::ffi::BRepMesh_ShapeVisitor_visit_edge(self as *mut Self, theEdge) }
     }
 
+    /// **Source:** `BRepMesh_ShapeVisitor.hxx`:49 - `BRepMesh_ShapeVisitor::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_ShapeVisitor_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_ShapeVisitor.hxx`:49 - `BRepMesh_ShapeVisitor::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_ShapeVisitor_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_ShapeVisitor.hxx`:49 - `BRepMesh_ShapeVisitor::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_ShapeVisitor_get_type_descriptor()) }
     }
@@ -3960,6 +4243,7 @@ impl ShapeVisitor {
 // From BRepMesh_SphereRangeSplitter.hxx
 // ========================
 
+/// **Source:** `BRepMesh_SphereRangeSplitter.hxx`:24 - `BRepMesh_SphereRangeSplitter`
 /// Auxiliary class extending default range splitter in
 /// order to generate internal nodes for spherical surface.
 pub use crate::ffi::BRepMesh_SphereRangeSplitter as SphereRangeSplitter;
@@ -3971,6 +4255,7 @@ unsafe impl crate::CppDeletable for SphereRangeSplitter {
 }
 
 impl SphereRangeSplitter {
+    /// **Source:** `BRepMesh_SphereRangeSplitter.hxx`:28 - `BRepMesh_SphereRangeSplitter::BRepMesh_SphereRangeSplitter()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_SphereRangeSplitter_ctor()) }
@@ -4041,6 +4326,7 @@ impl SphereRangeSplitter {
 // From BRepMesh_TorusRangeSplitter.hxx
 // ========================
 
+/// **Source:** `BRepMesh_TorusRangeSplitter.hxx`:24 - `BRepMesh_TorusRangeSplitter`
 /// Auxiliary class extending UV range splitter in order to generate
 /// internal nodes for NURBS surface.
 pub use crate::ffi::BRepMesh_TorusRangeSplitter as TorusRangeSplitter;
@@ -4052,11 +4338,13 @@ unsafe impl crate::CppDeletable for TorusRangeSplitter {
 }
 
 impl TorusRangeSplitter {
+    /// **Source:** `BRepMesh_TorusRangeSplitter.hxx`:28 - `BRepMesh_TorusRangeSplitter::BRepMesh_TorusRangeSplitter()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_TorusRangeSplitter_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_TorusRangeSplitter.hxx`:38 - `BRepMesh_TorusRangeSplitter::AddPoint()`
     /// Registers border point.
     pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
         unsafe { crate::ffi::BRepMesh_TorusRangeSplitter_add_point(self as *mut Self, thePoint) }
@@ -4138,6 +4426,7 @@ impl TorusRangeSplitter {
 // From BRepMesh_Triangle.hxx
 // ========================
 
+/// **Source:** `BRepMesh_Triangle.hxx`:28 - `BRepMesh_Triangle`
 /// Light weighted structure representing triangle
 /// of mesh consisting of oriented links.
 pub use crate::ffi::BRepMesh_Triangle as Triangle;
@@ -4149,11 +4438,13 @@ unsafe impl crate::CppDeletable for Triangle {
 }
 
 impl Triangle {
+    /// **Source:** `BRepMesh_Triangle.hxx`:34 - `BRepMesh_Triangle::BRepMesh_Triangle()`
     /// Default constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Triangle_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_Triangle.hxx`:79 - `BRepMesh_Triangle::Movability()`
     /// Returns movability of the triangle.
     pub fn movability(&self) -> crate::b_rep_mesh::DegreeOfFreedom {
         unsafe {
@@ -4164,6 +4455,7 @@ impl Triangle {
         }
     }
 
+    /// **Source:** `BRepMesh_Triangle.hxx`:82 - `BRepMesh_Triangle::SetMovability()`
     /// Sets movability of the triangle.
     pub fn set_movability(&mut self, theMovability: crate::b_rep_mesh::DegreeOfFreedom) {
         unsafe {
@@ -4171,6 +4463,7 @@ impl Triangle {
         }
     }
 
+    /// **Source:** `BRepMesh_Triangle.hxx`:87 - `BRepMesh_Triangle::IsEqual()`
     /// Checks for equality with another triangle.
     /// @param theOther triangle to be checked against this one.
     /// @return TRUE if equal, FALSE if not.
@@ -4183,6 +4476,7 @@ impl Triangle {
 // From BRepMesh_Triangulator.hxx
 // ========================
 
+/// **Source:** `BRepMesh_Triangulator.hxx`:32 - `BRepMesh_Triangulator`
 /// Auxiliary tool to generate triangulation
 pub use crate::ffi::BRepMesh_Triangulator as Triangulator;
 
@@ -4193,6 +4487,7 @@ unsafe impl crate::CppDeletable for Triangulator {
 }
 
 impl Triangulator {
+    /// **Source:** `BRepMesh_Triangulator.hxx`:53 - `BRepMesh_Triangulator::SetMessenger()`
     /// Set messenger for output information
     /// without this Message::DefaultMessenger() will be used
     pub fn set_messenger(&mut self, theMess: &crate::ffi::HandleMessageMessenger) {
@@ -4204,6 +4499,7 @@ impl Triangulator {
 // From BRepMesh_UVParamRangeSplitter.hxx
 // ========================
 
+/// **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:23 - `BRepMesh_UVParamRangeSplitter`
 /// Intended to generate internal mesh nodes using UV parameters of boundary discrete points.
 pub use crate::ffi::BRepMesh_UVParamRangeSplitter as UVParamRangeSplitter;
 
@@ -4214,6 +4510,7 @@ unsafe impl crate::CppDeletable for UVParamRangeSplitter {
 }
 
 impl UVParamRangeSplitter {
+    /// **Source:** `BRepMesh_UVParamRangeSplitter.hxx`:27 - `BRepMesh_UVParamRangeSplitter::BRepMesh_UVParamRangeSplitter()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UVParamRangeSplitter_ctor()) }
@@ -4289,6 +4586,7 @@ impl UVParamRangeSplitter {
 // From BRepMesh_UndefinedRangeSplitter.hxx
 // ========================
 
+/// **Source:** `BRepMesh_UndefinedRangeSplitter.hxx`:23 - `BRepMesh_UndefinedRangeSplitter`
 /// Auxiliary class provides safe value for surfaces that looks like NURBS
 /// but has no poles or other characteristics.
 pub use crate::ffi::BRepMesh_UndefinedRangeSplitter as UndefinedRangeSplitter;
@@ -4300,6 +4598,7 @@ unsafe impl crate::CppDeletable for UndefinedRangeSplitter {
 }
 
 impl UndefinedRangeSplitter {
+    /// **Source:** `BRepMesh_UndefinedRangeSplitter.hxx`:27 - `BRepMesh_UndefinedRangeSplitter::BRepMesh_UndefinedRangeSplitter()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UndefinedRangeSplitter_ctor()) }
@@ -4411,6 +4710,7 @@ impl UndefinedRangeSplitter {
 // From BRepMesh_Vertex.hxx
 // ========================
 
+/// **Source:** `BRepMesh_Vertex.hxx`:26 - `BRepMesh_Vertex`
 /// Light weighted structure representing vertex
 /// of the mesh in parametric space. Vertex could be
 /// associated with 3d point stored in external map.
@@ -4423,11 +4723,13 @@ unsafe impl crate::CppDeletable for Vertex {
 }
 
 impl Vertex {
+    /// **Source:** `BRepMesh_Vertex.hxx`:32 - `BRepMesh_Vertex::BRepMesh_Vertex()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Vertex_ctor()) }
     }
 
+    /// **Source:** `BRepMesh_Vertex.hxx`:42 - `BRepMesh_Vertex::BRepMesh_Vertex()`
     /// Creates vertex associated with point in 3d space.
     /// @param theUV position of vertex in parametric space.
     /// @param theLocation3d index of 3d point to be associated with vertex.
@@ -4446,6 +4748,7 @@ impl Vertex {
         }
     }
 
+    /// **Source:** `BRepMesh_Vertex.hxx`:53 - `BRepMesh_Vertex::BRepMesh_Vertex()`
     /// Creates vertex without association with point in 3d space.
     /// @param theU U position of vertex in parametric space.
     /// @param theV V position of vertex in parametric space.
@@ -4464,6 +4767,7 @@ impl Vertex {
         }
     }
 
+    /// **Source:** `BRepMesh_Vertex.hxx`:66 - `BRepMesh_Vertex::Initialize()`
     /// Initializes vertex associated with point in 3d space.
     /// @param theUV position of vertex in parametric space.
     /// @param theLocation3d index of 3d point to be associated with vertex.
@@ -4484,21 +4788,25 @@ impl Vertex {
         }
     }
 
+    /// **Source:** `BRepMesh_Vertex.hxx`:76 - `BRepMesh_Vertex::Coord()`
     /// Returns position of the vertex in parametric space.
     pub fn coord(&self) -> &crate::ffi::gp_XY {
         unsafe { &*(crate::ffi::BRepMesh_Vertex_coord(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_Vertex.hxx`:79 - `BRepMesh_Vertex::ChangeCoord()`
     /// Returns position of the vertex in parametric space for modification.
     pub fn change_coord(&mut self) -> &mut crate::ffi::gp_XY {
         unsafe { &mut *(crate::ffi::BRepMesh_Vertex_change_coord(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepMesh_Vertex.hxx`:82 - `BRepMesh_Vertex::Location3d()`
     /// Returns index of 3d point associated with the vertex.
     pub fn location3d(&self) -> i32 {
         unsafe { crate::ffi::BRepMesh_Vertex_location3d(self as *const Self) }
     }
 
+    /// **Source:** `BRepMesh_Vertex.hxx`:85 - `BRepMesh_Vertex::Movability()`
     /// Returns movability of the vertex.
     pub fn movability(&self) -> crate::b_rep_mesh::DegreeOfFreedom {
         unsafe {
@@ -4509,6 +4817,7 @@ impl Vertex {
         }
     }
 
+    /// **Source:** `BRepMesh_Vertex.hxx`:88 - `BRepMesh_Vertex::SetMovability()`
     /// Sets movability of the vertex.
     pub fn set_movability(&mut self, theMovability: crate::b_rep_mesh::DegreeOfFreedom) {
         unsafe {
@@ -4516,6 +4825,7 @@ impl Vertex {
         }
     }
 
+    /// **Source:** `BRepMesh_Vertex.hxx`:93 - `BRepMesh_Vertex::IsEqual()`
     /// Checks for equality with another vertex.
     /// @param theOther vertex to be checked against this one.
     /// @return TRUE if equal, FALSE if not.
@@ -4528,6 +4838,7 @@ impl Vertex {
 // From BRepMesh_VertexTool.hxx
 // ========================
 
+/// **Source:** `BRepMesh_VertexTool.hxx`:26 - `BRepMesh_VertexTool`
 /// Describes data structure intended to keep mesh nodes
 /// defined in UV space and implements functionality
 /// providing their uniqueness regarding their position.
@@ -4540,11 +4851,13 @@ unsafe impl crate::CppDeletable for VertexTool {
 }
 
 impl VertexTool {
+    /// **Source:** `BRepMesh_VertexTool.hxx`:34 - `BRepMesh_VertexTool::SetCellSize()`
     /// Sets new size of cell for cellfilter equal in both directions.
     pub fn set_cell_size_real(&mut self, theSize: f64) {
         unsafe { crate::ffi::BRepMesh_VertexTool_set_cell_size_real(self as *mut Self, theSize) }
     }
 
+    /// **Source:** `BRepMesh_VertexTool.hxx`:43 - `BRepMesh_VertexTool::SetCellSize()`
     /// Sets new size of cell for cellfilter.
     /// @param theSizeX size for X dimension.
     /// @param theSizeY size for Y dimension.
@@ -4558,6 +4871,7 @@ impl VertexTool {
         }
     }
 
+    /// **Source:** `BRepMesh_VertexTool.hxx`:53 - `BRepMesh_VertexTool::SetTolerance()`
     /// Sets the tolerance to be used for identification of
     /// coincident vertices equal for both dimensions.
     pub fn set_tolerance_real(&mut self, theTolerance: f64) {
@@ -4566,6 +4880,7 @@ impl VertexTool {
         }
     }
 
+    /// **Source:** `BRepMesh_VertexTool.hxx`:64 - `BRepMesh_VertexTool::SetTolerance()`
     /// Sets the tolerance to be used for identification of
     /// coincident vertices.
     /// @param theToleranceX tolerance for X dimension.
@@ -4580,6 +4895,7 @@ impl VertexTool {
         }
     }
 
+    /// **Source:** `BRepMesh_VertexTool.hxx`:75 - `BRepMesh_VertexTool::GetTolerance()`
     /// Gets the tolerance to be used for identification of
     /// coincident vertices.
     /// @param theToleranceX tolerance for X dimension.
@@ -4594,6 +4910,7 @@ impl VertexTool {
         }
     }
 
+    /// **Source:** `BRepMesh_VertexTool.hxx`:86 - `BRepMesh_VertexTool::Add()`
     /// Adds vertex with empty data to the tool.
     /// @param theVertex node to be added to the mesh.
     /// @param isForceAdd adds the given node to structure without
@@ -4603,31 +4920,37 @@ impl VertexTool {
         unsafe { crate::ffi::BRepMesh_VertexTool_add(self as *mut Self, theVertex, isForceAdd) }
     }
 
+    /// **Source:** `BRepMesh_VertexTool.hxx`:90 - `BRepMesh_VertexTool::DeleteVertex()`
     /// Deletes vertex with the given index from the tool.
     pub fn delete_vertex(&mut self, theIndex: i32) {
         unsafe { crate::ffi::BRepMesh_VertexTool_delete_vertex(self as *mut Self, theIndex) }
     }
 
+    /// **Source:** `BRepMesh_VertexTool.hxx`:99 - `BRepMesh_VertexTool::FindKey()`
     /// Returns vertex by the given index.
     pub fn find_key(&mut self, theIndex: i32) -> &crate::ffi::BRepMesh_Vertex {
         unsafe { &*(crate::ffi::BRepMesh_VertexTool_find_key(self as *mut Self, theIndex)) }
     }
 
+    /// **Source:** `BRepMesh_VertexTool.hxx`:105 - `BRepMesh_VertexTool::FindIndex()`
     /// Returns index of the given vertex.
     pub fn find_index(&mut self, theVertex: &crate::ffi::BRepMesh_Vertex) -> i32 {
         unsafe { crate::ffi::BRepMesh_VertexTool_find_index(self as *mut Self, theVertex) }
     }
 
+    /// **Source:** `BRepMesh_VertexTool.hxx`:113 - `BRepMesh_VertexTool::Extent()`
     /// Returns a number of vertices.
     pub fn extent(&self) -> i32 {
         unsafe { crate::ffi::BRepMesh_VertexTool_extent(self as *const Self) }
     }
 
+    /// **Source:** `BRepMesh_VertexTool.hxx`:116 - `BRepMesh_VertexTool::IsEmpty()`
     /// Returns True when the map contains no keys. <br>
     pub fn is_empty(&self) -> bool {
         unsafe { crate::ffi::BRepMesh_VertexTool_is_empty(self as *const Self) }
     }
 
+    /// **Source:** `BRepMesh_VertexTool.hxx`:121 - `BRepMesh_VertexTool::Substitute()`
     /// Substitutes vertex with the given by the given vertex with attributes.
     /// @param theIndex index of vertex to be substituted.
     /// @param theVertex replacement vertex.
@@ -4637,19 +4960,23 @@ impl VertexTool {
         }
     }
 
+    /// **Source:** `BRepMesh_VertexTool.hxx`:125 - `BRepMesh_VertexTool::RemoveLast()`
     /// Remove last node from the structure.
     pub fn remove_last(&mut self) {
         unsafe { crate::ffi::BRepMesh_VertexTool_remove_last(self as *mut Self) }
     }
 
+    /// **Source:** `BRepMesh_VertexTool.hxx`:137 - `BRepMesh_VertexTool::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_VertexTool_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_VertexTool.hxx`:137 - `BRepMesh_VertexTool::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::BRepMesh_VertexTool_get_type_name() }
     }
 
+    /// **Source:** `BRepMesh_VertexTool.hxx`:137 - `BRepMesh_VertexTool::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepMesh_VertexTool_get_type_descriptor()) }
     }

@@ -10,6 +10,7 @@
 // From XSAlgo_ShapeProcessor.hxx
 // ========================
 
+/// **Source:** `XSAlgo_ShapeProcessor.hxx`:32 - `XSAlgo_ShapeProcessor`
 /// Shape Processing module.
 /// Allows to define and apply general Shape Processing as a customizable sequence of operators.
 pub use crate::ffi::XSAlgo_ShapeProcessor as ShapeProcessor;
@@ -21,6 +22,7 @@ unsafe impl crate::CppDeletable for ShapeProcessor {
 }
 
 impl ShapeProcessor {
+    /// **Source:** `XSAlgo_ShapeProcessor.hxx`:53 - `XSAlgo_ShapeProcessor::XSAlgo_ShapeProcessor()`
     /// Constructor.
     /// @param theParameters Parameters to be used in the processing.
     pub fn new_shapefixparameters(
@@ -33,6 +35,7 @@ impl ShapeProcessor {
         }
     }
 
+    /// **Source:** `XSAlgo_ShapeProcessor.hxx`:87 - `XSAlgo_ShapeProcessor::CheckPCurve()`
     /// Check quality of pcurve of the edge on the given face, and correct it if necessary.
     /// @param theEdge Edge to check.
     /// @param theFace Face on which the edge is located.
@@ -55,6 +58,7 @@ impl ShapeProcessor {
         }
     }
 
+    /// **Source:** `XSAlgo_ShapeProcessor.hxx`:160 - `XSAlgo_ShapeProcessor::PrepareForTransfer()`
     /// The function is designed to set the length unit for the application before performing a
     /// transfer operation. It ensures that the length unit is correctly configured based on the
     /// value associated with the key "xstep.cascade.unit".

@@ -10,6 +10,7 @@
 // From BRepPrimAPI_MakeBox.hxx
 // ========================
 
+/// **Source:** `BRepPrimAPI_MakeBox.hxx`:50 - `BRepPrimAPI_MakeBox`
 /// Describes functions to build parallelepiped boxes.
 /// A MakeBox object provides a framework for:
 /// -   defining the construction of a box,
@@ -37,16 +38,19 @@ unsafe impl crate::CppDeletable for MakeBox {
 }
 
 impl MakeBox {
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:56 - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrimAPI_MakeBox_ctor()) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:59 - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
     /// Make a box with a corner at 0,0,0 and the other dx,dy,dz
     pub fn new_real3(dx: f64, dy: f64, dz: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrimAPI_MakeBox_ctor_real3(dx, dy, dz)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:64 - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
     /// Make a box with a corner at P and size dx, dy, dz.
     pub fn new_pnt_real3(
         P: &crate::ffi::gp_Pnt,
@@ -59,11 +63,13 @@ impl MakeBox {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:70 - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
     /// Make a box with corners P1,P2.
     pub fn new_pnt2(P1: &crate::ffi::gp_Pnt, P2: &crate::ffi::gp_Pnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrimAPI_MakeBox_ctor_pnt2(P1, P2)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:73 - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
     /// Make a box with Ax2 (the left corner and the axis) and size dx, dy, dz.
     pub fn new_ax2_real3(
         Axes: &crate::ffi::gp_Ax2,
@@ -78,6 +84,7 @@ impl MakeBox {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:79 - `BRepPrimAPI_MakeBox::Init()`
     /// Init a box with a corner at 0,0,0 and the other theDX, theDY, theDZ
     pub fn init_real3(&mut self, theDX: f64, theDY: f64, theDZ: f64) {
         unsafe {
@@ -85,6 +92,7 @@ impl MakeBox {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:84 - `BRepPrimAPI_MakeBox::Init()`
     /// Init a box with a corner at thePnt and size theDX, theDY, theDZ.
     pub fn init_pnt_real3(
         &mut self,
@@ -104,11 +112,13 @@ impl MakeBox {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:90 - `BRepPrimAPI_MakeBox::Init()`
     /// Init a box with corners thePnt1, thePnt2.
     pub fn init_pnt2(&mut self, thePnt1: &crate::ffi::gp_Pnt, thePnt2: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::BRepPrimAPI_MakeBox_init_pnt2(self as *mut Self, thePnt1, thePnt2) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:93 - `BRepPrimAPI_MakeBox::Init()`
     /// Init a box with Ax2 (the left corner and the theAxes) and size theDX, theDY, theDZ.
     pub fn init_ax2_real3(
         &mut self,
@@ -128,51 +138,61 @@ impl MakeBox {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:99 - `BRepPrimAPI_MakeBox::Wedge()`
     /// Returns the internal algorithm.
     pub fn wedge(&mut self) -> &mut crate::ffi::BRepPrim_Wedge {
         unsafe { &mut *(crate::ffi::BRepPrimAPI_MakeBox_wedge(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:102 - `BRepPrimAPI_MakeBox::Build()`
     /// Stores the solid in myShape.
     pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BRepPrimAPI_MakeBox_build(self as *mut Self, theRange) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:106 - `BRepPrimAPI_MakeBox::Shell()`
     /// Returns the constructed box as a shell.
     pub fn shell(&mut self) -> &crate::ffi::TopoDS_Shell {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeBox_shell(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:110 - `BRepPrimAPI_MakeBox::Solid()`
     /// Returns the constructed box as a solid.
     pub fn solid(&mut self) -> &crate::ffi::TopoDS_Solid {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeBox_solid(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:114 - `BRepPrimAPI_MakeBox::BottomFace()`
     /// Returns ZMin face
     pub fn bottom_face(&mut self) -> &crate::ffi::TopoDS_Face {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeBox_bottom_face(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:117 - `BRepPrimAPI_MakeBox::BackFace()`
     /// Returns XMin face
     pub fn back_face(&mut self) -> &crate::ffi::TopoDS_Face {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeBox_back_face(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:120 - `BRepPrimAPI_MakeBox::FrontFace()`
     /// Returns XMax face
     pub fn front_face(&mut self) -> &crate::ffi::TopoDS_Face {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeBox_front_face(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:123 - `BRepPrimAPI_MakeBox::LeftFace()`
     /// Returns YMin face
     pub fn left_face(&mut self) -> &crate::ffi::TopoDS_Face {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeBox_left_face(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:126 - `BRepPrimAPI_MakeBox::RightFace()`
     /// Returns YMax face
     pub fn right_face(&mut self) -> &crate::ffi::TopoDS_Face {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeBox_right_face(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:129 - `BRepPrimAPI_MakeBox::TopFace()`
     /// Returns ZMax face
     pub fn top_face(&mut self) -> &crate::ffi::TopoDS_Face {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeBox_top_face(self as *mut Self)) }
@@ -245,6 +265,7 @@ impl MakeBox {
 // From BRepPrimAPI_MakeCone.hxx
 // ========================
 
+/// **Source:** `BRepPrimAPI_MakeCone.hxx`:33 - `BRepPrimAPI_MakeCone`
 /// Describes functions to build cones or portions of cones.
 /// A MakeCone object provides a framework for:
 /// -   defining the construction of a cone,
@@ -259,6 +280,7 @@ unsafe impl crate::CppDeletable for MakeCone {
 }
 
 impl MakeCone {
+    /// **Source:** `BRepPrimAPI_MakeCone.hxx`:42 - `BRepPrimAPI_MakeCone::BRepPrimAPI_MakeCone()`
     /// Make a cone.
     /// @param[in] R1  cone bottom radius, may be null (z = 0)
     /// @param[in] R2  cone top radius, may be null (z = H)
@@ -267,6 +289,7 @@ impl MakeCone {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrimAPI_MakeCone_ctor_real3(R1, R2, H)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeCone.hxx`:51 - `BRepPrimAPI_MakeCone::BRepPrimAPI_MakeCone()`
     /// Make a cone.
     /// @param[in] R1     cone bottom radius, may be null (z = 0)
     /// @param[in] R2     cone top radius, may be null (z = H)
@@ -278,6 +301,7 @@ impl MakeCone {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeCone.hxx`:61 - `BRepPrimAPI_MakeCone::BRepPrimAPI_MakeCone()`
     /// Make a cone.
     /// @param[in] axes  coordinate system for the construction of the cone
     /// @param[in] R1    cone bottom radius, may be null (z = 0)
@@ -296,6 +320,7 @@ impl MakeCone {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeCone.hxx`:97 - `BRepPrimAPI_MakeCone::BRepPrimAPI_MakeCone()`
     /// Make a cone of height H radius R1 in the plane z =
     /// 0, R2 in the plane Z = H. R1 and R2 may be null.
     /// Take a section of <angle>
@@ -341,6 +366,7 @@ impl MakeCone {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeCone.hxx`:107 - `BRepPrimAPI_MakeCone::Cone()`
     /// Returns the algorithm.
     pub fn cone(&mut self) -> &mut crate::ffi::BRepPrim_Cone {
         unsafe { &mut *(crate::ffi::BRepPrimAPI_MakeCone_cone(self as *mut Self)) }
@@ -451,6 +477,7 @@ impl MakeCone {
 // From BRepPrimAPI_MakeCylinder.hxx
 // ========================
 
+/// **Source:** `BRepPrimAPI_MakeCylinder.hxx`:33 - `BRepPrimAPI_MakeCylinder`
 /// Describes functions to build cylinders or portions of  cylinders.
 /// A MakeCylinder object provides a framework for:
 /// -   defining the construction of a cylinder,
@@ -465,6 +492,7 @@ unsafe impl crate::CppDeletable for MakeCylinder {
 }
 
 impl MakeCylinder {
+    /// **Source:** `BRepPrimAPI_MakeCylinder.hxx`:41 - `BRepPrimAPI_MakeCylinder::BRepPrimAPI_MakeCylinder()`
     /// Make a cylinder.
     /// @param[in] R  cylinder radius
     /// @param[in] H  cylinder height
@@ -472,6 +500,7 @@ impl MakeCylinder {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrimAPI_MakeCylinder_ctor_real2(R, H)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeCylinder.hxx`:47 - `BRepPrimAPI_MakeCylinder::BRepPrimAPI_MakeCylinder()`
     /// Make a cylinder (part cylinder).
     /// @param[in] R      cylinder radius
     /// @param[in] H      cylinder height
@@ -482,6 +511,7 @@ impl MakeCylinder {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeCylinder.hxx`:55 - `BRepPrimAPI_MakeCylinder::BRepPrimAPI_MakeCylinder()`
     /// Make a cylinder of radius R and length H.
     /// @param[in] Axes  coordinate system for the construction of the cylinder
     /// @param[in] R     cylinder radius
@@ -494,6 +524,7 @@ impl MakeCylinder {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeCylinder.hxx`:85 - `BRepPrimAPI_MakeCylinder::BRepPrimAPI_MakeCylinder()`
     /// Make a cylinder   of  radius R  and  length H with
     /// angle  H.
     /// Constructs
@@ -533,6 +564,7 @@ impl MakeCylinder {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeCylinder.hxx`:94 - `BRepPrimAPI_MakeCylinder::Cylinder()`
     /// Returns the algorithm.
     pub fn cylinder(&mut self) -> &mut crate::ffi::BRepPrim_Cylinder {
         unsafe { &mut *(crate::ffi::BRepPrimAPI_MakeCylinder_cylinder(self as *mut Self)) }
@@ -647,6 +679,7 @@ impl MakeCylinder {
 // From BRepPrimAPI_MakeHalfSpace.hxx
 // ========================
 
+/// **Source:** `BRepPrimAPI_MakeHalfSpace.hxx`:39 - `BRepPrimAPI_MakeHalfSpace`
 /// Describes functions to build half-spaces.
 /// A half-space is an infinite solid, limited by a surface. It
 /// is built from a face or a shell, which bounds it, and with
@@ -666,6 +699,7 @@ unsafe impl crate::CppDeletable for MakeHalfSpace {
 }
 
 impl MakeHalfSpace {
+    /// **Source:** `BRepPrimAPI_MakeHalfSpace.hxx`:45 - `BRepPrimAPI_MakeHalfSpace::BRepPrimAPI_MakeHalfSpace()`
     /// Make a HalfSpace defined with a Face and a Point.
     pub fn new_face_pnt(
         Face: &crate::ffi::TopoDS_Face,
@@ -678,6 +712,7 @@ impl MakeHalfSpace {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeHalfSpace.hxx`:48 - `BRepPrimAPI_MakeHalfSpace::BRepPrimAPI_MakeHalfSpace()`
     /// Make a HalfSpace defined with a Shell and a Point.
     pub fn new_shell_pnt(
         Shell: &crate::ffi::TopoDS_Shell,
@@ -690,6 +725,7 @@ impl MakeHalfSpace {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeHalfSpace.hxx`:51 - `BRepPrimAPI_MakeHalfSpace::Solid()`
     /// Returns the constructed half-space as a solid.
     pub fn solid(&self) -> &crate::ffi::TopoDS_Solid {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeHalfSpace_solid(self as *const Self)) }
@@ -777,6 +813,7 @@ impl MakeHalfSpace {
 // From BRepPrimAPI_MakeOneAxis.hxx
 // ========================
 
+/// **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:30 - `BRepPrimAPI_MakeOneAxis`
 /// The abstract class MakeOneAxis is the root class of
 /// algorithms used to construct rotational primitives.
 pub use crate::ffi::BRepPrimAPI_MakeOneAxis as MakeOneAxis;
@@ -788,21 +825,25 @@ unsafe impl crate::CppDeletable for MakeOneAxis {
 }
 
 impl MakeOneAxis {
+    /// **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:40 - `BRepPrimAPI_MakeOneAxis::Build()`
     /// Stores the solid in myShape.
     pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BRepPrimAPI_MakeOneAxis_build(self as *mut Self, theRange) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:44 - `BRepPrimAPI_MakeOneAxis::Face()`
     /// Returns the lateral face of the rotational primitive.
     pub fn face(&mut self) -> &crate::ffi::TopoDS_Face {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeOneAxis_face(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:48 - `BRepPrimAPI_MakeOneAxis::Shell()`
     /// Returns the constructed rotational primitive as a shell.
     pub fn shell(&mut self) -> &crate::ffi::TopoDS_Shell {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeOneAxis_shell(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:52 - `BRepPrimAPI_MakeOneAxis::Solid()`
     /// Returns the constructed rotational primitive as a solid.
     pub fn solid(&mut self) -> &crate::ffi::TopoDS_Solid {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeOneAxis_solid(self as *mut Self)) }
@@ -877,6 +918,7 @@ impl MakeOneAxis {
 // From BRepPrimAPI_MakePrism.hxx
 // ========================
 
+/// **Source:** `BRepPrimAPI_MakePrism.hxx`:47 - `BRepPrimAPI_MakePrism`
 /// Describes functions to build linear swept topologies, called prisms.
 /// A prism is defined by:
 /// -   a basis shape, which is swept, and
@@ -903,6 +945,7 @@ unsafe impl crate::CppDeletable for MakePrism {
 }
 
 impl MakePrism {
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:55 - `BRepPrimAPI_MakePrism::BRepPrimAPI_MakePrism()`
     /// Builds the prism of base S and vector V. If C is true,
     /// S is copied. If Canonize is true then generated surfaces
     /// are attempted to be canonized in simple types
@@ -919,6 +962,7 @@ impl MakePrism {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:66 - `BRepPrimAPI_MakePrism::BRepPrimAPI_MakePrism()`
     /// Builds a semi-infinite or an infinite prism of base S.
     /// If Inf is true the prism  is infinite, if Inf is false
     /// the prism is semi-infinite (in the direction D).  If C
@@ -939,6 +983,7 @@ impl MakePrism {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:55 - `BRepPrimAPI_MakePrism::BRepPrimAPI_MakePrism()`
     /// Builds the prism of base S and vector V. If C is true,
     /// S is copied. If Canonize is true then generated surfaces
     /// are attempted to be canonized in simple types
@@ -950,6 +995,7 @@ impl MakePrism {
         Self::new_shape_vec_bool2(S, V, Copy, true)
     }
 
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:55 - `BRepPrimAPI_MakePrism::BRepPrimAPI_MakePrism()`
     /// Builds the prism of base S and vector V. If C is true,
     /// S is copied. If Canonize is true then generated surfaces
     /// are attempted to be canonized in simple types
@@ -960,6 +1006,7 @@ impl MakePrism {
         Self::new_shape_vec_bool2(S, V, false, true)
     }
 
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:66 - `BRepPrimAPI_MakePrism::BRepPrimAPI_MakePrism()`
     /// Builds a semi-infinite or an infinite prism of base S.
     /// If Inf is true the prism  is infinite, if Inf is false
     /// the prism is semi-infinite (in the direction D).  If C
@@ -975,6 +1022,7 @@ impl MakePrism {
         Self::new_shape_dir_bool3(S, D, Inf, Copy, true)
     }
 
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:66 - `BRepPrimAPI_MakePrism::BRepPrimAPI_MakePrism()`
     /// Builds a semi-infinite or an infinite prism of base S.
     /// If Inf is true the prism  is infinite, if Inf is false
     /// the prism is semi-infinite (in the direction D).  If C
@@ -989,6 +1037,7 @@ impl MakePrism {
         Self::new_shape_dir_bool3(S, D, Inf, false, true)
     }
 
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:66 - `BRepPrimAPI_MakePrism::BRepPrimAPI_MakePrism()`
     /// Builds a semi-infinite or an infinite prism of base S.
     /// If Inf is true the prism  is infinite, if Inf is false
     /// the prism is semi-infinite (in the direction D).  If C
@@ -1002,16 +1051,19 @@ impl MakePrism {
         Self::new_shape_dir_bool3(S, D, true, false, true)
     }
 
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:73 - `BRepPrimAPI_MakePrism::Prism()`
     /// Returns the internal sweeping algorithm.
     pub fn prism(&self) -> &crate::ffi::BRepSweep_Prism {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakePrism_prism(self as *const Self)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:76 - `BRepPrimAPI_MakePrism::Build()`
     /// Builds the resulting shape (redefined from MakeShape).
     pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BRepPrimAPI_MakePrism_build(self as *mut Self, theRange) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:80 - `BRepPrimAPI_MakePrism::FirstShape()`
     /// Returns the  TopoDS  Shape of the bottom of the prism.
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
@@ -1021,6 +1073,7 @@ impl MakePrism {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:88 - `BRepPrimAPI_MakePrism::LastShape()`
     /// Returns the TopoDS Shape of the top of the prism.
     /// In the case of a finite prism, FirstShape returns the
     /// basis of the prism, in other words, S if Copy is false;
@@ -1035,16 +1088,19 @@ impl MakePrism {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:91 - `BRepPrimAPI_MakePrism::Generated()`
     /// Returns ListOfShape from TopTools.
     pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakePrism_generated(self as *mut Self, S)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:95 - `BRepPrimAPI_MakePrism::IsDeleted()`
     /// Returns true if the shape S has been deleted.
     pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepPrimAPI_MakePrism_is_deleted(self as *mut Self, S) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:99 - `BRepPrimAPI_MakePrism::FirstShape()`
     /// Returns the TopoDS Shape of the bottom  of the  prism.
     /// generated  with  theShape (subShape of the  generating shape).
     pub fn first_shape_shape(
@@ -1059,6 +1115,7 @@ impl MakePrism {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:103 - `BRepPrimAPI_MakePrism::LastShape()`
     /// Returns the  TopoDS  Shape of the top  of  the  prism.
     /// generated  with  theShape (subShape of the  generating shape).
     pub fn last_shape_shape(
@@ -1148,6 +1205,7 @@ impl MakePrism {
 // From BRepPrimAPI_MakeRevol.hxx
 // ========================
 
+/// **Source:** `BRepPrimAPI_MakeRevol.hxx`:62 - `BRepPrimAPI_MakeRevol`
 /// Class to make revolved sweep topologies.
 ///
 /// a revolved sweep is defined by :
@@ -1188,6 +1246,7 @@ unsafe impl crate::CppDeletable for MakeRevol {
 }
 
 impl MakeRevol {
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:69 - `BRepPrimAPI_MakeRevol::BRepPrimAPI_MakeRevol()`
     /// Builds the Revol of base S, axis  A and angle  D. If C
     /// is true, S is copied.
     pub fn new_shape_ax1_real_bool(
@@ -1203,6 +1262,7 @@ impl MakeRevol {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:76 - `BRepPrimAPI_MakeRevol::BRepPrimAPI_MakeRevol()`
     /// Builds the Revol of base S, axis  A and angle 2*Pi. If
     /// C is true, S is copied.
     pub fn new_shape_ax1_bool(
@@ -1217,6 +1277,7 @@ impl MakeRevol {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:69 - `BRepPrimAPI_MakeRevol::BRepPrimAPI_MakeRevol()`
     /// Builds the Revol of base S, axis  A and angle  D. If C
     /// is true, S is copied.
     pub fn new_shape_ax1_real(
@@ -1227,6 +1288,7 @@ impl MakeRevol {
         Self::new_shape_ax1_real_bool(S, A, D, false)
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:76 - `BRepPrimAPI_MakeRevol::BRepPrimAPI_MakeRevol()`
     /// Builds the Revol of base S, axis  A and angle 2*Pi. If
     /// C is true, S is copied.
     pub fn new_shape_ax1(
@@ -1236,16 +1298,19 @@ impl MakeRevol {
         Self::new_shape_ax1_bool(S, A, false)
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:81 - `BRepPrimAPI_MakeRevol::Revol()`
     /// Returns the internal sweeping algorithm.
     pub fn revol(&self) -> &crate::ffi::BRepSweep_Revol {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeRevol_revol(self as *const Self)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:84 - `BRepPrimAPI_MakeRevol::Build()`
     /// Builds the resulting shape (redefined from MakeShape).
     pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BRepPrimAPI_MakeRevol_build(self as *mut Self, theRange) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:89 - `BRepPrimAPI_MakeRevol::FirstShape()`
     /// Returns the first shape of the revol  (coinciding with
     /// the generating shape).
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
@@ -1256,6 +1321,7 @@ impl MakeRevol {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:92 - `BRepPrimAPI_MakeRevol::LastShape()`
     /// Returns the TopoDS Shape of the end of the revol.
     pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
@@ -1265,6 +1331,7 @@ impl MakeRevol {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:97 - `BRepPrimAPI_MakeRevol::Generated()`
     /// Returns list of shape generated from shape S
     /// Warning: shape S must be shape of type VERTEX, EDGE, FACE, SOLID.
     /// For shapes of other types method always returns empty list
@@ -1272,11 +1339,13 @@ impl MakeRevol {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeRevol_generated(self as *mut Self, S)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:101 - `BRepPrimAPI_MakeRevol::IsDeleted()`
     /// Returns true if the shape S has been deleted.
     pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepPrimAPI_MakeRevol_is_deleted(self as *mut Self, S) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:105 - `BRepPrimAPI_MakeRevol::FirstShape()`
     /// Returns the TopoDS Shape of the beginning of the revolution,
     /// generated with theShape  (subShape of the generating shape).
     pub fn first_shape_shape(
@@ -1291,6 +1360,7 @@ impl MakeRevol {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:109 - `BRepPrimAPI_MakeRevol::LastShape()`
     /// Returns the TopoDS Shape of the end of the revolution,
     /// generated with  theShape (subShape of the  generating shape).
     pub fn last_shape_shape(
@@ -1305,11 +1375,13 @@ impl MakeRevol {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:112 - `BRepPrimAPI_MakeRevol::HasDegenerated()`
     /// Check if there are degenerated edges in the result.
     pub fn has_degenerated(&self) -> bool {
         unsafe { crate::ffi::BRepPrimAPI_MakeRevol_has_degenerated(self as *const Self) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:115 - `BRepPrimAPI_MakeRevol::Degenerated()`
     /// Returns the list of degenerated edges
     pub fn degenerated(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeRevol_degenerated(self as *const Self)) }
@@ -1390,6 +1462,7 @@ impl MakeRevol {
 // From BRepPrimAPI_MakeRevolution.hxx
 // ========================
 
+/// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:34 - `BRepPrimAPI_MakeRevolution`
 /// Describes functions to build revolved shapes.
 /// A MakeRevolution object provides a framework for:
 /// -   defining the construction of a revolved shape,
@@ -1404,6 +1477,7 @@ unsafe impl crate::CppDeletable for MakeRevolution {
 }
 
 impl MakeRevolution {
+    /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:40 - `BRepPrimAPI_MakeRevolution::BRepPrimAPI_MakeRevolution()`
     /// Make a revolution body by rotating a curve around Z.
     pub fn new_handlegeomcurve(Meridian: &crate::ffi::HandleGeomCurve) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1413,6 +1487,7 @@ impl MakeRevolution {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:43 - `BRepPrimAPI_MakeRevolution::BRepPrimAPI_MakeRevolution()`
     /// Make a revolution body by rotating a curve around Z.
     pub fn new_handlegeomcurve_real(
         Meridian: &crate::ffi::HandleGeomCurve,
@@ -1425,6 +1500,7 @@ impl MakeRevolution {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:47 - `BRepPrimAPI_MakeRevolution::BRepPrimAPI_MakeRevolution()`
     /// Make a revolution body by rotating a curve around Z.
     pub fn new_handlegeomcurve_real2(
         Meridian: &crate::ffi::HandleGeomCurve,
@@ -1440,6 +1516,7 @@ impl MakeRevolution {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:52 - `BRepPrimAPI_MakeRevolution::BRepPrimAPI_MakeRevolution()`
     /// Make a revolution body by rotating a curve around Z.
     pub fn new_handlegeomcurve_real3(
         Meridian: &crate::ffi::HandleGeomCurve,
@@ -1456,6 +1533,7 @@ impl MakeRevolution {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:58 - `BRepPrimAPI_MakeRevolution::BRepPrimAPI_MakeRevolution()`
     /// Make a revolution body by rotating a curve around Z.
     pub fn new_ax2_handlegeomcurve(
         Axes: &crate::ffi::gp_Ax2,
@@ -1468,6 +1546,7 @@ impl MakeRevolution {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:62 - `BRepPrimAPI_MakeRevolution::BRepPrimAPI_MakeRevolution()`
     /// Make a revolution body by rotating a curve around Z.
     pub fn new_ax2_handlegeomcurve_real(
         Axes: &crate::ffi::gp_Ax2,
@@ -1483,6 +1562,7 @@ impl MakeRevolution {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:67 - `BRepPrimAPI_MakeRevolution::BRepPrimAPI_MakeRevolution()`
     /// Make a revolution body by rotating a curve around Z.
     pub fn new_ax2_handlegeomcurve_real2(
         Axes: &crate::ffi::gp_Ax2,
@@ -1499,6 +1579,7 @@ impl MakeRevolution {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:81 - `BRepPrimAPI_MakeRevolution::BRepPrimAPI_MakeRevolution()`
     /// Make a revolution body by rotating a curve around Z.
     /// For all algorithms the resulting shape is composed of
     /// -   a lateral revolved face,
@@ -1524,6 +1605,7 @@ impl MakeRevolution {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:91 - `BRepPrimAPI_MakeRevolution::Revolution()`
     /// Returns the algorithm.
     pub fn revolution(&mut self) -> &mut crate::ffi::BRepPrim_Revolution {
         unsafe { &mut *(crate::ffi::BRepPrimAPI_MakeRevolution_revolution(self as *mut Self)) }
@@ -1646,6 +1728,7 @@ impl MakeRevolution {
 // From BRepPrimAPI_MakeSphere.hxx
 // ========================
 
+/// **Source:** `BRepPrimAPI_MakeSphere.hxx`:33 - `BRepPrimAPI_MakeSphere`
 /// Describes functions to build spheres or portions of spheres.
 /// A MakeSphere object provides a framework for:
 /// -   defining the construction of a sphere,
@@ -1660,12 +1743,14 @@ unsafe impl crate::CppDeletable for MakeSphere {
 }
 
 impl MakeSphere {
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:40 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     /// Make a sphere.
     /// @param[in] R  sphere radius
     pub fn new_real(R: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrimAPI_MakeSphere_ctor_real(R)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:45 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     /// Make a sphere (spherical wedge).
     /// @param[in] R      sphere radius
     /// @param[in] angle  angle between the radii lying within the bounding semidisks
@@ -1675,6 +1760,7 @@ impl MakeSphere {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:51 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     /// Make a sphere (spherical segment).
     /// @param[in] R  sphere radius
     /// @param[in] angle1  first angle defining a spherical segment
@@ -1687,6 +1773,7 @@ impl MakeSphere {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:60 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     /// Make a sphere (spherical segment).
     /// @param[in] R       sphere radius
     /// @param[in] angle1  first angle defining a spherical segment
@@ -1700,6 +1787,7 @@ impl MakeSphere {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:68 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     /// Make a sphere.
     /// @param[in] Center  sphere center coordinates
     /// @param[in] R       sphere radius
@@ -1709,6 +1797,7 @@ impl MakeSphere {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:74 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     /// Make a sphere (spherical wedge).
     /// @param[in] Center  sphere center coordinates
     /// @param[in] R       sphere radius
@@ -1721,6 +1810,7 @@ impl MakeSphere {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:83 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     /// Make a sphere (spherical segment).
     /// @param[in] Center  sphere center coordinates
     /// @param[in] R       sphere radius
@@ -1739,6 +1829,7 @@ impl MakeSphere {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:94 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     /// Make a sphere (spherical segment).
     /// @param[in] Center  sphere center coordinates
     /// @param[in] R       sphere radius
@@ -1759,6 +1850,7 @@ impl MakeSphere {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:103 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     /// Make a sphere.
     /// @param[in] Axis  coordinate system for the construction of the sphere
     /// @param[in] R     sphere radius
@@ -1768,6 +1860,7 @@ impl MakeSphere {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:109 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     /// Make a sphere (spherical wedge).
     /// @param[in] Axis   coordinate system for the construction of the sphere
     /// @param[in] R      sphere radius
@@ -1780,6 +1873,7 @@ impl MakeSphere {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:118 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     /// Make a sphere (spherical segment).
     /// @param[in] Axis    coordinate system for the construction of the sphere
     /// @param[in] R       sphere radius
@@ -1798,6 +1892,7 @@ impl MakeSphere {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:133 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     /// Make a sphere of radius R.
     /// For all algorithms The resulting shape is composed of
     /// -   a lateral spherical face,
@@ -1822,6 +1917,7 @@ impl MakeSphere {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:143 - `BRepPrimAPI_MakeSphere::Sphere()`
     /// Returns the algorithm.
     pub fn sphere(&mut self) -> &mut crate::ffi::BRepPrim_Sphere {
         unsafe { &mut *(crate::ffi::BRepPrimAPI_MakeSphere_sphere(self as *mut Self)) }
@@ -1932,6 +2028,7 @@ impl MakeSphere {
 // From BRepPrimAPI_MakeSweep.hxx
 // ========================
 
+/// **Source:** `BRepPrimAPI_MakeSweep.hxx`:42 - `BRepPrimAPI_MakeSweep`
 /// The abstract class MakeSweep is
 /// the root class of swept primitives.
 /// Sweeps are objects you obtain by sweeping a profile along a path.
@@ -1957,6 +2054,7 @@ unsafe impl crate::CppDeletable for MakeSweep {
 }
 
 impl MakeSweep {
+    /// **Source:** `BRepPrimAPI_MakeSweep.hxx`:48 - `BRepPrimAPI_MakeSweep::FirstShape()`
     /// Returns the  TopoDS  Shape of the bottom of the sweep.
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
@@ -1966,6 +2064,7 @@ impl MakeSweep {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeSweep.hxx`:51 - `BRepPrimAPI_MakeSweep::LastShape()`
     /// Returns the TopoDS Shape of the top of the sweep.
     pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
@@ -2049,6 +2148,7 @@ impl MakeSweep {
 // From BRepPrimAPI_MakeTorus.hxx
 // ========================
 
+/// **Source:** `BRepPrimAPI_MakeTorus.hxx`:33 - `BRepPrimAPI_MakeTorus`
 /// Describes functions to build tori or portions of tori.
 /// A MakeTorus object provides a framework for:
 /// -   defining the construction of a torus,
@@ -2063,6 +2163,7 @@ unsafe impl crate::CppDeletable for MakeTorus {
 }
 
 impl MakeTorus {
+    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:41 - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
     /// Make a torus.
     /// @param[in] R1  distance from the center of the pipe to the center of the torus
     /// @param[in] R2  radius of the pipe
@@ -2070,6 +2171,7 @@ impl MakeTorus {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrimAPI_MakeTorus_ctor_real2(R1, R2)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:47 - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
     /// Make a section of a torus.
     /// @param[in] R1     distance from the center of the pipe to the center of the torus
     /// @param[in] R2     radius of the pipe
@@ -2080,6 +2182,7 @@ impl MakeTorus {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:56 - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
     /// Make  a torus with angles on the small circle.
     /// @param[in] R1      distance from the center of the pipe to the center of the torus
     /// @param[in] R2      radius of the pipe
@@ -2093,6 +2196,7 @@ impl MakeTorus {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:67 - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
     /// Make  a torus with angles on the small circle.
     /// @param[in] R1      distance from the center of the pipe to the center of the torus
     /// @param[in] R2      radius of the pipe
@@ -2113,6 +2217,7 @@ impl MakeTorus {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:77 - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
     /// Make a torus.
     /// @param[in] Axes  coordinate system for the construction of the sphere
     /// @param[in] R1    distance from the center of the pipe to the center of the torus
@@ -2125,6 +2230,7 @@ impl MakeTorus {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:86 - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
     /// Make a section of a torus.
     /// @param[in] Axes   coordinate system for the construction of the sphere
     /// @param[in] R1     distance from the center of the pipe to the center of the torus
@@ -2143,6 +2249,7 @@ impl MakeTorus {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:97 - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
     /// Make a torus.
     /// @param[in] Axes    coordinate system for the construction of the sphere
     /// @param[in] R1      distance from the center of the pipe to the center of the torus
@@ -2163,6 +2270,7 @@ impl MakeTorus {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:123 - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
     /// Make a section of a torus of radii R1 R2.
     /// For all algorithms The resulting shape is composed of
     /// -      a lateral toroidal face,
@@ -2198,6 +2306,7 @@ impl MakeTorus {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:134 - `BRepPrimAPI_MakeTorus::Torus()`
     /// Returns the algorithm.
     pub fn torus(&mut self) -> &mut crate::ffi::BRepPrim_Torus {
         unsafe { &mut *(crate::ffi::BRepPrimAPI_MakeTorus_torus(self as *mut Self)) }
@@ -2308,6 +2417,7 @@ impl MakeTorus {
 // From BRepPrimAPI_MakeWedge.hxx
 // ========================
 
+/// **Source:** `BRepPrimAPI_MakeWedge.hxx`:35 - `BRepPrimAPI_MakeWedge`
 /// Describes functions to build wedges, i.e. boxes with inclined faces.
 /// A MakeWedge object provides a framework for:
 /// -   defining the construction of a wedge,
@@ -2322,6 +2432,7 @@ unsafe impl crate::CppDeletable for MakeWedge {
 }
 
 impl MakeWedge {
+    /// **Source:** `BRepPrimAPI_MakeWedge.hxx`:41 - `BRepPrimAPI_MakeWedge::BRepPrimAPI_MakeWedge()`
     /// Make a STEP right angular wedge. (ltx >= 0)
     pub fn new_real4(dx: f64, dy: f64, dz: f64, ltx: f64) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2329,6 +2440,7 @@ impl MakeWedge {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeWedge.hxx`:47 - `BRepPrimAPI_MakeWedge::BRepPrimAPI_MakeWedge()`
     /// Make a STEP right angular wedge. (ltx >= 0)
     pub fn new_ax2_real4(
         Axes: &crate::ffi::gp_Ax2,
@@ -2344,6 +2456,7 @@ impl MakeWedge {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeWedge.hxx`:54 - `BRepPrimAPI_MakeWedge::BRepPrimAPI_MakeWedge()`
     /// Make a wedge. The face at dy is xmin,zmin xmax,zmax
     pub fn new_real7(
         dx: f64,
@@ -2361,6 +2474,7 @@ impl MakeWedge {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeWedge.hxx`:63 - `BRepPrimAPI_MakeWedge::BRepPrimAPI_MakeWedge()`
     /// Make a wedge. The face at dy is xmin,zmin xmax,zmax
     pub fn new_ax2_real7(
         Axes: &crate::ffi::gp_Ax2,
@@ -2379,21 +2493,25 @@ impl MakeWedge {
         }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeWedge.hxx`:73 - `BRepPrimAPI_MakeWedge::Wedge()`
     /// Returns the internal algorithm.
     pub fn wedge(&mut self) -> &mut crate::ffi::BRepPrim_Wedge {
         unsafe { &mut *(crate::ffi::BRepPrimAPI_MakeWedge_wedge(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeWedge.hxx`:76 - `BRepPrimAPI_MakeWedge::Build()`
     /// Stores the solid in myShape.
     pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BRepPrimAPI_MakeWedge_build(self as *mut Self, theRange) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeWedge.hxx`:80 - `BRepPrimAPI_MakeWedge::Shell()`
     /// Returns the constructed box in the form of a shell.
     pub fn shell(&mut self) -> &crate::ffi::TopoDS_Shell {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeWedge_shell(self as *mut Self)) }
     }
 
+    /// **Source:** `BRepPrimAPI_MakeWedge.hxx`:84 - `BRepPrimAPI_MakeWedge::Solid()`
     /// Returns the constructed box in the form of a solid.
     pub fn solid(&mut self) -> &crate::ffi::TopoDS_Solid {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeWedge_solid(self as *mut Self)) }

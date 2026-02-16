@@ -3187,10 +3187,21 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
 
     let mut output = String::new();
 
-    // Doc comment
+    // Source attribution + doc comment for the class
+    let class_source = format_source_attribution(
+        &bindings.source_header,
+        bindings.source_line,
+        cn,
+    );
+    output.push_str(&format!("/// {}\n", class_source));
     if let Some(ref comment) = bindings.doc_comment {
         for line in comment.lines() {
-            output.push_str(&format!("/// {}\n", line.trim()));
+            let trimmed = line.trim();
+            if trimmed.is_empty() {
+                output.push_str("///\n");
+            } else {
+                output.push_str(&format!("/// {}\n", trimmed));
+            }
         }
     }
 
@@ -3220,7 +3231,12 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             .collect();
         let args: Vec<String> = ctor.params.iter().map(|p| enum_convert_arg(p)).collect();
 
-        let doc = format_reexport_doc(&ctor.doc_comment);
+        let source_attr = format_source_attribution(
+            &bindings.source_header,
+            ctor.source_line,
+            &format!("{}::{}()", cn, cn),
+        );
+        let doc = format_reexport_doc(&source_attr, &ctor.doc_comment);
 
         if let Some(ref conv) = ctor.convenience_of {
             // Convenience constructor: Rust-only wrapper that delegates to full-arg version
@@ -3285,11 +3301,71 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
 
         let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr);
 
-        let doc = format_reexport_doc(&wm.doc_comment);
+        let source_attr = format_source_attribution(
+            &bindings.source_header,
+            wm.source_line,
+            &format!("{}::{}()", cn, wm.cpp_method_name),
+        );
+        let doc = format_reexport_doc(&source_attr, &wm.doc_comment);
         impl_methods.push(format!(
             "{}    pub fn {}({}){} {{\n        {}\n    }}\n",
             doc,
             wm.impl_method_name,
+            params.join(", "),
+            return_type,
+            body,
+        ));
+    }
+
+    // 2b. Direct methods (also delegates to ffi free functions, same pattern as wrappers)
+    for dm in &bindings.direct_methods {
+        let self_param = if dm.is_const {
+            "&self".to_string()
+        } else {
+            "&mut self".to_string()
+        };
+
+        let self_arg = if dm.is_const {
+            "self as *const Self".to_string()
+        } else {
+            "self as *mut Self".to_string()
+        };
+
+        let params: Vec<String> = std::iter::once(self_param)
+            .chain(
+                dm.params
+                    .iter()
+                    .map(|p| format!("{}: {}", p.rust_name, p.rust_reexport_type)),
+            )
+            .collect();
+        let args: Vec<String> = std::iter::once(self_arg)
+            .chain(dm.params.iter().map(|p| enum_convert_arg(p)))
+            .collect();
+
+        let return_type = dm
+            .return_type
+            .as_ref()
+            .map(|rt| format!(" -> {}", rt.rust_reexport_type))
+            .unwrap_or_default();
+
+        let ffi_fn_name = format!("{}_{}", cn, dm.rust_name);
+        let raw_call = format!("crate::ffi::{}({})", ffi_fn_name, args.join(", "));
+        let is_enum_return = dm.return_type.as_ref().and_then(|rt| rt.enum_rust_type.as_ref());
+        let needs_owned_ptr = dm.return_type.as_ref().map_or(false, |rt| rt.needs_unique_ptr);
+        let reexport_rt = dm.return_type.as_ref().map(|rt| rt.rust_reexport_type.as_str());
+
+        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr);
+
+        let source_attr = format_source_attribution(
+            &bindings.source_header,
+            dm.source_line,
+            &format!("{}::{}()", cn, dm.cxx_name),
+        );
+        let doc = format_reexport_doc(&source_attr, &dm.doc_comment);
+        impl_methods.push(format!(
+            "{}    pub fn {}({}){} {{\n        {}\n    }}\n",
+            doc,
+            dm.rust_name,
             params.join(", "),
             return_type,
             body,
@@ -3320,7 +3396,12 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             })
             .unwrap_or_default();
 
-        let doc = format_reexport_doc(&sm.doc_comment);
+        let source_attr = format_source_attribution(
+            &bindings.source_header,
+            sm.source_line,
+            &format!("{}::{}()", cn, sm.cpp_method_name),
+        );
+        let doc = format_reexport_doc(&source_attr, &sm.doc_comment);
         let raw_call = format!("crate::ffi::{}({})", sm.ffi_fn_name, args.join(", "));
         let is_enum_return = sm.return_type.as_ref().and_then(|rt| rt.enum_rust_type.as_ref());
         let needs_owned_ptr = sm.return_type.as_ref().map_or(false, |rt| rt.needs_unique_ptr);
@@ -3422,14 +3503,17 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
 
         let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr);
 
+        let no_doc: Option<String> = None;
         impl_methods.push(format!(
-            "    /// Inherited from {source}: {method}()\n    pub fn {}({}){} {{\n        {}\n    }}\n",
+            "{}    pub fn {}({}){} {{\n        {}\n    }}\n",
+            format_reexport_doc(
+                &format!("Inherited from {}: {}()", im.source_class, im.cpp_method_name),
+                &no_doc,
+            ),
             im.impl_method_name,
             params.join(", "),
             return_type,
             body,
-            source = im.source_class,
-            method = im.cpp_method_name,
         ));
     }
 
@@ -3489,19 +3573,20 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
     output
 }
 
-/// Format an optional doc comment for re-export impl methods (indented with 4 spaces).
-fn format_reexport_doc(doc: &Option<String>) -> String {
-    match doc {
-        Some(comment) => {
-            let formatted = comment
-                .lines()
-                .map(|line| format!("    /// {}", line.trim()))
-                .collect::<Vec<_>>()
-                .join("\n");
-            format!("{}\n", formatted)
+/// Format source attribution + optional doc comment for re-export impl methods (indented with 4 spaces).
+fn format_reexport_doc(source_attr: &str, doc: &Option<String>) -> String {
+    let mut out = format!("    /// {}\n", source_attr);
+    if let Some(comment) = doc {
+        for line in comment.lines() {
+            let trimmed = line.trim();
+            if trimmed.is_empty() {
+                out.push_str("    ///\n");
+            } else {
+                out.push_str(&format!("    /// {}\n", trimmed));
+            }
         }
-        None => String::new(),
     }
+    out
 }
 
 // ── FFI TokenStream emit ────────────────────────────────────────────────────
@@ -3745,36 +3830,14 @@ fn format_return_type_with_lifetime(ffi_type: Option<&str>, needs_lifetime: bool
     }
 }
 
-/// Emit a doc comment block for ffi.rs (indented 8 spaces).
-fn emit_ffi_doc(out: &mut String, source: &str, comment: &Option<String>) {
+/// Emit source attribution only for ffi.rs (indented 8 spaces, no doc comments).
+fn emit_ffi_doc(out: &mut String, source: &str, _comment: &Option<String>) {
     writeln!(out, "        /// {}", source).unwrap();
-    if let Some(ref comment) = comment {
-        writeln!(out, "        ///").unwrap();
-        for line in comment.lines() {
-            let trimmed = line.trim();
-            if trimmed.is_empty() {
-                writeln!(out, "        ///").unwrap();
-            } else {
-                writeln!(out, "        /// {}", trimmed).unwrap();
-            }
-        }
-    }
 }
 
-/// Emit a doc comment block for ffi.rs (indented 4 spaces, for extern "C" blocks).
-fn emit_ffi_doc_4(out: &mut String, source: &str, comment: &Option<String>) {
+/// Emit source attribution only for ffi.rs (indented 4 spaces, no doc comments).
+fn emit_ffi_doc_4(out: &mut String, source: &str, _comment: &Option<String>) {
     writeln!(out, "    /// {}", source).unwrap();
-    if let Some(ref comment) = comment {
-        writeln!(out, "    ///").unwrap();
-        for line in comment.lines() {
-            let trimmed = line.trim();
-            if trimmed.is_empty() {
-                writeln!(out, "    ///").unwrap();
-            } else {
-                writeln!(out, "    /// {}", trimmed).unwrap();
-            }
-        }
-    }
 }
 
 #[cfg(test)]

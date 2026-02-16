@@ -10,6 +10,7 @@
 // From StepData_Factors.hxx
 // ========================
 
+/// **Source:** `StepData_Factors.hxx`:24 - `StepData_Factors`
 /// Class for using units variables
 pub use crate::ffi::StepData_Factors as Factors;
 
@@ -20,11 +21,13 @@ unsafe impl crate::CppDeletable for Factors {
 }
 
 impl Factors {
+    /// **Source:** `StepData_Factors.hxx`:30 - `StepData_Factors::StepData_Factors()`
     /// Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepData_Factors_ctor()) }
     }
 
+    /// **Source:** `StepData_Factors.hxx`:33 - `StepData_Factors::InitializeFactors()`
     /// Initializes the 3 factors for the conversion of units
     pub fn initialize_factors(
         &mut self,
@@ -42,40 +45,47 @@ impl Factors {
         }
     }
 
+    /// **Source:** `StepData_Factors.hxx`:38 - `StepData_Factors::SetCascadeUnit()`
     /// Sets length unit for current transfer process
     pub fn set_cascade_unit(&mut self, theUnit: f64) {
         unsafe { crate::ffi::StepData_Factors_set_cascade_unit(self as *mut Self, theUnit) }
     }
 
+    /// **Source:** `StepData_Factors.hxx`:41 - `StepData_Factors::CascadeUnit()`
     /// Returns length unit for current transfer process (mm by default)
     pub fn cascade_unit(&self) -> f64 {
         unsafe { crate::ffi::StepData_Factors_cascade_unit(self as *const Self) }
     }
 
+    /// **Source:** `StepData_Factors.hxx`:45 - `StepData_Factors::LengthFactor()`
     /// Returns transient length factor for scaling of shapes
     /// at one stage of transfer process
     pub fn length_factor(&self) -> f64 {
         unsafe { crate::ffi::StepData_Factors_length_factor(self as *const Self) }
     }
 
+    /// **Source:** `StepData_Factors.hxx`:49 - `StepData_Factors::PlaneAngleFactor()`
     /// Returns transient plane angle factor for conversion of angles
     /// at one stage of transfer process
     pub fn plane_angle_factor(&self) -> f64 {
         unsafe { crate::ffi::StepData_Factors_plane_angle_factor(self as *const Self) }
     }
 
+    /// **Source:** `StepData_Factors.hxx`:53 - `StepData_Factors::SolidAngleFactor()`
     /// Returns transient solid angle factor for conversion of angles
     /// at one stage of transfer process
     pub fn solid_angle_factor(&self) -> f64 {
         unsafe { crate::ffi::StepData_Factors_solid_angle_factor(self as *const Self) }
     }
 
+    /// **Source:** `StepData_Factors.hxx`:57 - `StepData_Factors::FactorRadianDegree()`
     /// Returns transient factor radian degree for conversion of angles
     /// at one stage of transfer process
     pub fn factor_radian_degree(&self) -> f64 {
         unsafe { crate::ffi::StepData_Factors_factor_radian_degree(self as *const Self) }
     }
 
+    /// **Source:** `StepData_Factors.hxx`:61 - `StepData_Factors::FactorDegreeRadian()`
     /// Returns transient factor degree radian for conversion of angles
     /// at one stage of transfer process
     pub fn factor_degree_radian(&self) -> f64 {
@@ -87,6 +97,7 @@ impl Factors {
 // From StepData_StepModel.hxx
 // ========================
 
+/// **Source:** `StepData_StepModel.hxx`:38 - `StepData_StepModel`
 /// Gives access to
 /// - entities in a STEP file,
 /// - the STEP file header.
@@ -99,16 +110,19 @@ unsafe impl crate::CppDeletable for StepModel {
 }
 
 impl StepModel {
+    /// **Source:** `StepData_StepModel.hxx`:43 - `StepData_StepModel::StepData_StepModel()`
     /// Creates an empty STEP model with an empty header.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepData_StepModel_ctor()) }
     }
 
+    /// **Source:** `StepData_StepModel.hxx`:50 - `StepData_StepModel::GetFromAnother()`
     /// gets header from another Model (uses Header Protocol)
     pub fn get_from_another(&mut self, other: &crate::ffi::HandleInterfaceInterfaceModel) {
         unsafe { crate::ffi::StepData_StepModel_get_from_another(self as *mut Self, other) }
     }
 
+    /// **Source:** `StepData_StepModel.hxx`:54 - `StepData_StepModel::NewEmptyModel()`
     /// Returns a New Empty Model, same type as <me>, i.e. StepModel
     pub fn new_empty_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
         unsafe {
@@ -118,26 +132,31 @@ impl StepModel {
         }
     }
 
+    /// **Source:** `StepData_StepModel.hxx`:60 - `StepData_StepModel::HasHeaderEntity()`
     /// says if a Header entity has a specified type
     pub fn has_header_entity(&self, atype: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::StepData_StepModel_has_header_entity(self as *const Self, atype) }
     }
 
+    /// **Source:** `StepData_StepModel.hxx`:66 - `StepData_StepModel::ClearHeader()`
     /// Clears the Header
     pub fn clear_header(&mut self) {
         unsafe { crate::ffi::StepData_StepModel_clear_header(self as *mut Self) }
     }
 
+    /// **Source:** `StepData_StepModel.hxx`:72 - `StepData_StepModel::VerifyCheck()`
     /// Specific Check, checks Header Items with HeaderProtocol
     pub fn verify_check(&self, ach: &mut crate::ffi::HandleInterfaceCheck) {
         unsafe { crate::ffi::StepData_StepModel_verify_check(self as *const Self, ach) }
     }
 
+    /// **Source:** `StepData_StepModel.hxx`:83 - `StepData_StepModel::ClearLabels()`
     /// erases specific labels, i.e. clears the map (entity-ident)
     pub fn clear_labels(&mut self) {
         unsafe { crate::ffi::StepData_StepModel_clear_labels(self as *mut Self) }
     }
 
+    /// **Source:** `StepData_StepModel.hxx`:107 - `StepData_StepModel::SourceCodePage()`
     /// Return the encoding of STEP file for converting names into UNICODE.
     /// Initialized from "read.step.codepage" variable by constructor, which is Resource_UTF8 by
     /// default.
@@ -150,6 +169,7 @@ impl StepModel {
         }
     }
 
+    /// **Source:** `StepData_StepModel.hxx`:110 - `StepData_StepModel::SetSourceCodePage()`
     /// Return the encoding of STEP file for converting names into UNICODE.
     pub fn set_source_code_page(&mut self, theCode: crate::resource::FormatType) {
         unsafe {
@@ -157,26 +177,31 @@ impl StepModel {
         }
     }
 
+    /// **Source:** `StepData_StepModel.hxx`:113 - `StepData_StepModel::SetLocalLengthUnit()`
     /// Sets local length unit using for transfer process
     pub fn set_local_length_unit(&mut self, theUnit: f64) {
         unsafe { crate::ffi::StepData_StepModel_set_local_length_unit(self as *mut Self, theUnit) }
     }
 
+    /// **Source:** `StepData_StepModel.hxx`:116 - `StepData_StepModel::LocalLengthUnit()`
     /// Returns local length unit using for transfer process (1 by default)
     pub fn local_length_unit(&self) -> f64 {
         unsafe { crate::ffi::StepData_StepModel_local_length_unit(self as *const Self) }
     }
 
+    /// **Source:** `StepData_StepModel.hxx`:119 - `StepData_StepModel::SetWriteLengthUnit()`
     /// Sets length unit using for writing process
     pub fn set_write_length_unit(&mut self, theUnit: f64) {
         unsafe { crate::ffi::StepData_StepModel_set_write_length_unit(self as *mut Self, theUnit) }
     }
 
+    /// **Source:** `StepData_StepModel.hxx`:122 - `StepData_StepModel::WriteLengthUnit()`
     /// Returns length unit using for writing process (1 by default)
     pub fn write_length_unit(&self) -> f64 {
         unsafe { crate::ffi::StepData_StepModel_write_length_unit(self as *const Self) }
     }
 
+    /// **Source:** `StepData_StepModel.hxx`:127 - `StepData_StepModel::IsInitializedUnit()`
     /// Returns the unit initialization flag
     /// True - the unit was initialized
     /// False - the unit value was not initialized, the default value is used
@@ -184,14 +209,17 @@ impl StepModel {
         unsafe { crate::ffi::StepData_StepModel_is_initialized_unit(self as *const Self) }
     }
 
+    /// **Source:** `StepData_StepModel.hxx`:132 - `StepData_StepModel::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::StepData_StepModel_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `StepData_StepModel.hxx`:132 - `StepData_StepModel::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::StepData_StepModel_get_type_name() }
     }
 
+    /// **Source:** `StepData_StepModel.hxx`:132 - `StepData_StepModel::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::StepData_StepModel_get_type_descriptor()) }
     }

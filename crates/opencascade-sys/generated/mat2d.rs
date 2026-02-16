@@ -10,6 +10,7 @@
 // From MAT2d_BiInt.hxx
 // ========================
 
+/// **Source:** `MAT2d_BiInt.hxx`:28 - `MAT2d_BiInt`
 /// BiInt is a set of two integers.
 pub use crate::ffi::MAT2d_BiInt as BiInt;
 
@@ -20,26 +21,32 @@ unsafe impl crate::CppDeletable for BiInt {
 }
 
 impl BiInt {
+    /// **Source:** `MAT2d_BiInt.hxx`:33 - `MAT2d_BiInt::MAT2d_BiInt()`
     pub fn new_int2(I1: i32, I2: i32) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::MAT2d_BiInt_ctor_int2(I1, I2)) }
     }
 
+    /// **Source:** `MAT2d_BiInt.hxx`:35 - `MAT2d_BiInt::FirstIndex()`
     pub fn first_index(&self) -> i32 {
         unsafe { crate::ffi::MAT2d_BiInt_first_index(self as *const Self) }
     }
 
+    /// **Source:** `MAT2d_BiInt.hxx`:37 - `MAT2d_BiInt::SecondIndex()`
     pub fn second_index(&self) -> i32 {
         unsafe { crate::ffi::MAT2d_BiInt_second_index(self as *const Self) }
     }
 
+    /// **Source:** `MAT2d_BiInt.hxx`:39 - `MAT2d_BiInt::FirstIndex()`
     pub fn first_index_int(&mut self, I1: i32) {
         unsafe { crate::ffi::MAT2d_BiInt_first_index_int(self as *mut Self, I1) }
     }
 
+    /// **Source:** `MAT2d_BiInt.hxx`:41 - `MAT2d_BiInt::SecondIndex()`
     pub fn second_index_int(&mut self, I2: i32) {
         unsafe { crate::ffi::MAT2d_BiInt_second_index_int(self as *mut Self, I2) }
     }
 
+    /// **Source:** `MAT2d_BiInt.hxx`:43 - `MAT2d_BiInt::IsEqual()`
     pub fn is_equal(&self, B: &crate::ffi::MAT2d_BiInt) -> bool {
         unsafe { crate::ffi::MAT2d_BiInt_is_equal(self as *const Self, B) }
     }
@@ -49,6 +56,7 @@ impl BiInt {
 // From MAT2d_Tool2d.hxx
 // ========================
 
+/// **Source:** `MAT2d_Tool2d.hxx`:40 - `MAT2d_Tool2d`
 /// Set of the methods useful for the MAT's computation.
 /// Tool2d contains the geometry of the bisecting locus.
 pub use crate::ffi::MAT2d_Tool2d as Tool2d;
@@ -60,30 +68,36 @@ unsafe impl crate::CppDeletable for Tool2d {
 }
 
 impl Tool2d {
+    /// **Source:** `MAT2d_Tool2d.hxx`:46 - `MAT2d_Tool2d::MAT2d_Tool2d()`
     /// Empty Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::MAT2d_Tool2d_ctor()) }
     }
 
+    /// **Source:** `MAT2d_Tool2d.hxx`:49 - `MAT2d_Tool2d::Sense()`
     /// <aSide> defines the side of the computation of the map.
     pub fn sense(&mut self, aside: crate::mat::Side) {
         unsafe { crate::ffi::MAT2d_Tool2d_sense(self as *mut Self, aside.into()) }
     }
 
+    /// **Source:** `MAT2d_Tool2d.hxx`:51 - `MAT2d_Tool2d::SetJoinType()`
     pub fn set_join_type(&mut self, aJoinType: crate::geom_abs::JoinType) {
         unsafe { crate::ffi::MAT2d_Tool2d_set_join_type(self as *mut Self, aJoinType.into()) }
     }
 
+    /// **Source:** `MAT2d_Tool2d.hxx`:59 - `MAT2d_Tool2d::NumberOfItems()`
     /// Returns the Number of Items .
     pub fn number_of_items(&self) -> i32 {
         unsafe { crate::ffi::MAT2d_Tool2d_number_of_items(self as *const Self) }
     }
 
+    /// **Source:** `MAT2d_Tool2d.hxx`:62 - `MAT2d_Tool2d::ToleranceOfConfusion()`
     /// Returns tolerance to test the confusion of two points.
     pub fn tolerance_of_confusion(&self) -> f64 {
         unsafe { crate::ffi::MAT2d_Tool2d_tolerance_of_confusion(self as *const Self) }
     }
 
+    /// **Source:** `MAT2d_Tool2d.hxx`:68 - `MAT2d_Tool2d::FirstPoint()`
     /// Creates the point at the origin of the bisector between
     /// anitem and the previous  item.
     /// dist is the distance from the FirstPoint to <anitem>.
@@ -92,6 +106,7 @@ impl Tool2d {
         unsafe { crate::ffi::MAT2d_Tool2d_first_point(self as *mut Self, anitem, dist) }
     }
 
+    /// **Source:** `MAT2d_Tool2d.hxx`:73 - `MAT2d_Tool2d::TangentBefore()`
     /// Creates the Tangent at the end of the Item defined
     /// by <anitem>. Returns the index of this vector in
     /// <theGeomVecs>
@@ -99,6 +114,7 @@ impl Tool2d {
         unsafe { crate::ffi::MAT2d_Tool2d_tangent_before(self as *mut Self, anitem, IsOpenResult) }
     }
 
+    /// **Source:** `MAT2d_Tool2d.hxx`:79 - `MAT2d_Tool2d::TangentAfter()`
     /// Creates the Reversed Tangent at the origin of the Item
     /// defined by <anitem>. Returns the index of this vector in
     /// <theGeomVecs>
@@ -106,6 +122,7 @@ impl Tool2d {
         unsafe { crate::ffi::MAT2d_Tool2d_tangent_after(self as *mut Self, anitem, IsOpenResult) }
     }
 
+    /// **Source:** `MAT2d_Tool2d.hxx`:85 - `MAT2d_Tool2d::Tangent()`
     /// Creates the Tangent at the end of the bisector defined
     /// by <bisector>. Returns the index of this vector in
     /// <theGeomVecs>
@@ -113,18 +130,21 @@ impl Tool2d {
         unsafe { crate::ffi::MAT2d_Tool2d_tangent(self as *mut Self, bisector) }
     }
 
+    /// **Source:** `MAT2d_Tool2d.hxx`:121 - `MAT2d_Tool2d::Dump()`
     /// displays information about the bisector defined by
     /// <bisector>.
     pub fn dump(&self, bisector: i32, erease: i32) {
         unsafe { crate::ffi::MAT2d_Tool2d_dump(self as *const Self, bisector, erease) }
     }
 
+    /// **Source:** `MAT2d_Tool2d.hxx`:125 - `MAT2d_Tool2d::GeomBis()`
     /// Returns the <Bisec> of index <Index> in
     /// <theGeomBisectors>.
     pub fn geom_bis(&self, Index: i32) -> &crate::ffi::Bisector_Bisec {
         unsafe { &*(crate::ffi::MAT2d_Tool2d_geom_bis(self as *const Self, Index)) }
     }
 
+    /// **Source:** `MAT2d_Tool2d.hxx`:128 - `MAT2d_Tool2d::GeomElt()`
     /// Returns the Geometry of index <Index> in <theGeomElts>.
     pub fn geom_elt(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
@@ -132,21 +152,25 @@ impl Tool2d {
         }
     }
 
+    /// **Source:** `MAT2d_Tool2d.hxx`:131 - `MAT2d_Tool2d::GeomPnt()`
     /// Returns the point of index <Index> in the <theGeomPnts>.
     pub fn geom_pnt(&self, Index: i32) -> &crate::ffi::gp_Pnt2d {
         unsafe { &*(crate::ffi::MAT2d_Tool2d_geom_pnt(self as *const Self, Index)) }
     }
 
+    /// **Source:** `MAT2d_Tool2d.hxx`:135 - `MAT2d_Tool2d::GeomVec()`
     /// Returns the  vector  of index <Index> in the
     /// <theGeomVecs>.
     pub fn geom_vec(&self, Index: i32) -> &crate::ffi::gp_Vec2d {
         unsafe { &*(crate::ffi::MAT2d_Tool2d_geom_vec(self as *const Self, Index)) }
     }
 
+    /// **Source:** `MAT2d_Tool2d.hxx`:139 - `MAT2d_Tool2d::BisecFusion()`
     pub fn bisec_fusion(&mut self, Index1: i32, Index2: i32) {
         unsafe { crate::ffi::MAT2d_Tool2d_bisec_fusion(self as *mut Self, Index1, Index2) }
     }
 
+    /// **Source:** `MAT2d_Tool2d.hxx`:143 - `MAT2d_Tool2d::ChangeGeomBis()`
     /// Returns the <Bisec> of index <Index> in
     /// <theGeomBisectors>.
     pub fn change_geom_bis(&mut self, Index: i32) -> &mut crate::ffi::Bisector_Bisec {

@@ -37,6 +37,7 @@ impl TryFrom<i32> for Side {
 // From MAT_BasicElt.hxx
 // ========================
 
+/// **Source:** `MAT_BasicElt.hxx`:32 - `MAT_BasicElt`
 /// A    BasicELt  is  associated   to  each  elementary
 /// constituent of  the figure.
 pub use crate::ffi::MAT_BasicElt as BasicElt;
@@ -48,37 +49,45 @@ unsafe impl crate::CppDeletable for BasicElt {
 }
 
 impl BasicElt {
+    /// **Source:** `MAT_BasicElt.hxx`:37 - `MAT_BasicElt::MAT_BasicElt()`
     /// Constructor, <anInteger> is the <index> of <me>.
     pub fn new_int(anInteger: i32) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::MAT_BasicElt_ctor_int(anInteger)) }
     }
 
+    /// **Source:** `MAT_BasicElt.hxx`:48 - `MAT_BasicElt::Index()`
     /// Return the <index> of <me> in Graph.TheBasicElts.
     pub fn index(&self) -> i32 {
         unsafe { crate::ffi::MAT_BasicElt_index(self as *const Self) }
     }
 
+    /// **Source:** `MAT_BasicElt.hxx`:51 - `MAT_BasicElt::GeomIndex()`
     /// Return the <GeomIndex> of <me>.
     pub fn geom_index(&self) -> i32 {
         unsafe { crate::ffi::MAT_BasicElt_geom_index(self as *const Self) }
     }
 
+    /// **Source:** `MAT_BasicElt.hxx`:57 - `MAT_BasicElt::SetIndex()`
     pub fn set_index(&mut self, anInteger: i32) {
         unsafe { crate::ffi::MAT_BasicElt_set_index(self as *mut Self, anInteger) }
     }
 
+    /// **Source:** `MAT_BasicElt.hxx`:59 - `MAT_BasicElt::SetGeomIndex()`
     pub fn set_geom_index(&mut self, anInteger: i32) {
         unsafe { crate::ffi::MAT_BasicElt_set_geom_index(self as *mut Self, anInteger) }
     }
 
+    /// **Source:** `MAT_BasicElt.hxx`:61 - `MAT_BasicElt::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::MAT_BasicElt_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `MAT_BasicElt.hxx`:61 - `MAT_BasicElt::get_type_name()`
     pub fn get_type_name() -> *const std::ffi::c_char {
         unsafe { crate::ffi::MAT_BasicElt_get_type_name() }
     }
 
+    /// **Source:** `MAT_BasicElt.hxx`:61 - `MAT_BasicElt::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::MAT_BasicElt_get_type_descriptor()) }
     }
