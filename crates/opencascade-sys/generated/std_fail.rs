@@ -59,8 +59,12 @@ impl NotDone {
     }
 
     /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::StdFail_NotDone_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StdFail_NotDone_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::get_type_descriptor()`

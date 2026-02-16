@@ -217,14 +217,22 @@ impl BasicEditor {
 
     /// **Source:** `IGESData_BasicEditor.hxx`:119 - `IGESData_BasicEditor::UnitFlagName()`
     /// From the flag of unit, determines its name, "" if incorrect
-    pub fn unit_flag_name(flag: i32) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IGESData_BasicEditor_unit_flag_name(flag) }
+    pub fn unit_flag_name(flag: i32) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_BasicEditor_unit_flag_name(flag))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IGESData_BasicEditor.hxx`:122 - `IGESData_BasicEditor::IGESVersionName()`
     /// From the flag of IGES version, returns name, "" if incorrect
-    pub fn iges_version_name(flag: i32) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IGESData_BasicEditor_iges_version_name(flag) }
+    pub fn iges_version_name(flag: i32) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_BasicEditor_iges_version_name(flag))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IGESData_BasicEditor.hxx`:125 - `IGESData_BasicEditor::IGESVersionMax()`
@@ -235,8 +243,12 @@ impl BasicEditor {
 
     /// **Source:** `IGESData_BasicEditor.hxx`:128 - `IGESData_BasicEditor::DraftingName()`
     /// From the flag of drafting standard, returns name, "" if incorrect
-    pub fn drafting_name(flag: i32) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IGESData_BasicEditor_drafting_name(flag) }
+    pub fn drafting_name(flag: i32) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_BasicEditor_drafting_name(flag))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IGESData_BasicEditor.hxx`:131 - `IGESData_BasicEditor::DraftingMax()`
@@ -359,8 +371,12 @@ impl HArray1OfIGESEntity {
     }
 
     /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IGESData_HArray1OfIGESEntity_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_HArray1OfIGESEntity_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::get_type_descriptor()`
@@ -857,8 +873,12 @@ impl IGESEntity {
     }
 
     /// **Source:** `IGESData_IGESEntity.hxx`:333 - `IGESData_IGESEntity::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IGESData_IGESEntity_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_IGESEntity_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IGESData_IGESEntity.hxx`:333 - `IGESData_IGESEntity::get_type_descriptor()`

@@ -144,8 +144,12 @@ impl AxisPlacement {
     }
 
     /// **Source:** `Geom2d_AxisPlacement.hxx`:94 - `Geom2d_AxisPlacement::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_AxisPlacement_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_AxisPlacement_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_AxisPlacement.hxx`:94 - `Geom2d_AxisPlacement::get_type_descriptor()`
@@ -1462,8 +1466,12 @@ impl BSplineCurve {
     }
 
     /// **Source:** `Geom2d_BSplineCurve.hxx`:865 - `Geom2d_BSplineCurve::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_BSplineCurve_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_BSplineCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_BSplineCurve.hxx`:865 - `Geom2d_BSplineCurve::get_type_descriptor()`
@@ -2118,8 +2126,12 @@ impl BezierCurve {
     }
 
     /// **Source:** `Geom2d_BezierCurve.hxx`:313 - `Geom2d_BezierCurve::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_BezierCurve_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_BezierCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_BezierCurve.hxx`:313 - `Geom2d_BezierCurve::get_type_descriptor()`
@@ -2408,8 +2420,12 @@ impl BoundedCurve {
     }
 
     /// **Source:** `Geom2d_BoundedCurve.hxx`:63 - `Geom2d_BoundedCurve::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_BoundedCurve_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_BoundedCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_BoundedCurve.hxx`:63 - `Geom2d_BoundedCurve::get_type_descriptor()`
@@ -2869,8 +2885,12 @@ impl CartesianPoint {
     }
 
     /// **Source:** `Geom2d_CartesianPoint.hxx`:77 - `Geom2d_CartesianPoint::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_CartesianPoint_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_CartesianPoint_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_CartesianPoint.hxx`:77 - `Geom2d_CartesianPoint::get_type_descriptor()`
@@ -3269,8 +3289,12 @@ impl Circle {
     }
 
     /// **Source:** `Geom2d_Circle.hxx`:160 - `Geom2d_Circle::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_Circle_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_Circle_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_Circle.hxx`:160 - `Geom2d_Circle::get_type_descriptor()`
@@ -3701,8 +3725,12 @@ impl Conic {
     }
 
     /// **Source:** `Geom2d_Conic.hxx`:113 - `Geom2d_Conic::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_Conic_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_Conic_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_Conic.hxx`:113 - `Geom2d_Conic::get_type_descriptor()`
@@ -4299,8 +4327,12 @@ impl Curve {
     }
 
     /// **Source:** `Geom2d_Curve.hxx`:225 - `Geom2d_Curve::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_Curve_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_Curve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_Curve.hxx`:225 - `Geom2d_Curve::get_type_descriptor()`
@@ -4697,8 +4729,12 @@ impl Direction {
     }
 
     /// **Source:** `Geom2d_Direction.hxx`:89 - `Geom2d_Direction::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_Direction_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_Direction_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_Direction.hxx`:89 - `Geom2d_Direction::get_type_descriptor()`
@@ -5268,8 +5304,12 @@ impl Ellipse {
     }
 
     /// **Source:** `Geom2d_Ellipse.hxx`:245 - `Geom2d_Ellipse::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_Ellipse_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_Ellipse_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_Ellipse.hxx`:245 - `Geom2d_Ellipse::get_type_descriptor()`
@@ -5751,8 +5791,12 @@ impl Geometry {
     }
 
     /// **Source:** `Geom2d_Geometry.hxx`:115 - `Geom2d_Geometry::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_Geometry_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_Geometry_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_Geometry.hxx`:115 - `Geom2d_Geometry::get_type_descriptor()`
@@ -6428,8 +6472,12 @@ impl Hyperbola {
     }
 
     /// **Source:** `Geom2d_Hyperbola.hxx`:292 - `Geom2d_Hyperbola::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_Hyperbola_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_Hyperbola_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_Hyperbola.hxx`:292 - `Geom2d_Hyperbola::get_type_descriptor()`
@@ -6971,8 +7019,12 @@ impl Line {
     }
 
     /// **Source:** `Geom2d_Line.hxx`:182 - `Geom2d_Line::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_Line_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_Line_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_Line.hxx`:182 - `Geom2d_Line::get_type_descriptor()`
@@ -7555,8 +7607,12 @@ impl OffsetCurve {
     }
 
     /// **Source:** `Geom2d_OffsetCurve.hxx`:291 - `Geom2d_OffsetCurve::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_OffsetCurve_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_OffsetCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_OffsetCurve.hxx`:291 - `Geom2d_OffsetCurve::get_type_descriptor()`
@@ -8036,8 +8092,12 @@ impl Parabola {
     }
 
     /// **Source:** `Geom2d_Parabola.hxx`:210 - `Geom2d_Parabola::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_Parabola_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_Parabola_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_Parabola.hxx`:210 - `Geom2d_Parabola::get_type_descriptor()`
@@ -8371,8 +8431,12 @@ impl Point {
     }
 
     /// **Source:** `Geom2d_Point.hxx`:60 - `Geom2d_Point::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_Point_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_Point_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_Point.hxx`:60 - `Geom2d_Point::get_type_descriptor()`
@@ -8823,8 +8887,12 @@ impl Transformation {
     }
 
     /// **Source:** `Geom2d_Transformation.hxx`:196 - `Geom2d_Transformation::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_Transformation_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_Transformation_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_Transformation.hxx`:196 - `Geom2d_Transformation::get_type_descriptor()`
@@ -9291,8 +9359,12 @@ impl TrimmedCurve {
     }
 
     /// **Source:** `Geom2d_TrimmedCurve.hxx`:260 - `Geom2d_TrimmedCurve::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_TrimmedCurve_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_TrimmedCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_TrimmedCurve.hxx`:260 - `Geom2d_TrimmedCurve::get_type_descriptor()`
@@ -9552,8 +9624,12 @@ impl UndefinedDerivative {
     }
 
     /// **Source:** `Geom2d_UndefinedDerivative.hxx`:36 - `Geom2d_UndefinedDerivative::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_UndefinedDerivative_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_UndefinedDerivative_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_UndefinedDerivative.hxx`:36 - `Geom2d_UndefinedDerivative::get_type_descriptor()`
@@ -9615,8 +9691,12 @@ impl UndefinedValue {
     }
 
     /// **Source:** `Geom2d_UndefinedValue.hxx`:36 - `Geom2d_UndefinedValue::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_UndefinedValue_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_UndefinedValue_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_UndefinedValue.hxx`:36 - `Geom2d_UndefinedValue::get_type_descriptor()`
@@ -9723,8 +9803,12 @@ impl Vector {
     }
 
     /// **Source:** `Geom2d_Vector.hxx`:76 - `Geom2d_Vector::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_Vector_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_Vector_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_Vector.hxx`:76 - `Geom2d_Vector::get_type_descriptor()`
@@ -10119,8 +10203,12 @@ impl VectorWithMagnitude {
     }
 
     /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:146 - `Geom2d_VectorWithMagnitude::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Geom2d_VectorWithMagnitude_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom2d_VectorWithMagnitude_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:146 - `Geom2d_VectorWithMagnitude::get_type_descriptor()`

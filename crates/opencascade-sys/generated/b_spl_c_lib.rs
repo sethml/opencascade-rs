@@ -545,8 +545,12 @@ impl Cache {
     }
 
     /// **Source:** `BSplCLib_Cache.hxx`:126 - `BSplCLib_Cache::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BSplCLib_Cache_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BSplCLib_Cache_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BSplCLib_Cache.hxx`:126 - `BSplCLib_Cache::get_type_descriptor()`

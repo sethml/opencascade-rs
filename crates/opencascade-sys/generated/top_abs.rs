@@ -75,8 +75,12 @@ pub fn complement(Or: crate::top_abs::Orientation) -> crate::top_abs::Orientatio
 /// @param theType shape type
 /// @return string identifier from the list COMPOUND, COMPSOLID, SOLID, SHELL, FACE, WIRE, EDGE,
 /// VERTEX, SHAPE
-pub fn shape_type_to_string(theType: crate::top_abs::ShapeEnum) -> *const std::ffi::c_char {
-    unsafe { crate::ffi::TopAbs_shape_type_to_string(theType.into()) }
+pub fn shape_type_to_string(theType: crate::top_abs::ShapeEnum) -> String {
+    unsafe {
+        std::ffi::CStr::from_ptr(crate::ffi::TopAbs_shape_type_to_string(theType.into()))
+            .to_string_lossy()
+            .into_owned()
+    }
 }
 /// **Source:** `TopAbs.hxx` - `TopAbs::ShapeTypeFromString`
 /// Returns the shape type from the given string identifier (using case-insensitive comparison).
@@ -95,10 +99,14 @@ pub fn shape_type_from_string(theTypeString: &str) -> crate::top_abs::ShapeEnum 
 /// Returns the string name for a given shape orientation.
 /// @param theOrientation shape orientation
 /// @return string identifier from the list FORWARD, REVERSED, INTERNAL, EXTERNAL
-pub fn shape_orientation_to_string(
-    theOrientation: crate::top_abs::Orientation,
-) -> *const std::ffi::c_char {
-    unsafe { crate::ffi::TopAbs_shape_orientation_to_string(theOrientation.into()) }
+pub fn shape_orientation_to_string(theOrientation: crate::top_abs::Orientation) -> String {
+    unsafe {
+        std::ffi::CStr::from_ptr(crate::ffi::TopAbs_shape_orientation_to_string(
+            theOrientation.into(),
+        ))
+        .to_string_lossy()
+        .into_owned()
+    }
 }
 /// **Source:** `TopAbs.hxx` - `TopAbs::ShapeOrientationFromString`
 /// Returns the shape orientation from the given string identifier (using case-insensitive

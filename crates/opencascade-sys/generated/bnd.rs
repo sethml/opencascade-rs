@@ -1790,8 +1790,12 @@ impl HArray1OfBox {
     }
 
     /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Bnd_HArray1OfBox_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Bnd_HArray1OfBox_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::get_type_descriptor()`
@@ -1900,8 +1904,12 @@ impl HArray1OfBox2d {
     }
 
     /// **Source:** `Bnd_HArray1OfBox2d.hxx`:23 - `Bnd_HArray1OfBox2d::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Bnd_HArray1OfBox2d_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Bnd_HArray1OfBox2d_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Bnd_HArray1OfBox2d.hxx`:23 - `Bnd_HArray1OfBox2d::get_type_descriptor()`
@@ -2012,8 +2020,12 @@ impl HArray1OfSphere {
     }
 
     /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Bnd_HArray1OfSphere_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Bnd_HArray1OfSphere_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::get_type_descriptor()`

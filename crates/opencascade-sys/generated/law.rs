@@ -188,8 +188,12 @@ impl BSpFunc {
     }
 
     /// **Source:** `Law_BSpFunc.hxx`:85 - `Law_BSpFunc::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Law_BSpFunc_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Law_BSpFunc_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Law_BSpFunc.hxx`:85 - `Law_BSpFunc::get_type_descriptor()`
@@ -996,8 +1000,12 @@ impl BSpline {
     }
 
     /// **Source:** `Law_BSpline.hxx`:561 - `Law_BSpline::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Law_BSpline_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Law_BSpline_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Law_BSpline.hxx`:561 - `Law_BSpline::get_type_descriptor()`
@@ -1222,8 +1230,12 @@ impl Composite {
     }
 
     /// **Source:** `Law_Composite.hxx`:103 - `Law_Composite::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Law_Composite_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Law_Composite_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Law_Composite.hxx`:103 - `Law_Composite::get_type_descriptor()`
@@ -1369,8 +1381,12 @@ impl Constant {
     }
 
     /// **Source:** `Law_Constant.hxx`:75 - `Law_Constant::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Law_Constant_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Law_Constant_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Law_Constant.hxx`:75 - `Law_Constant::get_type_descriptor()`
@@ -1510,8 +1526,12 @@ impl Function {
     }
 
     /// **Source:** `Law_Function.hxx`:75 - `Law_Function::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Law_Function_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Law_Function_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Law_Function.hxx`:75 - `Law_Function::get_type_descriptor()`
@@ -1752,8 +1772,12 @@ impl Interpol {
     }
 
     /// **Source:** `Law_Interpol.hxx`:87 - `Law_Interpol::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Law_Interpol_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Law_Interpol_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Law_Interpol.hxx`:87 - `Law_Interpol::get_type_descriptor()`
@@ -2085,8 +2109,12 @@ impl Linear {
     }
 
     /// **Source:** `Law_Linear.hxx`:86 - `Law_Linear::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Law_Linear_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Law_Linear_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Law_Linear.hxx`:86 - `Law_Linear::get_type_descriptor()`
@@ -2198,8 +2226,12 @@ impl S {
     }
 
     /// **Source:** `Law_S.hxx`:60 - `Law_S::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Law_S_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Law_S_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Law_S.hxx`:60 - `Law_S::get_type_descriptor()`

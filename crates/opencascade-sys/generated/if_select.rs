@@ -288,8 +288,12 @@ impl Act {
 
     /// **Source:** `IFSelect_Act.hxx`:66 - `IFSelect_Act::Help()`
     /// Short Help for commands : returns the help given to create
-    pub fn help(&self, number: i32) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_Act_help(self as *const Self, number) }
+    pub fn help(&self, number: i32) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_Act_help(self as *const Self, number))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_Act.hxx`:86 - `IFSelect_Act::DynamicType()`
@@ -308,8 +312,12 @@ impl Act {
     }
 
     /// **Source:** `IFSelect_Act.hxx`:86 - `IFSelect_Act::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_Act_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_Act_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_Act.hxx`:86 - `IFSelect_Act::get_type_descriptor()`
@@ -387,18 +395,33 @@ impl Activator {
     /// **Source:** `IFSelect_Activator.hxx`:107 - `IFSelect_Activator::Help()`
     /// Sends a short help message for a given command identified by
     /// it number for this Activator (must take one line max)
-    pub fn help(&self, number: i32) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_Activator_help(self as *const Self, number) }
+    pub fn help(&self, number: i32) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_Activator_help(
+                self as *const Self,
+                number,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_Activator.hxx`:109 - `IFSelect_Activator::Group()`
-    pub fn group(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_Activator_group(self as *const Self) }
+    pub fn group(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_Activator_group(self as *const Self))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_Activator.hxx`:111 - `IFSelect_Activator::File()`
-    pub fn file(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_Activator_file(self as *const Self) }
+    pub fn file(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_Activator_file(self as *const Self))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_Activator.hxx`:116 - `IFSelect_Activator::SetForGroup()`
@@ -484,8 +507,12 @@ impl Activator {
     }
 
     /// **Source:** `IFSelect_Activator.hxx`:118 - `IFSelect_Activator::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_Activator_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_Activator_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_Activator.hxx`:118 - `IFSelect_Activator::get_type_descriptor()`
@@ -634,8 +661,12 @@ impl AppliedModifiers {
     }
 
     /// **Source:** `IFSelect_AppliedModifiers.hxx`:101 - `IFSelect_AppliedModifiers::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_AppliedModifiers_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_AppliedModifiers_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_AppliedModifiers.hxx`:101 - `IFSelect_AppliedModifiers::get_type_descriptor()`
@@ -704,8 +735,12 @@ impl BasicDumper {
     }
 
     /// **Source:** `IFSelect_BasicDumper.hxx`:54 - `IFSelect_BasicDumper::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_BasicDumper_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_BasicDumper_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_BasicDumper.hxx`:54 - `IFSelect_BasicDumper::get_type_descriptor()`
@@ -819,8 +854,12 @@ impl CheckCounter {
     }
 
     /// **Source:** `IFSelect_CheckCounter.hxx`:61 - `IFSelect_CheckCounter::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_CheckCounter_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_CheckCounter_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_CheckCounter.hxx`:61 - `IFSelect_CheckCounter::get_type_descriptor()`
@@ -974,8 +1013,14 @@ impl ContextModif {
 
     /// **Source:** `IFSelect_ContextModif.hxx`:109 - `IFSelect_ContextModif::FileName()`
     /// Returns File Name (can be empty)
-    pub fn file_name(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_ContextModif_file_name(self as *const Self) }
+    pub fn file_name(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_ContextModif_file_name(
+                self as *const Self,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_ContextModif.hxx`:116 - `IFSelect_ContextModif::IsForNone()`
@@ -1105,8 +1150,14 @@ impl ContextWrite {
 
     /// **Source:** `IFSelect_ContextWrite.hxx`:76 - `IFSelect_ContextWrite::FileName()`
     /// Returns the File Name
-    pub fn file_name(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_ContextWrite_file_name(self as *const Self) }
+    pub fn file_name(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_ContextWrite_file_name(
+                self as *const Self,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_ContextWrite.hxx`:79 - `IFSelect_ContextWrite::AppliedModifiers()`
@@ -1278,8 +1329,12 @@ impl DispGlobal {
     }
 
     /// **Source:** `IFSelect_DispGlobal.hxx`:55 - `IFSelect_DispGlobal::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_DispGlobal_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_DispGlobal_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_DispGlobal.hxx`:55 - `IFSelect_DispGlobal::get_type_descriptor()`
@@ -1422,8 +1477,12 @@ impl DispPerCount {
     }
 
     /// **Source:** `IFSelect_DispPerCount.hxx`:68 - `IFSelect_DispPerCount::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_DispPerCount_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_DispPerCount_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_DispPerCount.hxx`:68 - `IFSelect_DispPerCount::get_type_descriptor()`
@@ -1570,8 +1629,12 @@ impl DispPerFiles {
     }
 
     /// **Source:** `IFSelect_DispPerFiles.hxx`:72 - `IFSelect_DispPerFiles::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_DispPerFiles_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_DispPerFiles_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_DispPerFiles.hxx`:72 - `IFSelect_DispPerFiles::get_type_descriptor()`
@@ -1691,8 +1754,12 @@ impl DispPerOne {
     }
 
     /// **Source:** `IFSelect_DispPerOne.hxx`:55 - `IFSelect_DispPerOne::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_DispPerOne_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_DispPerOne_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_DispPerOne.hxx`:55 - `IFSelect_DispPerOne::get_type_descriptor()`
@@ -1784,8 +1851,14 @@ impl DispPerSignature {
     /// **Source:** `IFSelect_DispPerSignature.hxx`:52 - `IFSelect_DispPerSignature::SignName()`
     /// Returns the name of the SignCounter, which caracterises the
     /// sorting criterium for this Dispatch
-    pub fn sign_name(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_DispPerSignature_sign_name(self as *const Self) }
+    pub fn sign_name(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_DispPerSignature_sign_name(
+                self as *const Self,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_DispPerSignature.hxx`:55 - `IFSelect_DispPerSignature::Label()`
@@ -1824,8 +1897,12 @@ impl DispPerSignature {
     }
 
     /// **Source:** `IFSelect_DispPerSignature.hxx`:68 - `IFSelect_DispPerSignature::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_DispPerSignature_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_DispPerSignature_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_DispPerSignature.hxx`:68 - `IFSelect_DispPerSignature::get_type_descriptor()`
@@ -2032,8 +2109,12 @@ impl Dispatch {
     }
 
     /// **Source:** `IFSelect_Dispatch.hxx`:125 - `IFSelect_Dispatch::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_Dispatch_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_Dispatch_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_Dispatch.hxx`:125 - `IFSelect_Dispatch::get_type_descriptor()`
@@ -2140,8 +2221,12 @@ impl EditForm {
     }
 
     /// **Source:** `IFSelect_EditForm.hxx`:76 - `IFSelect_EditForm::Label()`
-    pub fn label(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_EditForm_label(self as *const Self) }
+    pub fn label(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_EditForm_label(self as *const Self))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_EditForm.hxx`:79 - `IFSelect_EditForm::IsLoaded()`
@@ -2486,8 +2571,12 @@ impl EditForm {
     }
 
     /// **Source:** `IFSelect_EditForm.hxx`:300 - `IFSelect_EditForm::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_EditForm_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_EditForm_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_EditForm.hxx`:300 - `IFSelect_EditForm::get_type_descriptor()`
@@ -2577,8 +2666,16 @@ impl Editor {
     /// **Source:** `IFSelect_Editor.hxx`:80 - `IFSelect_Editor::Name()`
     /// Returns the name of a Value (complete or short) from its ident
     /// Short Name can be empty
-    pub fn name(&self, num: i32, isshort: bool) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_Editor_name(self as *const Self, num, isshort) }
+    pub fn name(&self, num: i32, isshort: bool) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_Editor_name(
+                self as *const Self,
+                num,
+                isshort,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_Editor.hxx`:84 - `IFSelect_Editor::EditMode()`
@@ -2737,8 +2834,12 @@ impl Editor {
     }
 
     /// **Source:** `IFSelect_Editor.hxx`:175 - `IFSelect_Editor::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_Editor_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_Editor_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_Editor.hxx`:175 - `IFSelect_Editor::get_type_descriptor()`
@@ -2978,8 +3079,12 @@ impl GeneralModifier {
     }
 
     /// **Source:** `IFSelect_GeneralModifier.hxx`:98 - `IFSelect_GeneralModifier::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_GeneralModifier_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_GeneralModifier_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_GeneralModifier.hxx`:98 - `IFSelect_GeneralModifier::get_type_descriptor()`
@@ -3069,8 +3174,12 @@ impl GraphCounter {
     }
 
     /// **Source:** `IFSelect_GraphCounter.hxx`:57 - `IFSelect_GraphCounter::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_GraphCounter_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_GraphCounter_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_GraphCounter.hxx`:57 - `IFSelect_GraphCounter::get_type_descriptor()`
@@ -3241,8 +3350,12 @@ impl HSeqOfSelection {
     }
 
     /// **Source:** `IFSelect_HSeqOfSelection.hxx`:23 - `IFSelect_HSeqOfSelection::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_HSeqOfSelection_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_HSeqOfSelection_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_HSeqOfSelection.hxx`:23 - `IFSelect_HSeqOfSelection::get_type_descriptor()`
@@ -3335,8 +3448,12 @@ impl IntParam {
     /// **Source:** `IFSelect_IntParam.hxx`:63 - `IFSelect_IntParam::StaticName()`
     /// Returns the name of static parameter to which this IntParam
     /// is bound, empty if none
-    pub fn static_name(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_IntParam_static_name(self as *const Self) }
+    pub fn static_name(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_IntParam_static_name(self as *const Self))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_IntParam.hxx`:68 - `IFSelect_IntParam::Value()`
@@ -3360,8 +3477,12 @@ impl IntParam {
     }
 
     /// **Source:** `IFSelect_IntParam.hxx`:74 - `IFSelect_IntParam::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_IntParam_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_IntParam_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_IntParam.hxx`:74 - `IFSelect_IntParam::get_type_descriptor()`
@@ -3590,8 +3711,12 @@ impl ListEditor {
     }
 
     /// **Source:** `IFSelect_ListEditor.hxx`:144 - `IFSelect_ListEditor::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_ListEditor_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_ListEditor_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_ListEditor.hxx`:144 - `IFSelect_ListEditor::get_type_descriptor()`
@@ -3851,8 +3976,12 @@ impl ModelCopier {
     }
 
     /// **Source:** `IFSelect_ModelCopier.hxx`:223 - `IFSelect_ModelCopier::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_ModelCopier_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_ModelCopier_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_ModelCopier.hxx`:223 - `IFSelect_ModelCopier::get_type_descriptor()`
@@ -3941,8 +4070,12 @@ impl ModifEditForm {
     }
 
     /// **Source:** `IFSelect_ModifEditForm.hxx`:54 - `IFSelect_ModifEditForm::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_ModifEditForm_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_ModifEditForm_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_ModifEditForm.hxx`:54 - `IFSelect_ModifEditForm::get_type_descriptor()`
@@ -4076,8 +4209,12 @@ impl ModifReorder {
     }
 
     /// **Source:** `IFSelect_ModifReorder.hxx`:58 - `IFSelect_ModifReorder::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_ModifReorder_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_ModifReorder_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_ModifReorder.hxx`:58 - `IFSelect_ModifReorder::get_type_descriptor()`
@@ -4188,8 +4325,12 @@ impl Modifier {
     }
 
     /// **Source:** `IFSelect_Modifier.hxx`:59 - `IFSelect_Modifier::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_Modifier_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_Modifier_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_Modifier.hxx`:59 - `IFSelect_Modifier::get_type_descriptor()`
@@ -4314,8 +4455,12 @@ impl PacketList {
 
     /// **Source:** `IFSelect_PacketList.hxx`:54 - `IFSelect_PacketList::Name()`
     /// Returns the recorded name for a packet list
-    pub fn name(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_PacketList_name(self as *const Self) }
+    pub fn name(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_PacketList_name(self as *const Self))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_PacketList.hxx`:57 - `IFSelect_PacketList::Model()`
@@ -4375,8 +4520,12 @@ impl PacketList {
     }
 
     /// **Source:** `IFSelect_PacketList.hxx`:99 - `IFSelect_PacketList::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_PacketList_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_PacketList_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_PacketList.hxx`:99 - `IFSelect_PacketList::get_type_descriptor()`
@@ -4500,8 +4649,12 @@ impl ParamEditor {
     }
 
     /// **Source:** `IFSelect_ParamEditor.hxx`:91 - `IFSelect_ParamEditor::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_ParamEditor_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_ParamEditor_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_ParamEditor.hxx`:91 - `IFSelect_ParamEditor::get_type_descriptor()`
@@ -4774,8 +4927,12 @@ impl SelectAnyList {
     }
 
     /// **Source:** `IFSelect_SelectAnyList.hxx`:130 - `IFSelect_SelectAnyList::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectAnyList_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectAnyList_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectAnyList.hxx`:130 - `IFSelect_SelectAnyList::get_type_descriptor()`
@@ -4876,8 +5033,12 @@ impl SelectAnyType {
     }
 
     /// **Source:** `IFSelect_SelectAnyType.hxx`:50 - `IFSelect_SelectAnyType::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectAnyType_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectAnyType_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectAnyType.hxx`:50 - `IFSelect_SelectAnyType::get_type_descriptor()`
@@ -5018,8 +5179,12 @@ impl SelectBase {
     }
 
     /// **Source:** `IFSelect_SelectBase.hxx`:39 - `IFSelect_SelectBase::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectBase_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectBase_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectBase.hxx`:39 - `IFSelect_SelectBase::get_type_descriptor()`
@@ -5138,8 +5303,12 @@ impl SelectCombine {
     }
 
     /// **Source:** `IFSelect_SelectCombine.hxx`:70 - `IFSelect_SelectCombine::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectCombine_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectCombine_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectCombine.hxx`:70 - `IFSelect_SelectCombine::get_type_descriptor()`
@@ -5249,8 +5418,12 @@ impl SelectControl {
     }
 
     /// **Source:** `IFSelect_SelectControl.hxx`:67 - `IFSelect_SelectControl::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectControl_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectControl_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectControl.hxx`:67 - `IFSelect_SelectControl::get_type_descriptor()`
@@ -5346,8 +5519,12 @@ impl SelectDeduct {
     }
 
     /// **Source:** `IFSelect_SelectDeduct.hxx`:80 - `IFSelect_SelectDeduct::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectDeduct_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectDeduct_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectDeduct.hxx`:80 - `IFSelect_SelectDeduct::get_type_descriptor()`
@@ -5413,8 +5590,12 @@ impl SelectDiff {
     }
 
     /// **Source:** `IFSelect_SelectDiff.hxx`:48 - `IFSelect_SelectDiff::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectDiff_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectDiff_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectDiff.hxx`:48 - `IFSelect_SelectDiff::get_type_descriptor()`
@@ -5544,8 +5725,12 @@ impl SelectEntityNumber {
     }
 
     /// **Source:** `IFSelect_SelectEntityNumber.hxx`:58 - `IFSelect_SelectEntityNumber::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectEntityNumber_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectEntityNumber_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectEntityNumber.hxx`:58 - `IFSelect_SelectEntityNumber::get_type_descriptor()`
@@ -5636,8 +5821,12 @@ impl SelectErrorEntities {
     }
 
     /// **Source:** `IFSelect_SelectErrorEntities.hxx`:54 - `IFSelect_SelectErrorEntities::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectErrorEntities_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectErrorEntities_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectErrorEntities.hxx`:54 - `IFSelect_SelectErrorEntities::get_type_descriptor()`
@@ -5819,8 +6008,12 @@ impl SelectExplore {
     }
 
     /// **Source:** `IFSelect_SelectExplore.hxx`:88 - `IFSelect_SelectExplore::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectExplore_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectExplore_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectExplore.hxx`:88 - `IFSelect_SelectExplore::get_type_descriptor()`
@@ -5947,8 +6140,12 @@ impl SelectExtract {
     }
 
     /// **Source:** `IFSelect_SelectExtract.hxx`:86 - `IFSelect_SelectExtract::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectExtract_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectExtract_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectExtract.hxx`:86 - `IFSelect_SelectExtract::get_type_descriptor()`
@@ -6049,8 +6246,12 @@ impl SelectFlag {
 
     /// **Source:** `IFSelect_SelectFlag.hxx`:47 - `IFSelect_SelectFlag::FlagName()`
     /// Returns the name of the flag
-    pub fn flag_name(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectFlag_flag_name(self as *const Self) }
+    pub fn flag_name(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectFlag_flag_name(self as *const Self))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectFlag.hxx`:67 - `IFSelect_SelectFlag::ExtractLabel()`
@@ -6069,8 +6270,12 @@ impl SelectFlag {
     }
 
     /// **Source:** `IFSelect_SelectFlag.hxx`:69 - `IFSelect_SelectFlag::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectFlag_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectFlag_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectFlag.hxx`:69 - `IFSelect_SelectFlag::get_type_descriptor()`
@@ -6195,8 +6400,12 @@ impl SelectInList {
     }
 
     /// **Source:** `IFSelect_SelectInList.hxx`:59 - `IFSelect_SelectInList::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectInList_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectInList_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectInList.hxx`:59 - `IFSelect_SelectInList::get_type_descriptor()`
@@ -6400,8 +6609,12 @@ impl SelectIncorrectEntities {
     }
 
     /// **Source:** `IFSelect_SelectIncorrectEntities.hxx`:40 - `IFSelect_SelectIncorrectEntities::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectIncorrectEntities_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectIncorrectEntities_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectIncorrectEntities.hxx`:40 - `IFSelect_SelectIncorrectEntities::get_type_descriptor()`
@@ -6597,8 +6810,12 @@ impl SelectIntersection {
     }
 
     /// **Source:** `IFSelect_SelectIntersection.hxx`:48 - `IFSelect_SelectIntersection::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectIntersection_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectIntersection_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectIntersection.hxx`:48 - `IFSelect_SelectIntersection::get_type_descriptor()`
@@ -6723,8 +6940,12 @@ impl SelectModelEntities {
     }
 
     /// **Source:** `IFSelect_SelectModelEntities.hxx`:53 - `IFSelect_SelectModelEntities::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectModelEntities_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectModelEntities_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectModelEntities.hxx`:53 - `IFSelect_SelectModelEntities::get_type_descriptor()`
@@ -6815,8 +7036,12 @@ impl SelectModelRoots {
     }
 
     /// **Source:** `IFSelect_SelectModelRoots.hxx`:50 - `IFSelect_SelectModelRoots::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectModelRoots_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectModelRoots_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectModelRoots.hxx`:50 - `IFSelect_SelectModelRoots::get_type_descriptor()`
@@ -6966,8 +7191,12 @@ impl SelectPointed {
     }
 
     /// **Source:** `IFSelect_SelectPointed.hxx`:122 - `IFSelect_SelectPointed::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectPointed_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectPointed_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectPointed.hxx`:122 - `IFSelect_SelectPointed::get_type_descriptor()`
@@ -7118,8 +7347,12 @@ impl SelectRange {
     }
 
     /// **Source:** `IFSelect_SelectRange.hxx`:86 - `IFSelect_SelectRange::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectRange_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectRange_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectRange.hxx`:86 - `IFSelect_SelectRange::get_type_descriptor()`
@@ -7265,8 +7498,12 @@ impl SelectRootComps {
     }
 
     /// **Source:** `IFSelect_SelectRootComps.hxx`:66 - `IFSelect_SelectRootComps::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectRootComps_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectRootComps_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectRootComps.hxx`:66 - `IFSelect_SelectRootComps::get_type_descriptor()`
@@ -7414,8 +7651,12 @@ impl SelectRoots {
     }
 
     /// **Source:** `IFSelect_SelectRoots.hxx`:60 - `IFSelect_SelectRoots::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectRoots_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectRoots_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectRoots.hxx`:60 - `IFSelect_SelectRoots::get_type_descriptor()`
@@ -7618,8 +7859,12 @@ impl SelectSent {
     }
 
     /// **Source:** `IFSelect_SelectSent.hxx`:91 - `IFSelect_SelectSent::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectSent_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectSent_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectSent.hxx`:91 - `IFSelect_SelectSent::get_type_descriptor()`
@@ -7750,8 +7995,12 @@ impl SelectShared {
     }
 
     /// **Source:** `IFSelect_SelectShared.hxx`:48 - `IFSelect_SelectShared::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectShared_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectShared_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectShared.hxx`:48 - `IFSelect_SelectShared::get_type_descriptor()`
@@ -7857,8 +8106,12 @@ impl SelectSharing {
     }
 
     /// **Source:** `IFSelect_SelectSharing.hxx`:50 - `IFSelect_SelectSharing::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectSharing_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectSharing_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectSharing.hxx`:50 - `IFSelect_SelectSharing::get_type_descriptor()`
@@ -7984,8 +8237,12 @@ impl SelectSignature {
     }
 
     /// **Source:** `IFSelect_SelectSignature.hxx`:108 - `IFSelect_SelectSignature::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectSignature_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectSignature_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectSignature.hxx`:108 - `IFSelect_SelectSignature::get_type_descriptor()`
@@ -8142,8 +8399,12 @@ impl SelectSignedShared {
     }
 
     /// **Source:** `IFSelect_SelectSignedShared.hxx`:72 - `IFSelect_SelectSignedShared::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectSignedShared_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectSignedShared_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectSignedShared.hxx`:72 - `IFSelect_SelectSignedShared::get_type_descriptor()`
@@ -8304,8 +8565,12 @@ impl SelectSignedSharing {
     }
 
     /// **Source:** `IFSelect_SelectSignedSharing.hxx`:72 - `IFSelect_SelectSignedSharing::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectSignedSharing_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectSignedSharing_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectSignedSharing.hxx`:72 - `IFSelect_SelectSignedSharing::get_type_descriptor()`
@@ -8489,8 +8754,12 @@ impl SelectSuite {
     }
 
     /// **Source:** `IFSelect_SelectSuite.hxx`:94 - `IFSelect_SelectSuite::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectSuite_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectSuite_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectSuite.hxx`:94 - `IFSelect_SelectSuite::get_type_descriptor()`
@@ -8622,8 +8891,12 @@ impl SelectType {
     }
 
     /// **Source:** `IFSelect_SelectType.hxx`:53 - `IFSelect_SelectType::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectType_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectType_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectType.hxx`:53 - `IFSelect_SelectType::get_type_descriptor()`
@@ -8768,8 +9041,12 @@ impl SelectUnion {
     }
 
     /// **Source:** `IFSelect_SelectUnion.hxx`:48 - `IFSelect_SelectUnion::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectUnion_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectUnion_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectUnion.hxx`:48 - `IFSelect_SelectUnion::get_type_descriptor()`
@@ -8881,8 +9158,12 @@ impl SelectUnknownEntities {
     }
 
     /// **Source:** `IFSelect_SelectUnknownEntities.hxx`:51 - `IFSelect_SelectUnknownEntities::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SelectUnknownEntities_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectUnknownEntities_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SelectUnknownEntities.hxx`:51 - `IFSelect_SelectUnknownEntities::get_type_descriptor()`
@@ -9058,8 +9339,12 @@ impl Selection {
     }
 
     /// **Source:** `IFSelect_Selection.hxx`:71 - `IFSelect_Selection::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_Selection_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_Selection_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_Selection.hxx`:71 - `IFSelect_Selection::get_type_descriptor()`
@@ -9216,8 +9501,12 @@ impl SessionDumper {
     }
 
     /// **Source:** `IFSelect_SessionDumper.hxx`:91 - `IFSelect_SessionDumper::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SessionDumper_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SessionDumper_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SessionDumper.hxx`:91 - `IFSelect_SessionDumper::get_type_descriptor()`
@@ -9693,8 +9982,15 @@ impl SessionPilot {
     /// Returns the part of the command line which begins at argument
     /// <numarg> between 0 and NbWords-1 (by default, all the line)
     /// Empty string if out of range
-    pub fn command_part(&self, numarg: i32) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SessionPilot_command_part(self as *const Self, numarg) }
+    pub fn command_part(&self, numarg: i32) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SessionPilot_command_part(
+                self as *const Self,
+                numarg,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SessionPilot.hxx`:112 - `IFSelect_SessionPilot::NbWords()`
@@ -9716,8 +10012,15 @@ impl SessionPilot {
     /// **Source:** `IFSelect_SessionPilot.hxx`:120 - `IFSelect_SessionPilot::Arg()`
     /// Returns a word given its rank, as a CString.
     /// As for Word, begins at 0 (the command name), etc...
-    pub fn arg(&self, num: i32) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SessionPilot_arg(self as *const Self, num) }
+    pub fn arg(&self, num: i32) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SessionPilot_arg(
+                self as *const Self,
+                num,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SessionPilot.hxx`:124 - `IFSelect_SessionPilot::RemoveWord()`
@@ -9827,8 +10130,15 @@ impl SessionPilot {
 
     /// **Source:** `IFSelect_SessionPilot.hxx`:206 - `IFSelect_SessionPilot::Help()`
     /// Help for specific commands (apart from general command help)
-    pub fn help(&self, number: i32) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SessionPilot_help(self as *const Self, number) }
+    pub fn help(&self, number: i32) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SessionPilot_help(
+                self as *const Self,
+                number,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SessionPilot.hxx`:208 - `IFSelect_SessionPilot::DynamicType()`
@@ -9837,8 +10147,12 @@ impl SessionPilot {
     }
 
     /// **Source:** `IFSelect_SessionPilot.hxx`:208 - `IFSelect_SessionPilot::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SessionPilot_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SessionPilot_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SessionPilot.hxx`:208 - `IFSelect_SessionPilot::get_type_descriptor()`
@@ -10218,8 +10532,12 @@ impl ShareOut {
     }
 
     /// **Source:** `IFSelect_ShareOut.hxx`:237 - `IFSelect_ShareOut::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_ShareOut_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_ShareOut_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_ShareOut.hxx`:237 - `IFSelect_ShareOut::get_type_descriptor()`
@@ -10505,8 +10823,12 @@ impl SignAncestor {
     }
 
     /// **Source:** `IFSelect_SignAncestor.hxx`:42 - `IFSelect_SignAncestor::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SignAncestor_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SignAncestor_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SignAncestor.hxx`:42 - `IFSelect_SignAncestor::get_type_descriptor()`
@@ -10641,8 +10963,12 @@ impl SignCategory {
     }
 
     /// **Source:** `IFSelect_SignCategory.hxx`:44 - `IFSelect_SignCategory::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SignCategory_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SignCategory_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SignCategory.hxx`:44 - `IFSelect_SignCategory::get_type_descriptor()`
@@ -10908,8 +11234,12 @@ impl SignCounter {
     }
 
     /// **Source:** `IFSelect_SignCounter.hxx`:163 - `IFSelect_SignCounter::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SignCounter_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SignCounter_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SignCounter.hxx`:163 - `IFSelect_SignCounter::get_type_descriptor()`
@@ -10998,8 +11328,12 @@ impl SignMultiple {
     }
 
     /// **Source:** `IFSelect_SignMultiple.hxx`:71 - `IFSelect_SignMultiple::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SignMultiple_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SignMultiple_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SignMultiple.hxx`:71 - `IFSelect_SignMultiple::get_type_descriptor()`
@@ -11134,8 +11468,12 @@ impl SignType {
     }
 
     /// **Source:** `IFSelect_SignType.hxx`:48 - `IFSelect_SignType::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SignType_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SignType_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SignType.hxx`:48 - `IFSelect_SignType::get_type_descriptor()`
@@ -11258,8 +11596,12 @@ impl SignValidity {
     }
 
     /// **Source:** `IFSelect_SignValidity.hxx`:53 - `IFSelect_SignValidity::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SignValidity_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SignValidity_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SignValidity.hxx`:53 - `IFSelect_SignValidity::get_type_descriptor()`
@@ -11441,8 +11783,12 @@ impl Signature {
     /// of each sub-class of Signature. For a Null Handle, it should
     /// provide ""
     /// It can work with the model which contains the entity
-    pub fn name(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_Signature_name(self as *const Self) }
+    pub fn name(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_Signature_name(self as *const Self))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_Signature.hxx`:81 - `IFSelect_Signature::Label()`
@@ -11473,13 +11819,21 @@ impl Signature {
     /// It is a convenient way when the value of a signature has the
     /// form of a simple integer value
     /// The value is to be used immediately (one buffer only, no copy)
-    pub fn int_value(val: i32) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_Signature_int_value(val) }
+    pub fn int_value(val: i32) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_Signature_int_value(val))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_Signature.hxx`:105 - `IFSelect_Signature::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_Signature_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_Signature_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_Signature.hxx`:105 - `IFSelect_Signature::get_type_descriptor()`
@@ -11573,8 +11927,14 @@ impl SignatureList {
     /// **Source:** `IFSelect_SignatureList.hxx`:75 - `IFSelect_SignatureList::LastValue()`
     /// Returns the last value recorded by Add (only if SignMode set)
     /// Cleared by Clear or Init
-    pub fn last_value(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SignatureList_last_value(self as *const Self) }
+    pub fn last_value(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SignatureList_last_value(
+                self as *const Self,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SignatureList.hxx`:89 - `IFSelect_SignatureList::List()`
@@ -11644,8 +12004,12 @@ impl SignatureList {
     /// **Source:** `IFSelect_SignatureList.hxx`:113 - `IFSelect_SignatureList::Name()`
     /// Returns the recorded Name.
     /// Remark : default is "..." (no SetName called)
-    pub fn name(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SignatureList_name(self as *const Self) }
+    pub fn name(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SignatureList_name(self as *const Self))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SignatureList.hxx`:138 - `IFSelect_SignatureList::DynamicType()`
@@ -11654,8 +12018,12 @@ impl SignatureList {
     }
 
     /// **Source:** `IFSelect_SignatureList.hxx`:138 - `IFSelect_SignatureList::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_SignatureList_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SignatureList_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SignatureList.hxx`:138 - `IFSelect_SignatureList::get_type_descriptor()`
@@ -11803,8 +12171,12 @@ impl TransformStandard {
     }
 
     /// **Source:** `IFSelect_TransformStandard.hxx`:165 - `IFSelect_TransformStandard::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_TransformStandard_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_TransformStandard_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_TransformStandard.hxx`:165 - `IFSelect_TransformStandard::get_type_descriptor()`
@@ -11869,8 +12241,12 @@ impl Transformer {
     }
 
     /// **Source:** `IFSelect_Transformer.hxx`:99 - `IFSelect_Transformer::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_Transformer_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_Transformer_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_Transformer.hxx`:99 - `IFSelect_Transformer::get_type_descriptor()`
@@ -11977,8 +12353,15 @@ impl WorkLibrary {
 
     /// **Source:** `IFSelect_WorkLibrary.hxx`:138 - `IFSelect_WorkLibrary::DumpHelp()`
     /// Returns the help line recorded for <level>, or an empty string
-    pub fn dump_help(&self, level: i32) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_WorkLibrary_dump_help(self as *const Self, level) }
+    pub fn dump_help(&self, level: i32) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_WorkLibrary_dump_help(
+                self as *const Self,
+                level,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_WorkLibrary.hxx`:140 - `IFSelect_WorkLibrary::DynamicType()`
@@ -11987,8 +12370,12 @@ impl WorkLibrary {
     }
 
     /// **Source:** `IFSelect_WorkLibrary.hxx`:140 - `IFSelect_WorkLibrary::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_WorkLibrary_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_WorkLibrary_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_WorkLibrary.hxx`:140 - `IFSelect_WorkLibrary::get_type_descriptor()`
@@ -12143,8 +12530,14 @@ impl WorkSession {
     /// **Source:** `IFSelect_WorkSession.hxx`:145 - `IFSelect_WorkSession::LoadedFile()`
     /// Returns the filename used to load current model
     /// empty if unknown
-    pub fn loaded_file(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_WorkSession_loaded_file(self as *const Self) }
+    pub fn loaded_file(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_WorkSession_loaded_file(
+                self as *const Self,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:151 - `IFSelect_WorkSession::ReadFile()`
@@ -12900,23 +13293,30 @@ impl WorkSession {
     /// **Source:** `IFSelect_WorkSession.hxx`:739 - `IFSelect_WorkSession::GiveFileRoot()`
     /// Extracts File Root Name from a given complete file name
     /// (uses OSD_Path)
-    pub fn give_file_root(&self, file: &str) -> *const std::ffi::c_char {
+    pub fn give_file_root(&self, file: &str) -> String {
         let c_file = std::ffi::CString::new(file).unwrap();
         unsafe {
-            crate::ffi::IFSelect_WorkSession_give_file_root(self as *const Self, c_file.as_ptr())
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_WorkSession_give_file_root(
+                self as *const Self,
+                c_file.as_ptr(),
+            ))
+            .to_string_lossy()
+            .into_owned()
         }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:743 - `IFSelect_WorkSession::GiveFileComplete()`
     /// Completes a file name as required, with Prefix and Extension
     /// (if defined; for a non-defined item, completes nothing)
-    pub fn give_file_complete(&self, file: &str) -> *const std::ffi::c_char {
+    pub fn give_file_complete(&self, file: &str) -> String {
         let c_file = std::ffi::CString::new(file).unwrap();
         unsafe {
-            crate::ffi::IFSelect_WorkSession_give_file_complete(
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_WorkSession_give_file_complete(
                 self as *const Self,
                 c_file.as_ptr(),
-            )
+            ))
+            .to_string_lossy()
+            .into_owned()
         }
     }
 
@@ -13467,8 +13867,12 @@ impl WorkSession {
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:1161 - `IFSelect_WorkSession::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IFSelect_WorkSession_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_WorkSession_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:1161 - `IFSelect_WorkSession::get_type_descriptor()`

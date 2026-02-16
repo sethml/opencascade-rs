@@ -32,8 +32,12 @@ impl ActorWrite {
     }
 
     /// **Source:** `IGESControl_ActorWrite.hxx`:51 - `IGESControl_ActorWrite::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IGESControl_ActorWrite_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESControl_ActorWrite_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IGESControl_ActorWrite.hxx`:51 - `IGESControl_ActorWrite::get_type_descriptor()`
@@ -148,8 +152,12 @@ impl AlgoContainer {
     }
 
     /// **Source:** `IGESControl_AlgoContainer.hxx`:34 - `IGESControl_AlgoContainer::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IGESControl_AlgoContainer_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESControl_AlgoContainer_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IGESControl_AlgoContainer.hxx`:34 - `IGESControl_AlgoContainer::get_type_descriptor()`
@@ -251,8 +259,12 @@ impl Controller {
     }
 
     /// **Source:** `IGESControl_Controller.hxx`:77 - `IGESControl_Controller::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IGESControl_Controller_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESControl_Controller_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IGESControl_Controller.hxx`:77 - `IGESControl_Controller::get_type_descriptor()`
@@ -393,8 +405,12 @@ impl IGESBoundary {
     }
 
     /// **Source:** `IGESControl_IGESBoundary.hxx`:58 - `IGESControl_IGESBoundary::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IGESControl_IGESBoundary_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESControl_IGESBoundary_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IGESControl_IGESBoundary.hxx`:58 - `IGESControl_IGESBoundary::get_type_descriptor()`
@@ -724,8 +740,12 @@ impl ToolContainer {
     }
 
     /// **Source:** `IGESControl_ToolContainer.hxx`:38 - `IGESControl_ToolContainer::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IGESControl_ToolContainer_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESControl_ToolContainer_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IGESControl_ToolContainer.hxx`:38 - `IGESControl_ToolContainer::get_type_descriptor()`

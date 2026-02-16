@@ -65,8 +65,12 @@ impl Datum3D {
     }
 
     /// **Source:** `TopLoc_Datum3D.hxx`:61 - `TopLoc_Datum3D::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::TopLoc_Datum3D_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopLoc_Datum3D_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `TopLoc_Datum3D.hxx`:61 - `TopLoc_Datum3D::get_type_descriptor()`
@@ -399,8 +403,12 @@ impl SListNodeOfItemLocation {
     }
 
     /// **Source:** `TopLoc_SListNodeOfItemLocation.hxx`:40 - `TopLoc_SListNodeOfItemLocation::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::TopLoc_SListNodeOfItemLocation_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopLoc_SListNodeOfItemLocation_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `TopLoc_SListNodeOfItemLocation.hxx`:40 - `TopLoc_SListNodeOfItemLocation::get_type_descriptor()`

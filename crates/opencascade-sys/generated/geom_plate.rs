@@ -1144,8 +1144,12 @@ impl CurveConstraint {
     }
 
     /// **Source:** `GeomPlate_CurveConstraint.hxx`:146 - `GeomPlate_CurveConstraint::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::GeomPlate_CurveConstraint_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::GeomPlate_CurveConstraint_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `GeomPlate_CurveConstraint.hxx`:146 - `GeomPlate_CurveConstraint::get_type_descriptor()`
@@ -1230,8 +1234,12 @@ impl HArray1OfHCurve {
     }
 
     /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::GeomPlate_HArray1OfHCurve_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::GeomPlate_HArray1OfHCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::get_type_descriptor()`
@@ -1318,8 +1326,12 @@ impl HArray1OfSequenceOfReal {
     }
 
     /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::GeomPlate_HArray1OfSequenceOfReal_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::get_type_descriptor()`
@@ -1403,8 +1415,14 @@ impl HSequenceOfCurveConstraint {
     }
 
     /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::GeomPlate_HSequenceOfCurveConstraint_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::GeomPlate_HSequenceOfCurveConstraint_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::get_type_descriptor()`
@@ -1490,8 +1508,14 @@ impl HSequenceOfPointConstraint {
     }
 
     /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::GeomPlate_HSequenceOfPointConstraint_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::GeomPlate_HSequenceOfPointConstraint_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::get_type_descriptor()`
@@ -1843,8 +1867,12 @@ impl PointConstraint {
     }
 
     /// **Source:** `GeomPlate_PointConstraint.hxx`:137 - `GeomPlate_PointConstraint::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::GeomPlate_PointConstraint_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::GeomPlate_PointConstraint_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `GeomPlate_PointConstraint.hxx`:137 - `GeomPlate_PointConstraint::get_type_descriptor()`

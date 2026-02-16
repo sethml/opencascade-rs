@@ -98,8 +98,12 @@ impl ActorRead {
     }
 
     /// **Source:** `STEPControl_ActorRead.hxx`:120 - `STEPControl_ActorRead::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::STEPControl_ActorRead_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::STEPControl_ActorRead_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `STEPControl_ActorRead.hxx`:120 - `STEPControl_ActorRead::get_type_descriptor()`
@@ -242,8 +246,12 @@ impl ActorWrite {
     }
 
     /// **Source:** `STEPControl_ActorWrite.hxx`:99 - `STEPControl_ActorWrite::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::STEPControl_ActorWrite_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::STEPControl_ActorWrite_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `STEPControl_ActorWrite.hxx`:99 - `STEPControl_ActorWrite::get_type_descriptor()`
@@ -379,8 +387,12 @@ impl Controller {
     }
 
     /// **Source:** `STEPControl_Controller.hxx`:71 - `STEPControl_Controller::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::STEPControl_Controller_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::STEPControl_Controller_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `STEPControl_Controller.hxx`:71 - `STEPControl_Controller::get_type_descriptor()`

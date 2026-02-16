@@ -103,8 +103,12 @@ impl ActorOfFinderProcess {
     }
 
     /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:101 - `Transfer_ActorOfFinderProcess::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Transfer_ActorOfFinderProcess_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Transfer_ActorOfFinderProcess_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:101 - `Transfer_ActorOfFinderProcess::get_type_descriptor()`
@@ -239,8 +243,12 @@ impl ActorOfProcessForFinder {
     }
 
     /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:95 - `Transfer_ActorOfProcessForFinder::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Transfer_ActorOfProcessForFinder_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Transfer_ActorOfProcessForFinder_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:95 - `Transfer_ActorOfProcessForFinder::get_type_descriptor()`
@@ -355,8 +363,10 @@ impl ActorOfProcessForTransient {
     }
 
     /// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:94 - `Transfer_ActorOfProcessForTransient::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Transfer_ActorOfProcessForTransient_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Transfer_ActorOfProcessForTransient_get_type_name()).to_string_lossy().into_owned()
+        }
     }
 
     /// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:94 - `Transfer_ActorOfProcessForTransient::get_type_descriptor()`
@@ -426,8 +436,12 @@ impl ActorOfTransientProcess {
     }
 
     /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:95 - `Transfer_ActorOfTransientProcess::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Transfer_ActorOfTransientProcess_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Transfer_ActorOfTransientProcess_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:95 - `Transfer_ActorOfTransientProcess::get_type_descriptor()`
@@ -556,8 +570,14 @@ impl Binder {
     /// **Source:** `Transfer_Binder.hxx`:77 - `Transfer_Binder::ResultTypeName()`
     /// Returns the Name of the Type which characterizes the Result
     /// Can be returned even if ResultType itself is unknown
-    pub fn result_type_name(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Transfer_Binder_result_type_name(self as *const Self) }
+    pub fn result_type_name(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Transfer_Binder_result_type_name(
+                self as *const Self,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `Transfer_Binder.hxx`:81 - `Transfer_Binder::AddResult()`
@@ -679,8 +699,12 @@ impl Binder {
     }
 
     /// **Source:** `Transfer_Binder.hxx`:134 - `Transfer_Binder::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Transfer_Binder_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Transfer_Binder_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Transfer_Binder.hxx`:134 - `Transfer_Binder::get_type_descriptor()`

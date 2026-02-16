@@ -70,8 +70,15 @@ impl Controller {
     /// Returns a name, as given when initializing :
     /// rsc = False (D) : True Name attached to the Norm (long name)
     /// rsc = True : Name of the resource set (i.e. short name)
-    pub fn name(&self, rsc: bool) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::XSControl_Controller_name(self as *const Self, rsc) }
+    pub fn name(&self, rsc: bool) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::XSControl_Controller_name(
+                self as *const Self,
+                rsc,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `XSControl_Controller.hxx`:102 - `XSControl_Controller::WorkLibrary()`
@@ -149,9 +156,15 @@ impl Controller {
     /// **Source:** `XSControl_Controller.hxx`:147 - `XSControl_Controller::ModeWriteHelp()`
     /// Returns the help line recorded for a value of modetrans
     /// empty if help not defined or not within bounds or if values are free
-    pub fn mode_write_help(&self, modetrans: i32, shape: bool) -> *const std::ffi::c_char {
+    pub fn mode_write_help(&self, modetrans: i32, shape: bool) -> String {
         unsafe {
-            crate::ffi::XSControl_Controller_mode_write_help(self as *const Self, modetrans, shape)
+            std::ffi::CStr::from_ptr(crate::ffi::XSControl_Controller_mode_write_help(
+                self as *const Self,
+                modetrans,
+                shape,
+            ))
+            .to_string_lossy()
+            .into_owned()
         }
     }
 
@@ -184,8 +197,12 @@ impl Controller {
     }
 
     /// **Source:** `XSControl_Controller.hxx`:219 - `XSControl_Controller::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::XSControl_Controller_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::XSControl_Controller_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `XSControl_Controller.hxx`:219 - `XSControl_Controller::get_type_descriptor()`

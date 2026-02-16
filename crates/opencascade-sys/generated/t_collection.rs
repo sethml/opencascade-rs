@@ -833,8 +833,14 @@ impl AsciiString {
     /// Returns pointer to AsciiString (char *).
     /// This is useful for some casual manipulations.
     /// Warning: Because this "char *" is 'const', you can't modify its contents.
-    pub fn to_c_string(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::TCollection_AsciiString_to_c_string(self as *const Self) }
+    pub fn to_c_string(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TCollection_AsciiString_to_c_string(
+                self as *const Self,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `TCollection_AsciiString.hxx`:651 - `TCollection_AsciiString::Token()`
@@ -1934,8 +1940,14 @@ impl HAsciiString {
     /// Returns pointer to string (char *)
     /// This is useful for some casual manipulations
     /// Because this "char *" is 'const', you can't modify its contents.
-    pub fn to_c_string(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::TCollection_HAsciiString_to_c_string(self as *const Self) }
+    pub fn to_c_string(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TCollection_HAsciiString_to_c_string(
+                self as *const Self,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `TCollection_HAsciiString.hxx`:461 - `TCollection_HAsciiString::Token()`
@@ -2006,8 +2018,12 @@ impl HAsciiString {
     }
 
     /// **Source:** `TCollection_HAsciiString.hxx`:488 - `TCollection_HAsciiString::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::TCollection_HAsciiString_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TCollection_HAsciiString_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `TCollection_HAsciiString.hxx`:488 - `TCollection_HAsciiString::get_type_descriptor()`
@@ -2305,8 +2321,12 @@ impl HExtendedString {
     }
 
     /// **Source:** `TCollection_HExtendedString.hxx`:210 - `TCollection_HExtendedString::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::TCollection_HExtendedString_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TCollection_HExtendedString_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `TCollection_HExtendedString.hxx`:210 - `TCollection_HExtendedString::get_type_descriptor()`

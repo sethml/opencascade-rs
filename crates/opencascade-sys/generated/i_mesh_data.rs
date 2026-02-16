@@ -118,8 +118,12 @@ impl Curve {
     }
 
     /// **Source:** `IMeshData_Curve.hxx`:47 - `IMeshData_Curve::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IMeshData_Curve_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IMeshData_Curve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IMeshData_Curve.hxx`:47 - `IMeshData_Curve::get_type_descriptor()`
@@ -253,8 +257,12 @@ impl Edge {
     }
 
     /// **Source:** `IMeshData_Edge.hxx`:98 - `IMeshData_Edge::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IMeshData_Edge_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IMeshData_Edge_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IMeshData_Edge.hxx`:98 - `IMeshData_Edge::get_type_descriptor()`
@@ -383,8 +391,12 @@ impl Face {
     }
 
     /// **Source:** `IMeshData_Face.hxx`:63 - `IMeshData_Face::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IMeshData_Face_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IMeshData_Face_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IMeshData_Face.hxx`:63 - `IMeshData_Face::get_type_descriptor()`
@@ -513,8 +525,12 @@ impl Model {
     }
 
     /// **Source:** `IMeshData_Model.hxx`:37 - `IMeshData_Model::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IMeshData_Model_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IMeshData_Model_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IMeshData_Model.hxx`:37 - `IMeshData_Model::get_type_descriptor()`
@@ -632,8 +648,12 @@ impl PCurve {
     }
 
     /// **Source:** `IMeshData_PCurve.hxx`:63 - `IMeshData_PCurve::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IMeshData_PCurve_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IMeshData_PCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IMeshData_PCurve.hxx`:63 - `IMeshData_PCurve::get_type_descriptor()`
@@ -712,8 +732,12 @@ impl ParametersList {
     }
 
     /// **Source:** `IMeshData_ParametersList.hxx`:38 - `IMeshData_ParametersList::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IMeshData_ParametersList_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IMeshData_ParametersList_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IMeshData_ParametersList.hxx`:38 - `IMeshData_ParametersList::get_type_descriptor()`
@@ -777,8 +801,12 @@ impl Shape {
     }
 
     /// **Source:** `IMeshData_Shape.hxx`:36 - `IMeshData_Shape::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IMeshData_Shape_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IMeshData_Shape_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IMeshData_Shape.hxx`:36 - `IMeshData_Shape::get_type_descriptor()`
@@ -895,8 +923,12 @@ impl TessellatedShape {
     }
 
     /// **Source:** `IMeshData_TessellatedShape.hxx`:36 - `IMeshData_TessellatedShape::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IMeshData_TessellatedShape_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IMeshData_TessellatedShape_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IMeshData_TessellatedShape.hxx`:36 - `IMeshData_TessellatedShape::get_type_descriptor()`
@@ -979,8 +1011,12 @@ impl Wire {
     }
 
     /// **Source:** `IMeshData_Wire.hxx`:53 - `IMeshData_Wire::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IMeshData_Wire_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IMeshData_Wire_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IMeshData_Wire.hxx`:53 - `IMeshData_Wire::get_type_descriptor()`

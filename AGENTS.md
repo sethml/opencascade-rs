@@ -14,6 +14,8 @@ the user if they want to speed them up.
 
 Do not use /tmp/ for temporary files. Use tmp/ in the project directory instead.
 
+When writing scripts, if they're more than 5 lines write to a temporary file rather than using shell quoting to avoid quoting errors.
+
 Never git commit unless explicitly asked to do so.
 
 When resolving git merge conflicts, any code in crates/opencascade-sys/generated is generated code and should be regenerated rather than trying to resolve conflicts.

@@ -94,8 +94,12 @@ impl BaseMeshAlgo {
     }
 
     /// **Source:** `BRepMesh_BaseMeshAlgo.hxx`:46 - `BRepMesh_BaseMeshAlgo::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_BaseMeshAlgo_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_BaseMeshAlgo_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_BaseMeshAlgo.hxx`:46 - `BRepMesh_BaseMeshAlgo::get_type_descriptor()`
@@ -483,8 +487,12 @@ impl Classifier {
     }
 
     /// **Source:** `BRepMesh_Classifier.hxx`:56 - `BRepMesh_Classifier::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_Classifier_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_Classifier_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_Classifier.hxx`:56 - `BRepMesh_Classifier::get_type_descriptor()`
@@ -629,8 +637,12 @@ impl ConstrainedBaseMeshAlgo {
     }
 
     /// **Source:** `BRepMesh_ConstrainedBaseMeshAlgo.hxx`:34 - `BRepMesh_ConstrainedBaseMeshAlgo::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ConstrainedBaseMeshAlgo_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_ConstrainedBaseMeshAlgo.hxx`:34 - `BRepMesh_ConstrainedBaseMeshAlgo::get_type_descriptor()`
@@ -709,8 +721,12 @@ impl Context {
     }
 
     /// **Source:** `BRepMesh_Context.hxx`:33 - `BRepMesh_Context::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_Context_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_Context_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_Context.hxx`:33 - `BRepMesh_Context::get_type_descriptor()`
@@ -913,8 +929,12 @@ impl CurveTessellator {
     }
 
     /// **Source:** `BRepMesh_CurveTessellator.hxx`:61 - `BRepMesh_CurveTessellator::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_CurveTessellator_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_CurveTessellator_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_CurveTessellator.hxx`:61 - `BRepMesh_CurveTessellator::get_type_descriptor()`
@@ -965,8 +985,12 @@ impl CustomBaseMeshAlgo {
     }
 
     /// **Source:** `BRepMesh_CustomBaseMeshAlgo.hxx`:36 - `BRepMesh_CustomBaseMeshAlgo::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_CustomBaseMeshAlgo_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_CustomBaseMeshAlgo_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_CustomBaseMeshAlgo.hxx`:36 - `BRepMesh_CustomBaseMeshAlgo::get_type_descriptor()`
@@ -1383,8 +1407,12 @@ impl DataStructureOfDelaun {
     }
 
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:203 - `BRepMesh_DataStructureOfDelaun::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_DataStructureOfDelaun_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_DataStructureOfDelaun.hxx`:203 - `BRepMesh_DataStructureOfDelaun::get_type_descriptor()`
@@ -1573,8 +1601,12 @@ impl Deflection {
     }
 
     /// **Source:** `BRepMesh_Deflection.hxx`:66 - `BRepMesh_Deflection::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_Deflection_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_Deflection_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_Deflection.hxx`:66 - `BRepMesh_Deflection::get_type_descriptor()`
@@ -1640,8 +1672,12 @@ impl DelabellaBaseMeshAlgo {
     }
 
     /// **Source:** `BRepMesh_DelabellaBaseMeshAlgo.hxx`:32 - `BRepMesh_DelabellaBaseMeshAlgo::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_DelabellaBaseMeshAlgo.hxx`:32 - `BRepMesh_DelabellaBaseMeshAlgo::get_type_descriptor()`
@@ -1766,8 +1802,12 @@ impl DelabellaMeshAlgoFactory {
     }
 
     /// **Source:** `BRepMesh_DelabellaMeshAlgoFactory.hxx`:38 - `BRepMesh_DelabellaMeshAlgoFactory::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_DelabellaMeshAlgoFactory.hxx`:38 - `BRepMesh_DelabellaMeshAlgoFactory::get_type_descriptor()`
@@ -1952,8 +1992,12 @@ impl DelaunayBaseMeshAlgo {
     }
 
     /// **Source:** `BRepMesh_DelaunayBaseMeshAlgo.hxx`:32 - `BRepMesh_DelaunayBaseMeshAlgo::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_DelaunayBaseMeshAlgo.hxx`:32 - `BRepMesh_DelaunayBaseMeshAlgo::get_type_descriptor()`
@@ -2059,8 +2103,12 @@ impl DiscretRoot {
     }
 
     /// **Source:** `BRepMesh_DiscretRoot.hxx`:41 - `BRepMesh_DiscretRoot::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_DiscretRoot_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_DiscretRoot_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_DiscretRoot.hxx`:41 - `BRepMesh_DiscretRoot::get_type_descriptor()`
@@ -2211,8 +2259,12 @@ impl EdgeDiscret {
     }
 
     /// **Source:** `BRepMesh_EdgeDiscret.hxx`:70 - `BRepMesh_EdgeDiscret::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_EdgeDiscret_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_EdgeDiscret_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_EdgeDiscret.hxx`:70 - `BRepMesh_EdgeDiscret::get_type_descriptor()`
@@ -2285,8 +2337,12 @@ impl EdgeTessellationExtractor {
     }
 
     /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:49 - `BRepMesh_EdgeTessellationExtractor::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_EdgeTessellationExtractor_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_EdgeTessellationExtractor_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_EdgeTessellationExtractor.hxx`:49 - `BRepMesh_EdgeTessellationExtractor::get_type_descriptor()`
@@ -2467,8 +2523,12 @@ impl FaceChecker {
     }
 
     /// **Source:** `BRepMesh_FaceChecker.hxx`:80 - `BRepMesh_FaceChecker::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_FaceChecker_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_FaceChecker_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_FaceChecker.hxx`:80 - `BRepMesh_FaceChecker::get_type_descriptor()`
@@ -2544,8 +2604,12 @@ impl FaceDiscret {
     }
 
     /// **Source:** `BRepMesh_FaceDiscret.hxx`:36 - `BRepMesh_FaceDiscret::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_FaceDiscret_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_FaceDiscret_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_FaceDiscret.hxx`:36 - `BRepMesh_FaceDiscret::get_type_descriptor()`
@@ -2876,8 +2940,12 @@ impl IncrementalMesh {
     }
 
     /// **Source:** `BRepMesh_IncrementalMesh.hxx`:129 - `BRepMesh_IncrementalMesh::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_IncrementalMesh_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_IncrementalMesh_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_IncrementalMesh.hxx`:129 - `BRepMesh_IncrementalMesh::get_type_descriptor()`
@@ -2963,8 +3031,12 @@ impl MeshAlgoFactory {
     }
 
     /// **Source:** `BRepMesh_MeshAlgoFactory.hxx`:38 - `BRepMesh_MeshAlgoFactory::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_MeshAlgoFactory_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_MeshAlgoFactory_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_MeshAlgoFactory.hxx`:38 - `BRepMesh_MeshAlgoFactory::get_type_descriptor()`
@@ -3097,8 +3169,12 @@ impl MeshTool {
     }
 
     /// **Source:** `BRepMesh_MeshTool.hxx`:160 - `BRepMesh_MeshTool::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_MeshTool_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_MeshTool_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_MeshTool.hxx`:160 - `BRepMesh_MeshTool::get_type_descriptor()`
@@ -3168,8 +3244,12 @@ impl ModelBuilder {
     }
 
     /// **Source:** `BRepMesh_ModelBuilder.hxx`:38 - `BRepMesh_ModelBuilder::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_ModelBuilder_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ModelBuilder_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_ModelBuilder.hxx`:38 - `BRepMesh_ModelBuilder::get_type_descriptor()`
@@ -3349,8 +3429,12 @@ impl ModelHealer {
     }
 
     /// **Source:** `BRepMesh_ModelHealer.hxx`:51 - `BRepMesh_ModelHealer::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_ModelHealer_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ModelHealer_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_ModelHealer.hxx`:51 - `BRepMesh_ModelHealer::get_type_descriptor()`
@@ -3399,8 +3483,12 @@ impl ModelPostProcessor {
     }
 
     /// **Source:** `BRepMesh_ModelPostProcessor.hxx`:33 - `BRepMesh_ModelPostProcessor::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_ModelPostProcessor_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ModelPostProcessor_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_ModelPostProcessor.hxx`:33 - `BRepMesh_ModelPostProcessor::get_type_descriptor()`
@@ -3454,8 +3542,12 @@ impl ModelPreProcessor {
     }
 
     /// **Source:** `BRepMesh_ModelPreProcessor.hxx`:34 - `BRepMesh_ModelPreProcessor::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_ModelPreProcessor_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ModelPreProcessor_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_ModelPreProcessor.hxx`:34 - `BRepMesh_ModelPreProcessor::get_type_descriptor()`
@@ -3877,8 +3969,14 @@ impl SelectorOfDataStructureOfDelaun {
     }
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:80 - `BRepMesh_SelectorOfDataStructureOfDelaun::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:80 - `BRepMesh_SelectorOfDataStructureOfDelaun::get_type_descriptor()`
@@ -4142,8 +4240,12 @@ impl ShapeTool {
     }
 
     /// **Source:** `BRepMesh_ShapeTool.hxx`:140 - `BRepMesh_ShapeTool::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_ShapeTool_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ShapeTool_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_ShapeTool.hxx`:140 - `BRepMesh_ShapeTool::get_type_descriptor()`
@@ -4217,8 +4319,12 @@ impl ShapeVisitor {
     }
 
     /// **Source:** `BRepMesh_ShapeVisitor.hxx`:49 - `BRepMesh_ShapeVisitor::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_ShapeVisitor_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_ShapeVisitor_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_ShapeVisitor.hxx`:49 - `BRepMesh_ShapeVisitor::get_type_descriptor()`
@@ -4976,8 +5082,12 @@ impl VertexTool {
     }
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:137 - `BRepMesh_VertexTool::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepMesh_VertexTool_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepMesh_VertexTool_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:137 - `BRepMesh_VertexTool::get_type_descriptor()`

@@ -142,8 +142,12 @@ impl AbortiveTransaction {
     }
 
     /// **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_AbortiveTransaction_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_AbortiveTransaction_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_AbortiveTransaction.hxx`:36 - `Standard_AbortiveTransaction::get_type_descriptor()`
@@ -371,8 +375,12 @@ impl ConstructionError {
     }
 
     /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_ConstructionError_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_ConstructionError_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_ConstructionError.hxx`:36 - `Standard_ConstructionError::get_type_descriptor()`
@@ -434,8 +442,12 @@ impl DimensionError {
     }
 
     /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_DimensionError_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_DimensionError_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_DimensionError.hxx`:36 - `Standard_DimensionError::get_type_descriptor()`
@@ -497,8 +509,12 @@ impl DimensionMismatch {
     }
 
     /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_DimensionMismatch_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_DimensionMismatch_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_DimensionMismatch.hxx`:36 - `Standard_DimensionMismatch::get_type_descriptor()`
@@ -560,8 +576,12 @@ impl DivideByZero {
     }
 
     /// **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_DivideByZero_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_DivideByZero_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_DivideByZero.hxx`:36 - `Standard_DivideByZero::get_type_descriptor()`
@@ -623,8 +643,12 @@ impl DomainError {
     }
 
     /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_DomainError_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_DomainError_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_DomainError.hxx`:36 - `Standard_DomainError::get_type_descriptor()`
@@ -692,8 +716,12 @@ impl Dump {
 
     /// **Source:** `Standard_Dump.hxx`:374 - `Standard_Dump::JsonKeyToString()`
     /// Returns key value for enum type
-    pub fn json_key_to_string(theKey: crate::standard::JsonKey) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_Dump_json_key_to_string(theKey.into()) }
+    pub fn json_key_to_string(theKey: crate::standard::JsonKey) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_Dump_json_key_to_string(theKey.into()))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_Dump.hxx`:377 - `Standard_Dump::JsonKeyLength()`
@@ -896,8 +924,14 @@ impl Failure {
 
     /// **Source:** `Standard_Failure.hxx`:61 - `Standard_Failure::GetMessageString()`
     /// Returns error message
-    pub fn get_message_string(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_Failure_get_message_string(self as *const Self) }
+    pub fn get_message_string(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_Failure_get_message_string(
+                self as *const Self,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `Standard_Failure.hxx`:64 - `Standard_Failure::SetMessageString()`
@@ -914,8 +948,14 @@ impl Failure {
 
     /// **Source:** `Standard_Failure.hxx`:67 - `Standard_Failure::GetStackString()`
     /// Returns the stack trace string
-    pub fn get_stack_string(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_Failure_get_stack_string(self as *const Self) }
+    pub fn get_stack_string(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_Failure_get_stack_string(
+                self as *const Self,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `Standard_Failure.hxx`:70 - `Standard_Failure::SetStackString()`
@@ -1009,8 +1049,12 @@ impl Failure {
     }
 
     /// **Source:** `Standard_Failure.hxx`:114 - `Standard_Failure::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_Failure_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_Failure_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_Failure.hxx`:114 - `Standard_Failure::get_type_descriptor()`
@@ -1193,8 +1237,12 @@ impl ImmutableObject {
     }
 
     /// **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_ImmutableObject_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_ImmutableObject_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_ImmutableObject.hxx`:36 - `Standard_ImmutableObject::get_type_descriptor()`
@@ -1256,8 +1304,12 @@ impl LicenseError {
     }
 
     /// **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_LicenseError_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_LicenseError_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_LicenseError.hxx`:36 - `Standard_LicenseError::get_type_descriptor()`
@@ -1319,8 +1371,12 @@ impl LicenseNotFound {
     }
 
     /// **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_LicenseNotFound_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_LicenseNotFound_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_LicenseNotFound.hxx`:36 - `Standard_LicenseNotFound::get_type_descriptor()`
@@ -1543,8 +1599,12 @@ impl MultiplyDefined {
     }
 
     /// **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_MultiplyDefined_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_MultiplyDefined_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_MultiplyDefined.hxx`:36 - `Standard_MultiplyDefined::get_type_descriptor()`
@@ -1681,8 +1741,12 @@ impl NegativeValue {
     }
 
     /// **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_NegativeValue_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_NegativeValue_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_NegativeValue.hxx`:36 - `Standard_NegativeValue::get_type_descriptor()`
@@ -1744,8 +1808,12 @@ impl NoMoreObject {
     }
 
     /// **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_NoMoreObject_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_NoMoreObject_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_NoMoreObject.hxx`:36 - `Standard_NoMoreObject::get_type_descriptor()`
@@ -1807,8 +1875,12 @@ impl NoSuchObject {
     }
 
     /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_NoSuchObject_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_NoSuchObject_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_NoSuchObject.hxx`:36 - `Standard_NoSuchObject::get_type_descriptor()`
@@ -1870,8 +1942,12 @@ impl NotImplemented {
     }
 
     /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_NotImplemented_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_NotImplemented_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_NotImplemented.hxx`:36 - `Standard_NotImplemented::get_type_descriptor()`
@@ -1933,8 +2009,12 @@ impl NullObject {
     }
 
     /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_NullObject_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_NullObject_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_NullObject.hxx`:36 - `Standard_NullObject::get_type_descriptor()`
@@ -1996,8 +2076,12 @@ impl NullValue {
     }
 
     /// **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_NullValue_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_NullValue_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_NullValue.hxx`:36 - `Standard_NullValue::get_type_descriptor()`
@@ -2059,8 +2143,12 @@ impl NumericError {
     }
 
     /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_NumericError_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_NumericError_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_NumericError.hxx`:36 - `Standard_NumericError::get_type_descriptor()`
@@ -2109,8 +2197,14 @@ impl OutOfMemory {
 
     /// **Source:** `Standard_OutOfMemory.hxx`:57 - `Standard_OutOfMemory::GetMessageString()`
     /// Returns error message
-    pub fn get_message_string(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_OutOfMemory_get_message_string(self as *const Self) }
+    pub fn get_message_string(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_OutOfMemory_get_message_string(
+                self as *const Self,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `Standard_OutOfMemory.hxx`:60 - `Standard_OutOfMemory::SetMessageString()`
@@ -2138,8 +2232,12 @@ impl OutOfMemory {
     }
 
     /// **Source:** `Standard_OutOfMemory.hxx`:75 - `Standard_OutOfMemory::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_OutOfMemory_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_OutOfMemory_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_OutOfMemory.hxx`:75 - `Standard_OutOfMemory::get_type_descriptor()`
@@ -2201,8 +2299,12 @@ impl OutOfRange {
     }
 
     /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_OutOfRange_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_OutOfRange_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_OutOfRange.hxx`:46 - `Standard_OutOfRange::get_type_descriptor()`
@@ -2264,8 +2366,12 @@ impl Overflow {
     }
 
     /// **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_Overflow_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_Overflow_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_Overflow.hxx`:36 - `Standard_Overflow::get_type_descriptor()`
@@ -2306,8 +2412,12 @@ impl Persistent {
     }
 
     /// **Source:** `Standard_Persistent.hxx`:33 - `Standard_Persistent::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_Persistent_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_Persistent_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_Persistent.hxx`:33 - `Standard_Persistent::get_type_descriptor()`
@@ -2398,8 +2508,12 @@ impl ProgramError {
     }
 
     /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_ProgramError_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_ProgramError_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_ProgramError.hxx`:36 - `Standard_ProgramError::get_type_descriptor()`
@@ -2461,8 +2575,12 @@ impl RangeError {
     }
 
     /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_RangeError_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_RangeError_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_RangeError.hxx`:43 - `Standard_RangeError::get_type_descriptor()`
@@ -2648,8 +2766,12 @@ impl Transient {
     }
 
     /// **Source:** `Standard_Transient.hxx`:65 - `Standard_Transient::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_Transient_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_Transient_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_Transient.hxx`:68 - `Standard_Transient::get_type_descriptor()`
@@ -2697,14 +2819,22 @@ unsafe impl crate::CppDeletable for Type {
 impl Type {
     /// **Source:** `Standard_Type.hxx`:124 - `Standard_Type::SystemName()`
     /// Returns the system type name of the class (typeinfo.name)
-    pub fn system_name(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_Type_system_name(self as *const Self) }
+    pub fn system_name(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_Type_system_name(self as *const Self))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_Type.hxx`:127 - `Standard_Type::Name()`
     /// Returns the given name of the class type (get_type_name)
-    pub fn name(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_Type_name(self as *const Self) }
+    pub fn name(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_Type_name(self as *const Self))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_Type.hxx`:130 - `Standard_Type::Size()`
@@ -2744,8 +2874,12 @@ impl Type {
     }
 
     /// **Source:** `Standard_Type.hxx`:174 - `Standard_Type::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_Type_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_Type_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_Type.hxx`:174 - `Standard_Type::get_type_descriptor()`
@@ -2834,8 +2968,12 @@ impl TypeMismatch {
     }
 
     /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_TypeMismatch_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_TypeMismatch_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_TypeMismatch.hxx`:35 - `Standard_TypeMismatch::get_type_descriptor()`
@@ -2897,8 +3035,12 @@ impl Underflow {
     }
 
     /// **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Standard_Underflow_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Standard_Underflow_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Standard_Underflow.hxx`:36 - `Standard_Underflow::get_type_descriptor()`

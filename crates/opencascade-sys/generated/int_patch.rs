@@ -435,8 +435,12 @@ impl Line {
     }
 
     /// **Source:** `IntPatch_Line.hxx`:111 - `IntPatch_Line::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::IntPatch_Line_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IntPatch_Line_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IntPatch_Line.hxx`:111 - `IntPatch_Line::get_type_descriptor()`

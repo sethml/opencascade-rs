@@ -277,8 +277,12 @@ impl Curve2d {
     }
 
     /// **Source:** `Adaptor2d_Curve2d.hxx`:52 - `Adaptor2d_Curve2d::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Adaptor2d_Curve2d_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Adaptor2d_Curve2d_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Adaptor2d_Curve2d.hxx`:52 - `Adaptor2d_Curve2d::get_type_descriptor()`
@@ -571,8 +575,12 @@ impl Line2d {
     }
 
     /// **Source:** `Adaptor2d_Line2d.hxx`:45 - `Adaptor2d_Line2d::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Adaptor2d_Line2d_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Adaptor2d_Line2d_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Adaptor2d_Line2d.hxx`:45 - `Adaptor2d_Line2d::get_type_descriptor()`
@@ -948,8 +956,12 @@ impl OffsetCurve {
     }
 
     /// **Source:** `Adaptor2d_OffsetCurve.hxx`:39 - `Adaptor2d_OffsetCurve::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Adaptor2d_OffsetCurve_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Adaptor2d_OffsetCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Adaptor2d_OffsetCurve.hxx`:39 - `Adaptor2d_OffsetCurve::get_type_descriptor()`

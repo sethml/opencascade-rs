@@ -51,8 +51,12 @@ impl RepresentationItem {
     }
 
     /// **Source:** `StepRepr_RepresentationItem.hxx`:42 - `StepRepr_RepresentationItem::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::StepRepr_RepresentationItem_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepRepr_RepresentationItem_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `StepRepr_RepresentationItem.hxx`:42 - `StepRepr_RepresentationItem::get_type_descriptor()`

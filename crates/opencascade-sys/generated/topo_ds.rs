@@ -188,8 +188,12 @@ impl AlertWithShape {
     }
 
     /// **Source:** `TopoDS_AlertWithShape.hxx`:43 - `TopoDS_AlertWithShape::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::TopoDS_AlertWithShape_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopoDS_AlertWithShape_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `TopoDS_AlertWithShape.hxx`:43 - `TopoDS_AlertWithShape::get_type_descriptor()`
@@ -1431,8 +1435,12 @@ impl FrozenShape {
     }
 
     /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::TopoDS_FrozenShape_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopoDS_FrozenShape_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::get_type_descriptor()`
@@ -1504,8 +1512,12 @@ impl HShape {
     }
 
     /// **Source:** `TopoDS_HShape.hxx`:53 - `TopoDS_HShape::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::TopoDS_HShape_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopoDS_HShape_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `TopoDS_HShape.hxx`:53 - `TopoDS_HShape::get_type_descriptor()`
@@ -1717,8 +1729,12 @@ impl LockedShape {
     }
 
     /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::TopoDS_LockedShape_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopoDS_LockedShape_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::get_type_descriptor()`
@@ -2681,8 +2697,12 @@ impl TCompSolid {
     }
 
     /// **Source:** `TopoDS_TCompSolid.hxx`:44 - `TopoDS_TCompSolid::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::TopoDS_TCompSolid_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopoDS_TCompSolid_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `TopoDS_TCompSolid.hxx`:44 - `TopoDS_TCompSolid::get_type_descriptor()`
@@ -2799,8 +2819,12 @@ impl TCompound {
     }
 
     /// **Source:** `TopoDS_TCompound.hxx`:45 - `TopoDS_TCompound::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::TopoDS_TCompound_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopoDS_TCompound_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `TopoDS_TCompound.hxx`:45 - `TopoDS_TCompound::get_type_descriptor()`
@@ -2904,8 +2928,12 @@ impl TEdge {
     }
 
     /// **Source:** `TopoDS_TEdge.hxx`:36 - `TopoDS_TEdge::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::TopoDS_TEdge_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopoDS_TEdge_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `TopoDS_TEdge.hxx`:36 - `TopoDS_TEdge::get_type_descriptor()`
@@ -3026,8 +3054,12 @@ impl TFace {
     }
 
     /// **Source:** `TopoDS_TFace.hxx`:46 - `TopoDS_TFace::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::TopoDS_TFace_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopoDS_TFace_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `TopoDS_TFace.hxx`:46 - `TopoDS_TFace::get_type_descriptor()`
@@ -3264,8 +3296,12 @@ impl TShape {
     }
 
     /// **Source:** `TopoDS_TShape.hxx`:142 - `TopoDS_TShape::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::TopoDS_TShape_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopoDS_TShape_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `TopoDS_TShape.hxx`:142 - `TopoDS_TShape::get_type_descriptor()`
@@ -3340,8 +3376,12 @@ impl TShell {
     }
 
     /// **Source:** `TopoDS_TShell.hxx`:44 - `TopoDS_TShell::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::TopoDS_TShell_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopoDS_TShell_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `TopoDS_TShell.hxx`:44 - `TopoDS_TShell::get_type_descriptor()`
@@ -3459,8 +3499,12 @@ impl TSolid {
     }
 
     /// **Source:** `TopoDS_TSolid.hxx`:46 - `TopoDS_TSolid::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::TopoDS_TSolid_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopoDS_TSolid_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `TopoDS_TSolid.hxx`:46 - `TopoDS_TSolid::get_type_descriptor()`
@@ -3564,8 +3608,12 @@ impl TVertex {
     }
 
     /// **Source:** `TopoDS_TVertex.hxx`:40 - `TopoDS_TVertex::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::TopoDS_TVertex_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopoDS_TVertex_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `TopoDS_TVertex.hxx`:40 - `TopoDS_TVertex::get_type_descriptor()`
@@ -3684,8 +3732,12 @@ impl TWire {
     }
 
     /// **Source:** `TopoDS_TWire.hxx`:44 - `TopoDS_TWire::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::TopoDS_TWire_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopoDS_TWire_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `TopoDS_TWire.hxx`:44 - `TopoDS_TWire::get_type_descriptor()`
@@ -3808,8 +3860,12 @@ impl UnCompatibleShapes {
     }
 
     /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::TopoDS_UnCompatibleShapes_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopoDS_UnCompatibleShapes_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::get_type_descriptor()`

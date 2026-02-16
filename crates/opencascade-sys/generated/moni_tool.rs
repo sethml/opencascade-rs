@@ -28,8 +28,12 @@ impl SignText {
     /// **Source:** `MoniTool_SignText.hxx`:40 - `MoniTool_SignText::Name()`
     /// Returns an identification of the Signature (a word), given at
     /// initialization time
-    pub fn name(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::MoniTool_SignText_name(self as *const Self) }
+    pub fn name(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::MoniTool_SignText_name(self as *const Self))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `MoniTool_SignText.hxx`:57 - `MoniTool_SignText::DynamicType()`
@@ -38,8 +42,12 @@ impl SignText {
     }
 
     /// **Source:** `MoniTool_SignText.hxx`:57 - `MoniTool_SignText::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::MoniTool_SignText_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::MoniTool_SignText_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `MoniTool_SignText.hxx`:57 - `MoniTool_SignText::get_type_descriptor()`

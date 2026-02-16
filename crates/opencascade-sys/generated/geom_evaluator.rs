@@ -97,8 +97,12 @@ impl Curve {
     }
 
     /// **Source:** `GeomEvaluator_Curve.hxx`:51 - `GeomEvaluator_Curve::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::GeomEvaluator_Curve_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::GeomEvaluator_Curve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `GeomEvaluator_Curve.hxx`:51 - `GeomEvaluator_Curve::get_type_descriptor()`
@@ -261,8 +265,12 @@ impl OffsetCurve {
     }
 
     /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:63 - `GeomEvaluator_OffsetCurve::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::GeomEvaluator_OffsetCurve_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::GeomEvaluator_OffsetCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:63 - `GeomEvaluator_OffsetCurve::get_type_descriptor()`
@@ -453,8 +461,12 @@ impl OffsetSurface {
     }
 
     /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:83 - `GeomEvaluator_OffsetSurface::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::GeomEvaluator_OffsetSurface_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::GeomEvaluator_OffsetSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:83 - `GeomEvaluator_OffsetSurface::get_type_descriptor()`
@@ -626,8 +638,12 @@ impl Surface {
     }
 
     /// **Source:** `GeomEvaluator_Surface.hxx`:71 - `GeomEvaluator_Surface::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::GeomEvaluator_Surface_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::GeomEvaluator_Surface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `GeomEvaluator_Surface.hxx`:71 - `GeomEvaluator_Surface::get_type_descriptor()`
@@ -852,8 +868,12 @@ impl SurfaceOfExtrusion {
     }
 
     /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:79 - `GeomEvaluator_SurfaceOfExtrusion::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::GeomEvaluator_SurfaceOfExtrusion_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::GeomEvaluator_SurfaceOfExtrusion_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:79 - `GeomEvaluator_SurfaceOfExtrusion::get_type_descriptor()`
@@ -1099,8 +1119,12 @@ impl SurfaceOfRevolution {
     }
 
     /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:89 - `GeomEvaluator_SurfaceOfRevolution::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::GeomEvaluator_SurfaceOfRevolution_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::GeomEvaluator_SurfaceOfRevolution_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:89 - `GeomEvaluator_SurfaceOfRevolution::get_type_descriptor()`

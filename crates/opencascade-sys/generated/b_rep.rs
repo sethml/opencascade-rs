@@ -954,8 +954,12 @@ impl Curve3D {
     }
 
     /// **Source:** `BRep_Curve3D.hxx`:56 - `BRep_Curve3D::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRep_Curve3D_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRep_Curve3D_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRep_Curve3D.hxx`:56 - `BRep_Curve3D::get_type_descriptor()`
@@ -1239,8 +1243,12 @@ impl CurveOn2Surfaces {
     }
 
     /// **Source:** `BRep_CurveOn2Surfaces.hxx`:71 - `BRep_CurveOn2Surfaces::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRep_CurveOn2Surfaces_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRep_CurveOn2Surfaces_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRep_CurveOn2Surfaces.hxx`:71 - `BRep_CurveOn2Surfaces::get_type_descriptor()`
@@ -1518,8 +1526,12 @@ impl CurveOnClosedSurface {
     }
 
     /// **Source:** `BRep_CurveOnClosedSurface.hxx`:85 - `BRep_CurveOnClosedSurface::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRep_CurveOnClosedSurface_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRep_CurveOnClosedSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRep_CurveOnClosedSurface.hxx`:85 - `BRep_CurveOnClosedSurface::get_type_descriptor()`
@@ -1835,8 +1847,12 @@ impl CurveOnSurface {
     }
 
     /// **Source:** `BRep_CurveOnSurface.hxx`:76 - `BRep_CurveOnSurface::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRep_CurveOnSurface_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRep_CurveOnSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRep_CurveOnSurface.hxx`:76 - `BRep_CurveOnSurface::get_type_descriptor()`
@@ -2340,8 +2356,12 @@ impl CurveRepresentation {
     }
 
     /// **Source:** `BRep_CurveRepresentation.hxx`:153 - `BRep_CurveRepresentation::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRep_CurveRepresentation_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRep_CurveRepresentation_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRep_CurveRepresentation.hxx`:153 - `BRep_CurveRepresentation::get_type_descriptor()`
@@ -2436,8 +2456,12 @@ impl GCurve {
     }
 
     /// **Source:** `BRep_GCurve.hxx`:60 - `BRep_GCurve::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRep_GCurve_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRep_GCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRep_GCurve.hxx`:60 - `BRep_GCurve::get_type_descriptor()`
@@ -2654,8 +2678,12 @@ impl PointOnCurve {
     }
 
     /// **Source:** `BRep_PointOnCurve.hxx`:54 - `BRep_PointOnCurve::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRep_PointOnCurve_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRep_PointOnCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRep_PointOnCurve.hxx`:54 - `BRep_PointOnCurve::get_type_descriptor()`
@@ -2781,8 +2809,12 @@ impl PointOnCurveOnSurface {
     }
 
     /// **Source:** `BRep_PointOnCurveOnSurface.hxx`:58 - `BRep_PointOnCurveOnSurface::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRep_PointOnCurveOnSurface_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRep_PointOnCurveOnSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRep_PointOnCurveOnSurface.hxx`:58 - `BRep_PointOnCurveOnSurface::get_type_descriptor()`
@@ -2931,8 +2963,12 @@ impl PointOnSurface {
     }
 
     /// **Source:** `BRep_PointOnSurface.hxx`:50 - `BRep_PointOnSurface::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRep_PointOnSurface_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRep_PointOnSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRep_PointOnSurface.hxx`:50 - `BRep_PointOnSurface::get_type_descriptor()`
@@ -3157,8 +3193,12 @@ impl PointRepresentation {
     }
 
     /// **Source:** `BRep_PointRepresentation.hxx`:88 - `BRep_PointRepresentation::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRep_PointRepresentation_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRep_PointRepresentation_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRep_PointRepresentation.hxx`:88 - `BRep_PointRepresentation::get_type_descriptor()`
@@ -3229,8 +3269,12 @@ impl PointsOnSurface {
     }
 
     /// **Source:** `BRep_PointsOnSurface.hxx`:43 - `BRep_PointsOnSurface::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRep_PointsOnSurface_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRep_PointsOnSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRep_PointsOnSurface.hxx`:43 - `BRep_PointsOnSurface::get_type_descriptor()`
@@ -3352,8 +3396,12 @@ impl Polygon3D {
     }
 
     /// **Source:** `BRep_Polygon3D.hxx`:51 - `BRep_Polygon3D::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRep_Polygon3D_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRep_Polygon3D_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRep_Polygon3D.hxx`:51 - `BRep_Polygon3D::get_type_descriptor()`
@@ -3563,8 +3611,12 @@ impl PolygonOnClosedSurface {
     }
 
     /// **Source:** `BRep_PolygonOnClosedSurface.hxx`:57 - `BRep_PolygonOnClosedSurface::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRep_PolygonOnClosedSurface_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRep_PolygonOnClosedSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRep_PolygonOnClosedSurface.hxx`:57 - `BRep_PolygonOnClosedSurface::get_type_descriptor()`
@@ -3842,8 +3894,12 @@ impl PolygonOnClosedTriangulation {
     }
 
     /// **Source:** `BRep_PolygonOnClosedTriangulation.hxx`:59 - `BRep_PolygonOnClosedTriangulation::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRep_PolygonOnClosedTriangulation_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRep_PolygonOnClosedTriangulation_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRep_PolygonOnClosedTriangulation.hxx`:59 - `BRep_PolygonOnClosedTriangulation::get_type_descriptor()`
@@ -4148,8 +4204,12 @@ impl PolygonOnSurface {
     }
 
     /// **Source:** `BRep_PolygonOnSurface.hxx`:64 - `BRep_PolygonOnSurface::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRep_PolygonOnSurface_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRep_PolygonOnSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRep_PolygonOnSurface.hxx`:64 - `BRep_PolygonOnSurface::get_type_descriptor()`
@@ -4392,8 +4452,12 @@ impl PolygonOnTriangulation {
     }
 
     /// **Source:** `BRep_PolygonOnTriangulation.hxx`:66 - `BRep_PolygonOnTriangulation::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRep_PolygonOnTriangulation_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRep_PolygonOnTriangulation_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRep_PolygonOnTriangulation.hxx`:66 - `BRep_PolygonOnTriangulation::get_type_descriptor()`
@@ -4662,8 +4726,12 @@ impl TEdge {
     }
 
     /// **Source:** `BRep_TEdge.hxx`:83 - `BRep_TEdge::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRep_TEdge_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRep_TEdge_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRep_TEdge.hxx`:83 - `BRep_TEdge::get_type_descriptor()`
@@ -4899,8 +4967,12 @@ impl TFace {
     }
 
     /// **Source:** `BRep_TFace.hxx`:136 - `BRep_TFace::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRep_TFace_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRep_TFace_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRep_TFace.hxx`:136 - `BRep_TFace::get_type_descriptor()`
@@ -5048,8 +5120,12 @@ impl TVertex {
     }
 
     /// **Source:** `BRep_TVertex.hxx`:64 - `BRep_TVertex::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRep_TVertex_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRep_TVertex_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRep_TVertex.hxx`:64 - `BRep_TVertex::get_type_descriptor()`

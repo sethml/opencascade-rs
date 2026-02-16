@@ -716,8 +716,12 @@ impl FastSewing {
     }
 
     /// **Source:** `BRepBuilderAPI_FastSewing.hxx`:90 - `BRepBuilderAPI_FastSewing::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepBuilderAPI_FastSewing_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepBuilderAPI_FastSewing_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepBuilderAPI_FastSewing.hxx`:90 - `BRepBuilderAPI_FastSewing::get_type_descriptor()`
@@ -5210,8 +5214,12 @@ impl Sewing {
     }
 
     /// **Source:** `BRepBuilderAPI_Sewing.hxx`:243 - `BRepBuilderAPI_Sewing::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::BRepBuilderAPI_Sewing_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepBuilderAPI_Sewing_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `BRepBuilderAPI_Sewing.hxx`:243 - `BRepBuilderAPI_Sewing::get_type_descriptor()`

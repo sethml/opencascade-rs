@@ -3814,8 +3814,12 @@ impl NotSquare {
     }
 
     /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::math_NotSquare_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::math_NotSquare_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::get_type_descriptor()`
@@ -4100,8 +4104,12 @@ impl SingularMatrix {
     }
 
     /// **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::math_SingularMatrix_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::math_SingularMatrix_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::get_type_descriptor()`

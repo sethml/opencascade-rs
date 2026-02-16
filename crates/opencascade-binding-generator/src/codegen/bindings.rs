@@ -607,7 +607,7 @@ fn unified_return_type_to_string(ty: &Type) -> String {
             )
         }
         Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
-            "*const std::ffi::c_char".to_string()
+            "String".to_string()
         }
         _ => unified_type_to_string(ty),
     }
@@ -3290,7 +3290,9 @@ fn build_reexport_body(raw_call: &str, reexport_type: Option<&str>, is_enum: Opt
     } else if needs_owned_ptr {
         format!("unsafe {{ crate::OwnedPtr::from_raw({}) }}", raw_call)
     } else if let Some(rt) = reexport_type {
-        if rt.starts_with("&mut ") {
+        if rt == "String" {
+            format!("unsafe {{ std::ffi::CStr::from_ptr({}).to_string_lossy().into_owned() }}", raw_call)
+        } else if rt.starts_with("&mut ") {
             format!("unsafe {{ &mut *({}) }}", raw_call)
         } else if rt.starts_with('&') {
             format!("unsafe {{ &*({}) }}", raw_call)

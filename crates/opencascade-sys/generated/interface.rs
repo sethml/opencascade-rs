@@ -280,8 +280,15 @@ impl BitMap {
 
     /// **Source:** `Interface_BitMap.hxx`:107 - `Interface_BitMap::FlagName()`
     /// Returns the name recorded for a flag, or an empty string
-    pub fn flag_name(&self, num: i32) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Interface_BitMap_flag_name(self as *const Self, num) }
+    pub fn flag_name(&self, num: i32) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Interface_BitMap_flag_name(
+                self as *const Self,
+                num,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `Interface_BitMap.hxx`:110 - `Interface_BitMap::FlagNumber()`
@@ -457,8 +464,16 @@ impl Check {
     /// **Source:** `Interface_Check.hxx`:91 - `Interface_Check::CFail()`
     /// Same as above, but returns a CString (to be printed ...)
     /// Final form by default, Original form if <final> is False
-    pub fn c_fail(&self, num: i32, final_: bool) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Interface_Check_c_fail(self as *const Self, num, final_) }
+    pub fn c_fail(&self, num: i32, final_: bool) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Interface_Check_c_fail(
+                self as *const Self,
+                num,
+                final_,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `Interface_Check.hxx`:97 - `Interface_Check::Fails()`
@@ -557,8 +572,16 @@ impl Check {
     /// **Source:** `Interface_Check.hxx`:132 - `Interface_Check::CWarning()`
     /// Same as above, but returns a CString (to be printed ...)
     /// Final form by default, Original form if <final> is False
-    pub fn c_warning(&self, num: i32, final_: bool) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Interface_Check_c_warning(self as *const Self, num, final_) }
+    pub fn c_warning(&self, num: i32, final_: bool) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Interface_Check_c_warning(
+                self as *const Self,
+                num,
+                final_,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `Interface_Check.hxx`:138 - `Interface_Check::Warnings()`
@@ -599,8 +622,16 @@ impl Check {
     /// **Source:** `Interface_Check.hxx`:155 - `Interface_Check::CInfoMsg()`
     /// Same as above, but returns a CString (to be printed ...)
     /// Final form by default, Original form if <final> is False
-    pub fn c_info_msg(&self, num: i32, final_: bool) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Interface_Check_c_info_msg(self as *const Self, num, final_) }
+    pub fn c_info_msg(&self, num: i32, final_: bool) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Interface_Check_c_info_msg(
+                self as *const Self,
+                num,
+                final_,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `Interface_Check.hxx`:161 - `Interface_Check::InfoMsgs()`
@@ -760,8 +791,12 @@ impl Check {
     }
 
     /// **Source:** `Interface_Check.hxx`:263 - `Interface_Check::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Interface_Check_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Interface_Check_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Interface_Check.hxx`:263 - `Interface_Check::get_type_descriptor()`
@@ -839,8 +874,12 @@ impl CheckIterator {
 
     /// **Source:** `Interface_CheckIterator.hxx`:58 - `Interface_CheckIterator::Name()`
     /// Returns the recorded name (can be empty)
-    pub fn name(&self) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Interface_CheckIterator_name(self as *const Self) }
+    pub fn name(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Interface_CheckIterator_name(self as *const Self))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Interface_CheckIterator.hxx`:62 - `Interface_CheckIterator::SetModel()`
@@ -1454,8 +1493,12 @@ impl HArray1OfHAsciiString {
     }
 
     /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Interface_HArray1OfHAsciiString_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Interface_HArray1OfHAsciiString_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::get_type_descriptor()`
@@ -1533,8 +1576,12 @@ impl HSequenceOfCheck {
     }
 
     /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Interface_HSequenceOfCheck_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Interface_HSequenceOfCheck_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::get_type_descriptor()`
@@ -2087,9 +2134,15 @@ impl InterfaceModel {
     /// **Source:** `Interface_InterfaceModel.hxx`:155 - `Interface_InterfaceModel::ClassName()`
     /// From a CDL Type Name, returns the Class part (package dropped)
     /// WARNING : buffered, to be immediately copied or printed
-    pub fn class_name(typnam: &str) -> *const std::ffi::c_char {
+    pub fn class_name(typnam: &str) -> String {
         let c_typnam = std::ffi::CString::new(typnam).unwrap();
-        unsafe { crate::ffi::Interface_InterfaceModel_class_name(c_typnam.as_ptr()) }
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Interface_InterfaceModel_class_name(
+                c_typnam.as_ptr(),
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `Interface_InterfaceModel.hxx`:408 - `Interface_InterfaceModel::HasTemplate()`
@@ -2127,8 +2180,12 @@ impl InterfaceModel {
     }
 
     /// **Source:** `Interface_InterfaceModel.hxx`:424 - `Interface_InterfaceModel::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Interface_InterfaceModel_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Interface_InterfaceModel_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Interface_InterfaceModel.hxx`:424 - `Interface_InterfaceModel::get_type_descriptor()`
@@ -2182,14 +2239,22 @@ impl SignType {
     /// **Source:** `Interface_SignType.hxx`:55 - `Interface_SignType::ClassName()`
     /// From a CDL Type Name, returns the Class part (package dropped)
     /// WARNING : buffered, to be immediately copied or printed
-    pub fn class_name(typnam: &str) -> *const std::ffi::c_char {
+    pub fn class_name(typnam: &str) -> String {
         let c_typnam = std::ffi::CString::new(typnam).unwrap();
-        unsafe { crate::ffi::Interface_SignType_class_name(c_typnam.as_ptr()) }
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Interface_SignType_class_name(c_typnam.as_ptr()))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Interface_SignType.hxx`:57 - `Interface_SignType::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Interface_SignType_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Interface_SignType_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Interface_SignType.hxx`:57 - `Interface_SignType::get_type_descriptor()`

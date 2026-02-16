@@ -83,8 +83,12 @@ impl BasicElt {
     }
 
     /// **Source:** `MAT_BasicElt.hxx`:61 - `MAT_BasicElt::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::MAT_BasicElt_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::MAT_BasicElt_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `MAT_BasicElt.hxx`:61 - `MAT_BasicElt::get_type_descriptor()`

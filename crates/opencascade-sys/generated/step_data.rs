@@ -215,8 +215,12 @@ impl StepModel {
     }
 
     /// **Source:** `StepData_StepModel.hxx`:132 - `StepData_StepModel::get_type_name()`
-    pub fn get_type_name() -> *const std::ffi::c_char {
-        unsafe { crate::ffi::StepData_StepModel_get_type_name() }
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepData_StepModel_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `StepData_StepModel.hxx`:132 - `StepData_StepModel::get_type_descriptor()`

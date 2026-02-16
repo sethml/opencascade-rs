@@ -1346,8 +1346,12 @@ impl Color {
 
     /// **Source:** `Quantity_Color.hxx`:189 - `Quantity_Color::StringName()`
     /// Returns the name of the color identified by the given Quantity_NameOfColor enumeration value.
-    pub fn string_name(theColor: crate::quantity::NameOfColor) -> *const std::ffi::c_char {
-        unsafe { crate::ffi::Quantity_Color_string_name(theColor.into()) }
+    pub fn string_name(theColor: crate::quantity::NameOfColor) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Quantity_Color_string_name(theColor.into()))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `Quantity_Color.hxx`:194 - `Quantity_Color::ColorFromName()`
