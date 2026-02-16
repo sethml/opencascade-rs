@@ -421,7 +421,7 @@ impl CompoundFace {
         let shape = self.inner.as_shape();
         let shape = Shape::from_shape(shape).clean();
 
-        let compound = topo_ds::compound(unsafe { &*shape.inner.as_ptr() });
+        let compound = topo_ds::compound(&shape.inner);
 
         Self::from_compound(compound)
     }
@@ -509,7 +509,7 @@ impl CompoundFace {
 
         shape.set_global_translation(translation);
 
-        let compound = topo_ds::compound(unsafe { &*shape.inner.as_ptr() });
+        let compound = topo_ds::compound(&shape.inner);
         *self = Self::from_compound(compound);
     }
 }

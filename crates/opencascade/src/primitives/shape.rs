@@ -768,7 +768,7 @@ pub(crate) fn list_of_shape_to_edges(list: &top_tools::ListOfShape) -> Vec<Edge>
     let mut iter = list.iter();
     let mut edges = Vec::new();
     while let Some(shape) = iter.next() {
-        let edge = topo_ds::edge(unsafe { &*shape.as_ptr() });
+        let edge = topo_ds::edge(&shape);
         edges.push(Edge::from_edge(edge));
     }
     edges
