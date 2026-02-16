@@ -1,8 +1,0 @@
-src/
-node_modules/
-tsconfig.json
-src/**/*.test.ts
-out/**/*.test.*
-out/**/*.js.map
-out/**/*.d.ts
-.gitignore
