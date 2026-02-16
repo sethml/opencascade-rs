@@ -148,24 +148,23 @@ let p = handle_ellipse.get().value(0.0);
 ### Handle Downcasting
 
 Handle downcasting (e.g., `Handle(Geom_Surface)` → `Handle(Geom_Plane)`) is
-not yet supported by the binding generator. As a workaround, you can use an
-unsafe pointer cast after confirming the dynamic type:
+supported via generated `downcast_to_*()` methods on Handle types. These use
+OCCT's `Handle::DownCast` internally, which performs runtime type checking.
 
 ```rust
-let surface_ref = surface_handle.get();
-let dynamic_type = surface_ref.dynamic_type();
-let type_obj = dynamic_type.get();
-let name = type_obj.name();
+let surface = b_rep::Tool::surface_face(face);
 
-if name == "Geom_Plane" {
-    // TODO: Use proper Handle downcast once the generator supports it.
-    // This is safe because DynamicType() confirms the concrete type,
-    // and the types share object layout via inheritance.
-    let plane: &geom::Plane =
-        unsafe { &*(surface_ref as *const geom::Surface as *const geom::Plane) };
+// Try to downcast HandleGeomSurface to HandleGeomPlane
+if let Some(plane_handle) = surface.downcast_to_plane() {
+    let plane = plane_handle.get();
     let location = plane.location();
+    // ...
 }
 ```
+
+Downcasts are generated from each base Handle type to all of its concrete
+(non-abstract) descendants. The methods return `Option<OwnedPtr<HandleDerived>>`,
+so no unsafe code is needed.
 
 ## Enums
 
@@ -417,10 +416,6 @@ let my_body = mk_fuse.shape();
   `*const T`, use `owned_ptr.as_ptr()` to get `*const T`, or `&*owned_ptr`
   to get `&T` (which then auto-coerces). For `*mut T`, use
   `owned_ptr.as_mut_ptr()` or `&mut *owned_ptr`.
-- **No Handle downcasting** — use unsafe pointer casts after dynamic type
-  checks as a workaround (see Handle Downcasting section above). The
-  `get_type_name()` method is available on all `Standard_Transient`-derived
-  classes for RTTI type identification.
 - **Bitset/flag enums remain `i32`** — most enum parameters now use typed Rust
   enums, but enums used as bitmasks (names containing "Flag" or "Mask", or
   values that are powers of 2) are still `i32`.
@@ -432,15 +427,16 @@ let my_body = mk_fuse.shape();
 
 All classes inheriting from `Standard_Transient` have a `get_type_name()`
 method that returns the C++ class name as a `String`. This is useful for
-Handle downcasting type checks and debugging:
+debugging and RTTI type identification:
 
 ```rust
 let surface_handle = b_rep::Tool::surface_face(face);
 let type_name = surface_handle.get().get_type_name();
-if type_name == "Geom_Plane" {
-    // Safe to downcast
-}
+println!("Surface type: {}", type_name); // e.g., "Geom_Plane"
 ```
+
+For type-checked downcasting, prefer the `downcast_to_*()` methods on Handle
+types (see the Handle Downcasting section above).
 
 ## Inherited Methods on TopoDS Subtypes
 

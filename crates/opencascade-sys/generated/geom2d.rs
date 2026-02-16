@@ -2715,6 +2715,60 @@ impl HandleGeom2dBoundedCurve {
             ))
         }
     }
+
+    /// Downcast Handle<Geom2d_BoundedCurve> to Handle<Geom2d_BSplineCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_BSplineCurve` (or subclass).
+    pub fn downcast_to_b_spline_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dBoundedCurve_downcast_to_HandleGeom2dBSplineCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_BoundedCurve> to Handle<Geom2d_BezierCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_BezierCurve` (or subclass).
+    pub fn downcast_to_bezier_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dBoundedCurve_downcast_to_HandleGeom2dBezierCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_BoundedCurve> to Handle<Geom2d_TrimmedCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_TrimmedCurve` (or subclass).
+    pub fn downcast_to_trimmed_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dTrimmedCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dBoundedCurve_downcast_to_HandleGeom2dTrimmedCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -3916,6 +3970,66 @@ impl HandleGeom2dConic {
             ))
         }
     }
+
+    /// Downcast Handle<Geom2d_Conic> to Handle<Geom2d_Circle>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_Circle` (or subclass).
+    pub fn downcast_to_circle(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dCircle>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dConic_downcast_to_HandleGeom2dCircle(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Conic> to Handle<Geom2d_Ellipse>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_Ellipse` (or subclass).
+    pub fn downcast_to_ellipse(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dEllipse>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dConic_downcast_to_HandleGeom2dEllipse(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Conic> to Handle<Geom2d_Hyperbola>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_Hyperbola` (or subclass).
+    pub fn downcast_to_hyperbola(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dHyperbola>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dConic_downcast_to_HandleGeom2dHyperbola(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Conic> to Handle<Geom2d_Parabola>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_Parabola` (or subclass).
+    pub fn downcast_to_parabola(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dParabola>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dConic_downcast_to_HandleGeom2dParabola(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -4331,6 +4445,144 @@ impl HandleGeom2dCurve {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dCurve_to_HandleGeom2dGeometry(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Curve> to Handle<Geom2d_BSplineCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_BSplineCurve` (or subclass).
+    pub fn downcast_to_b_spline_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dCurve_downcast_to_HandleGeom2dBSplineCurve(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Curve> to Handle<Geom2d_BezierCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_BezierCurve` (or subclass).
+    pub fn downcast_to_bezier_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dCurve_downcast_to_HandleGeom2dBezierCurve(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Curve> to Handle<Geom2d_Circle>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_Circle` (or subclass).
+    pub fn downcast_to_circle(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dCircle>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dCurve_downcast_to_HandleGeom2dCircle(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Curve> to Handle<Geom2d_Ellipse>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_Ellipse` (or subclass).
+    pub fn downcast_to_ellipse(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dEllipse>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dCurve_downcast_to_HandleGeom2dEllipse(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Curve> to Handle<Geom2d_Hyperbola>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_Hyperbola` (or subclass).
+    pub fn downcast_to_hyperbola(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dHyperbola>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dCurve_downcast_to_HandleGeom2dHyperbola(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Curve> to Handle<Geom2d_Line>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_Line` (or subclass).
+    pub fn downcast_to_line(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dCurve_downcast_to_HandleGeom2dLine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Curve> to Handle<Geom2d_OffsetCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_OffsetCurve` (or subclass).
+    pub fn downcast_to_offset_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dOffsetCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dCurve_downcast_to_HandleGeom2dOffsetCurve(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Curve> to Handle<Geom2d_Parabola>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_Parabola` (or subclass).
+    pub fn downcast_to_parabola(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dParabola>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dCurve_downcast_to_HandleGeom2dParabola(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Curve> to Handle<Geom2d_TrimmedCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_TrimmedCurve` (or subclass).
+    pub fn downcast_to_trimmed_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dTrimmedCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dCurve_downcast_to_HandleGeom2dTrimmedCurve(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -5526,6 +5778,222 @@ impl HandleGeom2dGeometry {
     /// Dereference this Handle to mutably access the underlying Geom2d_Geometry
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_Geometry {
         unsafe { &mut *(crate::ffi::HandleGeom2dGeometry_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<Geom2d_Geometry> to Handle<Geom2d_AxisPlacement>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_AxisPlacement` (or subclass).
+    pub fn downcast_to_axis_placement(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dAxisPlacement>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dAxisPlacement(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Geometry> to Handle<Geom2d_BSplineCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_BSplineCurve` (or subclass).
+    pub fn downcast_to_b_spline_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dBSplineCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Geometry> to Handle<Geom2d_BezierCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_BezierCurve` (or subclass).
+    pub fn downcast_to_bezier_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dBezierCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Geometry> to Handle<Geom2d_CartesianPoint>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_CartesianPoint` (or subclass).
+    pub fn downcast_to_cartesian_point(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dCartesianPoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dCartesianPoint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Geometry> to Handle<Geom2d_Circle>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_Circle` (or subclass).
+    pub fn downcast_to_circle(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dCircle>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dCircle(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Geometry> to Handle<Geom2d_Direction>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_Direction` (or subclass).
+    pub fn downcast_to_direction(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dDirection>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dDirection(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Geometry> to Handle<Geom2d_Ellipse>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_Ellipse` (or subclass).
+    pub fn downcast_to_ellipse(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dEllipse>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dEllipse(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Geometry> to Handle<Geom2d_Hyperbola>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_Hyperbola` (or subclass).
+    pub fn downcast_to_hyperbola(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dHyperbola>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dHyperbola(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Geometry> to Handle<Geom2d_Line>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_Line` (or subclass).
+    pub fn downcast_to_line(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dLine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Geometry> to Handle<Geom2d_OffsetCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_OffsetCurve` (or subclass).
+    pub fn downcast_to_offset_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dOffsetCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dOffsetCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Geometry> to Handle<Geom2d_Parabola>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_Parabola` (or subclass).
+    pub fn downcast_to_parabola(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dParabola>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dParabola(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Geometry> to Handle<Geom2d_TrimmedCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_TrimmedCurve` (or subclass).
+    pub fn downcast_to_trimmed_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dTrimmedCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dTrimmedCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Geometry> to Handle<Geom2d_VectorWithMagnitude>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_VectorWithMagnitude` (or subclass).
+    pub fn downcast_to_vector_with_magnitude(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dVectorWithMagnitude>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dVectorWithMagnitude(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -8051,6 +8519,24 @@ impl HandleGeom2dPoint {
             ))
         }
     }
+
+    /// Downcast Handle<Geom2d_Point> to Handle<Geom2d_CartesianPoint>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_CartesianPoint` (or subclass).
+    pub fn downcast_to_cartesian_point(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dCartesianPoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dPoint_downcast_to_HandleGeom2dCartesianPoint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -9379,6 +9865,40 @@ impl HandleGeom2dVector {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dVector_to_HandleGeom2dGeometry(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Vector> to Handle<Geom2d_Direction>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_Direction` (or subclass).
+    pub fn downcast_to_direction(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dDirection>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dVector_downcast_to_HandleGeom2dDirection(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom2d_Vector> to Handle<Geom2d_VectorWithMagnitude>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2d_VectorWithMagnitude` (or subclass).
+    pub fn downcast_to_vector_with_magnitude(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dVectorWithMagnitude>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dVector_downcast_to_HandleGeom2dVectorWithMagnitude(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }

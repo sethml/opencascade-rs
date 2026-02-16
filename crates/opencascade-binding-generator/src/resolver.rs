@@ -483,6 +483,22 @@ impl SymbolTable {
         ancestors.sort();
         ancestors
     }
+
+    /// Get all descendants of a class by C++ name (classes that directly or indirectly inherit from it)
+    pub fn get_all_descendants_by_name(&self, cpp_name: &str) -> Vec<String> {
+        let mut descendants = Vec::new();
+        for class in self.classes.values() {
+            if class.cpp_name == cpp_name {
+                continue;
+            }
+            let ancestors = self.get_all_ancestors_by_name(&class.cpp_name);
+            if ancestors.contains(&cpp_name.to_string()) {
+                descendants.push(class.cpp_name.clone());
+            }
+        }
+        descendants.sort();
+        descendants
+    }
 }
 
 /// Rust keywords that need special handling

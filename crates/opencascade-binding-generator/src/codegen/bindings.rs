@@ -48,6 +48,7 @@ pub struct ClassBindings {
     /// Whether Handle_get/get_mut should be generated (true for all handle types, including abstract)
     pub has_handle_get: bool,
     pub handle_upcasts: Vec<HandleUpcastBinding>,
+    pub handle_downcasts: Vec<HandleDowncastBinding>,
     pub inherited_methods: Vec<InheritedMethodBinding>,
 }
 
@@ -197,6 +198,20 @@ pub struct HandleUpcastBinding {
     /// Derived handle type name, e.g. "HandleGeomBSplineCurve"
     pub derived_handle_name: String,
 }
+
+/// A Handle downcast binding (Handle<Base> → Option<Handle<Derived>> via DownCast).
+#[derive(Debug, Clone)]
+pub struct HandleDowncastBinding {
+    /// Derived handle type name, e.g. "HandleGeomPlane"
+    pub derived_handle_name: String,
+    /// Derived class C++ name, e.g. "Geom_Plane"
+    pub derived_class: String,
+    /// Base handle type name, e.g. "HandleGeomSurface"
+    pub base_handle_name: String,
+    /// FFI function name, e.g. "HandleGeomSurface_downcast_to_HandleGeomPlane"
+    pub ffi_fn_name: String,
+}
+
 
 /// An inherited method from an ancestor class.
 #[derive(Debug, Clone)]
@@ -1237,6 +1252,12 @@ pub fn compute_class_bindings(
     } else {
         Vec::new()
     };
+    // ── Handle downcasts ─────────────────────────────────────────────
+    let handle_downcasts = if has_handle_get {
+        compute_handle_downcast_bindings(class, symbol_table, handle_able_classes)
+    } else {
+        Vec::new()
+    };
 
     // ── Inherited methods ───────────────────────────────────────────────
     let inherited_methods =
@@ -1261,6 +1282,7 @@ pub fn compute_class_bindings(
         has_to_handle,
         has_handle_get,
         handle_upcasts,
+        handle_downcasts,
         inherited_methods,
     }
 }
@@ -1714,8 +1736,52 @@ fn compute_handle_upcast_bindings(
         .collect()
 }
 
-// ── Inherited method bindings ───────────────────────────────────────────────
+// ── Handle downcast bindings ─────────────────────────────────────────────────────
 
+fn compute_handle_downcast_bindings(
+    class: &ParsedClass,
+    symbol_table: &SymbolTable,
+    handle_able_classes: &HashSet<String>,
+) -> Vec<HandleDowncastBinding> {
+    let protected_destructor_classes = symbol_table.protected_destructor_class_names();
+    let all_descendants = symbol_table.get_all_descendants_by_name(&class.name);
+    let cpp_name = &class.name;
+
+    let handle_type_name = format!("Handle{}", cpp_name.replace("_", ""));
+
+    all_descendants
+        .iter()
+        .filter(|desc| {
+            if protected_destructor_classes.contains(*desc) {
+                return false;
+            }
+            if !handle_able_classes.contains(*desc) {
+                return false;
+            }
+            if let Some(desc_class) = symbol_table.class_by_name(desc) {
+                // Only generate downcasts to concrete (non-abstract) descendants
+                // that are handle types
+                desc_class.is_handle_type && !desc_class.is_abstract
+            } else {
+                false
+            }
+        })
+        .map(|derived_class| {
+            let derived_handle_name = format!("Handle{}", derived_class.replace("_", ""));
+            let ffi_fn_name =
+                format!("{}_downcast_to_{}", handle_type_name, derived_handle_name);
+
+            HandleDowncastBinding {
+                derived_handle_name,
+                derived_class: derived_class.clone(),
+                base_handle_name: handle_type_name.clone(),
+                ffi_fn_name,
+            }
+        })
+        .collect()
+}
+
+// ── Inherited method bindings ───────────────────────────────────────────────────
 fn compute_inherited_method_bindings(
     class: &ParsedClass,
     symbol_table: &SymbolTable,
@@ -2246,6 +2312,7 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
     //   7. to_owned
     //   8. to_handle
     //   9. handle_upcast
+    //   9b. handle_downcast
     //   10. inherited_method
 
     // 3. CStringParam wrapper methods
@@ -3032,6 +3099,32 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         writeln!(output, "}}").unwrap();
     }
 
+    // 9b. Handle downcast wrappers
+    for hdown in &bindings.handle_downcasts {
+        writeln!(
+            output,
+            "extern \"C\" {derived_handle}* {fn_name}(const {base_handle}* self_) {{",
+            derived_handle = hdown.derived_handle_name,
+            fn_name = hdown.ffi_fn_name,
+            base_handle = hdown.base_handle_name
+        )
+        .unwrap();
+        writeln!(
+            output,
+            "    opencascade::handle<{derived_class}> result = opencascade::handle<{derived_class}>::DownCast(*self_);",
+            derived_class = hdown.derived_class
+        )
+        .unwrap();
+        writeln!(output, "    if (result.IsNull()) return nullptr;").unwrap();
+        writeln!(
+            output,
+            "    return new {derived_handle}(result);",
+            derived_handle = hdown.derived_handle_name
+        )
+        .unwrap();
+        writeln!(output, "}}").unwrap();
+    }
+
     // 10. Inherited method wrappers
     for im in &bindings.inherited_methods {
         let self_param = if im.is_const {
@@ -3567,6 +3660,19 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
                 ffi_fn = hu.ffi_fn_name,
             ));
         }
+        for hd in &bindings.handle_downcasts {
+            // Extract short name from derived class (e.g. "Geom_Plane" -> "Plane")
+            let derived_short = hd.derived_class.split('_').skip(1).collect::<Vec<_>>().join("_");
+            let method_name = format!("downcast_to_{}", derived_short.to_snake_case());
+            output.push_str(&format!(
+                "    /// Downcast Handle<{cn}> to Handle<{derived}>\n    ///\n    /// Returns `None` if the handle does not point to a `{derived}` (or subclass).\n    pub fn {method}(&self) -> Option<crate::OwnedPtr<crate::ffi::{derived_handle}>> {{\n        let ptr = unsafe {{ crate::ffi::{ffi_fn}(self as *const Self) }};\n        if ptr.is_null() {{ None }} else {{ Some(unsafe {{ crate::OwnedPtr::from_raw(ptr) }}) }}\n    }}\n",
+                cn = cn,
+                derived = hd.derived_class,
+                method = method_name,
+                derived_handle = hd.derived_handle_name,
+                ffi_fn = hd.ffi_fn_name,
+            ));
+        }
         output.push_str("}\n\n");
     }
 
@@ -3730,6 +3836,12 @@ pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
     for hu in &bindings.handle_upcasts {
         writeln!(out, "    /// Upcast Handle<{}> to Handle<{}>", cn, hu.base_class).unwrap();
         writeln!(out, "    pub fn {}(self_: *const {}) -> *mut {};", hu.ffi_fn_name, hu.derived_handle_name, hu.base_handle_name).unwrap();
+    }
+
+    // ── Handle downcasts ─────────────────────────────────────────────────────
+    for hd in &bindings.handle_downcasts {
+        writeln!(out, "    /// Downcast Handle<{}> to Handle<{}> (returns null on failure)", cn, hd.derived_class).unwrap();
+        writeln!(out, "    pub fn {}(self_: *const {}) -> *mut {};", hd.ffi_fn_name, hd.base_handle_name, hd.derived_handle_name).unwrap();
     }
 
     // ── Inherited methods (free functions with self_ parameter) ─────────

@@ -1,5 +1,3 @@
-use std::ffi::CStr;
-
 use opencascade_sys::b_rep;
 use opencascade_sys::b_rep_algo_api;
 use opencascade_sys::b_rep_builder_api;
@@ -132,22 +130,9 @@ pub fn main() {
         let face = topo_ds::face(current);
         let surface = b_rep::Tool::surface_face(face);
 
-        // Check if this face is a Geom_Plane
-        let surface_ref = surface.get();
-        let dynamic_type = surface_ref.dynamic_type();
-        let type_obj = dynamic_type.get();
-        let name = type_obj.name();
-        let name_str = unsafe { CStr::from_ptr(name) }.to_str().unwrap_or("");
-
-        if name_str == "Geom_Plane" {
-            // TODO: The binding generator should produce Handle downcasts
-            // (e.g., HandleGeomSurface → HandleGeomPlane via Handle::DownCast).
-            // Until then, we use an unsafe pointer cast after confirming the
-            // dynamic type. This is safe because OCCT's DynamicType() confirms
-            // the concrete type is Geom_Plane, and Geom_Plane inherits from
-            // Geom_Surface with the same object layout.
-            let plane: &geom::Plane =
-                unsafe { &*(surface_ref as *const geom::Surface as *const geom::Plane) };
+        // Try to downcast the surface handle to Geom_Plane
+        if let Some(plane_handle) = surface.downcast_to_plane() {
+            let plane = plane_handle.get();
             let plane_location = plane.location();
             let plane_z = plane_location.z();
             if plane_z > z_max {

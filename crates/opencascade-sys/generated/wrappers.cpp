@@ -20159,6 +20159,16 @@ extern "C" Geom_AxisPlacement* HandleGeomAxisPlacement_get_mut(HandleGeomAxisPla
 extern "C" HandleGeomGeometry* HandleGeomAxisPlacement_to_HandleGeomGeometry(const HandleGeomAxisPlacement* self_) {
     return new HandleGeomGeometry(*self_);
 }
+extern "C" HandleGeomAxis1Placement* HandleGeomAxisPlacement_downcast_to_HandleGeomAxis1Placement(const HandleGeomAxisPlacement* self_) {
+    opencascade::handle<Geom_Axis1Placement> result = opencascade::handle<Geom_Axis1Placement>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomAxis1Placement(result);
+}
+extern "C" HandleGeomAxis2Placement* HandleGeomAxisPlacement_downcast_to_HandleGeomAxis2Placement(const HandleGeomAxisPlacement* self_) {
+    opencascade::handle<Geom_Axis2Placement> result = opencascade::handle<Geom_Axis2Placement>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomAxis2Placement(result);
+}
 extern "C" void Geom_AxisPlacement_inherited_Mirror(Geom_AxisPlacement* self, const gp_Pnt& P) {
     self->Mirror(P);
 }
@@ -21256,6 +21266,21 @@ extern "C" HandleGeomCurve* HandleGeomBoundedCurve_to_HandleGeomCurve(const Hand
 extern "C" HandleGeomGeometry* HandleGeomBoundedCurve_to_HandleGeomGeometry(const HandleGeomBoundedCurve* self_) {
     return new HandleGeomGeometry(*self_);
 }
+extern "C" HandleGeomBSplineCurve* HandleGeomBoundedCurve_downcast_to_HandleGeomBSplineCurve(const HandleGeomBoundedCurve* self_) {
+    opencascade::handle<Geom_BSplineCurve> result = opencascade::handle<Geom_BSplineCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomBSplineCurve(result);
+}
+extern "C" HandleGeomBezierCurve* HandleGeomBoundedCurve_downcast_to_HandleGeomBezierCurve(const HandleGeomBoundedCurve* self_) {
+    opencascade::handle<Geom_BezierCurve> result = opencascade::handle<Geom_BezierCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomBezierCurve(result);
+}
+extern "C" HandleGeomTrimmedCurve* HandleGeomBoundedCurve_downcast_to_HandleGeomTrimmedCurve(const HandleGeomBoundedCurve* self_) {
+    opencascade::handle<Geom_TrimmedCurve> result = opencascade::handle<Geom_TrimmedCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomTrimmedCurve(result);
+}
 extern "C" void Geom_BoundedCurve_inherited_Reverse(Geom_BoundedCurve* self) {
     self->Reverse();
 }
@@ -21369,6 +21394,21 @@ extern "C" HandleGeomGeometry* HandleGeomBoundedSurface_to_HandleGeomGeometry(co
 }
 extern "C" HandleGeomSurface* HandleGeomBoundedSurface_to_HandleGeomSurface(const HandleGeomBoundedSurface* self_) {
     return new HandleGeomSurface(*self_);
+}
+extern "C" HandleGeomBSplineSurface* HandleGeomBoundedSurface_downcast_to_HandleGeomBSplineSurface(const HandleGeomBoundedSurface* self_) {
+    opencascade::handle<Geom_BSplineSurface> result = opencascade::handle<Geom_BSplineSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomBSplineSurface(result);
+}
+extern "C" HandleGeomBezierSurface* HandleGeomBoundedSurface_downcast_to_HandleGeomBezierSurface(const HandleGeomBoundedSurface* self_) {
+    opencascade::handle<Geom_BezierSurface> result = opencascade::handle<Geom_BezierSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomBezierSurface(result);
+}
+extern "C" HandleGeomRectangularTrimmedSurface* HandleGeomBoundedSurface_downcast_to_HandleGeomRectangularTrimmedSurface(const HandleGeomBoundedSurface* self_) {
+    opencascade::handle<Geom_RectangularTrimmedSurface> result = opencascade::handle<Geom_RectangularTrimmedSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomRectangularTrimmedSurface(result);
 }
 extern "C" void Geom_BoundedSurface_inherited_Mirror(Geom_BoundedSurface* self, const gp_Pnt& P) {
     self->Mirror(P);
@@ -21819,6 +21859,26 @@ extern "C" HandleGeomCurve* HandleGeomConic_to_HandleGeomCurve(const HandleGeomC
 extern "C" HandleGeomGeometry* HandleGeomConic_to_HandleGeomGeometry(const HandleGeomConic* self_) {
     return new HandleGeomGeometry(*self_);
 }
+extern "C" HandleGeomCircle* HandleGeomConic_downcast_to_HandleGeomCircle(const HandleGeomConic* self_) {
+    opencascade::handle<Geom_Circle> result = opencascade::handle<Geom_Circle>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomCircle(result);
+}
+extern "C" HandleGeomEllipse* HandleGeomConic_downcast_to_HandleGeomEllipse(const HandleGeomConic* self_) {
+    opencascade::handle<Geom_Ellipse> result = opencascade::handle<Geom_Ellipse>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomEllipse(result);
+}
+extern "C" HandleGeomHyperbola* HandleGeomConic_downcast_to_HandleGeomHyperbola(const HandleGeomConic* self_) {
+    opencascade::handle<Geom_Hyperbola> result = opencascade::handle<Geom_Hyperbola>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomHyperbola(result);
+}
+extern "C" HandleGeomParabola* HandleGeomConic_downcast_to_HandleGeomParabola(const HandleGeomConic* self_) {
+    opencascade::handle<Geom_Parabola> result = opencascade::handle<Geom_Parabola>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomParabola(result);
+}
 extern "C" Standard_Real Geom_Conic_inherited_TransformedParameter(const Geom_Conic* self, Standard_Real U, const gp_Trsf& T) {
     return self->TransformedParameter(U, T);
 }
@@ -22163,6 +22223,51 @@ extern "C" const Geom_Curve* HandleGeomCurve_get(const HandleGeomCurve* handle) 
 extern "C" Geom_Curve* HandleGeomCurve_get_mut(HandleGeomCurve* handle) { return (*handle).get(); }
 extern "C" HandleGeomGeometry* HandleGeomCurve_to_HandleGeomGeometry(const HandleGeomCurve* self_) {
     return new HandleGeomGeometry(*self_);
+}
+extern "C" HandleGeomBSplineCurve* HandleGeomCurve_downcast_to_HandleGeomBSplineCurve(const HandleGeomCurve* self_) {
+    opencascade::handle<Geom_BSplineCurve> result = opencascade::handle<Geom_BSplineCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomBSplineCurve(result);
+}
+extern "C" HandleGeomBezierCurve* HandleGeomCurve_downcast_to_HandleGeomBezierCurve(const HandleGeomCurve* self_) {
+    opencascade::handle<Geom_BezierCurve> result = opencascade::handle<Geom_BezierCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomBezierCurve(result);
+}
+extern "C" HandleGeomCircle* HandleGeomCurve_downcast_to_HandleGeomCircle(const HandleGeomCurve* self_) {
+    opencascade::handle<Geom_Circle> result = opencascade::handle<Geom_Circle>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomCircle(result);
+}
+extern "C" HandleGeomEllipse* HandleGeomCurve_downcast_to_HandleGeomEllipse(const HandleGeomCurve* self_) {
+    opencascade::handle<Geom_Ellipse> result = opencascade::handle<Geom_Ellipse>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomEllipse(result);
+}
+extern "C" HandleGeomHyperbola* HandleGeomCurve_downcast_to_HandleGeomHyperbola(const HandleGeomCurve* self_) {
+    opencascade::handle<Geom_Hyperbola> result = opencascade::handle<Geom_Hyperbola>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomHyperbola(result);
+}
+extern "C" HandleGeomLine* HandleGeomCurve_downcast_to_HandleGeomLine(const HandleGeomCurve* self_) {
+    opencascade::handle<Geom_Line> result = opencascade::handle<Geom_Line>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomLine(result);
+}
+extern "C" HandleGeomOffsetCurve* HandleGeomCurve_downcast_to_HandleGeomOffsetCurve(const HandleGeomCurve* self_) {
+    opencascade::handle<Geom_OffsetCurve> result = opencascade::handle<Geom_OffsetCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomOffsetCurve(result);
+}
+extern "C" HandleGeomParabola* HandleGeomCurve_downcast_to_HandleGeomParabola(const HandleGeomCurve* self_) {
+    opencascade::handle<Geom_Parabola> result = opencascade::handle<Geom_Parabola>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomParabola(result);
+}
+extern "C" HandleGeomTrimmedCurve* HandleGeomCurve_downcast_to_HandleGeomTrimmedCurve(const HandleGeomCurve* self_) {
+    opencascade::handle<Geom_TrimmedCurve> result = opencascade::handle<Geom_TrimmedCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomTrimmedCurve(result);
 }
 extern "C" void Geom_Curve_inherited_Mirror(Geom_Curve* self, const gp_Pnt& P) {
     self->Mirror(P);
@@ -22586,6 +22691,31 @@ extern "C" HandleGeomGeometry* HandleGeomElementarySurface_to_HandleGeomGeometry
 extern "C" HandleGeomSurface* HandleGeomElementarySurface_to_HandleGeomSurface(const HandleGeomElementarySurface* self_) {
     return new HandleGeomSurface(*self_);
 }
+extern "C" HandleGeomConicalSurface* HandleGeomElementarySurface_downcast_to_HandleGeomConicalSurface(const HandleGeomElementarySurface* self_) {
+    opencascade::handle<Geom_ConicalSurface> result = opencascade::handle<Geom_ConicalSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomConicalSurface(result);
+}
+extern "C" HandleGeomCylindricalSurface* HandleGeomElementarySurface_downcast_to_HandleGeomCylindricalSurface(const HandleGeomElementarySurface* self_) {
+    opencascade::handle<Geom_CylindricalSurface> result = opencascade::handle<Geom_CylindricalSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomCylindricalSurface(result);
+}
+extern "C" HandleGeomPlane* HandleGeomElementarySurface_downcast_to_HandleGeomPlane(const HandleGeomElementarySurface* self_) {
+    opencascade::handle<Geom_Plane> result = opencascade::handle<Geom_Plane>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomPlane(result);
+}
+extern "C" HandleGeomSphericalSurface* HandleGeomElementarySurface_downcast_to_HandleGeomSphericalSurface(const HandleGeomElementarySurface* self_) {
+    opencascade::handle<Geom_SphericalSurface> result = opencascade::handle<Geom_SphericalSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomSphericalSurface(result);
+}
+extern "C" HandleGeomToroidalSurface* HandleGeomElementarySurface_downcast_to_HandleGeomToroidalSurface(const HandleGeomElementarySurface* self_) {
+    opencascade::handle<Geom_ToroidalSurface> result = opencascade::handle<Geom_ToroidalSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomToroidalSurface(result);
+}
 extern "C" void Geom_ElementarySurface_inherited_Mirror(Geom_ElementarySurface* self, const gp_Pnt& P) {
     self->Mirror(P);
 }
@@ -22935,6 +23065,141 @@ extern "C" const opencascade::handle<Standard_Type>& Geom_Geometry_get_type_desc
 }
 extern "C" const Geom_Geometry* HandleGeomGeometry_get(const HandleGeomGeometry* handle) { return (*handle).get(); }
 extern "C" Geom_Geometry* HandleGeomGeometry_get_mut(HandleGeomGeometry* handle) { return (*handle).get(); }
+extern "C" HandleGeomAxis1Placement* HandleGeomGeometry_downcast_to_HandleGeomAxis1Placement(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_Axis1Placement> result = opencascade::handle<Geom_Axis1Placement>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomAxis1Placement(result);
+}
+extern "C" HandleGeomAxis2Placement* HandleGeomGeometry_downcast_to_HandleGeomAxis2Placement(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_Axis2Placement> result = opencascade::handle<Geom_Axis2Placement>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomAxis2Placement(result);
+}
+extern "C" HandleGeomBSplineCurve* HandleGeomGeometry_downcast_to_HandleGeomBSplineCurve(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_BSplineCurve> result = opencascade::handle<Geom_BSplineCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomBSplineCurve(result);
+}
+extern "C" HandleGeomBSplineSurface* HandleGeomGeometry_downcast_to_HandleGeomBSplineSurface(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_BSplineSurface> result = opencascade::handle<Geom_BSplineSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomBSplineSurface(result);
+}
+extern "C" HandleGeomBezierCurve* HandleGeomGeometry_downcast_to_HandleGeomBezierCurve(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_BezierCurve> result = opencascade::handle<Geom_BezierCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomBezierCurve(result);
+}
+extern "C" HandleGeomBezierSurface* HandleGeomGeometry_downcast_to_HandleGeomBezierSurface(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_BezierSurface> result = opencascade::handle<Geom_BezierSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomBezierSurface(result);
+}
+extern "C" HandleGeomBoundedSurface* HandleGeomGeometry_downcast_to_HandleGeomBoundedSurface(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_BoundedSurface> result = opencascade::handle<Geom_BoundedSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomBoundedSurface(result);
+}
+extern "C" HandleGeomCartesianPoint* HandleGeomGeometry_downcast_to_HandleGeomCartesianPoint(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_CartesianPoint> result = opencascade::handle<Geom_CartesianPoint>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomCartesianPoint(result);
+}
+extern "C" HandleGeomCircle* HandleGeomGeometry_downcast_to_HandleGeomCircle(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_Circle> result = opencascade::handle<Geom_Circle>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomCircle(result);
+}
+extern "C" HandleGeomConicalSurface* HandleGeomGeometry_downcast_to_HandleGeomConicalSurface(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_ConicalSurface> result = opencascade::handle<Geom_ConicalSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomConicalSurface(result);
+}
+extern "C" HandleGeomCylindricalSurface* HandleGeomGeometry_downcast_to_HandleGeomCylindricalSurface(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_CylindricalSurface> result = opencascade::handle<Geom_CylindricalSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomCylindricalSurface(result);
+}
+extern "C" HandleGeomDirection* HandleGeomGeometry_downcast_to_HandleGeomDirection(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_Direction> result = opencascade::handle<Geom_Direction>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomDirection(result);
+}
+extern "C" HandleGeomEllipse* HandleGeomGeometry_downcast_to_HandleGeomEllipse(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_Ellipse> result = opencascade::handle<Geom_Ellipse>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomEllipse(result);
+}
+extern "C" HandleGeomHyperbola* HandleGeomGeometry_downcast_to_HandleGeomHyperbola(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_Hyperbola> result = opencascade::handle<Geom_Hyperbola>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomHyperbola(result);
+}
+extern "C" HandleGeomLine* HandleGeomGeometry_downcast_to_HandleGeomLine(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_Line> result = opencascade::handle<Geom_Line>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomLine(result);
+}
+extern "C" HandleGeomOffsetCurve* HandleGeomGeometry_downcast_to_HandleGeomOffsetCurve(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_OffsetCurve> result = opencascade::handle<Geom_OffsetCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomOffsetCurve(result);
+}
+extern "C" HandleGeomOffsetSurface* HandleGeomGeometry_downcast_to_HandleGeomOffsetSurface(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_OffsetSurface> result = opencascade::handle<Geom_OffsetSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomOffsetSurface(result);
+}
+extern "C" HandleGeomParabola* HandleGeomGeometry_downcast_to_HandleGeomParabola(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_Parabola> result = opencascade::handle<Geom_Parabola>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomParabola(result);
+}
+extern "C" HandleGeomPlane* HandleGeomGeometry_downcast_to_HandleGeomPlane(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_Plane> result = opencascade::handle<Geom_Plane>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomPlane(result);
+}
+extern "C" HandleGeomRectangularTrimmedSurface* HandleGeomGeometry_downcast_to_HandleGeomRectangularTrimmedSurface(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_RectangularTrimmedSurface> result = opencascade::handle<Geom_RectangularTrimmedSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomRectangularTrimmedSurface(result);
+}
+extern "C" HandleGeomSphericalSurface* HandleGeomGeometry_downcast_to_HandleGeomSphericalSurface(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_SphericalSurface> result = opencascade::handle<Geom_SphericalSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomSphericalSurface(result);
+}
+extern "C" HandleGeomSurfaceOfLinearExtrusion* HandleGeomGeometry_downcast_to_HandleGeomSurfaceOfLinearExtrusion(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_SurfaceOfLinearExtrusion> result = opencascade::handle<Geom_SurfaceOfLinearExtrusion>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomSurfaceOfLinearExtrusion(result);
+}
+extern "C" HandleGeomSurfaceOfRevolution* HandleGeomGeometry_downcast_to_HandleGeomSurfaceOfRevolution(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_SurfaceOfRevolution> result = opencascade::handle<Geom_SurfaceOfRevolution>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomSurfaceOfRevolution(result);
+}
+extern "C" HandleGeomSweptSurface* HandleGeomGeometry_downcast_to_HandleGeomSweptSurface(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_SweptSurface> result = opencascade::handle<Geom_SweptSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomSweptSurface(result);
+}
+extern "C" HandleGeomToroidalSurface* HandleGeomGeometry_downcast_to_HandleGeomToroidalSurface(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_ToroidalSurface> result = opencascade::handle<Geom_ToroidalSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomToroidalSurface(result);
+}
+extern "C" HandleGeomTrimmedCurve* HandleGeomGeometry_downcast_to_HandleGeomTrimmedCurve(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_TrimmedCurve> result = opencascade::handle<Geom_TrimmedCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomTrimmedCurve(result);
+}
+extern "C" HandleGeomVectorWithMagnitude* HandleGeomGeometry_downcast_to_HandleGeomVectorWithMagnitude(const HandleGeomGeometry* self_) {
+    opencascade::handle<Geom_VectorWithMagnitude> result = opencascade::handle<Geom_VectorWithMagnitude>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomVectorWithMagnitude(result);
+}
 extern "C" void Geom_Geometry_destructor(Geom_Geometry* self_) { delete self_; }
 
 // ========================
@@ -24071,6 +24336,11 @@ extern "C" Geom_Point* HandleGeomPoint_get_mut(HandleGeomPoint* handle) { return
 extern "C" HandleGeomGeometry* HandleGeomPoint_to_HandleGeomGeometry(const HandleGeomPoint* self_) {
     return new HandleGeomGeometry(*self_);
 }
+extern "C" HandleGeomCartesianPoint* HandleGeomPoint_downcast_to_HandleGeomCartesianPoint(const HandleGeomPoint* self_) {
+    opencascade::handle<Geom_CartesianPoint> result = opencascade::handle<Geom_CartesianPoint>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomCartesianPoint(result);
+}
 extern "C" void Geom_Point_inherited_Mirror(Geom_Point* self, const gp_Pnt& P) {
     self->Mirror(P);
 }
@@ -24556,6 +24826,71 @@ extern "C" Geom_Surface* HandleGeomSurface_get_mut(HandleGeomSurface* handle) { 
 extern "C" HandleGeomGeometry* HandleGeomSurface_to_HandleGeomGeometry(const HandleGeomSurface* self_) {
     return new HandleGeomGeometry(*self_);
 }
+extern "C" HandleGeomBSplineSurface* HandleGeomSurface_downcast_to_HandleGeomBSplineSurface(const HandleGeomSurface* self_) {
+    opencascade::handle<Geom_BSplineSurface> result = opencascade::handle<Geom_BSplineSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomBSplineSurface(result);
+}
+extern "C" HandleGeomBezierSurface* HandleGeomSurface_downcast_to_HandleGeomBezierSurface(const HandleGeomSurface* self_) {
+    opencascade::handle<Geom_BezierSurface> result = opencascade::handle<Geom_BezierSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomBezierSurface(result);
+}
+extern "C" HandleGeomBoundedSurface* HandleGeomSurface_downcast_to_HandleGeomBoundedSurface(const HandleGeomSurface* self_) {
+    opencascade::handle<Geom_BoundedSurface> result = opencascade::handle<Geom_BoundedSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomBoundedSurface(result);
+}
+extern "C" HandleGeomConicalSurface* HandleGeomSurface_downcast_to_HandleGeomConicalSurface(const HandleGeomSurface* self_) {
+    opencascade::handle<Geom_ConicalSurface> result = opencascade::handle<Geom_ConicalSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomConicalSurface(result);
+}
+extern "C" HandleGeomCylindricalSurface* HandleGeomSurface_downcast_to_HandleGeomCylindricalSurface(const HandleGeomSurface* self_) {
+    opencascade::handle<Geom_CylindricalSurface> result = opencascade::handle<Geom_CylindricalSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomCylindricalSurface(result);
+}
+extern "C" HandleGeomOffsetSurface* HandleGeomSurface_downcast_to_HandleGeomOffsetSurface(const HandleGeomSurface* self_) {
+    opencascade::handle<Geom_OffsetSurface> result = opencascade::handle<Geom_OffsetSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomOffsetSurface(result);
+}
+extern "C" HandleGeomPlane* HandleGeomSurface_downcast_to_HandleGeomPlane(const HandleGeomSurface* self_) {
+    opencascade::handle<Geom_Plane> result = opencascade::handle<Geom_Plane>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomPlane(result);
+}
+extern "C" HandleGeomRectangularTrimmedSurface* HandleGeomSurface_downcast_to_HandleGeomRectangularTrimmedSurface(const HandleGeomSurface* self_) {
+    opencascade::handle<Geom_RectangularTrimmedSurface> result = opencascade::handle<Geom_RectangularTrimmedSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomRectangularTrimmedSurface(result);
+}
+extern "C" HandleGeomSphericalSurface* HandleGeomSurface_downcast_to_HandleGeomSphericalSurface(const HandleGeomSurface* self_) {
+    opencascade::handle<Geom_SphericalSurface> result = opencascade::handle<Geom_SphericalSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomSphericalSurface(result);
+}
+extern "C" HandleGeomSurfaceOfLinearExtrusion* HandleGeomSurface_downcast_to_HandleGeomSurfaceOfLinearExtrusion(const HandleGeomSurface* self_) {
+    opencascade::handle<Geom_SurfaceOfLinearExtrusion> result = opencascade::handle<Geom_SurfaceOfLinearExtrusion>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomSurfaceOfLinearExtrusion(result);
+}
+extern "C" HandleGeomSurfaceOfRevolution* HandleGeomSurface_downcast_to_HandleGeomSurfaceOfRevolution(const HandleGeomSurface* self_) {
+    opencascade::handle<Geom_SurfaceOfRevolution> result = opencascade::handle<Geom_SurfaceOfRevolution>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomSurfaceOfRevolution(result);
+}
+extern "C" HandleGeomSweptSurface* HandleGeomSurface_downcast_to_HandleGeomSweptSurface(const HandleGeomSurface* self_) {
+    opencascade::handle<Geom_SweptSurface> result = opencascade::handle<Geom_SweptSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomSweptSurface(result);
+}
+extern "C" HandleGeomToroidalSurface* HandleGeomSurface_downcast_to_HandleGeomToroidalSurface(const HandleGeomSurface* self_) {
+    opencascade::handle<Geom_ToroidalSurface> result = opencascade::handle<Geom_ToroidalSurface>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomToroidalSurface(result);
+}
 extern "C" void Geom_Surface_inherited_Mirror(Geom_Surface* self, const gp_Pnt& P) {
     self->Mirror(P);
 }
@@ -24961,6 +25296,16 @@ extern "C" HandleGeomGeometry* HandleGeomSweptSurface_to_HandleGeomGeometry(cons
 }
 extern "C" HandleGeomSurface* HandleGeomSweptSurface_to_HandleGeomSurface(const HandleGeomSweptSurface* self_) {
     return new HandleGeomSurface(*self_);
+}
+extern "C" HandleGeomSurfaceOfLinearExtrusion* HandleGeomSweptSurface_downcast_to_HandleGeomSurfaceOfLinearExtrusion(const HandleGeomSweptSurface* self_) {
+    opencascade::handle<Geom_SurfaceOfLinearExtrusion> result = opencascade::handle<Geom_SurfaceOfLinearExtrusion>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomSurfaceOfLinearExtrusion(result);
+}
+extern "C" HandleGeomSurfaceOfRevolution* HandleGeomSweptSurface_downcast_to_HandleGeomSurfaceOfRevolution(const HandleGeomSweptSurface* self_) {
+    opencascade::handle<Geom_SurfaceOfRevolution> result = opencascade::handle<Geom_SurfaceOfRevolution>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomSurfaceOfRevolution(result);
 }
 extern "C" void Geom_SweptSurface_inherited_Mirror(Geom_SweptSurface* self, const gp_Pnt& P) {
     self->Mirror(P);
@@ -25625,6 +25970,16 @@ extern "C" const Geom_Vector* HandleGeomVector_get(const HandleGeomVector* handl
 extern "C" Geom_Vector* HandleGeomVector_get_mut(HandleGeomVector* handle) { return (*handle).get(); }
 extern "C" HandleGeomGeometry* HandleGeomVector_to_HandleGeomGeometry(const HandleGeomVector* self_) {
     return new HandleGeomGeometry(*self_);
+}
+extern "C" HandleGeomDirection* HandleGeomVector_downcast_to_HandleGeomDirection(const HandleGeomVector* self_) {
+    opencascade::handle<Geom_Direction> result = opencascade::handle<Geom_Direction>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomDirection(result);
+}
+extern "C" HandleGeomVectorWithMagnitude* HandleGeomVector_downcast_to_HandleGeomVectorWithMagnitude(const HandleGeomVector* self_) {
+    opencascade::handle<Geom_VectorWithMagnitude> result = opencascade::handle<Geom_VectorWithMagnitude>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeomVectorWithMagnitude(result);
 }
 extern "C" void Geom_Vector_inherited_Mirror(Geom_Vector* self, const gp_Pnt& P) {
     self->Mirror(P);
@@ -26402,6 +26757,21 @@ extern "C" HandleGeom2dCurve* HandleGeom2dBoundedCurve_to_HandleGeom2dCurve(cons
 extern "C" HandleGeom2dGeometry* HandleGeom2dBoundedCurve_to_HandleGeom2dGeometry(const HandleGeom2dBoundedCurve* self_) {
     return new HandleGeom2dGeometry(*self_);
 }
+extern "C" HandleGeom2dBSplineCurve* HandleGeom2dBoundedCurve_downcast_to_HandleGeom2dBSplineCurve(const HandleGeom2dBoundedCurve* self_) {
+    opencascade::handle<Geom2d_BSplineCurve> result = opencascade::handle<Geom2d_BSplineCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dBSplineCurve(result);
+}
+extern "C" HandleGeom2dBezierCurve* HandleGeom2dBoundedCurve_downcast_to_HandleGeom2dBezierCurve(const HandleGeom2dBoundedCurve* self_) {
+    opencascade::handle<Geom2d_BezierCurve> result = opencascade::handle<Geom2d_BezierCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dBezierCurve(result);
+}
+extern "C" HandleGeom2dTrimmedCurve* HandleGeom2dBoundedCurve_downcast_to_HandleGeom2dTrimmedCurve(const HandleGeom2dBoundedCurve* self_) {
+    opencascade::handle<Geom2d_TrimmedCurve> result = opencascade::handle<Geom2d_TrimmedCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dTrimmedCurve(result);
+}
 extern "C" void Geom2d_BoundedCurve_inherited_Reverse(Geom2d_BoundedCurve* self) {
     self->Reverse();
 }
@@ -26824,6 +27194,26 @@ extern "C" HandleGeom2dCurve* HandleGeom2dConic_to_HandleGeom2dCurve(const Handl
 extern "C" HandleGeom2dGeometry* HandleGeom2dConic_to_HandleGeom2dGeometry(const HandleGeom2dConic* self_) {
     return new HandleGeom2dGeometry(*self_);
 }
+extern "C" HandleGeom2dCircle* HandleGeom2dConic_downcast_to_HandleGeom2dCircle(const HandleGeom2dConic* self_) {
+    opencascade::handle<Geom2d_Circle> result = opencascade::handle<Geom2d_Circle>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dCircle(result);
+}
+extern "C" HandleGeom2dEllipse* HandleGeom2dConic_downcast_to_HandleGeom2dEllipse(const HandleGeom2dConic* self_) {
+    opencascade::handle<Geom2d_Ellipse> result = opencascade::handle<Geom2d_Ellipse>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dEllipse(result);
+}
+extern "C" HandleGeom2dHyperbola* HandleGeom2dConic_downcast_to_HandleGeom2dHyperbola(const HandleGeom2dConic* self_) {
+    opencascade::handle<Geom2d_Hyperbola> result = opencascade::handle<Geom2d_Hyperbola>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dHyperbola(result);
+}
+extern "C" HandleGeom2dParabola* HandleGeom2dConic_downcast_to_HandleGeom2dParabola(const HandleGeom2dConic* self_) {
+    opencascade::handle<Geom2d_Parabola> result = opencascade::handle<Geom2d_Parabola>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dParabola(result);
+}
 extern "C" Standard_Real Geom2d_Conic_inherited_TransformedParameter(const Geom2d_Conic* self, Standard_Real U, const gp_Trsf2d& T) {
     return self->TransformedParameter(U, T);
 }
@@ -26974,6 +27364,51 @@ extern "C" const Geom2d_Curve* HandleGeom2dCurve_get(const HandleGeom2dCurve* ha
 extern "C" Geom2d_Curve* HandleGeom2dCurve_get_mut(HandleGeom2dCurve* handle) { return (*handle).get(); }
 extern "C" HandleGeom2dGeometry* HandleGeom2dCurve_to_HandleGeom2dGeometry(const HandleGeom2dCurve* self_) {
     return new HandleGeom2dGeometry(*self_);
+}
+extern "C" HandleGeom2dBSplineCurve* HandleGeom2dCurve_downcast_to_HandleGeom2dBSplineCurve(const HandleGeom2dCurve* self_) {
+    opencascade::handle<Geom2d_BSplineCurve> result = opencascade::handle<Geom2d_BSplineCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dBSplineCurve(result);
+}
+extern "C" HandleGeom2dBezierCurve* HandleGeom2dCurve_downcast_to_HandleGeom2dBezierCurve(const HandleGeom2dCurve* self_) {
+    opencascade::handle<Geom2d_BezierCurve> result = opencascade::handle<Geom2d_BezierCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dBezierCurve(result);
+}
+extern "C" HandleGeom2dCircle* HandleGeom2dCurve_downcast_to_HandleGeom2dCircle(const HandleGeom2dCurve* self_) {
+    opencascade::handle<Geom2d_Circle> result = opencascade::handle<Geom2d_Circle>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dCircle(result);
+}
+extern "C" HandleGeom2dEllipse* HandleGeom2dCurve_downcast_to_HandleGeom2dEllipse(const HandleGeom2dCurve* self_) {
+    opencascade::handle<Geom2d_Ellipse> result = opencascade::handle<Geom2d_Ellipse>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dEllipse(result);
+}
+extern "C" HandleGeom2dHyperbola* HandleGeom2dCurve_downcast_to_HandleGeom2dHyperbola(const HandleGeom2dCurve* self_) {
+    opencascade::handle<Geom2d_Hyperbola> result = opencascade::handle<Geom2d_Hyperbola>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dHyperbola(result);
+}
+extern "C" HandleGeom2dLine* HandleGeom2dCurve_downcast_to_HandleGeom2dLine(const HandleGeom2dCurve* self_) {
+    opencascade::handle<Geom2d_Line> result = opencascade::handle<Geom2d_Line>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dLine(result);
+}
+extern "C" HandleGeom2dOffsetCurve* HandleGeom2dCurve_downcast_to_HandleGeom2dOffsetCurve(const HandleGeom2dCurve* self_) {
+    opencascade::handle<Geom2d_OffsetCurve> result = opencascade::handle<Geom2d_OffsetCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dOffsetCurve(result);
+}
+extern "C" HandleGeom2dParabola* HandleGeom2dCurve_downcast_to_HandleGeom2dParabola(const HandleGeom2dCurve* self_) {
+    opencascade::handle<Geom2d_Parabola> result = opencascade::handle<Geom2d_Parabola>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dParabola(result);
+}
+extern "C" HandleGeom2dTrimmedCurve* HandleGeom2dCurve_downcast_to_HandleGeom2dTrimmedCurve(const HandleGeom2dCurve* self_) {
+    opencascade::handle<Geom2d_TrimmedCurve> result = opencascade::handle<Geom2d_TrimmedCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dTrimmedCurve(result);
 }
 extern "C" void Geom2d_Curve_inherited_Mirror(Geom2d_Curve* self, const gp_Pnt2d& P) {
     self->Mirror(P);
@@ -27381,6 +27816,71 @@ extern "C" const opencascade::handle<Standard_Type>& Geom2d_Geometry_get_type_de
 }
 extern "C" const Geom2d_Geometry* HandleGeom2dGeometry_get(const HandleGeom2dGeometry* handle) { return (*handle).get(); }
 extern "C" Geom2d_Geometry* HandleGeom2dGeometry_get_mut(HandleGeom2dGeometry* handle) { return (*handle).get(); }
+extern "C" HandleGeom2dAxisPlacement* HandleGeom2dGeometry_downcast_to_HandleGeom2dAxisPlacement(const HandleGeom2dGeometry* self_) {
+    opencascade::handle<Geom2d_AxisPlacement> result = opencascade::handle<Geom2d_AxisPlacement>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dAxisPlacement(result);
+}
+extern "C" HandleGeom2dBSplineCurve* HandleGeom2dGeometry_downcast_to_HandleGeom2dBSplineCurve(const HandleGeom2dGeometry* self_) {
+    opencascade::handle<Geom2d_BSplineCurve> result = opencascade::handle<Geom2d_BSplineCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dBSplineCurve(result);
+}
+extern "C" HandleGeom2dBezierCurve* HandleGeom2dGeometry_downcast_to_HandleGeom2dBezierCurve(const HandleGeom2dGeometry* self_) {
+    opencascade::handle<Geom2d_BezierCurve> result = opencascade::handle<Geom2d_BezierCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dBezierCurve(result);
+}
+extern "C" HandleGeom2dCartesianPoint* HandleGeom2dGeometry_downcast_to_HandleGeom2dCartesianPoint(const HandleGeom2dGeometry* self_) {
+    opencascade::handle<Geom2d_CartesianPoint> result = opencascade::handle<Geom2d_CartesianPoint>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dCartesianPoint(result);
+}
+extern "C" HandleGeom2dCircle* HandleGeom2dGeometry_downcast_to_HandleGeom2dCircle(const HandleGeom2dGeometry* self_) {
+    opencascade::handle<Geom2d_Circle> result = opencascade::handle<Geom2d_Circle>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dCircle(result);
+}
+extern "C" HandleGeom2dDirection* HandleGeom2dGeometry_downcast_to_HandleGeom2dDirection(const HandleGeom2dGeometry* self_) {
+    opencascade::handle<Geom2d_Direction> result = opencascade::handle<Geom2d_Direction>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dDirection(result);
+}
+extern "C" HandleGeom2dEllipse* HandleGeom2dGeometry_downcast_to_HandleGeom2dEllipse(const HandleGeom2dGeometry* self_) {
+    opencascade::handle<Geom2d_Ellipse> result = opencascade::handle<Geom2d_Ellipse>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dEllipse(result);
+}
+extern "C" HandleGeom2dHyperbola* HandleGeom2dGeometry_downcast_to_HandleGeom2dHyperbola(const HandleGeom2dGeometry* self_) {
+    opencascade::handle<Geom2d_Hyperbola> result = opencascade::handle<Geom2d_Hyperbola>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dHyperbola(result);
+}
+extern "C" HandleGeom2dLine* HandleGeom2dGeometry_downcast_to_HandleGeom2dLine(const HandleGeom2dGeometry* self_) {
+    opencascade::handle<Geom2d_Line> result = opencascade::handle<Geom2d_Line>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dLine(result);
+}
+extern "C" HandleGeom2dOffsetCurve* HandleGeom2dGeometry_downcast_to_HandleGeom2dOffsetCurve(const HandleGeom2dGeometry* self_) {
+    opencascade::handle<Geom2d_OffsetCurve> result = opencascade::handle<Geom2d_OffsetCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dOffsetCurve(result);
+}
+extern "C" HandleGeom2dParabola* HandleGeom2dGeometry_downcast_to_HandleGeom2dParabola(const HandleGeom2dGeometry* self_) {
+    opencascade::handle<Geom2d_Parabola> result = opencascade::handle<Geom2d_Parabola>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dParabola(result);
+}
+extern "C" HandleGeom2dTrimmedCurve* HandleGeom2dGeometry_downcast_to_HandleGeom2dTrimmedCurve(const HandleGeom2dGeometry* self_) {
+    opencascade::handle<Geom2d_TrimmedCurve> result = opencascade::handle<Geom2d_TrimmedCurve>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dTrimmedCurve(result);
+}
+extern "C" HandleGeom2dVectorWithMagnitude* HandleGeom2dGeometry_downcast_to_HandleGeom2dVectorWithMagnitude(const HandleGeom2dGeometry* self_) {
+    opencascade::handle<Geom2d_VectorWithMagnitude> result = opencascade::handle<Geom2d_VectorWithMagnitude>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dVectorWithMagnitude(result);
+}
 extern "C" void Geom2d_Geometry_destructor(Geom2d_Geometry* self_) { delete self_; }
 
 // ========================
@@ -28100,6 +28600,11 @@ extern "C" Geom2d_Point* HandleGeom2dPoint_get_mut(HandleGeom2dPoint* handle) { 
 extern "C" HandleGeom2dGeometry* HandleGeom2dPoint_to_HandleGeom2dGeometry(const HandleGeom2dPoint* self_) {
     return new HandleGeom2dGeometry(*self_);
 }
+extern "C" HandleGeom2dCartesianPoint* HandleGeom2dPoint_downcast_to_HandleGeom2dCartesianPoint(const HandleGeom2dPoint* self_) {
+    opencascade::handle<Geom2d_CartesianPoint> result = opencascade::handle<Geom2d_CartesianPoint>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dCartesianPoint(result);
+}
 extern "C" void Geom2d_Point_inherited_Mirror(Geom2d_Point* self, const gp_Pnt2d& P) {
     self->Mirror(P);
 }
@@ -28473,6 +28978,16 @@ extern "C" const Geom2d_Vector* HandleGeom2dVector_get(const HandleGeom2dVector*
 extern "C" Geom2d_Vector* HandleGeom2dVector_get_mut(HandleGeom2dVector* handle) { return (*handle).get(); }
 extern "C" HandleGeom2dGeometry* HandleGeom2dVector_to_HandleGeom2dGeometry(const HandleGeom2dVector* self_) {
     return new HandleGeom2dGeometry(*self_);
+}
+extern "C" HandleGeom2dDirection* HandleGeom2dVector_downcast_to_HandleGeom2dDirection(const HandleGeom2dVector* self_) {
+    opencascade::handle<Geom2d_Direction> result = opencascade::handle<Geom2d_Direction>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dDirection(result);
+}
+extern "C" HandleGeom2dVectorWithMagnitude* HandleGeom2dVector_downcast_to_HandleGeom2dVectorWithMagnitude(const HandleGeom2dVector* self_) {
+    opencascade::handle<Geom2d_VectorWithMagnitude> result = opencascade::handle<Geom2d_VectorWithMagnitude>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleGeom2dVectorWithMagnitude(result);
 }
 extern "C" void Geom2d_Vector_inherited_Mirror(Geom2d_Vector* self, const gp_Pnt2d& P) {
     self->Mirror(P);
@@ -38029,6 +38544,16 @@ extern "C" Law_BSpFunc* HandleLawBSpFunc_get_mut(HandleLawBSpFunc* handle) { ret
 extern "C" HandleLawFunction* HandleLawBSpFunc_to_HandleLawFunction(const HandleLawBSpFunc* self_) {
     return new HandleLawFunction(*self_);
 }
+extern "C" HandleLawInterpol* HandleLawBSpFunc_downcast_to_HandleLawInterpol(const HandleLawBSpFunc* self_) {
+    opencascade::handle<Law_Interpol> result = opencascade::handle<Law_Interpol>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleLawInterpol(result);
+}
+extern "C" HandleLawS* HandleLawBSpFunc_downcast_to_HandleLawS(const HandleLawBSpFunc* self_) {
+    opencascade::handle<Law_S> result = opencascade::handle<Law_S>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleLawS(result);
+}
 extern "C" void Law_BSpFunc_destructor(Law_BSpFunc* self_) { delete self_; }
 
 // ========================
@@ -38383,6 +38908,36 @@ extern "C" const opencascade::handle<Standard_Type>& Law_Function_get_type_descr
 }
 extern "C" const Law_Function* HandleLawFunction_get(const HandleLawFunction* handle) { return (*handle).get(); }
 extern "C" Law_Function* HandleLawFunction_get_mut(HandleLawFunction* handle) { return (*handle).get(); }
+extern "C" HandleLawBSpFunc* HandleLawFunction_downcast_to_HandleLawBSpFunc(const HandleLawFunction* self_) {
+    opencascade::handle<Law_BSpFunc> result = opencascade::handle<Law_BSpFunc>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleLawBSpFunc(result);
+}
+extern "C" HandleLawComposite* HandleLawFunction_downcast_to_HandleLawComposite(const HandleLawFunction* self_) {
+    opencascade::handle<Law_Composite> result = opencascade::handle<Law_Composite>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleLawComposite(result);
+}
+extern "C" HandleLawConstant* HandleLawFunction_downcast_to_HandleLawConstant(const HandleLawFunction* self_) {
+    opencascade::handle<Law_Constant> result = opencascade::handle<Law_Constant>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleLawConstant(result);
+}
+extern "C" HandleLawInterpol* HandleLawFunction_downcast_to_HandleLawInterpol(const HandleLawFunction* self_) {
+    opencascade::handle<Law_Interpol> result = opencascade::handle<Law_Interpol>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleLawInterpol(result);
+}
+extern "C" HandleLawLinear* HandleLawFunction_downcast_to_HandleLawLinear(const HandleLawFunction* self_) {
+    opencascade::handle<Law_Linear> result = opencascade::handle<Law_Linear>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleLawLinear(result);
+}
+extern "C" HandleLawS* HandleLawFunction_downcast_to_HandleLawS(const HandleLawFunction* self_) {
+    opencascade::handle<Law_S> result = opencascade::handle<Law_S>::DownCast(*self_);
+    if (result.IsNull()) return nullptr;
+    return new HandleLawS(result);
+}
 extern "C" void Law_Function_destructor(Law_Function* self_) { delete self_; }
 
 // ========================

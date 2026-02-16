@@ -240,6 +240,33 @@ impl HandleLawBSpFunc {
             ))
         }
     }
+
+    /// Downcast Handle<Law_BSpFunc> to Handle<Law_Interpol>
+    ///
+    /// Returns `None` if the handle does not point to a `Law_Interpol` (or subclass).
+    pub fn downcast_to_interpol(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleLawInterpol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleLawBSpFunc_downcast_to_HandleLawInterpol(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Law_BSpFunc> to Handle<Law_S>
+    ///
+    /// Returns `None` if the handle does not point to a `Law_S` (or subclass).
+    pub fn downcast_to_s(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleLawS>> {
+        let ptr =
+            unsafe { crate::ffi::HandleLawBSpFunc_downcast_to_HandleLawS(self as *const Self) };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -1510,6 +1537,89 @@ impl HandleLawFunction {
     /// Dereference this Handle to mutably access the underlying Law_Function
     pub fn get_mut(&mut self) -> &mut crate::ffi::Law_Function {
         unsafe { &mut *(crate::ffi::HandleLawFunction_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<Law_Function> to Handle<Law_BSpFunc>
+    ///
+    /// Returns `None` if the handle does not point to a `Law_BSpFunc` (or subclass).
+    pub fn downcast_to_b_sp_func(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleLawBSpFunc>> {
+        let ptr = unsafe {
+            crate::ffi::HandleLawFunction_downcast_to_HandleLawBSpFunc(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Law_Function> to Handle<Law_Composite>
+    ///
+    /// Returns `None` if the handle does not point to a `Law_Composite` (or subclass).
+    pub fn downcast_to_composite(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleLawComposite>> {
+        let ptr = unsafe {
+            crate::ffi::HandleLawFunction_downcast_to_HandleLawComposite(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Law_Function> to Handle<Law_Constant>
+    ///
+    /// Returns `None` if the handle does not point to a `Law_Constant` (or subclass).
+    pub fn downcast_to_constant(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleLawConstant>> {
+        let ptr = unsafe {
+            crate::ffi::HandleLawFunction_downcast_to_HandleLawConstant(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Law_Function> to Handle<Law_Interpol>
+    ///
+    /// Returns `None` if the handle does not point to a `Law_Interpol` (or subclass).
+    pub fn downcast_to_interpol(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleLawInterpol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleLawFunction_downcast_to_HandleLawInterpol(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Law_Function> to Handle<Law_Linear>
+    ///
+    /// Returns `None` if the handle does not point to a `Law_Linear` (or subclass).
+    pub fn downcast_to_linear(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleLawLinear>> {
+        let ptr = unsafe {
+            crate::ffi::HandleLawFunction_downcast_to_HandleLawLinear(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Law_Function> to Handle<Law_S>
+    ///
+    /// Returns `None` if the handle does not point to a `Law_S` (or subclass).
+    pub fn downcast_to_s(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleLawS>> {
+        let ptr =
+            unsafe { crate::ffi::HandleLawFunction_downcast_to_HandleLawS(self as *const Self) };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 

@@ -625,8 +625,8 @@ pub fn generate_module_reexports(
         }
     }
 
-    // Also collect base handle types referenced by upcast methods that need re-exporting.
-    // These are handle types for base classes (e.g. HandleGeomSurface, HandleGeomCurve)
+    // Also collect handle types referenced by upcast/downcast methods that need re-exporting.
+    // These are handle types for base classes (upcast targets) or derived classes (downcast targets)
     // that external crates need to name.
     let mut base_handle_reexports: std::collections::BTreeSet<String> = std::collections::BTreeSet::new();
     for b in module_bindings {
@@ -638,11 +638,16 @@ pub fn generate_module_reexports(
                 base_handle_reexports.insert(hu.base_handle_name.clone());
             }
         }
+        for hd in &b.handle_downcasts {
+            if !directly_exported_handles.contains(&hd.derived_handle_name) {
+                base_handle_reexports.insert(hd.derived_handle_name.clone());
+            }
+        }
     }
 
     // Emit base handle type re-exports at the top of the module
     if !base_handle_reexports.is_empty() {
-        output.push_str("// Base handle type re-exports (targets of handle upcasts)\n");
+        output.push_str("// Handle type re-exports (targets of handle upcasts/downcasts)\n");
         for handle_name in &base_handle_reexports {
             output.push_str(&format!("pub use crate::ffi::{};\n", handle_name));
         }
