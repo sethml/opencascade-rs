@@ -270,14 +270,16 @@ impl Edge {
         unsafe { &*(crate::ffi::IMeshData_Edge_get_type_descriptor()) }
     }
 
-    /// Upcast to IMeshData_Shape
-    pub fn as_shape(&self) -> &Shape {
-        unsafe { &*(crate::ffi::IMeshData_Edge_as_IMeshData_Shape(self as *const Self)) }
+    /// Upcast to IMeshData_TessellatedShape
+    pub fn as_tessellated_shape(&self) -> &TessellatedShape {
+        unsafe { &*(crate::ffi::IMeshData_Edge_as_IMeshData_TessellatedShape(self as *const Self)) }
     }
 
-    /// Upcast to IMeshData_Shape (mutable)
-    pub fn as_shape_mut(&mut self) -> &mut Shape {
-        unsafe { &mut *(crate::ffi::IMeshData_Edge_as_IMeshData_Shape_mut(self as *mut Self)) }
+    /// Upcast to IMeshData_TessellatedShape (mutable)
+    pub fn as_tessellated_shape_mut(&mut self) -> &mut TessellatedShape {
+        unsafe {
+            &mut *(crate::ffi::IMeshData_Edge_as_IMeshData_TessellatedShape_mut(self as *mut Self))
+        }
     }
 
     /// Upcast to IMeshData_StatusOwner
@@ -292,26 +294,24 @@ impl Edge {
         }
     }
 
-    /// Upcast to IMeshData_TessellatedShape
-    pub fn as_tessellated_shape(&self) -> &TessellatedShape {
-        unsafe { &*(crate::ffi::IMeshData_Edge_as_IMeshData_TessellatedShape(self as *const Self)) }
+    /// Upcast to IMeshData_Shape
+    pub fn as_shape(&self) -> &Shape {
+        unsafe { &*(crate::ffi::IMeshData_Edge_as_IMeshData_Shape(self as *const Self)) }
     }
 
-    /// Upcast to IMeshData_TessellatedShape (mutable)
-    pub fn as_tessellated_shape_mut(&mut self) -> &mut TessellatedShape {
-        unsafe {
-            &mut *(crate::ffi::IMeshData_Edge_as_IMeshData_TessellatedShape_mut(self as *mut Self))
-        }
+    /// Upcast to IMeshData_Shape (mutable)
+    pub fn as_shape_mut(&mut self) -> &mut Shape {
+        unsafe { &mut *(crate::ffi::IMeshData_Edge_as_IMeshData_Shape_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
-        unsafe { crate::ffi::IMeshData_Edge_inherited_SetShape(self as *mut Self, theShape) }
+    /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:31 - `IMeshData_TessellatedShape::GetDeflection()`
+    pub fn get_deflection(&self) -> f64 {
+        unsafe { crate::ffi::IMeshData_Edge_inherited_GetDeflection(self as *const Self) }
     }
 
-    /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
-        unsafe { &*(crate::ffi::IMeshData_Edge_inherited_GetShape(self as *const Self)) }
+    /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:34 - `IMeshData_TessellatedShape::SetDeflection()`
+    pub fn set_deflection(&mut self, theValue: f64) {
+        unsafe { crate::ffi::IMeshData_Edge_inherited_SetDeflection(self as *mut Self, theValue) }
     }
 
     /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:29 - `IMeshData_StatusOwner::IsEqual()`
@@ -339,14 +339,14 @@ impl Edge {
         unsafe { crate::ffi::IMeshData_Edge_inherited_GetStatusMask(self as *const Self) }
     }
 
-    /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:31 - `IMeshData_TessellatedShape::GetDeflection()`
-    pub fn get_deflection(&self) -> f64 {
-        unsafe { crate::ffi::IMeshData_Edge_inherited_GetDeflection(self as *const Self) }
+    /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
+    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::IMeshData_Edge_inherited_SetShape(self as *mut Self, theShape) }
     }
 
-    /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:34 - `IMeshData_TessellatedShape::SetDeflection()`
-    pub fn set_deflection(&mut self, theValue: f64) {
-        unsafe { crate::ffi::IMeshData_Edge_inherited_SetDeflection(self as *mut Self, theValue) }
+    /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
+    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::IMeshData_Edge_inherited_GetShape(self as *const Self)) }
     }
 }
 
@@ -404,14 +404,16 @@ impl Face {
         unsafe { &*(crate::ffi::IMeshData_Face_get_type_descriptor()) }
     }
 
-    /// Upcast to IMeshData_Shape
-    pub fn as_shape(&self) -> &Shape {
-        unsafe { &*(crate::ffi::IMeshData_Face_as_IMeshData_Shape(self as *const Self)) }
+    /// Upcast to IMeshData_TessellatedShape
+    pub fn as_tessellated_shape(&self) -> &TessellatedShape {
+        unsafe { &*(crate::ffi::IMeshData_Face_as_IMeshData_TessellatedShape(self as *const Self)) }
     }
 
-    /// Upcast to IMeshData_Shape (mutable)
-    pub fn as_shape_mut(&mut self) -> &mut Shape {
-        unsafe { &mut *(crate::ffi::IMeshData_Face_as_IMeshData_Shape_mut(self as *mut Self)) }
+    /// Upcast to IMeshData_TessellatedShape (mutable)
+    pub fn as_tessellated_shape_mut(&mut self) -> &mut TessellatedShape {
+        unsafe {
+            &mut *(crate::ffi::IMeshData_Face_as_IMeshData_TessellatedShape_mut(self as *mut Self))
+        }
     }
 
     /// Upcast to IMeshData_StatusOwner
@@ -426,26 +428,24 @@ impl Face {
         }
     }
 
-    /// Upcast to IMeshData_TessellatedShape
-    pub fn as_tessellated_shape(&self) -> &TessellatedShape {
-        unsafe { &*(crate::ffi::IMeshData_Face_as_IMeshData_TessellatedShape(self as *const Self)) }
+    /// Upcast to IMeshData_Shape
+    pub fn as_shape(&self) -> &Shape {
+        unsafe { &*(crate::ffi::IMeshData_Face_as_IMeshData_Shape(self as *const Self)) }
     }
 
-    /// Upcast to IMeshData_TessellatedShape (mutable)
-    pub fn as_tessellated_shape_mut(&mut self) -> &mut TessellatedShape {
-        unsafe {
-            &mut *(crate::ffi::IMeshData_Face_as_IMeshData_TessellatedShape_mut(self as *mut Self))
-        }
+    /// Upcast to IMeshData_Shape (mutable)
+    pub fn as_shape_mut(&mut self) -> &mut Shape {
+        unsafe { &mut *(crate::ffi::IMeshData_Face_as_IMeshData_Shape_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
-        unsafe { crate::ffi::IMeshData_Face_inherited_SetShape(self as *mut Self, theShape) }
+    /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:31 - `IMeshData_TessellatedShape::GetDeflection()`
+    pub fn get_deflection(&self) -> f64 {
+        unsafe { crate::ffi::IMeshData_Face_inherited_GetDeflection(self as *const Self) }
     }
 
-    /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
-        unsafe { &*(crate::ffi::IMeshData_Face_inherited_GetShape(self as *const Self)) }
+    /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:34 - `IMeshData_TessellatedShape::SetDeflection()`
+    pub fn set_deflection(&mut self, theValue: f64) {
+        unsafe { crate::ffi::IMeshData_Face_inherited_SetDeflection(self as *mut Self, theValue) }
     }
 
     /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:29 - `IMeshData_StatusOwner::IsEqual()`
@@ -473,14 +473,14 @@ impl Face {
         unsafe { crate::ffi::IMeshData_Face_inherited_GetStatusMask(self as *const Self) }
     }
 
-    /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:31 - `IMeshData_TessellatedShape::GetDeflection()`
-    pub fn get_deflection(&self) -> f64 {
-        unsafe { crate::ffi::IMeshData_Face_inherited_GetDeflection(self as *const Self) }
+    /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
+    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::IMeshData_Face_inherited_SetShape(self as *mut Self, theShape) }
     }
 
-    /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:34 - `IMeshData_TessellatedShape::SetDeflection()`
-    pub fn set_deflection(&mut self, theValue: f64) {
-        unsafe { crate::ffi::IMeshData_Face_inherited_SetDeflection(self as *mut Self, theValue) }
+    /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
+    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::IMeshData_Face_inherited_GetShape(self as *const Self)) }
     }
 }
 
@@ -1024,14 +1024,16 @@ impl Wire {
         unsafe { &*(crate::ffi::IMeshData_Wire_get_type_descriptor()) }
     }
 
-    /// Upcast to IMeshData_Shape
-    pub fn as_shape(&self) -> &Shape {
-        unsafe { &*(crate::ffi::IMeshData_Wire_as_IMeshData_Shape(self as *const Self)) }
+    /// Upcast to IMeshData_TessellatedShape
+    pub fn as_tessellated_shape(&self) -> &TessellatedShape {
+        unsafe { &*(crate::ffi::IMeshData_Wire_as_IMeshData_TessellatedShape(self as *const Self)) }
     }
 
-    /// Upcast to IMeshData_Shape (mutable)
-    pub fn as_shape_mut(&mut self) -> &mut Shape {
-        unsafe { &mut *(crate::ffi::IMeshData_Wire_as_IMeshData_Shape_mut(self as *mut Self)) }
+    /// Upcast to IMeshData_TessellatedShape (mutable)
+    pub fn as_tessellated_shape_mut(&mut self) -> &mut TessellatedShape {
+        unsafe {
+            &mut *(crate::ffi::IMeshData_Wire_as_IMeshData_TessellatedShape_mut(self as *mut Self))
+        }
     }
 
     /// Upcast to IMeshData_StatusOwner
@@ -1046,26 +1048,24 @@ impl Wire {
         }
     }
 
-    /// Upcast to IMeshData_TessellatedShape
-    pub fn as_tessellated_shape(&self) -> &TessellatedShape {
-        unsafe { &*(crate::ffi::IMeshData_Wire_as_IMeshData_TessellatedShape(self as *const Self)) }
+    /// Upcast to IMeshData_Shape
+    pub fn as_shape(&self) -> &Shape {
+        unsafe { &*(crate::ffi::IMeshData_Wire_as_IMeshData_Shape(self as *const Self)) }
     }
 
-    /// Upcast to IMeshData_TessellatedShape (mutable)
-    pub fn as_tessellated_shape_mut(&mut self) -> &mut TessellatedShape {
-        unsafe {
-            &mut *(crate::ffi::IMeshData_Wire_as_IMeshData_TessellatedShape_mut(self as *mut Self))
-        }
+    /// Upcast to IMeshData_Shape (mutable)
+    pub fn as_shape_mut(&mut self) -> &mut Shape {
+        unsafe { &mut *(crate::ffi::IMeshData_Wire_as_IMeshData_Shape_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
-        unsafe { crate::ffi::IMeshData_Wire_inherited_SetShape(self as *mut Self, theShape) }
+    /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:31 - `IMeshData_TessellatedShape::GetDeflection()`
+    pub fn get_deflection(&self) -> f64 {
+        unsafe { crate::ffi::IMeshData_Wire_inherited_GetDeflection(self as *const Self) }
     }
 
-    /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
-        unsafe { &*(crate::ffi::IMeshData_Wire_inherited_GetShape(self as *const Self)) }
+    /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:34 - `IMeshData_TessellatedShape::SetDeflection()`
+    pub fn set_deflection(&mut self, theValue: f64) {
+        unsafe { crate::ffi::IMeshData_Wire_inherited_SetDeflection(self as *mut Self, theValue) }
     }
 
     /// Inherited: **Source:** `IMeshData_StatusOwner.hxx`:29 - `IMeshData_StatusOwner::IsEqual()`
@@ -1093,13 +1093,13 @@ impl Wire {
         unsafe { crate::ffi::IMeshData_Wire_inherited_GetStatusMask(self as *const Self) }
     }
 
-    /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:31 - `IMeshData_TessellatedShape::GetDeflection()`
-    pub fn get_deflection(&self) -> f64 {
-        unsafe { crate::ffi::IMeshData_Wire_inherited_GetDeflection(self as *const Self) }
+    /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
+    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::IMeshData_Wire_inherited_SetShape(self as *mut Self, theShape) }
     }
 
-    /// Inherited: **Source:** `IMeshData_TessellatedShape.hxx`:34 - `IMeshData_TessellatedShape::SetDeflection()`
-    pub fn set_deflection(&mut self, theValue: f64) {
-        unsafe { crate::ffi::IMeshData_Wire_inherited_SetDeflection(self as *mut Self, theValue) }
+    /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
+    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::IMeshData_Wire_inherited_GetShape(self as *const Self)) }
     }
 }

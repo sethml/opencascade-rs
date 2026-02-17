@@ -144,24 +144,6 @@ impl LocalOperation {
         unsafe { crate::ffi::BRepFilletAPI_LocalOperation_nb_surf(self as *const Self, IC) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        unsafe {
-            &*(crate::ffi::BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        unsafe {
-            &mut *(crate::ffi::BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
@@ -182,14 +164,22 @@ impl LocalOperation {
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepFilletAPI_LocalOperation_inherited_IsDone(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        unsafe {
+            &*(crate::ffi::BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command(
+                self as *const Self,
+            ))
+        }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepFilletAPI_LocalOperation_inherited_Check(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
@@ -223,6 +213,16 @@ impl LocalOperation {
         unsafe {
             crate::ffi::BRepFilletAPI_LocalOperation_inherited_IsDeleted(self as *mut Self, S)
         }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepFilletAPI_LocalOperation_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepFilletAPI_LocalOperation_inherited_Check(self as *const Self) }
     }
 }
 
@@ -624,17 +624,19 @@ impl MakeChamfer {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_nb_surf(self as *const Self, IC) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+    /// Upcast to BRepFilletAPI_LocalOperation
+    pub fn as_local_operation(&self) -> &LocalOperation {
         unsafe {
-            &*(crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command(self as *const Self))
+            &*(crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation(
+                self as *const Self,
+            ))
         }
     }
 
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+    /// Upcast to BRepFilletAPI_LocalOperation (mutable)
+    pub fn as_local_operation_mut(&mut self) -> &mut LocalOperation {
         unsafe {
-            &mut *(crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command_mut(
+            &mut *(crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation_mut(
                 self as *mut Self,
             ))
         }
@@ -660,22 +662,25 @@ impl MakeChamfer {
         }
     }
 
-    /// Upcast to BRepFilletAPI_LocalOperation
-    pub fn as_local_operation(&self) -> &LocalOperation {
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*(crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation(
-                self as *const Self,
+            &*(crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command(self as *const Self))
+        }
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
             ))
         }
     }
 
-    /// Upcast to BRepFilletAPI_LocalOperation (mutable)
-    pub fn as_local_operation_mut(&mut self) -> &mut LocalOperation {
-        unsafe {
-            &mut *(crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation_mut(
-                self as *mut Self,
-            ))
-        }
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
+    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFilletAPI_MakeChamfer_inherited_Shape(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
@@ -686,11 +691,6 @@ impl MakeChamfer {
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_inherited_Check(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
-        unsafe { &*(crate::ffi::BRepFilletAPI_MakeChamfer_inherited_Shape(self as *mut Self)) }
     }
 }
 
@@ -1358,17 +1358,19 @@ impl MakeFillet {
         }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+    /// Upcast to BRepFilletAPI_LocalOperation
+    pub fn as_local_operation(&self) -> &LocalOperation {
         unsafe {
-            &*(crate::ffi::BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command(self as *const Self))
+            &*(crate::ffi::BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation(
+                self as *const Self,
+            ))
         }
     }
 
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+    /// Upcast to BRepFilletAPI_LocalOperation (mutable)
+    pub fn as_local_operation_mut(&mut self) -> &mut LocalOperation {
         unsafe {
-            &mut *(crate::ffi::BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command_mut(
+            &mut *(crate::ffi::BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation_mut(
                 self as *mut Self,
             ))
         }
@@ -1394,22 +1396,25 @@ impl MakeFillet {
         }
     }
 
-    /// Upcast to BRepFilletAPI_LocalOperation
-    pub fn as_local_operation(&self) -> &LocalOperation {
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*(crate::ffi::BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation(
-                self as *const Self,
+            &*(crate::ffi::BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command(self as *const Self))
+        }
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
             ))
         }
     }
 
-    /// Upcast to BRepFilletAPI_LocalOperation (mutable)
-    pub fn as_local_operation_mut(&mut self) -> &mut LocalOperation {
-        unsafe {
-            &mut *(crate::ffi::BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation_mut(
-                self as *mut Self,
-            ))
-        }
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
+    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFilletAPI_MakeFillet_inherited_Shape(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
@@ -1420,11 +1425,6 @@ impl MakeFillet {
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_inherited_Check(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
-        unsafe { &*(crate::ffi::BRepFilletAPI_MakeFillet_inherited_Shape(self as *mut Self)) }
     }
 }
 
@@ -1870,24 +1870,6 @@ impl MakeFillet2d {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_build(self as *mut Self, theRange) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        unsafe {
-            &*(crate::ffi::BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        unsafe {
-            &mut *(crate::ffi::BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_Command_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
@@ -1908,14 +1890,22 @@ impl MakeFillet2d {
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_IsDone(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        unsafe {
+            &*(crate::ffi::BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_Command(
+                self as *const Self,
+            ))
+        }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_Check(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
@@ -1933,5 +1923,15 @@ impl MakeFillet2d {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_IsDeleted(self as *mut Self, S) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_Check(self as *const Self) }
     }
 }

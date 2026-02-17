@@ -1631,24 +1631,6 @@ impl DefaultDeltaOnModification {
         unsafe { &*(crate::ffi::TDF_DefaultDeltaOnModification_get_type_descriptor()) }
     }
 
-    /// Upcast to TDF_AttributeDelta
-    pub fn as_attribute_delta(&self) -> &AttributeDelta {
-        unsafe {
-            &*(crate::ffi::TDF_DefaultDeltaOnModification_as_TDF_AttributeDelta(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to TDF_AttributeDelta (mutable)
-    pub fn as_attribute_delta_mut(&mut self) -> &mut AttributeDelta {
-        unsafe {
-            &mut *(crate::ffi::TDF_DefaultDeltaOnModification_as_TDF_AttributeDelta_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to TDF_DeltaOnModification
     pub fn as_delta_on_modification(&self) -> &DeltaOnModification {
         unsafe {
@@ -1662,6 +1644,24 @@ impl DefaultDeltaOnModification {
     pub fn as_delta_on_modification_mut(&mut self) -> &mut DeltaOnModification {
         unsafe {
             &mut *(crate::ffi::TDF_DefaultDeltaOnModification_as_TDF_DeltaOnModification_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to TDF_AttributeDelta
+    pub fn as_attribute_delta(&self) -> &AttributeDelta {
+        unsafe {
+            &*(crate::ffi::TDF_DefaultDeltaOnModification_as_TDF_AttributeDelta(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to TDF_AttributeDelta (mutable)
+    pub fn as_attribute_delta_mut(&mut self) -> &mut AttributeDelta {
+        unsafe {
+            &mut *(crate::ffi::TDF_DefaultDeltaOnModification_as_TDF_AttributeDelta_mut(
                 self as *mut Self,
             ))
         }
@@ -1748,22 +1748,6 @@ impl DefaultDeltaOnRemoval {
         unsafe { &*(crate::ffi::TDF_DefaultDeltaOnRemoval_get_type_descriptor()) }
     }
 
-    /// Upcast to TDF_AttributeDelta
-    pub fn as_attribute_delta(&self) -> &AttributeDelta {
-        unsafe {
-            &*(crate::ffi::TDF_DefaultDeltaOnRemoval_as_TDF_AttributeDelta(self as *const Self))
-        }
-    }
-
-    /// Upcast to TDF_AttributeDelta (mutable)
-    pub fn as_attribute_delta_mut(&mut self) -> &mut AttributeDelta {
-        unsafe {
-            &mut *(crate::ffi::TDF_DefaultDeltaOnRemoval_as_TDF_AttributeDelta_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to TDF_DeltaOnRemoval
     pub fn as_delta_on_removal(&self) -> &DeltaOnRemoval {
         unsafe {
@@ -1775,6 +1759,22 @@ impl DefaultDeltaOnRemoval {
     pub fn as_delta_on_removal_mut(&mut self) -> &mut DeltaOnRemoval {
         unsafe {
             &mut *(crate::ffi::TDF_DefaultDeltaOnRemoval_as_TDF_DeltaOnRemoval_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to TDF_AttributeDelta
+    pub fn as_attribute_delta(&self) -> &AttributeDelta {
+        unsafe {
+            &*(crate::ffi::TDF_DefaultDeltaOnRemoval_as_TDF_AttributeDelta(self as *const Self))
+        }
+    }
+
+    /// Upcast to TDF_AttributeDelta (mutable)
+    pub fn as_attribute_delta_mut(&mut self) -> &mut AttributeDelta {
+        unsafe {
+            &mut *(crate::ffi::TDF_DefaultDeltaOnRemoval_as_TDF_AttributeDelta_mut(
                 self as *mut Self,
             ))
         }

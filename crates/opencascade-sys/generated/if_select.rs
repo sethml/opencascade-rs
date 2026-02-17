@@ -3885,6 +3885,18 @@ impl ModifEditForm {
         unsafe { &*(crate::ffi::IFSelect_ModifEditForm_get_type_descriptor()) }
     }
 
+    /// Upcast to IFSelect_Modifier
+    pub fn as_modifier(&self) -> &Modifier {
+        unsafe { &*(crate::ffi::IFSelect_ModifEditForm_as_IFSelect_Modifier(self as *const Self)) }
+    }
+
+    /// Upcast to IFSelect_Modifier (mutable)
+    pub fn as_modifier_mut(&mut self) -> &mut Modifier {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_ModifEditForm_as_IFSelect_Modifier_mut(self as *mut Self))
+        }
+    }
+
     /// Upcast to IFSelect_GeneralModifier
     pub fn as_general_modifier(&self) -> &GeneralModifier {
         unsafe {
@@ -3898,18 +3910,6 @@ impl ModifEditForm {
             &mut *(crate::ffi::IFSelect_ModifEditForm_as_IFSelect_GeneralModifier_mut(
                 self as *mut Self,
             ))
-        }
-    }
-
-    /// Upcast to IFSelect_Modifier
-    pub fn as_modifier(&self) -> &Modifier {
-        unsafe { &*(crate::ffi::IFSelect_ModifEditForm_as_IFSelect_Modifier(self as *const Self)) }
-    }
-
-    /// Upcast to IFSelect_Modifier (mutable)
-    pub fn as_modifier_mut(&mut self) -> &mut Modifier {
-        unsafe {
-            &mut *(crate::ffi::IFSelect_ModifEditForm_as_IFSelect_Modifier_mut(self as *mut Self))
         }
     }
 
@@ -4024,6 +4024,18 @@ impl ModifReorder {
         unsafe { &*(crate::ffi::IFSelect_ModifReorder_get_type_descriptor()) }
     }
 
+    /// Upcast to IFSelect_Modifier
+    pub fn as_modifier(&self) -> &Modifier {
+        unsafe { &*(crate::ffi::IFSelect_ModifReorder_as_IFSelect_Modifier(self as *const Self)) }
+    }
+
+    /// Upcast to IFSelect_Modifier (mutable)
+    pub fn as_modifier_mut(&mut self) -> &mut Modifier {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_ModifReorder_as_IFSelect_Modifier_mut(self as *mut Self))
+        }
+    }
+
     /// Upcast to IFSelect_GeneralModifier
     pub fn as_general_modifier(&self) -> &GeneralModifier {
         unsafe {
@@ -4037,18 +4049,6 @@ impl ModifReorder {
             &mut *(crate::ffi::IFSelect_ModifReorder_as_IFSelect_GeneralModifier_mut(
                 self as *mut Self,
             ))
-        }
-    }
-
-    /// Upcast to IFSelect_Modifier
-    pub fn as_modifier(&self) -> &Modifier {
-        unsafe { &*(crate::ffi::IFSelect_ModifReorder_as_IFSelect_Modifier(self as *const Self)) }
-    }
-
-    /// Upcast to IFSelect_Modifier (mutable)
-    pub fn as_modifier_mut(&mut self) -> &mut Modifier {
-        unsafe {
-            &mut *(crate::ffi::IFSelect_ModifReorder_as_IFSelect_Modifier_mut(self as *mut Self))
         }
     }
 
@@ -4848,22 +4848,6 @@ impl SelectAnyType {
         unsafe { &*(crate::ffi::IFSelect_SelectAnyType_get_type_descriptor()) }
     }
 
-    /// Upcast to IFSelect_SelectDeduct
-    pub fn as_select_deduct(&self) -> &SelectDeduct {
-        unsafe {
-            &*(crate::ffi::IFSelect_SelectAnyType_as_IFSelect_SelectDeduct(self as *const Self))
-        }
-    }
-
-    /// Upcast to IFSelect_SelectDeduct (mutable)
-    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
-        unsafe {
-            &mut *(crate::ffi::IFSelect_SelectAnyType_as_IFSelect_SelectDeduct_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to IFSelect_SelectExtract
     pub fn as_select_extract(&self) -> &SelectExtract {
         unsafe {
@@ -4880,6 +4864,22 @@ impl SelectAnyType {
         }
     }
 
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        unsafe {
+            &*(crate::ffi::IFSelect_SelectAnyType_as_IFSelect_SelectDeduct(self as *const Self))
+        }
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_SelectAnyType_as_IFSelect_SelectDeduct_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Upcast to IFSelect_Selection
     pub fn as_selection(&self) -> &Selection {
         unsafe { &*(crate::ffi::IFSelect_SelectAnyType_as_IFSelect_Selection(self as *const Self)) }
@@ -4889,6 +4889,34 @@ impl SelectAnyType {
     pub fn as_selection_mut(&mut self) -> &mut Selection {
         unsafe {
             &mut *(crate::ffi::IFSelect_SelectAnyType_as_IFSelect_Selection_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
+    pub fn is_direct(&self) -> bool {
+        unsafe { crate::ffi::IFSelect_SelectAnyType_inherited_IsDirect(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
+    pub fn set_direct(&mut self, direct: bool) {
+        unsafe { crate::ffi::IFSelect_SelectAnyType_inherited_SetDirect(self as *mut Self, direct) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectAnyType_inherited_Label(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:84 - `IFSelect_SelectExtract::ExtractLabel()`
+    pub fn extract_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectAnyType_inherited_ExtractLabel(
+                self as *const Self,
+            ))
         }
     }
 
@@ -4920,34 +4948,6 @@ impl SelectAnyType {
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectAnyType_inherited_FillIterator(self as *const Self, iter)
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
-    pub fn is_direct(&self) -> bool {
-        unsafe { crate::ffi::IFSelect_SelectAnyType_inherited_IsDirect(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
-    pub fn set_direct(&mut self, direct: bool) {
-        unsafe { crate::ffi::IFSelect_SelectAnyType_inherited_SetDirect(self as *mut Self, direct) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectAnyType_inherited_Label(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:84 - `IFSelect_SelectExtract::ExtractLabel()`
-    pub fn extract_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectAnyType_inherited_ExtractLabel(
-                self as *const Self,
-            ))
         }
     }
 }
@@ -5636,24 +5636,6 @@ impl SelectErrorEntities {
         unsafe { &*(crate::ffi::IFSelect_SelectErrorEntities_get_type_descriptor()) }
     }
 
-    /// Upcast to IFSelect_SelectDeduct
-    pub fn as_select_deduct(&self) -> &SelectDeduct {
-        unsafe {
-            &*(crate::ffi::IFSelect_SelectErrorEntities_as_IFSelect_SelectDeduct(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to IFSelect_SelectDeduct (mutable)
-    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
-        unsafe {
-            &mut *(crate::ffi::IFSelect_SelectErrorEntities_as_IFSelect_SelectDeduct_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to IFSelect_SelectExtract
     pub fn as_select_extract(&self) -> &SelectExtract {
         unsafe {
@@ -5672,6 +5654,24 @@ impl SelectErrorEntities {
         }
     }
 
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        unsafe {
+            &*(crate::ffi::IFSelect_SelectErrorEntities_as_IFSelect_SelectDeduct(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_SelectErrorEntities_as_IFSelect_SelectDeduct_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Upcast to IFSelect_Selection
     pub fn as_selection(&self) -> &Selection {
         unsafe {
@@ -5684,6 +5684,27 @@ impl SelectErrorEntities {
         unsafe {
             &mut *(crate::ffi::IFSelect_SelectErrorEntities_as_IFSelect_Selection_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
+    pub fn is_direct(&self) -> bool {
+        unsafe { crate::ffi::IFSelect_SelectErrorEntities_inherited_IsDirect(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
+    pub fn set_direct(&mut self, direct: bool) {
+        unsafe {
+            crate::ffi::IFSelect_SelectErrorEntities_inherited_SetDirect(self as *mut Self, direct)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectErrorEntities_inherited_Label(
+                self as *const Self,
             ))
         }
     }
@@ -5723,27 +5744,6 @@ impl SelectErrorEntities {
                 self as *const Self,
                 iter,
             )
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
-    pub fn is_direct(&self) -> bool {
-        unsafe { crate::ffi::IFSelect_SelectErrorEntities_inherited_IsDirect(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
-    pub fn set_direct(&mut self, direct: bool) {
-        unsafe {
-            crate::ffi::IFSelect_SelectErrorEntities_inherited_SetDirect(self as *mut Self, direct)
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectErrorEntities_inherited_Label(
-                self as *const Self,
-            ))
         }
     }
 }
@@ -6085,18 +6085,6 @@ impl SelectFlag {
         unsafe { &*(crate::ffi::IFSelect_SelectFlag_get_type_descriptor()) }
     }
 
-    /// Upcast to IFSelect_SelectDeduct
-    pub fn as_select_deduct(&self) -> &SelectDeduct {
-        unsafe { &*(crate::ffi::IFSelect_SelectFlag_as_IFSelect_SelectDeduct(self as *const Self)) }
-    }
-
-    /// Upcast to IFSelect_SelectDeduct (mutable)
-    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
-        unsafe {
-            &mut *(crate::ffi::IFSelect_SelectFlag_as_IFSelect_SelectDeduct_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to IFSelect_SelectExtract
     pub fn as_select_extract(&self) -> &SelectExtract {
         unsafe {
@@ -6111,6 +6099,18 @@ impl SelectFlag {
         }
     }
 
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        unsafe { &*(crate::ffi::IFSelect_SelectFlag_as_IFSelect_SelectDeduct(self as *const Self)) }
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_SelectFlag_as_IFSelect_SelectDeduct_mut(self as *mut Self))
+        }
+    }
+
     /// Upcast to IFSelect_Selection
     pub fn as_selection(&self) -> &Selection {
         unsafe { &*(crate::ffi::IFSelect_SelectFlag_as_IFSelect_Selection(self as *const Self)) }
@@ -6120,6 +6120,25 @@ impl SelectFlag {
     pub fn as_selection_mut(&mut self) -> &mut Selection {
         unsafe {
             &mut *(crate::ffi::IFSelect_SelectFlag_as_IFSelect_Selection_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
+    pub fn is_direct(&self) -> bool {
+        unsafe { crate::ffi::IFSelect_SelectFlag_inherited_IsDirect(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
+    pub fn set_direct(&mut self, direct: bool) {
+        unsafe { crate::ffi::IFSelect_SelectFlag_inherited_SetDirect(self as *mut Self, direct) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectFlag_inherited_Label(
+                self as *const Self,
+            ))
         }
     }
 
@@ -6150,25 +6169,6 @@ impl SelectFlag {
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectFlag_inherited_FillIterator(self as *const Self, iter) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
-    pub fn is_direct(&self) -> bool {
-        unsafe { crate::ffi::IFSelect_SelectFlag_inherited_IsDirect(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
-    pub fn set_direct(&mut self, direct: bool) {
-        unsafe { crate::ffi::IFSelect_SelectFlag_inherited_SetDirect(self as *mut Self, direct) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectFlag_inherited_Label(
-                self as *const Self,
-            ))
-        }
     }
 }
 
@@ -6424,19 +6424,19 @@ impl SelectIncorrectEntities {
         unsafe { &*(crate::ffi::IFSelect_SelectIncorrectEntities_get_type_descriptor()) }
     }
 
-    /// Upcast to IFSelect_SelectDeduct
-    pub fn as_select_deduct(&self) -> &SelectDeduct {
+    /// Upcast to IFSelect_SelectFlag
+    pub fn as_select_flag(&self) -> &SelectFlag {
         unsafe {
-            &*(crate::ffi::IFSelect_SelectIncorrectEntities_as_IFSelect_SelectDeduct(
+            &*(crate::ffi::IFSelect_SelectIncorrectEntities_as_IFSelect_SelectFlag(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast to IFSelect_SelectDeduct (mutable)
-    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
+    /// Upcast to IFSelect_SelectFlag (mutable)
+    pub fn as_select_flag_mut(&mut self) -> &mut SelectFlag {
         unsafe {
-            &mut *(crate::ffi::IFSelect_SelectIncorrectEntities_as_IFSelect_SelectDeduct_mut(
+            &mut *(crate::ffi::IFSelect_SelectIncorrectEntities_as_IFSelect_SelectFlag_mut(
                 self as *mut Self,
             ))
         }
@@ -6460,19 +6460,19 @@ impl SelectIncorrectEntities {
         }
     }
 
-    /// Upcast to IFSelect_SelectFlag
-    pub fn as_select_flag(&self) -> &SelectFlag {
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
         unsafe {
-            &*(crate::ffi::IFSelect_SelectIncorrectEntities_as_IFSelect_SelectFlag(
+            &*(crate::ffi::IFSelect_SelectIncorrectEntities_as_IFSelect_SelectDeduct(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast to IFSelect_SelectFlag (mutable)
-    pub fn as_select_flag_mut(&mut self) -> &mut SelectFlag {
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
         unsafe {
-            &mut *(crate::ffi::IFSelect_SelectIncorrectEntities_as_IFSelect_SelectFlag_mut(
+            &mut *(crate::ffi::IFSelect_SelectIncorrectEntities_as_IFSelect_SelectDeduct_mut(
                 self as *mut Self,
             ))
         }
@@ -6492,6 +6492,43 @@ impl SelectIncorrectEntities {
         unsafe {
             &mut *(crate::ffi::IFSelect_SelectIncorrectEntities_as_IFSelect_Selection_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectFlag.hxx`:67 - `IFSelect_SelectFlag::ExtractLabel()`
+    pub fn extract_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectIncorrectEntities_inherited_ExtractLabel(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
+    pub fn is_direct(&self) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectIncorrectEntities_inherited_IsDirect(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
+    pub fn set_direct(&mut self, direct: bool) {
+        unsafe {
+            crate::ffi::IFSelect_SelectIncorrectEntities_inherited_SetDirect(
+                self as *mut Self,
+                direct,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectIncorrectEntities_inherited_Label(
+                self as *const Self,
             ))
         }
     }
@@ -6532,43 +6569,6 @@ impl SelectIncorrectEntities {
             crate::ffi::IFSelect_SelectIncorrectEntities_inherited_FillIterator(
                 self as *const Self,
                 iter,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
-    pub fn is_direct(&self) -> bool {
-        unsafe {
-            crate::ffi::IFSelect_SelectIncorrectEntities_inherited_IsDirect(self as *const Self)
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
-    pub fn set_direct(&mut self, direct: bool) {
-        unsafe {
-            crate::ffi::IFSelect_SelectIncorrectEntities_inherited_SetDirect(
-                self as *mut Self,
-                direct,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectIncorrectEntities_inherited_Label(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:84 - `IFSelect_SelectExtract::ExtractLabel()`
-    pub fn extract_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IFSelect_SelectIncorrectEntities_inherited_ExtractLabel(
-                    self as *const Self,
-                ),
             )
         }
     }
@@ -7162,20 +7162,6 @@ impl SelectRange {
         unsafe { &*(crate::ffi::IFSelect_SelectRange_get_type_descriptor()) }
     }
 
-    /// Upcast to IFSelect_SelectDeduct
-    pub fn as_select_deduct(&self) -> &SelectDeduct {
-        unsafe {
-            &*(crate::ffi::IFSelect_SelectRange_as_IFSelect_SelectDeduct(self as *const Self))
-        }
-    }
-
-    /// Upcast to IFSelect_SelectDeduct (mutable)
-    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
-        unsafe {
-            &mut *(crate::ffi::IFSelect_SelectRange_as_IFSelect_SelectDeduct_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to IFSelect_SelectExtract
     pub fn as_select_extract(&self) -> &SelectExtract {
         unsafe {
@@ -7192,6 +7178,20 @@ impl SelectRange {
         }
     }
 
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        unsafe {
+            &*(crate::ffi::IFSelect_SelectRange_as_IFSelect_SelectDeduct(self as *const Self))
+        }
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_SelectRange_as_IFSelect_SelectDeduct_mut(self as *mut Self))
+        }
+    }
+
     /// Upcast to IFSelect_Selection
     pub fn as_selection(&self) -> &Selection {
         unsafe { &*(crate::ffi::IFSelect_SelectRange_as_IFSelect_Selection(self as *const Self)) }
@@ -7201,6 +7201,25 @@ impl SelectRange {
     pub fn as_selection_mut(&mut self) -> &mut Selection {
         unsafe {
             &mut *(crate::ffi::IFSelect_SelectRange_as_IFSelect_Selection_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
+    pub fn is_direct(&self) -> bool {
+        unsafe { crate::ffi::IFSelect_SelectRange_inherited_IsDirect(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
+    pub fn set_direct(&mut self, direct: bool) {
+        unsafe { crate::ffi::IFSelect_SelectRange_inherited_SetDirect(self as *mut Self, direct) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRange_inherited_Label(
+                self as *const Self,
+            ))
         }
     }
 
@@ -7232,25 +7251,6 @@ impl SelectRange {
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectRange_inherited_FillIterator(self as *const Self, iter)
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
-    pub fn is_direct(&self) -> bool {
-        unsafe { crate::ffi::IFSelect_SelectRange_inherited_IsDirect(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
-    pub fn set_direct(&mut self, direct: bool) {
-        unsafe { crate::ffi::IFSelect_SelectRange_inherited_SetDirect(self as *mut Self, direct) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRange_inherited_Label(
-                self as *const Self,
-            ))
         }
     }
 }
@@ -7313,22 +7313,6 @@ impl SelectRootComps {
         unsafe { &*(crate::ffi::IFSelect_SelectRootComps_get_type_descriptor()) }
     }
 
-    /// Upcast to IFSelect_SelectDeduct
-    pub fn as_select_deduct(&self) -> &SelectDeduct {
-        unsafe {
-            &*(crate::ffi::IFSelect_SelectRootComps_as_IFSelect_SelectDeduct(self as *const Self))
-        }
-    }
-
-    /// Upcast to IFSelect_SelectDeduct (mutable)
-    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
-        unsafe {
-            &mut *(crate::ffi::IFSelect_SelectRootComps_as_IFSelect_SelectDeduct_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to IFSelect_SelectExtract
     pub fn as_select_extract(&self) -> &SelectExtract {
         unsafe {
@@ -7340,6 +7324,22 @@ impl SelectRootComps {
     pub fn as_select_extract_mut(&mut self) -> &mut SelectExtract {
         unsafe {
             &mut *(crate::ffi::IFSelect_SelectRootComps_as_IFSelect_SelectExtract_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        unsafe {
+            &*(crate::ffi::IFSelect_SelectRootComps_as_IFSelect_SelectDeduct(self as *const Self))
+        }
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_SelectRootComps_as_IFSelect_SelectDeduct_mut(
                 self as *mut Self,
             ))
         }
@@ -7357,6 +7357,27 @@ impl SelectRootComps {
         unsafe {
             &mut *(crate::ffi::IFSelect_SelectRootComps_as_IFSelect_Selection_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
+    pub fn is_direct(&self) -> bool {
+        unsafe { crate::ffi::IFSelect_SelectRootComps_inherited_IsDirect(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
+    pub fn set_direct(&mut self, direct: bool) {
+        unsafe {
+            crate::ffi::IFSelect_SelectRootComps_inherited_SetDirect(self as *mut Self, direct)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRootComps_inherited_Label(
+                self as *const Self,
             ))
         }
     }
@@ -7389,27 +7410,6 @@ impl SelectRootComps {
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectRootComps_inherited_FillIterator(self as *const Self, iter)
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
-    pub fn is_direct(&self) -> bool {
-        unsafe { crate::ffi::IFSelect_SelectRootComps_inherited_IsDirect(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
-    pub fn set_direct(&mut self, direct: bool) {
-        unsafe {
-            crate::ffi::IFSelect_SelectRootComps_inherited_SetDirect(self as *mut Self, direct)
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRootComps_inherited_Label(
-                self as *const Self,
-            ))
         }
     }
 }
@@ -7466,20 +7466,6 @@ impl SelectRoots {
         unsafe { &*(crate::ffi::IFSelect_SelectRoots_get_type_descriptor()) }
     }
 
-    /// Upcast to IFSelect_SelectDeduct
-    pub fn as_select_deduct(&self) -> &SelectDeduct {
-        unsafe {
-            &*(crate::ffi::IFSelect_SelectRoots_as_IFSelect_SelectDeduct(self as *const Self))
-        }
-    }
-
-    /// Upcast to IFSelect_SelectDeduct (mutable)
-    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
-        unsafe {
-            &mut *(crate::ffi::IFSelect_SelectRoots_as_IFSelect_SelectDeduct_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to IFSelect_SelectExtract
     pub fn as_select_extract(&self) -> &SelectExtract {
         unsafe {
@@ -7496,6 +7482,20 @@ impl SelectRoots {
         }
     }
 
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        unsafe {
+            &*(crate::ffi::IFSelect_SelectRoots_as_IFSelect_SelectDeduct(self as *const Self))
+        }
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_SelectRoots_as_IFSelect_SelectDeduct_mut(self as *mut Self))
+        }
+    }
+
     /// Upcast to IFSelect_Selection
     pub fn as_selection(&self) -> &Selection {
         unsafe { &*(crate::ffi::IFSelect_SelectRoots_as_IFSelect_Selection(self as *const Self)) }
@@ -7505,6 +7505,25 @@ impl SelectRoots {
     pub fn as_selection_mut(&mut self) -> &mut Selection {
         unsafe {
             &mut *(crate::ffi::IFSelect_SelectRoots_as_IFSelect_Selection_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
+    pub fn is_direct(&self) -> bool {
+        unsafe { crate::ffi::IFSelect_SelectRoots_inherited_IsDirect(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
+    pub fn set_direct(&mut self, direct: bool) {
+        unsafe { crate::ffi::IFSelect_SelectRoots_inherited_SetDirect(self as *mut Self, direct) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRoots_inherited_Label(
+                self as *const Self,
+            ))
         }
     }
 
@@ -7536,25 +7555,6 @@ impl SelectRoots {
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectRoots_inherited_FillIterator(self as *const Self, iter)
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
-    pub fn is_direct(&self) -> bool {
-        unsafe { crate::ffi::IFSelect_SelectRoots_inherited_IsDirect(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
-    pub fn set_direct(&mut self, direct: bool) {
-        unsafe { crate::ffi::IFSelect_SelectRoots_inherited_SetDirect(self as *mut Self, direct) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRoots_inherited_Label(
-                self as *const Self,
-            ))
         }
     }
 }
@@ -7674,18 +7674,6 @@ impl SelectSent {
         unsafe { &*(crate::ffi::IFSelect_SelectSent_get_type_descriptor()) }
     }
 
-    /// Upcast to IFSelect_SelectDeduct
-    pub fn as_select_deduct(&self) -> &SelectDeduct {
-        unsafe { &*(crate::ffi::IFSelect_SelectSent_as_IFSelect_SelectDeduct(self as *const Self)) }
-    }
-
-    /// Upcast to IFSelect_SelectDeduct (mutable)
-    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
-        unsafe {
-            &mut *(crate::ffi::IFSelect_SelectSent_as_IFSelect_SelectDeduct_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to IFSelect_SelectExtract
     pub fn as_select_extract(&self) -> &SelectExtract {
         unsafe {
@@ -7700,6 +7688,18 @@ impl SelectSent {
         }
     }
 
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        unsafe { &*(crate::ffi::IFSelect_SelectSent_as_IFSelect_SelectDeduct(self as *const Self)) }
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_SelectSent_as_IFSelect_SelectDeduct_mut(self as *mut Self))
+        }
+    }
+
     /// Upcast to IFSelect_Selection
     pub fn as_selection(&self) -> &Selection {
         unsafe { &*(crate::ffi::IFSelect_SelectSent_as_IFSelect_Selection(self as *const Self)) }
@@ -7709,6 +7709,25 @@ impl SelectSent {
     pub fn as_selection_mut(&mut self) -> &mut Selection {
         unsafe {
             &mut *(crate::ffi::IFSelect_SelectSent_as_IFSelect_Selection_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
+    pub fn is_direct(&self) -> bool {
+        unsafe { crate::ffi::IFSelect_SelectSent_inherited_IsDirect(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
+    pub fn set_direct(&mut self, direct: bool) {
+        unsafe { crate::ffi::IFSelect_SelectSent_inherited_SetDirect(self as *mut Self, direct) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSent_inherited_Label(
+                self as *const Self,
+            ))
         }
     }
 
@@ -7739,25 +7758,6 @@ impl SelectSent {
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectSent_inherited_FillIterator(self as *const Self, iter) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
-    pub fn is_direct(&self) -> bool {
-        unsafe { crate::ffi::IFSelect_SelectSent_inherited_IsDirect(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
-    pub fn set_direct(&mut self, direct: bool) {
-        unsafe { crate::ffi::IFSelect_SelectSent_inherited_SetDirect(self as *mut Self, direct) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSent_inherited_Label(
-                self as *const Self,
-            ))
-        }
     }
 }
 
@@ -8052,22 +8052,6 @@ impl SelectSignature {
         unsafe { &*(crate::ffi::IFSelect_SelectSignature_get_type_descriptor()) }
     }
 
-    /// Upcast to IFSelect_SelectDeduct
-    pub fn as_select_deduct(&self) -> &SelectDeduct {
-        unsafe {
-            &*(crate::ffi::IFSelect_SelectSignature_as_IFSelect_SelectDeduct(self as *const Self))
-        }
-    }
-
-    /// Upcast to IFSelect_SelectDeduct (mutable)
-    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
-        unsafe {
-            &mut *(crate::ffi::IFSelect_SelectSignature_as_IFSelect_SelectDeduct_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to IFSelect_SelectExtract
     pub fn as_select_extract(&self) -> &SelectExtract {
         unsafe {
@@ -8079,6 +8063,22 @@ impl SelectSignature {
     pub fn as_select_extract_mut(&mut self) -> &mut SelectExtract {
         unsafe {
             &mut *(crate::ffi::IFSelect_SelectSignature_as_IFSelect_SelectExtract_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        unsafe {
+            &*(crate::ffi::IFSelect_SelectSignature_as_IFSelect_SelectDeduct(self as *const Self))
+        }
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_SelectSignature_as_IFSelect_SelectDeduct_mut(
                 self as *mut Self,
             ))
         }
@@ -8096,6 +8096,27 @@ impl SelectSignature {
         unsafe {
             &mut *(crate::ffi::IFSelect_SelectSignature_as_IFSelect_Selection_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
+    pub fn is_direct(&self) -> bool {
+        unsafe { crate::ffi::IFSelect_SelectSignature_inherited_IsDirect(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
+    pub fn set_direct(&mut self, direct: bool) {
+        unsafe {
+            crate::ffi::IFSelect_SelectSignature_inherited_SetDirect(self as *mut Self, direct)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignature_inherited_Label(
+                self as *const Self,
             ))
         }
     }
@@ -8128,27 +8149,6 @@ impl SelectSignature {
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectSignature_inherited_FillIterator(self as *const Self, iter)
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
-    pub fn is_direct(&self) -> bool {
-        unsafe { crate::ffi::IFSelect_SelectSignature_inherited_IsDirect(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
-    pub fn set_direct(&mut self, direct: bool) {
-        unsafe {
-            crate::ffi::IFSelect_SelectSignature_inherited_SetDirect(self as *mut Self, direct)
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignature_inherited_Label(
-                self as *const Self,
-            ))
         }
     }
 }
@@ -8214,24 +8214,6 @@ impl SelectSignedShared {
         unsafe { &*(crate::ffi::IFSelect_SelectSignedShared_get_type_descriptor()) }
     }
 
-    /// Upcast to IFSelect_SelectDeduct
-    pub fn as_select_deduct(&self) -> &SelectDeduct {
-        unsafe {
-            &*(crate::ffi::IFSelect_SelectSignedShared_as_IFSelect_SelectDeduct(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to IFSelect_SelectDeduct (mutable)
-    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
-        unsafe {
-            &mut *(crate::ffi::IFSelect_SelectSignedShared_as_IFSelect_SelectDeduct_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to IFSelect_SelectExplore
     pub fn as_select_explore(&self) -> &SelectExplore {
         unsafe {
@@ -8250,6 +8232,24 @@ impl SelectSignedShared {
         }
     }
 
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        unsafe {
+            &*(crate::ffi::IFSelect_SelectSignedShared_as_IFSelect_SelectDeduct(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_SelectSignedShared_as_IFSelect_SelectDeduct_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Upcast to IFSelect_Selection
     pub fn as_selection(&self) -> &Selection {
         unsafe {
@@ -8262,6 +8262,20 @@ impl SelectSignedShared {
         unsafe {
             &mut *(crate::ffi::IFSelect_SelectSignedShared_as_IFSelect_Selection_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IFSelect_SelectSignedShared_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignedShared_inherited_Label(
+                self as *const Self,
             ))
         }
     }
@@ -8301,20 +8315,6 @@ impl SelectSignedShared {
                 self as *const Self,
                 iter,
             )
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
-    pub fn level(&self) -> i32 {
-        unsafe { crate::ffi::IFSelect_SelectSignedShared_inherited_Level(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignedShared_inherited_Label(
-                self as *const Self,
-            ))
         }
     }
 }
@@ -8380,24 +8380,6 @@ impl SelectSignedSharing {
         unsafe { &*(crate::ffi::IFSelect_SelectSignedSharing_get_type_descriptor()) }
     }
 
-    /// Upcast to IFSelect_SelectDeduct
-    pub fn as_select_deduct(&self) -> &SelectDeduct {
-        unsafe {
-            &*(crate::ffi::IFSelect_SelectSignedSharing_as_IFSelect_SelectDeduct(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to IFSelect_SelectDeduct (mutable)
-    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
-        unsafe {
-            &mut *(crate::ffi::IFSelect_SelectSignedSharing_as_IFSelect_SelectDeduct_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to IFSelect_SelectExplore
     pub fn as_select_explore(&self) -> &SelectExplore {
         unsafe {
@@ -8416,6 +8398,24 @@ impl SelectSignedSharing {
         }
     }
 
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        unsafe {
+            &*(crate::ffi::IFSelect_SelectSignedSharing_as_IFSelect_SelectDeduct(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_SelectSignedSharing_as_IFSelect_SelectDeduct_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Upcast to IFSelect_Selection
     pub fn as_selection(&self) -> &Selection {
         unsafe {
@@ -8428,6 +8428,20 @@ impl SelectSignedSharing {
         unsafe {
             &mut *(crate::ffi::IFSelect_SelectSignedSharing_as_IFSelect_Selection_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::IFSelect_SelectSignedSharing_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignedSharing_inherited_Label(
+                self as *const Self,
             ))
         }
     }
@@ -8467,20 +8481,6 @@ impl SelectSignedSharing {
                 self as *const Self,
                 iter,
             )
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
-    pub fn level(&self) -> i32 {
-        unsafe { crate::ffi::IFSelect_SelectSignedSharing_inherited_Level(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignedSharing_inherited_Label(
-                self as *const Self,
-            ))
         }
     }
 }
@@ -8720,18 +8720,6 @@ impl SelectType {
         }
     }
 
-    /// Upcast to IFSelect_SelectDeduct
-    pub fn as_select_deduct(&self) -> &SelectDeduct {
-        unsafe { &*(crate::ffi::IFSelect_SelectType_as_IFSelect_SelectDeduct(self as *const Self)) }
-    }
-
-    /// Upcast to IFSelect_SelectDeduct (mutable)
-    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
-        unsafe {
-            &mut *(crate::ffi::IFSelect_SelectType_as_IFSelect_SelectDeduct_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to IFSelect_SelectExtract
     pub fn as_select_extract(&self) -> &SelectExtract {
         unsafe {
@@ -8746,6 +8734,18 @@ impl SelectType {
         }
     }
 
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        unsafe { &*(crate::ffi::IFSelect_SelectType_as_IFSelect_SelectDeduct(self as *const Self)) }
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_SelectType_as_IFSelect_SelectDeduct_mut(self as *mut Self))
+        }
+    }
+
     /// Upcast to IFSelect_Selection
     pub fn as_selection(&self) -> &Selection {
         unsafe { &*(crate::ffi::IFSelect_SelectType_as_IFSelect_Selection(self as *const Self)) }
@@ -8755,6 +8755,25 @@ impl SelectType {
     pub fn as_selection_mut(&mut self) -> &mut Selection {
         unsafe {
             &mut *(crate::ffi::IFSelect_SelectType_as_IFSelect_Selection_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
+    pub fn is_direct(&self) -> bool {
+        unsafe { crate::ffi::IFSelect_SelectType_inherited_IsDirect(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
+    pub fn set_direct(&mut self, direct: bool) {
+        unsafe { crate::ffi::IFSelect_SelectType_inherited_SetDirect(self as *mut Self, direct) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectType_inherited_Label(
+                self as *const Self,
+            ))
         }
     }
 
@@ -8785,25 +8804,6 @@ impl SelectType {
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectType_inherited_FillIterator(self as *const Self, iter) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
-    pub fn is_direct(&self) -> bool {
-        unsafe { crate::ffi::IFSelect_SelectType_inherited_IsDirect(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
-    pub fn set_direct(&mut self, direct: bool) {
-        unsafe { crate::ffi::IFSelect_SelectType_inherited_SetDirect(self as *mut Self, direct) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectType_inherited_Label(
-                self as *const Self,
-            ))
-        }
     }
 }
 
@@ -8973,24 +8973,6 @@ impl SelectUnknownEntities {
         unsafe { &*(crate::ffi::IFSelect_SelectUnknownEntities_get_type_descriptor()) }
     }
 
-    /// Upcast to IFSelect_SelectDeduct
-    pub fn as_select_deduct(&self) -> &SelectDeduct {
-        unsafe {
-            &*(crate::ffi::IFSelect_SelectUnknownEntities_as_IFSelect_SelectDeduct(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to IFSelect_SelectDeduct (mutable)
-    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
-        unsafe {
-            &mut *(crate::ffi::IFSelect_SelectUnknownEntities_as_IFSelect_SelectDeduct_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to IFSelect_SelectExtract
     pub fn as_select_extract(&self) -> &SelectExtract {
         unsafe {
@@ -9004,6 +8986,24 @@ impl SelectUnknownEntities {
     pub fn as_select_extract_mut(&mut self) -> &mut SelectExtract {
         unsafe {
             &mut *(crate::ffi::IFSelect_SelectUnknownEntities_as_IFSelect_SelectExtract_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_select_deduct(&self) -> &SelectDeduct {
+        unsafe {
+            &*(crate::ffi::IFSelect_SelectUnknownEntities_as_IFSelect_SelectDeduct(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_select_deduct_mut(&mut self) -> &mut SelectDeduct {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_SelectUnknownEntities_as_IFSelect_SelectDeduct_mut(
                 self as *mut Self,
             ))
         }
@@ -9023,6 +9023,32 @@ impl SelectUnknownEntities {
         unsafe {
             &mut *(crate::ffi::IFSelect_SelectUnknownEntities_as_IFSelect_Selection_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
+    pub fn is_direct(&self) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectUnknownEntities_inherited_IsDirect(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
+    pub fn set_direct(&mut self, direct: bool) {
+        unsafe {
+            crate::ffi::IFSelect_SelectUnknownEntities_inherited_SetDirect(
+                self as *mut Self,
+                direct,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectUnknownEntities_inherited_Label(
+                self as *const Self,
             ))
         }
     }
@@ -9064,32 +9090,6 @@ impl SelectUnknownEntities {
                 self as *const Self,
                 iter,
             )
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
-    pub fn is_direct(&self) -> bool {
-        unsafe {
-            crate::ffi::IFSelect_SelectUnknownEntities_inherited_IsDirect(self as *const Self)
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
-    pub fn set_direct(&mut self, direct: bool) {
-        unsafe {
-            crate::ffi::IFSelect_SelectUnknownEntities_inherited_SetDirect(
-                self as *mut Self,
-                direct,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectUnknownEntities_inherited_Label(
-                self as *const Self,
-            ))
         }
     }
 }

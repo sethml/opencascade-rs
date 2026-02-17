@@ -77,22 +77,6 @@ impl ConnectedShapes {
         unsafe { &*(crate::ffi::XSControl_ConnectedShapes_get_type_descriptor()) }
     }
 
-    /// Upcast to IFSelect_SelectDeduct
-    pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        unsafe {
-            &*(crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectDeduct(self as *const Self))
-        }
-    }
-
-    /// Upcast to IFSelect_SelectDeduct (mutable)
-    pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        unsafe {
-            &mut *(crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectDeduct_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to IFSelect_SelectExplore
     pub fn as_if_select_select_explore(&self) -> &crate::if_select::SelectExplore {
         unsafe {
@@ -104,6 +88,22 @@ impl ConnectedShapes {
     pub fn as_if_select_select_explore_mut(&mut self) -> &mut crate::if_select::SelectExplore {
         unsafe {
             &mut *(crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectExplore_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
+        unsafe {
+            &*(crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectDeduct(self as *const Self))
+        }
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
+        unsafe {
+            &mut *(crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectDeduct_mut(
                 self as *mut Self,
             ))
         }
@@ -121,6 +121,20 @@ impl ConnectedShapes {
         unsafe {
             &mut *(crate::ffi::XSControl_ConnectedShapes_as_IFSelect_Selection_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::XSControl_ConnectedShapes_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_ConnectedShapes_inherited_Label(
+                self as *const Self,
             ))
         }
     }
@@ -153,20 +167,6 @@ impl ConnectedShapes {
     pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
         unsafe {
             crate::ffi::XSControl_ConnectedShapes_inherited_FillIterator(self as *const Self, iter)
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
-    pub fn level(&self) -> i32 {
-        unsafe { crate::ffi::XSControl_ConnectedShapes_inherited_Level(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XSControl_ConnectedShapes_inherited_Label(
-                self as *const Self,
-            ))
         }
     }
 }
@@ -303,24 +303,6 @@ impl SelectForTransfer {
         unsafe { &*(crate::ffi::XSControl_SelectForTransfer_get_type_descriptor()) }
     }
 
-    /// Upcast to IFSelect_SelectDeduct
-    pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        unsafe {
-            &*(crate::ffi::XSControl_SelectForTransfer_as_IFSelect_SelectDeduct(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to IFSelect_SelectDeduct (mutable)
-    pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        unsafe {
-            &mut *(crate::ffi::XSControl_SelectForTransfer_as_IFSelect_SelectDeduct_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to IFSelect_SelectExtract
     pub fn as_if_select_select_extract(&self) -> &crate::if_select::SelectExtract {
         unsafe {
@@ -339,6 +321,24 @@ impl SelectForTransfer {
         }
     }
 
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
+        unsafe {
+            &*(crate::ffi::XSControl_SelectForTransfer_as_IFSelect_SelectDeduct(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
+        unsafe {
+            &mut *(crate::ffi::XSControl_SelectForTransfer_as_IFSelect_SelectDeduct_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
         unsafe {
@@ -351,6 +351,27 @@ impl SelectForTransfer {
         unsafe {
             &mut *(crate::ffi::XSControl_SelectForTransfer_as_IFSelect_Selection_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
+    pub fn is_direct(&self) -> bool {
+        unsafe { crate::ffi::XSControl_SelectForTransfer_inherited_IsDirect(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
+    pub fn set_direct(&mut self, direct: bool) {
+        unsafe {
+            crate::ffi::XSControl_SelectForTransfer_inherited_SetDirect(self as *mut Self, direct)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_SelectForTransfer_inherited_Label(
+                self as *const Self,
             ))
         }
     }
@@ -390,27 +411,6 @@ impl SelectForTransfer {
                 self as *const Self,
                 iter,
             )
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
-    pub fn is_direct(&self) -> bool {
-        unsafe { crate::ffi::XSControl_SelectForTransfer_inherited_IsDirect(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
-    pub fn set_direct(&mut self, direct: bool) {
-        unsafe {
-            crate::ffi::XSControl_SelectForTransfer_inherited_SetDirect(self as *mut Self, direct)
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XSControl_SelectForTransfer_inherited_Label(
-                self as *const Self,
-            ))
         }
     }
 }

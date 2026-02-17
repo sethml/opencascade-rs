@@ -1200,6 +1200,18 @@ impl CompositeSurface {
         unsafe { &*(crate::ffi::ShapeExtend_CompositeSurface_get_type_descriptor()) }
     }
 
+    /// Upcast to Geom_Surface
+    pub fn as_geom_surface(&self) -> &crate::geom::Surface {
+        unsafe { &*(crate::ffi::ShapeExtend_CompositeSurface_as_Geom_Surface(self as *const Self)) }
+    }
+
+    /// Upcast to Geom_Surface (mutable)
+    pub fn as_geom_surface_mut(&mut self) -> &mut crate::geom::Surface {
+        unsafe {
+            &mut *(crate::ffi::ShapeExtend_CompositeSurface_as_Geom_Surface_mut(self as *mut Self))
+        }
+    }
+
     /// Upcast to Geom_Geometry
     pub fn as_geom_geometry(&self) -> &crate::geom::Geometry {
         unsafe {
@@ -1214,18 +1226,6 @@ impl CompositeSurface {
         }
     }
 
-    /// Upcast to Geom_Surface
-    pub fn as_geom_surface(&self) -> &crate::geom::Surface {
-        unsafe { &*(crate::ffi::ShapeExtend_CompositeSurface_as_Geom_Surface(self as *const Self)) }
-    }
-
-    /// Upcast to Geom_Surface (mutable)
-    pub fn as_geom_surface_mut(&mut self) -> &mut crate::geom::Surface {
-        unsafe {
-            &mut *(crate::ffi::ShapeExtend_CompositeSurface_as_Geom_Surface_mut(self as *mut Self))
-        }
-    }
-
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -1235,6 +1235,61 @@ impl CompositeSurface {
                 obj.into_raw(),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
+    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_inherited_UReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
+    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_inherited_VReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:113 - `Geom_Surface::TransformParameters()`
+    pub fn transform_parameters(&self, U: &mut f64, V: &mut f64, T: &crate::ffi::gp_Trsf) {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_inherited_TransformParameters(
+                self as *const Self,
+                U,
+                V,
+                T,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:135 - `Geom_Surface::ParametricTransformation()`
+    pub fn parametric_transformation(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> crate::OwnedPtr<crate::ffi::gp_GTrsf2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeExtend_CompositeSurface_inherited_ParametricTransformation(
+                    self as *const Self,
+                    T,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
+    pub fn u_period(&self) -> f64 {
+        unsafe { crate::ffi::ShapeExtend_CompositeSurface_inherited_UPeriod(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
+    pub fn v_period(&self) -> f64 {
+        unsafe { crate::ffi::ShapeExtend_CompositeSurface_inherited_VPeriod(self as *const Self) }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
@@ -1333,61 +1388,6 @@ impl CompositeSurface {
             )
         }
     }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
-    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_inherited_UReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
-    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_inherited_VReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:113 - `Geom_Surface::TransformParameters()`
-    pub fn transform_parameters(&self, U: &mut f64, V: &mut f64, T: &crate::ffi::gp_Trsf) {
-        unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_inherited_TransformParameters(
-                self as *const Self,
-                U,
-                V,
-                T,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:135 - `Geom_Surface::ParametricTransformation()`
-    pub fn parametric_transformation(
-        &self,
-        T: &crate::ffi::gp_Trsf,
-    ) -> crate::OwnedPtr<crate::ffi::gp_GTrsf2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::ShapeExtend_CompositeSurface_inherited_ParametricTransformation(
-                    self as *const Self,
-                    T,
-                ),
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
-    pub fn u_period(&self) -> f64 {
-        unsafe { crate::ffi::ShapeExtend_CompositeSurface_inherited_UPeriod(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
-    pub fn v_period(&self) -> f64 {
-        unsafe { crate::ffi::ShapeExtend_CompositeSurface_inherited_VPeriod(self as *const Self) }
-    }
 }
 
 pub use crate::ffi::HandleShapeExtendCompositeSurface;
@@ -1409,22 +1409,22 @@ impl HandleShapeExtendCompositeSurface {
         unsafe { &mut *(crate::ffi::HandleShapeExtendCompositeSurface_get_mut(self as *mut Self)) }
     }
 
-    /// Upcast Handle<ShapeExtend_CompositeSurface> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    /// Upcast Handle<ShapeExtend_CompositeSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(
-                crate::ffi::HandleShapeExtendCompositeSurface_to_HandleGeomGeometry(
+                crate::ffi::HandleShapeExtendCompositeSurface_to_HandleGeomSurface(
                     self as *const Self,
                 ),
             )
         }
     }
 
-    /// Upcast Handle<ShapeExtend_CompositeSurface> to Handle<Geom_Surface>
-    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    /// Upcast Handle<ShapeExtend_CompositeSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(
-                crate::ffi::HandleShapeExtendCompositeSurface_to_HandleGeomSurface(
+                crate::ffi::HandleShapeExtendCompositeSurface_to_HandleGeomGeometry(
                     self as *const Self,
                 ),
             )

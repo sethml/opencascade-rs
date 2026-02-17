@@ -749,15 +749,25 @@ impl Energy {
         unsafe { crate::ffi::FairCurve_Energy_nb_variables(self as *const Self) }
     }
 
-    /// Upcast to math_MultipleVarFunction
-    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        unsafe { &*(crate::ffi::FairCurve_Energy_as_math_MultipleVarFunction(self as *const Self)) }
+    /// Upcast to math_MultipleVarFunctionWithHessian
+    pub fn as_math_multiple_var_function_with_hessian(
+        &self,
+    ) -> &crate::math::MultipleVarFunctionWithHessian {
+        unsafe {
+            &*(crate::ffi::FairCurve_Energy_as_math_MultipleVarFunctionWithHessian(
+                self as *const Self,
+            ))
+        }
     }
 
-    /// Upcast to math_MultipleVarFunction (mutable)
-    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
+    /// Upcast to math_MultipleVarFunctionWithHessian (mutable)
+    pub fn as_math_multiple_var_function_with_hessian_mut(
+        &mut self,
+    ) -> &mut crate::math::MultipleVarFunctionWithHessian {
         unsafe {
-            &mut *(crate::ffi::FairCurve_Energy_as_math_MultipleVarFunction_mut(self as *mut Self))
+            &mut *(crate::ffi::FairCurve_Energy_as_math_MultipleVarFunctionWithHessian_mut(
+                self as *mut Self,
+            ))
         }
     }
 
@@ -783,25 +793,15 @@ impl Energy {
         }
     }
 
-    /// Upcast to math_MultipleVarFunctionWithHessian
-    pub fn as_math_multiple_var_function_with_hessian(
-        &self,
-    ) -> &crate::math::MultipleVarFunctionWithHessian {
-        unsafe {
-            &*(crate::ffi::FairCurve_Energy_as_math_MultipleVarFunctionWithHessian(
-                self as *const Self,
-            ))
-        }
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        unsafe { &*(crate::ffi::FairCurve_Energy_as_math_MultipleVarFunction(self as *const Self)) }
     }
 
-    /// Upcast to math_MultipleVarFunctionWithHessian (mutable)
-    pub fn as_math_multiple_var_function_with_hessian_mut(
-        &mut self,
-    ) -> &mut crate::math::MultipleVarFunctionWithHessian {
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
         unsafe {
-            &mut *(crate::ffi::FairCurve_Energy_as_math_MultipleVarFunctionWithHessian_mut(
-                self as *mut Self,
-            ))
+            &mut *(crate::ffi::FairCurve_Energy_as_math_MultipleVarFunction_mut(self as *mut Self))
         }
     }
 
@@ -855,19 +855,23 @@ impl EnergyOfBatten {
         }
     }
 
-    /// Upcast to math_MultipleVarFunction
-    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+    /// Upcast to math_MultipleVarFunctionWithHessian
+    pub fn as_math_multiple_var_function_with_hessian(
+        &self,
+    ) -> &crate::math::MultipleVarFunctionWithHessian {
         unsafe {
-            &*(crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunction(
+            &*(crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunctionWithHessian(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast to math_MultipleVarFunction (mutable)
-    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
+    /// Upcast to math_MultipleVarFunctionWithHessian (mutable)
+    pub fn as_math_multiple_var_function_with_hessian_mut(
+        &mut self,
+    ) -> &mut crate::math::MultipleVarFunctionWithHessian {
         unsafe {
-            &mut *(crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunction_mut(
+            &mut *(crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunctionWithHessian_mut(
                 self as *mut Self,
             ))
         }
@@ -895,23 +899,19 @@ impl EnergyOfBatten {
         }
     }
 
-    /// Upcast to math_MultipleVarFunctionWithHessian
-    pub fn as_math_multiple_var_function_with_hessian(
-        &self,
-    ) -> &crate::math::MultipleVarFunctionWithHessian {
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
         unsafe {
-            &*(crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunctionWithHessian(
+            &*(crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunction(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast to math_MultipleVarFunctionWithHessian (mutable)
-    pub fn as_math_multiple_var_function_with_hessian_mut(
-        &mut self,
-    ) -> &mut crate::math::MultipleVarFunctionWithHessian {
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
         unsafe {
-            &mut *(crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunctionWithHessian_mut(
+            &mut *(crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunction_mut(
                 self as *mut Self,
             ))
         }
@@ -972,17 +972,23 @@ impl EnergyOfMVC {
         }
     }
 
-    /// Upcast to math_MultipleVarFunction
-    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+    /// Upcast to math_MultipleVarFunctionWithHessian
+    pub fn as_math_multiple_var_function_with_hessian(
+        &self,
+    ) -> &crate::math::MultipleVarFunctionWithHessian {
         unsafe {
-            &*(crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunction(self as *const Self))
+            &*(crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunctionWithHessian(
+                self as *const Self,
+            ))
         }
     }
 
-    /// Upcast to math_MultipleVarFunction (mutable)
-    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
+    /// Upcast to math_MultipleVarFunctionWithHessian (mutable)
+    pub fn as_math_multiple_var_function_with_hessian_mut(
+        &mut self,
+    ) -> &mut crate::math::MultipleVarFunctionWithHessian {
         unsafe {
-            &mut *(crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunction_mut(
+            &mut *(crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunctionWithHessian_mut(
                 self as *mut Self,
             ))
         }
@@ -1010,23 +1016,17 @@ impl EnergyOfMVC {
         }
     }
 
-    /// Upcast to math_MultipleVarFunctionWithHessian
-    pub fn as_math_multiple_var_function_with_hessian(
-        &self,
-    ) -> &crate::math::MultipleVarFunctionWithHessian {
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
         unsafe {
-            &*(crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunctionWithHessian(
-                self as *const Self,
-            ))
+            &*(crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunction(self as *const Self))
         }
     }
 
-    /// Upcast to math_MultipleVarFunctionWithHessian (mutable)
-    pub fn as_math_multiple_var_function_with_hessian_mut(
-        &mut self,
-    ) -> &mut crate::math::MultipleVarFunctionWithHessian {
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
         unsafe {
-            &mut *(crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunctionWithHessian_mut(
+            &mut *(crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunction_mut(
                 self as *mut Self,
             ))
         }

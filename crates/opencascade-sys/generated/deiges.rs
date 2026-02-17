@@ -142,22 +142,6 @@ impl ConfigurationNode {
         unsafe { &*(crate::ffi::DEIGES_ConfigurationNode_get_type_descriptor()) }
     }
 
-    /// Upcast to DE_ConfigurationNode
-    pub fn as_de_configuration_node(&self) -> &crate::de::ConfigurationNode {
-        unsafe {
-            &*(crate::ffi::DEIGES_ConfigurationNode_as_DE_ConfigurationNode(self as *const Self))
-        }
-    }
-
-    /// Upcast to DE_ConfigurationNode (mutable)
-    pub fn as_de_configuration_node_mut(&mut self) -> &mut crate::de::ConfigurationNode {
-        unsafe {
-            &mut *(crate::ffi::DEIGES_ConfigurationNode_as_DE_ConfigurationNode_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to DE_ShapeFixConfigurationNode
     pub fn as_de_shape_fix_configuration_node(&self) -> &crate::de::ShapeFixConfigurationNode {
         unsafe {
@@ -173,6 +157,22 @@ impl ConfigurationNode {
     ) -> &mut crate::de::ShapeFixConfigurationNode {
         unsafe {
             &mut *(crate::ffi::DEIGES_ConfigurationNode_as_DE_ShapeFixConfigurationNode_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to DE_ConfigurationNode
+    pub fn as_de_configuration_node(&self) -> &crate::de::ConfigurationNode {
+        unsafe {
+            &*(crate::ffi::DEIGES_ConfigurationNode_as_DE_ConfigurationNode(self as *const Self))
+        }
+    }
+
+    /// Upcast to DE_ConfigurationNode (mutable)
+    pub fn as_de_configuration_node_mut(&mut self) -> &mut crate::de::ConfigurationNode {
+        unsafe {
+            &mut *(crate::ffi::DEIGES_ConfigurationNode_as_DE_ConfigurationNode_mut(
                 self as *mut Self,
             ))
         }

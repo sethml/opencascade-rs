@@ -223,13 +223,6 @@ modules = [
 
 # Exclude specific headers (even if their module is in `modules` above).
 exclude_headers = [
-    # Init method signature mismatch: subclass overrides Init() with different
-    # signature, hiding parent version. Generator creates inherited_Init wrapper
-    # that calls the parent signature which doesn't exist on the subclass.
-    "ShapeUpgrade_ConvertCurve2dToBezier.hxx",
-    "ShapeUpgrade_ConvertCurve3dToBezier.hxx",
-    "ShapeUpgrade_SplitCurve2dContinuity.hxx",
-    "ShapeUpgrade_SplitCurve3dContinuity.hxx",
 
     # i64 vs long type mismatch on arm64: Standard_Size maps to long but
     # generator emits i64 (long long).

@@ -271,16 +271,6 @@ impl NormalPolyDef {
         unsafe { crate::ffi::CSLib_NormalPolyDef_values(self as *mut Self, X, F, D) }
     }
 
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe { &*(crate::ffi::CSLib_NormalPolyDef_as_math_Function(self as *const Self)) }
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe { &mut *(crate::ffi::CSLib_NormalPolyDef_as_math_Function_mut(self as *mut Self)) }
-    }
-
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
         unsafe {
@@ -297,6 +287,16 @@ impl NormalPolyDef {
                 self as *mut Self,
             ))
         }
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe { &*(crate::ffi::CSLib_NormalPolyDef_as_math_Function(self as *const Self)) }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe { &mut *(crate::ffi::CSLib_NormalPolyDef_as_math_Function_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`

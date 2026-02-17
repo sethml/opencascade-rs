@@ -248,16 +248,6 @@ impl Area {
         unsafe { &*(crate::ffi::XCAFDoc_Area_get_type_descriptor()) }
     }
 
-    /// Upcast to TDF_Attribute
-    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        unsafe { &*(crate::ffi::XCAFDoc_Area_as_TDF_Attribute(self as *const Self)) }
-    }
-
-    /// Upcast to TDF_Attribute (mutable)
-    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        unsafe { &mut *(crate::ffi::XCAFDoc_Area_as_TDF_Attribute_mut(self as *mut Self)) }
-    }
-
     /// Upcast to TDataStd_Real
     pub fn as_t_data_std_real(&self) -> &crate::t_data_std::Real {
         unsafe { &*(crate::ffi::XCAFDoc_Area_as_TDataStd_Real(self as *const Self)) }
@@ -268,9 +258,38 @@ impl Area {
         unsafe { &mut *(crate::ffi::XCAFDoc_Area_as_TDataStd_Real_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
-        unsafe { crate::ffi::XCAFDoc_Area_inherited_SetID(self as *mut Self, arg0) }
+    /// Upcast to TDF_Attribute
+    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
+        unsafe { &*(crate::ffi::XCAFDoc_Area_as_TDF_Attribute(self as *const Self)) }
+    }
+
+    /// Upcast to TDF_Attribute (mutable)
+    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
+        unsafe { &mut *(crate::ffi::XCAFDoc_Area_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_Real.hxx`:78 - `TDataStd_Real::SetID()`
+    pub fn set_id(&mut self, guid: &crate::ffi::Standard_GUID) {
+        unsafe { crate::ffi::XCAFDoc_Area_inherited_SetID(self as *mut Self, guid) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_Real.hxx`:87 - `TDataStd_Real::IsCaptured()`
+    pub fn is_captured(&self) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Area_inherited_IsCaptured(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_Real.hxx`:91 - `TDataStd_Real::Restore()`
+    pub fn restore(&mut self, With: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::XCAFDoc_Area_inherited_Restore(self as *mut Self, With) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_Real.hxx`:95 - `TDataStd_Real::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_Area_inherited_Paste(self as *const Self, Into, RT) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
@@ -412,26 +431,6 @@ impl Area {
         }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
-    pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
-        unsafe { crate::ffi::XCAFDoc_Area_inherited_Restore(self as *mut Self, anAttribute) }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
-    pub fn paste(
-        &self,
-        intoAttribute: &crate::ffi::HandleTDFAttribute,
-        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
-    ) {
-        unsafe {
-            crate::ffi::XCAFDoc_Area_inherited_Paste(
-                self as *const Self,
-                intoAttribute,
-                aRelocationTable,
-            )
-        }
-    }
-
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_Area_inherited_References(self as *const Self, aDataSet) }
@@ -440,11 +439,6 @@ impl Area {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_Area_inherited_Forget(self as *mut Self, aTransaction) }
-    }
-
-    /// Inherited: **Source:** `TDataStd_Real.hxx`:87 - `TDataStd_Real::IsCaptured()`
-    pub fn is_captured(&self) -> bool {
-        unsafe { crate::ffi::XCAFDoc_Area_inherited_IsCaptured(self as *const Self) }
     }
 }
 
@@ -1594,18 +1588,6 @@ impl ClippingPlaneTool {
         unsafe { &*(crate::ffi::XCAFDoc_ClippingPlaneTool_get_type_descriptor()) }
     }
 
-    /// Upcast to TDF_Attribute
-    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        unsafe { &*(crate::ffi::XCAFDoc_ClippingPlaneTool_as_TDF_Attribute(self as *const Self)) }
-    }
-
-    /// Upcast to TDF_Attribute (mutable)
-    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        unsafe {
-            &mut *(crate::ffi::XCAFDoc_ClippingPlaneTool_as_TDF_Attribute_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to TDataStd_GenericEmpty
     pub fn as_t_data_std_generic_empty(&self) -> &crate::t_data_std::GenericEmpty {
         unsafe {
@@ -1619,6 +1601,34 @@ impl ClippingPlaneTool {
             &mut *(crate::ffi::XCAFDoc_ClippingPlaneTool_as_TDataStd_GenericEmpty_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast to TDF_Attribute
+    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
+        unsafe { &*(crate::ffi::XCAFDoc_ClippingPlaneTool_as_TDF_Attribute(self as *const Self)) }
+    }
+
+    /// Upcast to TDF_Attribute (mutable)
+    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_ClippingPlaneTool_as_TDF_Attribute_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
+    pub fn restore(&mut self, arg0: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_Restore(self as *mut Self, arg0) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:35 - `TDataStd_GenericEmpty::Paste()`
+    pub fn paste(
+        &self,
+        arg0: &crate::ffi::HandleTDFAttribute,
+        arg1: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_Paste(self as *const Self, arg0, arg1)
         }
     }
 
@@ -1797,28 +1807,6 @@ impl ClippingPlaneTool {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_BackupCopy(
                 self as *const Self,
             ))
-        }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
-    pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
-        unsafe {
-            crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_Restore(self as *mut Self, anAttribute)
-        }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
-    pub fn paste(
-        &self,
-        intoAttribute: &crate::ffi::HandleTDFAttribute,
-        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
-    ) {
-        unsafe {
-            crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_Paste(
-                self as *const Self,
-                intoAttribute,
-                aRelocationTable,
-            )
         }
     }
 
@@ -2766,16 +2754,6 @@ impl ColorTool {
         unsafe { &*(crate::ffi::XCAFDoc_ColorTool_get_type_descriptor()) }
     }
 
-    /// Upcast to TDF_Attribute
-    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        unsafe { &*(crate::ffi::XCAFDoc_ColorTool_as_TDF_Attribute(self as *const Self)) }
-    }
-
-    /// Upcast to TDF_Attribute (mutable)
-    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        unsafe { &mut *(crate::ffi::XCAFDoc_ColorTool_as_TDF_Attribute_mut(self as *mut Self)) }
-    }
-
     /// Upcast to TDataStd_GenericEmpty
     pub fn as_t_data_std_generic_empty(&self) -> &crate::t_data_std::GenericEmpty {
         unsafe { &*(crate::ffi::XCAFDoc_ColorTool_as_TDataStd_GenericEmpty(self as *const Self)) }
@@ -2786,6 +2764,30 @@ impl ColorTool {
         unsafe {
             &mut *(crate::ffi::XCAFDoc_ColorTool_as_TDataStd_GenericEmpty_mut(self as *mut Self))
         }
+    }
+
+    /// Upcast to TDF_Attribute
+    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
+        unsafe { &*(crate::ffi::XCAFDoc_ColorTool_as_TDF_Attribute(self as *const Self)) }
+    }
+
+    /// Upcast to TDF_Attribute (mutable)
+    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
+        unsafe { &mut *(crate::ffi::XCAFDoc_ColorTool_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
+    pub fn restore(&mut self, arg0: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_Restore(self as *mut Self, arg0) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:35 - `TDataStd_GenericEmpty::Paste()`
+    pub fn paste(
+        &self,
+        arg0: &crate::ffi::HandleTDFAttribute,
+        arg1: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_Paste(self as *const Self, arg0, arg1) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -2949,26 +2951,6 @@ impl ColorTool {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ColorTool_inherited_BackupCopy(
                 self as *const Self,
             ))
-        }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
-    pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
-        unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_Restore(self as *mut Self, anAttribute) }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
-    pub fn paste(
-        &self,
-        intoAttribute: &crate::ffi::HandleTDFAttribute,
-        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
-    ) {
-        unsafe {
-            crate::ffi::XCAFDoc_ColorTool_inherited_Paste(
-                self as *const Self,
-                intoAttribute,
-                aRelocationTable,
-            )
         }
     }
 
@@ -3636,16 +3618,6 @@ impl Dimension {
         unsafe { &*(crate::ffi::XCAFDoc_Dimension_get_type_descriptor()) }
     }
 
-    /// Upcast to TDF_Attribute
-    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        unsafe { &*(crate::ffi::XCAFDoc_Dimension_as_TDF_Attribute(self as *const Self)) }
-    }
-
-    /// Upcast to TDF_Attribute (mutable)
-    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        unsafe { &mut *(crate::ffi::XCAFDoc_Dimension_as_TDF_Attribute_mut(self as *mut Self)) }
-    }
-
     /// Upcast to TDataStd_GenericEmpty
     pub fn as_t_data_std_generic_empty(&self) -> &crate::t_data_std::GenericEmpty {
         unsafe { &*(crate::ffi::XCAFDoc_Dimension_as_TDataStd_GenericEmpty(self as *const Self)) }
@@ -3656,6 +3628,30 @@ impl Dimension {
         unsafe {
             &mut *(crate::ffi::XCAFDoc_Dimension_as_TDataStd_GenericEmpty_mut(self as *mut Self))
         }
+    }
+
+    /// Upcast to TDF_Attribute
+    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
+        unsafe { &*(crate::ffi::XCAFDoc_Dimension_as_TDF_Attribute(self as *const Self)) }
+    }
+
+    /// Upcast to TDF_Attribute (mutable)
+    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
+        unsafe { &mut *(crate::ffi::XCAFDoc_Dimension_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
+    pub fn restore(&mut self, arg0: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::XCAFDoc_Dimension_inherited_Restore(self as *mut Self, arg0) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:35 - `TDataStd_GenericEmpty::Paste()`
+    pub fn paste(
+        &self,
+        arg0: &crate::ffi::HandleTDFAttribute,
+        arg1: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_Dimension_inherited_Paste(self as *const Self, arg0, arg1) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -3819,26 +3815,6 @@ impl Dimension {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Dimension_inherited_BackupCopy(
                 self as *const Self,
             ))
-        }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
-    pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
-        unsafe { crate::ffi::XCAFDoc_Dimension_inherited_Restore(self as *mut Self, anAttribute) }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
-    pub fn paste(
-        &self,
-        intoAttribute: &crate::ffi::HandleTDFAttribute,
-        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
-    ) {
-        unsafe {
-            crate::ffi::XCAFDoc_Dimension_inherited_Paste(
-                self as *const Self,
-                intoAttribute,
-                aRelocationTable,
-            )
         }
     }
 
@@ -4061,16 +4037,6 @@ impl DocumentTool {
         unsafe { &*(crate::ffi::XCAFDoc_DocumentTool_get_type_descriptor()) }
     }
 
-    /// Upcast to TDF_Attribute
-    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        unsafe { &*(crate::ffi::XCAFDoc_DocumentTool_as_TDF_Attribute(self as *const Self)) }
-    }
-
-    /// Upcast to TDF_Attribute (mutable)
-    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        unsafe { &mut *(crate::ffi::XCAFDoc_DocumentTool_as_TDF_Attribute_mut(self as *mut Self)) }
-    }
-
     /// Upcast to TDataStd_GenericEmpty
     pub fn as_t_data_std_generic_empty(&self) -> &crate::t_data_std::GenericEmpty {
         unsafe {
@@ -4083,6 +4049,30 @@ impl DocumentTool {
         unsafe {
             &mut *(crate::ffi::XCAFDoc_DocumentTool_as_TDataStd_GenericEmpty_mut(self as *mut Self))
         }
+    }
+
+    /// Upcast to TDF_Attribute
+    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
+        unsafe { &*(crate::ffi::XCAFDoc_DocumentTool_as_TDF_Attribute(self as *const Self)) }
+    }
+
+    /// Upcast to TDF_Attribute (mutable)
+    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
+        unsafe { &mut *(crate::ffi::XCAFDoc_DocumentTool_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
+    pub fn restore(&mut self, arg0: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::XCAFDoc_DocumentTool_inherited_Restore(self as *mut Self, arg0) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:35 - `TDataStd_GenericEmpty::Paste()`
+    pub fn paste(
+        &self,
+        arg0: &crate::ffi::HandleTDFAttribute,
+        arg1: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_DocumentTool_inherited_Paste(self as *const Self, arg0, arg1) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -4241,28 +4231,6 @@ impl DocumentTool {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_inherited_BackupCopy(
                 self as *const Self,
             ))
-        }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
-    pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
-        unsafe {
-            crate::ffi::XCAFDoc_DocumentTool_inherited_Restore(self as *mut Self, anAttribute)
-        }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
-    pub fn paste(
-        &self,
-        intoAttribute: &crate::ffi::HandleTDFAttribute,
-        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
-    ) {
-        unsafe {
-            crate::ffi::XCAFDoc_DocumentTool_inherited_Paste(
-                self as *const Self,
-                intoAttribute,
-                aRelocationTable,
-            )
         }
     }
 
@@ -4447,16 +4415,6 @@ impl GeomTolerance {
         unsafe { &*(crate::ffi::XCAFDoc_GeomTolerance_get_type_descriptor()) }
     }
 
-    /// Upcast to TDF_Attribute
-    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        unsafe { &*(crate::ffi::XCAFDoc_GeomTolerance_as_TDF_Attribute(self as *const Self)) }
-    }
-
-    /// Upcast to TDF_Attribute (mutable)
-    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        unsafe { &mut *(crate::ffi::XCAFDoc_GeomTolerance_as_TDF_Attribute_mut(self as *mut Self)) }
-    }
-
     /// Upcast to TDataStd_GenericEmpty
     pub fn as_t_data_std_generic_empty(&self) -> &crate::t_data_std::GenericEmpty {
         unsafe {
@@ -4470,6 +4428,32 @@ impl GeomTolerance {
             &mut *(crate::ffi::XCAFDoc_GeomTolerance_as_TDataStd_GenericEmpty_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast to TDF_Attribute
+    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
+        unsafe { &*(crate::ffi::XCAFDoc_GeomTolerance_as_TDF_Attribute(self as *const Self)) }
+    }
+
+    /// Upcast to TDF_Attribute (mutable)
+    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
+        unsafe { &mut *(crate::ffi::XCAFDoc_GeomTolerance_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
+    pub fn restore(&mut self, arg0: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::XCAFDoc_GeomTolerance_inherited_Restore(self as *mut Self, arg0) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:35 - `TDataStd_GenericEmpty::Paste()`
+    pub fn paste(
+        &self,
+        arg0: &crate::ffi::HandleTDFAttribute,
+        arg1: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_GeomTolerance_inherited_Paste(self as *const Self, arg0, arg1)
         }
     }
 
@@ -4638,28 +4622,6 @@ impl GeomTolerance {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GeomTolerance_inherited_BackupCopy(
                 self as *const Self,
             ))
-        }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
-    pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
-        unsafe {
-            crate::ffi::XCAFDoc_GeomTolerance_inherited_Restore(self as *mut Self, anAttribute)
-        }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
-    pub fn paste(
-        &self,
-        intoAttribute: &crate::ffi::HandleTDFAttribute,
-        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
-    ) {
-        unsafe {
-            crate::ffi::XCAFDoc_GeomTolerance_inherited_Paste(
-                self as *const Self,
-                intoAttribute,
-                aRelocationTable,
-            )
         }
     }
 
@@ -5434,16 +5396,6 @@ impl LayerTool {
         unsafe { &*(crate::ffi::XCAFDoc_LayerTool_get_type_descriptor()) }
     }
 
-    /// Upcast to TDF_Attribute
-    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        unsafe { &*(crate::ffi::XCAFDoc_LayerTool_as_TDF_Attribute(self as *const Self)) }
-    }
-
-    /// Upcast to TDF_Attribute (mutable)
-    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        unsafe { &mut *(crate::ffi::XCAFDoc_LayerTool_as_TDF_Attribute_mut(self as *mut Self)) }
-    }
-
     /// Upcast to TDataStd_GenericEmpty
     pub fn as_t_data_std_generic_empty(&self) -> &crate::t_data_std::GenericEmpty {
         unsafe { &*(crate::ffi::XCAFDoc_LayerTool_as_TDataStd_GenericEmpty(self as *const Self)) }
@@ -5454,6 +5406,30 @@ impl LayerTool {
         unsafe {
             &mut *(crate::ffi::XCAFDoc_LayerTool_as_TDataStd_GenericEmpty_mut(self as *mut Self))
         }
+    }
+
+    /// Upcast to TDF_Attribute
+    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
+        unsafe { &*(crate::ffi::XCAFDoc_LayerTool_as_TDF_Attribute(self as *const Self)) }
+    }
+
+    /// Upcast to TDF_Attribute (mutable)
+    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
+        unsafe { &mut *(crate::ffi::XCAFDoc_LayerTool_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
+    pub fn restore(&mut self, arg0: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_Restore(self as *mut Self, arg0) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:35 - `TDataStd_GenericEmpty::Paste()`
+    pub fn paste(
+        &self,
+        arg0: &crate::ffi::HandleTDFAttribute,
+        arg1: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_Paste(self as *const Self, arg0, arg1) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -5617,26 +5593,6 @@ impl LayerTool {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LayerTool_inherited_BackupCopy(
                 self as *const Self,
             ))
-        }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
-    pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
-        unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_Restore(self as *mut Self, anAttribute) }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
-    pub fn paste(
-        &self,
-        intoAttribute: &crate::ffi::HandleTDFAttribute,
-        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
-    ) {
-        unsafe {
-            crate::ffi::XCAFDoc_LayerTool_inherited_Paste(
-                self as *const Self,
-                intoAttribute,
-                aRelocationTable,
-            )
         }
     }
 
@@ -6657,16 +6613,6 @@ impl MaterialTool {
         unsafe { &*(crate::ffi::XCAFDoc_MaterialTool_get_type_descriptor()) }
     }
 
-    /// Upcast to TDF_Attribute
-    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        unsafe { &*(crate::ffi::XCAFDoc_MaterialTool_as_TDF_Attribute(self as *const Self)) }
-    }
-
-    /// Upcast to TDF_Attribute (mutable)
-    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        unsafe { &mut *(crate::ffi::XCAFDoc_MaterialTool_as_TDF_Attribute_mut(self as *mut Self)) }
-    }
-
     /// Upcast to TDataStd_GenericEmpty
     pub fn as_t_data_std_generic_empty(&self) -> &crate::t_data_std::GenericEmpty {
         unsafe {
@@ -6679,6 +6625,30 @@ impl MaterialTool {
         unsafe {
             &mut *(crate::ffi::XCAFDoc_MaterialTool_as_TDataStd_GenericEmpty_mut(self as *mut Self))
         }
+    }
+
+    /// Upcast to TDF_Attribute
+    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
+        unsafe { &*(crate::ffi::XCAFDoc_MaterialTool_as_TDF_Attribute(self as *const Self)) }
+    }
+
+    /// Upcast to TDF_Attribute (mutable)
+    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
+        unsafe { &mut *(crate::ffi::XCAFDoc_MaterialTool_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
+    pub fn restore(&mut self, arg0: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::XCAFDoc_MaterialTool_inherited_Restore(self as *mut Self, arg0) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:35 - `TDataStd_GenericEmpty::Paste()`
+    pub fn paste(
+        &self,
+        arg0: &crate::ffi::HandleTDFAttribute,
+        arg1: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_MaterialTool_inherited_Paste(self as *const Self, arg0, arg1) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -6844,28 +6814,6 @@ impl MaterialTool {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_MaterialTool_inherited_BackupCopy(
                 self as *const Self,
             ))
-        }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
-    pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
-        unsafe {
-            crate::ffi::XCAFDoc_MaterialTool_inherited_Restore(self as *mut Self, anAttribute)
-        }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
-    pub fn paste(
-        &self,
-        intoAttribute: &crate::ffi::HandleTDFAttribute,
-        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
-    ) {
-        unsafe {
-            crate::ffi::XCAFDoc_MaterialTool_inherited_Paste(
-                self as *const Self,
-                intoAttribute,
-                aRelocationTable,
-            )
         }
     }
 
@@ -7225,14 +7173,16 @@ impl NoteBalloon {
         unsafe { &*(crate::ffi::XCAFDoc_NoteBalloon_get_id()) }
     }
 
-    /// Upcast to TDF_Attribute
-    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        unsafe { &*(crate::ffi::XCAFDoc_NoteBalloon_as_TDF_Attribute(self as *const Self)) }
+    /// Upcast to XCAFDoc_NoteComment
+    pub fn as_note_comment(&self) -> &NoteComment {
+        unsafe { &*(crate::ffi::XCAFDoc_NoteBalloon_as_XCAFDoc_NoteComment(self as *const Self)) }
     }
 
-    /// Upcast to TDF_Attribute (mutable)
-    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        unsafe { &mut *(crate::ffi::XCAFDoc_NoteBalloon_as_TDF_Attribute_mut(self as *mut Self)) }
+    /// Upcast to XCAFDoc_NoteComment (mutable)
+    pub fn as_note_comment_mut(&mut self) -> &mut NoteComment {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_NoteBalloon_as_XCAFDoc_NoteComment_mut(self as *mut Self))
+        }
     }
 
     /// Upcast to XCAFDoc_Note
@@ -7245,16 +7195,64 @@ impl NoteBalloon {
         unsafe { &mut *(crate::ffi::XCAFDoc_NoteBalloon_as_XCAFDoc_Note_mut(self as *mut Self)) }
     }
 
-    /// Upcast to XCAFDoc_NoteComment
-    pub fn as_note_comment(&self) -> &NoteComment {
-        unsafe { &*(crate::ffi::XCAFDoc_NoteBalloon_as_XCAFDoc_NoteComment(self as *const Self)) }
+    /// Upcast to TDF_Attribute
+    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
+        unsafe { &*(crate::ffi::XCAFDoc_NoteBalloon_as_TDF_Attribute(self as *const Self)) }
     }
 
-    /// Upcast to XCAFDoc_NoteComment (mutable)
-    pub fn as_note_comment_mut(&mut self) -> &mut NoteComment {
+    /// Upcast to TDF_Attribute (mutable)
+    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
+        unsafe { &mut *(crate::ffi::XCAFDoc_NoteBalloon_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `XCAFDoc_NoteComment.hxx`:50 - `XCAFDoc_NoteComment::Comment()`
+    pub fn comment(&self) -> &crate::ffi::TCollection_ExtendedString {
+        unsafe { &*(crate::ffi::XCAFDoc_NoteBalloon_inherited_Comment(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `XCAFDoc_NoteComment.hxx`:56 - `XCAFDoc_NoteComment::Restore()`
+    pub fn restore(&mut self, theAttrFrom: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::XCAFDoc_NoteBalloon_inherited_Restore(self as *mut Self, theAttrFrom) }
+    }
+
+    /// Inherited: **Source:** `XCAFDoc_NoteComment.hxx`:57 - `XCAFDoc_NoteComment::Paste()`
+    pub fn paste(
+        &self,
+        theAttrInto: &crate::ffi::HandleTDFAttribute,
+        theRT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
         unsafe {
-            &mut *(crate::ffi::XCAFDoc_NoteBalloon_as_XCAFDoc_NoteComment_mut(self as *mut Self))
+            crate::ffi::XCAFDoc_NoteBalloon_inherited_Paste(self as *const Self, theAttrInto, theRT)
         }
+    }
+
+    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:47 - `XCAFDoc_Note::UserName()`
+    pub fn user_name(&self) -> &crate::ffi::TCollection_ExtendedString {
+        unsafe { &*(crate::ffi::XCAFDoc_NoteBalloon_inherited_UserName(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:50 - `XCAFDoc_Note::TimeStamp()`
+    pub fn time_stamp(&self) -> &crate::ffi::TCollection_ExtendedString {
+        unsafe { &*(crate::ffi::XCAFDoc_NoteBalloon_inherited_TimeStamp(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:53 - `XCAFDoc_Note::IsOrphan()`
+    pub fn is_orphan(&self) -> bool {
+        unsafe { crate::ffi::XCAFDoc_NoteBalloon_inherited_IsOrphan(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:56 - `XCAFDoc_Note::GetObject()`
+    pub fn get_object(&self) -> crate::OwnedPtr<crate::ffi::HandleXCAFNoteObjectsNoteObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteBalloon_inherited_GetObject(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:59 - `XCAFDoc_Note::SetObject()`
+    pub fn set_object(&mut self, theObject: &crate::ffi::HandleXCAFNoteObjectsNoteObject) {
+        unsafe { crate::ffi::XCAFDoc_NoteBalloon_inherited_SetObject(self as *mut Self, theObject) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -7423,26 +7421,6 @@ impl NoteBalloon {
         }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
-    pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
-        unsafe { crate::ffi::XCAFDoc_NoteBalloon_inherited_Restore(self as *mut Self, anAttribute) }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
-    pub fn paste(
-        &self,
-        intoAttribute: &crate::ffi::HandleTDFAttribute,
-        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
-    ) {
-        unsafe {
-            crate::ffi::XCAFDoc_NoteBalloon_inherited_Paste(
-                self as *const Self,
-                intoAttribute,
-                aRelocationTable,
-            )
-        }
-    }
-
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -7453,40 +7431,6 @@ impl NoteBalloon {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_NoteBalloon_inherited_Forget(self as *mut Self, aTransaction) }
-    }
-
-    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:47 - `XCAFDoc_Note::UserName()`
-    pub fn user_name(&self) -> &crate::ffi::TCollection_ExtendedString {
-        unsafe { &*(crate::ffi::XCAFDoc_NoteBalloon_inherited_UserName(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:50 - `XCAFDoc_Note::TimeStamp()`
-    pub fn time_stamp(&self) -> &crate::ffi::TCollection_ExtendedString {
-        unsafe { &*(crate::ffi::XCAFDoc_NoteBalloon_inherited_TimeStamp(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:53 - `XCAFDoc_Note::IsOrphan()`
-    pub fn is_orphan(&self) -> bool {
-        unsafe { crate::ffi::XCAFDoc_NoteBalloon_inherited_IsOrphan(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:56 - `XCAFDoc_Note::GetObject()`
-    pub fn get_object(&self) -> crate::OwnedPtr<crate::ffi::HandleXCAFNoteObjectsNoteObject> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteBalloon_inherited_GetObject(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:59 - `XCAFDoc_Note::SetObject()`
-    pub fn set_object(&mut self, theObject: &crate::ffi::HandleXCAFNoteObjectsNoteObject) {
-        unsafe { crate::ffi::XCAFDoc_NoteBalloon_inherited_SetObject(self as *mut Self, theObject) }
-    }
-
-    /// Inherited: **Source:** `XCAFDoc_NoteComment.hxx`:50 - `XCAFDoc_NoteComment::Comment()`
-    pub fn comment(&self) -> &crate::ffi::TCollection_ExtendedString {
-        unsafe { &*(crate::ffi::XCAFDoc_NoteBalloon_inherited_Comment(self as *const Self)) }
     }
 }
 
@@ -7624,6 +7568,16 @@ impl NoteBinData {
         unsafe { &*(crate::ffi::XCAFDoc_NoteBinData_get_id()) }
     }
 
+    /// Upcast to XCAFDoc_Note
+    pub fn as_note(&self) -> &Note {
+        unsafe { &*(crate::ffi::XCAFDoc_NoteBinData_as_XCAFDoc_Note(self as *const Self)) }
+    }
+
+    /// Upcast to XCAFDoc_Note (mutable)
+    pub fn as_note_mut(&mut self) -> &mut Note {
+        unsafe { &mut *(crate::ffi::XCAFDoc_NoteBinData_as_XCAFDoc_Note_mut(self as *mut Self)) }
+    }
+
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe { &*(crate::ffi::XCAFDoc_NoteBinData_as_TDF_Attribute(self as *const Self)) }
@@ -7634,14 +7588,33 @@ impl NoteBinData {
         unsafe { &mut *(crate::ffi::XCAFDoc_NoteBinData_as_TDF_Attribute_mut(self as *mut Self)) }
     }
 
-    /// Upcast to XCAFDoc_Note
-    pub fn as_note(&self) -> &Note {
-        unsafe { &*(crate::ffi::XCAFDoc_NoteBinData_as_XCAFDoc_Note(self as *const Self)) }
+    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:47 - `XCAFDoc_Note::UserName()`
+    pub fn user_name(&self) -> &crate::ffi::TCollection_ExtendedString {
+        unsafe { &*(crate::ffi::XCAFDoc_NoteBinData_inherited_UserName(self as *const Self)) }
     }
 
-    /// Upcast to XCAFDoc_Note (mutable)
-    pub fn as_note_mut(&mut self) -> &mut Note {
-        unsafe { &mut *(crate::ffi::XCAFDoc_NoteBinData_as_XCAFDoc_Note_mut(self as *mut Self)) }
+    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:50 - `XCAFDoc_Note::TimeStamp()`
+    pub fn time_stamp(&self) -> &crate::ffi::TCollection_ExtendedString {
+        unsafe { &*(crate::ffi::XCAFDoc_NoteBinData_inherited_TimeStamp(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:53 - `XCAFDoc_Note::IsOrphan()`
+    pub fn is_orphan(&self) -> bool {
+        unsafe { crate::ffi::XCAFDoc_NoteBinData_inherited_IsOrphan(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:56 - `XCAFDoc_Note::GetObject()`
+    pub fn get_object(&self) -> crate::OwnedPtr<crate::ffi::HandleXCAFNoteObjectsNoteObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteBinData_inherited_GetObject(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:59 - `XCAFDoc_Note::SetObject()`
+    pub fn set_object(&mut self, theObject: &crate::ffi::HandleXCAFNoteObjectsNoteObject) {
+        unsafe { crate::ffi::XCAFDoc_NoteBinData_inherited_SetObject(self as *mut Self, theObject) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -7821,35 +7794,6 @@ impl NoteBinData {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_NoteBinData_inherited_Forget(self as *mut Self, aTransaction) }
     }
-
-    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:47 - `XCAFDoc_Note::UserName()`
-    pub fn user_name(&self) -> &crate::ffi::TCollection_ExtendedString {
-        unsafe { &*(crate::ffi::XCAFDoc_NoteBinData_inherited_UserName(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:50 - `XCAFDoc_Note::TimeStamp()`
-    pub fn time_stamp(&self) -> &crate::ffi::TCollection_ExtendedString {
-        unsafe { &*(crate::ffi::XCAFDoc_NoteBinData_inherited_TimeStamp(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:53 - `XCAFDoc_Note::IsOrphan()`
-    pub fn is_orphan(&self) -> bool {
-        unsafe { crate::ffi::XCAFDoc_NoteBinData_inherited_IsOrphan(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:56 - `XCAFDoc_Note::GetObject()`
-    pub fn get_object(&self) -> crate::OwnedPtr<crate::ffi::HandleXCAFNoteObjectsNoteObject> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteBinData_inherited_GetObject(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:59 - `XCAFDoc_Note::SetObject()`
-    pub fn set_object(&mut self, theObject: &crate::ffi::HandleXCAFNoteObjectsNoteObject) {
-        unsafe { crate::ffi::XCAFDoc_NoteBinData_inherited_SetObject(self as *mut Self, theObject) }
-    }
 }
 
 // ========================
@@ -7939,6 +7883,16 @@ impl NoteComment {
         unsafe { &*(crate::ffi::XCAFDoc_NoteComment_get_id()) }
     }
 
+    /// Upcast to XCAFDoc_Note
+    pub fn as_note(&self) -> &Note {
+        unsafe { &*(crate::ffi::XCAFDoc_NoteComment_as_XCAFDoc_Note(self as *const Self)) }
+    }
+
+    /// Upcast to XCAFDoc_Note (mutable)
+    pub fn as_note_mut(&mut self) -> &mut Note {
+        unsafe { &mut *(crate::ffi::XCAFDoc_NoteComment_as_XCAFDoc_Note_mut(self as *mut Self)) }
+    }
+
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe { &*(crate::ffi::XCAFDoc_NoteComment_as_TDF_Attribute(self as *const Self)) }
@@ -7949,14 +7903,33 @@ impl NoteComment {
         unsafe { &mut *(crate::ffi::XCAFDoc_NoteComment_as_TDF_Attribute_mut(self as *mut Self)) }
     }
 
-    /// Upcast to XCAFDoc_Note
-    pub fn as_note(&self) -> &Note {
-        unsafe { &*(crate::ffi::XCAFDoc_NoteComment_as_XCAFDoc_Note(self as *const Self)) }
+    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:47 - `XCAFDoc_Note::UserName()`
+    pub fn user_name(&self) -> &crate::ffi::TCollection_ExtendedString {
+        unsafe { &*(crate::ffi::XCAFDoc_NoteComment_inherited_UserName(self as *const Self)) }
     }
 
-    /// Upcast to XCAFDoc_Note (mutable)
-    pub fn as_note_mut(&mut self) -> &mut Note {
-        unsafe { &mut *(crate::ffi::XCAFDoc_NoteComment_as_XCAFDoc_Note_mut(self as *mut Self)) }
+    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:50 - `XCAFDoc_Note::TimeStamp()`
+    pub fn time_stamp(&self) -> &crate::ffi::TCollection_ExtendedString {
+        unsafe { &*(crate::ffi::XCAFDoc_NoteComment_inherited_TimeStamp(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:53 - `XCAFDoc_Note::IsOrphan()`
+    pub fn is_orphan(&self) -> bool {
+        unsafe { crate::ffi::XCAFDoc_NoteComment_inherited_IsOrphan(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:56 - `XCAFDoc_Note::GetObject()`
+    pub fn get_object(&self) -> crate::OwnedPtr<crate::ffi::HandleXCAFNoteObjectsNoteObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteComment_inherited_GetObject(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:59 - `XCAFDoc_Note::SetObject()`
+    pub fn set_object(&mut self, theObject: &crate::ffi::HandleXCAFNoteObjectsNoteObject) {
+        unsafe { crate::ffi::XCAFDoc_NoteComment_inherited_SetObject(self as *mut Self, theObject) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -8135,35 +8108,6 @@ impl NoteComment {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_NoteComment_inherited_Forget(self as *mut Self, aTransaction) }
-    }
-
-    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:47 - `XCAFDoc_Note::UserName()`
-    pub fn user_name(&self) -> &crate::ffi::TCollection_ExtendedString {
-        unsafe { &*(crate::ffi::XCAFDoc_NoteComment_inherited_UserName(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:50 - `XCAFDoc_Note::TimeStamp()`
-    pub fn time_stamp(&self) -> &crate::ffi::TCollection_ExtendedString {
-        unsafe { &*(crate::ffi::XCAFDoc_NoteComment_inherited_TimeStamp(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:53 - `XCAFDoc_Note::IsOrphan()`
-    pub fn is_orphan(&self) -> bool {
-        unsafe { crate::ffi::XCAFDoc_NoteComment_inherited_IsOrphan(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:56 - `XCAFDoc_Note::GetObject()`
-    pub fn get_object(&self) -> crate::OwnedPtr<crate::ffi::HandleXCAFNoteObjectsNoteObject> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteComment_inherited_GetObject(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `XCAFDoc_Note.hxx`:59 - `XCAFDoc_Note::SetObject()`
-    pub fn set_object(&mut self, theObject: &crate::ffi::HandleXCAFNoteObjectsNoteObject) {
-        unsafe { crate::ffi::XCAFDoc_NoteComment_inherited_SetObject(self as *mut Self, theObject) }
     }
 }
 
@@ -8745,16 +8689,6 @@ impl NotesTool {
         unsafe { &*(crate::ffi::XCAFDoc_NotesTool_get_id()) }
     }
 
-    /// Upcast to TDF_Attribute
-    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        unsafe { &*(crate::ffi::XCAFDoc_NotesTool_as_TDF_Attribute(self as *const Self)) }
-    }
-
-    /// Upcast to TDF_Attribute (mutable)
-    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        unsafe { &mut *(crate::ffi::XCAFDoc_NotesTool_as_TDF_Attribute_mut(self as *mut Self)) }
-    }
-
     /// Upcast to TDataStd_GenericEmpty
     pub fn as_t_data_std_generic_empty(&self) -> &crate::t_data_std::GenericEmpty {
         unsafe { &*(crate::ffi::XCAFDoc_NotesTool_as_TDataStd_GenericEmpty(self as *const Self)) }
@@ -8765,6 +8699,30 @@ impl NotesTool {
         unsafe {
             &mut *(crate::ffi::XCAFDoc_NotesTool_as_TDataStd_GenericEmpty_mut(self as *mut Self))
         }
+    }
+
+    /// Upcast to TDF_Attribute
+    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
+        unsafe { &*(crate::ffi::XCAFDoc_NotesTool_as_TDF_Attribute(self as *const Self)) }
+    }
+
+    /// Upcast to TDF_Attribute (mutable)
+    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
+        unsafe { &mut *(crate::ffi::XCAFDoc_NotesTool_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
+    pub fn restore(&mut self, arg0: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_Restore(self as *mut Self, arg0) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:35 - `TDataStd_GenericEmpty::Paste()`
+    pub fn paste(
+        &self,
+        arg0: &crate::ffi::HandleTDFAttribute,
+        arg1: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_Paste(self as *const Self, arg0, arg1) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -8928,26 +8886,6 @@ impl NotesTool {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NotesTool_inherited_BackupCopy(
                 self as *const Self,
             ))
-        }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
-    pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
-        unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_Restore(self as *mut Self, anAttribute) }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
-    pub fn paste(
-        &self,
-        intoAttribute: &crate::ffi::HandleTDFAttribute,
-        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
-    ) {
-        unsafe {
-            crate::ffi::XCAFDoc_NotesTool_inherited_Paste(
-                self as *const Self,
-                intoAttribute,
-                aRelocationTable,
-            )
         }
     }
 
@@ -9866,16 +9804,6 @@ impl ShapeTool {
         unsafe { &*(crate::ffi::XCAFDoc_ShapeTool_get_type_descriptor()) }
     }
 
-    /// Upcast to TDF_Attribute
-    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        unsafe { &*(crate::ffi::XCAFDoc_ShapeTool_as_TDF_Attribute(self as *const Self)) }
-    }
-
-    /// Upcast to TDF_Attribute (mutable)
-    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        unsafe { &mut *(crate::ffi::XCAFDoc_ShapeTool_as_TDF_Attribute_mut(self as *mut Self)) }
-    }
-
     /// Upcast to TDataStd_GenericEmpty
     pub fn as_t_data_std_generic_empty(&self) -> &crate::t_data_std::GenericEmpty {
         unsafe { &*(crate::ffi::XCAFDoc_ShapeTool_as_TDataStd_GenericEmpty(self as *const Self)) }
@@ -9886,6 +9814,30 @@ impl ShapeTool {
         unsafe {
             &mut *(crate::ffi::XCAFDoc_ShapeTool_as_TDataStd_GenericEmpty_mut(self as *mut Self))
         }
+    }
+
+    /// Upcast to TDF_Attribute
+    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
+        unsafe { &*(crate::ffi::XCAFDoc_ShapeTool_as_TDF_Attribute(self as *const Self)) }
+    }
+
+    /// Upcast to TDF_Attribute (mutable)
+    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
+        unsafe { &mut *(crate::ffi::XCAFDoc_ShapeTool_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
+    pub fn restore(&mut self, arg0: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_Restore(self as *mut Self, arg0) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:35 - `TDataStd_GenericEmpty::Paste()`
+    pub fn paste(
+        &self,
+        arg0: &crate::ffi::HandleTDFAttribute,
+        arg1: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_Paste(self as *const Self, arg0, arg1) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -10052,26 +10004,6 @@ impl ShapeTool {
         }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
-    pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
-        unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_Restore(self as *mut Self, anAttribute) }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
-    pub fn paste(
-        &self,
-        intoAttribute: &crate::ffi::HandleTDFAttribute,
-        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
-    ) {
-        unsafe {
-            crate::ffi::XCAFDoc_ShapeTool_inherited_Paste(
-                self as *const Self,
-                intoAttribute,
-                aRelocationTable,
-            )
-        }
-    }
-
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_References(self as *const Self, aDataSet) }
@@ -10139,6 +10071,16 @@ impl View {
         unsafe { &*(crate::ffi::XCAFDoc_View_get_type_descriptor()) }
     }
 
+    /// Upcast to TDataStd_GenericEmpty
+    pub fn as_t_data_std_generic_empty(&self) -> &crate::t_data_std::GenericEmpty {
+        unsafe { &*(crate::ffi::XCAFDoc_View_as_TDataStd_GenericEmpty(self as *const Self)) }
+    }
+
+    /// Upcast to TDataStd_GenericEmpty (mutable)
+    pub fn as_t_data_std_generic_empty_mut(&mut self) -> &mut crate::t_data_std::GenericEmpty {
+        unsafe { &mut *(crate::ffi::XCAFDoc_View_as_TDataStd_GenericEmpty_mut(self as *mut Self)) }
+    }
+
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe { &*(crate::ffi::XCAFDoc_View_as_TDF_Attribute(self as *const Self)) }
@@ -10149,14 +10091,18 @@ impl View {
         unsafe { &mut *(crate::ffi::XCAFDoc_View_as_TDF_Attribute_mut(self as *mut Self)) }
     }
 
-    /// Upcast to TDataStd_GenericEmpty
-    pub fn as_t_data_std_generic_empty(&self) -> &crate::t_data_std::GenericEmpty {
-        unsafe { &*(crate::ffi::XCAFDoc_View_as_TDataStd_GenericEmpty(self as *const Self)) }
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
+    pub fn restore(&mut self, arg0: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::XCAFDoc_View_inherited_Restore(self as *mut Self, arg0) }
     }
 
-    /// Upcast to TDataStd_GenericEmpty (mutable)
-    pub fn as_t_data_std_generic_empty_mut(&mut self) -> &mut crate::t_data_std::GenericEmpty {
-        unsafe { &mut *(crate::ffi::XCAFDoc_View_as_TDataStd_GenericEmpty_mut(self as *mut Self)) }
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:35 - `TDataStd_GenericEmpty::Paste()`
+    pub fn paste(
+        &self,
+        arg0: &crate::ffi::HandleTDFAttribute,
+        arg1: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_View_inherited_Paste(self as *const Self, arg0, arg1) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -10303,26 +10249,6 @@ impl View {
         }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
-    pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
-        unsafe { crate::ffi::XCAFDoc_View_inherited_Restore(self as *mut Self, anAttribute) }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
-    pub fn paste(
-        &self,
-        intoAttribute: &crate::ffi::HandleTDFAttribute,
-        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
-    ) {
-        unsafe {
-            crate::ffi::XCAFDoc_View_inherited_Paste(
-                self as *const Self,
-                intoAttribute,
-                aRelocationTable,
-            )
-        }
-    }
-
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_View_inherited_References(self as *const Self, aDataSet) }
@@ -10442,16 +10368,6 @@ impl ViewTool {
         unsafe { &*(crate::ffi::XCAFDoc_ViewTool_get_type_descriptor()) }
     }
 
-    /// Upcast to TDF_Attribute
-    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        unsafe { &*(crate::ffi::XCAFDoc_ViewTool_as_TDF_Attribute(self as *const Self)) }
-    }
-
-    /// Upcast to TDF_Attribute (mutable)
-    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        unsafe { &mut *(crate::ffi::XCAFDoc_ViewTool_as_TDF_Attribute_mut(self as *mut Self)) }
-    }
-
     /// Upcast to TDataStd_GenericEmpty
     pub fn as_t_data_std_generic_empty(&self) -> &crate::t_data_std::GenericEmpty {
         unsafe { &*(crate::ffi::XCAFDoc_ViewTool_as_TDataStd_GenericEmpty(self as *const Self)) }
@@ -10462,6 +10378,30 @@ impl ViewTool {
         unsafe {
             &mut *(crate::ffi::XCAFDoc_ViewTool_as_TDataStd_GenericEmpty_mut(self as *mut Self))
         }
+    }
+
+    /// Upcast to TDF_Attribute
+    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
+        unsafe { &*(crate::ffi::XCAFDoc_ViewTool_as_TDF_Attribute(self as *const Self)) }
+    }
+
+    /// Upcast to TDF_Attribute (mutable)
+    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
+        unsafe { &mut *(crate::ffi::XCAFDoc_ViewTool_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
+    pub fn restore(&mut self, arg0: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_Restore(self as *mut Self, arg0) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:35 - `TDataStd_GenericEmpty::Paste()`
+    pub fn paste(
+        &self,
+        arg0: &crate::ffi::HandleTDFAttribute,
+        arg1: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_Paste(self as *const Self, arg0, arg1) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -10617,26 +10557,6 @@ impl ViewTool {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ViewTool_inherited_BackupCopy(
                 self as *const Self,
             ))
-        }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
-    pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
-        unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_Restore(self as *mut Self, anAttribute) }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
-    pub fn paste(
-        &self,
-        intoAttribute: &crate::ffi::HandleTDFAttribute,
-        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
-    ) {
-        unsafe {
-            crate::ffi::XCAFDoc_ViewTool_inherited_Paste(
-                self as *const Self,
-                intoAttribute,
-                aRelocationTable,
-            )
         }
     }
 
@@ -11683,16 +11603,6 @@ impl Volume {
         unsafe { &*(crate::ffi::XCAFDoc_Volume_get_type_descriptor()) }
     }
 
-    /// Upcast to TDF_Attribute
-    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        unsafe { &*(crate::ffi::XCAFDoc_Volume_as_TDF_Attribute(self as *const Self)) }
-    }
-
-    /// Upcast to TDF_Attribute (mutable)
-    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        unsafe { &mut *(crate::ffi::XCAFDoc_Volume_as_TDF_Attribute_mut(self as *mut Self)) }
-    }
-
     /// Upcast to TDataStd_Real
     pub fn as_t_data_std_real(&self) -> &crate::t_data_std::Real {
         unsafe { &*(crate::ffi::XCAFDoc_Volume_as_TDataStd_Real(self as *const Self)) }
@@ -11703,9 +11613,38 @@ impl Volume {
         unsafe { &mut *(crate::ffi::XCAFDoc_Volume_as_TDataStd_Real_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
-        unsafe { crate::ffi::XCAFDoc_Volume_inherited_SetID(self as *mut Self, arg0) }
+    /// Upcast to TDF_Attribute
+    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
+        unsafe { &*(crate::ffi::XCAFDoc_Volume_as_TDF_Attribute(self as *const Self)) }
+    }
+
+    /// Upcast to TDF_Attribute (mutable)
+    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
+        unsafe { &mut *(crate::ffi::XCAFDoc_Volume_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_Real.hxx`:78 - `TDataStd_Real::SetID()`
+    pub fn set_id(&mut self, guid: &crate::ffi::Standard_GUID) {
+        unsafe { crate::ffi::XCAFDoc_Volume_inherited_SetID(self as *mut Self, guid) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_Real.hxx`:87 - `TDataStd_Real::IsCaptured()`
+    pub fn is_captured(&self) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Volume_inherited_IsCaptured(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_Real.hxx`:91 - `TDataStd_Real::Restore()`
+    pub fn restore(&mut self, With: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::XCAFDoc_Volume_inherited_Restore(self as *mut Self, With) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_Real.hxx`:95 - `TDataStd_Real::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_Volume_inherited_Paste(self as *const Self, Into, RT) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
@@ -11853,26 +11792,6 @@ impl Volume {
         }
     }
 
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
-    pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
-        unsafe { crate::ffi::XCAFDoc_Volume_inherited_Restore(self as *mut Self, anAttribute) }
-    }
-
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
-    pub fn paste(
-        &self,
-        intoAttribute: &crate::ffi::HandleTDFAttribute,
-        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
-    ) {
-        unsafe {
-            crate::ffi::XCAFDoc_Volume_inherited_Paste(
-                self as *const Self,
-                intoAttribute,
-                aRelocationTable,
-            )
-        }
-    }
-
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_Volume_inherited_References(self as *const Self, aDataSet) }
@@ -11881,11 +11800,6 @@ impl Volume {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_Volume_inherited_Forget(self as *mut Self, aTransaction) }
-    }
-
-    /// Inherited: **Source:** `TDataStd_Real.hxx`:87 - `TDataStd_Real::IsCaptured()`
-    pub fn is_captured(&self) -> bool {
-        unsafe { crate::ffi::XCAFDoc_Volume_inherited_IsCaptured(self as *const Self) }
     }
 }
 

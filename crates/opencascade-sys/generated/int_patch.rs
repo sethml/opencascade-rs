@@ -1087,16 +1087,6 @@ impl WLine {
         unsafe { &*(crate::ffi::IntPatch_WLine_get_type_descriptor()) }
     }
 
-    /// Upcast to IntPatch_Line
-    pub fn as_line(&self) -> &Line {
-        unsafe { &*(crate::ffi::IntPatch_WLine_as_IntPatch_Line(self as *const Self)) }
-    }
-
-    /// Upcast to IntPatch_Line (mutable)
-    pub fn as_line_mut(&mut self) -> &mut Line {
-        unsafe { &mut *(crate::ffi::IntPatch_WLine_as_IntPatch_Line_mut(self as *mut Self)) }
-    }
-
     /// Upcast to IntPatch_PointLine
     pub fn as_point_line(&self) -> &PointLine {
         unsafe { &*(crate::ffi::IntPatch_WLine_as_IntPatch_PointLine(self as *const Self)) }
@@ -1105,6 +1095,16 @@ impl WLine {
     /// Upcast to IntPatch_PointLine (mutable)
     pub fn as_point_line_mut(&mut self) -> &mut PointLine {
         unsafe { &mut *(crate::ffi::IntPatch_WLine_as_IntPatch_PointLine_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to IntPatch_Line
+    pub fn as_line(&self) -> &Line {
+        unsafe { &*(crate::ffi::IntPatch_WLine_as_IntPatch_Line(self as *const Self)) }
+    }
+
+    /// Upcast to IntPatch_Line (mutable)
+    pub fn as_line_mut(&mut self) -> &mut Line {
+        unsafe { &mut *(crate::ffi::IntPatch_WLine_as_IntPatch_Line_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `IntPatch_Line.hxx`:44 - `IntPatch_Line::SetValue()`

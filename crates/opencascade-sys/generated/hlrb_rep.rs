@@ -4114,20 +4114,6 @@ impl MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter {
         }
     }
 
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe {
-            &*(crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_Function(self as *const Self))
-        }
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *(crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_Function_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
         unsafe {
@@ -4141,6 +4127,20 @@ impl MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter {
     ) -> &mut crate::math::FunctionWithDerivative {
         unsafe {
             &mut *(crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_FunctionWithDerivative_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe {
+            &*(crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_Function(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe {
+            &mut *(crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_Function_mut(self as *mut Self))
         }
     }
 
@@ -4299,22 +4299,6 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
         }
     }
 
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe {
-            &*(crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_Function(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *(crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_Function_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
         unsafe {
@@ -4328,6 +4312,22 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
     ) -> &mut crate::math::FunctionWithDerivative {
         unsafe {
             &mut *(crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_FunctionWithDerivative_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe {
+            &*(crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_Function(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe {
+            &mut *(crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_Function_mut(self as *mut Self))
         }
     }
 }
@@ -5501,24 +5501,6 @@ impl TheCSFunctionOfInterCSurf {
         }
     }
 
-    /// Upcast to math_FunctionSet
-    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe {
-            &*(crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSet(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to math_FunctionSet (mutable)
-    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe {
-            &mut *(crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSet_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
@@ -5536,6 +5518,24 @@ impl TheCSFunctionOfInterCSurf {
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
             &mut *(crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe {
+            &*(crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSet(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSet_mut(
+                self as *mut Self,
+            ))
         }
     }
 
@@ -5608,20 +5608,6 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
         }
     }
 
-    /// Upcast to math_FunctionSet
-    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe {
-            &*(crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSet(self as *const Self))
-        }
-    }
-
-    /// Upcast to math_FunctionSet (mutable)
-    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe {
-            &mut *(crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSet_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
@@ -5637,6 +5623,20 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
             &mut *(crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe {
+            &*(crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSet(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSet_mut(self as *mut Self))
         }
     }
 
@@ -7320,22 +7320,6 @@ impl TheQuadCurvFuncOfTheQuadCurvExactInterCSurf {
         }
     }
 
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe {
-            &*(crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_Function(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *(crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_Function_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
         unsafe {
@@ -7349,6 +7333,22 @@ impl TheQuadCurvFuncOfTheQuadCurvExactInterCSurf {
     ) -> &mut crate::math::FunctionWithDerivative {
         unsafe {
             &mut *(crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_FunctionWithDerivative_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe {
+            &*(crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_Function(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe {
+            &mut *(crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_Function_mut(self as *mut Self))
         }
     }
 

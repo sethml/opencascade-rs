@@ -2714,6 +2714,16 @@ impl CartesianPoint {
         unsafe { &*(crate::ffi::Geom2d_CartesianPoint_get_type_descriptor()) }
     }
 
+    /// Upcast to Geom2d_Point
+    pub fn as_point(&self) -> &Point {
+        unsafe { &*(crate::ffi::Geom2d_CartesianPoint_as_Geom2d_Point(self as *const Self)) }
+    }
+
+    /// Upcast to Geom2d_Point (mutable)
+    pub fn as_point_mut(&mut self) -> &mut Point {
+        unsafe { &mut *(crate::ffi::Geom2d_CartesianPoint_as_Geom2d_Point_mut(self as *mut Self)) }
+    }
+
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
         unsafe { &*(crate::ffi::Geom2d_CartesianPoint_as_Geom2d_Geometry(self as *const Self)) }
@@ -2726,22 +2736,24 @@ impl CartesianPoint {
         }
     }
 
-    /// Upcast to Geom2d_Point
-    pub fn as_point(&self) -> &Point {
-        unsafe { &*(crate::ffi::Geom2d_CartesianPoint_as_Geom2d_Point(self as *const Self)) }
-    }
-
-    /// Upcast to Geom2d_Point (mutable)
-    pub fn as_point_mut(&mut self) -> &mut Point {
-        unsafe { &mut *(crate::ffi::Geom2d_CartesianPoint_as_Geom2d_Point_mut(self as *mut Self)) }
-    }
-
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCartesianPoint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2d_CartesianPoint_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Point.hxx`:51 - `Geom2d_Point::Distance()`
+    pub fn distance(&self, Other: &crate::ffi::HandleGeom2dPoint) -> f64 {
+        unsafe { crate::ffi::Geom2d_CartesianPoint_inherited_Distance(self as *const Self, Other) }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Point.hxx`:54 - `Geom2d_Point::SquareDistance()`
+    pub fn square_distance(&self, Other: &crate::ffi::HandleGeom2dPoint) -> f64 {
+        unsafe {
+            crate::ffi::Geom2d_CartesianPoint_inherited_SquareDistance(self as *const Self, Other)
         }
     }
 
@@ -2833,18 +2845,6 @@ impl CartesianPoint {
             ))
         }
     }
-
-    /// Inherited: **Source:** `Geom2d_Point.hxx`:51 - `Geom2d_Point::Distance()`
-    pub fn distance(&self, Other: &crate::ffi::HandleGeom2dPoint) -> f64 {
-        unsafe { crate::ffi::Geom2d_CartesianPoint_inherited_Distance(self as *const Self, Other) }
-    }
-
-    /// Inherited: **Source:** `Geom2d_Point.hxx`:54 - `Geom2d_Point::SquareDistance()`
-    pub fn square_distance(&self, Other: &crate::ffi::HandleGeom2dPoint) -> f64 {
-        unsafe {
-            crate::ffi::Geom2d_CartesianPoint_inherited_SquareDistance(self as *const Self, Other)
-        }
-    }
 }
 
 pub use crate::ffi::HandleGeom2dCartesianPoint;
@@ -2866,21 +2866,21 @@ impl HandleGeom2dCartesianPoint {
         unsafe { &mut *(crate::ffi::HandleGeom2dCartesianPoint_get_mut(self as *mut Self)) }
     }
 
-    /// Upcast Handle<Geom2d_CartesianPoint> to Handle<Geom2d_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleGeom2dCartesianPoint_to_HandleGeom2dGeometry(self as *const Self),
-            )
-        }
-    }
-
     /// Upcast Handle<Geom2d_CartesianPoint> to Handle<Geom2d_Point>
     pub fn to_handle_point(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dPoint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dCartesianPoint_to_HandleGeom2dPoint(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<Geom2d_CartesianPoint> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dCartesianPoint_to_HandleGeom2dGeometry(self as *const Self),
+            )
         }
     }
 }
@@ -4558,16 +4558,6 @@ impl Direction {
         unsafe { &*(crate::ffi::Geom2d_Direction_get_type_descriptor()) }
     }
 
-    /// Upcast to Geom2d_Geometry
-    pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::Geom2d_Direction_as_Geom2d_Geometry(self as *const Self)) }
-    }
-
-    /// Upcast to Geom2d_Geometry (mutable)
-    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe { &mut *(crate::ffi::Geom2d_Direction_as_Geom2d_Geometry_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Geom2d_Vector
     pub fn as_vector(&self) -> &Vector {
         unsafe { &*(crate::ffi::Geom2d_Direction_as_Geom2d_Vector(self as *const Self)) }
@@ -4578,11 +4568,69 @@ impl Direction {
         unsafe { &mut *(crate::ffi::Geom2d_Direction_as_Geom2d_Vector_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Geom2d_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        unsafe { &*(crate::ffi::Geom2d_Direction_as_Geom2d_Geometry(self as *const Self)) }
+    }
+
+    /// Upcast to Geom2d_Geometry (mutable)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+        unsafe { &mut *(crate::ffi::Geom2d_Direction_as_Geom2d_Geometry_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dDirection> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Direction_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Vector.hxx`:39 - `Geom2d_Vector::Reverse()`
+    pub fn reverse(&mut self) {
+        unsafe { crate::ffi::Geom2d_Direction_inherited_Reverse(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Vector.hxx`:42 - `Geom2d_Vector::Reversed()`
+    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dVector> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Direction_inherited_Reversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Vector.hxx`:50 - `Geom2d_Vector::Angle()`
+    pub fn angle(&self, Other: &crate::ffi::HandleGeom2dVector) -> f64 {
+        unsafe { crate::ffi::Geom2d_Direction_inherited_Angle(self as *const Self, Other) }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Vector.hxx`:53 - `Geom2d_Vector::Coord()`
+    pub fn coord(&self, X: &mut f64, Y: &mut f64) {
+        unsafe { crate::ffi::Geom2d_Direction_inherited_Coord(self as *const Self, X, Y) }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Vector.hxx`:62 - `Geom2d_Vector::X()`
+    pub fn x(&self) -> f64 {
+        unsafe { crate::ffi::Geom2d_Direction_inherited_X(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Vector.hxx`:65 - `Geom2d_Vector::Y()`
+    pub fn y(&self) -> f64 {
+        unsafe { crate::ffi::Geom2d_Direction_inherited_Y(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Vector.hxx`:71 - `Geom2d_Vector::Dot()`
+    pub fn dot(&self, Other: &crate::ffi::HandleGeom2dVector) -> f64 {
+        unsafe { crate::ffi::Geom2d_Direction_inherited_Dot(self as *const Self, Other) }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Vector.hxx`:74 - `Geom2d_Vector::Vec2d()`
+    pub fn vec2d(&self) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Direction_inherited_Vec2d(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
@@ -4673,54 +4721,6 @@ impl Direction {
             ))
         }
     }
-
-    /// Inherited: **Source:** `Geom2d_Vector.hxx`:39 - `Geom2d_Vector::Reverse()`
-    pub fn reverse(&mut self) {
-        unsafe { crate::ffi::Geom2d_Direction_inherited_Reverse(self as *mut Self) }
-    }
-
-    /// Inherited: **Source:** `Geom2d_Vector.hxx`:42 - `Geom2d_Vector::Reversed()`
-    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dVector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Direction_inherited_Reversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom2d_Vector.hxx`:50 - `Geom2d_Vector::Angle()`
-    pub fn angle(&self, Other: &crate::ffi::HandleGeom2dVector) -> f64 {
-        unsafe { crate::ffi::Geom2d_Direction_inherited_Angle(self as *const Self, Other) }
-    }
-
-    /// Inherited: **Source:** `Geom2d_Vector.hxx`:53 - `Geom2d_Vector::Coord()`
-    pub fn coord(&self, X: &mut f64, Y: &mut f64) {
-        unsafe { crate::ffi::Geom2d_Direction_inherited_Coord(self as *const Self, X, Y) }
-    }
-
-    /// Inherited: **Source:** `Geom2d_Vector.hxx`:62 - `Geom2d_Vector::X()`
-    pub fn x(&self) -> f64 {
-        unsafe { crate::ffi::Geom2d_Direction_inherited_X(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom2d_Vector.hxx`:65 - `Geom2d_Vector::Y()`
-    pub fn y(&self) -> f64 {
-        unsafe { crate::ffi::Geom2d_Direction_inherited_Y(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom2d_Vector.hxx`:71 - `Geom2d_Vector::Dot()`
-    pub fn dot(&self, Other: &crate::ffi::HandleGeom2dVector) -> f64 {
-        unsafe { crate::ffi::Geom2d_Direction_inherited_Dot(self as *const Self, Other) }
-    }
-
-    /// Inherited: **Source:** `Geom2d_Vector.hxx`:74 - `Geom2d_Vector::Vec2d()`
-    pub fn vec2d(&self) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_Direction_inherited_Vec2d(
-                self as *const Self,
-            ))
-        }
-    }
 }
 
 pub use crate::ffi::HandleGeom2dDirection;
@@ -4742,19 +4742,19 @@ impl HandleGeom2dDirection {
         unsafe { &mut *(crate::ffi::HandleGeom2dDirection_get_mut(self as *mut Self)) }
     }
 
-    /// Upcast Handle<Geom2d_Direction> to Handle<Geom2d_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+    /// Upcast Handle<Geom2d_Direction> to Handle<Geom2d_Vector>
+    pub fn to_handle_vector(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dVector> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dDirection_to_HandleGeom2dGeometry(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dDirection_to_HandleGeom2dVector(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast Handle<Geom2d_Direction> to Handle<Geom2d_Vector>
-    pub fn to_handle_vector(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dVector> {
+    /// Upcast Handle<Geom2d_Direction> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dDirection_to_HandleGeom2dVector(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeom2dDirection_to_HandleGeom2dGeometry(
                 self as *const Self,
             ))
         }
@@ -10032,6 +10032,18 @@ impl VectorWithMagnitude {
         unsafe { &*(crate::ffi::Geom2d_VectorWithMagnitude_get_type_descriptor()) }
     }
 
+    /// Upcast to Geom2d_Vector
+    pub fn as_vector(&self) -> &Vector {
+        unsafe { &*(crate::ffi::Geom2d_VectorWithMagnitude_as_Geom2d_Vector(self as *const Self)) }
+    }
+
+    /// Upcast to Geom2d_Vector (mutable)
+    pub fn as_vector_mut(&mut self) -> &mut Vector {
+        unsafe {
+            &mut *(crate::ffi::Geom2d_VectorWithMagnitude_as_Geom2d_Vector_mut(self as *mut Self))
+        }
+    }
+
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
         unsafe {
@@ -10046,18 +10058,6 @@ impl VectorWithMagnitude {
         }
     }
 
-    /// Upcast to Geom2d_Vector
-    pub fn as_vector(&self) -> &Vector {
-        unsafe { &*(crate::ffi::Geom2d_VectorWithMagnitude_as_Geom2d_Vector(self as *const Self)) }
-    }
-
-    /// Upcast to Geom2d_Vector (mutable)
-    pub fn as_vector_mut(&mut self) -> &mut Vector {
-        unsafe {
-            &mut *(crate::ffi::Geom2d_VectorWithMagnitude_as_Geom2d_Vector_mut(self as *mut Self))
-        }
-    }
-
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -10065,6 +10065,56 @@ impl VectorWithMagnitude {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2d_VectorWithMagnitude_to_handle(
                 obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Vector.hxx`:39 - `Geom2d_Vector::Reverse()`
+    pub fn reverse(&mut self) {
+        unsafe { crate::ffi::Geom2d_VectorWithMagnitude_inherited_Reverse(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Vector.hxx`:42 - `Geom2d_Vector::Reversed()`
+    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dVector> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_VectorWithMagnitude_inherited_Reversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Vector.hxx`:50 - `Geom2d_Vector::Angle()`
+    pub fn angle(&self, Other: &crate::ffi::HandleGeom2dVector) -> f64 {
+        unsafe {
+            crate::ffi::Geom2d_VectorWithMagnitude_inherited_Angle(self as *const Self, Other)
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Vector.hxx`:53 - `Geom2d_Vector::Coord()`
+    pub fn coord(&self, X: &mut f64, Y: &mut f64) {
+        unsafe { crate::ffi::Geom2d_VectorWithMagnitude_inherited_Coord(self as *const Self, X, Y) }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Vector.hxx`:62 - `Geom2d_Vector::X()`
+    pub fn x(&self) -> f64 {
+        unsafe { crate::ffi::Geom2d_VectorWithMagnitude_inherited_X(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Vector.hxx`:65 - `Geom2d_Vector::Y()`
+    pub fn y(&self) -> f64 {
+        unsafe { crate::ffi::Geom2d_VectorWithMagnitude_inherited_Y(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Vector.hxx`:71 - `Geom2d_Vector::Dot()`
+    pub fn dot(&self, Other: &crate::ffi::HandleGeom2dVector) -> f64 {
+        unsafe { crate::ffi::Geom2d_VectorWithMagnitude_inherited_Dot(self as *const Self, Other) }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Vector.hxx`:74 - `Geom2d_Vector::Vec2d()`
+    pub fn vec2d(&self) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_VectorWithMagnitude_inherited_Vec2d(
+                self as *const Self,
             ))
         }
     }
@@ -10159,56 +10209,6 @@ impl VectorWithMagnitude {
             ))
         }
     }
-
-    /// Inherited: **Source:** `Geom2d_Vector.hxx`:39 - `Geom2d_Vector::Reverse()`
-    pub fn reverse(&mut self) {
-        unsafe { crate::ffi::Geom2d_VectorWithMagnitude_inherited_Reverse(self as *mut Self) }
-    }
-
-    /// Inherited: **Source:** `Geom2d_Vector.hxx`:42 - `Geom2d_Vector::Reversed()`
-    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dVector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_VectorWithMagnitude_inherited_Reversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom2d_Vector.hxx`:50 - `Geom2d_Vector::Angle()`
-    pub fn angle(&self, Other: &crate::ffi::HandleGeom2dVector) -> f64 {
-        unsafe {
-            crate::ffi::Geom2d_VectorWithMagnitude_inherited_Angle(self as *const Self, Other)
-        }
-    }
-
-    /// Inherited: **Source:** `Geom2d_Vector.hxx`:53 - `Geom2d_Vector::Coord()`
-    pub fn coord(&self, X: &mut f64, Y: &mut f64) {
-        unsafe { crate::ffi::Geom2d_VectorWithMagnitude_inherited_Coord(self as *const Self, X, Y) }
-    }
-
-    /// Inherited: **Source:** `Geom2d_Vector.hxx`:62 - `Geom2d_Vector::X()`
-    pub fn x(&self) -> f64 {
-        unsafe { crate::ffi::Geom2d_VectorWithMagnitude_inherited_X(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom2d_Vector.hxx`:65 - `Geom2d_Vector::Y()`
-    pub fn y(&self) -> f64 {
-        unsafe { crate::ffi::Geom2d_VectorWithMagnitude_inherited_Y(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom2d_Vector.hxx`:71 - `Geom2d_Vector::Dot()`
-    pub fn dot(&self, Other: &crate::ffi::HandleGeom2dVector) -> f64 {
-        unsafe { crate::ffi::Geom2d_VectorWithMagnitude_inherited_Dot(self as *const Self, Other) }
-    }
-
-    /// Inherited: **Source:** `Geom2d_Vector.hxx`:74 - `Geom2d_Vector::Vec2d()`
-    pub fn vec2d(&self) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_VectorWithMagnitude_inherited_Vec2d(
-                self as *const Self,
-            ))
-        }
-    }
 }
 
 pub use crate::ffi::HandleGeom2dVectorWithMagnitude;
@@ -10230,22 +10230,22 @@ impl HandleGeom2dVectorWithMagnitude {
         unsafe { &mut *(crate::ffi::HandleGeom2dVectorWithMagnitude_get_mut(self as *mut Self)) }
     }
 
-    /// Upcast Handle<Geom2d_VectorWithMagnitude> to Handle<Geom2d_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+    /// Upcast Handle<Geom2d_VectorWithMagnitude> to Handle<Geom2d_Vector>
+    pub fn to_handle_vector(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dVector> {
         unsafe {
             crate::OwnedPtr::from_raw(
-                crate::ffi::HandleGeom2dVectorWithMagnitude_to_HandleGeom2dGeometry(
+                crate::ffi::HandleGeom2dVectorWithMagnitude_to_HandleGeom2dVector(
                     self as *const Self,
                 ),
             )
         }
     }
 
-    /// Upcast Handle<Geom2d_VectorWithMagnitude> to Handle<Geom2d_Vector>
-    pub fn to_handle_vector(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dVector> {
+    /// Upcast Handle<Geom2d_VectorWithMagnitude> to Handle<Geom2d_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(
-                crate::ffi::HandleGeom2dVectorWithMagnitude_to_HandleGeom2dVector(
+                crate::ffi::HandleGeom2dVectorWithMagnitude_to_HandleGeom2dGeometry(
                     self as *const Self,
                 ),
             )

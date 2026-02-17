@@ -4449,18 +4449,6 @@ impl FunctionDraft {
         unsafe { crate::ffi::GeomFill_FunctionDraft_nb_equations(self as *const Self) }
     }
 
-    /// Upcast to math_FunctionSet
-    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe { &*(crate::ffi::GeomFill_FunctionDraft_as_math_FunctionSet(self as *const Self)) }
-    }
-
-    /// Upcast to math_FunctionSet (mutable)
-    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe {
-            &mut *(crate::ffi::GeomFill_FunctionDraft_as_math_FunctionSet_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
@@ -4480,6 +4468,18 @@ impl FunctionDraft {
             &mut *(crate::ffi::GeomFill_FunctionDraft_as_math_FunctionSetWithDerivatives_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe { &*(crate::ffi::GeomFill_FunctionDraft_as_math_FunctionSet(self as *const Self)) }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::GeomFill_FunctionDraft_as_math_FunctionSet_mut(self as *mut Self))
         }
     }
 
@@ -4553,18 +4553,6 @@ impl FunctionGuide {
         unsafe { crate::ffi::GeomFill_FunctionGuide_nb_equations(self as *const Self) }
     }
 
-    /// Upcast to math_FunctionSet
-    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe { &*(crate::ffi::GeomFill_FunctionGuide_as_math_FunctionSet(self as *const Self)) }
-    }
-
-    /// Upcast to math_FunctionSet (mutable)
-    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe {
-            &mut *(crate::ffi::GeomFill_FunctionGuide_as_math_FunctionSet_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
@@ -4584,6 +4572,18 @@ impl FunctionGuide {
             &mut *(crate::ffi::GeomFill_FunctionGuide_as_math_FunctionSetWithDerivatives_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe { &*(crate::ffi::GeomFill_FunctionGuide_as_math_FunctionSet(self as *const Self)) }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::GeomFill_FunctionGuide_as_math_FunctionSet_mut(self as *mut Self))
         }
     }
 
@@ -4882,6 +4882,24 @@ impl GuideTrihedronAC {
         unsafe { &*(crate::ffi::GeomFill_GuideTrihedronAC_get_type_descriptor()) }
     }
 
+    /// Upcast to GeomFill_TrihedronWithGuide
+    pub fn as_trihedron_with_guide(&self) -> &TrihedronWithGuide {
+        unsafe {
+            &*(crate::ffi::GeomFill_GuideTrihedronAC_as_GeomFill_TrihedronWithGuide(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to GeomFill_TrihedronWithGuide (mutable)
+    pub fn as_trihedron_with_guide_mut(&mut self) -> &mut TrihedronWithGuide {
+        unsafe {
+            &mut *(crate::ffi::GeomFill_GuideTrihedronAC_as_GeomFill_TrihedronWithGuide_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Upcast to GeomFill_TrihedronLaw
     pub fn as_trihedron_law(&self) -> &TrihedronLaw {
         unsafe {
@@ -4898,21 +4916,14 @@ impl GuideTrihedronAC {
         }
     }
 
-    /// Upcast to GeomFill_TrihedronWithGuide
-    pub fn as_trihedron_with_guide(&self) -> &TrihedronWithGuide {
+    /// Inherited: **Source:** `GeomFill_TrihedronWithGuide.hxx`:39 - `GeomFill_TrihedronWithGuide::CurrentPointOnGuide()`
+    pub fn current_point_on_guide(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
-            &*(crate::ffi::GeomFill_GuideTrihedronAC_as_GeomFill_TrihedronWithGuide(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to GeomFill_TrihedronWithGuide (mutable)
-    pub fn as_trihedron_with_guide_mut(&mut self) -> &mut TrihedronWithGuide {
-        unsafe {
-            &mut *(crate::ffi::GeomFill_GuideTrihedronAC_as_GeomFill_TrihedronWithGuide_mut(
-                self as *mut Self,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomFill_GuideTrihedronAC_inherited_CurrentPointOnGuide(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4933,17 +4944,6 @@ impl GuideTrihedronAC {
                 self as *mut Self,
                 First,
                 Last,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `GeomFill_TrihedronWithGuide.hxx`:39 - `GeomFill_TrihedronWithGuide::CurrentPointOnGuide()`
-    pub fn current_point_on_guide(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::GeomFill_GuideTrihedronAC_inherited_CurrentPointOnGuide(
-                    self as *const Self,
-                ),
             )
         }
     }
@@ -5168,24 +5168,6 @@ impl GuideTrihedronPlan {
         unsafe { &*(crate::ffi::GeomFill_GuideTrihedronPlan_get_type_descriptor()) }
     }
 
-    /// Upcast to GeomFill_TrihedronLaw
-    pub fn as_trihedron_law(&self) -> &TrihedronLaw {
-        unsafe {
-            &*(crate::ffi::GeomFill_GuideTrihedronPlan_as_GeomFill_TrihedronLaw(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to GeomFill_TrihedronLaw (mutable)
-    pub fn as_trihedron_law_mut(&mut self) -> &mut TrihedronLaw {
-        unsafe {
-            &mut *(crate::ffi::GeomFill_GuideTrihedronPlan_as_GeomFill_TrihedronLaw_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to GeomFill_TrihedronWithGuide
     pub fn as_trihedron_with_guide(&self) -> &TrihedronWithGuide {
         unsafe {
@@ -5204,14 +5186,21 @@ impl GuideTrihedronPlan {
         }
     }
 
-    /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:96 - `GeomFill_TrihedronLaw::GetInterval()`
-    pub fn get_interval(&mut self, First: &mut f64, Last: &mut f64) {
+    /// Upcast to GeomFill_TrihedronLaw
+    pub fn as_trihedron_law(&self) -> &TrihedronLaw {
         unsafe {
-            crate::ffi::GeomFill_GuideTrihedronPlan_inherited_GetInterval(
+            &*(crate::ffi::GeomFill_GuideTrihedronPlan_as_GeomFill_TrihedronLaw(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to GeomFill_TrihedronLaw (mutable)
+    pub fn as_trihedron_law_mut(&mut self) -> &mut TrihedronLaw {
+        unsafe {
+            &mut *(crate::ffi::GeomFill_GuideTrihedronPlan_as_GeomFill_TrihedronLaw_mut(
                 self as *mut Self,
-                First,
-                Last,
-            )
+            ))
         }
     }
 
@@ -5222,6 +5211,17 @@ impl GuideTrihedronPlan {
                 crate::ffi::GeomFill_GuideTrihedronPlan_inherited_CurrentPointOnGuide(
                     self as *const Self,
                 ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:96 - `GeomFill_TrihedronLaw::GetInterval()`
+    pub fn get_interval(&mut self, First: &mut f64, Last: &mut f64) {
+        unsafe {
+            crate::ffi::GeomFill_GuideTrihedronPlan_inherited_GetInterval(
+                self as *mut Self,
+                First,
+                Last,
             )
         }
     }
@@ -7119,16 +7119,6 @@ impl PlanFunc {
         }
     }
 
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe { &*(crate::ffi::GeomFill_PlanFunc_as_math_Function(self as *const Self)) }
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe { &mut *(crate::ffi::GeomFill_PlanFunc_as_math_Function_mut(self as *mut Self)) }
-    }
-
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
         unsafe {
@@ -7145,6 +7135,16 @@ impl PlanFunc {
                 self as *mut Self,
             ))
         }
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe { &*(crate::ffi::GeomFill_PlanFunc_as_math_Function(self as *const Self)) }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe { &mut *(crate::ffi::GeomFill_PlanFunc_as_math_Function_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`

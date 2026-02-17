@@ -439,22 +439,6 @@ impl HPG0G1Constraint {
         unsafe { &*(crate::ffi::NLPlate_HPG0G1Constraint_get_type_descriptor()) }
     }
 
-    /// Upcast to NLPlate_HGPPConstraint
-    pub fn as_hgpp_constraint(&self) -> &HGPPConstraint {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG0G1Constraint_as_NLPlate_HGPPConstraint(self as *const Self))
-        }
-    }
-
-    /// Upcast to NLPlate_HGPPConstraint (mutable)
-    pub fn as_hgpp_constraint_mut(&mut self) -> &mut HGPPConstraint {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG0G1Constraint_as_NLPlate_HGPPConstraint_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to NLPlate_HPG0Constraint
     pub fn as_hpg0_constraint(&self) -> &HPG0Constraint {
         unsafe {
@@ -471,7 +455,23 @@ impl HPG0G1Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:44 - `NLPlate_HGPPConstraint::SetUVFreeSliding()`
+    /// Upcast to NLPlate_HGPPConstraint
+    pub fn as_hgpp_constraint(&self) -> &HGPPConstraint {
+        unsafe {
+            &*(crate::ffi::NLPlate_HPG0G1Constraint_as_NLPlate_HGPPConstraint(self as *const Self))
+        }
+    }
+
+    /// Upcast to NLPlate_HGPPConstraint (mutable)
+    pub fn as_hgpp_constraint_mut(&mut self) -> &mut HGPPConstraint {
+        unsafe {
+            &mut *(crate::ffi::NLPlate_HPG0G1Constraint_as_NLPlate_HGPPConstraint_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:38 - `NLPlate_HPG0Constraint::SetUVFreeSliding()`
     pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
         unsafe {
             crate::ffi::NLPlate_HPG0G1Constraint_inherited_SetUVFreeSliding(
@@ -481,7 +481,7 @@ impl HPG0G1Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:46 - `NLPlate_HGPPConstraint::SetIncrementalLoadAllowed()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:40 - `NLPlate_HPG0Constraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
         unsafe {
             crate::ffi::NLPlate_HPG0G1Constraint_inherited_SetIncrementalLoadAllowed(
@@ -489,6 +489,30 @@ impl HPG0G1Constraint {
                 ILA,
             )
         }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:43 - `NLPlate_HPG0Constraint::UVFreeSliding()`
+    pub fn uv_free_sliding(&self) -> bool {
+        unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_UVFreeSliding(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:45 - `NLPlate_HPG0Constraint::IncrementalLoadAllowed()`
+    pub fn incremental_load_allowed(&self) -> bool {
+        unsafe {
+            crate::ffi::NLPlate_HPG0G1Constraint_inherited_IncrementalLoadAllowed(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:49 - `NLPlate_HPG0Constraint::IsG0()`
+    pub fn is_g0(&self) -> bool {
+        unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_IsG0(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:51 - `NLPlate_HPG0Constraint::G0Target()`
+    pub fn g0_target(&self) -> &crate::ffi::gp_XYZ {
+        unsafe { &*(crate::ffi::NLPlate_HPG0G1Constraint_inherited_G0Target(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:48 - `NLPlate_HGPPConstraint::SetActiveOrder()`
@@ -540,33 +564,9 @@ impl HPG0G1Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:62 - `NLPlate_HGPPConstraint::UVFreeSliding()`
-    pub fn uv_free_sliding(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_UVFreeSliding(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:64 - `NLPlate_HGPPConstraint::IncrementalLoadAllowed()`
-    pub fn incremental_load_allowed(&self) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G1Constraint_inherited_IncrementalLoadAllowed(
-                self as *const Self,
-            )
-        }
-    }
-
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::ffi::gp_XY {
         unsafe { &*(crate::ffi::NLPlate_HPG0G1Constraint_inherited_UV(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:72 - `NLPlate_HGPPConstraint::IsG0()`
-    pub fn is_g0(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_IsG0(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:74 - `NLPlate_HGPPConstraint::G0Target()`
-    pub fn g0_target(&self) -> &crate::ffi::gp_XYZ {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G1Constraint_inherited_G0Target(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:78 - `NLPlate_HGPPConstraint::G2Target()`
@@ -659,17 +659,19 @@ impl HPG0G2Constraint {
         unsafe { &*(crate::ffi::NLPlate_HPG0G2Constraint_get_type_descriptor()) }
     }
 
-    /// Upcast to NLPlate_HGPPConstraint
-    pub fn as_hgpp_constraint(&self) -> &HGPPConstraint {
+    /// Upcast to NLPlate_HPG0G1Constraint
+    pub fn as_hpg0g1_constraint(&self) -> &HPG0G1Constraint {
         unsafe {
-            &*(crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HGPPConstraint(self as *const Self))
+            &*(crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HPG0G1Constraint(
+                self as *const Self,
+            ))
         }
     }
 
-    /// Upcast to NLPlate_HGPPConstraint (mutable)
-    pub fn as_hgpp_constraint_mut(&mut self) -> &mut HGPPConstraint {
+    /// Upcast to NLPlate_HPG0G1Constraint (mutable)
+    pub fn as_hpg0g1_constraint_mut(&mut self) -> &mut HPG0G1Constraint {
         unsafe {
-            &mut *(crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HGPPConstraint_mut(
+            &mut *(crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HPG0G1Constraint_mut(
                 self as *mut Self,
             ))
         }
@@ -691,25 +693,40 @@ impl HPG0G2Constraint {
         }
     }
 
-    /// Upcast to NLPlate_HPG0G1Constraint
-    pub fn as_hpg0g1_constraint(&self) -> &HPG0G1Constraint {
+    /// Upcast to NLPlate_HGPPConstraint
+    pub fn as_hgpp_constraint(&self) -> &HGPPConstraint {
         unsafe {
-            &*(crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HPG0G1Constraint(
-                self as *const Self,
-            ))
+            &*(crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HGPPConstraint(self as *const Self))
         }
     }
 
-    /// Upcast to NLPlate_HPG0G1Constraint (mutable)
-    pub fn as_hpg0g1_constraint_mut(&mut self) -> &mut HPG0G1Constraint {
+    /// Upcast to NLPlate_HGPPConstraint (mutable)
+    pub fn as_hgpp_constraint_mut(&mut self) -> &mut HGPPConstraint {
         unsafe {
-            &mut *(crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HPG0G1Constraint_mut(
+            &mut *(crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HGPPConstraint_mut(
                 self as *mut Self,
             ))
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:44 - `NLPlate_HGPPConstraint::SetUVFreeSliding()`
+    /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:41 - `NLPlate_HPG0G1Constraint::SetOrientation()`
+    pub fn set_orientation(&mut self, Orient: i32) {
+        unsafe {
+            crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetOrientation(self as *mut Self, Orient)
+        }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:45 - `NLPlate_HPG0G1Constraint::Orientation()`
+    pub fn orientation(&mut self) -> i32 {
+        unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_Orientation(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:47 - `NLPlate_HPG0G1Constraint::G1Target()`
+    pub fn g1_target(&self) -> &crate::ffi::Plate_D1 {
+        unsafe { &*(crate::ffi::NLPlate_HPG0G2Constraint_inherited_G1Target(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:38 - `NLPlate_HPG0Constraint::SetUVFreeSliding()`
     pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
         unsafe {
             crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetUVFreeSliding(
@@ -719,7 +736,7 @@ impl HPG0G2Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:46 - `NLPlate_HGPPConstraint::SetIncrementalLoadAllowed()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:40 - `NLPlate_HPG0Constraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
         unsafe {
             crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetIncrementalLoadAllowed(
@@ -727,6 +744,30 @@ impl HPG0G2Constraint {
                 ILA,
             )
         }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:43 - `NLPlate_HPG0Constraint::UVFreeSliding()`
+    pub fn uv_free_sliding(&self) -> bool {
+        unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_UVFreeSliding(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:45 - `NLPlate_HPG0Constraint::IncrementalLoadAllowed()`
+    pub fn incremental_load_allowed(&self) -> bool {
+        unsafe {
+            crate::ffi::NLPlate_HPG0G2Constraint_inherited_IncrementalLoadAllowed(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:49 - `NLPlate_HPG0Constraint::IsG0()`
+    pub fn is_g0(&self) -> bool {
+        unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_IsG0(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:51 - `NLPlate_HPG0Constraint::G0Target()`
+    pub fn g0_target(&self) -> &crate::ffi::gp_XYZ {
+        unsafe { &*(crate::ffi::NLPlate_HPG0G2Constraint_inherited_G0Target(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:48 - `NLPlate_HGPPConstraint::SetActiveOrder()`
@@ -742,13 +783,6 @@ impl HPG0G2Constraint {
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
     pub fn set_uv(&mut self, UV: &crate::ffi::gp_XY) {
         unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetUV(self as *mut Self, UV) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:52 - `NLPlate_HGPPConstraint::SetOrientation()`
-    pub fn set_orientation(&mut self, Orient: i32) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetOrientation(self as *mut Self, Orient)
-        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:54 - `NLPlate_HGPPConstraint::SetG0Criterion()`
@@ -785,43 +819,9 @@ impl HPG0G2Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:62 - `NLPlate_HGPPConstraint::UVFreeSliding()`
-    pub fn uv_free_sliding(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_UVFreeSliding(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:64 - `NLPlate_HGPPConstraint::IncrementalLoadAllowed()`
-    pub fn incremental_load_allowed(&self) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G2Constraint_inherited_IncrementalLoadAllowed(
-                self as *const Self,
-            )
-        }
-    }
-
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::ffi::gp_XY {
         unsafe { &*(crate::ffi::NLPlate_HPG0G2Constraint_inherited_UV(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:70 - `NLPlate_HGPPConstraint::Orientation()`
-    pub fn orientation(&mut self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_Orientation(self as *mut Self) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:72 - `NLPlate_HGPPConstraint::IsG0()`
-    pub fn is_g0(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_IsG0(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:74 - `NLPlate_HGPPConstraint::G0Target()`
-    pub fn g0_target(&self) -> &crate::ffi::gp_XYZ {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G2Constraint_inherited_G0Target(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:76 - `NLPlate_HGPPConstraint::G1Target()`
-    pub fn g1_target(&self) -> &crate::ffi::Plate_D1 {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G2Constraint_inherited_G1Target(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:80 - `NLPlate_HGPPConstraint::G3Target()`
@@ -910,33 +910,19 @@ impl HPG0G3Constraint {
         unsafe { &*(crate::ffi::NLPlate_HPG0G3Constraint_get_type_descriptor()) }
     }
 
-    /// Upcast to NLPlate_HGPPConstraint
-    pub fn as_hgpp_constraint(&self) -> &HGPPConstraint {
+    /// Upcast to NLPlate_HPG0G2Constraint
+    pub fn as_hpg0g2_constraint(&self) -> &HPG0G2Constraint {
         unsafe {
-            &*(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HGPPConstraint(self as *const Self))
-        }
-    }
-
-    /// Upcast to NLPlate_HGPPConstraint (mutable)
-    pub fn as_hgpp_constraint_mut(&mut self) -> &mut HGPPConstraint {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HGPPConstraint_mut(
-                self as *mut Self,
+            &*(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HPG0G2Constraint(
+                self as *const Self,
             ))
         }
     }
 
-    /// Upcast to NLPlate_HPG0Constraint
-    pub fn as_hpg0_constraint(&self) -> &HPG0Constraint {
+    /// Upcast to NLPlate_HPG0G2Constraint (mutable)
+    pub fn as_hpg0g2_constraint_mut(&mut self) -> &mut HPG0G2Constraint {
         unsafe {
-            &*(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HPG0Constraint(self as *const Self))
-        }
-    }
-
-    /// Upcast to NLPlate_HPG0Constraint (mutable)
-    pub fn as_hpg0_constraint_mut(&mut self) -> &mut HPG0Constraint {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HPG0Constraint_mut(
+            &mut *(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HPG0G2Constraint_mut(
                 self as *mut Self,
             ))
         }
@@ -960,25 +946,61 @@ impl HPG0G3Constraint {
         }
     }
 
-    /// Upcast to NLPlate_HPG0G2Constraint
-    pub fn as_hpg0g2_constraint(&self) -> &HPG0G2Constraint {
+    /// Upcast to NLPlate_HPG0Constraint
+    pub fn as_hpg0_constraint(&self) -> &HPG0Constraint {
         unsafe {
-            &*(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HPG0G2Constraint(
-                self as *const Self,
-            ))
+            &*(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HPG0Constraint(self as *const Self))
         }
     }
 
-    /// Upcast to NLPlate_HPG0G2Constraint (mutable)
-    pub fn as_hpg0g2_constraint_mut(&mut self) -> &mut HPG0G2Constraint {
+    /// Upcast to NLPlate_HPG0Constraint (mutable)
+    pub fn as_hpg0_constraint_mut(&mut self) -> &mut HPG0Constraint {
         unsafe {
-            &mut *(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HPG0G2Constraint_mut(
+            &mut *(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HPG0Constraint_mut(
                 self as *mut Self,
             ))
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:44 - `NLPlate_HGPPConstraint::SetUVFreeSliding()`
+    /// Upcast to NLPlate_HGPPConstraint
+    pub fn as_hgpp_constraint(&self) -> &HGPPConstraint {
+        unsafe {
+            &*(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HGPPConstraint(self as *const Self))
+        }
+    }
+
+    /// Upcast to NLPlate_HGPPConstraint (mutable)
+    pub fn as_hgpp_constraint_mut(&mut self) -> &mut HGPPConstraint {
+        unsafe {
+            &mut *(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HGPPConstraint_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0G2Constraint.hxx`:45 - `NLPlate_HPG0G2Constraint::G2Target()`
+    pub fn g2_target(&self) -> &crate::ffi::Plate_D2 {
+        unsafe { &*(crate::ffi::NLPlate_HPG0G3Constraint_inherited_G2Target(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:41 - `NLPlate_HPG0G1Constraint::SetOrientation()`
+    pub fn set_orientation(&mut self, Orient: i32) {
+        unsafe {
+            crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetOrientation(self as *mut Self, Orient)
+        }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:45 - `NLPlate_HPG0G1Constraint::Orientation()`
+    pub fn orientation(&mut self) -> i32 {
+        unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_Orientation(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:47 - `NLPlate_HPG0G1Constraint::G1Target()`
+    pub fn g1_target(&self) -> &crate::ffi::Plate_D1 {
+        unsafe { &*(crate::ffi::NLPlate_HPG0G3Constraint_inherited_G1Target(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:38 - `NLPlate_HPG0Constraint::SetUVFreeSliding()`
     pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
         unsafe {
             crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetUVFreeSliding(
@@ -988,7 +1010,7 @@ impl HPG0G3Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:46 - `NLPlate_HGPPConstraint::SetIncrementalLoadAllowed()`
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:40 - `NLPlate_HPG0Constraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
         unsafe {
             crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetIncrementalLoadAllowed(
@@ -996,6 +1018,30 @@ impl HPG0G3Constraint {
                 ILA,
             )
         }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:43 - `NLPlate_HPG0Constraint::UVFreeSliding()`
+    pub fn uv_free_sliding(&self) -> bool {
+        unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_UVFreeSliding(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:45 - `NLPlate_HPG0Constraint::IncrementalLoadAllowed()`
+    pub fn incremental_load_allowed(&self) -> bool {
+        unsafe {
+            crate::ffi::NLPlate_HPG0G3Constraint_inherited_IncrementalLoadAllowed(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:49 - `NLPlate_HPG0Constraint::IsG0()`
+    pub fn is_g0(&self) -> bool {
+        unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_IsG0(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:51 - `NLPlate_HPG0Constraint::G0Target()`
+    pub fn g0_target(&self) -> &crate::ffi::gp_XYZ {
+        unsafe { &*(crate::ffi::NLPlate_HPG0G3Constraint_inherited_G0Target(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:48 - `NLPlate_HGPPConstraint::SetActiveOrder()`
@@ -1011,13 +1057,6 @@ impl HPG0G3Constraint {
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
     pub fn set_uv(&mut self, UV: &crate::ffi::gp_XY) {
         unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetUV(self as *mut Self, UV) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:52 - `NLPlate_HGPPConstraint::SetOrientation()`
-    pub fn set_orientation(&mut self, Orient: i32) {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetOrientation(self as *mut Self, Orient)
-        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:54 - `NLPlate_HGPPConstraint::SetG0Criterion()`
@@ -1054,48 +1093,9 @@ impl HPG0G3Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:62 - `NLPlate_HGPPConstraint::UVFreeSliding()`
-    pub fn uv_free_sliding(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_UVFreeSliding(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:64 - `NLPlate_HGPPConstraint::IncrementalLoadAllowed()`
-    pub fn incremental_load_allowed(&self) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HPG0G3Constraint_inherited_IncrementalLoadAllowed(
-                self as *const Self,
-            )
-        }
-    }
-
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::ffi::gp_XY {
         unsafe { &*(crate::ffi::NLPlate_HPG0G3Constraint_inherited_UV(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:70 - `NLPlate_HGPPConstraint::Orientation()`
-    pub fn orientation(&mut self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_Orientation(self as *mut Self) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:72 - `NLPlate_HGPPConstraint::IsG0()`
-    pub fn is_g0(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_IsG0(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:74 - `NLPlate_HGPPConstraint::G0Target()`
-    pub fn g0_target(&self) -> &crate::ffi::gp_XYZ {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G3Constraint_inherited_G0Target(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:76 - `NLPlate_HGPPConstraint::G1Target()`
-    pub fn g1_target(&self) -> &crate::ffi::Plate_D1 {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G3Constraint_inherited_G1Target(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:78 - `NLPlate_HGPPConstraint::G2Target()`
-    pub fn g2_target(&self) -> &crate::ffi::Plate_D2 {
-        unsafe { &*(crate::ffi::NLPlate_HPG0G3Constraint_inherited_G2Target(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:82 - `NLPlate_HGPPConstraint::G0Criterion()`
@@ -1366,22 +1366,6 @@ impl HPG2Constraint {
         unsafe { &*(crate::ffi::NLPlate_HPG2Constraint_get_type_descriptor()) }
     }
 
-    /// Upcast to NLPlate_HGPPConstraint
-    pub fn as_hgpp_constraint(&self) -> &HGPPConstraint {
-        unsafe {
-            &*(crate::ffi::NLPlate_HPG2Constraint_as_NLPlate_HGPPConstraint(self as *const Self))
-        }
-    }
-
-    /// Upcast to NLPlate_HGPPConstraint (mutable)
-    pub fn as_hgpp_constraint_mut(&mut self) -> &mut HGPPConstraint {
-        unsafe {
-            &mut *(crate::ffi::NLPlate_HPG2Constraint_as_NLPlate_HGPPConstraint_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to NLPlate_HPG1Constraint
     pub fn as_hpg1_constraint(&self) -> &HPG1Constraint {
         unsafe {
@@ -1398,20 +1382,65 @@ impl HPG2Constraint {
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:44 - `NLPlate_HGPPConstraint::SetUVFreeSliding()`
-    pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
+    /// Upcast to NLPlate_HGPPConstraint
+    pub fn as_hgpp_constraint(&self) -> &HGPPConstraint {
         unsafe {
-            crate::ffi::NLPlate_HPG2Constraint_inherited_SetUVFreeSliding(self as *mut Self, UVFree)
+            &*(crate::ffi::NLPlate_HPG2Constraint_as_NLPlate_HGPPConstraint(self as *const Self))
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:46 - `NLPlate_HGPPConstraint::SetIncrementalLoadAllowed()`
+    /// Upcast to NLPlate_HGPPConstraint (mutable)
+    pub fn as_hgpp_constraint_mut(&mut self) -> &mut HGPPConstraint {
+        unsafe {
+            &mut *(crate::ffi::NLPlate_HPG2Constraint_as_NLPlate_HGPPConstraint_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:38 - `NLPlate_HPG1Constraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
         unsafe {
             crate::ffi::NLPlate_HPG2Constraint_inherited_SetIncrementalLoadAllowed(
                 self as *mut Self,
                 ILA,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:41 - `NLPlate_HPG1Constraint::SetOrientation()`
+    pub fn set_orientation(&mut self, Orient: i32) {
+        unsafe {
+            crate::ffi::NLPlate_HPG2Constraint_inherited_SetOrientation(self as *mut Self, Orient)
+        }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:43 - `NLPlate_HPG1Constraint::IncrementalLoadAllowed()`
+    pub fn incremental_load_allowed(&self) -> bool {
+        unsafe {
+            crate::ffi::NLPlate_HPG2Constraint_inherited_IncrementalLoadAllowed(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:47 - `NLPlate_HPG1Constraint::IsG0()`
+    pub fn is_g0(&self) -> bool {
+        unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_IsG0(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:49 - `NLPlate_HPG1Constraint::Orientation()`
+    pub fn orientation(&mut self) -> i32 {
+        unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_Orientation(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:51 - `NLPlate_HPG1Constraint::G1Target()`
+    pub fn g1_target(&self) -> &crate::ffi::Plate_D1 {
+        unsafe { &*(crate::ffi::NLPlate_HPG2Constraint_inherited_G1Target(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:44 - `NLPlate_HGPPConstraint::SetUVFreeSliding()`
+    pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
+        unsafe {
+            crate::ffi::NLPlate_HPG2Constraint_inherited_SetUVFreeSliding(self as *mut Self, UVFree)
         }
     }
 
@@ -1428,13 +1457,6 @@ impl HPG2Constraint {
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
     pub fn set_uv(&mut self, UV: &crate::ffi::gp_XY) {
         unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_SetUV(self as *mut Self, UV) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:52 - `NLPlate_HGPPConstraint::SetOrientation()`
-    pub fn set_orientation(&mut self, Orient: i32) {
-        unsafe {
-            crate::ffi::NLPlate_HPG2Constraint_inherited_SetOrientation(self as *mut Self, Orient)
-        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:54 - `NLPlate_HGPPConstraint::SetG0Criterion()`
@@ -1470,36 +1492,14 @@ impl HPG2Constraint {
         unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_UVFreeSliding(self as *const Self) }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:64 - `NLPlate_HGPPConstraint::IncrementalLoadAllowed()`
-    pub fn incremental_load_allowed(&self) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HPG2Constraint_inherited_IncrementalLoadAllowed(self as *const Self)
-        }
-    }
-
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::ffi::gp_XY {
         unsafe { &*(crate::ffi::NLPlate_HPG2Constraint_inherited_UV(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:70 - `NLPlate_HGPPConstraint::Orientation()`
-    pub fn orientation(&mut self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_Orientation(self as *mut Self) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:72 - `NLPlate_HGPPConstraint::IsG0()`
-    pub fn is_g0(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_IsG0(self as *const Self) }
-    }
-
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:74 - `NLPlate_HGPPConstraint::G0Target()`
     pub fn g0_target(&self) -> &crate::ffi::gp_XYZ {
         unsafe { &*(crate::ffi::NLPlate_HPG2Constraint_inherited_G0Target(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:76 - `NLPlate_HGPPConstraint::G1Target()`
-    pub fn g1_target(&self) -> &crate::ffi::Plate_D1 {
-        unsafe { &*(crate::ffi::NLPlate_HPG2Constraint_inherited_G1Target(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:80 - `NLPlate_HGPPConstraint::G3Target()`
@@ -1587,17 +1587,17 @@ impl HPG3Constraint {
         unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_get_type_descriptor()) }
     }
 
-    /// Upcast to NLPlate_HGPPConstraint
-    pub fn as_hgpp_constraint(&self) -> &HGPPConstraint {
+    /// Upcast to NLPlate_HPG2Constraint
+    pub fn as_hpg2_constraint(&self) -> &HPG2Constraint {
         unsafe {
-            &*(crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HGPPConstraint(self as *const Self))
+            &*(crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HPG2Constraint(self as *const Self))
         }
     }
 
-    /// Upcast to NLPlate_HGPPConstraint (mutable)
-    pub fn as_hgpp_constraint_mut(&mut self) -> &mut HGPPConstraint {
+    /// Upcast to NLPlate_HPG2Constraint (mutable)
+    pub fn as_hpg2_constraint_mut(&mut self) -> &mut HPG2Constraint {
         unsafe {
-            &mut *(crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HGPPConstraint_mut(
+            &mut *(crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HPG2Constraint_mut(
                 self as *mut Self,
             ))
         }
@@ -1619,36 +1619,70 @@ impl HPG3Constraint {
         }
     }
 
-    /// Upcast to NLPlate_HPG2Constraint
-    pub fn as_hpg2_constraint(&self) -> &HPG2Constraint {
+    /// Upcast to NLPlate_HGPPConstraint
+    pub fn as_hgpp_constraint(&self) -> &HGPPConstraint {
         unsafe {
-            &*(crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HPG2Constraint(self as *const Self))
+            &*(crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HGPPConstraint(self as *const Self))
         }
     }
 
-    /// Upcast to NLPlate_HPG2Constraint (mutable)
-    pub fn as_hpg2_constraint_mut(&mut self) -> &mut HPG2Constraint {
+    /// Upcast to NLPlate_HGPPConstraint (mutable)
+    pub fn as_hgpp_constraint_mut(&mut self) -> &mut HGPPConstraint {
         unsafe {
-            &mut *(crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HPG2Constraint_mut(
+            &mut *(crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HGPPConstraint_mut(
                 self as *mut Self,
             ))
         }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:44 - `NLPlate_HGPPConstraint::SetUVFreeSliding()`
-    pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
-        unsafe {
-            crate::ffi::NLPlate_HPG3Constraint_inherited_SetUVFreeSliding(self as *mut Self, UVFree)
-        }
+    /// Inherited: **Source:** `NLPlate_HPG2Constraint.hxx`:41 - `NLPlate_HPG2Constraint::G2Target()`
+    pub fn g2_target(&self) -> &crate::ffi::Plate_D2 {
+        unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_inherited_G2Target(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:46 - `NLPlate_HGPPConstraint::SetIncrementalLoadAllowed()`
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:38 - `NLPlate_HPG1Constraint::SetIncrementalLoadAllowed()`
     pub fn set_incremental_load_allowed(&mut self, ILA: bool) {
         unsafe {
             crate::ffi::NLPlate_HPG3Constraint_inherited_SetIncrementalLoadAllowed(
                 self as *mut Self,
                 ILA,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:41 - `NLPlate_HPG1Constraint::SetOrientation()`
+    pub fn set_orientation(&mut self, Orient: i32) {
+        unsafe {
+            crate::ffi::NLPlate_HPG3Constraint_inherited_SetOrientation(self as *mut Self, Orient)
+        }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:43 - `NLPlate_HPG1Constraint::IncrementalLoadAllowed()`
+    pub fn incremental_load_allowed(&self) -> bool {
+        unsafe {
+            crate::ffi::NLPlate_HPG3Constraint_inherited_IncrementalLoadAllowed(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:47 - `NLPlate_HPG1Constraint::IsG0()`
+    pub fn is_g0(&self) -> bool {
+        unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_IsG0(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:49 - `NLPlate_HPG1Constraint::Orientation()`
+    pub fn orientation(&mut self) -> i32 {
+        unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_Orientation(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:51 - `NLPlate_HPG1Constraint::G1Target()`
+    pub fn g1_target(&self) -> &crate::ffi::Plate_D1 {
+        unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_inherited_G1Target(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:44 - `NLPlate_HGPPConstraint::SetUVFreeSliding()`
+    pub fn set_uv_free_sliding(&mut self, UVFree: bool) {
+        unsafe {
+            crate::ffi::NLPlate_HPG3Constraint_inherited_SetUVFreeSliding(self as *mut Self, UVFree)
         }
     }
 
@@ -1665,13 +1699,6 @@ impl HPG3Constraint {
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
     pub fn set_uv(&mut self, UV: &crate::ffi::gp_XY) {
         unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_SetUV(self as *mut Self, UV) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:52 - `NLPlate_HGPPConstraint::SetOrientation()`
-    pub fn set_orientation(&mut self, Orient: i32) {
-        unsafe {
-            crate::ffi::NLPlate_HPG3Constraint_inherited_SetOrientation(self as *mut Self, Orient)
-        }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:54 - `NLPlate_HGPPConstraint::SetG0Criterion()`
@@ -1707,41 +1734,14 @@ impl HPG3Constraint {
         unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_UVFreeSliding(self as *const Self) }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:64 - `NLPlate_HGPPConstraint::IncrementalLoadAllowed()`
-    pub fn incremental_load_allowed(&self) -> bool {
-        unsafe {
-            crate::ffi::NLPlate_HPG3Constraint_inherited_IncrementalLoadAllowed(self as *const Self)
-        }
-    }
-
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
     pub fn uv(&self) -> &crate::ffi::gp_XY {
         unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_inherited_UV(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:70 - `NLPlate_HGPPConstraint::Orientation()`
-    pub fn orientation(&mut self) -> i32 {
-        unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_Orientation(self as *mut Self) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:72 - `NLPlate_HGPPConstraint::IsG0()`
-    pub fn is_g0(&self) -> bool {
-        unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_IsG0(self as *const Self) }
-    }
-
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:74 - `NLPlate_HGPPConstraint::G0Target()`
     pub fn g0_target(&self) -> &crate::ffi::gp_XYZ {
         unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_inherited_G0Target(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:76 - `NLPlate_HGPPConstraint::G1Target()`
-    pub fn g1_target(&self) -> &crate::ffi::Plate_D1 {
-        unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_inherited_G1Target(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:78 - `NLPlate_HGPPConstraint::G2Target()`
-    pub fn g2_target(&self) -> &crate::ffi::Plate_D2 {
-        unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_inherited_G2Target(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:82 - `NLPlate_HGPPConstraint::G0Criterion()`

@@ -3274,18 +3274,6 @@ impl FunctionTanCirCu {
         unsafe { crate::ffi::Geom2dGcc_FunctionTanCirCu_values(self as *mut Self, X, F, Deriv) }
     }
 
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe { &*(crate::ffi::Geom2dGcc_FunctionTanCirCu_as_math_Function(self as *const Self)) }
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *(crate::ffi::Geom2dGcc_FunctionTanCirCu_as_math_Function_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
         unsafe {
@@ -3303,6 +3291,18 @@ impl FunctionTanCirCu {
             &mut *(crate::ffi::Geom2dGcc_FunctionTanCirCu_as_math_FunctionWithDerivative_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe { &*(crate::ffi::Geom2dGcc_FunctionTanCirCu_as_math_Function(self as *const Self)) }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe {
+            &mut *(crate::ffi::Geom2dGcc_FunctionTanCirCu_as_math_Function_mut(self as *mut Self))
         }
     }
 
@@ -3366,20 +3366,6 @@ impl FunctionTanCuCu {
         unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCu_nb_equations(self as *const Self) }
     }
 
-    /// Upcast to math_FunctionSet
-    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe {
-            &*(crate::ffi::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSet(self as *const Self))
-        }
-    }
-
-    /// Upcast to math_FunctionSet (mutable)
-    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe {
-            &mut *(crate::ffi::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSet_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
@@ -3399,6 +3385,20 @@ impl FunctionTanCuCu {
             &mut *(crate::ffi::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSetWithDerivatives_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe {
+            &*(crate::ffi::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSet(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSet_mut(self as *mut Self))
         }
     }
 
@@ -3553,22 +3553,6 @@ impl FunctionTanCuCuCu {
         unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCuCu_nb_equations(self as *const Self) }
     }
 
-    /// Upcast to math_FunctionSet
-    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe {
-            &*(crate::ffi::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSet(self as *const Self))
-        }
-    }
-
-    /// Upcast to math_FunctionSet (mutable)
-    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe {
-            &mut *(crate::ffi::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSet_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
@@ -3586,6 +3570,22 @@ impl FunctionTanCuCuCu {
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
             &mut *(crate::ffi::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe {
+            &*(crate::ffi::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSet(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSet_mut(
                 self as *mut Self,
             ))
         }
@@ -3813,22 +3813,6 @@ impl FunctionTanCuCuOnCu {
         unsafe { crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_nb_equations(self as *const Self) }
     }
 
-    /// Upcast to math_FunctionSet
-    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe {
-            &*(crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSet(self as *const Self))
-        }
-    }
-
-    /// Upcast to math_FunctionSet (mutable)
-    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe {
-            &mut *(crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSet_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
@@ -3846,6 +3830,22 @@ impl FunctionTanCuCuOnCu {
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
             &mut *(crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe {
+            &*(crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSet(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSet_mut(
                 self as *mut Self,
             ))
         }
@@ -3913,18 +3913,6 @@ impl FunctionTanCuPnt {
         unsafe { crate::ffi::Geom2dGcc_FunctionTanCuPnt_values(self as *mut Self, X, F, Deriv) }
     }
 
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe { &*(crate::ffi::Geom2dGcc_FunctionTanCuPnt_as_math_Function(self as *const Self)) }
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *(crate::ffi::Geom2dGcc_FunctionTanCuPnt_as_math_Function_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
         unsafe {
@@ -3942,6 +3930,18 @@ impl FunctionTanCuPnt {
             &mut *(crate::ffi::Geom2dGcc_FunctionTanCuPnt_as_math_FunctionWithDerivative_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe { &*(crate::ffi::Geom2dGcc_FunctionTanCuPnt_as_math_Function(self as *const Self)) }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe {
+            &mut *(crate::ffi::Geom2dGcc_FunctionTanCuPnt_as_math_Function_mut(self as *mut Self))
         }
     }
 
@@ -4005,18 +4005,6 @@ impl FunctionTanObl {
         unsafe { crate::ffi::Geom2dGcc_FunctionTanObl_values(self as *mut Self, X, F, Deriv) }
     }
 
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe { &*(crate::ffi::Geom2dGcc_FunctionTanObl_as_math_Function(self as *const Self)) }
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *(crate::ffi::Geom2dGcc_FunctionTanObl_as_math_Function_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
         unsafe {
@@ -4034,6 +4022,18 @@ impl FunctionTanObl {
             &mut *(crate::ffi::Geom2dGcc_FunctionTanObl_as_math_FunctionWithDerivative_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe { &*(crate::ffi::Geom2dGcc_FunctionTanObl_as_math_Function(self as *const Self)) }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe {
+            &mut *(crate::ffi::Geom2dGcc_FunctionTanObl_as_math_Function_mut(self as *mut Self))
         }
     }
 

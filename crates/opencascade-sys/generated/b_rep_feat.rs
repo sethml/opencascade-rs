@@ -356,6 +356,18 @@ impl Builder {
         unsafe { &mut *(crate::ffi::BRepFeat_Builder_as_BOPAlgo_BOP_mut(self as *mut Self)) }
     }
 
+    /// Upcast to BOPAlgo_ToolsProvider
+    pub fn as_bop_algo_tools_provider(&self) -> &crate::bop_algo::ToolsProvider {
+        unsafe { &*(crate::ffi::BRepFeat_Builder_as_BOPAlgo_ToolsProvider(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_ToolsProvider (mutable)
+    pub fn as_bop_algo_tools_provider_mut(&mut self) -> &mut crate::bop_algo::ToolsProvider {
+        unsafe {
+            &mut *(crate::ffi::BRepFeat_Builder_as_BOPAlgo_ToolsProvider_mut(self as *mut Self))
+        }
+    }
+
     /// Upcast to BOPAlgo_Builder
     pub fn as_bop_algo_builder(&self) -> &crate::bop_algo::Builder {
         unsafe { &*(crate::ffi::BRepFeat_Builder_as_BOPAlgo_Builder(self as *const Self)) }
@@ -388,23 +400,6 @@ impl Builder {
         unsafe { &mut *(crate::ffi::BRepFeat_Builder_as_BOPAlgo_Options_mut(self as *mut Self)) }
     }
 
-    /// Upcast to BOPAlgo_ToolsProvider
-    pub fn as_bop_algo_tools_provider(&self) -> &crate::bop_algo::ToolsProvider {
-        unsafe { &*(crate::ffi::BRepFeat_Builder_as_BOPAlgo_ToolsProvider(self as *const Self)) }
-    }
-
-    /// Upcast to BOPAlgo_ToolsProvider (mutable)
-    pub fn as_bop_algo_tools_provider_mut(&mut self) -> &mut crate::bop_algo::ToolsProvider {
-        unsafe {
-            &mut *(crate::ffi::BRepFeat_Builder_as_BOPAlgo_ToolsProvider_mut(self as *mut Self))
-        }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_Algo.hxx`:39 - `BOPAlgo_Algo::Perform()`
-    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
-        unsafe { crate::ffi::BRepFeat_Builder_inherited_Perform(self as *mut Self, theRange) }
-    }
-
     /// Inherited: **Source:** `BOPAlgo_BOP.hxx`:79 - `BOPAlgo_BOP::Operation()`
     pub fn operation(&self) -> crate::bop_algo::Operation {
         unsafe {
@@ -413,6 +408,26 @@ impl Builder {
             ))
             .unwrap()
         }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_BOP.hxx`:81 - `BOPAlgo_BOP::Perform()`
+    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BRepFeat_Builder_inherited_Perform(self as *mut Self, theRange) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:39 - `BOPAlgo_ToolsProvider::AddTool()`
+    pub fn add_tool(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepFeat_Builder_inherited_AddTool(self as *mut Self, theShape) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:42 - `BOPAlgo_ToolsProvider::SetTools()`
+    pub fn set_tools(&mut self, theShapes: &crate::ffi::TopTools_ListOfShape) {
+        unsafe { crate::ffi::BRepFeat_Builder_inherited_SetTools(self as *mut Self, theShapes) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:45 - `BOPAlgo_ToolsProvider::Tools()`
+    pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepFeat_Builder_inherited_Tools(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
@@ -629,21 +644,6 @@ impl Builder {
     pub fn use_obb(&self) -> bool {
         unsafe { crate::ffi::BRepFeat_Builder_inherited_UseOBB(self as *const Self) }
     }
-
-    /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:39 - `BOPAlgo_ToolsProvider::AddTool()`
-    pub fn add_tool(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
-        unsafe { crate::ffi::BRepFeat_Builder_inherited_AddTool(self as *mut Self, theShape) }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:42 - `BOPAlgo_ToolsProvider::SetTools()`
-    pub fn set_tools(&mut self, theShapes: &crate::ffi::TopTools_ListOfShape) {
-        unsafe { crate::ffi::BRepFeat_Builder_inherited_SetTools(self as *mut Self, theShapes) }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:45 - `BOPAlgo_ToolsProvider::Tools()`
-    pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_Builder_inherited_Tools(self as *const Self)) }
-    }
 }
 
 // ========================
@@ -805,18 +805,6 @@ impl Form {
         }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        unsafe { &*(crate::ffi::BRepFeat_Form_as_BRepBuilderAPI_Command(self as *const Self)) }
-    }
-
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        unsafe {
-            &mut *(crate::ffi::BRepFeat_Form_as_BRepBuilderAPI_Command_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe { &*(crate::ffi::BRepFeat_Form_as_BRepBuilderAPI_MakeShape(self as *const Self)) }
@@ -831,14 +819,16 @@ impl Form {
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepFeat_Form_inherited_IsDone(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        unsafe { &*(crate::ffi::BRepFeat_Form_as_BRepBuilderAPI_Command(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepFeat_Form_inherited_Check(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepFeat_Form_as_BRepBuilderAPI_Command_mut(self as *mut Self))
+        }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
@@ -849,6 +839,16 @@ impl Form {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepFeat_Form_inherited_Shape(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepFeat_Form_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepFeat_Form_inherited_Check(self as *const Self) }
     }
 }
 
@@ -969,18 +969,6 @@ impl Gluer {
         unsafe { &*(crate::ffi::BRepFeat_Gluer_modified(self as *mut Self, F)) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        unsafe { &*(crate::ffi::BRepFeat_Gluer_as_BRepBuilderAPI_Command(self as *const Self)) }
-    }
-
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        unsafe {
-            &mut *(crate::ffi::BRepFeat_Gluer_as_BRepBuilderAPI_Command_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe { &*(crate::ffi::BRepFeat_Gluer_as_BRepBuilderAPI_MakeShape(self as *const Self)) }
@@ -995,14 +983,16 @@ impl Gluer {
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepFeat_Gluer_inherited_IsDone(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        unsafe { &*(crate::ffi::BRepFeat_Gluer_as_BRepBuilderAPI_Command(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepFeat_Gluer_inherited_Check(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepFeat_Gluer_as_BRepBuilderAPI_Command_mut(self as *mut Self))
+        }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
@@ -1013,6 +1003,16 @@ impl Gluer {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
     pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_Gluer_inherited_Generated(self as *mut Self, S)) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepFeat_Gluer_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepFeat_Gluer_inherited_Check(self as *const Self) }
     }
 }
 
@@ -1149,6 +1149,22 @@ impl MakeCylindricalHole {
         unsafe { crate::ffi::BRepFeat_MakeCylindricalHole_build(self as *mut Self) }
     }
 
+    /// Upcast to BRepFeat_Builder
+    pub fn as_builder(&self) -> &Builder {
+        unsafe {
+            &*(crate::ffi::BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder(self as *const Self))
+        }
+    }
+
+    /// Upcast to BRepFeat_Builder (mutable)
+    pub fn as_builder_mut(&mut self) -> &mut Builder {
+        unsafe {
+            &mut *(crate::ffi::BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Upcast to BOPAlgo_BOP
     pub fn as_bop_algo_bop(&self) -> &crate::bop_algo::BOP {
         unsafe { &*(crate::ffi::BRepFeat_MakeCylindricalHole_as_BOPAlgo_BOP(self as *const Self)) }
@@ -1158,6 +1174,24 @@ impl MakeCylindricalHole {
     pub fn as_bop_algo_bop_mut(&mut self) -> &mut crate::bop_algo::BOP {
         unsafe {
             &mut *(crate::ffi::BRepFeat_MakeCylindricalHole_as_BOPAlgo_BOP_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to BOPAlgo_ToolsProvider
+    pub fn as_bop_algo_tools_provider(&self) -> &crate::bop_algo::ToolsProvider {
+        unsafe {
+            &*(crate::ffi::BRepFeat_MakeCylindricalHole_as_BOPAlgo_ToolsProvider(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to BOPAlgo_ToolsProvider (mutable)
+    pub fn as_bop_algo_tools_provider_mut(&mut self) -> &mut crate::bop_algo::ToolsProvider {
+        unsafe {
+            &mut *(crate::ffi::BRepFeat_MakeCylindricalHole_as_BOPAlgo_ToolsProvider_mut(
+                self as *mut Self,
+            ))
         }
     }
 
@@ -1211,53 +1245,88 @@ impl MakeCylindricalHole {
         }
     }
 
-    /// Upcast to BOPAlgo_ToolsProvider
-    pub fn as_bop_algo_tools_provider(&self) -> &crate::bop_algo::ToolsProvider {
-        unsafe {
-            &*(crate::ffi::BRepFeat_MakeCylindricalHole_as_BOPAlgo_ToolsProvider(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BOPAlgo_ToolsProvider (mutable)
-    pub fn as_bop_algo_tools_provider_mut(&mut self) -> &mut crate::bop_algo::ToolsProvider {
-        unsafe {
-            &mut *(crate::ffi::BRepFeat_MakeCylindricalHole_as_BOPAlgo_ToolsProvider_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast to BRepFeat_Builder
-    pub fn as_builder(&self) -> &Builder {
-        unsafe {
-            &*(crate::ffi::BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder(self as *const Self))
-        }
-    }
-
-    /// Upcast to BRepFeat_Builder (mutable)
-    pub fn as_builder_mut(&mut self) -> &mut Builder {
-        unsafe {
-            &mut *(crate::ffi::BRepFeat_MakeCylindricalHole_as_BRepFeat_Builder_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_BOP.hxx`:75 - `BOPAlgo_BOP::Clear()`
+    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:54 - `BRepFeat_Builder::Clear()`
     pub fn clear(&mut self) {
         unsafe { crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Clear(self as *mut Self) }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BOP.hxx`:77 - `BOPAlgo_BOP::SetOperation()`
-    pub fn set_operation(&mut self, theOperation: crate::bop_algo::Operation) {
+    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:64 - `BRepFeat_Builder::SetOperation()`
+    pub fn set_operation(&mut self, theFuse: i32) {
         unsafe {
             crate::ffi::BRepFeat_MakeCylindricalHole_inherited_SetOperation(
                 self as *mut Self,
-                theOperation.into(),
+                theFuse,
             )
         }
+    }
+
+    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:74 - `BRepFeat_Builder::PartsOfTool()`
+    pub fn parts_of_tool(&mut self, theLT: &mut crate::ffi::TopTools_ListOfShape) {
+        unsafe {
+            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_PartsOfTool(self as *mut Self, theLT)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:78 - `BRepFeat_Builder::KeepParts()`
+    pub fn keep_parts(&mut self, theIm: &crate::ffi::TopTools_ListOfShape) {
+        unsafe {
+            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_KeepParts(self as *mut Self, theIm)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:81 - `BRepFeat_Builder::KeepPart()`
+    pub fn keep_part(&mut self, theS: &crate::ffi::TopoDS_Shape) {
+        unsafe {
+            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_KeepPart(self as *mut Self, theS)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:85 - `BRepFeat_Builder::PerformResult()`
+    pub fn perform_result(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe {
+            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_PerformResult(
+                self as *mut Self,
+                theRange,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:89 - `BRepFeat_Builder::RebuildFaces()`
+    pub fn rebuild_faces(&mut self) {
+        unsafe {
+            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_RebuildFaces(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:92 - `BRepFeat_Builder::RebuildEdge()`
+    pub fn rebuild_edge(
+        &mut self,
+        theE: &crate::ffi::TopoDS_Shape,
+        theF: &crate::ffi::TopoDS_Face,
+        theME: &crate::ffi::TopTools_MapOfShape,
+        aLEIm: &mut crate::ffi::TopTools_ListOfShape,
+    ) {
+        unsafe {
+            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_RebuildEdge(
+                self as *mut Self,
+                theE,
+                theF,
+                theME,
+                aLEIm,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:99 - `BRepFeat_Builder::CheckSolidImages()`
+    pub fn check_solid_images(&mut self) {
+        unsafe {
+            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_CheckSolidImages(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:102 - `BRepFeat_Builder::FillRemoved()`
+    pub fn fill_removed(&mut self) {
+        unsafe { crate::ffi::BRepFeat_MakeCylindricalHole_inherited_FillRemoved(self as *mut Self) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BOP.hxx`:79 - `BOPAlgo_BOP::Operation()`
@@ -1268,6 +1337,28 @@ impl MakeCylindricalHole {
             )
             .unwrap()
         }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:39 - `BOPAlgo_ToolsProvider::AddTool()`
+    pub fn add_tool(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+        unsafe {
+            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_AddTool(self as *mut Self, theShape)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:42 - `BOPAlgo_ToolsProvider::SetTools()`
+    pub fn set_tools(&mut self, theShapes: &crate::ffi::TopTools_ListOfShape) {
+        unsafe {
+            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_SetTools(
+                self as *mut Self,
+                theShapes,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:45 - `BOPAlgo_ToolsProvider::Tools()`
+    pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Tools(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
@@ -1575,97 +1666,6 @@ impl MakeCylindricalHole {
     pub fn use_obb(&self) -> bool {
         unsafe { crate::ffi::BRepFeat_MakeCylindricalHole_inherited_UseOBB(self as *const Self) }
     }
-
-    /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:39 - `BOPAlgo_ToolsProvider::AddTool()`
-    pub fn add_tool(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
-        unsafe {
-            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_AddTool(self as *mut Self, theShape)
-        }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:42 - `BOPAlgo_ToolsProvider::SetTools()`
-    pub fn set_tools(&mut self, theShapes: &crate::ffi::TopTools_ListOfShape) {
-        unsafe {
-            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_SetTools(
-                self as *mut Self,
-                theShapes,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:45 - `BOPAlgo_ToolsProvider::Tools()`
-    pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Tools(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:74 - `BRepFeat_Builder::PartsOfTool()`
-    pub fn parts_of_tool(&mut self, theLT: &mut crate::ffi::TopTools_ListOfShape) {
-        unsafe {
-            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_PartsOfTool(self as *mut Self, theLT)
-        }
-    }
-
-    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:78 - `BRepFeat_Builder::KeepParts()`
-    pub fn keep_parts(&mut self, theIm: &crate::ffi::TopTools_ListOfShape) {
-        unsafe {
-            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_KeepParts(self as *mut Self, theIm)
-        }
-    }
-
-    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:81 - `BRepFeat_Builder::KeepPart()`
-    pub fn keep_part(&mut self, theS: &crate::ffi::TopoDS_Shape) {
-        unsafe {
-            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_KeepPart(self as *mut Self, theS)
-        }
-    }
-
-    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:85 - `BRepFeat_Builder::PerformResult()`
-    pub fn perform_result(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
-        unsafe {
-            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_PerformResult(
-                self as *mut Self,
-                theRange,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:89 - `BRepFeat_Builder::RebuildFaces()`
-    pub fn rebuild_faces(&mut self) {
-        unsafe {
-            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_RebuildFaces(self as *mut Self)
-        }
-    }
-
-    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:92 - `BRepFeat_Builder::RebuildEdge()`
-    pub fn rebuild_edge(
-        &mut self,
-        theE: &crate::ffi::TopoDS_Shape,
-        theF: &crate::ffi::TopoDS_Face,
-        theME: &crate::ffi::TopTools_MapOfShape,
-        aLEIm: &mut crate::ffi::TopTools_ListOfShape,
-    ) {
-        unsafe {
-            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_RebuildEdge(
-                self as *mut Self,
-                theE,
-                theF,
-                theME,
-                aLEIm,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:99 - `BRepFeat_Builder::CheckSolidImages()`
-    pub fn check_solid_images(&mut self) {
-        unsafe {
-            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_CheckSolidImages(self as *mut Self)
-        }
-    }
-
-    /// Inherited: **Source:** `BRepFeat_Builder.hxx`:102 - `BRepFeat_Builder::FillRemoved()`
-    pub fn fill_removed(&mut self) {
-        unsafe { crate::ffi::BRepFeat_MakeCylindricalHole_inherited_FillRemoved(self as *mut Self) }
-    }
 }
 
 // ========================
@@ -1852,18 +1852,14 @@ impl MakeDPrism {
         unsafe { &*(crate::ffi::BRepFeat_MakeDPrism_lat_edges(self as *mut Self)) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        unsafe {
-            &*(crate::ffi::BRepFeat_MakeDPrism_as_BRepBuilderAPI_Command(self as *const Self))
-        }
+    /// Upcast to BRepFeat_Form
+    pub fn as_form(&self) -> &Form {
+        unsafe { &*(crate::ffi::BRepFeat_MakeDPrism_as_BRepFeat_Form(self as *const Self)) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        unsafe {
-            &mut *(crate::ffi::BRepFeat_MakeDPrism_as_BRepBuilderAPI_Command_mut(self as *mut Self))
-        }
+    /// Upcast to BRepFeat_Form (mutable)
+    pub fn as_form_mut(&mut self) -> &mut Form {
+        unsafe { &mut *(crate::ffi::BRepFeat_MakeDPrism_as_BRepFeat_Form_mut(self as *mut Self)) }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
@@ -1884,47 +1880,31 @@ impl MakeDPrism {
         }
     }
 
-    /// Upcast to BRepFeat_Form
-    pub fn as_form(&self) -> &Form {
-        unsafe { &*(crate::ffi::BRepFeat_MakeDPrism_as_BRepFeat_Form(self as *const Self)) }
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        unsafe {
+            &*(crate::ffi::BRepFeat_MakeDPrism_as_BRepBuilderAPI_Command(self as *const Self))
+        }
     }
 
-    /// Upcast to BRepFeat_Form (mutable)
-    pub fn as_form_mut(&mut self) -> &mut Form {
-        unsafe { &mut *(crate::ffi::BRepFeat_MakeDPrism_as_BRepFeat_Form_mut(self as *mut Self)) }
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepFeat_MakeDPrism_as_BRepBuilderAPI_Command_mut(self as *mut Self))
+        }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepFeat_MakeDPrism_inherited_IsDone(self as *const Self) }
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:71 - `BRepFeat_Form::Modified()`
+    pub fn modified(&mut self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepFeat_MakeDPrism_inherited_Modified(self as *mut Self, F)) }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepFeat_MakeDPrism_inherited_Check(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
-        unsafe { crate::ffi::BRepFeat_MakeDPrism_inherited_Build(self as *mut Self, theRange) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
-        unsafe { &*(crate::ffi::BRepFeat_MakeDPrism_inherited_Shape(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:76 - `BRepFeat_Form::Generated()`
     pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_MakeDPrism_inherited_Generated(self as *mut Self, S)) }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
-    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_MakeDPrism_inherited_Modified(self as *mut Self, S)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:79 - `BRepFeat_Form::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepFeat_MakeDPrism_inherited_IsDeleted(self as *mut Self, S) }
     }
@@ -1992,6 +1972,26 @@ impl MakeDPrism {
             )
             .unwrap()
         }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
+    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BRepFeat_MakeDPrism_inherited_Build(self as *mut Self, theRange) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
+    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFeat_MakeDPrism_inherited_Shape(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepFeat_MakeDPrism_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepFeat_MakeDPrism_inherited_Check(self as *const Self) }
     }
 }
 
@@ -2142,19 +2142,15 @@ impl MakeLinearForm {
         }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        unsafe {
-            &*(crate::ffi::BRepFeat_MakeLinearForm_as_BRepBuilderAPI_Command(self as *const Self))
-        }
+    /// Upcast to BRepFeat_RibSlot
+    pub fn as_rib_slot(&self) -> &RibSlot {
+        unsafe { &*(crate::ffi::BRepFeat_MakeLinearForm_as_BRepFeat_RibSlot(self as *const Self)) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+    /// Upcast to BRepFeat_RibSlot (mutable)
+    pub fn as_rib_slot_mut(&mut self) -> &mut RibSlot {
         unsafe {
-            &mut *(crate::ffi::BRepFeat_MakeLinearForm_as_BRepBuilderAPI_Command_mut(
-                self as *mut Self,
-            ))
+            &mut *(crate::ffi::BRepFeat_MakeLinearForm_as_BRepFeat_RibSlot_mut(self as *mut Self))
         }
     }
 
@@ -2176,51 +2172,35 @@ impl MakeLinearForm {
         }
     }
 
-    /// Upcast to BRepFeat_RibSlot
-    pub fn as_rib_slot(&self) -> &RibSlot {
-        unsafe { &*(crate::ffi::BRepFeat_MakeLinearForm_as_BRepFeat_RibSlot(self as *const Self)) }
-    }
-
-    /// Upcast to BRepFeat_RibSlot (mutable)
-    pub fn as_rib_slot_mut(&mut self) -> &mut RibSlot {
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &mut *(crate::ffi::BRepFeat_MakeLinearForm_as_BRepFeat_RibSlot_mut(self as *mut Self))
+            &*(crate::ffi::BRepFeat_MakeLinearForm_as_BRepBuilderAPI_Command(self as *const Self))
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepFeat_MakeLinearForm_inherited_IsDone(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepFeat_MakeLinearForm_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepFeat_MakeLinearForm_inherited_Check(self as *const Self) }
+    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:60 - `BRepFeat_RibSlot::IsDeleted()`
+    pub fn is_deleted(&mut self, F: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepFeat_MakeLinearForm_inherited_IsDeleted(self as *mut Self, F) }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
-        unsafe { crate::ffi::BRepFeat_MakeLinearForm_inherited_Build(self as *mut Self, theRange) }
+    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:63 - `BRepFeat_RibSlot::Modified()`
+    pub fn modified(&mut self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepFeat_MakeLinearForm_inherited_Modified(self as *mut Self, F)) }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
-        unsafe { &*(crate::ffi::BRepFeat_MakeLinearForm_inherited_Shape(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
+    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:67 - `BRepFeat_RibSlot::Generated()`
     pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_MakeLinearForm_inherited_Generated(self as *mut Self, S)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
-    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_MakeLinearForm_inherited_Modified(self as *mut Self, S)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
-    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
-        unsafe { crate::ffi::BRepFeat_MakeLinearForm_inherited_IsDeleted(self as *mut Self, S) }
     }
 
     /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:72 - `BRepFeat_RibSlot::FirstShape()`
@@ -2260,6 +2240,26 @@ impl MakeLinearForm {
             )
             .unwrap()
         }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
+    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BRepFeat_MakeLinearForm_inherited_Build(self as *mut Self, theRange) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
+    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFeat_MakeLinearForm_inherited_Shape(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepFeat_MakeLinearForm_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepFeat_MakeLinearForm_inherited_Check(self as *const Self) }
     }
 }
 
@@ -2395,16 +2395,14 @@ impl MakePipe {
         }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        unsafe { &*(crate::ffi::BRepFeat_MakePipe_as_BRepBuilderAPI_Command(self as *const Self)) }
+    /// Upcast to BRepFeat_Form
+    pub fn as_form(&self) -> &Form {
+        unsafe { &*(crate::ffi::BRepFeat_MakePipe_as_BRepFeat_Form(self as *const Self)) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        unsafe {
-            &mut *(crate::ffi::BRepFeat_MakePipe_as_BRepBuilderAPI_Command_mut(self as *mut Self))
-        }
+    /// Upcast to BRepFeat_Form (mutable)
+    pub fn as_form_mut(&mut self) -> &mut Form {
+        unsafe { &mut *(crate::ffi::BRepFeat_MakePipe_as_BRepFeat_Form_mut(self as *mut Self)) }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
@@ -2423,47 +2421,29 @@ impl MakePipe {
         }
     }
 
-    /// Upcast to BRepFeat_Form
-    pub fn as_form(&self) -> &Form {
-        unsafe { &*(crate::ffi::BRepFeat_MakePipe_as_BRepFeat_Form(self as *const Self)) }
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        unsafe { &*(crate::ffi::BRepFeat_MakePipe_as_BRepBuilderAPI_Command(self as *const Self)) }
     }
 
-    /// Upcast to BRepFeat_Form (mutable)
-    pub fn as_form_mut(&mut self) -> &mut Form {
-        unsafe { &mut *(crate::ffi::BRepFeat_MakePipe_as_BRepFeat_Form_mut(self as *mut Self)) }
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepFeat_MakePipe_as_BRepBuilderAPI_Command_mut(self as *mut Self))
+        }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepFeat_MakePipe_inherited_IsDone(self as *const Self) }
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:71 - `BRepFeat_Form::Modified()`
+    pub fn modified(&mut self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepFeat_MakePipe_inherited_Modified(self as *mut Self, F)) }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepFeat_MakePipe_inherited_Check(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
-        unsafe { crate::ffi::BRepFeat_MakePipe_inherited_Build(self as *mut Self, theRange) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
-        unsafe { &*(crate::ffi::BRepFeat_MakePipe_inherited_Shape(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:76 - `BRepFeat_Form::Generated()`
     pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_MakePipe_inherited_Generated(self as *mut Self, S)) }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
-    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_MakePipe_inherited_Modified(self as *mut Self, S)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:79 - `BRepFeat_Form::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepFeat_MakePipe_inherited_IsDeleted(self as *mut Self, S) }
     }
@@ -2531,6 +2511,26 @@ impl MakePipe {
             )
             .unwrap()
         }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
+    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BRepFeat_MakePipe_inherited_Build(self as *mut Self, theRange) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
+    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFeat_MakePipe_inherited_Shape(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepFeat_MakePipe_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepFeat_MakePipe_inherited_Check(self as *const Self) }
     }
 }
 
@@ -2704,16 +2704,14 @@ impl MakePrism {
         }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        unsafe { &*(crate::ffi::BRepFeat_MakePrism_as_BRepBuilderAPI_Command(self as *const Self)) }
+    /// Upcast to BRepFeat_Form
+    pub fn as_form(&self) -> &Form {
+        unsafe { &*(crate::ffi::BRepFeat_MakePrism_as_BRepFeat_Form(self as *const Self)) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        unsafe {
-            &mut *(crate::ffi::BRepFeat_MakePrism_as_BRepBuilderAPI_Command_mut(self as *mut Self))
-        }
+    /// Upcast to BRepFeat_Form (mutable)
+    pub fn as_form_mut(&mut self) -> &mut Form {
+        unsafe { &mut *(crate::ffi::BRepFeat_MakePrism_as_BRepFeat_Form_mut(self as *mut Self)) }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
@@ -2734,47 +2732,29 @@ impl MakePrism {
         }
     }
 
-    /// Upcast to BRepFeat_Form
-    pub fn as_form(&self) -> &Form {
-        unsafe { &*(crate::ffi::BRepFeat_MakePrism_as_BRepFeat_Form(self as *const Self)) }
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        unsafe { &*(crate::ffi::BRepFeat_MakePrism_as_BRepBuilderAPI_Command(self as *const Self)) }
     }
 
-    /// Upcast to BRepFeat_Form (mutable)
-    pub fn as_form_mut(&mut self) -> &mut Form {
-        unsafe { &mut *(crate::ffi::BRepFeat_MakePrism_as_BRepFeat_Form_mut(self as *mut Self)) }
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepFeat_MakePrism_as_BRepBuilderAPI_Command_mut(self as *mut Self))
+        }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepFeat_MakePrism_inherited_IsDone(self as *const Self) }
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:71 - `BRepFeat_Form::Modified()`
+    pub fn modified(&mut self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepFeat_MakePrism_inherited_Modified(self as *mut Self, F)) }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepFeat_MakePrism_inherited_Check(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
-        unsafe { crate::ffi::BRepFeat_MakePrism_inherited_Build(self as *mut Self, theRange) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
-        unsafe { &*(crate::ffi::BRepFeat_MakePrism_inherited_Shape(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:76 - `BRepFeat_Form::Generated()`
     pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_MakePrism_inherited_Generated(self as *mut Self, S)) }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
-    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_MakePrism_inherited_Modified(self as *mut Self, S)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:79 - `BRepFeat_Form::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepFeat_MakePrism_inherited_IsDeleted(self as *mut Self, S) }
     }
@@ -2842,6 +2822,26 @@ impl MakePrism {
             )
             .unwrap()
         }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
+    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BRepFeat_MakePrism_inherited_Build(self as *mut Self, theRange) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
+    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFeat_MakePrism_inherited_Shape(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepFeat_MakePrism_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepFeat_MakePrism_inherited_Check(self as *const Self) }
     }
 }
 
@@ -2966,16 +2966,14 @@ impl MakeRevol {
         }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        unsafe { &*(crate::ffi::BRepFeat_MakeRevol_as_BRepBuilderAPI_Command(self as *const Self)) }
+    /// Upcast to BRepFeat_Form
+    pub fn as_form(&self) -> &Form {
+        unsafe { &*(crate::ffi::BRepFeat_MakeRevol_as_BRepFeat_Form(self as *const Self)) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        unsafe {
-            &mut *(crate::ffi::BRepFeat_MakeRevol_as_BRepBuilderAPI_Command_mut(self as *mut Self))
-        }
+    /// Upcast to BRepFeat_Form (mutable)
+    pub fn as_form_mut(&mut self) -> &mut Form {
+        unsafe { &mut *(crate::ffi::BRepFeat_MakeRevol_as_BRepFeat_Form_mut(self as *mut Self)) }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
@@ -2996,47 +2994,29 @@ impl MakeRevol {
         }
     }
 
-    /// Upcast to BRepFeat_Form
-    pub fn as_form(&self) -> &Form {
-        unsafe { &*(crate::ffi::BRepFeat_MakeRevol_as_BRepFeat_Form(self as *const Self)) }
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        unsafe { &*(crate::ffi::BRepFeat_MakeRevol_as_BRepBuilderAPI_Command(self as *const Self)) }
     }
 
-    /// Upcast to BRepFeat_Form (mutable)
-    pub fn as_form_mut(&mut self) -> &mut Form {
-        unsafe { &mut *(crate::ffi::BRepFeat_MakeRevol_as_BRepFeat_Form_mut(self as *mut Self)) }
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepFeat_MakeRevol_as_BRepBuilderAPI_Command_mut(self as *mut Self))
+        }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepFeat_MakeRevol_inherited_IsDone(self as *const Self) }
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:71 - `BRepFeat_Form::Modified()`
+    pub fn modified(&mut self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BRepFeat_MakeRevol_inherited_Modified(self as *mut Self, F)) }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepFeat_MakeRevol_inherited_Check(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
-        unsafe { crate::ffi::BRepFeat_MakeRevol_inherited_Build(self as *mut Self, theRange) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
-        unsafe { &*(crate::ffi::BRepFeat_MakeRevol_inherited_Shape(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:76 - `BRepFeat_Form::Generated()`
     pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_MakeRevol_inherited_Generated(self as *mut Self, S)) }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
-    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::ffi::BRepFeat_MakeRevol_inherited_Modified(self as *mut Self, S)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
+    /// Inherited: **Source:** `BRepFeat_Form.hxx`:79 - `BRepFeat_Form::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepFeat_MakeRevol_inherited_IsDeleted(self as *mut Self, S) }
     }
@@ -3104,6 +3084,26 @@ impl MakeRevol {
             )
             .unwrap()
         }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
+    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe { crate::ffi::BRepFeat_MakeRevol_inherited_Build(self as *mut Self, theRange) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
+    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFeat_MakeRevol_inherited_Shape(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepFeat_MakeRevol_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepFeat_MakeRevol_inherited_Check(self as *const Self) }
     }
 }
 
@@ -3235,19 +3235,17 @@ impl MakeRevolutionForm {
         }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+    /// Upcast to BRepFeat_RibSlot
+    pub fn as_rib_slot(&self) -> &RibSlot {
         unsafe {
-            &*(crate::ffi::BRepFeat_MakeRevolutionForm_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*(crate::ffi::BRepFeat_MakeRevolutionForm_as_BRepFeat_RibSlot(self as *const Self))
         }
     }
 
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+    /// Upcast to BRepFeat_RibSlot (mutable)
+    pub fn as_rib_slot_mut(&mut self) -> &mut RibSlot {
         unsafe {
-            &mut *(crate::ffi::BRepFeat_MakeRevolutionForm_as_BRepBuilderAPI_Command_mut(
+            &mut *(crate::ffi::BRepFeat_MakeRevolutionForm_as_BRepFeat_RibSlot_mut(
                 self as *mut Self,
             ))
         }
@@ -3273,61 +3271,41 @@ impl MakeRevolutionForm {
         }
     }
 
-    /// Upcast to BRepFeat_RibSlot
-    pub fn as_rib_slot(&self) -> &RibSlot {
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*(crate::ffi::BRepFeat_MakeRevolutionForm_as_BRepFeat_RibSlot(self as *const Self))
+            &*(crate::ffi::BRepFeat_MakeRevolutionForm_as_BRepBuilderAPI_Command(
+                self as *const Self,
+            ))
         }
     }
 
-    /// Upcast to BRepFeat_RibSlot (mutable)
-    pub fn as_rib_slot_mut(&mut self) -> &mut RibSlot {
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
-            &mut *(crate::ffi::BRepFeat_MakeRevolutionForm_as_BRepFeat_RibSlot_mut(
+            &mut *(crate::ffi::BRepFeat_MakeRevolutionForm_as_BRepBuilderAPI_Command_mut(
                 self as *mut Self,
             ))
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepFeat_MakeRevolutionForm_inherited_IsDone(self as *const Self) }
+    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:60 - `BRepFeat_RibSlot::IsDeleted()`
+    pub fn is_deleted(&mut self, F: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::BRepFeat_MakeRevolutionForm_inherited_IsDeleted(self as *mut Self, F) }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepFeat_MakeRevolutionForm_inherited_Check(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:63 - `BRepFeat_RibSlot::Modified()`
+    pub fn modified(&mut self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
-            crate::ffi::BRepFeat_MakeRevolutionForm_inherited_Build(self as *mut Self, theRange)
+            &*(crate::ffi::BRepFeat_MakeRevolutionForm_inherited_Modified(self as *mut Self, F))
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
-        unsafe { &*(crate::ffi::BRepFeat_MakeRevolutionForm_inherited_Shape(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
+    /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:67 - `BRepFeat_RibSlot::Generated()`
     pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BRepFeat_MakeRevolutionForm_inherited_Generated(self as *mut Self, S))
         }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
-    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe {
-            &*(crate::ffi::BRepFeat_MakeRevolutionForm_inherited_Modified(self as *mut Self, S))
-        }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
-    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
-        unsafe { crate::ffi::BRepFeat_MakeRevolutionForm_inherited_IsDeleted(self as *mut Self, S) }
     }
 
     /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:72 - `BRepFeat_RibSlot::FirstShape()`
@@ -3375,6 +3353,28 @@ impl MakeRevolutionForm {
             )
             .unwrap()
         }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
+    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+        unsafe {
+            crate::ffi::BRepFeat_MakeRevolutionForm_inherited_Build(self as *mut Self, theRange)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
+    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFeat_MakeRevolutionForm_inherited_Shape(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepFeat_MakeRevolutionForm_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepFeat_MakeRevolutionForm_inherited_Check(self as *const Self) }
     }
 }
 
@@ -3499,18 +3499,6 @@ impl RibSlot {
         }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        unsafe { &*(crate::ffi::BRepFeat_RibSlot_as_BRepBuilderAPI_Command(self as *const Self)) }
-    }
-
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        unsafe {
-            &mut *(crate::ffi::BRepFeat_RibSlot_as_BRepBuilderAPI_Command_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe { &*(crate::ffi::BRepFeat_RibSlot_as_BRepBuilderAPI_MakeShape(self as *const Self)) }
@@ -3525,14 +3513,16 @@ impl RibSlot {
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepFeat_RibSlot_inherited_IsDone(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        unsafe { &*(crate::ffi::BRepFeat_RibSlot_as_BRepBuilderAPI_Command(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepFeat_RibSlot_inherited_Check(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepFeat_RibSlot_as_BRepBuilderAPI_Command_mut(self as *mut Self))
+        }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
@@ -3543,6 +3533,16 @@ impl RibSlot {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
         unsafe { &*(crate::ffi::BRepFeat_RibSlot_inherited_Shape(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepFeat_RibSlot_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepFeat_RibSlot_inherited_Check(self as *const Self) }
     }
 }
 
@@ -3683,20 +3683,6 @@ impl SplitShape {
         unsafe { &*(crate::ffi::BRepFeat_SplitShape_modified(self as *mut Self, F)) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        unsafe {
-            &*(crate::ffi::BRepFeat_SplitShape_as_BRepBuilderAPI_Command(self as *const Self))
-        }
-    }
-
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        unsafe {
-            &mut *(crate::ffi::BRepFeat_SplitShape_as_BRepBuilderAPI_Command_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
@@ -3715,14 +3701,18 @@ impl SplitShape {
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepFeat_SplitShape_inherited_IsDone(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        unsafe {
+            &*(crate::ffi::BRepFeat_SplitShape_as_BRepBuilderAPI_Command(self as *const Self))
+        }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepFeat_SplitShape_inherited_Check(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepFeat_SplitShape_as_BRepBuilderAPI_Command_mut(self as *mut Self))
+        }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
@@ -3733,5 +3723,15 @@ impl SplitShape {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
     pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_SplitShape_inherited_Generated(self as *mut Self, S)) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepFeat_SplitShape_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepFeat_SplitShape_inherited_Check(self as *const Self) }
     }
 }

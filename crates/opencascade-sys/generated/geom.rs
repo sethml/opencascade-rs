@@ -3710,16 +3710,6 @@ impl BSplineSurface {
         }
     }
 
-    /// Upcast to Geom_Geometry
-    pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::Geom_BSplineSurface_as_Geom_Geometry(self as *const Self)) }
-    }
-
-    /// Upcast to Geom_Geometry (mutable)
-    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe { &mut *(crate::ffi::Geom_BSplineSurface_as_Geom_Geometry_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Geom_Surface
     pub fn as_surface(&self) -> &Surface {
         unsafe { &*(crate::ffi::Geom_BSplineSurface_as_Geom_Surface(self as *const Self)) }
@@ -3730,12 +3720,88 @@ impl BSplineSurface {
         unsafe { &mut *(crate::ffi::Geom_BSplineSurface_as_Geom_Surface_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        unsafe { &*(crate::ffi::Geom_BSplineSurface_as_Geom_Geometry(self as *const Self)) }
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+        unsafe { &mut *(crate::ffi::Geom_BSplineSurface_as_Geom_Geometry_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_BSplineSurface_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
+    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_BSplineSurface_inherited_UReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
+    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_BSplineSurface_inherited_VReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:113 - `Geom_Surface::TransformParameters()`
+    pub fn transform_parameters(&self, U: &mut f64, V: &mut f64, T: &crate::ffi::gp_Trsf) {
+        unsafe {
+            crate::ffi::Geom_BSplineSurface_inherited_TransformParameters(
+                self as *const Self,
+                U,
+                V,
+                T,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:135 - `Geom_Surface::ParametricTransformation()`
+    pub fn parametric_transformation(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> crate::OwnedPtr<crate::ffi::gp_GTrsf2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Geom_BSplineSurface_inherited_ParametricTransformation(
+                    self as *const Self,
+                    T,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
+    pub fn u_period(&self) -> f64 {
+        unsafe { crate::ffi::Geom_BSplineSurface_inherited_UPeriod(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
+    pub fn v_period(&self) -> f64 {
+        unsafe { crate::ffi::Geom_BSplineSurface_inherited_VPeriod(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
+    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_BSplineSurface_inherited_Value(
+                self as *const Self,
+                U,
+                V,
+            ))
         }
     }
 
@@ -3827,72 +3893,6 @@ impl BSplineSurface {
             ))
         }
     }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
-    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_BSplineSurface_inherited_UReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
-    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_BSplineSurface_inherited_VReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:113 - `Geom_Surface::TransformParameters()`
-    pub fn transform_parameters(&self, U: &mut f64, V: &mut f64, T: &crate::ffi::gp_Trsf) {
-        unsafe {
-            crate::ffi::Geom_BSplineSurface_inherited_TransformParameters(
-                self as *const Self,
-                U,
-                V,
-                T,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:135 - `Geom_Surface::ParametricTransformation()`
-    pub fn parametric_transformation(
-        &self,
-        T: &crate::ffi::gp_Trsf,
-    ) -> crate::OwnedPtr<crate::ffi::gp_GTrsf2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Geom_BSplineSurface_inherited_ParametricTransformation(
-                    self as *const Self,
-                    T,
-                ),
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
-    pub fn u_period(&self) -> f64 {
-        unsafe { crate::ffi::Geom_BSplineSurface_inherited_UPeriod(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
-    pub fn v_period(&self) -> f64 {
-        unsafe { crate::ffi::Geom_BSplineSurface_inherited_VPeriod(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
-    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_BSplineSurface_inherited_Value(
-                self as *const Self,
-                U,
-                V,
-            ))
-        }
-    }
 }
 
 pub use crate::ffi::HandleGeomBSplineSurface;
@@ -3927,19 +3927,19 @@ impl HandleGeomBSplineSurface {
         }
     }
 
-    /// Upcast Handle<Geom_BSplineSurface> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    /// Upcast Handle<Geom_BSplineSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomBSplineSurface_to_HandleGeomGeometry(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomBSplineSurface_to_HandleGeomSurface(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast Handle<Geom_BSplineSurface> to Handle<Geom_Surface>
-    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    /// Upcast Handle<Geom_BSplineSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomBSplineSurface_to_HandleGeomSurface(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomBSplineSurface_to_HandleGeomGeometry(
                 self as *const Self,
             ))
         }
@@ -5293,16 +5293,6 @@ impl BezierSurface {
         }
     }
 
-    /// Upcast to Geom_Geometry
-    pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::Geom_BezierSurface_as_Geom_Geometry(self as *const Self)) }
-    }
-
-    /// Upcast to Geom_Geometry (mutable)
-    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe { &mut *(crate::ffi::Geom_BezierSurface_as_Geom_Geometry_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Geom_Surface
     pub fn as_surface(&self) -> &Surface {
         unsafe { &*(crate::ffi::Geom_BezierSurface_as_Geom_Surface(self as *const Self)) }
@@ -5313,12 +5303,88 @@ impl BezierSurface {
         unsafe { &mut *(crate::ffi::Geom_BezierSurface_as_Geom_Surface_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        unsafe { &*(crate::ffi::Geom_BezierSurface_as_Geom_Geometry(self as *const Self)) }
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+        unsafe { &mut *(crate::ffi::Geom_BezierSurface_as_Geom_Geometry_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_BezierSurface_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
+    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_BezierSurface_inherited_UReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
+    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_BezierSurface_inherited_VReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:113 - `Geom_Surface::TransformParameters()`
+    pub fn transform_parameters(&self, U: &mut f64, V: &mut f64, T: &crate::ffi::gp_Trsf) {
+        unsafe {
+            crate::ffi::Geom_BezierSurface_inherited_TransformParameters(
+                self as *const Self,
+                U,
+                V,
+                T,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:135 - `Geom_Surface::ParametricTransformation()`
+    pub fn parametric_transformation(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> crate::OwnedPtr<crate::ffi::gp_GTrsf2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Geom_BezierSurface_inherited_ParametricTransformation(
+                    self as *const Self,
+                    T,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
+    pub fn u_period(&self) -> f64 {
+        unsafe { crate::ffi::Geom_BezierSurface_inherited_UPeriod(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
+    pub fn v_period(&self) -> f64 {
+        unsafe { crate::ffi::Geom_BezierSurface_inherited_VPeriod(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
+    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_BezierSurface_inherited_Value(
+                self as *const Self,
+                U,
+                V,
+            ))
         }
     }
 
@@ -5410,72 +5476,6 @@ impl BezierSurface {
             ))
         }
     }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
-    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_BezierSurface_inherited_UReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
-    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_BezierSurface_inherited_VReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:113 - `Geom_Surface::TransformParameters()`
-    pub fn transform_parameters(&self, U: &mut f64, V: &mut f64, T: &crate::ffi::gp_Trsf) {
-        unsafe {
-            crate::ffi::Geom_BezierSurface_inherited_TransformParameters(
-                self as *const Self,
-                U,
-                V,
-                T,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:135 - `Geom_Surface::ParametricTransformation()`
-    pub fn parametric_transformation(
-        &self,
-        T: &crate::ffi::gp_Trsf,
-    ) -> crate::OwnedPtr<crate::ffi::gp_GTrsf2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Geom_BezierSurface_inherited_ParametricTransformation(
-                    self as *const Self,
-                    T,
-                ),
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
-    pub fn u_period(&self) -> f64 {
-        unsafe { crate::ffi::Geom_BezierSurface_inherited_UPeriod(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
-    pub fn v_period(&self) -> f64 {
-        unsafe { crate::ffi::Geom_BezierSurface_inherited_VPeriod(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
-    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_BezierSurface_inherited_Value(
-                self as *const Self,
-                U,
-                V,
-            ))
-        }
-    }
 }
 
 pub use crate::ffi::HandleGeomBezierSurface;
@@ -5510,19 +5510,19 @@ impl HandleGeomBezierSurface {
         }
     }
 
-    /// Upcast Handle<Geom_BezierSurface> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    /// Upcast Handle<Geom_BezierSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomBezierSurface_to_HandleGeomGeometry(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomBezierSurface_to_HandleGeomSurface(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast Handle<Geom_BezierSurface> to Handle<Geom_Surface>
-    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    /// Upcast Handle<Geom_BezierSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomBezierSurface_to_HandleGeomSurface(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomBezierSurface_to_HandleGeomGeometry(
                 self as *const Self,
             ))
         }
@@ -5996,16 +5996,6 @@ impl BoundedSurface {
         unsafe { &*(crate::ffi::Geom_BoundedSurface_get_type_descriptor()) }
     }
 
-    /// Upcast to Geom_Geometry
-    pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::Geom_BoundedSurface_as_Geom_Geometry(self as *const Self)) }
-    }
-
-    /// Upcast to Geom_Geometry (mutable)
-    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe { &mut *(crate::ffi::Geom_BoundedSurface_as_Geom_Geometry_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Geom_Surface
     pub fn as_surface(&self) -> &Surface {
         unsafe { &*(crate::ffi::Geom_BoundedSurface_as_Geom_Surface(self as *const Self)) }
@@ -6016,107 +6006,14 @@ impl BoundedSurface {
         unsafe { &mut *(crate::ffi::Geom_BoundedSurface_as_Geom_Surface_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
-    pub fn mirror(&mut self, P: &crate::ffi::gp_Pnt) {
-        unsafe { crate::ffi::Geom_BoundedSurface_inherited_Mirror(self as *mut Self, P) }
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        unsafe { &*(crate::ffi::Geom_BoundedSurface_as_Geom_Geometry(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:72 - `Geom_Geometry::Rotate()`
-    pub fn rotate(&mut self, A1: &crate::ffi::gp_Ax1, Ang: f64) {
-        unsafe { crate::ffi::Geom_BoundedSurface_inherited_Rotate(self as *mut Self, A1, Ang) }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:75 - `Geom_Geometry::Scale()`
-    pub fn scale(&mut self, P: &crate::ffi::gp_Pnt, S: f64) {
-        unsafe { crate::ffi::Geom_BoundedSurface_inherited_Scale(self as *mut Self, P, S) }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::ffi::gp_Vec) {
-        unsafe { crate::ffi::Geom_BoundedSurface_inherited_Translate(self as *mut Self, V) }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:88 - `Geom_Geometry::Transform()`
-    pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
-        unsafe { crate::ffi::Geom_BoundedSurface_inherited_Transform(self as *mut Self, T) }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:90 - `Geom_Geometry::Mirrored()`
-    pub fn mirrored(
-        &self,
-        P: &crate::ffi::gp_Pnt,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_BoundedSurface_inherited_Mirrored(
-                self as *const Self,
-                P,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:96 - `Geom_Geometry::Rotated()`
-    pub fn rotated(
-        &self,
-        A1: &crate::ffi::gp_Ax1,
-        Ang: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_BoundedSurface_inherited_Rotated(
-                self as *const Self,
-                A1,
-                Ang,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:99 - `Geom_Geometry::Scaled()`
-    pub fn scaled(
-        &self,
-        P: &crate::ffi::gp_Pnt,
-        S: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_BoundedSurface_inherited_Scaled(
-                self as *const Self,
-                P,
-                S,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:102 - `Geom_Geometry::Transformed()`
-    pub fn transformed(
-        &self,
-        T: &crate::ffi::gp_Trsf,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_BoundedSurface_inherited_Transformed(
-                self as *const Self,
-                T,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
-    pub fn translated(
-        &self,
-        V: &crate::ffi::gp_Vec,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_BoundedSurface_inherited_Translated(
-                self as *const Self,
-                V,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:110 - `Geom_Geometry::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_BoundedSurface_inherited_Copy(
-                self as *const Self,
-            ))
-        }
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+        unsafe { &mut *(crate::ffi::Geom_BoundedSurface_as_Geom_Geometry_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Geom_Surface.hxx`:58 - `Geom_Surface::UReverse()`
@@ -6369,6 +6266,109 @@ impl BoundedSurface {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
+    pub fn mirror(&mut self, P: &crate::ffi::gp_Pnt) {
+        unsafe { crate::ffi::Geom_BoundedSurface_inherited_Mirror(self as *mut Self, P) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:72 - `Geom_Geometry::Rotate()`
+    pub fn rotate(&mut self, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        unsafe { crate::ffi::Geom_BoundedSurface_inherited_Rotate(self as *mut Self, A1, Ang) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:75 - `Geom_Geometry::Scale()`
+    pub fn scale(&mut self, P: &crate::ffi::gp_Pnt, S: f64) {
+        unsafe { crate::ffi::Geom_BoundedSurface_inherited_Scale(self as *mut Self, P, S) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
+    pub fn translate(&mut self, V: &crate::ffi::gp_Vec) {
+        unsafe { crate::ffi::Geom_BoundedSurface_inherited_Translate(self as *mut Self, V) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:88 - `Geom_Geometry::Transform()`
+    pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
+        unsafe { crate::ffi::Geom_BoundedSurface_inherited_Transform(self as *mut Self, T) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:90 - `Geom_Geometry::Mirrored()`
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_BoundedSurface_inherited_Mirrored(
+                self as *const Self,
+                P,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:96 - `Geom_Geometry::Rotated()`
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_BoundedSurface_inherited_Rotated(
+                self as *const Self,
+                A1,
+                Ang,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:99 - `Geom_Geometry::Scaled()`
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_BoundedSurface_inherited_Scaled(
+                self as *const Self,
+                P,
+                S,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:102 - `Geom_Geometry::Transformed()`
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_BoundedSurface_inherited_Transformed(
+                self as *const Self,
+                T,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_BoundedSurface_inherited_Translated(
+                self as *const Self,
+                V,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:110 - `Geom_Geometry::Copy()`
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_BoundedSurface_inherited_Copy(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
 pub use crate::ffi::HandleGeomBoundedSurface;
@@ -6390,19 +6390,19 @@ impl HandleGeomBoundedSurface {
         unsafe { &mut *(crate::ffi::HandleGeomBoundedSurface_get_mut(self as *mut Self)) }
     }
 
-    /// Upcast Handle<Geom_BoundedSurface> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    /// Upcast Handle<Geom_BoundedSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomBoundedSurface_to_HandleGeomGeometry(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomBoundedSurface_to_HandleGeomSurface(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast Handle<Geom_BoundedSurface> to Handle<Geom_Surface>
-    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    /// Upcast Handle<Geom_BoundedSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomBoundedSurface_to_HandleGeomSurface(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomBoundedSurface_to_HandleGeomGeometry(
                 self as *const Self,
             ))
         }
@@ -6588,16 +6588,6 @@ impl CartesianPoint {
         unsafe { &*(crate::ffi::Geom_CartesianPoint_get_type_descriptor()) }
     }
 
-    /// Upcast to Geom_Geometry
-    pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::Geom_CartesianPoint_as_Geom_Geometry(self as *const Self)) }
-    }
-
-    /// Upcast to Geom_Geometry (mutable)
-    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe { &mut *(crate::ffi::Geom_CartesianPoint_as_Geom_Geometry_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Geom_Point
     pub fn as_point(&self) -> &Point {
         unsafe { &*(crate::ffi::Geom_CartesianPoint_as_Geom_Point(self as *const Self)) }
@@ -6608,12 +6598,34 @@ impl CartesianPoint {
         unsafe { &mut *(crate::ffi::Geom_CartesianPoint_as_Geom_Point_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        unsafe { &*(crate::ffi::Geom_CartesianPoint_as_Geom_Geometry(self as *const Self)) }
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+        unsafe { &mut *(crate::ffi::Geom_CartesianPoint_as_Geom_Geometry_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomCartesianPoint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_CartesianPoint_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Point.hxx`:56 - `Geom_Point::Distance()`
+    pub fn distance(&self, Other: &crate::ffi::HandleGeomPoint) -> f64 {
+        unsafe { crate::ffi::Geom_CartesianPoint_inherited_Distance(self as *const Self, Other) }
+    }
+
+    /// Inherited: **Source:** `Geom_Point.hxx`:59 - `Geom_Point::SquareDistance()`
+    pub fn square_distance(&self, Other: &crate::ffi::HandleGeomPoint) -> f64 {
+        unsafe {
+            crate::ffi::Geom_CartesianPoint_inherited_SquareDistance(self as *const Self, Other)
         }
     }
 
@@ -6705,18 +6717,6 @@ impl CartesianPoint {
             ))
         }
     }
-
-    /// Inherited: **Source:** `Geom_Point.hxx`:56 - `Geom_Point::Distance()`
-    pub fn distance(&self, Other: &crate::ffi::HandleGeomPoint) -> f64 {
-        unsafe { crate::ffi::Geom_CartesianPoint_inherited_Distance(self as *const Self, Other) }
-    }
-
-    /// Inherited: **Source:** `Geom_Point.hxx`:59 - `Geom_Point::SquareDistance()`
-    pub fn square_distance(&self, Other: &crate::ffi::HandleGeomPoint) -> f64 {
-        unsafe {
-            crate::ffi::Geom_CartesianPoint_inherited_SquareDistance(self as *const Self, Other)
-        }
-    }
 }
 
 pub use crate::ffi::HandleGeomCartesianPoint;
@@ -6738,19 +6738,19 @@ impl HandleGeomCartesianPoint {
         unsafe { &mut *(crate::ffi::HandleGeomCartesianPoint_get_mut(self as *mut Self)) }
     }
 
-    /// Upcast Handle<Geom_CartesianPoint> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    /// Upcast Handle<Geom_CartesianPoint> to Handle<Geom_Point>
+    pub fn to_handle_point(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomPoint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomCartesianPoint_to_HandleGeomGeometry(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomCartesianPoint_to_HandleGeomPoint(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast Handle<Geom_CartesianPoint> to Handle<Geom_Point>
-    pub fn to_handle_point(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomPoint> {
+    /// Upcast Handle<Geom_CartesianPoint> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomCartesianPoint_to_HandleGeomPoint(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomCartesianPoint_to_HandleGeomGeometry(
                 self as *const Self,
             ))
         }
@@ -8194,16 +8194,6 @@ impl ConicalSurface {
         }
     }
 
-    /// Upcast to Geom_Geometry
-    pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::Geom_ConicalSurface_as_Geom_Geometry(self as *const Self)) }
-    }
-
-    /// Upcast to Geom_Geometry (mutable)
-    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe { &mut *(crate::ffi::Geom_ConicalSurface_as_Geom_Geometry_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Geom_Surface
     pub fn as_surface(&self) -> &Surface {
         unsafe { &*(crate::ffi::Geom_ConicalSurface_as_Geom_Surface(self as *const Self)) }
@@ -8212,6 +8202,16 @@ impl ConicalSurface {
     /// Upcast to Geom_Surface (mutable)
     pub fn as_surface_mut(&mut self) -> &mut Surface {
         unsafe { &mut *(crate::ffi::Geom_ConicalSurface_as_Geom_Surface_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        unsafe { &*(crate::ffi::Geom_ConicalSurface_as_Geom_Geometry(self as *const Self)) }
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+        unsafe { &mut *(crate::ffi::Geom_ConicalSurface_as_Geom_Geometry_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -8276,6 +8276,45 @@ impl ConicalSurface {
     /// Inherited: **Source:** `Geom_ElementarySurface.hxx`:120 - `Geom_ElementarySurface::IsCNv()`
     pub fn is_c_nv(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom_ConicalSurface_inherited_IsCNv(self as *const Self, N) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
+    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_ConicalSurface_inherited_UReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
+    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_ConicalSurface_inherited_VReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
+    pub fn u_period(&self) -> f64 {
+        unsafe { crate::ffi::Geom_ConicalSurface_inherited_UPeriod(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
+    pub fn v_period(&self) -> f64 {
+        unsafe { crate::ffi::Geom_ConicalSurface_inherited_VPeriod(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
+    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_ConicalSurface_inherited_Value(
+                self as *const Self,
+                U,
+                V,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
@@ -8366,45 +8405,6 @@ impl ConicalSurface {
             ))
         }
     }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
-    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_ConicalSurface_inherited_UReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
-    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_ConicalSurface_inherited_VReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
-    pub fn u_period(&self) -> f64 {
-        unsafe { crate::ffi::Geom_ConicalSurface_inherited_UPeriod(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
-    pub fn v_period(&self) -> f64 {
-        unsafe { crate::ffi::Geom_ConicalSurface_inherited_VPeriod(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
-    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_ConicalSurface_inherited_Value(
-                self as *const Self,
-                U,
-                V,
-            ))
-        }
-    }
 }
 
 pub use crate::ffi::HandleGeomConicalSurface;
@@ -8439,19 +8439,19 @@ impl HandleGeomConicalSurface {
         }
     }
 
-    /// Upcast Handle<Geom_ConicalSurface> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    /// Upcast Handle<Geom_ConicalSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomConicalSurface_to_HandleGeomGeometry(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomConicalSurface_to_HandleGeomSurface(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast Handle<Geom_ConicalSurface> to Handle<Geom_Surface>
-    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    /// Upcast Handle<Geom_ConicalSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomConicalSurface_to_HandleGeomSurface(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomConicalSurface_to_HandleGeomGeometry(
                 self as *const Self,
             ))
         }
@@ -9427,18 +9427,6 @@ impl CylindricalSurface {
         }
     }
 
-    /// Upcast to Geom_Geometry
-    pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::Geom_CylindricalSurface_as_Geom_Geometry(self as *const Self)) }
-    }
-
-    /// Upcast to Geom_Geometry (mutable)
-    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe {
-            &mut *(crate::ffi::Geom_CylindricalSurface_as_Geom_Geometry_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to Geom_Surface
     pub fn as_surface(&self) -> &Surface {
         unsafe { &*(crate::ffi::Geom_CylindricalSurface_as_Geom_Surface(self as *const Self)) }
@@ -9448,6 +9436,18 @@ impl CylindricalSurface {
     pub fn as_surface_mut(&mut self) -> &mut Surface {
         unsafe {
             &mut *(crate::ffi::Geom_CylindricalSurface_as_Geom_Surface_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        unsafe { &*(crate::ffi::Geom_CylindricalSurface_as_Geom_Geometry(self as *const Self)) }
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+        unsafe {
+            &mut *(crate::ffi::Geom_CylindricalSurface_as_Geom_Geometry_mut(self as *mut Self))
         }
     }
 
@@ -9522,6 +9522,45 @@ impl CylindricalSurface {
     /// Inherited: **Source:** `Geom_ElementarySurface.hxx`:120 - `Geom_ElementarySurface::IsCNv()`
     pub fn is_c_nv(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom_CylindricalSurface_inherited_IsCNv(self as *const Self, N) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
+    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_CylindricalSurface_inherited_UReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
+    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_CylindricalSurface_inherited_VReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
+    pub fn u_period(&self) -> f64 {
+        unsafe { crate::ffi::Geom_CylindricalSurface_inherited_UPeriod(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
+    pub fn v_period(&self) -> f64 {
+        unsafe { crate::ffi::Geom_CylindricalSurface_inherited_VPeriod(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
+    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_CylindricalSurface_inherited_Value(
+                self as *const Self,
+                U,
+                V,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
@@ -9612,45 +9651,6 @@ impl CylindricalSurface {
             ))
         }
     }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
-    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_CylindricalSurface_inherited_UReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
-    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_CylindricalSurface_inherited_VReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
-    pub fn u_period(&self) -> f64 {
-        unsafe { crate::ffi::Geom_CylindricalSurface_inherited_UPeriod(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
-    pub fn v_period(&self) -> f64 {
-        unsafe { crate::ffi::Geom_CylindricalSurface_inherited_VPeriod(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
-    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_CylindricalSurface_inherited_Value(
-                self as *const Self,
-                U,
-                V,
-            ))
-        }
-    }
 }
 
 pub use crate::ffi::HandleGeomCylindricalSurface;
@@ -9685,20 +9685,20 @@ impl HandleGeomCylindricalSurface {
         }
     }
 
-    /// Upcast Handle<Geom_CylindricalSurface> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleGeomCylindricalSurface_to_HandleGeomGeometry(self as *const Self),
-            )
-        }
-    }
-
     /// Upcast Handle<Geom_CylindricalSurface> to Handle<Geom_Surface>
     pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HandleGeomCylindricalSurface_to_HandleGeomSurface(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<Geom_CylindricalSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomCylindricalSurface_to_HandleGeomGeometry(self as *const Self),
             )
         }
     }
@@ -9881,16 +9881,6 @@ impl Direction {
         unsafe { &*(crate::ffi::Geom_Direction_get_type_descriptor()) }
     }
 
-    /// Upcast to Geom_Geometry
-    pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::Geom_Direction_as_Geom_Geometry(self as *const Self)) }
-    }
-
-    /// Upcast to Geom_Geometry (mutable)
-    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe { &mut *(crate::ffi::Geom_Direction_as_Geom_Geometry_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Geom_Vector
     pub fn as_vector(&self) -> &Vector {
         unsafe { &*(crate::ffi::Geom_Direction_as_Geom_Vector(self as *const Self)) }
@@ -9901,11 +9891,90 @@ impl Direction {
         unsafe { &mut *(crate::ffi::Geom_Direction_as_Geom_Vector_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        unsafe { &*(crate::ffi::Geom_Direction_as_Geom_Geometry(self as *const Self)) }
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+        unsafe { &mut *(crate::ffi::Geom_Direction_as_Geom_Geometry_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomDirection> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Direction_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:38 - `Geom_Vector::Reverse()`
+    pub fn reverse(&mut self) {
+        unsafe { crate::ffi::Geom_Direction_inherited_Reverse(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:41 - `Geom_Vector::Reversed()`
+    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomVector> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_Direction_inherited_Reversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:51 - `Geom_Vector::Angle()`
+    pub fn angle(&self, Other: &crate::ffi::HandleGeomVector) -> f64 {
+        unsafe { crate::ffi::Geom_Direction_inherited_Angle(self as *const Self, Other) }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:67 - `Geom_Vector::AngleWithRef()`
+    pub fn angle_with_ref(
+        &self,
+        Other: &crate::ffi::HandleGeomVector,
+        VRef: &crate::ffi::HandleGeomVector,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::Geom_Direction_inherited_AngleWithRef(self as *const Self, Other, VRef)
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:71 - `Geom_Vector::Coord()`
+    pub fn coord(&self, X: &mut f64, Y: &mut f64, Z: &mut f64) {
+        unsafe { crate::ffi::Geom_Direction_inherited_Coord(self as *const Self, X, Y, Z) }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:80 - `Geom_Vector::X()`
+    pub fn x(&self) -> f64 {
+        unsafe { crate::ffi::Geom_Direction_inherited_X(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:83 - `Geom_Vector::Y()`
+    pub fn y(&self) -> f64 {
+        unsafe { crate::ffi::Geom_Direction_inherited_Y(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:86 - `Geom_Vector::Z()`
+    pub fn z(&self) -> f64 {
+        unsafe { crate::ffi::Geom_Direction_inherited_Z(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:118 - `Geom_Vector::Dot()`
+    pub fn dot(&self, Other: &crate::ffi::HandleGeomVector) -> f64 {
+        unsafe { crate::ffi::Geom_Direction_inherited_Dot(self as *const Self, Other) }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:121 - `Geom_Vector::DotCross()`
+    pub fn dot_cross(
+        &self,
+        V1: &crate::ffi::HandleGeomVector,
+        V2: &crate::ffi::HandleGeomVector,
+    ) -> f64 {
+        unsafe { crate::ffi::Geom_Direction_inherited_DotCross(self as *const Self, V1, V2) }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:125 - `Geom_Vector::Vec()`
+    pub fn vec(&self) -> &crate::ffi::gp_Vec {
+        unsafe { &*(crate::ffi::Geom_Direction_inherited_Vec(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
@@ -9996,75 +10065,6 @@ impl Direction {
             ))
         }
     }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:38 - `Geom_Vector::Reverse()`
-    pub fn reverse(&mut self) {
-        unsafe { crate::ffi::Geom_Direction_inherited_Reverse(self as *mut Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:41 - `Geom_Vector::Reversed()`
-    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomVector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_Direction_inherited_Reversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:51 - `Geom_Vector::Angle()`
-    pub fn angle(&self, Other: &crate::ffi::HandleGeomVector) -> f64 {
-        unsafe { crate::ffi::Geom_Direction_inherited_Angle(self as *const Self, Other) }
-    }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:67 - `Geom_Vector::AngleWithRef()`
-    pub fn angle_with_ref(
-        &self,
-        Other: &crate::ffi::HandleGeomVector,
-        VRef: &crate::ffi::HandleGeomVector,
-    ) -> f64 {
-        unsafe {
-            crate::ffi::Geom_Direction_inherited_AngleWithRef(self as *const Self, Other, VRef)
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:71 - `Geom_Vector::Coord()`
-    pub fn coord(&self, X: &mut f64, Y: &mut f64, Z: &mut f64) {
-        unsafe { crate::ffi::Geom_Direction_inherited_Coord(self as *const Self, X, Y, Z) }
-    }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:80 - `Geom_Vector::X()`
-    pub fn x(&self) -> f64 {
-        unsafe { crate::ffi::Geom_Direction_inherited_X(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:83 - `Geom_Vector::Y()`
-    pub fn y(&self) -> f64 {
-        unsafe { crate::ffi::Geom_Direction_inherited_Y(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:86 - `Geom_Vector::Z()`
-    pub fn z(&self) -> f64 {
-        unsafe { crate::ffi::Geom_Direction_inherited_Z(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:118 - `Geom_Vector::Dot()`
-    pub fn dot(&self, Other: &crate::ffi::HandleGeomVector) -> f64 {
-        unsafe { crate::ffi::Geom_Direction_inherited_Dot(self as *const Self, Other) }
-    }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:121 - `Geom_Vector::DotCross()`
-    pub fn dot_cross(
-        &self,
-        V1: &crate::ffi::HandleGeomVector,
-        V2: &crate::ffi::HandleGeomVector,
-    ) -> f64 {
-        unsafe { crate::ffi::Geom_Direction_inherited_DotCross(self as *const Self, V1, V2) }
-    }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:125 - `Geom_Vector::Vec()`
-    pub fn vec(&self) -> &crate::ffi::gp_Vec {
-        unsafe { &*(crate::ffi::Geom_Direction_inherited_Vec(self as *const Self)) }
-    }
 }
 
 pub use crate::ffi::HandleGeomDirection;
@@ -10086,19 +10086,19 @@ impl HandleGeomDirection {
         unsafe { &mut *(crate::ffi::HandleGeomDirection_get_mut(self as *mut Self)) }
     }
 
-    /// Upcast Handle<Geom_Direction> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    /// Upcast Handle<Geom_Direction> to Handle<Geom_Vector>
+    pub fn to_handle_vector(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomVector> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomDirection_to_HandleGeomGeometry(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomDirection_to_HandleGeomVector(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast Handle<Geom_Direction> to Handle<Geom_Vector>
-    pub fn to_handle_vector(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomVector> {
+    /// Upcast Handle<Geom_Direction> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomDirection_to_HandleGeomVector(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomDirection_to_HandleGeomGeometry(
                 self as *const Self,
             ))
         }
@@ -10273,18 +10273,6 @@ impl ElementarySurface {
         unsafe { &*(crate::ffi::Geom_ElementarySurface_get_type_descriptor()) }
     }
 
-    /// Upcast to Geom_Geometry
-    pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::Geom_ElementarySurface_as_Geom_Geometry(self as *const Self)) }
-    }
-
-    /// Upcast to Geom_Geometry (mutable)
-    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe {
-            &mut *(crate::ffi::Geom_ElementarySurface_as_Geom_Geometry_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to Geom_Surface
     pub fn as_surface(&self) -> &Surface {
         unsafe { &*(crate::ffi::Geom_ElementarySurface_as_Geom_Surface(self as *const Self)) }
@@ -10295,106 +10283,15 @@ impl ElementarySurface {
         unsafe { &mut *(crate::ffi::Geom_ElementarySurface_as_Geom_Surface_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
-    pub fn mirror(&mut self, P: &crate::ffi::gp_Pnt) {
-        unsafe { crate::ffi::Geom_ElementarySurface_inherited_Mirror(self as *mut Self, P) }
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        unsafe { &*(crate::ffi::Geom_ElementarySurface_as_Geom_Geometry(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:72 - `Geom_Geometry::Rotate()`
-    pub fn rotate(&mut self, A1: &crate::ffi::gp_Ax1, Ang: f64) {
-        unsafe { crate::ffi::Geom_ElementarySurface_inherited_Rotate(self as *mut Self, A1, Ang) }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:75 - `Geom_Geometry::Scale()`
-    pub fn scale(&mut self, P: &crate::ffi::gp_Pnt, S: f64) {
-        unsafe { crate::ffi::Geom_ElementarySurface_inherited_Scale(self as *mut Self, P, S) }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::ffi::gp_Vec) {
-        unsafe { crate::ffi::Geom_ElementarySurface_inherited_Translate(self as *mut Self, V) }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:88 - `Geom_Geometry::Transform()`
-    pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
-        unsafe { crate::ffi::Geom_ElementarySurface_inherited_Transform(self as *mut Self, T) }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:90 - `Geom_Geometry::Mirrored()`
-    pub fn mirrored(
-        &self,
-        P: &crate::ffi::gp_Pnt,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_ElementarySurface_inherited_Mirrored(
-                self as *const Self,
-                P,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:96 - `Geom_Geometry::Rotated()`
-    pub fn rotated(
-        &self,
-        A1: &crate::ffi::gp_Ax1,
-        Ang: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_ElementarySurface_inherited_Rotated(
-                self as *const Self,
-                A1,
-                Ang,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:99 - `Geom_Geometry::Scaled()`
-    pub fn scaled(
-        &self,
-        P: &crate::ffi::gp_Pnt,
-        S: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_ElementarySurface_inherited_Scaled(
-                self as *const Self,
-                P,
-                S,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:102 - `Geom_Geometry::Transformed()`
-    pub fn transformed(
-        &self,
-        T: &crate::ffi::gp_Trsf,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_ElementarySurface_inherited_Transformed(
-                self as *const Self,
-                T,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
-    pub fn translated(
-        &self,
-        V: &crate::ffi::gp_Vec,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_ElementarySurface_inherited_Translated(
-                self as *const Self,
-                V,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:110 - `Geom_Geometry::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_ElementarySurface_inherited_Copy(
-                self as *const Self,
-            ))
+            &mut *(crate::ffi::Geom_ElementarySurface_as_Geom_Geometry_mut(self as *mut Self))
         }
     }
 
@@ -10604,6 +10501,109 @@ impl ElementarySurface {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
+    pub fn mirror(&mut self, P: &crate::ffi::gp_Pnt) {
+        unsafe { crate::ffi::Geom_ElementarySurface_inherited_Mirror(self as *mut Self, P) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:72 - `Geom_Geometry::Rotate()`
+    pub fn rotate(&mut self, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        unsafe { crate::ffi::Geom_ElementarySurface_inherited_Rotate(self as *mut Self, A1, Ang) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:75 - `Geom_Geometry::Scale()`
+    pub fn scale(&mut self, P: &crate::ffi::gp_Pnt, S: f64) {
+        unsafe { crate::ffi::Geom_ElementarySurface_inherited_Scale(self as *mut Self, P, S) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
+    pub fn translate(&mut self, V: &crate::ffi::gp_Vec) {
+        unsafe { crate::ffi::Geom_ElementarySurface_inherited_Translate(self as *mut Self, V) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:88 - `Geom_Geometry::Transform()`
+    pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
+        unsafe { crate::ffi::Geom_ElementarySurface_inherited_Transform(self as *mut Self, T) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:90 - `Geom_Geometry::Mirrored()`
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_ElementarySurface_inherited_Mirrored(
+                self as *const Self,
+                P,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:96 - `Geom_Geometry::Rotated()`
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_ElementarySurface_inherited_Rotated(
+                self as *const Self,
+                A1,
+                Ang,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:99 - `Geom_Geometry::Scaled()`
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_ElementarySurface_inherited_Scaled(
+                self as *const Self,
+                P,
+                S,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:102 - `Geom_Geometry::Transformed()`
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_ElementarySurface_inherited_Transformed(
+                self as *const Self,
+                T,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_ElementarySurface_inherited_Translated(
+                self as *const Self,
+                V,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:110 - `Geom_Geometry::Copy()`
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_ElementarySurface_inherited_Copy(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
 pub use crate::ffi::HandleGeomElementarySurface;
@@ -10625,21 +10625,21 @@ impl HandleGeomElementarySurface {
         unsafe { &mut *(crate::ffi::HandleGeomElementarySurface_get_mut(self as *mut Self)) }
     }
 
-    /// Upcast Handle<Geom_ElementarySurface> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleGeomElementarySurface_to_HandleGeomGeometry(self as *const Self),
-            )
-        }
-    }
-
     /// Upcast Handle<Geom_ElementarySurface> to Handle<Geom_Surface>
     pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HandleGeomElementarySurface_to_HandleGeomSurface(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Upcast Handle<Geom_ElementarySurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomElementarySurface_to_HandleGeomGeometry(self as *const Self),
+            )
         }
     }
 
@@ -14288,16 +14288,6 @@ impl OffsetSurface {
         unsafe { &*(crate::ffi::Geom_OffsetSurface_get_type_descriptor()) }
     }
 
-    /// Upcast to Geom_Geometry
-    pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::Geom_OffsetSurface_as_Geom_Geometry(self as *const Self)) }
-    }
-
-    /// Upcast to Geom_Geometry (mutable)
-    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe { &mut *(crate::ffi::Geom_OffsetSurface_as_Geom_Geometry_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Geom_Surface
     pub fn as_surface(&self) -> &Surface {
         unsafe { &*(crate::ffi::Geom_OffsetSurface_as_Geom_Surface(self as *const Self)) }
@@ -14308,12 +14298,51 @@ impl OffsetSurface {
         unsafe { &mut *(crate::ffi::Geom_OffsetSurface_as_Geom_Surface_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        unsafe { &*(crate::ffi::Geom_OffsetSurface_as_Geom_Geometry(self as *const Self)) }
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+        unsafe { &mut *(crate::ffi::Geom_OffsetSurface_as_Geom_Geometry_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_OffsetSurface_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
+    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_OffsetSurface_inherited_UReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
+    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_OffsetSurface_inherited_VReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
+    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_OffsetSurface_inherited_Value(
+                self as *const Self,
+                U,
+                V,
+            ))
         }
     }
 
@@ -14405,35 +14434,6 @@ impl OffsetSurface {
             ))
         }
     }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
-    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_OffsetSurface_inherited_UReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
-    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_OffsetSurface_inherited_VReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
-    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_OffsetSurface_inherited_Value(
-                self as *const Self,
-                U,
-                V,
-            ))
-        }
-    }
 }
 
 pub use crate::ffi::HandleGeomOffsetSurface;
@@ -14455,19 +14455,19 @@ impl HandleGeomOffsetSurface {
         unsafe { &mut *(crate::ffi::HandleGeomOffsetSurface_get_mut(self as *mut Self)) }
     }
 
-    /// Upcast Handle<Geom_OffsetSurface> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    /// Upcast Handle<Geom_OffsetSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomOffsetSurface_to_HandleGeomGeometry(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomOffsetSurface_to_HandleGeomSurface(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast Handle<Geom_OffsetSurface> to Handle<Geom_Surface>
-    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    /// Upcast Handle<Geom_OffsetSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomOffsetSurface_to_HandleGeomSurface(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomOffsetSurface_to_HandleGeomGeometry(
                 self as *const Self,
             ))
         }
@@ -15517,16 +15517,6 @@ impl Plane {
         unsafe { &mut *(crate::ffi::Geom_Plane_as_Geom_ElementarySurface_mut(self as *mut Self)) }
     }
 
-    /// Upcast to Geom_Geometry
-    pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::Geom_Plane_as_Geom_Geometry(self as *const Self)) }
-    }
-
-    /// Upcast to Geom_Geometry (mutable)
-    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe { &mut *(crate::ffi::Geom_Plane_as_Geom_Geometry_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Geom_Surface
     pub fn as_surface(&self) -> &Surface {
         unsafe { &*(crate::ffi::Geom_Plane_as_Geom_Surface(self as *const Self)) }
@@ -15535,6 +15525,16 @@ impl Plane {
     /// Upcast to Geom_Surface (mutable)
     pub fn as_surface_mut(&mut self) -> &mut Surface {
         unsafe { &mut *(crate::ffi::Geom_Plane_as_Geom_Surface_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        unsafe { &*(crate::ffi::Geom_Plane_as_Geom_Geometry(self as *const Self)) }
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+        unsafe { &mut *(crate::ffi::Geom_Plane_as_Geom_Geometry_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -15590,6 +15590,45 @@ impl Plane {
     /// Inherited: **Source:** `Geom_ElementarySurface.hxx`:120 - `Geom_ElementarySurface::IsCNv()`
     pub fn is_c_nv(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom_Plane_inherited_IsCNv(self as *const Self, N) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
+    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_Plane_inherited_UReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
+    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_Plane_inherited_VReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
+    pub fn u_period(&self) -> f64 {
+        unsafe { crate::ffi::Geom_Plane_inherited_UPeriod(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
+    pub fn v_period(&self) -> f64 {
+        unsafe { crate::ffi::Geom_Plane_inherited_VPeriod(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
+    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_Plane_inherited_Value(
+                self as *const Self,
+                U,
+                V,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
@@ -15680,45 +15719,6 @@ impl Plane {
             ))
         }
     }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
-    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_Plane_inherited_UReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
-    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_Plane_inherited_VReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
-    pub fn u_period(&self) -> f64 {
-        unsafe { crate::ffi::Geom_Plane_inherited_UPeriod(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
-    pub fn v_period(&self) -> f64 {
-        unsafe { crate::ffi::Geom_Plane_inherited_VPeriod(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
-    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_Plane_inherited_Value(
-                self as *const Self,
-                U,
-                V,
-            ))
-        }
-    }
 }
 
 pub use crate::ffi::HandleGeomPlane;
@@ -15751,19 +15751,19 @@ impl HandleGeomPlane {
         }
     }
 
-    /// Upcast Handle<Geom_Plane> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    /// Upcast Handle<Geom_Plane> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomPlane_to_HandleGeomGeometry(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomPlane_to_HandleGeomSurface(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast Handle<Geom_Plane> to Handle<Geom_Surface>
-    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    /// Upcast Handle<Geom_Plane> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomPlane_to_HandleGeomSurface(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomPlane_to_HandleGeomGeometry(
                 self as *const Self,
             ))
         }
@@ -16648,22 +16648,6 @@ impl RectangularTrimmedSurface {
         }
     }
 
-    /// Upcast to Geom_Geometry
-    pub fn as_geometry(&self) -> &Geometry {
-        unsafe {
-            &*(crate::ffi::Geom_RectangularTrimmedSurface_as_Geom_Geometry(self as *const Self))
-        }
-    }
-
-    /// Upcast to Geom_Geometry (mutable)
-    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe {
-            &mut *(crate::ffi::Geom_RectangularTrimmedSurface_as_Geom_Geometry_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to Geom_Surface
     pub fn as_surface(&self) -> &Surface {
         unsafe {
@@ -16680,6 +16664,22 @@ impl RectangularTrimmedSurface {
         }
     }
 
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        unsafe {
+            &*(crate::ffi::Geom_RectangularTrimmedSurface_as_Geom_Geometry(self as *const Self))
+        }
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+        unsafe {
+            &mut *(crate::ffi::Geom_RectangularTrimmedSurface_as_Geom_Geometry_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -16687,6 +16687,35 @@ impl RectangularTrimmedSurface {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_RectangularTrimmedSurface_to_handle(
                 obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
+    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Geom_RectangularTrimmedSurface_inherited_UReversed(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
+    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Geom_RectangularTrimmedSurface_inherited_VReversed(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
+    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_RectangularTrimmedSurface_inherited_Value(
+                self as *const Self,
+                U,
+                V,
             ))
         }
     }
@@ -16791,35 +16820,6 @@ impl RectangularTrimmedSurface {
             )
         }
     }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
-    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Geom_RectangularTrimmedSurface_inherited_UReversed(self as *const Self),
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
-    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Geom_RectangularTrimmedSurface_inherited_VReversed(self as *const Self),
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
-    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_RectangularTrimmedSurface_inherited_Value(
-                self as *const Self,
-                U,
-                V,
-            ))
-        }
-    }
 }
 
 pub use crate::ffi::HandleGeomRectangularTrimmedSurface;
@@ -16856,22 +16856,22 @@ impl HandleGeomRectangularTrimmedSurface {
         }
     }
 
-    /// Upcast Handle<Geom_RectangularTrimmedSurface> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    /// Upcast Handle<Geom_RectangularTrimmedSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(
-                crate::ffi::HandleGeomRectangularTrimmedSurface_to_HandleGeomGeometry(
+                crate::ffi::HandleGeomRectangularTrimmedSurface_to_HandleGeomSurface(
                     self as *const Self,
                 ),
             )
         }
     }
 
-    /// Upcast Handle<Geom_RectangularTrimmedSurface> to Handle<Geom_Surface>
-    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    /// Upcast Handle<Geom_RectangularTrimmedSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(
-                crate::ffi::HandleGeomRectangularTrimmedSurface_to_HandleGeomSurface(
+                crate::ffi::HandleGeomRectangularTrimmedSurface_to_HandleGeomGeometry(
                     self as *const Self,
                 ),
             )
@@ -17282,16 +17282,6 @@ impl SphericalSurface {
         }
     }
 
-    /// Upcast to Geom_Geometry
-    pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::Geom_SphericalSurface_as_Geom_Geometry(self as *const Self)) }
-    }
-
-    /// Upcast to Geom_Geometry (mutable)
-    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe { &mut *(crate::ffi::Geom_SphericalSurface_as_Geom_Geometry_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Geom_Surface
     pub fn as_surface(&self) -> &Surface {
         unsafe { &*(crate::ffi::Geom_SphericalSurface_as_Geom_Surface(self as *const Self)) }
@@ -17300,6 +17290,16 @@ impl SphericalSurface {
     /// Upcast to Geom_Surface (mutable)
     pub fn as_surface_mut(&mut self) -> &mut Surface {
         unsafe { &mut *(crate::ffi::Geom_SphericalSurface_as_Geom_Surface_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        unsafe { &*(crate::ffi::Geom_SphericalSurface_as_Geom_Geometry(self as *const Self)) }
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+        unsafe { &mut *(crate::ffi::Geom_SphericalSurface_as_Geom_Geometry_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -17373,6 +17373,72 @@ impl SphericalSurface {
     /// Inherited: **Source:** `Geom_ElementarySurface.hxx`:120 - `Geom_ElementarySurface::IsCNv()`
     pub fn is_c_nv(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom_SphericalSurface_inherited_IsCNv(self as *const Self, N) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
+    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_SphericalSurface_inherited_UReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
+    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_SphericalSurface_inherited_VReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:113 - `Geom_Surface::TransformParameters()`
+    pub fn transform_parameters(&self, U: &mut f64, V: &mut f64, T: &crate::ffi::gp_Trsf) {
+        unsafe {
+            crate::ffi::Geom_SphericalSurface_inherited_TransformParameters(
+                self as *const Self,
+                U,
+                V,
+                T,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:135 - `Geom_Surface::ParametricTransformation()`
+    pub fn parametric_transformation(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> crate::OwnedPtr<crate::ffi::gp_GTrsf2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Geom_SphericalSurface_inherited_ParametricTransformation(
+                    self as *const Self,
+                    T,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
+    pub fn u_period(&self) -> f64 {
+        unsafe { crate::ffi::Geom_SphericalSurface_inherited_UPeriod(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
+    pub fn v_period(&self) -> f64 {
+        unsafe { crate::ffi::Geom_SphericalSurface_inherited_VPeriod(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
+    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_SphericalSurface_inherited_Value(
+                self as *const Self,
+                U,
+                V,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
@@ -17463,72 +17529,6 @@ impl SphericalSurface {
             ))
         }
     }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
-    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_SphericalSurface_inherited_UReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
-    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_SphericalSurface_inherited_VReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:113 - `Geom_Surface::TransformParameters()`
-    pub fn transform_parameters(&self, U: &mut f64, V: &mut f64, T: &crate::ffi::gp_Trsf) {
-        unsafe {
-            crate::ffi::Geom_SphericalSurface_inherited_TransformParameters(
-                self as *const Self,
-                U,
-                V,
-                T,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:135 - `Geom_Surface::ParametricTransformation()`
-    pub fn parametric_transformation(
-        &self,
-        T: &crate::ffi::gp_Trsf,
-    ) -> crate::OwnedPtr<crate::ffi::gp_GTrsf2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Geom_SphericalSurface_inherited_ParametricTransformation(
-                    self as *const Self,
-                    T,
-                ),
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
-    pub fn u_period(&self) -> f64 {
-        unsafe { crate::ffi::Geom_SphericalSurface_inherited_UPeriod(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
-    pub fn v_period(&self) -> f64 {
-        unsafe { crate::ffi::Geom_SphericalSurface_inherited_VPeriod(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
-    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_SphericalSurface_inherited_Value(
-                self as *const Self,
-                U,
-                V,
-            ))
-        }
-    }
 }
 
 pub use crate::ffi::HandleGeomSphericalSurface;
@@ -17563,19 +17563,19 @@ impl HandleGeomSphericalSurface {
         }
     }
 
-    /// Upcast Handle<Geom_SphericalSurface> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    /// Upcast Handle<Geom_SphericalSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomSphericalSurface_to_HandleGeomGeometry(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomSphericalSurface_to_HandleGeomSurface(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast Handle<Geom_SphericalSurface> to Handle<Geom_Surface>
-    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    /// Upcast Handle<Geom_SphericalSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomSphericalSurface_to_HandleGeomSurface(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomSphericalSurface_to_HandleGeomGeometry(
                 self as *const Self,
             ))
         }
@@ -18794,17 +18794,17 @@ impl SurfaceOfLinearExtrusion {
         unsafe { &*(crate::ffi::Geom_SurfaceOfLinearExtrusion_get_type_descriptor()) }
     }
 
-    /// Upcast to Geom_Geometry
-    pub fn as_geometry(&self) -> &Geometry {
+    /// Upcast to Geom_SweptSurface
+    pub fn as_swept_surface(&self) -> &SweptSurface {
         unsafe {
-            &*(crate::ffi::Geom_SurfaceOfLinearExtrusion_as_Geom_Geometry(self as *const Self))
+            &*(crate::ffi::Geom_SurfaceOfLinearExtrusion_as_Geom_SweptSurface(self as *const Self))
         }
     }
 
-    /// Upcast to Geom_Geometry (mutable)
-    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+    /// Upcast to Geom_SweptSurface (mutable)
+    pub fn as_swept_surface_mut(&mut self) -> &mut SweptSurface {
         unsafe {
-            &mut *(crate::ffi::Geom_SurfaceOfLinearExtrusion_as_Geom_Geometry_mut(
+            &mut *(crate::ffi::Geom_SurfaceOfLinearExtrusion_as_Geom_SweptSurface_mut(
                 self as *mut Self,
             ))
         }
@@ -18824,17 +18824,17 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
-    /// Upcast to Geom_SweptSurface
-    pub fn as_swept_surface(&self) -> &SweptSurface {
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
         unsafe {
-            &*(crate::ffi::Geom_SurfaceOfLinearExtrusion_as_Geom_SweptSurface(self as *const Self))
+            &*(crate::ffi::Geom_SurfaceOfLinearExtrusion_as_Geom_Geometry(self as *const Self))
         }
     }
 
-    /// Upcast to Geom_SweptSurface (mutable)
-    pub fn as_swept_surface_mut(&mut self) -> &mut SweptSurface {
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
         unsafe {
-            &mut *(crate::ffi::Geom_SurfaceOfLinearExtrusion_as_Geom_SweptSurface_mut(
+            &mut *(crate::ffi::Geom_SurfaceOfLinearExtrusion_as_Geom_Geometry_mut(
                 self as *mut Self,
             ))
         }
@@ -18847,6 +18847,71 @@ impl SurfaceOfLinearExtrusion {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_SurfaceOfLinearExtrusion_to_handle(
                 obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_SweptSurface.hxx`:48 - `Geom_SweptSurface::Continuity()`
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        unsafe {
+            crate::geom_abs::Shape::try_from(
+                crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Continuity(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_SweptSurface.hxx`:54 - `Geom_SweptSurface::Direction()`
+    pub fn direction(&self) -> &crate::ffi::gp_Dir {
+        unsafe {
+            &*(crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Direction(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_SweptSurface.hxx`:59 - `Geom_SweptSurface::BasisCurve()`
+    pub fn basis_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_BasisCurve(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
+    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_UReversed(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
+    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_VReversed(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
+    pub fn u_period(&self) -> f64 {
+        unsafe { crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_UPeriod(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
+    pub fn v_period(&self) -> f64 {
+        unsafe { crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_VPeriod(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
+    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Value(
+                self as *const Self,
+                U,
+                V,
             ))
         }
     }
@@ -18949,71 +19014,6 @@ impl SurfaceOfLinearExtrusion {
             )
         }
     }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
-    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_UReversed(self as *const Self),
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
-    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_VReversed(self as *const Self),
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
-    pub fn u_period(&self) -> f64 {
-        unsafe { crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_UPeriod(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
-    pub fn v_period(&self) -> f64 {
-        unsafe { crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_VPeriod(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:206 - `Geom_Surface::Continuity()`
-    pub fn continuity(&self) -> crate::geom_abs::Shape {
-        unsafe {
-            crate::geom_abs::Shape::try_from(
-                crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Continuity(self as *const Self),
-            )
-            .unwrap()
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
-    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Value(
-                self as *const Self,
-                U,
-                V,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_SweptSurface.hxx`:54 - `Geom_SweptSurface::Direction()`
-    pub fn direction(&self) -> &crate::ffi::gp_Dir {
-        unsafe {
-            &*(crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Direction(self as *const Self))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_SweptSurface.hxx`:59 - `Geom_SweptSurface::BasisCurve()`
-    pub fn basis_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_BasisCurve(self as *const Self),
-            )
-        }
-    }
 }
 
 pub use crate::ffi::HandleGeomSurfaceOfLinearExtrusion;
@@ -19035,11 +19035,11 @@ impl HandleGeomSurfaceOfLinearExtrusion {
         unsafe { &mut *(crate::ffi::HandleGeomSurfaceOfLinearExtrusion_get_mut(self as *mut Self)) }
     }
 
-    /// Upcast Handle<Geom_SurfaceOfLinearExtrusion> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    /// Upcast Handle<Geom_SurfaceOfLinearExtrusion> to Handle<Geom_SweptSurface>
+    pub fn to_handle_swept_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSweptSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(
-                crate::ffi::HandleGeomSurfaceOfLinearExtrusion_to_HandleGeomGeometry(
+                crate::ffi::HandleGeomSurfaceOfLinearExtrusion_to_HandleGeomSweptSurface(
                     self as *const Self,
                 ),
             )
@@ -19057,11 +19057,11 @@ impl HandleGeomSurfaceOfLinearExtrusion {
         }
     }
 
-    /// Upcast Handle<Geom_SurfaceOfLinearExtrusion> to Handle<Geom_SweptSurface>
-    pub fn to_handle_swept_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSweptSurface> {
+    /// Upcast Handle<Geom_SurfaceOfLinearExtrusion> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(
-                crate::ffi::HandleGeomSurfaceOfLinearExtrusion_to_HandleGeomSweptSurface(
+                crate::ffi::HandleGeomSurfaceOfLinearExtrusion_to_HandleGeomGeometry(
                     self as *const Self,
                 ),
             )
@@ -19550,15 +19550,17 @@ impl SurfaceOfRevolution {
         unsafe { &*(crate::ffi::Geom_SurfaceOfRevolution_get_type_descriptor()) }
     }
 
-    /// Upcast to Geom_Geometry
-    pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::Geom_SurfaceOfRevolution_as_Geom_Geometry(self as *const Self)) }
+    /// Upcast to Geom_SweptSurface
+    pub fn as_swept_surface(&self) -> &SweptSurface {
+        unsafe {
+            &*(crate::ffi::Geom_SurfaceOfRevolution_as_Geom_SweptSurface(self as *const Self))
+        }
     }
 
-    /// Upcast to Geom_Geometry (mutable)
-    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+    /// Upcast to Geom_SweptSurface (mutable)
+    pub fn as_swept_surface_mut(&mut self) -> &mut SweptSurface {
         unsafe {
-            &mut *(crate::ffi::Geom_SurfaceOfRevolution_as_Geom_Geometry_mut(self as *mut Self))
+            &mut *(crate::ffi::Geom_SurfaceOfRevolution_as_Geom_SweptSurface_mut(self as *mut Self))
         }
     }
 
@@ -19574,17 +19576,15 @@ impl SurfaceOfRevolution {
         }
     }
 
-    /// Upcast to Geom_SweptSurface
-    pub fn as_swept_surface(&self) -> &SweptSurface {
-        unsafe {
-            &*(crate::ffi::Geom_SurfaceOfRevolution_as_Geom_SweptSurface(self as *const Self))
-        }
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        unsafe { &*(crate::ffi::Geom_SurfaceOfRevolution_as_Geom_Geometry(self as *const Self)) }
     }
 
-    /// Upcast to Geom_SweptSurface (mutable)
-    pub fn as_swept_surface_mut(&mut self) -> &mut SweptSurface {
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
         unsafe {
-            &mut *(crate::ffi::Geom_SurfaceOfRevolution_as_Geom_SweptSurface_mut(self as *mut Self))
+            &mut *(crate::ffi::Geom_SurfaceOfRevolution_as_Geom_Geometry_mut(self as *mut Self))
         }
     }
 
@@ -19595,6 +19595,69 @@ impl SurfaceOfRevolution {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_SurfaceOfRevolution_to_handle(
                 obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_SweptSurface.hxx`:48 - `Geom_SweptSurface::Continuity()`
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        unsafe {
+            crate::geom_abs::Shape::try_from(
+                crate::ffi::Geom_SurfaceOfRevolution_inherited_Continuity(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_SweptSurface.hxx`:54 - `Geom_SweptSurface::Direction()`
+    pub fn direction(&self) -> &crate::ffi::gp_Dir {
+        unsafe { &*(crate::ffi::Geom_SurfaceOfRevolution_inherited_Direction(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Geom_SweptSurface.hxx`:59 - `Geom_SweptSurface::BasisCurve()`
+    pub fn basis_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_SurfaceOfRevolution_inherited_BasisCurve(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
+    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_SurfaceOfRevolution_inherited_UReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
+    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_SurfaceOfRevolution_inherited_VReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
+    pub fn u_period(&self) -> f64 {
+        unsafe { crate::ffi::Geom_SurfaceOfRevolution_inherited_UPeriod(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
+    pub fn v_period(&self) -> f64 {
+        unsafe { crate::ffi::Geom_SurfaceOfRevolution_inherited_VPeriod(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
+    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_SurfaceOfRevolution_inherited_Value(
+                self as *const Self,
+                U,
+                V,
             ))
         }
     }
@@ -19687,69 +19750,6 @@ impl SurfaceOfRevolution {
             ))
         }
     }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
-    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_SurfaceOfRevolution_inherited_UReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
-    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_SurfaceOfRevolution_inherited_VReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
-    pub fn u_period(&self) -> f64 {
-        unsafe { crate::ffi::Geom_SurfaceOfRevolution_inherited_UPeriod(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
-    pub fn v_period(&self) -> f64 {
-        unsafe { crate::ffi::Geom_SurfaceOfRevolution_inherited_VPeriod(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:206 - `Geom_Surface::Continuity()`
-    pub fn continuity(&self) -> crate::geom_abs::Shape {
-        unsafe {
-            crate::geom_abs::Shape::try_from(
-                crate::ffi::Geom_SurfaceOfRevolution_inherited_Continuity(self as *const Self),
-            )
-            .unwrap()
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
-    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_SurfaceOfRevolution_inherited_Value(
-                self as *const Self,
-                U,
-                V,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_SweptSurface.hxx`:54 - `Geom_SweptSurface::Direction()`
-    pub fn direction(&self) -> &crate::ffi::gp_Dir {
-        unsafe { &*(crate::ffi::Geom_SurfaceOfRevolution_inherited_Direction(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `Geom_SweptSurface.hxx`:59 - `Geom_SweptSurface::BasisCurve()`
-    pub fn basis_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_SurfaceOfRevolution_inherited_BasisCurve(
-                self as *const Self,
-            ))
-        }
-    }
 }
 
 pub use crate::ffi::HandleGeomSurfaceOfRevolution;
@@ -19771,11 +19771,11 @@ impl HandleGeomSurfaceOfRevolution {
         unsafe { &mut *(crate::ffi::HandleGeomSurfaceOfRevolution_get_mut(self as *mut Self)) }
     }
 
-    /// Upcast Handle<Geom_SurfaceOfRevolution> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    /// Upcast Handle<Geom_SurfaceOfRevolution> to Handle<Geom_SweptSurface>
+    pub fn to_handle_swept_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSweptSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(
-                crate::ffi::HandleGeomSurfaceOfRevolution_to_HandleGeomGeometry(
+                crate::ffi::HandleGeomSurfaceOfRevolution_to_HandleGeomSweptSurface(
                     self as *const Self,
                 ),
             )
@@ -19791,11 +19791,11 @@ impl HandleGeomSurfaceOfRevolution {
         }
     }
 
-    /// Upcast Handle<Geom_SurfaceOfRevolution> to Handle<Geom_SweptSurface>
-    pub fn to_handle_swept_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSweptSurface> {
+    /// Upcast Handle<Geom_SurfaceOfRevolution> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(
-                crate::ffi::HandleGeomSurfaceOfRevolution_to_HandleGeomSweptSurface(
+                crate::ffi::HandleGeomSurfaceOfRevolution_to_HandleGeomGeometry(
                     self as *const Self,
                 ),
             )
@@ -19880,16 +19880,6 @@ impl SweptSurface {
         unsafe { &*(crate::ffi::Geom_SweptSurface_get_type_descriptor()) }
     }
 
-    /// Upcast to Geom_Geometry
-    pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::Geom_SweptSurface_as_Geom_Geometry(self as *const Self)) }
-    }
-
-    /// Upcast to Geom_Geometry (mutable)
-    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe { &mut *(crate::ffi::Geom_SweptSurface_as_Geom_Geometry_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Geom_Surface
     pub fn as_surface(&self) -> &Surface {
         unsafe { &*(crate::ffi::Geom_SweptSurface_as_Geom_Surface(self as *const Self)) }
@@ -19900,107 +19890,14 @@ impl SweptSurface {
         unsafe { &mut *(crate::ffi::Geom_SweptSurface_as_Geom_Surface_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
-    pub fn mirror(&mut self, P: &crate::ffi::gp_Pnt) {
-        unsafe { crate::ffi::Geom_SweptSurface_inherited_Mirror(self as *mut Self, P) }
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        unsafe { &*(crate::ffi::Geom_SweptSurface_as_Geom_Geometry(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:72 - `Geom_Geometry::Rotate()`
-    pub fn rotate(&mut self, A1: &crate::ffi::gp_Ax1, Ang: f64) {
-        unsafe { crate::ffi::Geom_SweptSurface_inherited_Rotate(self as *mut Self, A1, Ang) }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:75 - `Geom_Geometry::Scale()`
-    pub fn scale(&mut self, P: &crate::ffi::gp_Pnt, S: f64) {
-        unsafe { crate::ffi::Geom_SweptSurface_inherited_Scale(self as *mut Self, P, S) }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::ffi::gp_Vec) {
-        unsafe { crate::ffi::Geom_SweptSurface_inherited_Translate(self as *mut Self, V) }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:88 - `Geom_Geometry::Transform()`
-    pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
-        unsafe { crate::ffi::Geom_SweptSurface_inherited_Transform(self as *mut Self, T) }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:90 - `Geom_Geometry::Mirrored()`
-    pub fn mirrored(
-        &self,
-        P: &crate::ffi::gp_Pnt,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_SweptSurface_inherited_Mirrored(
-                self as *const Self,
-                P,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:96 - `Geom_Geometry::Rotated()`
-    pub fn rotated(
-        &self,
-        A1: &crate::ffi::gp_Ax1,
-        Ang: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_SweptSurface_inherited_Rotated(
-                self as *const Self,
-                A1,
-                Ang,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:99 - `Geom_Geometry::Scaled()`
-    pub fn scaled(
-        &self,
-        P: &crate::ffi::gp_Pnt,
-        S: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_SweptSurface_inherited_Scaled(
-                self as *const Self,
-                P,
-                S,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:102 - `Geom_Geometry::Transformed()`
-    pub fn transformed(
-        &self,
-        T: &crate::ffi::gp_Trsf,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_SweptSurface_inherited_Transformed(
-                self as *const Self,
-                T,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
-    pub fn translated(
-        &self,
-        V: &crate::ffi::gp_Vec,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_SweptSurface_inherited_Translated(
-                self as *const Self,
-                V,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Geometry.hxx`:110 - `Geom_Geometry::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_SweptSurface_inherited_Copy(
-                self as *const Self,
-            ))
-        }
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+        unsafe { &mut *(crate::ffi::Geom_SweptSurface_as_Geom_Geometry_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Geom_Surface.hxx`:58 - `Geom_Surface::UReverse()`
@@ -20243,6 +20140,109 @@ impl SweptSurface {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
+    pub fn mirror(&mut self, P: &crate::ffi::gp_Pnt) {
+        unsafe { crate::ffi::Geom_SweptSurface_inherited_Mirror(self as *mut Self, P) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:72 - `Geom_Geometry::Rotate()`
+    pub fn rotate(&mut self, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        unsafe { crate::ffi::Geom_SweptSurface_inherited_Rotate(self as *mut Self, A1, Ang) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:75 - `Geom_Geometry::Scale()`
+    pub fn scale(&mut self, P: &crate::ffi::gp_Pnt, S: f64) {
+        unsafe { crate::ffi::Geom_SweptSurface_inherited_Scale(self as *mut Self, P, S) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
+    pub fn translate(&mut self, V: &crate::ffi::gp_Vec) {
+        unsafe { crate::ffi::Geom_SweptSurface_inherited_Translate(self as *mut Self, V) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:88 - `Geom_Geometry::Transform()`
+    pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
+        unsafe { crate::ffi::Geom_SweptSurface_inherited_Transform(self as *mut Self, T) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:90 - `Geom_Geometry::Mirrored()`
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_SweptSurface_inherited_Mirrored(
+                self as *const Self,
+                P,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:96 - `Geom_Geometry::Rotated()`
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_SweptSurface_inherited_Rotated(
+                self as *const Self,
+                A1,
+                Ang,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:99 - `Geom_Geometry::Scaled()`
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_SweptSurface_inherited_Scaled(
+                self as *const Self,
+                P,
+                S,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:102 - `Geom_Geometry::Transformed()`
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_SweptSurface_inherited_Transformed(
+                self as *const Self,
+                T,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_SweptSurface_inherited_Translated(
+                self as *const Self,
+                V,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:110 - `Geom_Geometry::Copy()`
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_SweptSurface_inherited_Copy(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
 pub use crate::ffi::HandleGeomSweptSurface;
@@ -20264,19 +20264,19 @@ impl HandleGeomSweptSurface {
         unsafe { &mut *(crate::ffi::HandleGeomSweptSurface_get_mut(self as *mut Self)) }
     }
 
-    /// Upcast Handle<Geom_SweptSurface> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    /// Upcast Handle<Geom_SweptSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomSweptSurface_to_HandleGeomGeometry(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomSweptSurface_to_HandleGeomSurface(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast Handle<Geom_SweptSurface> to Handle<Geom_Surface>
-    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    /// Upcast Handle<Geom_SweptSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomSweptSurface_to_HandleGeomSurface(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomSweptSurface_to_HandleGeomGeometry(
                 self as *const Self,
             ))
         }
@@ -20711,16 +20711,6 @@ impl ToroidalSurface {
         }
     }
 
-    /// Upcast to Geom_Geometry
-    pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::Geom_ToroidalSurface_as_Geom_Geometry(self as *const Self)) }
-    }
-
-    /// Upcast to Geom_Geometry (mutable)
-    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe { &mut *(crate::ffi::Geom_ToroidalSurface_as_Geom_Geometry_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Geom_Surface
     pub fn as_surface(&self) -> &Surface {
         unsafe { &*(crate::ffi::Geom_ToroidalSurface_as_Geom_Surface(self as *const Self)) }
@@ -20729,6 +20719,16 @@ impl ToroidalSurface {
     /// Upcast to Geom_Surface (mutable)
     pub fn as_surface_mut(&mut self) -> &mut Surface {
         unsafe { &mut *(crate::ffi::Geom_ToroidalSurface_as_Geom_Surface_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        unsafe { &*(crate::ffi::Geom_ToroidalSurface_as_Geom_Geometry(self as *const Self)) }
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+        unsafe { &mut *(crate::ffi::Geom_ToroidalSurface_as_Geom_Geometry_mut(self as *mut Self)) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -20798,6 +20798,72 @@ impl ToroidalSurface {
     /// Inherited: **Source:** `Geom_ElementarySurface.hxx`:120 - `Geom_ElementarySurface::IsCNv()`
     pub fn is_c_nv(&self, N: i32) -> bool {
         unsafe { crate::ffi::Geom_ToroidalSurface_inherited_IsCNv(self as *const Self, N) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
+    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_ToroidalSurface_inherited_UReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
+    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_ToroidalSurface_inherited_VReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:113 - `Geom_Surface::TransformParameters()`
+    pub fn transform_parameters(&self, U: &mut f64, V: &mut f64, T: &crate::ffi::gp_Trsf) {
+        unsafe {
+            crate::ffi::Geom_ToroidalSurface_inherited_TransformParameters(
+                self as *const Self,
+                U,
+                V,
+                T,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:135 - `Geom_Surface::ParametricTransformation()`
+    pub fn parametric_transformation(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> crate::OwnedPtr<crate::ffi::gp_GTrsf2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Geom_ToroidalSurface_inherited_ParametricTransformation(
+                    self as *const Self,
+                    T,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
+    pub fn u_period(&self) -> f64 {
+        unsafe { crate::ffi::Geom_ToroidalSurface_inherited_UPeriod(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
+    pub fn v_period(&self) -> f64 {
+        unsafe { crate::ffi::Geom_ToroidalSurface_inherited_VPeriod(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
+    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_ToroidalSurface_inherited_Value(
+                self as *const Self,
+                U,
+                V,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
@@ -20888,72 +20954,6 @@ impl ToroidalSurface {
             ))
         }
     }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
-    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_ToroidalSurface_inherited_UReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
-    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_ToroidalSurface_inherited_VReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:113 - `Geom_Surface::TransformParameters()`
-    pub fn transform_parameters(&self, U: &mut f64, V: &mut f64, T: &crate::ffi::gp_Trsf) {
-        unsafe {
-            crate::ffi::Geom_ToroidalSurface_inherited_TransformParameters(
-                self as *const Self,
-                U,
-                V,
-                T,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:135 - `Geom_Surface::ParametricTransformation()`
-    pub fn parametric_transformation(
-        &self,
-        T: &crate::ffi::gp_Trsf,
-    ) -> crate::OwnedPtr<crate::ffi::gp_GTrsf2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Geom_ToroidalSurface_inherited_ParametricTransformation(
-                    self as *const Self,
-                    T,
-                ),
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
-    pub fn u_period(&self) -> f64 {
-        unsafe { crate::ffi::Geom_ToroidalSurface_inherited_UPeriod(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
-    pub fn v_period(&self) -> f64 {
-        unsafe { crate::ffi::Geom_ToroidalSurface_inherited_VPeriod(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
-    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_ToroidalSurface_inherited_Value(
-                self as *const Self,
-                U,
-                V,
-            ))
-        }
-    }
 }
 
 pub use crate::ffi::HandleGeomToroidalSurface;
@@ -20988,19 +20988,19 @@ impl HandleGeomToroidalSurface {
         }
     }
 
-    /// Upcast Handle<Geom_ToroidalSurface> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    /// Upcast Handle<Geom_ToroidalSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomToroidalSurface_to_HandleGeomGeometry(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomToroidalSurface_to_HandleGeomSurface(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast Handle<Geom_ToroidalSurface> to Handle<Geom_Surface>
-    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    /// Upcast Handle<Geom_ToroidalSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomToroidalSurface_to_HandleGeomSurface(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomToroidalSurface_to_HandleGeomGeometry(
                 self as *const Self,
             ))
         }
@@ -22758,18 +22758,6 @@ impl VectorWithMagnitude {
         unsafe { &*(crate::ffi::Geom_VectorWithMagnitude_get_type_descriptor()) }
     }
 
-    /// Upcast to Geom_Geometry
-    pub fn as_geometry(&self) -> &Geometry {
-        unsafe { &*(crate::ffi::Geom_VectorWithMagnitude_as_Geom_Geometry(self as *const Self)) }
-    }
-
-    /// Upcast to Geom_Geometry (mutable)
-    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        unsafe {
-            &mut *(crate::ffi::Geom_VectorWithMagnitude_as_Geom_Geometry_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to Geom_Vector
     pub fn as_vector(&self) -> &Vector {
         unsafe { &*(crate::ffi::Geom_VectorWithMagnitude_as_Geom_Vector(self as *const Self)) }
@@ -22782,6 +22770,18 @@ impl VectorWithMagnitude {
         }
     }
 
+    /// Upcast to Geom_Geometry
+    pub fn as_geometry(&self) -> &Geometry {
+        unsafe { &*(crate::ffi::Geom_VectorWithMagnitude_as_Geom_Geometry(self as *const Self)) }
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geometry_mut(&mut self) -> &mut Geometry {
+        unsafe {
+            &mut *(crate::ffi::Geom_VectorWithMagnitude_as_Geom_Geometry_mut(self as *mut Self))
+        }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
@@ -22791,6 +22791,83 @@ impl VectorWithMagnitude {
                 obj.into_raw(),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:38 - `Geom_Vector::Reverse()`
+    pub fn reverse(&mut self) {
+        unsafe { crate::ffi::Geom_VectorWithMagnitude_inherited_Reverse(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:41 - `Geom_Vector::Reversed()`
+    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomVector> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_VectorWithMagnitude_inherited_Reversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:51 - `Geom_Vector::Angle()`
+    pub fn angle(&self, Other: &crate::ffi::HandleGeomVector) -> f64 {
+        unsafe { crate::ffi::Geom_VectorWithMagnitude_inherited_Angle(self as *const Self, Other) }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:67 - `Geom_Vector::AngleWithRef()`
+    pub fn angle_with_ref(
+        &self,
+        Other: &crate::ffi::HandleGeomVector,
+        VRef: &crate::ffi::HandleGeomVector,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::Geom_VectorWithMagnitude_inherited_AngleWithRef(
+                self as *const Self,
+                Other,
+                VRef,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:71 - `Geom_Vector::Coord()`
+    pub fn coord(&self, X: &mut f64, Y: &mut f64, Z: &mut f64) {
+        unsafe {
+            crate::ffi::Geom_VectorWithMagnitude_inherited_Coord(self as *const Self, X, Y, Z)
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:80 - `Geom_Vector::X()`
+    pub fn x(&self) -> f64 {
+        unsafe { crate::ffi::Geom_VectorWithMagnitude_inherited_X(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:83 - `Geom_Vector::Y()`
+    pub fn y(&self) -> f64 {
+        unsafe { crate::ffi::Geom_VectorWithMagnitude_inherited_Y(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:86 - `Geom_Vector::Z()`
+    pub fn z(&self) -> f64 {
+        unsafe { crate::ffi::Geom_VectorWithMagnitude_inherited_Z(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:118 - `Geom_Vector::Dot()`
+    pub fn dot(&self, Other: &crate::ffi::HandleGeomVector) -> f64 {
+        unsafe { crate::ffi::Geom_VectorWithMagnitude_inherited_Dot(self as *const Self, Other) }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:121 - `Geom_Vector::DotCross()`
+    pub fn dot_cross(
+        &self,
+        V1: &crate::ffi::HandleGeomVector,
+        V2: &crate::ffi::HandleGeomVector,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::Geom_VectorWithMagnitude_inherited_DotCross(self as *const Self, V1, V2)
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Vector.hxx`:125 - `Geom_Vector::Vec()`
+    pub fn vec(&self) -> &crate::ffi::gp_Vec {
+        unsafe { &*(crate::ffi::Geom_VectorWithMagnitude_inherited_Vec(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
@@ -22881,83 +22958,6 @@ impl VectorWithMagnitude {
             ))
         }
     }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:38 - `Geom_Vector::Reverse()`
-    pub fn reverse(&mut self) {
-        unsafe { crate::ffi::Geom_VectorWithMagnitude_inherited_Reverse(self as *mut Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:41 - `Geom_Vector::Reversed()`
-    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomVector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_VectorWithMagnitude_inherited_Reversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:51 - `Geom_Vector::Angle()`
-    pub fn angle(&self, Other: &crate::ffi::HandleGeomVector) -> f64 {
-        unsafe { crate::ffi::Geom_VectorWithMagnitude_inherited_Angle(self as *const Self, Other) }
-    }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:67 - `Geom_Vector::AngleWithRef()`
-    pub fn angle_with_ref(
-        &self,
-        Other: &crate::ffi::HandleGeomVector,
-        VRef: &crate::ffi::HandleGeomVector,
-    ) -> f64 {
-        unsafe {
-            crate::ffi::Geom_VectorWithMagnitude_inherited_AngleWithRef(
-                self as *const Self,
-                Other,
-                VRef,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:71 - `Geom_Vector::Coord()`
-    pub fn coord(&self, X: &mut f64, Y: &mut f64, Z: &mut f64) {
-        unsafe {
-            crate::ffi::Geom_VectorWithMagnitude_inherited_Coord(self as *const Self, X, Y, Z)
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:80 - `Geom_Vector::X()`
-    pub fn x(&self) -> f64 {
-        unsafe { crate::ffi::Geom_VectorWithMagnitude_inherited_X(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:83 - `Geom_Vector::Y()`
-    pub fn y(&self) -> f64 {
-        unsafe { crate::ffi::Geom_VectorWithMagnitude_inherited_Y(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:86 - `Geom_Vector::Z()`
-    pub fn z(&self) -> f64 {
-        unsafe { crate::ffi::Geom_VectorWithMagnitude_inherited_Z(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:118 - `Geom_Vector::Dot()`
-    pub fn dot(&self, Other: &crate::ffi::HandleGeomVector) -> f64 {
-        unsafe { crate::ffi::Geom_VectorWithMagnitude_inherited_Dot(self as *const Self, Other) }
-    }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:121 - `Geom_Vector::DotCross()`
-    pub fn dot_cross(
-        &self,
-        V1: &crate::ffi::HandleGeomVector,
-        V2: &crate::ffi::HandleGeomVector,
-    ) -> f64 {
-        unsafe {
-            crate::ffi::Geom_VectorWithMagnitude_inherited_DotCross(self as *const Self, V1, V2)
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Vector.hxx`:125 - `Geom_Vector::Vec()`
-    pub fn vec(&self) -> &crate::ffi::gp_Vec {
-        unsafe { &*(crate::ffi::Geom_VectorWithMagnitude_inherited_Vec(self as *const Self)) }
-    }
 }
 
 pub use crate::ffi::HandleGeomVectorWithMagnitude;
@@ -22979,6 +22979,15 @@ impl HandleGeomVectorWithMagnitude {
         unsafe { &mut *(crate::ffi::HandleGeomVectorWithMagnitude_get_mut(self as *mut Self)) }
     }
 
+    /// Upcast Handle<Geom_VectorWithMagnitude> to Handle<Geom_Vector>
+    pub fn to_handle_vector(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomVector> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomVectorWithMagnitude_to_HandleGeomVector(self as *const Self),
+            )
+        }
+    }
+
     /// Upcast Handle<Geom_VectorWithMagnitude> to Handle<Geom_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
@@ -22986,15 +22995,6 @@ impl HandleGeomVectorWithMagnitude {
                 crate::ffi::HandleGeomVectorWithMagnitude_to_HandleGeomGeometry(
                     self as *const Self,
                 ),
-            )
-        }
-    }
-
-    /// Upcast Handle<Geom_VectorWithMagnitude> to Handle<Geom_Vector>
-    pub fn to_handle_vector(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomVector> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HandleGeomVectorWithMagnitude_to_HandleGeomVector(self as *const Self),
             )
         }
     }

@@ -1790,16 +1790,6 @@ impl PrjFunc {
         }
     }
 
-    /// Upcast to math_FunctionSet
-    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe { &*(crate::ffi::ProjLib_PrjFunc_as_math_FunctionSet(self as *const Self)) }
-    }
-
-    /// Upcast to math_FunctionSet (mutable)
-    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe { &mut *(crate::ffi::ProjLib_PrjFunc_as_math_FunctionSet_mut(self as *mut Self)) }
-    }
-
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
@@ -1818,6 +1808,16 @@ impl PrjFunc {
                 self as *mut Self,
             ))
         }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe { &*(crate::ffi::ProjLib_PrjFunc_as_math_FunctionSet(self as *const Self)) }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe { &mut *(crate::ffi::ProjLib_PrjFunc_as_math_FunctionSet_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`

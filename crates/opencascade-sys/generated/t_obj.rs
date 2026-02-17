@@ -134,6 +134,18 @@ impl Application {
         unsafe { &*(crate::ffi::TObj_Application_get_type_descriptor()) }
     }
 
+    /// Upcast to TDocStd_Application
+    pub fn as_t_doc_std_application(&self) -> &crate::t_doc_std::Application {
+        unsafe { &*(crate::ffi::TObj_Application_as_TDocStd_Application(self as *const Self)) }
+    }
+
+    /// Upcast to TDocStd_Application (mutable)
+    pub fn as_t_doc_std_application_mut(&mut self) -> &mut crate::t_doc_std::Application {
+        unsafe {
+            &mut *(crate::ffi::TObj_Application_as_TDocStd_Application_mut(self as *mut Self))
+        }
+    }
+
     /// Upcast to CDF_Application
     pub fn as_cdf_application(&self) -> &crate::cdf::Application {
         unsafe { &*(crate::ffi::TObj_Application_as_CDF_Application(self as *const Self)) }
@@ -154,16 +166,28 @@ impl Application {
         unsafe { &mut *(crate::ffi::TObj_Application_as_CDM_Application_mut(self as *mut Self)) }
     }
 
-    /// Upcast to TDocStd_Application
-    pub fn as_t_doc_std_application(&self) -> &crate::t_doc_std::Application {
-        unsafe { &*(crate::ffi::TObj_Application_as_TDocStd_Application(self as *const Self)) }
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:76 - `TDocStd_Application::IsDriverLoaded()`
+    pub fn is_driver_loaded(&self) -> bool {
+        unsafe { crate::ffi::TObj_Application_inherited_IsDriverLoaded(self as *const Self) }
     }
 
-    /// Upcast to TDocStd_Application (mutable)
-    pub fn as_t_doc_std_application_mut(&mut self) -> &mut crate::t_doc_std::Application {
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:96 - `TDocStd_Application::Resources()`
+    pub fn resources(&mut self) -> crate::OwnedPtr<crate::ffi::HandleResourceManager> {
         unsafe {
-            &mut *(crate::ffi::TObj_Application_as_TDocStd_Application_mut(self as *mut Self))
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Application_inherited_Resources(
+                self as *mut Self,
+            ))
         }
+    }
+
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:157 - `TDocStd_Application::NbDocuments()`
+    pub fn nb_documents(&self) -> i32 {
+        unsafe { crate::ffi::TObj_Application_inherited_NbDocuments(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:221 - `TDocStd_Application::IsInSession()`
+    pub fn is_in_session(&self, path: &crate::ffi::TCollection_ExtendedString) -> i32 {
+        unsafe { crate::ffi::TObj_Application_inherited_IsInSession(self as *const Self, path) }
     }
 
     /// Inherited: **Source:** `CDF_Application.hxx`:126 - `CDF_Application::CanRetrieve()`
@@ -214,15 +238,6 @@ impl Application {
         }
     }
 
-    /// Inherited: **Source:** `CDM_Application.hxx`:42 - `CDM_Application::Resources()`
-    pub fn resources(&mut self) -> crate::OwnedPtr<crate::ffi::HandleResourceManager> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TObj_Application_inherited_Resources(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Inherited: **Source:** `CDM_Application.hxx`:45 - `CDM_Application::MessageDriver()`
     pub fn message_driver(&mut self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
         unsafe {
@@ -248,21 +263,6 @@ impl Application {
                 self as *const Self,
             ))
         }
-    }
-
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:76 - `TDocStd_Application::IsDriverLoaded()`
-    pub fn is_driver_loaded(&self) -> bool {
-        unsafe { crate::ffi::TObj_Application_inherited_IsDriverLoaded(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:157 - `TDocStd_Application::NbDocuments()`
-    pub fn nb_documents(&self) -> i32 {
-        unsafe { crate::ffi::TObj_Application_inherited_NbDocuments(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:221 - `TDocStd_Application::IsInSession()`
-    pub fn is_in_session(&self, path: &crate::ffi::TCollection_ExtendedString) -> i32 {
-        unsafe { crate::ffi::TObj_Application_inherited_IsInSession(self as *const Self, path) }
     }
 }
 

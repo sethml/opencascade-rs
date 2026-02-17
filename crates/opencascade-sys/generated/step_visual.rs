@@ -47,6 +47,24 @@ impl TessellatedGeometricSet {
         unsafe { &*(crate::ffi::StepVisual_TessellatedGeometricSet_get_type_descriptor()) }
     }
 
+    /// Upcast to StepVisual_TessellatedItem
+    pub fn as_tessellated_item(&self) -> &TessellatedItem {
+        unsafe {
+            &*(crate::ffi::StepVisual_TessellatedGeometricSet_as_StepVisual_TessellatedItem(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepVisual_TessellatedItem (mutable)
+    pub fn as_tessellated_item_mut(&mut self) -> &mut TessellatedItem {
+        unsafe {
+            &mut *(crate::ffi::StepVisual_TessellatedGeometricSet_as_StepVisual_TessellatedItem_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Upcast to StepGeom_GeometricRepresentationItem
     pub fn as_step_geom_geometric_representation_item(
         &self,
@@ -80,24 +98,6 @@ impl TessellatedGeometricSet {
     ) -> &mut crate::step_repr::RepresentationItem {
         unsafe {
             &mut *(crate::ffi::StepVisual_TessellatedGeometricSet_as_StepRepr_RepresentationItem_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast to StepVisual_TessellatedItem
-    pub fn as_tessellated_item(&self) -> &TessellatedItem {
-        unsafe {
-            &*(crate::ffi::StepVisual_TessellatedGeometricSet_as_StepVisual_TessellatedItem(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to StepVisual_TessellatedItem (mutable)
-    pub fn as_tessellated_item_mut(&mut self) -> &mut TessellatedItem {
-        unsafe {
-            &mut *(crate::ffi::StepVisual_TessellatedGeometricSet_as_StepVisual_TessellatedItem_mut(
-                self as *mut Self,
-            ))
         }
     }
 

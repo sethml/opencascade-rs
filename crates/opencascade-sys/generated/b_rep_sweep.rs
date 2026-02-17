@@ -1409,6 +1409,16 @@ impl Rotation {
         unsafe { crate::ffi::BRepSweep_Rotation_angle(self as *const Self) }
     }
 
+    /// Upcast to BRepSweep_Trsf
+    pub fn as_trsf(&self) -> &Trsf {
+        unsafe { &*(crate::ffi::BRepSweep_Rotation_as_BRepSweep_Trsf(self as *const Self)) }
+    }
+
+    /// Upcast to BRepSweep_Trsf (mutable)
+    pub fn as_trsf_mut(&mut self) -> &mut Trsf {
+        unsafe { &mut *(crate::ffi::BRepSweep_Rotation_as_BRepSweep_Trsf_mut(self as *mut Self)) }
+    }
+
     /// Upcast to BRepSweep_NumLinearRegularSweep
     pub fn as_num_linear_regular_sweep(&self) -> &NumLinearRegularSweep {
         unsafe {
@@ -1427,17 +1437,21 @@ impl Rotation {
         }
     }
 
-    /// Upcast to BRepSweep_Trsf
-    pub fn as_trsf(&self) -> &Trsf {
-        unsafe { &*(crate::ffi::BRepSweep_Rotation_as_BRepSweep_Trsf(self as *const Self)) }
+    /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:51 - `BRepSweep_Trsf::Init()`
+    pub fn init(&mut self) {
+        unsafe { crate::ffi::BRepSweep_Rotation_inherited_Init(self as *mut Self) }
     }
 
-    /// Upcast to BRepSweep_Trsf (mutable)
-    pub fn as_trsf_mut(&mut self) -> &mut Trsf {
-        unsafe { &mut *(crate::ffi::BRepSweep_Rotation_as_BRepSweep_Trsf_mut(self as *mut Self)) }
+    /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:55 - `BRepSweep_Trsf::Process()`
+    pub fn process(
+        &mut self,
+        aGenS: &crate::ffi::TopoDS_Shape,
+        aDirV: &crate::ffi::Sweep_NumShape,
+    ) -> bool {
+        unsafe { crate::ffi::BRepSweep_Rotation_inherited_Process(self as *mut Self, aGenS, aDirV) }
     }
 
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:199 - `BRepSweep_NumLinearRegularSweep::SetContinuity()`
+    /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:180 - `BRepSweep_Trsf::SetContinuity()`
     pub fn set_continuity(
         &mut self,
         aGenS: &crate::ffi::TopoDS_Shape,
@@ -1494,20 +1508,6 @@ impl Rotation {
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:248 - `BRepSweep_NumLinearRegularSweep::Closed()`
     pub fn closed(&self) -> bool {
         unsafe { crate::ffi::BRepSweep_Rotation_inherited_Closed(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:51 - `BRepSweep_Trsf::Init()`
-    pub fn init(&mut self) {
-        unsafe { crate::ffi::BRepSweep_Rotation_inherited_Init(self as *mut Self) }
-    }
-
-    /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:55 - `BRepSweep_Trsf::Process()`
-    pub fn process(
-        &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
-    ) -> bool {
-        unsafe { crate::ffi::BRepSweep_Rotation_inherited_Process(self as *mut Self, aGenS, aDirV) }
     }
 }
 
@@ -1992,6 +1992,18 @@ impl Translation {
         }
     }
 
+    /// Upcast to BRepSweep_Trsf
+    pub fn as_trsf(&self) -> &Trsf {
+        unsafe { &*(crate::ffi::BRepSweep_Translation_as_BRepSweep_Trsf(self as *const Self)) }
+    }
+
+    /// Upcast to BRepSweep_Trsf (mutable)
+    pub fn as_trsf_mut(&mut self) -> &mut Trsf {
+        unsafe {
+            &mut *(crate::ffi::BRepSweep_Translation_as_BRepSweep_Trsf_mut(self as *mut Self))
+        }
+    }
+
     /// Upcast to BRepSweep_NumLinearRegularSweep
     pub fn as_num_linear_regular_sweep(&self) -> &NumLinearRegularSweep {
         unsafe {
@@ -2010,15 +2022,34 @@ impl Translation {
         }
     }
 
-    /// Upcast to BRepSweep_Trsf
-    pub fn as_trsf(&self) -> &Trsf {
-        unsafe { &*(crate::ffi::BRepSweep_Translation_as_BRepSweep_Trsf(self as *const Self)) }
+    /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:51 - `BRepSweep_Trsf::Init()`
+    pub fn init(&mut self) {
+        unsafe { crate::ffi::BRepSweep_Translation_inherited_Init(self as *mut Self) }
     }
 
-    /// Upcast to BRepSweep_Trsf (mutable)
-    pub fn as_trsf_mut(&mut self) -> &mut Trsf {
+    /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:55 - `BRepSweep_Trsf::Process()`
+    pub fn process(
+        &mut self,
+        aGenS: &crate::ffi::TopoDS_Shape,
+        aDirV: &crate::ffi::Sweep_NumShape,
+    ) -> bool {
         unsafe {
-            &mut *(crate::ffi::BRepSweep_Translation_as_BRepSweep_Trsf_mut(self as *mut Self))
+            crate::ffi::BRepSweep_Translation_inherited_Process(self as *mut Self, aGenS, aDirV)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:180 - `BRepSweep_Trsf::SetContinuity()`
+    pub fn set_continuity(
+        &mut self,
+        aGenS: &crate::ffi::TopoDS_Shape,
+        aDirS: &crate::ffi::Sweep_NumShape,
+    ) {
+        unsafe {
+            crate::ffi::BRepSweep_Translation_inherited_SetContinuity(
+                self as *mut Self,
+                aGenS,
+                aDirS,
+            )
         }
     }
 
@@ -2032,21 +2063,6 @@ impl Translation {
                 self as *const Self,
                 aNewShape,
             ))
-        }
-    }
-
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:199 - `BRepSweep_NumLinearRegularSweep::SetContinuity()`
-    pub fn set_continuity(
-        &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
-    ) {
-        unsafe {
-            crate::ffi::BRepSweep_Translation_inherited_SetContinuity(
-                self as *mut Self,
-                aGenS,
-                aDirS,
-            )
         }
     }
 
@@ -2096,22 +2112,6 @@ impl Translation {
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:248 - `BRepSweep_NumLinearRegularSweep::Closed()`
     pub fn closed(&self) -> bool {
         unsafe { crate::ffi::BRepSweep_Translation_inherited_Closed(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:51 - `BRepSweep_Trsf::Init()`
-    pub fn init(&mut self) {
-        unsafe { crate::ffi::BRepSweep_Translation_inherited_Init(self as *mut Self) }
-    }
-
-    /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:55 - `BRepSweep_Trsf::Process()`
-    pub fn process(
-        &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
-    ) -> bool {
-        unsafe {
-            crate::ffi::BRepSweep_Translation_inherited_Process(self as *mut Self, aGenS, aDirV)
-        }
     }
 }
 

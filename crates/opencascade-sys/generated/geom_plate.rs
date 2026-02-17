@@ -2129,16 +2129,6 @@ impl Surface {
         unsafe { &*(crate::ffi::GeomPlate_Surface_get_type_descriptor()) }
     }
 
-    /// Upcast to Geom_Geometry
-    pub fn as_geom_geometry(&self) -> &crate::geom::Geometry {
-        unsafe { &*(crate::ffi::GeomPlate_Surface_as_Geom_Geometry(self as *const Self)) }
-    }
-
-    /// Upcast to Geom_Geometry (mutable)
-    pub fn as_geom_geometry_mut(&mut self) -> &mut crate::geom::Geometry {
-        unsafe { &mut *(crate::ffi::GeomPlate_Surface_as_Geom_Geometry_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Geom_Surface
     pub fn as_geom_surface(&self) -> &crate::geom::Surface {
         unsafe { &*(crate::ffi::GeomPlate_Surface_as_Geom_Surface(self as *const Self)) }
@@ -2149,12 +2139,51 @@ impl Surface {
         unsafe { &mut *(crate::ffi::GeomPlate_Surface_as_Geom_Surface_mut(self as *mut Self)) }
     }
 
+    /// Upcast to Geom_Geometry
+    pub fn as_geom_geometry(&self) -> &crate::geom::Geometry {
+        unsafe { &*(crate::ffi::GeomPlate_Surface_as_Geom_Geometry(self as *const Self)) }
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geom_geometry_mut(&mut self) -> &mut crate::geom::Geometry {
+        unsafe { &mut *(crate::ffi::GeomPlate_Surface_as_Geom_Geometry_mut(self as *mut Self)) }
+    }
+
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
+    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_inherited_UReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
+    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_inherited_VReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
+    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_inherited_Value(
+                self as *const Self,
+                U,
+                V,
+            ))
         }
     }
 
@@ -2246,35 +2275,6 @@ impl Surface {
             ))
         }
     }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
-    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_inherited_UReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
-    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_inherited_VReversed(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
-    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_inherited_Value(
-                self as *const Self,
-                U,
-                V,
-            ))
-        }
-    }
 }
 
 pub use crate::ffi::HandleGeomPlateSurface;
@@ -2296,19 +2296,19 @@ impl HandleGeomPlateSurface {
         unsafe { &mut *(crate::ffi::HandleGeomPlateSurface_get_mut(self as *mut Self)) }
     }
 
-    /// Upcast Handle<GeomPlate_Surface> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    /// Upcast Handle<GeomPlate_Surface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomPlateSurface_to_HandleGeomGeometry(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomPlateSurface_to_HandleGeomSurface(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast Handle<GeomPlate_Surface> to Handle<Geom_Surface>
-    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    /// Upcast Handle<GeomPlate_Surface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomPlateSurface_to_HandleGeomSurface(
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomPlateSurface_to_HandleGeomGeometry(
                 self as *const Self,
             ))
         }

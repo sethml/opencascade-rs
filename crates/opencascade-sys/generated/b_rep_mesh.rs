@@ -152,22 +152,6 @@ impl BoundaryParamsRangeSplitter {
         }
     }
 
-    /// Upcast to BRepMesh_DefaultRangeSplitter
-    pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
-    pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to BRepMesh_NURBSRangeSplitter
     pub fn as_nurbs_range_splitter(&self) -> &NURBSRangeSplitter {
         unsafe {
@@ -200,7 +184,23 @@ impl BoundaryParamsRangeSplitter {
         }
     }
 
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:45 - `BRepMesh_DefaultRangeSplitter::AdjustRange()`
+    /// Upcast to BRepMesh_DefaultRangeSplitter
+    pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
+        unsafe {
+            &*(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
+    pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_NURBSRangeSplitter.hxx`:38 - `BRepMesh_NURBSRangeSplitter::AdjustRange()`
     pub fn adjust_range(&mut self) {
         unsafe {
             crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_AdjustRange(
@@ -734,16 +734,6 @@ impl Context {
         unsafe { &*(crate::ffi::BRepMesh_Context_get_type_descriptor()) }
     }
 
-    /// Upcast to IMeshData_Shape
-    pub fn as_i_mesh_data_shape(&self) -> &crate::i_mesh_data::Shape {
-        unsafe { &*(crate::ffi::BRepMesh_Context_as_IMeshData_Shape(self as *const Self)) }
-    }
-
-    /// Upcast to IMeshData_Shape (mutable)
-    pub fn as_i_mesh_data_shape_mut(&mut self) -> &mut crate::i_mesh_data::Shape {
-        unsafe { &mut *(crate::ffi::BRepMesh_Context_as_IMeshData_Shape_mut(self as *mut Self)) }
-    }
-
     /// Upcast to IMeshTools_Context
     pub fn as_i_mesh_tools_context(&self) -> &crate::i_mesh_tools::Context {
         unsafe { &*(crate::ffi::BRepMesh_Context_as_IMeshTools_Context(self as *const Self)) }
@@ -754,14 +744,14 @@ impl Context {
         unsafe { &mut *(crate::ffi::BRepMesh_Context_as_IMeshTools_Context_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
-        unsafe { crate::ffi::BRepMesh_Context_inherited_SetShape(self as *mut Self, theShape) }
+    /// Upcast to IMeshData_Shape
+    pub fn as_i_mesh_data_shape(&self) -> &crate::i_mesh_data::Shape {
+        unsafe { &*(crate::ffi::BRepMesh_Context_as_IMeshData_Shape(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
-        unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetShape(self as *const Self)) }
+    /// Upcast to IMeshData_Shape (mutable)
+    pub fn as_i_mesh_data_shape_mut(&mut self) -> &mut crate::i_mesh_data::Shape {
+        unsafe { &mut *(crate::ffi::BRepMesh_Context_as_IMeshData_Shape_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:40 - `IMeshTools_Context::BuildModel()`
@@ -877,6 +867,16 @@ impl Context {
         unsafe {
             &mut *(crate::ffi::BRepMesh_Context_inherited_ChangeParameters(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
+    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::BRepMesh_Context_inherited_SetShape(self as *mut Self, theShape) }
+    }
+
+    /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
+    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetShape(self as *const Self)) }
     }
 }
 
@@ -998,24 +998,6 @@ impl CustomBaseMeshAlgo {
         unsafe { &*(crate::ffi::BRepMesh_CustomBaseMeshAlgo_get_type_descriptor()) }
     }
 
-    /// Upcast to BRepMesh_BaseMeshAlgo
-    pub fn as_base_mesh_algo(&self) -> &BaseMeshAlgo {
-        unsafe {
-            &*(crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BRepMesh_BaseMeshAlgo (mutable)
-    pub fn as_base_mesh_algo_mut(&mut self) -> &mut BaseMeshAlgo {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo
     pub fn as_constrained_base_mesh_algo(&self) -> &ConstrainedBaseMeshAlgo {
         unsafe {
@@ -1029,6 +1011,24 @@ impl CustomBaseMeshAlgo {
     pub fn as_constrained_base_mesh_algo_mut(&mut self) -> &mut ConstrainedBaseMeshAlgo {
         unsafe {
             &mut *(crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to BRepMesh_BaseMeshAlgo
+    pub fn as_base_mesh_algo(&self) -> &BaseMeshAlgo {
+        unsafe {
+            &*(crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to BRepMesh_BaseMeshAlgo (mutable)
+    pub fn as_base_mesh_algo_mut(&mut self) -> &mut BaseMeshAlgo {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_CustomBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(
                 self as *mut Self,
             ))
         }
@@ -1685,19 +1685,19 @@ impl DelabellaBaseMeshAlgo {
         unsafe { &*(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_get_type_descriptor()) }
     }
 
-    /// Upcast to BRepMesh_BaseMeshAlgo
-    pub fn as_base_mesh_algo(&self) -> &BaseMeshAlgo {
+    /// Upcast to BRepMesh_CustomBaseMeshAlgo
+    pub fn as_custom_base_mesh_algo(&self) -> &CustomBaseMeshAlgo {
         unsafe {
-            &*(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(
+            &*(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_CustomBaseMeshAlgo(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast to BRepMesh_BaseMeshAlgo (mutable)
-    pub fn as_base_mesh_algo_mut(&mut self) -> &mut BaseMeshAlgo {
+    /// Upcast to BRepMesh_CustomBaseMeshAlgo (mutable)
+    pub fn as_custom_base_mesh_algo_mut(&mut self) -> &mut CustomBaseMeshAlgo {
         unsafe {
-            &mut *(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(
+            &mut *(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_CustomBaseMeshAlgo_mut(
                 self as *mut Self,
             ))
         }
@@ -1719,19 +1719,19 @@ impl DelabellaBaseMeshAlgo {
         }
     }
 
-    /// Upcast to BRepMesh_CustomBaseMeshAlgo
-    pub fn as_custom_base_mesh_algo(&self) -> &CustomBaseMeshAlgo {
+    /// Upcast to BRepMesh_BaseMeshAlgo
+    pub fn as_base_mesh_algo(&self) -> &BaseMeshAlgo {
         unsafe {
-            &*(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_CustomBaseMeshAlgo(
+            &*(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast to BRepMesh_CustomBaseMeshAlgo (mutable)
-    pub fn as_custom_base_mesh_algo_mut(&mut self) -> &mut CustomBaseMeshAlgo {
+    /// Upcast to BRepMesh_BaseMeshAlgo (mutable)
+    pub fn as_base_mesh_algo_mut(&mut self) -> &mut BaseMeshAlgo {
         unsafe {
-            &mut *(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_CustomBaseMeshAlgo_mut(
+            &mut *(crate::ffi::BRepMesh_DelabellaBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(
                 self as *mut Self,
             ))
         }
@@ -2005,6 +2005,22 @@ impl DelaunayBaseMeshAlgo {
         unsafe { &*(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_get_type_descriptor()) }
     }
 
+    /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo
+    pub fn as_constrained_base_mesh_algo(&self) -> &ConstrainedBaseMeshAlgo {
+        unsafe {
+            &*(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo (mutable)
+    pub fn as_constrained_base_mesh_algo_mut(&mut self) -> &mut ConstrainedBaseMeshAlgo {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo_mut(self as *mut Self))
+        }
+    }
+
     /// Upcast to BRepMesh_BaseMeshAlgo
     pub fn as_base_mesh_algo(&self) -> &BaseMeshAlgo {
         unsafe {
@@ -2020,22 +2036,6 @@ impl DelaunayBaseMeshAlgo {
             &mut *(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_BaseMeshAlgo_mut(
                 self as *mut Self,
             ))
-        }
-    }
-
-    /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo
-    pub fn as_constrained_base_mesh_algo(&self) -> &ConstrainedBaseMeshAlgo {
-        unsafe {
-            &*(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BRepMesh_ConstrainedBaseMeshAlgo (mutable)
-    pub fn as_constrained_base_mesh_algo_mut(&mut self) -> &mut ConstrainedBaseMeshAlgo {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_DelaunayBaseMeshAlgo_as_BRepMesh_ConstrainedBaseMeshAlgo_mut(self as *mut Self))
         }
     }
 
@@ -2390,24 +2390,6 @@ impl ExtrusionRangeSplitter {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ExtrusionRangeSplitter_ctor()) }
     }
 
-    /// Upcast to BRepMesh_DefaultRangeSplitter
-    pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
-    pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to BRepMesh_NURBSRangeSplitter
     pub fn as_nurbs_range_splitter(&self) -> &NURBSRangeSplitter {
         unsafe {
@@ -2444,6 +2426,31 @@ impl ExtrusionRangeSplitter {
         }
     }
 
+    /// Upcast to BRepMesh_DefaultRangeSplitter
+    pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
+        unsafe {
+            &*(crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
+    pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_ExtrusionRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_NURBSRangeSplitter.hxx`:38 - `BRepMesh_NURBSRangeSplitter::AdjustRange()`
+    pub fn adjust_range(&mut self) {
+        unsafe {
+            crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_AdjustRange(self as *mut Self)
+        }
+    }
+
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
         unsafe {
@@ -2451,13 +2458,6 @@ impl ExtrusionRangeSplitter {
                 self as *mut Self,
                 thePoint,
             )
-        }
-    }
-
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:45 - `BRepMesh_DefaultRangeSplitter::AdjustRange()`
-    pub fn adjust_range(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_AdjustRange(self as *mut Self)
         }
     }
 
@@ -3600,24 +3600,6 @@ impl NURBSRangeSplitter {
         unsafe { crate::ffi::BRepMesh_NURBSRangeSplitter_adjust_range(self as *mut Self) }
     }
 
-    /// Upcast to BRepMesh_DefaultRangeSplitter
-    pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
-    pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to BRepMesh_UVParamRangeSplitter
     pub fn as_uv_param_range_splitter(&self) -> &UVParamRangeSplitter {
         unsafe {
@@ -3631,6 +3613,24 @@ impl NURBSRangeSplitter {
     pub fn as_uv_param_range_splitter_mut(&mut self) -> &mut UVParamRangeSplitter {
         unsafe {
             &mut *(crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter
+    pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
+        unsafe {
+            &*(crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
+    pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_NURBSRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
                 self as *mut Self,
             ))
         }
@@ -4460,24 +4460,6 @@ impl TorusRangeSplitter {
         unsafe { crate::ffi::BRepMesh_TorusRangeSplitter_add_point(self as *mut Self, thePoint) }
     }
 
-    /// Upcast to BRepMesh_DefaultRangeSplitter
-    pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
-    pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to BRepMesh_UVParamRangeSplitter
     pub fn as_uv_param_range_splitter(&self) -> &UVParamRangeSplitter {
         unsafe {
@@ -4491,6 +4473,24 @@ impl TorusRangeSplitter {
     pub fn as_uv_param_range_splitter_mut(&mut self) -> &mut UVParamRangeSplitter {
         unsafe {
             &mut *(crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_UVParamRangeSplitter_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter
+    pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
+        unsafe {
+            &*(crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
+    pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_TorusRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
                 self as *mut Self,
             ))
         }
@@ -4714,24 +4714,6 @@ impl UndefinedRangeSplitter {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UndefinedRangeSplitter_ctor()) }
     }
 
-    /// Upcast to BRepMesh_DefaultRangeSplitter
-    pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
-        unsafe {
-            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
-    pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
-        unsafe {
-            &mut *(crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to BRepMesh_NURBSRangeSplitter
     pub fn as_nurbs_range_splitter(&self) -> &NURBSRangeSplitter {
         unsafe {
@@ -4768,6 +4750,31 @@ impl UndefinedRangeSplitter {
         }
     }
 
+    /// Upcast to BRepMesh_DefaultRangeSplitter
+    pub fn as_default_range_splitter(&self) -> &DefaultRangeSplitter {
+        unsafe {
+            &*(crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_DefaultRangeSplitter(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to BRepMesh_DefaultRangeSplitter (mutable)
+    pub fn as_default_range_splitter_mut(&mut self) -> &mut DefaultRangeSplitter {
+        unsafe {
+            &mut *(crate::ffi::BRepMesh_UndefinedRangeSplitter_as_BRepMesh_DefaultRangeSplitter_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_NURBSRangeSplitter.hxx`:38 - `BRepMesh_NURBSRangeSplitter::AdjustRange()`
+    pub fn adjust_range(&mut self) {
+        unsafe {
+            crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_AdjustRange(self as *mut Self)
+        }
+    }
+
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
         unsafe {
@@ -4775,13 +4782,6 @@ impl UndefinedRangeSplitter {
                 self as *mut Self,
                 thePoint,
             )
-        }
-    }
-
-    /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:45 - `BRepMesh_DefaultRangeSplitter::AdjustRange()`
-    pub fn adjust_range(&mut self) {
-        unsafe {
-            crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_AdjustRange(self as *mut Self)
         }
     }
 

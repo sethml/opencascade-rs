@@ -371,24 +371,6 @@ impl MakeTriangulation {
         unsafe { crate::ffi::ShapeConstruct_MakeTriangulation_is_done(self as *const Self) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        unsafe {
-            &*(crate::ffi::ShapeConstruct_MakeTriangulation_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        unsafe {
-            &mut *(crate::ffi::ShapeConstruct_MakeTriangulation_as_BRepBuilderAPI_Command_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
@@ -409,9 +391,22 @@ impl MakeTriangulation {
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::ShapeConstruct_MakeTriangulation_inherited_Check(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        unsafe {
+            &*(crate::ffi::ShapeConstruct_MakeTriangulation_as_BRepBuilderAPI_Command(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::ShapeConstruct_MakeTriangulation_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
@@ -446,6 +441,11 @@ impl MakeTriangulation {
         unsafe {
             crate::ffi::ShapeConstruct_MakeTriangulation_inherited_IsDeleted(self as *mut Self, S)
         }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::ShapeConstruct_MakeTriangulation_inherited_Check(self as *const Self) }
     }
 }
 

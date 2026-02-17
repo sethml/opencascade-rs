@@ -630,22 +630,6 @@ impl GltfLatePrimitiveArray {
         unsafe { &*(crate::ffi::RWGltf_GltfLatePrimitiveArray_get_type_descriptor()) }
     }
 
-    /// Upcast to Poly_Triangulation
-    pub fn as_poly_triangulation(&self) -> &crate::poly::Triangulation {
-        unsafe {
-            &*(crate::ffi::RWGltf_GltfLatePrimitiveArray_as_Poly_Triangulation(self as *const Self))
-        }
-    }
-
-    /// Upcast to Poly_Triangulation (mutable)
-    pub fn as_poly_triangulation_mut(&mut self) -> &mut crate::poly::Triangulation {
-        unsafe {
-            &mut *(crate::ffi::RWGltf_GltfLatePrimitiveArray_as_Poly_Triangulation_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to RWMesh_TriangulationSource
     pub fn as_rw_mesh_triangulation_source(&self) -> &crate::rw_mesh::TriangulationSource {
         unsafe {
@@ -663,6 +647,134 @@ impl GltfLatePrimitiveArray {
             &mut *(crate::ffi::RWGltf_GltfLatePrimitiveArray_as_RWMesh_TriangulationSource_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Upcast to Poly_Triangulation
+    pub fn as_poly_triangulation(&self) -> &crate::poly::Triangulation {
+        unsafe {
+            &*(crate::ffi::RWGltf_GltfLatePrimitiveArray_as_Poly_Triangulation(self as *const Self))
+        }
+    }
+
+    /// Upcast to Poly_Triangulation (mutable)
+    pub fn as_poly_triangulation_mut(&mut self) -> &mut crate::poly::Triangulation {
+        unsafe {
+            &mut *(crate::ffi::RWGltf_GltfLatePrimitiveArray_as_Poly_Triangulation_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:36 - `RWMesh_TriangulationSource::Reader()`
+    pub fn reader(&self) -> &crate::ffi::HandleRWMeshTriangulationReader {
+        unsafe {
+            &*(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Reader(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:39 - `RWMesh_TriangulationSource::SetReader()`
+    pub fn set_reader(&mut self, theReader: &crate::ffi::HandleRWMeshTriangulationReader) {
+        unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetReader(
+                self as *mut Self,
+                theReader,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:43 - `RWMesh_TriangulationSource::DegeneratedTriNb()`
+    pub fn degenerated_tri_nb(&self) -> i32 {
+        unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_DegeneratedTriNb(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:46 - `RWMesh_TriangulationSource::ChangeDegeneratedTriNb()`
+    pub fn change_degenerated_tri_nb(&mut self) -> &mut i32 {
+        unsafe {
+            &mut *(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_ChangeDegeneratedTriNb(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:49 - `RWMesh_TriangulationSource::HasGeometry()`
+    pub fn has_geometry(&self) -> bool {
+        unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_HasGeometry(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:55 - `RWMesh_TriangulationSource::NbEdges()`
+    pub fn nb_edges(&self) -> i32 {
+        unsafe { crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_NbEdges(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:60 - `RWMesh_TriangulationSource::Edge()`
+    pub fn edge(&self, theIndex: i32) -> i32 {
+        unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Edge(self as *const Self, theIndex)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:65 - `RWMesh_TriangulationSource::SetEdge()`
+    pub fn set_edge(&mut self, theIndex: i32, theEdge: i32) {
+        unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetEdge(
+                self as *mut Self,
+                theIndex,
+                theEdge,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:75 - `RWMesh_TriangulationSource::NbDeferredNodes()`
+    pub fn nb_deferred_nodes(&self) -> i32 {
+        unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_NbDeferredNodes(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:78 - `RWMesh_TriangulationSource::SetNbDeferredNodes()`
+    pub fn set_nb_deferred_nodes(&mut self, theNbNodes: i32) {
+        unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetNbDeferredNodes(
+                self as *mut Self,
+                theNbNodes,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:84 - `RWMesh_TriangulationSource::NbDeferredTriangles()`
+    pub fn nb_deferred_triangles(&self) -> i32 {
+        unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_NbDeferredTriangles(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:90 - `RWMesh_TriangulationSource::SetNbDeferredTriangles()`
+    pub fn set_nb_deferred_triangles(&mut self, theNbTris: i32) {
+        unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetNbDeferredTriangles(
+                self as *mut Self,
+                theNbTris,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:99 - `RWMesh_TriangulationSource::ResizeEdges()`
+    pub fn resize_edges(&mut self, theNbEdges: i32, theToCopyOld: bool) {
+        unsafe {
+            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_ResizeEdges(
+                self as *mut Self,
+                theNbEdges,
+                theToCopyOld,
+            )
         }
     }
 
@@ -692,13 +804,6 @@ impl GltfLatePrimitiveArray {
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:119 - `Poly_Triangulation::Clear()`
     pub fn clear(&mut self) {
         unsafe { crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Clear(self as *mut Self) }
-    }
-
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:122 - `Poly_Triangulation::HasGeometry()`
-    pub fn has_geometry(&self) -> bool {
-        unsafe {
-            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_HasGeometry(self as *const Self)
-        }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:128 - `Poly_Triangulation::NbNodes()`
@@ -970,22 +1075,6 @@ impl GltfLatePrimitiveArray {
         }
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:356 - `Poly_Triangulation::NbDeferredNodes()`
-    pub fn nb_deferred_nodes(&self) -> i32 {
-        unsafe {
-            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_NbDeferredNodes(self as *const Self)
-        }
-    }
-
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:361 - `Poly_Triangulation::NbDeferredTriangles()`
-    pub fn nb_deferred_triangles(&self) -> i32 {
-        unsafe {
-            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_NbDeferredTriangles(
-                self as *const Self,
-            )
-        }
-    }
-
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:368 - `Poly_Triangulation::LoadDeferredData()`
     pub fn load_deferred_data(&mut self, theFileSystem: &crate::ffi::HandleOSDFileSystem) -> bool {
         unsafe {
@@ -1016,95 +1105,6 @@ impl GltfLatePrimitiveArray {
         unsafe {
             crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_UnloadDeferredData(
                 self as *mut Self,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:36 - `RWMesh_TriangulationSource::Reader()`
-    pub fn reader(&self) -> &crate::ffi::HandleRWMeshTriangulationReader {
-        unsafe {
-            &*(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Reader(self as *const Self))
-        }
-    }
-
-    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:39 - `RWMesh_TriangulationSource::SetReader()`
-    pub fn set_reader(&mut self, theReader: &crate::ffi::HandleRWMeshTriangulationReader) {
-        unsafe {
-            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetReader(
-                self as *mut Self,
-                theReader,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:43 - `RWMesh_TriangulationSource::DegeneratedTriNb()`
-    pub fn degenerated_tri_nb(&self) -> i32 {
-        unsafe {
-            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_DegeneratedTriNb(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:46 - `RWMesh_TriangulationSource::ChangeDegeneratedTriNb()`
-    pub fn change_degenerated_tri_nb(&mut self) -> &mut i32 {
-        unsafe {
-            &mut *(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_ChangeDegeneratedTriNb(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:55 - `RWMesh_TriangulationSource::NbEdges()`
-    pub fn nb_edges(&self) -> i32 {
-        unsafe { crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_NbEdges(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:60 - `RWMesh_TriangulationSource::Edge()`
-    pub fn edge(&self, theIndex: i32) -> i32 {
-        unsafe {
-            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Edge(self as *const Self, theIndex)
-        }
-    }
-
-    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:65 - `RWMesh_TriangulationSource::SetEdge()`
-    pub fn set_edge(&mut self, theIndex: i32, theEdge: i32) {
-        unsafe {
-            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetEdge(
-                self as *mut Self,
-                theIndex,
-                theEdge,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:78 - `RWMesh_TriangulationSource::SetNbDeferredNodes()`
-    pub fn set_nb_deferred_nodes(&mut self, theNbNodes: i32) {
-        unsafe {
-            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetNbDeferredNodes(
-                self as *mut Self,
-                theNbNodes,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:90 - `RWMesh_TriangulationSource::SetNbDeferredTriangles()`
-    pub fn set_nb_deferred_triangles(&mut self, theNbTris: i32) {
-        unsafe {
-            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetNbDeferredTriangles(
-                self as *mut Self,
-                theNbTris,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:99 - `RWMesh_TriangulationSource::ResizeEdges()`
-    pub fn resize_edges(&mut self, theNbEdges: i32, theToCopyOld: bool) {
-        unsafe {
-            crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_ResizeEdges(
-                self as *mut Self,
-                theNbEdges,
-                theToCopyOld,
             )
         }
     }

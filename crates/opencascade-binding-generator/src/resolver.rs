@@ -461,13 +461,19 @@ impl SymbolTable {
         let mut visited: HashSet<String> = HashSet::new();
         
         // Start with the direct base classes of the given class
-        let mut to_process = if let Some(class) = self.class_by_name(cpp_name) {
-            class.base_classes.clone()
+        let mut to_process = std::collections::VecDeque::new();
+        if let Some(class) = self.class_by_name(cpp_name) {
+            for base in &class.base_classes {
+                to_process.push_back(base.clone());
+            }
         } else {
             return ancestors;
         };
         
-        while let Some(base) = to_process.pop() {
+        // BFS: process closest ancestors first so that `seen_methods` in
+        // `compute_inherited_method_bindings` correctly lets the closest
+        // ancestor's method shadow more-distant ancestors (C++ name-hiding).
+        while let Some(base) = to_process.pop_front() {
             if visited.contains(&base) {
                 continue;
             }
@@ -477,14 +483,12 @@ impl SymbolTable {
             if let Some(base_class) = self.class_by_name(&base) {
                 for parent in &base_class.base_classes {
                     if !visited.contains(parent) {
-                        to_process.push(parent.clone());
+                        to_process.push_back(parent.clone());
                     }
                 }
             }
         }
         
-        // Sort for deterministic output
-        ancestors.sort();
         ancestors
     }
 

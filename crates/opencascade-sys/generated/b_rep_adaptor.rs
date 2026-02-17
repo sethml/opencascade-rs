@@ -884,18 +884,6 @@ impl Curve2d {
         unsafe { &*(crate::ffi::BRepAdaptor_Curve2d_get_type_descriptor()) }
     }
 
-    /// Upcast to Adaptor2d_Curve2d
-    pub fn as_adaptor2d_curve2d(&self) -> &crate::adaptor2d::Curve2d {
-        unsafe { &*(crate::ffi::BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d(self as *const Self)) }
-    }
-
-    /// Upcast to Adaptor2d_Curve2d (mutable)
-    pub fn as_adaptor2d_curve2d_mut(&mut self) -> &mut crate::adaptor2d::Curve2d {
-        unsafe {
-            &mut *(crate::ffi::BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to Geom2dAdaptor_Curve
     pub fn as_geom2d_adaptor_curve(&self) -> &crate::geom2d_adaptor::Curve {
         unsafe { &*(crate::ffi::BRepAdaptor_Curve2d_as_Geom2dAdaptor_Curve(self as *const Self)) }
@@ -908,221 +896,15 @@ impl Curve2d {
         }
     }
 
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:57 - `Adaptor2d_Curve2d::FirstParameter()`
-    pub fn first_parameter(&self) -> f64 {
-        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_FirstParameter(self as *const Self) }
+    /// Upcast to Adaptor2d_Curve2d
+    pub fn as_adaptor2d_curve2d(&self) -> &crate::adaptor2d::Curve2d {
+        unsafe { &*(crate::ffi::BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:59 - `Adaptor2d_Curve2d::LastParameter()`
-    pub fn last_parameter(&self) -> f64 {
-        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_LastParameter(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:61 - `Adaptor2d_Curve2d::Continuity()`
-    pub fn continuity(&self) -> crate::geom_abs::Shape {
+    /// Upcast to Adaptor2d_Curve2d (mutable)
+    pub fn as_adaptor2d_curve2d_mut(&mut self) -> &mut crate::adaptor2d::Curve2d {
         unsafe {
-            crate::geom_abs::Shape::try_from(crate::ffi::BRepAdaptor_Curve2d_inherited_Continuity(
-                self as *const Self,
-            ))
-            .unwrap()
-        }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:66 - `Adaptor2d_Curve2d::NbIntervals()`
-    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
-        unsafe {
-            crate::ffi::BRepAdaptor_Curve2d_inherited_NbIntervals(self as *const Self, S.into())
-        }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:79 - `Adaptor2d_Curve2d::Trim()`
-    pub fn trim(
-        &self,
-        First: f64,
-        Last: f64,
-        Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Trim(
-                self as *const Self,
-                First,
-                Last,
-                Tol,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:83 - `Adaptor2d_Curve2d::IsClosed()`
-    pub fn is_closed(&self) -> bool {
-        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_IsClosed(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:85 - `Adaptor2d_Curve2d::IsPeriodic()`
-    pub fn is_periodic(&self) -> bool {
-        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_IsPeriodic(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:87 - `Adaptor2d_Curve2d::Period()`
-    pub fn period(&self) -> f64 {
-        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Period(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:90 - `Adaptor2d_Curve2d::Value()`
-    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Value(
-                self as *const Self,
-                U,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:93 - `Adaptor2d_Curve2d::D0()`
-    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d) {
-        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_D0(self as *const Self, U, P) }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:99 - `Adaptor2d_Curve2d::D1()`
-    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V: &mut crate::ffi::gp_Vec2d) {
-        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_D1(self as *const Self, U, P, V) }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:105 - `Adaptor2d_Curve2d::D2()`
-    pub fn d2(
-        &self,
-        U: f64,
-        P: &mut crate::ffi::gp_Pnt2d,
-        V1: &mut crate::ffi::gp_Vec2d,
-        V2: &mut crate::ffi::gp_Vec2d,
-    ) {
-        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_D2(self as *const Self, U, P, V1, V2) }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:114 - `Adaptor2d_Curve2d::D3()`
-    pub fn d3(
-        &self,
-        U: f64,
-        P: &mut crate::ffi::gp_Pnt2d,
-        V1: &mut crate::ffi::gp_Vec2d,
-        V2: &mut crate::ffi::gp_Vec2d,
-        V3: &mut crate::ffi::gp_Vec2d,
-    ) {
-        unsafe {
-            crate::ffi::BRepAdaptor_Curve2d_inherited_D3(self as *const Self, U, P, V1, V2, V3)
-        }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:125 - `Adaptor2d_Curve2d::DN()`
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_DN(
-                self as *const Self,
-                U,
-                N,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:129 - `Adaptor2d_Curve2d::Resolution()`
-    pub fn resolution(&self, R3d: f64) -> f64 {
-        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Resolution(self as *const Self, R3d) }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:134 - `Adaptor2d_Curve2d::GetType()`
-    pub fn get_type(&self) -> crate::geom_abs::CurveType {
-        unsafe {
-            crate::geom_abs::CurveType::try_from(crate::ffi::BRepAdaptor_Curve2d_inherited_GetType(
-                self as *const Self,
-            ))
-            .unwrap()
-        }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:136 - `Adaptor2d_Curve2d::Line()`
-    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Line(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:138 - `Adaptor2d_Curve2d::Circle()`
-    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Circle(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:140 - `Adaptor2d_Curve2d::Ellipse()`
-    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Ellipse(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:142 - `Adaptor2d_Curve2d::Hyperbola()`
-    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Hyperbola(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:144 - `Adaptor2d_Curve2d::Parabola()`
-    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Parabola(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:146 - `Adaptor2d_Curve2d::Degree()`
-    pub fn degree(&self) -> i32 {
-        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Degree(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:148 - `Adaptor2d_Curve2d::IsRational()`
-    pub fn is_rational(&self) -> bool {
-        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_IsRational(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:150 - `Adaptor2d_Curve2d::NbPoles()`
-    pub fn nb_poles(&self) -> i32 {
-        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_NbPoles(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:152 - `Adaptor2d_Curve2d::NbKnots()`
-    pub fn nb_knots(&self) -> i32 {
-        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_NbKnots(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:154 - `Adaptor2d_Curve2d::NbSamples()`
-    pub fn nb_samples(&self) -> i32 {
-        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_NbSamples(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:156 - `Adaptor2d_Curve2d::Bezier()`
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Bezier(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:158 - `Adaptor2d_Curve2d::BSpline()`
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_BSpline(
-                self as *const Self,
-            ))
+            &mut *(crate::ffi::BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d_mut(self as *mut Self))
         }
     }
 
@@ -1139,6 +921,224 @@ impl Curve2d {
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:91 - `Geom2dAdaptor_Curve::Curve()`
     pub fn curve(&self) -> &crate::ffi::HandleGeom2dCurve {
         unsafe { &*(crate::ffi::BRepAdaptor_Curve2d_inherited_Curve(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:93 - `Geom2dAdaptor_Curve::FirstParameter()`
+    pub fn first_parameter(&self) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_FirstParameter(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:95 - `Geom2dAdaptor_Curve::LastParameter()`
+    pub fn last_parameter(&self) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_LastParameter(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:97 - `Geom2dAdaptor_Curve::Continuity()`
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::BRepAdaptor_Curve2d_inherited_Continuity(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:102 - `Geom2dAdaptor_Curve::NbIntervals()`
+    pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
+        unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_NbIntervals(self as *const Self, S.into())
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:116 - `Geom2dAdaptor_Curve::Trim()`
+    pub fn trim(
+        &self,
+        First: f64,
+        Last: f64,
+        Tol: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Trim(
+                self as *const Self,
+                First,
+                Last,
+                Tol,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:120 - `Geom2dAdaptor_Curve::IsClosed()`
+    pub fn is_closed(&self) -> bool {
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_IsClosed(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:122 - `Geom2dAdaptor_Curve::IsPeriodic()`
+    pub fn is_periodic(&self) -> bool {
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_IsPeriodic(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:124 - `Geom2dAdaptor_Curve::Period()`
+    pub fn period(&self) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Period(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:127 - `Geom2dAdaptor_Curve::Value()`
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Value(
+                self as *const Self,
+                U,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:130 - `Geom2dAdaptor_Curve::D0()`
+    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_D0(self as *const Self, U, P) }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:136 - `Geom2dAdaptor_Curve::D1()`
+    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V: &mut crate::ffi::gp_Vec2d) {
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_D1(self as *const Self, U, P, V) }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:142 - `Geom2dAdaptor_Curve::D2()`
+    pub fn d2(
+        &self,
+        U: f64,
+        P: &mut crate::ffi::gp_Pnt2d,
+        V1: &mut crate::ffi::gp_Vec2d,
+        V2: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_D2(self as *const Self, U, P, V1, V2) }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:151 - `Geom2dAdaptor_Curve::D3()`
+    pub fn d3(
+        &self,
+        U: f64,
+        P: &mut crate::ffi::gp_Pnt2d,
+        V1: &mut crate::ffi::gp_Vec2d,
+        V2: &mut crate::ffi::gp_Vec2d,
+        V3: &mut crate::ffi::gp_Vec2d,
+    ) {
+        unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_D3(self as *const Self, U, P, V1, V2, V3)
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:162 - `Geom2dAdaptor_Curve::DN()`
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_DN(
+                self as *const Self,
+                U,
+                N,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:166 - `Geom2dAdaptor_Curve::Resolution()`
+    pub fn resolution(&self, Ruv: f64) -> f64 {
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Resolution(self as *const Self, Ruv) }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:168 - `Geom2dAdaptor_Curve::GetType()`
+    pub fn get_type(&self) -> crate::geom_abs::CurveType {
+        unsafe {
+            crate::geom_abs::CurveType::try_from(crate::ffi::BRepAdaptor_Curve2d_inherited_GetType(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:170 - `Geom2dAdaptor_Curve::Line()`
+    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Line(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:172 - `Geom2dAdaptor_Curve::Circle()`
+    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Circle(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:174 - `Geom2dAdaptor_Curve::Ellipse()`
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Ellipse(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:176 - `Geom2dAdaptor_Curve::Hyperbola()`
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Hyperbola(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:178 - `Geom2dAdaptor_Curve::Parabola()`
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Parabola(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:180 - `Geom2dAdaptor_Curve::Degree()`
+    pub fn degree(&self) -> i32 {
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_Degree(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:182 - `Geom2dAdaptor_Curve::IsRational()`
+    pub fn is_rational(&self) -> bool {
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_IsRational(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:184 - `Geom2dAdaptor_Curve::NbPoles()`
+    pub fn nb_poles(&self) -> i32 {
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_NbPoles(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:186 - `Geom2dAdaptor_Curve::NbKnots()`
+    pub fn nb_knots(&self) -> i32 {
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_NbKnots(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:188 - `Geom2dAdaptor_Curve::NbSamples()`
+    pub fn nb_samples(&self) -> i32 {
+        unsafe { crate::ffi::BRepAdaptor_Curve2d_inherited_NbSamples(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:190 - `Geom2dAdaptor_Curve::Bezier()`
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_Bezier(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:192 - `Geom2dAdaptor_Curve::BSpline()`
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_BSpline(
+                self as *const Self,
+            ))
+        }
     }
 }
 

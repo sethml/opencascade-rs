@@ -198,20 +198,6 @@ impl MakeBox {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeBox_top_face(self as *mut Self)) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        unsafe {
-            &*(crate::ffi::BRepPrimAPI_MakeBox_as_BRepBuilderAPI_Command(self as *const Self))
-        }
-    }
-
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        unsafe {
-            &mut *(crate::ffi::BRepPrimAPI_MakeBox_as_BRepBuilderAPI_Command_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
@@ -230,14 +216,18 @@ impl MakeBox {
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepPrimAPI_MakeBox_inherited_IsDone(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        unsafe {
+            &*(crate::ffi::BRepPrimAPI_MakeBox_as_BRepBuilderAPI_Command(self as *const Self))
+        }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepPrimAPI_MakeBox_inherited_Check(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepPrimAPI_MakeBox_as_BRepBuilderAPI_Command_mut(self as *mut Self))
+        }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
@@ -258,6 +248,16 @@ impl MakeBox {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepPrimAPI_MakeBox_inherited_IsDeleted(self as *mut Self, S) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepPrimAPI_MakeBox_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepPrimAPI_MakeBox_inherited_Check(self as *const Self) }
     }
 }
 
@@ -372,17 +372,17 @@ impl MakeCone {
         unsafe { &mut *(crate::ffi::BRepPrimAPI_MakeCone_cone(self as *mut Self)) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+    /// Upcast to BRepPrimAPI_MakeOneAxis
+    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
         unsafe {
-            &*(crate::ffi::BRepPrimAPI_MakeCone_as_BRepBuilderAPI_Command(self as *const Self))
+            &*(crate::ffi::BRepPrimAPI_MakeCone_as_BRepPrimAPI_MakeOneAxis(self as *const Self))
         }
     }
 
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+    /// Upcast to BRepPrimAPI_MakeOneAxis (mutable)
+    pub fn as_make_one_axis_mut(&mut self) -> &mut MakeOneAxis {
         unsafe {
-            &mut *(crate::ffi::BRepPrimAPI_MakeCone_as_BRepBuilderAPI_Command_mut(
+            &mut *(crate::ffi::BRepPrimAPI_MakeCone_as_BRepPrimAPI_MakeOneAxis_mut(
                 self as *mut Self,
             ))
         }
@@ -406,35 +406,40 @@ impl MakeCone {
         }
     }
 
-    /// Upcast to BRepPrimAPI_MakeOneAxis
-    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*(crate::ffi::BRepPrimAPI_MakeCone_as_BRepPrimAPI_MakeOneAxis(self as *const Self))
+            &*(crate::ffi::BRepPrimAPI_MakeCone_as_BRepBuilderAPI_Command(self as *const Self))
         }
     }
 
-    /// Upcast to BRepPrimAPI_MakeOneAxis (mutable)
-    pub fn as_make_one_axis_mut(&mut self) -> &mut MakeOneAxis {
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
-            &mut *(crate::ffi::BRepPrimAPI_MakeCone_as_BRepPrimAPI_MakeOneAxis_mut(
+            &mut *(crate::ffi::BRepPrimAPI_MakeCone_as_BRepBuilderAPI_Command_mut(
                 self as *mut Self,
             ))
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepPrimAPI_MakeCone_inherited_IsDone(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepPrimAPI_MakeCone_inherited_Check(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:40 - `BRepPrimAPI_MakeOneAxis::Build()`
     pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BRepPrimAPI_MakeCone_inherited_Build(self as *mut Self, theRange) }
+    }
+
+    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:44 - `BRepPrimAPI_MakeOneAxis::Face()`
+    pub fn face(&mut self) -> &crate::ffi::TopoDS_Face {
+        unsafe { &*(crate::ffi::BRepPrimAPI_MakeCone_inherited_Face(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:48 - `BRepPrimAPI_MakeOneAxis::Shell()`
+    pub fn shell(&mut self) -> &crate::ffi::TopoDS_Shell {
+        unsafe { &*(crate::ffi::BRepPrimAPI_MakeCone_inherited_Shell(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:52 - `BRepPrimAPI_MakeOneAxis::Solid()`
+    pub fn solid(&mut self) -> &crate::ffi::TopoDS_Solid {
+        unsafe { &*(crate::ffi::BRepPrimAPI_MakeCone_inherited_Solid(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
@@ -457,19 +462,14 @@ impl MakeCone {
         unsafe { crate::ffi::BRepPrimAPI_MakeCone_inherited_IsDeleted(self as *mut Self, S) }
     }
 
-    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:44 - `BRepPrimAPI_MakeOneAxis::Face()`
-    pub fn face(&mut self) -> &crate::ffi::TopoDS_Face {
-        unsafe { &*(crate::ffi::BRepPrimAPI_MakeCone_inherited_Face(self as *mut Self)) }
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepPrimAPI_MakeCone_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:48 - `BRepPrimAPI_MakeOneAxis::Shell()`
-    pub fn shell(&mut self) -> &crate::ffi::TopoDS_Shell {
-        unsafe { &*(crate::ffi::BRepPrimAPI_MakeCone_inherited_Shell(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:52 - `BRepPrimAPI_MakeOneAxis::Solid()`
-    pub fn solid(&mut self) -> &crate::ffi::TopoDS_Solid {
-        unsafe { &*(crate::ffi::BRepPrimAPI_MakeCone_inherited_Solid(self as *mut Self)) }
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepPrimAPI_MakeCone_inherited_Check(self as *const Self) }
     }
 }
 
@@ -570,17 +570,17 @@ impl MakeCylinder {
         unsafe { &mut *(crate::ffi::BRepPrimAPI_MakeCylinder_cylinder(self as *mut Self)) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+    /// Upcast to BRepPrimAPI_MakeOneAxis
+    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
         unsafe {
-            &*(crate::ffi::BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_Command(self as *const Self))
+            &*(crate::ffi::BRepPrimAPI_MakeCylinder_as_BRepPrimAPI_MakeOneAxis(self as *const Self))
         }
     }
 
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+    /// Upcast to BRepPrimAPI_MakeOneAxis (mutable)
+    pub fn as_make_one_axis_mut(&mut self) -> &mut MakeOneAxis {
         unsafe {
-            &mut *(crate::ffi::BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_Command_mut(
+            &mut *(crate::ffi::BRepPrimAPI_MakeCylinder_as_BRepPrimAPI_MakeOneAxis_mut(
                 self as *mut Self,
             ))
         }
@@ -606,35 +606,40 @@ impl MakeCylinder {
         }
     }
 
-    /// Upcast to BRepPrimAPI_MakeOneAxis
-    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*(crate::ffi::BRepPrimAPI_MakeCylinder_as_BRepPrimAPI_MakeOneAxis(self as *const Self))
+            &*(crate::ffi::BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_Command(self as *const Self))
         }
     }
 
-    /// Upcast to BRepPrimAPI_MakeOneAxis (mutable)
-    pub fn as_make_one_axis_mut(&mut self) -> &mut MakeOneAxis {
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
-            &mut *(crate::ffi::BRepPrimAPI_MakeCylinder_as_BRepPrimAPI_MakeOneAxis_mut(
+            &mut *(crate::ffi::BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_Command_mut(
                 self as *mut Self,
             ))
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepPrimAPI_MakeCylinder_inherited_IsDone(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepPrimAPI_MakeCylinder_inherited_Check(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:40 - `BRepPrimAPI_MakeOneAxis::Build()`
     pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BRepPrimAPI_MakeCylinder_inherited_Build(self as *mut Self, theRange) }
+    }
+
+    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:44 - `BRepPrimAPI_MakeOneAxis::Face()`
+    pub fn face(&mut self) -> &crate::ffi::TopoDS_Face {
+        unsafe { &*(crate::ffi::BRepPrimAPI_MakeCylinder_inherited_Face(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:48 - `BRepPrimAPI_MakeOneAxis::Shell()`
+    pub fn shell(&mut self) -> &crate::ffi::TopoDS_Shell {
+        unsafe { &*(crate::ffi::BRepPrimAPI_MakeCylinder_inherited_Shell(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:52 - `BRepPrimAPI_MakeOneAxis::Solid()`
+    pub fn solid(&mut self) -> &crate::ffi::TopoDS_Solid {
+        unsafe { &*(crate::ffi::BRepPrimAPI_MakeCylinder_inherited_Solid(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
@@ -659,19 +664,14 @@ impl MakeCylinder {
         unsafe { crate::ffi::BRepPrimAPI_MakeCylinder_inherited_IsDeleted(self as *mut Self, S) }
     }
 
-    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:44 - `BRepPrimAPI_MakeOneAxis::Face()`
-    pub fn face(&mut self) -> &crate::ffi::TopoDS_Face {
-        unsafe { &*(crate::ffi::BRepPrimAPI_MakeCylinder_inherited_Face(self as *mut Self)) }
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepPrimAPI_MakeCylinder_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:48 - `BRepPrimAPI_MakeOneAxis::Shell()`
-    pub fn shell(&mut self) -> &crate::ffi::TopoDS_Shell {
-        unsafe { &*(crate::ffi::BRepPrimAPI_MakeCylinder_inherited_Shell(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:52 - `BRepPrimAPI_MakeOneAxis::Solid()`
-    pub fn solid(&mut self) -> &crate::ffi::TopoDS_Solid {
-        unsafe { &*(crate::ffi::BRepPrimAPI_MakeCylinder_inherited_Solid(self as *mut Self)) }
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepPrimAPI_MakeCylinder_inherited_Check(self as *const Self) }
     }
 }
 
@@ -731,22 +731,6 @@ impl MakeHalfSpace {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeHalfSpace_solid(self as *const Self)) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        unsafe {
-            &*(crate::ffi::BRepPrimAPI_MakeHalfSpace_as_BRepBuilderAPI_Command(self as *const Self))
-        }
-    }
-
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        unsafe {
-            &mut *(crate::ffi::BRepPrimAPI_MakeHalfSpace_as_BRepBuilderAPI_Command_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
@@ -767,14 +751,20 @@ impl MakeHalfSpace {
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepPrimAPI_MakeHalfSpace_inherited_IsDone(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        unsafe {
+            &*(crate::ffi::BRepPrimAPI_MakeHalfSpace_as_BRepBuilderAPI_Command(self as *const Self))
+        }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepPrimAPI_MakeHalfSpace_inherited_Check(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepPrimAPI_MakeHalfSpace_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
@@ -806,6 +796,16 @@ impl MakeHalfSpace {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepPrimAPI_MakeHalfSpace_inherited_IsDeleted(self as *mut Self, S) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepPrimAPI_MakeHalfSpace_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepPrimAPI_MakeHalfSpace_inherited_Check(self as *const Self) }
     }
 }
 
@@ -849,22 +849,6 @@ impl MakeOneAxis {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeOneAxis_solid(self as *mut Self)) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        unsafe {
-            &*(crate::ffi::BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_Command(self as *const Self))
-        }
-    }
-
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        unsafe {
-            &mut *(crate::ffi::BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_Command_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
@@ -883,14 +867,20 @@ impl MakeOneAxis {
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepPrimAPI_MakeOneAxis_inherited_IsDone(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        unsafe {
+            &*(crate::ffi::BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_Command(self as *const Self))
+        }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepPrimAPI_MakeOneAxis_inherited_Check(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
@@ -911,6 +901,16 @@ impl MakeOneAxis {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepPrimAPI_MakeOneAxis_inherited_IsDeleted(self as *mut Self, S) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepPrimAPI_MakeOneAxis_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepPrimAPI_MakeOneAxis_inherited_Check(self as *const Self) }
     }
 }
 
@@ -1130,17 +1130,17 @@ impl MakePrism {
         }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+    /// Upcast to BRepPrimAPI_MakeSweep
+    pub fn as_make_sweep(&self) -> &MakeSweep {
         unsafe {
-            &*(crate::ffi::BRepPrimAPI_MakePrism_as_BRepBuilderAPI_Command(self as *const Self))
+            &*(crate::ffi::BRepPrimAPI_MakePrism_as_BRepPrimAPI_MakeSweep(self as *const Self))
         }
     }
 
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+    /// Upcast to BRepPrimAPI_MakeSweep (mutable)
+    pub fn as_make_sweep_mut(&mut self) -> &mut MakeSweep {
         unsafe {
-            &mut *(crate::ffi::BRepPrimAPI_MakePrism_as_BRepBuilderAPI_Command_mut(
+            &mut *(crate::ffi::BRepPrimAPI_MakePrism_as_BRepPrimAPI_MakeSweep_mut(
                 self as *mut Self,
             ))
         }
@@ -1164,30 +1164,20 @@ impl MakePrism {
         }
     }
 
-    /// Upcast to BRepPrimAPI_MakeSweep
-    pub fn as_make_sweep(&self) -> &MakeSweep {
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*(crate::ffi::BRepPrimAPI_MakePrism_as_BRepPrimAPI_MakeSweep(self as *const Self))
+            &*(crate::ffi::BRepPrimAPI_MakePrism_as_BRepBuilderAPI_Command(self as *const Self))
         }
     }
 
-    /// Upcast to BRepPrimAPI_MakeSweep (mutable)
-    pub fn as_make_sweep_mut(&mut self) -> &mut MakeSweep {
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
-            &mut *(crate::ffi::BRepPrimAPI_MakePrism_as_BRepPrimAPI_MakeSweep_mut(
+            &mut *(crate::ffi::BRepPrimAPI_MakePrism_as_BRepBuilderAPI_Command_mut(
                 self as *mut Self,
             ))
         }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepPrimAPI_MakePrism_inherited_IsDone(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepPrimAPI_MakePrism_inherited_Check(self as *const Self) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
@@ -1198,6 +1188,16 @@ impl MakePrism {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
     pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakePrism_inherited_Modified(self as *mut Self, S)) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepPrimAPI_MakePrism_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepPrimAPI_MakePrism_inherited_Check(self as *const Self) }
     }
 }
 
@@ -1387,17 +1387,17 @@ impl MakeRevol {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeRevol_degenerated(self as *const Self)) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+    /// Upcast to BRepPrimAPI_MakeSweep
+    pub fn as_make_sweep(&self) -> &MakeSweep {
         unsafe {
-            &*(crate::ffi::BRepPrimAPI_MakeRevol_as_BRepBuilderAPI_Command(self as *const Self))
+            &*(crate::ffi::BRepPrimAPI_MakeRevol_as_BRepPrimAPI_MakeSweep(self as *const Self))
         }
     }
 
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+    /// Upcast to BRepPrimAPI_MakeSweep (mutable)
+    pub fn as_make_sweep_mut(&mut self) -> &mut MakeSweep {
         unsafe {
-            &mut *(crate::ffi::BRepPrimAPI_MakeRevol_as_BRepBuilderAPI_Command_mut(
+            &mut *(crate::ffi::BRepPrimAPI_MakeRevol_as_BRepPrimAPI_MakeSweep_mut(
                 self as *mut Self,
             ))
         }
@@ -1421,30 +1421,20 @@ impl MakeRevol {
         }
     }
 
-    /// Upcast to BRepPrimAPI_MakeSweep
-    pub fn as_make_sweep(&self) -> &MakeSweep {
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*(crate::ffi::BRepPrimAPI_MakeRevol_as_BRepPrimAPI_MakeSweep(self as *const Self))
+            &*(crate::ffi::BRepPrimAPI_MakeRevol_as_BRepBuilderAPI_Command(self as *const Self))
         }
     }
 
-    /// Upcast to BRepPrimAPI_MakeSweep (mutable)
-    pub fn as_make_sweep_mut(&mut self) -> &mut MakeSweep {
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
-            &mut *(crate::ffi::BRepPrimAPI_MakeRevol_as_BRepPrimAPI_MakeSweep_mut(
+            &mut *(crate::ffi::BRepPrimAPI_MakeRevol_as_BRepBuilderAPI_Command_mut(
                 self as *mut Self,
             ))
         }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepPrimAPI_MakeRevol_inherited_IsDone(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepPrimAPI_MakeRevol_inherited_Check(self as *const Self) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
@@ -1455,6 +1445,16 @@ impl MakeRevol {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
     pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeRevol_inherited_Modified(self as *mut Self, S)) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepPrimAPI_MakeRevol_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepPrimAPI_MakeRevol_inherited_Check(self as *const Self) }
     }
 }
 
@@ -1611,19 +1611,19 @@ impl MakeRevolution {
         unsafe { &mut *(crate::ffi::BRepPrimAPI_MakeRevolution_revolution(self as *mut Self)) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+    /// Upcast to BRepPrimAPI_MakeOneAxis
+    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
         unsafe {
-            &*(crate::ffi::BRepPrimAPI_MakeRevolution_as_BRepBuilderAPI_Command(
+            &*(crate::ffi::BRepPrimAPI_MakeRevolution_as_BRepPrimAPI_MakeOneAxis(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+    /// Upcast to BRepPrimAPI_MakeOneAxis (mutable)
+    pub fn as_make_one_axis_mut(&mut self) -> &mut MakeOneAxis {
         unsafe {
-            &mut *(crate::ffi::BRepPrimAPI_MakeRevolution_as_BRepBuilderAPI_Command_mut(
+            &mut *(crate::ffi::BRepPrimAPI_MakeRevolution_as_BRepPrimAPI_MakeOneAxis_mut(
                 self as *mut Self,
             ))
         }
@@ -1649,39 +1649,44 @@ impl MakeRevolution {
         }
     }
 
-    /// Upcast to BRepPrimAPI_MakeOneAxis
-    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*(crate::ffi::BRepPrimAPI_MakeRevolution_as_BRepPrimAPI_MakeOneAxis(
+            &*(crate::ffi::BRepPrimAPI_MakeRevolution_as_BRepBuilderAPI_Command(
                 self as *const Self,
             ))
         }
     }
 
-    /// Upcast to BRepPrimAPI_MakeOneAxis (mutable)
-    pub fn as_make_one_axis_mut(&mut self) -> &mut MakeOneAxis {
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
-            &mut *(crate::ffi::BRepPrimAPI_MakeRevolution_as_BRepPrimAPI_MakeOneAxis_mut(
+            &mut *(crate::ffi::BRepPrimAPI_MakeRevolution_as_BRepBuilderAPI_Command_mut(
                 self as *mut Self,
             ))
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepPrimAPI_MakeRevolution_inherited_IsDone(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Check(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:40 - `BRepPrimAPI_MakeOneAxis::Build()`
     pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe {
             crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Build(self as *mut Self, theRange)
         }
+    }
+
+    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:44 - `BRepPrimAPI_MakeOneAxis::Face()`
+    pub fn face(&mut self) -> &crate::ffi::TopoDS_Face {
+        unsafe { &*(crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Face(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:48 - `BRepPrimAPI_MakeOneAxis::Shell()`
+    pub fn shell(&mut self) -> &crate::ffi::TopoDS_Shell {
+        unsafe { &*(crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Shell(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:52 - `BRepPrimAPI_MakeOneAxis::Solid()`
+    pub fn solid(&mut self) -> &crate::ffi::TopoDS_Solid {
+        unsafe { &*(crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Solid(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
@@ -1708,19 +1713,14 @@ impl MakeRevolution {
         unsafe { crate::ffi::BRepPrimAPI_MakeRevolution_inherited_IsDeleted(self as *mut Self, S) }
     }
 
-    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:44 - `BRepPrimAPI_MakeOneAxis::Face()`
-    pub fn face(&mut self) -> &crate::ffi::TopoDS_Face {
-        unsafe { &*(crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Face(self as *mut Self)) }
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepPrimAPI_MakeRevolution_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:48 - `BRepPrimAPI_MakeOneAxis::Shell()`
-    pub fn shell(&mut self) -> &crate::ffi::TopoDS_Shell {
-        unsafe { &*(crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Shell(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:52 - `BRepPrimAPI_MakeOneAxis::Solid()`
-    pub fn solid(&mut self) -> &crate::ffi::TopoDS_Solid {
-        unsafe { &*(crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Solid(self as *mut Self)) }
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Check(self as *const Self) }
     }
 }
 
@@ -1923,17 +1923,17 @@ impl MakeSphere {
         unsafe { &mut *(crate::ffi::BRepPrimAPI_MakeSphere_sphere(self as *mut Self)) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+    /// Upcast to BRepPrimAPI_MakeOneAxis
+    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
         unsafe {
-            &*(crate::ffi::BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_Command(self as *const Self))
+            &*(crate::ffi::BRepPrimAPI_MakeSphere_as_BRepPrimAPI_MakeOneAxis(self as *const Self))
         }
     }
 
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+    /// Upcast to BRepPrimAPI_MakeOneAxis (mutable)
+    pub fn as_make_one_axis_mut(&mut self) -> &mut MakeOneAxis {
         unsafe {
-            &mut *(crate::ffi::BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_Command_mut(
+            &mut *(crate::ffi::BRepPrimAPI_MakeSphere_as_BRepPrimAPI_MakeOneAxis_mut(
                 self as *mut Self,
             ))
         }
@@ -1957,35 +1957,40 @@ impl MakeSphere {
         }
     }
 
-    /// Upcast to BRepPrimAPI_MakeOneAxis
-    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*(crate::ffi::BRepPrimAPI_MakeSphere_as_BRepPrimAPI_MakeOneAxis(self as *const Self))
+            &*(crate::ffi::BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_Command(self as *const Self))
         }
     }
 
-    /// Upcast to BRepPrimAPI_MakeOneAxis (mutable)
-    pub fn as_make_one_axis_mut(&mut self) -> &mut MakeOneAxis {
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
-            &mut *(crate::ffi::BRepPrimAPI_MakeSphere_as_BRepPrimAPI_MakeOneAxis_mut(
+            &mut *(crate::ffi::BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_Command_mut(
                 self as *mut Self,
             ))
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepPrimAPI_MakeSphere_inherited_IsDone(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepPrimAPI_MakeSphere_inherited_Check(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:40 - `BRepPrimAPI_MakeOneAxis::Build()`
     pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BRepPrimAPI_MakeSphere_inherited_Build(self as *mut Self, theRange) }
+    }
+
+    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:44 - `BRepPrimAPI_MakeOneAxis::Face()`
+    pub fn face(&mut self) -> &crate::ffi::TopoDS_Face {
+        unsafe { &*(crate::ffi::BRepPrimAPI_MakeSphere_inherited_Face(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:48 - `BRepPrimAPI_MakeOneAxis::Shell()`
+    pub fn shell(&mut self) -> &crate::ffi::TopoDS_Shell {
+        unsafe { &*(crate::ffi::BRepPrimAPI_MakeSphere_inherited_Shell(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:52 - `BRepPrimAPI_MakeOneAxis::Solid()`
+    pub fn solid(&mut self) -> &crate::ffi::TopoDS_Solid {
+        unsafe { &*(crate::ffi::BRepPrimAPI_MakeSphere_inherited_Solid(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
@@ -2008,19 +2013,14 @@ impl MakeSphere {
         unsafe { crate::ffi::BRepPrimAPI_MakeSphere_inherited_IsDeleted(self as *mut Self, S) }
     }
 
-    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:44 - `BRepPrimAPI_MakeOneAxis::Face()`
-    pub fn face(&mut self) -> &crate::ffi::TopoDS_Face {
-        unsafe { &*(crate::ffi::BRepPrimAPI_MakeSphere_inherited_Face(self as *mut Self)) }
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepPrimAPI_MakeSphere_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:48 - `BRepPrimAPI_MakeOneAxis::Shell()`
-    pub fn shell(&mut self) -> &crate::ffi::TopoDS_Shell {
-        unsafe { &*(crate::ffi::BRepPrimAPI_MakeSphere_inherited_Shell(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:52 - `BRepPrimAPI_MakeOneAxis::Solid()`
-    pub fn solid(&mut self) -> &crate::ffi::TopoDS_Solid {
-        unsafe { &*(crate::ffi::BRepPrimAPI_MakeSphere_inherited_Solid(self as *mut Self)) }
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepPrimAPI_MakeSphere_inherited_Check(self as *const Self) }
     }
 }
 
@@ -2074,22 +2074,6 @@ impl MakeSweep {
         }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        unsafe {
-            &*(crate::ffi::BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_Command(self as *const Self))
-        }
-    }
-
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        unsafe {
-            &mut *(crate::ffi::BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_Command_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
@@ -2108,14 +2092,20 @@ impl MakeSweep {
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepPrimAPI_MakeSweep_inherited_IsDone(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        unsafe {
+            &*(crate::ffi::BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_Command(self as *const Self))
+        }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepPrimAPI_MakeSweep_inherited_Check(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
@@ -2141,6 +2131,16 @@ impl MakeSweep {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepPrimAPI_MakeSweep_inherited_IsDeleted(self as *mut Self, S) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepPrimAPI_MakeSweep_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepPrimAPI_MakeSweep_inherited_Check(self as *const Self) }
     }
 }
 
@@ -2312,17 +2312,17 @@ impl MakeTorus {
         unsafe { &mut *(crate::ffi::BRepPrimAPI_MakeTorus_torus(self as *mut Self)) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+    /// Upcast to BRepPrimAPI_MakeOneAxis
+    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
         unsafe {
-            &*(crate::ffi::BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_Command(self as *const Self))
+            &*(crate::ffi::BRepPrimAPI_MakeTorus_as_BRepPrimAPI_MakeOneAxis(self as *const Self))
         }
     }
 
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+    /// Upcast to BRepPrimAPI_MakeOneAxis (mutable)
+    pub fn as_make_one_axis_mut(&mut self) -> &mut MakeOneAxis {
         unsafe {
-            &mut *(crate::ffi::BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_Command_mut(
+            &mut *(crate::ffi::BRepPrimAPI_MakeTorus_as_BRepPrimAPI_MakeOneAxis_mut(
                 self as *mut Self,
             ))
         }
@@ -2346,35 +2346,40 @@ impl MakeTorus {
         }
     }
 
-    /// Upcast to BRepPrimAPI_MakeOneAxis
-    pub fn as_make_one_axis(&self) -> &MakeOneAxis {
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*(crate::ffi::BRepPrimAPI_MakeTorus_as_BRepPrimAPI_MakeOneAxis(self as *const Self))
+            &*(crate::ffi::BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_Command(self as *const Self))
         }
     }
 
-    /// Upcast to BRepPrimAPI_MakeOneAxis (mutable)
-    pub fn as_make_one_axis_mut(&mut self) -> &mut MakeOneAxis {
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
-            &mut *(crate::ffi::BRepPrimAPI_MakeTorus_as_BRepPrimAPI_MakeOneAxis_mut(
+            &mut *(crate::ffi::BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_Command_mut(
                 self as *mut Self,
             ))
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepPrimAPI_MakeTorus_inherited_IsDone(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepPrimAPI_MakeTorus_inherited_Check(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:40 - `BRepPrimAPI_MakeOneAxis::Build()`
     pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
         unsafe { crate::ffi::BRepPrimAPI_MakeTorus_inherited_Build(self as *mut Self, theRange) }
+    }
+
+    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:44 - `BRepPrimAPI_MakeOneAxis::Face()`
+    pub fn face(&mut self) -> &crate::ffi::TopoDS_Face {
+        unsafe { &*(crate::ffi::BRepPrimAPI_MakeTorus_inherited_Face(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:48 - `BRepPrimAPI_MakeOneAxis::Shell()`
+    pub fn shell(&mut self) -> &crate::ffi::TopoDS_Shell {
+        unsafe { &*(crate::ffi::BRepPrimAPI_MakeTorus_inherited_Shell(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:52 - `BRepPrimAPI_MakeOneAxis::Solid()`
+    pub fn solid(&mut self) -> &crate::ffi::TopoDS_Solid {
+        unsafe { &*(crate::ffi::BRepPrimAPI_MakeTorus_inherited_Solid(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
@@ -2397,19 +2402,14 @@ impl MakeTorus {
         unsafe { crate::ffi::BRepPrimAPI_MakeTorus_inherited_IsDeleted(self as *mut Self, S) }
     }
 
-    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:44 - `BRepPrimAPI_MakeOneAxis::Face()`
-    pub fn face(&mut self) -> &crate::ffi::TopoDS_Face {
-        unsafe { &*(crate::ffi::BRepPrimAPI_MakeTorus_inherited_Face(self as *mut Self)) }
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepPrimAPI_MakeTorus_inherited_IsDone(self as *const Self) }
     }
 
-    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:48 - `BRepPrimAPI_MakeOneAxis::Shell()`
-    pub fn shell(&mut self) -> &crate::ffi::TopoDS_Shell {
-        unsafe { &*(crate::ffi::BRepPrimAPI_MakeTorus_inherited_Shell(self as *mut Self)) }
-    }
-
-    /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:52 - `BRepPrimAPI_MakeOneAxis::Solid()`
-    pub fn solid(&mut self) -> &crate::ffi::TopoDS_Solid {
-        unsafe { &*(crate::ffi::BRepPrimAPI_MakeTorus_inherited_Solid(self as *mut Self)) }
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepPrimAPI_MakeTorus_inherited_Check(self as *const Self) }
     }
 }
 
@@ -2517,22 +2517,6 @@ impl MakeWedge {
         unsafe { &*(crate::ffi::BRepPrimAPI_MakeWedge_solid(self as *mut Self)) }
     }
 
-    /// Upcast to BRepBuilderAPI_Command
-    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        unsafe {
-            &*(crate::ffi::BRepPrimAPI_MakeWedge_as_BRepBuilderAPI_Command(self as *const Self))
-        }
-    }
-
-    /// Upcast to BRepBuilderAPI_Command (mutable)
-    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        unsafe {
-            &mut *(crate::ffi::BRepPrimAPI_MakeWedge_as_BRepBuilderAPI_Command_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
@@ -2551,14 +2535,20 @@ impl MakeWedge {
         }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
-    pub fn is_done(&self) -> bool {
-        unsafe { crate::ffi::BRepPrimAPI_MakeWedge_inherited_IsDone(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command
+    pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
+        unsafe {
+            &*(crate::ffi::BRepPrimAPI_MakeWedge_as_BRepBuilderAPI_Command(self as *const Self))
+        }
     }
 
-    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
-    pub fn check(&self) {
-        unsafe { crate::ffi::BRepPrimAPI_MakeWedge_inherited_Check(self as *const Self) }
+    /// Upcast to BRepBuilderAPI_Command (mutable)
+    pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
+        unsafe {
+            &mut *(crate::ffi::BRepPrimAPI_MakeWedge_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
@@ -2579,5 +2569,15 @@ impl MakeWedge {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
         unsafe { crate::ffi::BRepPrimAPI_MakeWedge_inherited_IsDeleted(self as *mut Self, S) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepPrimAPI_MakeWedge_inherited_IsDone(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
+    pub fn check(&self) {
+        unsafe { crate::ffi::BRepPrimAPI_MakeWedge_inherited_Check(self as *const Self) }
     }
 }

@@ -2459,6 +2459,22 @@ impl MultipleVarFunctionWithHessian {
         unsafe { crate::ffi::math_MultipleVarFunctionWithHessian_nb_variables(self as *const Self) }
     }
 
+    /// Upcast to math_MultipleVarFunctionWithGradient
+    pub fn as_multiple_var_function_with_gradient(&self) -> &MultipleVarFunctionWithGradient {
+        unsafe {
+            &*(crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunctionWithGradient(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
+    pub fn as_multiple_var_function_with_gradient_mut(
+        &mut self,
+    ) -> &mut MultipleVarFunctionWithGradient {
+        unsafe {
+            &mut *(crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
+        }
+    }
+
     /// Upcast to math_MultipleVarFunction
     pub fn as_multiple_var_function(&self) -> &MultipleVarFunction {
         unsafe {
@@ -2474,22 +2490,6 @@ impl MultipleVarFunctionWithHessian {
             &mut *(crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunction_mut(
                 self as *mut Self,
             ))
-        }
-    }
-
-    /// Upcast to math_MultipleVarFunctionWithGradient
-    pub fn as_multiple_var_function_with_gradient(&self) -> &MultipleVarFunctionWithGradient {
-        unsafe {
-            &*(crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunctionWithGradient(self as *const Self))
-        }
-    }
-
-    /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
-    pub fn as_multiple_var_function_with_gradient_mut(
-        &mut self,
-    ) -> &mut MultipleVarFunctionWithGradient {
-        unsafe {
-            &mut *(crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
         }
     }
 
@@ -3295,22 +3295,6 @@ impl TrigonometricEquationFunction {
         unsafe { crate::ffi::math_TrigonometricEquationFunction_values(self as *mut Self, X, F, D) }
     }
 
-    /// Upcast to math_Function
-    pub fn as_function(&self) -> &Function {
-        unsafe {
-            &*(crate::ffi::math_TrigonometricEquationFunction_as_math_Function(self as *const Self))
-        }
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_function_mut(&mut self) -> &mut Function {
-        unsafe {
-            &mut *(crate::ffi::math_TrigonometricEquationFunction_as_math_Function_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to math_FunctionWithDerivative
     pub fn as_function_with_derivative(&self) -> &FunctionWithDerivative {
         unsafe {
@@ -3324,6 +3308,22 @@ impl TrigonometricEquationFunction {
     pub fn as_function_with_derivative_mut(&mut self) -> &mut FunctionWithDerivative {
         unsafe {
             &mut *(crate::ffi::math_TrigonometricEquationFunction_as_math_FunctionWithDerivative_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_Function
+    pub fn as_function(&self) -> &Function {
+        unsafe {
+            &*(crate::ffi::math_TrigonometricEquationFunction_as_math_Function(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_function_mut(&mut self) -> &mut Function {
+        unsafe {
+            &mut *(crate::ffi::math_TrigonometricEquationFunction_as_math_Function_mut(
+                self as *mut Self,
+            ))
         }
     }
 

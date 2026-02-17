@@ -491,24 +491,6 @@ impl TheCSFunctionOfHInter {
         }
     }
 
-    /// Upcast to math_FunctionSet
-    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        unsafe {
-            &*(crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_as_math_FunctionSet(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to math_FunctionSet (mutable)
-    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        unsafe {
-            &mut *(crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_as_math_FunctionSet_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
@@ -526,6 +508,24 @@ impl TheCSFunctionOfHInter {
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
             &mut *(crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_FunctionSet
+    pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
+        unsafe {
+            &*(crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_as_math_FunctionSet(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_FunctionSet (mutable)
+    pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
+        unsafe {
+            &mut *(crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_as_math_FunctionSet_mut(
+                self as *mut Self,
+            ))
         }
     }
 
@@ -2019,22 +2019,6 @@ impl TheQuadCurvFuncOfTheQuadCurvExactHInter {
         }
     }
 
-    /// Upcast to math_Function
-    pub fn as_math_function(&self) -> &crate::math::Function {
-        unsafe {
-            &*(crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_as_math_Function(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to math_Function (mutable)
-    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        unsafe {
-            &mut *(crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_as_math_Function_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
         unsafe {
@@ -2048,6 +2032,22 @@ impl TheQuadCurvFuncOfTheQuadCurvExactHInter {
     ) -> &mut crate::math::FunctionWithDerivative {
         unsafe {
             &mut *(crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_as_math_FunctionWithDerivative_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe {
+            &*(crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_as_math_Function(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe {
+            &mut *(crate::ffi::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_as_math_Function_mut(self as *mut Self))
         }
     }
 

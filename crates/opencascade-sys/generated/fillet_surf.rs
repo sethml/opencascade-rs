@@ -590,18 +590,6 @@ impl InternalBuilder {
         }
     }
 
-    /// Upcast to ChFi3d_Builder
-    pub fn as_ch_fi3d_builder(&self) -> &crate::ch_fi3d::Builder {
-        unsafe { &*(crate::ffi::FilletSurf_InternalBuilder_as_ChFi3d_Builder(self as *const Self)) }
-    }
-
-    /// Upcast to ChFi3d_Builder (mutable)
-    pub fn as_ch_fi3d_builder_mut(&mut self) -> &mut crate::ch_fi3d::Builder {
-        unsafe {
-            &mut *(crate::ffi::FilletSurf_InternalBuilder_as_ChFi3d_Builder_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to ChFi3d_FilBuilder
     pub fn as_ch_fi3d_fil_builder(&self) -> &crate::ch_fi3d::FilBuilder {
         unsafe {
@@ -616,6 +604,127 @@ impl InternalBuilder {
                 self as *mut Self,
             ))
         }
+    }
+
+    /// Upcast to ChFi3d_Builder
+    pub fn as_ch_fi3d_builder(&self) -> &crate::ch_fi3d::Builder {
+        unsafe { &*(crate::ffi::FilletSurf_InternalBuilder_as_ChFi3d_Builder(self as *const Self)) }
+    }
+
+    /// Upcast to ChFi3d_Builder (mutable)
+    pub fn as_ch_fi3d_builder_mut(&mut self) -> &mut crate::ch_fi3d::Builder {
+        unsafe {
+            &mut *(crate::ffi::FilletSurf_InternalBuilder_as_ChFi3d_Builder_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:54 - `ChFi3d_FilBuilder::SetFilletShape()`
+    pub fn set_fillet_shape(&mut self, FShape: crate::ch_fi3d::FilletShape) {
+        unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_SetFilletShape(
+                self as *mut Self,
+                FShape.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:57 - `ChFi3d_FilBuilder::GetFilletShape()`
+    pub fn get_fillet_shape(&self) -> crate::ch_fi3d::FilletShape {
+        unsafe {
+            crate::ch_fi3d::FilletShape::try_from(
+                crate::ffi::FilletSurf_InternalBuilder_inherited_GetFilletShape(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:68 - `ChFi3d_FilBuilder::SetRadius()`
+    pub fn set_radius(&mut self, C: &crate::ffi::HandleLawFunction, IC: i32, IinC: i32) {
+        unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_SetRadius(
+                self as *mut Self,
+                C,
+                IC,
+                IinC,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:73 - `ChFi3d_FilBuilder::IsConstant()`
+    pub fn is_constant(&mut self, IC: i32) -> bool {
+        unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_IsConstant(self as *mut Self, IC)
+        }
+    }
+
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:77 - `ChFi3d_FilBuilder::Radius()`
+    pub fn radius(&mut self, IC: i32) -> f64 {
+        unsafe { crate::ffi::FilletSurf_InternalBuilder_inherited_Radius(self as *mut Self, IC) }
+    }
+
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:80 - `ChFi3d_FilBuilder::ResetContour()`
+    pub fn reset_contour(&mut self, IC: i32) {
+        unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_ResetContour(self as *mut Self, IC)
+        }
+    }
+
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:89 - `ChFi3d_FilBuilder::UnSet()`
+    pub fn un_set(&mut self, IC: i32, E: &crate::ffi::TopoDS_Edge) {
+        unsafe { crate::ffi::FilletSurf_InternalBuilder_inherited_UnSet(self as *mut Self, IC, E) }
+    }
+
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:114 - `ChFi3d_FilBuilder::GetBounds()`
+    pub fn get_bounds(
+        &mut self,
+        IC: i32,
+        E: &crate::ffi::TopoDS_Edge,
+        First: &mut f64,
+        Last: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_GetBounds(
+                self as *mut Self,
+                IC,
+                E,
+                First,
+                Last,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:122 - `ChFi3d_FilBuilder::GetLaw()`
+    pub fn get_law(
+        &mut self,
+        IC: i32,
+        E: &crate::ffi::TopoDS_Edge,
+    ) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::FilletSurf_InternalBuilder_inherited_GetLaw(
+                self as *mut Self,
+                IC,
+                E,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:126 - `ChFi3d_FilBuilder::SetLaw()`
+    pub fn set_law(
+        &mut self,
+        IC: i32,
+        E: &crate::ffi::TopoDS_Edge,
+        L: &crate::ffi::HandleLawFunction,
+    ) {
+        unsafe {
+            crate::ffi::FilletSurf_InternalBuilder_inherited_SetLaw(self as *mut Self, IC, E, L)
+        }
+    }
+
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:132 - `ChFi3d_FilBuilder::NbSurf()`
+    pub fn nb_surf(&self, IC: i32) -> i32 {
+        unsafe { crate::ffi::FilletSurf_InternalBuilder_inherited_NbSurf(self as *const Self, IC) }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:71 - `ChFi3d_Builder::SetParams()`
@@ -868,114 +977,5 @@ impl InternalBuilder {
                 Index,
             )
         }
-    }
-
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:54 - `ChFi3d_FilBuilder::SetFilletShape()`
-    pub fn set_fillet_shape(&mut self, FShape: crate::ch_fi3d::FilletShape) {
-        unsafe {
-            crate::ffi::FilletSurf_InternalBuilder_inherited_SetFilletShape(
-                self as *mut Self,
-                FShape.into(),
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:57 - `ChFi3d_FilBuilder::GetFilletShape()`
-    pub fn get_fillet_shape(&self) -> crate::ch_fi3d::FilletShape {
-        unsafe {
-            crate::ch_fi3d::FilletShape::try_from(
-                crate::ffi::FilletSurf_InternalBuilder_inherited_GetFilletShape(
-                    self as *const Self,
-                ),
-            )
-            .unwrap()
-        }
-    }
-
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:68 - `ChFi3d_FilBuilder::SetRadius()`
-    pub fn set_radius(&mut self, C: &crate::ffi::HandleLawFunction, IC: i32, IinC: i32) {
-        unsafe {
-            crate::ffi::FilletSurf_InternalBuilder_inherited_SetRadius(
-                self as *mut Self,
-                C,
-                IC,
-                IinC,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:73 - `ChFi3d_FilBuilder::IsConstant()`
-    pub fn is_constant(&mut self, IC: i32) -> bool {
-        unsafe {
-            crate::ffi::FilletSurf_InternalBuilder_inherited_IsConstant(self as *mut Self, IC)
-        }
-    }
-
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:77 - `ChFi3d_FilBuilder::Radius()`
-    pub fn radius(&mut self, IC: i32) -> f64 {
-        unsafe { crate::ffi::FilletSurf_InternalBuilder_inherited_Radius(self as *mut Self, IC) }
-    }
-
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:80 - `ChFi3d_FilBuilder::ResetContour()`
-    pub fn reset_contour(&mut self, IC: i32) {
-        unsafe {
-            crate::ffi::FilletSurf_InternalBuilder_inherited_ResetContour(self as *mut Self, IC)
-        }
-    }
-
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:89 - `ChFi3d_FilBuilder::UnSet()`
-    pub fn un_set(&mut self, IC: i32, E: &crate::ffi::TopoDS_Edge) {
-        unsafe { crate::ffi::FilletSurf_InternalBuilder_inherited_UnSet(self as *mut Self, IC, E) }
-    }
-
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:114 - `ChFi3d_FilBuilder::GetBounds()`
-    pub fn get_bounds(
-        &mut self,
-        IC: i32,
-        E: &crate::ffi::TopoDS_Edge,
-        First: &mut f64,
-        Last: &mut f64,
-    ) -> bool {
-        unsafe {
-            crate::ffi::FilletSurf_InternalBuilder_inherited_GetBounds(
-                self as *mut Self,
-                IC,
-                E,
-                First,
-                Last,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:122 - `ChFi3d_FilBuilder::GetLaw()`
-    pub fn get_law(
-        &mut self,
-        IC: i32,
-        E: &crate::ffi::TopoDS_Edge,
-    ) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::FilletSurf_InternalBuilder_inherited_GetLaw(
-                self as *mut Self,
-                IC,
-                E,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:126 - `ChFi3d_FilBuilder::SetLaw()`
-    pub fn set_law(
-        &mut self,
-        IC: i32,
-        E: &crate::ffi::TopoDS_Edge,
-        L: &crate::ffi::HandleLawFunction,
-    ) {
-        unsafe {
-            crate::ffi::FilletSurf_InternalBuilder_inherited_SetLaw(self as *mut Self, IC, E, L)
-        }
-    }
-
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:132 - `ChFi3d_FilBuilder::NbSurf()`
-    pub fn nb_surf(&self, IC: i32) -> i32 {
-        unsafe { crate::ffi::FilletSurf_InternalBuilder_inherited_NbSurf(self as *const Self, IC) }
     }
 }

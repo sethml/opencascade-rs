@@ -110,6 +110,16 @@ impl Absolute {
         unsafe { &*(crate::ffi::Expr_Absolute_get_type_descriptor()) }
     }
 
+    /// Upcast to Expr_UnaryExpression
+    pub fn as_unary_expression(&self) -> &UnaryExpression {
+        unsafe { &*(crate::ffi::Expr_Absolute_as_Expr_UnaryExpression(self as *const Self)) }
+    }
+
+    /// Upcast to Expr_UnaryExpression (mutable)
+    pub fn as_unary_expression_mut(&mut self) -> &mut UnaryExpression {
+        unsafe { &mut *(crate::ffi::Expr_Absolute_as_Expr_UnaryExpression_mut(self as *mut Self)) }
+    }
+
     /// Upcast to Expr_GeneralExpression
     pub fn as_general_expression(&self) -> &GeneralExpression {
         unsafe { &*(crate::ffi::Expr_Absolute_as_Expr_GeneralExpression(self as *const Self)) }
@@ -122,43 +132,43 @@ impl Absolute {
         }
     }
 
-    /// Upcast to Expr_UnaryExpression
-    pub fn as_unary_expression(&self) -> &UnaryExpression {
-        unsafe { &*(crate::ffi::Expr_Absolute_as_Expr_UnaryExpression(self as *const Self)) }
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Absolute_inherited_Operand(self as *const Self)) }
     }
 
-    /// Upcast to Expr_UnaryExpression (mutable)
-    pub fn as_unary_expression_mut(&mut self) -> &mut UnaryExpression {
-        unsafe { &mut *(crate::ffi::Expr_Absolute_as_Expr_UnaryExpression_mut(self as *mut Self)) }
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
+        unsafe { crate::ffi::Expr_Absolute_inherited_SetOperand(self as *mut Self, exp) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn nb_sub_expressions(&self) -> i32 {
         unsafe { crate::ffi::Expr_Absolute_inherited_NbSubExpressions(self as *const Self) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
     pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_Absolute_inherited_SubExpression(self as *const Self, I)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_Absolute_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_Absolute_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_Absolute_inherited_Simplified(
                 self as *const Self,
             ))
         }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_Absolute_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_Absolute_inherited_Contains(self as *const Self, exp) }
     }
 
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
@@ -169,16 +179,6 @@ impl Absolute {
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_Absolute_inherited_EvaluateNumeric(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
-    pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Absolute_inherited_Operand(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
-    pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
-        unsafe { crate::ffi::Expr_Absolute_inherited_SetOperand(self as *mut Self, exp) }
     }
 }
 
@@ -263,6 +263,16 @@ impl ArcCosine {
         unsafe { &*(crate::ffi::Expr_ArcCosine_get_type_descriptor()) }
     }
 
+    /// Upcast to Expr_UnaryExpression
+    pub fn as_unary_expression(&self) -> &UnaryExpression {
+        unsafe { &*(crate::ffi::Expr_ArcCosine_as_Expr_UnaryExpression(self as *const Self)) }
+    }
+
+    /// Upcast to Expr_UnaryExpression (mutable)
+    pub fn as_unary_expression_mut(&mut self) -> &mut UnaryExpression {
+        unsafe { &mut *(crate::ffi::Expr_ArcCosine_as_Expr_UnaryExpression_mut(self as *mut Self)) }
+    }
+
     /// Upcast to Expr_GeneralExpression
     pub fn as_general_expression(&self) -> &GeneralExpression {
         unsafe { &*(crate::ffi::Expr_ArcCosine_as_Expr_GeneralExpression(self as *const Self)) }
@@ -275,43 +285,43 @@ impl ArcCosine {
         }
     }
 
-    /// Upcast to Expr_UnaryExpression
-    pub fn as_unary_expression(&self) -> &UnaryExpression {
-        unsafe { &*(crate::ffi::Expr_ArcCosine_as_Expr_UnaryExpression(self as *const Self)) }
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_ArcCosine_inherited_Operand(self as *const Self)) }
     }
 
-    /// Upcast to Expr_UnaryExpression (mutable)
-    pub fn as_unary_expression_mut(&mut self) -> &mut UnaryExpression {
-        unsafe { &mut *(crate::ffi::Expr_ArcCosine_as_Expr_UnaryExpression_mut(self as *mut Self)) }
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
+        unsafe { crate::ffi::Expr_ArcCosine_inherited_SetOperand(self as *mut Self, exp) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn nb_sub_expressions(&self) -> i32 {
         unsafe { crate::ffi::Expr_ArcCosine_inherited_NbSubExpressions(self as *const Self) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
     pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_ArcCosine_inherited_SubExpression(self as *const Self, I)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_ArcCosine_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_ArcCosine_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_ArcCosine_inherited_Simplified(
                 self as *const Self,
             ))
         }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_ArcCosine_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_ArcCosine_inherited_Contains(self as *const Self, exp) }
     }
 
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
@@ -322,16 +332,6 @@ impl ArcCosine {
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_ArcCosine_inherited_EvaluateNumeric(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
-    pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_ArcCosine_inherited_Operand(self as *const Self)) }
-    }
-
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
-    pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
-        unsafe { crate::ffi::Expr_ArcCosine_inherited_SetOperand(self as *mut Self, exp) }
     }
 }
 
@@ -416,16 +416,6 @@ impl ArcSine {
         unsafe { &*(crate::ffi::Expr_ArcSine_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_ArcSine_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe { &mut *(crate::ffi::Expr_ArcSine_as_Expr_GeneralExpression_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Expr_UnaryExpression
     pub fn as_unary_expression(&self) -> &UnaryExpression {
         unsafe { &*(crate::ffi::Expr_ArcSine_as_Expr_UnaryExpression(self as *const Self)) }
@@ -436,43 +426,14 @@ impl ArcSine {
         unsafe { &mut *(crate::ffi::Expr_ArcSine_as_Expr_UnaryExpression_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_ArcSine_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_ArcSine_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_ArcSine_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArcSine_inherited_Simplified(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_ArcSine_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_ArcSine_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_ArcSine_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_ArcSine_inherited_EvaluateNumeric(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
+        unsafe { &mut *(crate::ffi::Expr_ArcSine_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
@@ -483,6 +444,45 @@ impl ArcSine {
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_ArcSine_inherited_SetOperand(self as *mut Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_ArcSine_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_ArcSine_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_ArcSine_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_ArcSine_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArcSine_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_ArcSine_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_ArcSine_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -569,18 +569,6 @@ impl ArcTangent {
         unsafe { &*(crate::ffi::Expr_ArcTangent_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_ArcTangent_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe {
-            &mut *(crate::ffi::Expr_ArcTangent_as_Expr_GeneralExpression_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to Expr_UnaryExpression
     pub fn as_unary_expression(&self) -> &UnaryExpression {
         unsafe { &*(crate::ffi::Expr_ArcTangent_as_Expr_UnaryExpression(self as *const Self)) }
@@ -593,43 +581,16 @@ impl ArcTangent {
         }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_ArcTangent_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_ArcTangent_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_ArcTangent_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArcTangent_inherited_Simplified(
-                self as *const Self,
-            ))
+            &mut *(crate::ffi::Expr_ArcTangent_as_Expr_GeneralExpression_mut(self as *mut Self))
         }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_ArcTangent_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_ArcTangent_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_ArcTangent_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_ArcTangent_inherited_EvaluateNumeric(self as *const Self) }
     }
 
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
@@ -640,6 +601,45 @@ impl ArcTangent {
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_ArcTangent_inherited_SetOperand(self as *mut Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_ArcTangent_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_ArcTangent_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_ArcTangent_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_ArcTangent_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArcTangent_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_ArcTangent_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_ArcTangent_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -724,16 +724,6 @@ impl ArgCosh {
         unsafe { &*(crate::ffi::Expr_ArgCosh_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_ArgCosh_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe { &mut *(crate::ffi::Expr_ArgCosh_as_Expr_GeneralExpression_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Expr_UnaryExpression
     pub fn as_unary_expression(&self) -> &UnaryExpression {
         unsafe { &*(crate::ffi::Expr_ArgCosh_as_Expr_UnaryExpression(self as *const Self)) }
@@ -744,43 +734,14 @@ impl ArgCosh {
         unsafe { &mut *(crate::ffi::Expr_ArgCosh_as_Expr_UnaryExpression_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_ArgCosh_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_ArgCosh_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_ArgCosh_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArgCosh_inherited_Simplified(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_ArgCosh_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_ArgCosh_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_ArgCosh_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_ArgCosh_inherited_EvaluateNumeric(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
+        unsafe { &mut *(crate::ffi::Expr_ArgCosh_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
@@ -791,6 +752,45 @@ impl ArgCosh {
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_ArgCosh_inherited_SetOperand(self as *mut Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_ArgCosh_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_ArgCosh_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_ArgCosh_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_ArgCosh_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArgCosh_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_ArgCosh_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_ArgCosh_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -875,16 +875,6 @@ impl ArgSinh {
         unsafe { &*(crate::ffi::Expr_ArgSinh_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_ArgSinh_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe { &mut *(crate::ffi::Expr_ArgSinh_as_Expr_GeneralExpression_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Expr_UnaryExpression
     pub fn as_unary_expression(&self) -> &UnaryExpression {
         unsafe { &*(crate::ffi::Expr_ArgSinh_as_Expr_UnaryExpression(self as *const Self)) }
@@ -895,43 +885,14 @@ impl ArgSinh {
         unsafe { &mut *(crate::ffi::Expr_ArgSinh_as_Expr_UnaryExpression_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_ArgSinh_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_ArgSinh_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_ArgSinh_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArgSinh_inherited_Simplified(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_ArgSinh_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_ArgSinh_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_ArgSinh_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_ArgSinh_inherited_EvaluateNumeric(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
+        unsafe { &mut *(crate::ffi::Expr_ArgSinh_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
@@ -942,6 +903,45 @@ impl ArgSinh {
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_ArgSinh_inherited_SetOperand(self as *mut Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_ArgSinh_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_ArgSinh_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_ArgSinh_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_ArgSinh_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArgSinh_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_ArgSinh_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_ArgSinh_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -1026,16 +1026,6 @@ impl ArgTanh {
         unsafe { &*(crate::ffi::Expr_ArgTanh_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_ArgTanh_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe { &mut *(crate::ffi::Expr_ArgTanh_as_Expr_GeneralExpression_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Expr_UnaryExpression
     pub fn as_unary_expression(&self) -> &UnaryExpression {
         unsafe { &*(crate::ffi::Expr_ArgTanh_as_Expr_UnaryExpression(self as *const Self)) }
@@ -1046,43 +1036,14 @@ impl ArgTanh {
         unsafe { &mut *(crate::ffi::Expr_ArgTanh_as_Expr_UnaryExpression_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_ArgTanh_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_ArgTanh_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_ArgTanh_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArgTanh_inherited_Simplified(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_ArgTanh_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_ArgTanh_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_ArgTanh_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_ArgTanh_inherited_EvaluateNumeric(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
+        unsafe { &mut *(crate::ffi::Expr_ArgTanh_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
@@ -1093,6 +1054,45 @@ impl ArgTanh {
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_ArgTanh_inherited_SetOperand(self as *mut Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_ArgTanh_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_ArgTanh_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_ArgTanh_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_ArgTanh_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArgTanh_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_ArgTanh_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_ArgTanh_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -1522,16 +1522,6 @@ impl Cosh {
         unsafe { &*(crate::ffi::Expr_Cosh_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Cosh_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe { &mut *(crate::ffi::Expr_Cosh_as_Expr_GeneralExpression_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Expr_UnaryExpression
     pub fn as_unary_expression(&self) -> &UnaryExpression {
         unsafe { &*(crate::ffi::Expr_Cosh_as_Expr_UnaryExpression(self as *const Self)) }
@@ -1542,43 +1532,14 @@ impl Cosh {
         unsafe { &mut *(crate::ffi::Expr_Cosh_as_Expr_UnaryExpression_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_Cosh_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Cosh_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Cosh_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_Cosh_inherited_Simplified(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_Cosh_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_Cosh_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_Cosh_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_Cosh_inherited_EvaluateNumeric(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
+        unsafe { &mut *(crate::ffi::Expr_Cosh_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
@@ -1589,6 +1550,45 @@ impl Cosh {
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_Cosh_inherited_SetOperand(self as *mut Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_Cosh_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Cosh_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_Cosh_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_Cosh_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Cosh_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_Cosh_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_Cosh_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -1671,16 +1671,6 @@ impl Cosine {
         unsafe { &*(crate::ffi::Expr_Cosine_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Cosine_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe { &mut *(crate::ffi::Expr_Cosine_as_Expr_GeneralExpression_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Expr_UnaryExpression
     pub fn as_unary_expression(&self) -> &UnaryExpression {
         unsafe { &*(crate::ffi::Expr_Cosine_as_Expr_UnaryExpression(self as *const Self)) }
@@ -1691,43 +1681,14 @@ impl Cosine {
         unsafe { &mut *(crate::ffi::Expr_Cosine_as_Expr_UnaryExpression_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_Cosine_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Cosine_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Cosine_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_Cosine_inherited_Simplified(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_Cosine_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_Cosine_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_Cosine_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_Cosine_inherited_EvaluateNumeric(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
+        unsafe { &mut *(crate::ffi::Expr_Cosine_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
@@ -1738,6 +1699,45 @@ impl Cosine {
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_Cosine_inherited_SetOperand(self as *mut Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_Cosine_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Cosine_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_Cosine_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_Cosine_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Cosine_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_Cosine_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_Cosine_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -1990,16 +1990,6 @@ impl Different {
         unsafe { &*(crate::ffi::Expr_Different_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralRelation
-    pub fn as_general_relation(&self) -> &GeneralRelation {
-        unsafe { &*(crate::ffi::Expr_Different_as_Expr_GeneralRelation(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralRelation (mutable)
-    pub fn as_general_relation_mut(&mut self) -> &mut GeneralRelation {
-        unsafe { &mut *(crate::ffi::Expr_Different_as_Expr_GeneralRelation_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Expr_SingleRelation
     pub fn as_single_relation(&self) -> &SingleRelation {
         unsafe { &*(crate::ffi::Expr_Different_as_Expr_SingleRelation(self as *const Self)) }
@@ -2010,37 +2000,14 @@ impl Different {
         unsafe { &mut *(crate::ffi::Expr_Different_as_Expr_SingleRelation_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:42 - `Expr_GeneralRelation::IsLinear()`
-    pub fn is_linear(&self) -> bool {
-        unsafe { crate::ffi::Expr_Different_inherited_IsLinear(self as *const Self) }
+    /// Upcast to Expr_GeneralRelation
+    pub fn as_general_relation(&self) -> &GeneralRelation {
+        unsafe { &*(crate::ffi::Expr_Different_as_Expr_GeneralRelation(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:58 - `Expr_GeneralRelation::NbOfSubRelations()`
-    pub fn nb_of_sub_relations(&self) -> i32 {
-        unsafe { crate::ffi::Expr_Different_inherited_NbOfSubRelations(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:62 - `Expr_GeneralRelation::NbOfSingleRelations()`
-    pub fn nb_of_single_relations(&self) -> i32 {
-        unsafe { crate::ffi::Expr_Different_inherited_NbOfSingleRelations(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:66 - `Expr_GeneralRelation::SubRelation()`
-    pub fn sub_relation(
-        &self,
-        index: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_Different_inherited_SubRelation(
-                self as *const Self,
-                index,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:70 - `Expr_GeneralRelation::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_Different_inherited_Contains(self as *const Self, exp) }
+    /// Upcast to Expr_GeneralRelation (mutable)
+    pub fn as_general_relation_mut(&mut self) -> &mut GeneralRelation {
+        unsafe { &mut *(crate::ffi::Expr_Different_as_Expr_GeneralRelation_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetFirstMember()`
@@ -2069,6 +2036,39 @@ impl Different {
                 self as *const Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:48 - `Expr_SingleRelation::IsLinear()`
+    pub fn is_linear(&self) -> bool {
+        unsafe { crate::ffi::Expr_Different_inherited_IsLinear(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:51 - `Expr_SingleRelation::NbOfSubRelations()`
+    pub fn nb_of_sub_relations(&self) -> i32 {
+        unsafe { crate::ffi::Expr_Different_inherited_NbOfSubRelations(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:55 - `Expr_SingleRelation::NbOfSingleRelations()`
+    pub fn nb_of_single_relations(&self) -> i32 {
+        unsafe { crate::ffi::Expr_Different_inherited_NbOfSingleRelations(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:59 - `Expr_SingleRelation::SubRelation()`
+    pub fn sub_relation(
+        &self,
+        index: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Different_inherited_SubRelation(
+                self as *const Self,
+                index,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:64 - `Expr_SingleRelation::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_Different_inherited_Contains(self as *const Self, exp) }
     }
 }
 
@@ -2314,16 +2314,6 @@ impl Equal {
         unsafe { &*(crate::ffi::Expr_Equal_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralRelation
-    pub fn as_general_relation(&self) -> &GeneralRelation {
-        unsafe { &*(crate::ffi::Expr_Equal_as_Expr_GeneralRelation(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralRelation (mutable)
-    pub fn as_general_relation_mut(&mut self) -> &mut GeneralRelation {
-        unsafe { &mut *(crate::ffi::Expr_Equal_as_Expr_GeneralRelation_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Expr_SingleRelation
     pub fn as_single_relation(&self) -> &SingleRelation {
         unsafe { &*(crate::ffi::Expr_Equal_as_Expr_SingleRelation(self as *const Self)) }
@@ -2334,37 +2324,14 @@ impl Equal {
         unsafe { &mut *(crate::ffi::Expr_Equal_as_Expr_SingleRelation_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:42 - `Expr_GeneralRelation::IsLinear()`
-    pub fn is_linear(&self) -> bool {
-        unsafe { crate::ffi::Expr_Equal_inherited_IsLinear(self as *const Self) }
+    /// Upcast to Expr_GeneralRelation
+    pub fn as_general_relation(&self) -> &GeneralRelation {
+        unsafe { &*(crate::ffi::Expr_Equal_as_Expr_GeneralRelation(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:58 - `Expr_GeneralRelation::NbOfSubRelations()`
-    pub fn nb_of_sub_relations(&self) -> i32 {
-        unsafe { crate::ffi::Expr_Equal_inherited_NbOfSubRelations(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:62 - `Expr_GeneralRelation::NbOfSingleRelations()`
-    pub fn nb_of_single_relations(&self) -> i32 {
-        unsafe { crate::ffi::Expr_Equal_inherited_NbOfSingleRelations(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:66 - `Expr_GeneralRelation::SubRelation()`
-    pub fn sub_relation(
-        &self,
-        index: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_Equal_inherited_SubRelation(
-                self as *const Self,
-                index,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:70 - `Expr_GeneralRelation::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_Equal_inherited_Contains(self as *const Self, exp) }
+    /// Upcast to Expr_GeneralRelation (mutable)
+    pub fn as_general_relation_mut(&mut self) -> &mut GeneralRelation {
+        unsafe { &mut *(crate::ffi::Expr_Equal_as_Expr_GeneralRelation_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetFirstMember()`
@@ -2393,6 +2360,39 @@ impl Equal {
                 self as *const Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:48 - `Expr_SingleRelation::IsLinear()`
+    pub fn is_linear(&self) -> bool {
+        unsafe { crate::ffi::Expr_Equal_inherited_IsLinear(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:51 - `Expr_SingleRelation::NbOfSubRelations()`
+    pub fn nb_of_sub_relations(&self) -> i32 {
+        unsafe { crate::ffi::Expr_Equal_inherited_NbOfSubRelations(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:55 - `Expr_SingleRelation::NbOfSingleRelations()`
+    pub fn nb_of_single_relations(&self) -> i32 {
+        unsafe { crate::ffi::Expr_Equal_inherited_NbOfSingleRelations(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:59 - `Expr_SingleRelation::SubRelation()`
+    pub fn sub_relation(
+        &self,
+        index: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Equal_inherited_SubRelation(
+                self as *const Self,
+                index,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:64 - `Expr_SingleRelation::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_Equal_inherited_Contains(self as *const Self, exp) }
     }
 }
 
@@ -2479,18 +2479,6 @@ impl Exponential {
         unsafe { &*(crate::ffi::Expr_Exponential_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Exponential_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe {
-            &mut *(crate::ffi::Expr_Exponential_as_Expr_GeneralExpression_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to Expr_UnaryExpression
     pub fn as_unary_expression(&self) -> &UnaryExpression {
         unsafe { &*(crate::ffi::Expr_Exponential_as_Expr_UnaryExpression(self as *const Self)) }
@@ -2503,43 +2491,16 @@ impl Exponential {
         }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_Exponential_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Exponential_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Exponential_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_Exponential_inherited_Simplified(
-                self as *const Self,
-            ))
+            &mut *(crate::ffi::Expr_Exponential_as_Expr_GeneralExpression_mut(self as *mut Self))
         }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_Exponential_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_Exponential_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_Exponential_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_Exponential_inherited_EvaluateNumeric(self as *const Self) }
     }
 
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
@@ -2550,6 +2511,45 @@ impl Exponential {
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_Exponential_inherited_SetOperand(self as *mut Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_Exponential_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Exponential_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_Exponential_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_Exponential_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Exponential_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_Exponential_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_Exponential_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -3378,18 +3378,6 @@ impl GreaterThan {
         unsafe { &*(crate::ffi::Expr_GreaterThan_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralRelation
-    pub fn as_general_relation(&self) -> &GeneralRelation {
-        unsafe { &*(crate::ffi::Expr_GreaterThan_as_Expr_GeneralRelation(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralRelation (mutable)
-    pub fn as_general_relation_mut(&mut self) -> &mut GeneralRelation {
-        unsafe {
-            &mut *(crate::ffi::Expr_GreaterThan_as_Expr_GeneralRelation_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to Expr_SingleRelation
     pub fn as_single_relation(&self) -> &SingleRelation {
         unsafe { &*(crate::ffi::Expr_GreaterThan_as_Expr_SingleRelation(self as *const Self)) }
@@ -3402,37 +3390,16 @@ impl GreaterThan {
         }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:42 - `Expr_GeneralRelation::IsLinear()`
-    pub fn is_linear(&self) -> bool {
-        unsafe { crate::ffi::Expr_GreaterThan_inherited_IsLinear(self as *const Self) }
+    /// Upcast to Expr_GeneralRelation
+    pub fn as_general_relation(&self) -> &GeneralRelation {
+        unsafe { &*(crate::ffi::Expr_GreaterThan_as_Expr_GeneralRelation(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:58 - `Expr_GeneralRelation::NbOfSubRelations()`
-    pub fn nb_of_sub_relations(&self) -> i32 {
-        unsafe { crate::ffi::Expr_GreaterThan_inherited_NbOfSubRelations(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:62 - `Expr_GeneralRelation::NbOfSingleRelations()`
-    pub fn nb_of_single_relations(&self) -> i32 {
-        unsafe { crate::ffi::Expr_GreaterThan_inherited_NbOfSingleRelations(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:66 - `Expr_GeneralRelation::SubRelation()`
-    pub fn sub_relation(
-        &self,
-        index: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
+    /// Upcast to Expr_GeneralRelation (mutable)
+    pub fn as_general_relation_mut(&mut self) -> &mut GeneralRelation {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_GreaterThan_inherited_SubRelation(
-                self as *const Self,
-                index,
-            ))
+            &mut *(crate::ffi::Expr_GreaterThan_as_Expr_GeneralRelation_mut(self as *mut Self))
         }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:70 - `Expr_GeneralRelation::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_GreaterThan_inherited_Contains(self as *const Self, exp) }
     }
 
     /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetFirstMember()`
@@ -3461,6 +3428,39 @@ impl GreaterThan {
                 self as *const Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:48 - `Expr_SingleRelation::IsLinear()`
+    pub fn is_linear(&self) -> bool {
+        unsafe { crate::ffi::Expr_GreaterThan_inherited_IsLinear(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:51 - `Expr_SingleRelation::NbOfSubRelations()`
+    pub fn nb_of_sub_relations(&self) -> i32 {
+        unsafe { crate::ffi::Expr_GreaterThan_inherited_NbOfSubRelations(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:55 - `Expr_SingleRelation::NbOfSingleRelations()`
+    pub fn nb_of_single_relations(&self) -> i32 {
+        unsafe { crate::ffi::Expr_GreaterThan_inherited_NbOfSingleRelations(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:59 - `Expr_SingleRelation::SubRelation()`
+    pub fn sub_relation(
+        &self,
+        index: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_GreaterThan_inherited_SubRelation(
+                self as *const Self,
+                index,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:64 - `Expr_SingleRelation::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_GreaterThan_inherited_Contains(self as *const Self, exp) }
     }
 }
 
@@ -3552,22 +3552,6 @@ impl GreaterThanOrEqual {
         unsafe { &*(crate::ffi::Expr_GreaterThanOrEqual_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralRelation
-    pub fn as_general_relation(&self) -> &GeneralRelation {
-        unsafe {
-            &*(crate::ffi::Expr_GreaterThanOrEqual_as_Expr_GeneralRelation(self as *const Self))
-        }
-    }
-
-    /// Upcast to Expr_GeneralRelation (mutable)
-    pub fn as_general_relation_mut(&mut self) -> &mut GeneralRelation {
-        unsafe {
-            &mut *(crate::ffi::Expr_GreaterThanOrEqual_as_Expr_GeneralRelation_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to Expr_SingleRelation
     pub fn as_single_relation(&self) -> &SingleRelation {
         unsafe {
@@ -3584,41 +3568,20 @@ impl GreaterThanOrEqual {
         }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:42 - `Expr_GeneralRelation::IsLinear()`
-    pub fn is_linear(&self) -> bool {
-        unsafe { crate::ffi::Expr_GreaterThanOrEqual_inherited_IsLinear(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:58 - `Expr_GeneralRelation::NbOfSubRelations()`
-    pub fn nb_of_sub_relations(&self) -> i32 {
+    /// Upcast to Expr_GeneralRelation
+    pub fn as_general_relation(&self) -> &GeneralRelation {
         unsafe {
-            crate::ffi::Expr_GreaterThanOrEqual_inherited_NbOfSubRelations(self as *const Self)
+            &*(crate::ffi::Expr_GreaterThanOrEqual_as_Expr_GeneralRelation(self as *const Self))
         }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:62 - `Expr_GeneralRelation::NbOfSingleRelations()`
-    pub fn nb_of_single_relations(&self) -> i32 {
+    /// Upcast to Expr_GeneralRelation (mutable)
+    pub fn as_general_relation_mut(&mut self) -> &mut GeneralRelation {
         unsafe {
-            crate::ffi::Expr_GreaterThanOrEqual_inherited_NbOfSingleRelations(self as *const Self)
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:66 - `Expr_GeneralRelation::SubRelation()`
-    pub fn sub_relation(
-        &self,
-        index: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_GreaterThanOrEqual_inherited_SubRelation(
-                self as *const Self,
-                index,
+            &mut *(crate::ffi::Expr_GreaterThanOrEqual_as_Expr_GeneralRelation_mut(
+                self as *mut Self,
             ))
         }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:70 - `Expr_GeneralRelation::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_GreaterThanOrEqual_inherited_Contains(self as *const Self, exp) }
     }
 
     /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetFirstMember()`
@@ -3651,6 +3614,43 @@ impl GreaterThanOrEqual {
                 self as *const Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:48 - `Expr_SingleRelation::IsLinear()`
+    pub fn is_linear(&self) -> bool {
+        unsafe { crate::ffi::Expr_GreaterThanOrEqual_inherited_IsLinear(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:51 - `Expr_SingleRelation::NbOfSubRelations()`
+    pub fn nb_of_sub_relations(&self) -> i32 {
+        unsafe {
+            crate::ffi::Expr_GreaterThanOrEqual_inherited_NbOfSubRelations(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:55 - `Expr_SingleRelation::NbOfSingleRelations()`
+    pub fn nb_of_single_relations(&self) -> i32 {
+        unsafe {
+            crate::ffi::Expr_GreaterThanOrEqual_inherited_NbOfSingleRelations(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:59 - `Expr_SingleRelation::SubRelation()`
+    pub fn sub_relation(
+        &self,
+        index: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_GreaterThanOrEqual_inherited_SubRelation(
+                self as *const Self,
+                index,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:64 - `Expr_SingleRelation::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_GreaterThanOrEqual_inherited_Contains(self as *const Self, exp) }
     }
 }
 
@@ -3971,16 +3971,6 @@ impl LessThan {
         unsafe { &*(crate::ffi::Expr_LessThan_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralRelation
-    pub fn as_general_relation(&self) -> &GeneralRelation {
-        unsafe { &*(crate::ffi::Expr_LessThan_as_Expr_GeneralRelation(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralRelation (mutable)
-    pub fn as_general_relation_mut(&mut self) -> &mut GeneralRelation {
-        unsafe { &mut *(crate::ffi::Expr_LessThan_as_Expr_GeneralRelation_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Expr_SingleRelation
     pub fn as_single_relation(&self) -> &SingleRelation {
         unsafe { &*(crate::ffi::Expr_LessThan_as_Expr_SingleRelation(self as *const Self)) }
@@ -3991,37 +3981,14 @@ impl LessThan {
         unsafe { &mut *(crate::ffi::Expr_LessThan_as_Expr_SingleRelation_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:42 - `Expr_GeneralRelation::IsLinear()`
-    pub fn is_linear(&self) -> bool {
-        unsafe { crate::ffi::Expr_LessThan_inherited_IsLinear(self as *const Self) }
+    /// Upcast to Expr_GeneralRelation
+    pub fn as_general_relation(&self) -> &GeneralRelation {
+        unsafe { &*(crate::ffi::Expr_LessThan_as_Expr_GeneralRelation(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:58 - `Expr_GeneralRelation::NbOfSubRelations()`
-    pub fn nb_of_sub_relations(&self) -> i32 {
-        unsafe { crate::ffi::Expr_LessThan_inherited_NbOfSubRelations(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:62 - `Expr_GeneralRelation::NbOfSingleRelations()`
-    pub fn nb_of_single_relations(&self) -> i32 {
-        unsafe { crate::ffi::Expr_LessThan_inherited_NbOfSingleRelations(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:66 - `Expr_GeneralRelation::SubRelation()`
-    pub fn sub_relation(
-        &self,
-        index: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_LessThan_inherited_SubRelation(
-                self as *const Self,
-                index,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:70 - `Expr_GeneralRelation::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_LessThan_inherited_Contains(self as *const Self, exp) }
+    /// Upcast to Expr_GeneralRelation (mutable)
+    pub fn as_general_relation_mut(&mut self) -> &mut GeneralRelation {
+        unsafe { &mut *(crate::ffi::Expr_LessThan_as_Expr_GeneralRelation_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetFirstMember()`
@@ -4050,6 +4017,39 @@ impl LessThan {
                 self as *const Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:48 - `Expr_SingleRelation::IsLinear()`
+    pub fn is_linear(&self) -> bool {
+        unsafe { crate::ffi::Expr_LessThan_inherited_IsLinear(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:51 - `Expr_SingleRelation::NbOfSubRelations()`
+    pub fn nb_of_sub_relations(&self) -> i32 {
+        unsafe { crate::ffi::Expr_LessThan_inherited_NbOfSubRelations(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:55 - `Expr_SingleRelation::NbOfSingleRelations()`
+    pub fn nb_of_single_relations(&self) -> i32 {
+        unsafe { crate::ffi::Expr_LessThan_inherited_NbOfSingleRelations(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:59 - `Expr_SingleRelation::SubRelation()`
+    pub fn sub_relation(
+        &self,
+        index: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_LessThan_inherited_SubRelation(
+                self as *const Self,
+                index,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:64 - `Expr_SingleRelation::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_LessThan_inherited_Contains(self as *const Self, exp) }
     }
 }
 
@@ -4139,18 +4139,6 @@ impl LessThanOrEqual {
         unsafe { &*(crate::ffi::Expr_LessThanOrEqual_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralRelation
-    pub fn as_general_relation(&self) -> &GeneralRelation {
-        unsafe { &*(crate::ffi::Expr_LessThanOrEqual_as_Expr_GeneralRelation(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralRelation (mutable)
-    pub fn as_general_relation_mut(&mut self) -> &mut GeneralRelation {
-        unsafe {
-            &mut *(crate::ffi::Expr_LessThanOrEqual_as_Expr_GeneralRelation_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to Expr_SingleRelation
     pub fn as_single_relation(&self) -> &SingleRelation {
         unsafe { &*(crate::ffi::Expr_LessThanOrEqual_as_Expr_SingleRelation(self as *const Self)) }
@@ -4163,39 +4151,16 @@ impl LessThanOrEqual {
         }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:42 - `Expr_GeneralRelation::IsLinear()`
-    pub fn is_linear(&self) -> bool {
-        unsafe { crate::ffi::Expr_LessThanOrEqual_inherited_IsLinear(self as *const Self) }
+    /// Upcast to Expr_GeneralRelation
+    pub fn as_general_relation(&self) -> &GeneralRelation {
+        unsafe { &*(crate::ffi::Expr_LessThanOrEqual_as_Expr_GeneralRelation(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:58 - `Expr_GeneralRelation::NbOfSubRelations()`
-    pub fn nb_of_sub_relations(&self) -> i32 {
-        unsafe { crate::ffi::Expr_LessThanOrEqual_inherited_NbOfSubRelations(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:62 - `Expr_GeneralRelation::NbOfSingleRelations()`
-    pub fn nb_of_single_relations(&self) -> i32 {
+    /// Upcast to Expr_GeneralRelation (mutable)
+    pub fn as_general_relation_mut(&mut self) -> &mut GeneralRelation {
         unsafe {
-            crate::ffi::Expr_LessThanOrEqual_inherited_NbOfSingleRelations(self as *const Self)
+            &mut *(crate::ffi::Expr_LessThanOrEqual_as_Expr_GeneralRelation_mut(self as *mut Self))
         }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:66 - `Expr_GeneralRelation::SubRelation()`
-    pub fn sub_relation(
-        &self,
-        index: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_LessThanOrEqual_inherited_SubRelation(
-                self as *const Self,
-                index,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:70 - `Expr_GeneralRelation::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_LessThanOrEqual_inherited_Contains(self as *const Self, exp) }
     }
 
     /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetFirstMember()`
@@ -4226,6 +4191,41 @@ impl LessThanOrEqual {
                 self as *const Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:48 - `Expr_SingleRelation::IsLinear()`
+    pub fn is_linear(&self) -> bool {
+        unsafe { crate::ffi::Expr_LessThanOrEqual_inherited_IsLinear(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:51 - `Expr_SingleRelation::NbOfSubRelations()`
+    pub fn nb_of_sub_relations(&self) -> i32 {
+        unsafe { crate::ffi::Expr_LessThanOrEqual_inherited_NbOfSubRelations(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:55 - `Expr_SingleRelation::NbOfSingleRelations()`
+    pub fn nb_of_single_relations(&self) -> i32 {
+        unsafe {
+            crate::ffi::Expr_LessThanOrEqual_inherited_NbOfSingleRelations(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:59 - `Expr_SingleRelation::SubRelation()`
+    pub fn sub_relation(
+        &self,
+        index: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_LessThanOrEqual_inherited_SubRelation(
+                self as *const Self,
+                index,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:64 - `Expr_SingleRelation::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_LessThanOrEqual_inherited_Contains(self as *const Self, exp) }
     }
 }
 
@@ -4310,16 +4310,6 @@ impl LogOf10 {
         unsafe { &*(crate::ffi::Expr_LogOf10_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_LogOf10_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe { &mut *(crate::ffi::Expr_LogOf10_as_Expr_GeneralExpression_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Expr_UnaryExpression
     pub fn as_unary_expression(&self) -> &UnaryExpression {
         unsafe { &*(crate::ffi::Expr_LogOf10_as_Expr_UnaryExpression(self as *const Self)) }
@@ -4330,43 +4320,14 @@ impl LogOf10 {
         unsafe { &mut *(crate::ffi::Expr_LogOf10_as_Expr_UnaryExpression_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_LogOf10_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_LogOf10_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_LogOf10_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_LogOf10_inherited_Simplified(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_LogOf10_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_LogOf10_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_LogOf10_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_LogOf10_inherited_EvaluateNumeric(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
+        unsafe { &mut *(crate::ffi::Expr_LogOf10_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
@@ -4377,6 +4338,45 @@ impl LogOf10 {
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_LogOf10_inherited_SetOperand(self as *mut Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_LogOf10_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_LogOf10_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_LogOf10_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_LogOf10_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_LogOf10_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_LogOf10_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_LogOf10_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -4459,16 +4459,6 @@ impl LogOfe {
         unsafe { &*(crate::ffi::Expr_LogOfe_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_LogOfe_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe { &mut *(crate::ffi::Expr_LogOfe_as_Expr_GeneralExpression_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Expr_UnaryExpression
     pub fn as_unary_expression(&self) -> &UnaryExpression {
         unsafe { &*(crate::ffi::Expr_LogOfe_as_Expr_UnaryExpression(self as *const Self)) }
@@ -4479,43 +4469,14 @@ impl LogOfe {
         unsafe { &mut *(crate::ffi::Expr_LogOfe_as_Expr_UnaryExpression_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_LogOfe_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_LogOfe_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_LogOfe_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_LogOfe_inherited_Simplified(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_LogOfe_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_LogOfe_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_LogOfe_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_LogOfe_inherited_EvaluateNumeric(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
+        unsafe { &mut *(crate::ffi::Expr_LogOfe_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
@@ -4526,6 +4487,45 @@ impl LogOfe {
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_LogOfe_inherited_SetOperand(self as *mut Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_LogOfe_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_LogOfe_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_LogOfe_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_LogOfe_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_LogOfe_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_LogOfe_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_LogOfe_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -4645,18 +4645,6 @@ impl NamedConstant {
         unsafe { &*(crate::ffi::Expr_NamedConstant_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_NamedConstant_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe {
-            &mut *(crate::ffi::Expr_NamedConstant_as_Expr_GeneralExpression_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to Expr_NamedExpression
     pub fn as_named_expression(&self) -> &NamedExpression {
         unsafe { &*(crate::ffi::Expr_NamedConstant_as_Expr_NamedExpression(self as *const Self)) }
@@ -4669,27 +4657,15 @@ impl NamedConstant {
         }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_NamedConstant_inherited_IsShareable(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_NamedConstant_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:82 - `Expr_GeneralExpression::IsIdentical()`
-    pub fn is_identical(&self, Other: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_NamedConstant_inherited_IsIdentical(self as *const Self, Other) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_NamedConstant_inherited_EvaluateNumeric(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:115 - `Expr_GeneralExpression::String()`
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedConstant_inherited_String(
-                self as *const Self,
-            ))
+            &mut *(crate::ffi::Expr_NamedConstant_as_Expr_GeneralExpression_mut(self as *mut Self))
         }
     }
 
@@ -4701,6 +4677,30 @@ impl NamedConstant {
     /// Inherited: **Source:** `Expr_NamedExpression.hxx`:38 - `Expr_NamedExpression::SetName()`
     pub fn set_name(&mut self, name: &crate::ffi::TCollection_AsciiString) {
         unsafe { crate::ffi::Expr_NamedConstant_inherited_SetName(self as *mut Self, name) }
+    }
+
+    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:43 - `Expr_NamedExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_NamedConstant_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:49 - `Expr_NamedExpression::IsIdentical()`
+    pub fn is_identical(&self, Other: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_NamedConstant_inherited_IsIdentical(self as *const Self, Other) }
+    }
+
+    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:52 - `Expr_NamedExpression::String()`
+    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedConstant_inherited_String(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_NamedConstant_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -5090,18 +5090,6 @@ impl NamedUnknown {
         unsafe { &*(crate::ffi::Expr_NamedUnknown_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_NamedUnknown_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe {
-            &mut *(crate::ffi::Expr_NamedUnknown_as_Expr_GeneralExpression_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to Expr_NamedExpression
     pub fn as_named_expression(&self) -> &NamedExpression {
         unsafe { &*(crate::ffi::Expr_NamedUnknown_as_Expr_NamedExpression(self as *const Self)) }
@@ -5114,27 +5102,15 @@ impl NamedUnknown {
         }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_NamedUnknown_inherited_IsShareable(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_NamedUnknown_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:82 - `Expr_GeneralExpression::IsIdentical()`
-    pub fn is_identical(&self, Other: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_NamedUnknown_inherited_IsIdentical(self as *const Self, Other) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_NamedUnknown_inherited_EvaluateNumeric(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:115 - `Expr_GeneralExpression::String()`
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedUnknown_inherited_String(
-                self as *const Self,
-            ))
+            &mut *(crate::ffi::Expr_NamedUnknown_as_Expr_GeneralExpression_mut(self as *mut Self))
         }
     }
 
@@ -5146,6 +5122,30 @@ impl NamedUnknown {
     /// Inherited: **Source:** `Expr_NamedExpression.hxx`:38 - `Expr_NamedExpression::SetName()`
     pub fn set_name(&mut self, name: &crate::ffi::TCollection_AsciiString) {
         unsafe { crate::ffi::Expr_NamedUnknown_inherited_SetName(self as *mut Self, name) }
+    }
+
+    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:43 - `Expr_NamedExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_NamedUnknown_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:49 - `Expr_NamedExpression::IsIdentical()`
+    pub fn is_identical(&self, Other: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_NamedUnknown_inherited_IsIdentical(self as *const Self, Other) }
+    }
+
+    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:52 - `Expr_NamedExpression::String()`
+    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedUnknown_inherited_String(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_NamedUnknown_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -5689,18 +5689,6 @@ impl PolyFunction {
         unsafe { &*(crate::ffi::Expr_PolyFunction_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_PolyFunction_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe {
-            &mut *(crate::ffi::Expr_PolyFunction_as_Expr_GeneralExpression_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to Expr_PolyExpression
     pub fn as_poly_expression(&self) -> &PolyExpression {
         unsafe { &*(crate::ffi::Expr_PolyFunction_as_Expr_PolyExpression(self as *const Self)) }
@@ -5713,43 +5701,16 @@ impl PolyFunction {
         }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_PolyFunction_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_PolyFunction_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_PolyFunction_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_PolyFunction_inherited_Simplified(
-                self as *const Self,
-            ))
+            &mut *(crate::ffi::Expr_PolyFunction_as_Expr_GeneralExpression_mut(self as *mut Self))
         }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_PolyFunction_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_PolyFunction_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_PolyFunction_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_PolyFunction_inherited_EvaluateNumeric(self as *const Self) }
     }
 
     /// Inherited: **Source:** `Expr_PolyExpression.hxx`:36 - `Expr_PolyExpression::NbOperands()`
@@ -5765,6 +5726,45 @@ impl PolyFunction {
     /// Inherited: **Source:** `Expr_PolyExpression.hxx`:45 - `Expr_PolyExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression, index: i32) {
         unsafe { crate::ffi::Expr_PolyFunction_inherited_SetOperand(self as *mut Self, exp, index) }
+    }
+
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:50 - `Expr_PolyExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_PolyFunction_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:54 - `Expr_PolyExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_PolyFunction_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:58 - `Expr_PolyExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_PolyFunction_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:62 - `Expr_PolyExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_PolyFunction_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:72 - `Expr_PolyExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_PolyFunction_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_PolyFunction_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_PolyFunction_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -5850,16 +5850,6 @@ impl Product {
         unsafe { &*(crate::ffi::Expr_Product_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Product_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe { &mut *(crate::ffi::Expr_Product_as_Expr_GeneralExpression_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Expr_PolyExpression
     pub fn as_poly_expression(&self) -> &PolyExpression {
         unsafe { &*(crate::ffi::Expr_Product_as_Expr_PolyExpression(self as *const Self)) }
@@ -5870,43 +5860,14 @@ impl Product {
         unsafe { &mut *(crate::ffi::Expr_Product_as_Expr_PolyExpression_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_Product_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Product_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Product_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_Product_inherited_Simplified(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_Product_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_Product_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_Product_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_Product_inherited_EvaluateNumeric(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
+        unsafe { &mut *(crate::ffi::Expr_Product_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Expr_PolyExpression.hxx`:36 - `Expr_PolyExpression::NbOperands()`
@@ -5922,6 +5883,45 @@ impl Product {
     /// Inherited: **Source:** `Expr_PolyExpression.hxx`:45 - `Expr_PolyExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression, index: i32) {
         unsafe { crate::ffi::Expr_Product_inherited_SetOperand(self as *mut Self, exp, index) }
+    }
+
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:50 - `Expr_PolyExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_Product_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:54 - `Expr_PolyExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Product_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:58 - `Expr_PolyExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_Product_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:62 - `Expr_PolyExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_Product_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:72 - `Expr_PolyExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Product_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_Product_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_Product_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -6081,16 +6081,6 @@ impl Sign {
         unsafe { &*(crate::ffi::Expr_Sign_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Sign_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe { &mut *(crate::ffi::Expr_Sign_as_Expr_GeneralExpression_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Expr_UnaryExpression
     pub fn as_unary_expression(&self) -> &UnaryExpression {
         unsafe { &*(crate::ffi::Expr_Sign_as_Expr_UnaryExpression(self as *const Self)) }
@@ -6101,43 +6091,14 @@ impl Sign {
         unsafe { &mut *(crate::ffi::Expr_Sign_as_Expr_UnaryExpression_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_Sign_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Sign_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Sign_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_Sign_inherited_Simplified(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_Sign_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_Sign_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_Sign_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_Sign_inherited_EvaluateNumeric(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
+        unsafe { &mut *(crate::ffi::Expr_Sign_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
@@ -6148,6 +6109,45 @@ impl Sign {
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_Sign_inherited_SetOperand(self as *mut Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_Sign_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Sign_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_Sign_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_Sign_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Sign_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_Sign_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_Sign_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -6228,16 +6228,6 @@ impl Sine {
         unsafe { &*(crate::ffi::Expr_Sine_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Sine_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe { &mut *(crate::ffi::Expr_Sine_as_Expr_GeneralExpression_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Expr_UnaryExpression
     pub fn as_unary_expression(&self) -> &UnaryExpression {
         unsafe { &*(crate::ffi::Expr_Sine_as_Expr_UnaryExpression(self as *const Self)) }
@@ -6248,43 +6238,14 @@ impl Sine {
         unsafe { &mut *(crate::ffi::Expr_Sine_as_Expr_UnaryExpression_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_Sine_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Sine_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Sine_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_Sine_inherited_Simplified(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_Sine_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_Sine_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_Sine_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_Sine_inherited_EvaluateNumeric(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
+        unsafe { &mut *(crate::ffi::Expr_Sine_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
@@ -6295,6 +6256,45 @@ impl Sine {
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_Sine_inherited_SetOperand(self as *mut Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_Sine_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Sine_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_Sine_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_Sine_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Sine_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_Sine_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_Sine_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -6530,16 +6530,6 @@ impl Sinh {
         unsafe { &*(crate::ffi::Expr_Sinh_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Sinh_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe { &mut *(crate::ffi::Expr_Sinh_as_Expr_GeneralExpression_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Expr_UnaryExpression
     pub fn as_unary_expression(&self) -> &UnaryExpression {
         unsafe { &*(crate::ffi::Expr_Sinh_as_Expr_UnaryExpression(self as *const Self)) }
@@ -6550,43 +6540,14 @@ impl Sinh {
         unsafe { &mut *(crate::ffi::Expr_Sinh_as_Expr_UnaryExpression_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_Sinh_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Sinh_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Sinh_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_Sinh_inherited_Simplified(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_Sinh_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_Sinh_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_Sinh_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_Sinh_inherited_EvaluateNumeric(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
+        unsafe { &mut *(crate::ffi::Expr_Sinh_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
@@ -6597,6 +6558,45 @@ impl Sinh {
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_Sinh_inherited_SetOperand(self as *mut Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_Sinh_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Sinh_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_Sinh_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_Sinh_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Sinh_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_Sinh_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_Sinh_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -6679,16 +6679,6 @@ impl Square {
         unsafe { &*(crate::ffi::Expr_Square_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Square_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe { &mut *(crate::ffi::Expr_Square_as_Expr_GeneralExpression_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Expr_UnaryExpression
     pub fn as_unary_expression(&self) -> &UnaryExpression {
         unsafe { &*(crate::ffi::Expr_Square_as_Expr_UnaryExpression(self as *const Self)) }
@@ -6699,43 +6689,14 @@ impl Square {
         unsafe { &mut *(crate::ffi::Expr_Square_as_Expr_UnaryExpression_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_Square_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Square_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Square_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_Square_inherited_Simplified(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_Square_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_Square_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_Square_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_Square_inherited_EvaluateNumeric(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
+        unsafe { &mut *(crate::ffi::Expr_Square_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
@@ -6746,6 +6707,45 @@ impl Square {
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_Square_inherited_SetOperand(self as *mut Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_Square_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Square_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_Square_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_Square_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Square_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_Square_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_Square_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -6832,18 +6832,6 @@ impl SquareRoot {
         unsafe { &*(crate::ffi::Expr_SquareRoot_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_SquareRoot_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe {
-            &mut *(crate::ffi::Expr_SquareRoot_as_Expr_GeneralExpression_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to Expr_UnaryExpression
     pub fn as_unary_expression(&self) -> &UnaryExpression {
         unsafe { &*(crate::ffi::Expr_SquareRoot_as_Expr_UnaryExpression(self as *const Self)) }
@@ -6856,43 +6844,16 @@ impl SquareRoot {
         }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_SquareRoot_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_SquareRoot_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_SquareRoot_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_SquareRoot_inherited_Simplified(
-                self as *const Self,
-            ))
+            &mut *(crate::ffi::Expr_SquareRoot_as_Expr_GeneralExpression_mut(self as *mut Self))
         }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_SquareRoot_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_SquareRoot_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_SquareRoot_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_SquareRoot_inherited_EvaluateNumeric(self as *const Self) }
     }
 
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
@@ -6903,6 +6864,45 @@ impl SquareRoot {
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_SquareRoot_inherited_SetOperand(self as *mut Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_SquareRoot_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_SquareRoot_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_SquareRoot_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_SquareRoot_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_SquareRoot_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_SquareRoot_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_SquareRoot_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -6986,16 +6986,6 @@ impl Sum {
         unsafe { &*(crate::ffi::Expr_Sum_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Sum_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe { &mut *(crate::ffi::Expr_Sum_as_Expr_GeneralExpression_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Expr_PolyExpression
     pub fn as_poly_expression(&self) -> &PolyExpression {
         unsafe { &*(crate::ffi::Expr_Sum_as_Expr_PolyExpression(self as *const Self)) }
@@ -7006,43 +6996,14 @@ impl Sum {
         unsafe { &mut *(crate::ffi::Expr_Sum_as_Expr_PolyExpression_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_Sum_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Sum_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Sum_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_Sum_inherited_Simplified(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_Sum_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_Sum_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_Sum_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_Sum_inherited_EvaluateNumeric(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
+        unsafe { &mut *(crate::ffi::Expr_Sum_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Expr_PolyExpression.hxx`:36 - `Expr_PolyExpression::NbOperands()`
@@ -7058,6 +7019,45 @@ impl Sum {
     /// Inherited: **Source:** `Expr_PolyExpression.hxx`:45 - `Expr_PolyExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression, index: i32) {
         unsafe { crate::ffi::Expr_Sum_inherited_SetOperand(self as *mut Self, exp, index) }
+    }
+
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:50 - `Expr_PolyExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_Sum_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:54 - `Expr_PolyExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Sum_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:58 - `Expr_PolyExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_Sum_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:62 - `Expr_PolyExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_Sum_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:72 - `Expr_PolyExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Sum_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_Sum_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_Sum_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -7291,16 +7291,6 @@ impl Tangent {
         unsafe { &*(crate::ffi::Expr_Tangent_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Tangent_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe { &mut *(crate::ffi::Expr_Tangent_as_Expr_GeneralExpression_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Expr_UnaryExpression
     pub fn as_unary_expression(&self) -> &UnaryExpression {
         unsafe { &*(crate::ffi::Expr_Tangent_as_Expr_UnaryExpression(self as *const Self)) }
@@ -7311,43 +7301,14 @@ impl Tangent {
         unsafe { &mut *(crate::ffi::Expr_Tangent_as_Expr_UnaryExpression_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_Tangent_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Tangent_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Tangent_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_Tangent_inherited_Simplified(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_Tangent_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_Tangent_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_Tangent_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_Tangent_inherited_EvaluateNumeric(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
+        unsafe { &mut *(crate::ffi::Expr_Tangent_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
@@ -7358,6 +7319,45 @@ impl Tangent {
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_Tangent_inherited_SetOperand(self as *mut Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_Tangent_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Tangent_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_Tangent_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_Tangent_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Tangent_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_Tangent_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_Tangent_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -7438,16 +7438,6 @@ impl Tanh {
         unsafe { &*(crate::ffi::Expr_Tanh_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Tanh_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe { &mut *(crate::ffi::Expr_Tanh_as_Expr_GeneralExpression_mut(self as *mut Self)) }
-    }
-
     /// Upcast to Expr_UnaryExpression
     pub fn as_unary_expression(&self) -> &UnaryExpression {
         unsafe { &*(crate::ffi::Expr_Tanh_as_Expr_UnaryExpression(self as *const Self)) }
@@ -7458,43 +7448,14 @@ impl Tanh {
         unsafe { &mut *(crate::ffi::Expr_Tanh_as_Expr_UnaryExpression_mut(self as *mut Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_Tanh_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Tanh_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_Tanh_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_Tanh_inherited_Simplified(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_Tanh_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_Tanh_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_Tanh_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_Tanh_inherited_EvaluateNumeric(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
+        unsafe { &mut *(crate::ffi::Expr_Tanh_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
@@ -7505,6 +7466,45 @@ impl Tanh {
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_Tanh_inherited_SetOperand(self as *mut Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_Tanh_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_Tanh_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_Tanh_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_Tanh_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Tanh_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_Tanh_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_Tanh_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -7753,18 +7753,6 @@ impl UnaryFunction {
         unsafe { &*(crate::ffi::Expr_UnaryFunction_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_UnaryFunction_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe {
-            &mut *(crate::ffi::Expr_UnaryFunction_as_Expr_GeneralExpression_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to Expr_UnaryExpression
     pub fn as_unary_expression(&self) -> &UnaryExpression {
         unsafe { &*(crate::ffi::Expr_UnaryFunction_as_Expr_UnaryExpression(self as *const Self)) }
@@ -7777,45 +7765,16 @@ impl UnaryFunction {
         }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_UnaryFunction_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_UnaryFunction_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
         unsafe {
-            &*(crate::ffi::Expr_UnaryFunction_inherited_SubExpression(self as *const Self, I))
+            &mut *(crate::ffi::Expr_UnaryFunction_as_Expr_GeneralExpression_mut(self as *mut Self))
         }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_UnaryFunction_inherited_Simplified(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_UnaryFunction_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_UnaryFunction_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_UnaryFunction_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_UnaryFunction_inherited_EvaluateNumeric(self as *const Self) }
     }
 
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
@@ -7826,6 +7785,47 @@ impl UnaryFunction {
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_UnaryFunction_inherited_SetOperand(self as *mut Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_UnaryFunction_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe {
+            &*(crate::ffi::Expr_UnaryFunction_inherited_SubExpression(self as *const Self, I))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_UnaryFunction_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_UnaryFunction_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_UnaryFunction_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_UnaryFunction_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_UnaryFunction_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
@@ -7912,18 +7912,6 @@ impl UnaryMinus {
         unsafe { &*(crate::ffi::Expr_UnaryMinus_get_type_descriptor()) }
     }
 
-    /// Upcast to Expr_GeneralExpression
-    pub fn as_general_expression(&self) -> &GeneralExpression {
-        unsafe { &*(crate::ffi::Expr_UnaryMinus_as_Expr_GeneralExpression(self as *const Self)) }
-    }
-
-    /// Upcast to Expr_GeneralExpression (mutable)
-    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
-        unsafe {
-            &mut *(crate::ffi::Expr_UnaryMinus_as_Expr_GeneralExpression_mut(self as *mut Self))
-        }
-    }
-
     /// Upcast to Expr_UnaryExpression
     pub fn as_unary_expression(&self) -> &UnaryExpression {
         unsafe { &*(crate::ffi::Expr_UnaryMinus_as_Expr_UnaryExpression(self as *const Self)) }
@@ -7936,43 +7924,16 @@ impl UnaryMinus {
         }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
-    pub fn nb_sub_expressions(&self) -> i32 {
-        unsafe { crate::ffi::Expr_UnaryMinus_inherited_NbSubExpressions(self as *const Self) }
+    /// Upcast to Expr_GeneralExpression
+    pub fn as_general_expression(&self) -> &GeneralExpression {
+        unsafe { &*(crate::ffi::Expr_UnaryMinus_as_Expr_GeneralExpression(self as *const Self)) }
     }
 
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
-    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
-        unsafe { &*(crate::ffi::Expr_UnaryMinus_inherited_SubExpression(self as *const Self, I)) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
-    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+    /// Upcast to Expr_GeneralExpression (mutable)
+    pub fn as_general_expression_mut(&mut self) -> &mut GeneralExpression {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_UnaryMinus_inherited_Simplified(
-                self as *const Self,
-            ))
+            &mut *(crate::ffi::Expr_UnaryMinus_as_Expr_GeneralExpression_mut(self as *mut Self))
         }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
-    pub fn contains_unknowns(&self) -> bool {
-        unsafe { crate::ffi::Expr_UnaryMinus_inherited_ContainsUnknowns(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
-    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
-        unsafe { crate::ffi::Expr_UnaryMinus_inherited_Contains(self as *const Self, exp) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
-    pub fn is_shareable(&self) -> bool {
-        unsafe { crate::ffi::Expr_UnaryMinus_inherited_IsShareable(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
-    pub fn evaluate_numeric(&self) -> f64 {
-        unsafe { crate::ffi::Expr_UnaryMinus_inherited_EvaluateNumeric(self as *const Self) }
     }
 
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
@@ -7983,6 +7944,45 @@ impl UnaryMinus {
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
     pub fn set_operand(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_UnaryMinus_inherited_SetOperand(self as *mut Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    pub fn nb_sub_expressions(&self) -> i32 {
+        unsafe { crate::ffi::Expr_UnaryMinus_inherited_NbSubExpressions(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    pub fn sub_expression(&self, I: i32) -> &crate::ffi::HandleExprGeneralExpression {
+        unsafe { &*(crate::ffi::Expr_UnaryMinus_inherited_SubExpression(self as *const Self, I)) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    pub fn contains_unknowns(&self) -> bool {
+        unsafe { crate::ffi::Expr_UnaryMinus_inherited_ContainsUnknowns(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
+        unsafe { crate::ffi::Expr_UnaryMinus_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_UnaryMinus_inherited_Simplified(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn is_shareable(&self) -> bool {
+        unsafe { crate::ffi::Expr_UnaryMinus_inherited_IsShareable(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    pub fn evaluate_numeric(&self) -> f64 {
+        unsafe { crate::ffi::Expr_UnaryMinus_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 

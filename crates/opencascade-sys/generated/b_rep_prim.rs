@@ -416,6 +416,16 @@ impl Cone {
         }
     }
 
+    /// Upcast to BRepPrim_Revolution
+    pub fn as_revolution(&self) -> &Revolution {
+        unsafe { &*(crate::ffi::BRepPrim_Cone_as_BRepPrim_Revolution(self as *const Self)) }
+    }
+
+    /// Upcast to BRepPrim_Revolution (mutable)
+    pub fn as_revolution_mut(&mut self) -> &mut Revolution {
+        unsafe { &mut *(crate::ffi::BRepPrim_Cone_as_BRepPrim_Revolution_mut(self as *mut Self)) }
+    }
+
     /// Upcast to BRepPrim_OneAxis
     pub fn as_one_axis(&self) -> &OneAxis {
         unsafe { &*(crate::ffi::BRepPrim_Cone_as_BRepPrim_OneAxis(self as *const Self)) }
@@ -426,14 +436,33 @@ impl Cone {
         unsafe { &mut *(crate::ffi::BRepPrim_Cone_as_BRepPrim_OneAxis_mut(self as *mut Self)) }
     }
 
-    /// Upcast to BRepPrim_Revolution
-    pub fn as_revolution(&self) -> &Revolution {
-        unsafe { &*(crate::ffi::BRepPrim_Cone_as_BRepPrim_Revolution(self as *const Self)) }
+    /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:56 - `BRepPrim_Revolution::MakeEmptyMeridianEdge()`
+    pub fn make_empty_meridian_edge(&self, Ang: f64) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Cone_inherited_MakeEmptyMeridianEdge(
+                self as *const Self,
+                Ang,
+            ))
+        }
     }
 
-    /// Upcast to BRepPrim_Revolution (mutable)
-    pub fn as_revolution_mut(&mut self) -> &mut Revolution {
-        unsafe { &mut *(crate::ffi::BRepPrim_Cone_as_BRepPrim_Revolution_mut(self as *mut Self)) }
+    /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:60 - `BRepPrim_Revolution::MeridianValue()`
+    pub fn meridian_value(&self, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Cone_inherited_MeridianValue(
+                self as *const Self,
+                V,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:65 - `BRepPrim_Revolution::SetMeridianPCurve()`
+    pub fn set_meridian_p_curve(
+        &self,
+        E: &mut crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+    ) {
+        unsafe { crate::ffi::BRepPrim_Cone_inherited_SetMeridianPCurve(self as *const Self, E, F) }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
@@ -461,35 +490,6 @@ impl Cone {
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max(&self) -> f64 {
         unsafe { crate::ffi::BRepPrim_Cone_inherited_VMax(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:102 - `BRepPrim_OneAxis::MakeEmptyMeridianEdge()`
-    pub fn make_empty_meridian_edge(&self, Ang: f64) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Cone_inherited_MakeEmptyMeridianEdge(
-                self as *const Self,
-                Ang,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:107 - `BRepPrim_OneAxis::SetMeridianPCurve()`
-    pub fn set_meridian_p_curve(
-        &self,
-        E: &mut crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
-    ) {
-        unsafe { crate::ffi::BRepPrim_Cone_inherited_SetMeridianPCurve(self as *const Self, E, F) }
-    }
-
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:111 - `BRepPrim_OneAxis::MeridianValue()`
-    pub fn meridian_value(&self, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Cone_inherited_MeridianValue(
-                self as *const Self,
-                V,
-            ))
-        }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
@@ -765,6 +765,18 @@ impl Cylinder {
         }
     }
 
+    /// Upcast to BRepPrim_Revolution
+    pub fn as_revolution(&self) -> &Revolution {
+        unsafe { &*(crate::ffi::BRepPrim_Cylinder_as_BRepPrim_Revolution(self as *const Self)) }
+    }
+
+    /// Upcast to BRepPrim_Revolution (mutable)
+    pub fn as_revolution_mut(&mut self) -> &mut Revolution {
+        unsafe {
+            &mut *(crate::ffi::BRepPrim_Cylinder_as_BRepPrim_Revolution_mut(self as *mut Self))
+        }
+    }
+
     /// Upcast to BRepPrim_OneAxis
     pub fn as_one_axis(&self) -> &OneAxis {
         unsafe { &*(crate::ffi::BRepPrim_Cylinder_as_BRepPrim_OneAxis(self as *const Self)) }
@@ -775,15 +787,36 @@ impl Cylinder {
         unsafe { &mut *(crate::ffi::BRepPrim_Cylinder_as_BRepPrim_OneAxis_mut(self as *mut Self)) }
     }
 
-    /// Upcast to BRepPrim_Revolution
-    pub fn as_revolution(&self) -> &Revolution {
-        unsafe { &*(crate::ffi::BRepPrim_Cylinder_as_BRepPrim_Revolution(self as *const Self)) }
+    /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:56 - `BRepPrim_Revolution::MakeEmptyMeridianEdge()`
+    pub fn make_empty_meridian_edge(&self, Ang: f64) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepPrim_Cylinder_inherited_MakeEmptyMeridianEdge(
+                    self as *const Self,
+                    Ang,
+                ),
+            )
+        }
     }
 
-    /// Upcast to BRepPrim_Revolution (mutable)
-    pub fn as_revolution_mut(&mut self) -> &mut Revolution {
+    /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:60 - `BRepPrim_Revolution::MeridianValue()`
+    pub fn meridian_value(&self, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
         unsafe {
-            &mut *(crate::ffi::BRepPrim_Cylinder_as_BRepPrim_Revolution_mut(self as *mut Self))
+            crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Cylinder_inherited_MeridianValue(
+                self as *const Self,
+                V,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:65 - `BRepPrim_Revolution::SetMeridianPCurve()`
+    pub fn set_meridian_p_curve(
+        &self,
+        E: &mut crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+    ) {
+        unsafe {
+            crate::ffi::BRepPrim_Cylinder_inherited_SetMeridianPCurve(self as *const Self, E, F)
         }
     }
 
@@ -815,39 +848,6 @@ impl Cylinder {
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max(&self) -> f64 {
         unsafe { crate::ffi::BRepPrim_Cylinder_inherited_VMax(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:102 - `BRepPrim_OneAxis::MakeEmptyMeridianEdge()`
-    pub fn make_empty_meridian_edge(&self, Ang: f64) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::BRepPrim_Cylinder_inherited_MakeEmptyMeridianEdge(
-                    self as *const Self,
-                    Ang,
-                ),
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:107 - `BRepPrim_OneAxis::SetMeridianPCurve()`
-    pub fn set_meridian_p_curve(
-        &self,
-        E: &mut crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
-    ) {
-        unsafe {
-            crate::ffi::BRepPrim_Cylinder_inherited_SetMeridianPCurve(self as *const Self, E, F)
-        }
-    }
-
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:111 - `BRepPrim_OneAxis::MeridianValue()`
-    pub fn meridian_value(&self, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Cylinder_inherited_MeridianValue(
-                self as *const Self,
-                V,
-            ))
-        }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
@@ -2278,6 +2278,16 @@ impl Sphere {
         }
     }
 
+    /// Upcast to BRepPrim_Revolution
+    pub fn as_revolution(&self) -> &Revolution {
+        unsafe { &*(crate::ffi::BRepPrim_Sphere_as_BRepPrim_Revolution(self as *const Self)) }
+    }
+
+    /// Upcast to BRepPrim_Revolution (mutable)
+    pub fn as_revolution_mut(&mut self) -> &mut Revolution {
+        unsafe { &mut *(crate::ffi::BRepPrim_Sphere_as_BRepPrim_Revolution_mut(self as *mut Self)) }
+    }
+
     /// Upcast to BRepPrim_OneAxis
     pub fn as_one_axis(&self) -> &OneAxis {
         unsafe { &*(crate::ffi::BRepPrim_Sphere_as_BRepPrim_OneAxis(self as *const Self)) }
@@ -2288,14 +2298,35 @@ impl Sphere {
         unsafe { &mut *(crate::ffi::BRepPrim_Sphere_as_BRepPrim_OneAxis_mut(self as *mut Self)) }
     }
 
-    /// Upcast to BRepPrim_Revolution
-    pub fn as_revolution(&self) -> &Revolution {
-        unsafe { &*(crate::ffi::BRepPrim_Sphere_as_BRepPrim_Revolution(self as *const Self)) }
+    /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:56 - `BRepPrim_Revolution::MakeEmptyMeridianEdge()`
+    pub fn make_empty_meridian_edge(&self, Ang: f64) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Sphere_inherited_MakeEmptyMeridianEdge(
+                self as *const Self,
+                Ang,
+            ))
+        }
     }
 
-    /// Upcast to BRepPrim_Revolution (mutable)
-    pub fn as_revolution_mut(&mut self) -> &mut Revolution {
-        unsafe { &mut *(crate::ffi::BRepPrim_Sphere_as_BRepPrim_Revolution_mut(self as *mut Self)) }
+    /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:60 - `BRepPrim_Revolution::MeridianValue()`
+    pub fn meridian_value(&self, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Sphere_inherited_MeridianValue(
+                self as *const Self,
+                V,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:65 - `BRepPrim_Revolution::SetMeridianPCurve()`
+    pub fn set_meridian_p_curve(
+        &self,
+        E: &mut crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+    ) {
+        unsafe {
+            crate::ffi::BRepPrim_Sphere_inherited_SetMeridianPCurve(self as *const Self, E, F)
+        }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
@@ -2326,37 +2357,6 @@ impl Sphere {
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max(&self) -> f64 {
         unsafe { crate::ffi::BRepPrim_Sphere_inherited_VMax(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:102 - `BRepPrim_OneAxis::MakeEmptyMeridianEdge()`
-    pub fn make_empty_meridian_edge(&self, Ang: f64) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Sphere_inherited_MakeEmptyMeridianEdge(
-                self as *const Self,
-                Ang,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:107 - `BRepPrim_OneAxis::SetMeridianPCurve()`
-    pub fn set_meridian_p_curve(
-        &self,
-        E: &mut crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
-    ) {
-        unsafe {
-            crate::ffi::BRepPrim_Sphere_inherited_SetMeridianPCurve(self as *const Self, E, F)
-        }
-    }
-
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:111 - `BRepPrim_OneAxis::MeridianValue()`
-    pub fn meridian_value(&self, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Sphere_inherited_MeridianValue(
-                self as *const Self,
-                V,
-            ))
-        }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
@@ -2610,6 +2610,16 @@ impl Torus {
         }
     }
 
+    /// Upcast to BRepPrim_Revolution
+    pub fn as_revolution(&self) -> &Revolution {
+        unsafe { &*(crate::ffi::BRepPrim_Torus_as_BRepPrim_Revolution(self as *const Self)) }
+    }
+
+    /// Upcast to BRepPrim_Revolution (mutable)
+    pub fn as_revolution_mut(&mut self) -> &mut Revolution {
+        unsafe { &mut *(crate::ffi::BRepPrim_Torus_as_BRepPrim_Revolution_mut(self as *mut Self)) }
+    }
+
     /// Upcast to BRepPrim_OneAxis
     pub fn as_one_axis(&self) -> &OneAxis {
         unsafe { &*(crate::ffi::BRepPrim_Torus_as_BRepPrim_OneAxis(self as *const Self)) }
@@ -2620,14 +2630,33 @@ impl Torus {
         unsafe { &mut *(crate::ffi::BRepPrim_Torus_as_BRepPrim_OneAxis_mut(self as *mut Self)) }
     }
 
-    /// Upcast to BRepPrim_Revolution
-    pub fn as_revolution(&self) -> &Revolution {
-        unsafe { &*(crate::ffi::BRepPrim_Torus_as_BRepPrim_Revolution(self as *const Self)) }
+    /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:56 - `BRepPrim_Revolution::MakeEmptyMeridianEdge()`
+    pub fn make_empty_meridian_edge(&self, Ang: f64) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Torus_inherited_MakeEmptyMeridianEdge(
+                self as *const Self,
+                Ang,
+            ))
+        }
     }
 
-    /// Upcast to BRepPrim_Revolution (mutable)
-    pub fn as_revolution_mut(&mut self) -> &mut Revolution {
-        unsafe { &mut *(crate::ffi::BRepPrim_Torus_as_BRepPrim_Revolution_mut(self as *mut Self)) }
+    /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:60 - `BRepPrim_Revolution::MeridianValue()`
+    pub fn meridian_value(&self, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Torus_inherited_MeridianValue(
+                self as *const Self,
+                V,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:65 - `BRepPrim_Revolution::SetMeridianPCurve()`
+    pub fn set_meridian_p_curve(
+        &self,
+        E: &mut crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+    ) {
+        unsafe { crate::ffi::BRepPrim_Torus_inherited_SetMeridianPCurve(self as *const Self, E, F) }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
@@ -2658,35 +2687,6 @@ impl Torus {
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max(&self) -> f64 {
         unsafe { crate::ffi::BRepPrim_Torus_inherited_VMax(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:102 - `BRepPrim_OneAxis::MakeEmptyMeridianEdge()`
-    pub fn make_empty_meridian_edge(&self, Ang: f64) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Torus_inherited_MakeEmptyMeridianEdge(
-                self as *const Self,
-                Ang,
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:107 - `BRepPrim_OneAxis::SetMeridianPCurve()`
-    pub fn set_meridian_p_curve(
-        &self,
-        E: &mut crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
-    ) {
-        unsafe { crate::ffi::BRepPrim_Torus_inherited_SetMeridianPCurve(self as *const Self, E, F) }
-    }
-
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:111 - `BRepPrim_OneAxis::MeridianValue()`
-    pub fn meridian_value(&self, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_Torus_inherited_MeridianValue(
-                self as *const Self,
-                V,
-            ))
-        }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`

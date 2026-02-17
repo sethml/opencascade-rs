@@ -469,6 +469,348 @@ impl ClosedFaceDivide {
 }
 
 // ========================
+// From ShapeUpgrade_ConvertCurve2dToBezier.hxx
+// ========================
+
+/// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:30 - `ShapeUpgrade_ConvertCurve2dToBezier`
+/// converts/splits a 2d curve to a list of beziers
+pub use crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier as ConvertCurve2dToBezier;
+
+unsafe impl crate::CppDeletable for ConvertCurve2dToBezier {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_destructor(ptr);
+    }
+}
+
+impl ConvertCurve2dToBezier {
+    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:35 - `ShapeUpgrade_ConvertCurve2dToBezier::ShapeUpgrade_ConvertCurve2dToBezier()`
+    /// Empty constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_ctor()) }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:39 - `ShapeUpgrade_ConvertCurve2dToBezier::Compute()`
+    /// Converts curve into a list of beziers, and stores the
+    /// splitting parameters on original curve.
+    pub fn compute(&mut self) {
+        unsafe { crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_compute(self as *mut Self) }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:43 - `ShapeUpgrade_ConvertCurve2dToBezier::Build()`
+    /// Splits a list of beziers computed by Compute method according
+    /// the split values and splitting parameters.
+    pub fn build(&mut self, Segment: bool) {
+        unsafe { crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_build(self as *mut Self, Segment) }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:46 - `ShapeUpgrade_ConvertCurve2dToBezier::SplitParams()`
+    /// Returns the list of split parameters in original curve parametrisation.
+    pub fn split_params(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_split_params(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:48 - `ShapeUpgrade_ConvertCurve2dToBezier::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:48 - `ShapeUpgrade_ConvertCurve2dToBezier::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_get_type_name()).to_string_lossy().into_owned()
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:48 - `ShapeUpgrade_ConvertCurve2dToBezier::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_get_type_descriptor()) }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve2d
+    pub fn as_split_curve2d(&self) -> &SplitCurve2d {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve2d(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve2d (mutable)
+    pub fn as_split_curve2d_mut(&mut self) -> &mut SplitCurve2d {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve2d_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve
+    pub fn as_split_curve(&self) -> &SplitCurve {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve (mutable)
+    pub fn as_split_curve_mut(&mut self) -> &mut SplitCurve {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:39 - `ShapeUpgrade_SplitCurve2d::Init()`
+    pub fn init(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_Init(self as *mut Self, C)
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
+    pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_SetSplitValues(
+                self as *mut Self,
+                SplitValues,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:59 - `ShapeUpgrade_SplitCurve::SplitValues()`
+    pub fn split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_SplitValues(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:66 - `ShapeUpgrade_SplitCurve::Perform()`
+    pub fn perform(&mut self, Segment: bool) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_Perform(
+                self as *mut Self,
+                Segment,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:73 - `ShapeUpgrade_SplitCurve::Status()`
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_Status(
+                self as *const Self,
+                status.into(),
+            )
+        }
+    }
+}
+
+// ========================
+// From ShapeUpgrade_ConvertCurve3dToBezier.hxx
+// ========================
+
+/// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:30 - `ShapeUpgrade_ConvertCurve3dToBezier`
+/// converts/splits a 3d curve of any type to a list of beziers
+pub use crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier as ConvertCurve3dToBezier;
+
+unsafe impl crate::CppDeletable for ConvertCurve3dToBezier {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_destructor(ptr);
+    }
+}
+
+impl ConvertCurve3dToBezier {
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:35 - `ShapeUpgrade_ConvertCurve3dToBezier::ShapeUpgrade_ConvertCurve3dToBezier()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_ctor()) }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:38 - `ShapeUpgrade_ConvertCurve3dToBezier::SetLineMode()`
+    /// Sets mode for conversion Geom_Line to bezier.
+    pub fn set_line_mode(&mut self, mode: bool) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_set_line_mode(self as *mut Self, mode)
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:41 - `ShapeUpgrade_ConvertCurve3dToBezier::GetLineMode()`
+    /// Returns the Geom_Line conversion mode.
+    pub fn get_line_mode(&self) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_get_line_mode(self as *const Self)
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:44 - `ShapeUpgrade_ConvertCurve3dToBezier::SetCircleMode()`
+    /// Sets mode for conversion Geom_Circle to bezier.
+    pub fn set_circle_mode(&mut self, mode: bool) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_set_circle_mode(self as *mut Self, mode)
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:47 - `ShapeUpgrade_ConvertCurve3dToBezier::GetCircleMode()`
+    /// Returns the Geom_Circle conversion mode.
+    pub fn get_circle_mode(&self) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_get_circle_mode(self as *const Self)
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:50 - `ShapeUpgrade_ConvertCurve3dToBezier::SetConicMode()`
+    /// Returns the Geom_Conic conversion mode.
+    pub fn set_conic_mode(&mut self, mode: bool) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_set_conic_mode(self as *mut Self, mode)
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:53 - `ShapeUpgrade_ConvertCurve3dToBezier::GetConicMode()`
+    /// Performs converting and computes the resulting shape.
+    pub fn get_conic_mode(&self) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_get_conic_mode(self as *const Self)
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:57 - `ShapeUpgrade_ConvertCurve3dToBezier::Compute()`
+    /// Converts curve into a list of beziers, and stores the
+    /// splitting parameters on original curve.
+    pub fn compute(&mut self) {
+        unsafe { crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_compute(self as *mut Self) }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:61 - `ShapeUpgrade_ConvertCurve3dToBezier::Build()`
+    /// Splits a list of beziers computed by Compute method according
+    /// the split values and splitting parameters.
+    pub fn build(&mut self, Segment: bool) {
+        unsafe { crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_build(self as *mut Self, Segment) }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:64 - `ShapeUpgrade_ConvertCurve3dToBezier::SplitParams()`
+    /// Returns the list of split parameters in original curve parametrisation.
+    pub fn split_params(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_split_params(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:66 - `ShapeUpgrade_ConvertCurve3dToBezier::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:66 - `ShapeUpgrade_ConvertCurve3dToBezier::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_get_type_name()).to_string_lossy().into_owned()
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:66 - `ShapeUpgrade_ConvertCurve3dToBezier::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_get_type_descriptor()) }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve3d
+    pub fn as_split_curve3d(&self) -> &SplitCurve3d {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve3d(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve3d (mutable)
+    pub fn as_split_curve3d_mut(&mut self) -> &mut SplitCurve3d {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve3d_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve
+    pub fn as_split_curve(&self) -> &SplitCurve {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve (mutable)
+    pub fn as_split_curve_mut(&mut self) -> &mut SplitCurve {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:39 - `ShapeUpgrade_SplitCurve3d::Init()`
+    pub fn init(&mut self, C: &crate::ffi::HandleGeomCurve) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_Init(self as *mut Self, C)
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
+    pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_SetSplitValues(
+                self as *mut Self,
+                SplitValues,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:59 - `ShapeUpgrade_SplitCurve::SplitValues()`
+    pub fn split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_SplitValues(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:66 - `ShapeUpgrade_SplitCurve::Perform()`
+    pub fn perform(&mut self, Segment: bool) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_Perform(
+                self as *mut Self,
+                Segment,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:73 - `ShapeUpgrade_SplitCurve::Status()`
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_Status(
+                self as *const Self,
+                status.into(),
+            )
+        }
+    }
+}
+
+// ========================
 // From ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx
 // ========================
 
@@ -3878,6 +4220,167 @@ impl SplitCurve2d {
 }
 
 // ========================
+// From ShapeUpgrade_SplitCurve2dContinuity.hxx
+// ========================
+
+/// **Source:** `ShapeUpgrade_SplitCurve2dContinuity.hxx`:34 - `ShapeUpgrade_SplitCurve2dContinuity`
+/// Corrects/splits a 2d curve with a continuity criterion.
+/// Tolerance is used to correct the curve at a knot that respects
+/// geometrically the criterion, in order to reduce the
+/// multiplicity of the knot.
+pub use crate::ffi::ShapeUpgrade_SplitCurve2dContinuity as SplitCurve2dContinuity;
+
+unsafe impl crate::CppDeletable for SplitCurve2dContinuity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_destructor(ptr);
+    }
+}
+
+impl SplitCurve2dContinuity {
+    /// **Source:** `ShapeUpgrade_SplitCurve2dContinuity.hxx`:39 - `ShapeUpgrade_SplitCurve2dContinuity::ShapeUpgrade_SplitCurve2dContinuity()`
+    /// Empty constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_ctor()) }
+    }
+
+    /// **Source:** `ShapeUpgrade_SplitCurve2dContinuity.hxx`:42 - `ShapeUpgrade_SplitCurve2dContinuity::SetCriterion()`
+    /// Sets criterion for splitting.
+    pub fn set_criterion(&mut self, Criterion: crate::geom_abs::Shape) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_set_criterion(
+                self as *mut Self,
+                Criterion.into(),
+            )
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_SplitCurve2dContinuity.hxx`:45 - `ShapeUpgrade_SplitCurve2dContinuity::SetTolerance()`
+    /// Sets tolerance.
+    pub fn set_tolerance(&mut self, Tol: f64) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_set_tolerance(self as *mut Self, Tol)
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_SplitCurve2dContinuity.hxx`:48 - `ShapeUpgrade_SplitCurve2dContinuity::Compute()`
+    /// Calculates points for correction/splitting of the curve
+    pub fn compute(&mut self) {
+        unsafe { crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_compute(self as *mut Self) }
+    }
+
+    /// **Source:** `ShapeUpgrade_SplitCurve2dContinuity.hxx`:50 - `ShapeUpgrade_SplitCurve2dContinuity::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_SplitCurve2dContinuity.hxx`:50 - `ShapeUpgrade_SplitCurve2dContinuity::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_get_type_name()).to_string_lossy().into_owned()
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_SplitCurve2dContinuity.hxx`:50 - `ShapeUpgrade_SplitCurve2dContinuity::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_get_type_descriptor()) }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve2d
+    pub fn as_split_curve2d(&self) -> &SplitCurve2d {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve2d(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve2d (mutable)
+    pub fn as_split_curve2d_mut(&mut self) -> &mut SplitCurve2d {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve2d_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve
+    pub fn as_split_curve(&self) -> &SplitCurve {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve (mutable)
+    pub fn as_split_curve_mut(&mut self) -> &mut SplitCurve {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:39 - `ShapeUpgrade_SplitCurve2d::Init()`
+    pub fn init(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_Init(self as *mut Self, C)
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:50 - `ShapeUpgrade_SplitCurve2d::Build()`
+    pub fn build(&mut self, Segment: bool) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_Build(
+                self as *mut Self,
+                Segment,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
+    pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_SetSplitValues(
+                self as *mut Self,
+                SplitValues,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:59 - `ShapeUpgrade_SplitCurve::SplitValues()`
+    pub fn split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_SplitValues(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:66 - `ShapeUpgrade_SplitCurve::Perform()`
+    pub fn perform(&mut self, Segment: bool) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_Perform(
+                self as *mut Self,
+                Segment,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:73 - `ShapeUpgrade_SplitCurve::Status()`
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_Status(
+                self as *const Self,
+                status.into(),
+            )
+        }
+    }
+}
+
+// ========================
 // From ShapeUpgrade_SplitCurve3d.hxx
 // ========================
 
@@ -4001,6 +4504,174 @@ impl SplitCurve3d {
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         unsafe {
             crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_Status(
+                self as *const Self,
+                status.into(),
+            )
+        }
+    }
+}
+
+// ========================
+// From ShapeUpgrade_SplitCurve3dContinuity.hxx
+// ========================
+
+/// **Source:** `ShapeUpgrade_SplitCurve3dContinuity.hxx`:35 - `ShapeUpgrade_SplitCurve3dContinuity`
+/// Corrects/splits a 2d curve with a continuity criterion.
+/// Tolerance is used to correct the curve at a knot that respects
+/// geometrically the criterion, in order to reduce the
+/// multiplicity of the knot.
+pub use crate::ffi::ShapeUpgrade_SplitCurve3dContinuity as SplitCurve3dContinuity;
+
+unsafe impl crate::CppDeletable for SplitCurve3dContinuity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_destructor(ptr);
+    }
+}
+
+impl SplitCurve3dContinuity {
+    /// **Source:** `ShapeUpgrade_SplitCurve3dContinuity.hxx`:40 - `ShapeUpgrade_SplitCurve3dContinuity::ShapeUpgrade_SplitCurve3dContinuity()`
+    /// Empty constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_ctor()) }
+    }
+
+    /// **Source:** `ShapeUpgrade_SplitCurve3dContinuity.hxx`:43 - `ShapeUpgrade_SplitCurve3dContinuity::SetCriterion()`
+    /// Sets criterion for splitting.
+    pub fn set_criterion(&mut self, Criterion: crate::geom_abs::Shape) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_set_criterion(
+                self as *mut Self,
+                Criterion.into(),
+            )
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_SplitCurve3dContinuity.hxx`:46 - `ShapeUpgrade_SplitCurve3dContinuity::SetTolerance()`
+    /// Sets tolerance.
+    pub fn set_tolerance(&mut self, Tol: f64) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_set_tolerance(self as *mut Self, Tol)
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_SplitCurve3dContinuity.hxx`:49 - `ShapeUpgrade_SplitCurve3dContinuity::Compute()`
+    /// Calculates points for correction/splitting of the curve
+    pub fn compute(&mut self) {
+        unsafe { crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_compute(self as *mut Self) }
+    }
+
+    /// **Source:** `ShapeUpgrade_SplitCurve3dContinuity.hxx`:51 - `ShapeUpgrade_SplitCurve3dContinuity::GetCurve()`
+    pub fn get_curve(&self) -> &crate::ffi::HandleGeomCurve {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_get_curve(self as *const Self))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_SplitCurve3dContinuity.hxx`:53 - `ShapeUpgrade_SplitCurve3dContinuity::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_SplitCurve3dContinuity.hxx`:53 - `ShapeUpgrade_SplitCurve3dContinuity::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_get_type_name()).to_string_lossy().into_owned()
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_SplitCurve3dContinuity.hxx`:53 - `ShapeUpgrade_SplitCurve3dContinuity::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_get_type_descriptor()) }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve3d
+    pub fn as_split_curve3d(&self) -> &SplitCurve3d {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve3d(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve3d (mutable)
+    pub fn as_split_curve3d_mut(&mut self) -> &mut SplitCurve3d {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve3d_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve
+    pub fn as_split_curve(&self) -> &SplitCurve {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve (mutable)
+    pub fn as_split_curve_mut(&mut self) -> &mut SplitCurve {
+        unsafe {
+            &mut *(crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:39 - `ShapeUpgrade_SplitCurve3d::Init()`
+    pub fn init(&mut self, C: &crate::ffi::HandleGeomCurve) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_Init(self as *mut Self, C)
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:50 - `ShapeUpgrade_SplitCurve3d::Build()`
+    pub fn build(&mut self, Segment: bool) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_Build(
+                self as *mut Self,
+                Segment,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
+    pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_SetSplitValues(
+                self as *mut Self,
+                SplitValues,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:59 - `ShapeUpgrade_SplitCurve::SplitValues()`
+    pub fn split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_SplitValues(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:66 - `ShapeUpgrade_SplitCurve::Perform()`
+    pub fn perform(&mut self, Segment: bool) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_Perform(
+                self as *mut Self,
+                Segment,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:73 - `ShapeUpgrade_SplitCurve::Status()`
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_Status(
                 self as *const Self,
                 status.into(),
             )

@@ -1731,24 +1731,6 @@ impl FuncCylinderLSDist {
         unsafe { crate::ffi::GeomConvert_FuncCylinderLSDist_nb_variables(self as *const Self) }
     }
 
-    /// Upcast to math_MultipleVarFunction
-    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        unsafe {
-            &*(crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunction(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to math_MultipleVarFunction (mutable)
-    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        unsafe {
-            &mut *(crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunction_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to math_MultipleVarFunctionWithGradient
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
@@ -1766,6 +1748,24 @@ impl FuncCylinderLSDist {
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
         unsafe {
             &mut *(crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        unsafe {
+            &*(crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunction(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
+        unsafe {
+            &mut *(crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunction_mut(
+                self as *mut Self,
+            ))
         }
     }
 
@@ -1820,24 +1820,6 @@ impl FuncSphereLSDist {
         unsafe { crate::ffi::GeomConvert_FuncSphereLSDist_nb_variables(self as *const Self) }
     }
 
-    /// Upcast to math_MultipleVarFunction
-    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        unsafe {
-            &*(crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunction(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to math_MultipleVarFunction (mutable)
-    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        unsafe {
-            &mut *(crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunction_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to math_MultipleVarFunctionWithGradient
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
@@ -1855,6 +1837,24 @@ impl FuncSphereLSDist {
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
         unsafe {
             &mut *(crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunction
+    pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
+        unsafe {
+            &*(crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunction(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to math_MultipleVarFunction (mutable)
+    pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
+        unsafe {
+            &mut *(crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunction_mut(
+                self as *mut Self,
+            ))
         }
     }
 

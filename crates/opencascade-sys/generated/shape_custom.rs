@@ -624,24 +624,6 @@ impl BSplineRestriction {
         unsafe { &*(crate::ffi::ShapeCustom_BSplineRestriction_get_type_descriptor()) }
     }
 
-    /// Upcast to BRepTools_Modification
-    pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_BSplineRestriction_as_BRepTools_Modification(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BRepTools_Modification (mutable)
-    pub fn as_b_rep_tools_modification_mut(&mut self) -> &mut crate::b_rep_tools::Modification {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_BSplineRestriction_as_BRepTools_Modification_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to ShapeCustom_Modification
     pub fn as_modification(&self) -> &Modification {
         unsafe {
@@ -660,46 +642,21 @@ impl BSplineRestriction {
         }
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
-    pub fn new_triangulation(
-        &mut self,
-        F: &crate::ffi::TopoDS_Face,
-        T: &mut crate::ffi::HandlePolyTriangulation,
-    ) -> bool {
+    /// Upcast to BRepTools_Modification
+    pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
         unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_inherited_NewTriangulation(
-                self as *mut Self,
-                F,
-                T,
-            )
+            &*(crate::ffi::ShapeCustom_BSplineRestriction_as_BRepTools_Modification(
+                self as *const Self,
+            ))
         }
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
-    pub fn new_polygon(
-        &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        P: &mut crate::ffi::HandlePolyPolygon3D,
-    ) -> bool {
+    /// Upcast to BRepTools_Modification (mutable)
+    pub fn as_b_rep_tools_modification_mut(&mut self) -> &mut crate::b_rep_tools::Modification {
         unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_inherited_NewPolygon(self as *mut Self, E, P)
-        }
-    }
-
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
-    pub fn new_polygon_on_triangulation(
-        &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
-        P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
-    ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_BSplineRestriction_inherited_NewPolygonOnTriangulation(
+            &mut *(crate::ffi::ShapeCustom_BSplineRestriction_as_BRepTools_Modification_mut(
                 self as *mut Self,
-                E,
-                F,
-                P,
-            )
+            ))
         }
     }
 
@@ -742,6 +699,49 @@ impl BSplineRestriction {
                 shape,
                 message,
                 gravity.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
+    pub fn new_triangulation(
+        &mut self,
+        F: &crate::ffi::TopoDS_Face,
+        T: &mut crate::ffi::HandlePolyTriangulation,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeCustom_BSplineRestriction_inherited_NewTriangulation(
+                self as *mut Self,
+                F,
+                T,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
+    pub fn new_polygon(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        P: &mut crate::ffi::HandlePolyPolygon3D,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeCustom_BSplineRestriction_inherited_NewPolygon(self as *mut Self, E, P)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
+    pub fn new_polygon_on_triangulation(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+        P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeCustom_BSplineRestriction_inherited_NewPolygonOnTriangulation(
+                self as *mut Self,
+                E,
+                F,
+                P,
             )
         }
     }
@@ -970,24 +970,6 @@ impl ConvertToBSpline {
         unsafe { &*(crate::ffi::ShapeCustom_ConvertToBSpline_get_type_descriptor()) }
     }
 
-    /// Upcast to BRepTools_Modification
-    pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_ConvertToBSpline_as_BRepTools_Modification(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BRepTools_Modification (mutable)
-    pub fn as_b_rep_tools_modification_mut(&mut self) -> &mut crate::b_rep_tools::Modification {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_ConvertToBSpline_as_BRepTools_Modification_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to ShapeCustom_Modification
     pub fn as_modification(&self) -> &Modification {
         unsafe {
@@ -1006,46 +988,21 @@ impl ConvertToBSpline {
         }
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
-    pub fn new_triangulation(
-        &mut self,
-        F: &crate::ffi::TopoDS_Face,
-        T: &mut crate::ffi::HandlePolyTriangulation,
-    ) -> bool {
+    /// Upcast to BRepTools_Modification
+    pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
         unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_inherited_NewTriangulation(
-                self as *mut Self,
-                F,
-                T,
-            )
+            &*(crate::ffi::ShapeCustom_ConvertToBSpline_as_BRepTools_Modification(
+                self as *const Self,
+            ))
         }
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
-    pub fn new_polygon(
-        &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        P: &mut crate::ffi::HandlePolyPolygon3D,
-    ) -> bool {
+    /// Upcast to BRepTools_Modification (mutable)
+    pub fn as_b_rep_tools_modification_mut(&mut self) -> &mut crate::b_rep_tools::Modification {
         unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_inherited_NewPolygon(self as *mut Self, E, P)
-        }
-    }
-
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
-    pub fn new_polygon_on_triangulation(
-        &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
-        P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
-    ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToBSpline_inherited_NewPolygonOnTriangulation(
+            &mut *(crate::ffi::ShapeCustom_ConvertToBSpline_as_BRepTools_Modification_mut(
                 self as *mut Self,
-                E,
-                F,
-                P,
-            )
+            ))
         }
     }
 
@@ -1088,6 +1045,49 @@ impl ConvertToBSpline {
                 shape,
                 message,
                 gravity.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
+    pub fn new_triangulation(
+        &mut self,
+        F: &crate::ffi::TopoDS_Face,
+        T: &mut crate::ffi::HandlePolyTriangulation,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeCustom_ConvertToBSpline_inherited_NewTriangulation(
+                self as *mut Self,
+                F,
+                T,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
+    pub fn new_polygon(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        P: &mut crate::ffi::HandlePolyPolygon3D,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeCustom_ConvertToBSpline_inherited_NewPolygon(self as *mut Self, E, P)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
+    pub fn new_polygon_on_triangulation(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+        P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeCustom_ConvertToBSpline_inherited_NewPolygonOnTriangulation(
+                self as *mut Self,
+                E,
+                F,
+                P,
             )
         }
     }
@@ -1288,6 +1288,24 @@ impl ConvertToRevolution {
         unsafe { &*(crate::ffi::ShapeCustom_ConvertToRevolution_get_type_descriptor()) }
     }
 
+    /// Upcast to ShapeCustom_Modification
+    pub fn as_modification(&self) -> &Modification {
+        unsafe {
+            &*(crate::ffi::ShapeCustom_ConvertToRevolution_as_ShapeCustom_Modification(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to ShapeCustom_Modification (mutable)
+    pub fn as_modification_mut(&mut self) -> &mut Modification {
+        unsafe {
+            &mut *(crate::ffi::ShapeCustom_ConvertToRevolution_as_ShapeCustom_Modification_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Upcast to BRepTools_Modification
     pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
         unsafe {
@@ -1306,21 +1324,46 @@ impl ConvertToRevolution {
         }
     }
 
-    /// Upcast to ShapeCustom_Modification
-    pub fn as_modification(&self) -> &Modification {
+    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:36 - `ShapeCustom_Modification::SetMsgRegistrator()`
+    pub fn set_msg_registrator(
+        &mut self,
+        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+    ) {
         unsafe {
-            &*(crate::ffi::ShapeCustom_ConvertToRevolution_as_ShapeCustom_Modification(
-                self as *const Self,
-            ))
+            crate::ffi::ShapeCustom_ConvertToRevolution_inherited_SetMsgRegistrator(
+                self as *mut Self,
+                msgreg,
+            )
         }
     }
 
-    /// Upcast to ShapeCustom_Modification (mutable)
-    pub fn as_modification_mut(&mut self) -> &mut Modification {
+    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:40 - `ShapeCustom_Modification::MsgRegistrator()`
+    pub fn msg_registrator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
         unsafe {
-            &mut *(crate::ffi::ShapeCustom_ConvertToRevolution_as_ShapeCustom_Modification_mut(
-                self as *mut Self,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeCustom_ConvertToRevolution_inherited_MsgRegistrator(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:44 - `ShapeCustom_Modification::SendMsg()`
+    pub fn send_msg(
+        &self,
+        shape: &crate::ffi::TopoDS_Shape,
+        message: &crate::ffi::Message_Msg,
+        gravity: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::ShapeCustom_ConvertToRevolution_inherited_SendMsg(
+                self as *const Self,
+                shape,
+                message,
+                gravity.into(),
+            )
         }
     }
 
@@ -1367,49 +1410,6 @@ impl ConvertToRevolution {
                 E,
                 F,
                 P,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:36 - `ShapeCustom_Modification::SetMsgRegistrator()`
-    pub fn set_msg_registrator(
-        &mut self,
-        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
-    ) {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToRevolution_inherited_SetMsgRegistrator(
-                self as *mut Self,
-                msgreg,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:40 - `ShapeCustom_Modification::MsgRegistrator()`
-    pub fn msg_registrator(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::ShapeCustom_ConvertToRevolution_inherited_MsgRegistrator(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:44 - `ShapeCustom_Modification::SendMsg()`
-    pub fn send_msg(
-        &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
-        gravity: crate::message::Gravity,
-    ) {
-        unsafe {
-            crate::ffi::ShapeCustom_ConvertToRevolution_inherited_SendMsg(
-                self as *const Self,
-                shape,
-                message,
-                gravity.into(),
             )
         }
     }
@@ -1730,24 +1730,6 @@ impl DirectModification {
         unsafe { &*(crate::ffi::ShapeCustom_DirectModification_get_type_descriptor()) }
     }
 
-    /// Upcast to BRepTools_Modification
-    pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_DirectModification_as_BRepTools_Modification(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BRepTools_Modification (mutable)
-    pub fn as_b_rep_tools_modification_mut(&mut self) -> &mut crate::b_rep_tools::Modification {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_DirectModification_as_BRepTools_Modification_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to ShapeCustom_Modification
     pub fn as_modification(&self) -> &Modification {
         unsafe {
@@ -1766,46 +1748,21 @@ impl DirectModification {
         }
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
-    pub fn new_triangulation(
-        &mut self,
-        F: &crate::ffi::TopoDS_Face,
-        T: &mut crate::ffi::HandlePolyTriangulation,
-    ) -> bool {
+    /// Upcast to BRepTools_Modification
+    pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
         unsafe {
-            crate::ffi::ShapeCustom_DirectModification_inherited_NewTriangulation(
-                self as *mut Self,
-                F,
-                T,
-            )
+            &*(crate::ffi::ShapeCustom_DirectModification_as_BRepTools_Modification(
+                self as *const Self,
+            ))
         }
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
-    pub fn new_polygon(
-        &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        P: &mut crate::ffi::HandlePolyPolygon3D,
-    ) -> bool {
+    /// Upcast to BRepTools_Modification (mutable)
+    pub fn as_b_rep_tools_modification_mut(&mut self) -> &mut crate::b_rep_tools::Modification {
         unsafe {
-            crate::ffi::ShapeCustom_DirectModification_inherited_NewPolygon(self as *mut Self, E, P)
-        }
-    }
-
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
-    pub fn new_polygon_on_triangulation(
-        &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
-        P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
-    ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_DirectModification_inherited_NewPolygonOnTriangulation(
+            &mut *(crate::ffi::ShapeCustom_DirectModification_as_BRepTools_Modification_mut(
                 self as *mut Self,
-                E,
-                F,
-                P,
-            )
+            ))
         }
     }
 
@@ -1848,6 +1805,49 @@ impl DirectModification {
                 shape,
                 message,
                 gravity.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
+    pub fn new_triangulation(
+        &mut self,
+        F: &crate::ffi::TopoDS_Face,
+        T: &mut crate::ffi::HandlePolyTriangulation,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeCustom_DirectModification_inherited_NewTriangulation(
+                self as *mut Self,
+                F,
+                T,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
+    pub fn new_polygon(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        P: &mut crate::ffi::HandlePolyPolygon3D,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeCustom_DirectModification_inherited_NewPolygon(self as *mut Self, E, P)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
+    pub fn new_polygon_on_triangulation(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+        P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeCustom_DirectModification_inherited_NewPolygonOnTriangulation(
+                self as *mut Self,
+                E,
+                F,
+                P,
             )
         }
     }
@@ -2616,24 +2616,6 @@ impl SweptToElementary {
         unsafe { &*(crate::ffi::ShapeCustom_SweptToElementary_get_type_descriptor()) }
     }
 
-    /// Upcast to BRepTools_Modification
-    pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_SweptToElementary_as_BRepTools_Modification(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BRepTools_Modification (mutable)
-    pub fn as_b_rep_tools_modification_mut(&mut self) -> &mut crate::b_rep_tools::Modification {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_SweptToElementary_as_BRepTools_Modification_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to ShapeCustom_Modification
     pub fn as_modification(&self) -> &Modification {
         unsafe {
@@ -2652,46 +2634,21 @@ impl SweptToElementary {
         }
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
-    pub fn new_triangulation(
-        &mut self,
-        F: &crate::ffi::TopoDS_Face,
-        T: &mut crate::ffi::HandlePolyTriangulation,
-    ) -> bool {
+    /// Upcast to BRepTools_Modification
+    pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
         unsafe {
-            crate::ffi::ShapeCustom_SweptToElementary_inherited_NewTriangulation(
-                self as *mut Self,
-                F,
-                T,
-            )
+            &*(crate::ffi::ShapeCustom_SweptToElementary_as_BRepTools_Modification(
+                self as *const Self,
+            ))
         }
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
-    pub fn new_polygon(
-        &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        P: &mut crate::ffi::HandlePolyPolygon3D,
-    ) -> bool {
+    /// Upcast to BRepTools_Modification (mutable)
+    pub fn as_b_rep_tools_modification_mut(&mut self) -> &mut crate::b_rep_tools::Modification {
         unsafe {
-            crate::ffi::ShapeCustom_SweptToElementary_inherited_NewPolygon(self as *mut Self, E, P)
-        }
-    }
-
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
-    pub fn new_polygon_on_triangulation(
-        &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
-        P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
-    ) -> bool {
-        unsafe {
-            crate::ffi::ShapeCustom_SweptToElementary_inherited_NewPolygonOnTriangulation(
+            &mut *(crate::ffi::ShapeCustom_SweptToElementary_as_BRepTools_Modification_mut(
                 self as *mut Self,
-                E,
-                F,
-                P,
-            )
+            ))
         }
     }
 
@@ -2734,6 +2691,49 @@ impl SweptToElementary {
                 shape,
                 message,
                 gravity.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
+    pub fn new_triangulation(
+        &mut self,
+        F: &crate::ffi::TopoDS_Face,
+        T: &mut crate::ffi::HandlePolyTriangulation,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeCustom_SweptToElementary_inherited_NewTriangulation(
+                self as *mut Self,
+                F,
+                T,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
+    pub fn new_polygon(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        P: &mut crate::ffi::HandlePolyPolygon3D,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeCustom_SweptToElementary_inherited_NewPolygon(self as *mut Self, E, P)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
+    pub fn new_polygon_on_triangulation(
+        &mut self,
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+        P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeCustom_SweptToElementary_inherited_NewPolygonOnTriangulation(
+                self as *mut Self,
+                E,
+                F,
+                P,
             )
         }
     }
@@ -2880,24 +2880,6 @@ impl TrsfModification {
         unsafe { &*(crate::ffi::ShapeCustom_TrsfModification_get_type_descriptor()) }
     }
 
-    /// Upcast to BRepTools_Modification
-    pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
-        unsafe {
-            &*(crate::ffi::ShapeCustom_TrsfModification_as_BRepTools_Modification(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BRepTools_Modification (mutable)
-    pub fn as_b_rep_tools_modification_mut(&mut self) -> &mut crate::b_rep_tools::Modification {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_TrsfModification_as_BRepTools_Modification_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// Upcast to BRepTools_TrsfModification
     pub fn as_b_rep_tools_trsf_modification(&self) -> &crate::b_rep_tools::TrsfModification {
         unsafe {
@@ -2918,7 +2900,39 @@ impl TrsfModification {
         }
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
+    /// Upcast to BRepTools_Modification
+    pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
+        unsafe {
+            &*(crate::ffi::ShapeCustom_TrsfModification_as_BRepTools_Modification(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to BRepTools_Modification (mutable)
+    pub fn as_b_rep_tools_modification_mut(&mut self) -> &mut crate::b_rep_tools::Modification {
+        unsafe {
+            &mut *(crate::ffi::ShapeCustom_TrsfModification_as_BRepTools_Modification_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:49 - `BRepTools_TrsfModification::Trsf()`
+    pub fn trsf(&mut self) -> &mut crate::ffi::gp_Trsf {
+        unsafe {
+            &mut *(crate::ffi::ShapeCustom_TrsfModification_inherited_Trsf(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:52 - `BRepTools_TrsfModification::IsCopyMesh()`
+    pub fn is_copy_mesh(&mut self) -> &mut bool {
+        unsafe {
+            &mut *(crate::ffi::ShapeCustom_TrsfModification_inherited_IsCopyMesh(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:76 - `BRepTools_TrsfModification::NewTriangulation()`
     pub fn new_triangulation(
         &mut self,
         F: &crate::ffi::TopoDS_Face,
@@ -2933,7 +2947,7 @@ impl TrsfModification {
         }
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
+    /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:81 - `BRepTools_TrsfModification::NewPolygon()`
     pub fn new_polygon(
         &mut self,
         E: &crate::ffi::TopoDS_Edge,
@@ -2944,7 +2958,7 @@ impl TrsfModification {
         }
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
+    /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:87 - `BRepTools_TrsfModification::NewPolygonOnTriangulation()`
     pub fn new_polygon_on_triangulation(
         &mut self,
         E: &crate::ffi::TopoDS_Edge,
@@ -2961,7 +2975,7 @@ impl TrsfModification {
         }
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:143 - `BRepTools_Modification::Continuity()`
+    /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:142 - `BRepTools_TrsfModification::Continuity()`
     pub fn continuity(
         &mut self,
         E: &crate::ffi::TopoDS_Edge,
@@ -2984,20 +2998,6 @@ impl TrsfModification {
                 ),
             )
             .unwrap()
-        }
-    }
-
-    /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:49 - `BRepTools_TrsfModification::Trsf()`
-    pub fn trsf(&mut self) -> &mut crate::ffi::gp_Trsf {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_TrsfModification_inherited_Trsf(self as *mut Self))
-        }
-    }
-
-    /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:52 - `BRepTools_TrsfModification::IsCopyMesh()`
-    pub fn is_copy_mesh(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::ffi::ShapeCustom_TrsfModification_inherited_IsCopyMesh(self as *mut Self))
         }
     }
 }
