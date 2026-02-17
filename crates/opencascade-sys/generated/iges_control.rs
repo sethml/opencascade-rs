@@ -26,6 +26,12 @@ impl ActorWrite {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESControl_ActorWrite_ctor()) }
     }
 
+    /// **Source:** `IGESControl_ActorWrite.hxx`:39 - `IGESControl_ActorWrite::Recognize()`
+    /// Recognizes a ShapeMapper
+    pub fn recognize(&mut self, start: &crate::ffi::HandleTransferFinder) -> bool {
+        unsafe { crate::ffi::IGESControl_ActorWrite_recognize(self as *mut Self, start) }
+    }
+
     /// **Source:** `IGESControl_ActorWrite.hxx`:51 - `IGESControl_ActorWrite::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESControl_ActorWrite_dynamic_type(self as *const Self)) }
@@ -83,6 +89,23 @@ impl ActorWrite {
         unsafe {
             &mut *(crate::ffi::IGESControl_ActorWrite_as_Transfer_ActorOfProcessForFinder_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:47 - `Transfer_ActorOfFinderProcess::Transferring()`
+    pub fn transferring(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        TP: &crate::ffi::HandleTransferProcessForFinder,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_ActorWrite_inherited_Transferring(
+                self as *mut Self,
+                start,
+                TP,
+                theProgress,
             ))
         }
     }

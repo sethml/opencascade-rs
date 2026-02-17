@@ -224,13 +224,13 @@ modules = [
 # Exclude specific headers (even if their module is in `modules` above).
 exclude_headers = [
 
-    # const char*& output parameter: generator converts const char* to rust::Str
-    # but can't handle output reference parameters (&) to C strings.
-    "Transfer_Finder.hxx",
+    # Transfer_Finder: GetStringAttribute has const char*& output parameter.
+    # Now handled: method is skipped with warning, needs manual binding.
+    # "Transfer_Finder.hxx",
 
-    # Standard_CString (const char*) parameter passed by const ref: generator
-    # converts to rust::Str but the C++ function expects const char* const&.
-    "BRepFill_AdvancedEvolved.hxx",
+    # BRepFill_AdvancedEvolved: SetTemporaryDirectory has const char* const& parameter.
+    # Now handled: method is skipped with warning, needs manual binding.
+    # "BRepFill_AdvancedEvolved.hxx",
 
     # Protected operator new/delete: class has protected allocation operators
     # (inherited from Message_ProgressScope), can't use std::make_unique.

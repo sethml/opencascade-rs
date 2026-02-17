@@ -317,6 +317,68 @@ impl ACRLaw {
 }
 
 // ========================
+// From BRepFill_AdvancedEvolved.hxx
+// ========================
+
+/// **Source:** `BRepFill_AdvancedEvolved.hxx`:33 - `BRepFill_AdvancedEvolved`
+/// Constructs an evolved volume from a spine (wire or face)
+/// and  a profile ( wire).
+pub use crate::ffi::BRepFill_AdvancedEvolved as AdvancedEvolved;
+
+unsafe impl crate::CppDeletable for AdvancedEvolved {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepFill_AdvancedEvolved_destructor(ptr);
+    }
+}
+
+impl AdvancedEvolved {
+    /// **Source:** `BRepFill_AdvancedEvolved.hxx`:39 - `BRepFill_AdvancedEvolved::BRepFill_AdvancedEvolved()`
+    /// Constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_AdvancedEvolved_ctor()) }
+    }
+
+    /// **Source:** `BRepFill_AdvancedEvolved.hxx`:47 - `BRepFill_AdvancedEvolved::Perform()`
+    pub fn perform(
+        &mut self,
+        theSpine: &crate::ffi::TopoDS_Wire,
+        theProfile: &crate::ffi::TopoDS_Wire,
+        theTolerance: f64,
+        theSolidReq: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepFill_AdvancedEvolved_perform(
+                self as *mut Self,
+                theSpine,
+                theProfile,
+                theTolerance,
+                theSolidReq,
+            )
+        }
+    }
+
+    /// **Source:** `BRepFill_AdvancedEvolved.hxx`:61 - `BRepFill_AdvancedEvolved::Shape()`
+    /// returns the resulting shape.
+    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BRepFill_AdvancedEvolved_shape(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepFill_AdvancedEvolved.hxx`:64 - `BRepFill_AdvancedEvolved::SetTemporaryDirectory()`
+    /// Sets directory where the debug shapes will be saved
+    pub fn set_temporary_directory(&mut self, thePath: &&str) {
+        unsafe {
+            crate::ffi::BRepFill_AdvancedEvolved_set_temporary_directory(self as *mut Self, thePath)
+        }
+    }
+
+    /// **Source:** `BRepFill_AdvancedEvolved.hxx`:67 - `BRepFill_AdvancedEvolved::SetParallelMode()`
+    /// Sets/Unsets computation in parallel mode
+    pub fn set_parallel_mode(&mut self, theVal: bool) {
+        unsafe { crate::ffi::BRepFill_AdvancedEvolved_set_parallel_mode(self as *mut Self, theVal) }
+    }
+}
+
+// ========================
 // From BRepFill_ApproxSeewing.hxx
 // ========================
 

@@ -443,3 +443,51 @@ Some methods have `T* param = NULL` where NULL means "don't care." Could be auto
 ### System Include Path Auto-Detection
 
 Currently `-I` path is passed manually. Could auto-detect from `occt-sys`.
+
+### Per-Symbol Manual Bindings
+
+Some C++ function signatures cannot be automatically bound and require custom implementations. The generator should support per-symbol overrides in `bindings.toml` to allow specifying manual bindings for specific functions.
+
+**Proposed configuration format:**
+
+```toml
+[manual_bindings]
+# Format: "ClassName::method_name" or just "function_name" for free functions
+# Each entry specifies the binding type and implementation details
+
+"Transfer_Finder::GetStringAttribute" = { 
+    # Output reference parameter: copy returned string to Rust String
+    return_type = "Option<String>",
+    impl_type = "output_ref",
+    # The method has signature: GetStringAttribute(name: Standard_CString, val: Standard_CString&) -> bool
+    # The val parameter is an output parameter that receives the string value
+}
+
+"BRepFill_AdvancedEvolved::SetTemporaryDirectory" = {
+    # Const ref to const char*: need to copy Rust str to malloc'd buffer
+    impl_type = "const_ref",
+    # Note: This is a memory leak, but the object is small and typically only called once
+    # Comment should be added in generated code
+}
+```
+
+**Implementation approach:**
+1. Add a `[manual_bindings]` section to `bindings.toml`
+2. The generator will skip these functions during automatic binding
+3. Generate placeholder stubs that can be manually implemented
+4. Document the expected signature and provide implementation hints
+
+**Example manual implementations:**
+
+For `GetStringAttribute`, the manual binding would:
+- Call the C++ method to get the boolean result
+- Copy the string from the output parameter to an owned Rust `String`
+- Return `Option<String>` (None if the method returns false)
+
+For `SetTemporaryDirectory`, the manual binding would:
+- Accept a `&str` parameter from Rust
+- Use `malloc` to allocate a buffer and copy the string
+- Pass the buffer to the C++ function
+- Note in comments that this is a memory leak (acceptable for this use case)
+
+Currently `-I` path is passed manually. Could auto-detect from `occt-sys`.

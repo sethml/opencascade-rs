@@ -91,6 +91,23 @@ impl ActorOfFinderProcess {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfFinderProcess_ctor()) }
     }
 
+    /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:47 - `Transfer_ActorOfFinderProcess::Transferring()`
+    pub fn transferring(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        TP: &crate::ffi::HandleTransferProcessForFinder,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfFinderProcess_transferring(
+                self as *mut Self,
+                start,
+                TP,
+                theProgress,
+            ))
+        }
+    }
+
     /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:101 - `Transfer_ActorOfFinderProcess::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Transfer_ActorOfFinderProcess_dynamic_type(self as *const Self)) }
@@ -123,6 +140,13 @@ impl ActorOfFinderProcess {
     pub fn as_actor_of_process_for_finder_mut(&mut self) -> &mut ActorOfProcessForFinder {
         unsafe {
             &mut *(crate::ffi::Transfer_ActorOfFinderProcess_as_Transfer_ActorOfProcessForFinder_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:55 - `Transfer_ActorOfProcessForFinder::Recognize()`
+    pub fn recognize(&mut self, start: &crate::ffi::HandleTransferFinder) -> bool {
+        unsafe {
+            crate::ffi::Transfer_ActorOfFinderProcess_inherited_Recognize(self as *mut Self, start)
         }
     }
 
@@ -181,6 +205,44 @@ impl ActorOfProcessForFinder {
     /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:42 - `Transfer_ActorOfProcessForFinder::Transfer_ActorOfProcessForFinder()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfProcessForFinder_ctor()) }
+    }
+
+    /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:55 - `Transfer_ActorOfProcessForFinder::Recognize()`
+    /// Prerequisite for Transfer : the method Transfer is
+    /// called on a starting object only if Recognize has
+    /// returned True on it
+    /// This allows to define a list of Actors, each one
+    /// processing a definite kind of data
+    /// TransferProcess calls Recognize on each one before
+    /// calling Transfer. But even if Recognize has returned
+    /// True, Transfer can reject by returning a Null Binder
+    /// (afterwards rejection), the next actor is then invoked
+    ///
+    /// The provided default returns True, can be redefined
+    pub fn recognize(&mut self, start: &crate::ffi::HandleTransferFinder) -> bool {
+        unsafe { crate::ffi::Transfer_ActorOfProcessForFinder_recognize(self as *mut Self, start) }
+    }
+
+    /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:62 - `Transfer_ActorOfProcessForFinder::Transferring()`
+    /// Specific action of Transfer. The Result is stored in
+    /// the returned Binder, or a Null Handle for "No result"
+    /// (Default defined as doing nothing; should be deferred)
+    /// "mutable" allows the Actor to record intermediate
+    /// information, in addition to those of TransferProcess
+    pub fn transferring(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        TP: &crate::ffi::HandleTransferProcessForFinder,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfProcessForFinder_transferring(
+                self as *mut Self,
+                start,
+                TP,
+                theProgress,
+            ))
+        }
     }
 
     /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:73 - `Transfer_ActorOfProcessForFinder::NullResult()`
@@ -728,6 +790,262 @@ impl HandleTransferBinder {
 }
 
 // ========================
+// From Transfer_Finder.hxx
+// ========================
+
+/// **Source:** `Transfer_Finder.hxx`:37 - `Transfer_Finder`
+/// a Finder allows to map any kind of object as a Key for a Map.
+/// This works by defining, for a Hash Code, that of the real Key,
+/// not of the Finder which acts only as an intermediate.
+/// When a Map asks for the HashCode of a Finder, this one returns
+/// the code it has determined at creation time
+pub use crate::ffi::Transfer_Finder as Finder;
+
+unsafe impl crate::CppDeletable for Finder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Transfer_Finder_destructor(ptr);
+    }
+}
+
+impl Finder {
+    /// **Source:** `Transfer_Finder.hxx`:44 - `Transfer_Finder::GetHashCode()`
+    /// Returns the HashCode which has been stored by SetHashCode
+    /// (remark that HashCode could be deferred then be defined by
+    /// sub-classes, the result is the same)
+    pub fn get_hash_code(&self) -> usize {
+        unsafe { crate::ffi::Transfer_Finder_get_hash_code(self as *const Self) }
+    }
+
+    /// **Source:** `Transfer_Finder.hxx`:49 - `Transfer_Finder::Equates()`
+    /// Specific testof equality : to be defined by each sub-class,
+    /// must be False if Finders have not the same true Type, else
+    /// their contents must be compared
+    pub fn equates(&self, other: &crate::ffi::HandleTransferFinder) -> bool {
+        unsafe { crate::ffi::Transfer_Finder_equates(self as *const Self, other) }
+    }
+
+    /// **Source:** `Transfer_Finder.hxx`:53 - `Transfer_Finder::ValueType()`
+    /// Returns the Type of the Value. By default, returns the
+    /// DynamicType of <me>, but can be redefined
+    pub fn value_type(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_Finder_value_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `Transfer_Finder.hxx`:57 - `Transfer_Finder::ValueTypeName()`
+    /// Returns the name of the Type of the Value. Default is name
+    /// of ValueType, unless it is for a non-handled object
+    pub fn value_type_name(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Transfer_Finder_value_type_name(
+                self as *const Self,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `Transfer_Finder.hxx`:66 - `Transfer_Finder::RemoveAttribute()`
+    /// Removes an attribute
+    /// Returns True when done, False if this attribute did not exist
+    pub fn remove_attribute(&mut self, name: &str) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::Transfer_Finder_remove_attribute(self as *mut Self, c_name.as_ptr()) }
+    }
+
+    /// **Source:** `Transfer_Finder.hxx`:83 - `Transfer_Finder::AttributeType()`
+    /// Returns the type of an attribute :
+    /// ParamInt , ParamReal , ParamText (String) , ParamIdent (any)
+    /// or ParamVoid (not recorded)
+    pub fn attribute_type(&self, name: &str) -> crate::interface::ParamType {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::interface::ParamType::try_from(crate::ffi::Transfer_Finder_attribute_type(
+                self as *const Self,
+                c_name.as_ptr(),
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `Transfer_Finder.hxx`:86 - `Transfer_Finder::SetIntegerAttribute()`
+    /// Adds an integer value for an attribute
+    pub fn set_integer_attribute(&mut self, name: &str, val: i32) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::Transfer_Finder_set_integer_attribute(
+                self as *mut Self,
+                c_name.as_ptr(),
+                val,
+            )
+        }
+    }
+
+    /// **Source:** `Transfer_Finder.hxx`:96 - `Transfer_Finder::IntegerAttribute()`
+    /// Returns an integer attribute from its name. 0 if not recorded
+    pub fn integer_attribute(&self, name: &str) -> i32 {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::Transfer_Finder_integer_attribute(self as *const Self, c_name.as_ptr())
+        }
+    }
+
+    /// **Source:** `Transfer_Finder.hxx`:99 - `Transfer_Finder::SetRealAttribute()`
+    /// Adds a real value for an attribute
+    pub fn set_real_attribute(&mut self, name: &str, val: f64) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::Transfer_Finder_set_real_attribute(self as *mut Self, c_name.as_ptr(), val)
+        }
+    }
+
+    /// **Source:** `Transfer_Finder.hxx`:105 - `Transfer_Finder::GetRealAttribute()`
+    /// Returns an attribute from its name, as real
+    /// If no attribute has this name, or not a real
+    /// <val> is 0.0 and returned value is False
+    /// Else, it is True
+    pub fn get_real_attribute(&self, name: &str, val: &mut f64) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::Transfer_Finder_get_real_attribute(
+                self as *const Self,
+                c_name.as_ptr(),
+                val,
+            )
+        }
+    }
+
+    /// **Source:** `Transfer_Finder.hxx`:109 - `Transfer_Finder::RealAttribute()`
+    /// Returns a real attribute from its name. 0.0 if not recorded
+    pub fn real_attribute(&self, name: &str) -> f64 {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::Transfer_Finder_real_attribute(self as *const Self, c_name.as_ptr()) }
+    }
+
+    /// **Source:** `Transfer_Finder.hxx`:112 - `Transfer_Finder::SetStringAttribute()`
+    /// Adds a String value for an attribute
+    pub fn set_string_attribute(&mut self, name: &str, val: &str) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        let c_val = std::ffi::CString::new(val).unwrap();
+        unsafe {
+            crate::ffi::Transfer_Finder_set_string_attribute(
+                self as *mut Self,
+                c_name.as_ptr(),
+                c_val.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `Transfer_Finder.hxx`:118 - `Transfer_Finder::GetStringAttribute()`
+    /// Returns an attribute from its name, as String
+    /// If no attribute has this name, or not a String
+    /// <val> is 0.0 and returned value is False
+    /// Else, it is True
+    pub fn get_string_attribute(&self, name: &str, val: &mut &str) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::Transfer_Finder_get_string_attribute(
+                self as *const Self,
+                c_name.as_ptr(),
+                val,
+            )
+        }
+    }
+
+    /// **Source:** `Transfer_Finder.hxx`:122 - `Transfer_Finder::StringAttribute()`
+    /// Returns a String attribute from its name. "" if not recorded
+    pub fn string_attribute(&self, name: &str) -> String {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Transfer_Finder_string_attribute(
+                self as *const Self,
+                c_name.as_ptr(),
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `Transfer_Finder.hxx`:132 - `Transfer_Finder::SameAttributes()`
+    /// Gets the list of attributes from <other>, as such, i.e.
+    /// not copied : attributes are shared, any attribute edited,
+    /// added, or removed in <other> is also in <me> and vice versa
+    /// The former list of attributes of <me> is dropped
+    pub fn same_attributes(&mut self, other: &crate::ffi::HandleTransferFinder) {
+        unsafe { crate::ffi::Transfer_Finder_same_attributes(self as *mut Self, other) }
+    }
+
+    /// **Source:** `Transfer_Finder.hxx`:145 - `Transfer_Finder::GetAttributes()`
+    /// Gets the list of attributes from <other>, by copying it
+    /// By default, considers all the attributes from <other>
+    /// If <fromname> is given, considers only the attributes with
+    /// name beginning by <fromname>
+    ///
+    /// For each attribute, if <copied> is True (D), its value is also
+    /// copied if it is a basic type (Integer,Real,String), else it
+    /// remains shared between <other> and <me>
+    ///
+    /// These new attributes are added to the existing ones in <me>,
+    /// in case of same name, they replace the existing ones
+    pub fn get_attributes(
+        &mut self,
+        other: &crate::ffi::HandleTransferFinder,
+        fromname: &str,
+        copied: bool,
+    ) {
+        let c_fromname = std::ffi::CString::new(fromname).unwrap();
+        unsafe {
+            crate::ffi::Transfer_Finder_get_attributes(
+                self as *mut Self,
+                other,
+                c_fromname.as_ptr(),
+                copied,
+            )
+        }
+    }
+
+    /// **Source:** `Transfer_Finder.hxx`:149 - `Transfer_Finder::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Transfer_Finder_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Transfer_Finder.hxx`:149 - `Transfer_Finder::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Transfer_Finder_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `Transfer_Finder.hxx`:149 - `Transfer_Finder::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Transfer_Finder_get_type_descriptor()) }
+    }
+}
+
+pub use crate::ffi::HandleTransferFinder;
+
+unsafe impl crate::CppDeletable for HandleTransferFinder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTransferFinder_destructor(ptr);
+    }
+}
+
+impl HandleTransferFinder {
+    /// Dereference this Handle to access the underlying Transfer_Finder
+    pub fn get(&self) -> &crate::ffi::Transfer_Finder {
+        unsafe { &*(crate::ffi::HandleTransferFinder_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Transfer_Finder
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_Finder {
+        unsafe { &mut *(crate::ffi::HandleTransferFinder_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From Transfer_FinderProcess.hxx
 // ========================
 
@@ -860,6 +1178,71 @@ impl FinderProcess {
         }
     }
 
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:85 - `Transfer_ProcessForFinder::Find()`
+    pub fn find(
+        &self,
+        start: &crate::ffi::HandleTransferFinder,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_FinderProcess_inherited_Find(
+                self as *const Self,
+                start,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:91 - `Transfer_ProcessForFinder::IsBound()`
+    pub fn is_bound(&self, start: &crate::ffi::HandleTransferFinder) -> bool {
+        unsafe { crate::ffi::Transfer_FinderProcess_inherited_IsBound(self as *const Self, start) }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:96 - `Transfer_ProcessForFinder::IsAlreadyUsed()`
+    pub fn is_already_used(&self, start: &crate::ffi::HandleTransferFinder) -> bool {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_IsAlreadyUsed(self as *const Self, start)
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:102 - `Transfer_ProcessForFinder::Bind()`
+    pub fn bind(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        binder: &crate::ffi::HandleTransferBinder,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_Bind(self as *mut Self, start, binder)
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:110 - `Transfer_ProcessForFinder::Rebind()`
+    pub fn rebind(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        binder: &crate::ffi::HandleTransferBinder,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_Rebind(self as *mut Self, start, binder)
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:118 - `Transfer_ProcessForFinder::Unbind()`
+    pub fn unbind(&mut self, start: &crate::ffi::HandleTransferFinder) -> bool {
+        unsafe { crate::ffi::Transfer_FinderProcess_inherited_Unbind(self as *mut Self, start) }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:123 - `Transfer_ProcessForFinder::FindElseBind()`
+    pub fn find_else_bind(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_FinderProcess_inherited_FindElseBind(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:126 - `Transfer_ProcessForFinder::SetMessenger()`
     pub fn set_messenger(&mut self, messenger: &crate::ffi::HandleMessageMessenger) {
         unsafe {
@@ -888,9 +1271,72 @@ impl FinderProcess {
         unsafe { crate::ffi::Transfer_FinderProcess_inherited_TraceLevel(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:146 - `Transfer_ProcessForFinder::SendFail()`
+    pub fn send_fail(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_SendFail(self as *mut Self, start, amsg)
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:149 - `Transfer_ProcessForFinder::SendWarning()`
+    pub fn send_warning(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_SendWarning(self as *mut Self, start, amsg)
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:153 - `Transfer_ProcessForFinder::SendMsg()`
+    pub fn send_msg(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_SendMsg(self as *mut Self, start, amsg)
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:209 - `Transfer_ProcessForFinder::Check()`
+    pub fn check(
+        &self,
+        start: &crate::ffi::HandleTransferFinder,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_FinderProcess_inherited_Check(
+                self as *const Self,
+                start,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:231 - `Transfer_ProcessForFinder::BindMultiple()`
+    pub fn bind_multiple(&mut self, start: &crate::ffi::HandleTransferFinder) {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_BindMultiple(self as *mut Self, start)
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:286 - `Transfer_ProcessForFinder::NbMapped()`
     pub fn nb_mapped(&self) -> i32 {
         unsafe { crate::ffi::Transfer_FinderProcess_inherited_NbMapped(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:289 - `Transfer_ProcessForFinder::Mapped()`
+    pub fn mapped(&self, num: i32) -> &crate::ffi::HandleTransferFinder {
+        unsafe { &*(crate::ffi::Transfer_FinderProcess_inherited_Mapped(self as *const Self, num)) }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:292 - `Transfer_ProcessForFinder::MapIndex()`
+    pub fn map_index(&self, start: &crate::ffi::HandleTransferFinder) -> i32 {
+        unsafe { crate::ffi::Transfer_FinderProcess_inherited_MapIndex(self as *const Self, start) }
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:296 - `Transfer_ProcessForFinder::MapItem()`
@@ -901,6 +1347,11 @@ impl FinderProcess {
                 num,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:301 - `Transfer_ProcessForFinder::SetRoot()`
+    pub fn set_root(&mut self, start: &crate::ffi::HandleTransferFinder) {
+        unsafe { crate::ffi::Transfer_FinderProcess_inherited_SetRoot(self as *mut Self, start) }
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:310 - `Transfer_ProcessForFinder::SetRootManagement()`
@@ -915,6 +1366,11 @@ impl FinderProcess {
         unsafe { crate::ffi::Transfer_FinderProcess_inherited_NbRoots(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:316 - `Transfer_ProcessForFinder::Root()`
+    pub fn root(&self, num: i32) -> &crate::ffi::HandleTransferFinder {
+        unsafe { &*(crate::ffi::Transfer_FinderProcess_inherited_Root(self as *const Self, num)) }
+    }
+
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:320 - `Transfer_ProcessForFinder::RootItem()`
     pub fn root_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
         unsafe {
@@ -922,6 +1378,13 @@ impl FinderProcess {
                 self as *const Self,
                 num,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:324 - `Transfer_ProcessForFinder::RootIndex()`
+    pub fn root_index(&self, start: &crate::ffi::HandleTransferFinder) -> i32 {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_RootIndex(self as *const Self, start)
         }
     }
 
@@ -935,6 +1398,43 @@ impl FinderProcess {
         unsafe { crate::ffi::Transfer_FinderProcess_inherited_ResetNestingLevel(self as *mut Self) }
     }
 
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:337 - `Transfer_ProcessForFinder::Recognize()`
+    pub fn recognize(&self, start: &crate::ffi::HandleTransferFinder) -> bool {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_Recognize(self as *const Self, start)
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:343 - `Transfer_ProcessForFinder::Transferring()`
+    pub fn transferring(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_FinderProcess_inherited_Transferring(
+                self as *mut Self,
+                start,
+                theProgress,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:350 - `Transfer_ProcessForFinder::Transfer()`
+    pub fn transfer(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_Transfer(
+                self as *mut Self,
+                start,
+                theProgress,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:358 - `Transfer_ProcessForFinder::SetErrorHandle()`
     pub fn set_error_handle(&mut self, err: bool) {
         unsafe {
@@ -945,6 +1445,25 @@ impl FinderProcess {
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:361 - `Transfer_ProcessForFinder::ErrorHandle()`
     pub fn error_handle(&self) -> bool {
         unsafe { crate::ffi::Transfer_FinderProcess_inherited_ErrorHandle(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:369 - `Transfer_ProcessForFinder::StartTrace()`
+    pub fn start_trace(
+        &self,
+        binder: &crate::ffi::HandleTransferBinder,
+        start: &crate::ffi::HandleTransferFinder,
+        level: i32,
+        mode: i32,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_StartTrace(
+                self as *const Self,
+                binder,
+                start,
+                level,
+                mode,
+            )
+        }
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:382 - `Transfer_ProcessForFinder::IsLooping()`
@@ -965,6 +1484,62 @@ impl FinderProcess {
                 erronly,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:421 - `Transfer_ProcessForFinder::CheckListOne()`
+    pub fn check_list_one(
+        &self,
+        start: &crate::ffi::HandleTransferFinder,
+        level: i32,
+        erronly: bool,
+    ) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_FinderProcess_inherited_CheckListOne(
+                self as *const Self,
+                start,
+                level,
+                erronly,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:428 - `Transfer_ProcessForFinder::IsCheckListEmpty()`
+    pub fn is_check_list_empty(
+        &self,
+        start: &crate::ffi::HandleTransferFinder,
+        level: i32,
+        erronly: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_IsCheckListEmpty(
+                self as *const Self,
+                start,
+                level,
+                erronly,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:437 - `Transfer_ProcessForFinder::RemoveResult()`
+    pub fn remove_result(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        level: i32,
+        compute: bool,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_RemoveResult(
+                self as *mut Self,
+                start,
+                level,
+                compute,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:444 - `Transfer_ProcessForFinder::CheckNum()`
+    pub fn check_num(&self, start: &crate::ffi::HandleTransferFinder) -> i32 {
+        unsafe { crate::ffi::Transfer_FinderProcess_inherited_CheckNum(self as *const Self, start) }
     }
 }
 
@@ -1137,6 +1712,94 @@ impl ProcessForFinder {
         }
     }
 
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:85 - `Transfer_ProcessForFinder::Find()`
+    /// Returns the Binder which is linked with a starting Object
+    /// It can either bring a Result (Transfer done) or none (for a
+    /// pre-binding).
+    /// If no Binder is linked with <start>, returns a Null Handle
+    /// Considers a category number, by default 0
+    pub fn find(
+        &self,
+        start: &crate::ffi::HandleTransferFinder,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ProcessForFinder_find(
+                self as *const Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:91 - `Transfer_ProcessForFinder::IsBound()`
+    /// Returns True if a Result (whatever its form) is Bound with
+    /// a starting Object. I.e., if a Binder with a Result set,
+    /// is linked with it
+    /// Considers a category number, by default 0
+    pub fn is_bound(&self, start: &crate::ffi::HandleTransferFinder) -> bool {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_is_bound(self as *const Self, start) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:96 - `Transfer_ProcessForFinder::IsAlreadyUsed()`
+    /// Returns True if the result of the transfer of an object is
+    /// already used in other ones. If it is, Rebind cannot change it.
+    /// Considers a category number, by default 0
+    pub fn is_already_used(&self, start: &crate::ffi::HandleTransferFinder) -> bool {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_is_already_used(self as *const Self, start) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:102 - `Transfer_ProcessForFinder::Bind()`
+    /// Creates a Link a starting Object with a Binder. This Binder
+    /// can either bring a Result (effective Binding) or none (it can
+    /// be set later : pre-binding).
+    /// Considers a category number, by default 0
+    pub fn bind(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        binder: &crate::ffi::HandleTransferBinder,
+    ) {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_bind(self as *mut Self, start, binder) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:110 - `Transfer_ProcessForFinder::Rebind()`
+    /// Changes the Binder linked with a starting Object for its
+    /// unitary transfer. This it can be useful when the exact form
+    /// of the result is known once the transfer is widely engaged.
+    /// This can be done only on first transfer.
+    /// Considers a category number, by default 0
+    pub fn rebind(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        binder: &crate::ffi::HandleTransferBinder,
+    ) {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_rebind(self as *mut Self, start, binder) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:118 - `Transfer_ProcessForFinder::Unbind()`
+    /// Removes the Binder linked with a starting object
+    /// If this Binder brings a non-empty Check, it is replaced by
+    /// a VoidBinder. Also removes from the list of Roots as required.
+    /// Returns True if done, False if <start> was not bound
+    /// Considers a category number, by default 0
+    pub fn unbind(&mut self, start: &crate::ffi::HandleTransferFinder) -> bool {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_unbind(self as *mut Self, start) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:123 - `Transfer_ProcessForFinder::FindElseBind()`
+    /// Returns a Binder for a starting entity, as follows :
+    /// Tries to Find the already bound one
+    /// If none found, creates a VoidBinder and Binds it
+    pub fn find_else_bind(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ProcessForFinder_find_else_bind(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
     /// **Source:** `Transfer_ProcessForFinder.hxx`:126 - `Transfer_ProcessForFinder::SetMessenger()`
     /// Sets Messenger used for outputting messages.
     pub fn set_messenger(&mut self, messenger: &crate::ffi::HandleMessageMessenger) {
@@ -1175,11 +1838,205 @@ impl ProcessForFinder {
         unsafe { crate::ffi::Transfer_ProcessForFinder_trace_level(self as *const Self) }
     }
 
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:146 - `Transfer_ProcessForFinder::SendFail()`
+    /// New name for AddFail (Msg)
+    pub fn send_fail(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_send_fail(self as *mut Self, start, amsg) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:149 - `Transfer_ProcessForFinder::SendWarning()`
+    /// New name for AddWarning (Msg)
+    pub fn send_warning(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_ProcessForFinder_send_warning(self as *mut Self, start, amsg)
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:153 - `Transfer_ProcessForFinder::SendMsg()`
+    /// Adds an information message
+    /// Trace is filled if trace level is at least 3
+    pub fn send_msg(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_send_msg(self as *mut Self, start, amsg) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:157 - `Transfer_ProcessForFinder::AddFail()`
+    /// Adds an Error message to a starting entity (to the check of
+    /// its Binder of category 0, as a Fail)
+    pub fn add_fail_handletransferfinder_charptr2(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        mess: &str,
+        orig: &str,
+    ) {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        let c_orig = std::ffi::CString::new(orig).unwrap();
+        unsafe {
+            crate::ffi::Transfer_ProcessForFinder_add_fail_handletransferfinder_charptr2(
+                self as *mut Self,
+                start,
+                c_mess.as_ptr(),
+                c_orig.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:162 - `Transfer_ProcessForFinder::AddError()`
+    /// (other name of AddFail, maintained for compatibility)
+    pub fn add_error(&mut self, start: &crate::ffi::HandleTransferFinder, mess: &str, orig: &str) {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        let c_orig = std::ffi::CString::new(orig).unwrap();
+        unsafe {
+            crate::ffi::Transfer_ProcessForFinder_add_error(
+                self as *mut Self,
+                start,
+                c_mess.as_ptr(),
+                c_orig.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:168 - `Transfer_ProcessForFinder::AddFail()`
+    /// Adds an Error Message to a starting entity from the definition
+    /// of a Msg (Original+Value)
+    pub fn add_fail_handletransferfinder_msg(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_ProcessForFinder_add_fail_handletransferfinder_msg(
+                self as *mut Self,
+                start,
+                amsg,
+            )
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:172 - `Transfer_ProcessForFinder::AddWarning()`
+    /// Adds a Warning message to a starting entity (to the check of
+    /// its Binder of category 0)
+    pub fn add_warning_handletransferfinder_charptr2(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        mess: &str,
+        orig: &str,
+    ) {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        let c_orig = std::ffi::CString::new(orig).unwrap();
+        unsafe {
+            crate::ffi::Transfer_ProcessForFinder_add_warning_handletransferfinder_charptr2(
+                self as *mut Self,
+                start,
+                c_mess.as_ptr(),
+                c_orig.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:178 - `Transfer_ProcessForFinder::AddWarning()`
+    /// Adds a Warning Message to a starting entity from the definition
+    /// of a Msg (Original+Value)
+    pub fn add_warning_handletransferfinder_msg(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_ProcessForFinder_add_warning_handletransferfinder_msg(
+                self as *mut Self,
+                start,
+                amsg,
+            )
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:180 - `Transfer_ProcessForFinder::Mend()`
+    pub fn mend(&mut self, start: &crate::ffi::HandleTransferFinder, pref: &str) {
+        let c_pref = std::ffi::CString::new(pref).unwrap();
+        unsafe {
+            crate::ffi::Transfer_ProcessForFinder_mend(self as *mut Self, start, c_pref.as_ptr())
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:209 - `Transfer_ProcessForFinder::Check()`
+    /// Returns the Check attached to a starting entity. If <start>
+    /// is unknown, returns an empty Check
+    /// Adds a case name to a starting entity
+    /// Adds a case value to a starting entity
+    /// Returns the complete case list for an entity. Null Handle if empty
+    /// In the list of mapped items (between 1 and NbMapped),
+    /// searches for the first item which follows <num0>(not included)
+    /// and which has an attribute named <name>
+    /// Attributes are brought by Binders
+    /// Hence, allows such an iteration
+    ///
+    /// for (num = TP->NextItemWithAttribute(name,0);
+    /// num > 0;
+    /// num = TP->NextItemWithAttribute(name,num) {
+    /// .. process mapped item <num>
+    /// }
+    /// Returns the type of an Attribute attached to binders
+    /// If this name gives no Attribute, returns ParamVoid
+    /// If this name gives several different types, returns ParamMisc
+    /// Else, returns the effective type (ParamInteger, ParamReal,
+    /// ParamIdent, or ParamText)
+    /// Returns the list of recorded Attribute Names, as a Dictionary
+    /// of Integer : each value gives the count of items which bring
+    /// this attribute name
+    /// By default, considers all the attribute names
+    /// If <rootname> is given, considers only the attribute names
+    /// which begin by <rootname>
+    pub fn check(
+        &self,
+        start: &crate::ffi::HandleTransferFinder,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ProcessForFinder_check(
+                self as *const Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:231 - `Transfer_ProcessForFinder::BindMultiple()`
+    /// Prepares an object <start> to be bound with several results.
+    /// If no Binder is yet attached to <obj>, a MultipleBinder
+    /// is created, empty. If a Binder is already set, it must
+    /// accept Multiple Binding.
+    /// Considers a category number, by default 0
+    pub fn bind_multiple(&mut self, start: &crate::ffi::HandleTransferFinder) {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_bind_multiple(self as *mut Self, start) }
+    }
+
     /// **Source:** `Transfer_ProcessForFinder.hxx`:286 - `Transfer_ProcessForFinder::NbMapped()`
     /// Returns the maximum possible value for Map Index
     /// (no result can be bound with a value greater than it)
     pub fn nb_mapped(&self) -> i32 {
         unsafe { crate::ffi::Transfer_ProcessForFinder_nb_mapped(self as *const Self) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:289 - `Transfer_ProcessForFinder::Mapped()`
+    /// Returns the Starting Object bound to an Index,
+    pub fn mapped(&self, num: i32) -> &crate::ffi::HandleTransferFinder {
+        unsafe { &*(crate::ffi::Transfer_ProcessForFinder_mapped(self as *const Self, num)) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:292 - `Transfer_ProcessForFinder::MapIndex()`
+    /// Returns the Index value bound to a Starting Object, 0 if none
+    pub fn map_index(&self, start: &crate::ffi::HandleTransferFinder) -> i32 {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_map_index(self as *const Self, start) }
     }
 
     /// **Source:** `Transfer_ProcessForFinder.hxx`:296 - `Transfer_ProcessForFinder::MapItem()`
@@ -1192,6 +2049,14 @@ impl ProcessForFinder {
                 num,
             ))
         }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:301 - `Transfer_ProcessForFinder::SetRoot()`
+    /// Declares <obj> (and its Result) as Root. This status will be
+    /// later exploited by RootResult, see below (Result can be
+    /// produced at any time)
+    pub fn set_root(&mut self, start: &crate::ffi::HandleTransferFinder) {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_set_root(self as *mut Self, start) }
     }
 
     /// **Source:** `Transfer_ProcessForFinder.hxx`:310 - `Transfer_ProcessForFinder::SetRootManagement()`
@@ -1214,6 +2079,12 @@ impl ProcessForFinder {
         unsafe { crate::ffi::Transfer_ProcessForFinder_nb_roots(self as *const Self) }
     }
 
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:316 - `Transfer_ProcessForFinder::Root()`
+    /// Returns a Root Entity given its number in the list (1-NbRoots)
+    pub fn root(&self, num: i32) -> &crate::ffi::HandleTransferFinder {
+        unsafe { &*(crate::ffi::Transfer_ProcessForFinder_root(self as *const Self, num)) }
+    }
+
     /// **Source:** `Transfer_ProcessForFinder.hxx`:320 - `Transfer_ProcessForFinder::RootItem()`
     /// Returns the Binder bound with a Root Entity given its number
     /// Considers a category number, by default 0
@@ -1224,6 +2095,13 @@ impl ProcessForFinder {
                 num,
             ))
         }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:324 - `Transfer_ProcessForFinder::RootIndex()`
+    /// Returns the index in the list of roots for a starting item,
+    /// or 0 if it is not recorded as a root
+    pub fn root_index(&self, start: &crate::ffi::HandleTransferFinder) -> i32 {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_root_index(self as *const Self, start) }
     }
 
     /// **Source:** `Transfer_ProcessForFinder.hxx`:329 - `Transfer_ProcessForFinder::NestingLevel()`
@@ -1241,6 +2119,45 @@ impl ProcessForFinder {
         unsafe { crate::ffi::Transfer_ProcessForFinder_reset_nesting_level(self as *mut Self) }
     }
 
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:337 - `Transfer_ProcessForFinder::Recognize()`
+    /// Tells if <start> has been recognized as good candidate for
+    /// Transfer. i.e. queries the Actor and its Nexts
+    pub fn recognize(&self, start: &crate::ffi::HandleTransferFinder) -> bool {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_recognize(self as *const Self, start) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:343 - `Transfer_ProcessForFinder::Transferring()`
+    /// Performs the Transfer of a Starting Object, by calling
+    /// the method TransferProduct (see below).
+    /// Mapping and Roots are managed : nothing is done if a Result is
+    /// already Bound, an exception is raised in case of error.
+    pub fn transferring(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ProcessForFinder_transferring(
+                self as *mut Self,
+                start,
+                theProgress,
+            ))
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:350 - `Transfer_ProcessForFinder::Transfer()`
+    /// Same as Transferring but does not return the Binder.
+    /// Simply returns True in case of success (for user call)
+    pub fn transfer(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Transfer_ProcessForFinder_transfer(self as *mut Self, start, theProgress)
+        }
+    }
+
     /// **Source:** `Transfer_ProcessForFinder.hxx`:358 - `Transfer_ProcessForFinder::SetErrorHandle()`
     /// Allows controls if exceptions will be handled
     /// Transfer Operations
@@ -1255,6 +2172,31 @@ impl ProcessForFinder {
     /// Returns error handling flag
     pub fn error_handle(&self) -> bool {
         unsafe { crate::ffi::Transfer_ProcessForFinder_error_handle(self as *const Self) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:369 - `Transfer_ProcessForFinder::StartTrace()`
+    /// Method called when trace is asked
+    /// Calls PrintTrace to display information relevant for starting
+    /// objects (which can be redefined)
+    /// <level> is Nesting Level of Transfer (0 = root)
+    /// <mode> controls the way the trace is done :
+    /// 0 neutral, 1 for Error, 2 for Warning message, 3 for new Root
+    pub fn start_trace(
+        &self,
+        binder: &crate::ffi::HandleTransferBinder,
+        start: &crate::ffi::HandleTransferFinder,
+        level: i32,
+        mode: i32,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_ProcessForFinder_start_trace(
+                self as *const Self,
+                binder,
+                start,
+                level,
+                mode,
+            )
+        }
     }
 
     /// **Source:** `Transfer_ProcessForFinder.hxx`:382 - `Transfer_ProcessForFinder::IsLooping()`
@@ -1281,6 +2223,76 @@ impl ProcessForFinder {
                 erronly,
             ))
         }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:421 - `Transfer_ProcessForFinder::CheckListOne()`
+    /// Returns a CheckList for one starting object
+    /// <level> interpreted as by ResultOne
+    /// If <erronly> is True, checks with Warnings only are ignored
+    pub fn check_list_one(
+        &self,
+        start: &crate::ffi::HandleTransferFinder,
+        level: i32,
+        erronly: bool,
+    ) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ProcessForFinder_check_list_one(
+                self as *const Self,
+                start,
+                level,
+                erronly,
+            ))
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:428 - `Transfer_ProcessForFinder::IsCheckListEmpty()`
+    /// Returns True if no check message is attached to a starting
+    /// object. <level> interpreted as by ResultOne
+    /// If <erronly> is True, checks with Warnings only are ignored
+    pub fn is_check_list_empty(
+        &self,
+        start: &crate::ffi::HandleTransferFinder,
+        level: i32,
+        erronly: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Transfer_ProcessForFinder_is_check_list_empty(
+                self as *const Self,
+                start,
+                level,
+                erronly,
+            )
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:437 - `Transfer_ProcessForFinder::RemoveResult()`
+    /// Removes Results attached to (== Unbinds) a given object and,
+    /// according <level> :
+    /// <level> = 0 : only it
+    /// <level> = 1 : it plus its immediately owned sub-results(scope)
+    /// <level> = 2 : it plus all its owned sub-results(scope)
+    pub fn remove_result(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        level: i32,
+        compute: bool,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_ProcessForFinder_remove_result(
+                self as *mut Self,
+                start,
+                level,
+                compute,
+            )
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:444 - `Transfer_ProcessForFinder::CheckNum()`
+    /// Computes a number to be associated to a starting object in
+    /// a check or a check-list
+    /// By default, returns 0; can be redefined
+    pub fn check_num(&self, start: &crate::ffi::HandleTransferFinder) -> i32 {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_check_num(self as *const Self, start) }
     }
 
     /// **Source:** `Transfer_ProcessForFinder.hxx`:446 - `Transfer_ProcessForFinder::DynamicType()`
@@ -1339,7 +2351,7 @@ impl HandleTransferProcessForFinder {
 // ========================
 
 pub use crate::ffi::{
-    Transfer_Finder as Finder, Transfer_IteratorOfProcessForFinder as IteratorOfProcessForFinder,
+    Transfer_IteratorOfProcessForFinder as IteratorOfProcessForFinder,
     Transfer_ProcessForTransient as ProcessForTransient,
     Transfer_ResultFromModel as ResultFromModel, Transfer_SequenceOfFinder as SequenceOfFinder,
     Transfer_SimpleBinderOfTransient as SimpleBinderOfTransient,

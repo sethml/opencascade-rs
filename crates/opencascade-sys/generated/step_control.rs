@@ -210,6 +210,11 @@ impl ActorWrite {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorWrite_ctor()) }
     }
 
+    /// **Source:** `STEPControl_ActorWrite.hxx`:47 - `STEPControl_ActorWrite::Recognize()`
+    pub fn recognize(&mut self, start: &crate::ffi::HandleTransferFinder) -> bool {
+        unsafe { crate::ffi::STEPControl_ActorWrite_recognize(self as *mut Self, start) }
+    }
+
     /// **Source:** `STEPControl_ActorWrite.hxx`:81 - `STEPControl_ActorWrite::SetMode()`
     pub fn set_mode(&mut self, M: crate::step_control::StepModelType) {
         unsafe { crate::ffi::STEPControl_ActorWrite_set_mode(self as *mut Self, M.into()) }
@@ -297,6 +302,23 @@ impl ActorWrite {
         unsafe {
             &mut *(crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfProcessForFinder_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:47 - `Transfer_ActorOfFinderProcess::Transferring()`
+    pub fn transferring(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        TP: &crate::ffi::HandleTransferProcessForFinder,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorWrite_inherited_Transferring(
+                self as *mut Self,
+                start,
+                TP,
+                theProgress,
             ))
         }
     }

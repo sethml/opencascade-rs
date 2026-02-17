@@ -74,6 +74,8 @@ pub enum ExclusionReason {
     UnbindableFunction,
     /// Function references Handle types for classes without Handle declarations
     UnknownHandleType,
+    /// Method has const char*& or const char* const& parameter (needs manual binding)
+    StringRefParam { param_name: String, type_name: String },
 }
 
 /// Binding status for a symbol
@@ -609,6 +611,65 @@ pub fn static_method_has_unsupported_by_value_params(_method: &StaticMethod, _al
     None
 }
 
+/// Check if a method has const char*& or const char* const& parameters.
+/// These require manual bindings because:
+/// - const char*& (output param): Rust's &str is immutable, can't write back to C++
+/// - const char* const&: Generator converts to &str but C++ expects &const char*
+pub fn method_has_string_ref_param(method: &Method) -> Option<(String, String)> {
+    for param in &method.params {
+        let param_type = &param.ty;
+        // Check for Standard_CString& (const char*&)
+        if let Type::MutRef(inner) = param_type {
+            if let Type::ConstPtr(inner2) = inner.as_ref() {
+                if let Type::Class(name) = inner2.as_ref() {
+                    if name == "char" {
+                        return Some((param.name.clone(), "const char*&".to_string()));
+                    }
+                }
+            }
+        }
+        // Check for const Standard_CString& (const char* const&)
+        if let Type::ConstRef(inner) = param_type {
+            if let Type::ConstPtr(inner2) = inner.as_ref() {
+                if let Type::Class(name) = inner2.as_ref() {
+                    if name == "char" {
+                        return Some((param.name.clone(), "const char* const&".to_string()));
+                    }
+                }
+            }
+        }
+    }
+    None
+}
+
+/// Check if a static method has const char*& or const char* const& parameters.
+pub fn static_method_has_string_ref_param(method: &StaticMethod) -> Option<(String, String)> {
+    for param in &method.params {
+        let param_type = &param.ty;
+        // Check for Standard_CString& (const char*&)
+        if let Type::MutRef(inner) = param_type {
+            if let Type::ConstPtr(inner2) = inner.as_ref() {
+                if let Type::Class(name) = inner2.as_ref() {
+                    if name == "char" {
+                        return Some((param.name.clone(), "const char*&".to_string()));
+                    }
+                }
+            }
+        }
+        // Check for const Standard_CString& (const char* const&)
+        if let Type::ConstRef(inner) = param_type {
+            if let Type::ConstPtr(inner2) = inner.as_ref() {
+                if let Type::Class(name) = inner2.as_ref() {
+                    if name == "char" {
+                        return Some((param.name.clone(), "const char* const&".to_string()));
+                    }
+                }
+            }
+        }
+    }
+    None
+}
+
 /// Convert a method name to safe Rust identifier
 fn safe_method_name(name: &str) -> String {
     let snake_name = name.to_snake_case();
@@ -1034,6 +1095,8 @@ fn resolve_method(
         BindingStatus::Excluded(ExclusionReason::NeedsExplicitLifetimes)
     } else if let Some((param_name, type_name)) = method_has_unsupported_by_value_params(method, all_enum_names) {
         BindingStatus::Excluded(ExclusionReason::UnsupportedByValueParam { param_name, type_name })
+    } else if let Some((param_name, type_name)) = method_has_string_ref_param(method) {
+        BindingStatus::Excluded(ExclusionReason::StringRefParam { param_name, type_name })
     } else {
         BindingStatus::Included
     };
@@ -1090,6 +1153,8 @@ fn resolve_static_method(
         BindingStatus::Excluded(ExclusionReason::UnbindableStaticMethod)
     } else if let Some((param_name, type_name)) = static_method_has_unsupported_by_value_params(method, all_enum_names) {
         BindingStatus::Excluded(ExclusionReason::UnsupportedByValueParam { param_name, type_name })
+    } else if let Some((param_name, type_name)) = static_method_has_string_ref_param(method) {
+        BindingStatus::Excluded(ExclusionReason::StringRefParam { param_name, type_name })
     } else {
         BindingStatus::Included
     };
