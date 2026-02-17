@@ -145,6 +145,279 @@ impl LexicalCompare {
 }
 
 // ========================
+// From Resource_Manager.hxx
+// ========================
+
+/// **Source:** `Resource_Manager.hxx`:36 - `Resource_Manager`
+/// Defines a resource structure and its management methods.
+pub use crate::ffi::Resource_Manager as Manager;
+
+unsafe impl crate::CppDeletable for Manager {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Resource_Manager_destructor(ptr);
+    }
+}
+
+impl Manager {
+    /// **Source:** `Resource_Manager.hxx`:52 - `Resource_Manager::Resource_Manager()`
+    /// Create a Resource manager.
+    /// Attempts to find the two following files:
+    /// $CSF_`aName`Defaults/aName
+    /// $CSF_`aName`UserDefaults/aName
+    /// and load them respectively into a reference and a user resource structure.
+    ///
+    /// If CSF_ResourceVerbose defined, seeked files will be printed.
+    ///
+    /// FILE SYNTAX
+    /// The syntax of a resource file is a sequence of resource
+    /// lines terminated by newline characters or end of file.  The
+    /// syntax of an individual resource line is:
+    pub fn new_charptr_bool(aName: &str, Verbose: bool) -> crate::OwnedPtr<Self> {
+        let c_aName = std::ffi::CString::new(aName).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Resource_Manager_ctor_charptr_bool(
+                c_aName.as_ptr(),
+                Verbose,
+            ))
+        }
+    }
+
+    /// **Source:** `Resource_Manager.hxx`:56 - `Resource_Manager::Resource_Manager()`
+    /// Create an empty Resource manager
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Resource_Manager_ctor()) }
+    }
+
+    /// **Source:** `Resource_Manager.hxx`:63 - `Resource_Manager::Resource_Manager()`
+    /// Create a Resource manager.
+    /// @param[in] theName  description file name
+    /// @param[in] theDefaultsDirectory   default folder for looking description file
+    /// @param[in] theUserDefaultsDirectory  user folder for looking description file
+    /// @param[in] theIsVerbose  print verbose messages
+    pub fn new_asciistring3_bool(
+        theName: &crate::ffi::TCollection_AsciiString,
+        theDefaultsDirectory: &crate::ffi::TCollection_AsciiString,
+        theUserDefaultsDirectory: &crate::ffi::TCollection_AsciiString,
+        theIsVerbose: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Resource_Manager_ctor_asciistring3_bool(
+                theName,
+                theDefaultsDirectory,
+                theUserDefaultsDirectory,
+                theIsVerbose,
+            ))
+        }
+    }
+
+    /// **Source:** `Resource_Manager.hxx`:52 - `Resource_Manager::Resource_Manager()`
+    /// Create a Resource manager.
+    /// Attempts to find the two following files:
+    /// $CSF_`aName`Defaults/aName
+    /// $CSF_`aName`UserDefaults/aName
+    /// and load them respectively into a reference and a user resource structure.
+    ///
+    /// If CSF_ResourceVerbose defined, seeked files will be printed.
+    ///
+    /// FILE SYNTAX
+    /// The syntax of a resource file is a sequence of resource
+    /// lines terminated by newline characters or end of file.  The
+    /// syntax of an individual resource line is:
+    pub fn new_charptr(aName: &str) -> crate::OwnedPtr<Self> {
+        Self::new_charptr_bool(aName, false)
+    }
+
+    /// **Source:** `Resource_Manager.hxx`:63 - `Resource_Manager::Resource_Manager()`
+    /// Create a Resource manager.
+    /// @param[in] theName  description file name
+    /// @param[in] theDefaultsDirectory   default folder for looking description file
+    /// @param[in] theUserDefaultsDirectory  user folder for looking description file
+    /// @param[in] theIsVerbose  print verbose messages
+    pub fn new_asciistring3(
+        theName: &crate::ffi::TCollection_AsciiString,
+        theDefaultsDirectory: &crate::ffi::TCollection_AsciiString,
+        theUserDefaultsDirectory: &crate::ffi::TCollection_AsciiString,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_asciistring3_bool(theName, theDefaultsDirectory, theUserDefaultsDirectory, false)
+    }
+
+    /// **Source:** `Resource_Manager.hxx`:38 - `Resource_Manager::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Resource_Manager_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Resource_Manager.hxx`:70 - `Resource_Manager::Save()`
+    /// Save the user resource structure in the specified file.
+    /// Creates the file if it does not exist.
+    pub fn save(&self) -> bool {
+        unsafe { crate::ffi::Resource_Manager_save(self as *const Self) }
+    }
+
+    /// **Source:** `Resource_Manager.hxx`:73 - `Resource_Manager::Find()`
+    /// returns True if the Resource does exist.
+    pub fn find_charptr(&self, aResource: &str) -> bool {
+        let c_aResource = std::ffi::CString::new(aResource).unwrap();
+        unsafe {
+            crate::ffi::Resource_Manager_find_charptr(self as *const Self, c_aResource.as_ptr())
+        }
+    }
+
+    /// **Source:** `Resource_Manager.hxx`:76 - `Resource_Manager::Find()`
+    /// returns True if the Resource does exist.
+    pub fn find_asciistring2(
+        &self,
+        theResource: &crate::ffi::TCollection_AsciiString,
+        theValue: &mut crate::ffi::TCollection_AsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Resource_Manager_find_asciistring2(
+                self as *const Self,
+                theResource,
+                theValue,
+            )
+        }
+    }
+
+    /// **Source:** `Resource_Manager.hxx`:81 - `Resource_Manager::Integer()`
+    /// Gets the value of an integer resource according to its
+    /// instance and its type.
+    pub fn integer(&self, aResourceName: &str) -> i32 {
+        let c_aResourceName = std::ffi::CString::new(aResourceName).unwrap();
+        unsafe {
+            crate::ffi::Resource_Manager_integer(self as *const Self, c_aResourceName.as_ptr())
+        }
+    }
+
+    /// **Source:** `Resource_Manager.hxx`:85 - `Resource_Manager::Real()`
+    /// Gets the value of a real resource according to its instance
+    /// and its type.
+    pub fn real(&self, aResourceName: &str) -> f64 {
+        let c_aResourceName = std::ffi::CString::new(aResourceName).unwrap();
+        unsafe { crate::ffi::Resource_Manager_real(self as *const Self, c_aResourceName.as_ptr()) }
+    }
+
+    /// **Source:** `Resource_Manager.hxx`:89 - `Resource_Manager::Value()`
+    /// Gets the value of a CString resource according to its instance
+    /// and its type.
+    pub fn value(&self, aResourceName: &str) -> String {
+        let c_aResourceName = std::ffi::CString::new(aResourceName).unwrap();
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Resource_Manager_value(
+                self as *const Self,
+                c_aResourceName.as_ptr(),
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `Resource_Manager.hxx`:97 - `Resource_Manager::SetResource()`
+    /// Sets the new value of an integer resource.
+    /// If the resource does not exist, it is created.
+    pub fn set_resource_charptr_int(&mut self, aResourceName: &str, aValue: i32) {
+        let c_aResourceName = std::ffi::CString::new(aResourceName).unwrap();
+        unsafe {
+            crate::ffi::Resource_Manager_set_resource_charptr_int(
+                self as *mut Self,
+                c_aResourceName.as_ptr(),
+                aValue,
+            )
+        }
+    }
+
+    /// **Source:** `Resource_Manager.hxx`:102 - `Resource_Manager::SetResource()`
+    /// Sets the new value of a real resource.
+    /// If the resource does not exist, it is created.
+    pub fn set_resource_charptr_real(&mut self, aResourceName: &str, aValue: f64) {
+        let c_aResourceName = std::ffi::CString::new(aResourceName).unwrap();
+        unsafe {
+            crate::ffi::Resource_Manager_set_resource_charptr_real(
+                self as *mut Self,
+                c_aResourceName.as_ptr(),
+                aValue,
+            )
+        }
+    }
+
+    /// **Source:** `Resource_Manager.hxx`:107 - `Resource_Manager::SetResource()`
+    /// Sets the new value of an CString resource.
+    /// If the resource does not exist, it is created.
+    pub fn set_resource_charptr2(&mut self, aResourceName: &str, aValue: &str) {
+        let c_aResourceName = std::ffi::CString::new(aResourceName).unwrap();
+        let c_aValue = std::ffi::CString::new(aValue).unwrap();
+        unsafe {
+            crate::ffi::Resource_Manager_set_resource_charptr2(
+                self as *mut Self,
+                c_aResourceName.as_ptr(),
+                c_aValue.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `Resource_Manager.hxx`:127 - `Resource_Manager::IsInitialized()`
+    /// Returns true if Resource have been found
+    pub fn is_initialized(&self) -> bool {
+        unsafe { crate::ffi::Resource_Manager_is_initialized(self as *const Self) }
+    }
+
+    /// **Source:** `Resource_Manager.hxx`:38 - `Resource_Manager::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Resource_Manager_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `Resource_Manager.hxx`:38 - `Resource_Manager::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Resource_Manager_get_type_descriptor()) }
+    }
+
+    /// **Source:** `Resource_Manager.hxx`:118 - `Resource_Manager::GetResourcePath()`
+    /// Gets the resource file full path by its name.
+    /// If corresponding environment variable is not set
+    /// or file doesn't exist returns empty string.
+    pub fn get_resource_path(
+        aPath: &mut crate::ffi::TCollection_AsciiString,
+        aName: &str,
+        isUserDefaults: bool,
+    ) {
+        let c_aName = std::ffi::CString::new(aName).unwrap();
+        unsafe {
+            crate::ffi::Resource_Manager_get_resource_path(aPath, c_aName.as_ptr(), isUserDefaults)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleResourceManager> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Resource_Manager_to_handle(obj.into_raw())) }
+    }
+}
+
+pub use crate::ffi::HandleResourceManager;
+
+unsafe impl crate::CppDeletable for HandleResourceManager {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleResourceManager_destructor(ptr);
+    }
+}
+
+impl HandleResourceManager {
+    /// Dereference this Handle to access the underlying Resource_Manager
+    pub fn get(&self) -> &crate::ffi::Resource_Manager {
+        unsafe { &*(crate::ffi::HandleResourceManager_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Resource_Manager
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Resource_Manager {
+        unsafe { &mut *(crate::ffi::HandleResourceManager_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From Resource_NoSuchResource.hxx
 // ========================
 
@@ -359,4 +632,4 @@ impl Unicode {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::Resource_Manager as Manager;
+pub use crate::ffi::Resource_DataMapOfAsciiStringAsciiString as DataMapOfAsciiStringAsciiString;

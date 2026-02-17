@@ -417,6 +417,26 @@ impl Area {
         unsafe { crate::ffi::XCAFDoc_Area_inherited_Restore(self as *mut Self, anAttribute) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_Area_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::XCAFDoc_Area_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_Area_inherited_Forget(self as *mut Self, aTransaction) }
@@ -425,6 +445,128 @@ impl Area {
     /// Inherited: **Source:** `TDataStd_Real.hxx`:87 - `TDataStd_Real::IsCaptured()`
     pub fn is_captured(&self) -> bool {
         unsafe { crate::ffi::XCAFDoc_Area_inherited_IsCaptured(self as *const Self) }
+    }
+}
+
+// ========================
+// From XCAFDoc_AssemblyGraph.hxx
+// ========================
+
+/// **Source:** `XCAFDoc_AssemblyGraph.hxx`:34 - `XCAFDoc_AssemblyGraph`
+pub use crate::ffi::XCAFDoc_AssemblyGraph as AssemblyGraph;
+
+unsafe impl crate::CppDeletable for AssemblyGraph {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XCAFDoc_AssemblyGraph_destructor(ptr);
+    }
+}
+
+impl AssemblyGraph {
+    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:90 - `XCAFDoc_AssemblyGraph::XCAFDoc_AssemblyGraph()`
+    /// \brief Constructs graph from XCAF label.
+    /// Construction of a formal graph will be done immediately. The specified
+    /// label is used as a starting position.
+    /// \param[in]  theDoc   - document to iterate.
+    /// \param[in]  theLabel - starting position.
+    pub fn new_label(theLabel: &crate::ffi::TDF_Label) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyGraph_ctor_label(theLabel)) }
+    }
+
+    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:97 - `XCAFDoc_AssemblyGraph::GetRoots()`
+    /// \brief Returns IDs of the root nodes.
+    /// \return IDs of the root nodes.
+    pub fn get_roots(&self) -> &crate::ffi::TColStd_PackedMapOfInteger {
+        unsafe { &*(crate::ffi::XCAFDoc_AssemblyGraph_get_roots(self as *const Self)) }
+    }
+
+    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:103 - `XCAFDoc_AssemblyGraph::IsDirectLink()`
+    /// \brief Checks whether the assembly graph contains (n1, n2) directed link.
+    /// \param[in]  theNode1 - one-based ID of the first node.
+    /// \param[in]  theNode2 - one-based ID of the second node.
+    /// \return true/false.
+    pub fn is_direct_link(&self, theNode1: i32, theNode2: i32) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_AssemblyGraph_is_direct_link(
+                self as *const Self,
+                theNode1,
+                theNode2,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:109 - `XCAFDoc_AssemblyGraph::HasChildren()`
+    /// \brief Checks whether direct children exist for the given node.
+    /// \param[in]  theNode - one-based node ID.
+    /// \return true/false.
+    pub fn has_children(&self, theNode: i32) -> bool {
+        unsafe { crate::ffi::XCAFDoc_AssemblyGraph_has_children(self as *const Self, theNode) }
+    }
+
+    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:117 - `XCAFDoc_AssemblyGraph::GetChildren()`
+    /// \brief Returns IDs of child nodes for the given node.
+    /// \param[in]  theNode - one-based node ID.
+    /// \return set of child IDs.
+    pub fn get_children(&self, theNode: i32) -> &crate::ffi::TColStd_PackedMapOfInteger {
+        unsafe { &*(crate::ffi::XCAFDoc_AssemblyGraph_get_children(self as *const Self, theNode)) }
+    }
+
+    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:131 - `XCAFDoc_AssemblyGraph::GetNode()`
+    /// \brief returns object ID by node ID.
+    /// \param[in]  theNode - one-based node ID.
+    /// \return persistent ID.
+    pub fn get_node(&self, theNode: i32) -> &crate::ffi::TDF_Label {
+        unsafe { &*(crate::ffi::XCAFDoc_AssemblyGraph_get_node(self as *const Self, theNode)) }
+    }
+
+    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:139 - `XCAFDoc_AssemblyGraph::NbNodes()`
+    /// \brief Returns the number of graph nodes.
+    /// \return number of graph nodes.
+    pub fn nb_nodes(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_AssemblyGraph_nb_nodes(self as *const Self) }
+    }
+
+    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:147 - `XCAFDoc_AssemblyGraph::NbLinks()`
+    /// \brief Returns the number of graph links.
+    /// \return number of graph links.
+    pub fn nb_links(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_AssemblyGraph_nb_links(self as *const Self) }
+    }
+
+    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:152 - `XCAFDoc_AssemblyGraph::NbOccurrences()`
+    /// Returns quantity of part usage occurrences.
+    /// \param[in]  theNode - one-based part ID.
+    /// \return usage occurrence quantity.
+    pub fn nb_occurrences(&self, theNode: i32) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_AssemblyGraph_nb_occurrences(self as *const Self, theNode) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocAssemblyGraph> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyGraph_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleXCAFDocAssemblyGraph;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocAssemblyGraph {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocAssemblyGraph_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocAssemblyGraph {
+    /// Dereference this Handle to access the underlying XCAFDoc_AssemblyGraph
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_AssemblyGraph {
+        unsafe { &*(crate::ffi::HandleXCAFDocAssemblyGraph_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_AssemblyGraph
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_AssemblyGraph {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocAssemblyGraph_get_mut(self as *mut Self)) }
     }
 }
 
@@ -449,20 +591,6 @@ impl AssemblyItemId {
     /// Constructs an empty item ID.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyItemId_ctor()) }
-    }
-
-    /// **Source:** `XCAFDoc_AssemblyItemId.hxx`:35 - `XCAFDoc_AssemblyItemId::XCAFDoc_AssemblyItemId()`
-    /// Constructs an item ID from a list of strings, where every
-    /// string is a label entry.
-    /// \param[in]  thePath - list of label entries.
-    pub fn new_listofasciistring(
-        thePath: &crate::ffi::TColStd_ListOfAsciiString,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyItemId_ctor_listofasciistring(
-                thePath,
-            ))
-        }
     }
 
     /// **Source:** `XCAFDoc_AssemblyItemId.hxx`:40 - `XCAFDoc_AssemblyItemId::XCAFDoc_AssemblyItemId()`
@@ -672,6 +800,17 @@ impl AssemblyItemRef {
         unsafe { crate::ffi::XCAFDoc_AssemblyItemRef_restore(self as *mut Self, theAttrFrom) }
     }
 
+    /// **Source:** `XCAFDoc_AssemblyItemRef.hxx`:144 - `XCAFDoc_AssemblyItemRef::Paste()`
+    pub fn paste(
+        &self,
+        theAttrInto: &crate::ffi::HandleTDFAttribute,
+        theRT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_AssemblyItemRef_paste(self as *const Self, theAttrInto, theRT)
+        }
+    }
+
     /// **Source:** `XCAFDoc_AssemblyItemRef.hxx`:34 - `XCAFDoc_AssemblyItemRef::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -876,6 +1015,13 @@ impl AssemblyItemRef {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::XCAFDoc_AssemblyItemRef_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -969,6 +1115,15 @@ impl Centroid {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Centroid_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `XCAFDoc_Centroid.hxx`:63 - `XCAFDoc_Centroid::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_Centroid_paste(self as *const Self, Into, RT) }
     }
 
     /// **Source:** `XCAFDoc_Centroid.hxx`:72 - `XCAFDoc_Centroid::DynamicType()`
@@ -1166,6 +1321,11 @@ impl Centroid {
                 self as *const Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::XCAFDoc_Centroid_inherited_References(self as *const Self, aDataSet) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
@@ -1647,6 +1807,31 @@ impl ClippingPlaneTool {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_References(
+                self as *const Self,
+                aDataSet,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -1740,6 +1925,15 @@ impl Color {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Color_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `XCAFDoc_Color.hxx`:84 - `XCAFDoc_Color::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_Color_paste(self as *const Self, Into, RT) }
     }
 
     /// **Source:** `XCAFDoc_Color.hxx`:91 - `XCAFDoc_Color::DynamicType()`
@@ -1924,6 +2118,11 @@ impl Color {
                 self as *const Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::XCAFDoc_Color_inherited_References(self as *const Self, aDataSet) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
@@ -2758,6 +2957,26 @@ impl ColorTool {
         unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_Restore(self as *mut Self, anAttribute) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_ColorTool_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_Forget(self as *mut Self, aTransaction) }
@@ -2851,6 +3070,15 @@ impl Datum {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Datum_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `XCAFDoc_Datum.hxx`:77 - `XCAFDoc_Datum::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_Datum_paste(self as *const Self, Into, RT) }
     }
 
     /// **Source:** `XCAFDoc_Datum.hxx`:84 - `XCAFDoc_Datum::DynamicType()`
@@ -3037,6 +3265,11 @@ impl Datum {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::XCAFDoc_Datum_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_Datum_inherited_Forget(self as *mut Self, aTransaction) }
@@ -3119,6 +3352,15 @@ impl DimTol {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTol_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `XCAFDoc_DimTol.hxx`:68 - `XCAFDoc_DimTol::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_DimTol_paste(self as *const Self, Into, RT) }
     }
 
     /// **Source:** `XCAFDoc_DimTol.hxx`:75 - `XCAFDoc_DimTol::DynamicType()`
@@ -3303,6 +3545,11 @@ impl DimTol {
                 self as *const Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::XCAFDoc_DimTol_inherited_References(self as *const Self, aDataSet) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
@@ -3578,6 +3825,26 @@ impl Dimension {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
     pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
         unsafe { crate::ffi::XCAFDoc_Dimension_inherited_Restore(self as *mut Self, anAttribute) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_Dimension_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::XCAFDoc_Dimension_inherited_References(self as *const Self, aDataSet) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
@@ -3984,10 +4251,116 @@ impl DocumentTool {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_DocumentTool_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::XCAFDoc_DocumentTool_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
             crate::ffi::XCAFDoc_DocumentTool_inherited_Forget(self as *mut Self, aTransaction)
+        }
+    }
+}
+
+// ========================
+// From XCAFDoc_Editor.hxx
+// ========================
+
+/// **Source:** `XCAFDoc_Editor.hxx`:29 - `XCAFDoc_Editor`
+/// Tool for edit structure of document.
+pub use crate::ffi::XCAFDoc_Editor as Editor;
+
+unsafe impl crate::CppDeletable for Editor {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XCAFDoc_Editor_destructor(ptr);
+    }
+}
+
+impl Editor {
+    /// **Source:** `XCAFDoc_Editor.hxx` - `XCAFDoc_Editor::XCAFDoc_Editor()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Editor_ctor()) }
+    }
+
+    /// **Source:** `XCAFDoc_Editor.hxx`:39 - `XCAFDoc_Editor::Expand()`
+    /// Converts shape (compound/compsolid/shell/wire) to assembly.
+    /// @param[in] theDoc input document
+    /// @param[in] theShape input shape label
+    /// @param[in] theRecursively recursively expand a compound subshape
+    /// @return True if shape successfully expanded
+    pub fn expand_label2_bool(
+        theDoc: &crate::ffi::TDF_Label,
+        theShape: &crate::ffi::TDF_Label,
+        theRecursively: bool,
+    ) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Editor_expand_label2_bool(theDoc, theShape, theRecursively) }
+    }
+
+    /// **Source:** `XCAFDoc_Editor.hxx`:48 - `XCAFDoc_Editor::Expand()`
+    /// Converts all compounds shapes in the document to assembly
+    /// @param[in] theDoc input document
+    /// @param[in] theRecursively recursively expand a compound subshape
+    /// @return True if shape successfully expanded
+    pub fn expand_label_bool(theDoc: &crate::ffi::TDF_Label, theRecursively: bool) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Editor_expand_label_bool(theDoc, theRecursively) }
+    }
+
+    /// **Source:** `XCAFDoc_Editor.hxx`:69 - `XCAFDoc_Editor::Extract()`
+    /// Clones the label to a new position, keeping the structure with all the attributes
+    /// @param[in] theSrcLabel original label to copy from
+    /// @param[in] theDstLabel label to set result as a component of or a main document's label to
+    /// simply set new shape
+    /// @param[in] theIsNoVisMat get a VisMaterial attributes as is or convert to color
+    /// @return True if shape successfully extracted
+    pub fn extract(
+        theSrcLabel: &crate::ffi::TDF_Label,
+        theDstLabel: &crate::ffi::TDF_Label,
+        theIsNoVisMat: bool,
+    ) -> bool {
+        unsafe { crate::ffi::XCAFDoc_Editor_extract(theSrcLabel, theDstLabel, theIsNoVisMat) }
+    }
+
+    /// **Source:** `XCAFDoc_Editor.hxx`:148 - `XCAFDoc_Editor::RescaleGeometry()`
+    /// Applies geometrical scaling to the following assembly components:
+    /// - part geometry
+    /// - sub-assembly/part occurrence location
+    /// - part's centroid, area and volume attributes
+    /// - PMIs (warnings and errors are reported if it is impossible to make changes)
+    /// Normally, should start from a root sub-assembly, but if theForceIfNotRoot true
+    /// scaling will be applied forcibly. If theLabel corresponds to the shape tool
+    /// scaling is applied to the whole assembly.
+    /// @param[in] theLabel starting label
+    /// @param[in] theScaleFactor scale factor, should be positive
+    /// @param[in] theForceIfNotRoot allows scaling of a non root assembly if true,
+    /// otherwise - returns false
+    /// @return true in case of success, otherwise - false.
+    pub fn rescale_geometry(
+        theLabel: &crate::ffi::TDF_Label,
+        theScaleFactor: f64,
+        theForceIfNotRoot: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_Editor_rescale_geometry(theLabel, theScaleFactor, theForceIfNotRoot)
         }
     }
 }
@@ -4275,6 +4648,28 @@ impl GeomTolerance {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_GeomTolerance_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::XCAFDoc_GeomTolerance_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -4351,11 +4746,25 @@ impl GraphNode {
         unsafe { crate::ffi::XCAFDoc_GraphNode_restore(self as *mut Self, with) }
     }
 
+    /// **Source:** `XCAFDoc_GraphNode.hxx`:128 - `XCAFDoc_GraphNode::Paste()`
+    pub fn paste(
+        &self,
+        into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_GraphNode_paste(self as *const Self, into, RT) }
+    }
+
     /// **Source:** `XCAFDoc_GraphNode.hxx`:131 - `XCAFDoc_GraphNode::NewEmpty()`
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GraphNode_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `XCAFDoc_GraphNode.hxx`:133 - `XCAFDoc_GraphNode::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::XCAFDoc_GraphNode_references(self as *const Self, aDataSet) }
     }
 
     /// **Source:** `XCAFDoc_GraphNode.hxx`:138 - `XCAFDoc_GraphNode::BeforeForget()`
@@ -5216,6 +5625,26 @@ impl LayerTool {
         unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_Restore(self as *mut Self, anAttribute) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_LayerTool_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_Forget(self as *mut Self, aTransaction) }
@@ -5275,6 +5704,15 @@ impl LengthUnit {
     /// **Source:** `XCAFDoc_LengthUnit.hxx`:81 - `XCAFDoc_LengthUnit::Restore()`
     pub fn restore(&mut self, theWith: &crate::ffi::HandleTDFAttribute) {
         unsafe { crate::ffi::XCAFDoc_LengthUnit_restore(self as *mut Self, theWith) }
+    }
+
+    /// **Source:** `XCAFDoc_LengthUnit.hxx`:83 - `XCAFDoc_LengthUnit::Paste()`
+    pub fn paste(
+        &self,
+        theInto: &crate::ffi::HandleTDFAttribute,
+        theRT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_LengthUnit_paste(self as *const Self, theInto, theRT) }
     }
 
     /// **Source:** `XCAFDoc_LengthUnit.hxx`:93 - `XCAFDoc_LengthUnit::DynamicType()`
@@ -5483,6 +5921,13 @@ impl LengthUnit {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::XCAFDoc_LengthUnit_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_LengthUnit_inherited_Forget(self as *mut Self, aTransaction) }
@@ -5537,6 +5982,15 @@ impl Location {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Location_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `XCAFDoc_Location.hxx`:59 - `XCAFDoc_Location::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_Location_paste(self as *const Self, Into, RT) }
     }
 
     /// **Source:** `XCAFDoc_Location.hxx`:66 - `XCAFDoc_Location::DynamicType()`
@@ -5729,6 +6183,11 @@ impl Location {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::XCAFDoc_Location_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_Location_inherited_Forget(self as *mut Self, aTransaction) }
@@ -5830,6 +6289,15 @@ impl Material {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Material_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `XCAFDoc_Material.hxx`:71 - `XCAFDoc_Material::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_Material_paste(self as *const Self, Into, RT) }
     }
 
     /// **Source:** `XCAFDoc_Material.hxx`:78 - `XCAFDoc_Material::DynamicType()`
@@ -6020,6 +6488,11 @@ impl Material {
                 self as *const Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::XCAFDoc_Material_inherited_References(self as *const Self, aDataSet) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
@@ -6381,6 +6854,28 @@ impl MaterialTool {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_MaterialTool_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::XCAFDoc_MaterialTool_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -6459,6 +6954,15 @@ impl Note {
     /// **Source:** `XCAFDoc_Note.hxx`:63 - `XCAFDoc_Note::Restore()`
     pub fn restore(&mut self, theAttrFrom: &crate::ffi::HandleTDFAttribute) {
         unsafe { crate::ffi::XCAFDoc_Note_restore(self as *mut Self, theAttrFrom) }
+    }
+
+    /// **Source:** `XCAFDoc_Note.hxx`:64 - `XCAFDoc_Note::Paste()`
+    pub fn paste(
+        &self,
+        theAttrInto: &crate::ffi::HandleTDFAttribute,
+        theRT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_Note_paste(self as *const Self, theAttrInto, theRT) }
     }
 
     /// **Source:** `XCAFDoc_Note.hxx`:31 - `XCAFDoc_Note::get_type_name()`
@@ -6647,6 +7151,11 @@ impl Note {
                 self as *const Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::XCAFDoc_Note_inherited_References(self as *const Self, aDataSet) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
@@ -6919,6 +7428,28 @@ impl NoteBalloon {
         unsafe { crate::ffi::XCAFDoc_NoteBalloon_inherited_Restore(self as *mut Self, anAttribute) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_NoteBalloon_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::XCAFDoc_NoteBalloon_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_NoteBalloon_inherited_Forget(self as *mut Self, aTransaction) }
@@ -7062,6 +7593,15 @@ impl NoteBinData {
     /// **Source:** `XCAFDoc_NoteBinData.hxx`:112 - `XCAFDoc_NoteBinData::Restore()`
     pub fn restore(&mut self, theAttrFrom: &crate::ffi::HandleTDFAttribute) {
         unsafe { crate::ffi::XCAFDoc_NoteBinData_restore(self as *mut Self, theAttrFrom) }
+    }
+
+    /// **Source:** `XCAFDoc_NoteBinData.hxx`:113 - `XCAFDoc_NoteBinData::Paste()`
+    pub fn paste(
+        &self,
+        theAttrInto: &crate::ffi::HandleTDFAttribute,
+        theRT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_NoteBinData_paste(self as *const Self, theAttrInto, theRT) }
     }
 
     /// **Source:** `XCAFDoc_NoteBinData.hxx`:27 - `XCAFDoc_NoteBinData::get_type_name()`
@@ -7270,6 +7810,13 @@ impl NoteBinData {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::XCAFDoc_NoteBinData_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_NoteBinData_inherited_Forget(self as *mut Self, aTransaction) }
@@ -7361,6 +7908,15 @@ impl NoteComment {
     /// **Source:** `XCAFDoc_NoteComment.hxx`:56 - `XCAFDoc_NoteComment::Restore()`
     pub fn restore(&mut self, theAttrFrom: &crate::ffi::HandleTDFAttribute) {
         unsafe { crate::ffi::XCAFDoc_NoteComment_restore(self as *mut Self, theAttrFrom) }
+    }
+
+    /// **Source:** `XCAFDoc_NoteComment.hxx`:57 - `XCAFDoc_NoteComment::Paste()`
+    pub fn paste(
+        &self,
+        theAttrInto: &crate::ffi::HandleTDFAttribute,
+        theRT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_NoteComment_paste(self as *const Self, theAttrInto, theRT) }
     }
 
     /// **Source:** `XCAFDoc_NoteComment.hxx`:24 - `XCAFDoc_NoteComment::get_type_name()`
@@ -7566,6 +8122,13 @@ impl NoteComment {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteComment_inherited_BackupCopy(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::XCAFDoc_NoteComment_inherited_References(self as *const Self, aDataSet)
         }
     }
 
@@ -8373,6 +8936,26 @@ impl NotesTool {
         unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_Restore(self as *mut Self, anAttribute) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_NotesTool_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_Forget(self as *mut Self, aTransaction) }
@@ -8430,6 +9013,15 @@ impl ShapeMapTool {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `XCAFDoc_ShapeMapTool.hxx`:58 - `XCAFDoc_ShapeMapTool::Paste()`
+    pub fn paste(
+        &self,
+        into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_ShapeMapTool_paste(self as *const Self, into, RT) }
     }
 
     /// **Source:** `XCAFDoc_ShapeMapTool.hxx`:61 - `XCAFDoc_ShapeMapTool::GetMap()`
@@ -8634,6 +9226,13 @@ impl ShapeMapTool {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeMapTool_inherited_BackupCopy(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::XCAFDoc_ShapeMapTool_inherited_References(self as *const Self, aDataSet)
         }
     }
 
@@ -9458,6 +10057,26 @@ impl ShapeTool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_Restore(self as *mut Self, anAttribute) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_ShapeTool_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_Forget(self as *mut Self, aTransaction) }
@@ -9687,6 +10306,26 @@ impl View {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
     pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
         unsafe { crate::ffi::XCAFDoc_View_inherited_Restore(self as *mut Self, anAttribute) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_View_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::XCAFDoc_View_inherited_References(self as *const Self, aDataSet) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
@@ -9986,6 +10625,26 @@ impl ViewTool {
         unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_Restore(self as *mut Self, anAttribute) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_ViewTool_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_Forget(self as *mut Self, aTransaction) }
@@ -10228,6 +10887,18 @@ impl VisMaterial {
         }
     }
 
+    /// **Source:** `XCAFDoc_VisMaterial.hxx`:189 - `XCAFDoc_VisMaterial::Paste()`
+    /// Paste this attribute into another one.
+    /// @param theInto [in/out] target attribute to copy this into
+    /// @param[in] theRelTable  relocation table
+    pub fn paste(
+        &self,
+        theInto: &crate::ffi::HandleTDFAttribute,
+        theRelTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_VisMaterial_paste(self as *const Self, theInto, theRelTable) }
+    }
+
     /// **Source:** `XCAFDoc_VisMaterial.hxx`:58 - `XCAFDoc_VisMaterial::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -10421,6 +11092,13 @@ impl VisMaterial {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterial_inherited_BackupCopy(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::XCAFDoc_VisMaterial_inherited_References(self as *const Self, aDataSet)
         }
     }
 
@@ -10683,6 +11361,16 @@ impl VisMaterialTool {
         }
     }
 
+    /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:137 - `XCAFDoc_VisMaterialTool::Paste()`
+    /// Does nothing.
+    pub fn paste(
+        &self,
+        arg0: &crate::ffi::HandleTDFAttribute,
+        arg1: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_VisMaterialTool_paste(self as *const Self, arg0, arg1) }
+    }
+
     /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:39 - `XCAFDoc_VisMaterialTool::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -10901,6 +11589,13 @@ impl VisMaterialTool {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterialTool_inherited_BackupCopy(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::XCAFDoc_VisMaterialTool_inherited_References(self as *const Self, aDataSet)
         }
     }
 
@@ -11161,6 +11856,26 @@ impl Volume {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
     pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
         unsafe { crate::ffi::XCAFDoc_Volume_inherited_Restore(self as *mut Self, anAttribute) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_Volume_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::XCAFDoc_Volume_inherited_References(self as *const Self, aDataSet) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`

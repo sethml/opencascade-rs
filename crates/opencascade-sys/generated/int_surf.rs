@@ -79,10 +79,8 @@ unsafe impl crate::CppDeletable for LineOn2S {
 
 impl LineOn2S {
     /// **Source:** `IntSurf_LineOn2S.hxx`:38 - `IntSurf_LineOn2S::IntSurf_LineOn2S()`
-    pub fn new_allocator(theAllocator: &crate::ffi::IntSurf_Allocator) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_LineOn2S_ctor_allocator(theAllocator))
-        }
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_LineOn2S_ctor()) }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:41 - `IntSurf_LineOn2S::Add()`

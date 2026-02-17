@@ -391,6 +391,42 @@ impl Attribute {
         }
     }
 
+    /// **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    /// This method is different from the "Copy" one,
+    /// because it is used when copying an attribute from
+    /// a source structure into a target structure. This
+    /// method may paste the contents of <me> into
+    /// <intoAttribute>.
+    ///
+    /// The given pasted attribute can be full or empty of
+    /// its contents. But don't make a NEW! Just set the
+    /// contents!
+    ///
+    /// It is possible to use <aRelocationTable> to
+    /// get/set the relocation value of a source
+    /// attribute.
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TDF_Attribute_paste(self as *const Self, intoAttribute, aRelocationTable)
+        }
+    }
+
+    /// **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    /// Adds the first level referenced attributes and labels
+    /// to <aDataSet>.
+    ///
+    /// For this, use the AddLabel or AddAttribute of
+    /// DataSet.
+    ///
+    /// If there is none, do not implement the method.
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDF_Attribute_references(self as *const Self, aDataSet) }
+    }
+
     /// **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     /// Forgets the attribute. <aTransaction> is the
     /// current transaction in which the forget is done. A
@@ -574,27 +610,9 @@ impl AttributeIterator {
         }
     }
 
-    /// **Source:** `TDF_AttributeIterator.hxx`:52 - `TDF_AttributeIterator::TDF_AttributeIterator()`
-    pub fn new_labelnodeptr_bool(
-        aLabelNode: &crate::ffi::TDF_LabelNodePtr,
-        withoutForgotten: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TDF_AttributeIterator_ctor_labelnodeptr_bool(
-                aLabelNode,
-                withoutForgotten,
-            ))
-        }
-    }
-
     /// **Source:** `TDF_AttributeIterator.hxx`:50 - `TDF_AttributeIterator::TDF_AttributeIterator()`
     pub fn new_label(aLabel: &crate::ffi::TDF_Label) -> crate::OwnedPtr<Self> {
         Self::new_label_bool(aLabel, true)
-    }
-
-    /// **Source:** `TDF_AttributeIterator.hxx`:52 - `TDF_AttributeIterator::TDF_AttributeIterator()`
-    pub fn new_labelnodeptr(aLabelNode: &crate::ffi::TDF_LabelNodePtr) -> crate::OwnedPtr<Self> {
-        Self::new_labelnodeptr_bool(aLabelNode, true)
     }
 
     /// **Source:** `TDF_AttributeIterator.hxx`:54 - `TDF_AttributeIterator::Initialize()`
@@ -902,6 +920,61 @@ impl ClosureMode {
 }
 
 // ========================
+// From TDF_ClosureTool.hxx
+// ========================
+
+/// **Source:** `TDF_ClosureTool.hxx`:39 - `TDF_ClosureTool`
+/// This class provides services to build the closure
+/// of an information set.
+/// This class gives services around the transitive
+/// enclosure of a set of information, starting from a
+/// list of label.
+/// You can set closure options by using IDFilter
+/// (to select or exclude specific attribute IDs) and
+/// CopyOption objects and by giving to Closure
+/// method.
+pub use crate::ffi::TDF_ClosureTool as ClosureTool;
+
+unsafe impl crate::CppDeletable for ClosureTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TDF_ClosureTool_destructor(ptr);
+    }
+}
+
+impl ClosureTool {
+    /// **Source:** `TDF_ClosureTool.hxx` - `TDF_ClosureTool::TDF_ClosureTool()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_ClosureTool_ctor()) }
+    }
+
+    /// **Source:** `TDF_ClosureTool.hxx`:46 - `TDF_ClosureTool::Closure()`
+    /// Builds the transitive closure of label and
+    /// attribute sets into <aDataSet>.
+    pub fn closure_handletdfdataset(aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDF_ClosureTool_closure_handletdfdataset(aDataSet) }
+    }
+
+    /// **Source:** `TDF_ClosureTool.hxx`:53 - `TDF_ClosureTool::Closure()`
+    /// Builds the transitive closure of label and
+    /// attribute sets into <aDataSet>. Uses <aFilter> to
+    /// determine if an attribute has to be taken in
+    /// account or not. Uses <aMode> for various way of
+    /// closing.
+    pub fn closure_handletdfdataset_idfilter_closuremode(
+        aDataSet: &crate::ffi::HandleTDFDataSet,
+        aFilter: &crate::ffi::TDF_IDFilter,
+        aMode: &crate::ffi::TDF_ClosureMode,
+    ) {
+        unsafe {
+            crate::ffi::TDF_ClosureTool_closure_handletdfdataset_idfilter_closuremode(
+                aDataSet, aFilter, aMode,
+            )
+        }
+    }
+}
+
+// ========================
 // From TDF_ComparisonTool.hxx
 // ========================
 
@@ -936,6 +1009,162 @@ impl ComparisonTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_ComparisonTool_ctor()) }
+    }
+
+    /// **Source:** `TDF_ComparisonTool.hxx`:54 - `TDF_ComparisonTool::Compare()`
+    /// Compares <aSourceDataSet> with <aTargetDataSet>,
+    /// updating <aRelocationTable> with labels and
+    /// attributes found in both sets.
+    pub fn compare(
+        aSourceDataSet: &crate::ffi::HandleTDFDataSet,
+        aTargetDataSet: &crate::ffi::HandleTDFDataSet,
+        aFilter: &crate::ffi::TDF_IDFilter,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TDF_ComparisonTool_compare(
+                aSourceDataSet,
+                aTargetDataSet,
+                aFilter,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// **Source:** `TDF_ComparisonTool.hxx`:69 - `TDF_ComparisonTool::SourceUnbound()`
+    /// Finds from <aRefDataSet> all the keys not bound
+    /// into <aRelocationTable> and put them into
+    /// <aDiffDataSet>. Returns True if the difference
+    /// contains at least one key. (A key is a source
+    /// object).
+    ///
+    /// <anOption> may take the following values:
+    /// 1 : labels treatment only;
+    /// 2 : attributes treatment only (default value);
+    /// 3 : both labels & attributes treatment.
+    pub fn source_unbound(
+        aRefDataSet: &crate::ffi::HandleTDFDataSet,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+        aFilter: &crate::ffi::TDF_IDFilter,
+        aDiffDataSet: &crate::ffi::HandleTDFDataSet,
+        anOption: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TDF_ComparisonTool_source_unbound(
+                aRefDataSet,
+                aRelocationTable,
+                aFilter,
+                aDiffDataSet,
+                anOption,
+            )
+        }
+    }
+
+    /// **Source:** `TDF_ComparisonTool.hxx`:86 - `TDF_ComparisonTool::TargetUnbound()`
+    /// Subtracts from <aRefDataSet> all the items bound
+    /// into <aRelocationTable>. The result is put into
+    /// <aDiffDataSet>. Returns True if the difference
+    /// contains at least one item. (An item is a target
+    /// object).
+    ///
+    /// <anOption> may take the following values:
+    /// 1 : labels treatment only;
+    /// 2 : attributes treatment  only(default value);
+    /// 3 : both labels & attributes treatment.
+    pub fn target_unbound(
+        aRefDataSet: &crate::ffi::HandleTDFDataSet,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+        aFilter: &crate::ffi::TDF_IDFilter,
+        aDiffDataSet: &crate::ffi::HandleTDFDataSet,
+        anOption: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TDF_ComparisonTool_target_unbound(
+                aRefDataSet,
+                aRelocationTable,
+                aFilter,
+                aDiffDataSet,
+                anOption,
+            )
+        }
+    }
+
+    /// **Source:** `TDF_ComparisonTool.hxx`:94 - `TDF_ComparisonTool::Cut()`
+    /// Removes attributes from <aDataSet>.
+    pub fn cut(aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDF_ComparisonTool_cut(aDataSet) }
+    }
+
+    /// **Source:** `TDF_ComparisonTool.hxx`:98 - `TDF_ComparisonTool::IsSelfContained()`
+    /// Returns true if all the labels of <aDataSet> are
+    /// descendant of <aLabel>.
+    pub fn is_self_contained(
+        aLabel: &crate::ffi::TDF_Label,
+        aDataSet: &crate::ffi::HandleTDFDataSet,
+    ) -> bool {
+        unsafe { crate::ffi::TDF_ComparisonTool_is_self_contained(aLabel, aDataSet) }
+    }
+}
+
+// ========================
+// From TDF_CopyLabel.hxx
+// ========================
+
+/// **Source:** `TDF_CopyLabel.hxx`:31 - `TDF_CopyLabel`
+/// This class gives copy of  source  label  hierarchy
+pub use crate::ffi::TDF_CopyLabel as CopyLabel;
+
+unsafe impl crate::CppDeletable for CopyLabel {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TDF_CopyLabel_destructor(ptr);
+    }
+}
+
+impl CopyLabel {
+    /// **Source:** `TDF_CopyLabel.hxx`:37 - `TDF_CopyLabel::TDF_CopyLabel()`
+    /// Empty  constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_CopyLabel_ctor()) }
+    }
+
+    /// **Source:** `TDF_CopyLabel.hxx`:40 - `TDF_CopyLabel::TDF_CopyLabel()`
+    /// CopyTool
+    pub fn new_label2(
+        aSource: &crate::ffi::TDF_Label,
+        aTarget: &crate::ffi::TDF_Label,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_CopyLabel_ctor_label2(aSource, aTarget))
+        }
+    }
+
+    /// **Source:** `TDF_CopyLabel.hxx`:43 - `TDF_CopyLabel::Load()`
+    /// Loads  src  and  tgt  labels
+    pub fn load(&mut self, aSource: &crate::ffi::TDF_Label, aTarget: &crate::ffi::TDF_Label) {
+        unsafe { crate::ffi::TDF_CopyLabel_load(self as *mut Self, aSource, aTarget) }
+    }
+
+    /// **Source:** `TDF_CopyLabel.hxx`:46 - `TDF_CopyLabel::UseFilter()`
+    /// Sets  filter
+    pub fn use_filter(&mut self, aFilter: &crate::ffi::TDF_IDFilter) {
+        unsafe { crate::ffi::TDF_CopyLabel_use_filter(self as *mut Self, aFilter) }
+    }
+
+    /// **Source:** `TDF_CopyLabel.hxx`:61 - `TDF_CopyLabel::Perform()`
+    /// performs  algorithm  of  selfcontained  copy
+    pub fn perform(&mut self) {
+        unsafe { crate::ffi::TDF_CopyLabel_perform(self as *mut Self) }
+    }
+
+    /// **Source:** `TDF_CopyLabel.hxx`:63 - `TDF_CopyLabel::IsDone()`
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::TDF_CopyLabel_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `TDF_CopyLabel.hxx`:66 - `TDF_CopyLabel::RelocationTable()`
+    /// returns  relocation  table
+    pub fn relocation_table(&self) -> &crate::ffi::HandleTDFRelocationTable {
+        unsafe { &*(crate::ffi::TDF_CopyLabel_relocation_table(self as *const Self)) }
     }
 }
 
@@ -992,6 +1221,71 @@ impl CopyTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_CopyTool_ctor()) }
+    }
+
+    /// **Source:** `TDF_CopyTool.hxx`:75 - `TDF_CopyTool::Copy()`
+    /// Copy   <aSourceDataSet> with using  and  updating
+    /// <aRelocationTable>. This  method ignores   target
+    /// attributes privilege over source ones.
+    pub fn copy_handletdfdataset_handletdfrelocationtable(
+        aSourceDataSet: &crate::ffi::HandleTDFDataSet,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TDF_CopyTool_copy_handletdfdataset_handletdfrelocationtable(
+                aSourceDataSet,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// **Source:** `TDF_CopyTool.hxx`:82 - `TDF_CopyTool::Copy()`
+    /// Copy  <aSourceDataSet>  using      and updating
+    /// <aRelocationTable>. Use <aPrivilegeFilter> to give
+    /// a list  of   IDs for which  the target  attribute
+    /// prevails over the source one.
+    pub fn copy_handletdfdataset_handletdfrelocationtable_idfilter(
+        aSourceDataSet: &crate::ffi::HandleTDFDataSet,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+        aPrivilegeFilter: &crate::ffi::TDF_IDFilter,
+    ) {
+        unsafe {
+            crate::ffi::TDF_CopyTool_copy_handletdfdataset_handletdfrelocationtable_idfilter(
+                aSourceDataSet,
+                aRelocationTable,
+                aPrivilegeFilter,
+            )
+        }
+    }
+
+    /// **Source:** `TDF_CopyTool.hxx`:97 - `TDF_CopyTool::Copy()`
+    /// Copy    <aSourceDataSet>   using and    updating
+    /// <aRelocationTable>. Use <aPrivilegeFilter> to give
+    /// a  list of IDs   for which  the target  attribute
+    /// prevails    over    the    source     one.   If
+    /// <setSelfContained>   is   set  to   true,  every
+    /// TDF_Reference will  be replaced  by the referenced
+    /// structure according to <aRefFilter>.
+    ///
+    /// NB: <aRefFilter> is used only if
+    /// <setSelfContained> is true.
+    /// Internal root label copy recursive method.
+    pub fn copy_handletdfdataset_handletdfrelocationtable_idfilter2_bool(
+        aSourceDataSet: &crate::ffi::HandleTDFDataSet,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+        aPrivilegeFilter: &crate::ffi::TDF_IDFilter,
+        aRefFilter: &crate::ffi::TDF_IDFilter,
+        setSelfContained: bool,
+    ) {
+        unsafe {
+            crate::ffi::TDF_CopyTool_copy_handletdfdataset_handletdfrelocationtable_idfilter2_bool(
+                aSourceDataSet,
+                aRelocationTable,
+                aPrivilegeFilter,
+                aRefFilter,
+                setSelfContained,
+            )
+        }
     }
 }
 
@@ -1171,6 +1465,115 @@ impl HandleTDFData {
     /// Dereference this Handle to mutably access the underlying TDF_Data
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_Data {
         unsafe { &mut *(crate::ffi::HandleTDFData_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TDF_DataSet.hxx
+// ========================
+
+/// **Source:** `TDF_DataSet.hxx`:34 - `TDF_DataSet`
+/// This class is a set of TDF information like labels and attributes.
+pub use crate::ffi::TDF_DataSet as DataSet;
+
+unsafe impl crate::CppDeletable for DataSet {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TDF_DataSet_destructor(ptr);
+    }
+}
+
+impl DataSet {
+    /// **Source:** `TDF_DataSet.hxx`:39 - `TDF_DataSet::TDF_DataSet()`
+    /// Creates an  empty   DataSet  object.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_DataSet_ctor()) }
+    }
+
+    /// **Source:** `TDF_DataSet.hxx`:42 - `TDF_DataSet::Clear()`
+    /// Clears all information.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::TDF_DataSet_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `TDF_DataSet.hxx`:46 - `TDF_DataSet::IsEmpty()`
+    /// Returns true if there is at least one label or one
+    /// attribute.
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::TDF_DataSet_is_empty(self as *const Self) }
+    }
+
+    /// **Source:** `TDF_DataSet.hxx`:49 - `TDF_DataSet::AddLabel()`
+    /// Adds <aLabel> in  the  current  data  set.
+    pub fn add_label(&mut self, aLabel: &crate::ffi::TDF_Label) {
+        unsafe { crate::ffi::TDF_DataSet_add_label(self as *mut Self, aLabel) }
+    }
+
+    /// **Source:** `TDF_DataSet.hxx`:52 - `TDF_DataSet::ContainsLabel()`
+    /// Returns true if the label  <alabel>   is in the data set.
+    pub fn contains_label(&self, aLabel: &crate::ffi::TDF_Label) -> bool {
+        unsafe { crate::ffi::TDF_DataSet_contains_label(self as *const Self, aLabel) }
+    }
+
+    /// **Source:** `TDF_DataSet.hxx`:59 - `TDF_DataSet::AddAttribute()`
+    /// Adds <anAttribute> into the current data  set.
+    pub fn add_attribute(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::TDF_DataSet_add_attribute(self as *mut Self, anAttribute) }
+    }
+
+    /// **Source:** `TDF_DataSet.hxx`:62 - `TDF_DataSet::ContainsAttribute()`
+    /// Returns true if <anAttribute> is in the data set.
+    pub fn contains_attribute(&self, anAttribute: &crate::ffi::HandleTDFAttribute) -> bool {
+        unsafe { crate::ffi::TDF_DataSet_contains_attribute(self as *const Self, anAttribute) }
+    }
+
+    /// **Source:** `TDF_DataSet.hxx`:69 - `TDF_DataSet::AddRoot()`
+    /// Adds a root label to <myRootLabels>.
+    pub fn add_root(&mut self, aLabel: &crate::ffi::TDF_Label) {
+        unsafe { crate::ffi::TDF_DataSet_add_root(self as *mut Self, aLabel) }
+    }
+
+    /// **Source:** `TDF_DataSet.hxx`:80 - `TDF_DataSet::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDF_DataSet_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TDF_DataSet.hxx`:80 - `TDF_DataSet::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TDF_DataSet_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TDF_DataSet.hxx`:80 - `TDF_DataSet::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDF_DataSet_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleTDFDataSet> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_DataSet_to_handle(obj.into_raw())) }
+    }
+}
+
+pub use crate::ffi::HandleTDFDataSet;
+
+unsafe impl crate::CppDeletable for HandleTDFDataSet {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDFDataSet_destructor(ptr);
+    }
+}
+
+impl HandleTDFDataSet {
+    /// Dereference this Handle to access the underlying TDF_DataSet
+    pub fn get(&self) -> &crate::ffi::TDF_DataSet {
+        unsafe { &*(crate::ffi::HandleTDFDataSet_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDF_DataSet
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_DataSet {
+        unsafe { &mut *(crate::ffi::HandleTDFDataSet_get_mut(self as *mut Self)) }
     }
 }
 
@@ -2508,6 +2911,20 @@ impl Reference {
         }
     }
 
+    /// **Source:** `TDF_Reference.hxx`:51 - `TDF_Reference::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDF_Reference_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDF_Reference.hxx`:54 - `TDF_Reference::References()`
+    pub fn references(&self, DS: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDF_Reference_references(self as *const Self, DS) }
+    }
+
     /// **Source:** `TDF_Reference.hxx`:64 - `TDF_Reference::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDF_Reference_dynamic_type(self as *const Self)) }
@@ -2699,6 +3116,222 @@ impl Reference {
 }
 
 // ========================
+// From TDF_RelocationTable.hxx
+// ========================
+
+/// **Source:** `TDF_RelocationTable.hxx`:46 - `TDF_RelocationTable`
+/// This is a relocation dictionary between source
+/// and target labels, attributes or any
+/// transient(useful for copy or paste actions).
+/// Note that one target value may be the
+/// relocation value of more than one source object.
+///
+/// Common behaviour: it returns true and the found
+/// relocation value as target object; false
+/// otherwise.
+///
+/// Look at SelfRelocate method for more explanation
+/// about self relocation behavior of this class.
+pub use crate::ffi::TDF_RelocationTable as RelocationTable;
+
+unsafe impl crate::CppDeletable for RelocationTable {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TDF_RelocationTable_destructor(ptr);
+    }
+}
+
+impl RelocationTable {
+    /// **Source:** `TDF_RelocationTable.hxx`:53 - `TDF_RelocationTable::TDF_RelocationTable()`
+    /// Creates an relocation table. <selfRelocate> says
+    /// if a value without explicit relocation is its own
+    /// relocation.
+    pub fn new_bool(selfRelocate: bool) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_RelocationTable_ctor_bool(selfRelocate))
+        }
+    }
+
+    /// **Source:** `TDF_RelocationTable.hxx`:53 - `TDF_RelocationTable::TDF_RelocationTable()`
+    /// Creates an relocation table. <selfRelocate> says
+    /// if a value without explicit relocation is its own
+    /// relocation.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        Self::new_bool(false)
+    }
+
+    /// **Source:** `TDF_RelocationTable.hxx`:71 - `TDF_RelocationTable::SelfRelocate()`
+    /// Sets <mySelfRelocate> to <selfRelocate>.
+    ///
+    /// This flag affects the HasRelocation method
+    /// behavior like this:
+    ///
+    /// <mySelfRelocate> == False:
+    ///
+    /// If no relocation object is found in the map, a
+    /// null object is returned
+    ///
+    /// <mySelfRelocate> == True:
+    ///
+    /// If no relocation object is found in the map, the
+    /// method assumes the source object is relocation
+    /// value; so the source object is returned as target
+    /// object.
+    pub fn self_relocate_bool(&mut self, selfRelocate: bool) {
+        unsafe {
+            crate::ffi::TDF_RelocationTable_self_relocate_bool(self as *mut Self, selfRelocate)
+        }
+    }
+
+    /// **Source:** `TDF_RelocationTable.hxx`:74 - `TDF_RelocationTable::SelfRelocate()`
+    /// Returns <mySelfRelocate>.
+    pub fn self_relocate(&self) -> bool {
+        unsafe { crate::ffi::TDF_RelocationTable_self_relocate(self as *const Self) }
+    }
+
+    /// **Source:** `TDF_RelocationTable.hxx`:76 - `TDF_RelocationTable::AfterRelocate()`
+    pub fn after_relocate_bool(&mut self, afterRelocate: bool) {
+        unsafe {
+            crate::ffi::TDF_RelocationTable_after_relocate_bool(self as *mut Self, afterRelocate)
+        }
+    }
+
+    /// **Source:** `TDF_RelocationTable.hxx`:79 - `TDF_RelocationTable::AfterRelocate()`
+    /// Returns <myAfterRelocate>.
+    pub fn after_relocate(&self) -> bool {
+        unsafe { crate::ffi::TDF_RelocationTable_after_relocate(self as *const Self) }
+    }
+
+    /// **Source:** `TDF_RelocationTable.hxx`:83 - `TDF_RelocationTable::SetRelocation()`
+    /// Sets the relocation value of <aSourceLabel> to
+    /// <aTargetLabel>.
+    pub fn set_relocation_label2(
+        &mut self,
+        aSourceLabel: &crate::ffi::TDF_Label,
+        aTargetLabel: &crate::ffi::TDF_Label,
+    ) {
+        unsafe {
+            crate::ffi::TDF_RelocationTable_set_relocation_label2(
+                self as *mut Self,
+                aSourceLabel,
+                aTargetLabel,
+            )
+        }
+    }
+
+    /// **Source:** `TDF_RelocationTable.hxx`:90 - `TDF_RelocationTable::HasRelocation()`
+    /// Finds the relocation value of <aSourceLabel>
+    /// and returns it into <aTargetLabel>.
+    ///
+    /// (See above SelfRelocate method for more
+    /// explanation about the method behavior)
+    pub fn has_relocation_label2(
+        &self,
+        aSourceLabel: &crate::ffi::TDF_Label,
+        aTargetLabel: &mut crate::ffi::TDF_Label,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TDF_RelocationTable_has_relocation_label2(
+                self as *const Self,
+                aSourceLabel,
+                aTargetLabel,
+            )
+        }
+    }
+
+    /// **Source:** `TDF_RelocationTable.hxx`:95 - `TDF_RelocationTable::SetRelocation()`
+    /// Sets the relocation value of <aSourceAttribute> to
+    /// <aTargetAttribute>.
+    pub fn set_relocation_handletdfattribute2(
+        &mut self,
+        aSourceAttribute: &crate::ffi::HandleTDFAttribute,
+        aTargetAttribute: &crate::ffi::HandleTDFAttribute,
+    ) {
+        unsafe {
+            crate::ffi::TDF_RelocationTable_set_relocation_handletdfattribute2(
+                self as *mut Self,
+                aSourceAttribute,
+                aTargetAttribute,
+            )
+        }
+    }
+
+    /// **Source:** `TDF_RelocationTable.hxx`:103 - `TDF_RelocationTable::HasRelocation()`
+    /// Finds the relocation value of <aSourceAttribute>
+    /// and returns it into <aTargetAttribute>.
+    ///
+    /// (See above SelfRelocate method for more
+    /// explanation about the method behavior)
+    pub fn has_relocation_handletdfattribute2(
+        &self,
+        aSourceAttribute: &crate::ffi::HandleTDFAttribute,
+        aTargetAttribute: &mut crate::ffi::HandleTDFAttribute,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TDF_RelocationTable_has_relocation_handletdfattribute2(
+                self as *const Self,
+                aSourceAttribute,
+                aTargetAttribute,
+            )
+        }
+    }
+
+    /// **Source:** `TDF_RelocationTable.hxx`:130 - `TDF_RelocationTable::Clear()`
+    /// Clears the relocation dictionary, but lets the
+    /// self relocation flag to its current value.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::TDF_RelocationTable_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `TDF_RelocationTable.hxx`:156 - `TDF_RelocationTable::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDF_RelocationTable_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TDF_RelocationTable.hxx`:156 - `TDF_RelocationTable::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TDF_RelocationTable_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TDF_RelocationTable.hxx`:156 - `TDF_RelocationTable::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDF_RelocationTable_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFRelocationTable> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_RelocationTable_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTDFRelocationTable;
+
+unsafe impl crate::CppDeletable for HandleTDFRelocationTable {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDFRelocationTable_destructor(ptr);
+    }
+}
+
+impl HandleTDFRelocationTable {
+    /// Dereference this Handle to access the underlying TDF_RelocationTable
+    pub fn get(&self) -> &crate::ffi::TDF_RelocationTable {
+        unsafe { &*(crate::ffi::HandleTDFRelocationTable_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDF_RelocationTable
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_RelocationTable {
+        unsafe { &mut *(crate::ffi::HandleTDFRelocationTable_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From TDF_TagSource.hxx
 // ========================
 
@@ -2756,6 +3389,15 @@ impl TagSource {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_TagSource_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `TDF_TagSource.hxx`:70 - `TDF_TagSource::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDF_TagSource_paste(self as *const Self, Into, RT) }
     }
 
     /// **Source:** `TDF_TagSource.hxx`:77 - `TDF_TagSource::DynamicType()`
@@ -2953,9 +3595,161 @@ impl TagSource {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDF_TagSource_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDF_TagSource_inherited_Forget(self as *mut Self, aTransaction) }
+    }
+}
+
+// ========================
+// From TDF_Tool.hxx
+// ========================
+
+/// **Source:** `TDF_Tool.hxx`:36 - `TDF_Tool`
+/// This class provides general services for a data framework.
+pub use crate::ffi::TDF_Tool as Tool;
+
+unsafe impl crate::CppDeletable for Tool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TDF_Tool_destructor(ptr);
+    }
+}
+
+impl Tool {
+    /// **Source:** `TDF_Tool.hxx` - `TDF_Tool::TDF_Tool()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_Tool_ctor()) }
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:44 - `TDF_Tool::NbLabels()`
+    /// Returns the number of labels of the tree,
+    /// including <aLabel>. aLabel is also included in this figure.
+    /// This information is useful in setting the size of an array.
+    pub fn nb_labels(aLabel: &crate::ffi::TDF_Label) -> i32 {
+        unsafe { crate::ffi::TDF_Tool_nb_labels(aLabel) }
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:50 - `TDF_Tool::NbAttributes()`
+    /// Returns the total number of attributes attached
+    /// to the labels dependent on the label aLabel.
+    /// The attributes of aLabel are also included in this figure.
+    /// This information is useful in setting the size of an array.
+    pub fn nb_attributes_label(aLabel: &crate::ffi::TDF_Label) -> i32 {
+        unsafe { crate::ffi::TDF_Tool_nb_attributes_label(aLabel) }
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:55 - `TDF_Tool::NbAttributes()`
+    /// Returns the number of attributes of the tree,
+    /// selected by a<Filter>, including those of
+    /// <aLabel>.
+    pub fn nb_attributes_label_idfilter(
+        aLabel: &crate::ffi::TDF_Label,
+        aFilter: &crate::ffi::TDF_IDFilter,
+    ) -> i32 {
+        unsafe { crate::ffi::TDF_Tool_nb_attributes_label_idfilter(aLabel, aFilter) }
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:61 - `TDF_Tool::IsSelfContained()`
+    /// Returns true if <aLabel> and its descendants
+    /// reference only attributes or labels attached to
+    /// themselves.
+    pub fn is_self_contained_label(aLabel: &crate::ffi::TDF_Label) -> bool {
+        unsafe { crate::ffi::TDF_Tool_is_self_contained_label(aLabel) }
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:66 - `TDF_Tool::IsSelfContained()`
+    /// Returns true if <aLabel> and its descendants
+    /// reference only attributes or labels attached to
+    /// themselves and kept by <aFilter>.
+    pub fn is_self_contained_label_idfilter(
+        aLabel: &crate::ffi::TDF_Label,
+        aFilter: &crate::ffi::TDF_IDFilter,
+    ) -> bool {
+        unsafe { crate::ffi::TDF_Tool_is_self_contained_label_idfilter(aLabel, aFilter) }
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:106 - `TDF_Tool::RelocateLabel()`
+    /// Returns the label having the same sub-entry as
+    /// <aLabel> but located as descendant as <toRoot>
+    /// instead of <fromRoot>.
+    ///
+    /// Example :
+    ///
+    /// aLabel = 0:3:24:7:2:7
+    /// fromRoot = 0:3:24
+    /// toRoot = 0:5
+    /// returned label = 0:5:7:2:7
+    pub fn relocate_label(
+        aSourceLabel: &crate::ffi::TDF_Label,
+        fromRoot: &crate::ffi::TDF_Label,
+        toRoot: &crate::ffi::TDF_Label,
+        aTargetLabel: &mut crate::ffi::TDF_Label,
+        create: bool,
+    ) {
+        unsafe {
+            crate::ffi::TDF_Tool_relocate_label(
+                aSourceLabel,
+                fromRoot,
+                toRoot,
+                aTargetLabel,
+                create,
+            )
+        }
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:115 - `TDF_Tool::Entry()`
+    /// Returns the entry for the label aLabel in the form
+    /// of the ASCII character string anEntry containing
+    /// the tag list for aLabel.
+    pub fn entry(
+        aLabel: &crate::ffi::TDF_Label,
+        anEntry: &mut crate::ffi::TCollection_AsciiString,
+    ) {
+        unsafe { crate::ffi::TDF_Tool_entry(aLabel, anEntry) }
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:129 - `TDF_Tool::Label()`
+    /// Returns the label expressed by <anEntry>; creates
+    /// the label if it does not exist and if <create> is
+    /// true.
+    pub fn label_handletdfdata_asciistring_label_bool(
+        aDF: &crate::ffi::HandleTDFData,
+        anEntry: &crate::ffi::TCollection_AsciiString,
+        aLabel: &mut crate::ffi::TDF_Label,
+        create: bool,
+    ) {
+        unsafe {
+            crate::ffi::TDF_Tool_label_handletdfdata_asciistring_label_bool(
+                aDF, anEntry, aLabel, create,
+            )
+        }
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:137 - `TDF_Tool::Label()`
+    /// Returns the label expressed by <anEntry>; creates
+    /// the label if it does not exist and if <create> is
+    /// true.
+    pub fn label_handletdfdata_charptr_label_bool(
+        aDF: &crate::ffi::HandleTDFData,
+        anEntry: &str,
+        aLabel: &mut crate::ffi::TDF_Label,
+        create: bool,
+    ) {
+        let c_anEntry = std::ffi::CString::new(anEntry).unwrap();
+        unsafe {
+            crate::ffi::TDF_Tool_label_handletdfdata_charptr_label_bool(
+                aDF,
+                c_anEntry.as_ptr(),
+                aLabel,
+                create,
+            )
+        }
     }
 }
 
@@ -3073,9 +3867,11 @@ impl Transaction {
 // ========================
 
 pub use crate::ffi::{
-    TDF_AttributeDeltaList as AttributeDeltaList, TDF_AttributeList as AttributeList,
-    TDF_AttributeSequence as AttributeSequence, TDF_DataSet as DataSet,
-    TDF_HAllocator as HAllocator, TDF_IDList as IDList, TDF_LabelList as LabelList,
+    TDF_AttributeDataMap as AttributeDataMap, TDF_AttributeDeltaList as AttributeDeltaList,
+    TDF_AttributeIndexedMap as AttributeIndexedMap, TDF_AttributeList as AttributeList,
+    TDF_AttributeMap as AttributeMap, TDF_AttributeSequence as AttributeSequence,
+    TDF_DeltaList as DeltaList, TDF_HAllocator as HAllocator, TDF_IDList as IDList,
+    TDF_LabelDataMap as LabelDataMap, TDF_LabelIndexedMap as LabelIndexedMap,
+    TDF_LabelIntegerMap as LabelIntegerMap, TDF_LabelList as LabelList, TDF_LabelMap as LabelMap,
     TDF_LabelNodePtr as LabelNodePtr, TDF_LabelSequence as LabelSequence,
-    TDF_RelocationTable as RelocationTable,
 };

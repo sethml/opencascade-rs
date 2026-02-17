@@ -1826,24 +1826,6 @@ impl MarkedRangeSet {
         }
     }
 
-    /// **Source:** `IntTools_MarkedRangeSet.hxx`:45 - `IntTools_MarkedRangeSet::IntTools_MarkedRangeSet()`
-    /// Build set of ranges based on the array of progressive sorted values
-    ///
-    /// Warning:
-    /// The constructor do not check if the values of array are not sorted
-    /// It should be checked before function invocation
-    pub fn new_array1ofreal_int(
-        theSortedArray: &crate::ffi::TColStd_Array1OfReal,
-        theInitFlag: i32,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntTools_MarkedRangeSet_ctor_array1ofreal_int(
-                theSortedArray,
-                theInitFlag,
-            ))
-        }
-    }
-
     /// **Source:** `IntTools_MarkedRangeSet.hxx`:50 - `IntTools_MarkedRangeSet::SetBoundaries()`
     /// build set of ranges which consists of one range with
     /// boundary values theFirstBoundary and theLastBoundary

@@ -1632,19 +1632,6 @@ unsafe impl crate::CppDeletable for AttributeStream {
 }
 
 impl AttributeStream {
-    /// **Source:** `Message_AttributeStream.hxx`:27 - `Message_AttributeStream::Message_AttributeStream()`
-    /// Constructor with string argument
-    pub fn new_sstream_asciistring(
-        theStream: &crate::ffi::Standard_SStream,
-        theName: &crate::ffi::TCollection_AsciiString,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Message_AttributeStream_ctor_sstream_asciistring(
-                theStream, theName,
-            ))
-        }
-    }
-
     /// **Source:** `Message_AttributeStream.hxx`:24 - `Message_AttributeStream::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Message_AttributeStream_dynamic_type(self as *const Self)) }

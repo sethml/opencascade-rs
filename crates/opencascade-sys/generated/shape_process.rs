@@ -88,6 +88,29 @@ impl Context {
         }
     }
 
+    /// **Source:** `ShapeProcess_Context.hxx`:60 - `ShapeProcess_Context::LoadResourceManager()`
+    /// Loading Resource_Manager object if this object not
+    /// equal internal static Resource_Manager object or
+    /// internal static Resource_Manager object is null
+    pub fn load_resource_manager(
+        &mut self,
+        file: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleResourceManager> {
+        let c_file = std::ffi::CString::new(file).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeProcess_Context_load_resource_manager(
+                self as *mut Self,
+                c_file.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:63 - `ShapeProcess_Context::ResourceManager()`
+    /// Returns internal Resource_Manager object
+    pub fn resource_manager(&self) -> &crate::ffi::HandleResourceManager {
+        unsafe { &*(crate::ffi::ShapeProcess_Context_resource_manager(self as *const Self)) }
+    }
+
     /// **Source:** `ShapeProcess_Context.hxx`:66 - `ShapeProcess_Context::SetScope()`
     /// Set a new (sub)scope
     pub fn set_scope(&mut self, scope: &str) {
@@ -399,13 +422,6 @@ unsafe impl crate::CppDeletable for UOperator {
 }
 
 impl UOperator {
-    /// **Source:** `ShapeProcess_UOperator.hxx`:37 - `ShapeProcess_UOperator::ShapeProcess_UOperator()`
-    /// Creates operator with implementation defined as
-    /// OperFunc (static function)
-    pub fn new_operfunc(func: &crate::ffi::ShapeProcess_OperFunc) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeProcess_UOperator_ctor_operfunc(func)) }
-    }
-
     /// **Source:** `ShapeProcess_UOperator.hxx`:40 - `ShapeProcess_UOperator::Perform()`
     /// Performs operation and records changes in the context
     pub fn perform(

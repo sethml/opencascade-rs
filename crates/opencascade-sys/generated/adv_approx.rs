@@ -60,28 +60,6 @@ impl ApproxAFunction {
         }
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:80 - `AdvApprox_ApproxAFunction::AdvApprox_ApproxAFunction()`
-    /// Approximation with user methode of cutting
-    pub fn new_int3_handletcolstdharray1ofreal3_real2_shape_int2_evaluatorfunction_cutting(
-        Num1DSS: i32,
-        Num2DSS: i32,
-        Num3DSS: i32,
-        OneDTol: &crate::ffi::HandleTColStdHArray1OfReal,
-        TwoDTol: &crate::ffi::HandleTColStdHArray1OfReal,
-        ThreeDTol: &crate::ffi::HandleTColStdHArray1OfReal,
-        First: f64,
-        Last: f64,
-        Continuity: crate::geom_abs::Shape,
-        MaxDeg: i32,
-        MaxSeg: i32,
-        Func: &crate::ffi::AdvApprox_EvaluatorFunction,
-        CutTool: &crate::ffi::AdvApprox_Cutting,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AdvApprox_ApproxAFunction_ctor_int3_handletcolstdharray1ofreal3_real2_shape_int2_evaluatorfunction_cutting(Num1DSS, Num2DSS, Num3DSS, OneDTol, TwoDTol, ThreeDTol, First, Last, Continuity.into(), MaxDeg, MaxSeg, Func, CutTool))
-        }
-    }
-
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:114 - `AdvApprox_ApproxAFunction::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::AdvApprox_ApproxAFunction_is_done(self as *const Self) }

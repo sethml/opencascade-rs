@@ -38,6 +38,235 @@ impl TryFrom<i32> for DeletingMode {
 }
 
 // ========================
+// From TObj_Application.hxx
+// ========================
+
+/// **Source:** `TObj_Application.hxx`:29 - `TObj_Application`
+///
+/// This is a base class for OCAF based TObj models
+/// with declared virtual methods
+pub use crate::ffi::TObj_Application as Application;
+
+unsafe impl crate::CppDeletable for Application {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TObj_Application_destructor(ptr);
+    }
+}
+
+impl Application {
+    /// **Source:** `TObj_Application.hxx`:36 - `TObj_Application::Messenger()`
+    /// Returns reference to associated messenger handle
+    pub fn messenger(&mut self) -> &mut crate::ffi::HandleMessageMessenger {
+        unsafe { &mut *(crate::ffi::TObj_Application_messenger(self as *mut Self)) }
+    }
+
+    /// **Source:** `TObj_Application.hxx`:69 - `TObj_Application::ErrorMessage()`
+    /// Signal error during Load or Save
+    /// Default imiplementation is empty
+    pub fn error_message_extendedstring_gravity(
+        &mut self,
+        theMsg: &crate::ffi::TCollection_ExtendedString,
+        theLevel: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::TObj_Application_error_message_extendedstring_gravity(
+                self as *mut Self,
+                theMsg,
+                theLevel.into(),
+            )
+        }
+    }
+
+    /// **Source:** `TObj_Application.hxx`:74 - `TObj_Application::ErrorMessage()`
+    /// Signal error during Load or Save
+    /// Default imiplementation invoke previous declaration with 0
+    pub fn error_message_extendedstring(
+        &mut self,
+        theMsg: &crate::ffi::TCollection_ExtendedString,
+    ) {
+        unsafe {
+            crate::ffi::TObj_Application_error_message_extendedstring(self as *mut Self, theMsg)
+        }
+    }
+
+    /// **Source:** `TObj_Application.hxx`:81 - `TObj_Application::SetVerbose()`
+    /// Sets the verbose flag, meaning that load/save models should show
+    /// CPU and elapsed times
+    pub fn set_verbose(&mut self, isVerbose: bool) {
+        unsafe { crate::ffi::TObj_Application_set_verbose(self as *mut Self, isVerbose) }
+    }
+
+    /// **Source:** `TObj_Application.hxx`:84 - `TObj_Application::IsVerbose()`
+    /// Returns the verbose flag
+    pub fn is_verbose(&self) -> bool {
+        unsafe { crate::ffi::TObj_Application_is_verbose(self as *const Self) }
+    }
+
+    /// **Source:** `TObj_Application.hxx`:95 - `TObj_Application::ResourcesName()`
+    /// Return name of resource (i.e. "TObj")
+    pub fn resources_name(&mut self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TObj_Application_resources_name(self as *mut Self))
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TObj_Application.hxx`:123 - `TObj_Application::DynamicType()`
+    /// CASCADE RTTI
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TObj_Application_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TObj_Application.hxx`:123 - `TObj_Application::get_type_name()`
+    /// CASCADE RTTI
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TObj_Application_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TObj_Application.hxx`:123 - `TObj_Application::get_type_descriptor()`
+    /// CASCADE RTTI
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TObj_Application_get_type_descriptor()) }
+    }
+
+    /// Upcast to CDF_Application
+    pub fn as_cdf_application(&self) -> &crate::cdf::Application {
+        unsafe { &*(crate::ffi::TObj_Application_as_CDF_Application(self as *const Self)) }
+    }
+
+    /// Upcast to CDF_Application (mutable)
+    pub fn as_cdf_application_mut(&mut self) -> &mut crate::cdf::Application {
+        unsafe { &mut *(crate::ffi::TObj_Application_as_CDF_Application_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to CDM_Application
+    pub fn as_cdm_application(&self) -> &crate::cdm::Application {
+        unsafe { &*(crate::ffi::TObj_Application_as_CDM_Application(self as *const Self)) }
+    }
+
+    /// Upcast to CDM_Application (mutable)
+    pub fn as_cdm_application_mut(&mut self) -> &mut crate::cdm::Application {
+        unsafe { &mut *(crate::ffi::TObj_Application_as_CDM_Application_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to TDocStd_Application
+    pub fn as_t_doc_std_application(&self) -> &crate::t_doc_std::Application {
+        unsafe { &*(crate::ffi::TObj_Application_as_TDocStd_Application(self as *const Self)) }
+    }
+
+    /// Upcast to TDocStd_Application (mutable)
+    pub fn as_t_doc_std_application_mut(&mut self) -> &mut crate::t_doc_std::Application {
+        unsafe {
+            &mut *(crate::ffi::TObj_Application_as_TDocStd_Application_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:126 - `CDF_Application::CanRetrieve()`
+    pub fn can_retrieve(
+        &mut self,
+        theFolder: &crate::ffi::TCollection_ExtendedString,
+        theName: &crate::ffi::TCollection_ExtendedString,
+        theAppendMode: bool,
+    ) -> crate::pcdm::ReaderStatus {
+        unsafe {
+            crate::pcdm::ReaderStatus::try_from(crate::ffi::TObj_Application_inherited_CanRetrieve(
+                self as *mut Self,
+                theFolder,
+                theName,
+                theAppendMode,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:136 - `CDF_Application::GetRetrieveStatus()`
+    pub fn get_retrieve_status(&self) -> crate::pcdm::ReaderStatus {
+        unsafe {
+            crate::pcdm::ReaderStatus::try_from(
+                crate::ffi::TObj_Application_inherited_GetRetrieveStatus(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:179 - `CDF_Application::Format()`
+    pub fn format(
+        &mut self,
+        aFileName: &crate::ffi::TCollection_ExtendedString,
+        theFormat: &mut crate::ffi::TCollection_ExtendedString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TObj_Application_inherited_Format(self as *mut Self, aFileName, theFormat)
+        }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:187 - `CDF_Application::MetaDataDriver()`
+    pub fn meta_data_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleCDFMetaDataDriver> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Application_inherited_MetaDataDriver(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Application.hxx`:42 - `CDM_Application::Resources()`
+    pub fn resources(&mut self) -> crate::OwnedPtr<crate::ffi::HandleResourceManager> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Application_inherited_Resources(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Application.hxx`:45 - `CDM_Application::MessageDriver()`
+    pub fn message_driver(&mut self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Application_inherited_MessageDriver(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Application.hxx`:61 - `CDM_Application::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Application_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Application.hxx`:64 - `CDM_Application::Version()`
+    pub fn version(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Application_inherited_Version(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:76 - `TDocStd_Application::IsDriverLoaded()`
+    pub fn is_driver_loaded(&self) -> bool {
+        unsafe { crate::ffi::TObj_Application_inherited_IsDriverLoaded(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:157 - `TDocStd_Application::NbDocuments()`
+    pub fn nb_documents(&self) -> i32 {
+        unsafe { crate::ffi::TObj_Application_inherited_NbDocuments(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:221 - `TDocStd_Application::IsInSession()`
+    pub fn is_in_session(&self, path: &crate::ffi::TCollection_ExtendedString) -> i32 {
+        unsafe { crate::ffi::TObj_Application_inherited_IsInSession(self as *const Self, path) }
+    }
+}
+
+// ========================
 // From TObj_Assistant.hxx
 // ========================
 
@@ -981,6 +1210,17 @@ impl TModel {
         unsafe { crate::ffi::TObj_TModel_restore(self as *mut Self, theWith) }
     }
 
+    /// **Source:** `TObj_TModel.hxx`:69 - `TObj_TModel::Paste()`
+    /// This method is used when copying an attribute from a source structure
+    /// into a target structure.
+    pub fn paste(
+        &self,
+        theInto: &crate::ffi::HandleTDFAttribute,
+        theRT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TObj_TModel_paste(self as *const Self, theInto, theRT) }
+    }
+
     /// **Source:** `TObj_TModel.hxx`:78 - `TObj_TModel::DynamicType()`
     /// CASCADE RTTI
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
@@ -1163,9 +1403,317 @@ impl TModel {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TObj_TModel_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TObj_TModel_inherited_Forget(self as *mut Self, aTransaction) }
+    }
+}
+
+// ========================
+// From TObj_TNameContainer.hxx
+// ========================
+
+/// **Source:** `TObj_TNameContainer.hxx`:29 - `TObj_TNameContainer`
+///
+/// This class provides OCAF Attribute to storing the unique names of object in
+/// model.
+pub use crate::ffi::TObj_TNameContainer as TNameContainer;
+
+unsafe impl crate::CppDeletable for TNameContainer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TObj_TNameContainer_destructor(ptr);
+    }
+}
+
+impl TNameContainer {
+    /// **Source:** `TObj_TNameContainer.hxx`:35 - `TObj_TNameContainer::TObj_TNameContainer()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_TNameContainer_ctor()) }
+    }
+
+    /// **Source:** `TObj_TNameContainer.hxx`:41 - `TObj_TNameContainer::ID()`
+    /// Returns the ID of TObj_TNameContainer attribute.
+    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+        unsafe { &*(crate::ffi::TObj_TNameContainer_id(self as *const Self)) }
+    }
+
+    /// **Source:** `TObj_TNameContainer.hxx`:53 - `TObj_TNameContainer::RecordName()`
+    /// Records name with label attached
+    pub fn record_name(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHExtendedString,
+        theLabel: &crate::ffi::TDF_Label,
+    ) {
+        unsafe { crate::ffi::TObj_TNameContainer_record_name(self as *mut Self, theName, theLabel) }
+    }
+
+    /// **Source:** `TObj_TNameContainer.hxx`:57 - `TObj_TNameContainer::RemoveName()`
+    /// Remove name from the map
+    pub fn remove_name(&mut self, theName: &crate::ffi::HandleTCollectionHExtendedString) {
+        unsafe { crate::ffi::TObj_TNameContainer_remove_name(self as *mut Self, theName) }
+    }
+
+    /// **Source:** `TObj_TNameContainer.hxx`:61 - `TObj_TNameContainer::IsRegistered()`
+    /// Return True is theName is registered in the Map
+    pub fn is_registered(&self, theName: &crate::ffi::HandleTCollectionHExtendedString) -> bool {
+        unsafe { crate::ffi::TObj_TNameContainer_is_registered(self as *const Self, theName) }
+    }
+
+    /// **Source:** `TObj_TNameContainer.hxx`:64 - `TObj_TNameContainer::Clear()`
+    /// Remove all names registered in container
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::TObj_TNameContainer_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `TObj_TNameContainer.hxx`:80 - `TObj_TNameContainer::NewEmpty()`
+    /// Returns an new empty TObj_TNameContainer attribute. It is used by the
+    /// copy algorithm.
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_TNameContainer_new_empty(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `TObj_TNameContainer.hxx`:84 - `TObj_TNameContainer::Restore()`
+    /// Restores the backuped contents from <theWith> into this one. It is used
+    /// when aborting a transaction.
+    pub fn restore(&mut self, theWith: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::TObj_TNameContainer_restore(self as *mut Self, theWith) }
+    }
+
+    /// **Source:** `TObj_TNameContainer.hxx`:88 - `TObj_TNameContainer::Paste()`
+    /// This method is used when copying an attribute from a source structure
+    /// into a target structure.
+    pub fn paste(
+        &self,
+        theInto: &crate::ffi::HandleTDFAttribute,
+        theRT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TObj_TNameContainer_paste(self as *const Self, theInto, theRT) }
+    }
+
+    /// **Source:** `TObj_TNameContainer.hxx`:97 - `TObj_TNameContainer::DynamicType()`
+    /// CASCADE RTTI
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TObj_TNameContainer_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TObj_TNameContainer.hxx`:38 - `TObj_TNameContainer::GetID()`
+    /// This method is used in implementation of ID()
+    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+        unsafe { &*(crate::ffi::TObj_TNameContainer_get_id()) }
+    }
+
+    /// **Source:** `TObj_TNameContainer.hxx`:97 - `TObj_TNameContainer::get_type_name()`
+    /// CASCADE RTTI
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TObj_TNameContainer_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TObj_TNameContainer.hxx`:97 - `TObj_TNameContainer::get_type_descriptor()`
+    /// CASCADE RTTI
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TObj_TNameContainer_get_type_descriptor()) }
+    }
+
+    /// Upcast to TDF_Attribute
+    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
+        unsafe { &*(crate::ffi::TObj_TNameContainer_as_TDF_Attribute(self as *const Self)) }
+    }
+
+    /// Upcast to TDF_Attribute (mutable)
+    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
+        unsafe { &mut *(crate::ffi::TObj_TNameContainer_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+        unsafe { crate::ffi::TObj_TNameContainer_inherited_SetID(self as *mut Self, arg0) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_TNameContainer_inherited_Label(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    pub fn transaction(&self) -> i32 {
+        unsafe { crate::ffi::TObj_TNameContainer_inherited_Transaction(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    pub fn until_transaction(&self) -> i32 {
+        unsafe { crate::ffi::TObj_TNameContainer_inherited_UntilTransaction(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    pub fn is_valid(&self) -> bool {
+        unsafe { crate::ffi::TObj_TNameContainer_inherited_IsValid(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    pub fn is_new(&self) -> bool {
+        unsafe { crate::ffi::TObj_TNameContainer_inherited_IsNew(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    pub fn is_forgotten(&self) -> bool {
+        unsafe { crate::ffi::TObj_TNameContainer_inherited_IsForgotten(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+        unsafe { crate::ffi::TObj_TNameContainer_inherited_IsAttribute(self as *const Self, anID) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    pub fn find_attribute(
+        &self,
+        anID: &crate::ffi::Standard_GUID,
+        anAttribute: &mut crate::ffi::HandleTDFAttribute,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TObj_TNameContainer_inherited_FindAttribute(
+                self as *const Self,
+                anID,
+                anAttribute,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
+        unsafe {
+            crate::ffi::TObj_TNameContainer_inherited_AddAttribute(self as *const Self, other)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+        unsafe {
+            crate::ffi::TObj_TNameContainer_inherited_ForgetAttribute(self as *const Self, aguid)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    pub fn forget_all_attributes(&self, clearChildren: bool) {
+        unsafe {
+            crate::ffi::TObj_TNameContainer_inherited_ForgetAllAttributes(
+                self as *const Self,
+                clearChildren,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    pub fn after_addition(&mut self) {
+        unsafe { crate::ffi::TObj_TNameContainer_inherited_AfterAddition(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
+    pub fn before_removal(&mut self) {
+        unsafe { crate::ffi::TObj_TNameContainer_inherited_BeforeRemoval(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    pub fn before_forget(&mut self) {
+        unsafe { crate::ffi::TObj_TNameContainer_inherited_BeforeForget(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    pub fn after_resume(&mut self) {
+        unsafe { crate::ffi::TObj_TNameContainer_inherited_AfterResume(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
+        unsafe {
+            crate::ffi::TObj_TNameContainer_inherited_AfterRetrieval(self as *mut Self, forceIt)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    pub fn before_undo(
+        &mut self,
+        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        forceIt: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TObj_TNameContainer_inherited_BeforeUndo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
+    pub fn after_undo(
+        &mut self,
+        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        forceIt: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TObj_TNameContainer_inherited_AfterUndo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    pub fn before_commit_transaction(&mut self) {
+        unsafe {
+            crate::ffi::TObj_TNameContainer_inherited_BeforeCommitTransaction(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    pub fn backup(&mut self) {
+        unsafe { crate::ffi::TObj_TNameContainer_inherited_Backup(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    pub fn is_backuped(&self) -> bool {
+        unsafe { crate::ffi::TObj_TNameContainer_inherited_IsBackuped(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
+    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_TNameContainer_inherited_BackupCopy(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::TObj_TNameContainer_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    pub fn forget(&mut self, aTransaction: i32) {
+        unsafe { crate::ffi::TObj_TNameContainer_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
 
@@ -1214,6 +1762,17 @@ impl TObject {
     /// when aborting a transaction.
     pub fn restore(&mut self, theWith: &crate::ffi::HandleTDFAttribute) {
         unsafe { crate::ffi::TObj_TObject_restore(self as *mut Self, theWith) }
+    }
+
+    /// **Source:** `TObj_TObject.hxx`:78 - `TObj_TObject::Paste()`
+    /// This method is used when copying an attribute from a source structure
+    /// into a target structure.
+    pub fn paste(
+        &self,
+        theInto: &crate::ffi::HandleTDFAttribute,
+        theRT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TObj_TObject_paste(self as *const Self, theInto, theRT) }
     }
 
     /// **Source:** `TObj_TObject.hxx`:83 - `TObj_TObject::BeforeForget()`
@@ -1400,6 +1959,11 @@ impl TObject {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TObj_TObject_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TObj_TObject_inherited_Forget(self as *mut Self, aTransaction) }
@@ -1482,6 +2046,17 @@ impl TReference {
     /// when aborting a transaction.
     pub fn restore(&mut self, theWith: &crate::ffi::HandleTDFAttribute) {
         unsafe { crate::ffi::TObj_TReference_restore(self as *mut Self, theWith) }
+    }
+
+    /// **Source:** `TObj_TReference.hxx`:91 - `TObj_TReference::Paste()`
+    /// This method is used when copying an attribute from a source structure
+    /// into a target structure.
+    pub fn paste(
+        &self,
+        theInto: &crate::ffi::HandleTDFAttribute,
+        theRT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TObj_TReference_paste(self as *const Self, theInto, theRT) }
     }
 
     /// **Source:** `TObj_TReference.hxx`:95 - `TObj_TReference::BeforeForget()`
@@ -1673,6 +2248,11 @@ impl TReference {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TObj_TReference_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TObj_TReference_inherited_Forget(self as *mut Self, aTransaction) }
@@ -1730,6 +2310,17 @@ impl TXYZ {
     /// when aborting a transaction.
     pub fn restore(&mut self, theWith: &crate::ffi::HandleTDFAttribute) {
         unsafe { crate::ffi::TObj_TXYZ_restore(self as *mut Self, theWith) }
+    }
+
+    /// **Source:** `TObj_TXYZ.hxx`:73 - `TObj_TXYZ::Paste()`
+    /// This method is used when copying an attribute from a source structure
+    /// into a target structure.
+    pub fn paste(
+        &self,
+        theInto: &crate::ffi::HandleTDFAttribute,
+        theRT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TObj_TXYZ_paste(self as *const Self, theInto, theRT) }
     }
 
     /// **Source:** `TObj_TXYZ.hxx`:85 - `TObj_TXYZ::DynamicType()`
@@ -1909,6 +2500,11 @@ impl TXYZ {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TObj_TXYZ_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TObj_TXYZ_inherited_Forget(self as *mut Self, aTransaction) }
@@ -1920,6 +2516,6 @@ impl TXYZ {
 // ========================
 
 pub use crate::ffi::{
-    TObj_Application as Application, TObj_HSequenceOfObject as HSequenceOfObject,
-    TObj_Object as Object, TObj_TNameContainer as TNameContainer,
+    TObj_DataMapOfNameLabel as DataMapOfNameLabel, TObj_HSequenceOfObject as HSequenceOfObject,
+    TObj_Object as Object,
 };

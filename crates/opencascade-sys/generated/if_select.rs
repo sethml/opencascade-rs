@@ -267,25 +267,6 @@ unsafe impl crate::CppDeletable for Act {
 }
 
 impl Act {
-    /// **Source:** `IFSelect_Act.hxx`:56 - `IFSelect_Act::IFSelect_Act()`
-    /// Creates an Act with a name, help and a function
-    /// mode (Add or AddSet) is given when recording
-    pub fn new_charptr2_actfunc(
-        name: &str,
-        help: &str,
-        func: &crate::ffi::IFSelect_ActFunc,
-    ) -> crate::OwnedPtr<Self> {
-        let c_name = std::ffi::CString::new(name).unwrap();
-        let c_help = std::ffi::CString::new(help).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Act_ctor_charptr2_actfunc(
-                c_name.as_ptr(),
-                c_help.as_ptr(),
-                func,
-            ))
-        }
-    }
-
     /// **Source:** `IFSelect_Act.hxx`:66 - `IFSelect_Act::Help()`
     /// Short Help for commands : returns the help given to create
     pub fn help(&self, number: i32) -> String {
@@ -911,33 +892,6 @@ unsafe impl crate::CppDeletable for ContextModif {
 }
 
 impl ContextModif {
-    /// **Source:** `IFSelect_ContextModif.hxx`:65 - `IFSelect_ContextModif::IFSelect_ContextModif()`
-    /// Prepares a ContextModif with these information :
-    /// - the graph established from original model (target passed
-    /// directly to Modifier)
-    /// - the CopyTool which detains the CopyControl, which maps
-    /// starting (in original) and result (in target) entities
-    /// - an optional file name (for file output)
-    ///
-    /// Such a ContextModif is considered to be applied on all
-    /// transferred entities (no filter active)
-    pub fn new_graph_copytool_charptr(
-        graph: &crate::ffi::Interface_Graph,
-        TC: &crate::ffi::Interface_CopyTool,
-        filename: &str,
-    ) -> crate::OwnedPtr<Self> {
-        let c_filename = std::ffi::CString::new(filename).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IFSelect_ContextModif_ctor_graph_copytool_charptr(
-                    graph,
-                    TC,
-                    c_filename.as_ptr(),
-                ),
-            )
-        }
-    }
-
     /// **Source:** `IFSelect_ContextModif.hxx`:78 - `IFSelect_ContextModif::IFSelect_ContextModif()`
     /// Prepares a ContextModif with these information :
     /// - the graph established from original model (target passed
@@ -2161,23 +2115,6 @@ impl EditForm {
                     c_label.as_ptr(),
                 ),
             )
-        }
-    }
-
-    /// **Source:** `IFSelect_EditForm.hxx`:61 - `IFSelect_EditForm::IFSelect_EditForm()`
-    /// Creates an extracted EditForm from an Editor, limited to
-    /// the values identified in <nums>
-    /// A specific Label can be given
-    pub fn new_handleifselecteditor_sequenceofinteger_bool2_charptr(
-        editor: &crate::ffi::HandleIFSelectEditor,
-        nums: &crate::ffi::TColStd_SequenceOfInteger,
-        readonly: bool,
-        undoable: bool,
-        label: &str,
-    ) -> crate::OwnedPtr<Self> {
-        let c_label = std::ffi::CString::new(label).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_EditForm_ctor_handleifselecteditor_sequenceofinteger_bool2_charptr(editor, nums, readonly, undoable, c_label.as_ptr()))
         }
     }
 

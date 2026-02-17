@@ -102,6 +102,15 @@ impl AsciiString {
         }
     }
 
+    /// **Source:** `TDataStd_AsciiString.hxx`:75 - `TDataStd_AsciiString::Paste()`
+    pub fn paste(
+        &self,
+        into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_AsciiString_paste(self as *const Self, into, RT) }
+    }
+
     /// **Source:** `TDataStd_AsciiString.hxx`:84 - `TDataStd_AsciiString::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDataStd_AsciiString_dynamic_type(self as *const Self)) }
@@ -300,6 +309,13 @@ impl AsciiString {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::TDataStd_AsciiString_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -405,6 +421,15 @@ impl BooleanArray {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `TDataStd_BooleanArray.hxx`:93 - `TDataStd_BooleanArray::Paste()`
+    pub fn paste(
+        &self,
+        into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_BooleanArray_paste(self as *const Self, into, RT) }
     }
 
     /// **Source:** `TDataStd_BooleanArray.hxx`:102 - `TDataStd_BooleanArray::DynamicType()`
@@ -607,6 +632,13 @@ impl BooleanArray {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::TDataStd_BooleanArray_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -723,6 +755,15 @@ impl BooleanList {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `TDataStd_BooleanList.hxx`:95 - `TDataStd_BooleanList::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_BooleanList_paste(self as *const Self, Into, RT) }
     }
 
     /// **Source:** `TDataStd_BooleanList.hxx`:104 - `TDataStd_BooleanList::DynamicType()`
@@ -923,6 +964,13 @@ impl BooleanList {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::TDataStd_BooleanList_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -1040,6 +1088,15 @@ impl ByteArray {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ByteArray_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `TDataStd_ByteArray.hxx`:117 - `TDataStd_ByteArray::Paste()`
+    pub fn paste(
+        &self,
+        into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_ByteArray_paste(self as *const Self, into, RT) }
     }
 
     /// **Source:** `TDataStd_ByteArray.hxx`:38 - `TDataStd_ByteArray::get_type_name()`
@@ -1230,6 +1287,13 @@ impl ByteArray {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ByteArray_inherited_BackupCopy(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::TDataStd_ByteArray_inherited_References(self as *const Self, aDataSet)
         }
     }
 
@@ -1543,6 +1607,26 @@ impl Comment {
         unsafe { crate::ffi::TDataStd_Comment_inherited_Restore(self as *mut Self, anAttribute) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_Comment_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataStd_Comment_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_Comment_inherited_Forget(self as *mut Self, aTransaction) }
@@ -1602,6 +1686,15 @@ impl Current {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Current_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `TDataStd_Current.hxx`:66 - `TDataStd_Current::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_Current_paste(self as *const Self, Into, RT) }
     }
 
     /// **Source:** `TDataStd_Current.hxx`:75 - `TDataStd_Current::DynamicType()`
@@ -1815,6 +1908,11 @@ impl Current {
                 self as *const Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataStd_Current_inherited_References(self as *const Self, aDataSet) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
@@ -2648,6 +2746,28 @@ impl Directory {
         unsafe { crate::ffi::TDataStd_Directory_inherited_Restore(self as *mut Self, anAttribute) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_Directory_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::TDataStd_Directory_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_Directory_inherited_Forget(self as *mut Self, aTransaction) }
@@ -2716,6 +2836,15 @@ impl Expression {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `TDataStd_Expression.hxx`:71 - `TDataStd_Expression::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_Expression_paste(self as *const Self, Into, RT) }
     }
 
     /// **Source:** `TDataStd_Expression.hxx`:80 - `TDataStd_Expression::DynamicType()`
@@ -2920,6 +3049,13 @@ impl Expression {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::TDataStd_Expression_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_Expression_inherited_Forget(self as *mut Self, aTransaction) }
@@ -3056,6 +3192,15 @@ impl ExtStringArray {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `TDataStd_ExtStringArray.hxx`:124 - `TDataStd_ExtStringArray::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_ExtStringArray_paste(self as *const Self, Into, RT) }
     }
 
     /// **Source:** `TDataStd_ExtStringArray.hxx`:40 - `TDataStd_ExtStringArray::get_type_name()`
@@ -3260,6 +3405,13 @@ impl ExtStringArray {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::TDataStd_ExtStringArray_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -3435,6 +3587,15 @@ impl ExtStringList {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `TDataStd_ExtStringList.hxx`:105 - `TDataStd_ExtStringList::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_ExtStringList_paste(self as *const Self, Into, RT) }
     }
 
     /// **Source:** `TDataStd_ExtStringList.hxx`:114 - `TDataStd_ExtStringList::DynamicType()`
@@ -3641,6 +3802,13 @@ impl ExtStringList {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::TDataStd_ExtStringList_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -3668,6 +3836,15 @@ impl GenericEmpty {
     /// **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
     pub fn restore(&mut self, arg0: &crate::ffi::HandleTDFAttribute) {
         unsafe { crate::ffi::TDataStd_GenericEmpty_restore(self as *mut Self, arg0) }
+    }
+
+    /// **Source:** `TDataStd_GenericEmpty.hxx`:35 - `TDataStd_GenericEmpty::Paste()`
+    pub fn paste(
+        &self,
+        arg0: &crate::ffi::HandleTDFAttribute,
+        arg1: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_GenericEmpty_paste(self as *const Self, arg0, arg1) }
     }
 
     /// **Source:** `TDataStd_GenericEmpty.hxx`:44 - `TDataStd_GenericEmpty::DynamicType()`
@@ -3881,6 +4058,13 @@ impl GenericEmpty {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::TDataStd_GenericEmpty_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -3934,6 +4118,15 @@ impl GenericExtString {
     /// **Source:** `TDataStd_GenericExtString.hxx`:46 - `TDataStd_GenericExtString::Restore()`
     pub fn restore(&mut self, with: &crate::ffi::HandleTDFAttribute) {
         unsafe { crate::ffi::TDataStd_GenericExtString_restore(self as *mut Self, with) }
+    }
+
+    /// **Source:** `TDataStd_GenericExtString.hxx`:48 - `TDataStd_GenericExtString::Paste()`
+    pub fn paste(
+        &self,
+        into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_GenericExtString_paste(self as *const Self, into, RT) }
     }
 
     /// **Source:** `TDataStd_GenericExtString.hxx`:55 - `TDataStd_GenericExtString::DynamicType()`
@@ -4149,6 +4342,16 @@ impl GenericExtString {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::TDataStd_GenericExtString_inherited_References(
+                self as *const Self,
+                aDataSet,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -4179,17 +4382,6 @@ impl HDataMapOfStringInteger {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_HDataMapOfStringInteger_ctor_int(
                 NbBuckets,
             ))
-        }
-    }
-
-    /// **Source:** `TDataStd_HDataMapOfStringInteger.hxx`:33 - `TDataStd_HDataMapOfStringInteger::TDataStd_HDataMapOfStringInteger()`
-    pub fn new_datamapofstringinteger(
-        theOther: &crate::ffi::TColStd_DataMapOfStringInteger,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TDataStd_HDataMapOfStringInteger_ctor_datamapofstringinteger(theOther),
-            )
         }
     }
 
@@ -4372,6 +4564,15 @@ impl IntPackedMap {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `TDataStd_IntPackedMap.hxx`:90 - `TDataStd_IntPackedMap::Paste()`
+    pub fn paste(
+        &self,
+        into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_IntPackedMap_paste(self as *const Self, into, RT) }
     }
 
     /// **Source:** `TDataStd_IntPackedMap.hxx`:39 - `TDataStd_IntPackedMap::get_type_name()`
@@ -4574,6 +4775,13 @@ impl IntPackedMap {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::TDataStd_IntPackedMap_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -4648,6 +4856,15 @@ impl Integer {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Integer_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `TDataStd_Integer.hxx`:76 - `TDataStd_Integer::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_Integer_paste(self as *const Self, Into, RT) }
     }
 
     /// **Source:** `TDataStd_Integer.hxx`:87 - `TDataStd_Integer::DynamicType()`
@@ -4838,6 +5055,11 @@ impl Integer {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataStd_Integer_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_Integer_inherited_Forget(self as *mut Self, aTransaction) }
@@ -4975,6 +5197,16 @@ impl IntegerArray {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `TDataStd_IntegerArray.hxx`:122 - `TDataStd_IntegerArray::Paste()`
+    /// Note. Uses inside ChangeArray() method
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_IntegerArray_paste(self as *const Self, Into, RT) }
     }
 
     /// **Source:** `TDataStd_IntegerArray.hxx`:39 - `TDataStd_IntegerArray::get_type_name()`
@@ -5172,6 +5404,13 @@ impl IntegerArray {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::TDataStd_IntegerArray_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -5318,6 +5557,15 @@ impl IntegerList {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `TDataStd_IntegerList.hxx`:104 - `TDataStd_IntegerList::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_IntegerList_paste(self as *const Self, Into, RT) }
     }
 
     /// **Source:** `TDataStd_IntegerList.hxx`:113 - `TDataStd_IntegerList::DynamicType()`
@@ -5515,6 +5763,13 @@ impl IntegerList {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntegerList_inherited_BackupCopy(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::TDataStd_IntegerList_inherited_References(self as *const Self, aDataSet)
         }
     }
 
@@ -5773,6 +6028,26 @@ impl Name {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
     pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
         unsafe { crate::ffi::TDataStd_Name_inherited_Restore(self as *mut Self, anAttribute) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_Name_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataStd_Name_inherited_References(self as *const Self, aDataSet) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
@@ -6035,6 +6310,26 @@ impl NoteBook {
         unsafe { crate::ffi::TDataStd_NoteBook_inherited_Restore(self as *mut Self, anAttribute) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_NoteBook_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataStd_NoteBook_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_NoteBook_inherited_Forget(self as *mut Self, aTransaction) }
@@ -6106,6 +6401,15 @@ impl Real {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Real_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `TDataStd_Real.hxx`:95 - `TDataStd_Real::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_Real_paste(self as *const Self, Into, RT) }
     }
 
     /// **Source:** `TDataStd_Real.hxx`:104 - `TDataStd_Real::DynamicType()`
@@ -6290,6 +6594,11 @@ impl Real {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataStd_Real_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_Real_inherited_Forget(self as *mut Self, aTransaction) }
@@ -6421,6 +6730,16 @@ impl RealArray {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_RealArray_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `TDataStd_RealArray.hxx`:123 - `TDataStd_RealArray::Paste()`
+    /// Note. Uses inside ChangeArray() method
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_RealArray_paste(self as *const Self, Into, RT) }
     }
 
     /// **Source:** `TDataStd_RealArray.hxx`:40 - `TDataStd_RealArray::get_type_name()`
@@ -6614,6 +6933,13 @@ impl RealArray {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::TDataStd_RealArray_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_RealArray_inherited_Forget(self as *mut Self, aTransaction) }
@@ -6754,6 +7080,15 @@ impl RealList {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_RealList_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `TDataStd_RealList.hxx`:105 - `TDataStd_RealList::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_RealList_paste(self as *const Self, Into, RT) }
     }
 
     /// **Source:** `TDataStd_RealList.hxx`:114 - `TDataStd_RealList::DynamicType()`
@@ -6952,6 +7287,11 @@ impl RealList {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataStd_RealList_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_RealList_inherited_Forget(self as *mut Self, aTransaction) }
@@ -7050,6 +7390,20 @@ impl ReferenceArray {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `TDataStd_ReferenceArray.hxx`:97 - `TDataStd_ReferenceArray::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_ReferenceArray_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDataStd_ReferenceArray.hxx`:100 - `TDataStd_ReferenceArray::References()`
+    pub fn references(&self, DS: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataStd_ReferenceArray_references(self as *const Self, DS) }
     }
 
     /// **Source:** `TDataStd_ReferenceArray.hxx`:108 - `TDataStd_ReferenceArray::DynamicType()`
@@ -7429,6 +7783,20 @@ impl ReferenceList {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `TDataStd_ReferenceList.hxx`:106 - `TDataStd_ReferenceList::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_ReferenceList_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDataStd_ReferenceList.hxx`:109 - `TDataStd_ReferenceList::References()`
+    pub fn references(&self, DS: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataStd_ReferenceList_references(self as *const Self, DS) }
     }
 
     /// **Source:** `TDataStd_ReferenceList.hxx`:117 - `TDataStd_ReferenceList::DynamicType()`
@@ -7909,6 +8277,26 @@ impl Relation {
         unsafe { crate::ffi::TDataStd_Relation_inherited_Restore(self as *mut Self, anAttribute) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_Relation_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataStd_Relation_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_Relation_inherited_Forget(self as *mut Self, aTransaction) }
@@ -8169,6 +8557,26 @@ impl Tick {
         unsafe { crate::ffi::TDataStd_Tick_inherited_Restore(self as *mut Self, anAttribute) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_Tick_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataStd_Tick_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_Tick_inherited_Forget(self as *mut Self, aTransaction) }
@@ -8316,11 +8724,25 @@ impl TreeNode {
         unsafe { crate::ffi::TDataStd_TreeNode_restore(self as *mut Self, with) }
     }
 
+    /// **Source:** `TDataStd_TreeNode.hxx`:206 - `TDataStd_TreeNode::Paste()`
+    pub fn paste(
+        &self,
+        into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_TreeNode_paste(self as *const Self, into, RT) }
+    }
+
     /// **Source:** `TDataStd_TreeNode.hxx`:209 - `TDataStd_TreeNode::NewEmpty()`
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_TreeNode_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `TDataStd_TreeNode.hxx`:211 - `TDataStd_TreeNode::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataStd_TreeNode_references(self as *const Self, aDataSet) }
     }
 
     /// **Source:** `TDataStd_TreeNode.hxx`:222 - `TDataStd_TreeNode::DynamicType()`
@@ -8527,6 +8949,20 @@ impl UAttribute {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `TDataStd_UAttribute.hxx`:55 - `TDataStd_UAttribute::Paste()`
+    pub fn paste(
+        &self,
+        into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_UAttribute_paste(self as *const Self, into, RT) }
+    }
+
+    /// **Source:** `TDataStd_UAttribute.hxx`:58 - `TDataStd_UAttribute::References()`
+    pub fn references(&self, DS: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataStd_UAttribute_references(self as *const Self, DS) }
     }
 
     /// **Source:** `TDataStd_UAttribute.hxx`:66 - `TDataStd_UAttribute::DynamicType()`
@@ -8850,6 +9286,21 @@ impl Variable {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Variable_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `TDataStd_Variable.hxx`:131 - `TDataStd_Variable::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_Variable_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDataStd_Variable.hxx`:135 - `TDataStd_Variable::References()`
+    /// to export reference to the associated Name attribute.
+    pub fn references(&self, DS: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataStd_Variable_references(self as *const Self, DS) }
     }
 
     /// **Source:** `TDataStd_Variable.hxx`:143 - `TDataStd_Variable::DynamicType()`

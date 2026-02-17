@@ -745,46 +745,6 @@ impl PGProps {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GProp_PGProps_ctor_array2ofpnt(Pnts)) }
     }
 
-    /// **Source:** `GProp_PGProps.hxx`:102 - `GProp_PGProps::GProp_PGProps()`
-    /// computes the global properties of the system of points Pnts.
-    /// A density is associated with each point.
-    ///
-    /// raises if a density is lower or equal to Resolution from package
-    /// gp.
-    ///
-    /// raises if the length of Pnts and the length of Density
-    /// is not the same.
-    pub fn new_array1ofpnt_array1ofreal(
-        Pnts: &crate::ffi::TColgp_Array1OfPnt,
-        Density: &crate::ffi::TColStd_Array1OfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GProp_PGProps_ctor_array1ofpnt_array1ofreal(
-                Pnts, Density,
-            ))
-        }
-    }
-
-    /// **Source:** `GProp_PGProps.hxx`:113 - `GProp_PGProps::GProp_PGProps()`
-    /// computes the global properties of the system of points Pnts.
-    /// A density is associated with each point.
-    ///
-    /// Raised if a density is lower or equal to Resolution from package
-    /// gp.
-    ///
-    /// Raised if the length of Pnts and the length of Density
-    /// is not the same.
-    pub fn new_array2ofpnt_array2ofreal(
-        Pnts: &crate::ffi::TColgp_Array2OfPnt,
-        Density: &crate::ffi::TColStd_Array2OfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GProp_PGProps_ctor_array2ofpnt_array2ofreal(
-                Pnts, Density,
-            ))
-        }
-    }
-
     /// **Source:** `GProp_PGProps.hxx`:78 - `GProp_PGProps::AddPoint()`
     /// Brings together the global properties already
     /// retained by this framework with those induced by

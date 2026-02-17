@@ -753,34 +753,6 @@ unsafe impl crate::CppDeletable for Crout {
 }
 
 impl Crout {
-    /// **Source:** `math_Crout.hxx`:47 - `math_Crout::math_Crout()`
-    /// Given an input matrix A, this algorithm inverts A by the
-    /// Crout algorithm. The user can give only the inferior
-    /// triangle for the implementation.
-    /// A can be decomposed like this:
-    /// A = L * D * T(L) where L is triangular inferior and D is
-    /// diagonal.
-    /// If one element of A is less than MinPivot, A is
-    /// considered as singular.
-    /// Exception NotSquare is raised if A is not a square matrix.
-    pub fn new_matrix_real(A: &crate::ffi::math_Matrix, MinPivot: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_Crout_ctor_matrix_real(A, MinPivot)) }
-    }
-
-    /// **Source:** `math_Crout.hxx`:47 - `math_Crout::math_Crout()`
-    /// Given an input matrix A, this algorithm inverts A by the
-    /// Crout algorithm. The user can give only the inferior
-    /// triangle for the implementation.
-    /// A can be decomposed like this:
-    /// A = L * D * T(L) where L is triangular inferior and D is
-    /// diagonal.
-    /// If one element of A is less than MinPivot, A is
-    /// considered as singular.
-    /// Exception NotSquare is raised if A is not a square matrix.
-    pub fn new_matrix(A: &crate::ffi::math_Matrix) -> crate::OwnedPtr<Self> {
-        Self::new_matrix_real(A, 1.0e-20)
-    }
-
     /// **Source:** `math_Crout.hxx`:50 - `math_Crout::IsDone()`
     /// Returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
@@ -960,19 +932,6 @@ unsafe impl crate::CppDeletable for EigenValuesSearcher {
 }
 
 impl EigenValuesSearcher {
-    /// **Source:** `math_EigenValuesSearcher.hxx`:37 - `math_EigenValuesSearcher::math_EigenValuesSearcher()`
-    pub fn new_array1ofreal2(
-        Diagonal: &crate::ffi::TColStd_Array1OfReal,
-        Subdiagonal: &crate::ffi::TColStd_Array1OfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::math_EigenValuesSearcher_ctor_array1ofreal2(
-                Diagonal,
-                Subdiagonal,
-            ))
-        }
-    }
-
     /// **Source:** `math_EigenValuesSearcher.hxx`:42 - `math_EigenValuesSearcher::IsDone()`
     /// Returns Standard_True if computation is performed
     /// successfully.
@@ -1656,27 +1615,6 @@ unsafe impl crate::CppDeletable for FunctionSetRoot {
 }
 
 impl FunctionSetRoot {
-    /// **Source:** `math_FunctionSetRoot.hxx`:45 - `math_FunctionSetRoot::math_FunctionSetRoot()`
-    /// is used in a sub-class to initialize correctly all the fields
-    /// of this class.
-    /// The range (1, F.NbVariables()) must be especially
-    /// respected for all vectors and matrix declarations.
-    pub fn new_functionsetwithderivatives_vector_int(
-        F: &mut crate::ffi::math_FunctionSetWithDerivatives,
-        Tolerance: &crate::ffi::math_Vector,
-        NbIterations: i32,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::math_FunctionSetRoot_ctor_functionsetwithderivatives_vector_int(
-                    F,
-                    Tolerance,
-                    NbIterations,
-                ),
-            )
-        }
-    }
-
     /// **Source:** `math_FunctionSetRoot.hxx`:55 - `math_FunctionSetRoot::math_FunctionSetRoot()`
     /// is used in a sub-class to initialize correctly all the fields
     /// of this class.
@@ -1696,18 +1634,6 @@ impl FunctionSetRoot {
                 ),
             )
         }
-    }
-
-    /// **Source:** `math_FunctionSetRoot.hxx`:45 - `math_FunctionSetRoot::math_FunctionSetRoot()`
-    /// is used in a sub-class to initialize correctly all the fields
-    /// of this class.
-    /// The range (1, F.NbVariables()) must be especially
-    /// respected for all vectors and matrix declarations.
-    pub fn new_functionsetwithderivatives_vector(
-        F: &mut crate::ffi::math_FunctionSetWithDerivatives,
-        Tolerance: &crate::ffi::math_Vector,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_functionsetwithderivatives_vector_int(F, Tolerance, 100)
     }
 
     /// **Source:** `math_FunctionSetRoot.hxx`:55 - `math_FunctionSetRoot::math_FunctionSetRoot()`
@@ -1898,28 +1824,6 @@ unsafe impl crate::CppDeletable for Gauss {
 }
 
 impl Gauss {
-    /// **Source:** `math_Gauss.hxx`:48 - `math_Gauss::math_Gauss()`
-    /// Given an input n X n matrix A this constructor performs its LU
-    /// decomposition with partial pivoting (interchange of rows).
-    /// This LU decomposition is stored internally and may be used to
-    /// do subsequent calculation.
-    /// If the largest pivot found is less than MinPivot the matrix A is
-    /// considered as singular.
-    /// Exception NotSquare is raised if A is not a square matrix.
-    pub fn new_matrix_real_progressrange(
-        A: &crate::ffi::math_Matrix,
-        MinPivot: f64,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::math_Gauss_ctor_matrix_real_progressrange(
-                A,
-                MinPivot,
-                theProgress,
-            ))
-        }
-    }
-
     /// **Source:** `math_Gauss.hxx`:53 - `math_Gauss::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false
     pub fn is_done(&self) -> bool {
@@ -1955,34 +1859,6 @@ unsafe impl crate::CppDeletable for GaussLeastSquare {
 }
 
 impl GaussLeastSquare {
-    /// **Source:** `math_GaussLeastSquare.hxx`:46 - `math_GaussLeastSquare::math_GaussLeastSquare()`
-    /// Given an input n X m matrix A with n >= m this constructor
-    /// performs the LU decomposition with partial pivoting
-    /// (interchange of rows) of the matrix AA = A.Transposed() * A;
-    /// This LU decomposition is stored internally and may be used
-    /// to do subsequent calculation.
-    /// If the largest pivot found is less than MinPivot the matrix <A>
-    /// is considered as singular.
-    pub fn new_matrix_real(A: &crate::ffi::math_Matrix, MinPivot: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::math_GaussLeastSquare_ctor_matrix_real(
-                A, MinPivot,
-            ))
-        }
-    }
-
-    /// **Source:** `math_GaussLeastSquare.hxx`:46 - `math_GaussLeastSquare::math_GaussLeastSquare()`
-    /// Given an input n X m matrix A with n >= m this constructor
-    /// performs the LU decomposition with partial pivoting
-    /// (interchange of rows) of the matrix AA = A.Transposed() * A;
-    /// This LU decomposition is stored internally and may be used
-    /// to do subsequent calculation.
-    /// If the largest pivot found is less than MinPivot the matrix <A>
-    /// is considered as singular.
-    pub fn new_matrix(A: &crate::ffi::math_Matrix) -> crate::OwnedPtr<Self> {
-        Self::new_matrix_real(A, 1.0e-20)
-    }
-
     /// **Source:** `math_GaussLeastSquare.hxx`:50 - `math_GaussLeastSquare::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.e
     pub fn is_done(&self) -> bool {
@@ -2007,21 +1883,6 @@ unsafe impl crate::CppDeletable for GaussMultipleIntegration {
 }
 
 impl GaussMultipleIntegration {
-    /// **Source:** `math_GaussMultipleIntegration.hxx`:39 - `math_GaussMultipleIntegration::math_GaussMultipleIntegration()`
-    /// The Gauss-Legendre integration with Order = points of
-    /// integration for each unknown, is done on the function F
-    /// between the bounds Lower and Upper.
-    pub fn new_multiplevarfunction_vector2_integervector(
-        F: &mut crate::ffi::math_MultipleVarFunction,
-        Lower: &crate::ffi::math_Vector,
-        Upper: &crate::ffi::math_Vector,
-        Order: &crate::ffi::math_IntegerVector,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::math_GaussMultipleIntegration_ctor_multiplevarfunction_vector2_integervector(F, Lower, Upper, Order))
-        }
-    }
-
     /// **Source:** `math_GaussMultipleIntegration.hxx`:45 - `math_GaussMultipleIntegration::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
@@ -2053,25 +1914,6 @@ unsafe impl crate::CppDeletable for GaussSetIntegration {
 }
 
 impl GaussSetIntegration {
-    /// **Source:** `math_GaussSetIntegration.hxx`:40 - `math_GaussSetIntegration::math_GaussSetIntegration()`
-    /// The Gauss-Legendre integration with Order = points of
-    /// integration for each unknown, is done on the function F
-    /// between the bounds Lower and Upper.
-    pub fn new_functionset_vector2_integervector(
-        F: &mut crate::ffi::math_FunctionSet,
-        Lower: &crate::ffi::math_Vector,
-        Upper: &crate::ffi::math_Vector,
-        Order: &crate::ffi::math_IntegerVector,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::math_GaussSetIntegration_ctor_functionset_vector2_integervector(
-                    F, Lower, Upper, Order,
-                ),
-            )
-        }
-    }
-
     /// **Source:** `math_GaussSetIntegration.hxx`:46 - `math_GaussSetIntegration::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
@@ -2299,117 +2141,6 @@ unsafe impl crate::CppDeletable for Householder {
 }
 
 impl Householder {
-    /// **Source:** `math_Householder.hxx`:49 - `math_Householder::math_Householder()`
-    /// Given an input matrix A with n>= m, given an input matrix B
-    /// this constructor performs the least square resolution of
-    /// the set of linear equations A.X = B for each column of B.
-    /// If a column norm is less than EPS, the resolution can't
-    /// be done.
-    /// Exception DimensionError is raised if the row number of B
-    /// is different from the A row number.
-    pub fn new_matrix2_real(
-        A: &crate::ffi::math_Matrix,
-        B: &crate::ffi::math_Matrix,
-        EPS: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::math_Householder_ctor_matrix2_real(A, B, EPS))
-        }
-    }
-
-    /// **Source:** `math_Householder.hxx`:60 - `math_Householder::math_Householder()`
-    /// Given an input matrix A with n>= m, given an input matrix B
-    /// this constructor performs the least square resolution of
-    /// the set of linear equations A.X = B for each column of B.
-    /// If a column norm is less than EPS, the resolution can't
-    /// be done.
-    /// Exception DimensionError is raised if the row number of B
-    /// is different from the A row number.
-    pub fn new_matrix2_int4_real(
-        A: &crate::ffi::math_Matrix,
-        B: &crate::ffi::math_Matrix,
-        lowerArow: i32,
-        upperArow: i32,
-        lowerAcol: i32,
-        upperAcol: i32,
-        EPS: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::math_Householder_ctor_matrix2_int4_real(
-                A, B, lowerArow, upperArow, lowerAcol, upperAcol, EPS,
-            ))
-        }
-    }
-
-    /// **Source:** `math_Householder.hxx`:75 - `math_Householder::math_Householder()`
-    /// Given an input matrix A with n>= m, given an input vector B
-    /// this constructor performs the least square resolution of
-    /// the set of linear equations A.X = B.
-    /// If a column norm is less than EPS, the resolution can't
-    /// be done.
-    /// Exception DimensionError is raised if the length of B
-    /// is different from the A row number.
-    pub fn new_matrix_vector_real(
-        A: &crate::ffi::math_Matrix,
-        B: &crate::ffi::math_Vector,
-        EPS: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::math_Householder_ctor_matrix_vector_real(
-                A, B, EPS,
-            ))
-        }
-    }
-
-    /// **Source:** `math_Householder.hxx`:49 - `math_Householder::math_Householder()`
-    /// Given an input matrix A with n>= m, given an input matrix B
-    /// this constructor performs the least square resolution of
-    /// the set of linear equations A.X = B for each column of B.
-    /// If a column norm is less than EPS, the resolution can't
-    /// be done.
-    /// Exception DimensionError is raised if the row number of B
-    /// is different from the A row number.
-    pub fn new_matrix2(
-        A: &crate::ffi::math_Matrix,
-        B: &crate::ffi::math_Matrix,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_matrix2_real(A, B, 1.0e-20)
-    }
-
-    /// **Source:** `math_Householder.hxx`:60 - `math_Householder::math_Householder()`
-    /// Given an input matrix A with n>= m, given an input matrix B
-    /// this constructor performs the least square resolution of
-    /// the set of linear equations A.X = B for each column of B.
-    /// If a column norm is less than EPS, the resolution can't
-    /// be done.
-    /// Exception DimensionError is raised if the row number of B
-    /// is different from the A row number.
-    pub fn new_matrix2_int4(
-        A: &crate::ffi::math_Matrix,
-        B: &crate::ffi::math_Matrix,
-        lowerArow: i32,
-        upperArow: i32,
-        lowerAcol: i32,
-        upperAcol: i32,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_matrix2_int4_real(A, B, lowerArow, upperArow, lowerAcol, upperAcol, 1.0e-20)
-    }
-
-    /// **Source:** `math_Householder.hxx`:75 - `math_Householder::math_Householder()`
-    /// Given an input matrix A with n>= m, given an input vector B
-    /// this constructor performs the least square resolution of
-    /// the set of linear equations A.X = B.
-    /// If a column norm is less than EPS, the resolution can't
-    /// be done.
-    /// Exception DimensionError is raised if the length of B
-    /// is different from the A row number.
-    pub fn new_matrix_vector(
-        A: &crate::ffi::math_Matrix,
-        B: &crate::ffi::math_Vector,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_matrix_vector_real(A, B, 1.0e-20)
-    }
-
     /// **Source:** `math_Householder.hxx`:80 - `math_Householder::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
@@ -2434,15 +2165,6 @@ unsafe impl crate::CppDeletable for Jacobi {
 }
 
 impl Jacobi {
-    /// **Source:** `math_Jacobi.hxx`:40 - `math_Jacobi::math_Jacobi()`
-    /// Given a Real n X n matrix A, this constructor computes all its
-    /// eigenvalues and eigenvectors using the Jacobi method.
-    /// The exception NotSquare is raised if the matrix is not square.
-    /// No verification that the matrix A is really symmetric is done.
-    pub fn new_matrix(A: &crate::ffi::math_Matrix) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_Jacobi_ctor_matrix(A)) }
-    }
-
     /// **Source:** `math_Jacobi.hxx`:43 - `math_Jacobi::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
@@ -2980,21 +2702,6 @@ unsafe impl crate::CppDeletable for NewtonFunctionSetRoot {
 }
 
 impl NewtonFunctionSetRoot {
-    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:42 - `math_NewtonFunctionSetRoot::math_NewtonFunctionSetRoot()`
-    /// Initialize correctly all the fields of this class.
-    /// The range (1, F.NbVariables()) must be especially respected for
-    /// all vectors and matrix declarations.
-    pub fn new_functionsetwithderivatives_vector_real_int(
-        theFunction: &mut crate::ffi::math_FunctionSetWithDerivatives,
-        theXTolerance: &crate::ffi::math_Vector,
-        theFTolerance: f64,
-        tehNbIterations: i32,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::math_NewtonFunctionSetRoot_ctor_functionsetwithderivatives_vector_real_int(theFunction, theXTolerance, theFTolerance, tehNbIterations))
-        }
-    }
-
     /// **Source:** `math_NewtonFunctionSetRoot.hxx`:52 - `math_NewtonFunctionSetRoot::math_NewtonFunctionSetRoot()`
     /// This constructor should be used in a sub-class to initialize
     /// correctly all the fields of this class.
@@ -3015,23 +2722,6 @@ impl NewtonFunctionSetRoot {
                 ),
             )
         }
-    }
-
-    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:42 - `math_NewtonFunctionSetRoot::math_NewtonFunctionSetRoot()`
-    /// Initialize correctly all the fields of this class.
-    /// The range (1, F.NbVariables()) must be especially respected for
-    /// all vectors and matrix declarations.
-    pub fn new_functionsetwithderivatives_vector_real(
-        theFunction: &mut crate::ffi::math_FunctionSetWithDerivatives,
-        theXTolerance: &crate::ffi::math_Vector,
-        theFTolerance: f64,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_functionsetwithderivatives_vector_real_int(
-            theFunction,
-            theXTolerance,
-            theFTolerance,
-            100,
-        )
     }
 
     /// **Source:** `math_NewtonFunctionSetRoot.hxx`:52 - `math_NewtonFunctionSetRoot::math_NewtonFunctionSetRoot()`
@@ -3488,13 +3178,6 @@ unsafe impl crate::CppDeletable for SVD {
 }
 
 impl SVD {
-    /// **Source:** `math_SVD.hxx`:40 - `math_SVD::math_SVD()`
-    /// Given as input an n X m matrix A with n < m, n = m or n > m
-    /// this constructor performs the Singular Value Decomposition.
-    pub fn new_matrix(A: &crate::ffi::math_Matrix) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_SVD_ctor_matrix(A)) }
-    }
-
     /// **Source:** `math_SVD.hxx`:43 - `math_SVD::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
@@ -3778,241 +3461,6 @@ unsafe impl crate::CppDeletable for Uzawa {
 }
 
 impl Uzawa {
-    /// **Source:** `math_Uzawa.hxx`:53 - `math_Uzawa::math_Uzawa()`
-    /// Given an input matrix Cont, two input vectors Secont
-    /// and StartingPoint, it solves Cont*X = Secont (only
-    /// = equations) with a minimization of Norme(X-X0).
-    /// The maximum iterations number allowed is fixed to
-    /// NbIterations.
-    /// The tolerance EpsLic is fixed for the dual variable
-    /// convergence. The tolerance EpsLix is used for the
-    /// convergence of X.
-    /// Exception ConstructionError is raised if the line number
-    /// of Cont is different from the length of Secont.
-    pub fn new_matrix_vector2_real2_int(
-        Cont: &crate::ffi::math_Matrix,
-        Secont: &crate::ffi::math_Vector,
-        StartingPoint: &crate::ffi::math_Vector,
-        EpsLix: f64,
-        EpsLic: f64,
-        NbIterations: i32,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::math_Uzawa_ctor_matrix_vector2_real2_int(
-                Cont,
-                Secont,
-                StartingPoint,
-                EpsLix,
-                EpsLic,
-                NbIterations,
-            ))
-        }
-    }
-
-    /// **Source:** `math_Uzawa.hxx`:74 - `math_Uzawa::math_Uzawa()`
-    /// Given an input matrix Cont, two input vectors Secont
-    /// and StartingPoint, it solves Cont*X = Secont (the Nce
-    /// first equations are equal equations and the Nci last
-    /// equations are inequalities <) with a minimization
-    /// of Norme(X-X0).
-    /// The maximum iterations number allowed is fixed to
-    /// NbIterations.
-    /// The tolerance EpsLic is fixed for the dual variable
-    /// convergence. The tolerance EpsLix is used for the
-    /// convergence of X.
-    /// There are no conditions on Nce and Nci.
-    /// Exception ConstructionError is raised if the line number
-    /// of Cont is different from the length of Secont and from
-    /// Nce + Nci.
-    pub fn new_matrix_vector2_int2_real2_int(
-        Cont: &crate::ffi::math_Matrix,
-        Secont: &crate::ffi::math_Vector,
-        StartingPoint: &crate::ffi::math_Vector,
-        Nci: i32,
-        Nce: i32,
-        EpsLix: f64,
-        EpsLic: f64,
-        NbIterations: i32,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::math_Uzawa_ctor_matrix_vector2_int2_real2_int(
-                Cont,
-                Secont,
-                StartingPoint,
-                Nci,
-                Nce,
-                EpsLix,
-                EpsLic,
-                NbIterations,
-            ))
-        }
-    }
-
-    /// **Source:** `math_Uzawa.hxx`:53 - `math_Uzawa::math_Uzawa()`
-    /// Given an input matrix Cont, two input vectors Secont
-    /// and StartingPoint, it solves Cont*X = Secont (only
-    /// = equations) with a minimization of Norme(X-X0).
-    /// The maximum iterations number allowed is fixed to
-    /// NbIterations.
-    /// The tolerance EpsLic is fixed for the dual variable
-    /// convergence. The tolerance EpsLix is used for the
-    /// convergence of X.
-    /// Exception ConstructionError is raised if the line number
-    /// of Cont is different from the length of Secont.
-    pub fn new_matrix_vector2_real2(
-        Cont: &crate::ffi::math_Matrix,
-        Secont: &crate::ffi::math_Vector,
-        StartingPoint: &crate::ffi::math_Vector,
-        EpsLix: f64,
-        EpsLic: f64,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_matrix_vector2_real2_int(Cont, Secont, StartingPoint, EpsLix, EpsLic, 500)
-    }
-
-    /// **Source:** `math_Uzawa.hxx`:53 - `math_Uzawa::math_Uzawa()`
-    /// Given an input matrix Cont, two input vectors Secont
-    /// and StartingPoint, it solves Cont*X = Secont (only
-    /// = equations) with a minimization of Norme(X-X0).
-    /// The maximum iterations number allowed is fixed to
-    /// NbIterations.
-    /// The tolerance EpsLic is fixed for the dual variable
-    /// convergence. The tolerance EpsLix is used for the
-    /// convergence of X.
-    /// Exception ConstructionError is raised if the line number
-    /// of Cont is different from the length of Secont.
-    pub fn new_matrix_vector2_real(
-        Cont: &crate::ffi::math_Matrix,
-        Secont: &crate::ffi::math_Vector,
-        StartingPoint: &crate::ffi::math_Vector,
-        EpsLix: f64,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_matrix_vector2_real2_int(Cont, Secont, StartingPoint, EpsLix, 1.0e-06, 500)
-    }
-
-    /// **Source:** `math_Uzawa.hxx`:53 - `math_Uzawa::math_Uzawa()`
-    /// Given an input matrix Cont, two input vectors Secont
-    /// and StartingPoint, it solves Cont*X = Secont (only
-    /// = equations) with a minimization of Norme(X-X0).
-    /// The maximum iterations number allowed is fixed to
-    /// NbIterations.
-    /// The tolerance EpsLic is fixed for the dual variable
-    /// convergence. The tolerance EpsLix is used for the
-    /// convergence of X.
-    /// Exception ConstructionError is raised if the line number
-    /// of Cont is different from the length of Secont.
-    pub fn new_matrix_vector2(
-        Cont: &crate::ffi::math_Matrix,
-        Secont: &crate::ffi::math_Vector,
-        StartingPoint: &crate::ffi::math_Vector,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_matrix_vector2_real2_int(Cont, Secont, StartingPoint, 1.0e-06, 1.0e-06, 500)
-    }
-
-    /// **Source:** `math_Uzawa.hxx`:74 - `math_Uzawa::math_Uzawa()`
-    /// Given an input matrix Cont, two input vectors Secont
-    /// and StartingPoint, it solves Cont*X = Secont (the Nce
-    /// first equations are equal equations and the Nci last
-    /// equations are inequalities <) with a minimization
-    /// of Norme(X-X0).
-    /// The maximum iterations number allowed is fixed to
-    /// NbIterations.
-    /// The tolerance EpsLic is fixed for the dual variable
-    /// convergence. The tolerance EpsLix is used for the
-    /// convergence of X.
-    /// There are no conditions on Nce and Nci.
-    /// Exception ConstructionError is raised if the line number
-    /// of Cont is different from the length of Secont and from
-    /// Nce + Nci.
-    pub fn new_matrix_vector2_int2_real2(
-        Cont: &crate::ffi::math_Matrix,
-        Secont: &crate::ffi::math_Vector,
-        StartingPoint: &crate::ffi::math_Vector,
-        Nci: i32,
-        Nce: i32,
-        EpsLix: f64,
-        EpsLic: f64,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_matrix_vector2_int2_real2_int(
-            Cont,
-            Secont,
-            StartingPoint,
-            Nci,
-            Nce,
-            EpsLix,
-            EpsLic,
-            500,
-        )
-    }
-
-    /// **Source:** `math_Uzawa.hxx`:74 - `math_Uzawa::math_Uzawa()`
-    /// Given an input matrix Cont, two input vectors Secont
-    /// and StartingPoint, it solves Cont*X = Secont (the Nce
-    /// first equations are equal equations and the Nci last
-    /// equations are inequalities <) with a minimization
-    /// of Norme(X-X0).
-    /// The maximum iterations number allowed is fixed to
-    /// NbIterations.
-    /// The tolerance EpsLic is fixed for the dual variable
-    /// convergence. The tolerance EpsLix is used for the
-    /// convergence of X.
-    /// There are no conditions on Nce and Nci.
-    /// Exception ConstructionError is raised if the line number
-    /// of Cont is different from the length of Secont and from
-    /// Nce + Nci.
-    pub fn new_matrix_vector2_int2_real(
-        Cont: &crate::ffi::math_Matrix,
-        Secont: &crate::ffi::math_Vector,
-        StartingPoint: &crate::ffi::math_Vector,
-        Nci: i32,
-        Nce: i32,
-        EpsLix: f64,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_matrix_vector2_int2_real2_int(
-            Cont,
-            Secont,
-            StartingPoint,
-            Nci,
-            Nce,
-            EpsLix,
-            1.0e-06,
-            500,
-        )
-    }
-
-    /// **Source:** `math_Uzawa.hxx`:74 - `math_Uzawa::math_Uzawa()`
-    /// Given an input matrix Cont, two input vectors Secont
-    /// and StartingPoint, it solves Cont*X = Secont (the Nce
-    /// first equations are equal equations and the Nci last
-    /// equations are inequalities <) with a minimization
-    /// of Norme(X-X0).
-    /// The maximum iterations number allowed is fixed to
-    /// NbIterations.
-    /// The tolerance EpsLic is fixed for the dual variable
-    /// convergence. The tolerance EpsLix is used for the
-    /// convergence of X.
-    /// There are no conditions on Nce and Nci.
-    /// Exception ConstructionError is raised if the line number
-    /// of Cont is different from the length of Secont and from
-    /// Nce + Nci.
-    pub fn new_matrix_vector2_int2(
-        Cont: &crate::ffi::math_Matrix,
-        Secont: &crate::ffi::math_Vector,
-        StartingPoint: &crate::ffi::math_Vector,
-        Nci: i32,
-        Nce: i32,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_matrix_vector2_int2_real2_int(
-            Cont,
-            Secont,
-            StartingPoint,
-            Nci,
-            Nce,
-            1.0e-06,
-            1.0e-06,
-            500,
-        )
-    }
-
     /// **Source:** `math_Uzawa.hxx`:84 - `math_Uzawa::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {

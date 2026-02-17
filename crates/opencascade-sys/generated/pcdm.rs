@@ -6,6 +6,176 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// Status of reading of a document.
+/// The following values are accessible:
+/// - PCDM_RS_OK: the document was successfully read;
+/// - PCDM_RS_NoDriver: driver is not found for the defined file format;
+/// - PCDM_RS_UnknownFileDriver: check of the file failed (file doesn't exist, for example);
+/// - PCDM_RS_OpenError: attempt to open the file failed;
+/// - PCDM_RS_NoVersion: document version of the file is out of scope;
+/// - PCDM_RS_NoSchema: NOT USED;
+/// - PCDM_RS_NoDocument: document is empty (failed to be read correctly);
+/// - PCDM_RS_ExtensionFailure: NOT USED;
+/// - PCDM_RS_WrongStreamMode: file is not open for reading (a mistaken mode);
+/// - PCDM_RS_FormatFailure: mistake in document data structure;
+/// - PCDM_RS_TypeFailure: data type is unknown;
+/// - PCDM_RS_TypeNotFoundInSchema: data type is not found in schema (STD file format);
+/// - PCDM_RS_UnrecognizedFileFormat: document data structure is wrong (binary file format);
+/// - PCDM_RS_MakeFailure: conversion of data from persistent to transient attributes failed (XML
+/// file format);
+/// - PCDM_RS_PermissionDenied: file can't be opened because permission is denied;
+/// - PCDM_RS_DriverFailure: something went wrong (a general mistake of reading of a document);
+/// - PCDM_RS_AlreadyRetrievedAndModified: document is already retrieved and modified in current
+/// session;
+/// - PCDM_RS_AlreadyRetrieved: document is already in current session (already retrieved);
+/// - PCDM_RS_UnknownDocument: file doesn't exist on disk;
+/// - PCDM_RS_WrongResource: wrong resource file (.RetrievalPlugin);
+/// - PCDM_RS_ReaderException: no shape section in the document file (binary file format);
+/// - PCDM_RS_NoModel: NOT USED;
+/// - PCDM_RS_UserBreak: user stopped reading of the document;
+/// C++ enum: `PCDM_ReaderStatus`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ReaderStatus {
+    /// < Success
+    RsOk = 0,
+    /// < No driver for file format
+    RsNodriver = 1,
+    /// < File is bad
+    RsUnknownfiledriver = 2,
+    /// < Can't open file
+    RsOpenerror = 3,
+    /// < Unknown document version
+    RsNoversion = 4,
+    /// < NOT USED
+    RsNoschema = 5,
+    /// < Document is empty
+    RsNodocument = 6,
+    /// < NOT USED
+    RsExtensionfailure = 7,
+    /// < Open mode is mistaken
+    RsWrongstreammode = 8,
+    /// < Document data structure is wrong
+    RsFormatfailure = 9,
+    /// < Data type is unknown
+    RsTypefailure = 10,
+    /// < Data type is not found in schema
+    RsTypenotfoundinschema = 11,
+    /// < Document data structure is wrong
+    RsUnrecognizedfileformat = 12,
+    /// < Conversion of data failed
+    RsMakefailure = 13,
+    /// < Permission denied to open file
+    RsPermissiondenied = 14,
+    /// < General mistake of reading
+    RsDriverfailure = 15,
+    /// < Document is already retrieved and modified
+    RsAlreadyretrievedandmodified = 16,
+    /// < Document is already retrieved
+    RsAlreadyretrieved = 17,
+    /// < File doesn't exist
+    RsUnknowndocument = 18,
+    /// < Wrong resource file
+    RsWrongresource = 19,
+    /// < Wrong data structure
+    RsReaderexception = 20,
+    /// < NOT USED
+    RsNomodel = 21,
+    /// < User interrupted reading
+    RsUserbreak = 22,
+}
+
+impl From<ReaderStatus> for i32 {
+    fn from(value: ReaderStatus) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ReaderStatus {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(ReaderStatus::RsOk),
+            1 => Ok(ReaderStatus::RsNodriver),
+            2 => Ok(ReaderStatus::RsUnknownfiledriver),
+            3 => Ok(ReaderStatus::RsOpenerror),
+            4 => Ok(ReaderStatus::RsNoversion),
+            5 => Ok(ReaderStatus::RsNoschema),
+            6 => Ok(ReaderStatus::RsNodocument),
+            7 => Ok(ReaderStatus::RsExtensionfailure),
+            8 => Ok(ReaderStatus::RsWrongstreammode),
+            9 => Ok(ReaderStatus::RsFormatfailure),
+            10 => Ok(ReaderStatus::RsTypefailure),
+            11 => Ok(ReaderStatus::RsTypenotfoundinschema),
+            12 => Ok(ReaderStatus::RsUnrecognizedfileformat),
+            13 => Ok(ReaderStatus::RsMakefailure),
+            14 => Ok(ReaderStatus::RsPermissiondenied),
+            15 => Ok(ReaderStatus::RsDriverfailure),
+            16 => Ok(ReaderStatus::RsAlreadyretrievedandmodified),
+            17 => Ok(ReaderStatus::RsAlreadyretrieved),
+            18 => Ok(ReaderStatus::RsUnknowndocument),
+            19 => Ok(ReaderStatus::RsWrongresource),
+            20 => Ok(ReaderStatus::RsReaderexception),
+            21 => Ok(ReaderStatus::RsNomodel),
+            22 => Ok(ReaderStatus::RsUserbreak),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Status of storage of a document on disk.
+/// If it is PCDM_SS_OK, the document is successfully saved on disk.
+/// Else - there is an error.
+/// C++ enum: `PCDM_StoreStatus`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum StoreStatus {
+    /// < Document is saved successfully
+    SsOk = 0,
+    /// < Storage driver is not found
+    SsDriverfailure = 1,
+    /// < Attempt to write a file on disk failed
+    SsWritefailure = 2,
+    /// < A general error occurred (unexpected)
+    SsFailure = 3,
+    /// < Attempt to save a null document
+    SsDocIsnull = 4,
+    /// < Document has no objects to be saved
+    SsNoObj = 5,
+    /// < Error occurred on writing of an information-section
+    SsInfoSectionError = 6,
+    /// < User interrupted the process of storage of the document on disk
+    SsUserbreak = 7,
+    /// < No storage driver exist for this document format
+    SsUnrecognizedformat = 8,
+}
+
+impl From<StoreStatus> for i32 {
+    fn from(value: StoreStatus) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for StoreStatus {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(StoreStatus::SsOk),
+            1 => Ok(StoreStatus::SsDriverfailure),
+            2 => Ok(StoreStatus::SsWritefailure),
+            3 => Ok(StoreStatus::SsFailure),
+            4 => Ok(StoreStatus::SsDocIsnull),
+            5 => Ok(StoreStatus::SsNoObj),
+            6 => Ok(StoreStatus::SsInfoSectionError),
+            7 => Ok(StoreStatus::SsUserbreak),
+            8 => Ok(StoreStatus::SsUnrecognizedformat),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From PCDM_ReaderFilter.hxx
 // ========================
@@ -235,3 +405,12 @@ impl HandlePCDMReaderFilter {
         unsafe { &mut *(crate::ffi::HandlePCDMReaderFilter_get_mut(self as *mut Self)) }
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    PCDM_Reader as Reader, PCDM_ReferenceIterator as ReferenceIterator,
+    PCDM_RetrievalDriver as RetrievalDriver, PCDM_StorageDriver as StorageDriver,
+};

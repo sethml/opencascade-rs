@@ -39,6 +39,91 @@ impl TryFrom<i32> for CanCloseStatus {
 }
 
 // ========================
+// From CDM_Application.hxx
+// ========================
+
+/// **Source:** `CDM_Application.hxx`:36 - `CDM_Application`
+pub use crate::ffi::CDM_Application as Application;
+
+unsafe impl crate::CppDeletable for Application {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::CDM_Application_destructor(ptr);
+    }
+}
+
+impl Application {
+    /// **Source:** `CDM_Application.hxx`:42 - `CDM_Application::Resources()`
+    /// The manager returned by  this virtual  method will be
+    /// used to search for Format.Retrieval  resource items.
+    pub fn resources(&mut self) -> crate::OwnedPtr<crate::ffi::HandleResourceManager> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CDM_Application_resources(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `CDM_Application.hxx`:45 - `CDM_Application::MessageDriver()`
+    /// Returns default messenger;
+    pub fn message_driver(&mut self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CDM_Application_message_driver(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `CDM_Application.hxx`:61 - `CDM_Application::Name()`
+    /// Returns the application name.
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::CDM_Application_name(self as *const Self)) }
+    }
+
+    /// **Source:** `CDM_Application.hxx`:64 - `CDM_Application::Version()`
+    /// Returns the application version.
+    pub fn version(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CDM_Application_version(self as *const Self))
+        }
+    }
+
+    /// **Source:** `CDM_Application.hxx`:75 - `CDM_Application::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::CDM_Application_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `CDM_Application.hxx`:75 - `CDM_Application::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::CDM_Application_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `CDM_Application.hxx`:75 - `CDM_Application::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::CDM_Application_get_type_descriptor()) }
+    }
+}
+
+pub use crate::ffi::HandleCDMApplication;
+
+unsafe impl crate::CppDeletable for HandleCDMApplication {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleCDMApplication_destructor(ptr);
+    }
+}
+
+impl HandleCDMApplication {
+    /// Dereference this Handle to access the underlying CDM_Application
+    pub fn get(&self) -> &crate::ffi::CDM_Application {
+        unsafe { &*(crate::ffi::HandleCDMApplication_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying CDM_Application
+    pub fn get_mut(&mut self) -> &mut crate::ffi::CDM_Application {
+        unsafe { &mut *(crate::ffi::HandleCDMApplication_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From CDM_Reference.hxx
 // ========================
 
@@ -118,4 +203,4 @@ impl HandleCDMReference {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{CDM_Application as Application, CDM_MetaData as MetaData};
+pub use crate::ffi::{CDM_MetaData as MetaData, CDM_MetaDataLookUpTable as MetaDataLookUpTable};

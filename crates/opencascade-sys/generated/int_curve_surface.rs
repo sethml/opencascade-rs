@@ -973,18 +973,6 @@ impl TheInterferenceOfHInter {
         }
     }
 
-    /// **Source:** `IntCurveSurface_TheInterferenceOfHInter.hxx`:59 - `IntCurveSurface_TheInterferenceOfHInter::IntCurveSurface_TheInterferenceOfHInter()`
-    /// Constructs   and   computes  an  interference   between the
-    /// Straight Lines and the Polyhedron.
-    pub fn new_array1oflin_thepolyhedronofhinter(
-        theLins: &crate::ffi::Intf_Array1OfLin,
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor_array1oflin_thepolyhedronofhinter(theLins, thePolyh))
-        }
-    }
-
     /// **Source:** `IntCurveSurface_TheInterferenceOfHInter.hxx`:80 - `IntCurveSurface_TheInterferenceOfHInter::IntCurveSurface_TheInterferenceOfHInter()`
     /// Constructs and computes an interference between the Polygon
     /// and the Polyhedron.
@@ -1008,19 +996,6 @@ impl TheInterferenceOfHInter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor_lin_thepolyhedronofhinter_boundsortbox(theLin, thePolyh, theBoundSB))
-        }
-    }
-
-    /// **Source:** `IntCurveSurface_TheInterferenceOfHInter.hxx`:94 - `IntCurveSurface_TheInterferenceOfHInter::IntCurveSurface_TheInterferenceOfHInter()`
-    /// Constructs   and   computes  an  interference   between the
-    /// Straight Lines and the Polyhedron.
-    pub fn new_array1oflin_thepolyhedronofhinter_boundsortbox(
-        theLins: &crate::ffi::Intf_Array1OfLin,
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
-        theBoundSB: &mut crate::ffi::Bnd_BoundSortBox,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor_array1oflin_thepolyhedronofhinter_boundsortbox(theLins, thePolyh, theBoundSB))
         }
     }
 
@@ -1247,16 +1222,6 @@ impl ThePolygonOfHInter {
         }
     }
 
-    /// **Source:** `IntCurveSurface_ThePolygonOfHInter.hxx`:43 - `IntCurveSurface_ThePolygonOfHInter::IntCurveSurface_ThePolygonOfHInter()`
-    pub fn new_handleadaptor3dcurve_array1ofreal(
-        Curve: &crate::ffi::HandleAdaptor3dCurve,
-        Upars: &crate::ffi::TColStd_Array1OfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_ThePolygonOfHInter_ctor_handleadaptor3dcurve_array1ofreal(Curve, Upars))
-        }
-    }
-
     /// **Source:** `IntCurveSurface_ThePolygonOfHInter.hxx`:47 - `IntCurveSurface_ThePolygonOfHInter::Bounding()`
     /// Give the bounding box of the polygon.
     pub fn bounding(&self) -> &crate::ffi::Bnd_Box {
@@ -1460,17 +1425,6 @@ impl ThePolyhedronOfHInter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_ctor_handleadaptor3dsurface_int2_real4(Surface, nbdU, nbdV, U1, V1, U2, V2))
-        }
-    }
-
-    /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:40 - `IntCurveSurface_ThePolyhedronOfHInter::IntCurveSurface_ThePolyhedronOfHInter()`
-    pub fn new_handleadaptor3dsurface_array1ofreal2(
-        Surface: &crate::ffi::HandleAdaptor3dSurface,
-        Upars: &crate::ffi::TColStd_Array1OfReal,
-        Vpars: &crate::ffi::TColStd_Array1OfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_ctor_handleadaptor3dsurface_array1ofreal2(Surface, Upars, Vpars))
         }
     }
 

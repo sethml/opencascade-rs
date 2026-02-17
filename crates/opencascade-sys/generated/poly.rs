@@ -115,16 +115,6 @@ impl ArrayOfNodes {
         }
     }
 
-    /// **Source:** `Poly_ArrayOfNodes.hxx`:51 - `Poly_ArrayOfNodes::Poly_ArrayOfNodes()`
-    /// Constructor wrapping pre-allocated C-array of values without copying them.
-    pub fn new_vec3f_int(theBegin: &crate::ffi::gp_Vec3f, theLength: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Poly_ArrayOfNodes_ctor_vec3f_int(
-                theBegin, theLength,
-            ))
-        }
-    }
-
     /// **Source:** `Poly_ArrayOfNodes.hxx`:61 - `Poly_ArrayOfNodes::IsDoublePrecision()`
     /// Returns TRUE if array defines nodes with double precision.
     pub fn is_double_precision(&self) -> bool {
@@ -198,16 +188,6 @@ impl ArrayOfUVNodes {
     pub fn new_pnt2d_int(theBegin: &crate::ffi::gp_Pnt2d, theLength: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Poly_ArrayOfUVNodes_ctor_pnt2d_int(
-                theBegin, theLength,
-            ))
-        }
-    }
-
-    /// **Source:** `Poly_ArrayOfUVNodes.hxx`:51 - `Poly_ArrayOfUVNodes::Poly_ArrayOfUVNodes()`
-    /// Constructor wrapping pre-allocated C-array of values without copying them.
-    pub fn new_vec2f_int(theBegin: &crate::ffi::gp_Vec2f, theLength: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Poly_ArrayOfUVNodes_ctor_vec2f_int(
                 theBegin, theLength,
             ))
         }
@@ -1954,26 +1934,6 @@ impl Polygon3D {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_Polygon3D_ctor_array1ofpnt(Nodes)) }
     }
 
-    /// **Source:** `Poly_Polygon3D.hxx`:49 - `Poly_Polygon3D::Poly_Polygon3D()`
-    /// Constructs a 3D polygon defined by
-    /// the table of points, Nodes, and the parallel table of
-    /// parameters, Parameters, where each value of the table
-    /// Parameters is the parameter of the corresponding point
-    /// on the curve approximated by the constructed polygon.
-    /// Warning
-    /// Both the Nodes and Parameters tables must have the
-    /// same bounds. This property is not checked at construction time.
-    pub fn new_array1ofpnt_array1ofreal(
-        Nodes: &crate::ffi::TColgp_Array1OfPnt,
-        Parameters: &crate::ffi::TColStd_Array1OfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Poly_Polygon3D_ctor_array1ofpnt_array1ofreal(
-                Nodes, Parameters,
-            ))
-        }
-    }
-
     /// **Source:** `Poly_Polygon3D.hxx`:53 - `Poly_Polygon3D::Copy()`
     /// Creates a copy of current polygon
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyPolygon3D> {
@@ -2101,44 +2061,6 @@ impl PolygonOnTriangulation {
                 theNbNodes,
                 theHasParams,
             ))
-        }
-    }
-
-    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:50 - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
-    /// Constructs a 3D polygon on the triangulation of a shape,
-    /// defined by the table of nodes, <Nodes>.
-    pub fn new_array1ofinteger(
-        Nodes: &crate::ffi::TColStd_Array1OfInteger,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Poly_PolygonOnTriangulation_ctor_array1ofinteger(
-                Nodes,
-            ))
-        }
-    }
-
-    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:63 - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
-    /// Constructs a 3D polygon on the triangulation of a shape, defined by:
-    /// -   the table of nodes, Nodes, and the table of parameters, <Parameters>.
-    /// where:
-    /// -   a node value is an index in the table of nodes specific
-    /// to an existing triangulation of a shape
-    /// -   and a parameter value is the value of the parameter of
-    /// the corresponding point on the curve approximated by
-    /// the constructed polygon.
-    /// Warning
-    /// The tables Nodes and Parameters must be the same size.
-    /// This property is not checked at construction time.
-    pub fn new_array1ofinteger_array1ofreal(
-        Nodes: &crate::ffi::TColStd_Array1OfInteger,
-        Parameters: &crate::ffi::TColStd_Array1OfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Poly_PolygonOnTriangulation_ctor_array1ofinteger_array1ofreal(
-                    Nodes, Parameters,
-                ),
-            )
         }
     }
 
@@ -2416,43 +2338,6 @@ impl Triangulation {
                 theHasUVNodes,
                 theHasNormals,
             ))
-        }
-    }
-
-    /// **Source:** `Poly_Triangulation.hxx`:82 - `Poly_Triangulation::Poly_Triangulation()`
-    /// Constructs a triangulation from a set of triangles. The
-    /// triangulation is initialized with 3D points from Nodes and triangles
-    /// from Triangles.
-    pub fn new_array1ofpnt_array1oftriangle(
-        Nodes: &crate::ffi::TColgp_Array1OfPnt,
-        Triangles: &crate::ffi::Poly_Array1OfTriangle,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Poly_Triangulation_ctor_array1ofpnt_array1oftriangle(Nodes, Triangles),
-            )
-        }
-    }
-
-    /// **Source:** `Poly_Triangulation.hxx`:92 - `Poly_Triangulation::Poly_Triangulation()`
-    /// Constructs a triangulation from a set of triangles. The
-    /// triangulation is initialized with 3D points from Nodes, 2D points from
-    /// UVNodes and triangles from Triangles, where
-    /// coordinates of a 2D point from UVNodes are the
-    /// (u, v) parameters of the corresponding 3D point
-    /// from Nodes on the surface approximated by the
-    /// constructed triangulation.
-    pub fn new_array1ofpnt_array1ofpnt2d_array1oftriangle(
-        Nodes: &crate::ffi::TColgp_Array1OfPnt,
-        UVNodes: &crate::ffi::TColgp_Array1OfPnt2d,
-        Triangles: &crate::ffi::Poly_Array1OfTriangle,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Poly_Triangulation_ctor_array1ofpnt_array1ofpnt2d_array1oftriangle(
-                    Nodes, UVNodes, Triangles,
-                ),
-            )
         }
     }
 

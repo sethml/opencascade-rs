@@ -750,9 +750,12 @@ impl ShapeSet {
 pub use crate::ffi::{
     DataMapOfShapeShapeIterator, IndexedDataMapOfShapeListOfShapeIterator,
     IndexedMapOfShapeIterator, ListOfShapeIterator, MapOfShapeIterator, SequenceOfShapeIterator,
+    TopTools_DataMapOfIntegerListOfShape as DataMapOfIntegerListOfShape,
+    TopTools_DataMapOfIntegerShape as DataMapOfIntegerShape,
     TopTools_DataMapOfShapeBox as DataMapOfShapeBox,
     TopTools_DataMapOfShapeListOfShape as DataMapOfShapeListOfShape,
     TopTools_DataMapOfShapeReal as DataMapOfShapeReal, TopTools_HArray1OfShape as HArray1OfShape,
     TopTools_HArray2OfShape as HArray2OfShape, TopTools_HSequenceOfShape as HSequenceOfShape,
+    TopTools_IndexedDataMapOfShapeReal as IndexedDataMapOfShapeReal,
     TopTools_ListOfListOfShape as ListOfListOfShape,
 };

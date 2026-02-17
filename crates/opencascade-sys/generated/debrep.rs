@@ -41,6 +41,14 @@ impl ConfigurationNode {
         unsafe { &*(crate::ffi::DEBREP_ConfigurationNode_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `DEBREP_ConfigurationNode.hxx`:46 - `DEBREP_ConfigurationNode::Load()`
+    /// Updates values according the resource
+    /// @param[in] theResource input resource to use
+    /// @return true if theResource loading has ended correctly
+    pub fn load(&mut self, theResource: &crate::ffi::HandleDEConfigurationContext) -> bool {
+        unsafe { crate::ffi::DEBREP_ConfigurationNode_load(self as *mut Self, theResource) }
+    }
+
     /// **Source:** `DEBREP_ConfigurationNode.hxx`:51 - `DEBREP_ConfigurationNode::Save()`
     /// Writes configuration to the string
     /// @return result resource string

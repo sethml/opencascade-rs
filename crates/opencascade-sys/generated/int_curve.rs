@@ -878,29 +878,6 @@ impl IntImpConicParConic {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurve_IntImpConicParConic_ctor()) }
     }
 
-    /// **Source:** `IntCurve_IntImpConicParConic.hxx`:48 - `IntCurve_IntImpConicParConic::IntCurve_IntImpConicParConic()`
-    /// Intersection between an implicit curve and
-    /// a parametrised curve.
-    /// The exception ConstructionError is raised if the domain
-    /// of the parametrised curve does not verify HasFirstPoint
-    /// and HasLastPoint return True.
-    pub fn new_iconictool_domain_pconic_domain_real2(
-        ITool: &crate::ffi::IntCurve_IConicTool,
-        Dom1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::IntCurve_PConic,
-        Dom2: &crate::ffi::IntRes2d_Domain,
-        TolConf: f64,
-        Tol: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::IntCurve_IntImpConicParConic_ctor_iconictool_domain_pconic_domain_real2(
-                    ITool, Dom1, PCurve, Dom2, TolConf, Tol,
-                ),
-            )
-        }
-    }
-
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::IntCurve_IntImpConicParConic_inherited_IsDone(self as *const Self) }

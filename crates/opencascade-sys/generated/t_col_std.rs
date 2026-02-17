@@ -65,17 +65,6 @@ impl HArray1OfAsciiString {
         }
     }
 
-    /// **Source:** `TColStd_HArray1OfAsciiString.hxx`:22 - `TColStd_HArray1OfAsciiString::TColStd_HArray1OfAsciiString()`
-    pub fn new_array1ofasciistring(
-        theOther: &crate::ffi::TColStd_Array1OfAsciiString,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TColStd_HArray1OfAsciiString_ctor_array1ofasciistring(theOther),
-            )
-        }
-    }
-
     /// **Source:** `TColStd_HArray1OfAsciiString.hxx`:22 - `TColStd_HArray1OfAsciiString::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfAsciiString_dynamic_type(self as *const Self)) }
@@ -151,40 +140,6 @@ impl HArray1OfBoolean {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfBoolean_ctor_int2(
                 theLower, theUpper,
-            ))
-        }
-    }
-
-    /// **Source:** `TColStd_HArray1OfBoolean.hxx`:21 - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`
-    pub fn new_int2_bool(theLower: i32, theUpper: i32, theValue: &bool) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfBoolean_ctor_int2_bool(
-                theLower, theUpper, theValue,
-            ))
-        }
-    }
-
-    /// **Source:** `TColStd_HArray1OfBoolean.hxx`:21 - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`
-    pub fn new_bool_int2_bool(
-        theBegin: &bool,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfBoolean_ctor_bool_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
-        }
-    }
-
-    /// **Source:** `TColStd_HArray1OfBoolean.hxx`:21 - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`
-    pub fn new_array1ofboolean(
-        theOther: &crate::ffi::TColStd_Array1OfBoolean,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfBoolean_ctor_array1ofboolean(
-                theOther,
             ))
         }
     }
@@ -268,13 +223,6 @@ impl HArray1OfByte {
         }
     }
 
-    /// **Source:** `TColStd_HArray1OfByte.hxx`:21 - `TColStd_HArray1OfByte::TColStd_HArray1OfByte()`
-    pub fn new_array1ofbyte(theOther: &crate::ffi::TColStd_Array1OfByte) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfByte_ctor_array1ofbyte(theOther))
-        }
-    }
-
     /// **Source:** `TColStd_HArray1OfByte.hxx`:21 - `TColStd_HArray1OfByte::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfByte_dynamic_type(self as *const Self)) }
@@ -349,44 +297,6 @@ impl HArray1OfCharacter {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfCharacter_ctor_int2(
                 theLower, theUpper,
             ))
-        }
-    }
-
-    /// **Source:** `TColStd_HArray1OfCharacter.hxx`:22 - `TColStd_HArray1OfCharacter::TColStd_HArray1OfCharacter()`
-    pub fn new_int2_char(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfCharacter_ctor_int2_char(
-                theLower, theUpper, theValue,
-            ))
-        }
-    }
-
-    /// **Source:** `TColStd_HArray1OfCharacter.hxx`:22 - `TColStd_HArray1OfCharacter::TColStd_HArray1OfCharacter()`
-    pub fn new_char_int2_bool(
-        theBegin: &std::ffi::c_char,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfCharacter_ctor_char_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
-        }
-    }
-
-    /// **Source:** `TColStd_HArray1OfCharacter.hxx`:22 - `TColStd_HArray1OfCharacter::TColStd_HArray1OfCharacter()`
-    pub fn new_array1ofcharacter(
-        theOther: &crate::ffi::TColStd_Array1OfCharacter,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TColStd_HArray1OfCharacter_ctor_array1ofcharacter(theOther),
-            )
         }
     }
 
@@ -500,17 +410,6 @@ impl HArray1OfExtendedString {
         }
     }
 
-    /// **Source:** `TColStd_HArray1OfExtendedString.hxx`:22 - `TColStd_HArray1OfExtendedString::TColStd_HArray1OfExtendedString()`
-    pub fn new_array1ofextendedstring(
-        theOther: &crate::ffi::TColStd_Array1OfExtendedString,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TColStd_HArray1OfExtendedString_ctor_array1ofextendedstring(theOther),
-            )
-        }
-    }
-
     /// **Source:** `TColStd_HArray1OfExtendedString.hxx`:22 - `TColStd_HArray1OfExtendedString::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfExtendedString_dynamic_type(self as *const Self)) }
@@ -592,40 +491,6 @@ impl HArray1OfInteger {
         }
     }
 
-    /// **Source:** `TColStd_HArray1OfInteger.hxx`:22 - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`
-    pub fn new_int3(theLower: i32, theUpper: i32, theValue: &i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfInteger_ctor_int3(
-                theLower, theUpper, theValue,
-            ))
-        }
-    }
-
-    /// **Source:** `TColStd_HArray1OfInteger.hxx`:22 - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`
-    pub fn new_int3_bool(
-        theBegin: &i32,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfInteger_ctor_int3_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
-        }
-    }
-
-    /// **Source:** `TColStd_HArray1OfInteger.hxx`:22 - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`
-    pub fn new_array1ofinteger(
-        theOther: &crate::ffi::TColStd_Array1OfInteger,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfInteger_ctor_array1ofinteger(
-                theOther,
-            ))
-        }
-    }
-
     /// **Source:** `TColStd_HArray1OfInteger.hxx`:22 - `TColStd_HArray1OfInteger::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfInteger_dynamic_type(self as *const Self)) }
@@ -702,17 +567,6 @@ impl HArray1OfListOfInteger {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfListOfInteger_ctor_int2(
                 theLower, theUpper,
             ))
-        }
-    }
-
-    /// **Source:** `TColStd_HArray1OfListOfInteger.hxx`:21 - `TColStd_HArray1OfListOfInteger::TColStd_HArray1OfListOfInteger()`
-    pub fn new_array1oflistofinteger(
-        theOther: &crate::ffi::TColStd_Array1OfListOfInteger,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TColStd_HArray1OfListOfInteger_ctor_array1oflistofinteger(theOther),
-            )
         }
     }
 
@@ -797,36 +651,6 @@ impl HArray1OfReal {
         }
     }
 
-    /// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`
-    pub fn new_int2_real(theLower: i32, theUpper: i32, theValue: &f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfReal_ctor_int2_real(
-                theLower, theUpper, theValue,
-            ))
-        }
-    }
-
-    /// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`
-    pub fn new_real_int2_bool(
-        theBegin: &f64,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfReal_ctor_real_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
-        }
-    }
-
-    /// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`
-    pub fn new_array1ofreal(theOther: &crate::ffi::TColStd_Array1OfReal) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfReal_ctor_array1ofreal(theOther))
-        }
-    }
-
     /// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray1OfReal_dynamic_type(self as *const Self)) }
@@ -901,17 +725,6 @@ impl HArray1OfTransient {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfTransient_ctor_int2(
                 theLower, theUpper,
             ))
-        }
-    }
-
-    /// **Source:** `TColStd_HArray1OfTransient.hxx`:22 - `TColStd_HArray1OfTransient::TColStd_HArray1OfTransient()`
-    pub fn new_array1oftransient(
-        theOther: &crate::ffi::TColStd_Array1OfTransient,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TColStd_HArray1OfTransient_ctor_array1oftransient(theOther),
-            )
         }
     }
 
@@ -990,32 +803,6 @@ impl HArray2OfBoolean {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfBoolean_ctor_int4(
                 theRowLow, theRowUpp, theColLow, theColUpp,
-            ))
-        }
-    }
-
-    /// **Source:** `TColStd_HArray2OfBoolean.hxx`:22 - `TColStd_HArray2OfBoolean::TColStd_HArray2OfBoolean()`
-    pub fn new_int4_bool(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-        theValue: &bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfBoolean_ctor_int4_bool(
-                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-            ))
-        }
-    }
-
-    /// **Source:** `TColStd_HArray2OfBoolean.hxx`:22 - `TColStd_HArray2OfBoolean::TColStd_HArray2OfBoolean()`
-    pub fn new_array2ofboolean(
-        theOther: &crate::ffi::TColStd_Array2OfBoolean,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfBoolean_ctor_array2ofboolean(
-                theOther,
             ))
         }
     }
@@ -1099,32 +886,6 @@ impl HArray2OfCharacter {
         }
     }
 
-    /// **Source:** `TColStd_HArray2OfCharacter.hxx`:22 - `TColStd_HArray2OfCharacter::TColStd_HArray2OfCharacter()`
-    pub fn new_int4_char(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-        theValue: &std::ffi::c_char,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfCharacter_ctor_int4_char(
-                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-            ))
-        }
-    }
-
-    /// **Source:** `TColStd_HArray2OfCharacter.hxx`:22 - `TColStd_HArray2OfCharacter::TColStd_HArray2OfCharacter()`
-    pub fn new_array2ofcharacter(
-        theOther: &crate::ffi::TColStd_Array2OfCharacter,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TColStd_HArray2OfCharacter_ctor_array2ofcharacter(theOther),
-            )
-        }
-    }
-
     /// **Source:** `TColStd_HArray2OfCharacter.hxx`:22 - `TColStd_HArray2OfCharacter::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray2OfCharacter_dynamic_type(self as *const Self)) }
@@ -1200,32 +961,6 @@ impl HArray2OfInteger {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfInteger_ctor_int4(
                 theRowLow, theRowUpp, theColLow, theColUpp,
-            ))
-        }
-    }
-
-    /// **Source:** `TColStd_HArray2OfInteger.hxx`:22 - `TColStd_HArray2OfInteger::TColStd_HArray2OfInteger()`
-    pub fn new_int5(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-        theValue: &i32,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfInteger_ctor_int5(
-                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-            ))
-        }
-    }
-
-    /// **Source:** `TColStd_HArray2OfInteger.hxx`:22 - `TColStd_HArray2OfInteger::TColStd_HArray2OfInteger()`
-    pub fn new_array2ofinteger(
-        theOther: &crate::ffi::TColStd_Array2OfInteger,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfInteger_ctor_array2ofinteger(
-                theOther,
             ))
         }
     }
@@ -1309,28 +1044,6 @@ impl HArray2OfReal {
         }
     }
 
-    /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::TColStd_HArray2OfReal()`
-    pub fn new_int4_real(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-        theValue: &f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfReal_ctor_int4_real(
-                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-            ))
-        }
-    }
-
-    /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::TColStd_HArray2OfReal()`
-    pub fn new_array2ofreal(theOther: &crate::ffi::TColStd_Array2OfReal) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfReal_ctor_array2ofreal(theOther))
-        }
-    }
-
     /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray2OfReal_dynamic_type(self as *const Self)) }
@@ -1405,17 +1118,6 @@ impl HArray2OfTransient {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfTransient_ctor_int4(
                 theRowLow, theRowUpp, theColLow, theColUpp,
             ))
-        }
-    }
-
-    /// **Source:** `TColStd_HArray2OfTransient.hxx`:22 - `TColStd_HArray2OfTransient::TColStd_HArray2OfTransient()`
-    pub fn new_array2oftransient(
-        theOther: &crate::ffi::TColStd_Array2OfTransient,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TColStd_HArray2OfTransient_ctor_array2oftransient(theOther),
-            )
         }
     }
 
@@ -1590,17 +1292,6 @@ impl HSequenceOfAsciiString {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfAsciiString_ctor()) }
     }
 
-    /// **Source:** `TColStd_HSequenceOfAsciiString.hxx`:22 - `TColStd_HSequenceOfAsciiString::TColStd_HSequenceOfAsciiString()`
-    pub fn new_sequenceofasciistring(
-        theOther: &crate::ffi::TColStd_SequenceOfAsciiString,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TColStd_HSequenceOfAsciiString_ctor_sequenceofasciistring(theOther),
-            )
-        }
-    }
-
     /// **Source:** `TColStd_HSequenceOfAsciiString.hxx`:22 - `TColStd_HSequenceOfAsciiString::Append()`
     pub fn append(&mut self, theItem: &crate::ffi::TCollection_AsciiString) {
         unsafe { crate::ffi::TColStd_HSequenceOfAsciiString_append(self as *mut Self, theItem) }
@@ -1676,19 +1367,6 @@ impl HSequenceOfExtendedString {
     /// **Source:** `TColStd_HSequenceOfExtendedString.hxx`:22 - `TColStd_HSequenceOfExtendedString::TColStd_HSequenceOfExtendedString()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfExtendedString_ctor()) }
-    }
-
-    /// **Source:** `TColStd_HSequenceOfExtendedString.hxx`:22 - `TColStd_HSequenceOfExtendedString::TColStd_HSequenceOfExtendedString()`
-    pub fn new_sequenceofextendedstring(
-        theOther: &crate::ffi::TColStd_SequenceOfExtendedString,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TColStd_HSequenceOfExtendedString_ctor_sequenceofextendedstring(
-                    theOther,
-                ),
-            )
-        }
     }
 
     /// **Source:** `TColStd_HSequenceOfExtendedString.hxx`:22 - `TColStd_HSequenceOfExtendedString::Append()`
@@ -1770,17 +1448,6 @@ impl HSequenceOfHAsciiString {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfHAsciiString_ctor()) }
     }
 
-    /// **Source:** `TColStd_HSequenceOfHAsciiString.hxx`:21 - `TColStd_HSequenceOfHAsciiString::TColStd_HSequenceOfHAsciiString()`
-    pub fn new_sequenceofhasciistring(
-        theOther: &crate::ffi::TColStd_SequenceOfHAsciiString,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TColStd_HSequenceOfHAsciiString_ctor_sequenceofhasciistring(theOther),
-            )
-        }
-    }
-
     /// **Source:** `TColStd_HSequenceOfHAsciiString.hxx`:21 - `TColStd_HSequenceOfHAsciiString::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HSequenceOfHAsciiString_dynamic_type(self as *const Self)) }
@@ -1851,19 +1518,6 @@ impl HSequenceOfHExtendedString {
     /// **Source:** `TColStd_HSequenceOfHExtendedString.hxx`:21 - `TColStd_HSequenceOfHExtendedString::TColStd_HSequenceOfHExtendedString()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfHExtendedString_ctor()) }
-    }
-
-    /// **Source:** `TColStd_HSequenceOfHExtendedString.hxx`:21 - `TColStd_HSequenceOfHExtendedString::TColStd_HSequenceOfHExtendedString()`
-    pub fn new_sequenceofhextendedstring(
-        theOther: &crate::ffi::TColStd_SequenceOfHExtendedString,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TColStd_HSequenceOfHExtendedString_ctor_sequenceofhextendedstring(
-                    theOther,
-                ),
-            )
-        }
     }
 
     /// **Source:** `TColStd_HSequenceOfHExtendedString.hxx`:21 - `TColStd_HSequenceOfHExtendedString::DynamicType()`
@@ -1940,22 +1594,6 @@ impl HSequenceOfInteger {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfInteger_ctor()) }
     }
 
-    /// **Source:** `TColStd_HSequenceOfInteger.hxx`:22 - `TColStd_HSequenceOfInteger::TColStd_HSequenceOfInteger()`
-    pub fn new_sequenceofinteger(
-        theOther: &crate::ffi::TColStd_SequenceOfInteger,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TColStd_HSequenceOfInteger_ctor_sequenceofinteger(theOther),
-            )
-        }
-    }
-
-    /// **Source:** `TColStd_HSequenceOfInteger.hxx`:22 - `TColStd_HSequenceOfInteger::Append()`
-    pub fn append(&mut self, theItem: &i32) {
-        unsafe { crate::ffi::TColStd_HSequenceOfInteger_append(self as *mut Self, theItem) }
-    }
-
     /// **Source:** `TColStd_HSequenceOfInteger.hxx`:22 - `TColStd_HSequenceOfInteger::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HSequenceOfInteger_dynamic_type(self as *const Self)) }
@@ -2026,22 +1664,6 @@ impl HSequenceOfReal {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfReal_ctor()) }
     }
 
-    /// **Source:** `TColStd_HSequenceOfReal.hxx`:21 - `TColStd_HSequenceOfReal::TColStd_HSequenceOfReal()`
-    pub fn new_sequenceofreal(
-        theOther: &crate::ffi::TColStd_SequenceOfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfReal_ctor_sequenceofreal(
-                theOther,
-            ))
-        }
-    }
-
-    /// **Source:** `TColStd_HSequenceOfReal.hxx`:21 - `TColStd_HSequenceOfReal::Append()`
-    pub fn append(&mut self, theItem: &f64) {
-        unsafe { crate::ffi::TColStd_HSequenceOfReal_append(self as *mut Self, theItem) }
-    }
-
     /// **Source:** `TColStd_HSequenceOfReal.hxx`:21 - `TColStd_HSequenceOfReal::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HSequenceOfReal_dynamic_type(self as *const Self)) }
@@ -2108,17 +1730,6 @@ impl HSequenceOfTransient {
     /// **Source:** `TColStd_HSequenceOfTransient.hxx`:22 - `TColStd_HSequenceOfTransient::TColStd_HSequenceOfTransient()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_HSequenceOfTransient_ctor()) }
-    }
-
-    /// **Source:** `TColStd_HSequenceOfTransient.hxx`:22 - `TColStd_HSequenceOfTransient::TColStd_HSequenceOfTransient()`
-    pub fn new_sequenceoftransient(
-        theOther: &crate::ffi::TColStd_SequenceOfTransient,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TColStd_HSequenceOfTransient_ctor_sequenceoftransient(theOther),
-            )
-        }
     }
 
     /// **Source:** `TColStd_HSequenceOfTransient.hxx`:22 - `TColStd_HSequenceOfTransient::DynamicType()`
@@ -2414,6 +2025,7 @@ pub use crate::ffi::{
     TColStd_Array1OfTransient as Array1OfTransient, TColStd_Array2OfBoolean as Array2OfBoolean,
     TColStd_Array2OfCharacter as Array2OfCharacter, TColStd_Array2OfInteger as Array2OfInteger,
     TColStd_Array2OfReal as Array2OfReal, TColStd_Array2OfTransient as Array2OfTransient,
+    TColStd_DataMapOfIntegerInteger as DataMapOfIntegerInteger,
     TColStd_DataMapOfStringInteger as DataMapOfStringInteger,
     TColStd_IndexedDataMapOfStringString as IndexedDataMapOfStringString,
     TColStd_IndexedDataMapOfTransientTransient as IndexedDataMapOfTransientTransient,

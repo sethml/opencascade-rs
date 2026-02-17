@@ -41,6 +41,14 @@ impl ConfigurationNode {
         unsafe { &*(crate::ffi::DEXCAF_ConfigurationNode_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:45 - `DEXCAF_ConfigurationNode::Load()`
+    /// Updates values according the resource
+    /// @param[in] theResource input resource to use
+    /// @return true if theResource loading has ended correctly
+    pub fn load(&mut self, theResource: &crate::ffi::HandleDEConfigurationContext) -> bool {
+        unsafe { crate::ffi::DEXCAF_ConfigurationNode_load(self as *mut Self, theResource) }
+    }
+
     /// **Source:** `DEXCAF_ConfigurationNode.hxx`:50 - `DEXCAF_ConfigurationNode::Save()`
     /// Writes configuration to the string
     /// @return result resource string

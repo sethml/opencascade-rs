@@ -65,6 +65,16 @@ impl BisectingLocus {
         unsafe { crate::ffi::BRepMAT2d_BisectingLocus_is_done(self as *const Self) }
     }
 
+    /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:94 - `BRepMAT2d_BisectingLocus::Graph()`
+    /// Returns <theGraph> of <me>.
+    pub fn graph(&self) -> crate::OwnedPtr<crate::ffi::HandleMATGraph> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMAT2d_BisectingLocus_graph(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:97 - `BRepMAT2d_BisectingLocus::NumberOfContours()`
     /// Returns the number of contours.
     pub fn number_of_contours(&self) -> i32 {
@@ -180,21 +190,6 @@ impl LinkTopoBilo {
     /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:40 - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMAT2d_LinkTopoBilo_ctor()) }
-    }
-
-    /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:45 - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo()`
-    /// Constructs the links Between S and BiLo.
-    ///
-    /// raises if <S> is not a face.
-    pub fn new_explorer_bisectinglocus(
-        Explo: &crate::ffi::BRepMAT2d_Explorer,
-        BiLo: &crate::ffi::BRepMAT2d_BisectingLocus,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::BRepMAT2d_LinkTopoBilo_ctor_explorer_bisectinglocus(Explo, BiLo),
-            )
-        }
     }
 
     /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:58 - `BRepMAT2d_LinkTopoBilo::Init()`

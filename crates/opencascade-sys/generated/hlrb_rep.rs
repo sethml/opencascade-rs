@@ -6031,18 +6031,6 @@ impl TheInterferenceOfInterCSurf {
         }
     }
 
-    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:59 - `HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf()`
-    /// Constructs   and   computes  an  interference   between the
-    /// Straight Lines and the Polyhedron.
-    pub fn new_array1oflin_thepolyhedronofintercsurf(
-        theLins: &crate::ffi::Intf_Array1OfLin,
-        thePolyh: &crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_array1oflin_thepolyhedronofintercsurf(theLins, thePolyh))
-        }
-    }
-
     /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:80 - `HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf()`
     /// Constructs and computes an interference between the Polygon
     /// and the Polyhedron.
@@ -6066,19 +6054,6 @@ impl TheInterferenceOfInterCSurf {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_lin_thepolyhedronofintercsurf_boundsortbox(theLin, thePolyh, theBoundSB))
-        }
-    }
-
-    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:94 - `HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf()`
-    /// Constructs   and   computes  an  interference   between the
-    /// Straight Lines and the Polyhedron.
-    pub fn new_array1oflin_thepolyhedronofintercsurf_boundsortbox(
-        theLins: &crate::ffi::Intf_Array1OfLin,
-        thePolyh: &crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf,
-        theBoundSB: &mut crate::ffi::Bnd_BoundSortBox,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_array1oflin_thepolyhedronofintercsurf_boundsortbox(theLins, thePolyh, theBoundSB))
         }
     }
 
@@ -6618,18 +6593,6 @@ impl ThePolygonOfInterCSurf {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HLRBRep_ThePolygonOfInterCSurf_ctor_lin_real2_int(Curve, U1, U2, NbPnt),
-            )
-        }
-    }
-
-    /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:47 - `HLRBRep_ThePolygonOfInterCSurf::HLRBRep_ThePolygonOfInterCSurf()`
-    pub fn new_lin_array1ofreal(
-        Curve: &crate::ffi::gp_Lin,
-        Upars: &crate::ffi::TColStd_Array1OfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::HLRBRep_ThePolygonOfInterCSurf_ctor_lin_array1ofreal(Curve, Upars),
             )
         }
     }
@@ -7400,10 +7363,98 @@ impl TheQuadCurvFuncOfTheQuadCurvExactInterCSurf {
 }
 
 // ========================
+// From HLRBRep_VertexList.hxx
+// ========================
+
+/// **Source:** `HLRBRep_VertexList.hxx`:30 - `HLRBRep_VertexList`
+pub use crate::ffi::HLRBRep_VertexList as VertexList;
+
+unsafe impl crate::CppDeletable for VertexList {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HLRBRep_VertexList_destructor(ptr);
+    }
+}
+
+impl VertexList {
+    /// **Source:** `HLRBRep_VertexList.hxx`:39 - `HLRBRep_VertexList::IsPeriodic()`
+    /// Returns True when the curve is periodic.
+    pub fn is_periodic(&self) -> bool {
+        unsafe { crate::ffi::HLRBRep_VertexList_is_periodic(self as *const Self) }
+    }
+
+    /// **Source:** `HLRBRep_VertexList.hxx`:42 - `HLRBRep_VertexList::More()`
+    /// Returns True when there are more vertices.
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::HLRBRep_VertexList_more(self as *const Self) }
+    }
+
+    /// **Source:** `HLRBRep_VertexList.hxx`:45 - `HLRBRep_VertexList::Next()`
+    /// Proceeds to the next vertex.
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::HLRBRep_VertexList_next(self as *mut Self) }
+    }
+
+    /// **Source:** `HLRBRep_VertexList.hxx`:48 - `HLRBRep_VertexList::Current()`
+    /// Returns the current vertex
+    pub fn current(&self) -> &crate::ffi::HLRAlgo_Intersection {
+        unsafe { &*(crate::ffi::HLRBRep_VertexList_current(self as *const Self)) }
+    }
+
+    /// **Source:** `HLRBRep_VertexList.hxx`:51 - `HLRBRep_VertexList::IsBoundary()`
+    /// Returns True if the current vertex is on the boundary of the edge.
+    pub fn is_boundary(&self) -> bool {
+        unsafe { crate::ffi::HLRBRep_VertexList_is_boundary(self as *const Self) }
+    }
+
+    /// **Source:** `HLRBRep_VertexList.hxx`:55 - `HLRBRep_VertexList::IsInterference()`
+    /// Returns  True   if   the current    vertex  is  an
+    /// interference.
+    pub fn is_interference(&self) -> bool {
+        unsafe { crate::ffi::HLRBRep_VertexList_is_interference(self as *const Self) }
+    }
+
+    /// **Source:** `HLRBRep_VertexList.hxx`:59 - `HLRBRep_VertexList::Orientation()`
+    /// Returns the  orientation of the  current vertex if
+    /// it is on the boundary of the edge.
+    pub fn orientation(&self) -> crate::top_abs::Orientation {
+        unsafe {
+            crate::top_abs::Orientation::try_from(crate::ffi::HLRBRep_VertexList_orientation(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `HLRBRep_VertexList.hxx`:63 - `HLRBRep_VertexList::Transition()`
+    /// Returns  the transition  of the  current vertex if
+    /// it is an interference.
+    pub fn transition(&self) -> crate::top_abs::Orientation {
+        unsafe {
+            crate::top_abs::Orientation::try_from(crate::ffi::HLRBRep_VertexList_transition(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `HLRBRep_VertexList.hxx`:67 - `HLRBRep_VertexList::BoundaryTransition()`
+    /// Returns  the  transition  of  the  current  vertex
+    /// relative to the boundary if it is an interference.
+    pub fn boundary_transition(&self) -> crate::top_abs::Orientation {
+        unsafe {
+            crate::top_abs::Orientation::try_from(
+                crate::ffi::HLRBRep_VertexList_boundary_transition(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
     HLRBRep_Array1OfEData as Array1OfEData, HLRBRep_Array1OfFData as Array1OfFData,
-    HLRBRep_SeqOfShapeBounds as SeqOfShapeBounds, HLRBRep_VertexList as VertexList,
+    HLRBRep_SeqOfShapeBounds as SeqOfShapeBounds,
 };

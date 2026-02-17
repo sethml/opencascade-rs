@@ -9,8 +9,89 @@ use crate::model::{
 };
 use anyhow::{Context, Result};
 use clang::{Accessibility, Availability, Clang, Entity, EntityKind, EntityVisitResult, Index, TypeKind};
+use std::cell::RefCell;
+use std::collections::{HashMap, HashSet};
 use std::path::Path;
 use std::time::Instant;
+
+thread_local! {
+    /// Map from NCollection template display names to their typedef names.
+    /// Populated by `collect_ncollection_typedefs()` before type parsing begins.
+    /// Key: normalized template spelling (whitespace-stripped), e.g.
+    ///   "NCollection_Map<TDF_Label,NCollection_DefaultHasher<TDF_Label>>"
+    /// Value: typedef name, e.g. "TDF_LabelMap"
+    static TYPEDEF_MAP: RefCell<HashMap<String, String>> = RefCell::new(HashMap::new());
+}
+
+/// Normalize a C++ type spelling for typedef map lookup.
+/// Removes whitespace AND normalizes Standard_* type aliases to their C++ equivalents
+/// (e.g. Standard_Integer → int) so that typedef keys match display names even when
+/// clang uses different spellings.
+fn normalize_template_spelling(s: &str) -> String {
+    let no_ws: String = s.chars().filter(|c| !c.is_whitespace()).collect();
+    // Normalize OCCT type aliases to C++ primitives for consistent matching.
+    // Order matters: longer names first to avoid partial matches.
+    no_ws
+        .replace("Standard_Integer", "int")
+        .replace("Standard_Real", "double")
+        .replace("Standard_Boolean", "bool")
+        .replace("Standard_ShortReal", "float")
+        .replace("Standard_Character", "char")
+        .replace("Standard_Byte", "unsignedchar")
+        .replace("Standard_Utf8Char", "char")
+}
+
+
+/// Walk the AST to collect all typedef declarations that resolve to NCollection
+/// template specializations. Populates the thread-local TYPEDEF_MAP.
+fn collect_ncollection_typedefs(root: &Entity) {
+    let mut map = HashMap::new();
+
+    root.visit_children(|entity, _| {
+        if entity.get_kind() == EntityKind::TypedefDecl
+            || entity.get_kind() == EntityKind::TypeAliasDecl
+        {
+            if let Some(name) = entity.get_name() {
+                if let Some(underlying) = entity.get_typedef_underlying_type() {
+                    let display = underlying.get_display_name();
+                    // Check if this typedef resolves to an NCollection template,
+                    // math_VectorBase, math_Matrix, or another template type that
+                    // clang might misresolve.
+                    if display.contains('<') {
+                        let key = normalize_template_spelling(&display);
+                        // Only record if the typedef name looks like an OCCT type
+                        // (starts with uppercase, contains underscore)
+                        if name.starts_with(|c: char| c.is_ascii_uppercase())
+                            && name.contains('_')
+                        {
+                            map.insert(key, name.clone());
+                        }
+                    }
+                }
+            }
+        }
+        EntityVisitResult::Recurse
+    });
+
+    eprintln!("  Collected {} NCollection/template typedefs", map.len());
+    TYPEDEF_MAP.with(|m| {
+        *m.borrow_mut() = map;
+    });
+}
+
+/// Look up a type's display name in the typedef map.
+/// Returns the typedef name if found.
+fn lookup_typedef(display_name: &str) -> Option<String> {
+    let key = normalize_template_spelling(display_name);
+    TYPEDEF_MAP.with(|m| m.borrow().get(&key).cloned())
+}
+/// Get all typedef names collected during the last `parse_headers` call.
+/// Returns the set of OCCT typedef names that resolve to template specializations.
+/// Used by the resolver to register these as known class types.
+pub fn get_collected_typedef_names() -> HashSet<String> {
+    TYPEDEF_MAP.with(|m| m.borrow().values().cloned().collect())
+}
+
 
 /// Parse a collection of OCCT header files
 /// 
@@ -118,6 +199,12 @@ pub fn parse_headers(
     let visit_start = Instant::now();
     let root = tu.get_entity();
     
+
+    // Pre-scan AST to collect NCollection template typedef mappings.
+    // This must happen before class/method parsing so parse_type() can
+    // resolve misresolved NCollection template types back to their typedef names.
+    collect_ncollection_typedefs(&root);
+
     root.visit_children(|entity, _parent| {
         visit_top_level_batch(&entity, &header_set, &filename_to_index, &mut results, verbose)
     });
@@ -970,6 +1057,24 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         }
     }
 
+    // Check if this is a known NCollection/template typedef.
+    // When clang desugars types (especially through references/pointers),
+    // the display name may show the raw template form instead of the typedef.
+    // E.g., "NCollection_Map<TDF_Label, NCollection_DefaultHasher<TDF_Label>>"
+    // instead of "TDF_LabelMap". Look up the typedef name from our pre-scanned map.
+    let clean_for_lookup = trimmed_spelling
+        .trim_start_matches("const ")
+        .trim_start_matches("struct ")
+        .trim_start_matches("class ")
+        .trim_start_matches("typename ")
+        .trim();
+    if clean_for_lookup.contains('<') && !clean_for_lookup.starts_with("opencascade::handle<") && !clean_for_lookup.starts_with("Handle(") {
+        if let Some(typedef_name) = lookup_typedef(clean_for_lookup) {
+            return Type::Class(typedef_name);
+        }
+    }
+
+
     // Get canonical type for resolving typedefs
     let canonical = clang_type.get_canonical_type();
     let canonical_spelling = canonical.get_display_name();
@@ -1031,9 +1136,21 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         }
     };
 
-    // Handle primitives via canonical type
-    // But skip this if the spelling clearly identifies a class type
-    if !spelling_looks_like_class {
+    // Handle primitives via canonical type.
+    // Skip this if:
+    // 1. The spelling clearly identifies a class type (spelling_looks_like_class), OR
+    // 2. The spelling contains '<' or '::' — template or namespace-scoped types
+    //    whose canonical resolves to int/double/etc. are template misresolutions,
+    //    not genuine primitives.
+    let spelling_is_template_or_namespaced = {
+        let s = trimmed_spelling
+            .trim_start_matches("const ")
+            .trim_start_matches("volatile ")
+            .trim();
+        s.contains('<') || s.contains("::")
+    };
+    if !spelling_looks_like_class && !spelling_is_template_or_namespaced {
+
         match canonical_clean {
             "bool" => return Type::Bool,
             "int" => return Type::I32,
@@ -1048,7 +1165,60 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         }
     }
 
+    // Guard: when the OUTER type's display name identifies an OCCT class but the
+    // canonical type is "int" (template misresolution), construct the class type
+    // directly instead of recursing into the pointee (whose display name might
+    // already be "int", losing the typedef info).
+    if kind == TypeKind::LValueReference || kind == TypeKind::RValueReference || kind == TypeKind::Pointer
+
+    {
+        let canonical_base = canonical_clean
+            .trim_end_matches(" &")
+            .trim_end_matches(" &&")
+            .trim_end_matches(" *")
+            .trim();
+        if canonical_base == "int" {
+            // Strip qualifiers and ref/ptr decorators from the outer display name
+            let base = trimmed_spelling
+                .trim_start_matches("const ")
+                .trim_start_matches("volatile ")
+                .trim_start_matches("struct ")
+                .trim_start_matches("class ")
+                .trim_start_matches("typename ")
+                .trim_end_matches('&')
+                .trim_end_matches('*')
+                .trim();
+            let base_looks_like_class = base.starts_with(|c: char| c.is_ascii_uppercase())
+                && map_standard_type(base).is_none()
+                && base != "Standard_Boolean"
+                && !base.contains(' ');
+            // Also handle template/namespaced types (e.g. "NCollection_Map<...>" or
+            // "IMeshData::IMapOfReal") — these are clearly not primitives.
+            let base_looks_like_type = base_looks_like_class
+                || base.contains('<')
+                || base.contains("::");
+            if base_looks_like_type {
+
+                let inner = Type::Class(base.to_string());
+                if let Some(pointee) = clang_type.get_pointee_type() {
+                    let is_const = pointee.is_const_qualified();
+                    return match kind {
+                        TypeKind::LValueReference if is_const => Type::ConstRef(Box::new(inner)),
+                        TypeKind::LValueReference => Type::MutRef(Box::new(inner)),
+                        TypeKind::RValueReference => Type::RValueRef(Box::new(inner)),
+                        TypeKind::Pointer if is_const => Type::ConstPtr(Box::new(inner)),
+                        TypeKind::Pointer => Type::MutPtr(Box::new(inner)),
+                        _ => inner,
+                    };
+                }
+                return inner;
+            }
+        }
+    }
+
+
     // Handle reference types
+
     if kind == TypeKind::LValueReference {
         if let Some(pointee) = clang_type.get_pointee_type() {
             let is_const = pointee.is_const_qualified();
@@ -1103,9 +1273,17 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         .trim_end_matches(" *")
         .trim();
     
-    // If the spelling contains :: or < (nested/template type), try to use canonical
+    // If the spelling contains :: or < (nested/template type), try typedef map first,
+    // then try to use canonical
     if clean_name.contains("::") || clean_name.contains('<') {
+        // For template types, check if this is a known typedef
+        if clean_name.contains('<') {
+            if let Some(typedef_name) = lookup_typedef(clean_name) {
+                return Type::Class(typedef_name);
+            }
+        }
         let canonical_clean = canonical_spelling
+
             .trim_start_matches("const ")
             .trim_start_matches("class ")
             .trim_start_matches("struct ")

@@ -41,6 +41,14 @@ impl ConfigurationNode {
         unsafe { &*(crate::ffi::DEVRML_ConfigurationNode_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `DEVRML_ConfigurationNode.hxx`:44 - `DEVRML_ConfigurationNode::Load()`
+    /// Updates values according the resource
+    /// @param[in] theResource input resource to use
+    /// @return true if theResource loading has ended correctly
+    pub fn load(&mut self, theResource: &crate::ffi::HandleDEConfigurationContext) -> bool {
+        unsafe { crate::ffi::DEVRML_ConfigurationNode_load(self as *mut Self, theResource) }
+    }
+
     /// **Source:** `DEVRML_ConfigurationNode.hxx`:49 - `DEVRML_ConfigurationNode::Save()`
     /// Writes configuration to the string
     /// @return result resource string

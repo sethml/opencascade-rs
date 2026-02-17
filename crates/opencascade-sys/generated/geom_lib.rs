@@ -618,22 +618,6 @@ unsafe impl crate::CppDeletable for DenominatorMultiplier {
 }
 
 impl DenominatorMultiplier {
-    /// **Source:** `GeomLib_DenominatorMultiplier.hxx`:42 - `GeomLib_DenominatorMultiplier::GeomLib_DenominatorMultiplier()`
-    /// if the surface is rational this will define the evaluator
-    /// of a real function of 2 variables a(u,v) such that
-    /// if we define a new surface by :
-    /// a(u,v) * N(u,v)
-    /// NewF(u,v) = ----------------
-    /// a(u,v) * D(u,v)
-    pub fn new_handlegeombsplinesurface_array1ofreal(
-        Surface: &crate::ffi::HandleGeomBSplineSurface,
-        KnotVector: &crate::ffi::TColStd_Array1OfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomLib_DenominatorMultiplier_ctor_handlegeombsplinesurface_array1ofreal(Surface, KnotVector))
-        }
-    }
-
     /// **Source:** `GeomLib_DenominatorMultiplier.hxx`:59 - `GeomLib_DenominatorMultiplier::Value()`
     /// Returns the value of
     /// a(UParameter,VParameter)=
@@ -682,22 +666,6 @@ unsafe impl crate::CppDeletable for Interpolate {
 }
 
 impl Interpolate {
-    /// **Source:** `GeomLib_Interpolate.hxx`:43 - `GeomLib_Interpolate::GeomLib_Interpolate()`
-    pub fn new_int2_array1ofpnt_array1ofreal(
-        Degree: i32,
-        NumPoints: i32,
-        Points: &crate::ffi::TColgp_Array1OfPnt,
-        Parameters: &crate::ffi::TColStd_Array1OfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::GeomLib_Interpolate_ctor_int2_array1ofpnt_array1ofreal(
-                    Degree, NumPoints, Points, Parameters,
-                ),
-            )
-        }
-    }
-
     /// **Source:** `GeomLib_Interpolate.hxx`:49 - `GeomLib_Interpolate::IsDone()`
     /// returns if everything went OK
     pub fn is_done(&self) -> bool {
@@ -979,11 +947,6 @@ unsafe impl crate::CppDeletable for PolyFunc {
 }
 
 impl PolyFunc {
-    /// **Source:** `GeomLib_PolyFunc.hxx`:33 - `GeomLib_PolyFunc::GeomLib_PolyFunc()`
-    pub fn new_vector(Coeffs: &crate::ffi::math_Vector) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomLib_PolyFunc_ctor_vector(Coeffs)) }
-    }
-
     /// **Source:** `GeomLib_PolyFunc.hxx`:38 - `GeomLib_PolyFunc::Value()`
     /// computes the value <F>of the function for the variable <X>.
     /// Returns True if the calculation were successfully done,

@@ -706,6 +706,209 @@ impl HandleMATEdge {
 }
 
 // ========================
+// From MAT_Graph.hxx
+// ========================
+
+/// **Source:** `MAT_Graph.hxx`:38 - `MAT_Graph`
+/// The Class Graph permits the exploration of the
+/// Bisector Locus.
+pub use crate::ffi::MAT_Graph as Graph;
+
+unsafe impl crate::CppDeletable for Graph {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::MAT_Graph_destructor(ptr);
+    }
+}
+
+impl Graph {
+    /// **Source:** `MAT_Graph.hxx`:43 - `MAT_Graph::MAT_Graph()`
+    /// Empty constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::MAT_Graph_ctor()) }
+    }
+
+    /// **Source:** `MAT_Graph.hxx`:52 - `MAT_Graph::Perform()`
+    /// Construct <me> from the result of the method
+    /// <CreateMat> of the class <MAT> from <MAT>.
+    ///
+    /// <SemiInfinite> : if some bisector are infinites.
+    /// <TheRoots>     : Set of the bisectors.
+    /// <NbBasicElts>  : Number of Basic Elements.
+    /// <NbArcs>       : Number of Arcs = Number of Bisectors.
+    pub fn perform(
+        &mut self,
+        SemiInfinite: bool,
+        TheRoots: &crate::ffi::HandleMATListOfBisector,
+        NbBasicElts: i32,
+        NbArcs: i32,
+    ) {
+        unsafe {
+            crate::ffi::MAT_Graph_perform(
+                self as *mut Self,
+                SemiInfinite,
+                TheRoots,
+                NbBasicElts,
+                NbArcs,
+            )
+        }
+    }
+
+    /// **Source:** `MAT_Graph.hxx`:58 - `MAT_Graph::Arc()`
+    /// Return the Arc of index <Index> in <theArcs>.
+    pub fn arc(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleMATArc> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::MAT_Graph_arc(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `MAT_Graph.hxx`:61 - `MAT_Graph::BasicElt()`
+    /// Return the BasicElt of index <Index> in <theBasicElts>.
+    pub fn basic_elt(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleMATBasicElt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::MAT_Graph_basic_elt(self as *const Self, Index))
+        }
+    }
+
+    /// **Source:** `MAT_Graph.hxx`:64 - `MAT_Graph::Node()`
+    /// Return the Node of index <Index> in <theNodes>.
+    pub fn node(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleMATNode> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::MAT_Graph_node(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `MAT_Graph.hxx`:67 - `MAT_Graph::NumberOfArcs()`
+    /// Return the number of arcs of <me>.
+    pub fn number_of_arcs(&self) -> i32 {
+        unsafe { crate::ffi::MAT_Graph_number_of_arcs(self as *const Self) }
+    }
+
+    /// **Source:** `MAT_Graph.hxx`:70 - `MAT_Graph::NumberOfNodes()`
+    /// Return the number of nodes of <me>.
+    pub fn number_of_nodes(&self) -> i32 {
+        unsafe { crate::ffi::MAT_Graph_number_of_nodes(self as *const Self) }
+    }
+
+    /// **Source:** `MAT_Graph.hxx`:73 - `MAT_Graph::NumberOfBasicElts()`
+    /// Return the number of basic elements of <me>.
+    pub fn number_of_basic_elts(&self) -> i32 {
+        unsafe { crate::ffi::MAT_Graph_number_of_basic_elts(self as *const Self) }
+    }
+
+    /// **Source:** `MAT_Graph.hxx`:76 - `MAT_Graph::NumberOfInfiniteNodes()`
+    /// Return the number of infinites nodes of <me>.
+    pub fn number_of_infinite_nodes(&self) -> i32 {
+        unsafe { crate::ffi::MAT_Graph_number_of_infinite_nodes(self as *const Self) }
+    }
+
+    /// **Source:** `MAT_Graph.hxx`:94 - `MAT_Graph::FusionOfBasicElts()`
+    /// Merge two BasicElts.  The End of the BasicElt Elt1
+    /// of  IndexElt1 becomes The End of the BasicElt Elt2
+    /// of  IndexElt2.   Elt2 is replaced in  the  arcs  by
+    /// Elt1, Elt2 is eliminated.
+    ///
+    /// <MergeArc1> is True  if the fusion  of the BasicElts  =>
+    /// a fusion  of two Arcs which separated  the same  elements.
+    /// In this case <GeomIndexArc1> and  <GeomIndexArc2>  are the
+    /// Geometric  Index of this  arcs.
+    ///
+    /// If the  BasicElt corresponds to a close line ,
+    /// the StartArc and the EndArc of Elt1 can separate the same
+    /// elements .
+    /// In this case there is a fusion of this arcs, <MergeArc2>
+    /// is true and <GeomIndexArc3> and  <GeomIndexArc4>  are the
+    /// Geometric  Index of this  arcs.
+    pub fn fusion_of_basic_elts(
+        &mut self,
+        IndexElt1: i32,
+        IndexElt2: i32,
+        MergeArc1: &mut bool,
+        GeomIndexArc1: &mut i32,
+        GeomIndexArc2: &mut i32,
+        MergeArc2: &mut bool,
+        GeomIndexArc3: &mut i32,
+        GeomIndexArc4: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::MAT_Graph_fusion_of_basic_elts(
+                self as *mut Self,
+                IndexElt1,
+                IndexElt2,
+                MergeArc1,
+                GeomIndexArc1,
+                GeomIndexArc2,
+                MergeArc2,
+                GeomIndexArc3,
+                GeomIndexArc4,
+            )
+        }
+    }
+
+    /// **Source:** `MAT_Graph.hxx`:103 - `MAT_Graph::CompactArcs()`
+    pub fn compact_arcs(&mut self) {
+        unsafe { crate::ffi::MAT_Graph_compact_arcs(self as *mut Self) }
+    }
+
+    /// **Source:** `MAT_Graph.hxx`:105 - `MAT_Graph::CompactNodes()`
+    pub fn compact_nodes(&mut self) {
+        unsafe { crate::ffi::MAT_Graph_compact_nodes(self as *mut Self) }
+    }
+
+    /// **Source:** `MAT_Graph.hxx`:109 - `MAT_Graph::ChangeBasicElt()`
+    pub fn change_basic_elt(
+        &mut self,
+        Index: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleMATBasicElt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::MAT_Graph_change_basic_elt(
+                self as *mut Self,
+                Index,
+            ))
+        }
+    }
+
+    /// **Source:** `MAT_Graph.hxx`:111 - `MAT_Graph::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::MAT_Graph_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `MAT_Graph.hxx`:111 - `MAT_Graph::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::MAT_Graph_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `MAT_Graph.hxx`:111 - `MAT_Graph::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::MAT_Graph_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleMATGraph> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::MAT_Graph_to_handle(obj.into_raw())) }
+    }
+}
+
+pub use crate::ffi::HandleMATGraph;
+
+unsafe impl crate::CppDeletable for HandleMATGraph {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleMATGraph_destructor(ptr);
+    }
+}
+
+impl HandleMATGraph {
+    /// Dereference this Handle to access the underlying MAT_Graph
+    pub fn get(&self) -> &crate::ffi::MAT_Graph {
+        unsafe { &*(crate::ffi::HandleMATGraph_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying MAT_Graph
+    pub fn get_mut(&mut self) -> &mut crate::ffi::MAT_Graph {
+        unsafe { &mut *(crate::ffi::HandleMATGraph_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From MAT_ListOfBisector.hxx
 // ========================
 
@@ -1637,6 +1840,6 @@ impl HandleMATZone {
 // ========================
 
 pub use crate::ffi::{
-    MAT_Graph as Graph, MAT_SequenceOfArc as SequenceOfArc,
+    MAT_DataMapOfIntegerBasicElt as DataMapOfIntegerBasicElt, MAT_SequenceOfArc as SequenceOfArc,
     MAT_SequenceOfBasicElt as SequenceOfBasicElt,
 };

@@ -1269,19 +1269,6 @@ unsafe impl crate::CppDeletable for PlateG0Criterion {
 }
 
 impl PlateG0Criterion {
-    /// **Source:** `GeomPlate_PlateG0Criterion.hxx`:37 - `GeomPlate_PlateG0Criterion::GeomPlate_PlateG0Criterion()`
-    pub fn new_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(
-        Data: &crate::ffi::TColgp_SequenceOfXY,
-        G0Data: &crate::ffi::TColgp_SequenceOfXYZ,
-        Maximum: f64,
-        Type: crate::adv_app2_var::CriterionType,
-        Repart: crate::adv_app2_var::CriterionRepartition,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_PlateG0Criterion_ctor_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(Data, G0Data, Maximum, Type.into(), Repart.into()))
-        }
-    }
-
     /// Upcast to AdvApp2Var_Criterion
     pub fn as_adv_app2_var_criterion(&self) -> &crate::adv_app2_var::Criterion {
         unsafe {
@@ -1339,19 +1326,6 @@ unsafe impl crate::CppDeletable for PlateG1Criterion {
 }
 
 impl PlateG1Criterion {
-    /// **Source:** `GeomPlate_PlateG1Criterion.hxx`:37 - `GeomPlate_PlateG1Criterion::GeomPlate_PlateG1Criterion()`
-    pub fn new_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(
-        Data: &crate::ffi::TColgp_SequenceOfXY,
-        G1Data: &crate::ffi::TColgp_SequenceOfXYZ,
-        Maximum: f64,
-        Type: crate::adv_app2_var::CriterionType,
-        Repart: crate::adv_app2_var::CriterionRepartition,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_PlateG1Criterion_ctor_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(Data, G1Data, Maximum, Type.into(), Repart.into()))
-        }
-    }
-
     /// Upcast to AdvApp2Var_Criterion
     pub fn as_adv_app2_var_criterion(&self) -> &crate::adv_app2_var::Criterion {
         unsafe {

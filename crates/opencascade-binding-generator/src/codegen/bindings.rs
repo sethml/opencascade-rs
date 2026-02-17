@@ -647,6 +647,7 @@ fn is_constructor_bindable(
     ctor: &Constructor,
     _all_enum_names: &HashSet<String>,
     handle_able_classes: &HashSet<String>,
+    ctx: &TypeContext,
 ) -> bool {
     // By-value class/handle params are now supported: C++ wrappers accept const T&
     // and the C++ compiler handles the copy.
@@ -657,6 +658,16 @@ fn is_constructor_bindable(
         .params
         .iter()
         .any(|p| param_uses_unknown_handle(&p.ty, handle_able_classes))
+    {
+        return false;
+    }
+    // Also check for unknown class types in parameters.
+    // This catches NCollection typedef types (e.g., TDF_LabelMap) that aren't
+    // declared in the CXX bridge.
+    if ctor
+        .params
+        .iter()
+        .any(|p| type_uses_unknown_type(&p.ty, ctx))
     {
         return false;
     }
@@ -1341,6 +1352,7 @@ fn is_params_bindable(
     params: &[Param],
     _all_enum_names: &HashSet<String>,
     handle_able_classes: &HashSet<String>,
+    ctx: &TypeContext,
 ) -> bool {
     // By-value class/handle params are now supported via C++ wrappers (const T& conversion).
     if params.iter().any(|p| p.ty.is_unbindable()) {
@@ -1349,6 +1361,13 @@ fn is_params_bindable(
     if params
         .iter()
         .any(|p| param_uses_unknown_handle(&p.ty, handle_able_classes))
+    {
+        return false;
+    }
+    // Check for unknown class types
+    if params
+        .iter()
+        .any(|p| type_uses_unknown_type(&p.ty, ctx))
     {
         return false;
     }
@@ -1428,7 +1447,8 @@ fn compute_constructor_bindings(
     let mut bindable_ctors: Vec<TrimmedConstructor> = class
         .constructors
         .iter()
-        .filter(|c| is_constructor_bindable(c, all_enum_names, handle_able_classes))
+        .filter(|c| is_constructor_bindable(c, all_enum_names, handle_able_classes, ffi_ctx))
+
         .map(|c| TrimmedConstructor {
             original: c,
             trimmed_param_count: c.params.len(),
@@ -1441,7 +1461,8 @@ fn compute_constructor_bindings(
     // contiguous from the right, so we strip from the end until the remaining
     // params pass the filter.
     for ctor in &class.constructors {
-        if is_constructor_bindable(ctor, all_enum_names, handle_able_classes) {
+        if is_constructor_bindable(ctor, all_enum_names, handle_able_classes, ffi_ctx) {
+
             continue; // Already included
         }
         if ctor.has_unbindable_types() {
@@ -1460,7 +1481,8 @@ fn compute_constructor_bindings(
 
             // Check if the trimmed constructor would be bindable
             let trimmed_params = &ctor.params[..trim_to];
-            if is_params_bindable(trimmed_params, all_enum_names, handle_able_classes) {
+            if is_params_bindable(trimmed_params, all_enum_names, handle_able_classes, ffi_ctx) {
+
                 // Check it's not a duplicate of an existing binding
                 let already_exists = bindable_ctors.iter().any(|existing| {
                     existing.trimmed_param_count == trim_to

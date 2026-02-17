@@ -2347,6 +2347,7 @@ impl Tool {
 // ========================
 
 pub use crate::ffi::{
+    XCAFDimTolObjects_DataMapOfToleranceDatum as DataMapOfToleranceDatum,
     XCAFDimTolObjects_DatumModifiersSequence as DatumModifiersSequence,
     XCAFDimTolObjects_DatumObjectSequence as DatumObjectSequence,
     XCAFDimTolObjects_DimensionModifiersSequence as DimensionModifiersSequence,

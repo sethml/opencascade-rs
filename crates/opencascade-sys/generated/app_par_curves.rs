@@ -91,37 +91,6 @@ impl MultiBSpCurve {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_MultiBSpCurve_ctor_int(NbPol)) }
     }
 
-    /// **Source:** `AppParCurves_MultiBSpCurve.hxx`:76 - `AppParCurves_MultiBSpCurve::AppParCurves_MultiBSpCurve()`
-    /// creates a MultiBSpCurve, describing BSpline curves all
-    /// containing the same number of MultiPoint.
-    /// Each MultiPoint must have NbCurves Poles.
-    pub fn new_array1ofmultipoint_array1ofreal_array1ofinteger(
-        tabMU: &crate::ffi::AppParCurves_Array1OfMultiPoint,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_MultiBSpCurve_ctor_array1ofmultipoint_array1ofreal_array1ofinteger(tabMU, Knots, Mults))
-        }
-    }
-
-    /// **Source:** `AppParCurves_MultiBSpCurve.hxx`:82 - `AppParCurves_MultiBSpCurve::AppParCurves_MultiBSpCurve()`
-    /// creates a MultiBSpCurve, describing BSpline
-    /// curves, taking control points from <SC>.
-    pub fn new_multicurve_array1ofreal_array1ofinteger(
-        SC: &crate::ffi::AppParCurves_MultiCurve,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::AppParCurves_MultiBSpCurve_ctor_multicurve_array1ofreal_array1ofinteger(
-                    SC, Knots, Mults,
-                ),
-            )
-        }
-    }
-
     /// **Source:** `AppParCurves_MultiBSpCurve.hxx`:102 - `AppParCurves_MultiBSpCurve::Degree()`
     /// returns the degree of the curve(s).
     pub fn degree(&self) -> i32 {
@@ -420,20 +389,6 @@ impl MultiCurve {
     /// An exception is raised if Degree < 0.
     pub fn new_int(NbPol: i32) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_MultiCurve_ctor_int(NbPol)) }
-    }
-
-    /// **Source:** `AppParCurves_MultiCurve.hxx`:74 - `AppParCurves_MultiCurve::AppParCurves_MultiCurve()`
-    /// creates a MultiCurve, describing Bezier curves all
-    /// containing the same number of MultiPoint.
-    /// Each MultiPoint must have NbCurves Poles.
-    pub fn new_array1ofmultipoint(
-        tabMU: &crate::ffi::AppParCurves_Array1OfMultiPoint,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_MultiCurve_ctor_array1ofmultipoint(
-                tabMU,
-            ))
-        }
     }
 
     /// **Source:** `AppParCurves_MultiCurve.hxx`:79 - `AppParCurves_MultiCurve::SetNbPoles()`

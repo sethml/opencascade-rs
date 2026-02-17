@@ -262,10 +262,21 @@ exclude_headers = [
     "RWGltf_CafWriter.hxx",
     "RWGltf_GltfAccessor.hxx",
 
-    # NCollection_HArray1/HArray2/HSequence template instantiations: the generator
-    # produces wrong constructor signatures for these typedef'd template classes.
-    # The constructors take (lower, upper) bounds but the generated code doesn't
-    # match the actual NCollection_HArray1/HArray2/HSequence constructor interface.
+    # BVH template classes: abstract base or complex template type params
+    # that the generator can't resolve correctly.
+    "BVH_Properties.hxx",
+
+    # BRepExtrema classes depend on BVH templates with complex type params.
+    "BRepExtrema_OverlapTool.hxx",
+    "BRepExtrema_ProximityDistTool.hxx",
+    "BRepExtrema_SelfIntersection.hxx",
+    "BRepExtrema_ShapeProximity.hxx",
+    "BRepExtrema_TriangleSet.hxx",
+
+
+    # NCollection_HArray1/HArray2/HSequence template instantiations: clang fully
+    # canonicalizes the element-type constructor params to "int" (display name
+    # is already "int"), so no display-name heuristic can detect the misresolution.
     "Approx_HArray1OfAdHSurface.hxx",
     "Approx_HArray1OfGTrsf2d.hxx",
     "Bnd_HArray1OfBox.hxx",
@@ -340,73 +351,6 @@ exclude_headers = [
     "TopTools_HArray1OfShape.hxx",
     "TopTools_HArray2OfShape.hxx",
     "TopTools_HSequenceOfShape.hxx",
-
-    # BVH template classes: abstract base or complex template type params
-    # that the generator can't resolve correctly.
-    "BVH_Properties.hxx",
-
-    # BRepExtrema classes depend on BVH templates with complex type params.
-    "BRepExtrema_OverlapTool.hxx",
-    "BRepExtrema_ProximityDistTool.hxx",
-    "BRepExtrema_SelfIntersection.hxx",
-    "BRepExtrema_ShapeProximity.hxx",
-    "BRepExtrema_TriangleSet.hxx",
-
-    # BOPDS/BOPAlgo: methods return NCollection_DataMap/IndexedMap types
-    # but generator resolves them as Standard_Integer due to template typedef issues.
-    "BOPAlgo_CheckerSI.hxx",
-    "BOPAlgo_Tools.hxx",
-    "BOPDS_DS.hxx",
-    "BOPDS_FaceInfo.hxx",
-    "BOPDS_InterfFF.hxx",
-
-    # BRepMesh internal classes: use NCollection containers with template
-    # resolution issues in the generator.
-    "BRepMesh_BoundaryParamsRangeSplitter.hxx",
-    "BRepMesh_DataStructureOfDelaun.hxx",
-    "BRepMesh_Delaun.hxx",
-    "BRepMesh_ExtrusionRangeSplitter.hxx",
-    "BRepMesh_MeshTool.hxx",
-    "BRepMesh_NURBSRangeSplitter.hxx",
-    "BRepMesh_SelectorOfDataStructureOfDelaun.hxx",
-    "BRepMesh_TorusRangeSplitter.hxx",
-    "BRepMesh_UndefinedRangeSplitter.hxx",
-    "BRepMesh_UVParamRangeSplitter.hxx",
-    "BRepMesh_VertexTool.hxx",
-
-    # Return type mismatch: method returns NCollection map type but generator
-    # resolves it as Standard_Integer.
-    "Message_Report.hxx",
-    "Resource_Manager.hxx",
-    "ShapeExtend_MsgRegistrator.hxx",
-
-    # math_Matrix: overloaded operators return math_VectorBase<>/math_Matrix but
-    # generator resolves return type as Standard_Integer due to template issues.
-    "math_Matrix.hxx",
-
-    # BRepLib_FuseEdges: NCollection map type mismatch.
-    "BRepLib_FuseEdges.hxx",
-
-    # HLRBRep_VertexList: method type mismatch.
-    "HLRBRep_VertexList.hxx",
-
-    # MAT_Graph: return type mismatch (NCollection map resolved as wrong type).
-    "MAT_Graph.hxx",
-
-    # Units_*Sequence: Append method signature mismatch (NCollection_Sequence issue).
-    "Units_QuantitiesSequence.hxx",
-    "Units_TokensSequence.hxx",
-    "Units_UnitsSequence.hxx",
-
-    # DE_ConfigurationContext/DE_Wrapper: NCollection map type mismatches.
-    "DE_ConfigurationContext.hxx",
-    "DE_Wrapper.hxx",
-
-    # ShapeProcess_ShapeContext: return type mismatch (sequence type).
-    "ShapeProcess_ShapeContext.hxx",
-
-    # More NCollection_HArray1/HSequence/HDataMap template instantiations with
-    # constructor or method signature mismatches.
     "AppParCurves_HArray1OfMultiPoint.hxx",
     "ChFiDS_HData.hxx",
     "ChFiDS_SecHArray1.hxx",
@@ -424,102 +368,86 @@ exclude_headers = [
     "TFunction_HArray1OfDataMapOfGUIDDriver.hxx",
     "TObj_HSequenceOfObject.hxx",
     "Transfer_HSequenceOfFinder.hxx",
-
-    # NCollection map/set return type or ref param mismatches: methods return
-    # or take NCollection_DataMap/IndexedMap/Map types but the generator resolves
-    # the typedef as Standard_Integer.
-    "BOPDS_InterfFF.hxx",
-    "CDF_Application.hxx",
-    "CDM_Application.hxx",
-    "IFSelect_SignatureList.hxx",
     "TDataStd_HDataMapOfStringByte.hxx",
     "TDataStd_HDataMapOfStringHArray1OfInteger.hxx",
     "TDataStd_HDataMapOfStringHArray1OfReal.hxx",
     "TDataStd_HDataMapOfStringReal.hxx",
     "TDataStd_HDataMapOfStringString.hxx",
-    "TDataStd_NamedData.hxx",
-    "TDF_ClosureTool.hxx",
-    "TDF_CopyLabel.hxx",
-    "TDF_DataSet.hxx",
-    "TDF_RelocationTable.hxx",
-    "TDF_Tool.hxx",
-    "TFunction_IFunction.hxx",
-    "TFunction_Logbook.hxx",
-    "TFunction_Scope.hxx",
-    "TNaming_Name.hxx",
-    "TNaming_Naming.hxx",
-    "TNaming_NamingTool.hxx",
-    "TNaming_Scope.hxx",
-    "TNaming_Selector.hxx",
-    "TObj_Application.hxx",
-    "TObj_Object.hxx",
-    "TObj_TIntSparseArray.hxx",
-    "TObj_TNameContainer.hxx",
-    "TDocStd_Application.hxx",
-    "TDocStd_Document.hxx",
-    "TDocStd_Modified.hxx",
-    "Transfer_ActorOfFinderProcess.hxx",
-    "Transfer_ActorOfTransientProcess.hxx",
-    "XCAFApp_Application.hxx",
-    "XCAFDoc_AssemblyGraph.hxx",
-    "XCAFDoc_DimTolTool.hxx",
-    "XCAFDoc_Editor.hxx",
+    "TObj_SequenceOfObject.hxx",
+
+    # Clang fully canonicalizes return/param types to "int" display name.
+    "Message_Report.hxx",
+    "math_Matrix.hxx",
+    "Units_QuantitiesSequence.hxx",
+    "Units_TokensSequence.hxx",
+    "Units_UnitsSequence.hxx",
+
+
+    # Protected inherited member (BOPAlgo_PaveFiller::Clear is protected).
+    "BOPAlgo_CheckerSI.hxx",
+
+    # Codegen bug: val_enum_ undeclared identifier.
+    "ShapeProcess_ShapeContext.hxx",
+
+    # Clang fully canonicalizes NCollection types to "int" display name for
+    # return types and params. The ref/ptr guard can't detect misresolution when
+    # the display name is simply "int".
+    "IFSelect_SignatureList.hxx",
     "XSAlgo_ShapeProcessor.hxx",
     "XSControl_Controller.hxx",
     "XSControl_Reader.hxx",
     "XSControl_TransferReader.hxx",
     "XSControl_WorkSession.hxx",
-
-    # Protected operator delete (TDF_LabelNode).
-    "TDF_LabelNode.hxx",
-
-    # GeomInt_IntSS: NCollection_DynamicArray ref param type mismatch.
-    "GeomInt_IntSS.hxx",
-
-    # IntPatch_Intersection: NCollection_Vector ref param type mismatch.
-    "IntPatch_Intersection.hxx",
-
-    # StepToTopoDS_NMTool: constructor and NCollection_DataMap type mismatches.
-    "StepToTopoDS_NMTool.hxx",
-
-    # RWObj_MtlReader: constructor takes OSD_OpenFile_Mode not available.
-    "RWObj_MtlReader.hxx",
-
-    # IGES/STEP reader/writer classes: clang misresolves NCollection template types
-    # (e.g., NCollection_DataMap<A,B>) to Standard_Integer, producing C++ wrappers
-    # with incorrect parameter/return types.
-    "IGESCAFControl_Reader.hxx",
-    "IGESCAFControl_Writer.hxx",
     "IGESControl_ActorWrite.hxx",
     "IGESControl_Controller.hxx",
     "IGESControl_Reader.hxx",
     "IGESControl_Writer.hxx",
-    "IGESToBRep_Actor.hxx",
-    "IGESToBRep_Reader.hxx",
-    "STEPCAFControl_ActorWrite.hxx",
-    "STEPCAFControl_Controller.hxx",
-    "STEPCAFControl_Reader.hxx",
-    "STEPCAFControl_Writer.hxx",
+    "IGESCAFControl_Reader.hxx",
+    "IGESCAFControl_Writer.hxx",
+    # Also likely affected by inherited ParameterMap/NCollection issues:
     "STEPControl_ActorRead.hxx",
     "STEPControl_ActorWrite.hxx",
     "STEPControl_Controller.hxx",
     "STEPControl_Reader.hxx",
     "STEPControl_Writer.hxx",
+    "STEPCAFControl_ActorWrite.hxx",
+    "STEPCAFControl_Controller.hxx",
+    "STEPCAFControl_Reader.hxx",
+    "STEPCAFControl_Writer.hxx",
 
-    # RWGltf/RWMesh/RWObj reader classes with NCollection type mismatches.
+
+    # Inherited SetShapeFixParameters/ParameterMap NCollection type issues.
+    "IGESToBRep_Actor.hxx",
+    "IGESToBRep_Reader.hxx",
+
+    # NCollection_IndexedMap<TCollection_AsciiString> return type misresolved.
     "RWGltf_CafReader.hxx",
     "RWMesh_CafReader.hxx",
     "RWObj_CafReader.hxx",
     "RWObj_Reader.hxx",
     "RWObj_TriangulationReader.hxx",
 
-    # BOPDS_InterfFF is defined inside BOPDS_Interf.hxx (multi-class header),
-    # so we must exclude the containing header.
-    "BOPDS_Interf.hxx",
+    # TDataStd_NamedData: redefinition of wrapper functions (overload clash).
+    "TDataStd_NamedData.hxx",
 
-    # TObj_HSequenceOfObject is defined via DEFINE_HSEQUENCE macro in
-    # TObj_SequenceOfObject.hxx.
-    "TObj_SequenceOfObject.hxx",
+    # TObj_Object: conflicting types for get_child_label.
+    "TObj_Object.hxx",
+
+    # TObj_TIntSparseArray: NCollection_SparseArray::ConstIterator return.
+    "TObj_TIntSparseArray.hxx",
+
+    # XCAFDoc_DimTolTool: NCollection_IndexedDataMap ref param.
+    "XCAFDoc_DimTolTool.hxx",
+
+    # IntPatch_Intersection: NCollection_Vector<Handle(Adaptor3d_Surface)>& param.
+    "IntPatch_Intersection.hxx",
+
+
+    # Protected operator delete (TDF_LabelNode).
+    "TDF_LabelNode.hxx",
+
+    # RWObj_MtlReader: constructor takes OSD_OpenFile_Mode not available.
+    "RWObj_MtlReader.hxx",
 
     # BRepCheck_Result: the local re-export name "Result" collides with Rust's
     # prelude Result<T,E> type, and upcast methods reference "Result_" which
@@ -556,40 +484,46 @@ resolve_deps = true
 # included in the binding generation. Each category describes the root cause,
 # affected headers, and potential solutions.
 #
-# 1. NCollection Template Parameter Misresolution (FUNDAMENTAL)
-#    ─────────────────────────────────────────────────────────────
+# 1. NCollection Template Parameter Misresolution (PARTIALLY SOLVED)
+#    ─────────────────────────────────────────────────────────────────
 #    Root cause: When clang processes NCollection template specializations
 #    (e.g., NCollection_DataMap<TDF_Label, TDF_Label>) that it cannot fully
 #    instantiate, it falls back to canonical type "int" (Standard_Integer).
 #    This causes constructor and method parameters/returns to have wrong types.
 #
-#    Affected: ~80 HArray1/HArray2/HSequence headers, ~30 NCollection map
-#    headers, STEP/IGES Reader/Writer classes, math_Matrix, and several
-#    other classes using NCollection containers.
+#    Solution implemented: Three-layer guard in parser.rs:
+#    a) AST-based typedef map — collect_ncollection_typedefs() pre-scans all
+#       typedef declarations, building a map from NCollection template spelling
+#       to typedef name. lookup_typedef() then resolves template display names
+#       back to their original typedef (e.g., NCollection_DataMap<K,V> →
+#       TopTools_DataMapOfShapeShape). normalize_template_spelling() handles
+#       Standard_Integer→int, Standard_Real→double type alias mismatches.
+#    b) spelling_looks_like_class guard — when a non-template, non-namespace
+#       display name looks like an OCCT class but canonical type is "int",
+#       checks the underlying typedef declaration to distinguish real primitive
+#       typedefs from misresolved NCollection types.
+#    c) Reference/pointer canonical guard — when the outer ref/ptr type's
+#       display name identifies an OCCT class/template/namespace but canonical
+#       resolves to "int", constructs the Class type directly instead of
+#       recursing into the pointee (which would lose the typedef info).
 #
-#    Subcategories:
-#    a) HArray1/HArray2/HSequence constructor mismatches — DEFINE_HARRAY1 and
-#       DEFINE_HSEQUENCE macros expand to classes inheriting NCollection template
-#       constructors. The template parameter type (e.g., gp_Pnt) is misresolved
-#       to Standard_Integer, producing wrong constructor signatures.
-#    b) NCollection map return type mismatches — methods returning
-#       NCollection_DataMap<K,V> or similar have return type resolved to int.
-#    c) Reference-level desugaring — for parameters like `const ParameterMap&`,
-#       clang desugars the display name at ALL levels (both the reference AND
-#       the pointee), making it impossible to detect the mismatch from the
-#       type API. This blocks STEPControl_Reader/Writer, IGESControl_Reader/Writer,
-#       and XSControl_Reader.
+#    Additionally, is_constructor_bindable() in codegen/bindings.rs now checks
+#    type_uses_unknown_type() to filter constructors with unresolvable types.
 #
-#    Potential solutions:
-#    - Pre-scan headers to build a typedef→template mapping, then use the
-#      original typedef name instead of the canonical type.
-#    - Use clang's AST traversal to find typedef declarations and record their
-#      underlying NCollection types, then match during type resolution.
-#    - For HArray/HSequence specifically: hard-code the known constructor
-#      patterns and substitute correct parameter types based on the array's
-#      element type (extractable from the typedef name or base class).
-#    - For reference-level desugaring: traverse the typedef chain at the
-#      reference level to recover the original type name.
+#    ~40 headers successfully UNBLOCKED by this fix (BRepMesh_*, BOPDS_*,
+#    TDF_*, TNaming_*, TDocStd_*, TFunction_*, TObj_Application,
+#    TObj_TNameContainer, Transfer_*, CDF_Application, CDM_Application,
+#    XCAFApp_Application, XCAFDoc_AssemblyGraph, XCAFDoc_Editor,
+#    BOPAlgo_Tools, DE_ConfigurationContext, DE_Wrapper, GeomInt_IntSS,
+#    Resource_Manager, ShapeExtend_MsgRegistrator, HLRBRep_VertexList,
+#    MAT_Graph, StepToTopoDS_NMTool, BRepLib_FuseEdges).
+#
+#    Still blocked (~80 headers): Cases where clang fully canonicalizes the
+#    display name itself to "int" (no display-name heuristic can help),
+#    HArray/HSequence/HDataMap constructors, inherited NCollection params
+#    from XSControl/IGES/STEP frameworks, ref params with NCollection_Vector
+#    or NCollection_IndexedDataMap, and headers with secondary issues
+#    (overload clashes, conflicting types, redefinitions).
 #
 # 2. Primitive Typedef vs Template Typedef Ambiguity
 #    ────────────────────────────────────────────────

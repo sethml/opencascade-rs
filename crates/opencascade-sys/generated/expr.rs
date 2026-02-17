@@ -4865,19 +4865,6 @@ unsafe impl crate::CppDeletable for NamedFunction {
 }
 
 impl NamedFunction {
-    /// **Source:** `Expr_NamedFunction.hxx`:40 - `Expr_NamedFunction::Expr_NamedFunction()`
-    /// Creates a function of given variables <vars> with name
-    /// <name> defined by the expression <exp>.
-    pub fn new_asciistring_handleexprgeneralexpression_array1ofnamedunknown(
-        name: &crate::ffi::TCollection_AsciiString,
-        exp: &crate::ffi::HandleExprGeneralExpression,
-        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedFunction_ctor_asciistring_handleexprgeneralexpression_array1ofnamedunknown(name, exp, vars))
-        }
-    }
-
     /// **Source:** `Expr_NamedFunction.hxx`:45 - `Expr_NamedFunction::SetName()`
     /// Sets the name <newname> to <me>.
     pub fn set_name(&mut self, newname: &crate::ffi::TCollection_AsciiString) {
@@ -5635,17 +5622,6 @@ unsafe impl crate::CppDeletable for PolyFunction {
 }
 
 impl PolyFunction {
-    /// **Source:** `Expr_PolyFunction.hxx`:42 - `Expr_PolyFunction::Expr_PolyFunction()`
-    /// Creates <me> as <func>(<exps_1>,<exps_2>,...,<exps_n>)
-    pub fn new_handleexprgeneralfunction_array1ofgeneralexpression(
-        func: &crate::ffi::HandleExprGeneralFunction,
-        exps: &crate::ffi::Expr_Array1OfGeneralExpression,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_PolyFunction_ctor_handleexprgeneralfunction_array1ofgeneralexpression(func, exps))
-        }
-    }
-
     /// **Source:** `Expr_PolyFunction.hxx`:46 - `Expr_PolyFunction::Function()`
     /// Returns the function defining <me>.
     pub fn function(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralFunction> {
@@ -5806,18 +5782,6 @@ unsafe impl crate::CppDeletable for Product {
 }
 
 impl Product {
-    /// **Source:** `Expr_Product.hxx`:39 - `Expr_Product::Expr_Product()`
-    /// Creates the product of all members of sequence <exps>
-    pub fn new_sequenceofgeneralexpression(
-        exps: &crate::ffi::Expr_SequenceOfGeneralExpression,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_Product_ctor_sequenceofgeneralexpression(
-                exps,
-            ))
-        }
-    }
-
     /// **Source:** `Expr_Product.hxx`:42 - `Expr_Product::Expr_Product()`
     /// Creates the product of <exp1> and <exp2>.
     pub fn new_handleexprgeneralexpression2(
@@ -6956,16 +6920,6 @@ unsafe impl crate::CppDeletable for Sum {
 }
 
 impl Sum {
-    /// **Source:** `Expr_Sum.hxx`:40 - `Expr_Sum::Expr_Sum()`
-    /// Creates the sum of all the members of sequence <exps>.
-    pub fn new_sequenceofgeneralexpression(
-        exps: &crate::ffi::Expr_SequenceOfGeneralExpression,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Expr_Sum_ctor_sequenceofgeneralexpression(exps))
-        }
-    }
-
     /// **Source:** `Expr_Sum.hxx`:43 - `Expr_Sum::Expr_Sum()`
     /// Creates the sum of <exp1> and <exp2>.
     pub fn new_handleexprgeneralexpression2(

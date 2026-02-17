@@ -483,25 +483,6 @@ unsafe impl crate::CppDeletable for CacheParams {
 }
 
 impl CacheParams {
-    /// **Source:** `BSplCLib_CacheParams.hxx`:40 - `BSplCLib_CacheParams::BSplCLib_CacheParams()`
-    /// Constructor, prepares data structures for caching.
-    /// \param theDegree     degree of the B-spline (or Bezier)
-    /// \param thePeriodic   identify whether the B-spline is periodic
-    /// \param theFlatKnots  knots of Bezier / B-spline parameterization
-    pub fn new_int_bool_array1ofreal(
-        theDegree: i32,
-        thePeriodic: bool,
-        theFlatKnots: &crate::ffi::TColStd_Array1OfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BSplCLib_CacheParams_ctor_int_bool_array1ofreal(
-                theDegree,
-                thePeriodic,
-                theFlatKnots,
-            ))
-        }
-    }
-
     /// **Source:** `BSplCLib_CacheParams.hxx`:57 - `BSplCLib_CacheParams::PeriodicNormalization()`
     /// Normalizes the parameter for periodic B-splines
     /// \param theParameter the value to be normalized into the knots array

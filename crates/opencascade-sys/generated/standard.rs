@@ -1121,40 +1121,6 @@ impl GUID {
         }
     }
 
-    /// **Source:** `Standard_GUID.hxx`:49 - `Standard_GUID::Standard_GUID()`
-    /// build a GUID from an unicode string with the
-    /// following format:
-    ///
-    /// "00000000-0000-0000-0000-000000000000"
-    pub fn new_extstring(aGuid: &crate::ffi::Standard_ExtString) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_extstring(aGuid)) }
-    }
-
-    /// **Source:** `Standard_GUID.hxx`:51 - `Standard_GUID::Standard_GUID()`
-    pub fn new_int_extcharacter3_byte6(
-        a32b: i32,
-        a16b1: &crate::ffi::Standard_ExtCharacter,
-        a16b2: &crate::ffi::Standard_ExtCharacter,
-        a16b3: &crate::ffi::Standard_ExtCharacter,
-        a8b1: &crate::ffi::Standard_Byte,
-        a8b2: &crate::ffi::Standard_Byte,
-        a8b3: &crate::ffi::Standard_Byte,
-        a8b4: &crate::ffi::Standard_Byte,
-        a8b5: &crate::ffi::Standard_Byte,
-        a8b6: &crate::ffi::Standard_Byte,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_int_extcharacter3_byte6(
-                a32b, a16b1, a16b2, a16b3, a8b1, a8b2, a8b3, a8b4, a8b5, a8b6,
-            ))
-        }
-    }
-
-    /// **Source:** `Standard_GUID.hxx`:62 - `Standard_GUID::Standard_GUID()`
-    pub fn new_uuid(aGuid: &crate::ffi::Standard_UUID) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_uuid(aGuid)) }
-    }
-
     /// **Source:** `Standard_GUID.hxx`:64 - `Standard_GUID::Standard_GUID()`
     pub fn new_guid(aGuid: &crate::ffi::Standard_GUID) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_guid(aGuid)) }

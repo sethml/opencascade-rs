@@ -491,6 +491,518 @@ impl Curve {
 }
 
 // ========================
+// From BOPDS_DS.hxx
+// ========================
+
+/// **Source:** `BOPDS_DS.hxx`:76 - `BOPDS_DS`
+/// The class BOPDS_DS provides the control
+/// of data structure for the algorithms in the
+/// Boolean Component such as General Fuse, Boolean operations,
+/// Section, Maker Volume, Splitter and Cells Builder.<br>
+///
+/// The data structure has the  following contents:<br>
+/// 1. the arguments of an operation [myArguments];<br>
+/// 2  the information about arguments/new shapes
+/// and their sub-shapes (type of the shape,
+/// bounding box, etc) [myLines];<br>
+/// 3. each argument shape(and its subshapes)
+/// has/have own range of indices (rank);<br>
+/// 4. pave blocks on source edges [myPaveBlocksPool];<br>
+/// 5. the state of source faces  [myFaceInfoPool];<br>
+/// 6  the collection of same domain shapes [myShapesSD];<br>
+/// 7  the collection of interferences  [myInterfTB,
+/// myInterfVV,..myInterfFF]
+pub use crate::ffi::BOPDS_DS as DS;
+
+unsafe impl crate::CppDeletable for DS {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPDS_DS_destructor(ptr);
+    }
+}
+
+impl DS {
+    /// **Source:** `BOPDS_DS.hxx`:82 - `BOPDS_DS::BOPDS_DS()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPDS_DS_ctor()) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:88 - `BOPDS_DS::BOPDS_DS()`
+    /// Constructor
+    /// @param theAllocator the allocator to manage the memory
+    pub fn new_handlencollectionbaseallocator(
+        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPDS_DS_ctor_handlencollectionbaseallocator(
+                theAllocator,
+            ))
+        }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:91 - `BOPDS_DS::Clear()`
+    /// Clears the contents
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BOPDS_DS_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:94 - `BOPDS_DS::Allocator()`
+    /// Selector
+    pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
+        unsafe { &*(crate::ffi::BOPDS_DS_allocator(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:98 - `BOPDS_DS::SetArguments()`
+    /// Modifier
+    /// Sets the arguments [theLS] of an operation
+    pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
+        unsafe { crate::ffi::BOPDS_DS_set_arguments(self as *mut Self, theLS) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:102 - `BOPDS_DS::Arguments()`
+    /// Selector
+    /// Returns the arguments of an operation
+    pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BOPDS_DS_arguments(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:106 - `BOPDS_DS::Init()`
+    /// Initializes the data structure for
+    /// the arguments
+    pub fn init(&mut self, theFuzz: f64) {
+        unsafe { crate::ffi::BOPDS_DS_init(self as *mut Self, theFuzz) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:110 - `BOPDS_DS::NbShapes()`
+    /// Selector
+    /// Returns the total number of shapes stored
+    pub fn nb_shapes(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_DS_nb_shapes(self as *const Self) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:114 - `BOPDS_DS::NbSourceShapes()`
+    /// Selector
+    /// Returns the total number of source shapes stored
+    pub fn nb_source_shapes(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_DS_nb_source_shapes(self as *const Self) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:118 - `BOPDS_DS::NbRanges()`
+    /// Selector
+    /// Returns the number of index ranges
+    pub fn nb_ranges(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_DS_nb_ranges(self as *const Self) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:122 - `BOPDS_DS::Range()`
+    /// Selector
+    /// Returns the index range "i"
+    pub fn range(&self, theIndex: i32) -> &crate::ffi::BOPDS_IndexRange {
+        unsafe { &*(crate::ffi::BOPDS_DS_range(self as *const Self, theIndex)) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:126 - `BOPDS_DS::Rank()`
+    /// Selector
+    /// Returns the rank of the shape of index "i"
+    pub fn rank(&self, theIndex: i32) -> i32 {
+        unsafe { crate::ffi::BOPDS_DS_rank(self as *const Self, theIndex) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:130 - `BOPDS_DS::IsNewShape()`
+    /// Returns true if the shape of index "i" is not
+    /// the source shape/sub-shape
+    pub fn is_new_shape(&self, theIndex: i32) -> bool {
+        unsafe { crate::ffi::BOPDS_DS_is_new_shape(self as *const Self, theIndex) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:136 - `BOPDS_DS::Append()`
+    /// Modifier
+    /// Appends the information about the shape [theSI]
+    /// to the data structure
+    /// Returns the index of theSI in the data structure
+    pub fn append_shapeinfo(&mut self, theSI: &crate::ffi::BOPDS_ShapeInfo) -> i32 {
+        unsafe { crate::ffi::BOPDS_DS_append_shapeinfo(self as *mut Self, theSI) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:142 - `BOPDS_DS::Append()`
+    /// Modifier
+    /// Appends the default information about the shape [theS]
+    /// to the data structure
+    /// Returns the index of theS in the data structure
+    pub fn append_shape(&mut self, theS: &crate::ffi::TopoDS_Shape) -> i32 {
+        unsafe { crate::ffi::BOPDS_DS_append_shape(self as *mut Self, theS) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:147 - `BOPDS_DS::ShapeInfo()`
+    /// Selector
+    /// Returns the information about the shape
+    /// with index theIndex
+    pub fn shape_info(&self, theIndex: i32) -> &crate::ffi::BOPDS_ShapeInfo {
+        unsafe { &*(crate::ffi::BOPDS_DS_shape_info(self as *const Self, theIndex)) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:152 - `BOPDS_DS::ChangeShapeInfo()`
+    /// Selector/Modifier
+    /// Returns the information about the shape
+    /// with index theIndex
+    pub fn change_shape_info(&mut self, theIndex: i32) -> &mut crate::ffi::BOPDS_ShapeInfo {
+        unsafe { &mut *(crate::ffi::BOPDS_DS_change_shape_info(self as *mut Self, theIndex)) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:157 - `BOPDS_DS::Shape()`
+    /// Selector
+    /// Returns the shape
+    /// with index theIndex
+    pub fn shape(&self, theIndex: i32) -> &crate::ffi::TopoDS_Shape {
+        unsafe { &*(crate::ffi::BOPDS_DS_shape(self as *const Self, theIndex)) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:161 - `BOPDS_DS::Index()`
+    /// Selector
+    /// Returns the index  of the shape theS
+    pub fn index(&self, theS: &crate::ffi::TopoDS_Shape) -> i32 {
+        unsafe { crate::ffi::BOPDS_DS_index(self as *const Self, theS) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:174 - `BOPDS_DS::HasPaveBlocks()`
+    /// Query
+    /// Returns true if the shape with index theIndex has the
+    /// information about pave blocks
+    pub fn has_pave_blocks(&self, theIndex: i32) -> bool {
+        unsafe { crate::ffi::BOPDS_DS_has_pave_blocks(self as *const Self, theIndex) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:185 - `BOPDS_DS::UpdatePaveBlocks()`
+    /// Update the pave blocks for the all shapes in data structure
+    pub fn update_pave_blocks(&mut self) {
+        unsafe { crate::ffi::BOPDS_DS_update_pave_blocks(self as *mut Self) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:188 - `BOPDS_DS::UpdatePaveBlock()`
+    /// Update the pave block thePB
+    pub fn update_pave_block(&mut self, thePB: &crate::ffi::HandleBOPDSPaveBlock) {
+        unsafe { crate::ffi::BOPDS_DS_update_pave_block(self as *mut Self, thePB) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:191 - `BOPDS_DS::UpdateCommonBlock()`
+    /// Update the common block theCB
+    pub fn update_common_block(
+        &mut self,
+        theCB: &crate::ffi::HandleBOPDSCommonBlock,
+        theFuzz: f64,
+    ) {
+        unsafe { crate::ffi::BOPDS_DS_update_common_block(self as *mut Self, theCB, theFuzz) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:196 - `BOPDS_DS::IsCommonBlock()`
+    /// Query
+    /// Returns true if the pave block is common block
+    pub fn is_common_block(&self, thePB: &crate::ffi::HandleBOPDSPaveBlock) -> bool {
+        unsafe { crate::ffi::BOPDS_DS_is_common_block(self as *const Self, thePB) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:200 - `BOPDS_DS::CommonBlock()`
+    /// Selector
+    /// Returns the common block
+    pub fn common_block(
+        &self,
+        thePB: &crate::ffi::HandleBOPDSPaveBlock,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPDSCommonBlock> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPDS_DS_common_block(self as *const Self, thePB))
+        }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:204 - `BOPDS_DS::SetCommonBlock()`
+    /// Modifier
+    /// Sets the common block <theCB>
+    pub fn set_common_block(
+        &mut self,
+        thePB: &crate::ffi::HandleBOPDSPaveBlock,
+        theCB: &crate::ffi::HandleBOPDSCommonBlock,
+    ) {
+        unsafe { crate::ffi::BOPDS_DS_set_common_block(self as *mut Self, thePB, theCB) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:209 - `BOPDS_DS::RealPaveBlock()`
+    /// Selector
+    /// Returns the real first pave block
+    pub fn real_pave_block(
+        &self,
+        thePB: &crate::ffi::HandleBOPDSPaveBlock,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPDSPaveBlock> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPDS_DS_real_pave_block(
+                self as *const Self,
+                thePB,
+            ))
+        }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:213 - `BOPDS_DS::IsCommonBlockOnEdge()`
+    /// Query
+    /// Returns true if common block contains more then one pave block
+    pub fn is_common_block_on_edge(&self, thePB: &crate::ffi::HandleBOPDSPaveBlock) -> bool {
+        unsafe { crate::ffi::BOPDS_DS_is_common_block_on_edge(self as *const Self, thePB) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:222 - `BOPDS_DS::HasFaceInfo()`
+    /// Query
+    /// Returns true if the shape with index theIndex has the
+    /// information about state of face
+    pub fn has_face_info(&self, theIndex: i32) -> bool {
+        unsafe { crate::ffi::BOPDS_DS_has_face_info(self as *const Self, theIndex) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:226 - `BOPDS_DS::FaceInfo()`
+    /// Selector
+    /// Returns the state of face with index theIndex
+    pub fn face_info(&self, theIndex: i32) -> &crate::ffi::BOPDS_FaceInfo {
+        unsafe { &*(crate::ffi::BOPDS_DS_face_info(self as *const Self, theIndex)) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:230 - `BOPDS_DS::ChangeFaceInfo()`
+    /// Selector/Modifier
+    /// Returns the state of face with index theIndex
+    pub fn change_face_info(&mut self, theIndex: i32) -> &mut crate::ffi::BOPDS_FaceInfo {
+        unsafe { &mut *(crate::ffi::BOPDS_DS_change_face_info(self as *mut Self, theIndex)) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:233 - `BOPDS_DS::UpdateFaceInfoIn()`
+    /// Update the state In of face with index theIndex
+    pub fn update_face_info_in(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_DS_update_face_info_in(self as *mut Self, theIndex) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:239 - `BOPDS_DS::UpdateFaceInfoOn()`
+    /// Update the state On of face with index theIndex
+    pub fn update_face_info_on(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_DS_update_face_info_on(self as *mut Self, theIndex) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:268 - `BOPDS_DS::RefineFaceInfoOn()`
+    /// Refine the state On for the all faces having
+    /// state information
+    ///
+    /// ++
+    pub fn refine_face_info_on(&mut self) {
+        unsafe { crate::ffi::BOPDS_DS_refine_face_info_on(self as *mut Self) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:271 - `BOPDS_DS::RefineFaceInfoIn()`
+    /// Removes any pave block from list of having IN state if it has also the state ON.
+    pub fn refine_face_info_in(&mut self) {
+        unsafe { crate::ffi::BOPDS_DS_refine_face_info_in(self as *mut Self) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:301 - `BOPDS_DS::AddShapeSD()`
+    /// Modifier
+    /// Adds the information about same domain shapes
+    /// with indices theIndex, theIndexSD
+    pub fn add_shape_sd(&mut self, theIndex: i32, theIndexSD: i32) {
+        unsafe { crate::ffi::BOPDS_DS_add_shape_sd(self as *mut Self, theIndex, theIndexSD) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:310 - `BOPDS_DS::HasShapeSD()`
+    /// Query
+    /// Returns true if the shape with index theIndex has the
+    /// same domain shape. In this case theIndexSD will contain
+    /// the index of same domain shape found
+    ///
+    /// interferences
+    pub fn has_shape_sd(&self, theIndex: i32, theIndexSD: &mut i32) -> bool {
+        unsafe { crate::ffi::BOPDS_DS_has_shape_sd(self as *const Self, theIndex, theIndexSD) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:360 - `BOPDS_DS::AddInterf()`
+    /// Modifier
+    /// Adds the information about an interference between
+    /// shapes with indices theI1, theI2 to the summary
+    /// table of interferences
+    pub fn add_interf(&mut self, theI1: i32, theI2: i32) -> bool {
+        unsafe { crate::ffi::BOPDS_DS_add_interf(self as *mut Self, theI1, theI2) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:365 - `BOPDS_DS::HasInterf()`
+    /// Query
+    /// Returns true if the shape with index theI
+    /// is interferred
+    pub fn has_interf_int(&self, theI: i32) -> bool {
+        unsafe { crate::ffi::BOPDS_DS_has_interf_int(self as *const Self, theI) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:370 - `BOPDS_DS::HasInterf()`
+    /// Query
+    /// Returns true if the shapes with indices theI1, theI2
+    /// are interferred
+    pub fn has_interf_int2(&self, theI1: i32, theI2: i32) -> bool {
+        unsafe { crate::ffi::BOPDS_DS_has_interf_int2(self as *const Self, theI1, theI2) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:378 - `BOPDS_DS::HasInterfShapeSubShapes()`
+    /// Query
+    /// Returns true if the shape with index theI1 is interfered
+    /// with
+    /// any sub-shape of the shape with index theI2  (theFlag=true)
+    /// all sub-shapes of the shape with index theI2 (theFlag=false)
+    pub fn has_interf_shape_sub_shapes(&self, theI1: i32, theI2: i32, theFlag: bool) -> bool {
+        unsafe {
+            crate::ffi::BOPDS_DS_has_interf_shape_sub_shapes(
+                self as *const Self,
+                theI1,
+                theI2,
+                theFlag,
+            )
+        }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:385 - `BOPDS_DS::HasInterfSubShapes()`
+    /// Query
+    /// Returns true if the shapes with indices theI1, theI2
+    /// have interferred sub-shapes
+    pub fn has_interf_sub_shapes(&self, theI1: i32, theI2: i32) -> bool {
+        unsafe { crate::ffi::BOPDS_DS_has_interf_sub_shapes(self as *const Self, theI1, theI2) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:394 - `BOPDS_DS::Dump()`
+    pub fn dump(&self) {
+        unsafe { crate::ffi::BOPDS_DS_dump(self as *const Self) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:396 - `BOPDS_DS::IsSubShape()`
+    pub fn is_sub_shape(&mut self, theI1: i32, theI2: i32) -> bool {
+        unsafe { crate::ffi::BOPDS_DS_is_sub_shape(self as *mut Self, theI1, theI2) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:404 - `BOPDS_DS::UpdatePaveBlocksWithSDVertices()`
+    /// Update the pave blocks for all shapes in data structure
+    pub fn update_pave_blocks_with_sd_vertices(&mut self) {
+        unsafe { crate::ffi::BOPDS_DS_update_pave_blocks_with_sd_vertices(self as *mut Self) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:407 - `BOPDS_DS::UpdatePaveBlockWithSDVertices()`
+    /// Update the pave block for all shapes in data structure
+    pub fn update_pave_block_with_sd_vertices(&mut self, thePB: &crate::ffi::HandleBOPDSPaveBlock) {
+        unsafe { crate::ffi::BOPDS_DS_update_pave_block_with_sd_vertices(self as *mut Self, thePB) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:410 - `BOPDS_DS::UpdateCommonBlockWithSDVertices()`
+    /// Update the pave block of the common block for all shapes in data structure
+    pub fn update_common_block_with_sd_vertices(
+        &mut self,
+        theCB: &crate::ffi::HandleBOPDSCommonBlock,
+    ) {
+        unsafe {
+            crate::ffi::BOPDS_DS_update_common_block_with_sd_vertices(self as *mut Self, theCB)
+        }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:412 - `BOPDS_DS::InitPaveBlocksForVertex()`
+    pub fn init_pave_blocks_for_vertex(&mut self, theNV: i32) {
+        unsafe { crate::ffi::BOPDS_DS_init_pave_blocks_for_vertex(self as *mut Self, theNV) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:415 - `BOPDS_DS::ReleasePaveBlocks()`
+    /// Clears information about PaveBlocks for the untouched edges
+    pub fn release_pave_blocks(&mut self) {
+        unsafe { crate::ffi::BOPDS_DS_release_pave_blocks(self as *mut Self) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:421 - `BOPDS_DS::IsValidShrunkData()`
+    /// Checks if the existing shrunk data of the pave block is still valid.<br>
+    /// The shrunk data may become invalid if e.g. the vertices of the pave block
+    /// have been replaced with the new one with bigger tolerances, or the tolerances
+    /// of the existing vertices have been increased.
+    pub fn is_valid_shrunk_data(&mut self, thePB: &crate::ffi::HandleBOPDSPaveBlock) -> bool {
+        unsafe { crate::ffi::BOPDS_DS_is_valid_shrunk_data(self as *mut Self, thePB) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:426 - `BOPDS_DS::BuildBndBoxSolid()`
+    /// Computes bounding box <theBox> for the solid with DS-index <theIndex>.
+    /// The flag <theCheckInverted> enables/disables the check of the solid
+    /// for inverted status. By default the solids will be checked.
+    pub fn build_bnd_box_solid(
+        &mut self,
+        theIndex: i32,
+        theBox: &mut crate::ffi::Bnd_Box,
+        theCheckInverted: bool,
+    ) {
+        unsafe {
+            crate::ffi::BOPDS_DS_build_bnd_box_solid(
+                self as *mut Self,
+                theIndex,
+                theBox,
+                theCheckInverted,
+            )
+        }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:354 - `BOPDS_DS::NbInterfTypes()`
+    /// Returns the number of types of the interferences
+    pub fn nb_interf_types() -> i32 {
+        unsafe { crate::ffi::BOPDS_DS_nb_interf_types() }
+    }
+}
+
+// ========================
+// From BOPDS_FaceInfo.hxx
+// ========================
+
+/// **Source:** `BOPDS_FaceInfo.hxx`:32 - `BOPDS_FaceInfo`
+/// The class BOPDS_FaceInfo is to store
+/// handy information about state of face
+pub use crate::ffi::BOPDS_FaceInfo as FaceInfo;
+
+unsafe impl crate::CppDeletable for FaceInfo {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPDS_FaceInfo_destructor(ptr);
+    }
+}
+
+impl FaceInfo {
+    /// **Source:** `BOPDS_FaceInfo.hxx`:38 - `BOPDS_FaceInfo::BOPDS_FaceInfo()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPDS_FaceInfo_ctor()) }
+    }
+
+    /// **Source:** `BOPDS_FaceInfo.hxx`:44 - `BOPDS_FaceInfo::BOPDS_FaceInfo()`
+    /// Constructor
+    /// @param theAllocator the allocator to manage the memory
+    pub fn new_handlencollectionbaseallocator(
+        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BOPDS_FaceInfo_ctor_handlencollectionbaseallocator(theAllocator),
+            )
+        }
+    }
+
+    /// **Source:** `BOPDS_FaceInfo.hxx`:47 - `BOPDS_FaceInfo::Clear()`
+    /// Clears the contents
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BOPDS_FaceInfo_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `BOPDS_FaceInfo.hxx`:51 - `BOPDS_FaceInfo::SetIndex()`
+    /// Modifier
+    /// Sets the index of the face <theI>
+    pub fn set_index(&mut self, theI: i32) {
+        unsafe { crate::ffi::BOPDS_FaceInfo_set_index(self as *mut Self, theI) }
+    }
+
+    /// **Source:** `BOPDS_FaceInfo.hxx`:57 - `BOPDS_FaceInfo::Index()`
+    /// Selector
+    /// Returns the index of the face
+    ///
+    /// In
+    pub fn index(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_FaceInfo_index(self as *const Self) }
+    }
+}
+
+// ========================
 // From BOPDS_IndexRange.hxx
 // ========================
 
@@ -570,6 +1082,1070 @@ impl IndexRange {
 }
 
 // ========================
+// From BOPDS_Interf.hxx
+// ========================
+
+/// **Source:** `BOPDS_Interf.hxx`:210 - `BOPDS_InterfVV`
+///
+/// The class BOPDS_InterfVV stores the information about
+/// the interference of the type vertex/vertex.
+pub use crate::ffi::BOPDS_InterfVV as InterfVV;
+
+unsafe impl crate::CppDeletable for InterfVV {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPDS_InterfVV_destructor(ptr);
+    }
+}
+
+impl InterfVV {
+    /// **Source:** `BOPDS_Interf.hxx`:217 - `BOPDS_InterfVV::BOPDS_InterfVV()`
+    ///
+    /// Constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPDS_InterfVV_ctor()) }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:228 - `BOPDS_InterfVV::BOPDS_InterfVV()`
+    ///
+    /// Constructor
+    /// @param theAllocator
+    /// allocator to manage the memory
+    pub fn new_handlencollectionbaseallocator(
+        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BOPDS_InterfVV_ctor_handlencollectionbaseallocator(theAllocator),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
+        unsafe {
+            crate::ffi::BOPDS_InterfVV_inherited_SetIndices(self as *mut Self, theIndex1, theIndex2)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
+        unsafe {
+            crate::ffi::BOPDS_InterfVV_inherited_Indices(self as *const Self, theIndex1, theIndex2)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    pub fn set_index1(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfVV_inherited_SetIndex1(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    pub fn set_index2(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfVV_inherited_SetIndex2(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    pub fn index1(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfVV_inherited_Index1(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    pub fn index2(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfVV_inherited_Index2(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    pub fn opposite_index(&self, theI: i32) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfVV_inherited_OppositeIndex(self as *const Self, theI) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    pub fn contains(&self, theIndex: i32) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfVV_inherited_Contains(self as *const Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    pub fn set_index_new(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfVV_inherited_SetIndexNew(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    pub fn index_new(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfVV_inherited_IndexNew(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    pub fn has_index_new(&self, theIndex: &mut i32) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfVV_inherited_HasIndexNew(self as *const Self, theIndex) }
+    }
+}
+
+/// **Source:** `BOPDS_Interf.hxx`:250 - `BOPDS_InterfVE`
+///
+/// The class BOPDS_InterfVE stores the information about
+/// the interference of the type vertex/edge.
+pub use crate::ffi::BOPDS_InterfVE as InterfVE;
+
+unsafe impl crate::CppDeletable for InterfVE {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPDS_InterfVE_destructor(ptr);
+    }
+}
+
+impl InterfVE {
+    /// **Source:** `BOPDS_Interf.hxx`:257 - `BOPDS_InterfVE::BOPDS_InterfVE()`
+    ///
+    /// Constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPDS_InterfVE_ctor()) }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:269 - `BOPDS_InterfVE::BOPDS_InterfVE()`
+    ///
+    /// Constructor
+    /// @param theAllocator
+    /// allocator to manage the memory
+    pub fn new_handlencollectionbaseallocator(
+        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BOPDS_InterfVE_ctor_handlencollectionbaseallocator(theAllocator),
+            )
+        }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:290 - `BOPDS_InterfVE::SetParameter()`
+    ///
+    /// Modifier
+    /// Sets the value of parameter
+    /// of the point of the vertex
+    /// on the curve of the edge
+    /// @param theT
+    /// value of parameter
+    pub fn set_parameter(&mut self, theT: f64) {
+        unsafe { crate::ffi::BOPDS_InterfVE_set_parameter(self as *mut Self, theT) }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:301 - `BOPDS_InterfVE::Parameter()`
+    ///
+    /// Selector
+    /// Returrns the value of parameter
+    /// of the point of the vertex
+    /// on the curve of the edge
+    /// @return
+    /// value of parameter
+    pub fn parameter(&self) -> f64 {
+        unsafe { crate::ffi::BOPDS_InterfVE_parameter(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
+        unsafe {
+            crate::ffi::BOPDS_InterfVE_inherited_SetIndices(self as *mut Self, theIndex1, theIndex2)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
+        unsafe {
+            crate::ffi::BOPDS_InterfVE_inherited_Indices(self as *const Self, theIndex1, theIndex2)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    pub fn set_index1(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfVE_inherited_SetIndex1(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    pub fn set_index2(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfVE_inherited_SetIndex2(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    pub fn index1(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfVE_inherited_Index1(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    pub fn index2(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfVE_inherited_Index2(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    pub fn opposite_index(&self, theI: i32) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfVE_inherited_OppositeIndex(self as *const Self, theI) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    pub fn contains(&self, theIndex: i32) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfVE_inherited_Contains(self as *const Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    pub fn set_index_new(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfVE_inherited_SetIndexNew(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    pub fn index_new(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfVE_inherited_IndexNew(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    pub fn has_index_new(&self, theIndex: &mut i32) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfVE_inherited_HasIndexNew(self as *const Self, theIndex) }
+    }
+}
+
+/// **Source:** `BOPDS_Interf.hxx`:315 - `BOPDS_InterfVF`
+///
+/// The class BOPDS_InterfVF stores the information about
+/// the interference of the type vertex/face
+pub use crate::ffi::BOPDS_InterfVF as InterfVF;
+
+unsafe impl crate::CppDeletable for InterfVF {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPDS_InterfVF_destructor(ptr);
+    }
+}
+
+impl InterfVF {
+    /// **Source:** `BOPDS_Interf.hxx`:322 - `BOPDS_InterfVF::BOPDS_InterfVF()`
+    ///
+    /// Constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPDS_InterfVF_ctor()) }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:335 - `BOPDS_InterfVF::BOPDS_InterfVF()`
+    ///
+    /// Constructor
+    /// @param theAllocator
+    /// allocator to manage the memory
+    pub fn new_handlencollectionbaseallocator(
+        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BOPDS_InterfVF_ctor_handlencollectionbaseallocator(theAllocator),
+            )
+        }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:359 - `BOPDS_InterfVF::SetUV()`
+    ///
+    /// Modifier
+    /// Sets the value of parameters
+    /// of the point of the vertex
+    /// on the surface of of the face
+    /// @param theU
+    /// value of U parameter
+    /// @param theV
+    /// value of U parameter
+    pub fn set_uv(&mut self, theU: f64, theV: f64) {
+        unsafe { crate::ffi::BOPDS_InterfVF_set_uv(self as *mut Self, theU, theV) }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:376 - `BOPDS_InterfVF::UV()`
+    ///
+    /// Selector
+    /// Returns the value of parameters
+    /// of the point of the vertex
+    /// on the surface of of the face
+    /// @param theU
+    /// value of U parameter
+    /// @param theV
+    /// value of U parameter
+    pub fn uv(&self, theU: &mut f64, theV: &mut f64) {
+        unsafe { crate::ffi::BOPDS_InterfVF_uv(self as *const Self, theU, theV) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
+        unsafe {
+            crate::ffi::BOPDS_InterfVF_inherited_SetIndices(self as *mut Self, theIndex1, theIndex2)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
+        unsafe {
+            crate::ffi::BOPDS_InterfVF_inherited_Indices(self as *const Self, theIndex1, theIndex2)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    pub fn set_index1(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfVF_inherited_SetIndex1(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    pub fn set_index2(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfVF_inherited_SetIndex2(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    pub fn index1(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfVF_inherited_Index1(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    pub fn index2(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfVF_inherited_Index2(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    pub fn opposite_index(&self, theI: i32) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfVF_inherited_OppositeIndex(self as *const Self, theI) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    pub fn contains(&self, theIndex: i32) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfVF_inherited_Contains(self as *const Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    pub fn set_index_new(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfVF_inherited_SetIndexNew(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    pub fn index_new(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfVF_inherited_IndexNew(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    pub fn has_index_new(&self, theIndex: &mut i32) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfVF_inherited_HasIndexNew(self as *const Self, theIndex) }
+    }
+}
+
+/// **Source:** `BOPDS_Interf.hxx`:395 - `BOPDS_InterfEE`
+///
+/// The class BOPDS_InterfEE stores the information about
+/// the interference of the type edge/edge.
+pub use crate::ffi::BOPDS_InterfEE as InterfEE;
+
+unsafe impl crate::CppDeletable for InterfEE {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPDS_InterfEE_destructor(ptr);
+    }
+}
+
+impl InterfEE {
+    /// **Source:** `BOPDS_Interf.hxx`:402 - `BOPDS_InterfEE::BOPDS_InterfEE()`
+    ///
+    /// Constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPDS_InterfEE_ctor()) }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:413 - `BOPDS_InterfEE::BOPDS_InterfEE()`
+    ///
+    /// Constructor
+    /// @param theAllocator
+    /// allocator to manage the memory
+    pub fn new_handlencollectionbaseallocator(
+        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BOPDS_InterfEE_ctor_handlencollectionbaseallocator(theAllocator),
+            )
+        }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:431 - `BOPDS_InterfEE::SetCommonPart()`
+    ///
+    /// Modifier
+    /// Sets the info of common part
+    /// @param theCP
+    /// common part
+    pub fn set_common_part(&mut self, theCP: &crate::ffi::IntTools_CommonPrt) {
+        unsafe { crate::ffi::BOPDS_InterfEE_set_common_part(self as *mut Self, theCP) }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:440 - `BOPDS_InterfEE::CommonPart()`
+    ///
+    /// Selector
+    /// Returns the info of common part
+    /// @return
+    /// common part
+    pub fn common_part(&self) -> &crate::ffi::IntTools_CommonPrt {
+        unsafe { &*(crate::ffi::BOPDS_InterfEE_common_part(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
+        unsafe {
+            crate::ffi::BOPDS_InterfEE_inherited_SetIndices(self as *mut Self, theIndex1, theIndex2)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
+        unsafe {
+            crate::ffi::BOPDS_InterfEE_inherited_Indices(self as *const Self, theIndex1, theIndex2)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    pub fn set_index1(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfEE_inherited_SetIndex1(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    pub fn set_index2(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfEE_inherited_SetIndex2(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    pub fn index1(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfEE_inherited_Index1(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    pub fn index2(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfEE_inherited_Index2(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    pub fn opposite_index(&self, theI: i32) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfEE_inherited_OppositeIndex(self as *const Self, theI) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    pub fn contains(&self, theIndex: i32) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfEE_inherited_Contains(self as *const Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    pub fn set_index_new(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfEE_inherited_SetIndexNew(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    pub fn index_new(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfEE_inherited_IndexNew(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    pub fn has_index_new(&self, theIndex: &mut i32) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfEE_inherited_HasIndexNew(self as *const Self, theIndex) }
+    }
+}
+
+/// **Source:** `BOPDS_Interf.hxx`:454 - `BOPDS_InterfEF`
+///
+/// The class BOPDS_InterfEF stores the information about
+/// the interference of the type edge/face.
+pub use crate::ffi::BOPDS_InterfEF as InterfEF;
+
+unsafe impl crate::CppDeletable for InterfEF {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPDS_InterfEF_destructor(ptr);
+    }
+}
+
+impl InterfEF {
+    /// **Source:** `BOPDS_Interf.hxx`:461 - `BOPDS_InterfEF::BOPDS_InterfEF()`
+    ///
+    /// Constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPDS_InterfEF_ctor()) }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:477 - `BOPDS_InterfEF::BOPDS_InterfEF()`
+    ///
+    /// Constructor
+    /// @param theAllocator
+    /// allocator to manage the memory
+    ///
+    ///
+    /// Constructor
+    /// @param theAllocator
+    /// allocator to manage the memory
+    pub fn new_handlencollectionbaseallocator(
+        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BOPDS_InterfEF_ctor_handlencollectionbaseallocator(theAllocator),
+            )
+        }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:495 - `BOPDS_InterfEF::SetCommonPart()`
+    ///
+    /// Modifier
+    /// Sets the info of common part
+    /// @param theCP
+    /// common part
+    pub fn set_common_part(&mut self, theCP: &crate::ffi::IntTools_CommonPrt) {
+        unsafe { crate::ffi::BOPDS_InterfEF_set_common_part(self as *mut Self, theCP) }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:504 - `BOPDS_InterfEF::CommonPart()`
+    ///
+    /// Selector
+    /// Returns the info of common part
+    /// @return
+    /// common part
+    pub fn common_part(&self) -> &crate::ffi::IntTools_CommonPrt {
+        unsafe { &*(crate::ffi::BOPDS_InterfEF_common_part(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
+        unsafe {
+            crate::ffi::BOPDS_InterfEF_inherited_SetIndices(self as *mut Self, theIndex1, theIndex2)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
+        unsafe {
+            crate::ffi::BOPDS_InterfEF_inherited_Indices(self as *const Self, theIndex1, theIndex2)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    pub fn set_index1(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfEF_inherited_SetIndex1(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    pub fn set_index2(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfEF_inherited_SetIndex2(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    pub fn index1(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfEF_inherited_Index1(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    pub fn index2(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfEF_inherited_Index2(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    pub fn opposite_index(&self, theI: i32) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfEF_inherited_OppositeIndex(self as *const Self, theI) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    pub fn contains(&self, theIndex: i32) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfEF_inherited_Contains(self as *const Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    pub fn set_index_new(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfEF_inherited_SetIndexNew(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    pub fn index_new(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfEF_inherited_IndexNew(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    pub fn has_index_new(&self, theIndex: &mut i32) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfEF_inherited_HasIndexNew(self as *const Self, theIndex) }
+    }
+}
+
+/// **Source:** `BOPDS_Interf.hxx`:520 - `BOPDS_InterfFF`
+pub use crate::ffi::BOPDS_InterfFF as InterfFF;
+
+unsafe impl crate::CppDeletable for InterfFF {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPDS_InterfFF_destructor(ptr);
+    }
+}
+
+impl InterfFF {
+    /// **Source:** `BOPDS_Interf.hxx`:527 - `BOPDS_InterfFF::BOPDS_InterfFF()`
+    ///
+    /// Constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPDS_InterfFF_ctor()) }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:550 - `BOPDS_InterfFF::Init()`
+    ///
+    /// Initializer
+    /// @param theNbCurves
+    /// number of intersection curves
+    /// @param theNbPoints
+    /// number of intersection points
+    pub fn init(&mut self, theNbCurves: i32, theNbPoints: i32) {
+        unsafe { crate::ffi::BOPDS_InterfFF_init(self as *mut Self, theNbCurves, theNbPoints) }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:568 - `BOPDS_InterfFF::SetTangentFaces()`
+    ///
+    /// Modifier
+    /// Sets the flag of whether the faces are tangent
+    /// @param theFlag
+    /// the flag
+    pub fn set_tangent_faces(&mut self, theFlag: bool) {
+        unsafe { crate::ffi::BOPDS_InterfFF_set_tangent_faces(self as *mut Self, theFlag) }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:576 - `BOPDS_InterfFF::TangentFaces()`
+    ///
+    /// Selector
+    /// Returns the flag whether the faces are tangent
+    /// @return
+    /// the flag
+    pub fn tangent_faces(&self) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfFF_tangent_faces(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
+        unsafe {
+            crate::ffi::BOPDS_InterfFF_inherited_SetIndices(self as *mut Self, theIndex1, theIndex2)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
+        unsafe {
+            crate::ffi::BOPDS_InterfFF_inherited_Indices(self as *const Self, theIndex1, theIndex2)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    pub fn set_index1(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfFF_inherited_SetIndex1(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    pub fn set_index2(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfFF_inherited_SetIndex2(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    pub fn index1(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfFF_inherited_Index1(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    pub fn index2(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfFF_inherited_Index2(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    pub fn opposite_index(&self, theI: i32) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfFF_inherited_OppositeIndex(self as *const Self, theI) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    pub fn contains(&self, theIndex: i32) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfFF_inherited_Contains(self as *const Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    pub fn set_index_new(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfFF_inherited_SetIndexNew(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    pub fn index_new(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfFF_inherited_IndexNew(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    pub fn has_index_new(&self, theIndex: &mut i32) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfFF_inherited_HasIndexNew(self as *const Self, theIndex) }
+    }
+}
+
+/// **Source:** `BOPDS_Interf.hxx`:629 - `BOPDS_InterfVZ`
+///
+/// The class BOPDS_InterfVZ stores the information about
+/// the interference of the type vertex/solid.
+pub use crate::ffi::BOPDS_InterfVZ as InterfVZ;
+
+unsafe impl crate::CppDeletable for InterfVZ {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPDS_InterfVZ_destructor(ptr);
+    }
+}
+
+impl InterfVZ {
+    /// **Source:** `BOPDS_Interf.hxx`:636 - `BOPDS_InterfVZ::BOPDS_InterfVZ()`
+    ///
+    /// Constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPDS_InterfVZ_ctor()) }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:644 - `BOPDS_InterfVZ::BOPDS_InterfVZ()`
+    ///
+    /// Constructor
+    /// @param theAllocator
+    /// allocator to manage the memory
+    pub fn new_handlencollectionbaseallocator(
+        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BOPDS_InterfVZ_ctor_handlencollectionbaseallocator(theAllocator),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
+        unsafe {
+            crate::ffi::BOPDS_InterfVZ_inherited_SetIndices(self as *mut Self, theIndex1, theIndex2)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
+        unsafe {
+            crate::ffi::BOPDS_InterfVZ_inherited_Indices(self as *const Self, theIndex1, theIndex2)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    pub fn set_index1(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfVZ_inherited_SetIndex1(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    pub fn set_index2(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfVZ_inherited_SetIndex2(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    pub fn index1(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfVZ_inherited_Index1(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    pub fn index2(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfVZ_inherited_Index2(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    pub fn opposite_index(&self, theI: i32) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfVZ_inherited_OppositeIndex(self as *const Self, theI) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    pub fn contains(&self, theIndex: i32) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfVZ_inherited_Contains(self as *const Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    pub fn set_index_new(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfVZ_inherited_SetIndexNew(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    pub fn index_new(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfVZ_inherited_IndexNew(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    pub fn has_index_new(&self, theIndex: &mut i32) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfVZ_inherited_HasIndexNew(self as *const Self, theIndex) }
+    }
+}
+
+/// **Source:** `BOPDS_Interf.hxx`:662 - `BOPDS_InterfEZ`
+///
+/// The class BOPDS_InterfEZ stores the information about
+/// the interference of the type edge/solid.
+pub use crate::ffi::BOPDS_InterfEZ as InterfEZ;
+
+unsafe impl crate::CppDeletable for InterfEZ {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPDS_InterfEZ_destructor(ptr);
+    }
+}
+
+impl InterfEZ {
+    /// **Source:** `BOPDS_Interf.hxx`:669 - `BOPDS_InterfEZ::BOPDS_InterfEZ()`
+    ///
+    /// Constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPDS_InterfEZ_ctor()) }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:677 - `BOPDS_InterfEZ::BOPDS_InterfEZ()`
+    ///
+    /// Constructor
+    /// @param theAllocator
+    /// allocator to manage the memory
+    pub fn new_handlencollectionbaseallocator(
+        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BOPDS_InterfEZ_ctor_handlencollectionbaseallocator(theAllocator),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
+        unsafe {
+            crate::ffi::BOPDS_InterfEZ_inherited_SetIndices(self as *mut Self, theIndex1, theIndex2)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
+        unsafe {
+            crate::ffi::BOPDS_InterfEZ_inherited_Indices(self as *const Self, theIndex1, theIndex2)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    pub fn set_index1(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfEZ_inherited_SetIndex1(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    pub fn set_index2(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfEZ_inherited_SetIndex2(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    pub fn index1(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfEZ_inherited_Index1(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    pub fn index2(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfEZ_inherited_Index2(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    pub fn opposite_index(&self, theI: i32) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfEZ_inherited_OppositeIndex(self as *const Self, theI) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    pub fn contains(&self, theIndex: i32) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfEZ_inherited_Contains(self as *const Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    pub fn set_index_new(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfEZ_inherited_SetIndexNew(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    pub fn index_new(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfEZ_inherited_IndexNew(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    pub fn has_index_new(&self, theIndex: &mut i32) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfEZ_inherited_HasIndexNew(self as *const Self, theIndex) }
+    }
+}
+
+/// **Source:** `BOPDS_Interf.hxx`:695 - `BOPDS_InterfFZ`
+///
+/// The class BOPDS_InterfFZ stores the information about
+/// the interference of the type face/solid.
+pub use crate::ffi::BOPDS_InterfFZ as InterfFZ;
+
+unsafe impl crate::CppDeletable for InterfFZ {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPDS_InterfFZ_destructor(ptr);
+    }
+}
+
+impl InterfFZ {
+    /// **Source:** `BOPDS_Interf.hxx`:702 - `BOPDS_InterfFZ::BOPDS_InterfFZ()`
+    ///
+    /// Constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPDS_InterfFZ_ctor()) }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:710 - `BOPDS_InterfFZ::BOPDS_InterfFZ()`
+    ///
+    /// Constructor
+    /// @param theAllocator
+    /// allocator to manage the memory
+    pub fn new_handlencollectionbaseallocator(
+        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BOPDS_InterfFZ_ctor_handlencollectionbaseallocator(theAllocator),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
+        unsafe {
+            crate::ffi::BOPDS_InterfFZ_inherited_SetIndices(self as *mut Self, theIndex1, theIndex2)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
+        unsafe {
+            crate::ffi::BOPDS_InterfFZ_inherited_Indices(self as *const Self, theIndex1, theIndex2)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    pub fn set_index1(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfFZ_inherited_SetIndex1(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    pub fn set_index2(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfFZ_inherited_SetIndex2(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    pub fn index1(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfFZ_inherited_Index1(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    pub fn index2(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfFZ_inherited_Index2(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    pub fn opposite_index(&self, theI: i32) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfFZ_inherited_OppositeIndex(self as *const Self, theI) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    pub fn contains(&self, theIndex: i32) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfFZ_inherited_Contains(self as *const Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    pub fn set_index_new(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfFZ_inherited_SetIndexNew(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    pub fn index_new(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfFZ_inherited_IndexNew(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    pub fn has_index_new(&self, theIndex: &mut i32) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfFZ_inherited_HasIndexNew(self as *const Self, theIndex) }
+    }
+}
+
+/// **Source:** `BOPDS_Interf.hxx`:728 - `BOPDS_InterfZZ`
+///
+/// The class BOPDS_InterfZZ stores the information about
+/// the interference of the type solid/solid.
+pub use crate::ffi::BOPDS_InterfZZ as InterfZZ;
+
+unsafe impl crate::CppDeletable for InterfZZ {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPDS_InterfZZ_destructor(ptr);
+    }
+}
+
+impl InterfZZ {
+    /// **Source:** `BOPDS_Interf.hxx`:735 - `BOPDS_InterfZZ::BOPDS_InterfZZ()`
+    ///
+    /// Constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPDS_InterfZZ_ctor()) }
+    }
+
+    /// **Source:** `BOPDS_Interf.hxx`:743 - `BOPDS_InterfZZ::BOPDS_InterfZZ()`
+    ///
+    /// Constructor
+    /// @param theAllocator
+    /// allocator to manage the memory
+    pub fn new_handlencollectionbaseallocator(
+        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BOPDS_InterfZZ_ctor_handlencollectionbaseallocator(theAllocator),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
+    pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
+        unsafe {
+            crate::ffi::BOPDS_InterfZZ_inherited_SetIndices(self as *mut Self, theIndex1, theIndex2)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
+    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
+        unsafe {
+            crate::ffi::BOPDS_InterfZZ_inherited_Indices(self as *const Self, theIndex1, theIndex2)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
+    pub fn set_index1(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfZZ_inherited_SetIndex1(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
+    pub fn set_index2(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfZZ_inherited_SetIndex2(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:86 - `BOPDS_Interf::Index1()`
+    pub fn index1(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfZZ_inherited_Index1(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:94 - `BOPDS_Interf::Index2()`
+    pub fn index2(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfZZ_inherited_Index2(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:104 - `BOPDS_Interf::OppositeIndex()`
+    pub fn opposite_index(&self, theI: i32) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfZZ_inherited_OppositeIndex(self as *const Self, theI) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:128 - `BOPDS_Interf::Contains()`
+    pub fn contains(&self, theIndex: i32) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfZZ_inherited_Contains(self as *const Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
+    pub fn set_index_new(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_InterfZZ_inherited_SetIndexNew(self as *mut Self, theIndex) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
+    pub fn index_new(&self) -> i32 {
+        unsafe { crate::ffi::BOPDS_InterfZZ_inherited_IndexNew(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
+    pub fn has_index_new(&self, theIndex: &mut i32) -> bool {
+        unsafe { crate::ffi::BOPDS_InterfZZ_inherited_HasIndexNew(self as *const Self, theIndex) }
+    }
+}
+
+// ========================
 // From BOPDS_Iterator.hxx
 // ========================
 
@@ -606,6 +2182,13 @@ impl Iterator {
                 crate::ffi::BOPDS_Iterator_ctor_handlencollectionbaseallocator(theAllocator),
             )
         }
+    }
+
+    /// **Source:** `BOPDS_Iterator.hxx`:59 - `BOPDS_Iterator::DS()`
+    /// Selector
+    /// Returns the data structure
+    pub fn ds(&self) -> &crate::ffi::BOPDS_DS {
+        unsafe { &*(crate::ffi::BOPDS_Iterator_ds(self as *const Self)) }
     }
 
     /// **Source:** `BOPDS_Iterator.hxx`:64 - `BOPDS_Iterator::Initialize()`
@@ -762,6 +2345,11 @@ impl IteratorSI {
     /// Upcast to BOPDS_Iterator (mutable)
     pub fn as_iterator_mut(&mut self) -> &mut Iterator {
         unsafe { &mut *(crate::ffi::BOPDS_IteratorSI_as_BOPDS_Iterator_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:59 - `BOPDS_Iterator::DS()`
+    pub fn ds(&self) -> &crate::ffi::BOPDS_DS {
+        unsafe { &*(crate::ffi::BOPDS_IteratorSI_inherited_DS(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPDS_Iterator.hxx`:64 - `BOPDS_Iterator::Initialize()`
@@ -1542,6 +3130,12 @@ impl SubIterator {
         }
     }
 
+    /// **Source:** `BOPDS_SubIterator.hxx`:51 - `BOPDS_SubIterator::DS()`
+    /// Returns the data structure
+    pub fn ds(&self) -> &crate::ffi::BOPDS_DS {
+        unsafe { &*(crate::ffi::BOPDS_SubIterator_ds(self as *const Self)) }
+    }
+
     /// **Source:** `BOPDS_SubIterator.hxx`:72 - `BOPDS_SubIterator::Initialize()`
     /// Initializes the iterator
     pub fn initialize(&mut self) {
@@ -1643,6 +3237,17 @@ impl Tools {
 // ========================
 
 pub use crate::ffi::{
-    BOPDS_ListOfPave as ListOfPave, BOPDS_ListOfPaveBlock as ListOfPaveBlock,
-    BOPDS_PIterator as PIterator, BOPDS_DS as DS, BOPDS_PDS as PDS,
+    BOPDS_IndexedDataMapOfPaveBlockListOfInteger as IndexedDataMapOfPaveBlockListOfInteger,
+    BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock as IndexedDataMapOfPaveBlockListOfPaveBlock,
+    BOPDS_IndexedMapOfPaveBlock as IndexedMapOfPaveBlock, BOPDS_ListOfPave as ListOfPave,
+    BOPDS_ListOfPaveBlock as ListOfPaveBlock, BOPDS_MapOfPair as MapOfPair,
+    BOPDS_MapOfPaveBlock as MapOfPaveBlock, BOPDS_PIterator as PIterator,
+    BOPDS_VectorOfCurve as VectorOfCurve, BOPDS_VectorOfFaceInfo as VectorOfFaceInfo,
+    BOPDS_VectorOfInterfEE as VectorOfInterfEE, BOPDS_VectorOfInterfEF as VectorOfInterfEF,
+    BOPDS_VectorOfInterfEZ as VectorOfInterfEZ, BOPDS_VectorOfInterfFF as VectorOfInterfFF,
+    BOPDS_VectorOfInterfFZ as VectorOfInterfFZ, BOPDS_VectorOfInterfVE as VectorOfInterfVE,
+    BOPDS_VectorOfInterfVF as VectorOfInterfVF, BOPDS_VectorOfInterfVV as VectorOfInterfVV,
+    BOPDS_VectorOfInterfVZ as VectorOfInterfVZ, BOPDS_VectorOfInterfZZ as VectorOfInterfZZ,
+    BOPDS_VectorOfListOfPaveBlock as VectorOfListOfPaveBlock, BOPDS_VectorOfPoint as VectorOfPoint,
+    BOPDS_PDS as PDS,
 };

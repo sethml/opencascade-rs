@@ -58,6 +58,28 @@ impl Function {
         unsafe { crate::ffi::AppCont_Function_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `AppCont_Function.hxx`:59 - `AppCont_Function::Value()`
+    /// Returns the point at parameter <theU>.
+    pub fn value(
+        &self,
+        theU: f64,
+        thePnt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        thePnt: &mut crate::ffi::TColgp_Array1OfPnt,
+    ) -> bool {
+        unsafe { crate::ffi::AppCont_Function_value(self as *const Self, theU, thePnt2d, thePnt) }
+    }
+
+    /// **Source:** `AppCont_Function.hxx`:64 - `AppCont_Function::D1()`
+    /// Returns the derivative at parameter <theU>.
+    pub fn d1(
+        &self,
+        theU: f64,
+        theVec2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        theVec: &mut crate::ffi::TColgp_Array1OfVec,
+    ) -> bool {
+        unsafe { crate::ffi::AppCont_Function_d1(self as *const Self, theU, theVec2d, theVec) }
+    }
+
     /// **Source:** `AppCont_Function.hxx`:71 - `AppCont_Function::PeriodInformation()`
     /// Return information about peridicity in output paramateters space.
     /// @param theDimIdx Defines index in output parameters space. 1 <= theDimIdx <= 3 * myNbPnt + 2 *

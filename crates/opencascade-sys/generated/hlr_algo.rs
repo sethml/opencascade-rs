@@ -1822,5 +1822,7 @@ pub use crate::ffi::{
     HLRAlgo_Array1OfPHDat as Array1OfPHDat, HLRAlgo_Array1OfPINod as Array1OfPINod,
     HLRAlgo_Array1OfPISeg as Array1OfPISeg, HLRAlgo_Array1OfTData as Array1OfTData,
     HLRAlgo_HArray1OfPHDat as HArray1OfPHDat, HLRAlgo_HArray1OfTData as HArray1OfTData,
-    HLRAlgo_InterferenceList as InterferenceList, HLRAlgo_ListOfBPoint as ListOfBPoint,
+    HLRAlgo_InterferenceList as InterferenceList,
+    HLRAlgo_ListIteratorOfInterferenceList as ListIteratorOfInterferenceList,
+    HLRAlgo_ListOfBPoint as ListOfBPoint,
 };

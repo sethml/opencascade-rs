@@ -725,48 +725,6 @@ impl CompPolynomialToPoles {
         }
     }
 
-    /// **Source:** `Convert_CompPolynomialToPoles.hxx`:95 - `Convert_CompPolynomialToPoles::Convert_CompPolynomialToPoles()`
-    /// To Convert several span with different order of Continuity.
-    /// Warning: The Length of Continuity have to be NumCurves-1
-    pub fn new_int3_array1ofinteger2_array1ofreal_array2ofreal_array1ofreal(
-        NumCurves: i32,
-        Dimension: i32,
-        MaxDegree: i32,
-        Continuity: &crate::ffi::TColStd_Array1OfInteger,
-        NumCoeffPerCurve: &crate::ffi::TColStd_Array1OfInteger,
-        Coefficients: &crate::ffi::TColStd_Array1OfReal,
-        PolynomialIntervals: &crate::ffi::TColStd_Array2OfReal,
-        TrueIntervals: &crate::ffi::TColStd_Array1OfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Convert_CompPolynomialToPoles_ctor_int3_array1ofinteger2_array1ofreal_array2ofreal_array1ofreal(NumCurves, Dimension, MaxDegree, Continuity, NumCoeffPerCurve, Coefficients, PolynomialIntervals, TrueIntervals))
-        }
-    }
-
-    /// **Source:** `Convert_CompPolynomialToPoles.hxx`:105 - `Convert_CompPolynomialToPoles::Convert_CompPolynomialToPoles()`
-    /// To Convert only one span.
-    pub fn new_int3_array1ofreal3(
-        Dimension: i32,
-        MaxDegree: i32,
-        Degree: i32,
-        Coefficients: &crate::ffi::TColStd_Array1OfReal,
-        PolynomialIntervals: &crate::ffi::TColStd_Array1OfReal,
-        TrueIntervals: &crate::ffi::TColStd_Array1OfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Convert_CompPolynomialToPoles_ctor_int3_array1ofreal3(
-                    Dimension,
-                    MaxDegree,
-                    Degree,
-                    Coefficients,
-                    PolynomialIntervals,
-                    TrueIntervals,
-                ),
-            )
-        }
-    }
-
     /// **Source:** `Convert_CompPolynomialToPoles.hxx`:113 - `Convert_CompPolynomialToPoles::NbPoles()`
     /// number of poles of the n-dimensional BSpline
     pub fn nb_poles(&self) -> i32 {

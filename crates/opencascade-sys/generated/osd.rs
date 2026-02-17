@@ -4901,15 +4901,6 @@ impl Thread {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Thread_ctor()) }
     }
 
-    /// **Source:** `OSD_Thread.hxx`:42 - `OSD_Thread::OSD_Thread()`
-    /// Initialize the tool by the thread function
-    ///
-    /// Note: On Windows, you might have to take an address of the thread
-    /// function explicitly to pass it to this constructor without compiler error
-    pub fn new_threadfunction(func: &crate::ffi::OSD_ThreadFunction) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Thread_ctor_threadfunction(func)) }
-    }
-
     /// **Source:** `OSD_Thread.hxx`:45 - `OSD_Thread::OSD_Thread()`
     /// Copy constructor
     pub fn new_thread(other: &crate::ffi::OSD_Thread) -> crate::OwnedPtr<Self> {

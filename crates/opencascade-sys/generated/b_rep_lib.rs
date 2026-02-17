@@ -349,6 +349,18 @@ pub fn ensure_normal_consistency(
 pub fn update_deflection(S: &crate::ffi::TopoDS_Shape) {
     unsafe { crate::ffi::BRepLib_update_deflection(S) }
 }
+/// **Source:** `BRepLib.hxx`:289 - `BRepLib::BoundingVertex`
+/// Calculates the bounding sphere around the set of vertexes from the theLV list.
+/// Returns the center (theNewCenter) and the radius (theNewTol) of this sphere.
+/// This can be used to construct the new vertex which covers the given set of
+/// other vertices.
+pub fn bounding_vertex(
+    theLV: &crate::ffi::TopTools_ListOfShape,
+    theNewCenter: &mut crate::ffi::gp_Pnt,
+    theNewTol: &mut f64,
+) {
+    unsafe { crate::ffi::BRepLib_bounding_vertex(theLV, theNewCenter, theNewTol) }
+}
 /// **Source:** `BRepLib.hxx`:298 - `BRepLib::FindValidRange`
 /// For an edge defined by 3d curve and tolerance and vertices defined by points,
 /// parameters on curve and tolerances,
@@ -869,6 +881,90 @@ impl FindSurface {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepLib_FindSurface_location(self as *const Self))
         }
+    }
+}
+
+// ========================
+// From BRepLib_FuseEdges.hxx
+// ========================
+
+/// **Source:** `BRepLib_FuseEdges.hxx`:43 - `BRepLib_FuseEdges`
+/// This class can detect  vertices in a face that can
+/// be considered useless and then perform the fuse of
+/// the  edges and remove  the  useless vertices.  By
+/// useles vertices,  we mean :
+/// * vertices that  have  exactly two connex edges
+/// * the edges connex to the vertex must have
+/// exactly the same 2 connex faces .
+/// * The edges connex to the vertex must have the
+/// same geometric support.
+pub use crate::ffi::BRepLib_FuseEdges as FuseEdges;
+
+unsafe impl crate::CppDeletable for FuseEdges {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepLib_FuseEdges_destructor(ptr);
+    }
+}
+
+impl FuseEdges {
+    /// **Source:** `BRepLib_FuseEdges.hxx`:50 - `BRepLib_FuseEdges::BRepLib_FuseEdges()`
+    /// Initialise members  and build  construction of map
+    /// of ancestors.
+    pub fn new_shape_bool(
+        theShape: &crate::ffi::TopoDS_Shape,
+        PerformNow: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepLib_FuseEdges_ctor_shape_bool(
+                theShape, PerformNow,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepLib_FuseEdges.hxx`:50 - `BRepLib_FuseEdges::BRepLib_FuseEdges()`
+    /// Initialise members  and build  construction of map
+    /// of ancestors.
+    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+        Self::new_shape_bool(theShape, false)
+    }
+
+    /// **Source:** `BRepLib_FuseEdges.hxx`:54 - `BRepLib_FuseEdges::AvoidEdges()`
+    /// set edges to avoid being fused
+    pub fn avoid_edges(&mut self, theMapEdg: &crate::ffi::TopTools_IndexedMapOfShape) {
+        unsafe { crate::ffi::BRepLib_FuseEdges_avoid_edges(self as *mut Self, theMapEdg) }
+    }
+
+    /// **Source:** `BRepLib_FuseEdges.hxx`:58 - `BRepLib_FuseEdges::SetConcatBSpl()`
+    /// set mode to enable concatenation G1 BSpline edges in one
+    /// End  Modified  by  IFV  19.04.07
+    pub fn set_concat_b_spl(&mut self, theConcatBSpl: bool) {
+        unsafe { crate::ffi::BRepLib_FuseEdges_set_concat_b_spl(self as *mut Self, theConcatBSpl) }
+    }
+
+    /// **Source:** `BRepLib_FuseEdges.hxx`:73 - `BRepLib_FuseEdges::Faces()`
+    /// returns the map of modified faces.
+    pub fn faces(&mut self, theMapFac: &mut crate::ffi::TopTools_DataMapOfShapeShape) {
+        unsafe { crate::ffi::BRepLib_FuseEdges_faces(self as *mut Self, theMapFac) }
+    }
+
+    /// **Source:** `BRepLib_FuseEdges.hxx`:77 - `BRepLib_FuseEdges::Shape()`
+    /// returns myShape modified with the list of internal
+    /// edges removed from it.
+    pub fn shape(&mut self) -> &mut crate::ffi::TopoDS_Shape {
+        unsafe { &mut *(crate::ffi::BRepLib_FuseEdges_shape(self as *mut Self)) }
+    }
+
+    /// **Source:** `BRepLib_FuseEdges.hxx`:80 - `BRepLib_FuseEdges::NbVertices()`
+    /// returns the number of vertices candidate to be removed
+    pub fn nb_vertices(&mut self) -> i32 {
+        unsafe { crate::ffi::BRepLib_FuseEdges_nb_vertices(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepLib_FuseEdges.hxx`:84 - `BRepLib_FuseEdges::Perform()`
+    /// Using  map of list of connex  edges, fuse each list to
+    /// one edge and then update myShape
+    pub fn perform(&mut self) {
+        unsafe { crate::ffi::BRepLib_FuseEdges_perform(self as *mut Self) }
     }
 }
 

@@ -7,6 +7,303 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From DE_ConfigurationContext.hxx
+// ========================
+
+/// **Source:** `DE_ConfigurationContext.hxx`:28 - `DE_ConfigurationContext`
+/// Provides convenient interface to resource file
+/// Allows loading of the resource file and getting attributes'
+/// values starting from some scope, for example
+/// if scope is defined as "ToV4" and requested parameter
+/// is "exec.op", value of "ToV4.exec.op" parameter from
+/// the resource file will be returned
+pub use crate::ffi::DE_ConfigurationContext as ConfigurationContext;
+
+unsafe impl crate::CppDeletable for ConfigurationContext {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::DE_ConfigurationContext_destructor(ptr);
+    }
+}
+
+impl ConfigurationContext {
+    /// **Source:** `DE_ConfigurationContext.hxx`:34 - `DE_ConfigurationContext::DE_ConfigurationContext()`
+    /// Creates an empty tool
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::DE_ConfigurationContext_ctor()) }
+    }
+
+    /// **Source:** `DE_ConfigurationContext.hxx`:31 - `DE_ConfigurationContext::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::DE_ConfigurationContext_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `DE_ConfigurationContext.hxx`:40 - `DE_ConfigurationContext::Load()`
+    /// Import the custom configuration
+    /// Save all parameters with their values.
+    /// @param[in] theConfiguration path to configuration file or string value
+    /// @return true in case of success, false otherwise
+    pub fn load(&mut self, theConfiguration: &crate::ffi::TCollection_AsciiString) -> bool {
+        unsafe { crate::ffi::DE_ConfigurationContext_load(self as *mut Self, theConfiguration) }
+    }
+
+    /// **Source:** `DE_ConfigurationContext.hxx`:46 - `DE_ConfigurationContext::LoadFile()`
+    /// Import the resource file.
+    /// Save all parameters with their values.
+    /// @param[in] theFile path to the resource file
+    /// @return true in case of success, false otherwise
+    pub fn load_file(&mut self, theFile: &crate::ffi::TCollection_AsciiString) -> bool {
+        unsafe { crate::ffi::DE_ConfigurationContext_load_file(self as *mut Self, theFile) }
+    }
+
+    /// **Source:** `DE_ConfigurationContext.hxx`:52 - `DE_ConfigurationContext::LoadStr()`
+    /// Import the resource string.
+    /// Save all parameters with their values.
+    /// @param[in] theResource string with resource content
+    /// @return true in case of success, false otherwise
+    pub fn load_str(&mut self, theResource: &crate::ffi::TCollection_AsciiString) -> bool {
+        unsafe { crate::ffi::DE_ConfigurationContext_load_str(self as *mut Self, theResource) }
+    }
+
+    /// **Source:** `DE_ConfigurationContext.hxx`:58 - `DE_ConfigurationContext::IsParamSet()`
+    /// Checks for existing the parameter name
+    /// @param[in] theParam complex parameter name
+    /// @param[in] theScope base parameter name
+    /// @return Standard_True if parameter is defined in the resource file
+    pub fn is_param_set(
+        &self,
+        theParam: &crate::ffi::TCollection_AsciiString,
+        theScope: &crate::ffi::TCollection_AsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_ConfigurationContext_is_param_set(
+                self as *const Self,
+                theParam,
+                theScope,
+            )
+        }
+    }
+
+    /// **Source:** `DE_ConfigurationContext.hxx`:66 - `DE_ConfigurationContext::GetReal()`
+    /// Gets value of parameter as being of specific type
+    /// @param[in] theParam complex parameter name
+    /// @param[out] theValue value to get by parameter
+    /// @param[in] theScope base parameter name
+    /// @return Standard_False if parameter is not defined or has a wrong type
+    pub fn get_real(
+        &self,
+        theParam: &crate::ffi::TCollection_AsciiString,
+        theValue: &mut f64,
+        theScope: &crate::ffi::TCollection_AsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_ConfigurationContext_get_real(
+                self as *const Self,
+                theParam,
+                theValue,
+                theScope,
+            )
+        }
+    }
+
+    /// **Source:** `DE_ConfigurationContext.hxx`:75 - `DE_ConfigurationContext::GetInteger()`
+    /// Gets value of parameter as being of specific type
+    /// @param[in] theParam complex parameter name
+    /// @param[out] theValue value to get by parameter
+    /// @param[in] theScope base parameter name
+    /// @return Standard_False if parameter is not defined or has a wrong type
+    pub fn get_integer(
+        &self,
+        theParam: &crate::ffi::TCollection_AsciiString,
+        theValue: &mut i32,
+        theScope: &crate::ffi::TCollection_AsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_ConfigurationContext_get_integer(
+                self as *const Self,
+                theParam,
+                theValue,
+                theScope,
+            )
+        }
+    }
+
+    /// **Source:** `DE_ConfigurationContext.hxx`:84 - `DE_ConfigurationContext::GetBoolean()`
+    /// Gets value of parameter as being of specific type
+    /// @param[in] theParam complex parameter name
+    /// @param[out] theValue value to get by parameter
+    /// @param[in] theScope base parameter name
+    /// @return Standard_False if parameter is not defined or has a wrong type
+    pub fn get_boolean(
+        &self,
+        theParam: &crate::ffi::TCollection_AsciiString,
+        theValue: &mut bool,
+        theScope: &crate::ffi::TCollection_AsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_ConfigurationContext_get_boolean(
+                self as *const Self,
+                theParam,
+                theValue,
+                theScope,
+            )
+        }
+    }
+
+    /// **Source:** `DE_ConfigurationContext.hxx`:93 - `DE_ConfigurationContext::GetString()`
+    /// Gets value of parameter as being of specific type
+    /// @param[in] theParam complex parameter name
+    /// @param[out] theValue value to get by parameter
+    /// @param[in] theScope base parameter name
+    /// @return Standard_False if parameter is not defined or has a wrong type
+    pub fn get_string(
+        &self,
+        theParam: &crate::ffi::TCollection_AsciiString,
+        theValue: &mut crate::ffi::TCollection_AsciiString,
+        theScope: &crate::ffi::TCollection_AsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_ConfigurationContext_get_string(
+                self as *const Self,
+                theParam,
+                theValue,
+                theScope,
+            )
+        }
+    }
+
+    /// **Source:** `DE_ConfigurationContext.hxx`:111 - `DE_ConfigurationContext::RealVal()`
+    /// Gets value of parameter as being of specific type
+    /// @param[in] theParam complex parameter name
+    /// @param[in] theDefValue value by default if param is not found or has wrong type
+    /// @param[in] theScope base parameter name
+    /// @return specific type value
+    pub fn real_val(
+        &self,
+        theParam: &crate::ffi::TCollection_AsciiString,
+        theDefValue: f64,
+        theScope: &crate::ffi::TCollection_AsciiString,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::DE_ConfigurationContext_real_val(
+                self as *const Self,
+                theParam,
+                theDefValue,
+                theScope,
+            )
+        }
+    }
+
+    /// **Source:** `DE_ConfigurationContext.hxx`:120 - `DE_ConfigurationContext::IntegerVal()`
+    /// Gets value of parameter as being of specific type
+    /// @param[in] theParam complex parameter name
+    /// @param[in] theDefValue value by default if param is not found or has wrong type
+    /// @param[in] theScope base parameter name
+    /// @return specific type value
+    pub fn integer_val(
+        &self,
+        theParam: &crate::ffi::TCollection_AsciiString,
+        theDefValue: i32,
+        theScope: &crate::ffi::TCollection_AsciiString,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::DE_ConfigurationContext_integer_val(
+                self as *const Self,
+                theParam,
+                theDefValue,
+                theScope,
+            )
+        }
+    }
+
+    /// **Source:** `DE_ConfigurationContext.hxx`:129 - `DE_ConfigurationContext::BooleanVal()`
+    /// Gets value of parameter as being of specific type
+    /// @param[in] theParam complex parameter name
+    /// @param[in] theDefValue value by default if param is not found or has wrong type
+    /// @param[in] theScope base parameter name
+    /// @return specific type value
+    pub fn boolean_val(
+        &self,
+        theParam: &crate::ffi::TCollection_AsciiString,
+        theDefValue: bool,
+        theScope: &crate::ffi::TCollection_AsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_ConfigurationContext_boolean_val(
+                self as *const Self,
+                theParam,
+                theDefValue,
+                theScope,
+            )
+        }
+    }
+
+    /// **Source:** `DE_ConfigurationContext.hxx`:139 - `DE_ConfigurationContext::StringVal()`
+    /// Gets value of parameter as being of specific type
+    /// @param[in] theParam complex parameter name
+    /// @param[in] theDefValue value by default if param is not found or has wrong type
+    /// @param[in] theScope base parameter name
+    /// @return specific type value
+    pub fn string_val(
+        &self,
+        theParam: &crate::ffi::TCollection_AsciiString,
+        theDefValue: &crate::ffi::TCollection_AsciiString,
+        theScope: &crate::ffi::TCollection_AsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DE_ConfigurationContext_string_val(
+                self as *const Self,
+                theParam,
+                theDefValue,
+                theScope,
+            ))
+        }
+    }
+
+    /// **Source:** `DE_ConfigurationContext.hxx`:31 - `DE_ConfigurationContext::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::DE_ConfigurationContext_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `DE_ConfigurationContext.hxx`:31 - `DE_ConfigurationContext::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::DE_ConfigurationContext_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleDEConfigurationContext> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DE_ConfigurationContext_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleDEConfigurationContext;
+
+unsafe impl crate::CppDeletable for HandleDEConfigurationContext {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleDEConfigurationContext_destructor(ptr);
+    }
+}
+
+impl HandleDEConfigurationContext {
+    /// Dereference this Handle to access the underlying DE_ConfigurationContext
+    pub fn get(&self) -> &crate::ffi::DE_ConfigurationContext {
+        unsafe { &*(crate::ffi::HandleDEConfigurationContext_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying DE_ConfigurationContext
+    pub fn get_mut(&mut self) -> &mut crate::ffi::DE_ConfigurationContext {
+        unsafe { &mut *(crate::ffi::HandleDEConfigurationContext_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From DE_ConfigurationNode.hxx
 // ========================
 
@@ -55,8 +352,29 @@ impl ConfigurationNode {
     /// Updates values according the resource file
     /// @param[in] theResourcePath file path to resource
     /// @return True if Load was successful
-    pub fn load(&mut self, theResourcePath: &crate::ffi::TCollection_AsciiString) -> bool {
-        unsafe { crate::ffi::DE_ConfigurationNode_load(self as *mut Self, theResourcePath) }
+    pub fn load_asciistring(
+        &mut self,
+        theResourcePath: &crate::ffi::TCollection_AsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_ConfigurationNode_load_asciistring(self as *mut Self, theResourcePath)
+        }
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:68 - `DE_ConfigurationNode::Load()`
+    /// Updates values according the resource
+    /// @param[in] theResource input resource to use
+    /// @return True if Load was successful
+    pub fn load_handledeconfigurationcontext(
+        &mut self,
+        theResource: &crate::ffi::HandleDEConfigurationContext,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_ConfigurationNode_load_handledeconfigurationcontext(
+                self as *mut Self,
+                theResource,
+            )
+        }
     }
 
     /// **Source:** `DE_ConfigurationNode.hxx`:73 - `DE_ConfigurationNode::Save()`
@@ -365,6 +683,14 @@ impl ShapeFixConfigurationNode {
         unsafe { &*(crate::ffi::DE_ShapeFixConfigurationNode_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:39 - `DE_ShapeFixConfigurationNode::Load()`
+    /// Updates values according the resource
+    /// @param[in] theResource input resource to use
+    /// @return True if Load was successful
+    pub fn load(&mut self, theResource: &crate::ffi::HandleDEConfigurationContext) -> bool {
+        unsafe { crate::ffi::DE_ShapeFixConfigurationNode_load(self as *mut Self, theResource) }
+    }
+
     /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:44 - `DE_ShapeFixConfigurationNode::Save()`
     /// Writes configuration to the string
     /// @return result resource string
@@ -510,9 +836,274 @@ impl ShapeFixConfigurationNode {
 }
 
 // ========================
+// From DE_Wrapper.hxx
+// ========================
+
+/// **Source:** `DE_Wrapper.hxx`:54 - `DE_Wrapper`
+/// The main class for working with CAD file exchange.
+/// Loads and Saves special CAD transfer property.
+/// Consolidates all supported Formats and Vendors.
+/// Automatically recognizes CAD format and uses the preferred existed Vendor.
+/// Note:
+/// If Vendor's format is not binded, the configuration loading doesn't affect on its property.
+///
+/// Nodes are grouped by Vendor's name and Format's type.
+/// The Vendors may have the same supported CAD formats.
+/// Use a Vendor's priority for transfer operations.
+///
+/// The algorithm for standalone transfer operation:
+/// 1) Work with global wrapper directly or make deep copy and work with it
+/// 2) Update the supported vendors and formats
+/// 2.1) Create and initialize specialized configuration node of the required format and Vendor.
+/// 2.2) Bind the created node to the internal map(::Bind)
+/// 3) Configure the transfer property by resource string or file (::Load)
+/// 3.1) Configuration can disable or enable some Vendors and formats
+/// 3.2) Configuration can change the priority of Vendors
+/// 4) Initiate the transfer process by calling "::Write" or "::Read" methods
+/// 5) Validate the transfer process output
+pub use crate::ffi::DE_Wrapper as Wrapper;
+
+unsafe impl crate::CppDeletable for Wrapper {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::DE_Wrapper_destructor(ptr);
+    }
+}
+
+impl Wrapper {
+    /// **Source:** `DE_Wrapper.hxx`:60 - `DE_Wrapper::DE_Wrapper()`
+    /// Initializes all field by default
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::DE_Wrapper_ctor()) }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:64 - `DE_Wrapper::DE_Wrapper()`
+    /// Copies values of all fields
+    /// @param[in] theWrapper object to copy
+    pub fn new_handledewrapper(theWrapper: &crate::ffi::HandleDEWrapper) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DE_Wrapper_ctor_handledewrapper(theWrapper))
+        }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:56 - `DE_Wrapper::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::DE_Wrapper_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:152 - `DE_Wrapper::Read()`
+    /// Reads a CAD file, according internal configuration
+    /// @param[in] thePath path to the import CAD file
+    /// @param[out] theShape shape to save result
+    /// @param[in] theProgress progress indicator
+    /// @return true if Read operation has ended correctly
+    pub fn read(
+        &mut self,
+        thePath: &crate::ffi::TCollection_AsciiString,
+        theShape: &mut crate::ffi::TopoDS_Shape,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe { crate::ffi::DE_Wrapper_read(self as *mut Self, thePath, theShape, theProgress) }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:162 - `DE_Wrapper::Write()`
+    /// Writes a CAD file, according internal configuration
+    /// @param[in] thePath path to the export CAD file
+    /// @param[out] theShape shape to export
+    /// @param[in] theProgress progress indicator
+    /// @return true if Write operation has ended correctly
+    pub fn write(
+        &mut self,
+        thePath: &crate::ffi::TCollection_AsciiString,
+        theShape: &crate::ffi::TopoDS_Shape,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe { crate::ffi::DE_Wrapper_write(self as *mut Self, thePath, theShape, theProgress) }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:171 - `DE_Wrapper::Load()`
+    /// Updates values according the resource file
+    /// @param[in] theResource file path to resource or resource value
+    /// @param[in] theIsRecursive flag to update all nodes
+    /// @return true if theResource has loaded correctly
+    pub fn load_asciistring_bool(
+        &mut self,
+        theResource: &crate::ffi::TCollection_AsciiString,
+        theIsRecursive: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_Wrapper_load_asciistring_bool(
+                self as *mut Self,
+                theResource,
+                theIsRecursive,
+            )
+        }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:178 - `DE_Wrapper::Load()`
+    /// Updates values according the resource
+    /// @param[in] theResource input resource to use
+    /// @param[in] theIsRecursive flag to update all nodes
+    /// @return true if theResource has loaded correctly
+    pub fn load_handledeconfigurationcontext_bool(
+        &mut self,
+        theResource: &crate::ffi::HandleDEConfigurationContext,
+        theIsRecursive: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_Wrapper_load_handledeconfigurationcontext_bool(
+                self as *mut Self,
+                theResource,
+                theIsRecursive,
+            )
+        }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:206 - `DE_Wrapper::Bind()`
+    /// Creates new node copy and adds to the map
+    /// @param[in] theNode input node to copy
+    /// @return Standard_True if binded
+    pub fn bind(&mut self, theNode: &crate::ffi::HandleDEConfigurationNode) -> bool {
+        unsafe { crate::ffi::DE_Wrapper_bind(self as *mut Self, theNode) }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:211 - `DE_Wrapper::UnBind()`
+    /// Removes node with the same type from the map
+    /// @param[in] theNode input node to remove the same
+    /// @return Standard_True if removed
+    pub fn un_bind(&mut self, theNode: &crate::ffi::HandleDEConfigurationNode) -> bool {
+        unsafe { crate::ffi::DE_Wrapper_un_bind(self as *mut Self, theNode) }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:218 - `DE_Wrapper::Find()`
+    /// Finds a node associated with input format and vendor
+    /// @param[in] theFormat input node CAD format
+    /// @param[in] theVendor input node vendor name
+    /// @param[out] theNode output node
+    /// @return Standard_True if the node is found
+    pub fn find(
+        &self,
+        theFormat: &crate::ffi::TCollection_AsciiString,
+        theVendor: &crate::ffi::TCollection_AsciiString,
+        theNode: &mut crate::ffi::HandleDEConfigurationNode,
+    ) -> bool {
+        unsafe { crate::ffi::DE_Wrapper_find(self as *const Self, theFormat, theVendor, theNode) }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:242 - `DE_Wrapper::FindProvider()`
+    /// Find available provider from the configuration.
+    /// If there are several providers, choose the one with the highest priority.
+    /// @param[in] thePath path to the CAD file
+    /// @param[in] theToImport flag to finds for import. Standard_True-import, Standard_False-export
+    /// @param[out] theProvider created new provider
+    /// @return Standard_True if provider found and created
+    pub fn find_provider(
+        &self,
+        thePath: &crate::ffi::TCollection_AsciiString,
+        theToImport: bool,
+        theProvider: &mut crate::ffi::HandleDEProvider,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_Wrapper_find_provider(
+                self as *const Self,
+                thePath,
+                theToImport,
+                theProvider,
+            )
+        }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:249 - `DE_Wrapper::UpdateLoad()`
+    /// Updates all registered nodes, all changes will be saved in nodes
+    /// @param[in] theToForceUpdate flag that turns on/of nodes, according to updated ability to
+    /// import/export
+    pub fn update_load(&self, theToForceUpdate: bool) {
+        unsafe { crate::ffi::DE_Wrapper_update_load(self as *const Self, theToForceUpdate) }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:252 - `DE_Wrapper::KeepUpdates()`
+    /// Gets flag that keeps changes on configuration nodes which are being updated, false by default
+    pub fn keep_updates(&self) -> bool {
+        unsafe { crate::ffi::DE_Wrapper_keep_updates(self as *const Self) }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:255 - `DE_Wrapper::SetKeepUpdates()`
+    /// Sets flag that keeps changes on configuration nodes which are being updated, false by default
+    pub fn set_keep_updates(&mut self, theToKeepUpdates: bool) {
+        unsafe { crate::ffi::DE_Wrapper_set_keep_updates(self as *mut Self, theToKeepUpdates) }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:263 - `DE_Wrapper::Copy()`
+    /// Copies values of all fields
+    /// @return new object with the same field values
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleDEWrapper> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::DE_Wrapper_copy(self as *const Self)) }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:56 - `DE_Wrapper::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::DE_Wrapper_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:56 - `DE_Wrapper::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::DE_Wrapper_get_type_descriptor()) }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:69 - `DE_Wrapper::GlobalWrapper()`
+    /// Gets global configuration singleton.
+    /// If wrapper is not set, create it by default as base class object.
+    /// @return point to global configuration
+    pub fn global_wrapper() -> &'static crate::ffi::HandleDEWrapper {
+        unsafe { &*(crate::ffi::DE_Wrapper_global_wrapper()) }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:73 - `DE_Wrapper::SetGlobalWrapper()`
+    /// Sets global configuration singleton
+    /// @param[in] theWrapper object to set as global configuration
+    pub fn set_global_wrapper(theWrapper: &crate::ffi::HandleDEWrapper) {
+        unsafe { crate::ffi::DE_Wrapper_set_global_wrapper(theWrapper) }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:75 - `DE_Wrapper::GlobalLoadMutex()`
+    pub fn global_load_mutex() -> &'static mut crate::ffi::Standard_Mutex {
+        unsafe { &mut *(crate::ffi::DE_Wrapper_global_load_mutex()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleDEWrapper> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::DE_Wrapper_to_handle(obj.into_raw())) }
+    }
+}
+
+pub use crate::ffi::HandleDEWrapper;
+
+unsafe impl crate::CppDeletable for HandleDEWrapper {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleDEWrapper_destructor(ptr);
+    }
+}
+
+impl HandleDEWrapper {
+    /// Dereference this Handle to access the underlying DE_Wrapper
+    pub fn get(&self) -> &crate::ffi::DE_Wrapper {
+        unsafe { &*(crate::ffi::HandleDEWrapper_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying DE_Wrapper
+    pub fn get_mut(&mut self) -> &mut crate::ffi::DE_Wrapper {
+        unsafe { &mut *(crate::ffi::HandleDEWrapper_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
-    DE_ConfigurationContext as ConfigurationContext, DE_ShapeFixParameters as ShapeFixParameters,
+    DE_ConfigurationFormatMap as ConfigurationFormatMap, DE_ResourceMap as ResourceMap,
+    DE_ShapeFixParameters as ShapeFixParameters,
 };

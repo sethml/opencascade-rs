@@ -7972,6 +7972,11 @@ impl PaveFiller {
         }
     }
 
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:119 - `BOPAlgo_PaveFiller::DS()`
+    pub fn ds(&mut self) -> &crate::ffi::BOPDS_DS {
+        unsafe { &*(crate::ffi::BOPAlgo_PaveFiller_ds(self as *mut Self)) }
+    }
+
     /// **Source:** `BOPAlgo_PaveFiller.hxx`:126 - `BOPAlgo_PaveFiller::SetArguments()`
     /// Sets the arguments for operation
     pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
@@ -9398,6 +9403,110 @@ impl Splitter {
     /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:45 - `BOPAlgo_ToolsProvider::Tools()`
     pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_Splitter_inherited_Tools(self as *const Self)) }
+    }
+}
+
+// ========================
+// From BOPAlgo_Tools.hxx
+// ========================
+
+/// **Source:** `BOPAlgo_Tools.hxx`:41 - `BOPAlgo_Tools`
+/// Provides tools used in the intersection part of Boolean operations
+pub use crate::ffi::BOPAlgo_Tools as Tools;
+
+unsafe impl crate::CppDeletable for Tools {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPAlgo_Tools_destructor(ptr);
+    }
+}
+
+impl Tools {
+    /// **Source:** `BOPAlgo_Tools.hxx` - `BOPAlgo_Tools::BOPAlgo_Tools()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_Tools_ctor()) }
+    }
+
+    /// **Source:** `BOPAlgo_Tools.hxx`:148 - `BOPAlgo_Tools::EdgesToWires()`
+    /// Creates planar wires from the given edges.<br>
+    /// The input edges are expected to be planar. And for the performance
+    /// sake the method does not check if the edges are really planar.<br>
+    /// Thus, the result wires will also be not planar if the input edges are not planar.<br>
+    /// The edges may be not shared, but the resulting wires will be sharing the
+    /// coinciding parts and intersecting parts.<br>
+    /// The output wires may be non-manifold and contain free and multi-connected vertices.<br>
+    /// Parameters:
+    /// <theEdges> - input edges;<br>
+    /// <theWires> - output wires;<br>
+    /// <theShared> - boolean flag which defines whether the input edges are already
+    /// shared or have to be intersected;<br>
+    /// <theAngTol> - the angular tolerance which will be used for distinguishing
+    /// the planes in which the edges are located. Default value is
+    /// 1.e-8 which is used for intersection of planes in IntTools_FaceFace.<br>
+    /// Method returns the following error statuses:<br>
+    /// 0 - in case of success (at least one wire has been built);<br>
+    /// 1 - in case there are no edges in the given shape;<br>
+    /// 2 - sharing of the edges has failed.<br>
+    pub fn edges_to_wires(
+        theEdges: &crate::ffi::TopoDS_Shape,
+        theWires: &mut crate::ffi::TopoDS_Shape,
+        theShared: bool,
+        theAngTol: f64,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::BOPAlgo_Tools_edges_to_wires(theEdges, theWires, theShared, theAngTol)
+        }
+    }
+
+    /// **Source:** `BOPAlgo_Tools.hxx`:168 - `BOPAlgo_Tools::WiresToFaces()`
+    /// Creates planar faces from given planar wires.<br>
+    /// The method does not check if the wires are really planar.<br>
+    /// The input wires may be non-manifold but should be shared.<br>
+    /// The wires located in the same planes and included into other wires will create
+    /// holes in the faces built from outer wires.<br>
+    /// The tolerance values of the input shapes may be modified during the operation
+    /// due to projection of the edges on the planes for creation of 2D curves.<br>
+    /// Parameters:
+    /// <theWires> - the given wires;<br>
+    /// <theFaces> - the output faces;<br>
+    /// <theAngTol> - the angular tolerance for distinguishing the planes in which
+    /// the wires are located. Default value is 1.e-8 which is used
+    /// for intersection of planes in IntTools_FaceFace.<br>
+    /// Method returns TRUE in case of success, i.e. at least one face has been built.<br>
+    pub fn wires_to_faces(
+        theWires: &crate::ffi::TopoDS_Shape,
+        theFaces: &mut crate::ffi::TopoDS_Shape,
+        theAngTol: f64,
+    ) -> bool {
+        unsafe { crate::ffi::BOPAlgo_Tools_wires_to_faces(theWires, theFaces, theAngTol) }
+    }
+
+    /// **Source:** `BOPAlgo_Tools.hxx`:222 - `BOPAlgo_Tools::TrsfToPoint()`
+    /// Computes the transformation needed to move the objects
+    /// to the given point to increase the quality of computations.
+    /// Returns true if the objects are located far from the given point
+    /// (relatively given criteria), false otherwise.
+    /// @param theBox1 the AABB of the first object
+    /// @param theBox2 the AABB of the second object
+    /// @param theTrsf the computed transformation
+    /// @param thePoint the Point to compute transformation to
+    /// @param theCriteria the Criteria to check whether thranformation is required
+    pub fn trsf_to_point(
+        theBox1: &crate::ffi::Bnd_Box,
+        theBox2: &crate::ffi::Bnd_Box,
+        theTrsf: &mut crate::ffi::gp_Trsf,
+        thePoint: &crate::ffi::gp_Pnt,
+        theCriteria: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BOPAlgo_Tools_trsf_to_point(
+                theBox1,
+                theBox2,
+                theTrsf,
+                thePoint,
+                theCriteria,
+            )
+        }
     }
 }
 

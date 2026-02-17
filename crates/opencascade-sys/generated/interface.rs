@@ -1196,28 +1196,6 @@ unsafe impl crate::CppDeletable for Graph {
 }
 
 impl Graph {
-    /// **Source:** `Interface_Graph.hxx`:72 - `Interface_Graph::Interface_Graph()`
-    /// Creates an empty graph, ready to receive Entities from amodel
-    /// Note that this way of Creation allows <me> to verify that
-    /// Entities to work with are contained in <amodel>
-    /// Basic Shared and Sharing lists are obtained from a General
-    /// Services Library, given directly as an argument
-    pub fn new_handleinterfaceinterfacemodel_generallib_bool(
-        amodel: &crate::ffi::HandleInterfaceInterfaceModel,
-        lib: &crate::ffi::Interface_GeneralLib,
-        theModeStats: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Interface_Graph_ctor_handleinterfaceinterfacemodel_generallib_bool(
-                    amodel,
-                    lib,
-                    theModeStats,
-                ),
-            )
-        }
-    }
-
     /// **Source:** `Interface_Graph.hxx`:87 - `Interface_Graph::Interface_Graph()`
     /// Same a above but works with the Protocol recorded in the Model
     pub fn new_handleinterfaceinterfacemodel_bool(
@@ -1245,19 +1223,6 @@ impl Graph {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Interface_Graph_ctor_graph_bool(agraph, copied))
         }
-    }
-
-    /// **Source:** `Interface_Graph.hxx`:72 - `Interface_Graph::Interface_Graph()`
-    /// Creates an empty graph, ready to receive Entities from amodel
-    /// Note that this way of Creation allows <me> to verify that
-    /// Entities to work with are contained in <amodel>
-    /// Basic Shared and Sharing lists are obtained from a General
-    /// Services Library, given directly as an argument
-    pub fn new_handleinterfaceinterfacemodel_generallib(
-        amodel: &crate::ffi::HandleInterfaceInterfaceModel,
-        lib: &crate::ffi::Interface_GeneralLib,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_handleinterfaceinterfacemodel_generallib_bool(amodel, lib, true)
     }
 
     /// **Source:** `Interface_Graph.hxx`:87 - `Interface_Graph::Interface_Graph()`

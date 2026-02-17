@@ -300,15 +300,6 @@ unsafe impl crate::CppDeletable for GlobalTranslationConstraint {
 }
 
 impl GlobalTranslationConstraint {
-    /// **Source:** `Plate_GlobalTranslationConstraint.hxx`:33 - `Plate_GlobalTranslationConstraint::Plate_GlobalTranslationConstraint()`
-    pub fn new_sequenceofxy(SOfXY: &crate::ffi::TColgp_SequenceOfXY) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Plate_GlobalTranslationConstraint_ctor_sequenceofxy(SOfXY),
-            )
-        }
-    }
-
     /// **Source:** `Plate_GlobalTranslationConstraint.hxx`:35 - `Plate_GlobalTranslationConstraint::LXYZC()`
     pub fn lxyzc(&self) -> &crate::ffi::Plate_LinearXYZConstraint {
         unsafe { &*(crate::ffi::Plate_GlobalTranslationConstraint_lxyzc(self as *const Self)) }
@@ -533,26 +524,6 @@ impl LinearScalarConstraint {
         }
     }
 
-    /// **Source:** `Plate_LinearScalarConstraint.hxx`:45 - `Plate_LinearScalarConstraint::Plate_LinearScalarConstraint()`
-    pub fn new_array1ofpinpointconstraint_array1ofxyz(
-        thePPC: &crate::ffi::Plate_Array1OfPinpointConstraint,
-        theCoeff: &crate::ffi::TColgp_Array1OfXYZ,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_LinearScalarConstraint_ctor_array1ofpinpointconstraint_array1ofxyz(thePPC, theCoeff))
-        }
-    }
-
-    /// **Source:** `Plate_LinearScalarConstraint.hxx`:48 - `Plate_LinearScalarConstraint::Plate_LinearScalarConstraint()`
-    pub fn new_array1ofpinpointconstraint_array2ofxyz(
-        thePPC: &crate::ffi::Plate_Array1OfPinpointConstraint,
-        theCoeff: &crate::ffi::TColgp_Array2OfXYZ,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Plate_LinearScalarConstraint_ctor_array1ofpinpointconstraint_array2ofxyz(thePPC, theCoeff))
-        }
-    }
-
     /// **Source:** `Plate_LinearScalarConstraint.hxx`:51 - `Plate_LinearScalarConstraint::Plate_LinearScalarConstraint()`
     pub fn new_int2(ColLen: i32, RowLen: i32) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -606,34 +577,6 @@ impl LinearXYZConstraint {
     /// **Source:** `Plate_LinearXYZConstraint.hxx`:41 - `Plate_LinearXYZConstraint::Plate_LinearXYZConstraint()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_LinearXYZConstraint_ctor()) }
-    }
-
-    /// **Source:** `Plate_LinearXYZConstraint.hxx`:43 - `Plate_LinearXYZConstraint::Plate_LinearXYZConstraint()`
-    pub fn new_array1ofpinpointconstraint_array1ofreal(
-        thePPC: &crate::ffi::Plate_Array1OfPinpointConstraint,
-        theCoeff: &crate::ffi::TColStd_Array1OfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Plate_LinearXYZConstraint_ctor_array1ofpinpointconstraint_array1ofreal(
-                    thePPC, theCoeff,
-                ),
-            )
-        }
-    }
-
-    /// **Source:** `Plate_LinearXYZConstraint.hxx`:46 - `Plate_LinearXYZConstraint::Plate_LinearXYZConstraint()`
-    pub fn new_array1ofpinpointconstraint_array2ofreal(
-        thePPC: &crate::ffi::Plate_Array1OfPinpointConstraint,
-        theCoeff: &crate::ffi::TColStd_Array2OfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Plate_LinearXYZConstraint_ctor_array1ofpinpointconstraint_array2ofreal(
-                    thePPC, theCoeff,
-                ),
-            )
-        }
     }
 
     /// **Source:** `Plate_LinearXYZConstraint.hxx`:49 - `Plate_LinearXYZConstraint::Plate_LinearXYZConstraint()`
@@ -964,20 +907,6 @@ unsafe impl crate::CppDeletable for SampledCurveConstraint {
 }
 
 impl SampledCurveConstraint {
-    /// **Source:** `Plate_SampledCurveConstraint.hxx`:33 - `Plate_SampledCurveConstraint::Plate_SampledCurveConstraint()`
-    pub fn new_sequenceofpinpointconstraint_int(
-        SOPPC: &crate::ffi::Plate_SequenceOfPinpointConstraint,
-        n: i32,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Plate_SampledCurveConstraint_ctor_sequenceofpinpointconstraint_int(
-                    SOPPC, n,
-                ),
-            )
-        }
-    }
-
     /// **Source:** `Plate_SampledCurveConstraint.hxx`:36 - `Plate_SampledCurveConstraint::LXYZC()`
     pub fn lxyzc(&self) -> &crate::ffi::Plate_LinearXYZConstraint {
         unsafe { &*(crate::ffi::Plate_SampledCurveConstraint_lxyzc(self as *const Self)) }

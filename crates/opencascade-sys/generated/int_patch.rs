@@ -1200,4 +1200,4 @@ impl WLine {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::IntPatch_SequenceOfLine as SequenceOfLine;
+pub use crate::ffi::{IntPatch_RLine as RLine, IntPatch_SequenceOfLine as SequenceOfLine};

@@ -1978,24 +1978,6 @@ impl Coons {
         }
     }
 
-    /// **Source:** `GeomFill_Coons.hxx`:39 - `GeomFill_Coons::GeomFill_Coons()`
-    pub fn new_array1ofpnt4_array1ofreal4(
-        P1: &crate::ffi::TColgp_Array1OfPnt,
-        P2: &crate::ffi::TColgp_Array1OfPnt,
-        P3: &crate::ffi::TColgp_Array1OfPnt,
-        P4: &crate::ffi::TColgp_Array1OfPnt,
-        W1: &crate::ffi::TColStd_Array1OfReal,
-        W2: &crate::ffi::TColStd_Array1OfReal,
-        W3: &crate::ffi::TColStd_Array1OfReal,
-        W4: &crate::ffi::TColStd_Array1OfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_Coons_ctor_array1ofpnt4_array1ofreal4(
-                P1, P2, P3, P4, W1, W2, W3, W4,
-            ))
-        }
-    }
-
     /// **Source:** `GeomFill_Coons.hxx`:48 - `GeomFill_Coons::Init()`
     pub fn init(
         &mut self,
@@ -2886,44 +2868,12 @@ impl Curved {
         }
     }
 
-    /// **Source:** `GeomFill_Curved.hxx`:40 - `GeomFill_Curved::GeomFill_Curved()`
-    pub fn new_array1ofpnt4_array1ofreal4(
-        P1: &crate::ffi::TColgp_Array1OfPnt,
-        P2: &crate::ffi::TColgp_Array1OfPnt,
-        P3: &crate::ffi::TColgp_Array1OfPnt,
-        P4: &crate::ffi::TColgp_Array1OfPnt,
-        W1: &crate::ffi::TColStd_Array1OfReal,
-        W2: &crate::ffi::TColStd_Array1OfReal,
-        W3: &crate::ffi::TColStd_Array1OfReal,
-        W4: &crate::ffi::TColStd_Array1OfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_Curved_ctor_array1ofpnt4_array1ofreal4(
-                P1, P2, P3, P4, W1, W2, W3, W4,
-            ))
-        }
-    }
-
     /// **Source:** `GeomFill_Curved.hxx`:49 - `GeomFill_Curved::GeomFill_Curved()`
     pub fn new_array1ofpnt2(
         P1: &crate::ffi::TColgp_Array1OfPnt,
         P2: &crate::ffi::TColgp_Array1OfPnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomFill_Curved_ctor_array1ofpnt2(P1, P2)) }
-    }
-
-    /// **Source:** `GeomFill_Curved.hxx`:51 - `GeomFill_Curved::GeomFill_Curved()`
-    pub fn new_array1ofpnt2_array1ofreal2(
-        P1: &crate::ffi::TColgp_Array1OfPnt,
-        P2: &crate::ffi::TColgp_Array1OfPnt,
-        W1: &crate::ffi::TColStd_Array1OfReal,
-        W2: &crate::ffi::TColStd_Array1OfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_Curved_ctor_array1ofpnt2_array1ofreal2(
-                P1, P2, W1, W2,
-            ))
-        }
     }
 
     /// **Source:** `GeomFill_Curved.hxx`:56 - `GeomFill_Curved::Init()`
@@ -6432,87 +6382,6 @@ unsafe impl crate::CppDeletable for NSections {
 }
 
 impl NSections {
-    /// **Source:** `GeomFill_NSections.hxx`:46 - `GeomFill_NSections::GeomFill_NSections()`
-    /// Make a SectionLaw with N Curves.
-    pub fn new_sequenceofcurve(NC: &crate::ffi::TColGeom_SequenceOfCurve) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_NSections_ctor_sequenceofcurve(NC))
-        }
-    }
-
-    /// **Source:** `GeomFill_NSections.hxx`:49 - `GeomFill_NSections::GeomFill_NSections()`
-    /// Make a SectionLaw with N Curves and N associated parameters.
-    pub fn new_sequenceofcurve_sequenceofreal(
-        NC: &crate::ffi::TColGeom_SequenceOfCurve,
-        NP: &crate::ffi::TColStd_SequenceOfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::GeomFill_NSections_ctor_sequenceofcurve_sequenceofreal(NC, NP),
-            )
-        }
-    }
-
-    /// **Source:** `GeomFill_NSections.hxx`:54 - `GeomFill_NSections::GeomFill_NSections()`
-    /// Make a SectionLaw with N Curves and N associated parameters.
-    /// UF and UL are the parametric bounds of the NSections
-    pub fn new_sequenceofcurve_sequenceofreal_real2(
-        NC: &crate::ffi::TColGeom_SequenceOfCurve,
-        NP: &crate::ffi::TColStd_SequenceOfReal,
-        UF: f64,
-        UL: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::GeomFill_NSections_ctor_sequenceofcurve_sequenceofreal_real2(
-                    NC, NP, UF, UL,
-                ),
-            )
-        }
-    }
-
-    /// **Source:** `GeomFill_NSections.hxx`:62 - `GeomFill_NSections::GeomFill_NSections()`
-    /// Make a SectionLaw with N Curves and N associated parameters.
-    /// UF and UL are the parametric bounds of the NSections
-    /// VF and VL are the parametric bounds of the path
-    pub fn new_sequenceofcurve_sequenceofreal_real4(
-        NC: &crate::ffi::TColGeom_SequenceOfCurve,
-        NP: &crate::ffi::TColStd_SequenceOfReal,
-        UF: f64,
-        UL: f64,
-        VF: f64,
-        VL: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::GeomFill_NSections_ctor_sequenceofcurve_sequenceofreal_real4(
-                    NC, NP, UF, UL, VF, VL,
-                ),
-            )
-        }
-    }
-
-    /// **Source:** `GeomFill_NSections.hxx`:74 - `GeomFill_NSections::GeomFill_NSections()`
-    /// Make a SectionLaw with N Curves and N associated parameters.
-    /// UF and UL are the parametric bounds of the NSections
-    /// VF and VL are the parametric bounds of the path
-    /// UF and UL are the parametric bounds of the NSections
-    /// Surf is a reference surface used by BRepFill_NSections
-    pub fn new_sequenceofcurve_sequenceoftrsf_sequenceofreal_real4_handlegeombsplinesurface(
-        NC: &crate::ffi::TColGeom_SequenceOfCurve,
-        Trsfs: &crate::ffi::GeomFill_SequenceOfTrsf,
-        NP: &crate::ffi::TColStd_SequenceOfReal,
-        UF: f64,
-        UL: f64,
-        VF: f64,
-        VL: f64,
-        Surf: &crate::ffi::HandleGeomBSplineSurface,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_NSections_ctor_sequenceofcurve_sequenceoftrsf_sequenceofreal_real4_handlegeombsplinesurface(NC, Trsfs, NP, UF, UL, VF, VL, Surf))
-        }
-    }
-
     /// **Source:** `GeomFill_NSections.hxx`:109 - `GeomFill_NSections::SetSurface()`
     /// Sets the reference surface
     pub fn set_surface(&mut self, RefSurf: &crate::ffi::HandleGeomBSplineSurface) {
@@ -6848,20 +6717,6 @@ impl Pipe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_Pipe_ctor_handlegeomcurve3(
                 Path, FirstSect, LastSect,
             ))
-        }
-    }
-
-    /// **Source:** `GeomFill_Pipe.hxx`:127 - `GeomFill_Pipe::GeomFill_Pipe()`
-    /// Create a pipe with N  sections
-    /// The section evaluate from First to Last Section
-    pub fn new_handlegeomcurve_sequenceofcurve(
-        Path: &crate::ffi::HandleGeomCurve,
-        NSections: &crate::ffi::TColGeom_SequenceOfCurve,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::GeomFill_Pipe_ctor_handlegeomcurve_sequenceofcurve(Path, NSections),
-            )
         }
     }
 
@@ -8450,24 +8305,6 @@ impl Stretch {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_Stretch_ctor_array1ofpnt4(
                 P1, P2, P3, P4,
-            ))
-        }
-    }
-
-    /// **Source:** `GeomFill_Stretch.hxx`:40 - `GeomFill_Stretch::GeomFill_Stretch()`
-    pub fn new_array1ofpnt4_array1ofreal4(
-        P1: &crate::ffi::TColgp_Array1OfPnt,
-        P2: &crate::ffi::TColgp_Array1OfPnt,
-        P3: &crate::ffi::TColgp_Array1OfPnt,
-        P4: &crate::ffi::TColgp_Array1OfPnt,
-        W1: &crate::ffi::TColStd_Array1OfReal,
-        W2: &crate::ffi::TColStd_Array1OfReal,
-        W3: &crate::ffi::TColStd_Array1OfReal,
-        W4: &crate::ffi::TColStd_Array1OfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_Stretch_ctor_array1ofpnt4_array1ofreal4(
-                P1, P2, P3, P4, W1, W2, W3, W4,
             ))
         }
     }

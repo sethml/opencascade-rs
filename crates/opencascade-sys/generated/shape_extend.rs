@@ -1511,6 +1511,92 @@ impl Explorer {
 }
 
 // ========================
+// From ShapeExtend_MsgRegistrator.hxx
+// ========================
+
+/// **Source:** `ShapeExtend_MsgRegistrator.hxx`:41 - `ShapeExtend_MsgRegistrator`
+/// Attaches messages to the objects (generic Transient or shape).
+/// The objects of this class are transmitted to the Shape Healing
+/// algorithms so that they could collect messages occurred during
+/// processing.
+///
+/// Messages are added to the Maps (stored as a field) that can be
+/// used, for instance, by Data Exchange processors to attach those
+/// messages to initial file entities.
+pub use crate::ffi::ShapeExtend_MsgRegistrator as MsgRegistrator;
+
+unsafe impl crate::CppDeletable for MsgRegistrator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeExtend_MsgRegistrator_destructor(ptr);
+    }
+}
+
+impl MsgRegistrator {
+    /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:46 - `ShapeExtend_MsgRegistrator::ShapeExtend_MsgRegistrator()`
+    /// Creates an object.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_MsgRegistrator_ctor()) }
+    }
+
+    /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:58 - `ShapeExtend_MsgRegistrator::Send()`
+    /// Sends a message to be attached to the shape.
+    /// If the shape is in the map then the message is added to the
+    /// list, otherwise the shape is firstly added to the map.
+    pub fn send(
+        &mut self,
+        shape: &crate::ffi::TopoDS_Shape,
+        message: &crate::ffi::Message_Msg,
+        gravity: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::ShapeExtend_MsgRegistrator_send(
+                self as *mut Self,
+                shape,
+                message,
+                gravity.into(),
+            )
+        }
+    }
+
+    /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:68 - `ShapeExtend_MsgRegistrator::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeExtend_MsgRegistrator_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:68 - `ShapeExtend_MsgRegistrator::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::ShapeExtend_MsgRegistrator_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:68 - `ShapeExtend_MsgRegistrator::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeExtend_MsgRegistrator_get_type_descriptor()) }
+    }
+
+    /// Upcast to ShapeExtend_BasicMsgRegistrator
+    pub fn as_basic_msg_registrator(&self) -> &BasicMsgRegistrator {
+        unsafe {
+            &*(crate::ffi::ShapeExtend_MsgRegistrator_as_ShapeExtend_BasicMsgRegistrator(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to ShapeExtend_BasicMsgRegistrator (mutable)
+    pub fn as_basic_msg_registrator_mut(&mut self) -> &mut BasicMsgRegistrator {
+        unsafe {
+            &mut *(crate::ffi::ShapeExtend_MsgRegistrator_as_ShapeExtend_BasicMsgRegistrator_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
+// ========================
 // From ShapeExtend_WireData.hxx
 // ========================
 
@@ -1907,4 +1993,7 @@ impl HandleShapeExtendWireData {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::ShapeExtend_MsgRegistrator as MsgRegistrator;
+pub use crate::ffi::{
+    ShapeExtend_DataMapOfShapeListOfMsg as DataMapOfShapeListOfMsg,
+    ShapeExtend_DataMapOfTransientListOfMsg as DataMapOfTransientListOfMsg,
+};

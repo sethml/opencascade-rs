@@ -2823,9 +2823,12 @@ impl MultiLine {
 
     /// **Source:** `BRepFill_MultiLine.hxx`:83 - `BRepFill_MultiLine::Value()`
     /// Returns the current point on the 3d curve
-    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn value_real(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_MultiLine_value(self as *const Self, U))
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_MultiLine_value_real(
+                self as *const Self,
+                U,
+            ))
         }
     }
 
@@ -2870,6 +2873,35 @@ impl MultiLine {
                 PF2,
             )
         }
+    }
+
+    /// **Source:** `BRepFill_MultiLine.hxx`:99 - `BRepFill_MultiLine::Value()`
+    /// Returns the point at parameter <theU>.
+    pub fn value_real_array1ofpnt2d_array1ofpnt(
+        &self,
+        theU: f64,
+        thePnt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        thePnt: &mut crate::ffi::TColgp_Array1OfPnt,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepFill_MultiLine_value_real_array1ofpnt2d_array1ofpnt(
+                self as *const Self,
+                theU,
+                thePnt2d,
+                thePnt,
+            )
+        }
+    }
+
+    /// **Source:** `BRepFill_MultiLine.hxx`:104 - `BRepFill_MultiLine::D1()`
+    /// Returns the derivative at parameter <theU>.
+    pub fn d1(
+        &self,
+        theU: f64,
+        theVec2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        theVec: &mut crate::ffi::TColgp_Array1OfVec,
+    ) -> bool {
+        unsafe { crate::ffi::BRepFill_MultiLine_d1(self as *const Self, theU, theVec2d, theVec) }
     }
 
     /// Upcast to AppCont_Function
@@ -2944,39 +2976,10 @@ impl NSections {
         }
     }
 
-    /// **Source:** `BRepFill_NSections.hxx`:48 - `BRepFill_NSections::BRepFill_NSections()`
-    /// Construct
-    pub fn new_sequenceofshape_sequenceoftrsf_sequenceofreal_real2_bool(
-        S: &crate::ffi::TopTools_SequenceOfShape,
-        Trsfs: &crate::ffi::GeomFill_SequenceOfTrsf,
-        P: &crate::ffi::TColStd_SequenceOfReal,
-        VF: f64,
-        VL: f64,
-        Build: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_NSections_ctor_sequenceofshape_sequenceoftrsf_sequenceofreal_real2_bool(S, Trsfs, P, VF, VL, Build))
-        }
-    }
-
     /// **Source:** `BRepFill_NSections.hxx`:44 - `BRepFill_NSections::BRepFill_NSections()`
     /// Construct
     pub fn new_sequenceofshape(S: &crate::ffi::TopTools_SequenceOfShape) -> crate::OwnedPtr<Self> {
         Self::new_sequenceofshape_bool(S, true)
-    }
-
-    /// **Source:** `BRepFill_NSections.hxx`:48 - `BRepFill_NSections::BRepFill_NSections()`
-    /// Construct
-    pub fn new_sequenceofshape_sequenceoftrsf_sequenceofreal_real2(
-        S: &crate::ffi::TopTools_SequenceOfShape,
-        Trsfs: &crate::ffi::GeomFill_SequenceOfTrsf,
-        P: &crate::ffi::TColStd_SequenceOfReal,
-        VF: f64,
-        VL: f64,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_sequenceofshape_sequenceoftrsf_sequenceofreal_real2_bool(
-            S, Trsfs, P, VF, VL, true,
-        )
     }
 
     /// **Source:** `BRepFill_NSections.hxx`:56 - `BRepFill_NSections::IsVertex()`

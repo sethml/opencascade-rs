@@ -991,18 +991,6 @@ impl ProximityValueTool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ProximityValueTool_ctor()) }
     }
 
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:99 - `BRepExtrema_ProximityValueTool::LoadShapeLists()`
-    /// Loads the given list of subshapes into the proximity tool.
-    pub fn load_shape_lists(&mut self, theShapeList1: &i32, theShapeList2: &i32) {
-        unsafe {
-            crate::ffi::BRepExtrema_ProximityValueTool_load_shape_lists(
-                self as *mut Self,
-                theShapeList1,
-                theShapeList2,
-            )
-        }
-    }
-
     /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:104 - `BRepExtrema_ProximityValueTool::SetNbSamplePoints()`
     /// Sets number of sample points used for proximity calculation for each shape.
     /// If number is less or equal zero, all triangulation nodes are used.
@@ -1297,5 +1285,6 @@ impl UnCompatibleShape {
 // ========================
 
 pub use crate::ffi::{
-    BRepExtrema_SeqOfSolution as SeqOfSolution, BRepExtrema_TriangleSet as TriangleSet,
+    BRepExtrema_SeqOfSolution as SeqOfSolution, BRepExtrema_ShapeList as ShapeList,
+    BRepExtrema_TriangleSet as TriangleSet,
 };

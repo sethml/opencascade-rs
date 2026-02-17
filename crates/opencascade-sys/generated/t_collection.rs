@@ -75,28 +75,6 @@ impl AsciiString {
         }
     }
 
-    /// **Source:** `TCollection_AsciiString.hxx`:63 - `TCollection_AsciiString::TCollection_AsciiString()`
-    /// Initializes a AsciiString with a single character.
-    pub fn new_character(aChar: &crate::ffi::Standard_Character) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_character(aChar))
-        }
-    }
-
-    /// **Source:** `TCollection_AsciiString.hxx`:67 - `TCollection_AsciiString::TCollection_AsciiString()`
-    /// Initializes an AsciiString with <length> space allocated.
-    /// and filled with <filler>. This is useful for buffers.
-    pub fn new_int_character(
-        length: i32,
-        filler: &crate::ffi::Standard_Character,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_int_character(
-                length, filler,
-            ))
-        }
-    }
-
     /// **Source:** `TCollection_AsciiString.hxx`:71 - `TCollection_AsciiString::TCollection_AsciiString()`
     /// Initializes an AsciiString with an integer value
     pub fn new_int(value: i32) -> crate::OwnedPtr<Self> {
@@ -114,20 +92,6 @@ impl AsciiString {
     pub fn new_asciistring(astring: &crate::ffi::TCollection_AsciiString) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_asciistring(astring))
-        }
-    }
-
-    /// **Source:** `TCollection_AsciiString.hxx`:84 - `TCollection_AsciiString::TCollection_AsciiString()`
-    /// Initializes a AsciiString with copy of another AsciiString
-    /// concatenated with the message character.
-    pub fn new_asciistring_character(
-        astring: &crate::ffi::TCollection_AsciiString,
-        message: &crate::ffi::Standard_Character,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TCollection_AsciiString_ctor_asciistring_character(astring, message),
-            )
         }
     }
 
@@ -166,17 +130,13 @@ impl AsciiString {
     /// If replaceNonAscii is non-null character, it will be used
     /// in place of any non-ascii character found in the source string.
     /// Otherwise, creates UTF-8 unicode string.
-    pub fn new_extendedstring_character(
+    pub fn new_extendedstring(
         astring: &crate::ffi::TCollection_ExtendedString,
-        replaceNonAscii: &crate::ffi::Standard_Character,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TCollection_AsciiString_ctor_extendedstring_character(
-                    astring,
-                    replaceNonAscii,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::TCollection_AsciiString_ctor_extendedstring(
+                astring,
+            ))
         }
     }
 
@@ -996,48 +956,6 @@ impl ExtendedString {
         }
     }
 
-    /// **Source:** `TCollection_ExtendedString.hxx`:68 - `TCollection_ExtendedString::TCollection_ExtendedString()`
-    /// Creation by converting an ExtString to an extended string.
-    pub fn new_extstring(astring: &crate::ffi::Standard_ExtString) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_extstring(
-                astring,
-            ))
-        }
-    }
-
-    /// **Source:** `TCollection_ExtendedString.hxx`:80 - `TCollection_ExtendedString::TCollection_ExtendedString()`
-    /// Initializes a AsciiString with a single character.
-    pub fn new_character(aChar: &crate::ffi::Standard_Character) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_character(aChar))
-        }
-    }
-
-    /// **Source:** `TCollection_ExtendedString.hxx`:83 - `TCollection_ExtendedString::TCollection_ExtendedString()`
-    /// Initializes a ExtendedString with a single character.
-    pub fn new_extcharacter(aChar: &crate::ffi::Standard_ExtCharacter) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_extcharacter(
-                aChar,
-            ))
-        }
-    }
-
-    /// **Source:** `TCollection_ExtendedString.hxx`:87 - `TCollection_ExtendedString::TCollection_ExtendedString()`
-    /// Initializes a ExtendedString with <length> space allocated.
-    /// and filled with <filler>.This is useful for buffers.
-    pub fn new_int_extcharacter(
-        length: i32,
-        filler: &crate::ffi::Standard_ExtCharacter,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_ExtendedString_ctor_int_extcharacter(
-                length, filler,
-            ))
-        }
-    }
-
     /// **Source:** `TCollection_ExtendedString.hxx`:91 - `TCollection_ExtendedString::TCollection_ExtendedString()`
     /// Initializes an ExtendedString with an integer value
     pub fn new_int(value: i32) -> crate::OwnedPtr<Self> {
@@ -1346,28 +1264,6 @@ impl HAsciiString {
         }
     }
 
-    /// **Source:** `TCollection_HAsciiString.hxx`:52 - `TCollection_HAsciiString::TCollection_HAsciiString()`
-    /// Initializes a HAsciiString with a single character.
-    pub fn new_character(aChar: &crate::ffi::Standard_Character) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_ctor_character(aChar))
-        }
-    }
-
-    /// **Source:** `TCollection_HAsciiString.hxx`:56 - `TCollection_HAsciiString::TCollection_HAsciiString()`
-    /// Initializes a HAsciiString with <length> space allocated.
-    /// and filled with <filler>.This is useful for buffers.
-    pub fn new_int_character(
-        length: i32,
-        filler: &crate::ffi::Standard_Character,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_ctor_int_character(
-                length, filler,
-            ))
-        }
-    }
-
     /// **Source:** `TCollection_HAsciiString.hxx`:60 - `TCollection_HAsciiString::TCollection_HAsciiString()`
     /// Initializes a HAsciiString with an integer value
     pub fn new_int(value: i32) -> crate::OwnedPtr<Self> {
@@ -1399,20 +1295,6 @@ impl HAsciiString {
             crate::OwnedPtr::from_raw(
                 crate::ffi::TCollection_HAsciiString_ctor_handletcollectionhasciistring(aString),
             )
-        }
-    }
-
-    /// **Source:** `TCollection_HAsciiString.hxx`:81 - `TCollection_HAsciiString::TCollection_HAsciiString()`
-    /// Initializes a HAsciiString with a HExtendedString.
-    /// If replaceNonAscii is non-null character, it will be used
-    /// in place of any non-ascii character found in the source string.
-    /// Otherwise, creates UTF-8 unicode string.
-    pub fn new_handletcollectionhextendedstring_character(
-        aString: &crate::ffi::HandleTCollectionHExtendedString,
-        replaceNonAscii: &crate::ffi::Standard_Character,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HAsciiString_ctor_handletcollectionhextendedstring_character(aString, replaceNonAscii))
         }
     }
 
@@ -2102,40 +1984,6 @@ impl HExtendedString {
             crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_ctor_charptr(
                 c_message.as_ptr(),
             ))
-        }
-    }
-
-    /// **Source:** `TCollection_HExtendedString.hxx`:55 - `TCollection_HExtendedString::TCollection_HExtendedString()`
-    /// Initializes a HExtendedString with an ExtString.
-    pub fn new_extstring(message: &crate::ffi::Standard_ExtString) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_ctor_extstring(
-                message,
-            ))
-        }
-    }
-
-    /// **Source:** `TCollection_HExtendedString.hxx`:58 - `TCollection_HExtendedString::TCollection_HExtendedString()`
-    /// Initializes a HExtendedString with a single character.
-    pub fn new_extcharacter(aChar: &crate::ffi::Standard_ExtCharacter) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TCollection_HExtendedString_ctor_extcharacter(
-                aChar,
-            ))
-        }
-    }
-
-    /// **Source:** `TCollection_HExtendedString.hxx`:62 - `TCollection_HExtendedString::TCollection_HExtendedString()`
-    /// Initializes a HExtendedString with <length> space allocated.
-    /// and filled with <filler>. This is useful for buffers.
-    pub fn new_int_extcharacter(
-        length: i32,
-        filler: &crate::ffi::Standard_ExtCharacter,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::TCollection_HExtendedString_ctor_int_extcharacter(length, filler),
-            )
         }
     }
 

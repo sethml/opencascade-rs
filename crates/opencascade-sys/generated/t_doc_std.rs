@@ -105,6 +105,278 @@ impl TryFrom<i32> for FormatVersion {
 }
 
 // ========================
+// From TDocStd_Application.hxx
+// ========================
+
+/// **Source:** `TDocStd_Application.hxx`:67 - `TDocStd_Application`
+/// The abstract root class for all application classes.
+/// They are in charge of:
+/// -   Creating documents
+/// -   Storing documents and retrieving them
+/// -   Initializing document views.
+/// To create a useful OCAF-based application, you
+/// derive a class from Application and implement
+/// the methods below. You will have to redefine the
+/// deferred (virtual) methods Formats,
+/// InitDocument, and Resources, and override others.
+/// The application is a container for a document,
+/// which in its turn is the container of the data
+/// framework made up of labels and attributes.
+/// Besides furnishing a container for documents,
+/// TDocStd_Application provides the following
+/// services for them:
+/// -   Creation of new documents
+/// -   Activation of documents in sessions of an application
+/// -   Storage and retrieval of documents
+/// -   Initialization of document views.
+/// Note:
+/// If a client needs detailed information concerning
+/// the events during the Open/Store operation, a MessageDriver
+/// based on Message_PrinterOStream may be used. In case of need client
+/// can implement his own version inheriting from Message_Printer class
+/// and add it to the Messenger.
+/// Also the trace level of messages can be tuned by setting trace level (SetTraceLevel (Gravity ))
+/// for the used Printer. By default, trace level is Message_Info, so that all messages are output.
+pub use crate::ffi::TDocStd_Application as Application;
+
+unsafe impl crate::CppDeletable for Application {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TDocStd_Application_destructor(ptr);
+    }
+}
+
+impl Application {
+    /// **Source:** `TDocStd_Application.hxx`:72 - `TDocStd_Application::TDocStd_Application()`
+    /// Constructs the new instance and registers it in CDM_Session
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Application_ctor()) }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:76 - `TDocStd_Application::IsDriverLoaded()`
+    /// Check if meta data driver was successfully loaded
+    /// by the application constructor
+    pub fn is_driver_loaded(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Application_is_driver_loaded(self as *const Self) }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:96 - `TDocStd_Application::Resources()`
+    /// Returns resource manager defining supported persistent formats.
+    ///
+    /// Default implementation loads resource file with name ResourcesName(),
+    /// unless field myResources is already initialized (either by
+    /// previous call or in any other way).
+    ///
+    /// The resource manager should define:
+    ///
+    /// * Format name for each file extension supported:
+    /// - [Extension].FileFormat: [Format]
+    ///
+    /// * For each format supported (as returned by Formats()),
+    /// its extension, description string, and (when applicable)
+    /// GUIDs of storage and retrieval plugins:
+    /// - [Format].Description: [Description]
+    /// - [Format].FileExtension: [Extension]
+    /// - [Format].RetrievalPlugin: [GUID] (optional)
+    /// - [Format].StoragePlugin: [GUID] (optional)
+    pub fn resources(&mut self) -> crate::OwnedPtr<crate::ffi::HandleResourceManager> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Application_resources(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:127 - `TDocStd_Application::ResourcesName()`
+    /// Returns the name of the file containing the
+    /// resources of this application, for support of legacy
+    /// method of loading formats data from resource files.
+    ///
+    /// Method DefineFormat() can be used to define all necessary
+    /// parameters explicitly without actually using resource files.
+    ///
+    /// In a resource file, the application associates the
+    /// schema name of the document with the storage and
+    /// retrieval plug-ins that are to be loaded for each
+    /// document. On retrieval, the application reads the
+    /// schema name in the heading of the CSF file and
+    /// loads the plug-in indicated in the resource file.
+    /// This plug-in instantiates the actual driver for
+    /// transient-persistent conversion.
+    /// Your application can bring this process into play
+    /// by defining a class which inherits
+    /// CDF_Application and redefines the function
+    /// which returns the appropriate resources file. At
+    /// this point, the function Retrieve and the class
+    /// CDF_Store can be called. This allows you to
+    /// deal with storage and retrieval of - as well as
+    /// copying and pasting - documents.
+    /// To implement a class like this, several virtual
+    /// functions should be redefined. In particular, you
+    /// must redefine the abstract function Resources
+    /// inherited from the superclass CDM_Application.
+    ///
+    /// Default implementation returns empty string.
+    pub fn resources_name(&mut self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TDocStd_Application_resources_name(
+                self as *mut Self,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:157 - `TDocStd_Application::NbDocuments()`
+    /// returns the number of documents handled by the current applicative session.
+    pub fn nb_documents(&self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Application_nb_documents(self as *const Self) }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:221 - `TDocStd_Application::IsInSession()`
+    /// Returns an index for the document found in the
+    /// path path in this applicative session.
+    /// If the returned value is 0, the document is not
+    /// present in the applicative session.
+    /// This method can be used for the interactive part
+    /// of an application. For instance, on a call to
+    /// Open, the document to be opened may already
+    /// be in memory. IsInSession checks to see if this
+    /// is the case. Open can be made to depend on
+    /// the value of the index returned: if IsInSession
+    /// returns 0, the document is opened; if it returns
+    /// another value, a message is displayed asking the
+    /// user if he wants to override the version of the
+    /// document in memory.
+    /// Example:
+    /// Standard_Integer insession = A->IsInSession(aDoc);
+    /// if (insession > 0) {
+    /// std::cout << "document " << insession << " is already in session" << std::endl;
+    /// return 0;
+    /// }
+    pub fn is_in_session(&self, path: &crate::ffi::TCollection_ExtendedString) -> i32 {
+        unsafe { crate::ffi::TDocStd_Application_is_in_session(self as *const Self, path) }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:332 - `TDocStd_Application::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDocStd_Application_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:332 - `TDocStd_Application::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TDocStd_Application_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:332 - `TDocStd_Application::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDocStd_Application_get_type_descriptor()) }
+    }
+
+    /// Upcast to CDF_Application
+    pub fn as_cdf_application(&self) -> &crate::cdf::Application {
+        unsafe { &*(crate::ffi::TDocStd_Application_as_CDF_Application(self as *const Self)) }
+    }
+
+    /// Upcast to CDF_Application (mutable)
+    pub fn as_cdf_application_mut(&mut self) -> &mut crate::cdf::Application {
+        unsafe { &mut *(crate::ffi::TDocStd_Application_as_CDF_Application_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to CDM_Application
+    pub fn as_cdm_application(&self) -> &crate::cdm::Application {
+        unsafe { &*(crate::ffi::TDocStd_Application_as_CDM_Application(self as *const Self)) }
+    }
+
+    /// Upcast to CDM_Application (mutable)
+    pub fn as_cdm_application_mut(&mut self) -> &mut crate::cdm::Application {
+        unsafe { &mut *(crate::ffi::TDocStd_Application_as_CDM_Application_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:126 - `CDF_Application::CanRetrieve()`
+    pub fn can_retrieve(
+        &mut self,
+        theFolder: &crate::ffi::TCollection_ExtendedString,
+        theName: &crate::ffi::TCollection_ExtendedString,
+        theAppendMode: bool,
+    ) -> crate::pcdm::ReaderStatus {
+        unsafe {
+            crate::pcdm::ReaderStatus::try_from(
+                crate::ffi::TDocStd_Application_inherited_CanRetrieve(
+                    self as *mut Self,
+                    theFolder,
+                    theName,
+                    theAppendMode,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:136 - `CDF_Application::GetRetrieveStatus()`
+    pub fn get_retrieve_status(&self) -> crate::pcdm::ReaderStatus {
+        unsafe {
+            crate::pcdm::ReaderStatus::try_from(
+                crate::ffi::TDocStd_Application_inherited_GetRetrieveStatus(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:179 - `CDF_Application::Format()`
+    pub fn format(
+        &mut self,
+        aFileName: &crate::ffi::TCollection_ExtendedString,
+        theFormat: &mut crate::ffi::TCollection_ExtendedString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Application_inherited_Format(
+                self as *mut Self,
+                aFileName,
+                theFormat,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDF_Application.hxx`:187 - `CDF_Application::MetaDataDriver()`
+    pub fn meta_data_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleCDFMetaDataDriver> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Application_inherited_MetaDataDriver(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Application.hxx`:45 - `CDM_Application::MessageDriver()`
+    pub fn message_driver(&mut self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Application_inherited_MessageDriver(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Application.hxx`:61 - `CDM_Application::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Application_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Application.hxx`:64 - `CDM_Application::Version()`
+    pub fn version(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Application_inherited_Version(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ========================
 // From TDocStd_ApplicationDelta.hxx
 // ========================
 
@@ -306,6 +578,1037 @@ impl Context {
     /// **Source:** `TDocStd_Context.hxx`:35 - `TDocStd_Context::ModifiedReferences()`
     pub fn modified_references(&self) -> bool {
         unsafe { crate::ffi::TDocStd_Context_modified_references(self as *const Self) }
+    }
+}
+
+// ========================
+// From TDocStd_Document.hxx
+// ========================
+
+/// **Source:** `TDocStd_Document.hxx`:47 - `TDocStd_Document`
+/// The contents of a TDocStd_Application, a
+/// document is a container for a data framework
+/// composed of labels and attributes. As such,
+/// TDocStd_Document is the entry point into the data framework.
+/// To gain access to the data, you create a document as follows:
+/// Handle(TDocStd_Document) MyDF = new TDocStd_Document
+/// The document also allows you to manage:
+/// -   modifications, providing Undo and Redo functions.
+/// -   command transactions.
+/// Warning: The only data saved is the framework (TDF_Data)
+pub use crate::ffi::TDocStd_Document as Document;
+
+unsafe impl crate::CppDeletable for Document {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TDocStd_Document_destructor(ptr);
+    }
+}
+
+impl Document {
+    /// **Source:** `TDocStd_Document.hxx`:62 - `TDocStd_Document::TDocStd_Document()`
+    /// Constructs a document object defined by the
+    /// string astorageformat.
+    /// If a document is created outside of an application using this constructor, it must be
+    /// managed by a Handle. Otherwise memory problems could appear: call of
+    /// TDocStd_Owner::GetDocument creates a Handle(TDocStd_Document), so, releasing it will produce a
+    /// crash.
+    pub fn new_extendedstring(
+        astorageformat: &crate::ffi::TCollection_ExtendedString,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_ctor_extendedstring(
+                astorageformat,
+            ))
+        }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:65 - `TDocStd_Document::IsSaved()`
+    /// the document is saved in a file.
+    pub fn is_saved(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_is_saved(self as *const Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:69 - `TDocStd_Document::IsChanged()`
+    /// returns True if document differs from the state of last saving.
+    /// this method have to be called only working in the transaction mode
+    pub fn is_changed(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_is_changed(self as *const Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:72 - `TDocStd_Document::SetSaved()`
+    /// This method have to be called to show document that it has been saved
+    pub fn set_saved(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_set_saved(self as *mut Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:76 - `TDocStd_Document::SetSavedTime()`
+    /// Say to document what it is not saved.
+    /// Use value, returned earlier by GetSavedTime().
+    pub fn set_saved_time(&mut self, theTime: i32) {
+        unsafe { crate::ffi::TDocStd_Document_set_saved_time(self as *mut Self, theTime) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:79 - `TDocStd_Document::GetSavedTime()`
+    /// Returns value of <mySavedTime> to be used later in SetSavedTime()
+    pub fn get_saved_time(&self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Document_get_saved_time(self as *const Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:82 - `TDocStd_Document::GetName()`
+    /// raise if <me> is not saved.
+    pub fn get_name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_get_name(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:86 - `TDocStd_Document::GetPath()`
+    /// returns the OS  path of the  file, in which one <me> is
+    /// saved. Raise an exception if <me> is not saved.
+    pub fn get_path(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_get_path(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:88 - `TDocStd_Document::SetData()`
+    pub fn set_data(&mut self, data: &crate::ffi::HandleTDFData) {
+        unsafe { crate::ffi::TDocStd_Document_set_data(self as *mut Self, data) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:90 - `TDocStd_Document::GetData()`
+    pub fn get_data(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_get_data(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:94 - `TDocStd_Document::Main()`
+    /// Returns the main label in this data framework.
+    /// By definition, this is the label with the entry 0:1.
+    pub fn main(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_main(self as *const Self)) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:97 - `TDocStd_Document::IsEmpty()`
+    /// Returns True if the main label has no attributes
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_is_empty(self as *const Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:101 - `TDocStd_Document::IsValid()`
+    /// Returns False if the document has been modified
+    /// but not recomputed.
+    pub fn is_valid(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_is_valid(self as *const Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:105 - `TDocStd_Document::SetModified()`
+    /// Notify the label as modified, the Document becomes UnValid.
+    /// returns True if <L> has been notified as modified.
+    pub fn set_modified(&mut self, L: &crate::ffi::TDF_Label) {
+        unsafe { crate::ffi::TDocStd_Document_set_modified(self as *mut Self, L) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:109 - `TDocStd_Document::PurgeModified()`
+    /// Remove all modifications. After this call The document
+    /// becomesagain Valid.
+    pub fn purge_modified(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_purge_modified(self as *mut Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:116 - `TDocStd_Document::NewCommand()`
+    /// Launches a new command. This command may be undone.
+    pub fn new_command(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_new_command(self as *mut Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:119 - `TDocStd_Document::HasOpenCommand()`
+    /// returns True if a Command transaction is open in the current .
+    pub fn has_open_command(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_has_open_command(self as *const Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:125 - `TDocStd_Document::OpenCommand()`
+    /// Opens a new command transaction in this document.
+    /// You can use HasOpenCommand to see whether a command is already open.
+    /// Exceptions
+    /// Standard_DomainError if a command is already open in this document.
+    pub fn open_command(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_open_command(self as *mut Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:132 - `TDocStd_Document::CommitCommand()`
+    /// Commits documents transactions and fills the
+    /// transaction manager with documents that have
+    /// been changed during the transaction.
+    /// If no command transaction is open, nothing is done.
+    /// Returns True if a new delta has been added to myUndos.
+    pub fn commit_command(&mut self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_commit_command(self as *mut Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:136 - `TDocStd_Document::AbortCommand()`
+    /// Abort the  Command  transaction. Does nothing If there is
+    /// no Command transaction open.
+    pub fn abort_command(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_abort_command(self as *mut Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:139 - `TDocStd_Document::GetUndoLimit()`
+    /// The current limit on the number of undos
+    pub fn get_undo_limit(&self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Document_get_undo_limit(self as *const Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:146 - `TDocStd_Document::SetUndoLimit()`
+    /// Set the  limit on  the number of  Undo Delta  stored 0
+    /// will disable  Undo  on the  document A negative  value
+    /// means no limit. Note that by default Undo is disabled.
+    /// Enabling  it will  take effect with  the next  call to
+    /// NewCommand. Of course this limit is the same for Redo
+    pub fn set_undo_limit(&mut self, L: i32) {
+        unsafe { crate::ffi::TDocStd_Document_set_undo_limit(self as *mut Self, L) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:149 - `TDocStd_Document::ClearUndos()`
+    /// Remove all stored Undos and Redos
+    pub fn clear_undos(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_clear_undos(self as *mut Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:152 - `TDocStd_Document::ClearRedos()`
+    /// Remove all stored Redos
+    pub fn clear_redos(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_clear_redos(self as *mut Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:157 - `TDocStd_Document::GetAvailableUndos()`
+    /// Returns the number of undos stored in this
+    /// document. If this figure is greater than 0, the method Undo
+    /// can be used.
+    pub fn get_available_undos(&self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Document_get_available_undos(self as *const Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:163 - `TDocStd_Document::Undo()`
+    /// Will UNDO  one step, returns  False if no undo was
+    /// done (Undos == 0).
+    /// Otherwise, true is returned and one step in the
+    /// list of undoes is undone.
+    pub fn undo(&mut self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_undo(self as *mut Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:168 - `TDocStd_Document::GetAvailableRedos()`
+    /// Returns the number of redos stored in this
+    /// document. If this figure is greater than 0, the method Redo
+    /// can be used.
+    pub fn get_available_redos(&self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Document_get_available_redos(self as *const Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:173 - `TDocStd_Document::Redo()`
+    /// Will REDO  one step, returns  False if no redo was
+    /// done (Redos == 0).
+    /// Otherwise, true is returned, and one step in the list of redoes is done again.
+    pub fn redo(&mut self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_redo(self as *mut Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:181 - `TDocStd_Document::RemoveFirstUndo()`
+    /// Removes the first undo in the list of document undos.
+    /// It is used in the application when the undo limit is exceed.
+    pub fn remove_first_undo(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_remove_first_undo(self as *mut Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:186 - `TDocStd_Document::InitDeltaCompaction()`
+    /// Initializes the procedure of delta compaction
+    /// Returns false if there is no delta to compact
+    /// Marks the last delta as a "from" delta
+    pub fn init_delta_compaction(&mut self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_init_delta_compaction(self as *mut Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:191 - `TDocStd_Document::PerformDeltaCompaction()`
+    /// Performs the procedure of delta compaction
+    /// Makes all deltas starting from "from" delta
+    /// till the last one to be one delta.
+    pub fn perform_delta_compaction(&mut self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_perform_delta_compaction(self as *mut Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:196 - `TDocStd_Document::UpdateReferences()`
+    /// Set   modifications on  labels  impacted  by  external
+    /// references to the entry.  The document becomes invalid
+    /// and must be recomputed.
+    pub fn update_references(&mut self, aDocEntry: &crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::TDocStd_Document_update_references(self as *mut Self, aDocEntry) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:200 - `TDocStd_Document::Recompute()`
+    /// Recompute if the document was  not valid and propagate
+    /// the recorded modification.
+    pub fn recompute(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_recompute(self as *mut Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:220 - `TDocStd_Document::StorageFormat()`
+    pub fn storage_format(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_storage_format(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:223 - `TDocStd_Document::SetEmptyLabelsSavingMode()`
+    /// Sets saving mode for empty labels. If Standard_True, empty labels will be saved.
+    pub fn set_empty_labels_saving_mode(&mut self, isAllowed: bool) {
+        unsafe {
+            crate::ffi::TDocStd_Document_set_empty_labels_saving_mode(self as *mut Self, isAllowed)
+        }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:226 - `TDocStd_Document::EmptyLabelsSavingMode()`
+    /// Returns saving mode for empty labels.
+    pub fn empty_labels_saving_mode(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_empty_labels_saving_mode(self as *const Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:229 - `TDocStd_Document::ChangeStorageFormat()`
+    /// methods for the nested transaction mode
+    pub fn change_storage_format(
+        &mut self,
+        newStorageFormat: &crate::ffi::TCollection_ExtendedString,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_Document_change_storage_format(self as *mut Self, newStorageFormat)
+        }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:233 - `TDocStd_Document::SetNestedTransactionMode()`
+    /// Sets nested transaction mode if isAllowed == Standard_True
+    pub fn set_nested_transaction_mode(&mut self, isAllowed: bool) {
+        unsafe {
+            crate::ffi::TDocStd_Document_set_nested_transaction_mode(self as *mut Self, isAllowed)
+        }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:236 - `TDocStd_Document::IsNestedTransactionMode()`
+    /// Returns Standard_True if mode is set
+    pub fn is_nested_transaction_mode(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_is_nested_transaction_mode(self as *const Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:239 - `TDocStd_Document::SetModificationMode()`
+    /// if theTransactionOnly is True changes is denied outside transactions
+    pub fn set_modification_mode(&mut self, theTransactionOnly: bool) {
+        unsafe {
+            crate::ffi::TDocStd_Document_set_modification_mode(
+                self as *mut Self,
+                theTransactionOnly,
+            )
+        }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:242 - `TDocStd_Document::ModificationMode()`
+    /// returns True if changes allowed only inside transactions
+    pub fn modification_mode(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_modification_mode(self as *const Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:245 - `TDocStd_Document::BeforeClose()`
+    /// Prepares document for closing
+    pub fn before_close(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_before_close(self as *mut Self) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:248 - `TDocStd_Document::StorageFormatVersion()`
+    /// Returns version of the format to be used to store the document
+    pub fn storage_format_version(&self) -> crate::t_doc_std::FormatVersion {
+        unsafe {
+            crate::t_doc_std::FormatVersion::try_from(
+                crate::ffi::TDocStd_Document_storage_format_version(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:251 - `TDocStd_Document::ChangeStorageFormatVersion()`
+    /// Sets version of the format to be used to store the document
+    pub fn change_storage_format_version(&mut self, theVersion: crate::t_doc_std::FormatVersion) {
+        unsafe {
+            crate::ffi::TDocStd_Document_change_storage_format_version(
+                self as *mut Self,
+                theVersion.into(),
+            )
+        }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:259 - `TDocStd_Document::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDocStd_Document_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:254 - `TDocStd_Document::CurrentStorageFormatVersion()`
+    /// Returns current storage format version of the document.
+    pub fn current_storage_format_version() -> crate::t_doc_std::FormatVersion {
+        unsafe {
+            crate::t_doc_std::FormatVersion::try_from(
+                crate::ffi::TDocStd_Document_current_storage_format_version(),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:259 - `TDocStd_Document::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TDocStd_Document_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:259 - `TDocStd_Document::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDocStd_Document_get_type_descriptor()) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:115 - `CDM_Document::RemoveReference()`
+    pub fn remove_reference(&mut self, aReferenceIdentifier: i32) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_RemoveReference(
+                self as *mut Self,
+                aReferenceIdentifier,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:118 - `CDM_Document::RemoveAllReferences()`
+    pub fn remove_all_references(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_RemoveAllReferences(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:128 - `CDM_Document::IsInSession()`
+    pub fn is_in_session(&self, aReferenceIdentifier: i32) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_IsInSession(
+                self as *const Self,
+                aReferenceIdentifier,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:133 - `CDM_Document::IsStored()`
+    pub fn is_stored(&self, aReferenceIdentifier: i32) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_IsStored(
+                self as *const Self,
+                aReferenceIdentifier,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:138 - `CDM_Document::Name()`
+    pub fn name(
+        &self,
+        aReferenceIdentifier: i32,
+    ) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_Name(
+                self as *const Self,
+                aReferenceIdentifier,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:152 - `CDM_Document::ToReferencesNumber()`
+    pub fn to_references_number(&self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Document_inherited_ToReferencesNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:156 - `CDM_Document::FromReferencesNumber()`
+    pub fn from_references_number(&self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Document_inherited_FromReferencesNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:172 - `CDM_Document::IsReadOnly()`
+    pub fn is_read_only(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_inherited_IsReadOnly(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:177 - `CDM_Document::SetIsReadOnly()`
+    pub fn set_is_read_only(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_SetIsReadOnly(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:179 - `CDM_Document::UnsetIsReadOnly()`
+    pub fn unset_is_read_only(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_UnsetIsReadOnly(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:183 - `CDM_Document::Modify()`
+    pub fn modify(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_Modify(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:186 - `CDM_Document::Modifications()`
+    pub fn modifications(&self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Document_inherited_Modifications(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:188 - `CDM_Document::UnModify()`
+    pub fn un_modify(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_UnModify(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:194 - `CDM_Document::IsUpToDate()`
+    pub fn is_up_to_date(&self, aReferenceIdentifier: i32) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_IsUpToDate(
+                self as *const Self,
+                aReferenceIdentifier,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:200 - `CDM_Document::SetIsUpToDate()`
+    pub fn set_is_up_to_date(&mut self, aReferenceIdentifier: i32) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetIsUpToDate(
+                self as *mut Self,
+                aReferenceIdentifier,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:203 - `CDM_Document::SetComment()`
+    pub fn set_comment(&mut self, aComment: &crate::ffi::TCollection_ExtendedString) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_SetComment(self as *mut Self, aComment) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:206 - `CDM_Document::AddComment()`
+    pub fn add_comment(&mut self, aComment: &crate::ffi::TCollection_ExtendedString) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_AddComment(self as *mut Self, aComment) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:223 - `CDM_Document::StorageVersion()`
+    pub fn storage_version(&self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Document_inherited_StorageVersion(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:230 - `CDM_Document::UnsetIsStored()`
+    pub fn unset_is_stored(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_UnsetIsStored(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:234 - `CDM_Document::Folder()`
+    pub fn folder(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_Folder(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:237 - `CDM_Document::SetRequestedFolder()`
+    pub fn set_requested_folder(&mut self, aFolder: &crate::ffi::TCollection_ExtendedString) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetRequestedFolder(self as *mut Self, aFolder)
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:239 - `CDM_Document::RequestedFolder()`
+    pub fn requested_folder(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_RequestedFolder(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:241 - `CDM_Document::HasRequestedFolder()`
+    pub fn has_requested_folder(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_inherited_HasRequestedFolder(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:244 - `CDM_Document::SetRequestedName()`
+    pub fn set_requested_name(&mut self, aName: &crate::ffi::TCollection_ExtendedString) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_SetRequestedName(self as *mut Self, aName) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:249 - `CDM_Document::RequestedName()`
+    pub fn requested_name(&mut self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_RequestedName(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:251 - `CDM_Document::SetRequestedPreviousVersion()`
+    pub fn set_requested_previous_version(
+        &mut self,
+        aPreviousVersion: &crate::ffi::TCollection_ExtendedString,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetRequestedPreviousVersion(
+                self as *mut Self,
+                aPreviousVersion,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:254 - `CDM_Document::UnsetRequestedPreviousVersion()`
+    pub fn unset_requested_previous_version(&mut self) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_UnsetRequestedPreviousVersion(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:256 - `CDM_Document::HasRequestedPreviousVersion()`
+    pub fn has_requested_previous_version(&self) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_HasRequestedPreviousVersion(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:258 - `CDM_Document::RequestedPreviousVersion()`
+    pub fn requested_previous_version(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDocStd_Document_inherited_RequestedPreviousVersion(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:261 - `CDM_Document::SetRequestedComment()`
+    pub fn set_requested_comment(&mut self, aComment: &crate::ffi::TCollection_ExtendedString) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetRequestedComment(self as *mut Self, aComment)
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:263 - `CDM_Document::RequestedComment()`
+    pub fn requested_comment(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_RequestedComment(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:266 - `CDM_Document::LoadResources()`
+    pub fn load_resources(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_LoadResources(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:268 - `CDM_Document::FindFileExtension()`
+    pub fn find_file_extension(&mut self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_inherited_FindFileExtension(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:271 - `CDM_Document::FileExtension()`
+    pub fn file_extension(&mut self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_FileExtension(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:273 - `CDM_Document::FindDescription()`
+    pub fn find_description(&mut self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_inherited_FindDescription(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:276 - `CDM_Document::Description()`
+    pub fn description(&mut self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_Description(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:280 - `CDM_Document::IsModified()`
+    pub fn is_modified(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_inherited_IsModified(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:285 - `CDM_Document::IsOpened()`
+    pub fn is_opened(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Document_inherited_IsOpened(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:287 - `CDM_Document::Open()`
+    pub fn open(&mut self, anApplication: &crate::ffi::HandleCDMApplication) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_Open(self as *mut Self, anApplication) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:289 - `CDM_Document::CanClose()`
+    pub fn can_close(&self) -> crate::cdm::CanCloseStatus {
+        unsafe {
+            crate::cdm::CanCloseStatus::try_from(crate::ffi::TDocStd_Document_inherited_CanClose(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:291 - `CDM_Document::Close()`
+    pub fn close(&mut self) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_Close(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:293 - `CDM_Document::Application()`
+    pub fn application(&self) -> &crate::ffi::HandleCDMApplication {
+        unsafe { &*(crate::ffi::TDocStd_Document_inherited_Application(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:327 - `CDM_Document::ReferenceCounter()`
+    pub fn reference_counter(&self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Document_inherited_ReferenceCounter(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:335 - `CDM_Document::Reference()`
+    pub fn reference(
+        &self,
+        aReferenceIdentifier: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleCDMReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_Reference(
+                self as *const Self,
+                aReferenceIdentifier,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:338 - `CDM_Document::SetModifications()`
+    pub fn set_modifications(&mut self, Modifications: i32) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetModifications(
+                self as *mut Self,
+                Modifications,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:340 - `CDM_Document::SetReferenceCounter()`
+    pub fn set_reference_counter(&mut self, aReferenceCounter: i32) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_SetReferenceCounter(
+                self as *mut Self,
+                aReferenceCounter,
+            )
+        }
+    }
+}
+
+// ========================
+// From TDocStd_Modified.hxx
+// ========================
+
+/// **Source:** `TDocStd_Modified.hxx`:35 - `TDocStd_Modified`
+/// Transient attribute which register modified labels.
+/// This attribute is attached to root label.
+pub use crate::ffi::TDocStd_Modified as Modified;
+
+unsafe impl crate::CppDeletable for Modified {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TDocStd_Modified_destructor(ptr);
+    }
+}
+
+impl Modified {
+    /// **Source:** `TDocStd_Modified.hxx`:59 - `TDocStd_Modified::TDocStd_Modified()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Modified_ctor()) }
+    }
+
+    /// **Source:** `TDocStd_Modified.hxx`:61 - `TDocStd_Modified::IsEmpty()`
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Modified_is_empty(self as *const Self) }
+    }
+
+    /// **Source:** `TDocStd_Modified.hxx`:63 - `TDocStd_Modified::Clear()`
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::TDocStd_Modified_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `TDocStd_Modified.hxx`:66 - `TDocStd_Modified::AddLabel()`
+    /// add <L> as modified
+    pub fn add_label(&mut self, L: &crate::ffi::TDF_Label) -> bool {
+        unsafe { crate::ffi::TDocStd_Modified_add_label(self as *mut Self, L) }
+    }
+
+    /// **Source:** `TDocStd_Modified.hxx`:69 - `TDocStd_Modified::RemoveLabel()`
+    /// remove  <L> as modified
+    pub fn remove_label(&mut self, L: &crate::ffi::TDF_Label) -> bool {
+        unsafe { crate::ffi::TDocStd_Modified_remove_label(self as *mut Self, L) }
+    }
+
+    /// **Source:** `TDocStd_Modified.hxx`:74 - `TDocStd_Modified::ID()`
+    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+        unsafe { &*(crate::ffi::TDocStd_Modified_id(self as *const Self)) }
+    }
+
+    /// **Source:** `TDocStd_Modified.hxx`:76 - `TDocStd_Modified::Restore()`
+    pub fn restore(&mut self, With: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::TDocStd_Modified_restore(self as *mut Self, With) }
+    }
+
+    /// **Source:** `TDocStd_Modified.hxx`:78 - `TDocStd_Modified::NewEmpty()`
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Modified_new_empty(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TDocStd_Modified.hxx`:80 - `TDocStd_Modified::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDocStd_Modified_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDocStd_Modified.hxx`:85 - `TDocStd_Modified::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDocStd_Modified_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TDocStd_Modified.hxx`:41 - `TDocStd_Modified::IsEmpty()`
+    /// API class methods
+    /// =================
+    pub fn is_empty_label(access: &crate::ffi::TDF_Label) -> bool {
+        unsafe { crate::ffi::TDocStd_Modified_is_empty_label(access) }
+    }
+
+    /// **Source:** `TDocStd_Modified.hxx`:43 - `TDocStd_Modified::Add()`
+    pub fn add(alabel: &crate::ffi::TDF_Label) -> bool {
+        unsafe { crate::ffi::TDocStd_Modified_add(alabel) }
+    }
+
+    /// **Source:** `TDocStd_Modified.hxx`:45 - `TDocStd_Modified::Remove()`
+    pub fn remove(alabel: &crate::ffi::TDF_Label) -> bool {
+        unsafe { crate::ffi::TDocStd_Modified_remove(alabel) }
+    }
+
+    /// **Source:** `TDocStd_Modified.hxx`:47 - `TDocStd_Modified::Contains()`
+    pub fn contains(alabel: &crate::ffi::TDF_Label) -> bool {
+        unsafe { crate::ffi::TDocStd_Modified_contains(alabel) }
+    }
+
+    /// **Source:** `TDocStd_Modified.hxx`:53 - `TDocStd_Modified::Clear()`
+    /// remove all modified labels. becomes empty
+    pub fn clear_label(access: &crate::ffi::TDF_Label) {
+        unsafe { crate::ffi::TDocStd_Modified_clear_label(access) }
+    }
+
+    /// **Source:** `TDocStd_Modified.hxx`:57 - `TDocStd_Modified::GetID()`
+    /// Modified methods
+    /// ================
+    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+        unsafe { &*(crate::ffi::TDocStd_Modified_get_id()) }
+    }
+
+    /// **Source:** `TDocStd_Modified.hxx`:85 - `TDocStd_Modified::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TDocStd_Modified_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TDocStd_Modified.hxx`:85 - `TDocStd_Modified::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDocStd_Modified_get_type_descriptor()) }
+    }
+
+    /// Upcast to TDF_Attribute
+    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
+        unsafe { &*(crate::ffi::TDocStd_Modified_as_TDF_Attribute(self as *const Self)) }
+    }
+
+    /// Upcast to TDF_Attribute (mutable)
+    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
+        unsafe { &mut *(crate::ffi::TDocStd_Modified_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+        unsafe { crate::ffi::TDocStd_Modified_inherited_SetID(self as *mut Self, arg0) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Modified_inherited_Label(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    pub fn transaction(&self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Modified_inherited_Transaction(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    pub fn until_transaction(&self) -> i32 {
+        unsafe { crate::ffi::TDocStd_Modified_inherited_UntilTransaction(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    pub fn is_valid(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Modified_inherited_IsValid(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    pub fn is_new(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Modified_inherited_IsNew(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    pub fn is_forgotten(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Modified_inherited_IsForgotten(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+        unsafe { crate::ffi::TDocStd_Modified_inherited_IsAttribute(self as *const Self, anID) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    pub fn find_attribute(
+        &self,
+        anID: &crate::ffi::Standard_GUID,
+        anAttribute: &mut crate::ffi::HandleTDFAttribute,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Modified_inherited_FindAttribute(
+                self as *const Self,
+                anID,
+                anAttribute,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::TDocStd_Modified_inherited_AddAttribute(self as *const Self, other) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Modified_inherited_ForgetAttribute(self as *const Self, aguid)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    pub fn forget_all_attributes(&self, clearChildren: bool) {
+        unsafe {
+            crate::ffi::TDocStd_Modified_inherited_ForgetAllAttributes(
+                self as *const Self,
+                clearChildren,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    pub fn after_addition(&mut self) {
+        unsafe { crate::ffi::TDocStd_Modified_inherited_AfterAddition(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
+    pub fn before_removal(&mut self) {
+        unsafe { crate::ffi::TDocStd_Modified_inherited_BeforeRemoval(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    pub fn before_forget(&mut self) {
+        unsafe { crate::ffi::TDocStd_Modified_inherited_BeforeForget(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    pub fn after_resume(&mut self) {
+        unsafe { crate::ffi::TDocStd_Modified_inherited_AfterResume(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
+        unsafe { crate::ffi::TDocStd_Modified_inherited_AfterRetrieval(self as *mut Self, forceIt) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    pub fn before_undo(
+        &mut self,
+        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        forceIt: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Modified_inherited_BeforeUndo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
+    pub fn after_undo(
+        &mut self,
+        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        forceIt: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TDocStd_Modified_inherited_AfterUndo(self as *mut Self, anAttDelta, forceIt)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    pub fn before_commit_transaction(&mut self) {
+        unsafe { crate::ffi::TDocStd_Modified_inherited_BeforeCommitTransaction(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    pub fn backup(&mut self) {
+        unsafe { crate::ffi::TDocStd_Modified_inherited_Backup(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    pub fn is_backuped(&self) -> bool {
+        unsafe { crate::ffi::TDocStd_Modified_inherited_IsBackuped(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
+    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Modified_inherited_BackupCopy(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDocStd_Modified_inherited_References(self as *const Self, aDataSet) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    pub fn forget(&mut self, aTransaction: i32) {
+        unsafe { crate::ffi::TDocStd_Modified_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
 
@@ -578,6 +1881,15 @@ impl Owner {
         }
     }
 
+    /// **Source:** `TDocStd_Owner.hxx`:68 - `TDocStd_Owner::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDocStd_Owner_paste(self as *const Self, Into, RT) }
+    }
+
     /// **Source:** `TDocStd_Owner.hxx`:77 - `TDocStd_Owner::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDocStd_Owner_dynamic_type(self as *const Self)) }
@@ -762,6 +2074,11 @@ impl Owner {
                 self as *const Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDocStd_Owner_inherited_References(self as *const Self, aDataSet) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
@@ -956,6 +2273,18 @@ impl XLink {
         }
     }
 
+    /// **Source:** `TDocStd_XLink.hxx`:105 - `TDocStd_XLink::Paste()`
+    /// Does nothing.
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_XLink_paste(self as *const Self, intoAttribute, aRelocationTable)
+        }
+    }
+
     /// **Source:** `TDocStd_XLink.hxx`:115 - `TDocStd_XLink::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDocStd_XLink_dynamic_type(self as *const Self)) }
@@ -1100,6 +2429,11 @@ impl XLink {
         unsafe { crate::ffi::TDocStd_XLink_inherited_IsBackuped(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDocStd_XLink_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDocStd_XLink_inherited_Forget(self as *mut Self, aTransaction) }
@@ -1189,6 +2523,22 @@ impl XLinkRoot {
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLinkRoot_new_empty(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TDocStd_XLinkRoot.hxx`:67 - `TDocStd_XLinkRoot::Paste()`
+    /// Does nothing.
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_XLinkRoot_paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
         }
     }
 
@@ -1382,6 +2732,11 @@ impl XLinkRoot {
         unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_IsBackuped(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_Forget(self as *mut Self, aTransaction) }
@@ -1482,6 +2837,22 @@ impl XLinkTool {
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::TDocStd_XLinkTool_is_done(self as *const Self) }
     }
+
+    /// **Source:** `TDocStd_XLinkTool.hxx`:94 - `TDocStd_XLinkTool::DataSet()`
+    pub fn data_set(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDataSet> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLinkTool_data_set(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TDocStd_XLinkTool.hxx`:96 - `TDocStd_XLinkTool::RelocationTable()`
+    pub fn relocation_table(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFRelocationTable> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLinkTool_relocation_table(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
 // ========================
@@ -1489,6 +2860,6 @@ impl XLinkTool {
 // ========================
 
 pub use crate::ffi::{
-    TDocStd_Document as Document, TDocStd_SequenceOfApplicationDelta as SequenceOfApplicationDelta,
+    TDocStd_SequenceOfApplicationDelta as SequenceOfApplicationDelta,
     TDocStd_SequenceOfDocument as SequenceOfDocument, TDocStd_XLinkPtr as XLinkPtr,
 };

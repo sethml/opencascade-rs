@@ -359,6 +359,26 @@ impl Axis {
         unsafe { crate::ffi::TDataXtd_Axis_inherited_Restore(self as *mut Self, anAttribute) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TDataXtd_Axis_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataXtd_Axis_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataXtd_Axis_inherited_Forget(self as *mut Self, aTransaction) }
@@ -500,6 +520,20 @@ impl Constraint {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `TDataXtd_Constraint.hxx`:186 - `TDataXtd_Constraint::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataXtd_Constraint_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDataXtd_Constraint.hxx`:191 - `TDataXtd_Constraint::References()`
+    pub fn references(&self, DS: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataXtd_Constraint_references(self as *const Self, DS) }
     }
 
     /// **Source:** `TDataXtd_Constraint.hxx`:193 - `TDataXtd_Constraint::DynamicType()`
@@ -773,6 +807,15 @@ impl Geometry {
         }
     }
 
+    /// **Source:** `TDataXtd_Geometry.hxx`:135 - `TDataXtd_Geometry::Paste()`
+    pub fn paste(
+        &self,
+        into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataXtd_Geometry_paste(self as *const Self, into, RT) }
+    }
+
     /// **Source:** `TDataXtd_Geometry.hxx`:140 - `TDataXtd_Geometry::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDataXtd_Geometry_dynamic_type(self as *const Self)) }
@@ -1024,6 +1067,11 @@ impl Geometry {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataXtd_Geometry_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataXtd_Geometry_inherited_Forget(self as *mut Self, aTransaction) }
@@ -1267,6 +1315,26 @@ impl Pattern {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TDataXtd_Pattern_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataXtd_Pattern_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataXtd_Pattern_inherited_Forget(self as *mut Self, aTransaction) }
@@ -1351,6 +1419,20 @@ impl PatternStd {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `TDataXtd_PatternStd.hxx`:102 - `TDataXtd_PatternStd::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataXtd_PatternStd_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDataXtd_PatternStd.hxx`:105 - `TDataXtd_PatternStd::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataXtd_PatternStd_references(self as *const Self, aDataSet) }
     }
 
     /// **Source:** `TDataXtd_PatternStd.hxx`:110 - `TDataXtd_PatternStd::DynamicType()`
@@ -1824,6 +1906,28 @@ impl Placement {
         unsafe { crate::ffi::TDataXtd_Placement_inherited_Restore(self as *mut Self, anAttribute) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TDataXtd_Placement_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::TDataXtd_Placement_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataXtd_Placement_inherited_Forget(self as *mut Self, aTransaction) }
@@ -2067,6 +2171,26 @@ impl Plane {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
     pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
         unsafe { crate::ffi::TDataXtd_Plane_inherited_Restore(self as *mut Self, anAttribute) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TDataXtd_Plane_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataXtd_Plane_inherited_References(self as *const Self, aDataSet) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
@@ -2317,6 +2441,26 @@ impl Point {
         unsafe { crate::ffi::TDataXtd_Point_inherited_Restore(self as *mut Self, anAttribute) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TDataXtd_Point_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataXtd_Point_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataXtd_Point_inherited_Forget(self as *mut Self, aTransaction) }
@@ -2362,6 +2506,28 @@ impl Position {
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Position_new_empty(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TDataXtd_Position.hxx`:70 - `TDataXtd_Position::Paste()`
+    /// This method is different from the "Copy" one,
+    /// because it is used when copying an attribute from
+    /// a source structure into a target structure. This
+    /// method pastes the current attribute to the label
+    /// corresponding to the insertor. The pasted
+    /// attribute may be a brand new one or a new version
+    /// of the previous one.
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocTationable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TDataXtd_Position_paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocTationable,
+            )
         }
     }
 
@@ -2587,6 +2753,11 @@ impl Position {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataXtd_Position_inherited_References(self as *const Self, aDataSet) }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataXtd_Position_inherited_Forget(self as *mut Self, aTransaction) }
@@ -2637,6 +2808,28 @@ impl Presentation {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Presentation_new_empty(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// **Source:** `TDataXtd_Presentation.hxx`:72 - `TDataXtd_Presentation::Paste()`
+    /// This method is different from the "Copy" one,
+    /// because it is used when copying an attribute from
+    /// a source structure into a target structure. This
+    /// method pastes the current attribute to the label
+    /// corresponding to the insertor. The pasted
+    /// attribute may be a brand new one or a new version
+    /// of the previous one.
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocTationable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TDataXtd_Presentation_paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocTationable,
+            )
         }
     }
 
@@ -3055,6 +3248,13 @@ impl Presentation {
         unsafe { crate::ffi::TDataXtd_Presentation_inherited_IsBackuped(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::TDataXtd_Presentation_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -3087,6 +3287,11 @@ impl Shape {
     /// **Source:** `TDataXtd_Shape.hxx`:58 - `TDataXtd_Shape::ID()`
     pub fn id(&self) -> &crate::ffi::Standard_GUID {
         unsafe { &*(crate::ffi::TDataXtd_Shape_id(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataXtd_Shape.hxx`:60 - `TDataXtd_Shape::References()`
+    pub fn references(&self, DS: &crate::ffi::HandleTDFDataSet) {
+        unsafe { crate::ffi::TDataXtd_Shape_references(self as *const Self, DS) }
     }
 
     /// **Source:** `TDataXtd_Shape.hxx`:64 - `TDataXtd_Shape::DynamicType()`
@@ -3306,6 +3511,21 @@ impl Shape {
         unsafe { crate::ffi::TDataXtd_Shape_inherited_Restore(self as *mut Self, anAttribute) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    pub fn paste(
+        &self,
+        intoAttribute: &crate::ffi::HandleTDFAttribute,
+        aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TDataXtd_Shape_inherited_Paste(
+                self as *const Self,
+                intoAttribute,
+                aRelocationTable,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataXtd_Shape_inherited_Forget(self as *mut Self, aTransaction) }
@@ -3504,6 +3724,15 @@ impl Triangulation {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `TDataXtd_Triangulation.hxx`:144 - `TDataXtd_Triangulation::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataXtd_Triangulation_paste(self as *const Self, Into, RT) }
     }
 
     /// **Source:** `TDataXtd_Triangulation.hxx`:149 - `TDataXtd_Triangulation::DynamicType()`
@@ -3710,6 +3939,13 @@ impl Triangulation {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Triangulation_inherited_BackupCopy(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::TDataXtd_Triangulation_inherited_References(self as *const Self, aDataSet)
         }
     }
 
