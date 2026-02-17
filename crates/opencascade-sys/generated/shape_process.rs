@@ -6,8 +6,458 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `ShapeProcess.hxx`:77 - `ShapeProcess::RegisterOperator`
+/// Registers operator to make it visible for Performer
+pub fn register_operator(name: &str, op: &crate::ffi::HandleShapeProcessOperator) -> bool {
+    let c_name = std::ffi::CString::new(name).unwrap();
+    unsafe { crate::ffi::ShapeProcess_register_operator(c_name.as_ptr(), op) }
+}
+/// **Source:** `ShapeProcess.hxx`:81 - `ShapeProcess::FindOperator`
+/// Finds operator by its name
+pub fn find_operator(name: &str, op: &mut crate::ffi::HandleShapeProcessOperator) -> bool {
+    let c_name = std::ffi::CString::new(name).unwrap();
+    unsafe { crate::ffi::ShapeProcess_find_operator(c_name.as_ptr(), op) }
+}
+/// **Source:** `ShapeProcess.hxx`:87 - `ShapeProcess::Perform`
+/// Performs a specified sequence of operators on Context
+/// Resource file and other data should be already loaded
+/// to Context (including description of sequence seq)
+pub fn perform(
+    context: &crate::ffi::HandleShapeProcessContext,
+    seq: &str,
+    theProgress: &crate::ffi::Message_ProgressRange,
+) -> bool {
+    let c_seq = std::ffi::CString::new(seq).unwrap();
+    unsafe { crate::ffi::ShapeProcess_perform(context, c_seq.as_ptr(), theProgress) }
+}
+
+// ========================
+// From ShapeProcess_Context.hxx
+// ========================
+
+/// **Source:** `ShapeProcess_Context.hxx`:38 - `ShapeProcess_Context`
+/// Provides convenient interface to resource file
+/// Allows to load resource file and get values of
+/// attributes starting from some scope, for example
+/// if scope is defined as "ToV4" and requested parameter
+/// is "exec.op", value of "ToV4.exec.op" parameter from
+/// the resource file will be returned
+pub use crate::ffi::ShapeProcess_Context as Context;
+
+unsafe impl crate::CppDeletable for Context {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeProcess_Context_destructor(ptr);
+    }
+}
+
+impl Context {
+    /// **Source:** `ShapeProcess_Context.hxx`:43 - `ShapeProcess_Context::ShapeProcess_Context()`
+    /// Creates an empty tool
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeProcess_Context_ctor()) }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:48 - `ShapeProcess_Context::ShapeProcess_Context()`
+    /// Creates a new tool and initialises by name of
+    /// resource file and (if specified) starting scope
+    /// Calls method Init()
+    pub fn new_charptr2(file: &str, scope: &str) -> crate::OwnedPtr<Self> {
+        let c_file = std::ffi::CString::new(file).unwrap();
+        let c_scope = std::ffi::CString::new(scope).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeProcess_Context_ctor_charptr2(
+                c_file.as_ptr(),
+                c_scope.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:54 - `ShapeProcess_Context::Init()`
+    /// Initialises a tool by loading resource file and
+    /// (if specified) sets starting scope
+    /// Returns False if resource file not found
+    pub fn init(&mut self, file: &str, scope: &str) -> bool {
+        let c_file = std::ffi::CString::new(file).unwrap();
+        let c_scope = std::ffi::CString::new(scope).unwrap();
+        unsafe {
+            crate::ffi::ShapeProcess_Context_init(
+                self as *mut Self,
+                c_file.as_ptr(),
+                c_scope.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:66 - `ShapeProcess_Context::SetScope()`
+    /// Set a new (sub)scope
+    pub fn set_scope(&mut self, scope: &str) {
+        let c_scope = std::ffi::CString::new(scope).unwrap();
+        unsafe { crate::ffi::ShapeProcess_Context_set_scope(self as *mut Self, c_scope.as_ptr()) }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:69 - `ShapeProcess_Context::UnSetScope()`
+    /// Go out of current scope
+    pub fn un_set_scope(&mut self) {
+        unsafe { crate::ffi::ShapeProcess_Context_un_set_scope(self as *mut Self) }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:72 - `ShapeProcess_Context::IsParamSet()`
+    /// Returns True if parameter is defined in the resource file
+    pub fn is_param_set(&self, param: &str) -> bool {
+        let c_param = std::ffi::CString::new(param).unwrap();
+        unsafe {
+            crate::ffi::ShapeProcess_Context_is_param_set(self as *const Self, c_param.as_ptr())
+        }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:74 - `ShapeProcess_Context::GetReal()`
+    pub fn get_real(&self, param: &str, val: &mut f64) -> bool {
+        let c_param = std::ffi::CString::new(param).unwrap();
+        unsafe {
+            crate::ffi::ShapeProcess_Context_get_real(self as *const Self, c_param.as_ptr(), val)
+        }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:76 - `ShapeProcess_Context::GetInteger()`
+    pub fn get_integer(&self, param: &str, val: &mut i32) -> bool {
+        let c_param = std::ffi::CString::new(param).unwrap();
+        unsafe {
+            crate::ffi::ShapeProcess_Context_get_integer(self as *const Self, c_param.as_ptr(), val)
+        }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:79 - `ShapeProcess_Context::GetBoolean()`
+    pub fn get_boolean(&self, param: &str, val: &mut bool) -> bool {
+        let c_param = std::ffi::CString::new(param).unwrap();
+        unsafe {
+            crate::ffi::ShapeProcess_Context_get_boolean(self as *const Self, c_param.as_ptr(), val)
+        }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:84 - `ShapeProcess_Context::GetString()`
+    /// Get value of parameter as being of specific type
+    /// Returns False if parameter is not defined or has a wrong type
+    pub fn get_string(&self, param: &str, val: &mut crate::ffi::TCollection_AsciiString) -> bool {
+        let c_param = std::ffi::CString::new(param).unwrap();
+        unsafe {
+            crate::ffi::ShapeProcess_Context_get_string(self as *const Self, c_param.as_ptr(), val)
+        }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:87 - `ShapeProcess_Context::RealVal()`
+    pub fn real_val(&self, param: &str, def: f64) -> f64 {
+        let c_param = std::ffi::CString::new(param).unwrap();
+        unsafe {
+            crate::ffi::ShapeProcess_Context_real_val(self as *const Self, c_param.as_ptr(), def)
+        }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:90 - `ShapeProcess_Context::IntegerVal()`
+    pub fn integer_val(&self, param: &str, def: i32) -> i32 {
+        let c_param = std::ffi::CString::new(param).unwrap();
+        unsafe {
+            crate::ffi::ShapeProcess_Context_integer_val(self as *const Self, c_param.as_ptr(), def)
+        }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:93 - `ShapeProcess_Context::BooleanVal()`
+    pub fn boolean_val(&self, param: &str, def: bool) -> bool {
+        let c_param = std::ffi::CString::new(param).unwrap();
+        unsafe {
+            crate::ffi::ShapeProcess_Context_boolean_val(self as *const Self, c_param.as_ptr(), def)
+        }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:99 - `ShapeProcess_Context::StringVal()`
+    /// Get value of parameter as being of specific type
+    /// If parameter is not defined or does not have expected
+    /// type, returns default value as specified
+    pub fn string_val(&self, param: &str, def: &str) -> String {
+        let c_param = std::ffi::CString::new(param).unwrap();
+        let c_def = std::ffi::CString::new(def).unwrap();
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::ShapeProcess_Context_string_val(
+                self as *const Self,
+                c_param.as_ptr(),
+                c_def.as_ptr(),
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:103 - `ShapeProcess_Context::SetMessenger()`
+    /// Sets Messenger used for outputting messages.
+    pub fn set_messenger(&mut self, messenger: &crate::ffi::HandleMessageMessenger) {
+        unsafe { crate::ffi::ShapeProcess_Context_set_messenger(self as *mut Self, messenger) }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:106 - `ShapeProcess_Context::Messenger()`
+    /// Returns Messenger used for outputting messages.
+    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeProcess_Context_messenger(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:114 - `ShapeProcess_Context::SetTraceLevel()`
+    /// Sets trace level used for outputting messages
+    /// - 0: no trace at all
+    /// - 1: errors
+    /// - 2: errors and warnings
+    /// - 3: all messages
+    /// Default is 1 : Errors traced
+    pub fn set_trace_level(&mut self, tracelev: i32) {
+        unsafe { crate::ffi::ShapeProcess_Context_set_trace_level(self as *mut Self, tracelev) }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:117 - `ShapeProcess_Context::TraceLevel()`
+    /// Returns trace level used for outputting messages.
+    pub fn trace_level(&self) -> i32 {
+        unsafe { crate::ffi::ShapeProcess_Context_trace_level(self as *const Self) }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:119 - `ShapeProcess_Context::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeProcess_Context_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:119 - `ShapeProcess_Context::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::ShapeProcess_Context_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `ShapeProcess_Context.hxx`:119 - `ShapeProcess_Context::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeProcess_Context_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeProcessContext> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeProcess_Context_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeProcessContext;
+
+unsafe impl crate::CppDeletable for HandleShapeProcessContext {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeProcessContext_destructor(ptr);
+    }
+}
+
+impl HandleShapeProcessContext {
+    /// Dereference this Handle to access the underlying ShapeProcess_Context
+    pub fn get(&self) -> &crate::ffi::ShapeProcess_Context {
+        unsafe { &*(crate::ffi::HandleShapeProcessContext_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeProcess_Context
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeProcess_Context {
+        unsafe { &mut *(crate::ffi::HandleShapeProcessContext_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From ShapeProcess_OperLibrary.hxx
+// ========================
+
+/// **Source:** `ShapeProcess_OperLibrary.hxx`:47 - `ShapeProcess_OperLibrary`
+/// Provides a set of following operators
+///
+/// DirectFaces
+/// FixShape
+/// SameParameter
+/// SetTolerance
+/// SplitAngle
+/// BSplineRestriction
+/// ElementaryToRevolution
+/// SurfaceToBSpline
+/// ToBezier
+/// SplitContinuity
+/// SplitClosedFaces
+/// FixWireGaps
+/// FixFaceSize
+/// DropSmallEdges
+/// FixShape
+/// SplitClosedEdges
+pub use crate::ffi::ShapeProcess_OperLibrary as OperLibrary;
+
+unsafe impl crate::CppDeletable for OperLibrary {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeProcess_OperLibrary_destructor(ptr);
+    }
+}
+
+impl OperLibrary {
+    /// **Source:** `ShapeProcess_OperLibrary.hxx` - `ShapeProcess_OperLibrary::ShapeProcess_OperLibrary()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeProcess_OperLibrary_ctor()) }
+    }
+
+    /// **Source:** `ShapeProcess_OperLibrary.hxx`:53 - `ShapeProcess_OperLibrary::Init()`
+    /// Registers all the operators
+    pub fn init() {
+        unsafe { crate::ffi::ShapeProcess_OperLibrary_init() }
+    }
+}
+
+// ========================
+// From ShapeProcess_Operator.hxx
+// ========================
+
+/// **Source:** `ShapeProcess_Operator.hxx`:31 - `ShapeProcess_Operator`
+/// Abstract Operator class providing a tool to
+/// perform an operation on Context
+pub use crate::ffi::ShapeProcess_Operator as Operator;
+
+unsafe impl crate::CppDeletable for Operator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeProcess_Operator_destructor(ptr);
+    }
+}
+
+impl Operator {
+    /// **Source:** `ShapeProcess_Operator.hxx`:37 - `ShapeProcess_Operator::Perform()`
+    /// Performs operation and eventually records
+    /// changes in the context
+    pub fn perform(
+        &mut self,
+        context: &crate::ffi::HandleShapeProcessContext,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeProcess_Operator_perform(self as *mut Self, context, theProgress)
+        }
+    }
+
+    /// **Source:** `ShapeProcess_Operator.hxx`:41 - `ShapeProcess_Operator::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeProcess_Operator_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `ShapeProcess_Operator.hxx`:41 - `ShapeProcess_Operator::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::ShapeProcess_Operator_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `ShapeProcess_Operator.hxx`:41 - `ShapeProcess_Operator::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeProcess_Operator_get_type_descriptor()) }
+    }
+}
+
+pub use crate::ffi::HandleShapeProcessOperator;
+
+unsafe impl crate::CppDeletable for HandleShapeProcessOperator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeProcessOperator_destructor(ptr);
+    }
+}
+
+impl HandleShapeProcessOperator {
+    /// Dereference this Handle to access the underlying ShapeProcess_Operator
+    pub fn get(&self) -> &crate::ffi::ShapeProcess_Operator {
+        unsafe { &*(crate::ffi::HandleShapeProcessOperator_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeProcess_Operator
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeProcess_Operator {
+        unsafe { &mut *(crate::ffi::HandleShapeProcessOperator_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From ShapeProcess_UOperator.hxx
+// ========================
+
+/// **Source:** `ShapeProcess_UOperator.hxx`:31 - `ShapeProcess_UOperator`
+/// Defines operator as container for static function
+/// OperFunc. This allows user to create new operators
+/// without creation of new classes
+pub use crate::ffi::ShapeProcess_UOperator as UOperator;
+
+unsafe impl crate::CppDeletable for UOperator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeProcess_UOperator_destructor(ptr);
+    }
+}
+
+impl UOperator {
+    /// **Source:** `ShapeProcess_UOperator.hxx`:37 - `ShapeProcess_UOperator::ShapeProcess_UOperator()`
+    /// Creates operator with implementation defined as
+    /// OperFunc (static function)
+    pub fn new_operfunc(func: &crate::ffi::ShapeProcess_OperFunc) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeProcess_UOperator_ctor_operfunc(func)) }
+    }
+
+    /// **Source:** `ShapeProcess_UOperator.hxx`:40 - `ShapeProcess_UOperator::Perform()`
+    /// Performs operation and records changes in the context
+    pub fn perform(
+        &mut self,
+        context: &crate::ffi::HandleShapeProcessContext,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeProcess_UOperator_perform(self as *mut Self, context, theProgress)
+        }
+    }
+
+    /// **Source:** `ShapeProcess_UOperator.hxx`:44 - `ShapeProcess_UOperator::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeProcess_UOperator_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `ShapeProcess_UOperator.hxx`:44 - `ShapeProcess_UOperator::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::ShapeProcess_UOperator_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `ShapeProcess_UOperator.hxx`:44 - `ShapeProcess_UOperator::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeProcess_UOperator_get_type_descriptor()) }
+    }
+
+    /// Upcast to ShapeProcess_Operator
+    pub fn as_operator(&self) -> &Operator {
+        unsafe {
+            &*(crate::ffi::ShapeProcess_UOperator_as_ShapeProcess_Operator(self as *const Self))
+        }
+    }
+
+    /// Upcast to ShapeProcess_Operator (mutable)
+    pub fn as_operator_mut(&mut self) -> &mut Operator {
+        unsafe {
+            &mut *(crate::ffi::ShapeProcess_UOperator_as_ShapeProcess_Operator_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
 // ========================
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::ShapeProcess_ShapeContext as ShapeContext;
+pub use crate::ffi::{
+    ShapeProcess_OperFunc as OperFunc, ShapeProcess_ShapeContext as ShapeContext,
+};

@@ -59,8 +59,8 @@ pub fn wire_mut(theShape: &mut crate::ffi::TopoDS_Shape) -> &mut crate::ffi::Top
 /// @param theShape the shape to be cast
 /// @return the casted shape as TopoDS_Face
 /// @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
-pub fn face(theShape: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Face {
-    unsafe { &*(crate::ffi::TopoDS_face(theShape)) }
+pub fn face_shape(theShape: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Face {
+    unsafe { &*(crate::ffi::TopoDS_face_shape(theShape)) }
 }
 /// **Source:** `TopoDS.hxx`:154 - `TopoDS::Face`
 /// Casts shape theShape to the more specialized return type, Face.
@@ -75,8 +75,8 @@ pub fn face_mut(theShape: &mut crate::ffi::TopoDS_Shape) -> &mut crate::ffi::Top
 /// @param theShape the shape to be cast
 /// @return the casted shape as TopoDS_Shell
 /// @throws Standard_TypeMismatch if theShape cannot be cast to this return type.
-pub fn shell(theShape: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Shell {
-    unsafe { &*(crate::ffi::TopoDS_shell(theShape)) }
+pub fn shell_shape(theShape: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Shell {
+    unsafe { &*(crate::ffi::TopoDS_shell_shape(theShape)) }
 }
 /// **Source:** `TopoDS.hxx`:178 - `TopoDS::Shell`
 /// Casts shape theShape to the more specialized return type, Shell.

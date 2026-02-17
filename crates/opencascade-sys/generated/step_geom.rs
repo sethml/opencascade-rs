@@ -7,7 +7,121 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From StepGeom_GeometricRepresentationItem.hxx
+// ========================
+
+/// **Source:** `StepGeom_GeometricRepresentationItem.hxx`:28 - `StepGeom_GeometricRepresentationItem`
+pub use crate::ffi::StepGeom_GeometricRepresentationItem as GeometricRepresentationItem;
+
+unsafe impl crate::CppDeletable for GeometricRepresentationItem {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepGeom_GeometricRepresentationItem_destructor(ptr);
+    }
+}
+
+impl GeometricRepresentationItem {
+    /// **Source:** `StepGeom_GeometricRepresentationItem.hxx`:33 - `StepGeom_GeometricRepresentationItem::StepGeom_GeometricRepresentationItem()`
+    /// Returns a GeometricRepresentationItem
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepGeom_GeometricRepresentationItem_ctor())
+        }
+    }
+
+    /// **Source:** `StepGeom_GeometricRepresentationItem.hxx`:35 - `StepGeom_GeometricRepresentationItem::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepGeom_GeometricRepresentationItem_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepGeom_GeometricRepresentationItem.hxx`:35 - `StepGeom_GeometricRepresentationItem::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepGeom_GeometricRepresentationItem_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepGeom_GeometricRepresentationItem.hxx`:35 - `StepGeom_GeometricRepresentationItem::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepGeom_GeometricRepresentationItem_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepRepr_RepresentationItem
+    pub fn as_step_repr_representation_item(&self) -> &crate::step_repr::RepresentationItem {
+        unsafe {
+            &*(crate::ffi::StepGeom_GeometricRepresentationItem_as_StepRepr_RepresentationItem(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepRepr_RepresentationItem (mutable)
+    pub fn as_step_repr_representation_item_mut(
+        &mut self,
+    ) -> &mut crate::step_repr::RepresentationItem {
+        unsafe {
+            &mut *(crate::ffi::StepGeom_GeometricRepresentationItem_as_StepRepr_RepresentationItem_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_RepresentationItem.hxx`:36 - `StepRepr_RepresentationItem::Init()`
+    pub fn init(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepGeom_GeometricRepresentationItem_inherited_Init(
+                self as *mut Self,
+                aName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_RepresentationItem.hxx`:38 - `StepRepr_RepresentationItem::SetName()`
+    pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepGeom_GeometricRepresentationItem_inherited_SetName(
+                self as *mut Self,
+                aName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_RepresentationItem.hxx`:40 - `StepRepr_RepresentationItem::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepGeom_GeometricRepresentationItem_inherited_Name(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::StepGeom_Axis2Placement3d as Axis2Placement3d;
+pub use crate::ffi::{
+    StepGeom_Axis1Placement as Axis1Placement, StepGeom_Axis2Placement2d as Axis2Placement2d,
+    StepGeom_Axis2Placement3d as Axis2Placement3d,
+    StepGeom_BSplineCurveWithKnots as BSplineCurveWithKnots,
+    StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve as BSplineCurveWithKnotsAndRationalBSplineCurve,
+    StepGeom_BSplineSurfaceWithKnots as BSplineSurfaceWithKnots,
+    StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface as BSplineSurfaceWithKnotsAndRationalBSplineSurface,
+    StepGeom_BoundedCurve as BoundedCurve, StepGeom_BoundedSurface as BoundedSurface,
+    StepGeom_CartesianPoint as CartesianPoint, StepGeom_Circle as Circle, StepGeom_Conic as Conic,
+    StepGeom_ConicalSurface as ConicalSurface, StepGeom_Curve as Curve,
+    StepGeom_CylindricalSurface as CylindricalSurface, StepGeom_Direction as Direction,
+    StepGeom_ElementarySurface as ElementarySurface, StepGeom_Ellipse as Ellipse,
+    StepGeom_Hyperbola as Hyperbola, StepGeom_Line as Line, StepGeom_Parabola as Parabola,
+    StepGeom_Plane as Plane, StepGeom_Polyline as Polyline,
+    StepGeom_RectangularTrimmedSurface as RectangularTrimmedSurface,
+    StepGeom_SphericalSurface as SphericalSurface, StepGeom_Surface as Surface,
+    StepGeom_SurfaceOfLinearExtrusion as SurfaceOfLinearExtrusion,
+    StepGeom_SurfaceOfRevolution as SurfaceOfRevolution, StepGeom_SweptSurface as SweptSurface,
+    StepGeom_ToroidalSurface as ToroidalSurface, StepGeom_Vector as Vector,
+};

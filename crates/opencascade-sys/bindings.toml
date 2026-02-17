@@ -12,54 +12,213 @@
 
 # Include ALL headers from these modules.
 modules = [
-    "Adaptor2d",           # 2D curve adaptors
+    # === Core / Infrastructure ===
+    "Standard",            # Core types
+    "NCollection",         # Essential collections
+    "TCollection",         # String types
+    "TColStd",             # Typed collections
+    "TShort",              # Short integer array collections
+    "OSD",                 # OS utilities: file paths, timing, env, threads
+    "Resource",            # Resource management, Unicode conversion
+    "Quantity",            # Physical quantities: Color, length, angle types
+    "Units",               # Units of measurement system
+    "UnitsAPI",            # Units conversion API (mm<->inch, radian<->degree)
+    "UnitsMethods",        # Units conversion methods
+    "Message",             # Progress reporting
+    "StdFail",             # Standard failure/exception classes
+    "Precision",           # Precision utilities
+
+    # === Math / Geometry Primitives ===
+    "gp",                  # Geometric primitives (Pnt, Vec, Dir, Trsf, etc.)
+    "GProp",               # Global properties
+    "GeomAbs",             # Geometry enums
+    "TopAbs",              # Topology enums
+    "math",                # Numerical methods
+    "PLib",                # Polynomial evaluation library
+    "ElCLib",              # Elementary curve library: analytical 2D/3D curve evaluation
+    "ElSLib",              # Elementary surface library: analytical surface evaluation
+    "BSplCLib",            # B-spline curve evaluation library
+    "BSplSLib",            # B-spline surface evaluation library
+    "CSLib",               # Curve/surface analysis library (normals, curvature)
+    "Expr",                # Mathematical expression trees
+    "ExprIntrp",           # Expression interpreter/parser
+    "BVH",                 # Bounding Volume Hierarchy (spatial indexing)
+
+    # === Collections ===
+    "TColgp",              # Collections of geometric primitives
+    "TColGeom",            # Collections of Geom objects
+    "TColGeom2d",          # Collections of Geom2d objects
+
+    # === 3D Geometry ===
+    "Geom",                # 3D geometry
+    "GeomAdaptor",         # Adaptor for Geom curves/surfaces
+    "GeomAPI",             # Geometry utilities
+    "GeomConvert",         # Convert between Geom types
+    "GeomFill",            # Surface filling by sweeping/skinning curves
+    "GeomLib",             # Geometry utility library
+    "GeomLProp",           # Local properties on Geom curves/surfaces
+    "GeomPlate",           # Plate surface construction
+    "GeomProjLib",         # Projection of curves onto surfaces
+    "GeomTools",           # Debug I/O and utilities for Geom objects
     "Adaptor3d",           # 3D curve/surface adaptors
+    "GC",                  # Geometry construction
+    "GCPnts",              # Geometry points
+    "Convert",             # Conversion between B-spline representations
+    "CPnts",               # Computation of points on curves
+    "FairCurve",           # Fair curve construction (minimum energy)
+    "Approx",              # Curve/surface approximation
+    "ProjLib",             # Projection of curves onto surfaces (parametric)
+    "Extrema",             # Distance calculations
+    "Plate",               # Plate surface (thin-plate-spline)
+    "NLPlate",             # Non-linear plate surface construction
+    "Law",                 # Functions
+
+    # === 2D Geometry ===
+    "Geom2d",              # 2D geometry
+    "Geom2dAdaptor",       # Adaptor for Geom2d curves
+    "Geom2dAPI",           # High-level 2D geometry construction API
+    "Geom2dConvert",       # Convert between Geom2d types
+    "Geom2dGcc",           # 2D geometric constraint solver
+    "Geom2dLProp",         # Local properties on Geom2d curves
+    "Geom2dHatch",         # 2D hatching on Geom2d curves
+    "Adaptor2d",           # 2D curve adaptors
+    "GCE2d",               # 2D geometry construction
+    "gce",                 # Geometry construction error types
+    "GccAna",              # Analytical solutions for 2D geometric constraints
+    "GccEnt",              # Qualified entities for geometric constraints
+    "GccInt",              # Internal result types for Gcc
+    "Hatch",               # 2D hatching algorithm
+
+    # === Intersections ===
+    "IntAna",              # Analytical intersection of quadrics
+    "IntAna2d",            # Analytical intersection of 2D conics
+    "IntCurveSurface",     # Intersection of curve with surface
+    "IntCurvesFace",       # Intersection of curve with topological face
+    "IntRes2d",            # 2D intersection result types
+    "Intf",                # Interference/clash detection
+    "IntTools",            # Intersection tools for edges, faces
+
+    # === Bounding ===
     "Bnd",                 # Bounding boxes
+    "BndLib",              # Bounding box computation utilities
+
+    # === Topology ===
+    "TopoDS",              # Shape types
+    "TopExp",              # Topology exploration
+    "TopLoc",              # Locations
+    "TopTools",            # Topology tools
+
+    # === BRep (Boundary Representation) ===
     "BRep",                # Boundary representation utilities
     "BRepAdaptor",         # BRep curve/surface adaptors
     "BRepAlgoAPI",         # Boolean operations
     "BRepBndLib",          # Bounding box utilities
     "BRepBuilderAPI",      # Shape construction
+    "BRepCheck",           # BRep shape validity checking
+    "BRepClass",           # 2D point classification relative to a face
+    "BRepClass3d",         # 3D point classification (inside/outside solid)
+    "BRepExtrema",         # BRep distance computation
     "BRepFeat",            # Feature operations
+    "BRepFill",            # BRep filling, pipe, multi-section sweep
     "BRepFilletAPI",       # Fillets and chamfers
     "BRepGProp",           # Global properties
     "BRepIntCurveSurface", # Intersection
     "BRepLib",             # Topology building utilities
     "BRepMesh",            # Meshing
+    "BRepOffset",          # BRep offset/shelling implementation
     "BRepOffsetAPI",       # Offsets, sweeps, thick solids, lofts
+    "BRepPreviewAPI",      # Preview of sweep operations
+    "BRepPrim",            # BRep primitive construction internals
     "BRepPrimAPI",         # Primitive shapes
+    "BRepProj",            # Wire projection onto a shape
     "BRepTools",           # Shape I/O and utilities
-    "Extrema",             # Distance calculations
-    "GC",                  # Geometry construction
-    "GCE2d",               # 2D geometry construction
-    "GCPnts",              # Geometry points
-    "Geom",                # 3D geometry
-    "Geom2d",              # 2D geometry
-    "GeomAbs",             # Geometry enums
-    "GeomAPI",             # Geometry utilities
-    "gp",                  # Geometric primitives (Pnt, Vec, Dir, Trsf, etc.)
-    "GProp",               # Global properties
-    "IFSelect",            # Interface select enums
-    "IGESControl",         # IGES I/O
-    "Law",                 # Functions
-    "math",                # Numerical methods
-    "Message",             # Progress reporting
-    "NCollection",         # Essential collections
-    "Poly",                # Triangulation
-    "Precision",           # Precision utilities
+
+    # === Boolean Operations ===
+    "BOPAlgo",             # Boolean operation algorithms
+    "BOPDS",               # Boolean operation data structures
+    "BOPTools",            # Boolean operation utilities
+
+    # === Fillet / Chamfer ===
+    "BiTgte",              # Bi-tangent (rolling ball) fillet
+    "ChFi2d",              # 2D chamfer and fillet operations
+    "ChFi3d",              # 3D chamfer and fillet algorithm
+    "FilletSurf",          # Fillet surface construction
+
+    # === Modeling Operations ===
+    "Draft",               # Draft angle modification
+    "LocalAnalysis",       # Local analysis of surface continuity
+    "LocOpe",              # Local topological operations
+    "MAT",                 # Medial Axis Transform
+    "MAT2d",               # 2D Medial Axis Transform
+
+    # === Shape Healing ===
     "ShapeAnalysis",       # Shape analysis tools
+    "ShapeBuild",          # Shape building utilities
+    "ShapeConstruct",      # Shape construction utilities
+    "ShapeCustom",         # Shape customization
+    "ShapeExtend",         # Shape extension base classes
+    "ShapeFix",            # Shape healing/fixing (wire, face, shell, solid)
+    "ShapeProcess",        # Shape processing pipeline
+    "ShapeProcessAPI",     # Shape processing high-level API
     "ShapeUpgrade",        # Shape healing
-    "Standard",            # Core types
+
+    # === Triangulation / Poly ===
+    "Poly",                # Triangulation
+
+    # === Hidden Line Removal ===
+    "HLRAlgo",             # Hidden Line Removal data structures
+    "HLRBRep",             # Hidden Line Removal on BRep shapes
+
+    # === Data Exchange: Core ===
+    "DE",                  # Data Exchange plugin framework (modern API)
+    "DEBREP",              # Data Exchange BRep provider
+    "DEBRepCascade",       # Data Exchange BRep Cascade impl
+    "DEGLTF",              # Data Exchange glTF provider
+    "DEIGES",              # Data Exchange IGES provider
+    "DEOBJ",               # Data Exchange OBJ provider
+    "DEPLY",               # Data Exchange PLY provider
+    "DESTEP",              # Data Exchange STEP provider
+    "DESTL",               # Data Exchange STL provider
+    "DEVRML",              # Data Exchange VRML provider
+    "DEXCAF",              # Data Exchange XCAF base
+    "DEXCAFCascade",       # Data Exchange XCAF Cascade impl
+    "IFSelect",            # Interface select enums
+    "XSControl",           # Translation control framework
+
+    # === Data Exchange: IGES ===
+    "IGESControl",         # IGES I/O
+    "IGESCAFControl",      # IGES with XCAF (colors, layers, names)
+    "IGESToBRep",          # IGES to BRep conversion
+    "BRepToIGES",          # BRep to IGES conversion
+    "BRepToIGESBRep",      # BRep to IGES BRep conversion
+    "Geom2dToIGES",        # Geom2d to IGES conversion
+    "GeomToIGES",          # Geom to IGES conversion
+    "GeomToStep",          # Geom to STEP conversion
+
+    # === Data Exchange: STEP ===
     "STEPControl",         # STEP I/O
+    "STEPCAFControl",      # STEP with XCAF (colors, layers, names)
+
+    # === Data Exchange: Mesh Formats ===
     "StlAPI",              # STL I/O
-    "TColgp",              # Collections of geometric primitives
-    "TCollection",         # String types
-    "TColStd",             # Typed collections
-    "TopAbs",              # Topology enums
-    "TopExp",              # Topology exploration
-    "TopLoc",              # Locations
-    "TopoDS",              # Shape types
-    "TopTools",            # Topology tools
+    "RWGltf",              # Read/Write glTF files
+    "RWMesh",              # Read/Write mesh-based formats
+    "RWObj",               # Read/Write OBJ files
+    "RWPly",               # Read/Write PLY files
+    "RWStl",               # Read/Write STL files (low level)
+
+    # === OCAF / Application Framework ===
+    "TDF",                 # Data Framework: label/attribute tree
+    "TDataStd",            # Standard data attributes
+    "TDataXtd",            # Extended data attributes
+    "TDocStd",             # Document management (open, save, undo/redo)
+    "TFunction",           # Function mechanism for parametric deps
+    "TNaming",             # Topological naming / shape history tracking
+    "TObj",                # TObj model object framework
+    "XCAFApp",             # XCAF Application entry point
+    "XCAFDimTolObjects",   # Dimensional tolerance (GD&T/PMI) data
+    "XCAFDoc",             # XCAF document attributes (shape, color, material)
+    "XCAFNoteObjects",     # Note/annotation data objects
 ]
 
 # Exclude specific headers (even if their module is in `modules` above).
@@ -95,6 +254,292 @@ exclude_headers = [
 
     # Deleted copy constructor: TopoDS_AlertAttribute can't be copy-constructed.
     "TopoDS_AlertAttribute.hxx",
+
+    # Third-party dependency (rapidjson): these headers #include rapidjson which
+    # is not bundled with our OCCT build.
+    "RWGltf_GltfOStreamWriter.hxx",
+    "RWGltf_GltfJsonParser.hxx",
+    "RWGltf_CafWriter.hxx",
+    "RWGltf_GltfAccessor.hxx",
+
+    # NCollection_HArray1/HArray2/HSequence template instantiations: the generator
+    # produces wrong constructor signatures for these typedef'd template classes.
+    # The constructors take (lower, upper) bounds but the generated code doesn't
+    # match the actual NCollection_HArray1/HArray2/HSequence constructor interface.
+    "Approx_HArray1OfAdHSurface.hxx",
+    "Approx_HArray1OfGTrsf2d.hxx",
+    "Bnd_HArray1OfBox.hxx",
+    "Bnd_HArray1OfBox2d.hxx",
+    "Bnd_HArray1OfSphere.hxx",
+    "BRepAdaptor_HArray1OfCurve.hxx",
+    "Extrema_HArray1OfPOnCurv.hxx",
+    "Extrema_HArray1OfPOnCurv2d.hxx",
+    "Extrema_HArray1OfPOnSurf.hxx",
+    "Extrema_HArray2OfPOnCurv.hxx",
+    "Extrema_HArray2OfPOnCurv2d.hxx",
+    "Extrema_HArray2OfPOnSurf.hxx",
+    "Geom_HSequenceOfBSplineSurface.hxx",
+    "GeomFill_HArray1OfLocationLaw.hxx",
+    "GeomFill_HArray1OfSectionLaw.hxx",
+    "GeomFill_HSequenceOfAx2.hxx",
+    "GeomPlate_HArray1OfHCurve.hxx",
+    "GeomPlate_HArray1OfSequenceOfReal.hxx",
+    "GeomPlate_HSequenceOfCurveConstraint.hxx",
+    "GeomPlate_HSequenceOfPointConstraint.hxx",
+    "HLRAlgo_HArray1OfPHDat.hxx",
+    "HLRAlgo_HArray1OfPINod.hxx",
+    "HLRAlgo_HArray1OfPISeg.hxx",
+    "HLRAlgo_HArray1OfTData.hxx",
+    "IFSelect_HSeqOfSelection.hxx",
+    "Plate_HArray1OfPinpointConstraint.hxx",
+    "Poly_HArray1OfTriangle.hxx",
+    "ProjLib_HSequenceOfHSequenceOfPnt.hxx",
+    "Quantity_HArray1OfColor.hxx",
+    "ShapeAnalysis_HSequenceOfFreeBounds.hxx",
+    "TColGeom_HArray1OfBezierCurve.hxx",
+    "TColGeom_HArray1OfBSplineCurve.hxx",
+    "TColGeom_HArray1OfCurve.hxx",
+    "TColGeom_HArray1OfSurface.hxx",
+    "TColGeom_HArray2OfSurface.hxx",
+    "TColGeom_HSequenceOfBoundedCurve.hxx",
+    "TColGeom_HSequenceOfCurve.hxx",
+    "TColGeom2d_HArray1OfBezierCurve.hxx",
+    "TColGeom2d_HArray1OfBSplineCurve.hxx",
+    "TColGeom2d_HArray1OfCurve.hxx",
+    "TColGeom2d_HSequenceOfBoundedCurve.hxx",
+    "TColGeom2d_HSequenceOfCurve.hxx",
+    "TColgp_HArray1OfCirc2d.hxx",
+    "TColgp_HArray1OfDir.hxx",
+    "TColgp_HArray1OfDir2d.hxx",
+    "TColgp_HArray1OfLin2d.hxx",
+    "TColgp_HArray1OfPnt.hxx",
+    "TColgp_HArray1OfPnt2d.hxx",
+    "TColgp_HArray1OfVec.hxx",
+    "TColgp_HArray1OfVec2d.hxx",
+    "TColgp_HArray1OfXY.hxx",
+    "TColgp_HArray1OfXYZ.hxx",
+    "TColgp_HArray2OfCirc2d.hxx",
+    "TColgp_HArray2OfDir.hxx",
+    "TColgp_HArray2OfDir2d.hxx",
+    "TColgp_HArray2OfLin2d.hxx",
+    "TColgp_HArray2OfPnt.hxx",
+    "TColgp_HArray2OfPnt2d.hxx",
+    "TColgp_HArray2OfVec.hxx",
+    "TColgp_HArray2OfVec2d.hxx",
+    "TColgp_HArray2OfXY.hxx",
+    "TColgp_HArray2OfXYZ.hxx",
+    "TColgp_HSequenceOfDir.hxx",
+    "TColgp_HSequenceOfDir2d.hxx",
+    "TColgp_HSequenceOfPnt.hxx",
+    "TColgp_HSequenceOfPnt2d.hxx",
+    "TColgp_HSequenceOfVec.hxx",
+    "TColgp_HSequenceOfVec2d.hxx",
+    "TColgp_HSequenceOfXY.hxx",
+    "TColgp_HSequenceOfXYZ.hxx",
+    "TopTools_HArray1OfListOfShape.hxx",
+    "TopTools_HArray1OfShape.hxx",
+    "TopTools_HArray2OfShape.hxx",
+    "TopTools_HSequenceOfShape.hxx",
+
+    # BVH template classes: abstract base or complex template type params
+    # that the generator can't resolve correctly.
+    "BVH_Properties.hxx",
+
+    # BRepExtrema classes depend on BVH templates with complex type params.
+    "BRepExtrema_OverlapTool.hxx",
+    "BRepExtrema_ProximityDistTool.hxx",
+    "BRepExtrema_SelfIntersection.hxx",
+    "BRepExtrema_ShapeProximity.hxx",
+    "BRepExtrema_TriangleSet.hxx",
+
+    # BOPDS/BOPAlgo: methods return NCollection_DataMap/IndexedMap types
+    # but generator resolves them as Standard_Integer due to template typedef issues.
+    "BOPAlgo_CheckerSI.hxx",
+    "BOPAlgo_Tools.hxx",
+    "BOPDS_DS.hxx",
+    "BOPDS_FaceInfo.hxx",
+    "BOPDS_InterfFF.hxx",
+
+    # BRepMesh internal classes: use NCollection containers with template
+    # resolution issues in the generator.
+    "BRepMesh_BoundaryParamsRangeSplitter.hxx",
+    "BRepMesh_DataStructureOfDelaun.hxx",
+    "BRepMesh_Delaun.hxx",
+    "BRepMesh_ExtrusionRangeSplitter.hxx",
+    "BRepMesh_MeshTool.hxx",
+    "BRepMesh_NURBSRangeSplitter.hxx",
+    "BRepMesh_SelectorOfDataStructureOfDelaun.hxx",
+    "BRepMesh_TorusRangeSplitter.hxx",
+    "BRepMesh_UndefinedRangeSplitter.hxx",
+    "BRepMesh_UVParamRangeSplitter.hxx",
+    "BRepMesh_VertexTool.hxx",
+
+    # Return type mismatch: method returns NCollection map type but generator
+    # resolves it as Standard_Integer.
+    "Message_Report.hxx",
+    "Resource_Manager.hxx",
+    "ShapeExtend_MsgRegistrator.hxx",
+
+    # math_Matrix: overloaded operators return math_VectorBase<>/math_Matrix but
+    # generator resolves return type as Standard_Integer due to template issues.
+    "math_Matrix.hxx",
+
+    # BRepLib_FuseEdges: NCollection map type mismatch.
+    "BRepLib_FuseEdges.hxx",
+
+    # HLRBRep_VertexList: method type mismatch.
+    "HLRBRep_VertexList.hxx",
+
+    # MAT_Graph: return type mismatch (NCollection map resolved as wrong type).
+    "MAT_Graph.hxx",
+
+    # Units_*Sequence: Append method signature mismatch (NCollection_Sequence issue).
+    "Units_QuantitiesSequence.hxx",
+    "Units_TokensSequence.hxx",
+    "Units_UnitsSequence.hxx",
+
+    # DE_ConfigurationContext/DE_Wrapper: NCollection map type mismatches.
+    "DE_ConfigurationContext.hxx",
+    "DE_Wrapper.hxx",
+
+    # ShapeProcess_ShapeContext: return type mismatch (sequence type).
+    "ShapeProcess_ShapeContext.hxx",
+
+    # More NCollection_HArray1/HSequence/HDataMap template instantiations with
+    # constructor or method signature mismatches.
+    "AppParCurves_HArray1OfMultiPoint.hxx",
+    "ChFiDS_HData.hxx",
+    "ChFiDS_SecHArray1.hxx",
+    "IGESData_HArray1OfIGESEntity.hxx",
+    "Interface_HArray1OfHAsciiString.hxx",
+    "Interface_HSequenceOfCheck.hxx",
+    "StepDimTol_HArray1OfDatumReferenceModifier.hxx",
+    "StepDimTol_HArray1OfDatumSystemOrReference.hxx",
+    "StepRepr_HArray1OfRepresentationItem.hxx",
+    "StepVisual_HArray1OfPresentationStyleAssignment.hxx",
+    "StepVisual_HArray1OfPresentationStyleSelect.hxx",
+    "TDataStd_HLabelArray1.hxx",
+    "TDataXtd_HArray1OfTrsf.hxx",
+    "TDF_HAttributeArray1.hxx",
+    "TFunction_HArray1OfDataMapOfGUIDDriver.hxx",
+    "TObj_HSequenceOfObject.hxx",
+    "Transfer_HSequenceOfFinder.hxx",
+
+    # NCollection map/set return type or ref param mismatches: methods return
+    # or take NCollection_DataMap/IndexedMap/Map types but the generator resolves
+    # the typedef as Standard_Integer.
+    "BOPDS_InterfFF.hxx",
+    "CDF_Application.hxx",
+    "CDM_Application.hxx",
+    "IFSelect_SignatureList.hxx",
+    "TDataStd_HDataMapOfStringByte.hxx",
+    "TDataStd_HDataMapOfStringHArray1OfInteger.hxx",
+    "TDataStd_HDataMapOfStringHArray1OfReal.hxx",
+    "TDataStd_HDataMapOfStringReal.hxx",
+    "TDataStd_HDataMapOfStringString.hxx",
+    "TDataStd_NamedData.hxx",
+    "TDF_ClosureTool.hxx",
+    "TDF_CopyLabel.hxx",
+    "TDF_DataSet.hxx",
+    "TDF_RelocationTable.hxx",
+    "TDF_Tool.hxx",
+    "TFunction_IFunction.hxx",
+    "TFunction_Logbook.hxx",
+    "TFunction_Scope.hxx",
+    "TNaming_Name.hxx",
+    "TNaming_Naming.hxx",
+    "TNaming_NamingTool.hxx",
+    "TNaming_Scope.hxx",
+    "TNaming_Selector.hxx",
+    "TObj_Application.hxx",
+    "TObj_Object.hxx",
+    "TObj_TIntSparseArray.hxx",
+    "TObj_TNameContainer.hxx",
+    "TDocStd_Application.hxx",
+    "TDocStd_Document.hxx",
+    "TDocStd_Modified.hxx",
+    "Transfer_ActorOfFinderProcess.hxx",
+    "Transfer_ActorOfTransientProcess.hxx",
+    "XCAFApp_Application.hxx",
+    "XCAFDoc_AssemblyGraph.hxx",
+    "XCAFDoc_DimTolTool.hxx",
+    "XCAFDoc_Editor.hxx",
+    "XSAlgo_ShapeProcessor.hxx",
+    "XSControl_Controller.hxx",
+    "XSControl_Reader.hxx",
+    "XSControl_TransferReader.hxx",
+    "XSControl_WorkSession.hxx",
+
+    # Protected operator delete (TDF_LabelNode).
+    "TDF_LabelNode.hxx",
+
+    # GeomInt_IntSS: NCollection_DynamicArray ref param type mismatch.
+    "GeomInt_IntSS.hxx",
+
+    # IntPatch_Intersection: NCollection_Vector ref param type mismatch.
+    "IntPatch_Intersection.hxx",
+
+    # StepToTopoDS_NMTool: constructor and NCollection_DataMap type mismatches.
+    "StepToTopoDS_NMTool.hxx",
+
+    # RWObj_MtlReader: constructor takes OSD_OpenFile_Mode not available.
+    "RWObj_MtlReader.hxx",
+
+    # IGES/STEP reader/writer classes: clang misresolves NCollection template types
+    # (e.g., NCollection_DataMap<A,B>) to Standard_Integer, producing C++ wrappers
+    # with incorrect parameter/return types.
+    "IGESCAFControl_Reader.hxx",
+    "IGESCAFControl_Writer.hxx",
+    "IGESControl_ActorWrite.hxx",
+    "IGESControl_Controller.hxx",
+    "IGESControl_Reader.hxx",
+    "IGESControl_Writer.hxx",
+    "IGESToBRep_Actor.hxx",
+    "IGESToBRep_Reader.hxx",
+    "STEPCAFControl_ActorWrite.hxx",
+    "STEPCAFControl_Controller.hxx",
+    "STEPCAFControl_Reader.hxx",
+    "STEPCAFControl_Writer.hxx",
+    "STEPControl_ActorRead.hxx",
+    "STEPControl_ActorWrite.hxx",
+    "STEPControl_Controller.hxx",
+    "STEPControl_Reader.hxx",
+    "STEPControl_Writer.hxx",
+
+    # RWGltf/RWMesh/RWObj reader classes with NCollection type mismatches.
+    "RWGltf_CafReader.hxx",
+    "RWMesh_CafReader.hxx",
+    "RWObj_CafReader.hxx",
+    "RWObj_Reader.hxx",
+    "RWObj_TriangulationReader.hxx",
+
+    # BOPDS_InterfFF is defined inside BOPDS_Interf.hxx (multi-class header),
+    # so we must exclude the containing header.
+    "BOPDS_Interf.hxx",
+
+    # TObj_HSequenceOfObject is defined via DEFINE_HSEQUENCE macro in
+    # TObj_SequenceOfObject.hxx.
+    "TObj_SequenceOfObject.hxx",
+
+    # BRepCheck_Result: the local re-export name "Result" collides with Rust's
+    # prelude Result<T,E> type, and upcast methods reference "Result_" which
+    # doesn't exist. All BRepCheck classes that inherit from BRepCheck_Result
+    # are affected.
+    "BRepCheck_Result.hxx",
+    "BRepCheck_Analyzer.hxx",
+    "BRepCheck_Edge.hxx",
+    "BRepCheck_Face.hxx",
+    "BRepCheck_Shell.hxx",
+    "BRepCheck_Solid.hxx",
+    "BRepCheck_Vertex.hxx",
+    "BRepCheck_Wire.hxx",
+
+    # XSControl_Vars: const char*& output parameter (name) mishandled by generator.
+    "XSControl_Vars.hxx",
+
+    # TObj_HiddenPartition: duplicate new_label method — static constructor and
+    # inherited method collide in generated Rust code.
+    "TObj_HiddenPartition.hxx",
 ]
 
 # Include specific individual headers (from modules not fully included above).
@@ -102,3 +547,105 @@ include_headers = []
 
 [general]
 resolve_deps = true
+
+# =============================================================================
+# Problem Classes Preventing Header Inclusion
+# =============================================================================
+#
+# The following categories of problems prevent certain OCCT headers from being
+# included in the binding generation. Each category describes the root cause,
+# affected headers, and potential solutions.
+#
+# 1. NCollection Template Parameter Misresolution (FUNDAMENTAL)
+#    ─────────────────────────────────────────────────────────────
+#    Root cause: When clang processes NCollection template specializations
+#    (e.g., NCollection_DataMap<TDF_Label, TDF_Label>) that it cannot fully
+#    instantiate, it falls back to canonical type "int" (Standard_Integer).
+#    This causes constructor and method parameters/returns to have wrong types.
+#
+#    Affected: ~80 HArray1/HArray2/HSequence headers, ~30 NCollection map
+#    headers, STEP/IGES Reader/Writer classes, math_Matrix, and several
+#    other classes using NCollection containers.
+#
+#    Subcategories:
+#    a) HArray1/HArray2/HSequence constructor mismatches — DEFINE_HARRAY1 and
+#       DEFINE_HSEQUENCE macros expand to classes inheriting NCollection template
+#       constructors. The template parameter type (e.g., gp_Pnt) is misresolved
+#       to Standard_Integer, producing wrong constructor signatures.
+#    b) NCollection map return type mismatches — methods returning
+#       NCollection_DataMap<K,V> or similar have return type resolved to int.
+#    c) Reference-level desugaring — for parameters like `const ParameterMap&`,
+#       clang desugars the display name at ALL levels (both the reference AND
+#       the pointee), making it impossible to detect the mismatch from the
+#       type API. This blocks STEPControl_Reader/Writer, IGESControl_Reader/Writer,
+#       and XSControl_Reader.
+#
+#    Potential solutions:
+#    - Pre-scan headers to build a typedef→template mapping, then use the
+#      original typedef name instead of the canonical type.
+#    - Use clang's AST traversal to find typedef declarations and record their
+#      underlying NCollection types, then match during type resolution.
+#    - For HArray/HSequence specifically: hard-code the known constructor
+#      patterns and substitute correct parameter types based on the array's
+#      element type (extractable from the typedef name or base class).
+#    - For reference-level desugaring: traverse the typedef chain at the
+#      reference level to recover the original type name.
+#
+# 2. Primitive Typedef vs Template Typedef Ambiguity
+#    ────────────────────────────────────────────────
+#    Root cause: Some OCCT types are typedefs to primitives (e.g.,
+#    `typedef unsigned int Poly_MeshPurpose`), while NCollection typedefs
+#    are ALSO canonicalized to primitives by clang (incorrectly). The parser
+#    uses a heuristic guard (`spelling_looks_like_class`) to distinguish
+#    these, checking the typedef declaration's underlying type kind.
+#
+#    Current status: Mostly solved. The guard now checks whether the type's
+#    declaration is a TypedefDecl with a primitive underlying type (allowing
+#    canonical mapping) vs a template/record underlying type (blocking it).
+#    Handles both TypeKind::Typedef and TypeKind::Elaborated (clang sugar).
+#
+# 3. BVH/Template-Heavy Classes
+#    ──────────────────────────
+#    Root cause: Some classes use deeply-nested BVH tree templates or other
+#    complex template patterns that the generator cannot resolve.
+#
+#    Affected: BRepExtrema_OverlapTool, BRepExtrema_SelfIntersection,
+#    BRepExtrema_TriangleSet, BRepExtrema_ProximityDistTool,
+#    BRepExtrema_ProximityValueTool
+#
+#    Potential solutions: Skip classes with unresolvable template parameters
+#    automatically, or pre-declare the template specializations.
+#
+# 4. External Dependencies
+#    ─────────────────────
+#    Some classes reference external libraries (e.g., RapidJSON, RWGltf DRACO
+#    compression) that may not be available in the build environment.
+#
+#    Affected: RWGltf_GltfMaterialMap, RWGltf_GltfOStreamWriter,
+#    RWGltf_GltfSceneNodeMap, RWGltf_CafReader, RWMesh_FaceIterator,
+#    RWObj_CafReader, StdStorage_Root
+#
+# 5. Name Collisions and Method Conflicts
+#    ────────────────────────────────────
+#    Some headers produce duplicate method names or conflict with Rust
+#    reserved words in ways the generator can't resolve.
+#
+#    Affected: TObj_HiddenPartition (duplicate new_label method from static
+#    constructor and inherited method), IntPatch_WLine/IntPatch_ImpImpIntersection
+#    (name conflicts or unmapped operator types).
+#
+# 6. Modules Not Included (Intentionally Excluded)
+#    ─────────────────────────────────────────────
+#    The following module categories are not included because they are either
+#    platform-specific, visualization-only, or not relevant to CAD modeling:
+#
+#    - Platform-specific GUI: Cocoa, WNT, Wasm, Xw, D3DHost, OpenGl
+#    - Visualization/rendering: AIS, V3d, Graphic3d, Prs3d, PrsMgr, Select3D,
+#      SelectMgr, StdPrs, StdSelect, MeshVS, XSDRAW*
+#    - Font/image handling: Font, Image
+#    - Persistence/Storage: FSD, Storage, StdStorage, ShapeSchema, PCDM,
+#      CDM, CDF, BinDrivers, XmlDrivers
+#    - Draw test harness: Draw, DBRep, BRepTest, *Draw*
+#    - VRML: Vrml*
+#    - LDOM/XML core: LDOM, XmlObjMgt
+#    - Other unused: Media, TKernel-internal headers

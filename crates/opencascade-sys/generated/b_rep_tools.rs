@@ -163,6 +163,33 @@ pub fn triangulation(
 ) -> bool {
     unsafe { crate::ffi::BRepTools_triangulation(theShape, theLinDefl, theToCheckFreeEdges) }
 }
+/// **Source:** `BRepTools.hxx`:198 - `BRepTools::LoadTriangulation`
+/// Loads triangulation data for each face of the shape
+/// from some deferred storage using specified shared input file system
+/// @param[in] theShape             shape to load triangulations
+/// @param[in] theTriangulationIdx  index defining what triangulation should be loaded. Starts
+/// from 0.
+/// -1 is used in specific case to load currently already active triangulation.
+/// If some face doesn't contain triangulation with this index, nothing will be loaded for
+/// it. Exception will be thrown in case of invalid negative index
+/// @param[in] theToSetAsActive     flag to activate triangulation after its loading
+/// @param[in] theFileSystem        shared file system
+/// @return TRUE if at least one triangulation is loaded.
+pub fn load_triangulation(
+    theShape: &crate::ffi::TopoDS_Shape,
+    theTriangulationIdx: i32,
+    theToSetAsActive: bool,
+    theFileSystem: &crate::ffi::HandleOSDFileSystem,
+) -> bool {
+    unsafe {
+        crate::ffi::BRepTools_load_triangulation(
+            theShape,
+            theTriangulationIdx,
+            theToSetAsActive,
+            theFileSystem,
+        )
+    }
+}
 /// **Source:** `BRepTools.hxx`:213 - `BRepTools::UnloadTriangulation`
 /// Releases triangulation data for each face of the shape if there is deferred storage to load it
 /// later
@@ -202,6 +229,18 @@ pub fn activate_triangulation(
         )
     }
 }
+/// **Source:** `BRepTools.hxx`:239 - `BRepTools::LoadAllTriangulations`
+/// Loads all available triangulations for each face of the shape
+/// from some deferred storage using specified shared input file system
+/// @param[in] theShape       shape to load triangulations
+/// @param[in] theFileSystem  shared file system
+/// @return TRUE if at least one triangulation is loaded.
+pub fn load_all_triangulations(
+    theShape: &crate::ffi::TopoDS_Shape,
+    theFileSystem: &crate::ffi::HandleOSDFileSystem,
+) -> bool {
+    unsafe { crate::ffi::BRepTools_load_all_triangulations(theShape, theFileSystem) }
+}
 /// **Source:** `BRepTools.hxx`:247 - `BRepTools::UnloadAllTriangulations`
 /// Releases all available triangulations for each face of the shape if there is deferred storage
 /// to load them later
@@ -225,8 +264,8 @@ pub fn compare_edge2(E1: &crate::ffi::TopoDS_Edge, E2: &crate::ffi::TopoDS_Edge)
 /// **Source:** `BRepTools.hxx`:260 - `BRepTools::OuterWire`
 /// Returns the outer most wire of <F>. Returns a Null
 /// wire if <F> has no wires.
-pub fn outer_wire(F: &crate::ffi::TopoDS_Face) -> crate::OwnedPtr<crate::ffi::TopoDS_Wire> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_outer_wire(F)) }
+pub fn outer_wire_face(F: &crate::ffi::TopoDS_Face) -> crate::OwnedPtr<crate::ffi::TopoDS_Wire> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepTools_outer_wire_face(F)) }
 }
 /// **Source:** `BRepTools.hxx`:264 - `BRepTools::Map3DEdges`
 /// Stores in the map  <M> all the 3D topology edges

@@ -773,6 +773,11 @@ fn generate_output(
     for (module_name, types) in &extra_types_by_module {
         if !graph_module_names.contains(module_name) && !types.is_empty() {
             let rust_name = module_graph::module_to_rust_name(module_name);
+            // Get collections for this module (needed for typedef'd NCollection types)
+            let module_collections: Vec<_> = all_collections
+                .iter()
+                .filter(|c| c.module == rust_name)
+                .collect();
             let empty_fn_bindings: Vec<&codegen::bindings::FunctionBinding> = Vec::new();
             let module_fn_bindings = fn_bindings_by_module
                 .get(&rust_name)
@@ -781,7 +786,7 @@ fn generate_output(
                 module_name,
                 &rust_name,
                 &[],
-                &[],
+                &module_collections,
                 symbol_table,
                 &[],
                 module_fn_bindings,

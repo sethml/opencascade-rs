@@ -6,6 +6,107 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleGeomGeometry, HandleGeomSurface};
+
+// ========================
+// From GeomPlate_Aij.hxx
+// ========================
+
+/// **Source:** `GeomPlate_Aij.hxx`:27 - `GeomPlate_Aij`
+/// A structure containing indexes of two normals and its cross product
+pub use crate::ffi::GeomPlate_Aij as Aij;
+
+unsafe impl crate::CppDeletable for Aij {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomPlate_Aij_destructor(ptr);
+    }
+}
+
+impl Aij {
+    /// **Source:** `GeomPlate_Aij.hxx`:32 - `GeomPlate_Aij::GeomPlate_Aij()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Aij_ctor()) }
+    }
+
+    /// **Source:** `GeomPlate_Aij.hxx`:34 - `GeomPlate_Aij::GeomPlate_Aij()`
+    pub fn new_int2_vec(
+        anInd1: i32,
+        anInd2: i32,
+        aVec: &crate::ffi::gp_Vec,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Aij_ctor_int2_vec(anInd1, anInd2, aVec))
+        }
+    }
+}
+
+// ========================
+// From GeomPlate_BuildAveragePlane.hxx
+// ========================
+
+/// **Source:** `GeomPlate_BuildAveragePlane.hxx`:37 - `GeomPlate_BuildAveragePlane`
+/// This class computes an average inertial plane with an
+/// array of points.
+/// Computes the initial surface (average plane) in the cases
+/// when the initial surface is not given.
+pub use crate::ffi::GeomPlate_BuildAveragePlane as BuildAveragePlane;
+
+unsafe impl crate::CppDeletable for BuildAveragePlane {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomPlate_BuildAveragePlane_destructor(ptr);
+    }
+}
+
+impl BuildAveragePlane {
+    /// **Source:** `GeomPlate_BuildAveragePlane.hxx`:59 - `GeomPlate_BuildAveragePlane::Plane()`
+    /// Return the average Plane.
+    pub fn plane(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomPlane> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_BuildAveragePlane_plane(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomPlate_BuildAveragePlane.hxx`:62 - `GeomPlate_BuildAveragePlane::Line()`
+    /// Return a Line when 2 eigenvalues are null.
+    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomLine> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_BuildAveragePlane_line(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomPlate_BuildAveragePlane.hxx`:65 - `GeomPlate_BuildAveragePlane::IsPlane()`
+    /// return OK if is a plane.
+    pub fn is_plane(&self) -> bool {
+        unsafe { crate::ffi::GeomPlate_BuildAveragePlane_is_plane(self as *const Self) }
+    }
+
+    /// **Source:** `GeomPlate_BuildAveragePlane.hxx`:68 - `GeomPlate_BuildAveragePlane::IsLine()`
+    /// return OK if is a line.
+    pub fn is_line(&self) -> bool {
+        unsafe { crate::ffi::GeomPlate_BuildAveragePlane_is_line(self as *const Self) }
+    }
+
+    /// **Source:** `GeomPlate_BuildAveragePlane.hxx`:72 - `GeomPlate_BuildAveragePlane::MinMaxBox()`
+    /// computes the   minimal box  to include  all normal
+    /// projection points of the initial array  on the plane.
+    pub fn min_max_box(&self, Umin: &mut f64, Umax: &mut f64, Vmin: &mut f64, Vmax: &mut f64) {
+        unsafe {
+            crate::ffi::GeomPlate_BuildAveragePlane_min_max_box(
+                self as *const Self,
+                Umin,
+                Umax,
+                Vmin,
+                Vmax,
+            )
+        }
+    }
+}
+
 // ========================
 // From GeomPlate_BuildPlateSurface.hxx
 // ========================
@@ -29,34 +130,6 @@ unsafe impl crate::CppDeletable for BuildPlateSurface {
 }
 
 impl BuildPlateSurface {
-    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
-    /// Constructor  compatible  with  the  old  version
-    /// with this constructor the constraint are given in a Array of Curve on Surface
-    /// The array NbPoints  contains the number of points for each constraint.
-    /// The Array Tang contains the order of constraint for each Constraint: The possible values for
-    /// this order has to be -1 , 0 , 1 , 2 . Order i means constraint Gi. NbIter is the maximum
-    /// number of iteration to optimise the number of points for resolution Degree is the degree of
-    /// resolution for Plate Tol2d is the tolerance used to test if two points of different constraint
-    /// are identical in the parametric space of the initial surface Tol3d is used to test if two
-    /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
-    /// between normal of two identical points in the 2d space Raises  ConstructionError;
-    pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(
-        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
-        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
-        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
-        Degree: i32,
-        NbIter: i32,
-        Tol2d: f64,
-        Tol3d: f64,
-        TolAng: f64,
-        TolCurv: f64,
-        Anisotropie: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_BuildPlateSurface_ctor_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, TolAng, TolCurv, Anisotropie))
-        }
-    }
-
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     pub fn new_handlegeomsurface_int3_real4_bool(
         Surf: &crate::ffi::HandleGeomSurface,
@@ -135,141 +208,6 @@ impl BuildPlateSurface {
                 Anisotropie,
             ))
         }
-    }
-
-    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
-    /// Constructor  compatible  with  the  old  version
-    /// with this constructor the constraint are given in a Array of Curve on Surface
-    /// The array NbPoints  contains the number of points for each constraint.
-    /// The Array Tang contains the order of constraint for each Constraint: The possible values for
-    /// this order has to be -1 , 0 , 1 , 2 . Order i means constraint Gi. NbIter is the maximum
-    /// number of iteration to optimise the number of points for resolution Degree is the degree of
-    /// resolution for Plate Tol2d is the tolerance used to test if two points of different constraint
-    /// are identical in the parametric space of the initial surface Tol3d is used to test if two
-    /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
-    /// between normal of two identical points in the 2d space Raises  ConstructionError;
-    pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4(
-        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
-        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
-        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
-        Degree: i32,
-        NbIter: i32,
-        Tol2d: f64,
-        Tol3d: f64,
-        TolAng: f64,
-        TolCurv: f64,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, TolAng, TolCurv, false)
-    }
-
-    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
-    /// Constructor  compatible  with  the  old  version
-    /// with this constructor the constraint are given in a Array of Curve on Surface
-    /// The array NbPoints  contains the number of points for each constraint.
-    /// The Array Tang contains the order of constraint for each Constraint: The possible values for
-    /// this order has to be -1 , 0 , 1 , 2 . Order i means constraint Gi. NbIter is the maximum
-    /// number of iteration to optimise the number of points for resolution Degree is the degree of
-    /// resolution for Plate Tol2d is the tolerance used to test if two points of different constraint
-    /// are identical in the parametric space of the initial surface Tol3d is used to test if two
-    /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
-    /// between normal of two identical points in the 2d space Raises  ConstructionError;
-    pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real3(
-        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
-        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
-        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
-        Degree: i32,
-        NbIter: i32,
-        Tol2d: f64,
-        Tol3d: f64,
-        TolAng: f64,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, TolAng, 0.1, false)
-    }
-
-    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
-    /// Constructor  compatible  with  the  old  version
-    /// with this constructor the constraint are given in a Array of Curve on Surface
-    /// The array NbPoints  contains the number of points for each constraint.
-    /// The Array Tang contains the order of constraint for each Constraint: The possible values for
-    /// this order has to be -1 , 0 , 1 , 2 . Order i means constraint Gi. NbIter is the maximum
-    /// number of iteration to optimise the number of points for resolution Degree is the degree of
-    /// resolution for Plate Tol2d is the tolerance used to test if two points of different constraint
-    /// are identical in the parametric space of the initial surface Tol3d is used to test if two
-    /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
-    /// between normal of two identical points in the 2d space Raises  ConstructionError;
-    pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real2(
-        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
-        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
-        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
-        Degree: i32,
-        NbIter: i32,
-        Tol2d: f64,
-        Tol3d: f64,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, 0.01, 0.1, false)
-    }
-
-    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
-    /// Constructor  compatible  with  the  old  version
-    /// with this constructor the constraint are given in a Array of Curve on Surface
-    /// The array NbPoints  contains the number of points for each constraint.
-    /// The Array Tang contains the order of constraint for each Constraint: The possible values for
-    /// this order has to be -1 , 0 , 1 , 2 . Order i means constraint Gi. NbIter is the maximum
-    /// number of iteration to optimise the number of points for resolution Degree is the degree of
-    /// resolution for Plate Tol2d is the tolerance used to test if two points of different constraint
-    /// are identical in the parametric space of the initial surface Tol3d is used to test if two
-    /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
-    /// between normal of two identical points in the 2d space Raises  ConstructionError;
-    pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real(
-        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
-        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
-        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
-        Degree: i32,
-        NbIter: i32,
-        Tol2d: f64,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, 0.0001, 0.01, 0.1, false)
-    }
-
-    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
-    /// Constructor  compatible  with  the  old  version
-    /// with this constructor the constraint are given in a Array of Curve on Surface
-    /// The array NbPoints  contains the number of points for each constraint.
-    /// The Array Tang contains the order of constraint for each Constraint: The possible values for
-    /// this order has to be -1 , 0 , 1 , 2 . Order i means constraint Gi. NbIter is the maximum
-    /// number of iteration to optimise the number of points for resolution Degree is the degree of
-    /// resolution for Plate Tol2d is the tolerance used to test if two points of different constraint
-    /// are identical in the parametric space of the initial surface Tol3d is used to test if two
-    /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
-    /// between normal of two identical points in the 2d space Raises  ConstructionError;
-    pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2(
-        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
-        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
-        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
-        Degree: i32,
-        NbIter: i32,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, 0.00001, 0.0001, 0.01, 0.1, false)
-    }
-
-    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
-    /// Constructor  compatible  with  the  old  version
-    /// with this constructor the constraint are given in a Array of Curve on Surface
-    /// The array NbPoints  contains the number of points for each constraint.
-    /// The Array Tang contains the order of constraint for each Constraint: The possible values for
-    /// this order has to be -1 , 0 , 1 , 2 . Order i means constraint Gi. NbIter is the maximum
-    /// number of iteration to optimise the number of points for resolution Degree is the degree of
-    /// resolution for Plate Tol2d is the tolerance used to test if two points of different constraint
-    /// are identical in the parametric space of the initial surface Tol3d is used to test if two
-    /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
-    /// between normal of two identical points in the 2d space Raises  ConstructionError;
-    pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int(
-        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
-        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
-        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
-        Degree: i32,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, 3, 0.00001, 0.0001, 0.01, 0.1, false)
     }
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
@@ -738,6 +676,18 @@ impl BuildPlateSurface {
         unsafe { crate::ffi::GeomPlate_BuildPlateSurface_is_done(self as *const Self) }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:166 - `GeomPlate_BuildPlateSurface::Surface()`
+    /// Returns the result of the computation. This surface can
+    /// then be used by GeomPlate_MakeApprox for
+    /// converting the resulting surface into a BSpline.
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_BuildPlateSurface_surface(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:169 - `GeomPlate_BuildPlateSurface::SurfInit()`
     /// Returns the initial surface
     pub fn surf_init(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
@@ -758,17 +708,6 @@ impl BuildPlateSurface {
     pub fn sense(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfInteger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_BuildPlateSurface_sense(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:181 - `GeomPlate_BuildPlateSurface::Curves2d()`
-    /// Extracts the array of curves on the plate surface which
-    /// correspond to the curve constraints set in Add.
-    pub fn curves2d(&self) -> crate::OwnedPtr<crate::ffi::HandleTColGeom2dHArray1OfCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_BuildPlateSurface_curves2d(
                 self as *const Self,
             ))
         }
@@ -1190,371 +1129,267 @@ impl HandleGeomPlateCurveConstraint {
 }
 
 // ========================
-// From GeomPlate_HArray1OfHCurve.hxx
+// From GeomPlate_MakeApprox.hxx
 // ========================
 
-/// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve`
-pub use crate::ffi::GeomPlate_HArray1OfHCurve as HArray1OfHCurve;
+/// **Source:** `GeomPlate_MakeApprox.hxx`:31 - `GeomPlate_MakeApprox`
+/// Allows you to convert a GeomPlate surface into a BSpline.
+pub use crate::ffi::GeomPlate_MakeApprox as MakeApprox;
 
-unsafe impl crate::CppDeletable for HArray1OfHCurve {
+unsafe impl crate::CppDeletable for MakeApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomPlate_HArray1OfHCurve_destructor(ptr);
+        crate::ffi::GeomPlate_MakeApprox_destructor(ptr);
     }
 }
 
-impl HArray1OfHCurve {
-    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::GeomPlate_HArray1OfHCurve()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfHCurve_ctor()) }
-    }
-
-    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::GeomPlate_HArray1OfHCurve()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfHCurve_ctor_int2(
-                theLower, theUpper,
-            ))
-        }
-    }
-
-    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::GeomPlate_HArray1OfHCurve()`
-    pub fn new_array1ofhcurve(
-        theOther: &crate::ffi::GeomPlate_Array1OfHCurve,
+impl MakeApprox {
+    /// **Source:** `GeomPlate_MakeApprox.hxx`:40 - `GeomPlate_MakeApprox::GeomPlate_MakeApprox()`
+    /// Converts SurfPlate into a Geom_BSplineSurface with
+    /// n Bezier pieces (n<=Nbmax) of degree <= dgmax
+    /// and an approximation error < Tol3d if possible
+    /// the criterion CritPlate is satisfied if possible
+    pub fn new_handlegeomplatesurface_criterion_real_int2_shape_real(
+        SurfPlate: &crate::ffi::HandleGeomPlateSurface,
+        PlateCrit: &crate::ffi::AdvApp2Var_Criterion,
+        Tol3d: f64,
+        Nbmax: i32,
+        dgmax: i32,
+        Continuity: crate::geom_abs::Shape,
+        EnlargeCoeff: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfHCurve_ctor_array1ofhcurve(
-                theOther,
-            ))
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_MakeApprox_ctor_handlegeomplatesurface_criterion_real_int2_shape_real(SurfPlate, PlateCrit, Tol3d, Nbmax, dgmax, Continuity.into(), EnlargeCoeff))
         }
     }
 
-    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GeomPlate_HArray1OfHCurve_dynamic_type(self as *const Self)) }
-    }
-
-    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::get_type_name()`
-    pub fn get_type_name() -> String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::GeomPlate_HArray1OfHCurve_get_type_name())
-                .to_string_lossy()
-                .into_owned()
-        }
-    }
-
-    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GeomPlate_HArray1OfHCurve_get_type_descriptor()) }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateHArray1OfHCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfHCurve_to_handle(
-                obj.into_raw(),
-            ))
-        }
-    }
-}
-
-pub use crate::ffi::HandleGeomPlateHArray1OfHCurve;
-
-unsafe impl crate::CppDeletable for HandleGeomPlateHArray1OfHCurve {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomPlateHArray1OfHCurve_destructor(ptr);
-    }
-}
-
-impl HandleGeomPlateHArray1OfHCurve {
-    /// Dereference this Handle to access the underlying GeomPlate_HArray1OfHCurve
-    pub fn get(&self) -> &crate::ffi::GeomPlate_HArray1OfHCurve {
-        unsafe { &*(crate::ffi::HandleGeomPlateHArray1OfHCurve_get(self as *const Self)) }
-    }
-
-    /// Dereference this Handle to mutably access the underlying GeomPlate_HArray1OfHCurve
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomPlate_HArray1OfHCurve {
-        unsafe { &mut *(crate::ffi::HandleGeomPlateHArray1OfHCurve_get_mut(self as *mut Self)) }
-    }
-}
-
-// ========================
-// From GeomPlate_HArray1OfSequenceOfReal.hxx
-// ========================
-
-/// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal`
-pub use crate::ffi::GeomPlate_HArray1OfSequenceOfReal as HArray1OfSequenceOfReal;
-
-unsafe impl crate::CppDeletable for HArray1OfSequenceOfReal {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomPlate_HArray1OfSequenceOfReal_destructor(ptr);
-    }
-}
-
-impl HArray1OfSequenceOfReal {
-    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::GeomPlate_HArray1OfSequenceOfReal()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_ctor()) }
-    }
-
-    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::GeomPlate_HArray1OfSequenceOfReal()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_ctor_int2(
-                theLower, theUpper,
-            ))
-        }
-    }
-
-    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::GeomPlate_HArray1OfSequenceOfReal()`
-    pub fn new_array1ofsequenceofreal(
-        theOther: &crate::ffi::GeomPlate_Array1OfSequenceOfReal,
+    /// **Source:** `GeomPlate_MakeApprox.hxx`:56 - `GeomPlate_MakeApprox::GeomPlate_MakeApprox()`
+    /// Converts SurfPlate into a Geom_BSplineSurface with
+    /// n Bezier pieces (n<=Nbmax) of degree <= dgmax
+    /// and an approximation error < Tol3d if possible
+    /// if CritOrder = -1 , no criterion is used
+    /// if CritOrder = 0 , a PlateG0Criterion is used with max value > 10*dmax
+    /// if CritOrder = 1 , a PlateG1Criterion is used with max value > 10*dmax
+    /// WARNING : for CritOrder = 0 or 1, only the constraints points of SurfPlate
+    /// are used to evaluate the value of the criterion
+    pub fn new_handlegeomplatesurface_real_int2_real_int_shape_real(
+        SurfPlate: &crate::ffi::HandleGeomPlateSurface,
+        Tol3d: f64,
+        Nbmax: i32,
+        dgmax: i32,
+        dmax: f64,
+        CritOrder: i32,
+        Continuity: crate::geom_abs::Shape,
+        EnlargeCoeff: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::GeomPlate_HArray1OfSequenceOfReal_ctor_array1ofsequenceofreal(theOther),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_MakeApprox_ctor_handlegeomplatesurface_real_int2_real_int_shape_real(SurfPlate, Tol3d, Nbmax, dgmax, dmax, CritOrder, Continuity.into(), EnlargeCoeff))
         }
     }
 
-    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `GeomPlate_MakeApprox.hxx`:40 - `GeomPlate_MakeApprox::GeomPlate_MakeApprox()`
+    /// Converts SurfPlate into a Geom_BSplineSurface with
+    /// n Bezier pieces (n<=Nbmax) of degree <= dgmax
+    /// and an approximation error < Tol3d if possible
+    /// the criterion CritPlate is satisfied if possible
+    pub fn new_handlegeomplatesurface_criterion_real_int2_shape(
+        SurfPlate: &crate::ffi::HandleGeomPlateSurface,
+        PlateCrit: &crate::ffi::AdvApp2Var_Criterion,
+        Tol3d: f64,
+        Nbmax: i32,
+        dgmax: i32,
+        Continuity: crate::geom_abs::Shape,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handlegeomplatesurface_criterion_real_int2_shape_real(
+            SurfPlate, PlateCrit, Tol3d, Nbmax, dgmax, Continuity, 1.1,
+        )
+    }
+
+    /// **Source:** `GeomPlate_MakeApprox.hxx`:56 - `GeomPlate_MakeApprox::GeomPlate_MakeApprox()`
+    /// Converts SurfPlate into a Geom_BSplineSurface with
+    /// n Bezier pieces (n<=Nbmax) of degree <= dgmax
+    /// and an approximation error < Tol3d if possible
+    /// if CritOrder = -1 , no criterion is used
+    /// if CritOrder = 0 , a PlateG0Criterion is used with max value > 10*dmax
+    /// if CritOrder = 1 , a PlateG1Criterion is used with max value > 10*dmax
+    /// WARNING : for CritOrder = 0 or 1, only the constraints points of SurfPlate
+    /// are used to evaluate the value of the criterion
+    pub fn new_handlegeomplatesurface_real_int2_real_int_shape(
+        SurfPlate: &crate::ffi::HandleGeomPlateSurface,
+        Tol3d: f64,
+        Nbmax: i32,
+        dgmax: i32,
+        dmax: f64,
+        CritOrder: i32,
+        Continuity: crate::geom_abs::Shape,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handlegeomplatesurface_real_int2_real_int_shape_real(
+            SurfPlate, Tol3d, Nbmax, dgmax, dmax, CritOrder, Continuity, 1.1,
+        )
+    }
+
+    /// **Source:** `GeomPlate_MakeApprox.hxx`:67 - `GeomPlate_MakeApprox::Surface()`
+    /// Returns the BSpline surface extracted from the
+    /// GeomPlate_MakeApprox object.
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
         unsafe {
-            &*(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_dynamic_type(self as *const Self))
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_MakeApprox_surface(self as *const Self))
         }
     }
 
-    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::get_type_name()`
-    pub fn get_type_name() -> String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_get_type_name())
-                .to_string_lossy()
-                .into_owned()
-        }
+    /// **Source:** `GeomPlate_MakeApprox.hxx`:73 - `GeomPlate_MakeApprox::ApproxError()`
+    /// Returns the error in computation of the approximation
+    /// surface. This is the distance between the entire target
+    /// BSpline surface and the entire original surface
+    /// generated by BuildPlateSurface and converted by GeomPlate_Surface.
+    pub fn approx_error(&self) -> f64 {
+        unsafe { crate::ffi::GeomPlate_MakeApprox_approx_error(self as *const Self) }
     }
 
-    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_get_type_descriptor()) }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateHArray1OfSequenceOfReal> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_to_handle(
-                obj.into_raw(),
-            ))
-        }
-    }
-}
-
-pub use crate::ffi::HandleGeomPlateHArray1OfSequenceOfReal;
-
-unsafe impl crate::CppDeletable for HandleGeomPlateHArray1OfSequenceOfReal {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomPlateHArray1OfSequenceOfReal_destructor(ptr);
-    }
-}
-
-impl HandleGeomPlateHArray1OfSequenceOfReal {
-    /// Dereference this Handle to access the underlying GeomPlate_HArray1OfSequenceOfReal
-    pub fn get(&self) -> &crate::ffi::GeomPlate_HArray1OfSequenceOfReal {
-        unsafe { &*(crate::ffi::HandleGeomPlateHArray1OfSequenceOfReal_get(self as *const Self)) }
-    }
-
-    /// Dereference this Handle to mutably access the underlying GeomPlate_HArray1OfSequenceOfReal
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomPlate_HArray1OfSequenceOfReal {
-        unsafe {
-            &mut *(crate::ffi::HandleGeomPlateHArray1OfSequenceOfReal_get_mut(self as *mut Self))
-        }
+    /// **Source:** `GeomPlate_MakeApprox.hxx`:78 - `GeomPlate_MakeApprox::CriterionError()`
+    /// Returns the criterion error in computation of the
+    /// approximation surface. This is estimated relative to the
+    /// curve and point constraints only.
+    pub fn criterion_error(&self) -> f64 {
+        unsafe { crate::ffi::GeomPlate_MakeApprox_criterion_error(self as *const Self) }
     }
 }
 
 // ========================
-// From GeomPlate_HSequenceOfCurveConstraint.hxx
+// From GeomPlate_PlateG0Criterion.hxx
 // ========================
 
-/// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint`
-pub use crate::ffi::GeomPlate_HSequenceOfCurveConstraint as HSequenceOfCurveConstraint;
+/// **Source:** `GeomPlate_PlateG0Criterion.hxx`:32 - `GeomPlate_PlateG0Criterion`
+/// this class contains a specific G0 criterion for GeomPlate_MakeApprox
+pub use crate::ffi::GeomPlate_PlateG0Criterion as PlateG0Criterion;
 
-unsafe impl crate::CppDeletable for HSequenceOfCurveConstraint {
+unsafe impl crate::CppDeletable for PlateG0Criterion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomPlate_HSequenceOfCurveConstraint_destructor(ptr);
+        crate::ffi::GeomPlate_PlateG0Criterion_destructor(ptr);
     }
 }
 
-impl HSequenceOfCurveConstraint {
-    /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::GeomPlate_HSequenceOfCurveConstraint()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HSequenceOfCurveConstraint_ctor())
-        }
-    }
-
-    /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::GeomPlate_HSequenceOfCurveConstraint()`
-    pub fn new_sequenceofcurveconstraint(
-        theOther: &crate::ffi::GeomPlate_SequenceOfCurveConstraint,
+impl PlateG0Criterion {
+    /// **Source:** `GeomPlate_PlateG0Criterion.hxx`:37 - `GeomPlate_PlateG0Criterion::GeomPlate_PlateG0Criterion()`
+    pub fn new_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(
+        Data: &crate::ffi::TColgp_SequenceOfXY,
+        G0Data: &crate::ffi::TColgp_SequenceOfXYZ,
+        Maximum: f64,
+        Type: crate::adv_app2_var::CriterionType,
+        Repart: crate::adv_app2_var::CriterionRepartition,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::GeomPlate_HSequenceOfCurveConstraint_ctor_sequenceofcurveconstraint(
-                    theOther,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_PlateG0Criterion_ctor_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(Data, G0Data, Maximum, Type.into(), Repart.into()))
         }
     }
 
-    /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// Upcast to AdvApp2Var_Criterion
+    pub fn as_adv_app2_var_criterion(&self) -> &crate::adv_app2_var::Criterion {
         unsafe {
-            &*(crate::ffi::GeomPlate_HSequenceOfCurveConstraint_dynamic_type(self as *const Self))
+            &*(crate::ffi::GeomPlate_PlateG0Criterion_as_AdvApp2Var_Criterion(self as *const Self))
         }
     }
 
-    /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::get_type_name()`
-    pub fn get_type_name() -> String {
+    /// Upcast to AdvApp2Var_Criterion (mutable)
+    pub fn as_adv_app2_var_criterion_mut(&mut self) -> &mut crate::adv_app2_var::Criterion {
         unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::ffi::GeomPlate_HSequenceOfCurveConstraint_get_type_name(),
-            )
-            .to_string_lossy()
-            .into_owned()
-        }
-    }
-
-    /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GeomPlate_HSequenceOfCurveConstraint_get_type_descriptor()) }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateHSequenceOfCurveConstraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HSequenceOfCurveConstraint_to_handle(
-                obj.into_raw(),
+            &mut *(crate::ffi::GeomPlate_PlateG0Criterion_as_AdvApp2Var_Criterion_mut(
+                self as *mut Self,
             ))
         }
     }
-}
 
-pub use crate::ffi::HandleGeomPlateHSequenceOfCurveConstraint;
-
-unsafe impl crate::CppDeletable for HandleGeomPlateHSequenceOfCurveConstraint {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomPlateHSequenceOfCurveConstraint_destructor(ptr);
+    /// Inherited: **Source:** `AdvApp2Var_Criterion.hxx`:43 - `AdvApp2Var_Criterion::MaxValue()`
+    pub fn max_value(&self) -> f64 {
+        unsafe { crate::ffi::GeomPlate_PlateG0Criterion_inherited_MaxValue(self as *const Self) }
     }
-}
 
-impl HandleGeomPlateHSequenceOfCurveConstraint {
-    /// Dereference this Handle to access the underlying GeomPlate_HSequenceOfCurveConstraint
-    pub fn get(&self) -> &crate::ffi::GeomPlate_HSequenceOfCurveConstraint {
+    /// Inherited: **Source:** `AdvApp2Var_Criterion.hxx`:45 - `AdvApp2Var_Criterion::Type()`
+    pub fn type_(&self) -> crate::adv_app2_var::CriterionType {
         unsafe {
-            &*(crate::ffi::HandleGeomPlateHSequenceOfCurveConstraint_get(self as *const Self))
+            crate::adv_app2_var::CriterionType::try_from(
+                crate::ffi::GeomPlate_PlateG0Criterion_inherited_Type(self as *const Self),
+            )
+            .unwrap()
         }
     }
 
-    /// Dereference this Handle to mutably access the underlying GeomPlate_HSequenceOfCurveConstraint
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomPlate_HSequenceOfCurveConstraint {
+    /// Inherited: **Source:** `AdvApp2Var_Criterion.hxx`:47 - `AdvApp2Var_Criterion::Repartition()`
+    pub fn repartition(&self) -> crate::adv_app2_var::CriterionRepartition {
         unsafe {
-            &mut *(crate::ffi::HandleGeomPlateHSequenceOfCurveConstraint_get_mut(self as *mut Self))
+            crate::adv_app2_var::CriterionRepartition::try_from(
+                crate::ffi::GeomPlate_PlateG0Criterion_inherited_Repartition(self as *const Self),
+            )
+            .unwrap()
         }
     }
 }
 
 // ========================
-// From GeomPlate_HSequenceOfPointConstraint.hxx
+// From GeomPlate_PlateG1Criterion.hxx
 // ========================
 
-/// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint`
-pub use crate::ffi::GeomPlate_HSequenceOfPointConstraint as HSequenceOfPointConstraint;
+/// **Source:** `GeomPlate_PlateG1Criterion.hxx`:32 - `GeomPlate_PlateG1Criterion`
+/// this class contains a specific G1 criterion for GeomPlate_MakeApprox
+pub use crate::ffi::GeomPlate_PlateG1Criterion as PlateG1Criterion;
 
-unsafe impl crate::CppDeletable for HSequenceOfPointConstraint {
+unsafe impl crate::CppDeletable for PlateG1Criterion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomPlate_HSequenceOfPointConstraint_destructor(ptr);
+        crate::ffi::GeomPlate_PlateG1Criterion_destructor(ptr);
     }
 }
 
-impl HSequenceOfPointConstraint {
-    /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::GeomPlate_HSequenceOfPointConstraint()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HSequenceOfPointConstraint_ctor())
-        }
-    }
-
-    /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::GeomPlate_HSequenceOfPointConstraint()`
-    pub fn new_sequenceofpointconstraint(
-        theOther: &crate::ffi::GeomPlate_SequenceOfPointConstraint,
+impl PlateG1Criterion {
+    /// **Source:** `GeomPlate_PlateG1Criterion.hxx`:37 - `GeomPlate_PlateG1Criterion::GeomPlate_PlateG1Criterion()`
+    pub fn new_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(
+        Data: &crate::ffi::TColgp_SequenceOfXY,
+        G1Data: &crate::ffi::TColgp_SequenceOfXYZ,
+        Maximum: f64,
+        Type: crate::adv_app2_var::CriterionType,
+        Repart: crate::adv_app2_var::CriterionRepartition,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::GeomPlate_HSequenceOfPointConstraint_ctor_sequenceofpointconstraint(
-                    theOther,
-                ),
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_PlateG1Criterion_ctor_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(Data, G1Data, Maximum, Type.into(), Repart.into()))
         }
     }
 
-    /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// Upcast to AdvApp2Var_Criterion
+    pub fn as_adv_app2_var_criterion(&self) -> &crate::adv_app2_var::Criterion {
         unsafe {
-            &*(crate::ffi::GeomPlate_HSequenceOfPointConstraint_dynamic_type(self as *const Self))
+            &*(crate::ffi::GeomPlate_PlateG1Criterion_as_AdvApp2Var_Criterion(self as *const Self))
         }
     }
 
-    /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::get_type_name()`
-    pub fn get_type_name() -> String {
+    /// Upcast to AdvApp2Var_Criterion (mutable)
+    pub fn as_adv_app2_var_criterion_mut(&mut self) -> &mut crate::adv_app2_var::Criterion {
         unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::ffi::GeomPlate_HSequenceOfPointConstraint_get_type_name(),
-            )
-            .to_string_lossy()
-            .into_owned()
-        }
-    }
-
-    /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::GeomPlate_HSequenceOfPointConstraint_get_type_descriptor()) }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateHSequenceOfPointConstraint> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HSequenceOfPointConstraint_to_handle(
-                obj.into_raw(),
+            &mut *(crate::ffi::GeomPlate_PlateG1Criterion_as_AdvApp2Var_Criterion_mut(
+                self as *mut Self,
             ))
         }
     }
-}
 
-pub use crate::ffi::HandleGeomPlateHSequenceOfPointConstraint;
-
-unsafe impl crate::CppDeletable for HandleGeomPlateHSequenceOfPointConstraint {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomPlateHSequenceOfPointConstraint_destructor(ptr);
+    /// Inherited: **Source:** `AdvApp2Var_Criterion.hxx`:43 - `AdvApp2Var_Criterion::MaxValue()`
+    pub fn max_value(&self) -> f64 {
+        unsafe { crate::ffi::GeomPlate_PlateG1Criterion_inherited_MaxValue(self as *const Self) }
     }
-}
 
-impl HandleGeomPlateHSequenceOfPointConstraint {
-    /// Dereference this Handle to access the underlying GeomPlate_HSequenceOfPointConstraint
-    pub fn get(&self) -> &crate::ffi::GeomPlate_HSequenceOfPointConstraint {
+    /// Inherited: **Source:** `AdvApp2Var_Criterion.hxx`:45 - `AdvApp2Var_Criterion::Type()`
+    pub fn type_(&self) -> crate::adv_app2_var::CriterionType {
         unsafe {
-            &*(crate::ffi::HandleGeomPlateHSequenceOfPointConstraint_get(self as *const Self))
+            crate::adv_app2_var::CriterionType::try_from(
+                crate::ffi::GeomPlate_PlateG1Criterion_inherited_Type(self as *const Self),
+            )
+            .unwrap()
         }
     }
 
-    /// Dereference this Handle to mutably access the underlying GeomPlate_HSequenceOfPointConstraint
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomPlate_HSequenceOfPointConstraint {
+    /// Inherited: **Source:** `AdvApp2Var_Criterion.hxx`:47 - `AdvApp2Var_Criterion::Repartition()`
+    pub fn repartition(&self) -> crate::adv_app2_var::CriterionRepartition {
         unsafe {
-            &mut *(crate::ffi::HandleGeomPlateHSequenceOfPointConstraint_get_mut(self as *mut Self))
+            crate::adv_app2_var::CriterionRepartition::try_from(
+                crate::ffi::GeomPlate_PlateG1Criterion_inherited_Repartition(self as *const Self),
+            )
+            .unwrap()
         }
     }
 }
@@ -1913,12 +1748,603 @@ impl HandleGeomPlatePointConstraint {
 }
 
 // ========================
+// From GeomPlate_Surface.hxx
+// ========================
+
+/// **Source:** `GeomPlate_Surface.hxx`:46 - `GeomPlate_Surface`
+/// Describes the characteristics of plate surface objects
+/// returned by BuildPlateSurface::Surface. These can be
+/// used to verify the quality of the resulting surface before
+/// approximating it to a Geom_BSpline surface generated
+/// by MakeApprox. This proves necessary in cases where
+/// you want to use the resulting surface as the support for
+/// a shape. The algorithmically generated surface cannot
+/// fill this function as is, and as a result must be converted first.
+pub use crate::ffi::GeomPlate_Surface as Surface;
+
+unsafe impl crate::CppDeletable for Surface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomPlate_Surface_destructor(ptr);
+    }
+}
+
+impl Surface {
+    /// **Source:** `GeomPlate_Surface.hxx`:50 - `GeomPlate_Surface::GeomPlate_Surface()`
+    pub fn new_handlegeomsurface_plate(
+        Surfinit: &crate::ffi::HandleGeomSurface,
+        Surfinter: &crate::ffi::Plate_Plate,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_ctor_handlegeomsurface_plate(
+                Surfinit, Surfinter,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:55 - `GeomPlate_Surface::UReverse()`
+    /// Reverses the U direction of parametrization of <me>.
+    /// The bounds of the surface are not modified.
+    pub fn u_reverse(&mut self) {
+        unsafe { crate::ffi::GeomPlate_Surface_u_reverse(self as *mut Self) }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:66 - `GeomPlate_Surface::UReversedParameter()`
+    /// Return the  parameter on the  Ureversed surface for
+    /// the point of parameter U on <me>.
+    /// @code
+    /// me->UReversed()->Value(me->UReversedParameter(U),V)
+    /// @endcode
+    /// is the same point as
+    /// @code
+    /// me->Value(U,V)
+    /// @endcode
+    pub fn u_reversed_parameter(&self, U: f64) -> f64 {
+        unsafe { crate::ffi::GeomPlate_Surface_u_reversed_parameter(self as *const Self, U) }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:70 - `GeomPlate_Surface::VReverse()`
+    /// Reverses the V direction of parametrization of <me>.
+    /// The bounds of the surface are not modified.
+    pub fn v_reverse(&mut self) {
+        unsafe { crate::ffi::GeomPlate_Surface_v_reverse(self as *mut Self) }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:81 - `GeomPlate_Surface::VReversedParameter()`
+    /// Return the  parameter on the  Vreversed surface for
+    /// the point of parameter V on <me>.
+    /// @code
+    /// me->VReversed()->Value(U,me->VReversedParameter(V))
+    /// @endcode
+    /// is the same point as
+    /// @code
+    /// me->Value(U,V)
+    /// @endcode
+    pub fn v_reversed_parameter(&self, V: f64) -> f64 {
+        unsafe { crate::ffi::GeomPlate_Surface_v_reversed_parameter(self as *const Self, V) }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:100 - `GeomPlate_Surface::TransformParameters()`
+    /// Computes the  parameters on the  transformed  surface for
+    /// the transform of the point of parameters U,V on <me>.
+    /// @code
+    /// me->Transformed(T)->Value(U',V')
+    /// @endcode
+    /// is the same point as
+    /// @code
+    /// me->Value(U,V).Transformed(T)
+    /// @endcode
+    /// Where U',V' are the new values of U,V after calling
+    /// @code
+    /// me->TransformParameters(U,V,T)
+    /// @endcode
+    /// This methods does not change <U> and <V>
+    ///
+    /// It  can be redefined.  For  example on  the Plane,
+    /// Cylinder, Cone, Revolved and Extruded surfaces.
+    pub fn transform_parameters(&self, U: &mut f64, V: &mut f64, T: &crate::ffi::gp_Trsf) {
+        unsafe { crate::ffi::GeomPlate_Surface_transform_parameters(self as *const Self, U, V, T) }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:122 - `GeomPlate_Surface::ParametricTransformation()`
+    /// Returns a 2d transformation  used to find the  new
+    /// parameters of a point on the transformed surface.
+    /// @code
+    /// me->Transformed(T)->Value(U',V')
+    /// @endcode
+    /// is the same point as
+    /// @code
+    /// me->Value(U,V).Transformed(T)
+    /// @endcode
+    /// Where U',V' are  obtained by transforming U,V with
+    /// the 2d transformation returned by
+    /// @code
+    /// me->ParametricTransformation(T)
+    /// @endcode
+    /// This method returns an identity transformation
+    ///
+    /// It  can be redefined.  For  example on  the Plane,
+    /// Cylinder, Cone, Revolved and Extruded surfaces.
+    pub fn parametric_transformation(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> crate::OwnedPtr<crate::ffi::gp_GTrsf2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_parametric_transformation(
+                self as *const Self,
+                T,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:125 - `GeomPlate_Surface::Bounds()`
+    pub fn bounds(&self, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64) {
+        unsafe { crate::ffi::GeomPlate_Surface_bounds(self as *const Self, U1, U2, V1, V2) }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:135 - `GeomPlate_Surface::IsUClosed()`
+    /// Is the surface closed in the parametric direction U ?
+    /// Returns True if for each parameter V  the distance
+    /// between the point P (UFirst, V) and P (ULast, V) is
+    /// lower or equal to Resolution from gp.  UFirst and ULast
+    /// are the parametric bounds in the U direction.
+    pub fn is_u_closed(&self) -> bool {
+        unsafe { crate::ffi::GeomPlate_Surface_is_u_closed(self as *const Self) }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:142 - `GeomPlate_Surface::IsVClosed()`
+    /// Is the surface closed in the parametric direction V ?
+    /// Returns True if for each parameter U  the distance
+    /// between the point P (U, VFirst) and  P (U, VLast) is
+    /// lower or equal to Resolution from gp.  VFirst and VLast
+    /// are the parametric bounds in the V direction.
+    pub fn is_v_closed(&self) -> bool {
+        unsafe { crate::ffi::GeomPlate_Surface_is_v_closed(self as *const Self) }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:153 - `GeomPlate_Surface::IsUPeriodic()`
+    /// Is the parametrization of a surface periodic in the
+    /// direction U ?
+    /// It is possible only if the surface is closed in this
+    /// parametric direction and if the following relation is
+    /// satisfied :
+    /// for each parameter V the distance between the point
+    /// P (U, V)  and the point  P (U + T, V) is lower or equal
+    /// to Resolution from package gp. T is the parametric period
+    /// and must be a constant.
+    pub fn is_u_periodic(&self) -> bool {
+        unsafe { crate::ffi::GeomPlate_Surface_is_u_periodic(self as *const Self) }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:157 - `GeomPlate_Surface::UPeriod()`
+    /// returns the Uperiod.
+    /// raises if the surface is not uperiodic.
+    pub fn u_period(&self) -> f64 {
+        unsafe { crate::ffi::GeomPlate_Surface_u_period(self as *const Self) }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:168 - `GeomPlate_Surface::IsVPeriodic()`
+    /// Is the parametrization of a surface periodic in the
+    /// direction U ?
+    /// It is possible only if the surface is closed in this
+    /// parametric direction and if the following relation is
+    /// satisfied :
+    /// for each parameter V the distance between the point
+    /// P (U, V)  and the point  P (U + T, V) is lower or equal
+    /// to Resolution from package gp. T is the parametric period
+    /// and must be a constant.
+    pub fn is_v_periodic(&self) -> bool {
+        unsafe { crate::ffi::GeomPlate_Surface_is_v_periodic(self as *const Self) }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:172 - `GeomPlate_Surface::VPeriod()`
+    /// returns the Vperiod.
+    /// raises if the surface is not vperiodic.
+    pub fn v_period(&self) -> f64 {
+        unsafe { crate::ffi::GeomPlate_Surface_v_period(self as *const Self) }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:175 - `GeomPlate_Surface::UIso()`
+    /// Computes the U isoparametric curve.
+    pub fn u_iso(&self, U: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_u_iso(self as *const Self, U))
+        }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:178 - `GeomPlate_Surface::VIso()`
+    /// Computes the V isoparametric curve.
+    pub fn v_iso(&self, V: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_v_iso(self as *const Self, V))
+        }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:191 - `GeomPlate_Surface::Continuity()`
+    /// Global Continuity of the surface in direction U and V :
+    /// C0 : only geometric continuity,
+    /// C1 : continuity of the first derivative all along the surface,
+    /// C2 : continuity of the second derivative all along the surface,
+    /// C3 : continuity of the third derivative all along the surface,
+    /// G1 : tangency continuity all along the surface,
+    /// G2 : curvature continuity all along the surface,
+    /// CN : the order of continuity is infinite.
+    /// Example :
+    /// If the surface is C1 in the V parametric direction and C2
+    /// in the U parametric direction Shape = C1.
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::GeomPlate_Surface_continuity(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:196 - `GeomPlate_Surface::IsCNu()`
+    /// Returns the order of continuity of the surface in the
+    /// U parametric direction.
+    /// Raised if N < 0.
+    pub fn is_c_nu(&self, N: i32) -> bool {
+        unsafe { crate::ffi::GeomPlate_Surface_is_c_nu(self as *const Self, N) }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:201 - `GeomPlate_Surface::IsCNv()`
+    /// Returns the order of continuity of the surface in the
+    /// V parametric direction.
+    /// Raised if N < 0.
+    pub fn is_c_nv(&self, N: i32) -> bool {
+        unsafe { crate::ffi::GeomPlate_Surface_is_c_nv(self as *const Self, N) }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:207 - `GeomPlate_Surface::D0()`
+    /// Computes the point of parameter U,V on the surface.
+    ///
+    /// Raised only for an "OffsetSurface" if it is not possible to
+    /// compute the current point.
+    pub fn d0(&self, U: f64, V: f64, P: &mut crate::ffi::gp_Pnt) {
+        unsafe { crate::ffi::GeomPlate_Surface_d0(self as *const Self, U, V, P) }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:214 - `GeomPlate_Surface::D1()`
+    /// Computes the point P and the first derivatives in the
+    /// directions U and V at this point.
+    /// Raised if the continuity of the surface is not C1.
+    pub fn d1(
+        &self,
+        U: f64,
+        V: f64,
+        P: &mut crate::ffi::gp_Pnt,
+        D1U: &mut crate::ffi::gp_Vec,
+        D1V: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe { crate::ffi::GeomPlate_Surface_d1(self as *const Self, U, V, P, D1U, D1V) }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:223 - `GeomPlate_Surface::D2()`
+    /// Computes the point P, the first and the second derivatives in
+    /// the directions U and V at this point.
+    /// Raised if the continuity of the surface is not C2.
+    pub fn d2(
+        &self,
+        U: f64,
+        V: f64,
+        P: &mut crate::ffi::gp_Pnt,
+        D1U: &mut crate::ffi::gp_Vec,
+        D1V: &mut crate::ffi::gp_Vec,
+        D2U: &mut crate::ffi::gp_Vec,
+        D2V: &mut crate::ffi::gp_Vec,
+        D2UV: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe {
+            crate::ffi::GeomPlate_Surface_d2(self as *const Self, U, V, P, D1U, D1V, D2U, D2V, D2UV)
+        }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:235 - `GeomPlate_Surface::D3()`
+    /// Computes the point P, the first,the second and the third
+    /// derivatives in the directions U and V at this point.
+    /// Raised if the continuity of the surface is not C2.
+    pub fn d3(
+        &self,
+        U: f64,
+        V: f64,
+        P: &mut crate::ffi::gp_Pnt,
+        D1U: &mut crate::ffi::gp_Vec,
+        D1V: &mut crate::ffi::gp_Vec,
+        D2U: &mut crate::ffi::gp_Vec,
+        D2V: &mut crate::ffi::gp_Vec,
+        D2UV: &mut crate::ffi::gp_Vec,
+        D3U: &mut crate::ffi::gp_Vec,
+        D3V: &mut crate::ffi::gp_Vec,
+        D3UUV: &mut crate::ffi::gp_Vec,
+        D3UVV: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe {
+            crate::ffi::GeomPlate_Surface_d3(
+                self as *const Self,
+                U,
+                V,
+                P,
+                D1U,
+                D1V,
+                D2U,
+                D2V,
+                D2UV,
+                D3U,
+                D3V,
+                D3UUV,
+                D3UVV,
+            )
+        }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:255 - `GeomPlate_Surface::DN()`
+    /// ---Purpose ;
+    /// Computes the derivative of order Nu in the direction U and Nv
+    /// in the direction V at the point P(U, V).
+    ///
+    /// Raised if the continuity of the surface is not CNu in the U
+    /// direction or not CNv in the V direction.
+    /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_dn(
+                self as *const Self,
+                U,
+                V,
+                Nu,
+                Nv,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:260 - `GeomPlate_Surface::Copy()`
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_copy(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:267 - `GeomPlate_Surface::Transform()`
+    /// Transformation of a geometric object. This transformation
+    /// can be a translation, a rotation, a symmetry, a scaling
+    /// or a complex transformation obtained by combination of
+    /// the previous elementaries transformations.
+    /// (see class Transformation of the package Geom).
+    pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
+        unsafe { crate::ffi::GeomPlate_Surface_transform(self as *mut Self, T) }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:269 - `GeomPlate_Surface::CallSurfinit()`
+    pub fn call_surfinit(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_call_surfinit(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:271 - `GeomPlate_Surface::SetBounds()`
+    pub fn set_bounds(&mut self, Umin: f64, Umax: f64, Vmin: f64, Vmax: f64) {
+        unsafe {
+            crate::ffi::GeomPlate_Surface_set_bounds(self as *mut Self, Umin, Umax, Vmin, Vmax)
+        }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:276 - `GeomPlate_Surface::RealBounds()`
+    pub fn real_bounds(&self, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64) {
+        unsafe { crate::ffi::GeomPlate_Surface_real_bounds(self as *const Self, U1, U2, V1, V2) }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:283 - `GeomPlate_Surface::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::GeomPlate_Surface_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:283 - `GeomPlate_Surface::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::GeomPlate_Surface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:283 - `GeomPlate_Surface::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::GeomPlate_Surface_get_type_descriptor()) }
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geom_geometry(&self) -> &crate::geom::Geometry {
+        unsafe { &*(crate::ffi::GeomPlate_Surface_as_Geom_Geometry(self as *const Self)) }
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geom_geometry_mut(&mut self) -> &mut crate::geom::Geometry {
+        unsafe { &mut *(crate::ffi::GeomPlate_Surface_as_Geom_Geometry_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Geom_Surface
+    pub fn as_geom_surface(&self) -> &crate::geom::Surface {
+        unsafe { &*(crate::ffi::GeomPlate_Surface_as_Geom_Surface(self as *const Self)) }
+    }
+
+    /// Upcast to Geom_Surface (mutable)
+    pub fn as_geom_surface_mut(&mut self) -> &mut crate::geom::Surface {
+        unsafe { &mut *(crate::ffi::GeomPlate_Surface_as_Geom_Surface_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
+    pub fn mirror(&mut self, P: &crate::ffi::gp_Pnt) {
+        unsafe { crate::ffi::GeomPlate_Surface_inherited_Mirror(self as *mut Self, P) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:72 - `Geom_Geometry::Rotate()`
+    pub fn rotate(&mut self, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        unsafe { crate::ffi::GeomPlate_Surface_inherited_Rotate(self as *mut Self, A1, Ang) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:75 - `Geom_Geometry::Scale()`
+    pub fn scale(&mut self, P: &crate::ffi::gp_Pnt, S: f64) {
+        unsafe { crate::ffi::GeomPlate_Surface_inherited_Scale(self as *mut Self, P, S) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
+    pub fn translate(&mut self, V: &crate::ffi::gp_Vec) {
+        unsafe { crate::ffi::GeomPlate_Surface_inherited_Translate(self as *mut Self, V) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:90 - `Geom_Geometry::Mirrored()`
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_inherited_Mirrored(
+                self as *const Self,
+                P,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:96 - `Geom_Geometry::Rotated()`
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_inherited_Rotated(
+                self as *const Self,
+                A1,
+                Ang,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:99 - `Geom_Geometry::Scaled()`
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_inherited_Scaled(
+                self as *const Self,
+                P,
+                S,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:102 - `Geom_Geometry::Transformed()`
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_inherited_Transformed(
+                self as *const Self,
+                T,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_inherited_Translated(
+                self as *const Self,
+                V,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
+    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_inherited_UReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
+    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_inherited_VReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
+    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_inherited_Value(
+                self as *const Self,
+                U,
+                V,
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomPlateSurface;
+
+unsafe impl crate::CppDeletable for HandleGeomPlateSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomPlateSurface_destructor(ptr);
+    }
+}
+
+impl HandleGeomPlateSurface {
+    /// Dereference this Handle to access the underlying GeomPlate_Surface
+    pub fn get(&self) -> &crate::ffi::GeomPlate_Surface {
+        unsafe { &*(crate::ffi::HandleGeomPlateSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomPlate_Surface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomPlate_Surface {
+        unsafe { &mut *(crate::ffi::HandleGeomPlateSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomPlate_Surface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomPlateSurface_to_HandleGeomGeometry(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<GeomPlate_Surface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomPlateSurface_to_HandleGeomSurface(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
-    GeomPlate_Array1OfHCurve as Array1OfHCurve,
-    GeomPlate_Array1OfSequenceOfReal as Array1OfSequenceOfReal,
-    GeomPlate_SequenceOfCurveConstraint as SequenceOfCurveConstraint,
-    GeomPlate_SequenceOfPointConstraint as SequenceOfPointConstraint, GeomPlate_Surface as Surface,
+    GeomPlate_HArray1OfHCurve as HArray1OfHCurve, GeomPlate_SequenceOfAij as SequenceOfAij,
 };

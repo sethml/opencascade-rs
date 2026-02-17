@@ -35,3 +35,110 @@ impl TryFrom<i32> for Status {
         }
     }
 }
+
+/// Identifies the type of a particular point on a curve:
+/// - LProp_Inflection: a point of inflection
+/// - LProp_MinCur: a minimum of curvature
+/// - LProp_MaxCur: a maximum of curvature.
+/// C++ enum: `LProp_CIType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum CIType {
+    Inflection = 0,
+    Mincur = 1,
+    Maxcur = 2,
+}
+
+impl From<CIType> for i32 {
+    fn from(value: CIType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for CIType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(CIType::Inflection),
+            1 => Ok(CIType::Mincur),
+            2 => Ok(CIType::Maxcur),
+            _ => Err(value),
+        }
+    }
+}
+
+// ========================
+// From LProp_CurAndInf.hxx
+// ========================
+
+/// **Source:** `LProp_CurAndInf.hxx`:31 - `LProp_CurAndInf`
+/// Stores the parameters of a curve 2d or 3d corresponding
+/// to the curvature's extremas and the Inflection's Points.
+pub use crate::ffi::LProp_CurAndInf as CurAndInf;
+
+unsafe impl crate::CppDeletable for CurAndInf {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::LProp_CurAndInf_destructor(ptr);
+    }
+}
+
+impl CurAndInf {
+    /// **Source:** `LProp_CurAndInf.hxx`:36 - `LProp_CurAndInf::LProp_CurAndInf()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::LProp_CurAndInf_ctor()) }
+    }
+
+    /// **Source:** `LProp_CurAndInf.hxx`:38 - `LProp_CurAndInf::AddInflection()`
+    pub fn add_inflection(&mut self, Param: f64) {
+        unsafe { crate::ffi::LProp_CurAndInf_add_inflection(self as *mut Self, Param) }
+    }
+
+    /// **Source:** `LProp_CurAndInf.hxx`:40 - `LProp_CurAndInf::AddExtCur()`
+    pub fn add_ext_cur(&mut self, Param: f64, IsMin: bool) {
+        unsafe { crate::ffi::LProp_CurAndInf_add_ext_cur(self as *mut Self, Param, IsMin) }
+    }
+
+    /// **Source:** `LProp_CurAndInf.hxx`:42 - `LProp_CurAndInf::Clear()`
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::LProp_CurAndInf_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `LProp_CurAndInf.hxx`:44 - `LProp_CurAndInf::IsEmpty()`
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::LProp_CurAndInf_is_empty(self as *const Self) }
+    }
+
+    /// **Source:** `LProp_CurAndInf.hxx`:48 - `LProp_CurAndInf::NbPoints()`
+    /// Returns the number of points.
+    /// The Points are stored to increasing parameter.
+    pub fn nb_points(&self) -> i32 {
+        unsafe { crate::ffi::LProp_CurAndInf_nb_points(self as *const Self) }
+    }
+
+    /// **Source:** `LProp_CurAndInf.hxx`:52 - `LProp_CurAndInf::Parameter()`
+    /// Returns the parameter of the Nth point.
+    /// raises if N not in the range [1,NbPoints()]
+    pub fn parameter(&self, N: i32) -> f64 {
+        unsafe { crate::ffi::LProp_CurAndInf_parameter(self as *const Self, N) }
+    }
+
+    /// **Source:** `LProp_CurAndInf.hxx`:62 - `LProp_CurAndInf::Type()`
+    /// Returns
+    /// - MinCur if the Nth parameter corresponds to
+    /// a minimum of the radius of curvature.
+    /// - MaxCur if the Nth parameter corresponds to
+    /// a maximum of the radius of curvature.
+    /// - Inflection if the parameter corresponds to
+    /// a point of inflection.
+    /// raises if N not in the range [1,NbPoints()]
+    pub fn type_(&self, N: i32) -> crate::l_prop::CIType {
+        unsafe {
+            crate::l_prop::CIType::try_from(crate::ffi::LProp_CurAndInf_type_(
+                self as *const Self,
+                N,
+            ))
+            .unwrap()
+        }
+    }
+}

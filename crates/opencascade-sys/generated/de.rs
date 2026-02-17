@@ -7,7 +7,512 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From DE_ConfigurationNode.hxx
+// ========================
+
+/// **Source:** `DE_ConfigurationNode.hxx`:49 - `DE_ConfigurationNode`
+/// Base class to work with CAD transfer properties.
+/// Stores the necessary settings for a single Provider type.
+/// Configures and creates special provider to transfer CAD files.
+///
+/// Nodes are grouped by Vendor's name and Format type.
+/// The Vendor name is not defined by default.
+/// The Format type is not defined by default.
+/// The supported CAD extensions are not defined by default.
+/// The import process is not supported.
+/// The export process is not supported.
+///
+/// The algorithm for standalone transfer operation:
+/// 1) Create new empty Node object
+/// 2) Configure the current Node
+/// 2.1) Use the external resource file to configure (::Load)
+/// 2.2) Change the internal parameters directly:
+/// 2.2.1) Change field values of "GlobalParameters"
+/// 2.2.2) Change field values of "InternalParameters"
+/// 3) Create one-time transfer provider (::BuildProvider)
+/// 4) Initiate the transfer process:
+/// 4.1) Import (if "::IsImportSupported: returns TRUE)
+/// 4.1.1) Validate the support of input format (::CheckContent or ::CheckExtension)
+/// 4.1.2) Use created provider's "::Read" method
+/// 4.2) Export (if "::IsExportSupported: returns TRUE)
+/// 4.2.1) Use created provider's "::Write" method
+/// 5) Check the provider's output
+pub use crate::ffi::DE_ConfigurationNode as ConfigurationNode;
+
+unsafe impl crate::CppDeletable for ConfigurationNode {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::DE_ConfigurationNode_destructor(ptr);
+    }
+}
+
+impl ConfigurationNode {
+    /// **Source:** `DE_ConfigurationNode.hxx`:51 - `DE_ConfigurationNode::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::DE_ConfigurationNode_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:63 - `DE_ConfigurationNode::Load()`
+    /// Updates values according the resource file
+    /// @param[in] theResourcePath file path to resource
+    /// @return True if Load was successful
+    pub fn load(&mut self, theResourcePath: &crate::ffi::TCollection_AsciiString) -> bool {
+        unsafe { crate::ffi::DE_ConfigurationNode_load(self as *mut Self, theResourcePath) }
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:73 - `DE_ConfigurationNode::Save()`
+    /// Writes configuration to the resource file
+    /// @param[in] theResourcePath file path to resource
+    /// @return True if Save was successful
+    pub fn save_asciistring(&self, theResourcePath: &crate::ffi::TCollection_AsciiString) -> bool {
+        unsafe {
+            crate::ffi::DE_ConfigurationNode_save_asciistring(self as *const Self, theResourcePath)
+        }
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:77 - `DE_ConfigurationNode::Save()`
+    /// Writes configuration to the string
+    /// @return result resource string
+    pub fn save(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DE_ConfigurationNode_save(self as *const Self))
+        }
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:81 - `DE_ConfigurationNode::BuildProvider()`
+    /// Creates new provider for the own format
+    /// @return new created provider
+    pub fn build_provider(&mut self) -> crate::OwnedPtr<crate::ffi::HandleDEProvider> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DE_ConfigurationNode_build_provider(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:85 - `DE_ConfigurationNode::Copy()`
+    /// Copies values of all fields
+    /// @return new object with the same field values
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleDEConfigurationNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DE_ConfigurationNode_copy(self as *const Self))
+        }
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:91 - `DE_ConfigurationNode::UpdateLoad()`
+    /// Update loading status. Checking for the ability to read and write.
+    /// @param[in] theToImport flag to updates for import. Standard_True-import, Standard_False-export
+    /// @param[in] theToKeep flag to save update result
+    /// @return Standard_True, if node can be used
+    pub fn update_load(&mut self, theToImport: bool, theToKeep: bool) -> bool {
+        unsafe {
+            crate::ffi::DE_ConfigurationNode_update_load(self as *mut Self, theToImport, theToKeep)
+        }
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:97 - `DE_ConfigurationNode::IsImportSupported()`
+    /// Checks the import supporting
+    /// @return Standard_True if import is support
+    pub fn is_import_supported(&self) -> bool {
+        unsafe { crate::ffi::DE_ConfigurationNode_is_import_supported(self as *const Self) }
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:101 - `DE_ConfigurationNode::IsExportSupported()`
+    /// Checks the export supporting
+    /// @return Standard_True if export is support
+    pub fn is_export_supported(&self) -> bool {
+        unsafe { crate::ffi::DE_ConfigurationNode_is_export_supported(self as *const Self) }
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:105 - `DE_ConfigurationNode::GetFormat()`
+    /// Gets CAD format name of associated provider
+    /// @return provider CAD format
+    pub fn get_format(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DE_ConfigurationNode_get_format(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:109 - `DE_ConfigurationNode::GetVendor()`
+    /// Gets provider's vendor name of associated provider
+    /// @return provider's vendor name
+    pub fn get_vendor(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DE_ConfigurationNode_get_vendor(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:118 - `DE_ConfigurationNode::CheckExtension()`
+    /// Checks the file extension to verify a format
+    /// @param[in] theExtension input file extension
+    /// @return Standard_True if file is supported by a current provider
+    pub fn check_extension(&self, theExtension: &crate::ffi::TCollection_AsciiString) -> bool {
+        unsafe {
+            crate::ffi::DE_ConfigurationNode_check_extension(self as *const Self, theExtension)
+        }
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:123 - `DE_ConfigurationNode::CheckContent()`
+    /// Checks the file content to verify a format
+    /// @param[in] theBuffer read stream buffer to check content
+    /// @return Standard_True if file is supported by a current provider
+    pub fn check_content(&self, theBuffer: &crate::ffi::HandleNCollectionBuffer) -> bool {
+        unsafe { crate::ffi::DE_ConfigurationNode_check_content(self as *const Self, theBuffer) }
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:128 - `DE_ConfigurationNode::IsEnabled()`
+    /// Gets the provider loading status
+    /// @return Standard_True if the load is correct
+    pub fn is_enabled(&self) -> bool {
+        unsafe { crate::ffi::DE_ConfigurationNode_is_enabled(self as *const Self) }
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:132 - `DE_ConfigurationNode::SetEnabled()`
+    /// Sets the provider loading status
+    /// @param[in] theIsLoaded input load status
+    pub fn set_enabled(&mut self, theIsLoaded: bool) {
+        unsafe { crate::ffi::DE_ConfigurationNode_set_enabled(self as *mut Self, theIsLoaded) }
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:51 - `DE_ConfigurationNode::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::DE_ConfigurationNode_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:51 - `DE_ConfigurationNode::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::DE_ConfigurationNode_get_type_descriptor()) }
+    }
+}
+
+pub use crate::ffi::HandleDEConfigurationNode;
+
+unsafe impl crate::CppDeletable for HandleDEConfigurationNode {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleDEConfigurationNode_destructor(ptr);
+    }
+}
+
+impl HandleDEConfigurationNode {
+    /// Dereference this Handle to access the underlying DE_ConfigurationNode
+    pub fn get(&self) -> &crate::ffi::DE_ConfigurationNode {
+        unsafe { &*(crate::ffi::HandleDEConfigurationNode_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying DE_ConfigurationNode
+    pub fn get_mut(&mut self) -> &mut crate::ffi::DE_ConfigurationNode {
+        unsafe { &mut *(crate::ffi::HandleDEConfigurationNode_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From DE_Provider.hxx
+// ========================
+
+/// **Source:** `DE_Provider.hxx`:41 - `DE_Provider`
+/// Base class to make transfer process.
+/// Reads or Writes specialized CAD files into/from OCCT.
+/// Each operation needs the Configuration Node.
+///
+/// Providers are grouped by Vendor's name and Format type.
+/// The Vendor name is not defined by default.
+/// The Format type is not defined by default.
+/// The import process is not supported.
+/// The export process is not supported.
+///
+/// The algorithm for standalone transfer operation:
+/// 1) Create new empty Provider object
+/// 2) Configure the current object by special Configuration Node (::SetNode)
+/// 3) Initiate the transfer process:
+/// 3.1) Call the required Read method (if Read methods are implemented)
+/// 3.2) Call the required Write method (if Write methods are implemented)
+/// 4) Validate the output values
+pub use crate::ffi::DE_Provider as Provider;
+
+unsafe impl crate::CppDeletable for Provider {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::DE_Provider_destructor(ptr);
+    }
+}
+
+impl Provider {
+    /// **Source:** `DE_Provider.hxx`:44 - `DE_Provider::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::DE_Provider_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `DE_Provider.hxx`:129 - `DE_Provider::Read()`
+    /// Reads a CAD file, according internal configuration
+    /// @param[in] thePath path to the import CAD file
+    /// @param[out] theShape shape to save result
+    /// @param[in] theProgress progress indicator
+    /// @return True if Read was successful
+    pub fn read(
+        &mut self,
+        thePath: &crate::ffi::TCollection_AsciiString,
+        theShape: &mut crate::ffi::TopoDS_Shape,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe { crate::ffi::DE_Provider_read(self as *mut Self, thePath, theShape, theProgress) }
+    }
+
+    /// **Source:** `DE_Provider.hxx`:139 - `DE_Provider::Write()`
+    /// Writes a CAD file, according internal configuration
+    /// @param[in] thePath path to the export CAD file
+    /// @param[out] theShape shape to export
+    /// @param[in] theProgress progress indicator
+    /// @return True if Write was successful
+    pub fn write(
+        &mut self,
+        thePath: &crate::ffi::TCollection_AsciiString,
+        theShape: &crate::ffi::TopoDS_Shape,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe { crate::ffi::DE_Provider_write(self as *mut Self, thePath, theShape, theProgress) }
+    }
+
+    /// **Source:** `DE_Provider.hxx`:147 - `DE_Provider::GetFormat()`
+    /// Gets CAD format name of associated provider
+    /// @return provider CAD format
+    pub fn get_format(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DE_Provider_get_format(self as *const Self))
+        }
+    }
+
+    /// **Source:** `DE_Provider.hxx`:151 - `DE_Provider::GetVendor()`
+    /// Gets provider's vendor name of associated provider
+    /// @return provider's vendor name
+    pub fn get_vendor(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DE_Provider_get_vendor(self as *const Self))
+        }
+    }
+
+    /// **Source:** `DE_Provider.hxx`:155 - `DE_Provider::GetNode()`
+    /// Gets internal configuration node
+    /// @return configuration node object
+    pub fn get_node(&self) -> crate::OwnedPtr<crate::ffi::HandleDEConfigurationNode> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::DE_Provider_get_node(self as *const Self)) }
+    }
+
+    /// **Source:** `DE_Provider.hxx`:159 - `DE_Provider::SetNode()`
+    /// Sets internal configuration node
+    /// @param[in] theNode configuration node to set
+    pub fn set_node(&mut self, theNode: &crate::ffi::HandleDEConfigurationNode) {
+        unsafe { crate::ffi::DE_Provider_set_node(self as *mut Self, theNode) }
+    }
+
+    /// **Source:** `DE_Provider.hxx`:44 - `DE_Provider::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::DE_Provider_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `DE_Provider.hxx`:44 - `DE_Provider::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::DE_Provider_get_type_descriptor()) }
+    }
+}
+
+pub use crate::ffi::HandleDEProvider;
+
+unsafe impl crate::CppDeletable for HandleDEProvider {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleDEProvider_destructor(ptr);
+    }
+}
+
+impl HandleDEProvider {
+    /// Dereference this Handle to access the underlying DE_Provider
+    pub fn get(&self) -> &crate::ffi::DE_Provider {
+        unsafe { &*(crate::ffi::HandleDEProvider_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying DE_Provider
+    pub fn get_mut(&mut self) -> &mut crate::ffi::DE_Provider {
+        unsafe { &mut *(crate::ffi::HandleDEProvider_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From DE_ShapeFixConfigurationNode.hxx
+// ========================
+
+/// **Source:** `DE_ShapeFixConfigurationNode.hxx`:24 - `DE_ShapeFixConfigurationNode`
+/// Base class to work with shape healing parameters for child classes.
+pub use crate::ffi::DE_ShapeFixConfigurationNode as ShapeFixConfigurationNode;
+
+unsafe impl crate::CppDeletable for ShapeFixConfigurationNode {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::DE_ShapeFixConfigurationNode_destructor(ptr);
+    }
+}
+
+impl ShapeFixConfigurationNode {
+    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:26 - `DE_ShapeFixConfigurationNode::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::DE_ShapeFixConfigurationNode_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:44 - `DE_ShapeFixConfigurationNode::Save()`
+    /// Writes configuration to the string
+    /// @return result resource string
+    pub fn save(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DE_ShapeFixConfigurationNode_save(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:26 - `DE_ShapeFixConfigurationNode::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::DE_ShapeFixConfigurationNode_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:26 - `DE_ShapeFixConfigurationNode::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::DE_ShapeFixConfigurationNode_get_type_descriptor()) }
+    }
+
+    /// Upcast to DE_ConfigurationNode
+    pub fn as_configuration_node(&self) -> &ConfigurationNode {
+        unsafe {
+            &*(crate::ffi::DE_ShapeFixConfigurationNode_as_DE_ConfigurationNode(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to DE_ConfigurationNode (mutable)
+    pub fn as_configuration_node_mut(&mut self) -> &mut ConfigurationNode {
+        unsafe {
+            &mut *(crate::ffi::DE_ShapeFixConfigurationNode_as_DE_ConfigurationNode_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:81 - `DE_ConfigurationNode::BuildProvider()`
+    pub fn build_provider(&mut self) -> crate::OwnedPtr<crate::ffi::HandleDEProvider> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::DE_ShapeFixConfigurationNode_inherited_BuildProvider(self as *mut Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:85 - `DE_ConfigurationNode::Copy()`
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleDEConfigurationNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DE_ShapeFixConfigurationNode_inherited_Copy(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:91 - `DE_ConfigurationNode::UpdateLoad()`
+    pub fn update_load(&mut self, theToImport: bool, theToKeep: bool) -> bool {
+        unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_UpdateLoad(
+                self as *mut Self,
+                theToImport,
+                theToKeep,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:97 - `DE_ConfigurationNode::IsImportSupported()`
+    pub fn is_import_supported(&self) -> bool {
+        unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_IsImportSupported(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:101 - `DE_ConfigurationNode::IsExportSupported()`
+    pub fn is_export_supported(&self) -> bool {
+        unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_IsExportSupported(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:105 - `DE_ConfigurationNode::GetFormat()`
+    pub fn get_format(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DE_ShapeFixConfigurationNode_inherited_GetFormat(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:109 - `DE_ConfigurationNode::GetVendor()`
+    pub fn get_vendor(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DE_ShapeFixConfigurationNode_inherited_GetVendor(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:118 - `DE_ConfigurationNode::CheckExtension()`
+    pub fn check_extension(&self, theExtension: &crate::ffi::TCollection_AsciiString) -> bool {
+        unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_CheckExtension(
+                self as *const Self,
+                theExtension,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:123 - `DE_ConfigurationNode::CheckContent()`
+    pub fn check_content(&self, theBuffer: &crate::ffi::HandleNCollectionBuffer) -> bool {
+        unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_CheckContent(
+                self as *const Self,
+                theBuffer,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:128 - `DE_ConfigurationNode::IsEnabled()`
+    pub fn is_enabled(&self) -> bool {
+        unsafe { crate::ffi::DE_ShapeFixConfigurationNode_inherited_IsEnabled(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:132 - `DE_ConfigurationNode::SetEnabled()`
+    pub fn set_enabled(&mut self, theIsLoaded: bool) {
+        unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_SetEnabled(
+                self as *mut Self,
+                theIsLoaded,
+            )
+        }
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::DE_ShapeFixParameters as ShapeFixParameters;
+pub use crate::ffi::{
+    DE_ConfigurationContext as ConfigurationContext, DE_ShapeFixParameters as ShapeFixParameters,
+};

@@ -885,11 +885,6 @@ impl Check {
         unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_HasWarning(self as *const Self, theType) }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
-        unsafe { &*(crate::ffi::BRepAlgoAPI_Check_inherited_GetReport(self as *const Self)) }
-    }
-
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     pub fn clear_warnings(&mut self) {
         unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_ClearWarnings(self as *mut Self) }

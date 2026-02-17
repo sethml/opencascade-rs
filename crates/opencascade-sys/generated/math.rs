@@ -787,22 +787,6 @@ impl Crout {
         unsafe { crate::ffi::math_Crout_is_done(self as *const Self) }
     }
 
-    /// **Source:** `math_Crout.hxx`:63 - `math_Crout::Inverse()`
-    /// returns the inverse matrix of A. Only the inferior
-    /// triangle is returned.
-    /// Exception NotDone is raised if NotDone.
-    pub fn inverse(&self) -> &crate::ffi::math_Matrix {
-        unsafe { &*(crate::ffi::math_Crout_inverse(self as *const Self)) }
-    }
-
-    /// **Source:** `math_Crout.hxx`:68 - `math_Crout::Invert()`
-    /// returns in Inv the inverse matrix of A. Only the inferior
-    /// triangle is returned.
-    /// Exception NotDone is raised if NotDone.
-    pub fn invert(&self, Inv: &mut crate::ffi::math_Matrix) {
-        unsafe { crate::ffi::math_Crout_invert(self as *const Self, Inv) }
-    }
-
     /// **Source:** `math_Crout.hxx`:74 - `math_Crout::Determinant()`
     /// Returns the value of the determinant of the previously LU
     /// decomposed matrix A. Zero is returned if the matrix A is considered as singular.
@@ -1773,23 +1757,6 @@ impl FunctionSetRoot {
         unsafe { crate::ffi::math_FunctionSetRoot_state_number(self as *const Self) }
     }
 
-    /// **Source:** `math_FunctionSetRoot.hxx`:135 - `math_FunctionSetRoot::Derivative()`
-    /// Returns the matrix value of the derivative at the root.
-    /// Exception NotDone is raised if the root was not found.
-    pub fn derivative(&self) -> &crate::ffi::math_Matrix {
-        unsafe { &*(crate::ffi::math_FunctionSetRoot_derivative(self as *const Self)) }
-    }
-
-    /// **Source:** `math_FunctionSetRoot.hxx`:146 - `math_FunctionSetRoot::Derivative()`
-    /// outputs the matrix value of the derivative
-    /// at the root in Der.
-    /// Exception NotDone is raised if the root was not found.
-    /// Exception DimensionError is raised if the column range
-    /// of <Der> is not equal to the range of the startingPoint.
-    pub fn derivative_matrix(&self, Der: &mut crate::ffi::math_Matrix) {
-        unsafe { crate::ffi::math_FunctionSetRoot_derivative_matrix(self as *const Self, Der) }
-    }
-
     /// **Source:** `math_FunctionSetRoot.hxx`:174 - `math_FunctionSetRoot::IsDivergent()`
     pub fn is_divergent(&self) -> bool {
         unsafe { crate::ffi::math_FunctionSetRoot_is_divergent(self as *const Self) }
@@ -1966,15 +1933,6 @@ impl Gauss {
     /// successfully, zero is returned if the matrix A was considered as singular.
     pub fn determinant(&self) -> f64 {
         unsafe { crate::ffi::math_Gauss_determinant(self as *const Self) }
-    }
-
-    /// **Source:** `math_Gauss.hxx`:81 - `math_Gauss::Invert()`
-    /// This routine outputs Inv the inverse of the previously LU decomposed
-    /// matrix A.
-    /// Exception DimensionError is raised if the ranges of B are not
-    /// equal to the ranges of A.
-    pub fn invert(&self, Inv: &mut crate::ffi::math_Matrix) {
-        unsafe { crate::ffi::math_Gauss_invert(self as *const Self, Inv) }
     }
 }
 
@@ -2457,15 +2415,6 @@ impl Householder {
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_Householder_is_done(self as *const Self) }
     }
-
-    /// **Source:** `math_Householder.hxx`:94 - `math_Householder::AllValues()`
-    /// Returns the matrix sol of all the solutions of the system
-    /// A.X = B.
-    /// Exception NotDone is raised is the resolution has not be
-    /// done.
-    pub fn all_values(&self) -> &crate::ffi::math_Matrix {
-        unsafe { &*(crate::ffi::math_Householder_all_values(self as *const Self)) }
-    }
 }
 
 // ========================
@@ -2506,13 +2455,6 @@ impl Jacobi {
     /// Exception NotDone is raised if calculation is not done successfully.
     pub fn value(&self, Num: i32) -> f64 {
         unsafe { crate::ffi::math_Jacobi_value(self as *const Self, Num) }
-    }
-
-    /// **Source:** `math_Jacobi.hxx`:56 - `math_Jacobi::Vectors()`
-    /// returns the eigenvectors matrix.
-    /// Exception NotDone is raised if calculation is not done successfully.
-    pub fn vectors(&self) -> &crate::ffi::math_Matrix {
-        unsafe { &*(crate::ffi::math_Jacobi_vectors(self as *const Self)) }
     }
 }
 
@@ -2679,468 +2621,6 @@ impl KronrodSingleIntegration {
     /// that were made to compute result.
     pub fn nb_iter_reached(&self) -> i32 {
         unsafe { crate::ffi::math_KronrodSingleIntegration_nb_iter_reached(self as *const Self) }
-    }
-}
-
-// ========================
-// From math_Matrix.hxx
-// ========================
-
-/// **Source:** `math_Matrix.hxx`:74 - `math_Matrix`
-/// This class implements the real matrix abstract data type.
-/// Matrixes can have an arbitrary range which must be defined
-/// at the declaration and cannot be changed after this declaration
-/// math_Matrix(-3,5,2,4); //a vector with range [-3..5, 2..4]
-/// Matrix values may be initialized and
-/// retrieved using indexes which must lie within the range
-/// of definition of the matrix.
-/// Matrix objects follow "value semantics", that is, they
-/// cannot be shared and are copied through assignment
-/// Matrices are copied through assignment:
-/// @code
-/// math_Matrix M2(1, 9, 1, 3);
-/// ...
-/// M2 = M1;
-/// M1(1) = 2.0;//the matrix M2 will not be modified.
-/// @endcode
-/// The exception RangeError is raised when trying to access
-/// outside the range of a matrix :
-/// @code
-/// M1(11, 1)=0.0// --> will raise RangeError.
-/// @endcode
-///
-/// The exception DimensionError is raised when the dimensions of
-/// two matrices or vectors are not compatible.
-/// @code
-/// math_Matrix M3(1, 2, 1, 2);
-/// M3 = M1;   // will raise DimensionError
-/// M1.Add(M3) // --> will raise DimensionError.
-/// @endcode
-/// A Matrix can be constructed with a pointer to "c array".
-/// It allows to carry the bounds inside the matrix.
-/// Example :
-/// @code
-/// Standard_Real tab1[10][20];
-/// Standard_Real tab2[200];
-///
-/// math_Matrix A (tab1[0][0], 1, 10, 1, 20);
-/// math_Matrix B (tab2[0],    1, 10, 1, 20);
-/// @endcode
-pub use crate::ffi::math_Matrix as Matrix;
-
-unsafe impl crate::CppDeletable for Matrix {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_Matrix_destructor(ptr);
-    }
-}
-
-impl Matrix {
-    /// **Source:** `math_Matrix.hxx`:88 - `math_Matrix::math_Matrix()`
-    /// Constructs a non-initialized  matrix of range [LowerRow..UpperRow,
-    /// LowerCol..UpperCol]
-    /// For the constructed matrix:
-    /// -   LowerRow and UpperRow are the indexes of the
-    /// lower and upper bounds of a row, and
-    /// -   LowerCol and UpperCol are the indexes of the
-    /// lower and upper bounds of a column.
-    pub fn new_int4(
-        LowerRow: i32,
-        UpperRow: i32,
-        LowerCol: i32,
-        UpperCol: i32,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_ctor_int4(
-                LowerRow, UpperRow, LowerCol, UpperCol,
-            ))
-        }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:96 - `math_Matrix::math_Matrix()`
-    /// constructs a non-initialized matrix of range [LowerRow..UpperRow,
-    /// LowerCol..UpperCol]
-    /// whose values are all initialized with the value InitialValue.
-    pub fn new_int4_real(
-        LowerRow: i32,
-        UpperRow: i32,
-        LowerCol: i32,
-        UpperCol: i32,
-        InitialValue: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_ctor_int4_real(
-                LowerRow,
-                UpperRow,
-                LowerCol,
-                UpperCol,
-                InitialValue,
-            ))
-        }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:113 - `math_Matrix::math_Matrix()`
-    /// constructs a matrix for copy in initialization.
-    /// An exception is raised if the matrixes have not the same dimensions.
-    pub fn new_matrix(Other: &crate::ffi::math_Matrix) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_ctor_matrix(Other)) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:116 - `math_Matrix::Init()`
-    /// Initialize all the elements of a matrix to InitialValue.
-    pub fn init(&mut self, InitialValue: f64) {
-        unsafe { crate::ffi::math_Matrix_init(self as *mut Self, InitialValue) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:125 - `math_Matrix::RowNumber()`
-    /// Returns the number of rows  of this matrix.
-    /// Note that for a matrix A you always have the following relations:
-    /// - A.RowNumber() = A.UpperRow() -   A.LowerRow() + 1
-    /// - A.ColNumber() = A.UpperCol() -   A.LowerCol() + 1
-    /// - the length of a row of A is equal to the number of columns of A,
-    /// - the length of a column of A is equal to the number of
-    /// rows of A.returns the row range of a matrix.
-    pub fn row_number(&self) -> i32 {
-        unsafe { crate::ffi::math_Matrix_row_number(self as *const Self) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:134 - `math_Matrix::ColNumber()`
-    /// Returns the number of rows  of this matrix.
-    /// Note that for a matrix A you always have the following relations:
-    /// - A.RowNumber() = A.UpperRow() -   A.LowerRow() + 1
-    /// - A.ColNumber() = A.UpperCol() -   A.LowerCol() + 1
-    /// - the length of a row of A is equal to the number of columns of A,
-    /// - the length of a column of A is equal to the number of
-    /// rows of A.returns the row range of a matrix.
-    pub fn col_number(&self) -> i32 {
-        unsafe { crate::ffi::math_Matrix_col_number(self as *const Self) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:138 - `math_Matrix::LowerRow()`
-    /// Returns the value of the Lower index of the row
-    /// range of a matrix.
-    pub fn lower_row(&self) -> i32 {
-        unsafe { crate::ffi::math_Matrix_lower_row(self as *const Self) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:142 - `math_Matrix::UpperRow()`
-    /// Returns the Upper index of the row range
-    /// of a matrix.
-    pub fn upper_row(&self) -> i32 {
-        unsafe { crate::ffi::math_Matrix_upper_row(self as *const Self) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:146 - `math_Matrix::LowerCol()`
-    /// Returns the value of the Lower index of the
-    /// column range of a matrix.
-    pub fn lower_col(&self) -> i32 {
-        unsafe { crate::ffi::math_Matrix_lower_col(self as *const Self) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:150 - `math_Matrix::UpperCol()`
-    /// Returns the value of the upper index of the
-    /// column range of a matrix.
-    pub fn upper_col(&self) -> i32 {
-        unsafe { crate::ffi::math_Matrix_upper_col(self as *const Self) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:154 - `math_Matrix::Determinant()`
-    /// Computes the determinant of a matrix.
-    /// An exception is raised if the matrix is not a square matrix.
-    pub fn determinant(&self) -> f64 {
-        unsafe { crate::ffi::math_Matrix_determinant(self as *const Self) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:158 - `math_Matrix::Transpose()`
-    /// Transposes a given matrix.
-    /// An exception is raised if the matrix is not a square matrix.
-    pub fn transpose(&mut self) {
-        unsafe { crate::ffi::math_Matrix_transpose(self as *mut Self) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:163 - `math_Matrix::Invert()`
-    /// Inverts a matrix using Gauss algorithm.
-    /// Exception NotSquare is raised if the matrix is not square.
-    /// Exception SingularMatrix is raised if the matrix is singular.
-    pub fn invert(&mut self) {
-        unsafe { crate::ffi::math_Matrix_invert(self as *mut Self) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:182 - `math_Matrix::Multiply()`
-    /// Sets this matrix to the product of the matrix Left, and the matrix Right.
-    /// Example
-    /// math_Matrix A (1, 3, 1, 3);
-    /// math_Matrix B (1, 3, 1, 3);
-    /// // A = ... , B = ...
-    /// math_Matrix C (1, 3, 1, 3);
-    /// C.Multiply(A, B);
-    /// Exceptions
-    /// Standard_DimensionError if matrices are of incompatible dimensions, i.e. if:
-    /// -   the number of columns of matrix Left, or the number of
-    /// rows of matrix TLeft is not equal to the number of rows
-    /// of matrix Right, or
-    /// -   the number of rows of matrix Left, or the number of
-    /// columns of matrix TLeft is not equal to the number of
-    /// rows of this matrix, or
-    /// -   the number of columns of matrix Right is not equal to
-    /// the number of columns of this matrix.
-    pub fn multiply_real(&mut self, Right: f64) {
-        unsafe { crate::ffi::math_Matrix_multiply_real(self as *mut Self, Right) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:188 - `math_Matrix::Multiplied()`
-    /// multiplies all the elements of a matrix by the
-    /// value <Right>.
-    pub fn multiplied_real(&self, Right: f64) -> crate::OwnedPtr<crate::ffi::math_Matrix> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_multiplied_real(
-                self as *const Self,
-                Right,
-            ))
-        }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:213 - `math_Matrix::TMultiplied()`
-    /// Sets this matrix to the product of the
-    /// transposed matrix TLeft, and the matrix Right.
-    /// Example
-    /// math_Matrix A (1, 3, 1, 3);
-    /// math_Matrix B (1, 3, 1, 3);
-    /// // A = ... , B = ...
-    /// math_Matrix C (1, 3, 1, 3);
-    /// C.Multiply(A, B);
-    /// Exceptions
-    /// Standard_DimensionError if matrices are of incompatible dimensions, i.e. if:
-    /// -   the number of columns of matrix Left, or the number of
-    /// rows of matrix TLeft is not equal to the number of rows
-    /// of matrix Right, or
-    /// -   the number of rows of matrix Left, or the number of
-    /// columns of matrix TLeft is not equal to the number of
-    /// rows of this matrix, or
-    /// -   the number of columns of matrix Right is not equal to
-    /// the number of columns of this matrix.
-    pub fn t_multiplied(&self, Right: f64) -> crate::OwnedPtr<crate::ffi::math_Matrix> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_t_multiplied(
-                self as *const Self,
-                Right,
-            ))
-        }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:218 - `math_Matrix::Divide()`
-    /// divides all the elements of a matrix by the value <Right>.
-    /// An exception is raised if <Right> = 0.
-    pub fn divide(&mut self, Right: f64) {
-        unsafe { crate::ffi::math_Matrix_divide(self as *mut Self, Right) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:224 - `math_Matrix::Divided()`
-    /// divides all the elements of a matrix by the value <Right>.
-    /// An exception is raised if <Right> = 0.
-    pub fn divided(&self, Right: f64) -> crate::OwnedPtr<crate::ffi::math_Matrix> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_divided(self as *const Self, Right))
-        }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:237 - `math_Matrix::Add()`
-    /// adds the matrix <Right> to a matrix.
-    /// An exception is raised if the dimensions are different.
-    /// Warning
-    /// In order to save time when copying matrices, it is
-    /// preferable to use operator += or the function Add
-    /// whenever possible.
-    pub fn add_matrix(&mut self, Right: &crate::ffi::math_Matrix) {
-        unsafe { crate::ffi::math_Matrix_add_matrix(self as *mut Self, Right) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:243 - `math_Matrix::Added()`
-    /// adds the matrix <Right> to a matrix.
-    /// An exception is raised if the dimensions are different.
-    pub fn added(
-        &self,
-        Right: &crate::ffi::math_Matrix,
-    ) -> crate::OwnedPtr<crate::ffi::math_Matrix> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_added(self as *const Self, Right))
-        }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:249 - `math_Matrix::Add()`
-    /// sets a  matrix to the addition of <Left> and <Right>.
-    /// An exception is raised if the dimensions are different.
-    pub fn add_matrix2(&mut self, Left: &crate::ffi::math_Matrix, Right: &crate::ffi::math_Matrix) {
-        unsafe { crate::ffi::math_Matrix_add_matrix2(self as *mut Self, Left, Right) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:257 - `math_Matrix::Subtract()`
-    /// Subtracts the matrix <Right> from <me>.
-    /// An exception is raised if the dimensions are different.
-    /// Warning
-    /// In order to avoid time-consuming copying of matrices, it
-    /// is preferable to use operator -= or the function
-    /// Subtract whenever possible.
-    pub fn subtract_matrix(&mut self, Right: &crate::ffi::math_Matrix) {
-        unsafe { crate::ffi::math_Matrix_subtract_matrix(self as *mut Self, Right) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:263 - `math_Matrix::Subtracted()`
-    /// Returns the result of the subtraction of <Right> from <me>.
-    /// An exception is raised if the dimensions are different.
-    pub fn subtracted(
-        &self,
-        Right: &crate::ffi::math_Matrix,
-    ) -> crate::OwnedPtr<crate::ffi::math_Matrix> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_subtracted(
-                self as *const Self,
-                Right,
-            ))
-        }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:282 - `math_Matrix::Set()`
-    /// Sets the values of this matrix,
-    /// -   from index I1 to index I2 on the row dimension, and
-    /// -   from index J1 to index J2 on the column dimension,
-    /// to those of matrix M.
-    /// Exceptions
-    /// Standard_DimensionError if:
-    /// -   I1 is less than the index of the lower row bound of this matrix, or
-    /// -   I2 is greater than the index of the upper row bound of this matrix, or
-    /// -   J1 is less than the index of the lower column bound of this matrix, or
-    /// -   J2 is greater than the index of the upper column bound of this matrix, or
-    /// -   I2 - I1 + 1 is not equal to the number of rows of matrix M, or
-    /// -   J2 - J1 + 1 is not equal to the number of columns of matrix M.
-    pub fn set(&mut self, I1: i32, I2: i32, J1: i32, J2: i32, M: &crate::ffi::math_Matrix) {
-        unsafe { crate::ffi::math_Matrix_set(self as *mut Self, I1, I2, J1, J2, M) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:303 - `math_Matrix::SetDiag()`
-    /// Sets the diagonal of a matrix to the value <Value>.
-    /// An exception is raised if the matrix is not square.
-    pub fn set_diag(&mut self, Value: f64) {
-        unsafe { crate::ffi::math_Matrix_set_diag(self as *mut Self, Value) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:313 - `math_Matrix::SwapRow()`
-    /// Swaps the rows of index Row1 and Row2.
-    /// An exception is raised if <Row1> or <Row2> is out of range.
-    pub fn swap_row(&mut self, Row1: i32, Row2: i32) {
-        unsafe { crate::ffi::math_Matrix_swap_row(self as *mut Self, Row1, Row2) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:317 - `math_Matrix::SwapCol()`
-    /// Swaps the columns of index <Col1> and <Col2>.
-    /// An exception is raised if <Col1> or <Col2> is out of range.
-    pub fn swap_col(&mut self, Col1: i32, Col2: i32) {
-        unsafe { crate::ffi::math_Matrix_swap_col(self as *mut Self, Col1, Col2) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:321 - `math_Matrix::Transposed()`
-    /// Teturns the transposed of a matrix.
-    /// An exception is raised if the matrix is not a square matrix.
-    pub fn transposed(&self) -> crate::OwnedPtr<crate::ffi::math_Matrix> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_transposed(self as *const Self))
-        }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:326 - `math_Matrix::Inverse()`
-    /// Returns the inverse of a matrix.
-    /// Exception NotSquare is raised if the matrix is not square.
-    /// Exception SingularMatrix is raised if the matrix is singular.
-    pub fn inverse(&self) -> crate::OwnedPtr<crate::ffi::math_Matrix> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_inverse(self as *const Self)) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:331 - `math_Matrix::TMultiply()`
-    /// Returns the product of the transpose of a matrix with
-    /// the matrix <Right>.
-    /// An exception is raised if the dimensions are different.
-    pub fn t_multiply_matrix(
-        &self,
-        Right: &crate::ffi::math_Matrix,
-    ) -> crate::OwnedPtr<crate::ffi::math_Matrix> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_t_multiply_matrix(
-                self as *const Self,
-                Right,
-            ))
-        }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:340 - `math_Matrix::Multiply()`
-    /// Computes a matrix as the product of 2 matrixes.
-    /// An exception is raised if the dimensions are different.
-    pub fn multiply_matrix2(
-        &mut self,
-        Left: &crate::ffi::math_Matrix,
-        Right: &crate::ffi::math_Matrix,
-    ) {
-        unsafe { crate::ffi::math_Matrix_multiply_matrix2(self as *mut Self, Left, Right) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:345 - `math_Matrix::TMultiply()`
-    /// Computes a matrix to the product of the transpose of
-    /// the matrix <TLeft> with the matrix <Right>.
-    /// An exception is raised if the dimensions are different.
-    pub fn t_multiply_matrix2(
-        &mut self,
-        TLeft: &crate::ffi::math_Matrix,
-        Right: &crate::ffi::math_Matrix,
-    ) {
-        unsafe { crate::ffi::math_Matrix_t_multiply_matrix2(self as *mut Self, TLeft, Right) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:350 - `math_Matrix::Subtract()`
-    /// Sets a matrix to the Subtraction of the matrix <Right>
-    /// from the matrix <Left>.
-    /// An exception is raised if the dimensions are different.
-    pub fn subtract_matrix2(
-        &mut self,
-        Left: &crate::ffi::math_Matrix,
-        Right: &crate::ffi::math_Matrix,
-    ) {
-        unsafe { crate::ffi::math_Matrix_subtract_matrix2(self as *mut Self, Left, Right) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:356 - `math_Matrix::Value()`
-    /// Accesses (in read or write mode) the value of index <Row>
-    /// and <Col> of a matrix.
-    /// An exception is raised if <Row> and <Col> are not
-    /// in the correct range.
-    pub fn value(&mut self, Row: i32, Col: i32) -> &mut f64 {
-        unsafe { &mut *(crate::ffi::math_Matrix_value(self as *mut Self, Row, Col)) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:371 - `math_Matrix::Multiply()`
-    /// Returns the product of 2 matrices.
-    /// An exception is raised if the dimensions are different.
-    pub fn multiply_matrix(&mut self, Right: &crate::ffi::math_Matrix) {
-        unsafe { crate::ffi::math_Matrix_multiply_matrix(self as *mut Self, Right) }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:377 - `math_Matrix::Multiplied()`
-    /// Returns the product of 2 matrices.
-    /// An exception is raised if the dimensions are different.
-    pub fn multiplied_matrix(
-        &self,
-        Right: &crate::ffi::math_Matrix,
-    ) -> crate::OwnedPtr<crate::ffi::math_Matrix> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_multiplied_matrix(
-                self as *const Self,
-                Right,
-            ))
-        }
-    }
-
-    /// **Source:** `math_Matrix.hxx`:393 - `math_Matrix::Opposite()`
-    /// Returns the opposite of a matrix.
-    /// An exception is raised if the dimensions are different.
-    pub fn opposite(&mut self) -> crate::OwnedPtr<crate::ffi::math_Matrix> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_Matrix_opposite(self as *mut Self)) }
     }
 }
 
@@ -3593,25 +3073,6 @@ impl NewtonFunctionSetRoot {
         unsafe { crate::ffi::math_NewtonFunctionSetRoot_state_number(self as *const Self) }
     }
 
-    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:104 - `math_NewtonFunctionSetRoot::Derivative()`
-    /// Returns the matrix value of the derivative at the root.
-    /// Exception NotDone is raised if the root was not found.
-    pub fn derivative(&self) -> &crate::ffi::math_Matrix {
-        unsafe { &*(crate::ffi::math_NewtonFunctionSetRoot_derivative(self as *const Self)) }
-    }
-
-    /// **Source:** `math_NewtonFunctionSetRoot.hxx`:111 - `math_NewtonFunctionSetRoot::Derivative()`
-    /// Outputs the matrix value of the derivative at the root in
-    /// Der.
-    /// Exception NotDone is raised if the root was not found.
-    /// Exception DimensionError is raised if the range of Der is
-    /// not equal to the range of the StartingPoint.
-    pub fn derivative_matrix(&self, Der: &mut crate::ffi::math_Matrix) {
-        unsafe {
-            crate::ffi::math_NewtonFunctionSetRoot_derivative_matrix(self as *const Self, Der)
-        }
-    }
-
     /// **Source:** `math_NewtonFunctionSetRoot.hxx`:128 - `math_NewtonFunctionSetRoot::NbIterations()`
     /// Returns the number of iterations really done
     /// during the computation of the Root.
@@ -4038,16 +3499,6 @@ impl SVD {
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::math_SVD_is_done(self as *const Self) }
-    }
-
-    /// **Source:** `math_SVD.hxx`:62 - `math_SVD::PseudoInverse()`
-    /// Computes the inverse Inv of matrix A such as A * Inverse = Identity.
-    /// Exceptions
-    /// StdFail_NotDone if the algorithm fails (and IsDone returns false).
-    /// Standard_DimensionError if the ranges of Inv are
-    /// compatible with the ranges of A.
-    pub fn pseudo_inverse(&mut self, Inv: &mut crate::ffi::math_Matrix, Eps: f64) {
-        unsafe { crate::ffi::math_SVD_pseudo_inverse(self as *mut Self, Inv, Eps) }
     }
 }
 
@@ -4574,14 +4025,6 @@ impl Uzawa {
     pub fn nb_iterations(&self) -> i32 {
         unsafe { crate::ffi::math_Uzawa_nb_iterations(self as *const Self) }
     }
-
-    /// **Source:** `math_Uzawa.hxx`:109 - `math_Uzawa::InverseCont()`
-    /// returns the inverse matrix of (C * Transposed(C)).
-    /// This result is needed for the computation of the gradient
-    /// when approximating a curve.
-    pub fn inverse_cont(&self) -> &crate::ffi::math_Matrix {
-        unsafe { &*(crate::ffi::math_Uzawa_inverse_cont(self as *const Self)) }
-    }
 }
 
 // ========================
@@ -4628,4 +4071,6 @@ impl ValueAndWeight {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{math_IntegerVector as IntegerVector, math_Vector as Vector};
+pub use crate::ffi::{
+    math_IntegerVector as IntegerVector, math_Matrix as Matrix, math_Vector as Vector,
+};

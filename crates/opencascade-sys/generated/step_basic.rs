@@ -7,17 +7,435 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From StepBasic_LengthMeasureWithUnit.hxx
+// ========================
+
+/// **Source:** `StepBasic_LengthMeasureWithUnit.hxx`:27 - `StepBasic_LengthMeasureWithUnit`
+pub use crate::ffi::StepBasic_LengthMeasureWithUnit as LengthMeasureWithUnit;
+
+unsafe impl crate::CppDeletable for LengthMeasureWithUnit {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepBasic_LengthMeasureWithUnit_destructor(ptr);
+    }
+}
+
+impl LengthMeasureWithUnit {
+    /// **Source:** `StepBasic_LengthMeasureWithUnit.hxx`:32 - `StepBasic_LengthMeasureWithUnit::StepBasic_LengthMeasureWithUnit()`
+    /// Returns a LengthMeasureWithUnit
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepBasic_LengthMeasureWithUnit_ctor()) }
+    }
+
+    /// **Source:** `StepBasic_LengthMeasureWithUnit.hxx`:34 - `StepBasic_LengthMeasureWithUnit::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepBasic_LengthMeasureWithUnit_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepBasic_LengthMeasureWithUnit.hxx`:34 - `StepBasic_LengthMeasureWithUnit::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepBasic_LengthMeasureWithUnit_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepBasic_LengthMeasureWithUnit.hxx`:34 - `StepBasic_LengthMeasureWithUnit::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepBasic_LengthMeasureWithUnit_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepBasic_MeasureWithUnit
+    pub fn as_measure_with_unit(&self) -> &MeasureWithUnit {
+        unsafe {
+            &*(crate::ffi::StepBasic_LengthMeasureWithUnit_as_StepBasic_MeasureWithUnit(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepBasic_MeasureWithUnit (mutable)
+    pub fn as_measure_with_unit_mut(&mut self) -> &mut MeasureWithUnit {
+        unsafe {
+            &mut *(crate::ffi::StepBasic_LengthMeasureWithUnit_as_StepBasic_MeasureWithUnit_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepBasic_MeasureWithUnit.hxx`:40 - `StepBasic_MeasureWithUnit::SetValueComponent()`
+    pub fn set_value_component(&mut self, aValueComponent: f64) {
+        unsafe {
+            crate::ffi::StepBasic_LengthMeasureWithUnit_inherited_SetValueComponent(
+                self as *mut Self,
+                aValueComponent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepBasic_MeasureWithUnit.hxx`:42 - `StepBasic_MeasureWithUnit::ValueComponent()`
+    pub fn value_component(&self) -> f64 {
+        unsafe {
+            crate::ffi::StepBasic_LengthMeasureWithUnit_inherited_ValueComponent(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepBasic_MeasureWithUnit.hxx`:48 - `StepBasic_MeasureWithUnit::SetUnitComponent()`
+    pub fn set_unit_component(&mut self, aUnitComponent: &crate::ffi::StepBasic_Unit) {
+        unsafe {
+            crate::ffi::StepBasic_LengthMeasureWithUnit_inherited_SetUnitComponent(
+                self as *mut Self,
+                aUnitComponent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepBasic_MeasureWithUnit.hxx`:50 - `StepBasic_MeasureWithUnit::UnitComponent()`
+    pub fn unit_component(&self) -> crate::OwnedPtr<crate::ffi::StepBasic_Unit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepBasic_LengthMeasureWithUnit_inherited_UnitComponent(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepBasic_MeasureWithUnit.hxx
+// ========================
+
+/// **Source:** `StepBasic_MeasureWithUnit.hxx`:30 - `StepBasic_MeasureWithUnit`
+pub use crate::ffi::StepBasic_MeasureWithUnit as MeasureWithUnit;
+
+unsafe impl crate::CppDeletable for MeasureWithUnit {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepBasic_MeasureWithUnit_destructor(ptr);
+    }
+}
+
+impl MeasureWithUnit {
+    /// **Source:** `StepBasic_MeasureWithUnit.hxx`:35 - `StepBasic_MeasureWithUnit::StepBasic_MeasureWithUnit()`
+    /// Returns a MeasureWithUnit
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepBasic_MeasureWithUnit_ctor()) }
+    }
+
+    /// **Source:** `StepBasic_MeasureWithUnit.hxx`:40 - `StepBasic_MeasureWithUnit::SetValueComponent()`
+    pub fn set_value_component(&mut self, aValueComponent: f64) {
+        unsafe {
+            crate::ffi::StepBasic_MeasureWithUnit_set_value_component(
+                self as *mut Self,
+                aValueComponent,
+            )
+        }
+    }
+
+    /// **Source:** `StepBasic_MeasureWithUnit.hxx`:42 - `StepBasic_MeasureWithUnit::ValueComponent()`
+    pub fn value_component(&self) -> f64 {
+        unsafe { crate::ffi::StepBasic_MeasureWithUnit_value_component(self as *const Self) }
+    }
+
+    /// **Source:** `StepBasic_MeasureWithUnit.hxx`:48 - `StepBasic_MeasureWithUnit::SetUnitComponent()`
+    pub fn set_unit_component(&mut self, aUnitComponent: &crate::ffi::StepBasic_Unit) {
+        unsafe {
+            crate::ffi::StepBasic_MeasureWithUnit_set_unit_component(
+                self as *mut Self,
+                aUnitComponent,
+            )
+        }
+    }
+
+    /// **Source:** `StepBasic_MeasureWithUnit.hxx`:50 - `StepBasic_MeasureWithUnit::UnitComponent()`
+    pub fn unit_component(&self) -> crate::OwnedPtr<crate::ffi::StepBasic_Unit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_MeasureWithUnit_unit_component(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepBasic_MeasureWithUnit.hxx`:52 - `StepBasic_MeasureWithUnit::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepBasic_MeasureWithUnit_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepBasic_MeasureWithUnit.hxx`:52 - `StepBasic_MeasureWithUnit::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepBasic_MeasureWithUnit_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepBasic_MeasureWithUnit.hxx`:52 - `StepBasic_MeasureWithUnit::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepBasic_MeasureWithUnit_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_MeasureWithUnit_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepBasicMeasureWithUnit;
+
+unsafe impl crate::CppDeletable for HandleStepBasicMeasureWithUnit {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepBasicMeasureWithUnit_destructor(ptr);
+    }
+}
+
+impl HandleStepBasicMeasureWithUnit {
+    /// Dereference this Handle to access the underlying StepBasic_MeasureWithUnit
+    pub fn get(&self) -> &crate::ffi::StepBasic_MeasureWithUnit {
+        unsafe { &*(crate::ffi::HandleStepBasicMeasureWithUnit_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepBasic_MeasureWithUnit
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepBasic_MeasureWithUnit {
+        unsafe { &mut *(crate::ffi::HandleStepBasicMeasureWithUnit_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From StepBasic_ProductDefinition.hxx
+// ========================
+
+/// **Source:** `StepBasic_ProductDefinition.hxx`:31 - `StepBasic_ProductDefinition`
+pub use crate::ffi::StepBasic_ProductDefinition as ProductDefinition;
+
+unsafe impl crate::CppDeletable for ProductDefinition {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepBasic_ProductDefinition_destructor(ptr);
+    }
+}
+
+impl ProductDefinition {
+    /// **Source:** `StepBasic_ProductDefinition.hxx`:36 - `StepBasic_ProductDefinition::StepBasic_ProductDefinition()`
+    /// Returns a ProductDefinition
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepBasic_ProductDefinition_ctor()) }
+    }
+
+    /// **Source:** `StepBasic_ProductDefinition.hxx`:43 - `StepBasic_ProductDefinition::SetId()`
+    pub fn set_id(&mut self, aId: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::StepBasic_ProductDefinition_set_id(self as *mut Self, aId) }
+    }
+
+    /// **Source:** `StepBasic_ProductDefinition.hxx`:45 - `StepBasic_ProductDefinition::Id()`
+    pub fn id(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_ProductDefinition_id(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepBasic_ProductDefinition.hxx`:47 - `StepBasic_ProductDefinition::SetDescription()`
+    pub fn set_description(&mut self, aDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepBasic_ProductDefinition_set_description(self as *mut Self, aDescription)
+        }
+    }
+
+    /// **Source:** `StepBasic_ProductDefinition.hxx`:49 - `StepBasic_ProductDefinition::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_ProductDefinition_description(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepBasic_ProductDefinition.hxx`:60 - `StepBasic_ProductDefinition::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepBasic_ProductDefinition_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepBasic_ProductDefinition.hxx`:60 - `StepBasic_ProductDefinition::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepBasic_ProductDefinition_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepBasic_ProductDefinition.hxx`:60 - `StepBasic_ProductDefinition::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepBasic_ProductDefinition_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicProductDefinition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_ProductDefinition_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepBasicProductDefinition;
+
+unsafe impl crate::CppDeletable for HandleStepBasicProductDefinition {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepBasicProductDefinition_destructor(ptr);
+    }
+}
+
+impl HandleStepBasicProductDefinition {
+    /// Dereference this Handle to access the underlying StepBasic_ProductDefinition
+    pub fn get(&self) -> &crate::ffi::StepBasic_ProductDefinition {
+        unsafe { &*(crate::ffi::HandleStepBasicProductDefinition_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepBasic_ProductDefinition
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepBasic_ProductDefinition {
+        unsafe { &mut *(crate::ffi::HandleStepBasicProductDefinition_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From StepBasic_Unit.hxx
+// ========================
+
+/// **Source:** `StepBasic_Unit.hxx`:31 - `StepBasic_Unit`
+/// Implements a select type unit (NamedUnit or DerivedUnit)
+pub use crate::ffi::StepBasic_Unit as Unit;
+
+unsafe impl crate::CppDeletable for Unit {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepBasic_Unit_destructor(ptr);
+    }
+}
+
+impl Unit {
+    /// **Source:** `StepBasic_Unit.hxx`:37 - `StepBasic_Unit::StepBasic_Unit()`
+    /// Creates empty object
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepBasic_Unit_ctor()) }
+    }
+
+    /// Upcast to StepData_SelectType
+    pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
+        unsafe { &*(crate::ffi::StepBasic_Unit_as_StepData_SelectType(self as *const Self)) }
+    }
+
+    /// Upcast to StepData_SelectType (mutable)
+    pub fn as_step_data_select_type_mut(&mut self) -> &mut crate::step_data::SelectType {
+        unsafe { &mut *(crate::ffi::StepBasic_Unit_as_StepData_SelectType_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
+    pub fn nullify(&mut self) {
+        unsafe { crate::ffi::StepBasic_Unit_inherited_Nullify(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:79 - `StepData_SelectType::IsNull()`
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi::StepBasic_Unit_inherited_IsNull(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:83 - `StepData_SelectType::Type()`
+    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_Unit_inherited_Type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:87 - `StepData_SelectType::CaseNumber()`
+    pub fn case_number(&self) -> i32 {
+        unsafe { crate::ffi::StepBasic_Unit_inherited_CaseNumber(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:104 - `StepData_SelectType::NewMember()`
+    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_Unit_inherited_NewMember(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:111 - `StepData_SelectType::CaseMem()`
+    pub fn case_mem(&self, ent: &crate::ffi::HandleStepDataSelectMember) -> i32 {
+        unsafe { crate::ffi::StepBasic_Unit_inherited_CaseMem(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:115 - `StepData_SelectType::CaseMember()`
+    pub fn case_member(&self) -> i32 {
+        unsafe { crate::ffi::StepBasic_Unit_inherited_CaseMember(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:118 - `StepData_SelectType::Member()`
+    pub fn member(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_Unit_inherited_Member(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:127 - `StepData_SelectType::Int()`
+    pub fn int(&self) -> i32 {
+        unsafe { crate::ffi::StepBasic_Unit_inherited_Int(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
+    pub fn set_int(&mut self, val: i32) {
+        unsafe { crate::ffi::StepBasic_Unit_inherited_SetInt(self as *mut Self, val) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:134 - `StepData_SelectType::Integer()`
+    pub fn integer(&self) -> i32 {
+        unsafe { crate::ffi::StepBasic_Unit_inherited_Integer(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:141 - `StepData_SelectType::Boolean()`
+    pub fn boolean(&self) -> bool {
+        unsafe { crate::ffi::StepBasic_Unit_inherited_Boolean(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:145 - `StepData_SelectType::Logical()`
+    pub fn logical(&self) -> crate::step_data::Logical {
+        unsafe {
+            crate::step_data::Logical::try_from(crate::ffi::StepBasic_Unit_inherited_Logical(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:149 - `StepData_SelectType::Real()`
+    pub fn real(&self) -> f64 {
+        unsafe { crate::ffi::StepBasic_Unit_inherited_Real(self as *const Self) }
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
-    StepBasic_ApplicationProtocolDefinition as ApplicationProtocolDefinition,
-    StepBasic_Approval as Approval, StepBasic_ApprovalDateTime as ApprovalDateTime,
-    StepBasic_ApprovalPersonOrganization as ApprovalPersonOrganization,
-    StepBasic_ApprovalRole as ApprovalRole, StepBasic_DateAndTime as DateAndTime,
-    StepBasic_DateTimeRole as DateTimeRole,
-    StepBasic_PersonAndOrganization as PersonAndOrganization,
-    StepBasic_PersonAndOrganizationRole as PersonAndOrganizationRole,
-    StepBasic_ProductCategoryRelationship as ProductCategoryRelationship,
-    StepBasic_SecurityClassificationLevel as SecurityClassificationLevel,
+    StepBasic_DerivedUnit as DerivedUnit, StepBasic_GeneralProperty as GeneralProperty,
+    StepBasic_MeasureValueMember as MeasureValueMember, StepBasic_NamedUnit as NamedUnit,
+    StepBasic_ProductDefinitionContext as ProductDefinitionContext,
+    StepBasic_ProductDefinitionFormation as ProductDefinitionFormation,
 };

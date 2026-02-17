@@ -7,6 +7,207 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From DESTEP_ConfigurationNode.hxx
+// ========================
+
+/// **Source:** `DESTEP_ConfigurationNode.hxx`:33 - `DESTEP_ConfigurationNode`
+/// The purpose of this class is to configure the transfer process for STEP format
+/// Stores the necessary settings for DESTEP_Provider.
+/// Configures and creates special provider to transfer STEP files.
+///
+/// Nodes grouped by Vendor name and Format type.
+/// The Vendor name is "OCC"
+/// The Format type is "STEP"
+/// The supported CAD extensions are ".stp", ".step", ".stpz"
+/// The import process is supported.
+/// The export process is supported.
+pub use crate::ffi::DESTEP_ConfigurationNode as ConfigurationNode;
+
+unsafe impl crate::CppDeletable for ConfigurationNode {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::DESTEP_ConfigurationNode_destructor(ptr);
+    }
+}
+
+impl ConfigurationNode {
+    /// **Source:** `DESTEP_ConfigurationNode.hxx`:38 - `DESTEP_ConfigurationNode::DESTEP_ConfigurationNode()`
+    /// Initializes all field by default
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::DESTEP_ConfigurationNode_ctor()) }
+    }
+
+    /// **Source:** `DESTEP_ConfigurationNode.hxx`:35 - `DESTEP_ConfigurationNode::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::DESTEP_ConfigurationNode_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `DESTEP_ConfigurationNode.hxx`:52 - `DESTEP_ConfigurationNode::Save()`
+    /// Writes configuration to the string
+    /// @return result resource string
+    pub fn save(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DESTEP_ConfigurationNode_save(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `DESTEP_ConfigurationNode.hxx`:56 - `DESTEP_ConfigurationNode::Copy()`
+    /// Copies values of all fields
+    /// @return new object with the same field values
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleDEConfigurationNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DESTEP_ConfigurationNode_copy(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `DESTEP_ConfigurationNode.hxx`:60 - `DESTEP_ConfigurationNode::BuildProvider()`
+    /// Creates new provider for the own format
+    /// @return new created provider
+    pub fn build_provider(&mut self) -> crate::OwnedPtr<crate::ffi::HandleDEProvider> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DESTEP_ConfigurationNode_build_provider(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `DESTEP_ConfigurationNode.hxx`:65 - `DESTEP_ConfigurationNode::IsImportSupported()`
+    /// Checks the import supporting
+    /// @return true if import is supported
+    pub fn is_import_supported(&self) -> bool {
+        unsafe { crate::ffi::DESTEP_ConfigurationNode_is_import_supported(self as *const Self) }
+    }
+
+    /// **Source:** `DESTEP_ConfigurationNode.hxx`:69 - `DESTEP_ConfigurationNode::IsExportSupported()`
+    /// Checks the export supporting
+    /// @return true if export is supported
+    pub fn is_export_supported(&self) -> bool {
+        unsafe { crate::ffi::DESTEP_ConfigurationNode_is_export_supported(self as *const Self) }
+    }
+
+    /// **Source:** `DESTEP_ConfigurationNode.hxx`:73 - `DESTEP_ConfigurationNode::GetFormat()`
+    /// Gets CAD format name of associated provider
+    /// @return provider CAD format
+    pub fn get_format(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DESTEP_ConfigurationNode_get_format(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `DESTEP_ConfigurationNode.hxx`:77 - `DESTEP_ConfigurationNode::GetVendor()`
+    /// Gets provider's vendor name of associated provider
+    /// @return provider's vendor name
+    pub fn get_vendor(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DESTEP_ConfigurationNode_get_vendor(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `DESTEP_ConfigurationNode.hxx`:86 - `DESTEP_ConfigurationNode::CheckContent()`
+    /// Checks the file content to verify a format
+    /// @param[in] theBuffer read stream buffer to check content
+    /// @return Standard_True if file is supported by a current provider
+    pub fn check_content(&self, theBuffer: &crate::ffi::HandleNCollectionBuffer) -> bool {
+        unsafe {
+            crate::ffi::DESTEP_ConfigurationNode_check_content(self as *const Self, theBuffer)
+        }
+    }
+
+    /// **Source:** `DESTEP_ConfigurationNode.hxx`:35 - `DESTEP_ConfigurationNode::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::DESTEP_ConfigurationNode_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `DESTEP_ConfigurationNode.hxx`:35 - `DESTEP_ConfigurationNode::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::DESTEP_ConfigurationNode_get_type_descriptor()) }
+    }
+
+    /// Upcast to DE_ConfigurationNode
+    pub fn as_de_configuration_node(&self) -> &crate::de::ConfigurationNode {
+        unsafe {
+            &*(crate::ffi::DESTEP_ConfigurationNode_as_DE_ConfigurationNode(self as *const Self))
+        }
+    }
+
+    /// Upcast to DE_ConfigurationNode (mutable)
+    pub fn as_de_configuration_node_mut(&mut self) -> &mut crate::de::ConfigurationNode {
+        unsafe {
+            &mut *(crate::ffi::DESTEP_ConfigurationNode_as_DE_ConfigurationNode_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to DE_ShapeFixConfigurationNode
+    pub fn as_de_shape_fix_configuration_node(&self) -> &crate::de::ShapeFixConfigurationNode {
+        unsafe {
+            &*(crate::ffi::DESTEP_ConfigurationNode_as_DE_ShapeFixConfigurationNode(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to DE_ShapeFixConfigurationNode (mutable)
+    pub fn as_de_shape_fix_configuration_node_mut(
+        &mut self,
+    ) -> &mut crate::de::ShapeFixConfigurationNode {
+        unsafe {
+            &mut *(crate::ffi::DESTEP_ConfigurationNode_as_DE_ShapeFixConfigurationNode_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:91 - `DE_ConfigurationNode::UpdateLoad()`
+    pub fn update_load(&mut self, theToImport: bool, theToKeep: bool) -> bool {
+        unsafe {
+            crate::ffi::DESTEP_ConfigurationNode_inherited_UpdateLoad(
+                self as *mut Self,
+                theToImport,
+                theToKeep,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:118 - `DE_ConfigurationNode::CheckExtension()`
+    pub fn check_extension(&self, theExtension: &crate::ffi::TCollection_AsciiString) -> bool {
+        unsafe {
+            crate::ffi::DESTEP_ConfigurationNode_inherited_CheckExtension(
+                self as *const Self,
+                theExtension,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:128 - `DE_ConfigurationNode::IsEnabled()`
+    pub fn is_enabled(&self) -> bool {
+        unsafe { crate::ffi::DESTEP_ConfigurationNode_inherited_IsEnabled(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:132 - `DE_ConfigurationNode::SetEnabled()`
+    pub fn set_enabled(&mut self, theIsLoaded: bool) {
+        unsafe {
+            crate::ffi::DESTEP_ConfigurationNode_inherited_SetEnabled(
+                self as *mut Self,
+                theIsLoaded,
+            )
+        }
+    }
+}
+
+// ========================
 // From DESTEP_Parameters.hxx
 // ========================
 
@@ -35,5 +236,144 @@ impl Parameters {
     /// Reset used parameters
     pub fn reset(&mut self) {
         unsafe { crate::ffi::DESTEP_Parameters_reset(self as *mut Self) }
+    }
+}
+
+// ========================
+// From DESTEP_Provider.hxx
+// ========================
+
+/// **Source:** `DESTEP_Provider.hxx`:29 - `DESTEP_Provider`
+/// The class to transfer STEP files.
+/// Reads and Writes any STEP files into/from OCCT.
+/// Each operation needs configuration node.
+///
+/// Providers grouped by Vendor name and Format type.
+/// The Vendor name is "OCC"
+/// The Format type is "STEP"
+/// The import process is supported.
+/// The export process is supported.
+pub use crate::ffi::DESTEP_Provider as Provider;
+
+unsafe impl crate::CppDeletable for Provider {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::DESTEP_Provider_destructor(ptr);
+    }
+}
+
+impl Provider {
+    /// **Source:** `DESTEP_Provider.hxx`:37 - `DESTEP_Provider::DESTEP_Provider()`
+    /// Default constructor
+    /// Configure translation process with global configuration
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::DESTEP_Provider_ctor()) }
+    }
+
+    /// **Source:** `DESTEP_Provider.hxx`:41 - `DESTEP_Provider::DESTEP_Provider()`
+    /// Configure translation process
+    /// @param[in] theNode object to copy
+    pub fn new_handledeconfigurationnode(
+        theNode: &crate::ffi::HandleDEConfigurationNode,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DESTEP_Provider_ctor_handledeconfigurationnode(
+                theNode,
+            ))
+        }
+    }
+
+    /// **Source:** `DESTEP_Provider.hxx`:32 - `DESTEP_Provider::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::DESTEP_Provider_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `DESTEP_Provider.hxx`:117 - `DESTEP_Provider::Read()`
+    /// Reads a CAD file, according internal configuration
+    /// @param[in] thePath path to the import CAD file
+    /// @param[out] theShape shape to save result
+    /// @param[in] theProgress progress indicator
+    /// @return true if Read operation has ended correctly
+    pub fn read(
+        &mut self,
+        thePath: &crate::ffi::TCollection_AsciiString,
+        theShape: &mut crate::ffi::TopoDS_Shape,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DESTEP_Provider_read(self as *mut Self, thePath, theShape, theProgress)
+        }
+    }
+
+    /// **Source:** `DESTEP_Provider.hxx`:127 - `DESTEP_Provider::Write()`
+    /// Writes a CAD file, according internal configuration
+    /// @param[in] thePath path to the export CAD file
+    /// @param[out] theShape shape to export
+    /// @param[in] theProgress progress indicator
+    /// @return true if Write operation has ended correctly
+    pub fn write(
+        &mut self,
+        thePath: &crate::ffi::TCollection_AsciiString,
+        theShape: &crate::ffi::TopoDS_Shape,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DESTEP_Provider_write(self as *mut Self, thePath, theShape, theProgress)
+        }
+    }
+
+    /// **Source:** `DESTEP_Provider.hxx`:135 - `DESTEP_Provider::GetFormat()`
+    /// Gets CAD format name of associated provider
+    /// @return provider CAD format
+    pub fn get_format(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DESTEP_Provider_get_format(self as *const Self))
+        }
+    }
+
+    /// **Source:** `DESTEP_Provider.hxx`:139 - `DESTEP_Provider::GetVendor()`
+    /// Gets provider's vendor name of associated provider
+    /// @return provider's vendor name
+    pub fn get_vendor(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DESTEP_Provider_get_vendor(self as *const Self))
+        }
+    }
+
+    /// **Source:** `DESTEP_Provider.hxx`:32 - `DESTEP_Provider::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::DESTEP_Provider_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `DESTEP_Provider.hxx`:32 - `DESTEP_Provider::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::DESTEP_Provider_get_type_descriptor()) }
+    }
+
+    /// Upcast to DE_Provider
+    pub fn as_de_provider(&self) -> &crate::de::Provider {
+        unsafe { &*(crate::ffi::DESTEP_Provider_as_DE_Provider(self as *const Self)) }
+    }
+
+    /// Upcast to DE_Provider (mutable)
+    pub fn as_de_provider_mut(&mut self) -> &mut crate::de::Provider {
+        unsafe { &mut *(crate::ffi::DESTEP_Provider_as_DE_Provider_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `DE_Provider.hxx`:155 - `DE_Provider::GetNode()`
+    pub fn get_node(&self) -> crate::OwnedPtr<crate::ffi::HandleDEConfigurationNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DESTEP_Provider_inherited_GetNode(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `DE_Provider.hxx`:159 - `DE_Provider::SetNode()`
+    pub fn set_node(&mut self, theNode: &crate::ffi::HandleDEConfigurationNode) {
+        unsafe { crate::ffi::DESTEP_Provider_inherited_SetNode(self as *mut Self, theNode) }
     }
 }

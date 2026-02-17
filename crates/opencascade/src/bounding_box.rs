@@ -44,7 +44,7 @@ impl BoundingBox {
 /// package.
 pub fn aabb(shape: &Shape) -> BoundingBox {
     let mut bb = BoundingBox::void();
-    b_rep_bnd_lib::add(&shape.inner, &mut bb.inner, true);
+    b_rep_bnd_lib::add_shape_box_bool(&shape.inner, &mut bb.inner, true);
     bb
 }
 

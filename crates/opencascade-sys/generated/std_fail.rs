@@ -7,6 +7,73 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From StdFail_InfiniteSolutions.hxx
+// ========================
+
+/// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions`
+pub use crate::ffi::StdFail_InfiniteSolutions as InfiniteSolutions;
+
+unsafe impl crate::CppDeletable for InfiniteSolutions {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StdFail_InfiniteSolutions_destructor(ptr);
+    }
+}
+
+impl InfiniteSolutions {
+    /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::StdFail_InfiniteSolutions()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StdFail_InfiniteSolutions_ctor()) }
+    }
+
+    /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::StdFail_InfiniteSolutions()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_InfiniteSolutions_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::StdFail_InfiniteSolutions()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_InfiniteSolutions_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StdFail_InfiniteSolutions_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::StdFail_InfiniteSolutions_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StdFail_InfiniteSolutions_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StdFail_InfiniteSolutions_get_type_descriptor()) }
+    }
+}
+
+// ========================
 // From StdFail_NotDone.hxx
 // ========================
 
@@ -70,5 +137,206 @@ impl NotDone {
     /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::StdFail_NotDone_get_type_descriptor()) }
+    }
+}
+
+// ========================
+// From StdFail_Undefined.hxx
+// ========================
+
+/// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined`
+pub use crate::ffi::StdFail_Undefined as Undefined;
+
+unsafe impl crate::CppDeletable for Undefined {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StdFail_Undefined_destructor(ptr);
+    }
+}
+
+impl Undefined {
+    /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::StdFail_Undefined()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StdFail_Undefined_ctor()) }
+    }
+
+    /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::StdFail_Undefined()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_Undefined_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::StdFail_Undefined()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_Undefined_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StdFail_Undefined_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::StdFail_Undefined_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StdFail_Undefined_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StdFail_Undefined_get_type_descriptor()) }
+    }
+}
+
+// ========================
+// From StdFail_UndefinedDerivative.hxx
+// ========================
+
+/// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative`
+pub use crate::ffi::StdFail_UndefinedDerivative as UndefinedDerivative;
+
+unsafe impl crate::CppDeletable for UndefinedDerivative {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StdFail_UndefinedDerivative_destructor(ptr);
+    }
+}
+
+impl UndefinedDerivative {
+    /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::StdFail_UndefinedDerivative()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StdFail_UndefinedDerivative_ctor()) }
+    }
+
+    /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::StdFail_UndefinedDerivative()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_UndefinedDerivative_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::StdFail_UndefinedDerivative()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_UndefinedDerivative_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StdFail_UndefinedDerivative_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::StdFail_UndefinedDerivative_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StdFail_UndefinedDerivative_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StdFail_UndefinedDerivative_get_type_descriptor()) }
+    }
+}
+
+// ========================
+// From StdFail_UndefinedValue.hxx
+// ========================
+
+/// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue`
+pub use crate::ffi::StdFail_UndefinedValue as UndefinedValue;
+
+unsafe impl crate::CppDeletable for UndefinedValue {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StdFail_UndefinedValue_destructor(ptr);
+    }
+}
+
+impl UndefinedValue {
+    /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::StdFail_UndefinedValue()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StdFail_UndefinedValue_ctor()) }
+    }
+
+    /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::StdFail_UndefinedValue()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_UndefinedValue_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::StdFail_UndefinedValue()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StdFail_UndefinedValue_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StdFail_UndefinedValue_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::StdFail_UndefinedValue_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StdFail_UndefinedValue_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StdFail_UndefinedValue_get_type_descriptor()) }
     }
 }

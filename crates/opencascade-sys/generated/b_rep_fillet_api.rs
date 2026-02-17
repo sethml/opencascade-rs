@@ -144,17 +144,6 @@ impl LocalOperation {
         unsafe { crate::ffi::BRepFilletAPI_LocalOperation_nb_surf(self as *const Self, IC) }
     }
 
-    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:97 - `BRepFilletAPI_LocalOperation::Sect()`
-    pub fn sect(&self, IC: i32, IS: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSecHArray1> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_LocalOperation_sect(
-                self as *const Self,
-                IC,
-                IS,
-            ))
-        }
-    }
-
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
@@ -633,17 +622,6 @@ impl MakeChamfer {
     /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:295 - `BRepFilletAPI_MakeChamfer::NbSurf()`
     pub fn nb_surf(&self, IC: i32) -> i32 {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_nb_surf(self as *const Self, IC) }
-    }
-
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:297 - `BRepFilletAPI_MakeChamfer::Sect()`
-    pub fn sect(&self, IC: i32, IS: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSecHArray1> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeChamfer_sect(
-                self as *const Self,
-                IC,
-                IS,
-            ))
-        }
     }
 
     /// Upcast to BRepBuilderAPI_Command
@@ -1285,17 +1263,6 @@ impl MakeFillet {
     /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:351 - `BRepFilletAPI_MakeFillet::NbSurf()`
     pub fn nb_surf(&self, IC: i32) -> i32 {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_nb_surf(self as *const Self, IC) }
-    }
-
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:353 - `BRepFilletAPI_MakeFillet::Sect()`
-    pub fn sect(&self, IC: i32, IS: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSecHArray1> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeFillet_sect(
-                self as *const Self,
-                IC,
-                IS,
-            ))
-        }
     }
 
     /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:358 - `BRepFilletAPI_MakeFillet::NbFaultyContours()`

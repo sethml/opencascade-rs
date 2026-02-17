@@ -3056,6 +3056,6 @@ impl Underflow {
 pub use crate::ffi::{
     Standard_Byte as Byte, Standard_Character as Character, Standard_ExtCharacter as ExtCharacter,
     Standard_ExtString as ExtString, Standard_JmpBuf as JmpBuf, Standard_PCharacter as PCharacter,
-    Standard_PExtCharacter as PExtCharacter, Standard_SStream as SStream, Standard_UUID as UUID,
-    Standard_Utf16Char as Utf16Char,
+    Standard_PExtCharacter as PExtCharacter, Standard_SStream as SStream,
+    Standard_ThreadId as ThreadId, Standard_UUID as UUID, Standard_Utf16Char as Utf16Char,
 };

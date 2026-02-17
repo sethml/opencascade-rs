@@ -6,6 +6,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleGeomPlateSurface, HandleShapeExtendCompositeSurface};
+
 // ========================
 // From Geom_Axis1Placement.hxx
 // ========================
@@ -12008,6 +12011,22 @@ impl HandleGeomGeometry {
         unsafe { &mut *(crate::ffi::HandleGeomGeometry_get_mut(self as *mut Self)) }
     }
 
+    /// Downcast Handle<Geom_Geometry> to Handle<GeomPlate_Surface>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomPlate_Surface` (or subclass).
+    pub fn downcast_to_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomPlateSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomGeometry_downcast_to_HandleGeomPlateSurface(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Geom_Geometry> to Handle<Geom_Axis1Placement>
     ///
     /// Returns `None` if the handle does not point to a `Geom_Axis1Placement` (or subclass).
@@ -12443,87 +12462,22 @@ impl HandleGeomGeometry {
             Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
-}
 
-// ========================
-// From Geom_HSequenceOfBSplineSurface.hxx
-// ========================
-
-/// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface`
-pub use crate::ffi::Geom_HSequenceOfBSplineSurface as HSequenceOfBSplineSurface;
-
-unsafe impl crate::CppDeletable for HSequenceOfBSplineSurface {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom_HSequenceOfBSplineSurface_destructor(ptr);
-    }
-}
-
-impl HSequenceOfBSplineSurface {
-    /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::Geom_HSequenceOfBSplineSurface()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_HSequenceOfBSplineSurface_ctor()) }
-    }
-
-    /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::Geom_HSequenceOfBSplineSurface()`
-    pub fn new_sequenceofbsplinesurface(
-        theOther: &crate::ffi::Geom_SequenceOfBSplineSurface,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Geom_HSequenceOfBSplineSurface_ctor_sequenceofbsplinesurface(theOther),
+    /// Downcast Handle<Geom_Geometry> to Handle<ShapeExtend_CompositeSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeExtend_CompositeSurface` (or subclass).
+    pub fn downcast_to_composite_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeExtendCompositeSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomGeometry_downcast_to_HandleShapeExtendCompositeSurface(
+                self as *const Self,
             )
-        }
-    }
-
-    /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Geom_HSequenceOfBSplineSurface_dynamic_type(self as *const Self)) }
-    }
-
-    /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::get_type_name()`
-    pub fn get_type_name() -> String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Geom_HSequenceOfBSplineSurface_get_type_name())
-                .to_string_lossy()
-                .into_owned()
-        }
-    }
-
-    /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Geom_HSequenceOfBSplineSurface_get_type_descriptor()) }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomHSequenceOfBSplineSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Geom_HSequenceOfBSplineSurface_to_handle(
-                obj.into_raw(),
-            ))
-        }
-    }
-}
-
-pub use crate::ffi::HandleGeomHSequenceOfBSplineSurface;
-
-unsafe impl crate::CppDeletable for HandleGeomHSequenceOfBSplineSurface {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomHSequenceOfBSplineSurface_destructor(ptr);
-    }
-}
-
-impl HandleGeomHSequenceOfBSplineSurface {
-    /// Dereference this Handle to access the underlying Geom_HSequenceOfBSplineSurface
-    pub fn get(&self) -> &crate::ffi::Geom_HSequenceOfBSplineSurface {
-        unsafe { &*(crate::ffi::HandleGeomHSequenceOfBSplineSurface_get(self as *const Self)) }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Geom_HSequenceOfBSplineSurface
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Geom_HSequenceOfBSplineSurface {
-        unsafe {
-            &mut *(crate::ffi::HandleGeomHSequenceOfBSplineSurface_get_mut(self as *mut Self))
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -18631,6 +18585,22 @@ impl HandleGeomSurface {
         }
     }
 
+    /// Downcast Handle<Geom_Surface> to Handle<GeomPlate_Surface>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomPlate_Surface` (or subclass).
+    pub fn downcast_to_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomPlateSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomSurface_downcast_to_HandleGeomPlateSurface(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Geom_Surface> to Handle<Geom_BSplineSurface>
     ///
     /// Returns `None` if the handle does not point to a `Geom_BSplineSurface` (or subclass).
@@ -18839,6 +18809,24 @@ impl HandleGeomSurface {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomToroidalSurface>> {
         let ptr = unsafe {
             crate::ffi::HandleGeomSurface_downcast_to_HandleGeomToroidalSurface(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Geom_Surface> to Handle<ShapeExtend_CompositeSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeExtend_CompositeSurface` (or subclass).
+    pub fn downcast_to_composite_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeExtendCompositeSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomSurface_downcast_to_HandleShapeExtendCompositeSurface(
+                self as *const Self,
+            )
         };
         if ptr.is_null() {
             None
@@ -23473,9 +23461,3 @@ impl HandleGeomVectorWithMagnitude {
         }
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi::Geom_SequenceOfBSplineSurface as SequenceOfBSplineSurface;

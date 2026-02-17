@@ -65,6 +65,161 @@ impl TryFrom<i32> for Situation {
 }
 
 // ========================
+// From IntSurf_LineOn2S.hxx
+// ========================
+
+/// **Source:** `IntSurf_LineOn2S.hxx`:34 - `IntSurf_LineOn2S`
+pub use crate::ffi::IntSurf_LineOn2S as LineOn2S;
+
+unsafe impl crate::CppDeletable for LineOn2S {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntSurf_LineOn2S_destructor(ptr);
+    }
+}
+
+impl LineOn2S {
+    /// **Source:** `IntSurf_LineOn2S.hxx`:38 - `IntSurf_LineOn2S::IntSurf_LineOn2S()`
+    pub fn new_allocator(theAllocator: &crate::ffi::IntSurf_Allocator) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_LineOn2S_ctor_allocator(theAllocator))
+        }
+    }
+
+    /// **Source:** `IntSurf_LineOn2S.hxx`:41 - `IntSurf_LineOn2S::Add()`
+    /// Adds a point in the line.
+    pub fn add(&mut self, P: &crate::ffi::IntSurf_PntOn2S) {
+        unsafe { crate::ffi::IntSurf_LineOn2S_add(self as *mut Self, P) }
+    }
+
+    /// **Source:** `IntSurf_LineOn2S.hxx`:44 - `IntSurf_LineOn2S::NbPoints()`
+    /// Returns the number of points in the line.
+    pub fn nb_points(&self) -> i32 {
+        unsafe { crate::ffi::IntSurf_LineOn2S_nb_points(self as *const Self) }
+    }
+
+    /// **Source:** `IntSurf_LineOn2S.hxx`:47 - `IntSurf_LineOn2S::Value()`
+    /// Returns the point of range Index in the line.
+    pub fn value_int(&self, Index: i32) -> &crate::ffi::IntSurf_PntOn2S {
+        unsafe { &*(crate::ffi::IntSurf_LineOn2S_value_int(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `IntSurf_LineOn2S.hxx`:50 - `IntSurf_LineOn2S::Reverse()`
+    /// Reverses the order of points of the line.
+    pub fn reverse(&mut self) {
+        unsafe { crate::ffi::IntSurf_LineOn2S_reverse(self as *mut Self) }
+    }
+
+    /// **Source:** `IntSurf_LineOn2S.hxx`:54 - `IntSurf_LineOn2S::Split()`
+    /// Keeps in <me> the points 1 to Index-1, and returns
+    /// the items Index to the end.
+    pub fn split(&mut self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleIntSurfLineOn2S> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_LineOn2S_split(self as *mut Self, Index))
+        }
+    }
+
+    /// **Source:** `IntSurf_LineOn2S.hxx`:57 - `IntSurf_LineOn2S::Value()`
+    /// Replaces the point of range Index in the line.
+    pub fn value_int_pnton2s(&mut self, Index: i32, P: &crate::ffi::IntSurf_PntOn2S) {
+        unsafe { crate::ffi::IntSurf_LineOn2S_value_int_pnton2s(self as *mut Self, Index, P) }
+    }
+
+    /// **Source:** `IntSurf_LineOn2S.hxx`:60 - `IntSurf_LineOn2S::SetPoint()`
+    /// Sets the 3D point of the Index-th PntOn2S
+    pub fn set_point(&mut self, Index: i32, thePnt: &crate::ffi::gp_Pnt) {
+        unsafe { crate::ffi::IntSurf_LineOn2S_set_point(self as *mut Self, Index, thePnt) }
+    }
+
+    /// **Source:** `IntSurf_LineOn2S.hxx`:64 - `IntSurf_LineOn2S::SetUV()`
+    /// Sets the parametric coordinates on one of the surfaces
+    /// of the point of range Index in the line.
+    pub fn set_uv(&mut self, Index: i32, OnFirst: bool, U: f64, V: f64) {
+        unsafe { crate::ffi::IntSurf_LineOn2S_set_uv(self as *mut Self, Index, OnFirst, U, V) }
+    }
+
+    /// **Source:** `IntSurf_LineOn2S.hxx`:69 - `IntSurf_LineOn2S::Clear()`
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::IntSurf_LineOn2S_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `IntSurf_LineOn2S.hxx`:71 - `IntSurf_LineOn2S::InsertBefore()`
+    pub fn insert_before(&mut self, I: i32, P: &crate::ffi::IntSurf_PntOn2S) {
+        unsafe { crate::ffi::IntSurf_LineOn2S_insert_before(self as *mut Self, I, P) }
+    }
+
+    /// **Source:** `IntSurf_LineOn2S.hxx`:73 - `IntSurf_LineOn2S::RemovePoint()`
+    pub fn remove_point(&mut self, I: i32) {
+        unsafe { crate::ffi::IntSurf_LineOn2S_remove_point(self as *mut Self, I) }
+    }
+
+    /// **Source:** `IntSurf_LineOn2S.hxx`:77 - `IntSurf_LineOn2S::IsOutSurf1Box()`
+    /// Returns TRUE if theP is out of the box built from
+    /// the points on 1st surface
+    pub fn is_out_surf1_box(&mut self, theP: &crate::ffi::gp_Pnt2d) -> bool {
+        unsafe { crate::ffi::IntSurf_LineOn2S_is_out_surf1_box(self as *mut Self, theP) }
+    }
+
+    /// **Source:** `IntSurf_LineOn2S.hxx`:81 - `IntSurf_LineOn2S::IsOutSurf2Box()`
+    /// Returns TRUE if theP is out of the box built from
+    /// the points on 2nd surface
+    pub fn is_out_surf2_box(&mut self, theP: &crate::ffi::gp_Pnt2d) -> bool {
+        unsafe { crate::ffi::IntSurf_LineOn2S_is_out_surf2_box(self as *mut Self, theP) }
+    }
+
+    /// **Source:** `IntSurf_LineOn2S.hxx`:84 - `IntSurf_LineOn2S::IsOutBox()`
+    /// Returns TRUE if theP is out of the box built from 3D-points.
+    pub fn is_out_box(&mut self, theP: &crate::ffi::gp_Pnt) -> bool {
+        unsafe { crate::ffi::IntSurf_LineOn2S_is_out_box(self as *mut Self, theP) }
+    }
+
+    /// **Source:** `IntSurf_LineOn2S.hxx`:86 - `IntSurf_LineOn2S::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IntSurf_LineOn2S_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IntSurf_LineOn2S.hxx`:86 - `IntSurf_LineOn2S::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IntSurf_LineOn2S_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IntSurf_LineOn2S.hxx`:86 - `IntSurf_LineOn2S::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IntSurf_LineOn2S_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIntSurfLineOn2S> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_LineOn2S_to_handle(obj.into_raw())) }
+    }
+}
+
+pub use crate::ffi::HandleIntSurfLineOn2S;
+
+unsafe impl crate::CppDeletable for HandleIntSurfLineOn2S {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIntSurfLineOn2S_destructor(ptr);
+    }
+}
+
+impl HandleIntSurfLineOn2S {
+    /// Dereference this Handle to access the underlying IntSurf_LineOn2S
+    pub fn get(&self) -> &crate::ffi::IntSurf_LineOn2S {
+        unsafe { &*(crate::ffi::HandleIntSurfLineOn2S_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IntSurf_LineOn2S
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IntSurf_LineOn2S {
+        unsafe { &mut *(crate::ffi::HandleIntSurfLineOn2S_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From IntSurf_PntOn2S.hxx
 // ========================
 
@@ -208,6 +363,195 @@ impl PntOn2S {
                 theTol3D,
                 theTol2D,
             )
+        }
+    }
+}
+
+// ========================
+// From IntSurf_Quadric.hxx
+// ========================
+
+/// **Source:** `IntSurf_Quadric.hxx`:40 - `IntSurf_Quadric`
+pub use crate::ffi::IntSurf_Quadric as Quadric;
+
+unsafe impl crate::CppDeletable for Quadric {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntSurf_Quadric_destructor(ptr);
+    }
+}
+
+impl Quadric {
+    /// **Source:** `IntSurf_Quadric.hxx`:45 - `IntSurf_Quadric::IntSurf_Quadric()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_ctor()) }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:47 - `IntSurf_Quadric::IntSurf_Quadric()`
+    pub fn new_pln(P: &crate::ffi::gp_Pln) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_ctor_pln(P)) }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:49 - `IntSurf_Quadric::IntSurf_Quadric()`
+    pub fn new_cylinder(C: &crate::ffi::gp_Cylinder) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_ctor_cylinder(C)) }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:51 - `IntSurf_Quadric::IntSurf_Quadric()`
+    pub fn new_sphere(S: &crate::ffi::gp_Sphere) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_ctor_sphere(S)) }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:53 - `IntSurf_Quadric::IntSurf_Quadric()`
+    pub fn new_cone(C: &crate::ffi::gp_Cone) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_ctor_cone(C)) }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:55 - `IntSurf_Quadric::IntSurf_Quadric()`
+    pub fn new_torus(T: &crate::ffi::gp_Torus) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_ctor_torus(T)) }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:57 - `IntSurf_Quadric::SetValue()`
+    pub fn set_value_pln(&mut self, P: &crate::ffi::gp_Pln) {
+        unsafe { crate::ffi::IntSurf_Quadric_set_value_pln(self as *mut Self, P) }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:59 - `IntSurf_Quadric::SetValue()`
+    pub fn set_value_cylinder(&mut self, C: &crate::ffi::gp_Cylinder) {
+        unsafe { crate::ffi::IntSurf_Quadric_set_value_cylinder(self as *mut Self, C) }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:61 - `IntSurf_Quadric::SetValue()`
+    pub fn set_value_sphere(&mut self, S: &crate::ffi::gp_Sphere) {
+        unsafe { crate::ffi::IntSurf_Quadric_set_value_sphere(self as *mut Self, S) }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:63 - `IntSurf_Quadric::SetValue()`
+    pub fn set_value_cone(&mut self, C: &crate::ffi::gp_Cone) {
+        unsafe { crate::ffi::IntSurf_Quadric_set_value_cone(self as *mut Self, C) }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:65 - `IntSurf_Quadric::SetValue()`
+    pub fn set_value_torus(&mut self, T: &crate::ffi::gp_Torus) {
+        unsafe { crate::ffi::IntSurf_Quadric_set_value_torus(self as *mut Self, T) }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:67 - `IntSurf_Quadric::Distance()`
+    pub fn distance(&self, P: &crate::ffi::gp_Pnt) -> f64 {
+        unsafe { crate::ffi::IntSurf_Quadric_distance(self as *const Self, P) }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:69 - `IntSurf_Quadric::Gradient()`
+    pub fn gradient(&self, P: &crate::ffi::gp_Pnt) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_gradient(self as *const Self, P))
+        }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:71 - `IntSurf_Quadric::ValAndGrad()`
+    pub fn val_and_grad(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        Dist: &mut f64,
+        Grad: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe { crate::ffi::IntSurf_Quadric_val_and_grad(self as *const Self, P, Dist, Grad) }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:73 - `IntSurf_Quadric::TypeQuadric()`
+    pub fn type_quadric(&self) -> crate::geom_abs::SurfaceType {
+        unsafe {
+            crate::geom_abs::SurfaceType::try_from(crate::ffi::IntSurf_Quadric_type_quadric(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:75 - `IntSurf_Quadric::Plane()`
+    pub fn plane(&self) -> crate::OwnedPtr<crate::ffi::gp_Pln> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_plane(self as *const Self)) }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:77 - `IntSurf_Quadric::Sphere()`
+    pub fn sphere(&self) -> crate::OwnedPtr<crate::ffi::gp_Sphere> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_sphere(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:79 - `IntSurf_Quadric::Cylinder()`
+    pub fn cylinder(&self) -> crate::OwnedPtr<crate::ffi::gp_Cylinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_cylinder(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:81 - `IntSurf_Quadric::Cone()`
+    pub fn cone(&self) -> crate::OwnedPtr<crate::ffi::gp_Cone> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_cone(self as *const Self)) }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:83 - `IntSurf_Quadric::Torus()`
+    pub fn torus(&self) -> crate::OwnedPtr<crate::ffi::gp_Torus> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_torus(self as *const Self)) }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:85 - `IntSurf_Quadric::Value()`
+    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_value(self as *const Self, U, V))
+        }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:87 - `IntSurf_Quadric::D1()`
+    pub fn d1(
+        &self,
+        U: f64,
+        V: f64,
+        P: &mut crate::ffi::gp_Pnt,
+        D1U: &mut crate::ffi::gp_Vec,
+        D1V: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe { crate::ffi::IntSurf_Quadric_d1(self as *const Self, U, V, P, D1U, D1V) }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:93 - `IntSurf_Quadric::DN()`
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_dn(
+                self as *const Self,
+                U,
+                V,
+                Nu,
+                Nv,
+            ))
+        }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:98 - `IntSurf_Quadric::Normale()`
+    pub fn normale_real2(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_normale_real2(
+                self as *const Self,
+                U,
+                V,
+            ))
+        }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:100 - `IntSurf_Quadric::Parameters()`
+    pub fn parameters(&self, P: &crate::ffi::gp_Pnt, U: &mut f64, V: &mut f64) {
+        unsafe { crate::ffi::IntSurf_Quadric_parameters(self as *const Self, P, U, V) }
+    }
+
+    /// **Source:** `IntSurf_Quadric.hxx`:102 - `IntSurf_Quadric::Normale()`
+    pub fn normale_pnt(&self, P: &crate::ffi::gp_Pnt) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_normale_pnt(
+                self as *const Self,
+                P,
+            ))
         }
     }
 }
@@ -359,4 +703,4 @@ impl Transition {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::IntSurf_ListOfPntOn2S as ListOfPntOn2S;
+pub use crate::ffi::{IntSurf_Allocator as Allocator, IntSurf_ListOfPntOn2S as ListOfPntOn2S};

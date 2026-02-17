@@ -9,8 +9,18 @@
 /// **Source:** `ShapeAnalysis.hxx`:53 - `ShapeAnalysis::OuterWire`
 /// Returns positively oriented wire in the face.
 /// If there is no such wire - returns the last wire of the face.
-pub fn outer_wire(theFace: &crate::ffi::TopoDS_Face) -> crate::OwnedPtr<crate::ffi::TopoDS_Wire> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_outer_wire(theFace)) }
+pub fn outer_wire_face_2(
+    theFace: &crate::ffi::TopoDS_Face,
+) -> crate::OwnedPtr<crate::ffi::TopoDS_Wire> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_outer_wire_face_2(theFace)) }
+}
+/// **Source:** `ShapeAnalysis.hxx`:56 - `ShapeAnalysis::TotCross2D`
+/// Returns a total area of 2d wire
+pub fn tot_cross2_d(
+    sewd: &crate::ffi::HandleShapeExtendWireData,
+    aFace: &crate::ffi::TopoDS_Face,
+) -> f64 {
+    unsafe { crate::ffi::ShapeAnalysis_tot_cross2_d(sewd, aFace) }
 }
 /// **Source:** `ShapeAnalysis.hxx`:60 - `ShapeAnalysis::ContourArea`
 /// Returns a total area of 3d wire
@@ -82,20 +92,6 @@ unsafe impl crate::CppDeletable for BoxBndTreeSelector {
 }
 
 impl BoxBndTreeSelector {
-    /// **Source:** `ShapeAnalysis_BoxBndTree.hxx`:36 - `ShapeAnalysis_BoxBndTreeSelector::ShapeAnalysis_BoxBndTreeSelector()`
-    pub fn new_handletoptoolsharray1ofshape_bool(
-        theSeq: &crate::ffi::HandleTopToolsHArray1OfShape,
-        theShared: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::ShapeAnalysis_BoxBndTreeSelector_ctor_handletoptoolsharray1ofshape_bool(
-                    theSeq, theShared,
-                ),
-            )
-        }
-    }
-
     /// **Source:** `ShapeAnalysis_BoxBndTree.hxx`:49 - `ShapeAnalysis_BoxBndTreeSelector::DefineBoxes()`
     pub fn define_boxes(&mut self, theFBox: &crate::ffi::Bnd_Box, theLBox: &crate::ffi::Bnd_Box) {
         unsafe {
@@ -1654,16 +1650,6 @@ impl FreeBoundData {
         unsafe { crate::ffi::ShapeAnalysis_FreeBoundData_nb_notches(self as *const Self) }
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBoundData.hxx`:99 - `ShapeAnalysis_FreeBoundData::Notches()`
-    /// Returns sequence of notches on the contour
-    pub fn notches(&self) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_FreeBoundData_notches(
-                self as *const Self,
-            ))
-        }
-    }
-
     /// **Source:** `ShapeAnalysis_FreeBoundData.hxx`:102 - `ShapeAnalysis_FreeBoundData::Notch()`
     /// Returns notch on the contour
     pub fn notch(&self, index: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Wire> {
@@ -1950,99 +1936,6 @@ impl FreeBounds {
     pub fn get_open_wires(&self) -> &crate::ffi::TopoDS_Compound {
         unsafe { &*(crate::ffi::ShapeAnalysis_FreeBounds_get_open_wires(self as *const Self)) }
     }
-
-    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:115 - `ShapeAnalysis_FreeBounds::ConnectEdgesToWires()`
-    /// Builds sequence of <wires> out of sequence of not sorted
-    /// <edges>.
-    /// Tries to build wires of maximum length. Building a wire is
-    /// stopped when no edges can be connected to it at its head or
-    /// at its tail.
-    ///
-    /// Orientation of the edge can change when connecting.
-    /// If <shared> is True connection is performed only when
-    /// adjacent edges share the same vertex.
-    /// If <shared> is False connection is performed only when
-    /// ends of adjacent edges are at distance less than <toler>.
-    pub fn connect_edges_to_wires(
-        edges: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
-        toler: f64,
-        shared: bool,
-        wires: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
-    ) {
-        unsafe {
-            crate::ffi::ShapeAnalysis_FreeBounds_connect_edges_to_wires(edges, toler, shared, wires)
-        }
-    }
-
-    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:120 - `ShapeAnalysis_FreeBounds::ConnectWiresToWires()`
-    pub fn connect_wires_to_wires_handletoptoolshsequenceofshape_real_bool_handletoptoolshsequenceofshape(
-        iwires: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
-        toler: f64,
-        shared: bool,
-        owires: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
-    ) {
-        unsafe {
-            crate::ffi::ShapeAnalysis_FreeBounds_connect_wires_to_wires_handletoptoolshsequenceofshape_real_bool_handletoptoolshsequenceofshape(iwires, toler, shared, owires)
-        }
-    }
-
-    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:138 - `ShapeAnalysis_FreeBounds::ConnectWiresToWires()`
-    /// Builds sequence of <owires> out of sequence of not sorted
-    /// <iwires>.
-    /// Tries to build wires of maximum length. Building a wire is
-    /// stopped when no wires can be connected to it at its head or
-    /// at its tail.
-    ///
-    /// Orientation of the wire can change when connecting.
-    /// If <shared> is True connection is performed only when
-    /// adjacent wires share the same vertex.
-    /// If <shared> is False connection is performed only when
-    /// ends of adjacent wires are at distance less than <toler>.
-    /// Map <vertices> stores the correspondence between original
-    /// end vertices of the wires and new connecting vertices.
-    pub fn connect_wires_to_wires_handletoptoolshsequenceofshape_real_bool_handletoptoolshsequenceofshape_datamapofshapeshape(
-        iwires: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
-        toler: f64,
-        shared: bool,
-        owires: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
-        vertices: &mut crate::ffi::TopTools_DataMapOfShapeShape,
-    ) {
-        unsafe {
-            crate::ffi::ShapeAnalysis_FreeBounds_connect_wires_to_wires_handletoptoolshsequenceofshape_real_bool_handletoptoolshsequenceofshape_datamapofshapeshape(iwires, toler, shared, owires, vertices)
-        }
-    }
-
-    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:151 - `ShapeAnalysis_FreeBounds::SplitWires()`
-    /// Extracts closed sub-wires out of <wires> and adds them
-    /// to <closed>, open wires remained after extraction are put
-    /// into <open>.
-    /// If <shared> is True extraction is performed only when
-    /// edges share the same vertex.
-    /// If <shared> is False connection is performed only when
-    /// ends of the edges are at distance less than <toler>.
-    pub fn split_wires(
-        wires: &crate::ffi::HandleTopToolsHSequenceOfShape,
-        toler: f64,
-        shared: bool,
-        closed: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
-        open: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
-    ) {
-        unsafe {
-            crate::ffi::ShapeAnalysis_FreeBounds_split_wires(wires, toler, shared, closed, open)
-        }
-    }
-
-    /// **Source:** `ShapeAnalysis_FreeBounds.hxx`:160 - `ShapeAnalysis_FreeBounds::DispatchWires()`
-    /// Dispatches sequence of <wires> into two compounds
-    /// <closed> for closed wires and <open> for open wires.
-    /// If a compound is not empty wires are added into it.
-    pub fn dispatch_wires(
-        wires: &crate::ffi::HandleTopToolsHSequenceOfShape,
-        closed: &mut crate::ffi::TopoDS_Compound,
-        open: &mut crate::ffi::TopoDS_Compound,
-    ) {
-        unsafe { crate::ffi::ShapeAnalysis_FreeBounds_dispatch_wires(wires, closed, open) }
-    }
 }
 
 // ========================
@@ -2265,34 +2158,6 @@ impl FreeBoundsProperties {
         }
     }
 
-    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:116 - `ShapeAnalysis_FreeBoundsProperties::ClosedFreeBounds()`
-    /// Returns all closed free bounds
-    pub fn closed_free_bounds(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::ShapeAnalysis_FreeBoundsProperties_closed_free_bounds(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:119 - `ShapeAnalysis_FreeBoundsProperties::OpenFreeBounds()`
-    /// Returns all open free bounds
-    pub fn open_free_bounds(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::ShapeAnalysis_FreeBoundsProperties_open_free_bounds(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
     /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:123 - `ShapeAnalysis_FreeBoundsProperties::ClosedFreeBound()`
     /// Returns properties of closed free bound specified by its rank
     /// number
@@ -2441,89 +2306,6 @@ impl Geom {
         prec: f64,
     ) -> bool {
         unsafe { crate::ffi::ShapeAnalysis_Geom_position_trsf(coefs, trsf, unit, prec) }
-    }
-}
-
-// ========================
-// From ShapeAnalysis_HSequenceOfFreeBounds.hxx
-// ========================
-
-/// **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds`
-pub use crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds as HSequenceOfFreeBounds;
-
-unsafe impl crate::CppDeletable for HSequenceOfFreeBounds {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_destructor(ptr);
-    }
-}
-
-impl HSequenceOfFreeBounds {
-    /// **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds::ShapeAnalysis_HSequenceOfFreeBounds()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_ctor()) }
-    }
-
-    /// **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds::ShapeAnalysis_HSequenceOfFreeBounds()`
-    pub fn new_sequenceoffreebounds(
-        theOther: &crate::ffi::ShapeAnalysis_SequenceOfFreeBounds,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_ctor_sequenceoffreebounds(theOther),
-            )
-        }
-    }
-
-    /// **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_dynamic_type(self as *const Self))
-        }
-    }
-
-    /// **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds::get_type_name()`
-    pub fn get_type_name() -> String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_get_type_name()).to_string_lossy().into_owned()
-        }
-    }
-
-    /// **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_get_type_descriptor()) }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_to_handle(
-                obj.into_raw(),
-            ))
-        }
-    }
-}
-
-pub use crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds;
-
-unsafe impl crate::CppDeletable for HandleShapeAnalysisHSequenceOfFreeBounds {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds_destructor(ptr);
-    }
-}
-
-impl HandleShapeAnalysisHSequenceOfFreeBounds {
-    /// Dereference this Handle to access the underlying ShapeAnalysis_HSequenceOfFreeBounds
-    pub fn get(&self) -> &crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds {
-        unsafe { &*(crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds_get(self as *const Self)) }
-    }
-
-    /// Dereference this Handle to mutably access the underlying ShapeAnalysis_HSequenceOfFreeBounds
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds {
-        unsafe {
-            &mut *(crate::ffi::HandleShapeAnalysisHSequenceOfFreeBounds_get_mut(self as *mut Self))
-        }
     }
 }
 
@@ -2793,38 +2575,6 @@ impl ShapeContents {
     pub fn nb_shared_vertices(&self) -> i32 {
         unsafe { crate::ffi::ShapeAnalysis_ShapeContents_nb_shared_vertices(self as *const Self) }
     }
-
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:135 - `ShapeAnalysis_ShapeContents::BigSplineSec()`
-    pub fn big_spline_sec(&self) -> &crate::ffi::HandleTopToolsHSequenceOfShape {
-        unsafe { &*(crate::ffi::ShapeAnalysis_ShapeContents_big_spline_sec(self as *const Self)) }
-    }
-
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:137 - `ShapeAnalysis_ShapeContents::IndirectSec()`
-    pub fn indirect_sec(&self) -> &crate::ffi::HandleTopToolsHSequenceOfShape {
-        unsafe { &*(crate::ffi::ShapeAnalysis_ShapeContents_indirect_sec(self as *const Self)) }
-    }
-
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:139 - `ShapeAnalysis_ShapeContents::OffsetSurfaceSec()`
-    pub fn offset_surface_sec(&self) -> &crate::ffi::HandleTopToolsHSequenceOfShape {
-        unsafe {
-            &*(crate::ffi::ShapeAnalysis_ShapeContents_offset_surface_sec(self as *const Self))
-        }
-    }
-
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:141 - `ShapeAnalysis_ShapeContents::Trimmed3dSec()`
-    pub fn trimmed3d_sec(&self) -> &crate::ffi::HandleTopToolsHSequenceOfShape {
-        unsafe { &*(crate::ffi::ShapeAnalysis_ShapeContents_trimmed3d_sec(self as *const Self)) }
-    }
-
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:143 - `ShapeAnalysis_ShapeContents::OffsetCurveSec()`
-    pub fn offset_curve_sec(&self) -> &crate::ffi::HandleTopToolsHSequenceOfShape {
-        unsafe { &*(crate::ffi::ShapeAnalysis_ShapeContents_offset_curve_sec(self as *const Self)) }
-    }
-
-    /// **Source:** `ShapeAnalysis_ShapeContents.hxx`:145 - `ShapeAnalysis_ShapeContents::Trimmed2dSec()`
-    pub fn trimmed2d_sec(&self) -> &crate::ffi::HandleTopToolsHSequenceOfShape {
-        unsafe { &*(crate::ffi::ShapeAnalysis_ShapeContents_trimmed2d_sec(self as *const Self)) }
-    }
 }
 
 // ========================
@@ -2877,46 +2627,6 @@ impl ShapeTolerance {
                 mode,
                 type_.into(),
             )
-        }
-    }
-
-    /// **Source:** `ShapeAnalysis_ShapeTolerance.hxx`:59 - `ShapeAnalysis_ShapeTolerance::OverTolerance()`
-    /// Determines which shapes have a tolerance over the given value
-    /// <type> is interpreted as in the method Tolerance
-    pub fn over_tolerance(
-        &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        value: f64,
-        type_: crate::top_abs::ShapeEnum,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_ShapeTolerance_over_tolerance(
-                self as *const Self,
-                shape,
-                value,
-                type_.into(),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeAnalysis_ShapeTolerance.hxx`:66 - `ShapeAnalysis_ShapeTolerance::InTolerance()`
-    /// Determines which shapes have a tolerance within a given interval
-    /// <type> is interpreted as in the method Tolerance
-    pub fn in_tolerance(
-        &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        valmin: f64,
-        valmax: f64,
-        type_: crate::top_abs::ShapeEnum,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_ShapeTolerance_in_tolerance(
-                self as *const Self,
-                shape,
-                valmin,
-                valmax,
-                type_.into(),
-            ))
         }
     }
 
@@ -4038,22 +3748,73 @@ impl Wire {
         }
     }
 
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:104 - `ShapeAnalysis_Wire::ShapeAnalysis_Wire()`
+    /// Creates the object with WireData object, face
+    /// and precision
+    pub fn new_handleshapeextendwiredata_face_real(
+        sbwd: &crate::ffi::HandleShapeExtendWireData,
+        face: &crate::ffi::TopoDS_Face,
+        precision: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeAnalysis_Wire_ctor_handleshapeextendwiredata_face_real(
+                    sbwd, face, precision,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `ShapeAnalysis_Wire.hxx`:110 - `ShapeAnalysis_Wire::Init()`
     /// Initializes the object with standard TopoDS_Wire, face
     /// and precision
-    pub fn init(
+    pub fn init_wire_face_real(
         &mut self,
         wire: &crate::ffi::TopoDS_Wire,
         face: &crate::ffi::TopoDS_Face,
         precision: f64,
     ) {
-        unsafe { crate::ffi::ShapeAnalysis_Wire_init(self as *mut Self, wire, face, precision) }
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_init_wire_face_real(
+                self as *mut Self,
+                wire,
+                face,
+                precision,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:116 - `ShapeAnalysis_Wire::Init()`
+    /// Initializes the object with WireData object, face
+    /// and precision
+    pub fn init_handleshapeextendwiredata_face_real(
+        &mut self,
+        sbwd: &crate::ffi::HandleShapeExtendWireData,
+        face: &crate::ffi::TopoDS_Face,
+        precision: f64,
+    ) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_init_handleshapeextendwiredata_face_real(
+                self as *mut Self,
+                sbwd,
+                face,
+                precision,
+            )
+        }
     }
 
     /// **Source:** `ShapeAnalysis_Wire.hxx`:121 - `ShapeAnalysis_Wire::Load()`
     /// Loads the object with standard TopoDS_Wire
-    pub fn load(&mut self, wire: &crate::ffi::TopoDS_Wire) {
-        unsafe { crate::ffi::ShapeAnalysis_Wire_load(self as *mut Self, wire) }
+    pub fn load_wire(&mut self, wire: &crate::ffi::TopoDS_Wire) {
+        unsafe { crate::ffi::ShapeAnalysis_Wire_load_wire(self as *mut Self, wire) }
+    }
+
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:124 - `ShapeAnalysis_Wire::Load()`
+    /// Loads the object with WireData object
+    pub fn load_handleshapeextendwiredata(&mut self, sbwd: &crate::ffi::HandleShapeExtendWireData) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_load_handleshapeextendwiredata(self as *mut Self, sbwd)
+        }
     }
 
     /// **Source:** `ShapeAnalysis_Wire.hxx`:127 - `ShapeAnalysis_Wire::SetFace()`
@@ -4114,6 +3875,12 @@ impl Wire {
     /// Returns the value of precision
     pub fn precision(&self) -> f64 {
         unsafe { crate::ffi::ShapeAnalysis_Wire_precision(self as *const Self) }
+    }
+
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:152 - `ShapeAnalysis_Wire::WireData()`
+    /// Returns wire object being analyzed
+    pub fn wire_data(&self) -> &crate::ffi::HandleShapeExtendWireData {
+        unsafe { &*(crate::ffi::ShapeAnalysis_Wire_wire_data(self as *const Self)) }
     }
 
     /// **Source:** `ShapeAnalysis_Wire.hxx`:155 - `ShapeAnalysis_Wire::NbEdges()`
@@ -5103,13 +4870,40 @@ impl WireVertex {
     }
 
     /// **Source:** `ShapeAnalysis_WireVertex.hxx`:51 - `ShapeAnalysis_WireVertex::Init()`
-    pub fn init(&mut self, wire: &crate::ffi::TopoDS_Wire, preci: f64) {
-        unsafe { crate::ffi::ShapeAnalysis_WireVertex_init(self as *mut Self, wire, preci) }
+    pub fn init_wire_real(&mut self, wire: &crate::ffi::TopoDS_Wire, preci: f64) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_WireVertex_init_wire_real(self as *mut Self, wire, preci)
+        }
+    }
+
+    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:53 - `ShapeAnalysis_WireVertex::Init()`
+    pub fn init_handleshapeextendwiredata_real(
+        &mut self,
+        swbd: &crate::ffi::HandleShapeExtendWireData,
+        preci: f64,
+    ) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_WireVertex_init_handleshapeextendwiredata_real(
+                self as *mut Self,
+                swbd,
+                preci,
+            )
+        }
     }
 
     /// **Source:** `ShapeAnalysis_WireVertex.hxx`:55 - `ShapeAnalysis_WireVertex::Load()`
-    pub fn load(&mut self, wire: &crate::ffi::TopoDS_Wire) {
-        unsafe { crate::ffi::ShapeAnalysis_WireVertex_load(self as *mut Self, wire) }
+    pub fn load_wire(&mut self, wire: &crate::ffi::TopoDS_Wire) {
+        unsafe { crate::ffi::ShapeAnalysis_WireVertex_load_wire(self as *mut Self, wire) }
+    }
+
+    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:57 - `ShapeAnalysis_WireVertex::Load()`
+    pub fn load_handleshapeextendwiredata(&mut self, sbwd: &crate::ffi::HandleShapeExtendWireData) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_WireVertex_load_handleshapeextendwiredata(
+                self as *mut Self,
+                sbwd,
+            )
+        }
     }
 
     /// **Source:** `ShapeAnalysis_WireVertex.hxx`:65 - `ShapeAnalysis_WireVertex::SetPrecision()`
@@ -5197,6 +4991,12 @@ impl WireVertex {
         unsafe { crate::ffi::ShapeAnalysis_WireVertex_nb_edges(self as *const Self) }
     }
 
+    /// **Source:** `ShapeAnalysis_WireVertex.hxx`:114 - `ShapeAnalysis_WireVertex::WireData()`
+    /// Returns analyzed wire
+    pub fn wire_data(&self) -> &crate::ffi::HandleShapeExtendWireData {
+        unsafe { &*(crate::ffi::ShapeAnalysis_WireVertex_wire_data(self as *const Self)) }
+    }
+
     /// **Source:** `ShapeAnalysis_WireVertex.hxx`:118 - `ShapeAnalysis_WireVertex::Status()`
     /// Returns the recorded status for a vertex
     /// More detail by method Data
@@ -5278,5 +5078,5 @@ impl WireVertex {
 
 pub use crate::ffi::{
     ShapeAnalysis_DataMapOfShapeListOfReal as DataMapOfShapeListOfReal,
-    ShapeAnalysis_SequenceOfFreeBounds as SequenceOfFreeBounds,
+    ShapeAnalysis_HSequenceOfFreeBounds as HSequenceOfFreeBounds,
 };

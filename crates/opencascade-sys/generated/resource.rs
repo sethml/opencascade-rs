@@ -113,3 +113,250 @@ impl TryFrom<i32> for FormatType {
         }
     }
 }
+
+// ========================
+// From Resource_LexicalCompare.hxx
+// ========================
+
+/// **Source:** `Resource_LexicalCompare.hxx`:27 - `Resource_LexicalCompare`
+pub use crate::ffi::Resource_LexicalCompare as LexicalCompare;
+
+unsafe impl crate::CppDeletable for LexicalCompare {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Resource_LexicalCompare_destructor(ptr);
+    }
+}
+
+impl LexicalCompare {
+    /// **Source:** `Resource_LexicalCompare.hxx`:32 - `Resource_LexicalCompare::Resource_LexicalCompare()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Resource_LexicalCompare_ctor()) }
+    }
+
+    /// **Source:** `Resource_LexicalCompare.hxx`:35 - `Resource_LexicalCompare::IsLower()`
+    /// Returns True if <Left> is lower than <Right>.
+    pub fn is_lower(
+        &self,
+        Left: &crate::ffi::TCollection_AsciiString,
+        Right: &crate::ffi::TCollection_AsciiString,
+    ) -> bool {
+        unsafe { crate::ffi::Resource_LexicalCompare_is_lower(self as *const Self, Left, Right) }
+    }
+}
+
+// ========================
+// From Resource_NoSuchResource.hxx
+// ========================
+
+/// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource`
+pub use crate::ffi::Resource_NoSuchResource as NoSuchResource;
+
+unsafe impl crate::CppDeletable for NoSuchResource {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Resource_NoSuchResource_destructor(ptr);
+    }
+}
+
+impl NoSuchResource {
+    /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::Resource_NoSuchResource()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Resource_NoSuchResource_ctor()) }
+    }
+
+    /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::Resource_NoSuchResource()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Resource_NoSuchResource_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::Resource_NoSuchResource()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Resource_NoSuchResource_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Resource_NoSuchResource_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Resource_NoSuchResource_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Resource_NoSuchResource_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `Resource_NoSuchResource.hxx`:36 - `Resource_NoSuchResource::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Resource_NoSuchResource_get_type_descriptor()) }
+    }
+}
+
+// ========================
+// From Resource_Unicode.hxx
+// ========================
+
+/// **Source:** `Resource_Unicode.hxx`:34 - `Resource_Unicode`
+/// This class provides functions used to convert a non-ASCII C string
+/// given in ANSI, EUC, GB or SJIS format, to a
+/// Unicode string of extended characters, and vice versa.
+pub use crate::ffi::Resource_Unicode as Unicode;
+
+unsafe impl crate::CppDeletable for Unicode {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Resource_Unicode_destructor(ptr);
+    }
+}
+
+impl Unicode {
+    /// **Source:** `Resource_Unicode.hxx` - `Resource_Unicode::Resource_Unicode()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Resource_Unicode_ctor()) }
+    }
+
+    /// **Source:** `Resource_Unicode.hxx`:41 - `Resource_Unicode::ConvertSJISToUnicode()`
+    /// Converts non-ASCII CString <fromstr> in SJIS format
+    /// to Unicode ExtendedString <tostr>.
+    pub fn convert_sjis_to_unicode(
+        fromstr: &str,
+        tostr: &mut crate::ffi::TCollection_ExtendedString,
+    ) {
+        let c_fromstr = std::ffi::CString::new(fromstr).unwrap();
+        unsafe { crate::ffi::Resource_Unicode_convert_sjis_to_unicode(c_fromstr.as_ptr(), tostr) }
+    }
+
+    /// **Source:** `Resource_Unicode.hxx`:46 - `Resource_Unicode::ConvertEUCToUnicode()`
+    /// Converts non-ASCII CString <fromstr> in EUC format
+    /// to Unicode ExtendedString <tostr>.
+    pub fn convert_euc_to_unicode(
+        fromstr: &str,
+        tostr: &mut crate::ffi::TCollection_ExtendedString,
+    ) {
+        let c_fromstr = std::ffi::CString::new(fromstr).unwrap();
+        unsafe { crate::ffi::Resource_Unicode_convert_euc_to_unicode(c_fromstr.as_ptr(), tostr) }
+    }
+
+    /// **Source:** `Resource_Unicode.hxx`:51 - `Resource_Unicode::ConvertGBToUnicode()`
+    /// Converts non-ASCII CString <fromstr> in GB format
+    /// to Unicode ExtendedString <tostr>.
+    pub fn convert_gb_to_unicode(
+        fromstr: &str,
+        tostr: &mut crate::ffi::TCollection_ExtendedString,
+    ) {
+        let c_fromstr = std::ffi::CString::new(fromstr).unwrap();
+        unsafe { crate::ffi::Resource_Unicode_convert_gb_to_unicode(c_fromstr.as_ptr(), tostr) }
+    }
+
+    /// **Source:** `Resource_Unicode.hxx`:56 - `Resource_Unicode::ConvertGBKToUnicode()`
+    /// Converts non-ASCII CString <fromstr> in GBK format
+    /// to Unicode ExtendedString <tostr>.
+    pub fn convert_gbk_to_unicode(
+        fromstr: &str,
+        tostr: &mut crate::ffi::TCollection_ExtendedString,
+    ) -> bool {
+        let c_fromstr = std::ffi::CString::new(fromstr).unwrap();
+        unsafe { crate::ffi::Resource_Unicode_convert_gbk_to_unicode(c_fromstr.as_ptr(), tostr) }
+    }
+
+    /// **Source:** `Resource_Unicode.hxx`:61 - `Resource_Unicode::ConvertBig5ToUnicode()`
+    /// Converts non-ASCII CString <fromstr> in Big5 format
+    /// to Unicode ExtendedString <tostr>.
+    pub fn convert_big5_to_unicode(
+        fromstr: &str,
+        tostr: &mut crate::ffi::TCollection_ExtendedString,
+    ) -> bool {
+        let c_fromstr = std::ffi::CString::new(fromstr).unwrap();
+        unsafe { crate::ffi::Resource_Unicode_convert_big5_to_unicode(c_fromstr.as_ptr(), tostr) }
+    }
+
+    /// **Source:** `Resource_Unicode.hxx`:108 - `Resource_Unicode::SetFormat()`
+    /// Defines the current conversion format as typecode.
+    /// This conversion format will then be used by the
+    /// functions ConvertFormatToUnicode and
+    /// ConvertUnicodeToFormat to convert the strings.
+    pub fn set_format(typecode: crate::resource::FormatType) {
+        unsafe { crate::ffi::Resource_Unicode_set_format(typecode.into()) }
+    }
+
+    /// **Source:** `Resource_Unicode.hxx`:114 - `Resource_Unicode::GetFormat()`
+    /// Returns the current conversion format (either
+    /// ANSI, EUC, GB or SJIS).
+    /// The current converting format must be defined in
+    /// advance with the SetFormat function.
+    pub fn get_format() -> crate::resource::FormatType {
+        unsafe {
+            crate::resource::FormatType::try_from(crate::ffi::Resource_Unicode_get_format())
+                .unwrap()
+        }
+    }
+
+    /// **Source:** `Resource_Unicode.hxx`:118 - `Resource_Unicode::ReadFormat()`
+    /// Reads converting format from resource "FormatType"
+    /// in Resource Manager "CharSet"
+    pub fn read_format() {
+        unsafe { crate::ffi::Resource_Unicode_read_format() }
+    }
+
+    /// **Source:** `Resource_Unicode.hxx`:122 - `Resource_Unicode::ConvertFormatToUnicode()`
+    /// Converts the non-ASCII C string (as specified by GetFormat()) to the Unicode string of
+    /// extended characters.
+    pub fn convert_format_to_unicode_charptr_extendedstring(
+        theFromStr: &str,
+        theToStr: &mut crate::ffi::TCollection_ExtendedString,
+    ) {
+        let c_theFromStr = std::ffi::CString::new(theFromStr).unwrap();
+        unsafe {
+            crate::ffi::Resource_Unicode_convert_format_to_unicode_charptr_extendedstring(
+                c_theFromStr.as_ptr(),
+                theToStr,
+            )
+        }
+    }
+
+    /// **Source:** `Resource_Unicode.hxx`:133 - `Resource_Unicode::ConvertFormatToUnicode()`
+    /// Converts the non-ASCII C string in specified format to the Unicode string of extended
+    /// characters.
+    /// @param[in] theFormat   source encoding
+    /// @param[in] theFromStr  text to convert
+    /// @param[out] theToStr   destination string
+    pub fn convert_format_to_unicode_formattype_charptr_extendedstring(
+        theFormat: crate::resource::FormatType,
+        theFromStr: &str,
+        theToStr: &mut crate::ffi::TCollection_ExtendedString,
+    ) {
+        let c_theFromStr = std::ffi::CString::new(theFromStr).unwrap();
+        unsafe {
+            crate::ffi::Resource_Unicode_convert_format_to_unicode_formattype_charptr_extendedstring(
+                theFormat.into(),
+                c_theFromStr.as_ptr(),
+                theToStr,
+            )
+        }
+    }
+}
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::Resource_Manager as Manager;

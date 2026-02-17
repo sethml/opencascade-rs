@@ -1511,3 +1511,858 @@ impl Color {
         unsafe { crate::ffi::Quantity_Color_set_epsilon(theEpsilon) }
     }
 }
+
+// ========================
+// From Quantity_ColorRGBA.hxx
+// ========================
+
+/// **Source:** `Quantity_ColorRGBA.hxx`:21 - `Quantity_ColorRGBA`
+/// The pair of Quantity_Color and Alpha component (1.0 opaque, 0.0 transparent).
+pub use crate::ffi::Quantity_ColorRGBA as ColorRGBA;
+
+unsafe impl crate::CppDeletable for ColorRGBA {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Quantity_ColorRGBA_destructor(ptr);
+    }
+}
+
+impl ColorRGBA {
+    /// **Source:** `Quantity_ColorRGBA.hxx`:25 - `Quantity_ColorRGBA::Quantity_ColorRGBA()`
+    /// Creates a color with the default value.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Quantity_ColorRGBA_ctor()) }
+    }
+
+    /// **Source:** `Quantity_ColorRGBA.hxx`:31 - `Quantity_ColorRGBA::Quantity_ColorRGBA()`
+    /// Creates the color with specified RGB value.
+    pub fn new_color(theRgb: &crate::ffi::Quantity_Color) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Quantity_ColorRGBA_ctor_color(theRgb)) }
+    }
+
+    /// **Source:** `Quantity_ColorRGBA.hxx`:38 - `Quantity_ColorRGBA::Quantity_ColorRGBA()`
+    /// Creates the color with specified RGBA values.
+    pub fn new_color_float(
+        theRgb: &crate::ffi::Quantity_Color,
+        theAlpha: f32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_ColorRGBA_ctor_color_float(
+                theRgb, theAlpha,
+            ))
+        }
+    }
+
+    /// **Source:** `Quantity_ColorRGBA.hxx`:52 - `Quantity_ColorRGBA::Quantity_ColorRGBA()`
+    /// Creates the color from RGBA values.
+    pub fn new_float4(
+        theRed: f32,
+        theGreen: f32,
+        theBlue: f32,
+        theAlpha: f32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_ColorRGBA_ctor_float4(
+                theRed, theGreen, theBlue, theAlpha,
+            ))
+        }
+    }
+
+    /// **Source:** `Quantity_ColorRGBA.hxx`:59 - `Quantity_ColorRGBA::SetValues()`
+    /// Assign new values to the color.
+    pub fn set_values(&mut self, theRed: f32, theGreen: f32, theBlue: f32, theAlpha: f32) {
+        unsafe {
+            crate::ffi::Quantity_ColorRGBA_set_values(
+                self as *mut Self,
+                theRed,
+                theGreen,
+                theBlue,
+                theAlpha,
+            )
+        }
+    }
+
+    /// **Source:** `Quantity_ColorRGBA.hxx`:66 - `Quantity_ColorRGBA::GetRGB()`
+    /// Return RGB color value.
+    pub fn get_rgb(&self) -> &crate::ffi::Quantity_Color {
+        unsafe { &*(crate::ffi::Quantity_ColorRGBA_get_rgb(self as *const Self)) }
+    }
+
+    /// **Source:** `Quantity_ColorRGBA.hxx`:69 - `Quantity_ColorRGBA::ChangeRGB()`
+    /// Modify RGB color components without affecting alpha value.
+    pub fn change_rgb(&mut self) -> &mut crate::ffi::Quantity_Color {
+        unsafe { &mut *(crate::ffi::Quantity_ColorRGBA_change_rgb(self as *mut Self)) }
+    }
+
+    /// **Source:** `Quantity_ColorRGBA.hxx`:72 - `Quantity_ColorRGBA::SetRGB()`
+    /// Assign RGB color components without affecting alpha value.
+    pub fn set_rgb(&mut self, theRgb: &crate::ffi::Quantity_Color) {
+        unsafe { crate::ffi::Quantity_ColorRGBA_set_rgb(self as *mut Self, theRgb) }
+    }
+
+    /// **Source:** `Quantity_ColorRGBA.hxx`:75 - `Quantity_ColorRGBA::Alpha()`
+    /// Return alpha value (1.0 means opaque, 0.0 means fully transparent).
+    pub fn alpha(&self) -> f32 {
+        unsafe { crate::ffi::Quantity_ColorRGBA_alpha(self as *const Self) }
+    }
+
+    /// **Source:** `Quantity_ColorRGBA.hxx`:78 - `Quantity_ColorRGBA::SetAlpha()`
+    /// Assign the alpha value.
+    pub fn set_alpha(&mut self, theAlpha: f32) {
+        unsafe { crate::ffi::Quantity_ColorRGBA_set_alpha(self as *mut Self, theAlpha) }
+    }
+
+    /// **Source:** `Quantity_ColorRGBA.hxx`:84 - `Quantity_ColorRGBA::IsDifferent()`
+    /// Returns true if the distance between colors is greater than Epsilon().
+    pub fn is_different(&self, theOther: &crate::ffi::Quantity_ColorRGBA) -> bool {
+        unsafe { crate::ffi::Quantity_ColorRGBA_is_different(self as *const Self, theOther) }
+    }
+
+    /// **Source:** `Quantity_ColorRGBA.hxx`:94 - `Quantity_ColorRGBA::IsEqual()`
+    /// Two colors are considered to be equal if their distance is no greater than Epsilon().
+    pub fn is_equal(&self, theOther: &crate::ffi::Quantity_ColorRGBA) -> bool {
+        unsafe { crate::ffi::Quantity_ColorRGBA_is_equal(self as *const Self, theOther) }
+    }
+
+    /// **Source:** `Quantity_ColorRGBA.hxx`:110 - `Quantity_ColorRGBA::ColorFromName()`
+    /// Finds color from predefined names.
+    /// For example, the name of the color which corresponds to "BLACK" is Quantity_NOC_BLACK.
+    /// An alpha component is set to 1.0.
+    /// @param theColorNameString the color name
+    /// @param theColor a found color
+    /// @return false if the color name is unknown, or true if the search by color name was successful
+    pub fn color_from_name(
+        theColorNameString: &str,
+        theColor: &mut crate::ffi::Quantity_ColorRGBA,
+    ) -> bool {
+        let c_theColorNameString = std::ffi::CString::new(theColorNameString).unwrap();
+        unsafe {
+            crate::ffi::Quantity_ColorRGBA_color_from_name(c_theColorNameString.as_ptr(), theColor)
+        }
+    }
+
+    /// **Source:** `Quantity_ColorRGBA.hxx`:130 - `Quantity_ColorRGBA::ColorFromHex()`
+    /// Parses the string as a hex color (like "#FF0" for short sRGB color, "#FF0F" for short sRGBA
+    /// color,
+    /// "#FFFF00" for RGB color, or "#FFFF00FF" for RGBA color)
+    /// @param theHexColorString the string to be parsed
+    /// @param theColor a color that is a result of parsing
+    /// @param theAlphaComponentIsOff the flag that indicates if a color alpha component is presented
+    /// in the input string (false) or not (true)
+    /// @return true if parsing was successful, or false otherwise
+    pub fn color_from_hex(
+        theHexColorString: &str,
+        theColor: &mut crate::ffi::Quantity_ColorRGBA,
+        theAlphaComponentIsOff: bool,
+    ) -> bool {
+        let c_theHexColorString = std::ffi::CString::new(theHexColorString).unwrap();
+        unsafe {
+            crate::ffi::Quantity_ColorRGBA_color_from_hex(
+                c_theHexColorString.as_ptr(),
+                theColor,
+                theAlphaComponentIsOff,
+            )
+        }
+    }
+
+    /// **Source:** `Quantity_ColorRGBA.hxx`:135 - `Quantity_ColorRGBA::ColorToHex()`
+    /// Returns hex sRGBA string in format "#RRGGBBAA".
+    pub fn color_to_hex(
+        theColor: &crate::ffi::Quantity_ColorRGBA,
+        theToPrefixHash: bool,
+    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_ColorRGBA_color_to_hex(
+                theColor,
+                theToPrefixHash,
+            ))
+        }
+    }
+}
+
+// ========================
+// From Quantity_Date.hxx
+// ========================
+
+/// **Source:** `Quantity_Date.hxx`:36 - `Quantity_Date`
+/// This class provides services to manage date information.
+/// A date represents the following time intervals:
+/// year, month, day, hour, minute, second,
+/// millisecond and microsecond.
+/// Current time is expressed in elapsed seconds
+/// and microseconds beginning from 00:00 GMT,
+/// January 1, 1979 (zero hour). The valid date can
+/// only be later than this one.
+/// Note: a Period object gives the interval between two dates.
+pub use crate::ffi::Quantity_Date as Date;
+
+unsafe impl crate::CppDeletable for Date {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Quantity_Date_destructor(ptr);
+    }
+}
+
+impl Date {
+    /// **Source:** `Quantity_Date.hxx`:44 - `Quantity_Date::Quantity_Date()`
+    /// Constructs a default date
+    /// (00:00 GMT, January 1, 1979 (zero hour)); use the function
+    /// SetValues to define the required date; or
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Quantity_Date_ctor()) }
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:61 - `Quantity_Date::Quantity_Date()`
+    /// Constructs a date from the year yyyy, the
+    /// month mm, the day dd, the hour hh, the minute
+    /// mn, the second ss, the millisecond mis
+    /// (defaulted to 0) and the microsecond mics (defaulted to 0)..
+    /// With:      1 <= mm <= 12
+    /// 1 <= dd <= max number of days of <mm>
+    /// 1979 <= yyyy
+    /// 0 <= hh <= 23
+    /// 0 <= mn <= 59
+    /// 0 <= ss <= 59
+    /// 0 <= mis <= 999
+    /// 0 <= mics <= 999
+    /// Exceptions
+    /// Quantity_DateDefinitionError if mm, dd, hh,
+    /// mn, ss, mis and mics are not the components of the valid date.
+    pub fn new_int8(
+        mm: i32,
+        dd: i32,
+        yyyy: i32,
+        hh: i32,
+        mn: i32,
+        ss: i32,
+        mis: i32,
+        mics: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_Date_ctor_int8(
+                mm, dd, yyyy, hh, mn, ss, mis, mics,
+            ))
+        }
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:61 - `Quantity_Date::Quantity_Date()`
+    /// Constructs a date from the year yyyy, the
+    /// month mm, the day dd, the hour hh, the minute
+    /// mn, the second ss, the millisecond mis
+    /// (defaulted to 0) and the microsecond mics (defaulted to 0)..
+    /// With:      1 <= mm <= 12
+    /// 1 <= dd <= max number of days of <mm>
+    /// 1979 <= yyyy
+    /// 0 <= hh <= 23
+    /// 0 <= mn <= 59
+    /// 0 <= ss <= 59
+    /// 0 <= mis <= 999
+    /// 0 <= mics <= 999
+    /// Exceptions
+    /// Quantity_DateDefinitionError if mm, dd, hh,
+    /// mn, ss, mis and mics are not the components of the valid date.
+    pub fn new_int7(
+        mm: i32,
+        dd: i32,
+        yyyy: i32,
+        hh: i32,
+        mn: i32,
+        ss: i32,
+        mis: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_int8(mm, dd, yyyy, hh, mn, ss, mis, 0)
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:61 - `Quantity_Date::Quantity_Date()`
+    /// Constructs a date from the year yyyy, the
+    /// month mm, the day dd, the hour hh, the minute
+    /// mn, the second ss, the millisecond mis
+    /// (defaulted to 0) and the microsecond mics (defaulted to 0)..
+    /// With:      1 <= mm <= 12
+    /// 1 <= dd <= max number of days of <mm>
+    /// 1979 <= yyyy
+    /// 0 <= hh <= 23
+    /// 0 <= mn <= 59
+    /// 0 <= ss <= 59
+    /// 0 <= mis <= 999
+    /// 0 <= mics <= 999
+    /// Exceptions
+    /// Quantity_DateDefinitionError if mm, dd, hh,
+    /// mn, ss, mis and mics are not the components of the valid date.
+    pub fn new_int6(
+        mm: i32,
+        dd: i32,
+        yyyy: i32,
+        hh: i32,
+        mn: i32,
+        ss: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_int8(mm, dd, yyyy, hh, mn, ss, 0, 0)
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:79 - `Quantity_Date::Values()`
+    /// Gets a complete Date.
+    /// -   in mm - the month,
+    /// -   in dd - the day,
+    /// -   in yyyy - the year,
+    /// -   in hh - the hour,
+    /// -   in mn - the minute,
+    /// -   in ss - the second,
+    /// -   in mis - the millisecond, and
+    /// -   in mics - the microsecond
+    pub fn values(
+        &self,
+        mm: &mut i32,
+        dd: &mut i32,
+        yy: &mut i32,
+        hh: &mut i32,
+        mn: &mut i32,
+        ss: &mut i32,
+        mis: &mut i32,
+        mics: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::Quantity_Date_values(self as *const Self, mm, dd, yy, hh, mn, ss, mis, mics)
+        }
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:95 - `Quantity_Date::SetValues()`
+    /// Assigns to this date the year yyyy, the month
+    /// mm, the day dd, the hour hh, the minute mn, the
+    /// second ss, the millisecond mis (defaulted to 0)
+    /// and the microsecond mics (defaulted to 0).
+    /// Exceptions
+    /// Quantity_DateDefinitionError if mm, dd, hh,
+    /// mn, ss, mis and mics are not components of a valid date.
+    pub fn set_values(
+        &mut self,
+        mm: i32,
+        dd: i32,
+        yy: i32,
+        hh: i32,
+        mn: i32,
+        ss: i32,
+        mis: i32,
+        mics: i32,
+    ) {
+        unsafe {
+            crate::ffi::Quantity_Date_set_values(
+                self as *mut Self,
+                mm,
+                dd,
+                yy,
+                hh,
+                mn,
+                ss,
+                mis,
+                mics,
+            )
+        }
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:108 - `Quantity_Date::Difference()`
+    /// Subtracts one Date from another one to find the period
+    /// between and returns the value.
+    /// The result is the absolute value between the difference
+    /// of two dates.
+    pub fn difference(
+        &mut self,
+        anOther: &crate::ffi::Quantity_Date,
+    ) -> crate::OwnedPtr<crate::ffi::Quantity_Period> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_Date_difference(
+                self as *mut Self,
+                anOther,
+            ))
+        }
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:113 - `Quantity_Date::Subtract()`
+    /// Subtracts a period from a Date and returns the new Date.
+    /// Raises an exception if the result date is anterior to
+    /// Jan 1, 1979.
+    pub fn subtract(
+        &mut self,
+        aPeriod: &crate::ffi::Quantity_Period,
+    ) -> crate::OwnedPtr<crate::ffi::Quantity_Date> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_Date_subtract(
+                self as *mut Self,
+                aPeriod,
+            ))
+        }
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:118 - `Quantity_Date::Add()`
+    /// Adds a Period to a Date and returns the new Date.
+    pub fn add(
+        &mut self,
+        aPeriod: &crate::ffi::Quantity_Period,
+    ) -> crate::OwnedPtr<crate::ffi::Quantity_Date> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_Date_add(self as *mut Self, aPeriod))
+        }
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:123 - `Quantity_Date::Year()`
+    /// Returns year of a Date.
+    pub fn year(&mut self) -> i32 {
+        unsafe { crate::ffi::Quantity_Date_year(self as *mut Self) }
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:126 - `Quantity_Date::Month()`
+    /// Returns month of a Date.
+    pub fn month(&mut self) -> i32 {
+        unsafe { crate::ffi::Quantity_Date_month(self as *mut Self) }
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:129 - `Quantity_Date::Day()`
+    /// Returns Day of a Date.
+    pub fn day(&mut self) -> i32 {
+        unsafe { crate::ffi::Quantity_Date_day(self as *mut Self) }
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:132 - `Quantity_Date::Hour()`
+    /// Returns Hour of a Date.
+    pub fn hour(&mut self) -> i32 {
+        unsafe { crate::ffi::Quantity_Date_hour(self as *mut Self) }
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:135 - `Quantity_Date::Minute()`
+    /// Returns minute of a Date.
+    pub fn minute(&mut self) -> i32 {
+        unsafe { crate::ffi::Quantity_Date_minute(self as *mut Self) }
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:138 - `Quantity_Date::Second()`
+    /// Returns seconde of a Date.
+    pub fn second(&mut self) -> i32 {
+        unsafe { crate::ffi::Quantity_Date_second(self as *mut Self) }
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:141 - `Quantity_Date::MilliSecond()`
+    /// Returns millisecond of a Date.
+    pub fn milli_second(&mut self) -> i32 {
+        unsafe { crate::ffi::Quantity_Date_milli_second(self as *mut Self) }
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:144 - `Quantity_Date::MicroSecond()`
+    /// Returns microsecond of a Date.
+    pub fn micro_second(&mut self) -> i32 {
+        unsafe { crate::ffi::Quantity_Date_micro_second(self as *mut Self) }
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:148 - `Quantity_Date::IsEqual()`
+    /// Returns TRUE if both <me> and <other> are equal.
+    /// This method is an alias of operator ==.
+    pub fn is_equal(&self, anOther: &crate::ffi::Quantity_Date) -> bool {
+        unsafe { crate::ffi::Quantity_Date_is_equal(self as *const Self, anOther) }
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:153 - `Quantity_Date::IsEarlier()`
+    /// Returns TRUE if <me> is earlier than <other>.
+    pub fn is_earlier(&self, anOther: &crate::ffi::Quantity_Date) -> bool {
+        unsafe { crate::ffi::Quantity_Date_is_earlier(self as *const Self, anOther) }
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:158 - `Quantity_Date::IsLater()`
+    /// Returns TRUE if <me> is later then <other>.
+    pub fn is_later(&self, anOther: &crate::ffi::Quantity_Date) -> bool {
+        unsafe { crate::ffi::Quantity_Date_is_later(self as *const Self, anOther) }
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:179 - `Quantity_Date::IsValid()`
+    /// Checks the validity of a date - returns true if a
+    /// date defined from the year yyyy, the month mm,
+    /// the day dd, the hour hh, the minute mn, the
+    /// second ss, the millisecond mis (defaulted to 0)
+    /// and the microsecond mics (defaulted to 0) is valid.
+    /// A date must satisfy the conditions above:
+    /// -   yyyy is greater than or equal to 1979,
+    /// -   mm lies within the range [1, 12] (with 1
+    /// corresponding to January and 12 to December),
+    /// -   dd lies within a valid range for the month mm
+    /// (from 1 to 28, 29, 30 or 31 depending on
+    /// mm and whether yyyy is a leap year or not),
+    /// -   hh lies within the range [0, 23],
+    /// -   mn lies within the range [0, 59],
+    /// -   ss lies within the range [0, 59],
+    /// -   mis lies within the range [0, 999],
+    /// -   mics lies within the range [0, 999].C
+    pub fn is_valid(
+        mm: i32,
+        dd: i32,
+        yy: i32,
+        hh: i32,
+        mn: i32,
+        ss: i32,
+        mis: i32,
+        mics: i32,
+    ) -> bool {
+        unsafe { crate::ffi::Quantity_Date_is_valid(mm, dd, yy, hh, mn, ss, mis, mics) }
+    }
+
+    /// **Source:** `Quantity_Date.hxx`:191 - `Quantity_Date::IsLeap()`
+    /// Returns true if a year is a leap year.
+    /// The leap years are divisible by 4 and not by 100 except
+    /// the years divisible by 400.
+    pub fn is_leap(yy: i32) -> bool {
+        unsafe { crate::ffi::Quantity_Date_is_leap(yy) }
+    }
+}
+
+// ========================
+// From Quantity_DateDefinitionError.hxx
+// ========================
+
+/// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError`
+pub use crate::ffi::Quantity_DateDefinitionError as DateDefinitionError;
+
+unsafe impl crate::CppDeletable for DateDefinitionError {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Quantity_DateDefinitionError_destructor(ptr);
+    }
+}
+
+impl DateDefinitionError {
+    /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::Quantity_DateDefinitionError()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Quantity_DateDefinitionError_ctor()) }
+    }
+
+    /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::Quantity_DateDefinitionError()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_DateDefinitionError_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::Quantity_DateDefinitionError()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_DateDefinitionError_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Quantity_DateDefinitionError_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Quantity_DateDefinitionError_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Quantity_DateDefinitionError_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Quantity_DateDefinitionError_get_type_descriptor()) }
+    }
+}
+
+// ========================
+// From Quantity_Period.hxx
+// ========================
+
+/// **Source:** `Quantity_Period.hxx`:29 - `Quantity_Period`
+/// Manages date intervals. For example, a Period object
+/// gives the interval between two dates.
+/// A period is expressed in seconds and microseconds.
+pub use crate::ffi::Quantity_Period as Period;
+
+unsafe impl crate::CppDeletable for Period {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Quantity_Period_destructor(ptr);
+    }
+}
+
+impl Period {
+    /// **Source:** `Quantity_Period.hxx`:41 - `Quantity_Period::Quantity_Period()`
+    /// Creates a Period
+    /// With:      0 <= dd
+    /// 0 <= hh
+    /// 0 <= mn
+    /// 0 <= ss
+    /// 0 <= mis
+    /// 0 <= mics
+    pub fn new_int6(
+        dd: i32,
+        hh: i32,
+        mn: i32,
+        ss: i32,
+        mis: i32,
+        mics: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_Period_ctor_int6(
+                dd, hh, mn, ss, mis, mics,
+            ))
+        }
+    }
+
+    /// **Source:** `Quantity_Period.hxx`:59 - `Quantity_Period::Quantity_Period()`
+    /// Creates a Period with a number of seconds and microseconds.
+    /// Exceptions
+    /// Quantity_PeriodDefinitionError:
+    /// -   if the number of seconds expressed either by:
+    /// -   dd days, hh hours, mn minutes and ss seconds, or
+    /// -   Ss
+    /// is less than 0.
+    /// -   if the number of microseconds expressed either by:
+    /// -   mis milliseconds and mics microseconds, or
+    /// -   Mics
+    /// is less than 0.
+    pub fn new_int2(ss: i32, mics: i32) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Quantity_Period_ctor_int2(ss, mics)) }
+    }
+
+    /// **Source:** `Quantity_Period.hxx`:41 - `Quantity_Period::Quantity_Period()`
+    /// Creates a Period
+    /// With:      0 <= dd
+    /// 0 <= hh
+    /// 0 <= mn
+    /// 0 <= ss
+    /// 0 <= mis
+    /// 0 <= mics
+    pub fn new_int5(dd: i32, hh: i32, mn: i32, ss: i32, mis: i32) -> crate::OwnedPtr<Self> {
+        Self::new_int6(dd, hh, mn, ss, mis, 0)
+    }
+
+    /// **Source:** `Quantity_Period.hxx`:41 - `Quantity_Period::Quantity_Period()`
+    /// Creates a Period
+    /// With:      0 <= dd
+    /// 0 <= hh
+    /// 0 <= mn
+    /// 0 <= ss
+    /// 0 <= mis
+    /// 0 <= mics
+    pub fn new_int4(dd: i32, hh: i32, mn: i32, ss: i32) -> crate::OwnedPtr<Self> {
+        Self::new_int6(dd, hh, mn, ss, 0, 0)
+    }
+
+    /// **Source:** `Quantity_Period.hxx`:59 - `Quantity_Period::Quantity_Period()`
+    /// Creates a Period with a number of seconds and microseconds.
+    /// Exceptions
+    /// Quantity_PeriodDefinitionError:
+    /// -   if the number of seconds expressed either by:
+    /// -   dd days, hh hours, mn minutes and ss seconds, or
+    /// -   Ss
+    /// is less than 0.
+    /// -   if the number of microseconds expressed either by:
+    /// -   mis milliseconds and mics microseconds, or
+    /// -   Mics
+    /// is less than 0.
+    pub fn new_int(ss: i32) -> crate::OwnedPtr<Self> {
+        Self::new_int2(ss, 0)
+    }
+
+    /// **Source:** `Quantity_Period.hxx`:66 - `Quantity_Period::Values()`
+    /// Decomposes this period into a number of days,hours,
+    /// minutes,seconds,milliseconds and microseconds
+    /// Example of return values:
+    /// 2 days, 15 hours, 0 minute , 0 second
+    /// 0 millisecond and 0 microsecond
+    pub fn values_int6(
+        &self,
+        dd: &mut i32,
+        hh: &mut i32,
+        mn: &mut i32,
+        ss: &mut i32,
+        mis: &mut i32,
+        mics: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::Quantity_Period_values_int6(self as *const Self, dd, hh, mn, ss, mis, mics)
+        }
+    }
+
+    /// **Source:** `Quantity_Period.hxx`:76 - `Quantity_Period::Values()`
+    /// Returns the number of seconds in Ss and the
+    /// number of remainding microseconds in Mics of this period.
+    /// Example of return values: 3600 seconds and 0 microseconds
+    pub fn values_int2(&self, ss: &mut i32, mics: &mut i32) {
+        unsafe { crate::ffi::Quantity_Period_values_int2(self as *const Self, ss, mics) }
+    }
+
+    /// **Source:** `Quantity_Period.hxx`:82 - `Quantity_Period::SetValues()`
+    /// Assigns to this period the time interval defined
+    /// -   with dd days, hh hours, mn minutes, ss
+    /// seconds, mis (defaulted to 0) milliseconds and
+    /// mics (defaulted to 0) microseconds; or
+    pub fn set_values_int6(&mut self, dd: i32, hh: i32, mn: i32, ss: i32, mis: i32, mics: i32) {
+        unsafe {
+            crate::ffi::Quantity_Period_set_values_int6(
+                self as *mut Self,
+                dd,
+                hh,
+                mn,
+                ss,
+                mis,
+                mics,
+            )
+        }
+    }
+
+    /// **Source:** `Quantity_Period.hxx`:101 - `Quantity_Period::SetValues()`
+    /// Assigns to this period the time interval defined
+    /// -   with Ss seconds and Mics (defaulted to 0) microseconds.
+    /// Exceptions
+    /// Quantity_PeriodDefinitionError:
+    /// -   if the number of seconds expressed either by:
+    /// -   dd days, hh hours, mn minutes and ss seconds, or
+    /// -   Ss
+    /// is less than 0.
+    /// -   if the number of microseconds expressed either by:
+    /// -   mis milliseconds and mics microseconds, or
+    /// -   Mics
+    /// is less than 0.
+    pub fn set_values_int2(&mut self, ss: i32, mics: i32) {
+        unsafe { crate::ffi::Quantity_Period_set_values_int2(self as *mut Self, ss, mics) }
+    }
+
+    /// **Source:** `Quantity_Period.hxx`:104 - `Quantity_Period::Subtract()`
+    /// Subtracts one Period from another and returns the difference.
+    pub fn subtract(
+        &self,
+        anOther: &crate::ffi::Quantity_Period,
+    ) -> crate::OwnedPtr<crate::ffi::Quantity_Period> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_Period_subtract(
+                self as *const Self,
+                anOther,
+            ))
+        }
+    }
+
+    /// **Source:** `Quantity_Period.hxx`:109 - `Quantity_Period::Add()`
+    /// Adds one Period to another one.
+    pub fn add(
+        &self,
+        anOther: &crate::ffi::Quantity_Period,
+    ) -> crate::OwnedPtr<crate::ffi::Quantity_Period> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_Period_add(self as *const Self, anOther))
+        }
+    }
+
+    /// **Source:** `Quantity_Period.hxx`:114 - `Quantity_Period::IsEqual()`
+    /// Returns TRUE if both <me> and <other> are equal.
+    pub fn is_equal(&self, anOther: &crate::ffi::Quantity_Period) -> bool {
+        unsafe { crate::ffi::Quantity_Period_is_equal(self as *const Self, anOther) }
+    }
+
+    /// **Source:** `Quantity_Period.hxx`:119 - `Quantity_Period::IsShorter()`
+    /// Returns TRUE if <me> is shorter than <other>.
+    pub fn is_shorter(&self, anOther: &crate::ffi::Quantity_Period) -> bool {
+        unsafe { crate::ffi::Quantity_Period_is_shorter(self as *const Self, anOther) }
+    }
+
+    /// **Source:** `Quantity_Period.hxx`:124 - `Quantity_Period::IsLonger()`
+    /// Returns TRUE if <me> is longer then <other>.
+    pub fn is_longer(&self, anOther: &crate::ffi::Quantity_Period) -> bool {
+        unsafe { crate::ffi::Quantity_Period_is_longer(self as *const Self, anOther) }
+    }
+
+    /// **Source:** `Quantity_Period.hxx`:135 - `Quantity_Period::IsValid()`
+    /// Checks the validity of a Period in form (dd,hh,mn,ss,mil,mic)
+    /// With:      0 <= dd
+    /// 0 <= hh
+    /// 0 <= mn
+    /// 0 <= ss
+    /// 0 <= mis
+    /// 0 <= mics
+    pub fn is_valid_int6(dd: i32, hh: i32, mn: i32, ss: i32, mis: i32, mics: i32) -> bool {
+        unsafe { crate::ffi::Quantity_Period_is_valid_int6(dd, hh, mn, ss, mis, mics) }
+    }
+
+    /// **Source:** `Quantity_Period.hxx`:145 - `Quantity_Period::IsValid()`
+    /// Checks the validity of a Period in form (ss,mic)
+    /// With:      0 <= ss
+    /// 0 <= mics
+    pub fn is_valid_int2(ss: i32, mics: i32) -> bool {
+        unsafe { crate::ffi::Quantity_Period_is_valid_int2(ss, mics) }
+    }
+}
+
+// ========================
+// From Quantity_PeriodDefinitionError.hxx
+// ========================
+
+/// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError`
+pub use crate::ffi::Quantity_PeriodDefinitionError as PeriodDefinitionError;
+
+unsafe impl crate::CppDeletable for PeriodDefinitionError {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Quantity_PeriodDefinitionError_destructor(ptr);
+    }
+}
+
+impl PeriodDefinitionError {
+    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::Quantity_PeriodDefinitionError()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Quantity_PeriodDefinitionError_ctor()) }
+    }
+
+    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::Quantity_PeriodDefinitionError()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_PeriodDefinitionError_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::Quantity_PeriodDefinitionError()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_PeriodDefinitionError_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Quantity_PeriodDefinitionError_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::Quantity_PeriodDefinitionError_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Quantity_PeriodDefinitionError_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Quantity_PeriodDefinitionError_get_type_descriptor()) }
+    }
+}

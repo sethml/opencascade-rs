@@ -6,6 +6,16 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `GeomTools.hxx`:71 - `GeomTools::SetUndefinedTypeHandler`
+pub fn set_undefined_type_handler(aHandler: &crate::ffi::HandleGeomToolsUndefinedTypeHandler) {
+    unsafe { crate::ffi::GeomTools_set_undefined_type_handler(aHandler) }
+}
+/// **Source:** `GeomTools.hxx`:74 - `GeomTools::GetUndefinedTypeHandler`
+pub fn get_undefined_type_handler(
+) -> crate::OwnedPtr<crate::ffi::HandleGeomToolsUndefinedTypeHandler> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomTools_get_undefined_type_handler()) }
+}
+
 // ========================
 // From GeomTools_Curve2dSet.hxx
 // ========================
@@ -156,5 +166,77 @@ impl SurfaceSet {
     /// Returns the index of <L>.
     pub fn index(&self, S: &crate::ffi::HandleGeomSurface) -> i32 {
         unsafe { crate::ffi::GeomTools_SurfaceSet_index(self as *const Self, S) }
+    }
+}
+
+// ========================
+// From GeomTools_UndefinedTypeHandler.hxx
+// ========================
+
+/// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:34 - `GeomTools_UndefinedTypeHandler`
+pub use crate::ffi::GeomTools_UndefinedTypeHandler as UndefinedTypeHandler;
+
+unsafe impl crate::CppDeletable for UndefinedTypeHandler {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomTools_UndefinedTypeHandler_destructor(ptr);
+    }
+}
+
+impl UndefinedTypeHandler {
+    /// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:38 - `GeomTools_UndefinedTypeHandler::GeomTools_UndefinedTypeHandler()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomTools_UndefinedTypeHandler_ctor()) }
+    }
+
+    /// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:64 - `GeomTools_UndefinedTypeHandler::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::GeomTools_UndefinedTypeHandler_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:64 - `GeomTools_UndefinedTypeHandler::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::GeomTools_UndefinedTypeHandler_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `GeomTools_UndefinedTypeHandler.hxx`:64 - `GeomTools_UndefinedTypeHandler::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::GeomTools_UndefinedTypeHandler_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomToolsUndefinedTypeHandler> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomTools_UndefinedTypeHandler_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomToolsUndefinedTypeHandler;
+
+unsafe impl crate::CppDeletable for HandleGeomToolsUndefinedTypeHandler {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomToolsUndefinedTypeHandler_destructor(ptr);
+    }
+}
+
+impl HandleGeomToolsUndefinedTypeHandler {
+    /// Dereference this Handle to access the underlying GeomTools_UndefinedTypeHandler
+    pub fn get(&self) -> &crate::ffi::GeomTools_UndefinedTypeHandler {
+        unsafe { &*(crate::ffi::HandleGeomToolsUndefinedTypeHandler_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomTools_UndefinedTypeHandler
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomTools_UndefinedTypeHandler {
+        unsafe {
+            &mut *(crate::ffi::HandleGeomToolsUndefinedTypeHandler_get_mut(self as *mut Self))
+        }
     }
 }

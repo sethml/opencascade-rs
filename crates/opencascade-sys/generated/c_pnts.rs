@@ -437,6 +437,276 @@ impl MyRootFunction {
 }
 
 // ========================
+// From CPnts_UniformDeflection.hxx
+// ========================
+
+/// **Source:** `CPnts_UniformDeflection.hxx`:52 - `CPnts_UniformDeflection`
+/// This class defines an algorithm to create a set of points
+/// (with a given chordal deviation) at the
+/// positions of constant deflection of a given parametrized curve or a trimmed
+/// circle.
+/// The continuity of the curve must be at least C2.
+///
+/// the usage of the is the following.
+///
+/// class myUniformDFeflection instantiates
+/// UniformDeflection(Curve, Tool);
+///
+/// Curve C; // Curve inherits from Curve or Curve2d from Adaptor2d
+/// myUniformDeflection Iter1;
+/// DefPntOfmyUniformDeflection P;
+///
+/// for(Iter1.Initialize(C, Deflection, EPSILON, True);
+/// Iter1.More();
+/// Iter1.Next()) {
+/// P = Iter1.Value();
+/// ... make something with P
+/// }
+/// if(!Iter1.IsAllDone()) {
+/// ... something wrong happened
+/// }
+pub use crate::ffi::CPnts_UniformDeflection as UniformDeflection;
+
+unsafe impl crate::CppDeletable for UniformDeflection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::CPnts_UniformDeflection_destructor(ptr);
+    }
+}
+
+impl UniformDeflection {
+    /// **Source:** `CPnts_UniformDeflection.hxx`:58 - `CPnts_UniformDeflection::CPnts_UniformDeflection()`
+    /// creation of a indefinite UniformDeflection
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::CPnts_UniformDeflection_ctor()) }
+    }
+
+    /// **Source:** `CPnts_UniformDeflection.hxx`:74 - `CPnts_UniformDeflection::CPnts_UniformDeflection()`
+    /// Computes a uniform deflection distribution of points
+    /// on the curve <C>.
+    /// <Deflection> defines the constant deflection value.
+    /// The algorithm computes the number of points and the points.
+    /// The curve <C> must be at least C2 else the computation can fail.
+    /// If just some parts of the curve is C2 it is better to give the
+    /// parameters bounds and to use the below constructor .
+    /// if <WithControl> is True, the algorithm controls the estimate
+    /// deflection
+    /// when the curve is singular at the point P(u),the algorithm
+    /// computes the next point as
+    /// P(u + Max(CurrentStep,Abs(LastParameter-FirstParameter)))
+    /// if the singularity is at the first point ,the next point
+    /// calculated is the P(LastParameter)
+    pub fn new_curve_real2_bool(
+        C: &crate::ffi::Adaptor3d_Curve,
+        Deflection: f64,
+        Resolution: f64,
+        WithControl: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CPnts_UniformDeflection_ctor_curve_real2_bool(
+                C,
+                Deflection,
+                Resolution,
+                WithControl,
+            ))
+        }
+    }
+
+    /// **Source:** `CPnts_UniformDeflection.hxx`:80 - `CPnts_UniformDeflection::CPnts_UniformDeflection()`
+    /// As above with 2d curve
+    pub fn new_curve2d_real2_bool(
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        Deflection: f64,
+        Resolution: f64,
+        WithControl: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CPnts_UniformDeflection_ctor_curve2d_real2_bool(
+                C,
+                Deflection,
+                Resolution,
+                WithControl,
+            ))
+        }
+    }
+
+    /// **Source:** `CPnts_UniformDeflection.hxx`:89 - `CPnts_UniformDeflection::CPnts_UniformDeflection()`
+    /// Computes an uniform deflection distribution of points on a part of
+    /// the curve <C>. Deflection defines the step between the points.
+    /// <U1> and <U2> define the distribution span.
+    /// <U1> and <U2> must be in the parametric range of the curve.
+    pub fn new_curve_real4_bool(
+        C: &crate::ffi::Adaptor3d_Curve,
+        Deflection: f64,
+        U1: f64,
+        U2: f64,
+        Resolution: f64,
+        WithControl: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CPnts_UniformDeflection_ctor_curve_real4_bool(
+                C,
+                Deflection,
+                U1,
+                U2,
+                Resolution,
+                WithControl,
+            ))
+        }
+    }
+
+    /// **Source:** `CPnts_UniformDeflection.hxx`:97 - `CPnts_UniformDeflection::CPnts_UniformDeflection()`
+    /// As above with 2d curve
+    pub fn new_curve2d_real4_bool(
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        Deflection: f64,
+        U1: f64,
+        U2: f64,
+        Resolution: f64,
+        WithControl: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CPnts_UniformDeflection_ctor_curve2d_real4_bool(
+                C,
+                Deflection,
+                U1,
+                U2,
+                Resolution,
+                WithControl,
+            ))
+        }
+    }
+
+    /// **Source:** `CPnts_UniformDeflection.hxx`:106 - `CPnts_UniformDeflection::Initialize()`
+    /// Initialize the algorithms with <C>, <Deflection>, <UStep>,
+    /// <Resolution> and <WithControl>
+    pub fn initialize_curve_real2_bool(
+        &mut self,
+        C: &crate::ffi::Adaptor3d_Curve,
+        Deflection: f64,
+        Resolution: f64,
+        WithControl: bool,
+    ) {
+        unsafe {
+            crate::ffi::CPnts_UniformDeflection_initialize_curve_real2_bool(
+                self as *mut Self,
+                C,
+                Deflection,
+                Resolution,
+                WithControl,
+            )
+        }
+    }
+
+    /// **Source:** `CPnts_UniformDeflection.hxx`:113 - `CPnts_UniformDeflection::Initialize()`
+    /// Initialize the algorithms with <C>, <Deflection>, <UStep>,
+    /// <Resolution> and <WithControl>
+    pub fn initialize_curve2d_real2_bool(
+        &mut self,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        Deflection: f64,
+        Resolution: f64,
+        WithControl: bool,
+    ) {
+        unsafe {
+            crate::ffi::CPnts_UniformDeflection_initialize_curve2d_real2_bool(
+                self as *mut Self,
+                C,
+                Deflection,
+                Resolution,
+                WithControl,
+            )
+        }
+    }
+
+    /// **Source:** `CPnts_UniformDeflection.hxx`:120 - `CPnts_UniformDeflection::Initialize()`
+    /// Initialize the algorithms with <C>, <Deflection>, <UStep>,
+    /// <U1>, <U2> and <WithControl>
+    pub fn initialize_curve_real4_bool(
+        &mut self,
+        C: &crate::ffi::Adaptor3d_Curve,
+        Deflection: f64,
+        U1: f64,
+        U2: f64,
+        Resolution: f64,
+        WithControl: bool,
+    ) {
+        unsafe {
+            crate::ffi::CPnts_UniformDeflection_initialize_curve_real4_bool(
+                self as *mut Self,
+                C,
+                Deflection,
+                U1,
+                U2,
+                Resolution,
+                WithControl,
+            )
+        }
+    }
+
+    /// **Source:** `CPnts_UniformDeflection.hxx`:129 - `CPnts_UniformDeflection::Initialize()`
+    /// Initialize the algorithms with <C>, <Deflection>, <UStep>,
+    /// <U1>, <U2> and <WithControl>
+    pub fn initialize_curve2d_real4_bool(
+        &mut self,
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        Deflection: f64,
+        U1: f64,
+        U2: f64,
+        Resolution: f64,
+        WithControl: bool,
+    ) {
+        unsafe {
+            crate::ffi::CPnts_UniformDeflection_initialize_curve2d_real4_bool(
+                self as *mut Self,
+                C,
+                Deflection,
+                U1,
+                U2,
+                Resolution,
+                WithControl,
+            )
+        }
+    }
+
+    /// **Source:** `CPnts_UniformDeflection.hxx`:140 - `CPnts_UniformDeflection::IsAllDone()`
+    /// To know if all the calculus were done successfully
+    /// (ie all the points have been computed). The calculus can fail if
+    /// the Curve is not C1 in the considered domain.
+    /// Returns True if the calculus was successful.
+    pub fn is_all_done(&self) -> bool {
+        unsafe { crate::ffi::CPnts_UniformDeflection_is_all_done(self as *const Self) }
+    }
+
+    /// **Source:** `CPnts_UniformDeflection.hxx`:143 - `CPnts_UniformDeflection::Next()`
+    /// go to the next Point.
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::CPnts_UniformDeflection_next(self as *mut Self) }
+    }
+
+    /// **Source:** `CPnts_UniformDeflection.hxx`:146 - `CPnts_UniformDeflection::More()`
+    /// returns True if it exists a next Point.
+    pub fn more(&mut self) -> bool {
+        unsafe { crate::ffi::CPnts_UniformDeflection_more(self as *mut Self) }
+    }
+
+    /// **Source:** `CPnts_UniformDeflection.hxx`:149 - `CPnts_UniformDeflection::Value()`
+    /// return the computed parameter
+    pub fn value(&self) -> f64 {
+        unsafe { crate::ffi::CPnts_UniformDeflection_value(self as *const Self) }
+    }
+
+    /// **Source:** `CPnts_UniformDeflection.hxx`:152 - `CPnts_UniformDeflection::Point()`
+    /// return the computed parameter
+    pub fn point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CPnts_UniformDeflection_point(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 

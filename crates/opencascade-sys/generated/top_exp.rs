@@ -138,12 +138,12 @@ pub fn vertices_wire_vertex2(
 /// <E1,E2>, returns True if this vertex exists.
 ///
 /// Warning: <V> has sense only if the value <True> is returned
-pub fn common_vertex(
+pub fn common_vertex_mut(
     E1: &crate::ffi::TopoDS_Edge,
     E2: &crate::ffi::TopoDS_Edge,
     V: &mut crate::ffi::TopoDS_Vertex,
 ) -> bool {
-    unsafe { crate::ffi::TopExp_common_vertex(E1, E2, V) }
+    unsafe { crate::ffi::TopExp_common_vertex_mut(E1, E2, V) }
 }
 
 // ========================

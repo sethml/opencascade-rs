@@ -6,6 +6,348 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `ShapeBuild.hxx`:37 - `ShapeBuild::PlaneXOY`
+/// Rebuilds a shape with substitution of some components
+/// Returns a Geom_Surface which is the Plane XOY (Z positive)
+/// This allows to consider an UV space homologous to a 3D space,
+/// with this support surface
+pub fn plane_xoy() -> crate::OwnedPtr<crate::ffi::HandleGeomPlane> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_plane_xoy()) }
+}
+
+// ========================
+// From ShapeBuild_Edge.hxx
+// ========================
+
+/// **Source:** `ShapeBuild_Edge.hxx`:35 - `ShapeBuild_Edge`
+/// This class provides low-level operators for building an edge
+/// 3d curve, copying edge with replaced vertices etc.
+pub use crate::ffi::ShapeBuild_Edge as Edge;
+
+unsafe impl crate::CppDeletable for Edge {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeBuild_Edge_destructor(ptr);
+    }
+}
+
+impl Edge {
+    /// **Source:** `ShapeBuild_Edge.hxx` - `ShapeBuild_Edge::ShapeBuild_Edge()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_Edge_ctor()) }
+    }
+
+    /// **Source:** `ShapeBuild_Edge.hxx`:44 - `ShapeBuild_Edge::CopyReplaceVertices()`
+    /// Copy edge and replace one or both its vertices to a given
+    /// one(s). Vertex V1 replaces FORWARD vertex, and V2 - REVERSED,
+    /// as they are found by TopoDS_Iterator.
+    /// If V1 or V2 is NULL, the original vertex is taken
+    pub fn copy_replace_vertices(
+        &self,
+        edge: &crate::ffi::TopoDS_Edge,
+        V1: &crate::ffi::TopoDS_Vertex,
+        V2: &crate::ffi::TopoDS_Vertex,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_Edge_copy_replace_vertices(
+                self as *const Self,
+                edge,
+                V1,
+                V2,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeBuild_Edge.hxx`:50 - `ShapeBuild_Edge::CopyRanges()`
+    /// Copies ranges for curve3d and all common pcurves from
+    /// edge <fromedge> into edge <toedge>.
+    pub fn copy_ranges(
+        &self,
+        toedge: &crate::ffi::TopoDS_Edge,
+        fromedge: &crate::ffi::TopoDS_Edge,
+        alpha: f64,
+        beta: f64,
+    ) {
+        unsafe {
+            crate::ffi::ShapeBuild_Edge_copy_ranges(
+                self as *const Self,
+                toedge,
+                fromedge,
+                alpha,
+                beta,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeBuild_Edge.hxx`:56 - `ShapeBuild_Edge::SetRange3d()`
+    /// Sets range on 3d curve only.
+    pub fn set_range3d(&self, edge: &crate::ffi::TopoDS_Edge, first: f64, last: f64) {
+        unsafe { crate::ffi::ShapeBuild_Edge_set_range3d(self as *const Self, edge, first, last) }
+    }
+
+    /// **Source:** `ShapeBuild_Edge.hxx`:64 - `ShapeBuild_Edge::CopyPCurves()`
+    /// Makes a copy of pcurves from edge <fromedge> into edge
+    /// <toedge>. Pcurves which are already present in <toedge>,
+    /// are replaced by copies, other are copied. Ranges are also
+    /// copied.
+    pub fn copy_p_curves(
+        &self,
+        toedge: &crate::ffi::TopoDS_Edge,
+        fromedge: &crate::ffi::TopoDS_Edge,
+    ) {
+        unsafe { crate::ffi::ShapeBuild_Edge_copy_p_curves(self as *const Self, toedge, fromedge) }
+    }
+
+    /// **Source:** `ShapeBuild_Edge.hxx`:70 - `ShapeBuild_Edge::Copy()`
+    /// Make a copy of <edge> by call to CopyReplaceVertices()
+    /// (i.e. construct new TEdge with the same pcurves and vertices).
+    /// If <sharepcurves> is False, pcurves are also replaced by
+    /// their copies with help of method CopyPCurves
+    pub fn copy(
+        &self,
+        edge: &crate::ffi::TopoDS_Edge,
+        sharepcurves: bool,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_Edge_copy(
+                self as *const Self,
+                edge,
+                sharepcurves,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeBuild_Edge.hxx`:75 - `ShapeBuild_Edge::RemovePCurve()`
+    /// Removes the PCurve(s) which could be recorded in an Edge for
+    /// the given Face
+    pub fn remove_p_curve_edge_face(
+        &self,
+        edge: &crate::ffi::TopoDS_Edge,
+        face: &crate::ffi::TopoDS_Face,
+    ) {
+        unsafe {
+            crate::ffi::ShapeBuild_Edge_remove_p_curve_edge_face(self as *const Self, edge, face)
+        }
+    }
+
+    /// **Source:** `ShapeBuild_Edge.hxx`:79 - `ShapeBuild_Edge::RemovePCurve()`
+    /// Removes the PCurve(s) which could be recorded in an Edge for
+    /// the given Surface
+    pub fn remove_p_curve_edge_handlegeomsurface(
+        &self,
+        edge: &crate::ffi::TopoDS_Edge,
+        surf: &crate::ffi::HandleGeomSurface,
+    ) {
+        unsafe {
+            crate::ffi::ShapeBuild_Edge_remove_p_curve_edge_handlegeomsurface(
+                self as *const Self,
+                edge,
+                surf,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeBuild_Edge.hxx`:84 - `ShapeBuild_Edge::RemovePCurve()`
+    /// Removes the PCurve(s) which could be recorded in an Edge for
+    /// the given Surface, with given Location
+    pub fn remove_p_curve_edge_handlegeomsurface_location(
+        &self,
+        edge: &crate::ffi::TopoDS_Edge,
+        surf: &crate::ffi::HandleGeomSurface,
+        loc: &crate::ffi::TopLoc_Location,
+    ) {
+        unsafe {
+            crate::ffi::ShapeBuild_Edge_remove_p_curve_edge_handlegeomsurface_location(
+                self as *const Self,
+                edge,
+                surf,
+                loc,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeBuild_Edge.hxx`:92 - `ShapeBuild_Edge::ReplacePCurve()`
+    /// Replace the PCurve in an Edge for the given Face
+    /// In case if edge is seam, i.e. has 2 pcurves on that face,
+    /// only pcurve corresponding to the orientation of the edge is
+    /// replaced
+    pub fn replace_p_curve(
+        &self,
+        edge: &crate::ffi::TopoDS_Edge,
+        pcurve: &crate::ffi::HandleGeom2dCurve,
+        face: &crate::ffi::TopoDS_Face,
+    ) {
+        unsafe {
+            crate::ffi::ShapeBuild_Edge_replace_p_curve(self as *const Self, edge, pcurve, face)
+        }
+    }
+
+    /// **Source:** `ShapeBuild_Edge.hxx`:101 - `ShapeBuild_Edge::ReassignPCurve()`
+    /// Reassign edge pcurve lying on face <old> to another face <sub>.
+    /// If edge has two pcurves on <old> face, only one of them will be
+    /// reassigned, and other will left alone. Similarly, if edge already
+    /// had a pcurve on face <sub>, it will have two pcurves on it.
+    /// Returns True if succeeded, False if no pcurve lying on <old> found.
+    pub fn reassign_p_curve(
+        &self,
+        edge: &crate::ffi::TopoDS_Edge,
+        old: &crate::ffi::TopoDS_Face,
+        sub: &crate::ffi::TopoDS_Face,
+    ) -> bool {
+        unsafe { crate::ffi::ShapeBuild_Edge_reassign_p_curve(self as *const Self, edge, old, sub) }
+    }
+
+    /// **Source:** `ShapeBuild_Edge.hxx`:106 - `ShapeBuild_Edge::TransformPCurve()`
+    /// Transforms the PCurve with given matrix and affinity U factor.
+    pub fn transform_p_curve(
+        &self,
+        pcurve: &crate::ffi::HandleGeom2dCurve,
+        trans: &crate::ffi::gp_Trsf2d,
+        uFact: f64,
+        aFirst: &mut f64,
+        aLast: &mut f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_Edge_transform_p_curve(
+                self as *const Self,
+                pcurve,
+                trans,
+                uFact,
+                aFirst,
+                aLast,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeBuild_Edge.hxx`:113 - `ShapeBuild_Edge::RemoveCurve3d()`
+    /// Removes the Curve3D recorded in an Edge
+    pub fn remove_curve3d(&self, edge: &crate::ffi::TopoDS_Edge) {
+        unsafe { crate::ffi::ShapeBuild_Edge_remove_curve3d(self as *const Self, edge) }
+    }
+
+    /// **Source:** `ShapeBuild_Edge.hxx`:116 - `ShapeBuild_Edge::BuildCurve3d()`
+    /// Calls BRepTools::BuildCurve3D
+    pub fn build_curve3d(&self, edge: &crate::ffi::TopoDS_Edge) -> bool {
+        unsafe { crate::ffi::ShapeBuild_Edge_build_curve3d(self as *const Self, edge) }
+    }
+
+    /// **Source:** `ShapeBuild_Edge.hxx`:119 - `ShapeBuild_Edge::MakeEdge()`
+    /// Makes edge with curve and location
+    pub fn make_edge_edge_handlegeomcurve_location(
+        &self,
+        edge: &mut crate::ffi::TopoDS_Edge,
+        curve: &crate::ffi::HandleGeomCurve,
+        L: &crate::ffi::TopLoc_Location,
+    ) {
+        unsafe {
+            crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeomcurve_location(
+                self as *const Self,
+                edge,
+                curve,
+                L,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeBuild_Edge.hxx`:124 - `ShapeBuild_Edge::MakeEdge()`
+    /// Makes edge with curve, location and range [p1, p2]
+    pub fn make_edge_edge_handlegeomcurve_location_real2(
+        &self,
+        edge: &mut crate::ffi::TopoDS_Edge,
+        curve: &crate::ffi::HandleGeomCurve,
+        L: &crate::ffi::TopLoc_Location,
+        p1: f64,
+        p2: f64,
+    ) {
+        unsafe {
+            crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeomcurve_location_real2(
+                self as *const Self,
+                edge,
+                curve,
+                L,
+                p1,
+                p2,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeBuild_Edge.hxx`:131 - `ShapeBuild_Edge::MakeEdge()`
+    /// Makes edge with pcurve and face
+    pub fn make_edge_edge_handlegeom2dcurve_face(
+        &self,
+        edge: &mut crate::ffi::TopoDS_Edge,
+        pcurve: &crate::ffi::HandleGeom2dCurve,
+        face: &crate::ffi::TopoDS_Face,
+    ) {
+        unsafe {
+            crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeom2dcurve_face(
+                self as *const Self,
+                edge,
+                pcurve,
+                face,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeBuild_Edge.hxx`:136 - `ShapeBuild_Edge::MakeEdge()`
+    /// Makes edge with pcurve, face and range [p1, p2]
+    pub fn make_edge_edge_handlegeom2dcurve_face_real2(
+        &self,
+        edge: &mut crate::ffi::TopoDS_Edge,
+        pcurve: &crate::ffi::HandleGeom2dCurve,
+        face: &crate::ffi::TopoDS_Face,
+        p1: f64,
+        p2: f64,
+    ) {
+        unsafe {
+            crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeom2dcurve_face_real2(
+                self as *const Self,
+                edge,
+                pcurve,
+                face,
+                p1,
+                p2,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeBuild_Edge.hxx`:143 - `ShapeBuild_Edge::MakeEdge()`
+    /// Makes edge with pcurve, surface and location
+    pub fn make_edge_edge_handlegeom2dcurve_handlegeomsurface_location(
+        &self,
+        edge: &mut crate::ffi::TopoDS_Edge,
+        pcurve: &crate::ffi::HandleGeom2dCurve,
+        S: &crate::ffi::HandleGeomSurface,
+        L: &crate::ffi::TopLoc_Location,
+    ) {
+        unsafe {
+            crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeom2dcurve_handlegeomsurface_location(
+                self as *const Self,
+                edge,
+                pcurve,
+                S,
+                L,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeBuild_Edge.hxx`:149 - `ShapeBuild_Edge::MakeEdge()`
+    /// Makes edge with pcurve, surface, location and range [p1, p2]
+    pub fn make_edge_edge_handlegeom2dcurve_handlegeomsurface_location_real2(
+        &self,
+        edge: &mut crate::ffi::TopoDS_Edge,
+        pcurve: &crate::ffi::HandleGeom2dCurve,
+        S: &crate::ffi::HandleGeomSurface,
+        L: &crate::ffi::TopLoc_Location,
+        p1: f64,
+        p2: f64,
+    ) {
+        unsafe {
+            crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeom2dcurve_handlegeomsurface_location_real2(self as *const Self, edge, pcurve, S, L, p1, p2)
+        }
+    }
+}
+
 // ========================
 // From ShapeBuild_ReShape.hxx
 // ========================
@@ -231,6 +573,76 @@ impl ReShape {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_ReShape_inherited_History(
                 self as *const Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From ShapeBuild_Vertex.hxx
+// ========================
+
+/// **Source:** `ShapeBuild_Vertex.hxx`:27 - `ShapeBuild_Vertex`
+/// Provides low-level functions used for constructing vertices
+pub use crate::ffi::ShapeBuild_Vertex as Vertex;
+
+unsafe impl crate::CppDeletable for Vertex {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeBuild_Vertex_destructor(ptr);
+    }
+}
+
+impl Vertex {
+    /// **Source:** `ShapeBuild_Vertex.hxx` - `ShapeBuild_Vertex::ShapeBuild_Vertex()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_Vertex_ctor()) }
+    }
+
+    /// **Source:** `ShapeBuild_Vertex.hxx`:40 - `ShapeBuild_Vertex::CombineVertex()`
+    /// Combines new vertex from two others. This new one is the
+    /// smallest vertex which comprises both of the source vertices.
+    /// The function takes into account the positions and tolerances
+    /// of the source vertices.
+    /// The tolerance of the new vertex will be equal to the minimal
+    /// tolerance that is required to comprise source vertices
+    /// multiplied by tolFactor (in order to avoid errors because
+    /// of discreteness of calculations).
+    pub fn combine_vertex_vertex2_real(
+        &self,
+        V1: &crate::ffi::TopoDS_Vertex,
+        V2: &crate::ffi::TopoDS_Vertex,
+        tolFactor: f64,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_Vertex_combine_vertex_vertex2_real(
+                self as *const Self,
+                V1,
+                V2,
+                tolFactor,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeBuild_Vertex.hxx`:46 - `ShapeBuild_Vertex::CombineVertex()`
+    /// The same function as above, except that it accepts two points
+    /// and two tolerances instead of vertices
+    pub fn combine_vertex_pnt2_real3(
+        &self,
+        pnt1: &crate::ffi::gp_Pnt,
+        pnt2: &crate::ffi::gp_Pnt,
+        tol1: f64,
+        tol2: f64,
+        tolFactor: f64,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_Vertex_combine_vertex_pnt2_real3(
+                self as *const Self,
+                pnt1,
+                pnt2,
+                tol1,
+                tol2,
+                tolFactor,
             ))
         }
     }

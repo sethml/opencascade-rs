@@ -6,73 +6,6 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// C++ enum: `ChFiDS_TypeOfConcavity`
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(i32)]
-pub enum TypeOfConcavity {
-    Concave = 0,
-    Convex = 1,
-    Tangential = 2,
-    Freebound = 3,
-    Other = 4,
-    Mixed = 5,
-}
-
-impl From<TypeOfConcavity> for i32 {
-    fn from(value: TypeOfConcavity) -> Self {
-        value as i32
-    }
-}
-
-impl TryFrom<i32> for TypeOfConcavity {
-    type Error = i32;
-
-    fn try_from(value: i32) -> Result<Self, i32> {
-        match value {
-            0 => Ok(TypeOfConcavity::Concave),
-            1 => Ok(TypeOfConcavity::Convex),
-            2 => Ok(TypeOfConcavity::Tangential),
-            3 => Ok(TypeOfConcavity::Freebound),
-            4 => Ok(TypeOfConcavity::Other),
-            5 => Ok(TypeOfConcavity::Mixed),
-            _ => Err(value),
-        }
-    }
-}
-
-/// --- Purpose statuts concernant la cause de l'erreur
-/// C++ enum: `ChFiDS_ErrorStatus`
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(i32)]
-pub enum ErrorStatus {
-    Ok = 0,
-    Error = 1,
-    Walkingfailure = 2,
-    Startsolfailure = 3,
-    Twistedsurface = 4,
-}
-
-impl From<ErrorStatus> for i32 {
-    fn from(value: ErrorStatus) -> Self {
-        value as i32
-    }
-}
-
-impl TryFrom<i32> for ErrorStatus {
-    type Error = i32;
-
-    fn try_from(value: i32) -> Result<Self, i32> {
-        match value {
-            0 => Ok(ErrorStatus::Ok),
-            1 => Ok(ErrorStatus::Error),
-            2 => Ok(ErrorStatus::Walkingfailure),
-            3 => Ok(ErrorStatus::Startsolfailure),
-            4 => Ok(ErrorStatus::Twistedsurface),
-            _ => Err(value),
-        }
-    }
-}
-
 /// C++ enum: `ChFiDS_ChamfMethod`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
@@ -134,6 +67,120 @@ impl TryFrom<i32> for ChamfMode {
             0 => Ok(ChamfMode::Classicchamfer),
             1 => Ok(ChamfMode::Constthroatchamfer),
             2 => Ok(ChamfMode::Constthroatwithpenetrationchamfer),
+            _ => Err(value),
+        }
+    }
+}
+
+/// --- Purpose statuts concernant la cause de l'erreur
+/// C++ enum: `ChFiDS_ErrorStatus`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum ErrorStatus {
+    Ok = 0,
+    Error = 1,
+    Walkingfailure = 2,
+    Startsolfailure = 3,
+    Twistedsurface = 4,
+}
+
+impl From<ErrorStatus> for i32 {
+    fn from(value: ErrorStatus) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for ErrorStatus {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(ErrorStatus::Ok),
+            1 => Ok(ErrorStatus::Error),
+            2 => Ok(ErrorStatus::Walkingfailure),
+            3 => Ok(ErrorStatus::Startsolfailure),
+            4 => Ok(ErrorStatus::Twistedsurface),
+            _ => Err(value),
+        }
+    }
+}
+
+/// This enum describe the  different kinds of extremities
+/// of   a   fillet.   OnSame,   Ondiff and  AllSame   are
+/// particular cases of BreakPoint   for a corner   with 3
+/// edges and three faces :
+/// - AllSame means that  the three concavities are on the
+/// same side of the Shape,
+/// - OnDiff  means  that the  edge of  the  fillet  has a
+/// concave side different than the two other edges,
+/// - OnSame  means  that the  edge of  the  fillet  has a
+/// concave side different than one of the two other edges
+/// and identical to the third edge.
+/// C++ enum: `ChFiDS_State`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum State {
+    Onsame = 0,
+    Ondiff = 1,
+    Allsame = 2,
+    Breakpoint = 3,
+    Freeboundary = 4,
+    Closed = 5,
+    Tangent = 6,
+}
+
+impl From<State> for i32 {
+    fn from(value: State) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for State {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(State::Onsame),
+            1 => Ok(State::Ondiff),
+            2 => Ok(State::Allsame),
+            3 => Ok(State::Breakpoint),
+            4 => Ok(State::Freeboundary),
+            5 => Ok(State::Closed),
+            6 => Ok(State::Tangent),
+            _ => Err(value),
+        }
+    }
+}
+
+/// C++ enum: `ChFiDS_TypeOfConcavity`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum TypeOfConcavity {
+    Concave = 0,
+    Convex = 1,
+    Tangential = 2,
+    Freebound = 3,
+    Other = 4,
+    Mixed = 5,
+}
+
+impl From<TypeOfConcavity> for i32 {
+    fn from(value: TypeOfConcavity) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for TypeOfConcavity {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(TypeOfConcavity::Concave),
+            1 => Ok(TypeOfConcavity::Convex),
+            2 => Ok(TypeOfConcavity::Tangential),
+            3 => Ok(TypeOfConcavity::Freebound),
+            4 => Ok(TypeOfConcavity::Other),
+            5 => Ok(TypeOfConcavity::Mixed),
             _ => Err(value),
         }
     }
@@ -815,79 +862,6 @@ impl FaceInterference {
 }
 
 // ========================
-// From ChFiDS_HData.hxx
-// ========================
-
-/// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData`
-pub use crate::ffi::ChFiDS_HData as HData;
-
-unsafe impl crate::CppDeletable for HData {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFiDS_HData_destructor(ptr);
-    }
-}
-
-impl HData {
-    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChFiDS_HData()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_HData_ctor()) }
-    }
-
-    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChFiDS_HData()`
-    pub fn new_sequenceofsurfdata(
-        theOther: &crate::ffi::ChFiDS_SequenceOfSurfData,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_HData_ctor_sequenceofsurfdata(theOther))
-        }
-    }
-
-    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ChFiDS_HData_dynamic_type(self as *const Self)) }
-    }
-
-    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::get_type_name()`
-    pub fn get_type_name() -> String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::ChFiDS_HData_get_type_name())
-                .to_string_lossy()
-                .into_owned()
-        }
-    }
-
-    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ChFiDS_HData_get_type_descriptor()) }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleChFiDSHData> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_HData_to_handle(obj.into_raw())) }
-    }
-}
-
-pub use crate::ffi::HandleChFiDSHData;
-
-unsafe impl crate::CppDeletable for HandleChFiDSHData {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleChFiDSHData_destructor(ptr);
-    }
-}
-
-impl HandleChFiDSHData {
-    /// Dereference this Handle to access the underlying ChFiDS_HData
-    pub fn get(&self) -> &crate::ffi::ChFiDS_HData {
-        unsafe { &*(crate::ffi::HandleChFiDSHData_get(self as *const Self)) }
-    }
-
-    /// Dereference this Handle to mutably access the underlying ChFiDS_HData
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_HData {
-        unsafe { &mut *(crate::ffi::HandleChFiDSHData_get_mut(self as *mut Self)) }
-    }
-}
-
-// ========================
 // From ChFiDS_Map.hxx
 // ========================
 
@@ -998,109 +972,495 @@ impl Regul {
 }
 
 // ========================
-// From ChFiDS_SecHArray1.hxx
+// From ChFiDS_Spine.hxx
 // ========================
 
-/// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1`
-pub use crate::ffi::ChFiDS_SecHArray1 as SecHArray1;
+/// **Source:** `ChFiDS_Spine.hxx`:69 - `ChFiDS_Spine`
+/// Contains information necessary for construction of
+/// a 3D fillet or chamfer:
+///
+/// - guideline composed of edges of the solid, tangents
+/// between them, and borders by faces tangents
+/// between them.
+///
+/// Tools for construction of the Sp
+/// by propagation from an edge of solid
+/// are provided in the Builder of Fil3d.
+///
+/// The Spine contains among others the
+/// information about the nature of extremities
+/// of the fillet ( on free border , on section or closed ).
+///
+/// IMPORTANT NOTE  :    the guideline
+/// represented in this way is not C2, although the path
+/// claims it. Several palliative workarounds
+/// (see the methods at the end) are planned,
+/// but they are not enough. It is necessary to change
+/// the approach and double the Spine of line C2 with
+/// the known consequences for management of
+/// interactions between KPart Blend in Fil3d.
+pub use crate::ffi::ChFiDS_Spine as Spine;
 
-unsafe impl crate::CppDeletable for SecHArray1 {
+unsafe impl crate::CppDeletable for Spine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFiDS_SecHArray1_destructor(ptr);
+        crate::ffi::ChFiDS_Spine_destructor(ptr);
     }
 }
 
-impl SecHArray1 {
-    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+impl Spine {
+    /// **Source:** `ChFiDS_Spine.hxx`:73 - `ChFiDS_Spine::ChFiDS_Spine()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_SecHArray1_ctor()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_Spine_ctor()) }
     }
 
-    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+    /// **Source:** `ChFiDS_Spine.hxx`:75 - `ChFiDS_Spine::ChFiDS_Spine()`
+    pub fn new_real(Tol: f64) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_Spine_ctor_real(Tol)) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:78 - `ChFiDS_Spine::SetEdges()`
+    /// store edges composing the guideline
+    pub fn set_edges(&mut self, E: &crate::ffi::TopoDS_Edge) {
+        unsafe { crate::ffi::ChFiDS_Spine_set_edges(self as *mut Self, E) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:81 - `ChFiDS_Spine::SetOffsetEdges()`
+    /// store offset edges composing the offset guideline
+    pub fn set_offset_edges(&mut self, E: &crate::ffi::TopoDS_Edge) {
+        unsafe { crate::ffi::ChFiDS_Spine_set_offset_edges(self as *mut Self, E) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:84 - `ChFiDS_Spine::PutInFirst()`
+    /// store the edge at the first position before all others
+    pub fn put_in_first(&mut self, E: &crate::ffi::TopoDS_Edge) {
+        unsafe { crate::ffi::ChFiDS_Spine_put_in_first(self as *mut Self, E) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:87 - `ChFiDS_Spine::PutInFirstOffset()`
+    /// store the offset edge at the first position before all others
+    pub fn put_in_first_offset(&mut self, E: &crate::ffi::TopoDS_Edge) {
+        unsafe { crate::ffi::ChFiDS_Spine_put_in_first_offset(self as *mut Self, E) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:89 - `ChFiDS_Spine::NbEdges()`
+    pub fn nb_edges(&self) -> i32 {
+        unsafe { crate::ffi::ChFiDS_Spine_nb_edges(self as *const Self) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:91 - `ChFiDS_Spine::Edges()`
+    pub fn edges(&self, I: i32) -> &crate::ffi::TopoDS_Edge {
+        unsafe { &*(crate::ffi::ChFiDS_Spine_edges(self as *const Self, I)) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:93 - `ChFiDS_Spine::OffsetEdges()`
+    pub fn offset_edges(&self, I: i32) -> &crate::ffi::TopoDS_Edge {
+        unsafe { &*(crate::ffi::ChFiDS_Spine_offset_edges(self as *const Self, I)) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:97 - `ChFiDS_Spine::SetFirstStatus()`
+    /// stores if the start of a set of edges starts on a
+    /// section of free border or forms  a closed contour
+    pub fn set_first_status(&mut self, S: crate::ch_fi_ds::State) {
+        unsafe { crate::ffi::ChFiDS_Spine_set_first_status(self as *mut Self, S.into()) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:101 - `ChFiDS_Spine::SetLastStatus()`
+    /// stores if the end of a set of edges starts on a
+    /// section of free border or forms  a closed contour
+    pub fn set_last_status(&mut self, S: crate::ch_fi_ds::State) {
+        unsafe { crate::ffi::ChFiDS_Spine_set_last_status(self as *mut Self, S.into()) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:117 - `ChFiDS_Spine::Reset()`
+    pub fn reset(&mut self, AllData: bool) {
+        unsafe { crate::ffi::ChFiDS_Spine_reset(self as *mut Self, AllData) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:119 - `ChFiDS_Spine::SplitDone()`
+    pub fn split_done(&self) -> bool {
+        unsafe { crate::ffi::ChFiDS_Spine_split_done(self as *const Self) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:121 - `ChFiDS_Spine::SplitDone()`
+    pub fn split_done_bool(&mut self, B: bool) {
+        unsafe { crate::ffi::ChFiDS_Spine_split_done_bool(self as *mut Self, B) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:129 - `ChFiDS_Spine::Load()`
+    /// prepare the guideline depending on the edges that
+    /// are elementary arks (take parameters from
+    /// a single curvilinear abscissa); to be able to call
+    /// methods on the geometry (first,last,value,d1,d2)
+    /// it is necessary to start with preparation otherwise an
+    /// exception will be raised
+    pub fn load(&mut self) {
+        unsafe { crate::ffi::ChFiDS_Spine_load(self as *mut Self) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:131 - `ChFiDS_Spine::Resolution()`
+    pub fn resolution(&self, R3d: f64) -> f64 {
+        unsafe { crate::ffi::ChFiDS_Spine_resolution(self as *const Self, R3d) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:133 - `ChFiDS_Spine::IsClosed()`
+    pub fn is_closed(&self) -> bool {
+        unsafe { crate::ffi::ChFiDS_Spine_is_closed(self as *const Self) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:135 - `ChFiDS_Spine::FirstParameter()`
+    pub fn first_parameter(&self) -> f64 {
+        unsafe { crate::ffi::ChFiDS_Spine_first_parameter(self as *const Self) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:137 - `ChFiDS_Spine::LastParameter()`
+    pub fn last_parameter(&self) -> f64 {
+        unsafe { crate::ffi::ChFiDS_Spine_last_parameter(self as *const Self) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:139 - `ChFiDS_Spine::SetFirstParameter()`
+    pub fn set_first_parameter(&mut self, Par: f64) {
+        unsafe { crate::ffi::ChFiDS_Spine_set_first_parameter(self as *mut Self, Par) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:141 - `ChFiDS_Spine::SetLastParameter()`
+    pub fn set_last_parameter(&mut self, Par: f64) {
+        unsafe { crate::ffi::ChFiDS_Spine_set_last_parameter(self as *mut Self, Par) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:145 - `ChFiDS_Spine::FirstParameter()`
+    /// gives the total length of all arcs before the
+    /// number IndexSp
+    pub fn first_parameter_int(&self, IndexSpine: i32) -> f64 {
+        unsafe { crate::ffi::ChFiDS_Spine_first_parameter_int(self as *const Self, IndexSpine) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:149 - `ChFiDS_Spine::LastParameter()`
+    /// gives the total length till the ark with number
+    /// IndexSpine (inclus)
+    pub fn last_parameter_int(&self, IndexSpine: i32) -> f64 {
+        unsafe { crate::ffi::ChFiDS_Spine_last_parameter_int(self as *const Self, IndexSpine) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:152 - `ChFiDS_Spine::Length()`
+    /// gives the length of ark with number IndexSp
+    pub fn length(&self, IndexSpine: i32) -> f64 {
+        unsafe { crate::ffi::ChFiDS_Spine_length(self as *const Self, IndexSpine) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:154 - `ChFiDS_Spine::IsPeriodic()`
+    pub fn is_periodic(&self) -> bool {
+        unsafe { crate::ffi::ChFiDS_Spine_is_periodic(self as *const Self) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:156 - `ChFiDS_Spine::Period()`
+    pub fn period(&self) -> f64 {
+        unsafe { crate::ffi::ChFiDS_Spine_period(self as *const Self) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:158 - `ChFiDS_Spine::Absc()`
+    pub fn absc_real(&mut self, U: f64) -> f64 {
+        unsafe { crate::ffi::ChFiDS_Spine_absc_real(self as *mut Self, U) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:160 - `ChFiDS_Spine::Absc()`
+    pub fn absc_real_int(&mut self, U: f64, I: i32) -> f64 {
+        unsafe { crate::ffi::ChFiDS_Spine_absc_real_int(self as *mut Self, U, I) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:162 - `ChFiDS_Spine::Parameter()`
+    pub fn parameter_real2_bool(&mut self, AbsC: f64, U: &mut f64, Oriented: bool) {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_SecHArray1_ctor_int2(theLower, theUpper))
+            crate::ffi::ChFiDS_Spine_parameter_real2_bool(self as *mut Self, AbsC, U, Oriented)
         }
     }
 
-    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
-    pub fn new_int2_circsection(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &crate::ffi::ChFiDS_CircSection,
-    ) -> crate::OwnedPtr<Self> {
+    /// **Source:** `ChFiDS_Spine.hxx`:166 - `ChFiDS_Spine::Parameter()`
+    pub fn parameter_int_real2_bool(&mut self, Index: i32, AbsC: f64, U: &mut f64, Oriented: bool) {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_SecHArray1_ctor_int2_circsection(
-                theLower, theUpper, theValue,
+            crate::ffi::ChFiDS_Spine_parameter_int_real2_bool(
+                self as *mut Self,
+                Index,
+                AbsC,
+                U,
+                Oriented,
+            )
+        }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:171 - `ChFiDS_Spine::Value()`
+    pub fn value(&mut self, AbsC: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_Spine_value(self as *mut Self, AbsC))
+        }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:173 - `ChFiDS_Spine::D0()`
+    pub fn d0(&mut self, AbsC: f64, P: &mut crate::ffi::gp_Pnt) {
+        unsafe { crate::ffi::ChFiDS_Spine_d0(self as *mut Self, AbsC, P) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:175 - `ChFiDS_Spine::D1()`
+    pub fn d1(&mut self, AbsC: f64, P: &mut crate::ffi::gp_Pnt, V1: &mut crate::ffi::gp_Vec) {
+        unsafe { crate::ffi::ChFiDS_Spine_d1(self as *mut Self, AbsC, P, V1) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:177 - `ChFiDS_Spine::D2()`
+    pub fn d2(
+        &mut self,
+        AbsC: f64,
+        P: &mut crate::ffi::gp_Pnt,
+        V1: &mut crate::ffi::gp_Vec,
+        V2: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe { crate::ffi::ChFiDS_Spine_d2(self as *mut Self, AbsC, P, V1, V2) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:179 - `ChFiDS_Spine::SetCurrent()`
+    pub fn set_current(&mut self, Index: i32) {
+        unsafe { crate::ffi::ChFiDS_Spine_set_current(self as *mut Self, Index) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:182 - `ChFiDS_Spine::CurrentElementarySpine()`
+    /// sets the current curve and returns it
+    pub fn current_elementary_spine(&mut self, Index: i32) -> &crate::ffi::BRepAdaptor_Curve {
+        unsafe { &*(crate::ffi::ChFiDS_Spine_current_elementary_spine(self as *mut Self, Index)) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:184 - `ChFiDS_Spine::CurrentIndexOfElementarySpine()`
+    pub fn current_index_of_elementary_spine(&self) -> i32 {
+        unsafe { crate::ffi::ChFiDS_Spine_current_index_of_elementary_spine(self as *const Self) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:186 - `ChFiDS_Spine::GetType()`
+    pub fn get_type(&self) -> crate::geom_abs::CurveType {
+        unsafe {
+            crate::geom_abs::CurveType::try_from(crate::ffi::ChFiDS_Spine_get_type(
+                self as *const Self,
             ))
+            .unwrap()
         }
     }
 
-    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
-    pub fn new_circsection_int2_bool(
-        theBegin: &crate::ffi::ChFiDS_CircSection,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
+    /// **Source:** `ChFiDS_Spine.hxx`:188 - `ChFiDS_Spine::Line()`
+    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_Spine_line(self as *const Self)) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:190 - `ChFiDS_Spine::Circle()`
+    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_Spine_circle(self as *const Self)) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:195 - `ChFiDS_Spine::FirstStatus()`
+    /// returns if the set of edges starts on a free boundary
+    /// or if the first vertex is a breakpoint or if the set is
+    /// closed
+    pub fn first_status(&self) -> crate::ch_fi_ds::State {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_SecHArray1_ctor_circsection_int2_bool(
-                theBegin, theLower, theUpper, arg3,
+            crate::ch_fi_ds::State::try_from(crate::ffi::ChFiDS_Spine_first_status(
+                self as *const Self,
             ))
+            .unwrap()
         }
     }
 
-    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
-    pub fn new_secarray1(theOther: &crate::ffi::ChFiDS_SecArray1) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_SecHArray1_ctor_secarray1(theOther)) }
+    /// **Source:** `ChFiDS_Spine.hxx`:198 - `ChFiDS_Spine::LastStatus()`
+    /// returns the state at the end of the set
+    pub fn last_status(&self) -> crate::ch_fi_ds::State {
+        unsafe {
+            crate::ch_fi_ds::State::try_from(crate::ffi::ChFiDS_Spine_last_status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
     }
 
-    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::DynamicType()`
+    /// **Source:** `ChFiDS_Spine.hxx`:200 - `ChFiDS_Spine::Status()`
+    pub fn status(&self, IsFirst: bool) -> crate::ch_fi_ds::State {
+        unsafe {
+            crate::ch_fi_ds::State::try_from(crate::ffi::ChFiDS_Spine_status(
+                self as *const Self,
+                IsFirst,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:203 - `ChFiDS_Spine::GetTypeOfConcavity()`
+    /// returns the type of concavity in the connection
+    pub fn get_type_of_concavity(&self) -> crate::ch_fi_ds::TypeOfConcavity {
+        unsafe {
+            crate::ch_fi_ds::TypeOfConcavity::try_from(
+                crate::ffi::ChFiDS_Spine_get_type_of_concavity(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:205 - `ChFiDS_Spine::SetStatus()`
+    pub fn set_status(&mut self, S: crate::ch_fi_ds::State, IsFirst: bool) {
+        unsafe { crate::ffi::ChFiDS_Spine_set_status(self as *mut Self, S.into(), IsFirst) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:208 - `ChFiDS_Spine::SetTypeOfConcavity()`
+    /// sets the type of concavity in the connection
+    pub fn set_type_of_concavity(&mut self, theType: crate::ch_fi_ds::TypeOfConcavity) {
+        unsafe { crate::ffi::ChFiDS_Spine_set_type_of_concavity(self as *mut Self, theType.into()) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:212 - `ChFiDS_Spine::IsTangencyExtremity()`
+    /// returns   if the  set  of  edges starts (or   end) on
+    /// Tangency point.
+    pub fn is_tangency_extremity(&self, IsFirst: bool) -> bool {
+        unsafe { crate::ffi::ChFiDS_Spine_is_tangency_extremity(self as *const Self, IsFirst) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:214 - `ChFiDS_Spine::SetTangencyExtremity()`
+    pub fn set_tangency_extremity(&mut self, IsTangency: bool, IsFirst: bool) {
+        unsafe {
+            crate::ffi::ChFiDS_Spine_set_tangency_extremity(self as *mut Self, IsTangency, IsFirst)
+        }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:216 - `ChFiDS_Spine::Absc()`
+    pub fn absc_vertex(&self, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+        unsafe { crate::ffi::ChFiDS_Spine_absc_vertex(self as *const Self, V) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:218 - `ChFiDS_Spine::FirstVertex()`
+    pub fn first_vertex(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_Spine_first_vertex(self as *const Self))
+        }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:220 - `ChFiDS_Spine::LastVertex()`
+    pub fn last_vertex(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_Spine_last_vertex(self as *const Self))
+        }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:222 - `ChFiDS_Spine::SetFirstTgt()`
+    pub fn set_first_tgt(&mut self, W: f64) {
+        unsafe { crate::ffi::ChFiDS_Spine_set_first_tgt(self as *mut Self, W) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:224 - `ChFiDS_Spine::SetLastTgt()`
+    pub fn set_last_tgt(&mut self, W: f64) {
+        unsafe { crate::ffi::ChFiDS_Spine_set_last_tgt(self as *mut Self, W) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:226 - `ChFiDS_Spine::HasFirstTgt()`
+    pub fn has_first_tgt(&self) -> bool {
+        unsafe { crate::ffi::ChFiDS_Spine_has_first_tgt(self as *const Self) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:228 - `ChFiDS_Spine::HasLastTgt()`
+    pub fn has_last_tgt(&self) -> bool {
+        unsafe { crate::ffi::ChFiDS_Spine_has_last_tgt(self as *const Self) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:231 - `ChFiDS_Spine::SetReference()`
+    /// set a parameter reference for the approx.
+    pub fn set_reference_real(&mut self, W: f64) {
+        unsafe { crate::ffi::ChFiDS_Spine_set_reference_real(self as *mut Self, W) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:235 - `ChFiDS_Spine::SetReference()`
+    /// set  a  parameter  reference  for  the approx,  at the
+    /// middle  of edge I.
+    pub fn set_reference_int(&mut self, I: i32) {
+        unsafe { crate::ffi::ChFiDS_Spine_set_reference_int(self as *mut Self, I) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:237 - `ChFiDS_Spine::Index()`
+    pub fn index_real_bool(&self, W: f64, Forward: bool) -> i32 {
+        unsafe { crate::ffi::ChFiDS_Spine_index_real_bool(self as *const Self, W, Forward) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:240 - `ChFiDS_Spine::Index()`
+    pub fn index_edge(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
+        unsafe { crate::ffi::ChFiDS_Spine_index_edge(self as *const Self, E) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:242 - `ChFiDS_Spine::UnsetReference()`
+    pub fn unset_reference(&mut self) {
+        unsafe { crate::ffi::ChFiDS_Spine_unset_reference(self as *mut Self) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:244 - `ChFiDS_Spine::SetErrorStatus()`
+    pub fn set_error_status(&mut self, state: crate::ch_fi_ds::ErrorStatus) {
+        unsafe { crate::ffi::ChFiDS_Spine_set_error_status(self as *mut Self, state.into()) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:246 - `ChFiDS_Spine::ErrorStatus()`
+    pub fn error_status(&self) -> crate::ch_fi_ds::ErrorStatus {
+        unsafe {
+            crate::ch_fi_ds::ErrorStatus::try_from(crate::ffi::ChFiDS_Spine_error_status(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:249 - `ChFiDS_Spine::Mode()`
+    /// Return the mode of chamfers used
+    pub fn mode(&self) -> crate::ch_fi_ds::ChamfMode {
+        unsafe {
+            crate::ch_fi_ds::ChamfMode::try_from(crate::ffi::ChFiDS_Spine_mode(self as *const Self))
+                .unwrap()
+        }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:252 - `ChFiDS_Spine::GetTolesp()`
+    /// Return tolesp parameter
+    pub fn get_tolesp(&self) -> f64 {
+        unsafe { crate::ffi::ChFiDS_Spine_get_tolesp(self as *const Self) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:254 - `ChFiDS_Spine::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ChFiDS_SecHArray1_dynamic_type(self as *const Self)) }
+        unsafe { &*(crate::ffi::ChFiDS_Spine_dynamic_type(self as *const Self)) }
     }
 
-    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::get_type_name()`
+    /// **Source:** `ChFiDS_Spine.hxx`:254 - `ChFiDS_Spine::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::ChFiDS_SecHArray1_get_type_name())
+            std::ffi::CStr::from_ptr(crate::ffi::ChFiDS_Spine_get_type_name())
                 .to_string_lossy()
                 .into_owned()
         }
     }
 
-    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::get_type_descriptor()`
+    /// **Source:** `ChFiDS_Spine.hxx`:254 - `ChFiDS_Spine::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::ChFiDS_SecHArray1_get_type_descriptor()) }
+        unsafe { &*(crate::ffi::ChFiDS_Spine_get_type_descriptor()) }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSecHArray1> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_SecHArray1_to_handle(obj.into_raw()))
-        }
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSpine> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_Spine_to_handle(obj.into_raw())) }
     }
 }
 
-pub use crate::ffi::HandleChFiDSSecHArray1;
+pub use crate::ffi::HandleChFiDSSpine;
 
-unsafe impl crate::CppDeletable for HandleChFiDSSecHArray1 {
+unsafe impl crate::CppDeletable for HandleChFiDSSpine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleChFiDSSecHArray1_destructor(ptr);
+        crate::ffi::HandleChFiDSSpine_destructor(ptr);
     }
 }
 
-impl HandleChFiDSSecHArray1 {
-    /// Dereference this Handle to access the underlying ChFiDS_SecHArray1
-    pub fn get(&self) -> &crate::ffi::ChFiDS_SecHArray1 {
-        unsafe { &*(crate::ffi::HandleChFiDSSecHArray1_get(self as *const Self)) }
+impl HandleChFiDSSpine {
+    /// Dereference this Handle to access the underlying ChFiDS_Spine
+    pub fn get(&self) -> &crate::ffi::ChFiDS_Spine {
+        unsafe { &*(crate::ffi::HandleChFiDSSpine_get(self as *const Self)) }
     }
 
-    /// Dereference this Handle to mutably access the underlying ChFiDS_SecHArray1
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_SecHArray1 {
-        unsafe { &mut *(crate::ffi::HandleChFiDSSecHArray1_get_mut(self as *mut Self)) }
+    /// Dereference this Handle to mutably access the underlying ChFiDS_Spine
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_Spine {
+        unsafe { &mut *(crate::ffi::HandleChFiDSSpine_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1130,9 +1490,9 @@ impl Stripe {
         unsafe { crate::ffi::ChFiDS_Stripe_reset(self as *mut Self) }
     }
 
-    /// **Source:** `ChFiDS_Stripe.hxx`:43 - `ChFiDS_Stripe::SetOfSurfData()`
-    pub fn set_of_surf_data(&self) -> &crate::ffi::HandleChFiDSHData {
-        unsafe { &*(crate::ffi::ChFiDS_Stripe_set_of_surf_data(self as *const Self)) }
+    /// **Source:** `ChFiDS_Stripe.hxx`:45 - `ChFiDS_Stripe::Spine()`
+    pub fn spine(&self) -> &crate::ffi::HandleChFiDSSpine {
+        unsafe { &*(crate::ffi::ChFiDS_Stripe_spine(self as *const Self)) }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:47 - `ChFiDS_Stripe::OrientationOnFace1()`
@@ -1160,9 +1520,9 @@ impl Stripe {
         unsafe { crate::ffi::ChFiDS_Stripe_choix(self as *const Self) }
     }
 
-    /// **Source:** `ChFiDS_Stripe.hxx`:53 - `ChFiDS_Stripe::ChangeSetOfSurfData()`
-    pub fn change_set_of_surf_data(&mut self) -> &mut crate::ffi::HandleChFiDSHData {
-        unsafe { &mut *(crate::ffi::ChFiDS_Stripe_change_set_of_surf_data(self as *mut Self)) }
+    /// **Source:** `ChFiDS_Stripe.hxx`:55 - `ChFiDS_Stripe::ChangeSpine()`
+    pub fn change_spine(&mut self) -> &mut crate::ffi::HandleChFiDSSpine {
+        unsafe { &mut *(crate::ffi::ChFiDS_Stripe_change_spine(self as *mut Self)) }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:57 - `ChFiDS_Stripe::OrientationOnFace1()`
@@ -1891,6 +2251,7 @@ impl HandleChFiDSSurfData {
 // ========================
 
 pub use crate::ffi::{
-    ChFiDS_ListOfStripe as ListOfStripe, ChFiDS_SecArray1 as SecArray1,
-    ChFiDS_SequenceOfSurfData as SequenceOfSurfData, ChFiDS_Spine as Spine,
+    ChFiDS_HData as HData, ChFiDS_ListOfHElSpine as ListOfHElSpine,
+    ChFiDS_ListOfStripe as ListOfStripe, ChFiDS_SecHArray1 as SecHArray1,
+    ChFiDS_SequenceOfSurfData as SequenceOfSurfData,
 };

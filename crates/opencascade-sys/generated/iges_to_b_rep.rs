@@ -6,6 +6,86 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `IGESToBRep.hxx`:40 - `IGESToBRep::Init`
+/// Creates and initializes default AlgoContainer.
+pub fn init() {
+    unsafe { crate::ffi::IGESToBRep_init() }
+}
+/// **Source:** `IGESToBRep.hxx`:43 - `IGESToBRep::SetAlgoContainer`
+/// Sets default AlgoContainer
+pub fn set_algo_container(aContainer: &crate::ffi::HandleIGESToBRepAlgoContainer) {
+    unsafe { crate::ffi::IGESToBRep_set_algo_container(aContainer) }
+}
+/// **Source:** `IGESToBRep.hxx`:46 - `IGESToBRep::AlgoContainer`
+/// Returns default AlgoContainer
+pub fn algo_container() -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepAlgoContainer> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_algo_container()) }
+}
+/// **Source:** `IGESToBRep.hxx`:51 - `IGESToBRep::IsCurveAndSurface`
+/// Return True if the IGESEntity can be transferred by
+/// TransferCurveAndSurface.
+/// ex: All IGESEntity from IGESGeom
+pub fn is_curve_and_surface(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+    unsafe { crate::ffi::IGESToBRep_is_curve_and_surface(start) }
+}
+/// **Source:** `IGESToBRep.hxx`:59 - `IGESToBRep::IsBasicCurve`
+/// Return True if the IGESEntity can be transferred by
+/// TransferBasicCurve.
+/// ex: CircularArc, ConicArc, Line, CopiousData,
+/// BSplineCurve, SplineCurve... from IGESGeom :
+/// 104,110,112,126
+pub fn is_basic_curve(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+    unsafe { crate::ffi::IGESToBRep_is_basic_curve(start) }
+}
+/// **Source:** `IGESToBRep.hxx`:65 - `IGESToBRep::IsBasicSurface`
+/// Return True if the IGESEntity can be transferred by
+/// TransferBasicSurface.
+/// ex: BSplineSurface, SplineSurface... from IGESGeom :
+/// 114,128
+pub fn is_basic_surface(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+    unsafe { crate::ffi::IGESToBRep_is_basic_surface(start) }
+}
+/// **Source:** `IGESToBRep.hxx`:71 - `IGESToBRep::IsTopoCurve`
+/// Return True if the IGESEntity can be transferred by
+/// TransferTopoCurve.
+/// ex: all Curves from IGESGeom :
+/// all basic curves,102,130,142,144
+pub fn is_topo_curve(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+    unsafe { crate::ffi::IGESToBRep_is_topo_curve(start) }
+}
+/// **Source:** `IGESToBRep.hxx`:77 - `IGESToBRep::IsTopoSurface`
+/// Return True if the IGESEntity can be transferred by
+/// TransferTopoSurface.
+/// ex: All Surfaces from IGESGeom :
+/// all basic surfaces,108,118,120,122,141,143
+pub fn is_topo_surface(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+    unsafe { crate::ffi::IGESToBRep_is_topo_surface(start) }
+}
+/// **Source:** `IGESToBRep.hxx`:84 - `IGESToBRep::IsBRepEntity`
+/// Return True if the IGESEntity can be transferred by
+/// TransferBRepEntity.
+/// ex: VertexList, EdgeList, Loop, Face, Shell,
+/// Manifold Solid BRep Object from IGESSolid :
+/// 502, 504, 508, 510, 514, 186.
+pub fn is_b_rep_entity(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+    unsafe { crate::ffi::IGESToBRep_is_b_rep_entity(start) }
+}
+/// **Source:** `IGESToBRep.hxx`:86 - `IGESToBRep::IGESCurveToSequenceOfIGESCurve`
+pub fn iges_curve_to_sequence_of_iges_curve(
+    curve: &crate::ffi::HandleIGESDataIGESEntity,
+    sequence: &mut crate::ffi::HandleTColStdHSequenceOfTransient,
+) -> i32 {
+    unsafe { crate::ffi::IGESToBRep_iges_curve_to_sequence_of_iges_curve(curve, sequence) }
+}
+/// **Source:** `IGESToBRep.hxx`:90 - `IGESToBRep::TransferPCurve`
+pub fn transfer_p_curve(
+    fromedge: &crate::ffi::TopoDS_Edge,
+    toedge: &crate::ffi::TopoDS_Edge,
+    face: &crate::ffi::TopoDS_Face,
+) -> bool {
+    unsafe { crate::ffi::IGESToBRep_transfer_p_curve(fromedge, toedge, face) }
+}
+
 // ========================
 // From IGESToBRep_AlgoContainer.hxx
 // ========================
@@ -90,6 +170,1114 @@ impl HandleIGESToBRepAlgoContainer {
     /// Dereference this Handle to mutably access the underlying IGESToBRep_AlgoContainer
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESToBRep_AlgoContainer {
         unsafe { &mut *(crate::ffi::HandleIGESToBRepAlgoContainer_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From IGESToBRep_BRepEntity.hxx
+// ========================
+
+/// **Source:** `IGESToBRep_BRepEntity.hxx`:44 - `IGESToBRep_BRepEntity`
+/// Provides methods to transfer BRep entities
+/// ( VertexList 502, EdgeList 504, Loop 508,
+/// Face 510, Shell 514, ManifoldSolid 186)
+/// from IGES to CASCADE.
+pub use crate::ffi::IGESToBRep_BRepEntity as BRepEntity;
+
+unsafe impl crate::CppDeletable for BRepEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESToBRep_BRepEntity_destructor(ptr);
+    }
+}
+
+impl BRepEntity {
+    /// **Source:** `IGESToBRep_BRepEntity.hxx`:52 - `IGESToBRep_BRepEntity::IGESToBRep_BRepEntity()`
+    /// Creates  a tool BRepEntity  ready  to  run, with
+    /// epsilons  set  to  1.E-04,  TheModeTopo  to  True,  the
+    /// optimization of  the continuity to False.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BRepEntity_ctor()) }
+    }
+
+    /// **Source:** `IGESToBRep_BRepEntity.hxx`:56 - `IGESToBRep_BRepEntity::IGESToBRep_BRepEntity()`
+    /// Creates a tool BRepEntity ready to run and sets its
+    /// fields as CS's.
+    pub fn new_curveandsurface(
+        CS: &crate::ffi::IGESToBRep_CurveAndSurface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BRepEntity_ctor_curveandsurface(CS))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BRepEntity.hxx`:59 - `IGESToBRep_BRepEntity::IGESToBRep_BRepEntity()`
+    /// Creates a tool BRepEntity ready to run.
+    pub fn new_real3_bool3(
+        eps: f64,
+        epsGeom: f64,
+        epsCoeff: f64,
+        mode: bool,
+        modeapprox: bool,
+        optimized: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BRepEntity_ctor_real3_bool3(
+                eps, epsGeom, epsCoeff, mode, modeapprox, optimized,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BRepEntity.hxx`:68 - `IGESToBRep_BRepEntity::TransferBRepEntity()`
+    /// Transfer the BRepEntity" : Face, Shell or ManifoldSolid.
+    pub fn transfer_b_rep_entity(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BRepEntity_transfer_b_rep_entity(
+                self as *mut Self,
+                start,
+                theProgress,
+            ))
+        }
+    }
+
+    /// Upcast to IGESToBRep_CurveAndSurface
+    pub fn as_curve_and_surface(&self) -> &CurveAndSurface {
+        unsafe {
+            &*(crate::ffi::IGESToBRep_BRepEntity_as_IGESToBRep_CurveAndSurface(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESToBRep_CurveAndSurface (mutable)
+    pub fn as_curve_and_surface_mut(&mut self) -> &mut CurveAndSurface {
+        unsafe {
+            &mut *(crate::ffi::IGESToBRep_BRepEntity_as_IGESToBRep_CurveAndSurface_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:55 - `IGESToBRep_CurveAndSurface::Init()`
+    pub fn init(&mut self) {
+        unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_Init(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:58 - `IGESToBRep_CurveAndSurface::SetEpsilon()`
+    pub fn set_epsilon(&mut self, eps: f64) {
+        unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_SetEpsilon(self as *mut Self, eps) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:61 - `IGESToBRep_CurveAndSurface::GetEpsilon()`
+    pub fn get_epsilon(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_GetEpsilon(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:64 - `IGESToBRep_CurveAndSurface::SetEpsCoeff()`
+    pub fn set_eps_coeff(&mut self, eps: f64) {
+        unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_SetEpsCoeff(self as *mut Self, eps) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:67 - `IGESToBRep_CurveAndSurface::GetEpsCoeff()`
+    pub fn get_eps_coeff(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_GetEpsCoeff(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:70 - `IGESToBRep_CurveAndSurface::SetEpsGeom()`
+    pub fn set_eps_geom(&mut self, eps: f64) {
+        unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_SetEpsGeom(self as *mut Self, eps) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:73 - `IGESToBRep_CurveAndSurface::GetEpsGeom()`
+    pub fn get_eps_geom(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_GetEpsGeom(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:76 - `IGESToBRep_CurveAndSurface::SetMinTol()`
+    pub fn set_min_tol(&mut self, mintol: f64) {
+        unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_SetMinTol(self as *mut Self, mintol) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:79 - `IGESToBRep_CurveAndSurface::SetMaxTol()`
+    pub fn set_max_tol(&mut self, maxtol: f64) {
+        unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_SetMaxTol(self as *mut Self, maxtol) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:86 - `IGESToBRep_CurveAndSurface::UpdateMinMaxTol()`
+    pub fn update_min_max_tol(&mut self) {
+        unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_UpdateMinMaxTol(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:89 - `IGESToBRep_CurveAndSurface::GetMinTol()`
+    pub fn get_min_tol(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_GetMinTol(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:92 - `IGESToBRep_CurveAndSurface::GetMaxTol()`
+    pub fn get_max_tol(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_GetMaxTol(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:95 - `IGESToBRep_CurveAndSurface::SetModeApprox()`
+    pub fn set_mode_approx(&mut self, mode: bool) {
+        unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetModeApprox(self as *mut Self, mode)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:98 - `IGESToBRep_CurveAndSurface::GetModeApprox()`
+    pub fn get_mode_approx(&self) -> bool {
+        unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_GetModeApprox(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:101 - `IGESToBRep_CurveAndSurface::SetModeTransfer()`
+    pub fn set_mode_transfer(&mut self, mode: bool) {
+        unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetModeTransfer(self as *mut Self, mode)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:104 - `IGESToBRep_CurveAndSurface::GetModeTransfer()`
+    pub fn get_mode_transfer(&self) -> bool {
+        unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_GetModeTransfer(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:107 - `IGESToBRep_CurveAndSurface::SetOptimized()`
+    pub fn set_optimized(&mut self, optimized: bool) {
+        unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetOptimized(self as *mut Self, optimized)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:110 - `IGESToBRep_CurveAndSurface::GetOptimized()`
+    pub fn get_optimized(&self) -> bool {
+        unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_GetOptimized(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:113 - `IGESToBRep_CurveAndSurface::GetUnitFactor()`
+    pub fn get_unit_factor(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_GetUnitFactor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:116 - `IGESToBRep_CurveAndSurface::SetSurfaceCurve()`
+    pub fn set_surface_curve(&mut self, ival: i32) {
+        unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetSurfaceCurve(self as *mut Self, ival)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:121 - `IGESToBRep_CurveAndSurface::GetSurfaceCurve()`
+    pub fn get_surface_curve(&self) -> i32 {
+        unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_GetSurfaceCurve(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
+    pub fn set_continuity(&mut self, continuity: i32) {
+        unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetContinuity(self as *mut Self, continuity)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:136 - `IGESToBRep_CurveAndSurface::GetContinuity()`
+    pub fn get_continuity(&self) -> i32 {
+        unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_GetContinuity(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:148 - `IGESToBRep_CurveAndSurface::TransferCurveAndSurface()`
+    pub fn transfer_curve_and_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_BRepEntity_inherited_TransferCurveAndSurface(
+                    self as *mut Self,
+                    start,
+                    theProgress,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:155 - `IGESToBRep_CurveAndSurface::TransferGeometry()`
+    pub fn transfer_geometry(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BRepEntity_inherited_TransferGeometry(
+                self as *mut Self,
+                start,
+                theProgress,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:159 - `IGESToBRep_CurveAndSurface::SendFail()`
+    pub fn send_fail(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SendFail(self as *mut Self, start, amsg)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:162 - `IGESToBRep_CurveAndSurface::SendWarning()`
+    pub fn send_warning(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SendWarning(self as *mut Self, start, amsg)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:166 - `IGESToBRep_CurveAndSurface::SendMsg()`
+    pub fn send_msg(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SendMsg(self as *mut Self, start, amsg)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:170 - `IGESToBRep_CurveAndSurface::HasShapeResult()`
+    pub fn has_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+        unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_HasShapeResult(self as *const Self, start)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:174 - `IGESToBRep_CurveAndSurface::GetShapeResult()`
+    pub fn get_shape_result(
+        &self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BRepEntity_inherited_GetShapeResult(
+                self as *const Self,
+                start,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:177 - `IGESToBRep_CurveAndSurface::SetShapeResult()`
+    pub fn set_shape_result(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        result: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:182 - `IGESToBRep_CurveAndSurface::NbShapeResult()`
+    pub fn nb_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> i32 {
+        unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_NbShapeResult(self as *const Self, start)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:191 - `IGESToBRep_CurveAndSurface::AddShapeResult()`
+    pub fn add_shape_result(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        result: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_AddShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:194 - `IGESToBRep_CurveAndSurface::SetSurface()`
+    pub fn set_surface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) {
+        unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetSurface(self as *mut Self, theSurface)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:196 - `IGESToBRep_CurveAndSurface::Surface()`
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BRepEntity_inherited_Surface(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:198 - `IGESToBRep_CurveAndSurface::GetUVResolution()`
+    pub fn get_uv_resolution(&mut self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_GetUVResolution(self as *mut Self) }
+    }
+}
+
+// ========================
+// From IGESToBRep_BasicCurve.hxx
+// ========================
+
+/// **Source:** `IGESToBRep_BasicCurve.hxx`:50 - `IGESToBRep_BasicCurve`
+/// Provides methods to transfer basic geometric curves entities
+/// from IGES to CASCADE.
+/// These can be :
+/// * Circular arc
+/// * Conic arc
+/// * Spline curve
+/// * BSpline curve
+/// * Line
+/// * Copious data
+/// * Point
+/// * Transformation matrix
+pub use crate::ffi::IGESToBRep_BasicCurve as BasicCurve;
+
+unsafe impl crate::CppDeletable for BasicCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESToBRep_BasicCurve_destructor(ptr);
+    }
+}
+
+impl BasicCurve {
+    /// **Source:** `IGESToBRep_BasicCurve.hxx`:58 - `IGESToBRep_BasicCurve::IGESToBRep_BasicCurve()`
+    /// Creates  a tool BasicCurve  ready  to  run, with
+    /// epsilons  set  to  1.E-04,  TheModeTopo  to  True,  the
+    /// optimization of  the continuity to False.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_ctor()) }
+    }
+
+    /// **Source:** `IGESToBRep_BasicCurve.hxx`:62 - `IGESToBRep_BasicCurve::IGESToBRep_BasicCurve()`
+    /// Creates a tool BasicCurve ready to run and sets its
+    /// fields as CS's.
+    pub fn new_curveandsurface(
+        CS: &crate::ffi::IGESToBRep_CurveAndSurface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_ctor_curveandsurface(CS))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicCurve.hxx`:65 - `IGESToBRep_BasicCurve::IGESToBRep_BasicCurve()`
+    /// Creates a tool BasicCurve ready to run.
+    pub fn new_real3_bool3(
+        eps: f64,
+        epsGeom: f64,
+        epsCoeff: f64,
+        mode: bool,
+        modeapprox: bool,
+        optimized: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_ctor_real3_bool3(
+                eps, epsGeom, epsCoeff, mode, modeapprox, optimized,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicCurve.hxx`:75 - `IGESToBRep_BasicCurve::TransferBasicCurve()`
+    /// Transfert  a  IGESEntity which  answer True  to  the
+    /// member : IGESToBRep::IsBasicCurve(IGESEntity).  If this
+    /// Entity could not be converted, this member returns a NullEntity.
+    pub fn transfer_basic_curve(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_transfer_basic_curve(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicCurve.hxx`:82 - `IGESToBRep_BasicCurve::Transfer2dBasicCurve()`
+    /// Transfert  a  IGESEntity which  answer True  to  the
+    /// member : IGESToBRep::IsBasicCurve(IGESEntity).
+    /// The IGESEntity must be a curve UV and its associed TRSF must
+    /// be planar .If this Entity could not be converted, this member
+    /// returns a NullEntity.
+    pub fn transfer2d_basic_curve(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_transfer2d_basic_curve(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// Upcast to IGESToBRep_CurveAndSurface
+    pub fn as_curve_and_surface(&self) -> &CurveAndSurface {
+        unsafe {
+            &*(crate::ffi::IGESToBRep_BasicCurve_as_IGESToBRep_CurveAndSurface(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESToBRep_CurveAndSurface (mutable)
+    pub fn as_curve_and_surface_mut(&mut self) -> &mut CurveAndSurface {
+        unsafe {
+            &mut *(crate::ffi::IGESToBRep_BasicCurve_as_IGESToBRep_CurveAndSurface_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:55 - `IGESToBRep_CurveAndSurface::Init()`
+    pub fn init(&mut self) {
+        unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_Init(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:58 - `IGESToBRep_CurveAndSurface::SetEpsilon()`
+    pub fn set_epsilon(&mut self, eps: f64) {
+        unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_SetEpsilon(self as *mut Self, eps) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:61 - `IGESToBRep_CurveAndSurface::GetEpsilon()`
+    pub fn get_epsilon(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_GetEpsilon(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:64 - `IGESToBRep_CurveAndSurface::SetEpsCoeff()`
+    pub fn set_eps_coeff(&mut self, eps: f64) {
+        unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_SetEpsCoeff(self as *mut Self, eps) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:67 - `IGESToBRep_CurveAndSurface::GetEpsCoeff()`
+    pub fn get_eps_coeff(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_GetEpsCoeff(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:70 - `IGESToBRep_CurveAndSurface::SetEpsGeom()`
+    pub fn set_eps_geom(&mut self, eps: f64) {
+        unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_SetEpsGeom(self as *mut Self, eps) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:73 - `IGESToBRep_CurveAndSurface::GetEpsGeom()`
+    pub fn get_eps_geom(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_GetEpsGeom(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:76 - `IGESToBRep_CurveAndSurface::SetMinTol()`
+    pub fn set_min_tol(&mut self, mintol: f64) {
+        unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_SetMinTol(self as *mut Self, mintol) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:79 - `IGESToBRep_CurveAndSurface::SetMaxTol()`
+    pub fn set_max_tol(&mut self, maxtol: f64) {
+        unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_SetMaxTol(self as *mut Self, maxtol) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:86 - `IGESToBRep_CurveAndSurface::UpdateMinMaxTol()`
+    pub fn update_min_max_tol(&mut self) {
+        unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_UpdateMinMaxTol(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:89 - `IGESToBRep_CurveAndSurface::GetMinTol()`
+    pub fn get_min_tol(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_GetMinTol(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:92 - `IGESToBRep_CurveAndSurface::GetMaxTol()`
+    pub fn get_max_tol(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_GetMaxTol(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:95 - `IGESToBRep_CurveAndSurface::SetModeApprox()`
+    pub fn set_mode_approx(&mut self, mode: bool) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetModeApprox(self as *mut Self, mode)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:98 - `IGESToBRep_CurveAndSurface::GetModeApprox()`
+    pub fn get_mode_approx(&self) -> bool {
+        unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_GetModeApprox(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:101 - `IGESToBRep_CurveAndSurface::SetModeTransfer()`
+    pub fn set_mode_transfer(&mut self, mode: bool) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetModeTransfer(self as *mut Self, mode)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:104 - `IGESToBRep_CurveAndSurface::GetModeTransfer()`
+    pub fn get_mode_transfer(&self) -> bool {
+        unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_GetModeTransfer(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:107 - `IGESToBRep_CurveAndSurface::SetOptimized()`
+    pub fn set_optimized(&mut self, optimized: bool) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetOptimized(self as *mut Self, optimized)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:110 - `IGESToBRep_CurveAndSurface::GetOptimized()`
+    pub fn get_optimized(&self) -> bool {
+        unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_GetOptimized(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:113 - `IGESToBRep_CurveAndSurface::GetUnitFactor()`
+    pub fn get_unit_factor(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_GetUnitFactor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:116 - `IGESToBRep_CurveAndSurface::SetSurfaceCurve()`
+    pub fn set_surface_curve(&mut self, ival: i32) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetSurfaceCurve(self as *mut Self, ival)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:121 - `IGESToBRep_CurveAndSurface::GetSurfaceCurve()`
+    pub fn get_surface_curve(&self) -> i32 {
+        unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_GetSurfaceCurve(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
+    pub fn set_continuity(&mut self, continuity: i32) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetContinuity(self as *mut Self, continuity)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:136 - `IGESToBRep_CurveAndSurface::GetContinuity()`
+    pub fn get_continuity(&self) -> i32 {
+        unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_GetContinuity(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:148 - `IGESToBRep_CurveAndSurface::TransferCurveAndSurface()`
+    pub fn transfer_curve_and_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_BasicCurve_inherited_TransferCurveAndSurface(
+                    self as *mut Self,
+                    start,
+                    theProgress,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:155 - `IGESToBRep_CurveAndSurface::TransferGeometry()`
+    pub fn transfer_geometry(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_inherited_TransferGeometry(
+                self as *mut Self,
+                start,
+                theProgress,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:159 - `IGESToBRep_CurveAndSurface::SendFail()`
+    pub fn send_fail(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SendFail(self as *mut Self, start, amsg)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:162 - `IGESToBRep_CurveAndSurface::SendWarning()`
+    pub fn send_warning(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SendWarning(self as *mut Self, start, amsg)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:166 - `IGESToBRep_CurveAndSurface::SendMsg()`
+    pub fn send_msg(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SendMsg(self as *mut Self, start, amsg)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:170 - `IGESToBRep_CurveAndSurface::HasShapeResult()`
+    pub fn has_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_HasShapeResult(self as *const Self, start)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:174 - `IGESToBRep_CurveAndSurface::GetShapeResult()`
+    pub fn get_shape_result(
+        &self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_inherited_GetShapeResult(
+                self as *const Self,
+                start,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:177 - `IGESToBRep_CurveAndSurface::SetShapeResult()`
+    pub fn set_shape_result(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        result: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:182 - `IGESToBRep_CurveAndSurface::NbShapeResult()`
+    pub fn nb_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> i32 {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_NbShapeResult(self as *const Self, start)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:191 - `IGESToBRep_CurveAndSurface::AddShapeResult()`
+    pub fn add_shape_result(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        result: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_AddShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:194 - `IGESToBRep_CurveAndSurface::SetSurface()`
+    pub fn set_surface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetSurface(self as *mut Self, theSurface)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:196 - `IGESToBRep_CurveAndSurface::Surface()`
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_inherited_Surface(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:198 - `IGESToBRep_CurveAndSurface::GetUVResolution()`
+    pub fn get_uv_resolution(&mut self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_GetUVResolution(self as *mut Self) }
+    }
+}
+
+// ========================
+// From IGESToBRep_BasicSurface.hxx
+// ========================
+
+/// **Source:** `IGESToBRep_BasicSurface.hxx`:46 - `IGESToBRep_BasicSurface`
+/// Provides methods to transfer basic geometric surface entities
+/// from IGES to CASCADE.
+/// These can be :
+/// * Spline surface
+/// * BSpline surface
+pub use crate::ffi::IGESToBRep_BasicSurface as BasicSurface;
+
+unsafe impl crate::CppDeletable for BasicSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESToBRep_BasicSurface_destructor(ptr);
+    }
+}
+
+impl BasicSurface {
+    /// **Source:** `IGESToBRep_BasicSurface.hxx`:54 - `IGESToBRep_BasicSurface::IGESToBRep_BasicSurface()`
+    /// Creates  a tool BasicSurface  ready  to  run, with
+    /// epsilons  set  to  1.E-04,  TheModeTopo  to  True,  the
+    /// optimization of  the continuity to False.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicSurface_ctor()) }
+    }
+
+    /// **Source:** `IGESToBRep_BasicSurface.hxx`:58 - `IGESToBRep_BasicSurface::IGESToBRep_BasicSurface()`
+    /// Creates a tool BasicSurface ready to run and sets its
+    /// fields as CS's.
+    pub fn new_curveandsurface(
+        CS: &crate::ffi::IGESToBRep_CurveAndSurface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicSurface_ctor_curveandsurface(CS))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicSurface.hxx`:61 - `IGESToBRep_BasicSurface::IGESToBRep_BasicSurface()`
+    /// Creates a tool BasicSurface ready to run.
+    pub fn new_real3_bool3(
+        eps: f64,
+        epsGeom: f64,
+        epsCoeff: f64,
+        mode: bool,
+        modeapprox: bool,
+        optimized: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicSurface_ctor_real3_bool3(
+                eps, epsGeom, epsCoeff, mode, modeapprox, optimized,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_BasicSurface.hxx`:69 - `IGESToBRep_BasicSurface::TransferBasicSurface()`
+    /// Returns Surface  from Geom if the last transfer has succeeded.
+    pub fn transfer_basic_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicSurface_transfer_basic_surface(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// Upcast to IGESToBRep_CurveAndSurface
+    pub fn as_curve_and_surface(&self) -> &CurveAndSurface {
+        unsafe {
+            &*(crate::ffi::IGESToBRep_BasicSurface_as_IGESToBRep_CurveAndSurface(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to IGESToBRep_CurveAndSurface (mutable)
+    pub fn as_curve_and_surface_mut(&mut self) -> &mut CurveAndSurface {
+        unsafe {
+            &mut *(crate::ffi::IGESToBRep_BasicSurface_as_IGESToBRep_CurveAndSurface_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:55 - `IGESToBRep_CurveAndSurface::Init()`
+    pub fn init(&mut self) {
+        unsafe { crate::ffi::IGESToBRep_BasicSurface_inherited_Init(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:58 - `IGESToBRep_CurveAndSurface::SetEpsilon()`
+    pub fn set_epsilon(&mut self, eps: f64) {
+        unsafe { crate::ffi::IGESToBRep_BasicSurface_inherited_SetEpsilon(self as *mut Self, eps) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:61 - `IGESToBRep_CurveAndSurface::GetEpsilon()`
+    pub fn get_epsilon(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BasicSurface_inherited_GetEpsilon(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:64 - `IGESToBRep_CurveAndSurface::SetEpsCoeff()`
+    pub fn set_eps_coeff(&mut self, eps: f64) {
+        unsafe { crate::ffi::IGESToBRep_BasicSurface_inherited_SetEpsCoeff(self as *mut Self, eps) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:67 - `IGESToBRep_CurveAndSurface::GetEpsCoeff()`
+    pub fn get_eps_coeff(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BasicSurface_inherited_GetEpsCoeff(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:70 - `IGESToBRep_CurveAndSurface::SetEpsGeom()`
+    pub fn set_eps_geom(&mut self, eps: f64) {
+        unsafe { crate::ffi::IGESToBRep_BasicSurface_inherited_SetEpsGeom(self as *mut Self, eps) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:73 - `IGESToBRep_CurveAndSurface::GetEpsGeom()`
+    pub fn get_eps_geom(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BasicSurface_inherited_GetEpsGeom(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:76 - `IGESToBRep_CurveAndSurface::SetMinTol()`
+    pub fn set_min_tol(&mut self, mintol: f64) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetMinTol(self as *mut Self, mintol)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:79 - `IGESToBRep_CurveAndSurface::SetMaxTol()`
+    pub fn set_max_tol(&mut self, maxtol: f64) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetMaxTol(self as *mut Self, maxtol)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:86 - `IGESToBRep_CurveAndSurface::UpdateMinMaxTol()`
+    pub fn update_min_max_tol(&mut self) {
+        unsafe { crate::ffi::IGESToBRep_BasicSurface_inherited_UpdateMinMaxTol(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:89 - `IGESToBRep_CurveAndSurface::GetMinTol()`
+    pub fn get_min_tol(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BasicSurface_inherited_GetMinTol(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:92 - `IGESToBRep_CurveAndSurface::GetMaxTol()`
+    pub fn get_max_tol(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BasicSurface_inherited_GetMaxTol(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:95 - `IGESToBRep_CurveAndSurface::SetModeApprox()`
+    pub fn set_mode_approx(&mut self, mode: bool) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetModeApprox(self as *mut Self, mode)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:98 - `IGESToBRep_CurveAndSurface::GetModeApprox()`
+    pub fn get_mode_approx(&self) -> bool {
+        unsafe { crate::ffi::IGESToBRep_BasicSurface_inherited_GetModeApprox(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:101 - `IGESToBRep_CurveAndSurface::SetModeTransfer()`
+    pub fn set_mode_transfer(&mut self, mode: bool) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetModeTransfer(self as *mut Self, mode)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:104 - `IGESToBRep_CurveAndSurface::GetModeTransfer()`
+    pub fn get_mode_transfer(&self) -> bool {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_GetModeTransfer(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:107 - `IGESToBRep_CurveAndSurface::SetOptimized()`
+    pub fn set_optimized(&mut self, optimized: bool) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetOptimized(self as *mut Self, optimized)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:110 - `IGESToBRep_CurveAndSurface::GetOptimized()`
+    pub fn get_optimized(&self) -> bool {
+        unsafe { crate::ffi::IGESToBRep_BasicSurface_inherited_GetOptimized(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:113 - `IGESToBRep_CurveAndSurface::GetUnitFactor()`
+    pub fn get_unit_factor(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BasicSurface_inherited_GetUnitFactor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:116 - `IGESToBRep_CurveAndSurface::SetSurfaceCurve()`
+    pub fn set_surface_curve(&mut self, ival: i32) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetSurfaceCurve(self as *mut Self, ival)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:121 - `IGESToBRep_CurveAndSurface::GetSurfaceCurve()`
+    pub fn get_surface_curve(&self) -> i32 {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_GetSurfaceCurve(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
+    pub fn set_continuity(&mut self, continuity: i32) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetContinuity(
+                self as *mut Self,
+                continuity,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:136 - `IGESToBRep_CurveAndSurface::GetContinuity()`
+    pub fn get_continuity(&self) -> i32 {
+        unsafe { crate::ffi::IGESToBRep_BasicSurface_inherited_GetContinuity(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:148 - `IGESToBRep_CurveAndSurface::TransferCurveAndSurface()`
+    pub fn transfer_curve_and_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_BasicSurface_inherited_TransferCurveAndSurface(
+                    self as *mut Self,
+                    start,
+                    theProgress,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:155 - `IGESToBRep_CurveAndSurface::TransferGeometry()`
+    pub fn transfer_geometry(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_BasicSurface_inherited_TransferGeometry(
+                    self as *mut Self,
+                    start,
+                    theProgress,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:159 - `IGESToBRep_CurveAndSurface::SendFail()`
+    pub fn send_fail(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SendFail(self as *mut Self, start, amsg)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:162 - `IGESToBRep_CurveAndSurface::SendWarning()`
+    pub fn send_warning(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SendWarning(
+                self as *mut Self,
+                start,
+                amsg,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:166 - `IGESToBRep_CurveAndSurface::SendMsg()`
+    pub fn send_msg(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SendMsg(self as *mut Self, start, amsg)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:170 - `IGESToBRep_CurveAndSurface::HasShapeResult()`
+    pub fn has_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_HasShapeResult(self as *const Self, start)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:174 - `IGESToBRep_CurveAndSurface::GetShapeResult()`
+    pub fn get_shape_result(
+        &self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicSurface_inherited_GetShapeResult(
+                self as *const Self,
+                start,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:177 - `IGESToBRep_CurveAndSurface::SetShapeResult()`
+    pub fn set_shape_result(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        result: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:182 - `IGESToBRep_CurveAndSurface::NbShapeResult()`
+    pub fn nb_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> i32 {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_NbShapeResult(self as *const Self, start)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:191 - `IGESToBRep_CurveAndSurface::AddShapeResult()`
+    pub fn add_shape_result(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        result: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_AddShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:194 - `IGESToBRep_CurveAndSurface::SetSurface()`
+    pub fn set_surface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetSurface(self as *mut Self, theSurface)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:196 - `IGESToBRep_CurveAndSurface::Surface()`
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicSurface_inherited_Surface(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:198 - `IGESToBRep_CurveAndSurface::GetUVResolution()`
+    pub fn get_uv_resolution(&mut self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_BasicSurface_inherited_GetUVResolution(self as *mut Self) }
     }
 }
 
@@ -523,41 +1711,35 @@ impl IGESBoundary {
         }
     }
 
-    /// **Source:** `IGESToBRep_IGESBoundary.hxx`:89 - `IGESToBRep_IGESBoundary::Transfer()`
-    /// Translates 141 and 142 entities.
-    /// Returns True if the curve has been successfully translated,
-    /// otherwise returns False.
-    /// <okCurve..>: flags that indicate whether corresponding
-    /// representation has been successfully translated
-    /// (must be set to True before first call),
-    /// <curve3d>: model space curve for 142 and current model space
-    /// curve for 141,
-    /// <toreverse3d>: False for 142 and current orientation flag
-    /// for 141,
-    /// <curves2d>: 1 parameter space curve for 142 or list of
-    /// them for current model space curves for 141,
-    /// <number>: 1 for 142 and rank number of model space curve for 141.
-    pub fn transfer(
-        &mut self,
-        okCurve: &mut bool,
-        okCurve3d: &mut bool,
-        okCurve2d: &mut bool,
-        curve3d: &crate::ffi::HandleIGESDataIGESEntity,
-        toreverse3d: bool,
-        curves2d: &crate::ffi::HandleIGESDataHArray1OfIGESEntity,
-        number: i32,
-    ) -> bool {
+    /// **Source:** `IGESToBRep_IGESBoundary.hxx`:66 - `IGESToBRep_IGESBoundary::WireData()`
+    /// Returns the resulting wire
+    pub fn wire_data(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendWireData> {
         unsafe {
-            crate::ffi::IGESToBRep_IGESBoundary_transfer(
-                self as *mut Self,
-                okCurve,
-                okCurve3d,
-                okCurve2d,
-                curve3d,
-                toreverse3d,
-                curves2d,
-                number,
-            )
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_IGESBoundary_wire_data(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_IGESBoundary.hxx`:70 - `IGESToBRep_IGESBoundary::WireData3d()`
+    /// Returns the wire from 3D curves (edges contain 3D curves
+    /// and may contain pcurves)
+    pub fn wire_data3d(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendWireData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_IGESBoundary_wire_data3d(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_IGESBoundary.hxx`:74 - `IGESToBRep_IGESBoundary::WireData2d()`
+    /// Returns the wire from 2D curves (edges contain pcurves
+    /// only)
+    pub fn wire_data2d(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendWireData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_IGESBoundary_wire_data2d(
+                self as *const Self,
+            ))
         }
     }
 
@@ -709,5 +1891,860 @@ impl HandleIGESToBRepToolContainer {
     /// Dereference this Handle to mutably access the underlying IGESToBRep_ToolContainer
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESToBRep_ToolContainer {
         unsafe { &mut *(crate::ffi::HandleIGESToBRepToolContainer_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From IGESToBRep_TopoCurve.hxx
+// ========================
+
+/// **Source:** `IGESToBRep_TopoCurve.hxx`:45 - `IGESToBRep_TopoCurve`
+/// Provides methods to transfer topologic curves entities
+/// from IGES to CASCADE.
+pub use crate::ffi::IGESToBRep_TopoCurve as TopoCurve;
+
+unsafe impl crate::CppDeletable for TopoCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESToBRep_TopoCurve_destructor(ptr);
+    }
+}
+
+impl TopoCurve {
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:53 - `IGESToBRep_TopoCurve::IGESToBRep_TopoCurve()`
+    /// Creates  a tool TopoCurve  ready  to  run, with
+    /// epsilons  set  to  1.E-04,  TheModeTopo  to  True,  the
+    /// optimization of  the continuity to False.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_ctor()) }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:57 - `IGESToBRep_TopoCurve::IGESToBRep_TopoCurve()`
+    /// Creates a tool TopoCurve ready to run and sets its
+    /// fields as CS's.
+    pub fn new_curveandsurface(
+        CS: &crate::ffi::IGESToBRep_CurveAndSurface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_ctor_curveandsurface(CS))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:61 - `IGESToBRep_TopoCurve::IGESToBRep_TopoCurve()`
+    /// Creates a tool TopoCurve ready to run and sets its
+    /// fields as CS's.
+    pub fn new_topocurve(CS: &crate::ffi::IGESToBRep_TopoCurve) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_ctor_topocurve(CS)) }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:64 - `IGESToBRep_TopoCurve::IGESToBRep_TopoCurve()`
+    /// Creates a tool TopoCurve ready to run.
+    pub fn new_real3_bool3(
+        eps: f64,
+        epsGeom: f64,
+        epsCoeff: f64,
+        mode: bool,
+        modeapprox: bool,
+        optimized: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_ctor_real3_bool3(
+                eps, epsGeom, epsCoeff, mode, modeapprox, optimized,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:71 - `IGESToBRep_TopoCurve::TransferTopoCurve()`
+    pub fn transfer_topo_curve(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_transfer_topo_curve(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:73 - `IGESToBRep_TopoCurve::Transfer2dTopoCurve()`
+    pub fn transfer2d_topo_curve(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        face: &crate::ffi::TopoDS_Face,
+        trans: &crate::ffi::gp_Trsf2d,
+        uFact: f64,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_transfer2d_topo_curve(
+                self as *mut Self,
+                start,
+                face,
+                trans,
+                uFact,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:78 - `IGESToBRep_TopoCurve::TransferTopoBasicCurve()`
+    pub fn transfer_topo_basic_curve(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_transfer_topo_basic_curve(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:80 - `IGESToBRep_TopoCurve::Transfer2dTopoBasicCurve()`
+    pub fn transfer2d_topo_basic_curve(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        face: &crate::ffi::TopoDS_Face,
+        trans: &crate::ffi::gp_Trsf2d,
+        uFact: f64,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_transfer2d_topo_basic_curve(
+                self as *mut Self,
+                start,
+                face,
+                trans,
+                uFact,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:122 - `IGESToBRep_TopoCurve::ApproxBSplineCurve()`
+    pub fn approx_b_spline_curve(&mut self, start: &crate::ffi::HandleGeomBSplineCurve) {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_approx_b_spline_curve(self as *mut Self, start) }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:125 - `IGESToBRep_TopoCurve::NbCurves()`
+    /// Returns the count of Curves in "TheCurves"
+    pub fn nb_curves(&self) -> i32 {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_nb_curves(self as *const Self) }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:129 - `IGESToBRep_TopoCurve::Curve()`
+    /// Returns a Curve given its rank, by default the first one
+    /// (null Curvee if out of range) in "TheCurves"
+    pub fn curve(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_curve(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:131 - `IGESToBRep_TopoCurve::Approx2dBSplineCurve()`
+    pub fn approx2d_b_spline_curve(&mut self, start: &crate::ffi::HandleGeom2dBSplineCurve) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_approx2d_b_spline_curve(self as *mut Self, start)
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:134 - `IGESToBRep_TopoCurve::NbCurves2d()`
+    /// Returns the count of Curves in "TheCurves2d"
+    pub fn nb_curves2d(&self) -> i32 {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_nb_curves2d(self as *const Self) }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:138 - `IGESToBRep_TopoCurve::Curve2d()`
+    /// Returns a Curve given its rank, by default the first one
+    /// (null Curvee if out of range) in "TheCurves2d"
+    pub fn curve2d(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_curve2d(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:141 - `IGESToBRep_TopoCurve::SetBadCase()`
+    /// Sets TheBadCase flag
+    pub fn set_bad_case(&mut self, value: bool) {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_set_bad_case(self as *mut Self, value) }
+    }
+
+    /// **Source:** `IGESToBRep_TopoCurve.hxx`:144 - `IGESToBRep_TopoCurve::BadCase()`
+    /// Returns TheBadCase flag
+    pub fn bad_case(&self) -> bool {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_bad_case(self as *const Self) }
+    }
+
+    /// Upcast to IGESToBRep_CurveAndSurface
+    pub fn as_curve_and_surface(&self) -> &CurveAndSurface {
+        unsafe {
+            &*(crate::ffi::IGESToBRep_TopoCurve_as_IGESToBRep_CurveAndSurface(self as *const Self))
+        }
+    }
+
+    /// Upcast to IGESToBRep_CurveAndSurface (mutable)
+    pub fn as_curve_and_surface_mut(&mut self) -> &mut CurveAndSurface {
+        unsafe {
+            &mut *(crate::ffi::IGESToBRep_TopoCurve_as_IGESToBRep_CurveAndSurface_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:55 - `IGESToBRep_CurveAndSurface::Init()`
+    pub fn init(&mut self) {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_Init(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:58 - `IGESToBRep_CurveAndSurface::SetEpsilon()`
+    pub fn set_epsilon(&mut self, eps: f64) {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_SetEpsilon(self as *mut Self, eps) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:61 - `IGESToBRep_CurveAndSurface::GetEpsilon()`
+    pub fn get_epsilon(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_GetEpsilon(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:64 - `IGESToBRep_CurveAndSurface::SetEpsCoeff()`
+    pub fn set_eps_coeff(&mut self, eps: f64) {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_SetEpsCoeff(self as *mut Self, eps) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:67 - `IGESToBRep_CurveAndSurface::GetEpsCoeff()`
+    pub fn get_eps_coeff(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_GetEpsCoeff(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:70 - `IGESToBRep_CurveAndSurface::SetEpsGeom()`
+    pub fn set_eps_geom(&mut self, eps: f64) {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_SetEpsGeom(self as *mut Self, eps) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:73 - `IGESToBRep_CurveAndSurface::GetEpsGeom()`
+    pub fn get_eps_geom(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_GetEpsGeom(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:76 - `IGESToBRep_CurveAndSurface::SetMinTol()`
+    pub fn set_min_tol(&mut self, mintol: f64) {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_SetMinTol(self as *mut Self, mintol) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:79 - `IGESToBRep_CurveAndSurface::SetMaxTol()`
+    pub fn set_max_tol(&mut self, maxtol: f64) {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_SetMaxTol(self as *mut Self, maxtol) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:86 - `IGESToBRep_CurveAndSurface::UpdateMinMaxTol()`
+    pub fn update_min_max_tol(&mut self) {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_UpdateMinMaxTol(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:89 - `IGESToBRep_CurveAndSurface::GetMinTol()`
+    pub fn get_min_tol(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_GetMinTol(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:92 - `IGESToBRep_CurveAndSurface::GetMaxTol()`
+    pub fn get_max_tol(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_GetMaxTol(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:95 - `IGESToBRep_CurveAndSurface::SetModeApprox()`
+    pub fn set_mode_approx(&mut self, mode: bool) {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_SetModeApprox(self as *mut Self, mode) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:98 - `IGESToBRep_CurveAndSurface::GetModeApprox()`
+    pub fn get_mode_approx(&self) -> bool {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_GetModeApprox(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:101 - `IGESToBRep_CurveAndSurface::SetModeTransfer()`
+    pub fn set_mode_transfer(&mut self, mode: bool) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetModeTransfer(self as *mut Self, mode)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:104 - `IGESToBRep_CurveAndSurface::GetModeTransfer()`
+    pub fn get_mode_transfer(&self) -> bool {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_GetModeTransfer(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:107 - `IGESToBRep_CurveAndSurface::SetOptimized()`
+    pub fn set_optimized(&mut self, optimized: bool) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetOptimized(self as *mut Self, optimized)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:110 - `IGESToBRep_CurveAndSurface::GetOptimized()`
+    pub fn get_optimized(&self) -> bool {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_GetOptimized(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:113 - `IGESToBRep_CurveAndSurface::GetUnitFactor()`
+    pub fn get_unit_factor(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_GetUnitFactor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:116 - `IGESToBRep_CurveAndSurface::SetSurfaceCurve()`
+    pub fn set_surface_curve(&mut self, ival: i32) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetSurfaceCurve(self as *mut Self, ival)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:121 - `IGESToBRep_CurveAndSurface::GetSurfaceCurve()`
+    pub fn get_surface_curve(&self) -> i32 {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_GetSurfaceCurve(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
+    pub fn set_continuity(&mut self, continuity: i32) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetContinuity(self as *mut Self, continuity)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:136 - `IGESToBRep_CurveAndSurface::GetContinuity()`
+    pub fn get_continuity(&self) -> i32 {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_GetContinuity(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:148 - `IGESToBRep_CurveAndSurface::TransferCurveAndSurface()`
+    pub fn transfer_curve_and_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_TopoCurve_inherited_TransferCurveAndSurface(
+                    self as *mut Self,
+                    start,
+                    theProgress,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:155 - `IGESToBRep_CurveAndSurface::TransferGeometry()`
+    pub fn transfer_geometry(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_inherited_TransferGeometry(
+                self as *mut Self,
+                start,
+                theProgress,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:159 - `IGESToBRep_CurveAndSurface::SendFail()`
+    pub fn send_fail(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SendFail(self as *mut Self, start, amsg)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:162 - `IGESToBRep_CurveAndSurface::SendWarning()`
+    pub fn send_warning(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SendWarning(self as *mut Self, start, amsg)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:166 - `IGESToBRep_CurveAndSurface::SendMsg()`
+    pub fn send_msg(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SendMsg(self as *mut Self, start, amsg)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:170 - `IGESToBRep_CurveAndSurface::HasShapeResult()`
+    pub fn has_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_HasShapeResult(self as *const Self, start)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:174 - `IGESToBRep_CurveAndSurface::GetShapeResult()`
+    pub fn get_shape_result(
+        &self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_inherited_GetShapeResult(
+                self as *const Self,
+                start,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:177 - `IGESToBRep_CurveAndSurface::SetShapeResult()`
+    pub fn set_shape_result(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        result: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:182 - `IGESToBRep_CurveAndSurface::NbShapeResult()`
+    pub fn nb_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> i32 {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_NbShapeResult(self as *const Self, start)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:191 - `IGESToBRep_CurveAndSurface::AddShapeResult()`
+    pub fn add_shape_result(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        result: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_AddShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:194 - `IGESToBRep_CurveAndSurface::SetSurface()`
+    pub fn set_surface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetSurface(self as *mut Self, theSurface)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:196 - `IGESToBRep_CurveAndSurface::Surface()`
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_inherited_Surface(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:198 - `IGESToBRep_CurveAndSurface::GetUVResolution()`
+    pub fn get_uv_resolution(&mut self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_GetUVResolution(self as *mut Self) }
+    }
+}
+
+// ========================
+// From IGESToBRep_TopoSurface.hxx
+// ========================
+
+/// **Source:** `IGESToBRep_TopoSurface.hxx`:42 - `IGESToBRep_TopoSurface`
+/// Provides methods to transfer topologic surfaces entities
+/// from IGES to CASCADE.
+pub use crate::ffi::IGESToBRep_TopoSurface as TopoSurface;
+
+unsafe impl crate::CppDeletable for TopoSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESToBRep_TopoSurface_destructor(ptr);
+    }
+}
+
+impl TopoSurface {
+    /// **Source:** `IGESToBRep_TopoSurface.hxx`:50 - `IGESToBRep_TopoSurface::IGESToBRep_TopoSurface()`
+    /// Creates  a tool TopoSurface  ready  to  run, with
+    /// epsilons  set  to  1.E-04,  TheModeTopo  to  True,  the
+    /// optimization of  the continuity to False.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoSurface_ctor()) }
+    }
+
+    /// **Source:** `IGESToBRep_TopoSurface.hxx`:54 - `IGESToBRep_TopoSurface::IGESToBRep_TopoSurface()`
+    /// Creates a tool TopoSurface ready to run and sets its
+    /// fields as CS's.
+    pub fn new_curveandsurface(
+        CS: &crate::ffi::IGESToBRep_CurveAndSurface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoSurface_ctor_curveandsurface(CS))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoSurface.hxx`:57 - `IGESToBRep_TopoSurface::IGESToBRep_TopoSurface()`
+    /// Creates a tool TopoSurface ready to run.
+    pub fn new_real3_bool3(
+        eps: f64,
+        epsGeom: f64,
+        epsCoeff: f64,
+        mode: bool,
+        modeapprox: bool,
+        optimized: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoSurface_ctor_real3_bool3(
+                eps, epsGeom, epsCoeff, mode, modeapprox, optimized,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoSurface.hxx`:64 - `IGESToBRep_TopoSurface::TransferTopoSurface()`
+    pub fn transfer_topo_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoSurface_transfer_topo_surface(
+                self as *mut Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoSurface.hxx`:66 - `IGESToBRep_TopoSurface::TransferTopoBasicSurface()`
+    pub fn transfer_topo_basic_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_TopoSurface_transfer_topo_basic_surface(
+                    self as *mut Self,
+                    start,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IGESToBRep_TopoSurface.hxx`:88 - `IGESToBRep_TopoSurface::ParamSurface()`
+    pub fn param_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        trans: &mut crate::ffi::gp_Trsf2d,
+        uFact: &mut f64,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoSurface_param_surface(
+                self as *mut Self,
+                start,
+                trans,
+                uFact,
+            ))
+        }
+    }
+
+    /// Upcast to IGESToBRep_CurveAndSurface
+    pub fn as_curve_and_surface(&self) -> &CurveAndSurface {
+        unsafe {
+            &*(crate::ffi::IGESToBRep_TopoSurface_as_IGESToBRep_CurveAndSurface(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to IGESToBRep_CurveAndSurface (mutable)
+    pub fn as_curve_and_surface_mut(&mut self) -> &mut CurveAndSurface {
+        unsafe {
+            &mut *(crate::ffi::IGESToBRep_TopoSurface_as_IGESToBRep_CurveAndSurface_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:55 - `IGESToBRep_CurveAndSurface::Init()`
+    pub fn init(&mut self) {
+        unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_Init(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:58 - `IGESToBRep_CurveAndSurface::SetEpsilon()`
+    pub fn set_epsilon(&mut self, eps: f64) {
+        unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_SetEpsilon(self as *mut Self, eps) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:61 - `IGESToBRep_CurveAndSurface::GetEpsilon()`
+    pub fn get_epsilon(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_GetEpsilon(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:64 - `IGESToBRep_CurveAndSurface::SetEpsCoeff()`
+    pub fn set_eps_coeff(&mut self, eps: f64) {
+        unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_SetEpsCoeff(self as *mut Self, eps) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:67 - `IGESToBRep_CurveAndSurface::GetEpsCoeff()`
+    pub fn get_eps_coeff(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_GetEpsCoeff(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:70 - `IGESToBRep_CurveAndSurface::SetEpsGeom()`
+    pub fn set_eps_geom(&mut self, eps: f64) {
+        unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_SetEpsGeom(self as *mut Self, eps) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:73 - `IGESToBRep_CurveAndSurface::GetEpsGeom()`
+    pub fn get_eps_geom(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_GetEpsGeom(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:76 - `IGESToBRep_CurveAndSurface::SetMinTol()`
+    pub fn set_min_tol(&mut self, mintol: f64) {
+        unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_SetMinTol(self as *mut Self, mintol) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:79 - `IGESToBRep_CurveAndSurface::SetMaxTol()`
+    pub fn set_max_tol(&mut self, maxtol: f64) {
+        unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_SetMaxTol(self as *mut Self, maxtol) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:86 - `IGESToBRep_CurveAndSurface::UpdateMinMaxTol()`
+    pub fn update_min_max_tol(&mut self) {
+        unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_UpdateMinMaxTol(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:89 - `IGESToBRep_CurveAndSurface::GetMinTol()`
+    pub fn get_min_tol(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_GetMinTol(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:92 - `IGESToBRep_CurveAndSurface::GetMaxTol()`
+    pub fn get_max_tol(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_GetMaxTol(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:95 - `IGESToBRep_CurveAndSurface::SetModeApprox()`
+    pub fn set_mode_approx(&mut self, mode: bool) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetModeApprox(self as *mut Self, mode)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:98 - `IGESToBRep_CurveAndSurface::GetModeApprox()`
+    pub fn get_mode_approx(&self) -> bool {
+        unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_GetModeApprox(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:101 - `IGESToBRep_CurveAndSurface::SetModeTransfer()`
+    pub fn set_mode_transfer(&mut self, mode: bool) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetModeTransfer(self as *mut Self, mode)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:104 - `IGESToBRep_CurveAndSurface::GetModeTransfer()`
+    pub fn get_mode_transfer(&self) -> bool {
+        unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_GetModeTransfer(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:107 - `IGESToBRep_CurveAndSurface::SetOptimized()`
+    pub fn set_optimized(&mut self, optimized: bool) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetOptimized(self as *mut Self, optimized)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:110 - `IGESToBRep_CurveAndSurface::GetOptimized()`
+    pub fn get_optimized(&self) -> bool {
+        unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_GetOptimized(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:113 - `IGESToBRep_CurveAndSurface::GetUnitFactor()`
+    pub fn get_unit_factor(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_GetUnitFactor(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:116 - `IGESToBRep_CurveAndSurface::SetSurfaceCurve()`
+    pub fn set_surface_curve(&mut self, ival: i32) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetSurfaceCurve(self as *mut Self, ival)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:121 - `IGESToBRep_CurveAndSurface::GetSurfaceCurve()`
+    pub fn get_surface_curve(&self) -> i32 {
+        unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_GetSurfaceCurve(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
+    pub fn set_continuity(&mut self, continuity: i32) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetContinuity(
+                self as *mut Self,
+                continuity,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:136 - `IGESToBRep_CurveAndSurface::GetContinuity()`
+    pub fn get_continuity(&self) -> i32 {
+        unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_GetContinuity(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:148 - `IGESToBRep_CurveAndSurface::TransferCurveAndSurface()`
+    pub fn transfer_curve_and_surface(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_TopoSurface_inherited_TransferCurveAndSurface(
+                    self as *mut Self,
+                    start,
+                    theProgress,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:155 - `IGESToBRep_CurveAndSurface::TransferGeometry()`
+    pub fn transfer_geometry(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_TopoSurface_inherited_TransferGeometry(
+                    self as *mut Self,
+                    start,
+                    theProgress,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:159 - `IGESToBRep_CurveAndSurface::SendFail()`
+    pub fn send_fail(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SendFail(self as *mut Self, start, amsg)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:162 - `IGESToBRep_CurveAndSurface::SendWarning()`
+    pub fn send_warning(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SendWarning(self as *mut Self, start, amsg)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:166 - `IGESToBRep_CurveAndSurface::SendMsg()`
+    pub fn send_msg(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        amsg: &crate::ffi::Message_Msg,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SendMsg(self as *mut Self, start, amsg)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:170 - `IGESToBRep_CurveAndSurface::HasShapeResult()`
+    pub fn has_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_HasShapeResult(self as *const Self, start)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:174 - `IGESToBRep_CurveAndSurface::GetShapeResult()`
+    pub fn get_shape_result(
+        &self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoSurface_inherited_GetShapeResult(
+                self as *const Self,
+                start,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:177 - `IGESToBRep_CurveAndSurface::SetShapeResult()`
+    pub fn set_shape_result(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        result: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:182 - `IGESToBRep_CurveAndSurface::NbShapeResult()`
+    pub fn nb_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> i32 {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_NbShapeResult(self as *const Self, start)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:191 - `IGESToBRep_CurveAndSurface::AddShapeResult()`
+    pub fn add_shape_result(
+        &mut self,
+        start: &crate::ffi::HandleIGESDataIGESEntity,
+        result: &crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_AddShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:194 - `IGESToBRep_CurveAndSurface::SetSurface()`
+    pub fn set_surface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetSurface(self as *mut Self, theSurface)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:196 - `IGESToBRep_CurveAndSurface::Surface()`
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoSurface_inherited_Surface(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:198 - `IGESToBRep_CurveAndSurface::GetUVResolution()`
+    pub fn get_uv_resolution(&mut self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_GetUVResolution(self as *mut Self) }
     }
 }

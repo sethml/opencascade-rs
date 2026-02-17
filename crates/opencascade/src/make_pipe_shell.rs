@@ -51,6 +51,6 @@ pub(crate) fn make_pipe_shell_with_law_function_shell(
     pipe.build(&progress);
 
     let result_shape = pipe.shape();
-    let shell = topo_ds::shell(result_shape);
+    let shell = topo_ds::shell_shape(result_shape);
     crate::primitives::Shell::from_shell(shell)
 }

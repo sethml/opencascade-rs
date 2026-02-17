@@ -215,7 +215,7 @@ impl Iterator for FaceIterator {
 
     fn next(&mut self) -> Option<Self::Item> {
         if self.explorer.more() {
-            let face = topo_ds::face(self.explorer.current());
+            let face = topo_ds::face_shape(self.explorer.current());
             let face = Face::from_face(face);
 
             self.explorer.next();

@@ -689,11 +689,59 @@ pub fn build_symbol_table(
     all_class_names.extend(collection_type_names.iter().cloned());
 
     // Compute handle-able classes (inherit from Standard_Transient and no protected destructor)
-    let handle_able_classes: HashSet<String> = all_classes
+    let mut handle_able_classes: HashSet<String> = all_classes
         .iter()
         .filter(|c| c.is_handle_type && !c.has_protected_destructor)
         .map(|c| c.name.clone())
         .collect();
+
+    // Also add any class name that appears inside Type::Handle(...) in method signatures.
+    // If C++ code uses Handle(X) for a type, X must inherit from Standard_Transient,
+    // so it's handle-able even if its own header is excluded.
+    fn collect_handle_types(ty: &crate::model::Type, set: &mut HashSet<String>) {
+        match ty {
+            crate::model::Type::Handle(name) => {
+                // Only add clean OCCT type names (not template forms)
+                if !name.contains('<') && !name.contains("::") {
+                    set.insert(name.clone());
+                }
+            }
+            crate::model::Type::ConstRef(inner)
+            | crate::model::Type::MutRef(inner)
+            | crate::model::Type::ConstPtr(inner)
+            | crate::model::Type::MutPtr(inner)
+            | crate::model::Type::RValueRef(inner) => {
+                collect_handle_types(inner, set);
+            }
+            _ => {}
+        }
+    }
+    for class in all_classes {
+        for method in &class.methods {
+            for param in &method.params {
+                collect_handle_types(&param.ty, &mut handle_able_classes);
+            }
+            if let Some(ret) = &method.return_type {
+                collect_handle_types(ret, &mut handle_able_classes);
+            }
+        }
+        for ctor in &class.constructors {
+            for param in &ctor.params {
+                collect_handle_types(&param.ty, &mut handle_able_classes);
+            }
+        }
+    }
+    // Also scan standalone functions
+    for func in all_functions {
+        for param in &func.params {
+            collect_handle_types(&param.ty, &mut handle_able_classes);
+        }
+        if let Some(ret) = &func.return_type {
+            collect_handle_types(ret, &mut handle_able_classes);
+        }
+    }
+    // These referenced Handle types also need to be known class names
+    all_class_names.extend(handle_able_classes.iter().cloned());
     
     // Build authoritative type→module mapping from parsed header data.
     // This is the single source of truth for module membership.

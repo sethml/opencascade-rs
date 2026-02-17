@@ -738,7 +738,6 @@ fn parse_method(entity: &Entity, verbose: bool) -> Option<Method> {
             .unwrap_or_default();
         println!("    Method: {}{}{}", name, const_str, ret_str);
     }
-
     Some(Method {
         name,
         comment,
@@ -981,19 +980,72 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         .trim_start_matches("const ")
         .trim_start_matches("volatile ")
         .trim();
+    // Guard against clang misresolving NCollection template specializations.
+    // When clang can't fully instantiate templates like NCollection_DataMap<A,B>,
+    // it falls back to canonical type "int". Detect this by checking if the
+    // display name is clearly a class/typedef (not a known primitive typedef)
+    // while the canonical says it's a primitive.
+    //
+    // However, legitimate typedefs to primitives (e.g., `typedef unsigned int Poly_MeshPurpose`)
+    // must still resolve to their canonical primitive type. We distinguish these by
+    // checking the typedef's underlying type: if it's a builtin primitive or another
+    // typedef (i.e., a chain like Graphic3d_ZLayerId -> Standard_Integer -> int),
+    // it's a genuine primitive typedef. NCollection typedefs have underlying types
+    // that are template specializations (Record/Elaborated/Unexposed), not primitives.
+    let spelling_looks_like_class = {
+        let s = trimmed_spelling
+            .trim_start_matches("const ")
+            .trim_start_matches("struct ")
+            .trim_start_matches("class ")
+            .trim_start_matches("typename ")
+            .trim();
+        let looks_like_class = s.starts_with(|c: char| c.is_ascii_uppercase())
+            && map_standard_type(s).is_none()
+            && s != "Standard_Boolean"
+            && !s.contains('<')
+            && !s.contains("::");
+
+        if !looks_like_class {
+            false
+        } else {
+            // Check if this is a typedef whose underlying type is a primitive.
+            // If so, it's a genuine typedef-to-primitive (like Poly_MeshPurpose = unsigned int),
+            // not an NCollection template misresolution.
+            // Note: clang wraps typedefs in Elaborated sugar, so check both Typedef and Elaborated kinds.
+            let is_primitive_typedef = matches!(kind, TypeKind::Typedef | TypeKind::Elaborated)
+                && clang_type.get_declaration()
+                    .filter(|d| d.get_kind() == clang::EntityKind::TypedefDecl)
+                    .and_then(|d| d.get_typedef_underlying_type())
+                    .map(|u| matches!(u.get_kind(),
+                        TypeKind::Bool | TypeKind::CharS | TypeKind::CharU |
+                        TypeKind::SChar | TypeKind::UChar |
+                        TypeKind::Short | TypeKind::UShort |
+                        TypeKind::Int | TypeKind::UInt |
+                        TypeKind::Long | TypeKind::ULong |
+                        TypeKind::LongLong | TypeKind::ULongLong |
+                        TypeKind::Float | TypeKind::Double | TypeKind::LongDouble |
+                        TypeKind::Typedef  // chain through another typedef (e.g., Standard_Integer)
+                    ))
+                    .unwrap_or(false);
+            !is_primitive_typedef
+        }
+    };
 
     // Handle primitives via canonical type
-    match canonical_clean {
-        "bool" => return Type::Bool,
-        "int" => return Type::I32,
-        "unsigned int" => return Type::U32,
-        "long" => return Type::I64,
-        "unsigned long" => return Type::U64,
-        "long long" => return Type::I64,
-        "unsigned long long" => return Type::U64,
-        "float" => return Type::F32,
-        "double" => return Type::F64,
-        _ => {}
+    // But skip this if the spelling clearly identifies a class type
+    if !spelling_looks_like_class {
+        match canonical_clean {
+            "bool" => return Type::Bool,
+            "int" => return Type::I32,
+            "unsigned int" => return Type::U32,
+            "long" => return Type::I64,
+            "unsigned long" => return Type::U64,
+            "long long" => return Type::I64,
+            "unsigned long long" => return Type::U64,
+            "float" => return Type::F32,
+            "double" => return Type::F64,
+            _ => {}
+        }
     }
 
     // Handle reference types

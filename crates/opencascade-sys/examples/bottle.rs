@@ -127,7 +127,7 @@ pub fn main() {
 
     while face_explorer.more() {
         let current = face_explorer.current();
-        let face = topo_ds::face(current);
+        let face = topo_ds::face_shape(current);
         let surface = b_rep::Tool::surface_face(face);
 
         // Try to downcast the surface handle to Geom_Plane

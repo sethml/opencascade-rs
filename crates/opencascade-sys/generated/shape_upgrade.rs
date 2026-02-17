@@ -513,6 +513,17 @@ impl ConvertSurfaceToBezierBasis {
         }
     }
 
+    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:51 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::Segments()`
+    /// Returns the grid of bezier based surfaces correspondent to
+    /// original surface.
+    pub fn segments(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendCompositeSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_segments(self as *const Self),
+            )
+        }
+    }
+
     /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:54 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::SetPlaneMode()`
     /// Sets mode for conversion Geom_Plane to Bezier
     pub fn set_plane_mode(&mut self, mode: bool) {
@@ -701,6 +712,15 @@ impl ConvertSurfaceToBezierBasis {
                 self as *const Self,
                 status.into(),
             )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:98 - `ShapeUpgrade_SplitSurface::ResSurfaces()`
+    pub fn res_surfaces(&self) -> &crate::ffi::HandleShapeExtendCompositeSurface {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_ResSurfaces(
+                self as *const Self,
+            ))
         }
     }
 }
@@ -2330,6 +2350,32 @@ impl ShapeConvertToBezier {
         }
     }
 
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:86 - `ShapeUpgrade_ShapeDivide::SetMsgRegistrator()`
+    pub fn set_msg_registrator(
+        &mut self,
+        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetMsgRegistrator(
+                self as *mut Self,
+                msgreg,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:90 - `ShapeUpgrade_ShapeDivide::MsgRegistrator()`
+    pub fn msg_registrator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_MsgRegistrator(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:94 - `ShapeUpgrade_ShapeDivide::SendMsg()`
     pub fn send_msg(
         &self,
@@ -2444,6 +2490,29 @@ impl ShapeDivide {
     pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ShapeDivide_result(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ShapeDivide.hxx`:86 - `ShapeUpgrade_ShapeDivide::SetMsgRegistrator()`
+    /// Sets message registrator
+    pub fn set_msg_registrator(
+        &mut self,
+        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivide_set_msg_registrator(self as *mut Self, msgreg)
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ShapeDivide.hxx`:90 - `ShapeUpgrade_ShapeDivide::MsgRegistrator()`
+    /// Returns message registrator
+    pub fn msg_registrator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ShapeDivide_msg_registrator(
                 self as *const Self,
             ))
         }
@@ -2623,6 +2692,32 @@ impl ShapeDivideAngle {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_Result(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:86 - `ShapeUpgrade_ShapeDivide::SetMsgRegistrator()`
+    pub fn set_msg_registrator(
+        &mut self,
+        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetMsgRegistrator(
+                self as *mut Self,
+                msgreg,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:90 - `ShapeUpgrade_ShapeDivide::MsgRegistrator()`
+    pub fn msg_registrator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_MsgRegistrator(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2809,6 +2904,32 @@ impl ShapeDivideArea {
         }
     }
 
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:86 - `ShapeUpgrade_ShapeDivide::SetMsgRegistrator()`
+    pub fn set_msg_registrator(
+        &mut self,
+        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetMsgRegistrator(
+                self as *mut Self,
+                msgreg,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:90 - `ShapeUpgrade_ShapeDivide::MsgRegistrator()`
+    pub fn msg_registrator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_MsgRegistrator(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:94 - `ShapeUpgrade_ShapeDivide::SendMsg()`
     pub fn send_msg(
         &self,
@@ -2959,6 +3080,32 @@ impl ShapeDivideClosed {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_Result(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:86 - `ShapeUpgrade_ShapeDivide::SetMsgRegistrator()`
+    pub fn set_msg_registrator(
+        &mut self,
+        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetMsgRegistrator(
+                self as *mut Self,
+                msgreg,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:90 - `ShapeUpgrade_ShapeDivide::MsgRegistrator()`
+    pub fn msg_registrator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_MsgRegistrator(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3114,6 +3261,32 @@ impl ShapeDivideClosedEdges {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Result(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:86 - `ShapeUpgrade_ShapeDivide::SetMsgRegistrator()`
+    pub fn set_msg_registrator(
+        &mut self,
+        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetMsgRegistrator(
+                self as *mut Self,
+                msgreg,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:90 - `ShapeUpgrade_ShapeDivide::MsgRegistrator()`
+    pub fn msg_registrator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_MsgRegistrator(
                     self as *const Self,
                 ),
             )
@@ -3330,6 +3503,32 @@ impl ShapeDivideContinuity {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_Result(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:86 - `ShapeUpgrade_ShapeDivide::SetMsgRegistrator()`
+    pub fn set_msg_registrator(
+        &mut self,
+        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetMsgRegistrator(
+                self as *mut Self,
+                msgreg,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:90 - `ShapeUpgrade_ShapeDivide::MsgRegistrator()`
+    pub fn msg_registrator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_MsgRegistrator(
                     self as *const Self,
                 ),
             )
@@ -3601,11 +3800,6 @@ impl SplitCurve2d {
         unsafe { crate::ffi::ShapeUpgrade_SplitCurve2d_build(self as *mut Self, Segment) }
     }
 
-    /// **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:52 - `ShapeUpgrade_SplitCurve2d::GetCurves()`
-    pub fn get_curves(&self) -> &crate::ffi::HandleTColGeom2dHArray1OfCurve {
-        unsafe { &*(crate::ffi::ShapeUpgrade_SplitCurve2d_get_curves(self as *const Self)) }
-    }
-
     /// **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:54 - `ShapeUpgrade_SplitCurve2d::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ShapeUpgrade_SplitCurve2d_dynamic_type(self as *const Self)) }
@@ -3735,11 +3929,6 @@ impl SplitCurve3d {
     /// Curves all based on the same complete curve.
     pub fn build(&mut self, Segment: bool) {
         unsafe { crate::ffi::ShapeUpgrade_SplitCurve3d_build(self as *mut Self, Segment) }
-    }
-
-    /// **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:52 - `ShapeUpgrade_SplitCurve3d::GetCurves()`
-    pub fn get_curves(&self) -> &crate::ffi::HandleTColGeomHArray1OfCurve {
-        unsafe { &*(crate::ffi::ShapeUpgrade_SplitCurve3d_get_curves(self as *const Self)) }
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:54 - `ShapeUpgrade_SplitCurve3d::DynamicType()`
@@ -3938,6 +4127,12 @@ impl SplitSurface {
     /// DONE3 - geometric form of the surface or parametrisation is modified
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         unsafe { crate::ffi::ShapeUpgrade_SplitSurface_status(self as *const Self, status.into()) }
+    }
+
+    /// **Source:** `ShapeUpgrade_SplitSurface.hxx`:98 - `ShapeUpgrade_SplitSurface::ResSurfaces()`
+    /// Returns obtained surfaces after splitting as CompositeSurface
+    pub fn res_surfaces(&self) -> &crate::ffi::HandleShapeExtendCompositeSurface {
+        unsafe { &*(crate::ffi::ShapeUpgrade_SplitSurface_res_surfaces(self as *const Self)) }
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurface.hxx`:100 - `ShapeUpgrade_SplitSurface::DynamicType()`
@@ -4142,6 +4337,15 @@ impl SplitSurfaceAngle {
             )
         }
     }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:98 - `ShapeUpgrade_SplitSurface::ResSurfaces()`
+    pub fn res_surfaces(&self) -> &crate::ffi::HandleShapeExtendCompositeSurface {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_ResSurfaces(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
 // ========================
@@ -4307,6 +4511,13 @@ impl SplitSurfaceArea {
             )
         }
     }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:98 - `ShapeUpgrade_SplitSurface::ResSurfaces()`
+    pub fn res_surfaces(&self) -> &crate::ffi::HandleShapeExtendCompositeSurface {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_ResSurfaces(self as *const Self))
+        }
+    }
 }
 
 // ========================
@@ -4469,6 +4680,15 @@ impl SplitSurfaceContinuity {
                 self as *const Self,
                 status.into(),
             )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:98 - `ShapeUpgrade_SplitSurface::ResSurfaces()`
+    pub fn res_surfaces(&self) -> &crate::ffi::HandleShapeExtendCompositeSurface {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_ResSurfaces(
+                self as *const Self,
+            ))
         }
     }
 }

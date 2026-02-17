@@ -7,7 +7,246 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From StepShape_LimitsAndFits.hxx
+// ========================
+
+/// **Source:** `StepShape_LimitsAndFits.hxx`:29 - `StepShape_LimitsAndFits`
+/// Added for Dimensional Tolerances
+pub use crate::ffi::StepShape_LimitsAndFits as LimitsAndFits;
+
+unsafe impl crate::CppDeletable for LimitsAndFits {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepShape_LimitsAndFits_destructor(ptr);
+    }
+}
+
+impl LimitsAndFits {
+    /// **Source:** `StepShape_LimitsAndFits.hxx`:33 - `StepShape_LimitsAndFits::StepShape_LimitsAndFits()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepShape_LimitsAndFits_ctor()) }
+    }
+
+    /// **Source:** `StepShape_LimitsAndFits.hxx`:35 - `StepShape_LimitsAndFits::Init()`
+    pub fn init(
+        &mut self,
+        form_variance: &crate::ffi::HandleTCollectionHAsciiString,
+        zone_variance: &crate::ffi::HandleTCollectionHAsciiString,
+        grade: &crate::ffi::HandleTCollectionHAsciiString,
+        source: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::StepShape_LimitsAndFits_init(
+                self as *mut Self,
+                form_variance,
+                zone_variance,
+                grade,
+                source,
+            )
+        }
+    }
+
+    /// **Source:** `StepShape_LimitsAndFits.hxx`:40 - `StepShape_LimitsAndFits::FormVariance()`
+    pub fn form_variance(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepShape_LimitsAndFits_form_variance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepShape_LimitsAndFits.hxx`:42 - `StepShape_LimitsAndFits::SetFormVariance()`
+    pub fn set_form_variance(&mut self, form_variance: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepShape_LimitsAndFits_set_form_variance(self as *mut Self, form_variance)
+        }
+    }
+
+    /// **Source:** `StepShape_LimitsAndFits.hxx`:44 - `StepShape_LimitsAndFits::ZoneVariance()`
+    pub fn zone_variance(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepShape_LimitsAndFits_zone_variance(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepShape_LimitsAndFits.hxx`:46 - `StepShape_LimitsAndFits::SetZoneVariance()`
+    pub fn set_zone_variance(&mut self, zone_variance: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepShape_LimitsAndFits_set_zone_variance(self as *mut Self, zone_variance)
+        }
+    }
+
+    /// **Source:** `StepShape_LimitsAndFits.hxx`:48 - `StepShape_LimitsAndFits::Grade()`
+    pub fn grade(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepShape_LimitsAndFits_grade(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepShape_LimitsAndFits.hxx`:50 - `StepShape_LimitsAndFits::SetGrade()`
+    pub fn set_grade(&mut self, grade: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::StepShape_LimitsAndFits_set_grade(self as *mut Self, grade) }
+    }
+
+    /// **Source:** `StepShape_LimitsAndFits.hxx`:52 - `StepShape_LimitsAndFits::Source()`
+    pub fn source(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepShape_LimitsAndFits_source(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepShape_LimitsAndFits.hxx`:54 - `StepShape_LimitsAndFits::SetSource()`
+    pub fn set_source(&mut self, source: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::StepShape_LimitsAndFits_set_source(self as *mut Self, source) }
+    }
+
+    /// **Source:** `StepShape_LimitsAndFits.hxx`:56 - `StepShape_LimitsAndFits::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepShape_LimitsAndFits_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepShape_LimitsAndFits.hxx`:56 - `StepShape_LimitsAndFits::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepShape_LimitsAndFits_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepShape_LimitsAndFits.hxx`:56 - `StepShape_LimitsAndFits::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepShape_LimitsAndFits_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepShapeLimitsAndFits> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepShape_LimitsAndFits_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepShapeLimitsAndFits;
+
+unsafe impl crate::CppDeletable for HandleStepShapeLimitsAndFits {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepShapeLimitsAndFits_destructor(ptr);
+    }
+}
+
+impl HandleStepShapeLimitsAndFits {
+    /// Dereference this Handle to access the underlying StepShape_LimitsAndFits
+    pub fn get(&self) -> &crate::ffi::StepShape_LimitsAndFits {
+        unsafe { &*(crate::ffi::HandleStepShapeLimitsAndFits_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepShape_LimitsAndFits
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepShape_LimitsAndFits {
+        unsafe { &mut *(crate::ffi::HandleStepShapeLimitsAndFits_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From StepShape_ShapeDefinitionRepresentation.hxx
+// ========================
+
+/// **Source:** `StepShape_ShapeDefinitionRepresentation.hxx`:29 - `StepShape_ShapeDefinitionRepresentation`
+/// Representation of STEP entity ShapeDefinitionRepresentation
+pub use crate::ffi::StepShape_ShapeDefinitionRepresentation as ShapeDefinitionRepresentation;
+
+unsafe impl crate::CppDeletable for ShapeDefinitionRepresentation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepShape_ShapeDefinitionRepresentation_destructor(ptr);
+    }
+}
+
+impl ShapeDefinitionRepresentation {
+    /// **Source:** `StepShape_ShapeDefinitionRepresentation.hxx`:34 - `StepShape_ShapeDefinitionRepresentation::StepShape_ShapeDefinitionRepresentation()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepShape_ShapeDefinitionRepresentation_ctor())
+        }
+    }
+
+    /// **Source:** `StepShape_ShapeDefinitionRepresentation.hxx`:36 - `StepShape_ShapeDefinitionRepresentation::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepShape_ShapeDefinitionRepresentation_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepShape_ShapeDefinitionRepresentation.hxx`:36 - `StepShape_ShapeDefinitionRepresentation::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepShape_ShapeDefinitionRepresentation_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepShape_ShapeDefinitionRepresentation.hxx`:36 - `StepShape_ShapeDefinitionRepresentation::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepShape_ShapeDefinitionRepresentation_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepRepr_PropertyDefinitionRepresentation
+    pub fn as_step_repr_property_definition_representation(
+        &self,
+    ) -> &crate::step_repr::PropertyDefinitionRepresentation {
+        unsafe {
+            &*(crate::ffi::StepShape_ShapeDefinitionRepresentation_as_StepRepr_PropertyDefinitionRepresentation(self as *const Self))
+        }
+    }
+
+    /// Upcast to StepRepr_PropertyDefinitionRepresentation (mutable)
+    pub fn as_step_repr_property_definition_representation_mut(
+        &mut self,
+    ) -> &mut crate::step_repr::PropertyDefinitionRepresentation {
+        unsafe {
+            &mut *(crate::ffi::StepShape_ShapeDefinitionRepresentation_as_StepRepr_PropertyDefinitionRepresentation_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_PropertyDefinitionRepresentation.hxx`:41 - `StepRepr_PropertyDefinitionRepresentation::Definition()`
+    pub fn definition(&self) -> crate::OwnedPtr<crate::ffi::StepRepr_RepresentedDefinition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepShape_ShapeDefinitionRepresentation_inherited_Definition(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_PropertyDefinitionRepresentation.hxx`:44 - `StepRepr_PropertyDefinitionRepresentation::SetDefinition()`
+    pub fn set_definition(&mut self, Definition: &crate::ffi::StepRepr_RepresentedDefinition) {
+        unsafe {
+            crate::ffi::StepShape_ShapeDefinitionRepresentation_inherited_SetDefinition(
+                self as *mut Self,
+                Definition,
+            )
+        }
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::StepShape_ShapeDefinitionRepresentation as ShapeDefinitionRepresentation;
+pub use crate::ffi::{
+    StepShape_DimensionalLocation as DimensionalLocation,
+    StepShape_DimensionalSize as DimensionalSize,
+};

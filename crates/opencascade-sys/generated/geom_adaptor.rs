@@ -6,6 +6,27 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `GeomAdaptor.hxx`:40 - `GeomAdaptor::MakeCurve`
+/// Inherited  from    GHCurve.   Provides a  curve
+/// handled by reference.
+/// Build a Geom_Curve using the information from the
+/// Curve from Adaptor3d
+pub fn make_curve_curve(
+    C: &crate::ffi::Adaptor3d_Curve,
+) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_make_curve_curve(C)) }
+}
+/// **Source:** `GeomAdaptor.hxx`:45 - `GeomAdaptor::MakeSurface`
+/// Build a Geom_Surface using the information from the Surface from Adaptor3d
+/// @param theS - Surface adaptor to convert.
+/// @param theTrimFlag - True if perform trim surface values by adaptor and false otherwise.
+pub fn make_surface(
+    theS: &crate::ffi::Adaptor3d_Surface,
+    theTrimFlag: bool,
+) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_make_surface(theS, theTrimFlag)) }
+}
+
 // ========================
 // From GeomAdaptor_Curve.hxx
 // ========================

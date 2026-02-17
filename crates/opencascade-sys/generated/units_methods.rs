@@ -6,6 +6,104 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `UnitsMethods.hxx`:31 - `UnitsMethods::GetLengthFactorValue`
+/// Returns value of unit encoded by parameter theUnit
+/// (integer value denoting unit, as described in IGES
+/// standard) in millimeters by default
+pub fn get_length_factor_value(theUnit: i32) -> f64 {
+    unsafe { crate::ffi::UnitsMethods_get_length_factor_value(theUnit) }
+}
+/// **Source:** `UnitsMethods.hxx`:35 - `UnitsMethods::GetCasCadeLengthUnit`
+/// Returns value of current internal unit for CASCADE
+/// in millemeters by default
+pub fn get_cas_cade_length_unit(theBaseUnit: crate::units_methods::LengthUnit) -> f64 {
+    unsafe { crate::ffi::UnitsMethods_get_cas_cade_length_unit(theBaseUnit.into()) }
+}
+/// **Source:** `UnitsMethods.hxx`:39 - `UnitsMethods::SetCasCadeLengthUnit`
+/// Sets value of current internal unit for CASCADE
+pub fn set_cas_cade_length_unit_real_lengthunit(
+    theUnitValue: f64,
+    theBaseUnit: crate::units_methods::LengthUnit,
+) {
+    unsafe {
+        crate::ffi::UnitsMethods_set_cas_cade_length_unit_real_lengthunit(
+            theUnitValue,
+            theBaseUnit.into(),
+        )
+    }
+}
+/// **Source:** `UnitsMethods.hxx`:46 - `UnitsMethods::SetCasCadeLengthUnit`
+/// Sets value of current internal unit for CASCADE
+/// by parameter theUnit (integer value denoting unit,
+/// as described in IGES standard)
+pub fn set_cas_cade_length_unit_int(theUnit: i32) {
+    unsafe { crate::ffi::UnitsMethods_set_cas_cade_length_unit_int(theUnit) }
+}
+/// **Source:** `UnitsMethods.hxx`:49 - `UnitsMethods::GetLengthUnitScale`
+/// Returns the scale factor for switch from first given unit to second given unit
+pub fn get_length_unit_scale(
+    theFromUnit: crate::units_methods::LengthUnit,
+    theToUnit: crate::units_methods::LengthUnit,
+) -> f64 {
+    unsafe { crate::ffi::UnitsMethods_get_length_unit_scale(theFromUnit.into(), theToUnit.into()) }
+}
+/// **Source:** `UnitsMethods.hxx`:53 - `UnitsMethods::GetLengthUnitByFactorValue`
+/// Returns the enumeration corresponding to the given scale factor
+pub fn get_length_unit_by_factor_value(
+    theFactorValue: f64,
+    theBaseUnit: crate::units_methods::LengthUnit,
+) -> crate::units_methods::LengthUnit {
+    unsafe {
+        crate::units_methods::LengthUnit::try_from(
+            crate::ffi::UnitsMethods_get_length_unit_by_factor_value(
+                theFactorValue,
+                theBaseUnit.into(),
+            ),
+        )
+        .unwrap()
+    }
+}
+/// **Source:** `UnitsMethods.hxx`:58 - `UnitsMethods::DumpLengthUnit`
+/// Returns string name for the given scale factor
+pub fn dump_length_unit_real_lengthunit(
+    theScaleFactor: f64,
+    theBaseUnit: crate::units_methods::LengthUnit,
+) -> String {
+    unsafe {
+        std::ffi::CStr::from_ptr(crate::ffi::UnitsMethods_dump_length_unit_real_lengthunit(
+            theScaleFactor,
+            theBaseUnit.into(),
+        ))
+        .to_string_lossy()
+        .into_owned()
+    }
+}
+/// **Source:** `UnitsMethods.hxx`:63 - `UnitsMethods::DumpLengthUnit`
+/// Returns string for the given value of LengthUnit
+pub fn dump_length_unit_lengthunit(theUnit: crate::units_methods::LengthUnit) -> String {
+    unsafe {
+        std::ffi::CStr::from_ptr(crate::ffi::UnitsMethods_dump_length_unit_lengthunit(
+            theUnit.into(),
+        ))
+        .to_string_lossy()
+        .into_owned()
+    }
+}
+/// **Source:** `UnitsMethods.hxx`:66 - `UnitsMethods::LengthUnitFromString`
+/// Make conversion of given string to value of LengthUnit
+pub fn length_unit_from_string(
+    theStr: &str,
+    theCaseSensitive: bool,
+) -> crate::units_methods::LengthUnit {
+    let c_theStr = std::ffi::CString::new(theStr).unwrap();
+    unsafe {
+        crate::units_methods::LengthUnit::try_from(
+            crate::ffi::UnitsMethods_length_unit_from_string(c_theStr.as_ptr(), theCaseSensitive),
+        )
+        .unwrap()
+    }
+}
+
 /// The Enumeration describes possible values for length units
 /// C++ enum: `UnitsMethods_LengthUnit`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]

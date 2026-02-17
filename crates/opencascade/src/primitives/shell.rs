@@ -30,7 +30,7 @@ impl Shell {
         make_loft.check_compatibility(true);
 
         let shape = make_loft.shape();
-        let shell = topo_ds::shell(shape);
+        let shell = topo_ds::shell_shape(shape);
 
         Self::from_shell(shell)
     }

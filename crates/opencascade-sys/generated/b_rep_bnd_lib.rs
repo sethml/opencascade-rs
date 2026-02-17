@@ -24,8 +24,12 @@
 /// -   This algorithm is time consuming if triangulation has not
 /// been inserted inside the data structure of the shape S.
 /// -   The resulting bounding box may be somewhat larger than the object.
-pub fn add(S: &crate::ffi::TopoDS_Shape, B: &mut crate::ffi::Bnd_Box, useTriangulation: bool) {
-    unsafe { crate::ffi::BRepBndLib_add(S, B, useTriangulation) }
+pub fn add_shape_box_bool(
+    S: &crate::ffi::TopoDS_Shape,
+    B: &mut crate::ffi::Bnd_Box,
+    useTriangulation: bool,
+) {
+    unsafe { crate::ffi::BRepBndLib_add_shape_box_bool(S, B, useTriangulation) }
 }
 /// **Source:** `BRepBndLib.hxx`:67 - `BRepBndLib::AddClose`
 /// Adds the shape S to the bounding box B.

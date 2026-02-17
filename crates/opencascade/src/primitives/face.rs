@@ -151,7 +151,7 @@ impl Face {
         make_fillet.build(&progress);
 
         let result_shape = make_fillet.shape();
-        let result_face = topo_ds::face(result_shape);
+        let result_face = topo_ds::face_shape(result_shape);
 
         Self::from_face(result_face)
     }
@@ -212,7 +212,7 @@ impl Face {
         make_fillet.build(&progress);
 
         let filleted_shape = make_fillet.shape();
-        let result_face = topo_ds::face(filleted_shape);
+        let result_face = topo_ds::face_shape(filleted_shape);
 
         Self::from_face(result_face)
     }
@@ -375,7 +375,7 @@ impl Face {
 
     #[must_use]
     pub fn outer_wire(&self) -> Wire {
-        let inner = b_rep_tools::outer_wire(&self.inner);
+        let inner = b_rep_tools::outer_wire_face(&self.inner);
 
         Wire { inner }
     }

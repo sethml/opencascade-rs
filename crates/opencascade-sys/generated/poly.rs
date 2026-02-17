@@ -1382,121 +1382,6 @@ impl Connect {
 }
 
 // ========================
-// From Poly_HArray1OfTriangle.hxx
-// ========================
-
-/// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle`
-pub use crate::ffi::Poly_HArray1OfTriangle as HArray1OfTriangle;
-
-unsafe impl crate::CppDeletable for HArray1OfTriangle {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Poly_HArray1OfTriangle_destructor(ptr);
-    }
-}
-
-impl HArray1OfTriangle {
-    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_HArray1OfTriangle_ctor()) }
-    }
-
-    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Poly_HArray1OfTriangle_ctor_int2(
-                theLower, theUpper,
-            ))
-        }
-    }
-
-    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
-    pub fn new_int2_triangle(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &crate::ffi::Poly_Triangle,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Poly_HArray1OfTriangle_ctor_int2_triangle(
-                theLower, theUpper, theValue,
-            ))
-        }
-    }
-
-    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
-    pub fn new_triangle_int2_bool(
-        theBegin: &crate::ffi::Poly_Triangle,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Poly_HArray1OfTriangle_ctor_triangle_int2_bool(
-                theBegin, theLower, theUpper, arg3,
-            ))
-        }
-    }
-
-    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
-    pub fn new_array1oftriangle(
-        theOther: &crate::ffi::Poly_Array1OfTriangle,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Poly_HArray1OfTriangle_ctor_array1oftriangle(
-                theOther,
-            ))
-        }
-    }
-
-    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Poly_HArray1OfTriangle_dynamic_type(self as *const Self)) }
-    }
-
-    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::get_type_name()`
-    pub fn get_type_name() -> String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Poly_HArray1OfTriangle_get_type_name())
-                .to_string_lossy()
-                .into_owned()
-        }
-    }
-
-    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Poly_HArray1OfTriangle_get_type_descriptor()) }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePolyHArray1OfTriangle> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Poly_HArray1OfTriangle_to_handle(obj.into_raw()))
-        }
-    }
-}
-
-pub use crate::ffi::HandlePolyHArray1OfTriangle;
-
-unsafe impl crate::CppDeletable for HandlePolyHArray1OfTriangle {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandlePolyHArray1OfTriangle_destructor(ptr);
-    }
-}
-
-impl HandlePolyHArray1OfTriangle {
-    /// Dereference this Handle to access the underlying Poly_HArray1OfTriangle
-    pub fn get(&self) -> &crate::ffi::Poly_HArray1OfTriangle {
-        unsafe { &*(crate::ffi::HandlePolyHArray1OfTriangle_get(self as *const Self)) }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Poly_HArray1OfTriangle
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Poly_HArray1OfTriangle {
-        unsafe { &mut *(crate::ffi::HandlePolyHArray1OfTriangle_get_mut(self as *mut Self)) }
-    }
-}
-
-// ========================
 // From Poly_MakeLoops.hxx
 // ========================
 
@@ -2902,42 +2787,6 @@ impl Triangulation {
         unsafe { crate::ffi::Poly_Triangulation_compute_normals(self as *mut Self) }
     }
 
-    /// **Source:** `Poly_Triangulation.hxx`:300 - `Poly_Triangulation::MapNodeArray()`
-    /// Returns the table of 3D points for read-only access or NULL if nodes array is undefined.
-    /// Poly_Triangulation::Node() should be used instead when possible.
-    /// Returned object should not be used after Poly_Triangulation destruction.
-    pub fn map_node_array(&self) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfPnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Poly_Triangulation_map_node_array(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// **Source:** `Poly_Triangulation.hxx`:305 - `Poly_Triangulation::MapTriangleArray()`
-    /// Returns the triangle array for read-only access or NULL if triangle array is undefined.
-    /// Poly_Triangulation::Triangle() should be used instead when possible.
-    /// Returned object should not be used after Poly_Triangulation destruction.
-    pub fn map_triangle_array(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyHArray1OfTriangle> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Poly_Triangulation_map_triangle_array(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// **Source:** `Poly_Triangulation.hxx`:310 - `Poly_Triangulation::MapUVNodeArray()`
-    /// Returns the table of 2D nodes for read-only access or NULL if UV nodes array is undefined.
-    /// Poly_Triangulation::UVNode() should be used instead when possible.
-    /// Returned object should not be used after Poly_Triangulation destruction.
-    pub fn map_uv_node_array(&self) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfPnt2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Poly_Triangulation_map_uv_node_array(
-                self as *const Self,
-            ))
-        }
-    }
-
     /// **Source:** `Poly_Triangulation.hxx`:315 - `Poly_Triangulation::MapNormalArray()`
     /// Returns the table of per-vertex normals for read-only access or NULL if normals array is
     /// undefined. Poly_Triangulation::Normal() should be used instead when possible. Returned object
@@ -2985,6 +2834,30 @@ impl Triangulation {
     /// Returns TRUE if there is some triangulation data that can be loaded using LoadDeferredData().
     pub fn has_deferred_data(&self) -> bool {
         unsafe { crate::ffi::Poly_Triangulation_has_deferred_data(self as *const Self) }
+    }
+
+    /// **Source:** `Poly_Triangulation.hxx`:368 - `Poly_Triangulation::LoadDeferredData()`
+    /// Loads triangulation data into itself
+    /// from some deferred storage using specified shared input file system.
+    pub fn load_deferred_data(&mut self, theFileSystem: &crate::ffi::HandleOSDFileSystem) -> bool {
+        unsafe {
+            crate::ffi::Poly_Triangulation_load_deferred_data(self as *mut Self, theFileSystem)
+        }
+    }
+
+    /// **Source:** `Poly_Triangulation.hxx`:373 - `Poly_Triangulation::DetachedLoadDeferredData()`
+    /// Loads triangulation data into new Poly_Triangulation object
+    /// from some deferred storage using specified shared input file system.
+    pub fn detached_load_deferred_data(
+        &self,
+        theFileSystem: &crate::ffi::HandleOSDFileSystem,
+    ) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_Triangulation_detached_load_deferred_data(
+                self as *const Self,
+                theFileSystem,
+            ))
+        }
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:377 - `Poly_Triangulation::UnloadDeferredData()`
@@ -3190,5 +3063,6 @@ impl HandlePolyTriangulationParameters {
 // ========================
 
 pub use crate::ffi::{
-    Poly_Array1OfTriangle as Array1OfTriangle, Poly_ListOfTriangulation as ListOfTriangulation,
+    Poly_Array1OfTriangle as Array1OfTriangle, Poly_HArray1OfTriangle as HArray1OfTriangle,
+    Poly_ListOfTriangulation as ListOfTriangulation,
 };

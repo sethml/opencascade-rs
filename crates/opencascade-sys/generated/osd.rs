@@ -6,6 +6,3030 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `OSD.hxx`:83 - `OSD::SetSignal`
+/// Sets or removes signal and FPE (floating-point exception) handlers.
+/// OCCT signal handlers translate signals raised by C subsystem to C++
+/// exceptions inheriting Standard_Failure.
+///
+/// ### Windows-specific notes
+///
+/// Compiled with MS VC++ sets 3 main handlers:
+/// @li Signal handlers (via ::signal() functions) that translate system signals
+/// (SIGSEGV, SIGFPE, SIGILL) into C++ exceptions (classes inheriting
+/// Standard_Failure). They only be called if function ::raise() is called
+/// with one of supported signal type set.
+/// @li Exception handler OSD::WntHandler() (via ::SetUnhandledExceptionFilter())
+/// that will be used when user's code is compiled with /EHs option.
+/// @li Structured exception (SE) translator (via _set_se_translator()) that
+/// translates SE exceptions (aka asynchronous exceptions) into the
+/// C++ exceptions inheriting Standard_Failure. This translator will be
+/// used when user's code is compiled with /EHa option.
+///
+/// This approach ensures that regardless of the option the user chooses to
+/// compile his code with (/EHs or /EHa), signals (or SE exceptions) will be
+/// translated into Open CASCADE C++ exceptions.
+///
+/// MinGW should use SEH exception mode for signal handling to work.
+///
+/// ### Linux-specific notes
+///
+/// OSD::SetSignal() sets handlers (via ::sigaction()) for multiple signals
+/// (SIGFPE, SIGSEGV, etc).
+///
+/// ### Common notes
+///
+/// If @a theFloatingSignal is TRUE then floating point exceptions will
+/// generate SIGFPE in accordance with the mask
+/// - Windows: _EM_INVALID | _EM_DENORMAL | _EM_ZERODIVIDE | _EM_OVERFLOW,
+/// see _controlfp() system function.
+/// - Linux:   FE_INVALID | FE_DIVBYZERO | FE_OVERFLOW,
+/// see feenableexcept() system function.
+///
+/// If @a theFloatingSignal is FALSE then floating point calculations will gracefully
+/// complete regardless of occurred exceptions (e.g. division by zero).
+/// Otherwise the (thread-specific) FPE flags are set to raise signal if one of
+/// floating-point exceptions (division by zero, overflow, or invalid operation) occurs.
+///
+/// The recommended approach is to call OSD::SetSignal() in the beginning of the
+/// execution of the program, in function main() or its equivalent.
+/// In multithreaded programs it is advisable to call OSD::SetSignal() or
+/// OSD::SetThreadLocalSignal() with the same parameters in other threads where
+/// OCCT is used, to ensure consistency of behavior.
+///
+/// Note that in order to handle signals as C++ exceptions on Linux and under
+/// MinGW on Windows it is necessary to compile both OCCT and application with
+/// OCC_CONVERT_SIGNALS macro, and use macro OCC_CATCH_SIGNALS within each try{}
+/// block that has to catch this kind of exceptions.
+///
+/// Refer to documentation of Standard_ErrorHandler.hxx for details.
+pub fn set_signal_signalmode_bool(theSignalMode: crate::osd::SignalMode, theFloatingSignal: bool) {
+    unsafe { crate::ffi::OSD_set_signal_signalmode_bool(theSignalMode.into(), theFloatingSignal) }
+}
+/// **Source:** `OSD.hxx`:88 - `OSD::SetSignal`
+/// Sets signal and FPE handlers.
+/// Short-cut for OSD::SetSignal (OSD_SignalMode_Set, theFloatingSignal).
+pub fn set_signal_bool(theFloatingSignal: bool) {
+    unsafe { crate::ffi::OSD_set_signal_bool(theFloatingSignal) }
+}
+/// **Source:** `OSD.hxx`:97 - `OSD::SetThreadLocalSignal`
+/// Initializes thread-local signal handlers.
+/// This includes _set_se_translator() on Windows platform, and SetFloatingSignal().
+/// The main purpose of this method is initializing handlers for newly created threads
+/// without overriding global handlers (set by application or by OSD::SetSignal()).
+pub fn set_thread_local_signal(theSignalMode: crate::osd::SignalMode, theFloatingSignal: bool) {
+    unsafe { crate::ffi::OSD_set_thread_local_signal(theSignalMode.into(), theFloatingSignal) }
+}
+/// **Source:** `OSD.hxx`:104 - `OSD::SetFloatingSignal`
+/// Enables / disables generation of C signal on floating point exceptions (FPE).
+/// This call does NOT register a handler for signal raised in case of FPE -
+/// SetSignal() should be called beforehand for complete setup.
+/// Note that FPE setting is thread-local, new threads inherit it from parent.
+pub fn set_floating_signal(theFloatingSignal: bool) {
+    unsafe { crate::ffi::OSD_set_floating_signal(theFloatingSignal) }
+}
+/// **Source:** `OSD.hxx`:108 - `OSD::SignalMode`
+/// Returns signal mode set by the last call to SetSignal().
+/// By default, returns OSD_SignalMode_AsIs.
+pub fn signal_mode() -> crate::osd::SignalMode {
+    unsafe { crate::osd::SignalMode::try_from(crate::ffi::OSD_signal_mode()).unwrap() }
+}
+/// **Source:** `OSD.hxx`:112 - `OSD::ToCatchFloatingSignals`
+/// Returns true if floating point exceptions will raise C signal
+/// according to current (platform-dependent) settings in this thread.
+pub fn to_catch_floating_signals() -> bool {
+    unsafe { crate::ffi::OSD_to_catch_floating_signals() }
+}
+/// **Source:** `OSD.hxx`:115 - `OSD::SecSleep`
+/// Commands the process to sleep for a number of seconds.
+pub fn sec_sleep(theSeconds: i32) {
+    unsafe { crate::ffi::OSD_sec_sleep(theSeconds) }
+}
+/// **Source:** `OSD.hxx`:118 - `OSD::MilliSecSleep`
+/// Commands the process to sleep for a number of milliseconds
+pub fn milli_sec_sleep(theMilliseconds: i32) {
+    unsafe { crate::ffi::OSD_milli_sec_sleep(theMilliseconds) }
+}
+/// **Source:** `OSD.hxx`:130 - `OSD::CStringToReal`
+/// Converts aCstring representing a real with a period as decimal point,
+/// no thousand separator and no grouping of digits into aReal.
+///
+/// The conversion is independent from the current locale.
+pub fn c_string_to_real(aString: &str, aReal: &mut f64) -> bool {
+    let c_aString = std::ffi::CString::new(aString).unwrap();
+    unsafe { crate::ffi::OSD_c_string_to_real(c_aString.as_ptr(), aReal) }
+}
+/// **Source:** `OSD.hxx`:136 - `OSD::ControlBreak`
+/// since Windows NT does not support 'SIGINT' signal like UNIX,
+/// then this method checks whether Ctrl-Break keystroke was or
+/// not. If yes then raises Exception_CTRL_BREAK.
+pub fn control_break() {
+    unsafe { crate::ffi::OSD_control_break() }
+}
+/// **Source:** `OSD.hxx`:141 - `OSD::SignalStackTraceLength`
+/// Returns a length of stack trace to be put into exception redirected from signal;
+/// 0 by default meaning no stack trace.
+/// @sa Standard_Failure::GetStackString()
+pub fn signal_stack_trace_length() -> i32 {
+    unsafe { crate::ffi::OSD_signal_stack_trace_length() }
+}
+/// **Source:** `OSD.hxx`:144 - `OSD::SetSignalStackTraceLength`
+/// Sets a length of stack trace to be put into exception redirected from signal.
+pub fn set_signal_stack_trace_length(theLength: i32) {
+    unsafe { crate::ffi::OSD_set_signal_stack_trace_length(theLength) }
+}
+
+/// Used by OSD_File in the method Seek.
+/// C++ enum: `OSD_FromWhere`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum FromWhere {
+    Frombeginning = 0,
+    Fromhere = 1,
+    Fromend = 2,
+}
+
+impl From<FromWhere> for i32 {
+    fn from(value: FromWhere) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for FromWhere {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(FromWhere::Frombeginning),
+            1 => Ok(FromWhere::Fromhere),
+            2 => Ok(FromWhere::Fromend),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Specifies the type of files.
+/// C++ enum: `OSD_KindFile`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum KindFile {
+    File = 0,
+    Directory = 1,
+    Link = 2,
+    Socket = 3,
+    Unknown = 4,
+}
+
+impl From<KindFile> for i32 {
+    fn from(value: KindFile) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for KindFile {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(KindFile::File),
+            1 => Ok(KindFile::Directory),
+            2 => Ok(KindFile::Link),
+            3 => Ok(KindFile::Socket),
+            4 => Ok(KindFile::Unknown),
+            _ => Err(value),
+        }
+    }
+}
+
+/// This enumeration is used to load shareable libraries.
+/// C++ enum: `OSD_LoadMode`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum LoadMode {
+    RtldLazy = 0,
+    RtldNow = 1,
+}
+
+impl From<LoadMode> for i32 {
+    fn from(value: LoadMode) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for LoadMode {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(LoadMode::RtldLazy),
+            1 => Ok(LoadMode::RtldNow),
+            _ => Err(value),
+        }
+    }
+}
+
+/// locks for files.
+/// NoLock is the default value when opening a file.
+///
+/// ReadLock allows only one reading of the file at a time.
+///
+/// WriteLock prevents others writing into a file(excepted the user
+/// who puts the lock)but allows everybody to read.
+///
+/// ExclusiveLock prevents reading and writing except for the
+/// current user of the file.
+/// So ExclusiveLock means only one user on the file and this
+/// user is the one who puts the lock.
+/// C++ enum: `OSD_LockType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum LockType {
+    Nolock = 0,
+    Readlock = 1,
+    Writelock = 2,
+    Exclusivelock = 3,
+}
+
+impl From<LockType> for i32 {
+    fn from(value: LockType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for LockType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(LockType::Nolock),
+            1 => Ok(LockType::Readlock),
+            2 => Ok(LockType::Writelock),
+            3 => Ok(LockType::Exclusivelock),
+            _ => Err(value),
+        }
+    }
+}
+
+/// This is set of possible machine types
+/// used in OSD_Host::MachineType
+/// C++ enum: `OSD_OEMType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum OEMType {
+    Unavailable = 0,
+    Sun = 1,
+    Dec = 2,
+    Sgi = 3,
+    Nec = 4,
+    Mac = 5,
+    Pc = 6,
+    Hp = 7,
+    Ibm = 8,
+    Vax = 9,
+    Lin = 10,
+    Aix = 11,
+}
+
+impl From<OEMType> for i32 {
+    fn from(value: OEMType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for OEMType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(OEMType::Unavailable),
+            1 => Ok(OEMType::Sun),
+            2 => Ok(OEMType::Dec),
+            3 => Ok(OEMType::Sgi),
+            4 => Ok(OEMType::Nec),
+            5 => Ok(OEMType::Mac),
+            6 => Ok(OEMType::Pc),
+            7 => Ok(OEMType::Hp),
+            8 => Ok(OEMType::Ibm),
+            9 => Ok(OEMType::Vax),
+            10 => Ok(OEMType::Lin),
+            11 => Ok(OEMType::Aix),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Specifies the file open mode.
+/// C++ enum: `OSD_OpenMode`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum OpenMode {
+    Readonly = 0,
+    Writeonly = 1,
+    Readwrite = 2,
+}
+
+impl From<OpenMode> for i32 {
+    fn from(value: OpenMode) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for OpenMode {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(OpenMode::Readonly),
+            1 => Ok(OpenMode::Writeonly),
+            2 => Ok(OpenMode::Readwrite),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Mode of operation for OSD::SetSignal() function
+/// C++ enum: `OSD_SignalMode`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum SignalMode {
+    /// < Do not set or remove signal handlers
+    SignalmodeAsis = 0,
+    /// < Set OCCT signal handlers
+    SignalmodeSet = 1,
+    /// < Set OCCT signal handler but only if no handler is set, for each
+    /// < particular signal type
+    SignalmodeSetunhandled = 2,
+    /// < Unset signal handler to system default
+    SignalmodeUnset = 3,
+}
+
+impl From<SignalMode> for i32 {
+    fn from(value: SignalMode) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for SignalMode {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(SignalMode::SignalmodeAsis),
+            1 => Ok(SignalMode::SignalmodeSet),
+            2 => Ok(SignalMode::SignalmodeSetunhandled),
+            3 => Ok(SignalMode::SignalmodeUnset),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Access rights for files.
+/// R means Read, W means Write, X means eXecute and D means Delete.
+/// On UNIX, the right to Delete is combined with Write access.
+/// So if "W"rite is not set and "D"elete is, "W"rite will be set
+/// and if "W" is set, "D" will be too.
+/// C++ enum: `OSD_SingleProtection`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum SingleProtection {
+    None = 0,
+    R = 1,
+    W = 2,
+    Rw = 3,
+    X = 4,
+    Rx = 5,
+    Wx = 6,
+    Rwx = 7,
+    D = 8,
+    Rd = 9,
+    Wd = 10,
+    Rwd = 11,
+    Xd = 12,
+    Rxd = 13,
+    Wxd = 14,
+    Rwxd = 15,
+}
+
+impl From<SingleProtection> for i32 {
+    fn from(value: SingleProtection) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for SingleProtection {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(SingleProtection::None),
+            1 => Ok(SingleProtection::R),
+            2 => Ok(SingleProtection::W),
+            3 => Ok(SingleProtection::Rw),
+            4 => Ok(SingleProtection::X),
+            5 => Ok(SingleProtection::Rx),
+            6 => Ok(SingleProtection::Wx),
+            7 => Ok(SingleProtection::Rwx),
+            8 => Ok(SingleProtection::D),
+            9 => Ok(SingleProtection::Rd),
+            10 => Ok(SingleProtection::Wd),
+            11 => Ok(SingleProtection::Rwd),
+            12 => Ok(SingleProtection::Xd),
+            13 => Ok(SingleProtection::Rxd),
+            14 => Ok(SingleProtection::Wxd),
+            15 => Ok(SingleProtection::Rwxd),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Thisd is a set of possible system types.
+/// 'Default' means SysType of machine operating this process.
+/// This can be used with the Path class.
+/// All UNIX-like are grouped under "UnixBSD" or "UnixSystemV".
+/// Such systems are Solaris, NexTOS ...
+/// A category of systems accept MSDOS-like path such as
+/// WindowsNT and OS2.
+/// C++ enum: `OSD_SysType`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum SysType {
+    Unknown = 0,
+    Default = 1,
+    Unixbsd = 2,
+    Unixsystemv = 3,
+    Vms = 4,
+    Os2 = 5,
+    Osf = 6,
+    Macos = 7,
+    Taligent = 8,
+    Windowsnt = 9,
+    Linuxredhat = 10,
+    Aix = 11,
+}
+
+impl From<SysType> for i32 {
+    fn from(value: SysType) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for SysType {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(SysType::Unknown),
+            1 => Ok(SysType::Default),
+            2 => Ok(SysType::Unixbsd),
+            3 => Ok(SysType::Unixsystemv),
+            4 => Ok(SysType::Vms),
+            5 => Ok(SysType::Os2),
+            6 => Ok(SysType::Osf),
+            7 => Ok(SysType::Macos),
+            8 => Ok(SysType::Taligent),
+            9 => Ok(SysType::Windowsnt),
+            10 => Ok(SysType::Linuxredhat),
+            11 => Ok(SysType::Aix),
+            _ => Err(value),
+        }
+    }
+}
+
+/// Allows great accuracy for error management.
+/// This is private.
+/// C++ enum: `OSD_WhoAmI`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum WhoAmI {
+    Wdirectory = 0,
+    Wdirectoryiterator = 1,
+    Wenvironment = 2,
+    Wfile = 3,
+    Wfilenode = 4,
+    Wfileiterator = 5,
+    Wpath = 6,
+    Wprocess = 7,
+    Wprotection = 8,
+    Whost = 9,
+    Wdisk = 10,
+    Wchronometer = 11,
+    Wtimer = 12,
+    Wpackage = 13,
+    Wenvironmentiterator = 14,
+}
+
+impl From<WhoAmI> for i32 {
+    fn from(value: WhoAmI) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for WhoAmI {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(WhoAmI::Wdirectory),
+            1 => Ok(WhoAmI::Wdirectoryiterator),
+            2 => Ok(WhoAmI::Wenvironment),
+            3 => Ok(WhoAmI::Wfile),
+            4 => Ok(WhoAmI::Wfilenode),
+            5 => Ok(WhoAmI::Wfileiterator),
+            6 => Ok(WhoAmI::Wpath),
+            7 => Ok(WhoAmI::Wprocess),
+            8 => Ok(WhoAmI::Wprotection),
+            9 => Ok(WhoAmI::Whost),
+            10 => Ok(WhoAmI::Wdisk),
+            11 => Ok(WhoAmI::Wchronometer),
+            12 => Ok(WhoAmI::Wtimer),
+            13 => Ok(WhoAmI::Wpackage),
+            14 => Ok(WhoAmI::Wenvironmentiterator),
+            _ => Err(value),
+        }
+    }
+}
+
+// ========================
+// From OSD_CachedFileSystem.hxx
+// ========================
+
+/// **Source:** `OSD_CachedFileSystem.hxx`:25 - `OSD_CachedFileSystem`
+/// File system keeping last stream created by linked file system
+/// (OSD_FileSystem::DefaultFileSystem() by default) to be reused for opening a stream with the same
+/// URL. Note that as file is kept in opened state, application will need destroying this object to
+/// ensure all files being closed. This interface could be handy in context of reading numerous
+/// objects pointing to the same file (at different offset). Make sure to create a dedicated
+/// OSD_CachedFileSystem for each working thread to avoid data races.
+pub use crate::ffi::OSD_CachedFileSystem as CachedFileSystem;
+
+unsafe impl crate::CppDeletable for CachedFileSystem {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_CachedFileSystem_destructor(ptr);
+    }
+}
+
+impl CachedFileSystem {
+    /// **Source:** `OSD_CachedFileSystem.hxx`:30 - `OSD_CachedFileSystem::OSD_CachedFileSystem()`
+    /// Constructor.
+    pub fn new_handleosdfilesystem(
+        theLinkedFileSystem: &crate::ffi::HandleOSDFileSystem,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_CachedFileSystem_ctor_handleosdfilesystem(
+                theLinkedFileSystem,
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_CachedFileSystem.hxx`:27 - `OSD_CachedFileSystem::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_CachedFileSystem_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_CachedFileSystem.hxx`:34 - `OSD_CachedFileSystem::LinkedFileSystem()`
+    /// Return linked file system; initialized with OSD_FileSystem::DefaultFileSystem() by default.
+    pub fn linked_file_system(&self) -> &crate::ffi::HandleOSDFileSystem {
+        unsafe { &*(crate::ffi::OSD_CachedFileSystem_linked_file_system(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_CachedFileSystem.hxx`:37 - `OSD_CachedFileSystem::SetLinkedFileSystem()`
+    /// Sets linked file system.
+    pub fn set_linked_file_system(
+        &mut self,
+        theLinkedFileSystem: &crate::ffi::HandleOSDFileSystem,
+    ) {
+        unsafe {
+            crate::ffi::OSD_CachedFileSystem_set_linked_file_system(
+                self as *mut Self,
+                theLinkedFileSystem,
+            )
+        }
+    }
+
+    /// **Source:** `OSD_CachedFileSystem.hxx`:43 - `OSD_CachedFileSystem::IsSupportedPath()`
+    /// Returns TRUE if URL defines a supported protocol.
+    pub fn is_supported_path(&self, theUrl: &crate::ffi::TCollection_AsciiString) -> bool {
+        unsafe { crate::ffi::OSD_CachedFileSystem_is_supported_path(self as *const Self, theUrl) }
+    }
+
+    /// **Source:** `OSD_CachedFileSystem.hxx`:27 - `OSD_CachedFileSystem::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_CachedFileSystem_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_CachedFileSystem.hxx`:27 - `OSD_CachedFileSystem::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_CachedFileSystem_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_FileSystem
+    pub fn as_file_system(&self) -> &FileSystem {
+        unsafe { &*(crate::ffi::OSD_CachedFileSystem_as_OSD_FileSystem(self as *const Self)) }
+    }
+
+    /// Upcast to OSD_FileSystem (mutable)
+    pub fn as_file_system_mut(&mut self) -> &mut FileSystem {
+        unsafe { &mut *(crate::ffi::OSD_CachedFileSystem_as_OSD_FileSystem_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From OSD_Chronometer.hxx
+// ========================
+
+/// **Source:** `OSD_Chronometer.hxx`:34 - `OSD_Chronometer`
+/// This class measures CPU time (both user and system) consumed
+/// by current process or thread. The chronometer can be started
+/// and stopped multiple times, and measures cumulative time.
+///
+/// If only the thread is measured, calls to Stop() and Show()
+/// must occur from the same thread where Start() was called
+/// (unless chronometer is stopped); otherwise measurement will
+/// yield false values.
+pub use crate::ffi::OSD_Chronometer as Chronometer;
+
+unsafe impl crate::CppDeletable for Chronometer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Chronometer_destructor(ptr);
+    }
+}
+
+impl Chronometer {
+    /// **Source:** `OSD_Chronometer.hxx`:44 - `OSD_Chronometer::OSD_Chronometer()`
+    /// Initializes a stopped Chronometer.
+    ///
+    /// If ThisThreadOnly is True, measured CPU time will account
+    /// time of the current thread only; otherwise CPU of the
+    /// process (all threads, and completed children) is measured.
+    pub fn new_bool(theThisThreadOnly: bool) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Chronometer_ctor_bool(theThisThreadOnly))
+        }
+    }
+
+    /// **Source:** `OSD_Chronometer.hxx`:44 - `OSD_Chronometer::OSD_Chronometer()`
+    /// Initializes a stopped Chronometer.
+    ///
+    /// If ThisThreadOnly is True, measured CPU time will account
+    /// time of the current thread only; otherwise CPU of the
+    /// process (all threads, and completed children) is measured.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        Self::new_bool(false)
+    }
+
+    /// **Source:** `OSD_Chronometer.hxx`:50 - `OSD_Chronometer::IsStarted()`
+    /// Return true if timer has been started.
+    pub fn is_started(&self) -> bool {
+        unsafe { crate::ffi::OSD_Chronometer_is_started(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_Chronometer.hxx`:53 - `OSD_Chronometer::Reset()`
+    /// Stops and Reinitializes the Chronometer.
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::OSD_Chronometer_reset(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Chronometer.hxx`:56 - `OSD_Chronometer::Restart()`
+    /// Restarts the Chronometer.
+    pub fn restart(&mut self) {
+        unsafe { crate::ffi::OSD_Chronometer_restart(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Chronometer.hxx`:59 - `OSD_Chronometer::Stop()`
+    /// Stops the Chronometer.
+    pub fn stop(&mut self) {
+        unsafe { crate::ffi::OSD_Chronometer_stop(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Chronometer.hxx`:63 - `OSD_Chronometer::Start()`
+    /// Starts (after Create or Reset) or restarts (after Stop)
+    /// the chronometer.
+    pub fn start(&mut self) {
+        unsafe { crate::ffi::OSD_Chronometer_start(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Chronometer.hxx`:68 - `OSD_Chronometer::Show()`
+    /// Shows the current CPU user and system time on the
+    /// standard output stream <cout>.
+    /// The chronometer can be running (laps Time) or stopped.
+    pub fn show(&self) {
+        unsafe { crate::ffi::OSD_Chronometer_show(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_Chronometer.hxx`:77 - `OSD_Chronometer::UserTimeCPU()`
+    /// Returns the current CPU user time in seconds.
+    /// The chronometer can be running (laps Time) or stopped.
+    pub fn user_time_cpu(&self) -> f64 {
+        unsafe { crate::ffi::OSD_Chronometer_user_time_cpu(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_Chronometer.hxx`:86 - `OSD_Chronometer::SystemTimeCPU()`
+    /// Returns the current CPU system time in seconds.
+    /// The chronometer can be running (laps Time) or stopped.
+    pub fn system_time_cpu(&self) -> f64 {
+        unsafe { crate::ffi::OSD_Chronometer_system_time_cpu(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_Chronometer.hxx`:95 - `OSD_Chronometer::IsThisThreadOnly()`
+    /// Return TRUE if current thread CPU time should be measured,
+    /// and FALSE to measure all threads CPU time; FALSE by default,
+    pub fn is_this_thread_only(&self) -> bool {
+        unsafe { crate::ffi::OSD_Chronometer_is_this_thread_only(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_Chronometer.hxx`:99 - `OSD_Chronometer::SetThisThreadOnly()`
+    /// Set if current thread (TRUE) or all threads (FALSE) CPU time should be measured.
+    /// Will raise exception if Timer is in started state.
+    pub fn set_this_thread_only(&mut self, theIsThreadOnly: bool) {
+        unsafe {
+            crate::ffi::OSD_Chronometer_set_this_thread_only(self as *mut Self, theIsThreadOnly)
+        }
+    }
+
+    /// **Source:** `OSD_Chronometer.hxx`:103 - `OSD_Chronometer::Show()`
+    /// Returns the current CPU user time in a variable.
+    /// The chronometer can be running (laps Time) or stopped.
+    pub fn show_real(&self, theUserSeconds: &mut f64) {
+        unsafe { crate::ffi::OSD_Chronometer_show_real(self as *const Self, theUserSeconds) }
+    }
+
+    /// **Source:** `OSD_Chronometer.hxx`:107 - `OSD_Chronometer::Show()`
+    /// Returns the current CPU user and system time in variables.
+    /// The chronometer can be running (laps Time) or stopped.
+    pub fn show_real2(&self, theUserSec: &mut f64, theSystemSec: &mut f64) {
+        unsafe {
+            crate::ffi::OSD_Chronometer_show_real2(self as *const Self, theUserSec, theSystemSec)
+        }
+    }
+
+    /// **Source:** `OSD_Chronometer.hxx`:114 - `OSD_Chronometer::GetProcessCPU()`
+    /// Returns CPU time (user and system) consumed by the current
+    /// process since its start, in seconds. The actual precision of
+    /// the measurement depends on granularity provided by the system,
+    /// and is platform-specific.
+    pub fn get_process_cpu(UserSeconds: &mut f64, SystemSeconds: &mut f64) {
+        unsafe { crate::ffi::OSD_Chronometer_get_process_cpu(UserSeconds, SystemSeconds) }
+    }
+
+    /// **Source:** `OSD_Chronometer.hxx`:121 - `OSD_Chronometer::GetThreadCPU()`
+    /// Returns CPU time (user and system) consumed by the current
+    /// thread since its start. Note that this measurement is
+    /// platform-specific, as threads are implemented and managed
+    /// differently on different platforms and CPUs.
+    pub fn get_thread_cpu(UserSeconds: &mut f64, SystemSeconds: &mut f64) {
+        unsafe { crate::ffi::OSD_Chronometer_get_thread_cpu(UserSeconds, SystemSeconds) }
+    }
+}
+
+// ========================
+// From OSD_Directory.hxx
+// ========================
+
+/// **Source:** `OSD_Directory.hxx`:23 - `OSD_Directory`
+/// Management of directories (a set of directory oriented tools)
+pub use crate::ffi::OSD_Directory as Directory;
+
+unsafe impl crate::CppDeletable for Directory {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Directory_destructor(ptr);
+    }
+}
+
+impl Directory {
+    /// **Source:** `OSD_Directory.hxx`:33 - `OSD_Directory::OSD_Directory()`
+    /// Creates Directory object.
+    /// It is initialized to an empty name.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Directory_ctor()) }
+    }
+
+    /// **Source:** `OSD_Directory.hxx`:36 - `OSD_Directory::OSD_Directory()`
+    /// Creates Directory object initialized with theName.
+    pub fn new_path(theName: &crate::ffi::OSD_Path) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Directory_ctor_path(theName)) }
+    }
+
+    /// **Source:** `OSD_Directory.hxx`:44 - `OSD_Directory::Build()`
+    /// Creates (physically) a directory.
+    /// When a directory of the same name already exists, no error is
+    /// returned, and only <Protect> is applied to the existing directory.
+    ///
+    /// If Build is used and <me> is instantiated without a name,
+    /// OSDError is raised.
+    pub fn build(&mut self, Protect: &crate::ffi::OSD_Protection) {
+        unsafe { crate::ffi::OSD_Directory_build(self as *mut Self, Protect) }
+    }
+
+    /// **Source:** `OSD_Directory.hxx`:28 - `OSD_Directory::BuildTemporary()`
+    /// Creates a temporary Directory in current directory.
+    /// This directory is automatically removed when object dies.
+    pub fn build_temporary() -> crate::OwnedPtr<crate::ffi::OSD_Directory> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Directory_build_temporary()) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:38 - `OSD_FileNode::Path()`
+    pub fn path(&self, Name: &mut crate::ffi::OSD_Path) {
+        unsafe { crate::ffi::OSD_Directory_inherited_Path(self as *const Self, Name) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:42 - `OSD_FileNode::SetPath()`
+    pub fn set_path(&mut self, Name: &crate::ffi::OSD_Path) {
+        unsafe { crate::ffi::OSD_Directory_inherited_SetPath(self as *mut Self, Name) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:45 - `OSD_FileNode::Exists()`
+    pub fn exists(&mut self) -> bool {
+        unsafe { crate::ffi::OSD_Directory_inherited_Exists(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:48 - `OSD_FileNode::Remove()`
+    pub fn remove(&mut self) {
+        unsafe { crate::ffi::OSD_Directory_inherited_Remove(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:51 - `OSD_FileNode::Move()`
+    pub fn move_(&mut self, NewPath: &crate::ffi::OSD_Path) {
+        unsafe { crate::ffi::OSD_Directory_inherited_Move(self as *mut Self, NewPath) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:54 - `OSD_FileNode::Copy()`
+    pub fn copy(&mut self, ToPath: &crate::ffi::OSD_Path) {
+        unsafe { crate::ffi::OSD_Directory_inherited_Copy(self as *mut Self, ToPath) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:58 - `OSD_FileNode::Protection()`
+    pub fn protection(&mut self) -> crate::OwnedPtr<crate::ffi::OSD_Protection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Directory_inherited_Protection(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:61 - `OSD_FileNode::SetProtection()`
+    pub fn set_protection(&mut self, Prot: &crate::ffi::OSD_Protection) {
+        unsafe { crate::ffi::OSD_Directory_inherited_SetProtection(self as *mut Self, Prot) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:66 - `OSD_FileNode::AccessMoment()`
+    pub fn access_moment(&mut self) -> crate::OwnedPtr<crate::ffi::Quantity_Date> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Directory_inherited_AccessMoment(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:71 - `OSD_FileNode::CreationMoment()`
+    pub fn creation_moment(&mut self) -> crate::OwnedPtr<crate::ffi::Quantity_Date> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Directory_inherited_CreationMoment(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:74 - `OSD_FileNode::Failed()`
+    pub fn failed(&self) -> bool {
+        unsafe { crate::ffi::OSD_Directory_inherited_Failed(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:77 - `OSD_FileNode::Reset()`
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::OSD_Directory_inherited_Reset(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:80 - `OSD_FileNode::Perror()`
+    pub fn perror(&mut self) {
+        unsafe { crate::ffi::OSD_Directory_inherited_Perror(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:83 - `OSD_FileNode::Error()`
+    pub fn error(&self) -> i32 {
+        unsafe { crate::ffi::OSD_Directory_inherited_Error(self as *const Self) }
+    }
+}
+
+// ========================
+// From OSD_DirectoryIterator.hxx
+// ========================
+
+/// **Source:** `OSD_DirectoryIterator.hxx`:33 - `OSD_DirectoryIterator`
+/// Manages a breadth-only search for sub-directories in the specified
+/// Path.
+/// There is no specific order of results.
+pub use crate::ffi::OSD_DirectoryIterator as DirectoryIterator;
+
+unsafe impl crate::CppDeletable for DirectoryIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_DirectoryIterator_destructor(ptr);
+    }
+}
+
+impl DirectoryIterator {
+    /// **Source:** `OSD_DirectoryIterator.hxx`:39 - `OSD_DirectoryIterator::OSD_DirectoryIterator()`
+    /// Instantiates Object as empty Iterator;
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_DirectoryIterator_ctor()) }
+    }
+
+    /// **Source:** `OSD_DirectoryIterator.hxx`:44 - `OSD_DirectoryIterator::OSD_DirectoryIterator()`
+    /// Instantiates Object as Iterator.
+    /// Wild-card "*" can be used in Mask the same way it
+    /// is used by unix shell for file names
+    pub fn new_path_asciistring(
+        where_: &crate::ffi::OSD_Path,
+        Mask: &crate::ffi::TCollection_AsciiString,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_DirectoryIterator_ctor_path_asciistring(
+                where_, Mask,
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_DirectoryIterator.hxx`:46 - `OSD_DirectoryIterator::Destroy()`
+    pub fn destroy(&mut self) {
+        unsafe { crate::ffi::OSD_DirectoryIterator_destroy(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_DirectoryIterator.hxx`:51 - `OSD_DirectoryIterator::Initialize()`
+    /// Initializes the current File Directory
+    pub fn initialize(
+        &mut self,
+        where_: &crate::ffi::OSD_Path,
+        Mask: &crate::ffi::TCollection_AsciiString,
+    ) {
+        unsafe { crate::ffi::OSD_DirectoryIterator_initialize(self as *mut Self, where_, Mask) }
+    }
+
+    /// **Source:** `OSD_DirectoryIterator.hxx`:55 - `OSD_DirectoryIterator::More()`
+    /// Returns TRUE if other items are found while
+    /// using the 'Tree' method.
+    pub fn more(&mut self) -> bool {
+        unsafe { crate::ffi::OSD_DirectoryIterator_more(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_DirectoryIterator.hxx`:60 - `OSD_DirectoryIterator::Next()`
+    /// Sets the iterator to the next item.
+    /// Returns the item value corresponding to the current
+    /// position of the iterator.
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::OSD_DirectoryIterator_next(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_DirectoryIterator.hxx`:63 - `OSD_DirectoryIterator::Values()`
+    /// Returns the next item found .
+    pub fn values(&mut self) -> crate::OwnedPtr<crate::ffi::OSD_Directory> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_DirectoryIterator_values(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `OSD_DirectoryIterator.hxx`:66 - `OSD_DirectoryIterator::Failed()`
+    /// Returns TRUE if an error occurs
+    pub fn failed(&self) -> bool {
+        unsafe { crate::ffi::OSD_DirectoryIterator_failed(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_DirectoryIterator.hxx`:69 - `OSD_DirectoryIterator::Reset()`
+    /// Resets error counter to zero
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::OSD_DirectoryIterator_reset(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_DirectoryIterator.hxx`:72 - `OSD_DirectoryIterator::Perror()`
+    /// Raises OSD_Error
+    pub fn perror(&mut self) {
+        unsafe { crate::ffi::OSD_DirectoryIterator_perror(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_DirectoryIterator.hxx`:75 - `OSD_DirectoryIterator::Error()`
+    /// Returns error number if 'Failed' is TRUE.
+    pub fn error(&self) -> i32 {
+        unsafe { crate::ffi::OSD_DirectoryIterator_error(self as *const Self) }
+    }
+}
+
+// ========================
+// From OSD_Disk.hxx
+// ========================
+
+/// **Source:** `OSD_Disk.hxx`:25 - `OSD_Disk`
+/// Disk management (a set of disk oriented tools)
+pub use crate::ffi::OSD_Disk as Disk;
+
+unsafe impl crate::CppDeletable for Disk {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Disk_destructor(ptr);
+    }
+}
+
+impl Disk {
+    /// **Source:** `OSD_Disk.hxx`:33 - `OSD_Disk::OSD_Disk()`
+    /// Creates a disk object.
+    /// This is used only when a class contains a Disk field.
+    /// By default, its name is initialized to current working disk.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Disk_ctor()) }
+    }
+
+    /// **Source:** `OSD_Disk.hxx`:37 - `OSD_Disk::OSD_Disk()`
+    /// Initializes the object Disk with the disk name
+    /// associated to the OSD_Path.
+    pub fn new_path(Name: &crate::ffi::OSD_Path) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Disk_ctor_path(Name)) }
+    }
+
+    /// **Source:** `OSD_Disk.hxx`:45 - `OSD_Disk::OSD_Disk()`
+    /// Initializes the object Disk with <PathName>.
+    /// <PathName> specifies any file within the mounted
+    /// file system.
+    /// Example : OSD_Disk myDisk ("/tmp")
+    /// Initializes a disk object with the mounted
+    /// file associated to /tmp.
+    pub fn new_charptr(PathName: &str) -> crate::OwnedPtr<Self> {
+        let c_PathName = std::ffi::CString::new(PathName).unwrap();
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Disk_ctor_charptr(c_PathName.as_ptr())) }
+    }
+
+    /// **Source:** `OSD_Disk.hxx`:48 - `OSD_Disk::Name()`
+    /// Returns disk name of <me>.
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::OSD_Path> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Disk_name(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_Disk.hxx`:51 - `OSD_Disk::SetName()`
+    /// Instantiates <me> with <Name>.
+    pub fn set_name(&mut self, Name: &crate::ffi::OSD_Path) {
+        unsafe { crate::ffi::OSD_Disk_set_name(self as *mut Self, Name) }
+    }
+
+    /// **Source:** `OSD_Disk.hxx`:54 - `OSD_Disk::DiskSize()`
+    /// Returns total disk capacity in 512 bytes blocks.
+    pub fn disk_size(&mut self) -> i32 {
+        unsafe { crate::ffi::OSD_Disk_disk_size(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Disk.hxx`:57 - `OSD_Disk::DiskFree()`
+    /// Returns free available 512 bytes blocks on disk.
+    pub fn disk_free(&mut self) -> i32 {
+        unsafe { crate::ffi::OSD_Disk_disk_free(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Disk.hxx`:60 - `OSD_Disk::Failed()`
+    /// Returns TRUE if an error occurs
+    pub fn failed(&self) -> bool {
+        unsafe { crate::ffi::OSD_Disk_failed(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_Disk.hxx`:63 - `OSD_Disk::Reset()`
+    /// Resets error counter to zero
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::OSD_Disk_reset(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Disk.hxx`:66 - `OSD_Disk::Perror()`
+    /// Raises OSD_Error
+    pub fn perror(&mut self) {
+        unsafe { crate::ffi::OSD_Disk_perror(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Disk.hxx`:69 - `OSD_Disk::Error()`
+    /// Returns error number if 'Failed' is TRUE.
+    pub fn error(&self) -> i32 {
+        unsafe { crate::ffi::OSD_Disk_error(self as *const Self) }
+    }
+}
+
+// ========================
+// From OSD_Environment.hxx
+// ========================
+
+/// **Source:** `OSD_Environment.hxx`:33 - `OSD_Environment`
+/// Management of system environment variables
+/// An environment variable is composed of a variable name
+/// and its value.
+///
+/// To be portable among various systems, environment variables
+/// are local to a process.
+pub use crate::ffi::OSD_Environment as Environment;
+
+unsafe impl crate::CppDeletable for Environment {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Environment_destructor(ptr);
+    }
+}
+
+impl Environment {
+    /// **Source:** `OSD_Environment.hxx`:39 - `OSD_Environment::OSD_Environment()`
+    /// Creates the object Environment.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Environment_ctor()) }
+    }
+
+    /// **Source:** `OSD_Environment.hxx`:43 - `OSD_Environment::OSD_Environment()`
+    /// Creates an Environment variable initialized with value
+    /// set to an empty AsciiString.
+    pub fn new_asciistring(Name: &crate::ffi::TCollection_AsciiString) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Environment_ctor_asciistring(Name)) }
+    }
+
+    /// **Source:** `OSD_Environment.hxx`:46 - `OSD_Environment::OSD_Environment()`
+    /// Creates an Environment variable initialized with Value.
+    pub fn new_asciistring2(
+        Name: &crate::ffi::TCollection_AsciiString,
+        Value: &crate::ffi::TCollection_AsciiString,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Environment_ctor_asciistring2(Name, Value))
+        }
+    }
+
+    /// **Source:** `OSD_Environment.hxx`:53 - `OSD_Environment::SetValue()`
+    /// Changes environment variable value.
+    /// Raises ConstructionError either if the string contains
+    /// characters not in range of ' '...'~' or if the string
+    /// contains the character '$' which is forbidden.
+    pub fn set_value(&mut self, Value: &crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::OSD_Environment_set_value(self as *mut Self, Value) }
+    }
+
+    /// **Source:** `OSD_Environment.hxx`:56 - `OSD_Environment::Value()`
+    /// Gets the value of an environment variable
+    pub fn value(&mut self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Environment_value(self as *mut Self)) }
+    }
+
+    /// **Source:** `OSD_Environment.hxx`:62 - `OSD_Environment::SetName()`
+    /// Changes environment variable name.
+    /// Raises ConstructionError either if the string contains
+    /// characters not in range of ' '...'~' or if the string
+    /// contains the character '$' which is forbidden.
+    pub fn set_name(&mut self, name: &crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::OSD_Environment_set_name(self as *mut Self, name) }
+    }
+
+    /// **Source:** `OSD_Environment.hxx`:65 - `OSD_Environment::Name()`
+    /// Gets the name of <me>.
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Environment_name(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_Environment.hxx`:69 - `OSD_Environment::Build()`
+    /// Sets the value of an environment variable
+    /// into system (physically).
+    pub fn build(&mut self) {
+        unsafe { crate::ffi::OSD_Environment_build(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Environment.hxx`:72 - `OSD_Environment::Remove()`
+    /// Removes (physically) an environment variable
+    pub fn remove(&mut self) {
+        unsafe { crate::ffi::OSD_Environment_remove(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Environment.hxx`:75 - `OSD_Environment::Failed()`
+    /// Returns TRUE if an error occurs
+    pub fn failed(&self) -> bool {
+        unsafe { crate::ffi::OSD_Environment_failed(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_Environment.hxx`:78 - `OSD_Environment::Reset()`
+    /// Resets error counter to zero
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::OSD_Environment_reset(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Environment.hxx`:81 - `OSD_Environment::Perror()`
+    /// Raises OSD_Error
+    pub fn perror(&mut self) {
+        unsafe { crate::ffi::OSD_Environment_perror(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Environment.hxx`:84 - `OSD_Environment::Error()`
+    /// Returns error number if 'Failed' is TRUE.
+    pub fn error(&self) -> i32 {
+        unsafe { crate::ffi::OSD_Environment_error(self as *const Self) }
+    }
+}
+
+// ========================
+// From OSD_Error.hxx
+// ========================
+
+/// **Source:** `OSD_Error.hxx`:28 - `OSD_Error`
+/// Accurate management of OSD specific errors.
+pub use crate::ffi::OSD_Error as Error;
+
+unsafe impl crate::CppDeletable for Error {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Error_destructor(ptr);
+    }
+}
+
+impl Error {
+    /// **Source:** `OSD_Error.hxx`:35 - `OSD_Error::OSD_Error()`
+    /// Initializes Error to be without any Error.
+    /// This is only used by OSD, not by programmer.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Error_ctor()) }
+    }
+
+    /// **Source:** `OSD_Error.hxx`:38 - `OSD_Error::Perror()`
+    /// Raises OSD_Error with accurate error message.
+    pub fn perror(&mut self) {
+        unsafe { crate::ffi::OSD_Error_perror(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Error.hxx`:43 - `OSD_Error::SetValue()`
+    /// Instantiates error
+    /// This is only used by OSD methods to instantiates an error code.
+    /// No description is done for the programmer.
+    pub fn set_value(
+        &mut self,
+        Errcode: i32,
+        From: i32,
+        Message: &crate::ffi::TCollection_AsciiString,
+    ) {
+        unsafe { crate::ffi::OSD_Error_set_value(self as *mut Self, Errcode, From, Message) }
+    }
+
+    /// **Source:** `OSD_Error.hxx`:49 - `OSD_Error::Error()`
+    /// Returns an accurate error code.
+    /// To test these values, you must include "OSD_ErrorList.hxx"
+    pub fn error(&self) -> i32 {
+        unsafe { crate::ffi::OSD_Error_error(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_Error.hxx`:53 - `OSD_Error::Failed()`
+    /// Returns TRUE if an error occurs
+    /// This is a way to test if a system call succeeded or not.
+    pub fn failed(&self) -> bool {
+        unsafe { crate::ffi::OSD_Error_failed(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_Error.hxx`:57 - `OSD_Error::Reset()`
+    /// Resets error counter to zero
+    /// This allows the user to ignore an error (WARNING).
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::OSD_Error_reset(self as *mut Self) }
+    }
+}
+
+// ========================
+// From OSD_Exception.hxx
+// ========================
+
+/// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception`
+pub use crate::ffi::OSD_Exception as Exception;
+
+unsafe impl crate::CppDeletable for Exception {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Exception_destructor(ptr);
+    }
+}
+
+impl Exception {
+    /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::OSD_Exception()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_ctor()) }
+    }
+
+    /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::OSD_Exception()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_ctor_charptr(c_theMessage.as_ptr()))
+        }
+    }
+
+    /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::OSD_Exception()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Exception_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_Exception_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Exception_get_type_descriptor()) }
+    }
+}
+
+// ========================
+// From OSD_Exception_ACCESS_VIOLATION.hxx
+// ========================
+
+/// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION`
+pub use crate::ffi::OSD_Exception_ACCESS_VIOLATION as ExceptionACCESSVIOLATION;
+
+unsafe impl crate::CppDeletable for ExceptionACCESSVIOLATION {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Exception_ACCESS_VIOLATION_destructor(ptr);
+    }
+}
+
+impl ExceptionACCESSVIOLATION {
+    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::OSD_Exception_ACCESS_VIOLATION()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_ACCESS_VIOLATION_ctor()) }
+    }
+
+    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::OSD_Exception_ACCESS_VIOLATION()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_ACCESS_VIOLATION_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::OSD_Exception_ACCESS_VIOLATION()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_ACCESS_VIOLATION_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Exception_ACCESS_VIOLATION_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_Exception_ACCESS_VIOLATION_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_ACCESS_VIOLATION_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Exception_ACCESS_VIOLATION_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_Exception
+    pub fn as_exception(&self) -> &Exception {
+        unsafe {
+            &*(crate::ffi::OSD_Exception_ACCESS_VIOLATION_as_OSD_Exception(self as *const Self))
+        }
+    }
+
+    /// Upcast to OSD_Exception (mutable)
+    pub fn as_exception_mut(&mut self) -> &mut Exception {
+        unsafe {
+            &mut *(crate::ffi::OSD_Exception_ACCESS_VIOLATION_as_OSD_Exception_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx
+// ========================
+
+/// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED`
+pub use crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED as ExceptionARRAYBOUNDSEXCEEDED;
+
+unsafe impl crate::CppDeletable for ExceptionARRAYBOUNDSEXCEEDED {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_destructor(ptr);
+    }
+}
+
+impl ExceptionARRAYBOUNDSEXCEEDED {
+    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::OSD_Exception_ARRAY_BOUNDS_EXCEEDED()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_ctor()) }
+    }
+
+    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::OSD_Exception_ARRAY_BOUNDS_EXCEEDED()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::OSD_Exception_ARRAY_BOUNDS_EXCEEDED()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_ctor_charptr2(
+                    c_theMessage.as_ptr(),
+                    c_theStackTrace.as_ptr(),
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_get_type_name()).to_string_lossy().into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_Exception
+    pub fn as_exception(&self) -> &Exception {
+        unsafe {
+            &*(crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_as_OSD_Exception(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to OSD_Exception (mutable)
+    pub fn as_exception_mut(&mut self) -> &mut Exception {
+        unsafe {
+            &mut *(crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_as_OSD_Exception_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From OSD_Exception_CTRL_BREAK.hxx
+// ========================
+
+/// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK`
+pub use crate::ffi::OSD_Exception_CTRL_BREAK as ExceptionCTRLBREAK;
+
+unsafe impl crate::CppDeletable for ExceptionCTRLBREAK {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Exception_CTRL_BREAK_destructor(ptr);
+    }
+}
+
+impl ExceptionCTRLBREAK {
+    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::OSD_Exception_CTRL_BREAK()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_CTRL_BREAK_ctor()) }
+    }
+
+    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::OSD_Exception_CTRL_BREAK()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_CTRL_BREAK_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::OSD_Exception_CTRL_BREAK()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_CTRL_BREAK_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Exception_CTRL_BREAK_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_CTRL_BREAK_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Exception_CTRL_BREAK_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_Exception
+    pub fn as_exception(&self) -> &Exception {
+        unsafe { &*(crate::ffi::OSD_Exception_CTRL_BREAK_as_OSD_Exception(self as *const Self)) }
+    }
+
+    /// Upcast to OSD_Exception (mutable)
+    pub fn as_exception_mut(&mut self) -> &mut Exception {
+        unsafe {
+            &mut *(crate::ffi::OSD_Exception_CTRL_BREAK_as_OSD_Exception_mut(self as *mut Self))
+        }
+    }
+}
+
+// ========================
+// From OSD_Exception_ILLEGAL_INSTRUCTION.hxx
+// ========================
+
+/// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION`
+pub use crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION as ExceptionILLEGALINSTRUCTION;
+
+unsafe impl crate::CppDeletable for ExceptionILLEGALINSTRUCTION {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_destructor(ptr);
+    }
+}
+
+impl ExceptionILLEGALINSTRUCTION {
+    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::OSD_Exception_ILLEGAL_INSTRUCTION()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_ctor()) }
+    }
+
+    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::OSD_Exception_ILLEGAL_INSTRUCTION()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::OSD_Exception_ILLEGAL_INSTRUCTION()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_Exception
+    pub fn as_exception(&self) -> &Exception {
+        unsafe {
+            &*(crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_as_OSD_Exception(self as *const Self))
+        }
+    }
+
+    /// Upcast to OSD_Exception (mutable)
+    pub fn as_exception_mut(&mut self) -> &mut Exception {
+        unsafe {
+            &mut *(crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_as_OSD_Exception_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From OSD_Exception_INT_OVERFLOW.hxx
+// ========================
+
+/// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW`
+pub use crate::ffi::OSD_Exception_INT_OVERFLOW as ExceptionINTOVERFLOW;
+
+unsafe impl crate::CppDeletable for ExceptionINTOVERFLOW {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Exception_INT_OVERFLOW_destructor(ptr);
+    }
+}
+
+impl ExceptionINTOVERFLOW {
+    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::OSD_Exception_INT_OVERFLOW()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_INT_OVERFLOW_ctor()) }
+    }
+
+    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::OSD_Exception_INT_OVERFLOW()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_INT_OVERFLOW_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::OSD_Exception_INT_OVERFLOW()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_INT_OVERFLOW_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Exception_INT_OVERFLOW_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_Exception_INT_OVERFLOW_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_INT_OVERFLOW_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Exception_INT_OVERFLOW_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_Exception
+    pub fn as_exception(&self) -> &Exception {
+        unsafe { &*(crate::ffi::OSD_Exception_INT_OVERFLOW_as_OSD_Exception(self as *const Self)) }
+    }
+
+    /// Upcast to OSD_Exception (mutable)
+    pub fn as_exception_mut(&mut self) -> &mut Exception {
+        unsafe {
+            &mut *(crate::ffi::OSD_Exception_INT_OVERFLOW_as_OSD_Exception_mut(self as *mut Self))
+        }
+    }
+}
+
+// ========================
+// From OSD_Exception_INVALID_DISPOSITION.hxx
+// ========================
+
+/// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION`
+pub use crate::ffi::OSD_Exception_INVALID_DISPOSITION as ExceptionINVALIDDISPOSITION;
+
+unsafe impl crate::CppDeletable for ExceptionINVALIDDISPOSITION {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Exception_INVALID_DISPOSITION_destructor(ptr);
+    }
+}
+
+impl ExceptionINVALIDDISPOSITION {
+    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::OSD_Exception_INVALID_DISPOSITION()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_INVALID_DISPOSITION_ctor()) }
+    }
+
+    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::OSD_Exception_INVALID_DISPOSITION()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_INVALID_DISPOSITION_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::OSD_Exception_INVALID_DISPOSITION()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_INVALID_DISPOSITION_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::OSD_Exception_INVALID_DISPOSITION_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_Exception_INVALID_DISPOSITION_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_INVALID_DISPOSITION_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Exception_INVALID_DISPOSITION_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_Exception
+    pub fn as_exception(&self) -> &Exception {
+        unsafe {
+            &*(crate::ffi::OSD_Exception_INVALID_DISPOSITION_as_OSD_Exception(self as *const Self))
+        }
+    }
+
+    /// Upcast to OSD_Exception (mutable)
+    pub fn as_exception_mut(&mut self) -> &mut Exception {
+        unsafe {
+            &mut *(crate::ffi::OSD_Exception_INVALID_DISPOSITION_as_OSD_Exception_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From OSD_Exception_IN_PAGE_ERROR.hxx
+// ========================
+
+/// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR`
+pub use crate::ffi::OSD_Exception_IN_PAGE_ERROR as ExceptionINPAGEERROR;
+
+unsafe impl crate::CppDeletable for ExceptionINPAGEERROR {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Exception_IN_PAGE_ERROR_destructor(ptr);
+    }
+}
+
+impl ExceptionINPAGEERROR {
+    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::OSD_Exception_IN_PAGE_ERROR()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_IN_PAGE_ERROR_ctor()) }
+    }
+
+    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::OSD_Exception_IN_PAGE_ERROR()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_IN_PAGE_ERROR_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::OSD_Exception_IN_PAGE_ERROR()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_IN_PAGE_ERROR_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Exception_IN_PAGE_ERROR_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_Exception_IN_PAGE_ERROR_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_IN_PAGE_ERROR_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Exception_IN_PAGE_ERROR_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_Exception
+    pub fn as_exception(&self) -> &Exception {
+        unsafe { &*(crate::ffi::OSD_Exception_IN_PAGE_ERROR_as_OSD_Exception(self as *const Self)) }
+    }
+
+    /// Upcast to OSD_Exception (mutable)
+    pub fn as_exception_mut(&mut self) -> &mut Exception {
+        unsafe {
+            &mut *(crate::ffi::OSD_Exception_IN_PAGE_ERROR_as_OSD_Exception_mut(self as *mut Self))
+        }
+    }
+}
+
+// ========================
+// From OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx
+// ========================
+
+/// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION`
+pub use crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION as ExceptionNONCONTINUABLEEXCEPTION;
+
+unsafe impl crate::CppDeletable for ExceptionNONCONTINUABLEEXCEPTION {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_destructor(ptr);
+    }
+}
+
+impl ExceptionNONCONTINUABLEEXCEPTION {
+    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::OSD_Exception_NONCONTINUABLE_EXCEPTION()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_ctor())
+        }
+    }
+
+    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::OSD_Exception_NONCONTINUABLE_EXCEPTION()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_ctor_charptr(
+                    c_theMessage.as_ptr(),
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::OSD_Exception_NONCONTINUABLE_EXCEPTION()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_ctor_charptr2(
+                    c_theMessage.as_ptr(),
+                    c_theStackTrace.as_ptr(),
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_Exception
+    pub fn as_exception(&self) -> &Exception {
+        unsafe {
+            &*(crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_as_OSD_Exception(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to OSD_Exception (mutable)
+    pub fn as_exception_mut(&mut self) -> &mut Exception {
+        unsafe {
+            &mut *(crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_as_OSD_Exception_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From OSD_Exception_PRIV_INSTRUCTION.hxx
+// ========================
+
+/// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION`
+pub use crate::ffi::OSD_Exception_PRIV_INSTRUCTION as ExceptionPRIVINSTRUCTION;
+
+unsafe impl crate::CppDeletable for ExceptionPRIVINSTRUCTION {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Exception_PRIV_INSTRUCTION_destructor(ptr);
+    }
+}
+
+impl ExceptionPRIVINSTRUCTION {
+    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::OSD_Exception_PRIV_INSTRUCTION()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_PRIV_INSTRUCTION_ctor()) }
+    }
+
+    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::OSD_Exception_PRIV_INSTRUCTION()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_PRIV_INSTRUCTION_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::OSD_Exception_PRIV_INSTRUCTION()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_PRIV_INSTRUCTION_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Exception_PRIV_INSTRUCTION_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_Exception_PRIV_INSTRUCTION_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_PRIV_INSTRUCTION_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Exception_PRIV_INSTRUCTION_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_Exception
+    pub fn as_exception(&self) -> &Exception {
+        unsafe {
+            &*(crate::ffi::OSD_Exception_PRIV_INSTRUCTION_as_OSD_Exception(self as *const Self))
+        }
+    }
+
+    /// Upcast to OSD_Exception (mutable)
+    pub fn as_exception_mut(&mut self) -> &mut Exception {
+        unsafe {
+            &mut *(crate::ffi::OSD_Exception_PRIV_INSTRUCTION_as_OSD_Exception_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From OSD_Exception_STACK_OVERFLOW.hxx
+// ========================
+
+/// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW`
+pub use crate::ffi::OSD_Exception_STACK_OVERFLOW as ExceptionSTACKOVERFLOW;
+
+unsafe impl crate::CppDeletable for ExceptionSTACKOVERFLOW {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Exception_STACK_OVERFLOW_destructor(ptr);
+    }
+}
+
+impl ExceptionSTACKOVERFLOW {
+    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::OSD_Exception_STACK_OVERFLOW()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_STACK_OVERFLOW_ctor()) }
+    }
+
+    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::OSD_Exception_STACK_OVERFLOW()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_STACK_OVERFLOW_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::OSD_Exception_STACK_OVERFLOW()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_STACK_OVERFLOW_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Exception_STACK_OVERFLOW_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_Exception_STACK_OVERFLOW_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_STACK_OVERFLOW_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Exception_STACK_OVERFLOW_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_Exception
+    pub fn as_exception(&self) -> &Exception {
+        unsafe {
+            &*(crate::ffi::OSD_Exception_STACK_OVERFLOW_as_OSD_Exception(self as *const Self))
+        }
+    }
+
+    /// Upcast to OSD_Exception (mutable)
+    pub fn as_exception_mut(&mut self) -> &mut Exception {
+        unsafe {
+            &mut *(crate::ffi::OSD_Exception_STACK_OVERFLOW_as_OSD_Exception_mut(self as *mut Self))
+        }
+    }
+}
+
+// ========================
+// From OSD_Exception_STATUS_NO_MEMORY.hxx
+// ========================
+
+/// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY`
+pub use crate::ffi::OSD_Exception_STATUS_NO_MEMORY as ExceptionSTATUSNOMEMORY;
+
+unsafe impl crate::CppDeletable for ExceptionSTATUSNOMEMORY {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Exception_STATUS_NO_MEMORY_destructor(ptr);
+    }
+}
+
+impl ExceptionSTATUSNOMEMORY {
+    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::OSD_Exception_STATUS_NO_MEMORY()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_STATUS_NO_MEMORY_ctor()) }
+    }
+
+    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::OSD_Exception_STATUS_NO_MEMORY()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_STATUS_NO_MEMORY_ctor_charptr(
+                c_theMessage.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::OSD_Exception_STATUS_NO_MEMORY()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_STATUS_NO_MEMORY_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Exception_STATUS_NO_MEMORY_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_Exception_STATUS_NO_MEMORY_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_Exception_STATUS_NO_MEMORY_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Exception_STATUS_NO_MEMORY_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_Exception
+    pub fn as_exception(&self) -> &Exception {
+        unsafe {
+            &*(crate::ffi::OSD_Exception_STATUS_NO_MEMORY_as_OSD_Exception(self as *const Self))
+        }
+    }
+
+    /// Upcast to OSD_Exception (mutable)
+    pub fn as_exception_mut(&mut self) -> &mut Exception {
+        unsafe {
+            &mut *(crate::ffi::OSD_Exception_STATUS_NO_MEMORY_as_OSD_Exception_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From OSD_File.hxx
+// ========================
+
+/// **Source:** `OSD_File.hxx`:32 - `OSD_File`
+/// Basic tools to manage files
+/// Warning: 'ProgramError' is raised when somebody wants to use the methods
+/// Read, Write, Seek, Close when File is not open.
+pub use crate::ffi::OSD_File as File;
+
+unsafe impl crate::CppDeletable for File {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_File_destructor(ptr);
+    }
+}
+
+impl File {
+    /// **Source:** `OSD_File.hxx`:36 - `OSD_File::OSD_File()`
+    /// Creates File object.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_File_ctor()) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:39 - `OSD_File::OSD_File()`
+    /// Instantiates the object file, storing its name
+    pub fn new_path(Name: &crate::ffi::OSD_Path) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_File_ctor_path(Name)) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:48 - `OSD_File::Build()`
+    /// CREATES a file if it doesn't already exists or empties
+    /// an existing file.
+    /// After 'Build', the file is open.
+    /// If no name was given, ProgramError is raised.
+    pub fn build(&mut self, Mode: crate::osd::OpenMode, Protect: &crate::ffi::OSD_Protection) {
+        unsafe { crate::ffi::OSD_File_build(self as *mut Self, Mode.into(), Protect) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:53 - `OSD_File::Open()`
+    /// Opens a File with specific attributes
+    /// This works only on already existing file.
+    /// If no name was given, ProgramError is raised.
+    pub fn open(&mut self, Mode: crate::osd::OpenMode, Protect: &crate::ffi::OSD_Protection) {
+        unsafe { crate::ffi::OSD_File_open(self as *mut Self, Mode.into(), Protect) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:59 - `OSD_File::Append()`
+    /// Appends data to an existing file.
+    /// If file doesn't exist, creates it first.
+    /// After 'Append', the file is open.
+    /// If no name was given, ProgramError is raised.
+    pub fn append(&mut self, Mode: crate::osd::OpenMode, Protect: &crate::ffi::OSD_Protection) {
+        unsafe { crate::ffi::OSD_File_append(self as *mut Self, Mode.into(), Protect) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:68 - `OSD_File::Read()`
+    /// Attempts to read Nbyte bytes from the file associated with
+    /// the object file.
+    /// Upon successful completion, Read returns the number of
+    /// bytes actually read and placed in the Buffer. This number
+    /// may be less than Nbyte if the number of bytes left in the file
+    /// is less than Nbyte bytes. In this case only number of read
+    /// bytes will be placed in the buffer.
+    pub fn read(&mut self, Buffer: &mut crate::ffi::TCollection_AsciiString, Nbyte: i32) {
+        unsafe { crate::ffi::OSD_File_read(self as *mut Self, Buffer, Nbyte) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:79 - `OSD_File::ReadLine()`
+    /// Reads bytes from the data pointed to by the object file
+    /// into the buffer <Buffer>.
+    /// Data is read until <NByte-1> bytes have been read,
+    /// until	a newline character is read and transferred into
+    /// <Buffer>, or until an EOF (End-of-File) condition is
+    /// encountered.
+    /// Upon successful completion, Read returns the number of
+    /// bytes actually read into <NByteRead> and placed into the
+    /// Buffer <Buffer>.
+    pub fn read_line_asciistring_int2(
+        &mut self,
+        Buffer: &mut crate::ffi::TCollection_AsciiString,
+        NByte: i32,
+        NbyteRead: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::OSD_File_read_line_asciistring_int2(
+                self as *mut Self,
+                Buffer,
+                NByte,
+                NbyteRead,
+            )
+        }
+    }
+
+    /// **Source:** `OSD_File.hxx`:91 - `OSD_File::ReadLine()`
+    /// Reads bytes from the data pointed to by the object file
+    /// into the buffer <Buffer>.
+    /// Data is read until <NByte-1> bytes have been read,
+    /// until	a newline character is read and transferred into
+    /// <Buffer>, or until an EOF (End-of-File) condition is
+    /// encountered.
+    /// Upon successful completion, Read returns the number of
+    /// bytes actually read and placed into the Buffer <Buffer>.
+    pub fn read_line_asciistring_int(
+        &mut self,
+        Buffer: &mut crate::ffi::TCollection_AsciiString,
+        NByte: i32,
+    ) -> i32 {
+        unsafe { crate::ffi::OSD_File_read_line_asciistring_int(self as *mut Self, Buffer, NByte) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:110 - `OSD_File::Write()`
+    /// Attempts to write theNbBytes bytes from the AsciiString to the file.
+    pub fn write(&mut self, theBuffer: &crate::ffi::TCollection_AsciiString, theNbBytes: i32) {
+        unsafe { crate::ffi::OSD_File_write(self as *mut Self, theBuffer, theNbBytes) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:120 - `OSD_File::Seek()`
+    /// Sets the seek pointer associated with the open file
+    pub fn seek(&mut self, Offset: i32, Whence: crate::osd::FromWhere) {
+        unsafe { crate::ffi::OSD_File_seek(self as *mut Self, Offset, Whence.into()) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:123 - `OSD_File::Close()`
+    /// Closes the file (and deletes a descriptor)
+    pub fn close(&mut self) {
+        unsafe { crate::ffi::OSD_File_close(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:126 - `OSD_File::IsAtEnd()`
+    /// Returns TRUE if the seek pointer is at end of file.
+    pub fn is_at_end(&mut self) -> bool {
+        unsafe { crate::ffi::OSD_File_is_at_end(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:130 - `OSD_File::KindOfFile()`
+    /// Returns the kind of file. A file can be a
+    /// file, a directory or a link.
+    pub fn kind_of_file(&self) -> crate::osd::KindFile {
+        unsafe {
+            crate::osd::KindFile::try_from(crate::ffi::OSD_File_kind_of_file(self as *const Self))
+                .unwrap()
+        }
+    }
+
+    /// **Source:** `OSD_File.hxx`:134 - `OSD_File::BuildTemporary()`
+    /// Makes a temporary File
+    /// This temporary file is already open !
+    pub fn build_temporary(&mut self) {
+        unsafe { crate::ffi::OSD_File_build_temporary(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:137 - `OSD_File::SetLock()`
+    /// Locks current file
+    pub fn set_lock(&mut self, Lock: crate::osd::LockType) {
+        unsafe { crate::ffi::OSD_File_set_lock(self as *mut Self, Lock.into()) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:140 - `OSD_File::UnLock()`
+    /// Unlocks current file
+    pub fn un_lock(&mut self) {
+        unsafe { crate::ffi::OSD_File_un_lock(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:143 - `OSD_File::GetLock()`
+    /// Returns the current lock state
+    pub fn get_lock(&self) -> crate::osd::LockType {
+        unsafe {
+            crate::osd::LockType::try_from(crate::ffi::OSD_File_get_lock(self as *const Self))
+                .unwrap()
+        }
+    }
+
+    /// **Source:** `OSD_File.hxx`:146 - `OSD_File::IsLocked()`
+    /// Returns TRUE if this file is locked.
+    pub fn is_locked(&self) -> bool {
+        unsafe { crate::ffi::OSD_File_is_locked(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:156 - `OSD_File::Size()`
+    /// Returns actual number of bytes of <me>.
+    pub fn size(&mut self) -> usize {
+        unsafe { crate::ffi::OSD_File_size(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:159 - `OSD_File::IsOpen()`
+    /// Returns TRUE if <me> is open.
+    pub fn is_open(&self) -> bool {
+        unsafe { crate::ffi::OSD_File_is_open(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:163 - `OSD_File::IsReadable()`
+    /// returns TRUE if the file exists and if the user
+    /// has the authorization to read it.
+    pub fn is_readable(&mut self) -> bool {
+        unsafe { crate::ffi::OSD_File_is_readable(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:166 - `OSD_File::IsWriteable()`
+    /// returns TRUE if the file can be read and overwritten.
+    pub fn is_writeable(&mut self) -> bool {
+        unsafe { crate::ffi::OSD_File_is_writeable(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:169 - `OSD_File::IsExecutable()`
+    /// returns TRUE if the file can be executed.
+    pub fn is_executable(&mut self) -> bool {
+        unsafe { crate::ffi::OSD_File_is_executable(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:177 - `OSD_File::ReadLastLine()`
+    /// Enables to emulate unix "tail -f" command.
+    /// If a line is available in the file <me> returns it.
+    /// Otherwise attempts to read again aNbTries times in the file
+    /// waiting aDelay seconds between each read.
+    /// If meanwhile the file increases returns the next line, otherwise
+    /// returns FALSE.
+    pub fn read_last_line(
+        &mut self,
+        aLine: &mut crate::ffi::TCollection_AsciiString,
+        aDelay: i32,
+        aNbTries: i32,
+    ) -> bool {
+        unsafe { crate::ffi::OSD_File_read_last_line(self as *mut Self, aLine, aDelay, aNbTries) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:182 - `OSD_File::Edit()`
+    /// find an editor on the system and edit the given file
+    pub fn edit(&mut self) -> bool {
+        unsafe { crate::ffi::OSD_File_edit(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_File.hxx`:185 - `OSD_File::Rewind()`
+    /// Set file pointer position to the beginning of the file
+    pub fn rewind(&mut self) {
+        unsafe { crate::ffi::OSD_File_rewind(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:38 - `OSD_FileNode::Path()`
+    pub fn path(&self, Name: &mut crate::ffi::OSD_Path) {
+        unsafe { crate::ffi::OSD_File_inherited_Path(self as *const Self, Name) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:42 - `OSD_FileNode::SetPath()`
+    pub fn set_path(&mut self, Name: &crate::ffi::OSD_Path) {
+        unsafe { crate::ffi::OSD_File_inherited_SetPath(self as *mut Self, Name) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:45 - `OSD_FileNode::Exists()`
+    pub fn exists(&mut self) -> bool {
+        unsafe { crate::ffi::OSD_File_inherited_Exists(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:48 - `OSD_FileNode::Remove()`
+    pub fn remove(&mut self) {
+        unsafe { crate::ffi::OSD_File_inherited_Remove(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:51 - `OSD_FileNode::Move()`
+    pub fn move_(&mut self, NewPath: &crate::ffi::OSD_Path) {
+        unsafe { crate::ffi::OSD_File_inherited_Move(self as *mut Self, NewPath) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:54 - `OSD_FileNode::Copy()`
+    pub fn copy(&mut self, ToPath: &crate::ffi::OSD_Path) {
+        unsafe { crate::ffi::OSD_File_inherited_Copy(self as *mut Self, ToPath) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:58 - `OSD_FileNode::Protection()`
+    pub fn protection(&mut self) -> crate::OwnedPtr<crate::ffi::OSD_Protection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_File_inherited_Protection(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:61 - `OSD_FileNode::SetProtection()`
+    pub fn set_protection(&mut self, Prot: &crate::ffi::OSD_Protection) {
+        unsafe { crate::ffi::OSD_File_inherited_SetProtection(self as *mut Self, Prot) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:66 - `OSD_FileNode::AccessMoment()`
+    pub fn access_moment(&mut self) -> crate::OwnedPtr<crate::ffi::Quantity_Date> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_File_inherited_AccessMoment(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:71 - `OSD_FileNode::CreationMoment()`
+    pub fn creation_moment(&mut self) -> crate::OwnedPtr<crate::ffi::Quantity_Date> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_File_inherited_CreationMoment(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:74 - `OSD_FileNode::Failed()`
+    pub fn failed(&self) -> bool {
+        unsafe { crate::ffi::OSD_File_inherited_Failed(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:77 - `OSD_FileNode::Reset()`
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::OSD_File_inherited_Reset(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:80 - `OSD_FileNode::Perror()`
+    pub fn perror(&mut self) {
+        unsafe { crate::ffi::OSD_File_inherited_Perror(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `OSD_FileNode.hxx`:83 - `OSD_FileNode::Error()`
+    pub fn error(&self) -> i32 {
+        unsafe { crate::ffi::OSD_File_inherited_Error(self as *const Self) }
+    }
+}
+
+// ========================
+// From OSD_FileIterator.hxx
+// ========================
+
+/// **Source:** `OSD_FileIterator.hxx`:28 - `OSD_FileIterator`
+/// Manages a breadth-only search for files in the specified Path.
+/// There is no specific order of results.
+pub use crate::ffi::OSD_FileIterator as FileIterator;
+
+unsafe impl crate::CppDeletable for FileIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_FileIterator_destructor(ptr);
+    }
+}
+
+impl FileIterator {
+    /// **Source:** `OSD_FileIterator.hxx`:34 - `OSD_FileIterator::OSD_FileIterator()`
+    /// Instantiates Object as empty Iterator;
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_FileIterator_ctor()) }
+    }
+
+    /// **Source:** `OSD_FileIterator.hxx`:39 - `OSD_FileIterator::OSD_FileIterator()`
+    /// Instantiates Object as Iterator;
+    /// Wild-card "*" can be used in Mask the same way it
+    /// is used by unix shell for file names
+    pub fn new_path_asciistring(
+        where_: &crate::ffi::OSD_Path,
+        Mask: &crate::ffi::TCollection_AsciiString,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_FileIterator_ctor_path_asciistring(
+                where_, Mask,
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_FileIterator.hxx`:41 - `OSD_FileIterator::Destroy()`
+    pub fn destroy(&mut self) {
+        unsafe { crate::ffi::OSD_FileIterator_destroy(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_FileIterator.hxx`:46 - `OSD_FileIterator::Initialize()`
+    /// Initializes the current File Iterator
+    pub fn initialize(
+        &mut self,
+        where_: &crate::ffi::OSD_Path,
+        Mask: &crate::ffi::TCollection_AsciiString,
+    ) {
+        unsafe { crate::ffi::OSD_FileIterator_initialize(self as *mut Self, where_, Mask) }
+    }
+
+    /// **Source:** `OSD_FileIterator.hxx`:50 - `OSD_FileIterator::More()`
+    /// Returns TRUE if there are other items using the 'Tree'
+    /// method.
+    pub fn more(&mut self) -> bool {
+        unsafe { crate::ffi::OSD_FileIterator_more(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_FileIterator.hxx`:55 - `OSD_FileIterator::Next()`
+    /// Sets the iterator to the next item.
+    /// Returns the item value corresponding to the current
+    /// position of the iterator.
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::OSD_FileIterator_next(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_FileIterator.hxx`:58 - `OSD_FileIterator::Values()`
+    /// Returns the next file found .
+    pub fn values(&mut self) -> crate::OwnedPtr<crate::ffi::OSD_File> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_FileIterator_values(self as *mut Self)) }
+    }
+
+    /// **Source:** `OSD_FileIterator.hxx`:61 - `OSD_FileIterator::Failed()`
+    /// Returns TRUE if an error occurs
+    pub fn failed(&self) -> bool {
+        unsafe { crate::ffi::OSD_FileIterator_failed(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_FileIterator.hxx`:64 - `OSD_FileIterator::Reset()`
+    /// Resets error counter to zero
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::OSD_FileIterator_reset(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_FileIterator.hxx`:67 - `OSD_FileIterator::Perror()`
+    /// Raises OSD_Error
+    pub fn perror(&mut self) {
+        unsafe { crate::ffi::OSD_FileIterator_perror(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_FileIterator.hxx`:70 - `OSD_FileIterator::Error()`
+    /// Returns error number if 'Failed' is TRUE.
+    pub fn error(&self) -> i32 {
+        unsafe { crate::ffi::OSD_FileIterator_error(self as *const Self) }
+    }
+}
+
+// ========================
+// From OSD_FileSystem.hxx
+// ========================
+
+/// **Source:** `OSD_FileSystem.hxx`:23 - `OSD_FileSystem`
+/// Base interface for a file stream provider.
+/// It is intended to be implemented for specific file protocol.
+pub use crate::ffi::OSD_FileSystem as FileSystem;
+
+unsafe impl crate::CppDeletable for FileSystem {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_FileSystem_destructor(ptr);
+    }
+}
+
+impl FileSystem {
+    /// **Source:** `OSD_FileSystem.hxx`:25 - `OSD_FileSystem::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_FileSystem_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_FileSystem.hxx`:46 - `OSD_FileSystem::IsSupportedPath()`
+    /// Returns TRUE if URL defines a supported protocol.
+    pub fn is_supported_path(&self, theUrl: &crate::ffi::TCollection_AsciiString) -> bool {
+        unsafe { crate::ffi::OSD_FileSystem_is_supported_path(self as *const Self, theUrl) }
+    }
+
+    /// **Source:** `OSD_FileSystem.hxx`:25 - `OSD_FileSystem::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_FileSystem_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_FileSystem.hxx`:25 - `OSD_FileSystem::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_FileSystem_get_type_descriptor()) }
+    }
+
+    /// **Source:** `OSD_FileSystem.hxx`:29 - `OSD_FileSystem::DefaultFileSystem()`
+    /// Returns a global file system, which a selector between registered file systems
+    /// (OSD_FileSystemSelector).
+    pub fn default_file_system() -> &'static crate::ffi::HandleOSDFileSystem {
+        unsafe { &*(crate::ffi::OSD_FileSystem_default_file_system()) }
+    }
+
+    /// **Source:** `OSD_FileSystem.hxx`:37 - `OSD_FileSystem::AddDefaultProtocol()`
+    /// Registers file system within the global file system selector returned by
+    /// OSD_FileSystem::DefaultFileSystem(). Note that registering protocols is not thread-safe
+    /// operation and expected to be done once at application startup.
+    /// @param[in] theFileSystem  file system to register
+    /// @param[in] theIsPreferred add to the beginning of the list when TRUE, or add to the end
+    /// otherwise
+    pub fn add_default_protocol(
+        theFileSystem: &crate::ffi::HandleOSDFileSystem,
+        theIsPreferred: bool,
+    ) {
+        unsafe { crate::ffi::OSD_FileSystem_add_default_protocol(theFileSystem, theIsPreferred) }
+    }
+
+    /// **Source:** `OSD_FileSystem.hxx`:42 - `OSD_FileSystem::RemoveDefaultProtocol()`
+    /// Unregisters file system within the global file system selector returned by
+    /// OSD_FileSystem::DefaultFileSystem().
+    pub fn remove_default_protocol(theFileSystem: &crate::ffi::HandleOSDFileSystem) {
+        unsafe { crate::ffi::OSD_FileSystem_remove_default_protocol(theFileSystem) }
+    }
+}
+
+pub use crate::ffi::HandleOSDFileSystem;
+
+unsafe impl crate::CppDeletable for HandleOSDFileSystem {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleOSDFileSystem_destructor(ptr);
+    }
+}
+
+impl HandleOSDFileSystem {
+    /// Dereference this Handle to access the underlying OSD_FileSystem
+    pub fn get(&self) -> &crate::ffi::OSD_FileSystem {
+        unsafe { &*(crate::ffi::HandleOSDFileSystem_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying OSD_FileSystem
+    pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_FileSystem {
+        unsafe { &mut *(crate::ffi::HandleOSDFileSystem_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From OSD_FileSystemSelector.hxx
+// ========================
+
+/// **Source:** `OSD_FileSystemSelector.hxx`:22 - `OSD_FileSystemSelector`
+/// File system implementation which tried to open stream using registered list of file systems.
+pub use crate::ffi::OSD_FileSystemSelector as FileSystemSelector;
+
+unsafe impl crate::CppDeletable for FileSystemSelector {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_FileSystemSelector_destructor(ptr);
+    }
+}
+
+impl FileSystemSelector {
+    /// **Source:** `OSD_FileSystemSelector.hxx`:27 - `OSD_FileSystemSelector::OSD_FileSystemSelector()`
+    /// Constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_FileSystemSelector_ctor()) }
+    }
+
+    /// **Source:** `OSD_FileSystemSelector.hxx`:24 - `OSD_FileSystemSelector::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_FileSystemSelector_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_FileSystemSelector.hxx`:33 - `OSD_FileSystemSelector::AddProtocol()`
+    /// Registers file system within this selector.
+    /// @param[in] theFileSystem   file system to register
+    /// @param[in] theIsPreferred  add to the beginning of the list when TRUE, or add to the end
+    /// otherwise
+    pub fn add_protocol(
+        &mut self,
+        theFileSystem: &crate::ffi::HandleOSDFileSystem,
+        theIsPreferred: bool,
+    ) {
+        unsafe {
+            crate::ffi::OSD_FileSystemSelector_add_protocol(
+                self as *mut Self,
+                theFileSystem,
+                theIsPreferred,
+            )
+        }
+    }
+
+    /// **Source:** `OSD_FileSystemSelector.hxx`:37 - `OSD_FileSystemSelector::RemoveProtocol()`
+    /// Unregisters file system within this selector.
+    pub fn remove_protocol(&mut self, theFileSystem: &crate::ffi::HandleOSDFileSystem) {
+        unsafe {
+            crate::ffi::OSD_FileSystemSelector_remove_protocol(self as *mut Self, theFileSystem)
+        }
+    }
+
+    /// **Source:** `OSD_FileSystemSelector.hxx`:41 - `OSD_FileSystemSelector::IsSupportedPath()`
+    /// Returns TRUE if URL defines a supported protocol.
+    pub fn is_supported_path(&self, theUrl: &crate::ffi::TCollection_AsciiString) -> bool {
+        unsafe { crate::ffi::OSD_FileSystemSelector_is_supported_path(self as *const Self, theUrl) }
+    }
+
+    /// **Source:** `OSD_FileSystemSelector.hxx`:24 - `OSD_FileSystemSelector::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_FileSystemSelector_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_FileSystemSelector.hxx`:24 - `OSD_FileSystemSelector::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_FileSystemSelector_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_FileSystem
+    pub fn as_file_system(&self) -> &FileSystem {
+        unsafe { &*(crate::ffi::OSD_FileSystemSelector_as_OSD_FileSystem(self as *const Self)) }
+    }
+
+    /// Upcast to OSD_FileSystem (mutable)
+    pub fn as_file_system_mut(&mut self) -> &mut FileSystem {
+        unsafe {
+            &mut *(crate::ffi::OSD_FileSystemSelector_as_OSD_FileSystem_mut(self as *mut Self))
+        }
+    }
+}
+
+// ========================
+// From OSD_Host.hxx
+// ========================
+
+/// **Source:** `OSD_Host.hxx`:31 - `OSD_Host`
+/// Carries information about a Host
+/// System version ,host name, nodename ...
+pub use crate::ffi::OSD_Host as Host;
+
+unsafe impl crate::CppDeletable for Host {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Host_destructor(ptr);
+    }
+}
+
+impl Host {
+    /// **Source:** `OSD_Host.hxx`:37 - `OSD_Host::OSD_Host()`
+    /// Initializes current host by default.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Host_ctor()) }
+    }
+
+    /// **Source:** `OSD_Host.hxx`:40 - `OSD_Host::SystemVersion()`
+    /// Returns system name and version
+    pub fn system_version(&mut self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Host_system_version(self as *mut Self)) }
+    }
+
+    /// **Source:** `OSD_Host.hxx`:43 - `OSD_Host::SystemId()`
+    /// Returns the system type (UNIX System V, UNIX BSD, MS-DOS...)
+    pub fn system_id(&self) -> crate::osd::SysType {
+        unsafe {
+            crate::osd::SysType::try_from(crate::ffi::OSD_Host_system_id(self as *const Self))
+                .unwrap()
+        }
+    }
+
+    /// **Source:** `OSD_Host.hxx`:46 - `OSD_Host::HostName()`
+    /// Returns host name.
+    pub fn host_name(&mut self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Host_host_name(self as *mut Self)) }
+    }
+
+    /// **Source:** `OSD_Host.hxx`:49 - `OSD_Host::AvailableMemory()`
+    /// Returns available memory in Kilobytes.
+    pub fn available_memory(&mut self) -> i32 {
+        unsafe { crate::ffi::OSD_Host_available_memory(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Host.hxx`:52 - `OSD_Host::InternetAddress()`
+    /// Returns Internet address of current host.
+    pub fn internet_address(&mut self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Host_internet_address(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `OSD_Host.hxx`:55 - `OSD_Host::MachineType()`
+    /// Returns type of current machine.
+    pub fn machine_type(&mut self) -> crate::osd::OEMType {
+        unsafe {
+            crate::osd::OEMType::try_from(crate::ffi::OSD_Host_machine_type(self as *mut Self))
+                .unwrap()
+        }
+    }
+
+    /// **Source:** `OSD_Host.hxx`:58 - `OSD_Host::Failed()`
+    /// Returns TRUE if an error occurs
+    pub fn failed(&self) -> bool {
+        unsafe { crate::ffi::OSD_Host_failed(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_Host.hxx`:61 - `OSD_Host::Reset()`
+    /// Resets error counter to zero
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::OSD_Host_reset(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Host.hxx`:64 - `OSD_Host::Perror()`
+    /// Raises OSD_Error
+    pub fn perror(&mut self) {
+        unsafe { crate::ffi::OSD_Host_perror(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Host.hxx`:67 - `OSD_Host::Error()`
+    /// Returns error number if 'Failed' is TRUE.
+    pub fn error(&self) -> i32 {
+        unsafe { crate::ffi::OSD_Host_error(self as *const Self) }
+    }
+}
+
+// ========================
+// From OSD_LocalFileSystem.hxx
+// ========================
+
+/// **Source:** `OSD_LocalFileSystem.hxx`:20 - `OSD_LocalFileSystem`
+/// A file system opening local files (or files from mount systems).
+pub use crate::ffi::OSD_LocalFileSystem as LocalFileSystem;
+
+unsafe impl crate::CppDeletable for LocalFileSystem {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_LocalFileSystem_destructor(ptr);
+    }
+}
+
+impl LocalFileSystem {
+    /// **Source:** `OSD_LocalFileSystem.hxx`:25 - `OSD_LocalFileSystem::OSD_LocalFileSystem()`
+    /// Constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_LocalFileSystem_ctor()) }
+    }
+
+    /// **Source:** `OSD_LocalFileSystem.hxx`:22 - `OSD_LocalFileSystem::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_LocalFileSystem_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_LocalFileSystem.hxx`:28 - `OSD_LocalFileSystem::IsSupportedPath()`
+    /// Returns TRUE if URL defines a supported protocol.
+    pub fn is_supported_path(&self, theUrl: &crate::ffi::TCollection_AsciiString) -> bool {
+        unsafe { crate::ffi::OSD_LocalFileSystem_is_supported_path(self as *const Self, theUrl) }
+    }
+
+    /// **Source:** `OSD_LocalFileSystem.hxx`:22 - `OSD_LocalFileSystem::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_LocalFileSystem_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_LocalFileSystem.hxx`:22 - `OSD_LocalFileSystem::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_LocalFileSystem_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_FileSystem
+    pub fn as_file_system(&self) -> &FileSystem {
+        unsafe { &*(crate::ffi::OSD_LocalFileSystem_as_OSD_FileSystem(self as *const Self)) }
+    }
+
+    /// Upcast to OSD_FileSystem (mutable)
+    pub fn as_file_system_mut(&mut self) -> &mut FileSystem {
+        unsafe { &mut *(crate::ffi::OSD_LocalFileSystem_as_OSD_FileSystem_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From OSD_MAllocHook.hxx
+// ========================
+
+/// **Source:** `OSD_MAllocHook.hxx`:28 - `OSD_MAllocHook`
+///
+/// This class provides the possibility to set callback for memory
+/// allocation/deallocation.
+/// On MS Windows, it works only in Debug builds. It relies on the
+/// debug CRT function _CrtSetAllocHook (see MSDN for help).
+pub use crate::ffi::OSD_MAllocHook as MAllocHook;
+
+unsafe impl crate::CppDeletable for MAllocHook {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_MAllocHook_destructor(ptr);
+    }
+}
+
+impl MAllocHook {
+    /// **Source:** `OSD_MAllocHook.hxx` - `OSD_MAllocHook::OSD_MAllocHook()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_MAllocHook_ctor()) }
+    }
+}
+
 // ========================
 // From OSD_MemInfo.hxx
 // ========================
@@ -93,7 +3117,2175 @@ impl MemInfo {
 }
 
 // ========================
+// From OSD_OSDError.hxx
+// ========================
+
+/// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError`
+pub use crate::ffi::OSD_OSDError as OSDError;
+
+unsafe impl crate::CppDeletable for OSDError {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_OSDError_destructor(ptr);
+    }
+}
+
+impl OSDError {
+    /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::OSD_OSDError()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_OSDError_ctor()) }
+    }
+
+    /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::OSD_OSDError()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_OSDError_ctor_charptr(c_theMessage.as_ptr()))
+        }
+    }
+
+    /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::OSD_OSDError()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_OSDError_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_OSDError_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_OSDError_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_OSDError_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_OSDError_get_type_descriptor()) }
+    }
+}
+
+// ========================
+// From OSD_Parallel.hxx
+// ========================
+
+/// **Source:** `OSD_Parallel.hxx`:58 - `OSD_Parallel`
+/// @brief Simple tool for code parallelization.
+///
+/// OSD_Parallel class provides simple interface for parallel processing of
+/// tasks that can be formulated in terms of "for" or "foreach" loops.
+///
+/// To use this tool it is necessary to:
+/// - organize the data to be processed in a collection accessible by
+/// iteration (usually array or vector);
+/// - implement a functor class providing operator () accepting iterator
+/// (or index in array) that does the job;
+/// - call either For() or ForEach() providing begin and end iterators and
+/// a functor object.
+///
+/// Iterators should satisfy requirements of STL forward iterator.
+/// Functor
+///
+/// @code
+/// class Functor
+/// {
+/// public:
+/// void operator() ([processing instance]) const
+/// {
+/// //...
+/// }
+/// };
+/// @endcode
+///
+/// The operator () should be implemented in a thread-safe way so that
+/// the same functor object can process different data items in parallel threads.
+///
+/// Iteration by index (For) is expected to be more efficient than using iterators
+/// (ForEach).
+///
+/// Implementation uses TBB if OCCT is built with support of TBB; otherwise it
+/// uses ad-hoc parallelization tool. In general, if TBB is available, it is
+/// more efficient to use it directly instead of using OSD_Parallel.
+pub use crate::ffi::OSD_Parallel as Parallel;
+
+unsafe impl crate::CppDeletable for Parallel {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Parallel_destructor(ptr);
+    }
+}
+
+impl Parallel {
+    /// **Source:** `OSD_Parallel.hxx` - `OSD_Parallel::OSD_Parallel()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Parallel_ctor()) }
+    }
+
+    /// **Source:** `OSD_Parallel.hxx`:294 - `OSD_Parallel::ToUseOcctThreads()`
+    /// @name public methods
+    /// Returns TRUE if OCCT threads should be used instead of auxiliary threads library;
+    /// default value is FALSE if alternative library has been enabled while OCCT building and TRUE
+    /// otherwise.
+    pub fn to_use_occt_threads() -> bool {
+        unsafe { crate::ffi::OSD_Parallel_to_use_occt_threads() }
+    }
+
+    /// **Source:** `OSD_Parallel.hxx`:298 - `OSD_Parallel::SetUseOcctThreads()`
+    /// Sets if OCCT threads should be used instead of auxiliary threads library.
+    /// Has no effect if OCCT has been built with no auxiliary threads library.
+    pub fn set_use_occt_threads(theToUseOcct: bool) {
+        unsafe { crate::ffi::OSD_Parallel_set_use_occt_threads(theToUseOcct) }
+    }
+
+    /// **Source:** `OSD_Parallel.hxx`:301 - `OSD_Parallel::NbLogicalProcessors()`
+    /// Returns number of logical processors.
+    pub fn nb_logical_processors() -> i32 {
+        unsafe { crate::ffi::OSD_Parallel_nb_logical_processors() }
+    }
+}
+
+// ========================
+// From OSD_Path.hxx
+// ========================
+
+/// **Source:** `OSD_Path.hxx`:26 - `OSD_Path`
+pub use crate::ffi::OSD_Path as Path;
+
+unsafe impl crate::CppDeletable for Path {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Path_destructor(ptr);
+    }
+}
+
+impl Path {
+    /// **Source:** `OSD_Path.hxx`:33 - `OSD_Path::OSD_Path()`
+    /// Creates a Path object initialized to an empty string.
+    /// i.e. current directory.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_ctor()) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:45 - `OSD_Path::OSD_Path()`
+    /// Creates a Path object initialized by dependent path.
+    /// ex: OSD_Path me ("/usr/bin/myprog.sh",OSD_UnixBSD);
+    ///
+    /// OSD_Path me ("sys$common:[syslib]cc.exe",OSD_OSF) will
+    /// raise a ProgramError due to invalid name for this
+    /// type of system.
+    /// In order to avoid a 'ProgramError' , use IsValid(...)
+    /// to ensure you the validity of <aDependentName>.
+    /// Raises ConstructionError when the path is either null
+    /// or contains characters not in range of ' '...'~'.
+    pub fn new_asciistring_systype(
+        aDependentName: &crate::ffi::TCollection_AsciiString,
+        aSysType: crate::osd::SysType,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_ctor_asciistring_systype(
+                aDependentName,
+                aSysType.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:68 - `OSD_Path::OSD_Path()`
+    /// Initializes a system independent path.
+    /// By default , the Path conversion will be assumed using
+    /// currently used system.
+    /// A special syntax is used to specify a "aTrek" in an
+    /// independent manner :
+    /// a "|" represents directory separator
+    /// a "^" means directory above (father)
+    /// examples:
+    /// "|usr|bin" - On UNIX -> "/usr/bin"
+    /// - On VMS  -> "[usr.bin]"
+    /// - On MSDOS-> "\usr\bin"
+    /// - On MacOs-> ": usr : bin"
+    ///
+    /// "^|rep"    - On UNIX -> "../rep"
+    /// - On VMS  -> "[-.rep]"
+    /// - On MSDOS -> "..\rep"
+    /// - On MacOS->  ":: rep"
+    ///
+    /// "subdir|" - On UNIX -> "subdir/"
+    /// - On VMS  -> "[.subdir.]"
+    pub fn new_asciistring7(
+        aNode: &crate::ffi::TCollection_AsciiString,
+        aUsername: &crate::ffi::TCollection_AsciiString,
+        aPassword: &crate::ffi::TCollection_AsciiString,
+        aDisk: &crate::ffi::TCollection_AsciiString,
+        aTrek: &crate::ffi::TCollection_AsciiString,
+        aName: &crate::ffi::TCollection_AsciiString,
+        anExtension: &crate::ffi::TCollection_AsciiString,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_ctor_asciistring7(
+                aNode,
+                aUsername,
+                aPassword,
+                aDisk,
+                aTrek,
+                aName,
+                anExtension,
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:77 - `OSD_Path::Values()`
+    /// Gets each component of a path.
+    pub fn values(
+        &self,
+        aNode: &mut crate::ffi::TCollection_AsciiString,
+        aUsername: &mut crate::ffi::TCollection_AsciiString,
+        aPassword: &mut crate::ffi::TCollection_AsciiString,
+        aDisk: &mut crate::ffi::TCollection_AsciiString,
+        aTrek: &mut crate::ffi::TCollection_AsciiString,
+        aName: &mut crate::ffi::TCollection_AsciiString,
+        anExtension: &mut crate::ffi::TCollection_AsciiString,
+    ) {
+        unsafe {
+            crate::ffi::OSD_Path_values(
+                self as *const Self,
+                aNode,
+                aUsername,
+                aPassword,
+                aDisk,
+                aTrek,
+                aName,
+                anExtension,
+            )
+        }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:86 - `OSD_Path::SetValues()`
+    /// Sets each component of a path.
+    pub fn set_values(
+        &mut self,
+        aNode: &crate::ffi::TCollection_AsciiString,
+        aUsername: &crate::ffi::TCollection_AsciiString,
+        aPassword: &crate::ffi::TCollection_AsciiString,
+        aDisk: &crate::ffi::TCollection_AsciiString,
+        aTrek: &crate::ffi::TCollection_AsciiString,
+        aName: &crate::ffi::TCollection_AsciiString,
+        anExtension: &crate::ffi::TCollection_AsciiString,
+    ) {
+        unsafe {
+            crate::ffi::OSD_Path_set_values(
+                self as *mut Self,
+                aNode,
+                aUsername,
+                aPassword,
+                aDisk,
+                aTrek,
+                aName,
+                anExtension,
+            )
+        }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:109 - `OSD_Path::SystemName()`
+    /// Returns system dependent path
+    /// <aType> is one among Unix,VMS ...
+    /// This function is not private because you may need to
+    /// display system dependent path on a front-end.
+    /// It can be useful when communicating with another system.
+    /// For instance when you want to communicate between VMS and Unix
+    /// to transfer files, or to do a remote procedure call
+    /// using files.
+    /// example :
+    /// OSD_Path myPath ("sparc4", "sga", "secret_passwd",
+    /// "$5$dkb100","|users|examples");
+    /// Internal ( Dependent_name );
+    /// On UNIX  sga"secret_passwd"@sparc4:/users/examples
+    /// On VMS   sparc4"sga secret_passwd"::$5$dkb100:[users.examples]
+    /// Sets each component of a Path giving its system dependent name.
+    pub fn system_name(
+        &self,
+        FullName: &mut crate::ffi::TCollection_AsciiString,
+        aType: crate::osd::SysType,
+    ) {
+        unsafe { crate::ffi::OSD_Path_system_name(self as *const Self, FullName, aType.into()) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:113 - `OSD_Path::ExpandedName()`
+    /// Returns system dependent path resolving logical symbols.
+    pub fn expanded_name(&mut self, aName: &mut crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::OSD_Path_expanded_name(self as *mut Self, aName) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:125 - `OSD_Path::UpTrek()`
+    /// This removes the last directory name in <aTrek>
+    /// and returns result.
+    /// ex:  me = "|usr|bin|todo.sh"
+    /// me.UpTrek() gives me = "|usr|todo.sh"
+    /// if <me> contains "|", me.UpTrek() will give again "|"
+    /// without any error.
+    pub fn up_trek(&mut self) {
+        unsafe { crate::ffi::OSD_Path_up_trek(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:130 - `OSD_Path::DownTrek()`
+    /// This appends a directory name into the Trek.
+    /// ex: me = "|usr|todo.sh"
+    /// me.DownTrek("bin") gives me = "|usr|bin|todo.sh".
+    pub fn down_trek(&mut self, aName: &crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::OSD_Path_down_trek(self as *mut Self, aName) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:135 - `OSD_Path::TrekLength()`
+    /// Returns number of components in Trek of <me>.
+    /// ex: me = "|usr|sys|etc|bin"
+    /// me.TrekLength() returns 4.
+    pub fn trek_length(&self) -> i32 {
+        unsafe { crate::ffi::OSD_Path_trek_length(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:143 - `OSD_Path::RemoveATrek()`
+    /// This removes a component of Trek in <me> at position <where>.
+    /// The first component of Trek is numbered 1.
+    /// ex:   me = "|usr|bin|"
+    /// me.RemoveATrek(1) gives me = "|bin|"
+    /// To avoid a 'NumericError' because of a bad <where>, use
+    /// TrekLength() to know number of components of Trek in <me>.
+    pub fn remove_a_trek_int(&mut self, where_: i32) {
+        unsafe { crate::ffi::OSD_Path_remove_a_trek_int(self as *mut Self, where_) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:149 - `OSD_Path::RemoveATrek()`
+    /// This removes <aName> from <me> in Trek.
+    /// No error is raised if <aName> is not in <me>.
+    /// ex:  me = "|usr|sys|etc|doc"
+    /// me.RemoveATrek("sys") gives me = "|usr|etc|doc".
+    pub fn remove_a_trek_asciistring(&mut self, aName: &crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::OSD_Path_remove_a_trek_asciistring(self as *mut Self, aName) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:154 - `OSD_Path::TrekValue()`
+    /// Returns component of Trek in <me> at position <where>.
+    /// ex:  me = "|usr|bin|sys|"
+    /// me.TrekValue(2) returns "bin"
+    pub fn trek_value(&self, where_: i32) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_trek_value(self as *const Self, where_))
+        }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:159 - `OSD_Path::InsertATrek()`
+    /// This inserts <aName> at position <where> into Trek of <me>.
+    /// ex:  me = "|usr|etc|"
+    /// me.InsertATrek("sys",2) gives me = "|usr|sys|etc"
+    pub fn insert_a_trek(&mut self, aName: &crate::ffi::TCollection_AsciiString, where_: i32) {
+        unsafe { crate::ffi::OSD_Path_insert_a_trek(self as *mut Self, aName, where_) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:163 - `OSD_Path::Node()`
+    /// Returns Node of <me>.
+    pub fn node(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_node(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:166 - `OSD_Path::UserName()`
+    /// Returns UserName of <me>.
+    pub fn user_name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_user_name(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:169 - `OSD_Path::Password()`
+    /// Returns Password of <me>.
+    pub fn password(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_password(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:172 - `OSD_Path::Disk()`
+    /// Returns Disk of <me>.
+    pub fn disk(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_disk(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:175 - `OSD_Path::Trek()`
+    /// Returns Trek of <me>.
+    pub fn trek(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_trek(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:179 - `OSD_Path::Name()`
+    /// Returns file name of <me>.
+    /// If <me> hasn't been initialized, it returns an empty AsciiString.
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_name(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:183 - `OSD_Path::Extension()`
+    /// Returns my extension name.
+    /// This returns an empty string if path contains no file name.
+    pub fn extension(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_extension(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:186 - `OSD_Path::SetNode()`
+    /// Sets Node of <me>.
+    pub fn set_node(&mut self, aName: &crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::OSD_Path_set_node(self as *mut Self, aName) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:189 - `OSD_Path::SetUserName()`
+    /// Sets UserName of <me>.
+    pub fn set_user_name(&mut self, aName: &crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::OSD_Path_set_user_name(self as *mut Self, aName) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:192 - `OSD_Path::SetPassword()`
+    /// Sets Password of <me>.
+    pub fn set_password(&mut self, aName: &crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::OSD_Path_set_password(self as *mut Self, aName) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:195 - `OSD_Path::SetDisk()`
+    /// Sets Disk of <me>.
+    pub fn set_disk(&mut self, aName: &crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::OSD_Path_set_disk(self as *mut Self, aName) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:198 - `OSD_Path::SetTrek()`
+    /// Sets Trek of <me>.
+    pub fn set_trek(&mut self, aName: &crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::OSD_Path_set_trek(self as *mut Self, aName) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:202 - `OSD_Path::SetName()`
+    /// Sets file name of <me>.
+    /// If <me> hasn't been initialized, it returns an empty AsciiString.
+    pub fn set_name(&mut self, aName: &crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::OSD_Path_set_name(self as *mut Self, aName) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:205 - `OSD_Path::SetExtension()`
+    /// Sets my extension name.
+    pub fn set_extension(&mut self, aName: &crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::OSD_Path_set_extension(self as *mut Self, aName) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:210 - `OSD_Path::LocateExecFile()`
+    /// Finds the full path of an executable file, like the
+    /// "which" Unix utility. Uses the path environment variable.
+    /// Returns False if executable file not found.
+    pub fn locate_exec_file(&mut self, aPath: &mut crate::ffi::OSD_Path) -> bool {
+        unsafe { crate::ffi::OSD_Path_locate_exec_file(self as *mut Self, aPath) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:116 - `OSD_Path::IsValid()`
+    /// Returns TRUE if <theDependentName> is valid for this SysType.
+    pub fn is_valid(
+        theDependentName: &crate::ffi::TCollection_AsciiString,
+        theSysType: crate::osd::SysType,
+    ) -> bool {
+        unsafe { crate::ffi::OSD_Path_is_valid(theDependentName, theSysType.into()) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:219 - `OSD_Path::RelativePath()`
+    /// Returns the relative file path between the absolute directory
+    /// path <DirPath>  and the absolute file path <AbsFilePath>.
+    /// If <DirPath> starts with "/", paths are handled as
+    /// on Unix, if it starts with a letter followed by ":", as on
+    /// WNT. In particular on WNT directory names are not key sensitive.
+    /// If handling fails, an empty string is returned.
+    pub fn relative_path(
+        DirPath: &crate::ffi::TCollection_AsciiString,
+        AbsFilePath: &crate::ffi::TCollection_AsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_relative_path(DirPath, AbsFilePath))
+        }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:228 - `OSD_Path::AbsolutePath()`
+    /// Returns the absolute file path from the absolute directory path
+    /// <DirPath> and the relative file path returned by RelativePath().
+    /// If the RelFilePath is an absolute path, it is returned and the
+    /// directory path is ignored.
+    /// If handling fails, an empty string is returned.
+    pub fn absolute_path(
+        DirPath: &crate::ffi::TCollection_AsciiString,
+        RelFilePath: &crate::ffi::TCollection_AsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_absolute_path(DirPath, RelFilePath))
+        }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:239 - `OSD_Path::FolderAndFileFromPath()`
+    /// Split absolute filepath into folder path and file name.
+    /// Example: IN  theFilePath ='/media/cdrom/image.jpg'
+    /// OUT theFolder   ='/media/cdrom/'
+    /// OUT theFileName ='image.jpg'
+    /// @param[in] theFilePath   file path
+    /// @param[out] theFolder    folder path (with trailing separator)
+    /// @param[out] theFileName  file name
+    pub fn folder_and_file_from_path(
+        theFilePath: &crate::ffi::TCollection_AsciiString,
+        theFolder: &mut crate::ffi::TCollection_AsciiString,
+        theFileName: &mut crate::ffi::TCollection_AsciiString,
+    ) {
+        unsafe {
+            crate::ffi::OSD_Path_folder_and_file_from_path(theFilePath, theFolder, theFileName)
+        }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:251 - `OSD_Path::FileNameAndExtension()`
+    /// Return file extension from the name in lower case.
+    /// Extension is expected to be within 20-symbols length, and determined as file name tail after
+    /// last dot. Example: IN  theFilePath ='Image.sbs.JPG'
+    /// OUT theName     ='Image.sbs'
+    /// OUT theFileName ='jpg'
+    /// @param[in] theFilePath    file path
+    /// @param[out] theName       file name without extension
+    /// @param[out] theExtension  file extension in lower case and without dot
+    pub fn file_name_and_extension(
+        theFilePath: &crate::ffi::TCollection_AsciiString,
+        theName: &mut crate::ffi::TCollection_AsciiString,
+        theExtension: &mut crate::ffi::TCollection_AsciiString,
+    ) {
+        unsafe { crate::ffi::OSD_Path_file_name_and_extension(theFilePath, theName, theExtension) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:260 - `OSD_Path::IsDosPath()`
+    /// Detect absolute DOS-path also used in Windows.
+    /// The total path length is limited to 256 characters.
+    /// Sample path:
+    /// C:\folder\file
+    /// @return true if DOS path syntax detected.
+    pub fn is_dos_path(thePath: &str) -> bool {
+        let c_thePath = std::ffi::CString::new(thePath).unwrap();
+        unsafe { crate::ffi::OSD_Path_is_dos_path(c_thePath.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:272 - `OSD_Path::IsNtExtendedPath()`
+    /// Detect extended-length NT path (can be only absolute).
+    /// Approximate maximum path is 32767 characters.
+    /// Sample path:
+    /// \\?\D:\very long path
+    /// File I/O functions in the Windows API convert "/" to "\" as part of converting the name to an
+    /// NT-style name, except when using the "\\?\" prefix.
+    /// @return true if extended-length NT path syntax detected.
+    pub fn is_nt_extended_path(thePath: &str) -> bool {
+        let c_thePath = std::ffi::CString::new(thePath).unwrap();
+        unsafe { crate::ffi::OSD_Path_is_nt_extended_path(c_thePath.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:281 - `OSD_Path::IsUncPath()`
+    /// UNC is a naming convention used primarily to specify and map network drives in Microsoft
+    /// Windows. Sample path:
+    /// \\server\share\file
+    /// @return true if UNC path syntax detected.
+    pub fn is_unc_path(thePath: &str) -> bool {
+        let c_thePath = std::ffi::CString::new(thePath).unwrap();
+        unsafe { crate::ffi::OSD_Path_is_unc_path(c_thePath.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:294 - `OSD_Path::IsUncExtendedPath()`
+    /// Detect extended-length UNC path.
+    /// Sample path:
+    /// \\?\UNC\server\share
+    /// @return true if extended-length UNC path syntax detected.
+    pub fn is_unc_extended_path(thePath: &str) -> bool {
+        let c_thePath = std::ffi::CString::new(thePath).unwrap();
+        unsafe { crate::ffi::OSD_Path_is_unc_extended_path(c_thePath.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:303 - `OSD_Path::IsUnixPath()`
+    /// Detect absolute UNIX-path.
+    /// Sample path:
+    /// /media/cdrom/file
+    /// @return true if UNIX path syntax detected.
+    pub fn is_unix_path(thePath: &str) -> bool {
+        let c_thePath = std::ffi::CString::new(thePath).unwrap();
+        unsafe { crate::ffi::OSD_Path_is_unix_path(c_thePath.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:312 - `OSD_Path::IsContentProtocolPath()`
+    /// Detect special URLs on Android platform.
+    /// Sample path:
+    /// content://filename
+    /// @return true if content path syntax detected
+    pub fn is_content_protocol_path(thePath: &str) -> bool {
+        let c_thePath = std::ffi::CString::new(thePath).unwrap();
+        unsafe { crate::ffi::OSD_Path_is_content_protocol_path(c_thePath.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:322 - `OSD_Path::IsRemoteProtocolPath()`
+    /// Detect remote protocol path (http / ftp / ...).
+    /// Actually shouldn't be remote...
+    /// Sample path:
+    /// http://domain/path/file
+    /// @return true if remote protocol path syntax detected.
+    pub fn is_remote_protocol_path(thePath: &str) -> bool {
+        let c_thePath = std::ffi::CString::new(thePath).unwrap();
+        unsafe { crate::ffi::OSD_Path_is_remote_protocol_path(c_thePath.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:342 - `OSD_Path::IsRelativePath()`
+    /// Method to recognize path is absolute or not.
+    /// Detection is based on path syntax - no any filesystem / network access performed.
+    /// @return true if path is incomplete (relative).
+    pub fn is_relative_path(thePath: &str) -> bool {
+        let c_thePath = std::ffi::CString::new(thePath).unwrap();
+        unsafe { crate::ffi::OSD_Path_is_relative_path(c_thePath.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Path.hxx`:351 - `OSD_Path::IsAbsolutePath()`
+    /// Method to recognize path is absolute or not.
+    /// Detection is based on path syntax - no any filesystem / network access performed.
+    /// @return true if path is complete (absolute)
+    pub fn is_absolute_path(thePath: &str) -> bool {
+        let c_thePath = std::ffi::CString::new(thePath).unwrap();
+        unsafe { crate::ffi::OSD_Path_is_absolute_path(c_thePath.as_ptr()) }
+    }
+}
+
+// ========================
+// From OSD_PerfMeter.hxx
+// ========================
+
+/// **Source:** `OSD_PerfMeter.hxx`:25 - `OSD_PerfMeter`
+/// This class enables measuring the CPU time between two points of code execution, regardless of
+/// the scope of these points of code. A meter is identified by its name (string). So multiple
+/// objects in various places of user code may point to the same meter. The results will be printed
+/// on stdout upon finish of the program. For details see OSD_PerfMeter.h
+pub use crate::ffi::OSD_PerfMeter as PerfMeter;
+
+unsafe impl crate::CppDeletable for PerfMeter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_PerfMeter_destructor(ptr);
+    }
+}
+
+impl PerfMeter {
+    /// **Source:** `OSD_PerfMeter.hxx`:30 - `OSD_PerfMeter::OSD_PerfMeter()`
+    /// Constructs a void meter (to further call Init and Start)
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_PerfMeter_ctor()) }
+    }
+
+    /// **Source:** `OSD_PerfMeter.hxx`:36 - `OSD_PerfMeter::OSD_PerfMeter()`
+    /// Constructs and starts (if autoStart is true) the named meter
+    pub fn new_charptr_bool(theMeter: &str, theToAutoStart: bool) -> crate::OwnedPtr<Self> {
+        let c_theMeter = std::ffi::CString::new(theMeter).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_PerfMeter_ctor_charptr_bool(
+                c_theMeter.as_ptr(),
+                theToAutoStart,
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_PerfMeter.hxx`:36 - `OSD_PerfMeter::OSD_PerfMeter()`
+    /// Constructs and starts (if autoStart is true) the named meter
+    pub fn new_charptr(theMeter: &str) -> crate::OwnedPtr<Self> {
+        Self::new_charptr_bool(theMeter, true)
+    }
+
+    /// **Source:** `OSD_PerfMeter.hxx`:46 - `OSD_PerfMeter::Init()`
+    /// Prepares the named meter
+    pub fn init(&mut self, theMeter: &str) {
+        let c_theMeter = std::ffi::CString::new(theMeter).unwrap();
+        unsafe { crate::ffi::OSD_PerfMeter_init(self as *mut Self, c_theMeter.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_PerfMeter.hxx`:54 - `OSD_PerfMeter::Start()`
+    /// Starts the meter
+    pub fn start(&self) {
+        unsafe { crate::ffi::OSD_PerfMeter_start(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_PerfMeter.hxx`:57 - `OSD_PerfMeter::Stop()`
+    /// Stops the meter
+    pub fn stop(&self) {
+        unsafe { crate::ffi::OSD_PerfMeter_stop(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_PerfMeter.hxx`:60 - `OSD_PerfMeter::Tick()`
+    /// Increments the counter w/o time measurement
+    pub fn tick(&self) {
+        unsafe { crate::ffi::OSD_PerfMeter_tick(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_PerfMeter.hxx`:63 - `OSD_PerfMeter::Flush()`
+    /// Outputs the meter data and resets it to initial state
+    pub fn flush(&self) {
+        unsafe { crate::ffi::OSD_PerfMeter_flush(self as *const Self) }
+    }
+}
+
+// ========================
+// From OSD_Process.hxx
+// ========================
+
+/// **Source:** `OSD_Process.hxx`:36 - `OSD_Process`
+/// A set of system process tools
+pub use crate::ffi::OSD_Process as Process;
+
+unsafe impl crate::CppDeletable for Process {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Process_destructor(ptr);
+    }
+}
+
+impl Process {
+    /// **Source:** `OSD_Process.hxx`:49 - `OSD_Process::OSD_Process()`
+    /// Initializes the object and prepare for a possible dump
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Process_ctor()) }
+    }
+
+    /// **Source:** `OSD_Process.hxx`:52 - `OSD_Process::TerminalType()`
+    /// Returns the terminal used (vt100, vt200 ,sun-cmd ...)
+    pub fn terminal_type(&mut self, Name: &mut crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::OSD_Process_terminal_type(self as *mut Self, Name) }
+    }
+
+    /// **Source:** `OSD_Process.hxx`:55 - `OSD_Process::SystemDate()`
+    /// Gets system date.
+    pub fn system_date(&mut self) -> crate::OwnedPtr<crate::ffi::Quantity_Date> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Process_system_date(self as *mut Self)) }
+    }
+
+    /// **Source:** `OSD_Process.hxx`:58 - `OSD_Process::UserName()`
+    /// Returns the user name.
+    pub fn user_name(&mut self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Process_user_name(self as *mut Self)) }
+    }
+
+    /// **Source:** `OSD_Process.hxx`:61 - `OSD_Process::IsSuperUser()`
+    /// Returns True if the process user is the super-user.
+    pub fn is_super_user(&mut self) -> bool {
+        unsafe { crate::ffi::OSD_Process_is_super_user(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Process.hxx`:64 - `OSD_Process::ProcessId()`
+    /// Returns the 'Process Id'
+    pub fn process_id(&mut self) -> i32 {
+        unsafe { crate::ffi::OSD_Process_process_id(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Process.hxx`:67 - `OSD_Process::CurrentDirectory()`
+    /// Returns the current path where the process is.
+    pub fn current_directory(&mut self) -> crate::OwnedPtr<crate::ffi::OSD_Path> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Process_current_directory(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `OSD_Process.hxx`:70 - `OSD_Process::SetCurrentDirectory()`
+    /// Changes the current process directory.
+    pub fn set_current_directory(&mut self, where_: &crate::ffi::OSD_Path) {
+        unsafe { crate::ffi::OSD_Process_set_current_directory(self as *mut Self, where_) }
+    }
+
+    /// **Source:** `OSD_Process.hxx`:73 - `OSD_Process::Failed()`
+    /// Returns TRUE if an error occurs
+    pub fn failed(&self) -> bool {
+        unsafe { crate::ffi::OSD_Process_failed(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_Process.hxx`:76 - `OSD_Process::Reset()`
+    /// Resets error counter to zero
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::OSD_Process_reset(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Process.hxx`:79 - `OSD_Process::Perror()`
+    /// Raises OSD_Error
+    pub fn perror(&mut self) {
+        unsafe { crate::ffi::OSD_Process_perror(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Process.hxx`:82 - `OSD_Process::Error()`
+    /// Returns error number if 'Failed' is TRUE.
+    pub fn error(&self) -> i32 {
+        unsafe { crate::ffi::OSD_Process_error(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_Process.hxx`:40 - `OSD_Process::ExecutablePath()`
+    /// Return full path to the current process executable.
+    pub fn executable_path() -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Process_executable_path()) }
+    }
+
+    /// **Source:** `OSD_Process.hxx`:43 - `OSD_Process::ExecutableFolder()`
+    /// Return full path to the folder containing current process executable with trailing separator.
+    pub fn executable_folder() -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Process_executable_folder()) }
+    }
+}
+
+// ========================
+// From OSD_Protection.hxx
+// ========================
+
+/// **Source:** `OSD_Protection.hxx`:45 - `OSD_Protection`
+/// This  class provides data to manage file protection
+/// Example:These rights are treated in a system dependent manner :
+/// On UNIX you have User,Group and Other rights
+/// On VMS  you have Owner,Group,World and System rights
+/// An automatic conversion is done between OSD and UNIX/VMS.
+///
+/// OSD	VMS	UNIX
+/// User     Owner   User
+/// Group    Group   Group
+/// World    World   Other
+/// System   System  (combined with Other)
+///
+/// When you use System protection on UNIX you must know that
+/// Other rights and System rights are inclusively "ORed".
+/// So Other with only READ access and System with WRITE access
+/// will produce on UNIX Other with READ and WRITE access.
+///
+/// This choice comes from the fact that ROOT can't be considered
+/// as member of the group nor as user. So it is considered as Other.
+pub use crate::ffi::OSD_Protection as Protection;
+
+unsafe impl crate::CppDeletable for Protection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Protection_destructor(ptr);
+    }
+}
+
+impl Protection {
+    /// **Source:** `OSD_Protection.hxx`:56 - `OSD_Protection::OSD_Protection()`
+    /// Initializes global access rights as follows
+    ///
+    /// User   : Read Write
+    /// System : Read Write
+    /// Group  : Read
+    /// World  : Read
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Protection_ctor()) }
+    }
+
+    /// **Source:** `OSD_Protection.hxx`:59 - `OSD_Protection::OSD_Protection()`
+    /// Sets values of fields
+    pub fn new_singleprotection4(
+        System: crate::osd::SingleProtection,
+        User: crate::osd::SingleProtection,
+        Group: crate::osd::SingleProtection,
+        World: crate::osd::SingleProtection,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Protection_ctor_singleprotection4(
+                System.into(),
+                User.into(),
+                Group.into(),
+                World.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Protection.hxx`:65 - `OSD_Protection::Values()`
+    /// Retrieves values of fields
+    pub fn values(&mut self, System: &mut i32, User: &mut i32, Group: &mut i32, World: &mut i32) {
+        unsafe { crate::ffi::OSD_Protection_values(self as *mut Self, System, User, Group, World) }
+    }
+
+    /// **Source:** `OSD_Protection.hxx`:71 - `OSD_Protection::SetValues()`
+    /// Sets values of fields
+    pub fn set_values(
+        &mut self,
+        System: crate::osd::SingleProtection,
+        User: crate::osd::SingleProtection,
+        Group: crate::osd::SingleProtection,
+        World: crate::osd::SingleProtection,
+    ) {
+        unsafe {
+            crate::ffi::OSD_Protection_set_values(
+                self as *mut Self,
+                System.into(),
+                User.into(),
+                Group.into(),
+                World.into(),
+            )
+        }
+    }
+
+    /// **Source:** `OSD_Protection.hxx`:77 - `OSD_Protection::SetSystem()`
+    /// Sets protection of 'System'
+    pub fn set_system(&mut self, priv_: crate::osd::SingleProtection) {
+        unsafe { crate::ffi::OSD_Protection_set_system(self as *mut Self, priv_.into()) }
+    }
+
+    /// **Source:** `OSD_Protection.hxx`:80 - `OSD_Protection::SetUser()`
+    /// Sets protection of 'User'
+    pub fn set_user(&mut self, priv_: crate::osd::SingleProtection) {
+        unsafe { crate::ffi::OSD_Protection_set_user(self as *mut Self, priv_.into()) }
+    }
+
+    /// **Source:** `OSD_Protection.hxx`:83 - `OSD_Protection::SetGroup()`
+    /// Sets protection of 'Group'
+    pub fn set_group(&mut self, priv_: crate::osd::SingleProtection) {
+        unsafe { crate::ffi::OSD_Protection_set_group(self as *mut Self, priv_.into()) }
+    }
+
+    /// **Source:** `OSD_Protection.hxx`:86 - `OSD_Protection::SetWorld()`
+    /// Sets protection of 'World'
+    pub fn set_world(&mut self, priv_: crate::osd::SingleProtection) {
+        unsafe { crate::ffi::OSD_Protection_set_world(self as *mut Self, priv_.into()) }
+    }
+
+    /// **Source:** `OSD_Protection.hxx`:89 - `OSD_Protection::System()`
+    /// Gets protection of 'System'
+    pub fn system(&self) -> crate::osd::SingleProtection {
+        unsafe {
+            crate::osd::SingleProtection::try_from(crate::ffi::OSD_Protection_system(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `OSD_Protection.hxx`:92 - `OSD_Protection::User()`
+    /// Gets protection of 'User'
+    pub fn user(&self) -> crate::osd::SingleProtection {
+        unsafe {
+            crate::osd::SingleProtection::try_from(crate::ffi::OSD_Protection_user(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `OSD_Protection.hxx`:95 - `OSD_Protection::Group()`
+    /// Gets protection of 'Group'
+    pub fn group(&self) -> crate::osd::SingleProtection {
+        unsafe {
+            crate::osd::SingleProtection::try_from(crate::ffi::OSD_Protection_group(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `OSD_Protection.hxx`:98 - `OSD_Protection::World()`
+    /// Gets protection of 'World'
+    pub fn world(&self) -> crate::osd::SingleProtection {
+        unsafe {
+            crate::osd::SingleProtection::try_from(crate::ffi::OSD_Protection_world(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `OSD_Protection.hxx`:103 - `OSD_Protection::Add()`
+    /// Add a right to a single protection.
+    /// ex: aProt = RWD
+    /// me.Add(aProt,X)  ->  aProt = RWXD
+    pub fn add(&mut self, aProt: &mut i32, aRight: crate::osd::SingleProtection) {
+        unsafe { crate::ffi::OSD_Protection_add(self as *mut Self, aProt, aRight.into()) }
+    }
+
+    /// **Source:** `OSD_Protection.hxx`:109 - `OSD_Protection::Sub()`
+    /// Subtract a right to a single protection.
+    /// ex: aProt = RWD
+    /// me.Sub(aProt,RW) ->  aProt = D
+    /// But me.Sub(aProt,RWX) is also valid and gives same result.
+    pub fn sub(&mut self, aProt: &mut i32, aRight: crate::osd::SingleProtection) {
+        unsafe { crate::ffi::OSD_Protection_sub(self as *mut Self, aProt, aRight.into()) }
+    }
+}
+
+// ========================
+// From OSD_SIGBUS.hxx
+// ========================
+
+/// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS`
+pub use crate::ffi::OSD_SIGBUS as SIGBUS;
+
+unsafe impl crate::CppDeletable for SIGBUS {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_SIGBUS_destructor(ptr);
+    }
+}
+
+impl SIGBUS {
+    /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::OSD_SIGBUS()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGBUS_ctor()) }
+    }
+
+    /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::OSD_SIGBUS()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGBUS_ctor_charptr(c_theMessage.as_ptr()))
+        }
+    }
+
+    /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::OSD_SIGBUS()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGBUS_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_SIGBUS_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_SIGBUS_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_SIGBUS_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_SIGBUS_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_Signal
+    pub fn as_signal(&self) -> &Signal {
+        unsafe { &*(crate::ffi::OSD_SIGBUS_as_OSD_Signal(self as *const Self)) }
+    }
+
+    /// Upcast to OSD_Signal (mutable)
+    pub fn as_signal_mut(&mut self) -> &mut Signal {
+        unsafe { &mut *(crate::ffi::OSD_SIGBUS_as_OSD_Signal_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From OSD_SIGHUP.hxx
+// ========================
+
+/// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP`
+pub use crate::ffi::OSD_SIGHUP as SIGHUP;
+
+unsafe impl crate::CppDeletable for SIGHUP {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_SIGHUP_destructor(ptr);
+    }
+}
+
+impl SIGHUP {
+    /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::OSD_SIGHUP()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGHUP_ctor()) }
+    }
+
+    /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::OSD_SIGHUP()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGHUP_ctor_charptr(c_theMessage.as_ptr()))
+        }
+    }
+
+    /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::OSD_SIGHUP()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGHUP_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_SIGHUP_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_SIGHUP_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_SIGHUP_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_SIGHUP_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_Signal
+    pub fn as_signal(&self) -> &Signal {
+        unsafe { &*(crate::ffi::OSD_SIGHUP_as_OSD_Signal(self as *const Self)) }
+    }
+
+    /// Upcast to OSD_Signal (mutable)
+    pub fn as_signal_mut(&mut self) -> &mut Signal {
+        unsafe { &mut *(crate::ffi::OSD_SIGHUP_as_OSD_Signal_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From OSD_SIGILL.hxx
+// ========================
+
+/// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL`
+pub use crate::ffi::OSD_SIGILL as SIGILL;
+
+unsafe impl crate::CppDeletable for SIGILL {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_SIGILL_destructor(ptr);
+    }
+}
+
+impl SIGILL {
+    /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::OSD_SIGILL()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGILL_ctor()) }
+    }
+
+    /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::OSD_SIGILL()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGILL_ctor_charptr(c_theMessage.as_ptr()))
+        }
+    }
+
+    /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::OSD_SIGILL()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGILL_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_SIGILL_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_SIGILL_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_SIGILL_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_SIGILL_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_Signal
+    pub fn as_signal(&self) -> &Signal {
+        unsafe { &*(crate::ffi::OSD_SIGILL_as_OSD_Signal(self as *const Self)) }
+    }
+
+    /// Upcast to OSD_Signal (mutable)
+    pub fn as_signal_mut(&mut self) -> &mut Signal {
+        unsafe { &mut *(crate::ffi::OSD_SIGILL_as_OSD_Signal_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From OSD_SIGINT.hxx
+// ========================
+
+/// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT`
+pub use crate::ffi::OSD_SIGINT as SIGINT;
+
+unsafe impl crate::CppDeletable for SIGINT {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_SIGINT_destructor(ptr);
+    }
+}
+
+impl SIGINT {
+    /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::OSD_SIGINT()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGINT_ctor()) }
+    }
+
+    /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::OSD_SIGINT()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGINT_ctor_charptr(c_theMessage.as_ptr()))
+        }
+    }
+
+    /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::OSD_SIGINT()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGINT_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_SIGINT_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_SIGINT_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_SIGINT_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_SIGINT_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_Signal
+    pub fn as_signal(&self) -> &Signal {
+        unsafe { &*(crate::ffi::OSD_SIGINT_as_OSD_Signal(self as *const Self)) }
+    }
+
+    /// Upcast to OSD_Signal (mutable)
+    pub fn as_signal_mut(&mut self) -> &mut Signal {
+        unsafe { &mut *(crate::ffi::OSD_SIGINT_as_OSD_Signal_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From OSD_SIGKILL.hxx
+// ========================
+
+/// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL`
+pub use crate::ffi::OSD_SIGKILL as SIGKILL;
+
+unsafe impl crate::CppDeletable for SIGKILL {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_SIGKILL_destructor(ptr);
+    }
+}
+
+impl SIGKILL {
+    /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::OSD_SIGKILL()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGKILL_ctor()) }
+    }
+
+    /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::OSD_SIGKILL()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGKILL_ctor_charptr(c_theMessage.as_ptr()))
+        }
+    }
+
+    /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::OSD_SIGKILL()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGKILL_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_SIGKILL_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_SIGKILL_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_SIGKILL_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_SIGKILL_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_Signal
+    pub fn as_signal(&self) -> &Signal {
+        unsafe { &*(crate::ffi::OSD_SIGKILL_as_OSD_Signal(self as *const Self)) }
+    }
+
+    /// Upcast to OSD_Signal (mutable)
+    pub fn as_signal_mut(&mut self) -> &mut Signal {
+        unsafe { &mut *(crate::ffi::OSD_SIGKILL_as_OSD_Signal_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From OSD_SIGQUIT.hxx
+// ========================
+
+/// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT`
+pub use crate::ffi::OSD_SIGQUIT as SIGQUIT;
+
+unsafe impl crate::CppDeletable for SIGQUIT {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_SIGQUIT_destructor(ptr);
+    }
+}
+
+impl SIGQUIT {
+    /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::OSD_SIGQUIT()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGQUIT_ctor()) }
+    }
+
+    /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::OSD_SIGQUIT()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGQUIT_ctor_charptr(c_theMessage.as_ptr()))
+        }
+    }
+
+    /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::OSD_SIGQUIT()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGQUIT_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_SIGQUIT_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_SIGQUIT_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_SIGQUIT_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_SIGQUIT_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_Signal
+    pub fn as_signal(&self) -> &Signal {
+        unsafe { &*(crate::ffi::OSD_SIGQUIT_as_OSD_Signal(self as *const Self)) }
+    }
+
+    /// Upcast to OSD_Signal (mutable)
+    pub fn as_signal_mut(&mut self) -> &mut Signal {
+        unsafe { &mut *(crate::ffi::OSD_SIGQUIT_as_OSD_Signal_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From OSD_SIGSEGV.hxx
+// ========================
+
+/// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV`
+pub use crate::ffi::OSD_SIGSEGV as SIGSEGV;
+
+unsafe impl crate::CppDeletable for SIGSEGV {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_SIGSEGV_destructor(ptr);
+    }
+}
+
+impl SIGSEGV {
+    /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::OSD_SIGSEGV()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGSEGV_ctor()) }
+    }
+
+    /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::OSD_SIGSEGV()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGSEGV_ctor_charptr(c_theMessage.as_ptr()))
+        }
+    }
+
+    /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::OSD_SIGSEGV()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGSEGV_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_SIGSEGV_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_SIGSEGV_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_SIGSEGV_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_SIGSEGV_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_Signal
+    pub fn as_signal(&self) -> &Signal {
+        unsafe { &*(crate::ffi::OSD_SIGSEGV_as_OSD_Signal(self as *const Self)) }
+    }
+
+    /// Upcast to OSD_Signal (mutable)
+    pub fn as_signal_mut(&mut self) -> &mut Signal {
+        unsafe { &mut *(crate::ffi::OSD_SIGSEGV_as_OSD_Signal_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From OSD_SIGSYS.hxx
+// ========================
+
+/// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS`
+pub use crate::ffi::OSD_SIGSYS as SIGSYS;
+
+unsafe impl crate::CppDeletable for SIGSYS {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_SIGSYS_destructor(ptr);
+    }
+}
+
+impl SIGSYS {
+    /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::OSD_SIGSYS()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGSYS_ctor()) }
+    }
+
+    /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::OSD_SIGSYS()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGSYS_ctor_charptr(c_theMessage.as_ptr()))
+        }
+    }
+
+    /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::OSD_SIGSYS()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_SIGSYS_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_SIGSYS_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_SIGSYS_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_SIGSYS_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_SIGSYS_get_type_descriptor()) }
+    }
+
+    /// Upcast to OSD_Signal
+    pub fn as_signal(&self) -> &Signal {
+        unsafe { &*(crate::ffi::OSD_SIGSYS_as_OSD_Signal(self as *const Self)) }
+    }
+
+    /// Upcast to OSD_Signal (mutable)
+    pub fn as_signal_mut(&mut self) -> &mut Signal {
+        unsafe { &mut *(crate::ffi::OSD_SIGSYS_as_OSD_Signal_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From OSD_SharedLibrary.hxx
+// ========================
+
+/// **Source:** `OSD_SharedLibrary.hxx`:30 - `OSD_SharedLibrary`
+/// Interface to dynamic library loader.
+/// Provides tools to load a shared library
+/// and retrieve the address of an entry point.
+pub use crate::ffi::OSD_SharedLibrary as SharedLibrary;
+
+unsafe impl crate::CppDeletable for SharedLibrary {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_SharedLibrary_destructor(ptr);
+    }
+}
+
+impl SharedLibrary {
+    /// **Source:** `OSD_SharedLibrary.hxx`:36 - `OSD_SharedLibrary::OSD_SharedLibrary()`
+    /// Creates a SharedLibrary object with name NULL.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_SharedLibrary_ctor()) }
+    }
+
+    /// **Source:** `OSD_SharedLibrary.hxx`:39 - `OSD_SharedLibrary::OSD_SharedLibrary()`
+    /// Creates a SharedLibrary object with name aFilename.
+    pub fn new_charptr(aFilename: &str) -> crate::OwnedPtr<Self> {
+        let c_aFilename = std::ffi::CString::new(aFilename).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_SharedLibrary_ctor_charptr(
+                c_aFilename.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_SharedLibrary.hxx`:42 - `OSD_SharedLibrary::SetName()`
+    /// Sets a name associated to the shared object.
+    pub fn set_name(&mut self, aName: &str) {
+        let c_aName = std::ffi::CString::new(aName).unwrap();
+        unsafe { crate::ffi::OSD_SharedLibrary_set_name(self as *mut Self, c_aName.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_SharedLibrary.hxx`:45 - `OSD_SharedLibrary::Name()`
+    /// Returns the name associated to the shared object.
+    pub fn name(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_SharedLibrary_name(self as *const Self))
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_SharedLibrary.hxx`:67 - `OSD_SharedLibrary::DlOpen()`
+    /// The DlOpen method provides an interface to the
+    /// dynamic library loader to allow shared libraries
+    /// to be loaded and called at runtime.  The DlOpen
+    /// function attempts to load Filename, in the address
+    /// space of the process, resolving symbols as appropriate.
+    /// Any libraries that Filename depends upon are also loaded.
+    /// If MODE is RTLD_LAZY, then the runtime loader
+    /// does symbol resolution only as needed.
+    /// Typically, this means that the first call to a function
+    /// in the newly	loaded library will cause the resolution of
+    /// the	address	of that	function to occur.
+    /// If Mode is RTLD_NOW, then the runtime loader must do all
+    /// symbol binding during the DlOpen call.
+    /// The DlOpen method returns a	handle that is used by DlSym
+    /// or DlClose.
+    /// If there is an error, Standard_False is returned,
+    /// Standard_True otherwise.
+    /// If a NULL Filename is specified, DlOpen returns a handle
+    /// for the main	executable, which allows access to dynamic
+    /// symbols in the running program.
+    pub fn dl_open(&mut self, Mode: crate::osd::LoadMode) -> bool {
+        unsafe { crate::ffi::OSD_SharedLibrary_dl_open(self as *mut Self, Mode.into()) }
+    }
+
+    /// **Source:** `OSD_SharedLibrary.hxx`:81 - `OSD_SharedLibrary::DlClose()`
+    /// Deallocates the address space for the library
+    /// corresponding to the shared object.
+    /// If any user function continues to call a symbol
+    /// resolved in the address space of a library
+    /// that has been since been deallocated by DlClose,
+    /// the results are undefined.
+    pub fn dl_close(&self) {
+        unsafe { crate::ffi::OSD_SharedLibrary_dl_close(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_SharedLibrary.hxx`:86 - `OSD_SharedLibrary::DlError()`
+    /// The dlerror function returns a string describing
+    /// the last error that occurred from
+    /// a call to DlOpen, DlClose or DlSym.
+    pub fn dl_error(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_SharedLibrary_dl_error(self as *const Self))
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_SharedLibrary.hxx`:89 - `OSD_SharedLibrary::Destroy()`
+    /// Frees memory allocated.
+    pub fn destroy(&mut self) {
+        unsafe { crate::ffi::OSD_SharedLibrary_destroy(self as *mut Self) }
+    }
+}
+
+// ========================
+// From OSD_Signal.hxx
+// ========================
+
+/// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal`
+pub use crate::ffi::OSD_Signal as Signal;
+
+unsafe impl crate::CppDeletable for Signal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Signal_destructor(ptr);
+    }
+}
+
+impl Signal {
+    /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::OSD_Signal()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Signal_ctor()) }
+    }
+
+    /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::OSD_Signal()`
+    pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Signal_ctor_charptr(c_theMessage.as_ptr()))
+        }
+    }
+
+    /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::OSD_Signal()`
+    pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_Signal_ctor_charptr2(
+                c_theMessage.as_ptr(),
+                c_theStackTrace.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Signal_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::Raise()`
+    pub fn raise(theMessage: &str) {
+        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
+        unsafe { crate::ffi::OSD_Signal_raise(c_theMessage.as_ptr()) }
+    }
+
+    /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_Signal_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_Signal_get_type_descriptor()) }
+    }
+}
+
+// ========================
+// From OSD_Thread.hxx
+// ========================
+
+/// **Source:** `OSD_Thread.hxx`:30 - `OSD_Thread`
+/// A simple platform-intependent interface to execute
+/// and control threads.
+pub use crate::ffi::OSD_Thread as Thread;
+
+unsafe impl crate::CppDeletable for Thread {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Thread_destructor(ptr);
+    }
+}
+
+impl Thread {
+    /// **Source:** `OSD_Thread.hxx`:36 - `OSD_Thread::OSD_Thread()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Thread_ctor()) }
+    }
+
+    /// **Source:** `OSD_Thread.hxx`:42 - `OSD_Thread::OSD_Thread()`
+    /// Initialize the tool by the thread function
+    ///
+    /// Note: On Windows, you might have to take an address of the thread
+    /// function explicitly to pass it to this constructor without compiler error
+    pub fn new_threadfunction(func: &crate::ffi::OSD_ThreadFunction) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Thread_ctor_threadfunction(func)) }
+    }
+
+    /// **Source:** `OSD_Thread.hxx`:45 - `OSD_Thread::OSD_Thread()`
+    /// Copy constructor
+    pub fn new_thread(other: &crate::ffi::OSD_Thread) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Thread_ctor_thread(other)) }
+    }
+
+    /// **Source:** `OSD_Thread.hxx`:48 - `OSD_Thread::Assign()`
+    /// Copy thread handle from other OSD_Thread object.
+    pub fn assign(&mut self, other: &crate::ffi::OSD_Thread) {
+        unsafe { crate::ffi::OSD_Thread_assign(self as *mut Self, other) }
+    }
+
+    /// **Source:** `OSD_Thread.hxx`:55 - `OSD_Thread::SetPriority()`
+    pub fn set_priority(&mut self, thePriority: i32) {
+        unsafe { crate::ffi::OSD_Thread_set_priority(self as *mut Self, thePriority) }
+    }
+
+    /// **Source:** `OSD_Thread.hxx`:80 - `OSD_Thread::Detach()`
+    /// Detaches the execution thread from this Thread object,
+    /// so that it cannot be waited.
+    /// Note that mechanics of this operation is different on
+    /// UNIX/Linux (the thread is put to detached state) and Windows
+    /// (the handle is closed).
+    /// However, the purpose is the same: to instruct the system to
+    /// release all thread data upon its completion.
+    pub fn detach(&mut self) {
+        unsafe { crate::ffi::OSD_Thread_detach(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Thread.hxx`:83 - `OSD_Thread::Wait()`
+    /// Waits till the thread finishes execution.
+    pub fn wait(&mut self) -> bool {
+        unsafe { crate::ffi::OSD_Thread_wait(self as *mut Self) }
+    }
+}
+
+// ========================
+// From OSD_ThreadPool.hxx
+// ========================
+
+/// **Source:** `OSD_ThreadPool.hxx`:53 - `OSD_ThreadPool`
+/// Class defining a thread pool for executing algorithms in multi-threaded mode.
+/// Thread pool allocates requested amount of threads and keep them alive
+/// (in sleep mode when unused) during thread pool lifetime.
+/// The same pool can be used by multiple consumers,
+/// including nested multi-threading algorithms and concurrent threads:
+/// - Thread pool can be used either by multi-threaded algorithm by creating
+/// OSD_ThreadPool::Launcher.
+/// The functor performing a job takes two parameters - Thread Index and Data Index:
+/// void operator(int theThreadIndex, int theDataIndex){}
+/// Multi-threaded algorithm may rely on Thread Index for allocating thread-local variables in
+/// array form, since the Thread Index is guaranteed to be within range OSD_ThreadPool::Lower()
+/// and OSD_ThreadPool::Upper().
+/// - Default thread pool (OSD_ThreadPool::DefaultPool()) can be used in general case,
+/// but application may prefer creating a dedicated pool for better control.
+/// - Default thread pool allocates the amount of threads considering concurrency
+/// level of the system (amount of logical processors).
+/// This can be overridden during OSD_ThreadPool construction or by calling OSD_ThreadPool::Init()
+/// (the pool should not be used!).
+/// - OSD_ThreadPool::Launcher reserves specific amount of threads from the pool for executing
+/// multi-threaded Job.
+/// Normally, single Launcher instance will occupy all threads available in thread pool,
+/// so that nested multi-threaded algorithms (within the same thread)
+/// and concurrent threads trying to use the same thread pool will run sequentially.
+/// This behavior is affected by OSD_ThreadPool::NbDefaultThreadsToLaunch() parameter
+/// and Launcher constructor, so that single Launcher instance will occupy not all threads
+/// in the pool allowing other threads to be used concurrently.
+/// - OSD_ThreadPool::Launcher locks thread one-by-one from thread pool in a thread-safe way.
+/// - Each working thread catches exceptions occurred during job execution, and Launcher will
+/// throw Standard_Failure in a caller thread on completed execution.
+pub use crate::ffi::OSD_ThreadPool as ThreadPool;
+
+unsafe impl crate::CppDeletable for ThreadPool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_ThreadPool_destructor(ptr);
+    }
+}
+
+impl ThreadPool {
+    /// **Source:** `OSD_ThreadPool.hxx`:69 - `OSD_ThreadPool::OSD_ThreadPool()`
+    /// Main constructor.
+    /// Application may consider specifying more threads than actually
+    /// available (OSD_Parallel::NbLogicalProcessors()) and set up NbDefaultThreadsToLaunch() to a
+    /// smaller value so that concurrent threads will be able using single Thread Pool instance more
+    /// efficiently.
+    /// @param theNbThreads threads number to be created by pool
+    /// (if -1 is specified then OSD_Parallel::NbLogicalProcessors() will be used)
+    pub fn new_int(theNbThreads: i32) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_ThreadPool_ctor_int(theNbThreads)) }
+    }
+
+    /// **Source:** `OSD_ThreadPool.hxx`:69 - `OSD_ThreadPool::OSD_ThreadPool()`
+    /// Main constructor.
+    /// Application may consider specifying more threads than actually
+    /// available (OSD_Parallel::NbLogicalProcessors()) and set up NbDefaultThreadsToLaunch() to a
+    /// smaller value so that concurrent threads will be able using single Thread Pool instance more
+    /// efficiently.
+    /// @param theNbThreads threads number to be created by pool
+    /// (if -1 is specified then OSD_Parallel::NbLogicalProcessors() will be used)
+    pub fn new() -> crate::OwnedPtr<Self> {
+        Self::new_int(-1)
+    }
+
+    /// **Source:** `OSD_ThreadPool.hxx`:55 - `OSD_ThreadPool::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_ThreadPool_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_ThreadPool.hxx`:75 - `OSD_ThreadPool::HasThreads()`
+    /// Return TRUE if at least 2 threads are available (including self-thread).
+    pub fn has_threads(&self) -> bool {
+        unsafe { crate::ffi::OSD_ThreadPool_has_threads(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_ThreadPool.hxx`:78 - `OSD_ThreadPool::LowerThreadIndex()`
+    /// Return the lower thread index.
+    pub fn lower_thread_index(&self) -> i32 {
+        unsafe { crate::ffi::OSD_ThreadPool_lower_thread_index(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_ThreadPool.hxx`:81 - `OSD_ThreadPool::UpperThreadIndex()`
+    /// Return the upper thread index (last index is reserved for self-thread).
+    pub fn upper_thread_index(&self) -> i32 {
+        unsafe { crate::ffi::OSD_ThreadPool_upper_thread_index(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_ThreadPool.hxx`:84 - `OSD_ThreadPool::NbThreads()`
+    /// Return the number of threads; >= 1.
+    pub fn nb_threads(&self) -> i32 {
+        unsafe { crate::ffi::OSD_ThreadPool_nb_threads(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_ThreadPool.hxx`:88 - `OSD_ThreadPool::NbDefaultThreadsToLaunch()`
+    /// Return maximum number of threads to be locked by a single Launcher object by default;
+    /// the entire thread pool size is returned by default.
+    pub fn nb_default_threads_to_launch(&self) -> i32 {
+        unsafe { crate::ffi::OSD_ThreadPool_nb_default_threads_to_launch(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_ThreadPool.hxx`:92 - `OSD_ThreadPool::SetNbDefaultThreadsToLaunch()`
+    /// Set maximum number of threads to be locked by a single Launcher object by default.
+    /// Should be set BEFORE first usage.
+    pub fn set_nb_default_threads_to_launch(&mut self, theNbThreads: i32) {
+        unsafe {
+            crate::ffi::OSD_ThreadPool_set_nb_default_threads_to_launch(
+                self as *mut Self,
+                theNbThreads,
+            )
+        }
+    }
+
+    /// **Source:** `OSD_ThreadPool.hxx`:95 - `OSD_ThreadPool::IsInUse()`
+    /// Checks if thread pools has active consumers.
+    pub fn is_in_use(&mut self) -> bool {
+        unsafe { crate::ffi::OSD_ThreadPool_is_in_use(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_ThreadPool.hxx`:99 - `OSD_ThreadPool::Init()`
+    /// Reinitialize the thread pool with a different number of threads.
+    /// Should be called only with no active jobs, or exception Standard_ProgramError will be thrown!
+    pub fn init(&mut self, theNbThreads: i32) {
+        unsafe { crate::ffi::OSD_ThreadPool_init(self as *mut Self, theNbThreads) }
+    }
+
+    /// **Source:** `OSD_ThreadPool.hxx`:55 - `OSD_ThreadPool::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::OSD_ThreadPool_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `OSD_ThreadPool.hxx`:55 - `OSD_ThreadPool::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::OSD_ThreadPool_get_type_descriptor()) }
+    }
+
+    /// **Source:** `OSD_ThreadPool.hxx`:59 - `OSD_ThreadPool::DefaultPool()`
+    /// Return (or create) a default thread pool.
+    /// Number of threads argument will be considered only when called first time.
+    pub fn default_pool(theNbThreads: i32) -> &'static crate::ffi::HandleOSDThreadPool {
+        unsafe { &*(crate::ffi::OSD_ThreadPool_default_pool(theNbThreads)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleOSDThreadPool> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_ThreadPool_to_handle(obj.into_raw())) }
+    }
+}
+
+pub use crate::ffi::HandleOSDThreadPool;
+
+unsafe impl crate::CppDeletable for HandleOSDThreadPool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleOSDThreadPool_destructor(ptr);
+    }
+}
+
+impl HandleOSDThreadPool {
+    /// Dereference this Handle to access the underlying OSD_ThreadPool
+    pub fn get(&self) -> &crate::ffi::OSD_ThreadPool {
+        unsafe { &*(crate::ffi::HandleOSDThreadPool_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying OSD_ThreadPool
+    pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_ThreadPool {
+        unsafe { &mut *(crate::ffi::HandleOSDThreadPool_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From OSD_Timer.hxx
+// ========================
+
+/// **Source:** `OSD_Timer.hxx`:39 - `OSD_Timer`
+/// Working on heterogeneous platforms
+/// we need to use the system call gettimeofday.
+/// This function is portable and it measures ELAPSED
+/// time and CPU time in seconds and microseconds.
+/// Example: OSD_Timer aTimer;
+/// aTimer.Start();   // Start  the timers (t1).
+/// .....            // Do something.
+/// aTimer.Stop();    // Stop the timers (t2).
+/// aTimer.Show();    // Give the elapsed time between t1 and t2.
+/// // Give also the process CPU time between
+/// // t1 and t2.
+pub use crate::ffi::OSD_Timer as Timer;
+
+unsafe impl crate::CppDeletable for Timer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_Timer_destructor(ptr);
+    }
+}
+
+impl Timer {
+    /// **Source:** `OSD_Timer.hxx`:58 - `OSD_Timer::OSD_Timer()`
+    /// Builds a Chronometer initialized and stopped.
+    /// @param theThisThreadOnly when TRUE, measured CPU time will account time of the current thread
+    /// only;
+    /// otherwise CPU of the process (all threads, and completed children) is
+    /// measured; this flag does NOT affect ElapsedTime() value, only values
+    /// returned by OSD_Chronometer
+    pub fn new_bool(theThisThreadOnly: bool) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Timer_ctor_bool(theThisThreadOnly)) }
+    }
+
+    /// **Source:** `OSD_Timer.hxx`:58 - `OSD_Timer::OSD_Timer()`
+    /// Builds a Chronometer initialized and stopped.
+    /// @param theThisThreadOnly when TRUE, measured CPU time will account time of the current thread
+    /// only;
+    /// otherwise CPU of the process (all threads, and completed children) is
+    /// measured; this flag does NOT affect ElapsedTime() value, only values
+    /// returned by OSD_Chronometer
+    pub fn new() -> crate::OwnedPtr<Self> {
+        Self::new_bool(false)
+    }
+
+    /// **Source:** `OSD_Timer.hxx`:61 - `OSD_Timer::Reset()`
+    /// Stops and reinitializes the timer with specified elapsed time.
+    pub fn reset_real(&mut self, theTimeElapsedSec: f64) {
+        unsafe { crate::ffi::OSD_Timer_reset_real(self as *mut Self, theTimeElapsedSec) }
+    }
+
+    /// **Source:** `OSD_Timer.hxx`:64 - `OSD_Timer::Reset()`
+    /// Stops and reinitializes the timer with zero elapsed time.
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::OSD_Timer_reset(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Timer.hxx`:67 - `OSD_Timer::Restart()`
+    /// Restarts the Timer.
+    pub fn restart(&mut self) {
+        unsafe { crate::ffi::OSD_Timer_restart(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Timer.hxx`:72 - `OSD_Timer::Show()`
+    /// Shows both the elapsed time and CPU time on the standard output
+    /// stream <cout>.The chronometer can be running (Lap Time) or
+    /// stopped.
+    pub fn show(&self) {
+        unsafe { crate::ffi::OSD_Timer_show(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_Timer.hxx`:80 - `OSD_Timer::Show()`
+    /// returns both the elapsed time(seconds,minutes,hours)
+    /// and CPU  time.
+    pub fn show_real_int2_real(
+        &self,
+        theSeconds: &mut f64,
+        theMinutes: &mut i32,
+        theHours: &mut i32,
+        theCPUtime: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::OSD_Timer_show_real_int2_real(
+                self as *const Self,
+                theSeconds,
+                theMinutes,
+                theHours,
+                theCPUtime,
+            )
+        }
+    }
+
+    /// **Source:** `OSD_Timer.hxx`:86 - `OSD_Timer::Stop()`
+    /// Stops the Timer.
+    pub fn stop(&mut self) {
+        unsafe { crate::ffi::OSD_Timer_stop(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Timer.hxx`:90 - `OSD_Timer::Start()`
+    /// Starts (after Create or Reset) or restarts (after Stop)
+    /// the Timer.
+    pub fn start(&mut self) {
+        unsafe { crate::ffi::OSD_Timer_start(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_Timer.hxx`:93 - `OSD_Timer::ElapsedTime()`
+    /// Returns elapsed time in seconds.
+    pub fn elapsed_time(&self) -> f64 {
+        unsafe { crate::ffi::OSD_Timer_elapsed_time(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_Timer.hxx`:47 - `OSD_Timer::GetWallClockTime()`
+    /// Returns current time in seconds with system-defined precision.
+    /// The could be a system uptime or a time from some date.
+    /// Returned value is intended for precise elapsed time measurements as a delta between
+    /// timestamps. On Windows implemented via QueryPerformanceCounter(), on other systems via
+    /// gettimeofday().
+    pub fn get_wall_clock_time() -> f64 {
+        unsafe { crate::ffi::OSD_Timer_get_wall_clock_time() }
+    }
+
+    /// Upcast to OSD_Chronometer
+    pub fn as_chronometer(&self) -> &Chronometer {
+        unsafe { &*(crate::ffi::OSD_Timer_as_OSD_Chronometer(self as *const Self)) }
+    }
+
+    /// Upcast to OSD_Chronometer (mutable)
+    pub fn as_chronometer_mut(&mut self) -> &mut Chronometer {
+        unsafe { &mut *(crate::ffi::OSD_Timer_as_OSD_Chronometer_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `OSD_Chronometer.hxx`:50 - `OSD_Chronometer::IsStarted()`
+    pub fn is_started(&self) -> bool {
+        unsafe { crate::ffi::OSD_Timer_inherited_IsStarted(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `OSD_Chronometer.hxx`:77 - `OSD_Chronometer::UserTimeCPU()`
+    pub fn user_time_cpu(&self) -> f64 {
+        unsafe { crate::ffi::OSD_Timer_inherited_UserTimeCPU(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `OSD_Chronometer.hxx`:86 - `OSD_Chronometer::SystemTimeCPU()`
+    pub fn system_time_cpu(&self) -> f64 {
+        unsafe { crate::ffi::OSD_Timer_inherited_SystemTimeCPU(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `OSD_Chronometer.hxx`:95 - `OSD_Chronometer::IsThisThreadOnly()`
+    pub fn is_this_thread_only(&self) -> bool {
+        unsafe { crate::ffi::OSD_Timer_inherited_IsThisThreadOnly(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `OSD_Chronometer.hxx`:99 - `OSD_Chronometer::SetThisThreadOnly()`
+    pub fn set_this_thread_only(&mut self, theIsThreadOnly: bool) {
+        unsafe {
+            crate::ffi::OSD_Timer_inherited_SetThisThreadOnly(self as *mut Self, theIsThreadOnly)
+        }
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::OSD_FileSystem as FileSystem;
+pub use crate::ffi::{OSD_Function as Function, OSD_ThreadFunction as ThreadFunction};

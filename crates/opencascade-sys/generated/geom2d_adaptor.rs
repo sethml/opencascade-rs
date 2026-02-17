@@ -6,6 +6,17 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `Geom2dAdaptor.hxx`:39 - `Geom2dAdaptor::MakeCurve`
+/// Inherited  from    GHCurve.   Provides a  curve
+/// handled by reference.
+/// Creates  a 2d  curve  from  a  HCurve2d.  This
+/// cannot process the OtherCurves.
+pub fn make_curve_curve2d(
+    HC: &crate::ffi::Adaptor2d_Curve2d,
+) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dAdaptor_make_curve_curve2d(HC)) }
+}
+
 // ========================
 // From Geom2dAdaptor_Curve.hxx
 // ========================

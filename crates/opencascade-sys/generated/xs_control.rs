@@ -6,308 +6,1058 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `XSControl.hxx`:37 - `XSControl::Session`
+/// Returns the WorkSession of a SessionPilot, but casts it as
+/// from XSControl : it then gives access to Control & Transfers
+pub fn session(
+    pilot: &crate::ffi::HandleIFSelectSessionPilot,
+) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_session(pilot)) }
+}
+/// **Source:** `XSControl.hxx`:42 - `XSControl::Vars`
+/// Returns the Vars of a SessionPilot, it is brought by Session
+/// it provides access to external variables
+pub fn vars(
+    pilot: &crate::ffi::HandleIFSelectSessionPilot,
+) -> crate::OwnedPtr<crate::ffi::HandleXSControlVars> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_vars(pilot)) }
+}
+
 // ========================
-// From XSControl_Controller.hxx
+// From XSControl_ConnectedShapes.hxx
 // ========================
 
-/// **Source:** `XSControl_Controller.hxx`:60 - `XSControl_Controller`
-/// This class allows a general X-STEP engine to run generic
-/// functions on any interface norm, in the same way. It includes
-/// the transfer operations. I.e. it gathers the already available
-/// general modules, the engine has just to know it
-///
-/// The important point is that a given X-STEP Controller is
-/// attached to a given couple made of an Interface Norm (such as
-/// IGES-5.1) and an application data model (CasCade Shapes for
-/// instance).
-///
-/// Finally, Controller can be gathered in a general dictionary then
-/// retrieved later by a general call (method Recorded)
-///
-/// It does not manage the produced data, but the Actors make the
-/// link between the norm and the application
-pub use crate::ffi::XSControl_Controller as Controller;
+/// **Source:** `XSControl_ConnectedShapes.hxx`:41 - `XSControl_ConnectedShapes`
+/// From a TopoDS_Shape, or from the entity which has produced it,
+/// searches for the shapes, and the entities which have produced
+/// them in last transfer, which are adjacent to it by VERTICES
+pub use crate::ffi::XSControl_ConnectedShapes as ConnectedShapes;
 
-unsafe impl crate::CppDeletable for Controller {
+unsafe impl crate::CppDeletable for ConnectedShapes {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XSControl_Controller_destructor(ptr);
+        crate::ffi::XSControl_ConnectedShapes_destructor(ptr);
     }
 }
 
-impl Controller {
-    /// **Source:** `XSControl_Controller.hxx`:66 - `XSControl_Controller::SetNames()`
-    /// Changes names
-    /// if a name is empty, the formerly set one remains
-    /// Remark : Does not call Record or AutoRecord
-    pub fn set_names(&mut self, theLongName: &str, theShortName: &str) {
-        let c_theLongName = std::ffi::CString::new(theLongName).unwrap();
-        let c_theShortName = std::ffi::CString::new(theShortName).unwrap();
+impl ConnectedShapes {
+    /// **Source:** `XSControl_ConnectedShapes.hxx`:47 - `XSControl_ConnectedShapes::XSControl_ConnectedShapes()`
+    /// Creates a Selection ConnectedShapes. It remains to be set a
+    /// TransferReader
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_ConnectedShapes_ctor()) }
+    }
+
+    /// **Source:** `XSControl_ConnectedShapes.hxx`:67 - `XSControl_ConnectedShapes::ExploreLabel()`
+    /// Returns a text defining the criterium.
+    /// "Connected Entities through produced Shapes"
+    pub fn explore_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe {
-            crate::ffi::XSControl_Controller_set_names(
-                self as *mut Self,
-                c_theLongName.as_ptr(),
-                c_theShortName.as_ptr(),
-            )
-        }
-    }
-
-    /// **Source:** `XSControl_Controller.hxx`:71 - `XSControl_Controller::AutoRecord()`
-    /// Records <me> is a general dictionary under Short and Long
-    /// Names (see method Name)
-    pub fn auto_record(&self) {
-        unsafe { crate::ffi::XSControl_Controller_auto_record(self as *const Self) }
-    }
-
-    /// **Source:** `XSControl_Controller.hxx`:79 - `XSControl_Controller::Record()`
-    /// Records <me> in a general dictionary under a name
-    /// Error if <name> already used for another one
-    pub fn record(&self, name: &str) {
-        let c_name = std::ffi::CString::new(name).unwrap();
-        unsafe { crate::ffi::XSControl_Controller_record(self as *const Self, c_name.as_ptr()) }
-    }
-
-    /// **Source:** `XSControl_Controller.hxx`:88 - `XSControl_Controller::Name()`
-    /// Returns a name, as given when initializing :
-    /// rsc = False (D) : True Name attached to the Norm (long name)
-    /// rsc = True : Name of the resource set (i.e. short name)
-    pub fn name(&self, rsc: bool) -> String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::XSControl_Controller_name(
-                self as *const Self,
-                rsc,
-            ))
-            .to_string_lossy()
-            .into_owned()
-        }
-    }
-
-    /// **Source:** `XSControl_Controller.hxx`:102 - `XSControl_Controller::WorkLibrary()`
-    /// Returns the WorkLibrary attached to the Norm. Remark that it
-    /// has to be in phase with the Protocol  (read from field)
-    pub fn work_library(&self) -> &crate::ffi::HandleIFSelectWorkLibrary {
-        unsafe { &*(crate::ffi::XSControl_Controller_work_library(self as *const Self)) }
-    }
-
-    /// **Source:** `XSControl_Controller.hxx`:106 - `XSControl_Controller::NewModel()`
-    /// Creates a new empty Model ready to receive data of the Norm
-    /// Used to write data from Imagine to an interface file
-    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Controller_new_model(
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_ConnectedShapes_explore_label(
                 self as *const Self,
             ))
         }
     }
 
-    /// **Source:** `XSControl_Controller.hxx`:122 - `XSControl_Controller::SetModeWrite()`
-    /// Sets minimum and maximum values for modetrans (write)
-    /// Erases formerly recorded bounds and values
-    /// Actually only for shape
-    /// Then, for each value a little help can be attached
-    pub fn set_mode_write(&mut self, modemin: i32, modemax: i32, shape: bool) {
-        unsafe {
-            crate::ffi::XSControl_Controller_set_mode_write(
-                self as *mut Self,
-                modemin,
-                modemax,
-                shape,
-            )
-        }
-    }
-
-    /// **Source:** `XSControl_Controller.hxx`:127 - `XSControl_Controller::SetModeWriteHelp()`
-    /// Attaches a short line of help to a value of modetrans (write)
-    pub fn set_mode_write_help(&mut self, modetrans: i32, help: &str, shape: bool) {
-        let c_help = std::ffi::CString::new(help).unwrap();
-        unsafe {
-            crate::ffi::XSControl_Controller_set_mode_write_help(
-                self as *mut Self,
-                modetrans,
-                c_help.as_ptr(),
-                shape,
-            )
-        }
-    }
-
-    /// **Source:** `XSControl_Controller.hxx`:135 - `XSControl_Controller::ModeWriteBounds()`
-    /// Returns recorded min and max values for modetrans (write)
-    /// Actually only for shapes
-    /// Returns True if bounds are set, False else (then, free value)
-    pub fn mode_write_bounds(&self, modemin: &mut i32, modemax: &mut i32, shape: bool) -> bool {
-        unsafe {
-            crate::ffi::XSControl_Controller_mode_write_bounds(
-                self as *const Self,
-                modemin,
-                modemax,
-                shape,
-            )
-        }
-    }
-
-    /// **Source:** `XSControl_Controller.hxx`:141 - `XSControl_Controller::IsModeWrite()`
-    /// Tells if a value of <modetrans> is a good value(within bounds)
-    /// Actually only for shapes
-    pub fn is_mode_write(&self, modetrans: i32, shape: bool) -> bool {
-        unsafe {
-            crate::ffi::XSControl_Controller_is_mode_write(self as *const Self, modetrans, shape)
-        }
-    }
-
-    /// **Source:** `XSControl_Controller.hxx`:147 - `XSControl_Controller::ModeWriteHelp()`
-    /// Returns the help line recorded for a value of modetrans
-    /// empty if help not defined or not within bounds or if values are free
-    pub fn mode_write_help(&self, modetrans: i32, shape: bool) -> String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::XSControl_Controller_mode_write_help(
-                self as *const Self,
-                modetrans,
-                shape,
-            ))
-            .to_string_lossy()
-            .into_owned()
-        }
-    }
-
-    /// **Source:** `XSControl_Controller.hxx`:177 - `XSControl_Controller::RecognizeWriteShape()`
-    /// Tells if a shape is valid for a transfer to a model
-    /// Asks the ActorWrite (through a ShapeMapper)
-    pub fn recognize_write_shape(&self, shape: &crate::ffi::TopoDS_Shape, modetrans: i32) -> bool {
-        unsafe {
-            crate::ffi::XSControl_Controller_recognize_write_shape(
-                self as *const Self,
-                shape,
-                modetrans,
-            )
-        }
-    }
-
-    /// **Source:** `XSControl_Controller.hxx`:219 - `XSControl_Controller::DynamicType()`
+    /// **Source:** `XSControl_ConnectedShapes.hxx`:76 - `XSControl_ConnectedShapes::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::XSControl_Controller_dynamic_type(self as *const Self)) }
+        unsafe { &*(crate::ffi::XSControl_ConnectedShapes_dynamic_type(self as *const Self)) }
     }
 
-    /// **Source:** `XSControl_Controller.hxx`:83 - `XSControl_Controller::Recorded()`
-    /// Returns the Controller attached to a given name
-    /// Returns a Null Handle if <name> is unknown
-    pub fn recorded(name: &str) -> crate::OwnedPtr<crate::ffi::HandleXSControlController> {
-        let c_name = std::ffi::CString::new(name).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Controller_recorded(c_name.as_ptr()))
-        }
-    }
-
-    /// **Source:** `XSControl_Controller.hxx`:219 - `XSControl_Controller::get_type_name()`
+    /// **Source:** `XSControl_ConnectedShapes.hxx`:76 - `XSControl_ConnectedShapes::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::XSControl_Controller_get_type_name())
+            std::ffi::CStr::from_ptr(crate::ffi::XSControl_ConnectedShapes_get_type_name())
                 .to_string_lossy()
                 .into_owned()
         }
     }
 
-    /// **Source:** `XSControl_Controller.hxx`:219 - `XSControl_Controller::get_type_descriptor()`
+    /// **Source:** `XSControl_ConnectedShapes.hxx`:76 - `XSControl_ConnectedShapes::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::XSControl_Controller_get_type_descriptor()) }
-    }
-}
-
-pub use crate::ffi::HandleXSControlController;
-
-unsafe impl crate::CppDeletable for HandleXSControlController {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleXSControlController_destructor(ptr);
-    }
-}
-
-impl HandleXSControlController {
-    /// Dereference this Handle to access the underlying XSControl_Controller
-    pub fn get(&self) -> &crate::ffi::XSControl_Controller {
-        unsafe { &*(crate::ffi::HandleXSControlController_get(self as *const Self)) }
+        unsafe { &*(crate::ffi::XSControl_ConnectedShapes_get_type_descriptor()) }
     }
 
-    /// Dereference this Handle to mutably access the underlying XSControl_Controller
-    pub fn get_mut(&mut self) -> &mut crate::ffi::XSControl_Controller {
-        unsafe { &mut *(crate::ffi::HandleXSControlController_get_mut(self as *mut Self)) }
-    }
-}
-
-// ========================
-// From XSControl_Reader.hxx
-// ========================
-
-/// **Source:** `XSControl_Reader.hxx`:72 - `XSControl_Reader`
-/// A groundwork to convert a shape to data which complies
-/// with a particular norm. This data can be that of a whole
-/// model or that of a specific list of entities in the model.
-/// You specify the list using a single selection or a
-/// combination of selections. A selection is an operator which
-/// computes a list of entities from a list given in input. To
-/// specify the input, you can use:
-/// - A predefined selection such as "xst-transferrable-roots"
-/// - A filter based on a  signature.
-/// A signature is an operator which returns a string from an
-/// entity according to its type.
-/// For example:
-/// - "xst-type" (CDL)
-/// - "iges-level"
-/// - "step-type".
-/// A filter can be based on a signature by giving a value to
-/// be matched by the string returned. For example,
-/// "xst-type(Curve)".
-/// If no list is specified, the selection computes its list of
-/// entities from the whole model. To use this class, you have to
-/// initialize the transfer norm first, as shown in the example below.
-/// Example:
-/// Control_Reader reader;
-/// IFSelect_ReturnStatus status = reader.ReadFile (filename.);
-/// When using IGESControl_Reader or STEPControl_Reader - as the
-/// above example shows - the reader initializes the norm directly.
-/// Note that loading the file only stores the data. It does
-/// not translate this data. Shapes are accumulated by
-/// successive transfers. The last shape is cleared by:
-/// - ClearShapes which allows you to handle a new batch
-/// - TransferRoots which restarts the list of shapes from scratch.
-pub use crate::ffi::XSControl_Reader as Reader;
-
-unsafe impl crate::CppDeletable for Reader {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XSControl_Reader_destructor(ptr);
-    }
-}
-
-impl Reader {
-    /// **Source:** `XSControl_Reader.hxx`:79 - `XSControl_Reader::XSControl_Reader()`
-    /// Creates a Reader from scratch (creates an empty WorkSession)
-    /// A WorkSession or a Controller must be provided before running
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_Reader_ctor()) }
-    }
-
-    /// **Source:** `XSControl_Reader.hxx`:83 - `XSControl_Reader::XSControl_Reader()`
-    /// Creates a Reader from scratch, with a norm name which
-    /// identifies a Controller
-    pub fn new_charptr(norm: &str) -> crate::OwnedPtr<Self> {
-        let c_norm = std::ffi::CString::new(norm).unwrap();
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Reader_ctor_charptr(c_norm.as_ptr()))
+            &*(crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectDeduct(self as *const Self))
         }
     }
 
-    /// **Source:** `XSControl_Reader.hxx`:96 - `XSControl_Reader::SetNorm()`
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
+        unsafe {
+            &mut *(crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectDeduct_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to IFSelect_SelectExplore
+    pub fn as_if_select_select_explore(&self) -> &crate::if_select::SelectExplore {
+        unsafe {
+            &*(crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectExplore(self as *const Self))
+        }
+    }
+
+    /// Upcast to IFSelect_SelectExplore (mutable)
+    pub fn as_if_select_select_explore_mut(&mut self) -> &mut crate::if_select::SelectExplore {
+        unsafe {
+            &mut *(crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectExplore_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
+        unsafe {
+            &*(crate::ffi::XSControl_ConnectedShapes_as_IFSelect_Selection(self as *const Self))
+        }
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
+        unsafe {
+            &mut *(crate::ffi::XSControl_ConnectedShapes_as_IFSelect_Selection_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
+    pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
+        unsafe { crate::ffi::XSControl_ConnectedShapes_inherited_SetInput(self as *mut Self, sel) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
+    pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_ConnectedShapes_inherited_Input(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
+    pub fn has_input(&self) -> bool {
+        unsafe { crate::ffi::XSControl_ConnectedShapes_inherited_HasInput(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
+    pub fn has_alternate(&self) -> bool {
+        unsafe { crate::ffi::XSControl_ConnectedShapes_inherited_HasAlternate(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
+    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+        unsafe {
+            crate::ffi::XSControl_ConnectedShapes_inherited_FillIterator(self as *const Self, iter)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::XSControl_ConnectedShapes_inherited_Level(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_ConnectedShapes_inherited_Label(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From XSControl_FuncShape.hxx
+// ========================
+
+/// **Source:** `XSControl_FuncShape.hxx`:40 - `XSControl_FuncShape`
+/// Defines additional commands for XSControl to :
+/// - control of initialisation (xinit, xnorm, newmodel)
+/// - analyse of the result of a transfer (recorded in a
+/// TransientProcess for Read, FinderProcess for Write) :
+/// statistics, various lists (roots,complete,abnormal), what
+/// about one specific entity, producing a model with the
+/// abnormal result
+///
+/// This appendix of XSControl is compiled separately to distinguish
+/// basic features from user callable forms
+pub use crate::ffi::XSControl_FuncShape as FuncShape;
+
+unsafe impl crate::CppDeletable for FuncShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XSControl_FuncShape_destructor(ptr);
+    }
+}
+
+impl FuncShape {
+    /// **Source:** `XSControl_FuncShape.hxx` - `XSControl_FuncShape::XSControl_FuncShape()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_FuncShape_ctor()) }
+    }
+
+    /// **Source:** `XSControl_FuncShape.hxx`:46 - `XSControl_FuncShape::Init()`
+    /// Defines and loads all functions which work on shapes for XSControl (as ActFunc)
+    pub fn init() {
+        unsafe { crate::ffi::XSControl_FuncShape_init() }
+    }
+}
+
+// ========================
+// From XSControl_Functions.hxx
+// ========================
+
+/// **Source:** `XSControl_Functions.hxx`:25 - `XSControl_Functions`
+/// Functions from XSControl gives access to actions which can be
+/// commanded with the resources provided by XSControl: especially
+/// Controller and Transfer
+///
+/// It works by adding functions by method Init
+pub use crate::ffi::XSControl_Functions as Functions;
+
+unsafe impl crate::CppDeletable for Functions {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XSControl_Functions_destructor(ptr);
+    }
+}
+
+impl Functions {
+    /// **Source:** `XSControl_Functions.hxx` - `XSControl_Functions::XSControl_Functions()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_Functions_ctor()) }
+    }
+
+    /// **Source:** `XSControl_Functions.hxx`:29 - `XSControl_Functions::Init()`
+    /// Defines and loads all functions for XSControl (as ActFunc)
+    pub fn init() {
+        unsafe { crate::ffi::XSControl_Functions_init() }
+    }
+}
+
+// ========================
+// From XSControl_SelectForTransfer.hxx
+// ========================
+
+/// **Source:** `XSControl_SelectForTransfer.hxx`:47 - `XSControl_SelectForTransfer`
+/// This selection selects the entities which are recognised for
+/// transfer by an Actor for Read : current one or another one.
+///
+/// An Actor is an operator which runs transfers from interface
+/// entities to objects for Imagine. It has a method to recognize
+/// the entities it can process (by default, it recognises all,
+/// this method can be redefined).
+///
+/// A TransferReader brings an Actor, according to the currently
+/// selected norm and transfer conditions.
+///
+/// This selection considers, either the current Actor (brought by
+/// the TransferReader, updated as required), or a precise one.
+pub use crate::ffi::XSControl_SelectForTransfer as SelectForTransfer;
+
+unsafe impl crate::CppDeletable for SelectForTransfer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XSControl_SelectForTransfer_destructor(ptr);
+    }
+}
+
+impl SelectForTransfer {
+    /// **Source:** `XSControl_SelectForTransfer.hxx`:53 - `XSControl_SelectForTransfer::XSControl_SelectForTransfer()`
+    /// Creates a SelectForTransfer, non initialised
+    /// it sorts nothing, unless an Actor has been defined
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_SelectForTransfer_ctor()) }
+    }
+
+    /// **Source:** `XSControl_SelectForTransfer.hxx`:84 - `XSControl_SelectForTransfer::ExtractLabel()`
+    /// Returns a text defining the criterium : "Recognized for Transfer [(current actor)]"
+    pub fn extract_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_SelectForTransfer_extract_label(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `XSControl_SelectForTransfer.hxx`:86 - `XSControl_SelectForTransfer::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::XSControl_SelectForTransfer_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `XSControl_SelectForTransfer.hxx`:86 - `XSControl_SelectForTransfer::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::XSControl_SelectForTransfer_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `XSControl_SelectForTransfer.hxx`:86 - `XSControl_SelectForTransfer::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::XSControl_SelectForTransfer_get_type_descriptor()) }
+    }
+
+    /// Upcast to IFSelect_SelectDeduct
+    pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
+        unsafe {
+            &*(crate::ffi::XSControl_SelectForTransfer_as_IFSelect_SelectDeduct(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to IFSelect_SelectDeduct (mutable)
+    pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
+        unsafe {
+            &mut *(crate::ffi::XSControl_SelectForTransfer_as_IFSelect_SelectDeduct_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to IFSelect_SelectExtract
+    pub fn as_if_select_select_extract(&self) -> &crate::if_select::SelectExtract {
+        unsafe {
+            &*(crate::ffi::XSControl_SelectForTransfer_as_IFSelect_SelectExtract(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to IFSelect_SelectExtract (mutable)
+    pub fn as_if_select_select_extract_mut(&mut self) -> &mut crate::if_select::SelectExtract {
+        unsafe {
+            &mut *(crate::ffi::XSControl_SelectForTransfer_as_IFSelect_SelectExtract_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to IFSelect_Selection
+    pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
+        unsafe {
+            &*(crate::ffi::XSControl_SelectForTransfer_as_IFSelect_Selection(self as *const Self))
+        }
+    }
+
+    /// Upcast to IFSelect_Selection (mutable)
+    pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
+        unsafe {
+            &mut *(crate::ffi::XSControl_SelectForTransfer_as_IFSelect_Selection_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
+    pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
+        unsafe {
+            crate::ffi::XSControl_SelectForTransfer_inherited_SetInput(self as *mut Self, sel)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
+    pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_SelectForTransfer_inherited_Input(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
+    pub fn has_input(&self) -> bool {
+        unsafe { crate::ffi::XSControl_SelectForTransfer_inherited_HasInput(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
+    pub fn has_alternate(&self) -> bool {
+        unsafe {
+            crate::ffi::XSControl_SelectForTransfer_inherited_HasAlternate(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
+    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+        unsafe {
+            crate::ffi::XSControl_SelectForTransfer_inherited_FillIterator(
+                self as *const Self,
+                iter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
+    pub fn is_direct(&self) -> bool {
+        unsafe { crate::ffi::XSControl_SelectForTransfer_inherited_IsDirect(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
+    pub fn set_direct(&mut self, direct: bool) {
+        unsafe {
+            crate::ffi::XSControl_SelectForTransfer_inherited_SetDirect(self as *mut Self, direct)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_SelectForTransfer_inherited_Label(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From XSControl_SignTransferStatus.hxx
+// ========================
+
+/// **Source:** `XSControl_SignTransferStatus.hxx`:45 - `XSControl_SignTransferStatus`
+/// This Signatures gives the Transfer Status of an entity, as
+/// recorded in a TransferProcess. It can be :
+/// - Void : not recorded, or recorded as void with no message
+/// (attributes are not taken into account)
+/// - Warning : no result, warning message(s), no fail
+/// - Fail : no result, fail messages (with or without warning)
+/// - Result.. : result, no message (neither warning nor fail)
+/// Result.. i.e. Result:TypeName of the result
+/// - Result../Warning : result, with warning but no fail
+/// - Result../Fail : result, with fail (.e. bad result)
+/// - Fail on run : no result yet recorded, no message, but
+/// an exception occurred while recording the result
+/// (this should not appear and indicates a programming error)
+pub use crate::ffi::XSControl_SignTransferStatus as SignTransferStatus;
+
+unsafe impl crate::CppDeletable for SignTransferStatus {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XSControl_SignTransferStatus_destructor(ptr);
+    }
+}
+
+impl SignTransferStatus {
+    /// **Source:** `XSControl_SignTransferStatus.hxx`:51 - `XSControl_SignTransferStatus::XSControl_SignTransferStatus()`
+    /// Creates a SignTransferStatus, not initialised
+    /// it gives nothing (empty string)
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_SignTransferStatus_ctor()) }
+    }
+
+    /// **Source:** `XSControl_SignTransferStatus.hxx`:79 - `XSControl_SignTransferStatus::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::XSControl_SignTransferStatus_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `XSControl_SignTransferStatus.hxx`:79 - `XSControl_SignTransferStatus::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::XSControl_SignTransferStatus_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `XSControl_SignTransferStatus.hxx`:79 - `XSControl_SignTransferStatus::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::XSControl_SignTransferStatus_get_type_descriptor()) }
+    }
+
+    /// Upcast to IFSelect_Signature
+    pub fn as_if_select_signature(&self) -> &crate::if_select::Signature {
+        unsafe {
+            &*(crate::ffi::XSControl_SignTransferStatus_as_IFSelect_Signature(self as *const Self))
+        }
+    }
+
+    /// Upcast to IFSelect_Signature (mutable)
+    pub fn as_if_select_signature_mut(&mut self) -> &mut crate::if_select::Signature {
+        unsafe {
+            &mut *(crate::ffi::XSControl_SignTransferStatus_as_IFSelect_Signature_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Interface_SignType
+    pub fn as_interface_sign_type(&self) -> &crate::interface::SignType {
+        unsafe {
+            &*(crate::ffi::XSControl_SignTransferStatus_as_Interface_SignType(self as *const Self))
+        }
+    }
+
+    /// Upcast to Interface_SignType (mutable)
+    pub fn as_interface_sign_type_mut(&mut self) -> &mut crate::interface::SignType {
+        unsafe {
+            &mut *(crate::ffi::XSControl_SignTransferStatus_as_Interface_SignType_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to MoniTool_SignText
+    pub fn as_moni_tool_sign_text(&self) -> &crate::moni_tool::SignText {
+        unsafe {
+            &*(crate::ffi::XSControl_SignTransferStatus_as_MoniTool_SignText(self as *const Self))
+        }
+    }
+
+    /// Upcast to MoniTool_SignText (mutable)
+    pub fn as_moni_tool_sign_text_mut(&mut self) -> &mut crate::moni_tool::SignText {
+        unsafe {
+            &mut *(crate::ffi::XSControl_SignTransferStatus_as_MoniTool_SignText_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
+    pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
+        unsafe {
+            crate::ffi::XSControl_SignTransferStatus_inherited_SetIntCase(
+                self as *mut Self,
+                hasmin,
+                valmin,
+                hasmax,
+                valmax,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
+    pub fn is_int_case(
+        &self,
+        hasmin: &mut bool,
+        valmin: &mut i32,
+        hasmax: &mut bool,
+        valmax: &mut i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XSControl_SignTransferStatus_inherited_IsIntCase(
+                self as *const Self,
+                hasmin,
+                valmin,
+                hasmax,
+                valmax,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:69 - `IFSelect_Signature::CaseList()`
+    pub fn case_list(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_SignTransferStatus_inherited_CaseList(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:81 - `IFSelect_Signature::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_SignTransferStatus_inherited_Label(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From XSControl_TransferWriter.hxx
+// ========================
+
+/// **Source:** `XSControl_TransferWriter.hxx`:40 - `XSControl_TransferWriter`
+/// TransferWriter gives help to control transfer to write a file
+/// after having converted data from Cascade/Imagine
+///
+/// It works with a Controller (which itself can work with an
+/// Actor to Write) and a FinderProcess. It records results and
+/// checks
+pub use crate::ffi::XSControl_TransferWriter as TransferWriter;
+
+unsafe impl crate::CppDeletable for TransferWriter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XSControl_TransferWriter_destructor(ptr);
+    }
+}
+
+impl TransferWriter {
+    /// **Source:** `XSControl_TransferWriter.hxx`:45 - `XSControl_TransferWriter::XSControl_TransferWriter()`
+    /// Creates a TransferWriter, empty, ready to run
+    /// with an empty FinderProcess (but no controller, etc)
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_TransferWriter_ctor()) }
+    }
+
+    /// **Source:** `XSControl_TransferWriter.hxx`:70 - `XSControl_TransferWriter::Clear()`
+    /// Clears recorded data according a mode
+    /// 0 clears FinderProcess (results, checks)
+    /// -1 create a new FinderProcess
+    pub fn clear(&mut self, theMode: i32) {
+        unsafe { crate::ffi::XSControl_TransferWriter_clear(self as *mut Self, theMode) }
+    }
+
+    /// **Source:** `XSControl_TransferWriter.hxx`:76 - `XSControl_TransferWriter::TransferMode()`
+    /// Returns the current Transfer Mode (an Integer)
+    /// It will be interpreted by the Controller to run Transfers
+    /// This call form could be later replaced by more specific ones
+    /// (parameters suited for each norm / transfer case)
+    pub fn transfer_mode(&self) -> i32 {
+        unsafe { crate::ffi::XSControl_TransferWriter_transfer_mode(self as *const Self) }
+    }
+
+    /// **Source:** `XSControl_TransferWriter.hxx`:79 - `XSControl_TransferWriter::SetTransferMode()`
+    /// Changes the Transfer Mode
+    pub fn set_transfer_mode(&mut self, theMode: i32) {
+        unsafe {
+            crate::ffi::XSControl_TransferWriter_set_transfer_mode(self as *mut Self, theMode)
+        }
+    }
+
+    /// **Source:** `XSControl_TransferWriter.hxx`:83 - `XSControl_TransferWriter::PrintStats()`
+    /// Prints statistics on current Trace File, according what,mode
+    /// See PrintStatsProcess for details
+    pub fn print_stats(&self, theWhat: i32, theMode: i32) {
+        unsafe {
+            crate::ffi::XSControl_TransferWriter_print_stats(self as *const Self, theWhat, theMode)
+        }
+    }
+
+    /// **Source:** `XSControl_TransferWriter.hxx`:104 - `XSControl_TransferWriter::RecognizeShape()`
+    /// Tells if a Shape is valid for a transfer to a model
+    /// Asks the Controller (RecognizeWriteShape)
+    pub fn recognize_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) -> bool {
+        unsafe { crate::ffi::XSControl_TransferWriter_recognize_shape(self as *mut Self, theShape) }
+    }
+
+    /// **Source:** `XSControl_TransferWriter.hxx`:112 - `XSControl_TransferWriter::TransferWriteShape()`
+    /// Transfers a Shape from CasCade to a model of current norm,
+    /// according to the last call to SetTransferMode
+    /// Works by calling the Controller
+    /// Returns status : =0 if OK, >0 if error during transfer, <0 if
+    /// transfer badly initialised
+    pub fn transfer_write_shape(
+        &mut self,
+        theModel: &crate::ffi::HandleInterfaceInterfaceModel,
+        theShape: &crate::ffi::TopoDS_Shape,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> crate::if_select::ReturnStatus {
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(
+                crate::ffi::XSControl_TransferWriter_transfer_write_shape(
+                    self as *mut Self,
+                    theModel,
+                    theShape,
+                    theProgress,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `XSControl_TransferWriter.hxx`:118 - `XSControl_TransferWriter::CheckList()`
+    /// Returns the check-list of last transfer (write), i.e. the
+    /// check-list currently recorded in the FinderProcess
+    pub fn check_list(&self) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_TransferWriter_check_list(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `XSControl_TransferWriter.hxx`:124 - `XSControl_TransferWriter::ResultCheckList()`
+    /// Returns the check-list of last transfer (write), but tries
+    /// to bind to each check, the resulting entity in the model
+    /// instead of keeping the original Mapper, whenever known
+    pub fn result_check_list(
+        &self,
+        theModel: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_TransferWriter_result_check_list(
+                self as *const Self,
+                theModel,
+            ))
+        }
+    }
+
+    /// **Source:** `XSControl_TransferWriter.hxx`:126 - `XSControl_TransferWriter::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::XSControl_TransferWriter_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `XSControl_TransferWriter.hxx`:126 - `XSControl_TransferWriter::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::XSControl_TransferWriter_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `XSControl_TransferWriter.hxx`:126 - `XSControl_TransferWriter::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::XSControl_TransferWriter_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXSControlTransferWriter> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_TransferWriter_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleXSControlTransferWriter;
+
+unsafe impl crate::CppDeletable for HandleXSControlTransferWriter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXSControlTransferWriter_destructor(ptr);
+    }
+}
+
+impl HandleXSControlTransferWriter {
+    /// Dereference this Handle to access the underlying XSControl_TransferWriter
+    pub fn get(&self) -> &crate::ffi::XSControl_TransferWriter {
+        unsafe { &*(crate::ffi::HandleXSControlTransferWriter_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XSControl_TransferWriter
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XSControl_TransferWriter {
+        unsafe { &mut *(crate::ffi::HandleXSControlTransferWriter_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From XSControl_Utils.hxx
+// ========================
+
+/// **Source:** `XSControl_Utils.hxx`:51 - `XSControl_Utils`
+/// This class provides various useful utility routines, to
+/// facilitate handling of most common data structures :
+/// transients (type, type name ...),
+/// strings (ascii or extended, pointed or handled or ...),
+/// shapes (reading, writing, testing ...),
+/// sequences & arrays (of strings, of transients, of shapes ...),
+/// ...
+///
+/// Also it gives some helps on some data structures from XSTEP,
+/// such as printing on standard trace file, recignizing most
+/// currently used auxiliary types (Binder,Mapper ...)
+pub use crate::ffi::XSControl_Utils as Utils;
+
+unsafe impl crate::CppDeletable for Utils {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XSControl_Utils_destructor(ptr);
+    }
+}
+
+impl Utils {
+    /// **Source:** `XSControl_Utils.hxx`:58 - `XSControl_Utils::XSControl_Utils()`
+    /// the only use of this, is to allow a frontal to get one
+    /// distinct "Utils" set per separate engine
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_Utils_ctor()) }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:62 - `XSControl_Utils::TraceLine()`
+    /// Just prints a line into the current Trace File. This allows to
+    /// better characterise the various trace outputs, as desired.
+    pub fn trace_line(&self, line: &str) {
+        let c_line = std::ffi::CString::new(line).unwrap();
+        unsafe { crate::ffi::XSControl_Utils_trace_line(self as *const Self, c_line.as_ptr()) }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:85 - `XSControl_Utils::NewSeqTra()`
+    pub fn new_seq_tra(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Utils_new_seq_tra(self as *const Self))
+        }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:90 - `XSControl_Utils::DateString()`
+    pub fn date_string(&self, yy: i32, mm: i32, dd: i32, hh: i32, mn: i32, ss: i32) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::XSControl_Utils_date_string(
+                self as *const Self,
+                yy,
+                mm,
+                dd,
+                hh,
+                mn,
+                ss,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:97 - `XSControl_Utils::DateValues()`
+    pub fn date_values(
+        &self,
+        text: &str,
+        yy: &mut i32,
+        mm: &mut i32,
+        dd: &mut i32,
+        hh: &mut i32,
+        mn: &mut i32,
+        ss: &mut i32,
+    ) {
+        let c_text = std::ffi::CString::new(text).unwrap();
+        unsafe {
+            crate::ffi::XSControl_Utils_date_values(
+                self as *const Self,
+                c_text.as_ptr(),
+                yy,
+                mm,
+                dd,
+                hh,
+                mn,
+                ss,
+            )
+        }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:105 - `XSControl_Utils::ToCString()`
+    pub fn to_c_string_handletcollectionhasciistring(
+        &self,
+        strval: &crate::ffi::HandleTCollectionHAsciiString,
+    ) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::XSControl_Utils_to_c_string_handletcollectionhasciistring(
+                    self as *const Self,
+                    strval,
+                ),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:107 - `XSControl_Utils::ToCString()`
+    pub fn to_c_string_asciistring(&self, strval: &crate::ffi::TCollection_AsciiString) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::XSControl_Utils_to_c_string_asciistring(
+                self as *const Self,
+                strval,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:109 - `XSControl_Utils::ToHString()`
+    pub fn to_h_string(
+        &self,
+        strcon: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        let c_strcon = std::ffi::CString::new(strcon).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Utils_to_h_string(
+                self as *const Self,
+                c_strcon.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:111 - `XSControl_Utils::ToAString()`
+    pub fn to_a_string(
+        &self,
+        strcon: &str,
+    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        let c_strcon = std::ffi::CString::new(strcon).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Utils_to_a_string(
+                self as *const Self,
+                c_strcon.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:135 - `XSControl_Utils::NewSeqCStr()`
+    pub fn new_seq_c_str(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Utils_new_seq_c_str(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:137 - `XSControl_Utils::AppendCStr()`
+    pub fn append_c_str(
+        &self,
+        seqval: &crate::ffi::HandleTColStdHSequenceOfHAsciiString,
+        strval: &str,
+    ) {
+        let c_strval = std::ffi::CString::new(strval).unwrap();
+        unsafe {
+            crate::ffi::XSControl_Utils_append_c_str(self as *const Self, seqval, c_strval.as_ptr())
+        }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:140 - `XSControl_Utils::NewSeqEStr()`
+    pub fn new_seq_e_str(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Utils_new_seq_e_str(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:154 - `XSControl_Utils::ShapeType()`
+    /// Returns the type of a Shape : true type if <compound> is False
+    /// If <compound> is True and <shape> is a Compound, iterates on
+    /// its items. If all are of the same type, returns this type.
+    /// Else, returns COMPOUND. If it is empty, returns SHAPE
+    /// For a Null Shape, returns SHAPE
+    pub fn shape_type(
+        &self,
+        shape: &crate::ffi::TopoDS_Shape,
+        compound: bool,
+    ) -> crate::top_abs::ShapeEnum {
+        unsafe {
+            crate::top_abs::ShapeEnum::try_from(crate::ffi::XSControl_Utils_shape_type(
+                self as *const Self,
+                shape,
+                compound,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:166 - `XSControl_Utils::SortedCompound()`
+    /// From a Shape, builds a Compound as follows :
+    /// explores it level by level
+    /// If <explore> is False, only COMPOUND items. Else, all items
+    /// Adds to the result, shapes which comply to <type>
+    /// + if <type> is WIRE, considers free edges (and makes wires)
+    /// + if <type> is SHELL, considers free faces (and makes shells)
+    /// If <compound> is True, gathers items in compounds which
+    /// correspond to starting COMPOUND,SOLID or SHELL containers, or
+    /// items directly contained in a Compound
+    pub fn sorted_compound(
+        &self,
+        shape: &crate::ffi::TopoDS_Shape,
+        type_: crate::top_abs::ShapeEnum,
+        explore: bool,
+        compound: bool,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Utils_sorted_compound(
+                self as *const Self,
+                shape,
+                type_.into(),
+                explore,
+                compound,
+            ))
+        }
+    }
+
+    /// **Source:** `XSControl_Utils.hxx`:198 - `XSControl_Utils::SeqIntValue()`
+    pub fn seq_int_value(
+        &self,
+        list: &crate::ffi::HandleTColStdHSequenceOfInteger,
+        num: i32,
+    ) -> i32 {
+        unsafe { crate::ffi::XSControl_Utils_seq_int_value(self as *const Self, list, num) }
+    }
+}
+
+// ========================
+// From XSControl_Writer.hxx
+// ========================
+
+/// **Source:** `XSControl_Writer.hxx`:36 - `XSControl_Writer`
+/// This class gives a simple way to create then write a
+/// Model compliant to a given norm, from a Shape
+/// The model can then be edited by tools by other appropriate tools
+pub use crate::ffi::XSControl_Writer as Writer;
+
+unsafe impl crate::CppDeletable for Writer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XSControl_Writer_destructor(ptr);
+    }
+}
+
+impl Writer {
+    /// **Source:** `XSControl_Writer.hxx`:42 - `XSControl_Writer::XSControl_Writer()`
+    /// Creates a Writer from scratch
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_Writer_ctor()) }
+    }
+
+    /// **Source:** `XSControl_Writer.hxx`:46 - `XSControl_Writer::XSControl_Writer()`
+    /// Creates a Writer from scratch, with a norm name which
+    /// identifie a Controller
+    pub fn new_charptr(norm: &str) -> crate::OwnedPtr<Self> {
+        let c_norm = std::ffi::CString::new(norm).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Writer_ctor_charptr(c_norm.as_ptr()))
+        }
+    }
+
+    /// **Source:** `XSControl_Writer.hxx`:55 - `XSControl_Writer::SetNorm()`
     /// Sets a specific norm to <me>
     /// Returns True if done, False if <norm> is not available
     pub fn set_norm(&mut self, norm: &str) -> bool {
         let c_norm = std::ffi::CString::new(norm).unwrap();
-        unsafe { crate::ffi::XSControl_Reader_set_norm(self as *mut Self, c_norm.as_ptr()) }
+        unsafe { crate::ffi::XSControl_Writer_set_norm(self as *mut Self, c_norm.as_ptr()) }
     }
 
-    /// **Source:** `XSControl_Reader.hxx`:107 - `XSControl_Reader::ReadFile()`
-    /// Loads a file and returns the read status
-    /// Zero for a Model which complies with the Controller
-    pub fn read_file(&mut self, filename: &str) -> crate::if_select::ReturnStatus {
+    /// **Source:** `XSControl_Writer.hxx`:68 - `XSControl_Writer::Model()`
+    /// Returns the produced model. Produces a new one if not yet done
+    /// or if <newone> is True
+    /// This method allows for instance to edit product or header
+    /// data before writing
+    pub fn model(
+        &mut self,
+        newone: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Writer_model(self as *mut Self, newone))
+        }
+    }
+
+    /// **Source:** `XSControl_Writer.hxx`:73 - `XSControl_Writer::TransferShape()`
+    /// Transfers a Shape according to the mode
+    pub fn transfer_shape(
+        &mut self,
+        sh: &crate::ffi::TopoDS_Shape,
+        mode: i32,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> crate::if_select::ReturnStatus {
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(crate::ffi::XSControl_Writer_transfer_shape(
+                self as *mut Self,
+                sh,
+                mode,
+                theProgress,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `XSControl_Writer.hxx`:78 - `XSControl_Writer::WriteFile()`
+    /// Writes the produced model
+    pub fn write_file(&mut self, filename: &str) -> crate::if_select::ReturnStatus {
         let c_filename = std::ffi::CString::new(filename).unwrap();
         unsafe {
-            crate::if_select::ReturnStatus::try_from(crate::ffi::XSControl_Reader_read_file(
+            crate::if_select::ReturnStatus::try_from(crate::ffi::XSControl_Writer_write_file(
                 self as *mut Self,
                 c_filename.as_ptr(),
             ))
@@ -315,233 +1065,11 @@ impl Reader {
         }
     }
 
-    /// **Source:** `XSControl_Reader.hxx`:114 - `XSControl_Reader::Model()`
-    /// Returns the model. It can then be consulted (header, product)
-    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Reader_model(self as *const Self))
-        }
-    }
-
-    /// **Source:** `XSControl_Reader.hxx`:143 - `XSControl_Reader::GiveList()`
-    /// Returns a list of entities from the IGES or STEP file
-    /// according to the following rules:
-    /// - if first and second are empty strings, the whole file is selected.
-    /// - if first is an entity number or label, the entity referred to is selected.
-    /// - if first is a list of entity numbers/labels separated by commas, the entities referred to
-    /// are selected,
-    /// - if first is the name of a selection in the worksession and second is not defined,
-    /// the list contains the standard output for that selection.
-    /// - if first is the name of a selection and second is defined, the criterion defined
-    /// by second is applied to the result of the first selection.
-    /// A selection is an operator which computes a list of entities from a list given in
-    /// input according to its type. If no list is specified, the selection computes its
-    /// list of entities from the whole model.
-    /// A selection can be:
-    /// - A predefined selection (xst-transferrable-mode)
-    /// - A filter based on a signature
-    /// A Signature is an operator which returns a string from an entity according to its type. For
-    /// example:
-    /// - "xst-type" (CDL)
-    /// - "iges-level"
-    /// - "step-type".
-    /// For example, if you wanted to select only the advanced_faces in a STEP file you
-    /// would use the following code:
-    /// Example
-    /// Reader.GiveList("xst-transferrable-roots","step-type(ADVANCED_FACE)");
-    /// Warning
-    /// If the value given to second is incorrect, it will simply be ignored.
-    pub fn give_list(
-        &mut self,
-        first: &str,
-        second: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
-        let c_first = std::ffi::CString::new(first).unwrap();
-        let c_second = std::ffi::CString::new(second).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Reader_give_list(
-                self as *mut Self,
-                c_first.as_ptr(),
-                c_second.as_ptr(),
-            ))
-        }
-    }
-
-    /// **Source:** `XSControl_Reader.hxx`:158 - `XSControl_Reader::NbRootsForTransfer()`
-    /// Determines the list of root entities which are candidate for
-    /// a transfer to a Shape, and returns the number
-    /// of entities in the list
-    pub fn nb_roots_for_transfer(&mut self) -> i32 {
-        unsafe { crate::ffi::XSControl_Reader_nb_roots_for_transfer(self as *mut Self) }
-    }
-
-    /// **Source:** `XSControl_Reader.hxx`:168 - `XSControl_Reader::TransferOneRoot()`
-    /// Translates a root identified by the rank num in the model.
-    /// false is returned if no shape is produced.
-    pub fn transfer_one_root(
-        &mut self,
-        num: i32,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> bool {
-        unsafe {
-            crate::ffi::XSControl_Reader_transfer_one_root(self as *mut Self, num, theProgress)
-        }
-    }
-
-    /// **Source:** `XSControl_Reader.hxx`:175 - `XSControl_Reader::TransferOne()`
-    /// Translates an IGES or STEP
-    /// entity identified by the rank num in the model.
-    /// false is returned if no shape is produced.
-    pub fn transfer_one(
-        &mut self,
-        num: i32,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> bool {
-        unsafe { crate::ffi::XSControl_Reader_transfer_one(self as *mut Self, num, theProgress) }
-    }
-
-    /// **Source:** `XSControl_Reader.hxx`:190 - `XSControl_Reader::TransferList()`
-    /// Translates a list of entities.
-    /// Returns the number of IGES or STEP entities that were
-    /// successfully translated. The list can be produced with GiveList.
-    /// Warning - This function does not clear the existing output shapes.
-    pub fn transfer_list(
-        &mut self,
-        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> i32 {
-        unsafe { crate::ffi::XSControl_Reader_transfer_list(self as *mut Self, list, theProgress) }
-    }
-
-    /// **Source:** `XSControl_Reader.hxx`:197 - `XSControl_Reader::TransferRoots()`
-    /// Translates all translatable
-    /// roots and returns the number of successful translations.
-    /// Warning - This function clears existing output shapes first.
-    pub fn transfer_roots(&mut self, theProgress: &crate::ffi::Message_ProgressRange) -> i32 {
-        unsafe { crate::ffi::XSControl_Reader_transfer_roots(self as *mut Self, theProgress) }
-    }
-
-    /// **Source:** `XSControl_Reader.hxx`:201 - `XSControl_Reader::ClearShapes()`
-    /// Clears the list of shapes that
-    /// may have accumulated in calls to TransferOne or TransferRoot.C
-    pub fn clear_shapes(&mut self) {
-        unsafe { crate::ffi::XSControl_Reader_clear_shapes(self as *mut Self) }
-    }
-
-    /// **Source:** `XSControl_Reader.hxx`:204 - `XSControl_Reader::NbShapes()`
-    /// Returns the number of shapes produced by translation.
-    pub fn nb_shapes(&self) -> i32 {
-        unsafe { crate::ffi::XSControl_Reader_nb_shapes(self as *const Self) }
-    }
-
-    /// **Source:** `XSControl_Reader.hxx`:210 - `XSControl_Reader::Shape()`
-    /// Returns the shape resulting
-    /// from a translation and identified by the rank num.
-    /// num equals 1 by default. In other words, the first shape
-    /// resulting from the translation is returned.
-    pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Reader_shape(self as *const Self, num))
-        }
-    }
-
-    /// **Source:** `XSControl_Reader.hxx`:217 - `XSControl_Reader::OneShape()`
-    /// Returns all of the results in
-    /// a single shape which is:
-    /// - a null shape if there are no results,
-    /// - a shape if there is one result,
-    /// - a compound containing the resulting shapes if there are more than one.
-    pub fn one_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XSControl_Reader_one_shape(self as *const Self))
-        }
-    }
-
-    /// **Source:** `XSControl_Reader.hxx`:225 - `XSControl_Reader::PrintCheckLoad()`
-    /// Prints the check list attached to loaded data, on the Standard
-    /// Trace File (starts at std::cout)
-    /// All messages or fails only, according to <failsonly>
-    /// mode = 0 : per entity, prints messages
-    /// mode = 1 : per message, just gives count of entities per check
-    /// mode = 2 : also gives entity numbers
-    pub fn print_check_load(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
-        unsafe {
-            crate::ffi::XSControl_Reader_print_check_load(
-                self as *const Self,
-                failsonly,
-                mode.into(),
-            )
-        }
-    }
-
-    /// **Source:** `XSControl_Reader.hxx`:239 - `XSControl_Reader::PrintCheckTransfer()`
-    /// Displays check results for the
-    /// last translation of IGES or STEP entities to Open CASCADE
-    /// entities. Only fail messages are displayed if failsonly is
-    /// true. All messages are displayed if failsonly is
-    /// false. mode determines the contents and the order of the
-    /// messages according to the terms of the IFSelect_PrintCount enumeration.
-    pub fn print_check_transfer(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
-        unsafe {
-            crate::ffi::XSControl_Reader_print_check_transfer(
-                self as *const Self,
-                failsonly,
-                mode.into(),
-            )
-        }
-    }
-
-    /// **Source:** `XSControl_Reader.hxx`:275 - `XSControl_Reader::PrintStatsTransfer()`
-    /// Displays the statistics for
-    /// the last translation. what defines the kind of
-    /// statistics that are displayed as follows:
-    /// - 0 gives general statistics (number of translated roots,
-    /// number of warnings, number of fail messages),
-    /// - 1 gives root results,
-    /// - 2 gives statistics for all checked entities,
-    /// - 3 gives the list of translated entities,
-    /// - 4 gives warning and fail messages,
-    /// - 5 gives fail messages only.
-    /// The use of mode depends on the value of what. If what is 0,
-    /// mode is ignored. If what is 1, 2 or 3, mode defines the following:
-    /// - 0 lists the numbers of IGES or STEP entities in the respective model
-    /// - 1 gives the number, identifier, type and result
-    /// type for each IGES or STEP entity and/or its status
-    /// (fail, warning, etc.)
-    /// - 2 gives maximum information for each IGES or STEP entity (i.e. checks)
-    /// - 3 gives the number of entities per type of IGES or STEP entity
-    /// - 4 gives the number of IGES or STEP entities per result type and/or status
-    /// - 5 gives the number of pairs (IGES or STEP or result type and status)
-    /// - 6 gives the number of pairs (IGES or STEP or result type
-    /// and status) AND the list of entity numbers in the IGES or STEP model.
-    /// If what is 4 or 5, mode defines the warning and fail
-    /// messages as follows:
-    /// - if mode is 0 all warnings and checks per entity are returned
-    /// - if mode is 2 the list of entities per warning is returned.
-    /// If mode is not set, only the list of all entities per warning is given.
+    /// **Source:** `XSControl_Writer.hxx`:81 - `XSControl_Writer::PrintStatsTransfer()`
+    /// Prints Statistics about Transfer
     pub fn print_stats_transfer(&self, what: i32, mode: i32) {
         unsafe {
-            crate::ffi::XSControl_Reader_print_stats_transfer(self as *const Self, what, mode)
-        }
-    }
-
-    /// **Source:** `XSControl_Reader.hxx`:284 - `XSControl_Reader::GetStatsTransfer()`
-    /// Gives statistics about Transfer
-    pub fn get_stats_transfer(
-        &self,
-        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
-        nbMapped: &mut i32,
-        nbWithResult: &mut i32,
-        nbWithFail: &mut i32,
-    ) {
-        unsafe {
-            crate::ffi::XSControl_Reader_get_stats_transfer(
-                self as *const Self,
-                list,
-                nbMapped,
-                nbWithResult,
-                nbWithFail,
-            )
+            crate::ffi::XSControl_Writer_print_stats_transfer(self as *const Self, what, mode)
         }
     }
 }
@@ -550,4 +1078,7 @@ impl Reader {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::XSControl_WorkSession as WorkSession;
+pub use crate::ffi::{
+    XSControl_Controller as Controller, XSControl_TransferReader as TransferReader,
+    XSControl_WorkSession as WorkSession,
+};

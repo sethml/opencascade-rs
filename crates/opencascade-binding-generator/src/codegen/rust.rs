@@ -158,7 +158,7 @@ pub fn generate_ffi(
     let function_items = generate_functions_from_bindings(function_bindings);
 
     // Generate Handle type declarations
-    let handle_decls = generate_handle_declarations(all_classes);
+    let handle_decls = generate_handle_declarations(all_classes, &symbol_table.handle_able_classes);
 
     // Collect opaque type declarations (types referenced but not defined)
     let collected_types = collect_referenced_types(all_classes);
@@ -311,13 +311,24 @@ fn generate_functions_from_bindings(
 }
 
 /// Generate Handle type declarations
-fn generate_handle_declarations(classes: &[&ParsedClass]) -> String {
+fn generate_handle_declarations(classes: &[&ParsedClass], extra_handle_able: &HashSet<String>) -> String {
     let mut handles = BTreeSet::new();
 
+    // Classes parsed from non-excluded headers
+    let mut defined_handles = BTreeSet::new();
     for class in classes {
         if class.is_handle_type && !class.has_protected_destructor {
             handles.insert(class.name.clone());
+            defined_handles.insert(class.name.clone());
         }
+    }
+
+    // Also generate Handle declarations for types that appear in Handle(...)
+    // in method signatures, even if their own headers are excluded.
+    // This ensures that methods like GeomAPI_Interpolate(Handle(TColgp_HArray1OfPnt))
+    // can be generated even when TColgp_HArray1OfPnt.hxx is excluded.
+    for name in extra_handle_able {
+        handles.insert(name.clone());
     }
 
     let mut out = String::new();
@@ -327,6 +338,32 @@ fn generate_handle_declarations(classes: &[&ParsedClass]) -> String {
         writeln!(out, "#[repr(C)]").unwrap();
         writeln!(out, "pub struct {} {{ _opaque: [u8; 0] }}", handle_type_name).unwrap();
     }
+
+    // For extra handle types (not from parsed classes), generate standalone
+    // CppDeletable impls and destructor FFI declarations.
+    // Parsed classes get these in their module files instead.
+    let extra_handles: Vec<_> = handles.iter()
+        .filter(|name| !defined_handles.contains(*name))
+        .collect();
+    if !extra_handles.is_empty() {
+        writeln!(out).unwrap();
+        writeln!(out, "extern \"C\" {{").unwrap();
+        for class_name in &extra_handles {
+            let handle_type_name = format!("Handle{}", class_name.replace('_', ""));
+            writeln!(out, "    pub fn {}_destructor(ptr: *mut {});", handle_type_name, handle_type_name).unwrap();
+        }
+        writeln!(out, "}}").unwrap();
+        writeln!(out).unwrap();
+        for class_name in &extra_handles {
+            let handle_type_name = format!("Handle{}", class_name.replace('_', ""));
+            writeln!(out, "unsafe impl crate::CppDeletable for {} {{", handle_type_name).unwrap();
+            writeln!(out, "    unsafe fn cpp_delete(ptr: *mut Self) {{").unwrap();
+            writeln!(out, "        {}_destructor(ptr);", handle_type_name).unwrap();
+            writeln!(out, "    }}").unwrap();
+            writeln!(out, "}}").unwrap();
+        }
+    }
+
     out
 }
 

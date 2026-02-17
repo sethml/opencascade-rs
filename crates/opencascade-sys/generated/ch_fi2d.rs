@@ -6,6 +6,29 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `ChFi2d.hxx`:54 - `ChFi2d::CommonVertex`
+pub fn common_vertex_mut(
+    E1: &crate::ffi::TopoDS_Edge,
+    E2: &crate::ffi::TopoDS_Edge,
+    V: &mut crate::ffi::TopoDS_Vertex,
+) -> bool {
+    unsafe { crate::ffi::ChFi2d_common_vertex_mut(E1, E2, V) }
+}
+/// **Source:** `ChFi2d.hxx`:58 - `ChFi2d::FindConnectedEdges`
+pub fn find_connected_edges(
+    F: &crate::ffi::TopoDS_Face,
+    V: &crate::ffi::TopoDS_Vertex,
+    E1: &mut crate::ffi::TopoDS_Edge,
+    E2: &mut crate::ffi::TopoDS_Edge,
+) -> crate::ch_fi2d::ConstructionError {
+    unsafe {
+        crate::ch_fi2d::ConstructionError::try_from(crate::ffi::ChFi2d_find_connected_edges(
+            F, V, E1, E2,
+        ))
+        .unwrap()
+    }
+}
+
 /// Error that can occur during the fillet construction on planar wire.
 /// C++ enum: `ChFi2d_ConstructionError`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -66,6 +89,109 @@ impl TryFrom<i32> for ConstructionError {
             12 => Ok(ConstructionError::Notauthorized),
             _ => Err(value),
         }
+    }
+}
+
+// ========================
+// From ChFi2d_AnaFilletAlgo.hxx
+// ========================
+
+/// **Source:** `ChFi2d_AnaFilletAlgo.hxx`:25 - `ChFi2d_AnaFilletAlgo`
+/// An analytical algorithm for calculation of the fillets.
+/// It is implemented for segments and arcs of circle only.
+pub use crate::ffi::ChFi2d_AnaFilletAlgo as AnaFilletAlgo;
+
+unsafe impl crate::CppDeletable for AnaFilletAlgo {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ChFi2d_AnaFilletAlgo_destructor(ptr);
+    }
+}
+
+impl AnaFilletAlgo {
+    /// **Source:** `ChFi2d_AnaFilletAlgo.hxx`:30 - `ChFi2d_AnaFilletAlgo::ChFi2d_AnaFilletAlgo()`
+    /// An empty constructor.
+    /// Use the method Init() to initialize the class.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_AnaFilletAlgo_ctor()) }
+    }
+
+    /// **Source:** `ChFi2d_AnaFilletAlgo.hxx`:36 - `ChFi2d_AnaFilletAlgo::ChFi2d_AnaFilletAlgo()`
+    /// A constructor.
+    /// It expects a wire consisting of two edges of type (any combination of):
+    /// - segment
+    /// - arc of circle.
+    pub fn new_wire_pln(
+        theWire: &crate::ffi::TopoDS_Wire,
+        thePlane: &crate::ffi::gp_Pln,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_AnaFilletAlgo_ctor_wire_pln(
+                theWire, thePlane,
+            ))
+        }
+    }
+
+    /// **Source:** `ChFi2d_AnaFilletAlgo.hxx`:42 - `ChFi2d_AnaFilletAlgo::ChFi2d_AnaFilletAlgo()`
+    /// A constructor.
+    /// It expects two edges having a common point of type:
+    /// - segment
+    /// - arc of circle.
+    pub fn new_edge2_pln(
+        theEdge1: &crate::ffi::TopoDS_Edge,
+        theEdge2: &crate::ffi::TopoDS_Edge,
+        thePlane: &crate::ffi::gp_Pln,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_AnaFilletAlgo_ctor_edge2_pln(
+                theEdge1, theEdge2, thePlane,
+            ))
+        }
+    }
+
+    /// **Source:** `ChFi2d_AnaFilletAlgo.hxx`:47 - `ChFi2d_AnaFilletAlgo::Init()`
+    /// Initializes the class by a wire consisting of two edges.
+    pub fn init_wire_pln(
+        &mut self,
+        theWire: &crate::ffi::TopoDS_Wire,
+        thePlane: &crate::ffi::gp_Pln,
+    ) {
+        unsafe {
+            crate::ffi::ChFi2d_AnaFilletAlgo_init_wire_pln(self as *mut Self, theWire, thePlane)
+        }
+    }
+
+    /// **Source:** `ChFi2d_AnaFilletAlgo.hxx`:50 - `ChFi2d_AnaFilletAlgo::Init()`
+    /// Initializes the class by two edges.
+    pub fn init_edge2_pln(
+        &mut self,
+        theEdge1: &crate::ffi::TopoDS_Edge,
+        theEdge2: &crate::ffi::TopoDS_Edge,
+        thePlane: &crate::ffi::gp_Pln,
+    ) {
+        unsafe {
+            crate::ffi::ChFi2d_AnaFilletAlgo_init_edge2_pln(
+                self as *mut Self,
+                theEdge1,
+                theEdge2,
+                thePlane,
+            )
+        }
+    }
+
+    /// **Source:** `ChFi2d_AnaFilletAlgo.hxx`:55 - `ChFi2d_AnaFilletAlgo::Perform()`
+    /// Calculates a fillet.
+    pub fn perform(&mut self, radius: f64) -> bool {
+        unsafe { crate::ffi::ChFi2d_AnaFilletAlgo_perform(self as *mut Self, radius) }
+    }
+
+    /// **Source:** `ChFi2d_AnaFilletAlgo.hxx`:58 - `ChFi2d_AnaFilletAlgo::Result()`
+    /// Retrieves a result (fillet and shrinked neighbours).
+    pub fn result(
+        &mut self,
+        e1: &mut crate::ffi::TopoDS_Edge,
+        e2: &mut crate::ffi::TopoDS_Edge,
+    ) -> &crate::ffi::TopoDS_Edge {
+        unsafe { &*(crate::ffi::ChFi2d_AnaFilletAlgo_result(self as *mut Self, e1, e2)) }
     }
 }
 
@@ -338,5 +464,471 @@ impl Builder {
             ))
             .unwrap()
         }
+    }
+}
+
+// ========================
+// From ChFi2d_ChamferAPI.hxx
+// ========================
+
+/// **Source:** `ChFi2d_ChamferAPI.hxx`:24 - `ChFi2d_ChamferAPI`
+/// A class making a chamfer between two linear edges.
+pub use crate::ffi::ChFi2d_ChamferAPI as ChamferAPI;
+
+unsafe impl crate::CppDeletable for ChamferAPI {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ChFi2d_ChamferAPI_destructor(ptr);
+    }
+}
+
+impl ChamferAPI {
+    /// **Source:** `ChFi2d_ChamferAPI.hxx`:28 - `ChFi2d_ChamferAPI::ChFi2d_ChamferAPI()`
+    /// An empty constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_ChamferAPI_ctor()) }
+    }
+
+    /// **Source:** `ChFi2d_ChamferAPI.hxx`:31 - `ChFi2d_ChamferAPI::ChFi2d_ChamferAPI()`
+    /// A constructor accepting a wire consisting of two linear edges.
+    pub fn new_wire(theWire: &crate::ffi::TopoDS_Wire) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_ChamferAPI_ctor_wire(theWire)) }
+    }
+
+    /// **Source:** `ChFi2d_ChamferAPI.hxx`:34 - `ChFi2d_ChamferAPI::ChFi2d_ChamferAPI()`
+    /// A constructor accepting two linear edges.
+    pub fn new_edge2(
+        theEdge1: &crate::ffi::TopoDS_Edge,
+        theEdge2: &crate::ffi::TopoDS_Edge,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_ChamferAPI_ctor_edge2(theEdge1, theEdge2))
+        }
+    }
+
+    /// **Source:** `ChFi2d_ChamferAPI.hxx`:37 - `ChFi2d_ChamferAPI::Init()`
+    /// Initializes the class by a wire consisting of two libear edges.
+    pub fn init_wire(&mut self, theWire: &crate::ffi::TopoDS_Wire) {
+        unsafe { crate::ffi::ChFi2d_ChamferAPI_init_wire(self as *mut Self, theWire) }
+    }
+
+    /// **Source:** `ChFi2d_ChamferAPI.hxx`:40 - `ChFi2d_ChamferAPI::Init()`
+    /// Initializes the class by two linear edges.
+    pub fn init_edge2(
+        &mut self,
+        theEdge1: &crate::ffi::TopoDS_Edge,
+        theEdge2: &crate::ffi::TopoDS_Edge,
+    ) {
+        unsafe { crate::ffi::ChFi2d_ChamferAPI_init_edge2(self as *mut Self, theEdge1, theEdge2) }
+    }
+
+    /// **Source:** `ChFi2d_ChamferAPI.hxx`:44 - `ChFi2d_ChamferAPI::Perform()`
+    /// Constructs a chamfer edge.
+    /// Returns true if the edge is constructed.
+    pub fn perform(&mut self) -> bool {
+        unsafe { crate::ffi::ChFi2d_ChamferAPI_perform(self as *mut Self) }
+    }
+
+    /// **Source:** `ChFi2d_ChamferAPI.hxx`:47 - `ChFi2d_ChamferAPI::Result()`
+    pub fn result(
+        &mut self,
+        theEdge1: &mut crate::ffi::TopoDS_Edge,
+        theEdge2: &mut crate::ffi::TopoDS_Edge,
+        theLength1: f64,
+        theLength2: f64,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_ChamferAPI_result(
+                self as *mut Self,
+                theEdge1,
+                theEdge2,
+                theLength1,
+                theLength2,
+            ))
+        }
+    }
+}
+
+// ========================
+// From ChFi2d_FilletAPI.hxx
+// ========================
+
+/// **Source:** `ChFi2d_FilletAPI.hxx`:38 - `ChFi2d_FilletAPI`
+/// An interface class for 2D fillets.
+/// Open CASCADE provides two algorithms for 2D fillets:
+/// ChFi2d_Builder - it constructs a fillet or chamfer
+/// for linear and circular edges of a face.
+/// ChFi2d_FilletAPI - it encapsulates two algorithms:
+/// ChFi2d_AnaFilletAlgo - analytical constructor of the fillet.
+/// It works only for linear and circular edges,
+/// having a common point.
+/// ChFi2d_FilletAlgo - iteration recursive method constructing
+/// the fillet edge for any type of edges including
+/// ellipses and b-splines.
+/// The edges may even have no common point.
+///
+/// The algorithms ChFi2d_AnaFilletAlgo and ChFi2d_FilletAlgo may be used directly
+/// or via this ChFi2d_FilletAPI class. This class chooses an appropriate algorithm
+/// analyzing the arguments (a wire or two edges).
+pub use crate::ffi::ChFi2d_FilletAPI as FilletAPI;
+
+unsafe impl crate::CppDeletable for FilletAPI {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ChFi2d_FilletAPI_destructor(ptr);
+    }
+}
+
+impl FilletAPI {
+    /// **Source:** `ChFi2d_FilletAPI.hxx`:44 - `ChFi2d_FilletAPI::ChFi2d_FilletAPI()`
+    /// An empty constructor of the fillet algorithm.
+    /// Call a method Init() to initialize the algorithm
+    /// before calling of a Perform() method.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_FilletAPI_ctor()) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAPI.hxx`:47 - `ChFi2d_FilletAPI::ChFi2d_FilletAPI()`
+    /// A constructor of a fillet algorithm: accepts a wire consisting of two edges in a plane.
+    pub fn new_wire_pln(
+        theWire: &crate::ffi::TopoDS_Wire,
+        thePlane: &crate::ffi::gp_Pln,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_FilletAPI_ctor_wire_pln(theWire, thePlane))
+        }
+    }
+
+    /// **Source:** `ChFi2d_FilletAPI.hxx`:50 - `ChFi2d_FilletAPI::ChFi2d_FilletAPI()`
+    /// A constructor of a fillet algorithm: accepts two edges in a plane.
+    pub fn new_edge2_pln(
+        theEdge1: &crate::ffi::TopoDS_Edge,
+        theEdge2: &crate::ffi::TopoDS_Edge,
+        thePlane: &crate::ffi::gp_Pln,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_FilletAPI_ctor_edge2_pln(
+                theEdge1, theEdge2, thePlane,
+            ))
+        }
+    }
+
+    /// **Source:** `ChFi2d_FilletAPI.hxx`:55 - `ChFi2d_FilletAPI::Init()`
+    /// Initializes a fillet algorithm: accepts a wire consisting of two edges in a plane.
+    pub fn init_wire_pln(
+        &mut self,
+        theWire: &crate::ffi::TopoDS_Wire,
+        thePlane: &crate::ffi::gp_Pln,
+    ) {
+        unsafe { crate::ffi::ChFi2d_FilletAPI_init_wire_pln(self as *mut Self, theWire, thePlane) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAPI.hxx`:58 - `ChFi2d_FilletAPI::Init()`
+    /// Initializes a fillet algorithm: accepts two edges in a plane.
+    pub fn init_edge2_pln(
+        &mut self,
+        theEdge1: &crate::ffi::TopoDS_Edge,
+        theEdge2: &crate::ffi::TopoDS_Edge,
+        thePlane: &crate::ffi::gp_Pln,
+    ) {
+        unsafe {
+            crate::ffi::ChFi2d_FilletAPI_init_edge2_pln(
+                self as *mut Self,
+                theEdge1,
+                theEdge2,
+                thePlane,
+            )
+        }
+    }
+
+    /// **Source:** `ChFi2d_FilletAPI.hxx`:64 - `ChFi2d_FilletAPI::Perform()`
+    /// Constructs a fillet edge.
+    /// Returns true if at least one result was found.
+    pub fn perform(&mut self, theRadius: f64) -> bool {
+        unsafe { crate::ffi::ChFi2d_FilletAPI_perform(self as *mut Self, theRadius) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAPI.hxx`:70 - `ChFi2d_FilletAPI::NbResults()`
+    /// Returns number of possible solutions.
+    /// <thePoint> chooses a particular fillet in case of several fillets
+    /// may be constructed (for example, a circle intersecting a segment in 2 points).
+    /// Put the intersecting (or common) point of the edges.
+    pub fn nb_results(&mut self, thePoint: &crate::ffi::gp_Pnt) -> i32 {
+        unsafe { crate::ffi::ChFi2d_FilletAPI_nb_results(self as *mut Self, thePoint) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAPI.hxx`:77 - `ChFi2d_FilletAPI::Result()`
+    /// Returns result (fillet edge, modified edge1, modified edge2),
+    /// nearest to the given point <thePoint> if iSolution == -1
+    /// <thePoint> chooses a particular fillet in case of several fillets
+    /// may be constructed (for example, a circle intersecting a segment in 2 points).
+    /// Put the intersecting (or common) point of the edges.
+    pub fn result(
+        &mut self,
+        thePoint: &crate::ffi::gp_Pnt,
+        theEdge1: &mut crate::ffi::TopoDS_Edge,
+        theEdge2: &mut crate::ffi::TopoDS_Edge,
+        iSolution: i32,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_FilletAPI_result(
+                self as *mut Self,
+                thePoint,
+                theEdge1,
+                theEdge2,
+                iSolution,
+            ))
+        }
+    }
+}
+
+// ========================
+// From ChFi2d_FilletAlgo.hxx
+// ========================
+
+/// **Source:** `ChFi2d_FilletAlgo.hxx`:56 - `ChFi2d_FilletAlgo`
+/// Algorithm that creates fillet edge: arc tangent to two edges in the start
+/// and in the end vertices. Initial edges must be located on the plane and
+/// must be connected by the end or start points (shared vertices are not
+/// obligatory). Created fillet arc is created with the given radius, that is
+/// useful in sketcher applications.
+///
+/// The algorithm is iterative that allows to create fillet on any curves
+/// of initial edges, that supports projection of point and C2 continuous.
+/// Principles of algorithm can de reduced to the Newton method:
+/// 1. Splitting initial edge into N segments where probably only 1 root can be
+/// found. N depends on the complexity of the underlying curve.
+/// 2. On each segment compute value and derivative of the function:
+/// - argument of the function is the parameter on the curve
+/// - take point on the curve by the parameter: point of tangency
+/// - make center of fillet: perpendicular vector from the point of tagency
+/// - make projection from the center to the second curve
+/// - length of the projection minus radius of the fillet is result of the
+/// function
+/// - derivative of this function in the point is computed by value in
+/// point with small shift
+/// 3. Using Newton search method take the point on the segment where function
+/// value is most close to zero. If it is not enough close, step 2 and 3 are
+/// repeated taking as start or end point the found point.
+/// 4. If solution is found, result is created on point on root of the function (as a start point),
+/// point of the projection onto second curve (as an end point) and center of arc in found
+/// center. Initial edges are cut by the start and end point of tangency.
+pub use crate::ffi::ChFi2d_FilletAlgo as FilletAlgo;
+
+unsafe impl crate::CppDeletable for FilletAlgo {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ChFi2d_FilletAlgo_destructor(ptr);
+    }
+}
+
+impl FilletAlgo {
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:62 - `ChFi2d_FilletAlgo::ChFi2d_FilletAlgo()`
+    /// An empty constructor of the fillet algorithm.
+    /// Call a method Init() to initialize the algorithm
+    /// before calling of a Perform() method.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_FilletAlgo_ctor()) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:65 - `ChFi2d_FilletAlgo::ChFi2d_FilletAlgo()`
+    /// A constructor of a fillet algorithm: accepts a wire consisting of two edges in a plane.
+    pub fn new_wire_pln(
+        theWire: &crate::ffi::TopoDS_Wire,
+        thePlane: &crate::ffi::gp_Pln,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_FilletAlgo_ctor_wire_pln(
+                theWire, thePlane,
+            ))
+        }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:68 - `ChFi2d_FilletAlgo::ChFi2d_FilletAlgo()`
+    /// A constructor of a fillet algorithm: accepts two edges in a plane.
+    pub fn new_edge2_pln(
+        theEdge1: &crate::ffi::TopoDS_Edge,
+        theEdge2: &crate::ffi::TopoDS_Edge,
+        thePlane: &crate::ffi::gp_Pln,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_FilletAlgo_ctor_edge2_pln(
+                theEdge1, theEdge2, thePlane,
+            ))
+        }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:73 - `ChFi2d_FilletAlgo::Init()`
+    /// Initializes a fillet algorithm: accepts a wire consisting of two edges in a plane.
+    pub fn init_wire_pln(
+        &mut self,
+        theWire: &crate::ffi::TopoDS_Wire,
+        thePlane: &crate::ffi::gp_Pln,
+    ) {
+        unsafe { crate::ffi::ChFi2d_FilletAlgo_init_wire_pln(self as *mut Self, theWire, thePlane) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:76 - `ChFi2d_FilletAlgo::Init()`
+    /// Initializes a fillet algorithm: accepts two edges in a plane.
+    pub fn init_edge2_pln(
+        &mut self,
+        theEdge1: &crate::ffi::TopoDS_Edge,
+        theEdge2: &crate::ffi::TopoDS_Edge,
+        thePlane: &crate::ffi::gp_Pln,
+    ) {
+        unsafe {
+            crate::ffi::ChFi2d_FilletAlgo_init_edge2_pln(
+                self as *mut Self,
+                theEdge1,
+                theEdge2,
+                thePlane,
+            )
+        }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:82 - `ChFi2d_FilletAlgo::Perform()`
+    /// Constructs a fillet edge.
+    /// Returns true, if at least one result was found
+    pub fn perform(&mut self, theRadius: f64) -> bool {
+        unsafe { crate::ffi::ChFi2d_FilletAlgo_perform(self as *mut Self, theRadius) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:88 - `ChFi2d_FilletAlgo::NbResults()`
+    /// Returns number of possible solutions.
+    /// <thePoint> chooses a particular fillet in case of several fillets
+    /// may be constructed (for example, a circle intersecting a segment in 2 points).
+    /// Put the intersecting (or common) point of the edges.
+    pub fn nb_results(&mut self, thePoint: &crate::ffi::gp_Pnt) -> i32 {
+        unsafe { crate::ffi::ChFi2d_FilletAlgo_nb_results(self as *mut Self, thePoint) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:95 - `ChFi2d_FilletAlgo::Result()`
+    /// Returns result (fillet edge, modified edge1, modified edge2),
+    /// nearest to the given point <thePoint> if iSolution == -1.
+    /// <thePoint> chooses a particular fillet in case of several fillets
+    /// may be constructed (for example, a circle intersecting a segment in 2 points).
+    /// Put the intersecting (or common) point of the edges.
+    pub fn result(
+        &mut self,
+        thePoint: &crate::ffi::gp_Pnt,
+        theEdge1: &mut crate::ffi::TopoDS_Edge,
+        theEdge2: &mut crate::ffi::TopoDS_Edge,
+        iSolution: i32,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi2d_FilletAlgo_result(
+                self as *mut Self,
+                thePoint,
+                theEdge1,
+                theEdge2,
+                iSolution,
+            ))
+        }
+    }
+}
+
+/// **Source:** `ChFi2d_FilletAlgo.hxx`:141 - `FilletPoint`
+/// Private class. Corresponds to the point on the first curve, computed
+/// fillet function and derivative on it.
+pub use crate::ffi::FilletPoint;
+
+unsafe impl crate::CppDeletable for FilletPoint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::FilletPoint_destructor(ptr);
+    }
+}
+
+impl FilletPoint {
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:145 - `FilletPoint::FilletPoint()`
+    /// Creates a point on a first curve by parameter on this curve.
+    pub fn new_real(theParam: f64) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::FilletPoint_ctor_real(theParam)) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:148 - `FilletPoint::setParam()`
+    /// Changes the point position by changing point parameter on the first curve.
+    pub fn set_param(&mut self, theParam: f64) {
+        unsafe { crate::ffi::FilletPoint_set_param(self as *mut Self, theParam) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:151 - `FilletPoint::getParam()`
+    /// Returns the point parameter on the first curve.
+    pub fn get_param(&self) -> f64 {
+        unsafe { crate::ffi::FilletPoint_get_param(self as *const Self) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:154 - `FilletPoint::getNBValues()`
+    /// Returns number of found values of function in this point.
+    pub fn get_nb_values(&mut self) -> i32 {
+        unsafe { crate::ffi::FilletPoint_get_nb_values(self as *mut Self) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:157 - `FilletPoint::getValue()`
+    /// Returns value of function in this point.
+    pub fn get_value(&mut self, theIndex: i32) -> f64 {
+        unsafe { crate::ffi::FilletPoint_get_value(self as *mut Self, theIndex) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:160 - `FilletPoint::getDiff()`
+    /// Returns derivatives of function in this point.
+    pub fn get_diff(&mut self, theIndex: i32) -> f64 {
+        unsafe { crate::ffi::FilletPoint_get_diff(self as *mut Self, theIndex) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:163 - `FilletPoint::isValid()`
+    /// Returns true if function is valid (rediuses vectors of fillet do not intersect any curve).
+    pub fn is_valid(&mut self, theIndex: i32) -> bool {
+        unsafe { crate::ffi::FilletPoint_is_valid(self as *mut Self, theIndex) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:166 - `FilletPoint::getNear()`
+    /// Returns the index of the nearest value
+    pub fn get_near(&mut self, theIndex: i32) -> i32 {
+        unsafe { crate::ffi::FilletPoint_get_near(self as *mut Self, theIndex) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:169 - `FilletPoint::setParam2()`
+    /// Defines the parameter of the projected point on the second curve.
+    pub fn set_param2(&mut self, theParam2: f64) {
+        unsafe { crate::ffi::FilletPoint_set_param2(self as *mut Self, theParam2) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:172 - `FilletPoint::getParam2()`
+    /// Returns the parameter of the projected point on the second curve.
+    pub fn get_param2(&mut self) -> f64 {
+        unsafe { crate::ffi::FilletPoint_get_param2(self as *mut Self) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:175 - `FilletPoint::setCenter()`
+    /// Center of the fillet.
+    pub fn set_center(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+        unsafe { crate::ffi::FilletPoint_set_center(self as *mut Self, thePoint) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:178 - `FilletPoint::getCenter()`
+    /// Center of the fillet.
+    pub fn get_center(&mut self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::FilletPoint_get_center(self as *mut Self)) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:181 - `FilletPoint::appendValue()`
+    /// Appends value of the function.
+    pub fn append_value(&mut self, theValue: f64, theValid: bool) {
+        unsafe { crate::ffi::FilletPoint_append_value(self as *mut Self, theValue, theValid) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:194 - `FilletPoint::hasSolution()`
+    /// Returns the index of the solution or zero if there is no solution
+    pub fn has_solution(&mut self, theRadius: f64) -> i32 {
+        unsafe { crate::ffi::FilletPoint_has_solution(self as *mut Self, theRadius) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:197 - `FilletPoint::LowerValue()`
+    /// For debug only
+    pub fn lower_value(&mut self) -> f64 {
+        unsafe { crate::ffi::FilletPoint_lower_value(self as *mut Self) }
+    }
+
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:213 - `FilletPoint::remove()`
+    /// Removes the found value by the given index.
+    pub fn remove(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::FilletPoint_remove(self as *mut Self, theIndex) }
     }
 }

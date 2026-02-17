@@ -7,6 +7,227 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From StepRepr_CompoundRepresentationItem.hxx
+// ========================
+
+/// **Source:** `StepRepr_CompoundRepresentationItem.hxx`:31 - `StepRepr_CompoundRepresentationItem`
+/// Added for Dimensional Tolerances
+pub use crate::ffi::StepRepr_CompoundRepresentationItem as CompoundRepresentationItem;
+
+unsafe impl crate::CppDeletable for CompoundRepresentationItem {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepRepr_CompoundRepresentationItem_destructor(ptr);
+    }
+}
+
+impl CompoundRepresentationItem {
+    /// **Source:** `StepRepr_CompoundRepresentationItem.hxx`:35 - `StepRepr_CompoundRepresentationItem::StepRepr_CompoundRepresentationItem()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepRepr_CompoundRepresentationItem_ctor()) }
+    }
+
+    /// **Source:** `StepRepr_CompoundRepresentationItem.hxx`:42 - `StepRepr_CompoundRepresentationItem::NbItemElement()`
+    pub fn nb_item_element(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepRepr_CompoundRepresentationItem_nb_item_element(self as *const Self)
+        }
+    }
+
+    /// **Source:** `StepRepr_CompoundRepresentationItem.hxx`:47 - `StepRepr_CompoundRepresentationItem::ItemElementValue()`
+    pub fn item_element_value(
+        &self,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepReprRepresentationItem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepRepr_CompoundRepresentationItem_item_element_value(
+                    self as *const Self,
+                    num,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepRepr_CompoundRepresentationItem.hxx`:50 - `StepRepr_CompoundRepresentationItem::SetItemElementValue()`
+    pub fn set_item_element_value(
+        &mut self,
+        num: i32,
+        anelement: &crate::ffi::HandleStepReprRepresentationItem,
+    ) {
+        unsafe {
+            crate::ffi::StepRepr_CompoundRepresentationItem_set_item_element_value(
+                self as *mut Self,
+                num,
+                anelement,
+            )
+        }
+    }
+
+    /// **Source:** `StepRepr_CompoundRepresentationItem.hxx`:53 - `StepRepr_CompoundRepresentationItem::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepRepr_CompoundRepresentationItem_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepRepr_CompoundRepresentationItem.hxx`:53 - `StepRepr_CompoundRepresentationItem::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepRepr_CompoundRepresentationItem_get_type_name()).to_string_lossy().into_owned()
+        }
+    }
+
+    /// **Source:** `StepRepr_CompoundRepresentationItem.hxx`:53 - `StepRepr_CompoundRepresentationItem::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepRepr_CompoundRepresentationItem_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepRepr_RepresentationItem
+    pub fn as_representation_item(&self) -> &RepresentationItem {
+        unsafe {
+            &*(crate::ffi::StepRepr_CompoundRepresentationItem_as_StepRepr_RepresentationItem(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepRepr_RepresentationItem (mutable)
+    pub fn as_representation_item_mut(&mut self) -> &mut RepresentationItem {
+        unsafe {
+            &mut *(crate::ffi::StepRepr_CompoundRepresentationItem_as_StepRepr_RepresentationItem_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_RepresentationItem.hxx`:38 - `StepRepr_RepresentationItem::SetName()`
+    pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepRepr_CompoundRepresentationItem_inherited_SetName(
+                self as *mut Self,
+                aName,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_RepresentationItem.hxx`:40 - `StepRepr_RepresentationItem::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepRepr_CompoundRepresentationItem_inherited_Name(self as *const Self),
+            )
+        }
+    }
+}
+
+// ========================
+// From StepRepr_PropertyDefinitionRepresentation.hxx
+// ========================
+
+/// **Source:** `StepRepr_PropertyDefinitionRepresentation.hxx`:29 - `StepRepr_PropertyDefinitionRepresentation`
+/// Representation of STEP entity PropertyDefinitionRepresentation
+pub use crate::ffi::StepRepr_PropertyDefinitionRepresentation as PropertyDefinitionRepresentation;
+
+unsafe impl crate::CppDeletable for PropertyDefinitionRepresentation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepRepr_PropertyDefinitionRepresentation_destructor(ptr);
+    }
+}
+
+impl PropertyDefinitionRepresentation {
+    /// **Source:** `StepRepr_PropertyDefinitionRepresentation.hxx`:34 - `StepRepr_PropertyDefinitionRepresentation::StepRepr_PropertyDefinitionRepresentation()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepRepr_PropertyDefinitionRepresentation_ctor())
+        }
+    }
+
+    /// **Source:** `StepRepr_PropertyDefinitionRepresentation.hxx`:41 - `StepRepr_PropertyDefinitionRepresentation::Definition()`
+    /// Returns field Definition
+    pub fn definition(&self) -> crate::OwnedPtr<crate::ffi::StepRepr_RepresentedDefinition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepRepr_PropertyDefinitionRepresentation_definition(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepRepr_PropertyDefinitionRepresentation.hxx`:44 - `StepRepr_PropertyDefinitionRepresentation::SetDefinition()`
+    /// Set field Definition
+    pub fn set_definition(&mut self, Definition: &crate::ffi::StepRepr_RepresentedDefinition) {
+        unsafe {
+            crate::ffi::StepRepr_PropertyDefinitionRepresentation_set_definition(
+                self as *mut Self,
+                Definition,
+            )
+        }
+    }
+
+    /// **Source:** `StepRepr_PropertyDefinitionRepresentation.hxx`:53 - `StepRepr_PropertyDefinitionRepresentation::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepRepr_PropertyDefinitionRepresentation_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepRepr_PropertyDefinitionRepresentation.hxx`:53 - `StepRepr_PropertyDefinitionRepresentation::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepRepr_PropertyDefinitionRepresentation_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepRepr_PropertyDefinitionRepresentation.hxx`:53 - `StepRepr_PropertyDefinitionRepresentation::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepRepr_PropertyDefinitionRepresentation_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepReprPropertyDefinitionRepresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepRepr_PropertyDefinitionRepresentation_to_handle(obj.into_raw()),
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepReprPropertyDefinitionRepresentation;
+
+unsafe impl crate::CppDeletable for HandleStepReprPropertyDefinitionRepresentation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepReprPropertyDefinitionRepresentation_destructor(ptr);
+    }
+}
+
+impl HandleStepReprPropertyDefinitionRepresentation {
+    /// Dereference this Handle to access the underlying StepRepr_PropertyDefinitionRepresentation
+    pub fn get(&self) -> &crate::ffi::StepRepr_PropertyDefinitionRepresentation {
+        unsafe {
+            &*(crate::ffi::HandleStepReprPropertyDefinitionRepresentation_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepRepr_PropertyDefinitionRepresentation
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepRepr_PropertyDefinitionRepresentation {
+        unsafe {
+            &mut *(crate::ffi::HandleStepReprPropertyDefinitionRepresentation_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
+// ========================
 // From StepRepr_RepresentationItem.hxx
 // ========================
 
@@ -97,11 +318,149 @@ impl HandleStepReprRepresentationItem {
 }
 
 // ========================
+// From StepRepr_RepresentedDefinition.hxx
+// ========================
+
+/// **Source:** `StepRepr_RepresentedDefinition.hxx`:33 - `StepRepr_RepresentedDefinition`
+/// Representation of STEP SELECT type RepresentedDefinition
+pub use crate::ffi::StepRepr_RepresentedDefinition as RepresentedDefinition;
+
+unsafe impl crate::CppDeletable for RepresentedDefinition {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepRepr_RepresentedDefinition_destructor(ptr);
+    }
+}
+
+impl RepresentedDefinition {
+    /// **Source:** `StepRepr_RepresentedDefinition.hxx`:39 - `StepRepr_RepresentedDefinition::StepRepr_RepresentedDefinition()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepRepr_RepresentedDefinition_ctor()) }
+    }
+
+    /// Upcast to StepData_SelectType
+    pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
+        unsafe {
+            &*(crate::ffi::StepRepr_RepresentedDefinition_as_StepData_SelectType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepData_SelectType (mutable)
+    pub fn as_step_data_select_type_mut(&mut self) -> &mut crate::step_data::SelectType {
+        unsafe {
+            &mut *(crate::ffi::StepRepr_RepresentedDefinition_as_StepData_SelectType_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
+    pub fn nullify(&mut self) {
+        unsafe { crate::ffi::StepRepr_RepresentedDefinition_inherited_Nullify(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:79 - `StepData_SelectType::IsNull()`
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi::StepRepr_RepresentedDefinition_inherited_IsNull(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:83 - `StepData_SelectType::Type()`
+    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepRepr_RepresentedDefinition_inherited_Type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:87 - `StepData_SelectType::CaseNumber()`
+    pub fn case_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepRepr_RepresentedDefinition_inherited_CaseNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:104 - `StepData_SelectType::NewMember()`
+    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepRepr_RepresentedDefinition_inherited_NewMember(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:111 - `StepData_SelectType::CaseMem()`
+    pub fn case_mem(&self, ent: &crate::ffi::HandleStepDataSelectMember) -> i32 {
+        unsafe {
+            crate::ffi::StepRepr_RepresentedDefinition_inherited_CaseMem(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:115 - `StepData_SelectType::CaseMember()`
+    pub fn case_member(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepRepr_RepresentedDefinition_inherited_CaseMember(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:118 - `StepData_SelectType::Member()`
+    pub fn member(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepRepr_RepresentedDefinition_inherited_Member(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:127 - `StepData_SelectType::Int()`
+    pub fn int(&self) -> i32 {
+        unsafe { crate::ffi::StepRepr_RepresentedDefinition_inherited_Int(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
+    pub fn set_int(&mut self, val: i32) {
+        unsafe {
+            crate::ffi::StepRepr_RepresentedDefinition_inherited_SetInt(self as *mut Self, val)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:134 - `StepData_SelectType::Integer()`
+    pub fn integer(&self) -> i32 {
+        unsafe { crate::ffi::StepRepr_RepresentedDefinition_inherited_Integer(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:141 - `StepData_SelectType::Boolean()`
+    pub fn boolean(&self) -> bool {
+        unsafe { crate::ffi::StepRepr_RepresentedDefinition_inherited_Boolean(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:145 - `StepData_SelectType::Logical()`
+    pub fn logical(&self) -> crate::step_data::Logical {
+        unsafe {
+            crate::step_data::Logical::try_from(
+                crate::ffi::StepRepr_RepresentedDefinition_inherited_Logical(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:149 - `StepData_SelectType::Real()`
+    pub fn real(&self) -> f64 {
+        unsafe { crate::ffi::StepRepr_RepresentedDefinition_inherited_Real(self as *const Self) }
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
-    StepRepr_NextAssemblyUsageOccurrence as NextAssemblyUsageOccurrence,
-    StepRepr_Representation as Representation,
-    StepRepr_RepresentationRelationship as RepresentationRelationship,
+    StepRepr_HArray1OfRepresentationItem as HArray1OfRepresentationItem,
+    StepRepr_ProductDefinitionShape as ProductDefinitionShape,
+    StepRepr_PropertyDefinition as PropertyDefinition,
+    StepRepr_PropertyDefinitionRelationship as PropertyDefinitionRelationship,
+    StepRepr_Representation as Representation, StepRepr_ShapeAspect as ShapeAspect,
+    StepRepr_ShapeAspectRelationship as ShapeAspectRelationship,
 };

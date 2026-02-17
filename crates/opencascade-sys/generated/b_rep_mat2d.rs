@@ -112,14 +112,50 @@ impl BisectingLocus {
 
     /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:116 - `BRepMAT2d_BisectingLocus::GeomElt()`
     /// Returns the geometry linked to the <BasicElt>.
-    pub fn geom_elt(
+    pub fn geom_elt_handlematbasicelt(
         &self,
         aBasicElt: &crate::ffi::HandleMATBasicElt,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BRepMAT2d_BisectingLocus_geom_elt(
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepMAT2d_BisectingLocus_geom_elt_handlematbasicelt(
+                    self as *const Self,
+                    aBasicElt,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:120 - `BRepMAT2d_BisectingLocus::GeomElt()`
+    /// Returns the geometry of  type <gp> linked to
+    /// the <Node>.
+    pub fn geom_elt_handlematnode(
+        &self,
+        aNode: &crate::ffi::HandleMATNode,
+    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMAT2d_BisectingLocus_geom_elt_handlematnode(
                 self as *const Self,
-                aBasicElt,
+                aNode,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:126 - `BRepMAT2d_BisectingLocus::GeomBis()`
+    /// Returns the  geometry of type <Bissec>
+    /// linked   to the arc <ARC>.
+    /// <Reverse> is False when the FirstNode of <anArc>
+    /// correspond to the first point of geometry.
+    pub fn geom_bis(
+        &self,
+        anArc: &crate::ffi::HandleMATArc,
+        Reverse: &mut bool,
+    ) -> crate::OwnedPtr<crate::ffi::Bisector_Bisec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMAT2d_BisectingLocus_geom_bis(
+                self as *const Self,
+                anArc,
+                Reverse,
             ))
         }
     }

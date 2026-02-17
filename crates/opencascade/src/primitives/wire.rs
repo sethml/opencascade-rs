@@ -168,7 +168,7 @@ impl Wire {
     pub fn fillet(&self, radius: f64) -> Wire {
         // Create a face from this wire
         let face = Face::from_wire(self).fillet(radius);
-        let inner = opencascade_sys::b_rep_tools::outer_wire(&face.inner);
+        let inner = opencascade_sys::b_rep_tools::outer_wire_face(&face.inner);
 
         Self { inner }
     }
@@ -177,7 +177,7 @@ impl Wire {
     #[must_use]
     pub fn chamfer(&self, distance_1: f64) -> Wire {
         let face = Face::from_wire(self).chamfer(distance_1);
-        let inner = opencascade_sys::b_rep_tools::outer_wire(&face.inner);
+        let inner = opencascade_sys::b_rep_tools::outer_wire_face(&face.inner);
 
         Self { inner }
     }
@@ -202,7 +202,7 @@ impl Wire {
         let mut make_pipe = b_rep_offset_api::MakePipe::new_wire_shape(&path.inner, profile_shape);
 
         let pipe_shape = make_pipe.shape();
-        let result_shell = topo_ds::shell(pipe_shape);
+        let result_shell = topo_ds::shell_shape(pipe_shape);
 
         Shell::from_shell(result_shell)
     }

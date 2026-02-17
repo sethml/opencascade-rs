@@ -90,7 +90,7 @@
 /// x(1)/w , x(2)/w ,  ... derivated <N,0> times
 /// ....
 /// Warning: <RDers> must be dimensioned properly.
-pub fn rational_derivative(
+pub fn rational_derivative_int4_real2_bool(
     UDeg: i32,
     VDeg: i32,
     N: i32,
@@ -99,7 +99,9 @@ pub fn rational_derivative(
     RDers: &mut f64,
     All: bool,
 ) {
-    unsafe { crate::ffi::BSplSLib_rational_derivative(UDeg, VDeg, N, M, Ders, RDers, All) }
+    unsafe {
+        crate::ffi::BSplSLib_rational_derivative_int4_real2_bool(UDeg, VDeg, N, M, Ders, RDers, All)
+    }
 }
 /// **Source:** `BSplSLib.hxx`:313 - `BSplSLib::Reverse`
 /// Reverses the array of poles. Last is the Index of

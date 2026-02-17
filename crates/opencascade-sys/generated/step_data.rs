@@ -6,6 +6,35 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// A Standard Definition for STEP (which knows Boolean too)
+/// C++ enum: `StepData_Logical`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum Logical {
+    Lfalse = 0,
+    Ltrue = 1,
+    Lunknown = 2,
+}
+
+impl From<Logical> for i32 {
+    fn from(value: Logical) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for Logical {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(Logical::Lfalse),
+            1 => Ok(Logical::Ltrue),
+            2 => Ok(Logical::Lunknown),
+            _ => Err(value),
+        }
+    }
+}
+
 // ========================
 // From StepData_Factors.hxx
 // ========================
@@ -90,6 +119,588 @@ impl Factors {
     /// at one stage of transfer process
     pub fn factor_degree_radian(&self) -> f64 {
         unsafe { crate::ffi::StepData_Factors_factor_degree_radian(self as *const Self) }
+    }
+}
+
+// ========================
+// From StepData_SelectInt.hxx
+// ========================
+
+/// **Source:** `StepData_SelectInt.hxx`:33 - `StepData_SelectInt`
+/// A SelectInt is a SelectMember specialised for a basic integer
+/// type in a select which also accepts entities : this one has
+/// NO NAME.
+/// For a named select, see SelectNamed
+pub use crate::ffi::StepData_SelectInt as SelectInt;
+
+unsafe impl crate::CppDeletable for SelectInt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepData_SelectInt_destructor(ptr);
+    }
+}
+
+impl SelectInt {
+    /// **Source:** `StepData_SelectInt.hxx`:37 - `StepData_SelectInt::StepData_SelectInt()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepData_SelectInt_ctor()) }
+    }
+
+    /// **Source:** `StepData_SelectInt.hxx`:39 - `StepData_SelectInt::Kind()`
+    pub fn kind(&self) -> i32 {
+        unsafe { crate::ffi::StepData_SelectInt_kind(self as *const Self) }
+    }
+
+    /// **Source:** `StepData_SelectInt.hxx`:41 - `StepData_SelectInt::SetKind()`
+    pub fn set_kind(&mut self, kind: i32) {
+        unsafe { crate::ffi::StepData_SelectInt_set_kind(self as *mut Self, kind) }
+    }
+
+    /// **Source:** `StepData_SelectInt.hxx`:43 - `StepData_SelectInt::Int()`
+    pub fn int(&self) -> i32 {
+        unsafe { crate::ffi::StepData_SelectInt_int(self as *const Self) }
+    }
+
+    /// **Source:** `StepData_SelectInt.hxx`:45 - `StepData_SelectInt::SetInt()`
+    pub fn set_int(&mut self, val: i32) {
+        unsafe { crate::ffi::StepData_SelectInt_set_int(self as *mut Self, val) }
+    }
+
+    /// **Source:** `StepData_SelectInt.hxx`:47 - `StepData_SelectInt::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepData_SelectInt_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepData_SelectInt.hxx`:47 - `StepData_SelectInt::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepData_SelectInt_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepData_SelectInt.hxx`:47 - `StepData_SelectInt::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepData_SelectInt_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepData_SelectMember
+    pub fn as_select_member(&self) -> &SelectMember {
+        unsafe { &*(crate::ffi::StepData_SelectInt_as_StepData_SelectMember(self as *const Self)) }
+    }
+
+    /// Upcast to StepData_SelectMember (mutable)
+    pub fn as_select_member_mut(&mut self) -> &mut SelectMember {
+        unsafe {
+            &mut *(crate::ffi::StepData_SelectInt_as_StepData_SelectMember_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:54 - `StepData_SelectMember::HasName()`
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::StepData_SelectInt_inherited_HasName(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:74 - `StepData_SelectMember::ParamType()`
+    pub fn param_type(&self) -> crate::interface::ParamType {
+        unsafe {
+            crate::interface::ParamType::try_from(
+                crate::ffi::StepData_SelectInt_inherited_ParamType(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:85 - `StepData_SelectMember::Integer()`
+    pub fn integer(&self) -> i32 {
+        unsafe { crate::ffi::StepData_SelectInt_inherited_Integer(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:87 - `StepData_SelectMember::SetInteger()`
+    pub fn set_integer(&mut self, val: i32) {
+        unsafe { crate::ffi::StepData_SelectInt_inherited_SetInteger(self as *mut Self, val) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:89 - `StepData_SelectMember::Boolean()`
+    pub fn boolean(&self) -> bool {
+        unsafe { crate::ffi::StepData_SelectInt_inherited_Boolean(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:91 - `StepData_SelectMember::SetBoolean()`
+    pub fn set_boolean(&mut self, val: bool) {
+        unsafe { crate::ffi::StepData_SelectInt_inherited_SetBoolean(self as *mut Self, val) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:93 - `StepData_SelectMember::Logical()`
+    pub fn logical(&self) -> crate::step_data::Logical {
+        unsafe {
+            crate::step_data::Logical::try_from(crate::ffi::StepData_SelectInt_inherited_Logical(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:95 - `StepData_SelectMember::SetLogical()`
+    pub fn set_logical(&mut self, val: crate::step_data::Logical) {
+        unsafe {
+            crate::ffi::StepData_SelectInt_inherited_SetLogical(self as *mut Self, val.into())
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:97 - `StepData_SelectMember::Real()`
+    pub fn real(&self) -> f64 {
+        unsafe { crate::ffi::StepData_SelectInt_inherited_Real(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:99 - `StepData_SelectMember::SetReal()`
+    pub fn set_real(&mut self, val: f64) {
+        unsafe { crate::ffi::StepData_SelectInt_inherited_SetReal(self as *mut Self, val) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:105 - `StepData_SelectMember::Enum()`
+    pub fn enum_(&self) -> i32 {
+        unsafe { crate::ffi::StepData_SelectInt_inherited_Enum(self as *const Self) }
+    }
+}
+
+// ========================
+// From StepData_SelectMember.hxx
+// ========================
+
+/// **Source:** `StepData_SelectMember.hxx`:47 - `StepData_SelectMember`
+/// The general form for a Select Member. A Select Member can,
+/// either define a value of a basic type (such as an integer)
+/// with an additional information : a name or list of names
+/// which precise the meaning of this value
+/// or be an alternate value in a select, which also accepts an
+/// entity (in this case, the name is not mandatory)
+///
+/// Several sub-types of SelectMember are defined for integer and
+/// real value, plus an "universal" one for any, and one more to
+/// describe a select with several names
+///
+/// It is also possible to define a specific subtype by redefining
+/// virtual method, then give a better control
+///
+/// Remark : this class itself could be deferred, because at least
+/// one of its virtual methods must be redefined to be usable
+pub use crate::ffi::StepData_SelectMember as SelectMember;
+
+unsafe impl crate::CppDeletable for SelectMember {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepData_SelectMember_destructor(ptr);
+    }
+}
+
+impl SelectMember {
+    /// **Source:** `StepData_SelectMember.hxx`:51 - `StepData_SelectMember::StepData_SelectMember()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepData_SelectMember_ctor()) }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:54 - `StepData_SelectMember::HasName()`
+    /// Tells if a SelectMember has a name. Default is False
+    pub fn has_name(&self) -> bool {
+        unsafe { crate::ffi::StepData_SelectMember_has_name(self as *const Self) }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:57 - `StepData_SelectMember::Name()`
+    /// Returns the name of a SelectMember. Default is empty
+    pub fn name(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepData_SelectMember_name(self as *const Self))
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:62 - `StepData_SelectMember::SetName()`
+    /// Sets the name of a SelectMember, returns True if done, False
+    /// if no name is allowed
+    /// Default does nothing and returns False
+    pub fn set_name(&mut self, name: &str) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::StepData_SelectMember_set_name(self as *mut Self, c_name.as_ptr()) }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:66 - `StepData_SelectMember::Matches()`
+    /// Tells if the name of a SelectMember matches a given one
+    /// By default, compares the strings, can be redefined (optimised)
+    pub fn matches(&self, name: &str) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::StepData_SelectMember_matches(self as *const Self, c_name.as_ptr()) }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:68 - `StepData_SelectMember::Kind()`
+    pub fn kind(&self) -> i32 {
+        unsafe { crate::ffi::StepData_SelectMember_kind(self as *const Self) }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:70 - `StepData_SelectMember::SetKind()`
+    pub fn set_kind(&mut self, kind: i32) {
+        unsafe { crate::ffi::StepData_SelectMember_set_kind(self as *mut Self, kind) }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:74 - `StepData_SelectMember::ParamType()`
+    /// Returns the Kind of the SelectMember, under the form of an
+    /// enum ParamType
+    pub fn param_type(&self) -> crate::interface::ParamType {
+        unsafe {
+            crate::interface::ParamType::try_from(crate::ffi::StepData_SelectMember_param_type(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:78 - `StepData_SelectMember::Int()`
+    /// This internal method gives access to a value implemented by an
+    /// Integer (to read it)
+    pub fn int(&self) -> i32 {
+        unsafe { crate::ffi::StepData_SelectMember_int(self as *const Self) }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:82 - `StepData_SelectMember::SetInt()`
+    /// This internal method gives access to a value implemented by an
+    /// Integer (to set it)
+    pub fn set_int(&mut self, val: i32) {
+        unsafe { crate::ffi::StepData_SelectMember_set_int(self as *mut Self, val) }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:85 - `StepData_SelectMember::Integer()`
+    /// Gets the value as an Integer
+    pub fn integer(&self) -> i32 {
+        unsafe { crate::ffi::StepData_SelectMember_integer(self as *const Self) }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:87 - `StepData_SelectMember::SetInteger()`
+    pub fn set_integer(&mut self, val: i32) {
+        unsafe { crate::ffi::StepData_SelectMember_set_integer(self as *mut Self, val) }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:89 - `StepData_SelectMember::Boolean()`
+    pub fn boolean(&self) -> bool {
+        unsafe { crate::ffi::StepData_SelectMember_boolean(self as *const Self) }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:91 - `StepData_SelectMember::SetBoolean()`
+    pub fn set_boolean(&mut self, val: bool) {
+        unsafe { crate::ffi::StepData_SelectMember_set_boolean(self as *mut Self, val) }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:93 - `StepData_SelectMember::Logical()`
+    pub fn logical(&self) -> crate::step_data::Logical {
+        unsafe {
+            crate::step_data::Logical::try_from(crate::ffi::StepData_SelectMember_logical(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:95 - `StepData_SelectMember::SetLogical()`
+    pub fn set_logical(&mut self, val: crate::step_data::Logical) {
+        unsafe { crate::ffi::StepData_SelectMember_set_logical(self as *mut Self, val.into()) }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:97 - `StepData_SelectMember::Real()`
+    pub fn real(&self) -> f64 {
+        unsafe { crate::ffi::StepData_SelectMember_real(self as *const Self) }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:99 - `StepData_SelectMember::SetReal()`
+    pub fn set_real(&mut self, val: f64) {
+        unsafe { crate::ffi::StepData_SelectMember_set_real(self as *mut Self, val) }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:101 - `StepData_SelectMember::String()`
+    pub fn string(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepData_SelectMember_string(self as *const Self))
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:103 - `StepData_SelectMember::SetString()`
+    pub fn set_string(&mut self, val: &str) {
+        let c_val = std::ffi::CString::new(val).unwrap();
+        unsafe { crate::ffi::StepData_SelectMember_set_string(self as *mut Self, c_val.as_ptr()) }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:105 - `StepData_SelectMember::Enum()`
+    pub fn enum_(&self) -> i32 {
+        unsafe { crate::ffi::StepData_SelectMember_enum_(self as *const Self) }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:107 - `StepData_SelectMember::EnumText()`
+    pub fn enum_text(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepData_SelectMember_enum_text(
+                self as *const Self,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:109 - `StepData_SelectMember::SetEnum()`
+    pub fn set_enum(&mut self, val: i32, text: &str) {
+        let c_text = std::ffi::CString::new(text).unwrap();
+        unsafe {
+            crate::ffi::StepData_SelectMember_set_enum(self as *mut Self, val, c_text.as_ptr())
+        }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:111 - `StepData_SelectMember::SetEnumText()`
+    pub fn set_enum_text(&mut self, val: i32, text: &str) {
+        let c_text = std::ffi::CString::new(text).unwrap();
+        unsafe {
+            crate::ffi::StepData_SelectMember_set_enum_text(self as *mut Self, val, c_text.as_ptr())
+        }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:113 - `StepData_SelectMember::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepData_SelectMember_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:113 - `StepData_SelectMember::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepData_SelectMember_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepData_SelectMember.hxx`:113 - `StepData_SelectMember::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepData_SelectMember_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepData_SelectMember_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDataSelectMember;
+
+unsafe impl crate::CppDeletable for HandleStepDataSelectMember {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDataSelectMember_destructor(ptr);
+    }
+}
+
+impl HandleStepDataSelectMember {
+    /// Dereference this Handle to access the underlying StepData_SelectMember
+    pub fn get(&self) -> &crate::ffi::StepData_SelectMember {
+        unsafe { &*(crate::ffi::HandleStepDataSelectMember_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepData_SelectMember
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_SelectMember {
+        unsafe { &mut *(crate::ffi::HandleStepDataSelectMember_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From StepData_SelectType.hxx
+// ========================
+
+/// **Source:** `StepData_SelectType.hxx`:50 - `StepData_SelectType`
+/// SelectType is the basis used for SELECT_TYPE definitions from
+/// the EXPRESS form. A SELECT_TYPE in EXPRESS is an enumeration
+/// of Types, it corresponds in a way to a Super-Type, but with
+/// no specific Methods, and no exclusivity (a given Type can be
+/// member of several SELECT_TYPES, plus be itself a SUB_TYPE).
+///
+/// A SelectType can be field of a Transient Entity or only used
+/// to control an input Argument
+///
+/// This class implies to designate each member Type by a Case
+/// Number which is a positive Integer value (this allows a faster treatment).
+///
+/// With this class, a specific SelectType can :
+/// - recognize an Entity as complying or not with its definition,
+/// - storing it, with the guarantee that the stored Entity complies
+/// with the definition of the SelectType
+/// - and (if judged useful) give the stored Entity under the good
+/// Type rather than simply "Transient".
+pub use crate::ffi::StepData_SelectType as SelectType;
+
+unsafe impl crate::CppDeletable for SelectType {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepData_SelectType_destructor(ptr);
+    }
+}
+
+impl SelectType {
+    /// **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
+    /// Nullifies the Stored Entity
+    pub fn nullify(&mut self) {
+        unsafe { crate::ffi::StepData_SelectType_nullify(self as *mut Self) }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:79 - `StepData_SelectType::IsNull()`
+    /// Returns True if there is no Stored Entity (i.e. it is Null)
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi::StepData_SelectType_is_null(self as *const Self) }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:83 - `StepData_SelectType::Type()`
+    /// Returns the Effective (Dynamic) Type of the Stored Entity
+    /// If it is Null, returns TYPE(Transient)
+    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepData_SelectType_type_(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:87 - `StepData_SelectType::CaseNumber()`
+    /// Recognizes the Type of the stored Entity, or zero if it is
+    /// Null or SelectMember. Calls the first method CaseNum on Value
+    pub fn case_number(&self) -> i32 {
+        unsafe { crate::ffi::StepData_SelectType_case_number(self as *const Self) }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:104 - `StepData_SelectType::NewMember()`
+    /// Returns a preferred SelectMember. Default returns a Null
+    /// By default, a SelectMember can be set according to data type
+    /// and Name : it is a SelectNamed if Name is defined
+    ///
+    /// This method allows to define, for a specific SelectType, a
+    /// specific SelectMember than SelectNamed. For instance for a
+    /// Real plus a Name, a SelectReal plus a case number is a good
+    /// solution, lighter than SelectNamed which is very multipurpose
+    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepData_SelectType_new_member(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:111 - `StepData_SelectType::CaseMem()`
+    /// Recognize a SelectMember (kind, name). Returns a positive
+    /// value which identifies the case in the List of immediate cases
+    /// (distinct from the List of Entity Types). Zero if not
+    /// recognizes
+    /// Default returns 0, saying that no immediate value is allowed
+    pub fn case_mem(&self, ent: &crate::ffi::HandleStepDataSelectMember) -> i32 {
+        unsafe { crate::ffi::StepData_SelectType_case_mem(self as *const Self, ent) }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:115 - `StepData_SelectType::CaseMember()`
+    /// Returns the Type of the stored SelectMember, or zero if it is
+    /// Null or Entity. Calls the method CaseMem on Value
+    pub fn case_member(&self) -> i32 {
+        unsafe { crate::ffi::StepData_SelectType_case_member(self as *const Self) }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:118 - `StepData_SelectType::Member()`
+    /// Returns Value as a SelectMember. Null if not a SelectMember
+    pub fn member(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepData_SelectType_member(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:123 - `StepData_SelectType::SelectName()`
+    /// Returns the type name of SelectMember. If no SelectMember or
+    /// with no type name, returns an empty string
+    /// To change it, pass through the SelectMember itself
+    pub fn select_name(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepData_SelectType_select_name(
+                self as *const Self,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:127 - `StepData_SelectType::Int()`
+    /// This internal method gives access to a value implemented by an
+    /// Integer (to read it)
+    pub fn int(&self) -> i32 {
+        unsafe { crate::ffi::StepData_SelectType_int(self as *const Self) }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
+    /// This internal method gives access to a value implemented by an
+    /// Integer (to set it) : a SelectMember MUST ALREADY BE THERE !
+    pub fn set_int(&mut self, val: i32) {
+        unsafe { crate::ffi::StepData_SelectType_set_int(self as *mut Self, val) }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:134 - `StepData_SelectType::Integer()`
+    /// Gets the value as an Integer
+    pub fn integer(&self) -> i32 {
+        unsafe { crate::ffi::StepData_SelectType_integer(self as *const Self) }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:139 - `StepData_SelectType::SetInteger()`
+    /// Sets a new Integer value, with an optional type name
+    /// Warning : If a SelectMember is already set, works on it : value and
+    /// name must then be accepted by this SelectMember
+    pub fn set_integer(&mut self, val: i32, name: &str) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::StepData_SelectType_set_integer(self as *mut Self, val, c_name.as_ptr())
+        }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:141 - `StepData_SelectType::Boolean()`
+    pub fn boolean(&self) -> bool {
+        unsafe { crate::ffi::StepData_SelectType_boolean(self as *const Self) }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:143 - `StepData_SelectType::SetBoolean()`
+    pub fn set_boolean(&mut self, val: bool, name: &str) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::StepData_SelectType_set_boolean(self as *mut Self, val, c_name.as_ptr())
+        }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:145 - `StepData_SelectType::Logical()`
+    pub fn logical(&self) -> crate::step_data::Logical {
+        unsafe {
+            crate::step_data::Logical::try_from(crate::ffi::StepData_SelectType_logical(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:147 - `StepData_SelectType::SetLogical()`
+    pub fn set_logical(&mut self, val: crate::step_data::Logical, name: &str) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::StepData_SelectType_set_logical(
+                self as *mut Self,
+                val.into(),
+                c_name.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:149 - `StepData_SelectType::Real()`
+    pub fn real(&self) -> f64 {
+        unsafe { crate::ffi::StepData_SelectType_real(self as *const Self) }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:151 - `StepData_SelectType::SetReal()`
+    pub fn set_real(&mut self, val: f64, name: &str) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::StepData_SelectType_set_real(self as *mut Self, val, c_name.as_ptr()) }
     }
 }
 
@@ -391,3 +1002,9 @@ impl StepModel {
         unsafe { crate::ffi::StepData_StepModel_inherited_SetGlobalCheck(self as *mut Self, ach) }
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::StepData_PDescr as PDescr;

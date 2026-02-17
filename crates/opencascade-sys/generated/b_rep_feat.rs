@@ -415,6 +415,15 @@ impl Builder {
         }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleIntToolsContext> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFeat_Builder_inherited_Context(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
     pub fn add_argument(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BRepFeat_Builder_inherited_AddArgument(self as *mut Self, theShape) }
@@ -469,25 +478,17 @@ impl Builder {
         unsafe { crate::ffi::BRepFeat_Builder_inherited_CheckInverted(self as *const Self) }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
-    pub fn build_bop(
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
+    pub fn perform_with_filler(
         &mut self,
-        theObjects: &crate::ffi::TopTools_ListOfShape,
-        theObjState: crate::top_abs::State,
-        theTools: &crate::ffi::TopTools_ListOfShape,
-        theToolsState: crate::top_abs::State,
+        theFiller: &crate::ffi::BOPAlgo_PaveFiller,
         theRange: &crate::ffi::Message_ProgressRange,
-        theReport: &crate::ffi::HandleMessageReport,
     ) {
         unsafe {
-            crate::ffi::BRepFeat_Builder_inherited_BuildBOP(
+            crate::ffi::BRepFeat_Builder_inherited_PerformWithFiller(
                 self as *mut Self,
-                theObjects,
-                theObjState.into(),
-                theTools,
-                theToolsState.into(),
+                theFiller,
                 theRange,
-                theReport,
             )
         }
     }
@@ -592,11 +593,6 @@ impl Builder {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::BRepFeat_Builder_inherited_HasWarning(self as *const Self, theType) }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
-        unsafe { &*(crate::ffi::BRepFeat_Builder_inherited_GetReport(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -1274,6 +1270,15 @@ impl MakeCylindricalHole {
         }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleIntToolsContext> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Context(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
     pub fn add_argument(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
         unsafe {
@@ -1355,25 +1360,17 @@ impl MakeCylindricalHole {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
-    pub fn build_bop(
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
+    pub fn perform_with_filler(
         &mut self,
-        theObjects: &crate::ffi::TopTools_ListOfShape,
-        theObjState: crate::top_abs::State,
-        theTools: &crate::ffi::TopTools_ListOfShape,
-        theToolsState: crate::top_abs::State,
+        theFiller: &crate::ffi::BOPAlgo_PaveFiller,
         theRange: &crate::ffi::Message_ProgressRange,
-        theReport: &crate::ffi::HandleMessageReport,
     ) {
         unsafe {
-            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_BuildBOP(
+            crate::ffi::BRepFeat_MakeCylindricalHole_inherited_PerformWithFiller(
                 self as *mut Self,
-                theObjects,
-                theObjState.into(),
-                theTools,
-                theToolsState.into(),
+                theFiller,
                 theRange,
-                theReport,
             )
         }
     }
@@ -1520,13 +1517,6 @@ impl MakeCylindricalHole {
                 self as *const Self,
                 theType,
             )
-        }
-    }
-
-    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
-        unsafe {
-            &*(crate::ffi::BRepFeat_MakeCylindricalHole_inherited_GetReport(self as *const Self))
         }
     }
 

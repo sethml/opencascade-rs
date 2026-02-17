@@ -904,17 +904,6 @@ impl MeshCinert {
         unsafe { crate::ffi::BRepGProp_MeshCinert_perform(self as *mut Self, theNodes) }
     }
 
-    /// **Source:** `BRepGProp_MeshCinert.hxx`:48 - `BRepGProp_MeshCinert::PreparePolygon()`
-    /// Prepare set of 3d points on base of any available edge polygons:
-    /// 3D polygon, polygon on triangulation, 2d polygon on surface
-    /// If edge has no polygons, array thePolyg is left unchanged
-    pub fn prepare_polygon(
-        theE: &crate::ffi::TopoDS_Edge,
-        thePolyg: &mut crate::ffi::HandleTColgpHArray1OfPnt,
-    ) {
-        unsafe { crate::ffi::BRepGProp_MeshCinert_prepare_polygon(theE, thePolyg) }
-    }
-
     /// Upcast to GProp_GProps
     pub fn as_g_prop_g_props(&self) -> &crate::g_prop::GProps {
         unsafe { &*(crate::ffi::BRepGProp_MeshCinert_as_GProp_GProps(self as *const Self)) }

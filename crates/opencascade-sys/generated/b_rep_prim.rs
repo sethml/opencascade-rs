@@ -1037,6 +1037,120 @@ impl Cylinder {
 }
 
 // ========================
+// From BRepPrim_FaceBuilder.hxx
+// ========================
+
+/// **Source:** `BRepPrim_FaceBuilder.hxx`:36 - `BRepPrim_FaceBuilder`
+/// The  FaceBuilder is an algorithm   to build a BRep
+/// Face from a Geom Surface.
+///
+/// The  face covers  the  whole surface or  the  area
+/// delimited by UMin, UMax, VMin, VMax
+pub use crate::ffi::BRepPrim_FaceBuilder as FaceBuilder;
+
+unsafe impl crate::CppDeletable for FaceBuilder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepPrim_FaceBuilder_destructor(ptr);
+    }
+}
+
+impl FaceBuilder {
+    /// **Source:** `BRepPrim_FaceBuilder.hxx`:41 - `BRepPrim_FaceBuilder::BRepPrim_FaceBuilder()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepPrim_FaceBuilder_ctor()) }
+    }
+
+    /// **Source:** `BRepPrim_FaceBuilder.hxx`:43 - `BRepPrim_FaceBuilder::BRepPrim_FaceBuilder()`
+    pub fn new_builder_handlegeomsurface(
+        B: &crate::ffi::BRep_Builder,
+        S: &crate::ffi::HandleGeomSurface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepPrim_FaceBuilder_ctor_builder_handlegeomsurface(B, S),
+            )
+        }
+    }
+
+    /// **Source:** `BRepPrim_FaceBuilder.hxx`:45 - `BRepPrim_FaceBuilder::BRepPrim_FaceBuilder()`
+    pub fn new_builder_handlegeomsurface_real4(
+        B: &crate::ffi::BRep_Builder,
+        S: &crate::ffi::HandleGeomSurface,
+        UMin: f64,
+        UMax: f64,
+        VMin: f64,
+        VMax: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepPrim_FaceBuilder_ctor_builder_handlegeomsurface_real4(
+                    B, S, UMin, UMax, VMin, VMax,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `BRepPrim_FaceBuilder.hxx`:52 - `BRepPrim_FaceBuilder::Init()`
+    pub fn init_builder_handlegeomsurface(
+        &mut self,
+        B: &crate::ffi::BRep_Builder,
+        S: &crate::ffi::HandleGeomSurface,
+    ) {
+        unsafe {
+            crate::ffi::BRepPrim_FaceBuilder_init_builder_handlegeomsurface(self as *mut Self, B, S)
+        }
+    }
+
+    /// **Source:** `BRepPrim_FaceBuilder.hxx`:54 - `BRepPrim_FaceBuilder::Init()`
+    pub fn init_builder_handlegeomsurface_real4(
+        &mut self,
+        B: &crate::ffi::BRep_Builder,
+        S: &crate::ffi::HandleGeomSurface,
+        UMin: f64,
+        UMax: f64,
+        VMin: f64,
+        VMax: f64,
+    ) {
+        unsafe {
+            crate::ffi::BRepPrim_FaceBuilder_init_builder_handlegeomsurface_real4(
+                self as *mut Self,
+                B,
+                S,
+                UMin,
+                UMax,
+                VMin,
+                VMax,
+            )
+        }
+    }
+
+    /// **Source:** `BRepPrim_FaceBuilder.hxx`:61 - `BRepPrim_FaceBuilder::Face()`
+    pub fn face(&self) -> &crate::ffi::TopoDS_Face {
+        unsafe { &*(crate::ffi::BRepPrim_FaceBuilder_face(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepPrim_FaceBuilder.hxx`:69 - `BRepPrim_FaceBuilder::Edge()`
+    /// Returns the edge of index <I>
+    /// 1 - Edge VMin
+    /// 2 - Edge UMax
+    /// 3 - Edge VMax
+    /// 4 - Edge UMin
+    pub fn edge(&self, I: i32) -> &crate::ffi::TopoDS_Edge {
+        unsafe { &*(crate::ffi::BRepPrim_FaceBuilder_edge(self as *const Self, I)) }
+    }
+
+    /// **Source:** `BRepPrim_FaceBuilder.hxx`:76 - `BRepPrim_FaceBuilder::Vertex()`
+    /// Returns the vertex of index <I>
+    /// 1 - Vertex UMin,VMin
+    /// 2 - Vertex UMax,VMin
+    /// 3 - Vertex UMax,VMax
+    /// 4 - Vertex UMin,VMax
+    pub fn vertex(&self, I: i32) -> &crate::ffi::TopoDS_Vertex {
+        unsafe { &*(crate::ffi::BRepPrim_FaceBuilder_vertex(self as *const Self, I)) }
+    }
+}
+
+// ========================
 // From BRepPrim_GWedge.hxx
 // ========================
 

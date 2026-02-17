@@ -34,6 +34,34 @@ impl TryFrom<i32> for Position {
     }
 }
 
+/// C++ enum: `IntRes2d_Situation`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum Situation {
+    Inside = 0,
+    Outside = 1,
+    Unknown = 2,
+}
+
+impl From<Situation> for i32 {
+    fn from(value: Situation) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for Situation {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(Situation::Inside),
+            1 => Ok(Situation::Outside),
+            2 => Ok(Situation::Unknown),
+            _ => Err(value),
+        }
+    }
+}
+
 /// C++ enum: `IntRes2d_TypeTrans`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
@@ -64,30 +92,212 @@ impl TryFrom<i32> for TypeTrans {
     }
 }
 
-/// C++ enum: `IntRes2d_Situation`
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[repr(i32)]
-pub enum Situation {
-    Inside = 0,
-    Outside = 1,
-    Unknown = 2,
-}
+// ========================
+// From IntRes2d_Domain.hxx
+// ========================
 
-impl From<Situation> for i32 {
-    fn from(value: Situation) -> Self {
-        value as i32
+/// **Source:** `IntRes2d_Domain.hxx`:40 - `IntRes2d_Domain`
+/// Definition of the domain of parameter on a 2d-curve.
+/// Most of the time, a domain is defined by two extremities.
+/// An extremity is made of :
+/// - a point in 2d-space (Pnt2d from gp),
+/// - a parameter on the curve,
+/// - a tolerance in the 2d-space.
+/// Sometimes, it can be made of 0 or 1 point ( for an infinite
+/// or semi-infinite line for example).
+///
+/// For Intersection algorithms, Ellipses and Circles
+/// Domains must be closed.
+/// So, SetEquivalentParameters(.,.) method must be called
+/// after initializing the first and the last bounds.
+pub use crate::ffi::IntRes2d_Domain as Domain;
+
+unsafe impl crate::CppDeletable for Domain {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntRes2d_Domain_destructor(ptr);
     }
 }
 
-impl TryFrom<i32> for Situation {
-    type Error = i32;
+impl Domain {
+    /// **Source:** `IntRes2d_Domain.hxx`:47 - `IntRes2d_Domain::IntRes2d_Domain()`
+    /// Creates an infinite Domain (HasFirstPoint = False
+    /// and HasLastPoint = False).
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntRes2d_Domain_ctor()) }
+    }
 
-    fn try_from(value: i32) -> Result<Self, i32> {
-        match value {
-            0 => Ok(Situation::Inside),
-            1 => Ok(Situation::Outside),
-            2 => Ok(Situation::Unknown),
-            _ => Err(value),
+    /// **Source:** `IntRes2d_Domain.hxx`:50 - `IntRes2d_Domain::IntRes2d_Domain()`
+    /// Creates a bounded Domain.
+    pub fn new_pnt2d_real2_pnt2d_real2(
+        Pnt1: &crate::ffi::gp_Pnt2d,
+        Par1: f64,
+        Tol1: f64,
+        Pnt2: &crate::ffi::gp_Pnt2d,
+        Par2: f64,
+        Tol2: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntRes2d_Domain_ctor_pnt2d_real2_pnt2d_real2(
+                Pnt1, Par1, Tol1, Pnt2, Par2, Tol2,
+            ))
+        }
+    }
+
+    /// **Source:** `IntRes2d_Domain.hxx`:60 - `IntRes2d_Domain::IntRes2d_Domain()`
+    /// Creates a semi-infinite Domain. If First is set to
+    /// True, the given point is the first point of the domain,
+    /// otherwise it is the last point.
+    pub fn new_pnt2d_real2_bool(
+        Pnt: &crate::ffi::gp_Pnt2d,
+        Par: f64,
+        Tol: f64,
+        First: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntRes2d_Domain_ctor_pnt2d_real2_bool(
+                Pnt, Par, Tol, First,
+            ))
+        }
+    }
+
+    /// **Source:** `IntRes2d_Domain.hxx`:66 - `IntRes2d_Domain::SetValues()`
+    /// Sets the values for a bounded domain.
+    pub fn set_values_pnt2d_real2_pnt2d_real2(
+        &mut self,
+        Pnt1: &crate::ffi::gp_Pnt2d,
+        Par1: f64,
+        Tol1: f64,
+        Pnt2: &crate::ffi::gp_Pnt2d,
+        Par2: f64,
+        Tol2: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntRes2d_Domain_set_values_pnt2d_real2_pnt2d_real2(
+                self as *mut Self,
+                Pnt1,
+                Par1,
+                Tol1,
+                Pnt2,
+                Par2,
+                Tol2,
+            )
+        }
+    }
+
+    /// **Source:** `IntRes2d_Domain.hxx`:74 - `IntRes2d_Domain::SetValues()`
+    /// Sets the values for an infinite domain.
+    pub fn set_values(&mut self) {
+        unsafe { crate::ffi::IntRes2d_Domain_set_values(self as *mut Self) }
+    }
+
+    /// **Source:** `IntRes2d_Domain.hxx`:77 - `IntRes2d_Domain::SetValues()`
+    /// Sets the values for a semi-infinite domain.
+    pub fn set_values_pnt2d_real2_bool(
+        &mut self,
+        Pnt: &crate::ffi::gp_Pnt2d,
+        Par: f64,
+        Tol: f64,
+        First: bool,
+    ) {
+        unsafe {
+            crate::ffi::IntRes2d_Domain_set_values_pnt2d_real2_bool(
+                self as *mut Self,
+                Pnt,
+                Par,
+                Tol,
+                First,
+            )
+        }
+    }
+
+    /// **Source:** `IntRes2d_Domain.hxx`:83 - `IntRes2d_Domain::SetEquivalentParameters()`
+    /// Defines a closed domain.
+    pub fn set_equivalent_parameters(&mut self, zero: f64, period: f64) {
+        unsafe {
+            crate::ffi::IntRes2d_Domain_set_equivalent_parameters(self as *mut Self, zero, period)
+        }
+    }
+
+    /// **Source:** `IntRes2d_Domain.hxx`:88 - `IntRes2d_Domain::HasFirstPoint()`
+    /// Returns True if the domain has a first point, i-e
+    /// a point defining the lowest admitted parameter on the
+    /// curve.
+    pub fn has_first_point(&self) -> bool {
+        unsafe { crate::ffi::IntRes2d_Domain_has_first_point(self as *const Self) }
+    }
+
+    /// **Source:** `IntRes2d_Domain.hxx`:93 - `IntRes2d_Domain::FirstParameter()`
+    /// Returns the parameter of the first point of the domain
+    /// The exception DomainError is raised if HasFirstPoint
+    /// returns False.
+    pub fn first_parameter(&self) -> f64 {
+        unsafe { crate::ffi::IntRes2d_Domain_first_parameter(self as *const Self) }
+    }
+
+    /// **Source:** `IntRes2d_Domain.hxx`:98 - `IntRes2d_Domain::FirstPoint()`
+    /// Returns the first point of the domain.
+    /// The exception DomainError is raised if HasFirstPoint
+    /// returns False.
+    pub fn first_point(&self) -> &crate::ffi::gp_Pnt2d {
+        unsafe { &*(crate::ffi::IntRes2d_Domain_first_point(self as *const Self)) }
+    }
+
+    /// **Source:** `IntRes2d_Domain.hxx`:103 - `IntRes2d_Domain::FirstTolerance()`
+    /// Returns the tolerance of the first (left) bound.
+    /// The exception DomainError is raised if HasFirstPoint
+    /// returns False.
+    pub fn first_tolerance(&self) -> f64 {
+        unsafe { crate::ffi::IntRes2d_Domain_first_tolerance(self as *const Self) }
+    }
+
+    /// **Source:** `IntRes2d_Domain.hxx`:108 - `IntRes2d_Domain::HasLastPoint()`
+    /// Returns True if the domain has a last point, i-e
+    /// a point defining the highest admitted parameter on the
+    /// curve.
+    pub fn has_last_point(&self) -> bool {
+        unsafe { crate::ffi::IntRes2d_Domain_has_last_point(self as *const Self) }
+    }
+
+    /// **Source:** `IntRes2d_Domain.hxx`:113 - `IntRes2d_Domain::LastParameter()`
+    /// Returns the parameter of the last point of the domain.
+    /// The exception DomainError is raised if HasLastPoint
+    /// returns False.
+    pub fn last_parameter(&self) -> f64 {
+        unsafe { crate::ffi::IntRes2d_Domain_last_parameter(self as *const Self) }
+    }
+
+    /// **Source:** `IntRes2d_Domain.hxx`:118 - `IntRes2d_Domain::LastPoint()`
+    /// Returns the last point of the domain.
+    /// The exception DomainError is raised if HasLastPoint
+    /// returns False.
+    pub fn last_point(&self) -> &crate::ffi::gp_Pnt2d {
+        unsafe { &*(crate::ffi::IntRes2d_Domain_last_point(self as *const Self)) }
+    }
+
+    /// **Source:** `IntRes2d_Domain.hxx`:123 - `IntRes2d_Domain::LastTolerance()`
+    /// Returns the tolerance of the last (right) bound.
+    /// The exception DomainError is raised if HasLastPoint
+    /// returns False.
+    pub fn last_tolerance(&self) -> f64 {
+        unsafe { crate::ffi::IntRes2d_Domain_last_tolerance(self as *const Self) }
+    }
+
+    /// **Source:** `IntRes2d_Domain.hxx`:126 - `IntRes2d_Domain::IsClosed()`
+    /// Returns True if the domain is closed.
+    pub fn is_closed(&self) -> bool {
+        unsafe { crate::ffi::IntRes2d_Domain_is_closed(self as *const Self) }
+    }
+
+    /// **Source:** `IntRes2d_Domain.hxx`:130 - `IntRes2d_Domain::EquivalentParameters()`
+    /// Returns Equivalent parameters if the domain is closed.
+    /// Otherwise, the exception DomainError is raised.
+    pub fn equivalent_parameters(&self, zero: &mut f64, zeroplusperiod: &mut f64) {
+        unsafe {
+            crate::ffi::IntRes2d_Domain_equivalent_parameters(
+                self as *const Self,
+                zero,
+                zeroplusperiod,
+            )
         }
     }
 }
@@ -204,6 +414,122 @@ impl IntersectionPoint {
         unsafe {
             &*(crate::ffi::IntRes2d_IntersectionPoint_transition_of_second(self as *const Self))
         }
+    }
+}
+
+// ========================
+// From IntRes2d_IntersectionSegment.hxx
+// ========================
+
+/// **Source:** `IntRes2d_IntersectionSegment.hxx`:29 - `IntRes2d_IntersectionSegment`
+/// Definition of an intersection curve between
+/// two 2D curves.
+pub use crate::ffi::IntRes2d_IntersectionSegment as IntersectionSegment;
+
+unsafe impl crate::CppDeletable for IntersectionSegment {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntRes2d_IntersectionSegment_destructor(ptr);
+    }
+}
+
+impl IntersectionSegment {
+    /// **Source:** `IntRes2d_IntersectionSegment.hxx`:35 - `IntRes2d_IntersectionSegment::IntRes2d_IntersectionSegment()`
+    /// Empty constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntRes2d_IntersectionSegment_ctor()) }
+    }
+
+    /// **Source:** `IntRes2d_IntersectionSegment.hxx`:37 - `IntRes2d_IntersectionSegment::IntRes2d_IntersectionSegment()`
+    pub fn new_intersectionpoint2_bool2(
+        P1: &crate::ffi::IntRes2d_IntersectionPoint,
+        P2: &crate::ffi::IntRes2d_IntersectionPoint,
+        Oppos: bool,
+        ReverseFlag: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IntRes2d_IntersectionSegment_ctor_intersectionpoint2_bool2(
+                    P1,
+                    P2,
+                    Oppos,
+                    ReverseFlag,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IntRes2d_IntersectionSegment.hxx`:42 - `IntRes2d_IntersectionSegment::IntRes2d_IntersectionSegment()`
+    pub fn new_intersectionpoint_bool3(
+        P: &crate::ffi::IntRes2d_IntersectionPoint,
+        First: bool,
+        Oppos: bool,
+        ReverseFlag: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IntRes2d_IntersectionSegment_ctor_intersectionpoint_bool3(
+                    P,
+                    First,
+                    Oppos,
+                    ReverseFlag,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IntRes2d_IntersectionSegment.hxx`:48 - `IntRes2d_IntersectionSegment::IntRes2d_IntersectionSegment()`
+    /// Creates an infinite segment of intersection.
+    pub fn new_bool(Oppos: bool) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntRes2d_IntersectionSegment_ctor_bool(Oppos))
+        }
+    }
+
+    /// **Source:** `IntRes2d_IntersectionSegment.hxx`:52 - `IntRes2d_IntersectionSegment::IsOpposite()`
+    /// Returns FALSE if the intersection segment has got
+    /// the same orientation on both curves.
+    pub fn is_opposite(&self) -> bool {
+        unsafe { crate::ffi::IntRes2d_IntersectionSegment_is_opposite(self as *const Self) }
+    }
+
+    /// **Source:** `IntRes2d_IntersectionSegment.hxx`:60 - `IntRes2d_IntersectionSegment::HasFirstPoint()`
+    /// Returns True if the segment is  limited by a first
+    /// point.   This  point defines  the lowest parameter
+    /// admitted on the first  curve for the  segment.  If
+    /// IsOpposite  returns  False, it  defines the lowest
+    /// parameter on the  second curve, otherwise,  it  is
+    /// the highest parameter on the second curve.
+    pub fn has_first_point(&self) -> bool {
+        unsafe { crate::ffi::IntRes2d_IntersectionSegment_has_first_point(self as *const Self) }
+    }
+
+    /// **Source:** `IntRes2d_IntersectionSegment.hxx`:66 - `IntRes2d_IntersectionSegment::FirstPoint()`
+    /// Returns the  first point   of the segment    as an
+    /// IntersectionPoint (with    a    transition).   The
+    /// exception  DomainError  is raised if HasFirstPoint
+    /// returns False.
+    pub fn first_point(&self) -> &crate::ffi::IntRes2d_IntersectionPoint {
+        unsafe { &*(crate::ffi::IntRes2d_IntersectionSegment_first_point(self as *const Self)) }
+    }
+
+    /// **Source:** `IntRes2d_IntersectionSegment.hxx`:74 - `IntRes2d_IntersectionSegment::HasLastPoint()`
+    /// Returns True if the segment  is  limited by a last
+    /// point.  This point  defines  the highest parameter
+    /// admitted on the  first curve for  the segment.  If
+    /// IsOpposite returns  False, it  defines the highest
+    /// parameter on  the  second curve, otherwise, it  is
+    /// the lowest parameter on the second curve.
+    pub fn has_last_point(&self) -> bool {
+        unsafe { crate::ffi::IntRes2d_IntersectionSegment_has_last_point(self as *const Self) }
+    }
+
+    /// **Source:** `IntRes2d_IntersectionSegment.hxx`:80 - `IntRes2d_IntersectionSegment::LastPoint()`
+    /// Returns   the  last point  of the    segment as an
+    /// IntersectionPoint   (with  a    transition).   The
+    /// exception        DomainError     is   raised    if
+    /// HasLastExtremity returns False.
+    pub fn last_point(&self) -> &crate::ffi::IntRes2d_IntersectionPoint {
+        unsafe { &*(crate::ffi::IntRes2d_IntersectionSegment_last_point(self as *const Self)) }
     }
 }
 

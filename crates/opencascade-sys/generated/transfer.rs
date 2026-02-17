@@ -69,445 +69,6 @@ impl TryFrom<i32> for StatusExec {
 }
 
 // ========================
-// From Transfer_ActorOfFinderProcess.hxx
-// ========================
-
-/// **Source:** `Transfer_ActorOfFinderProcess.hxx`:39 - `Transfer_ActorOfFinderProcess`
-/// The original class was renamed. Compatibility only
-///
-/// ModeTrans : a simple way of transmitting a transfer mode from
-/// a user. To be interpreted for each norm
-pub use crate::ffi::Transfer_ActorOfFinderProcess as ActorOfFinderProcess;
-
-unsafe impl crate::CppDeletable for ActorOfFinderProcess {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_ActorOfFinderProcess_destructor(ptr);
-    }
-}
-
-impl ActorOfFinderProcess {
-    /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:42 - `Transfer_ActorOfFinderProcess::Transfer_ActorOfFinderProcess()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfFinderProcess_ctor()) }
-    }
-
-    /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:45 - `Transfer_ActorOfFinderProcess::ModeTrans()`
-    /// Returns the Transfer Mode, modifiable
-    pub fn mode_trans(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::Transfer_ActorOfFinderProcess_mode_trans(self as *mut Self)) }
-    }
-
-    /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:101 - `Transfer_ActorOfFinderProcess::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Transfer_ActorOfFinderProcess_dynamic_type(self as *const Self)) }
-    }
-
-    /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:101 - `Transfer_ActorOfFinderProcess::get_type_name()`
-    pub fn get_type_name() -> String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Transfer_ActorOfFinderProcess_get_type_name())
-                .to_string_lossy()
-                .into_owned()
-        }
-    }
-
-    /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:101 - `Transfer_ActorOfFinderProcess::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Transfer_ActorOfFinderProcess_get_type_descriptor()) }
-    }
-
-    /// Upcast to Transfer_ActorOfProcessForFinder
-    pub fn as_actor_of_process_for_finder(&self) -> &ActorOfProcessForFinder {
-        unsafe {
-            &*(crate::ffi::Transfer_ActorOfFinderProcess_as_Transfer_ActorOfProcessForFinder(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Transfer_ActorOfProcessForFinder (mutable)
-    pub fn as_actor_of_process_for_finder_mut(&mut self) -> &mut ActorOfProcessForFinder {
-        unsafe {
-            &mut *(crate::ffi::Transfer_ActorOfFinderProcess_as_Transfer_ActorOfProcessForFinder_mut(self as *mut Self))
-        }
-    }
-
-    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:73 - `Transfer_ActorOfProcessForFinder::NullResult()`
-    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Transfer_ActorOfFinderProcess_inherited_NullResult(self as *const Self),
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:80 - `Transfer_ActorOfProcessForFinder::SetLast()`
-    pub fn set_last(&mut self, mode: bool) {
-        unsafe {
-            crate::ffi::Transfer_ActorOfFinderProcess_inherited_SetLast(self as *mut Self, mode)
-        }
-    }
-
-    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:83 - `Transfer_ActorOfProcessForFinder::IsLast()`
-    pub fn is_last(&self) -> bool {
-        unsafe { crate::ffi::Transfer_ActorOfFinderProcess_inherited_IsLast(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:90 - `Transfer_ActorOfProcessForFinder::SetNext()`
-    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForFinder) {
-        unsafe {
-            crate::ffi::Transfer_ActorOfFinderProcess_inherited_SetNext(self as *mut Self, next)
-        }
-    }
-
-    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:93 - `Transfer_ActorOfProcessForFinder::Next()`
-    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfFinderProcess_inherited_Next(
-                self as *const Self,
-            ))
-        }
-    }
-}
-
-// ========================
-// From Transfer_ActorOfProcessForFinder.hxx
-// ========================
-
-/// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:38 - `Transfer_ActorOfProcessForFinder`
-pub use crate::ffi::Transfer_ActorOfProcessForFinder as ActorOfProcessForFinder;
-
-unsafe impl crate::CppDeletable for ActorOfProcessForFinder {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_ActorOfProcessForFinder_destructor(ptr);
-    }
-}
-
-impl ActorOfProcessForFinder {
-    /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:42 - `Transfer_ActorOfProcessForFinder::Transfer_ActorOfProcessForFinder()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfProcessForFinder_ctor()) }
-    }
-
-    /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:73 - `Transfer_ActorOfProcessForFinder::NullResult()`
-    /// Returns a Binder for No Result, i.e. a Null Handle
-    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfProcessForFinder_null_result(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:80 - `Transfer_ActorOfProcessForFinder::SetLast()`
-    /// If <mode> is True, commands an Actor to be set at the
-    /// end of the list of Actors (see SetNext)
-    /// If it is False (creation default), each add Actor is
-    /// set at the beginning of the list
-    /// This allows to define default Actors (which are Last)
-    pub fn set_last(&mut self, mode: bool) {
-        unsafe { crate::ffi::Transfer_ActorOfProcessForFinder_set_last(self as *mut Self, mode) }
-    }
-
-    /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:83 - `Transfer_ActorOfProcessForFinder::IsLast()`
-    /// Returns the Last status (see SetLast).
-    pub fn is_last(&self) -> bool {
-        unsafe { crate::ffi::Transfer_ActorOfProcessForFinder_is_last(self as *const Self) }
-    }
-
-    /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:90 - `Transfer_ActorOfProcessForFinder::SetNext()`
-    /// Defines a Next Actor : it can then be asked to work if
-    /// <me> produces no result for a given type of Object.
-    /// If Next is already set and is not "Last", calls
-    /// SetNext on it. If Next defined and "Last", the new
-    /// actor is added before it in the list
-    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForFinder) {
-        unsafe { crate::ffi::Transfer_ActorOfProcessForFinder_set_next(self as *mut Self, next) }
-    }
-
-    /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:93 - `Transfer_ActorOfProcessForFinder::Next()`
-    /// Returns the Actor defined as Next, or a Null Handle
-    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfProcessForFinder_next(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:95 - `Transfer_ActorOfProcessForFinder::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::Transfer_ActorOfProcessForFinder_dynamic_type(self as *const Self))
-        }
-    }
-
-    /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:95 - `Transfer_ActorOfProcessForFinder::get_type_name()`
-    pub fn get_type_name() -> String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Transfer_ActorOfProcessForFinder_get_type_name())
-                .to_string_lossy()
-                .into_owned()
-        }
-    }
-
-    /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:95 - `Transfer_ActorOfProcessForFinder::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Transfer_ActorOfProcessForFinder_get_type_descriptor()) }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfProcessForFinder_to_handle(
-                obj.into_raw(),
-            ))
-        }
-    }
-}
-
-pub use crate::ffi::HandleTransferActorOfProcessForFinder;
-
-unsafe impl crate::CppDeletable for HandleTransferActorOfProcessForFinder {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferActorOfProcessForFinder_destructor(ptr);
-    }
-}
-
-impl HandleTransferActorOfProcessForFinder {
-    /// Dereference this Handle to access the underlying Transfer_ActorOfProcessForFinder
-    pub fn get(&self) -> &crate::ffi::Transfer_ActorOfProcessForFinder {
-        unsafe { &*(crate::ffi::HandleTransferActorOfProcessForFinder_get(self as *const Self)) }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Transfer_ActorOfProcessForFinder
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_ActorOfProcessForFinder {
-        unsafe {
-            &mut *(crate::ffi::HandleTransferActorOfProcessForFinder_get_mut(self as *mut Self))
-        }
-    }
-}
-
-// ========================
-// From Transfer_ActorOfProcessForTransient.hxx
-// ========================
-
-/// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:37 - `Transfer_ActorOfProcessForTransient`
-pub use crate::ffi::Transfer_ActorOfProcessForTransient as ActorOfProcessForTransient;
-
-unsafe impl crate::CppDeletable for ActorOfProcessForTransient {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_ActorOfProcessForTransient_destructor(ptr);
-    }
-}
-
-impl ActorOfProcessForTransient {
-    /// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:41 - `Transfer_ActorOfProcessForTransient::Transfer_ActorOfProcessForTransient()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfProcessForTransient_ctor()) }
-    }
-
-    /// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:72 - `Transfer_ActorOfProcessForTransient::NullResult()`
-    /// Returns a Binder for No Result, i.e. a Null Handle
-    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfProcessForTransient_null_result(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:79 - `Transfer_ActorOfProcessForTransient::SetLast()`
-    /// If <mode> is True, commands an Actor to be set at the
-    /// end of the list of Actors (see SetNext)
-    /// If it is False (creation default), each add Actor is
-    /// set at the beginning of the list
-    /// This allows to define default Actors (which are Last)
-    pub fn set_last(&mut self, mode: bool) {
-        unsafe { crate::ffi::Transfer_ActorOfProcessForTransient_set_last(self as *mut Self, mode) }
-    }
-
-    /// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:82 - `Transfer_ActorOfProcessForTransient::IsLast()`
-    /// Returns the Last status (see SetLast).
-    pub fn is_last(&self) -> bool {
-        unsafe { crate::ffi::Transfer_ActorOfProcessForTransient_is_last(self as *const Self) }
-    }
-
-    /// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:89 - `Transfer_ActorOfProcessForTransient::SetNext()`
-    /// Defines a Next Actor : it can then be asked to work if
-    /// <me> produces no result for a given type of Object.
-    /// If Next is already set and is not "Last", calls
-    /// SetNext on it. If Next defined and "Last", the new
-    /// actor is added before it in the list
-    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForTransient) {
-        unsafe { crate::ffi::Transfer_ActorOfProcessForTransient_set_next(self as *mut Self, next) }
-    }
-
-    /// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:92 - `Transfer_ActorOfProcessForTransient::Next()`
-    /// Returns the Actor defined as Next, or a Null Handle
-    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfProcessForTransient_next(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:94 - `Transfer_ActorOfProcessForTransient::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::Transfer_ActorOfProcessForTransient_dynamic_type(self as *const Self))
-        }
-    }
-
-    /// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:94 - `Transfer_ActorOfProcessForTransient::get_type_name()`
-    pub fn get_type_name() -> String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Transfer_ActorOfProcessForTransient_get_type_name()).to_string_lossy().into_owned()
-        }
-    }
-
-    /// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:94 - `Transfer_ActorOfProcessForTransient::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Transfer_ActorOfProcessForTransient_get_type_descriptor()) }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfProcessForTransient_to_handle(
-                obj.into_raw(),
-            ))
-        }
-    }
-}
-
-pub use crate::ffi::HandleTransferActorOfProcessForTransient;
-
-unsafe impl crate::CppDeletable for HandleTransferActorOfProcessForTransient {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferActorOfProcessForTransient_destructor(ptr);
-    }
-}
-
-impl HandleTransferActorOfProcessForTransient {
-    /// Dereference this Handle to access the underlying Transfer_ActorOfProcessForTransient
-    pub fn get(&self) -> &crate::ffi::Transfer_ActorOfProcessForTransient {
-        unsafe { &*(crate::ffi::HandleTransferActorOfProcessForTransient_get(self as *const Self)) }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Transfer_ActorOfProcessForTransient
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_ActorOfProcessForTransient {
-        unsafe {
-            &mut *(crate::ffi::HandleTransferActorOfProcessForTransient_get_mut(self as *mut Self))
-        }
-    }
-}
-
-// ========================
-// From Transfer_ActorOfTransientProcess.hxx
-// ========================
-
-/// **Source:** `Transfer_ActorOfTransientProcess.hxx`:35 - `Transfer_ActorOfTransientProcess`
-/// The original class was renamed. Compatibility only
-pub use crate::ffi::Transfer_ActorOfTransientProcess as ActorOfTransientProcess;
-
-unsafe impl crate::CppDeletable for ActorOfTransientProcess {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_ActorOfTransientProcess_destructor(ptr);
-    }
-}
-
-impl ActorOfTransientProcess {
-    /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:38 - `Transfer_ActorOfTransientProcess::Transfer_ActorOfTransientProcess()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfTransientProcess_ctor()) }
-    }
-
-    /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:95 - `Transfer_ActorOfTransientProcess::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::ffi::Transfer_ActorOfTransientProcess_dynamic_type(self as *const Self))
-        }
-    }
-
-    /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:95 - `Transfer_ActorOfTransientProcess::get_type_name()`
-    pub fn get_type_name() -> String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::ffi::Transfer_ActorOfTransientProcess_get_type_name())
-                .to_string_lossy()
-                .into_owned()
-        }
-    }
-
-    /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:95 - `Transfer_ActorOfTransientProcess::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::ffi::Transfer_ActorOfTransientProcess_get_type_descriptor()) }
-    }
-
-    /// Upcast to Transfer_ActorOfProcessForTransient
-    pub fn as_actor_of_process_for_transient(&self) -> &ActorOfProcessForTransient {
-        unsafe {
-            &*(crate::ffi::Transfer_ActorOfTransientProcess_as_Transfer_ActorOfProcessForTransient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Transfer_ActorOfProcessForTransient (mutable)
-    pub fn as_actor_of_process_for_transient_mut(&mut self) -> &mut ActorOfProcessForTransient {
-        unsafe {
-            &mut *(crate::ffi::Transfer_ActorOfTransientProcess_as_Transfer_ActorOfProcessForTransient_mut(self as *mut Self))
-        }
-    }
-
-    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:72 - `Transfer_ActorOfProcessForTransient::NullResult()`
-    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
-        unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::ffi::Transfer_ActorOfTransientProcess_inherited_NullResult(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:79 - `Transfer_ActorOfProcessForTransient::SetLast()`
-    pub fn set_last(&mut self, mode: bool) {
-        unsafe {
-            crate::ffi::Transfer_ActorOfTransientProcess_inherited_SetLast(self as *mut Self, mode)
-        }
-    }
-
-    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:82 - `Transfer_ActorOfProcessForTransient::IsLast()`
-    pub fn is_last(&self) -> bool {
-        unsafe {
-            crate::ffi::Transfer_ActorOfTransientProcess_inherited_IsLast(self as *const Self)
-        }
-    }
-
-    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:89 - `Transfer_ActorOfProcessForTransient::SetNext()`
-    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForTransient) {
-        unsafe {
-            crate::ffi::Transfer_ActorOfTransientProcess_inherited_SetNext(self as *mut Self, next)
-        }
-    }
-
-    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:92 - `Transfer_ActorOfProcessForTransient::Next()`
-    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfTransientProcess_inherited_Next(
-                self as *const Self,
-            ))
-        }
-    }
-}
-
-// ========================
 // From Transfer_Binder.hxx
 // ========================
 
@@ -734,13 +295,516 @@ impl HandleTransferBinder {
 }
 
 // ========================
+// From Transfer_FinderProcess.hxx
+// ========================
+
+/// **Source:** `Transfer_FinderProcess.hxx`:32 - `Transfer_FinderProcess`
+/// Adds specific features to the generic definition :
+/// PrintTrace is adapted
+pub use crate::ffi::Transfer_FinderProcess as FinderProcess;
+
+unsafe impl crate::CppDeletable for FinderProcess {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Transfer_FinderProcess_destructor(ptr);
+    }
+}
+
+impl FinderProcess {
+    /// **Source:** `Transfer_FinderProcess.hxx`:37 - `Transfer_FinderProcess::Transfer_FinderProcess()`
+    /// Sets FinderProcess at initial state, with an initial size
+    pub fn new_int(nb: i32) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Transfer_FinderProcess_ctor_int(nb)) }
+    }
+
+    /// **Source:** `Transfer_FinderProcess.hxx`:37 - `Transfer_FinderProcess::Transfer_FinderProcess()`
+    /// Sets FinderProcess at initial state, with an initial size
+    pub fn new() -> crate::OwnedPtr<Self> {
+        Self::new_int(10000)
+    }
+
+    /// **Source:** `Transfer_FinderProcess.hxx`:41 - `Transfer_FinderProcess::SetModel()`
+    /// Sets an InterfaceModel, which can be used during transfer
+    /// for instance if a context must be managed, it is in the Model
+    pub fn set_model(&mut self, model: &crate::ffi::HandleInterfaceInterfaceModel) {
+        unsafe { crate::ffi::Transfer_FinderProcess_set_model(self as *mut Self, model) }
+    }
+
+    /// **Source:** `Transfer_FinderProcess.hxx`:44 - `Transfer_FinderProcess::Model()`
+    /// Returns the Model which can be used for context
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_FinderProcess_model(self as *const Self))
+        }
+    }
+
+    /// **Source:** `Transfer_FinderProcess.hxx`:60 - `Transfer_FinderProcess::NextMappedWithAttribute()`
+    /// In the list of mapped items (between 1 and NbMapped),
+    /// searches for the first mapped item which follows <num0>
+    /// (not included) and which has an attribute named <name>
+    /// The considered Attributes are those brought by Finders,i.e.
+    /// by Input data.
+    /// While NextItemWithAttribute works on Result data (Binders)
+    ///
+    /// Hence, allows such an iteration
+    ///
+    /// for (num = FP->NextMappedWithAttribute(name,0);
+    /// num > 0;
+    /// num = FP->NextMappedWithAttribute(name,num) {
+    /// .. process mapped item <num>
+    /// }
+    pub fn next_mapped_with_attribute(&self, name: &str, num0: i32) -> i32 {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_next_mapped_with_attribute(
+                self as *const Self,
+                c_name.as_ptr(),
+                num0,
+            )
+        }
+    }
+
+    /// **Source:** `Transfer_FinderProcess.hxx`:77 - `Transfer_FinderProcess::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Transfer_FinderProcess_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Transfer_FinderProcess.hxx`:77 - `Transfer_FinderProcess::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Transfer_FinderProcess_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `Transfer_FinderProcess.hxx`:77 - `Transfer_FinderProcess::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Transfer_FinderProcess_get_type_descriptor()) }
+    }
+
+    /// Upcast to Transfer_ProcessForFinder
+    pub fn as_process_for_finder(&self) -> &ProcessForFinder {
+        unsafe {
+            &*(crate::ffi::Transfer_FinderProcess_as_Transfer_ProcessForFinder(self as *const Self))
+        }
+    }
+
+    /// Upcast to Transfer_ProcessForFinder (mutable)
+    pub fn as_process_for_finder_mut(&mut self) -> &mut ProcessForFinder {
+        unsafe {
+            &mut *(crate::ffi::Transfer_FinderProcess_as_Transfer_ProcessForFinder_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:59 - `Transfer_ProcessForFinder::Clear()`
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::Transfer_FinderProcess_inherited_Clear(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:65 - `Transfer_ProcessForFinder::Clean()`
+    pub fn clean(&mut self) {
+        unsafe { crate::ffi::Transfer_FinderProcess_inherited_Clean(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:69 - `Transfer_ProcessForFinder::Resize()`
+    pub fn resize(&mut self, nb: i32) {
+        unsafe { crate::ffi::Transfer_FinderProcess_inherited_Resize(self as *mut Self, nb) }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:126 - `Transfer_ProcessForFinder::SetMessenger()`
+    pub fn set_messenger(&mut self, messenger: &crate::ffi::HandleMessageMessenger) {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_SetMessenger(self as *mut Self, messenger)
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:131 - `Transfer_ProcessForFinder::Messenger()`
+    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_FinderProcess_inherited_Messenger(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:140 - `Transfer_ProcessForFinder::SetTraceLevel()`
+    pub fn set_trace_level(&mut self, tracelev: i32) {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_SetTraceLevel(self as *mut Self, tracelev)
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:143 - `Transfer_ProcessForFinder::TraceLevel()`
+    pub fn trace_level(&self) -> i32 {
+        unsafe { crate::ffi::Transfer_FinderProcess_inherited_TraceLevel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:286 - `Transfer_ProcessForFinder::NbMapped()`
+    pub fn nb_mapped(&self) -> i32 {
+        unsafe { crate::ffi::Transfer_FinderProcess_inherited_NbMapped(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:296 - `Transfer_ProcessForFinder::MapItem()`
+    pub fn map_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_FinderProcess_inherited_MapItem(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:310 - `Transfer_ProcessForFinder::SetRootManagement()`
+    pub fn set_root_management(&mut self, stat: bool) {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_SetRootManagement(self as *mut Self, stat)
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:313 - `Transfer_ProcessForFinder::NbRoots()`
+    pub fn nb_roots(&self) -> i32 {
+        unsafe { crate::ffi::Transfer_FinderProcess_inherited_NbRoots(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:320 - `Transfer_ProcessForFinder::RootItem()`
+    pub fn root_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_FinderProcess_inherited_RootItem(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:329 - `Transfer_ProcessForFinder::NestingLevel()`
+    pub fn nesting_level(&self) -> i32 {
+        unsafe { crate::ffi::Transfer_FinderProcess_inherited_NestingLevel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:333 - `Transfer_ProcessForFinder::ResetNestingLevel()`
+    pub fn reset_nesting_level(&mut self) {
+        unsafe { crate::ffi::Transfer_FinderProcess_inherited_ResetNestingLevel(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:358 - `Transfer_ProcessForFinder::SetErrorHandle()`
+    pub fn set_error_handle(&mut self, err: bool) {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_SetErrorHandle(self as *mut Self, err)
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:361 - `Transfer_ProcessForFinder::ErrorHandle()`
+    pub fn error_handle(&self) -> bool {
+        unsafe { crate::ffi::Transfer_FinderProcess_inherited_ErrorHandle(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:382 - `Transfer_ProcessForFinder::IsLooping()`
+    pub fn is_looping(&self, alevel: i32) -> bool {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_IsLooping(self as *const Self, alevel)
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:406 - `Transfer_ProcessForFinder::CheckList()`
+    pub fn check_list(
+        &self,
+        erronly: bool,
+    ) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_FinderProcess_inherited_CheckList(
+                self as *const Self,
+                erronly,
+            ))
+        }
+    }
+}
+
+// ========================
+// From Transfer_ProcessForFinder.hxx
+// ========================
+
+/// **Source:** `Transfer_ProcessForFinder.hxx`:41 - `Transfer_ProcessForFinder`
+pub use crate::ffi::Transfer_ProcessForFinder as ProcessForFinder;
+
+unsafe impl crate::CppDeletable for ProcessForFinder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Transfer_ProcessForFinder_destructor(ptr);
+    }
+}
+
+impl ProcessForFinder {
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:49 - `Transfer_ProcessForFinder::Transfer_ProcessForFinder()`
+    /// Sets TransferProcess at initial state. Gives an Initial size
+    /// (indicative) for the Map when known (default is 10000).
+    /// Sets default trace file as a printer and default trace level
+    /// (see Message_TraceFile).
+    pub fn new_int(nb: i32) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Transfer_ProcessForFinder_ctor_int(nb)) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:54 - `Transfer_ProcessForFinder::Transfer_ProcessForFinder()`
+    /// Sets TransferProcess at initial state. Gives an Initial size
+    /// (indicative) for the Map when known (default is 10000).
+    /// Sets a specified printer.
+    pub fn new_handlemessagemessenger_int(
+        printer: &crate::ffi::HandleMessageMessenger,
+        nb: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Transfer_ProcessForFinder_ctor_handlemessagemessenger_int(printer, nb),
+            )
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:49 - `Transfer_ProcessForFinder::Transfer_ProcessForFinder()`
+    /// Sets TransferProcess at initial state. Gives an Initial size
+    /// (indicative) for the Map when known (default is 10000).
+    /// Sets default trace file as a printer and default trace level
+    /// (see Message_TraceFile).
+    pub fn new() -> crate::OwnedPtr<Self> {
+        Self::new_int(10000)
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:54 - `Transfer_ProcessForFinder::Transfer_ProcessForFinder()`
+    /// Sets TransferProcess at initial state. Gives an Initial size
+    /// (indicative) for the Map when known (default is 10000).
+    /// Sets a specified printer.
+    pub fn new_handlemessagemessenger(
+        printer: &crate::ffi::HandleMessageMessenger,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handlemessagemessenger_int(printer, 10000)
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:59 - `Transfer_ProcessForFinder::Clear()`
+    /// Resets a TransferProcess as ready for a completely new work.
+    /// Clears general data (roots) and the Map
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:65 - `Transfer_ProcessForFinder::Clean()`
+    /// Rebuilds the Map and the roots to really remove Unbound items
+    /// Because Unbind keeps the entity in place, even if not bound
+    /// Hence, working by checking new items is meaningless if a
+    /// formerly unbound item is rebound
+    pub fn clean(&mut self) {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_clean(self as *mut Self) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:69 - `Transfer_ProcessForFinder::Resize()`
+    /// Resizes the Map as required (if a new reliable value has been
+    /// determined). Acts only if <nb> is greater than actual NbMapped
+    pub fn resize(&mut self, nb: i32) {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_resize(self as *mut Self, nb) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:126 - `Transfer_ProcessForFinder::SetMessenger()`
+    /// Sets Messenger used for outputting messages.
+    pub fn set_messenger(&mut self, messenger: &crate::ffi::HandleMessageMessenger) {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_set_messenger(self as *mut Self, messenger) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:131 - `Transfer_ProcessForFinder::Messenger()`
+    /// Returns Messenger used for outputting messages.
+    /// The returned object is guaranteed to be non-null;
+    /// default is Message::Messenger().
+    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ProcessForFinder_messenger(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:140 - `Transfer_ProcessForFinder::SetTraceLevel()`
+    /// Sets trace level used for outputting messages:
+    /// <trace> = 0 : no trace at all
+    /// <trace> = 1 : handled exceptions and calls to AddError
+    /// <trace> = 2 : also calls to AddWarning
+    /// <trace> = 3 : also traces new Roots
+    /// (uses method ErrorTrace).
+    /// Default is 1 : Errors traced
+    pub fn set_trace_level(&mut self, tracelev: i32) {
+        unsafe {
+            crate::ffi::Transfer_ProcessForFinder_set_trace_level(self as *mut Self, tracelev)
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:143 - `Transfer_ProcessForFinder::TraceLevel()`
+    /// Returns trace level used for outputting messages.
+    pub fn trace_level(&self) -> i32 {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_trace_level(self as *const Self) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:286 - `Transfer_ProcessForFinder::NbMapped()`
+    /// Returns the maximum possible value for Map Index
+    /// (no result can be bound with a value greater than it)
+    pub fn nb_mapped(&self) -> i32 {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_nb_mapped(self as *const Self) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:296 - `Transfer_ProcessForFinder::MapItem()`
+    /// Returns the Binder bound to an Index
+    /// Considers a category number, by default 0
+    pub fn map_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ProcessForFinder_map_item(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:310 - `Transfer_ProcessForFinder::SetRootManagement()`
+    /// Enable (if <stat> True) or Disables (if <stat> False) Root
+    /// Management. If it is set, Transfers are considered as stacked
+    /// (a first Transfer commands other Transfers, and so on) and
+    /// the Transfers commanded by an external caller are "Root".
+    /// Remark : SetRoot can be called whatever this status, on every
+    /// object.
+    /// Default is set to True.
+    pub fn set_root_management(&mut self, stat: bool) {
+        unsafe {
+            crate::ffi::Transfer_ProcessForFinder_set_root_management(self as *mut Self, stat)
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:313 - `Transfer_ProcessForFinder::NbRoots()`
+    /// Returns the count of recorded Roots
+    pub fn nb_roots(&self) -> i32 {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_nb_roots(self as *const Self) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:320 - `Transfer_ProcessForFinder::RootItem()`
+    /// Returns the Binder bound with a Root Entity given its number
+    /// Considers a category number, by default 0
+    pub fn root_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ProcessForFinder_root_item(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:329 - `Transfer_ProcessForFinder::NestingLevel()`
+    /// Returns Nesting Level of Transfers (managed by methods
+    /// TranscriptWith & Co). Starts to zero. If no automatic Transfer
+    /// is used, it remains to zero. Zero means Root Level.
+    pub fn nesting_level(&self) -> i32 {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_nesting_level(self as *const Self) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:333 - `Transfer_ProcessForFinder::ResetNestingLevel()`
+    /// Resets Nesting Level of Transfers to Zero (Root Level),
+    /// whatever its current value.
+    pub fn reset_nesting_level(&mut self) {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_reset_nesting_level(self as *mut Self) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:358 - `Transfer_ProcessForFinder::SetErrorHandle()`
+    /// Allows controls if exceptions will be handled
+    /// Transfer Operations
+    /// <err> False : they are not handled with try {} catch {}
+    /// <err> True  : they are
+    /// Default is False: no handling performed
+    pub fn set_error_handle(&mut self, err: bool) {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_set_error_handle(self as *mut Self, err) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:361 - `Transfer_ProcessForFinder::ErrorHandle()`
+    /// Returns error handling flag
+    pub fn error_handle(&self) -> bool {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_error_handle(self as *const Self) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:382 - `Transfer_ProcessForFinder::IsLooping()`
+    /// Returns True if we are surely in a DeadLoop. Evaluation is not
+    /// exact, it is a "majorant" which must be computed fast.
+    /// This "majorant" is : <alevel> greater than NbMapped.
+    pub fn is_looping(&self, alevel: i32) -> bool {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_is_looping(self as *const Self, alevel) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:406 - `Transfer_ProcessForFinder::CheckList()`
+    /// Returns a CheckList as a list of Check : each one is for a
+    /// starting entity which have either check (warning or fail)
+    /// messages are attached, or are in abnormal state : that case
+    /// gives a specific message
+    /// If <erronly> is True, checks with Warnings only are ignored
+    pub fn check_list(
+        &self,
+        erronly: bool,
+    ) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ProcessForFinder_check_list(
+                self as *const Self,
+                erronly,
+            ))
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:446 - `Transfer_ProcessForFinder::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Transfer_ProcessForFinder_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:446 - `Transfer_ProcessForFinder::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Transfer_ProcessForFinder_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:446 - `Transfer_ProcessForFinder::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Transfer_ProcessForFinder_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferProcessForFinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ProcessForFinder_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTransferProcessForFinder;
+
+unsafe impl crate::CppDeletable for HandleTransferProcessForFinder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTransferProcessForFinder_destructor(ptr);
+    }
+}
+
+impl HandleTransferProcessForFinder {
+    /// Dereference this Handle to access the underlying Transfer_ProcessForFinder
+    pub fn get(&self) -> &crate::ffi::Transfer_ProcessForFinder {
+        unsafe { &*(crate::ffi::HandleTransferProcessForFinder_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Transfer_ProcessForFinder
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_ProcessForFinder {
+        unsafe { &mut *(crate::ffi::HandleTransferProcessForFinder_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
-    Transfer_Finder as Finder, Transfer_FinderProcess as FinderProcess,
-    Transfer_ProcessForFinder as ProcessForFinder,
-    Transfer_ProcessForTransient as ProcessForTransient,
-    Transfer_SimpleBinderOfTransient as SimpleBinderOfTransient,
-    Transfer_TransientProcess as TransientProcess,
+    Transfer_ActorOfProcessForFinder as ActorOfProcessForFinder,
+    Transfer_ActorOfTransientProcess as ActorOfTransientProcess, Transfer_Finder as Finder,
+    Transfer_IteratorOfProcessForFinder as IteratorOfProcessForFinder,
+    Transfer_TransientMapper as TransientMapper, Transfer_TransientProcess as TransientProcess,
 };

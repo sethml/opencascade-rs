@@ -23,6 +23,38 @@ pub fn decode_status(flag: i32, status: crate::shape_extend::Status) -> bool {
     unsafe { crate::ffi::ShapeExtend_decode_status(flag, status.into()) }
 }
 
+/// Defines kind of global parametrisation on the composite surface
+/// each patch of the 1st row and column adds its range, Ui+1 = Ui + URange(i,1), etc.
+/// each patch gives range 1.: Ui = i-1, Vj = j-1
+/// uniform parametrisation with global range [0,1]
+/// C++ enum: `ShapeExtend_Parametrisation`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum Parametrisation {
+    Natural = 0,
+    Uniform = 1,
+    Unitary = 2,
+}
+
+impl From<Parametrisation> for i32 {
+    fn from(value: Parametrisation) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for Parametrisation {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(Parametrisation::Natural),
+            1 => Ok(Parametrisation::Uniform),
+            2 => Ok(Parametrisation::Unitary),
+            _ => Err(value),
+        }
+    }
+}
+
 /// This enumeration is used in
 /// ShapeHealing toolkit for representing flags in the
 /// return statuses of class methods.
@@ -122,12 +154,1757 @@ impl TryFrom<i32> for Status {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleGeomCurve, HandleGeomGeometry, HandleGeomSurface};
+
+// ========================
+// From ShapeExtend_BasicMsgRegistrator.hxx
+// ========================
+
+/// **Source:** `ShapeExtend_BasicMsgRegistrator.hxx`:39 - `ShapeExtend_BasicMsgRegistrator`
+/// Abstract class that can be used for attaching messages
+/// to the objects (e.g. shapes).
+/// It is used by ShapeHealing algorithms to attach a message
+/// describing encountered case (e.g. removing small edge from
+/// a wire).
+///
+/// The methods of this class are empty and redefined, for instance,
+/// in the classes for Data Exchange processors for attaching
+/// messages to interface file entities or CAS.CADE shapes.
+pub use crate::ffi::ShapeExtend_BasicMsgRegistrator as BasicMsgRegistrator;
+
+unsafe impl crate::CppDeletable for BasicMsgRegistrator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeExtend_BasicMsgRegistrator_destructor(ptr);
+    }
+}
+
+impl BasicMsgRegistrator {
+    /// **Source:** `ShapeExtend_BasicMsgRegistrator.hxx`:44 - `ShapeExtend_BasicMsgRegistrator::ShapeExtend_BasicMsgRegistrator()`
+    /// Empty constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_BasicMsgRegistrator_ctor()) }
+    }
+
+    /// **Source:** `ShapeExtend_BasicMsgRegistrator.hxx`:53 - `ShapeExtend_BasicMsgRegistrator::Send()`
+    /// Sends a message to be attached to the shape.
+    pub fn send_shape_msg_gravity(
+        &mut self,
+        shape: &crate::ffi::TopoDS_Shape,
+        message: &crate::ffi::Message_Msg,
+        gravity: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::ShapeExtend_BasicMsgRegistrator_send_shape_msg_gravity(
+                self as *mut Self,
+                shape,
+                message,
+                gravity.into(),
+            )
+        }
+    }
+
+    /// **Source:** `ShapeExtend_BasicMsgRegistrator.hxx`:58 - `ShapeExtend_BasicMsgRegistrator::Send()`
+    /// Calls Send method with Null Transient.
+    pub fn send_msg_gravity(
+        &mut self,
+        message: &crate::ffi::Message_Msg,
+        gravity: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::ShapeExtend_BasicMsgRegistrator_send_msg_gravity(
+                self as *mut Self,
+                message,
+                gravity.into(),
+            )
+        }
+    }
+
+    /// **Source:** `ShapeExtend_BasicMsgRegistrator.hxx`:60 - `ShapeExtend_BasicMsgRegistrator::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeExtend_BasicMsgRegistrator_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `ShapeExtend_BasicMsgRegistrator.hxx`:60 - `ShapeExtend_BasicMsgRegistrator::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::ShapeExtend_BasicMsgRegistrator_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `ShapeExtend_BasicMsgRegistrator.hxx`:60 - `ShapeExtend_BasicMsgRegistrator::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeExtend_BasicMsgRegistrator_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_BasicMsgRegistrator_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeExtendBasicMsgRegistrator;
+
+unsafe impl crate::CppDeletable for HandleShapeExtendBasicMsgRegistrator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeExtendBasicMsgRegistrator_destructor(ptr);
+    }
+}
+
+impl HandleShapeExtendBasicMsgRegistrator {
+    /// Dereference this Handle to access the underlying ShapeExtend_BasicMsgRegistrator
+    pub fn get(&self) -> &crate::ffi::ShapeExtend_BasicMsgRegistrator {
+        unsafe { &*(crate::ffi::HandleShapeExtendBasicMsgRegistrator_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeExtend_BasicMsgRegistrator
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeExtend_BasicMsgRegistrator {
+        unsafe {
+            &mut *(crate::ffi::HandleShapeExtendBasicMsgRegistrator_get_mut(self as *mut Self))
+        }
+    }
+}
+
+// ========================
+// From ShapeExtend_ComplexCurve.hxx
+// ========================
+
+/// **Source:** `ShapeExtend_ComplexCurve.hxx`:35 - `ShapeExtend_ComplexCurve`
+/// Defines a curve which consists of several segments.
+/// Implements basic interface to it.
+pub use crate::ffi::ShapeExtend_ComplexCurve as ComplexCurve;
+
+unsafe impl crate::CppDeletable for ComplexCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeExtend_ComplexCurve_destructor(ptr);
+    }
+}
+
+impl ComplexCurve {
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:40 - `ShapeExtend_ComplexCurve::NbCurves()`
+    /// Returns number of curves
+    pub fn nb_curves(&self) -> i32 {
+        unsafe { crate::ffi::ShapeExtend_ComplexCurve_nb_curves(self as *const Self) }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:43 - `ShapeExtend_ComplexCurve::Curve()`
+    /// Returns curve given by its index
+    pub fn curve(&self, index: i32) -> &crate::ffi::HandleGeomCurve {
+        unsafe { &*(crate::ffi::ShapeExtend_ComplexCurve_curve(self as *const Self, index)) }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:47 - `ShapeExtend_ComplexCurve::LocateParameter()`
+    /// Returns number of the curve for the given parameter U
+    /// and local parameter UOut for the found curve
+    pub fn locate_parameter(&self, U: f64, UOut: &mut f64) -> i32 {
+        unsafe {
+            crate::ffi::ShapeExtend_ComplexCurve_locate_parameter(self as *const Self, U, UOut)
+        }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:52 - `ShapeExtend_ComplexCurve::LocalToGlobal()`
+    /// Returns global parameter for the whole curve according
+    /// to the segment and local parameter on it
+    pub fn local_to_global(&self, index: i32, Ulocal: f64) -> f64 {
+        unsafe {
+            crate::ffi::ShapeExtend_ComplexCurve_local_to_global(self as *const Self, index, Ulocal)
+        }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:56 - `ShapeExtend_ComplexCurve::Transform()`
+    /// Applies transformation to each curve
+    pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
+        unsafe { crate::ffi::ShapeExtend_ComplexCurve_transform(self as *mut Self, T) }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:59 - `ShapeExtend_ComplexCurve::ReversedParameter()`
+    /// Returns 1 - U
+    pub fn reversed_parameter(&self, U: f64) -> f64 {
+        unsafe { crate::ffi::ShapeExtend_ComplexCurve_reversed_parameter(self as *const Self, U) }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:62 - `ShapeExtend_ComplexCurve::FirstParameter()`
+    /// Returns 0
+    pub fn first_parameter(&self) -> f64 {
+        unsafe { crate::ffi::ShapeExtend_ComplexCurve_first_parameter(self as *const Self) }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:65 - `ShapeExtend_ComplexCurve::LastParameter()`
+    /// Returns 1
+    pub fn last_parameter(&self) -> f64 {
+        unsafe { crate::ffi::ShapeExtend_ComplexCurve_last_parameter(self as *const Self) }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:68 - `ShapeExtend_ComplexCurve::IsClosed()`
+    /// Returns True if the curve is closed
+    pub fn is_closed(&self) -> bool {
+        unsafe { crate::ffi::ShapeExtend_ComplexCurve_is_closed(self as *const Self) }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:71 - `ShapeExtend_ComplexCurve::IsPeriodic()`
+    /// Returns False
+    pub fn is_periodic(&self) -> bool {
+        unsafe { crate::ffi::ShapeExtend_ComplexCurve_is_periodic(self as *const Self) }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:74 - `ShapeExtend_ComplexCurve::Continuity()`
+    /// Returns GeomAbs_C0
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::ShapeExtend_ComplexCurve_continuity(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:77 - `ShapeExtend_ComplexCurve::IsCN()`
+    /// Returns False if N > 0
+    pub fn is_cn(&self, N: i32) -> bool {
+        unsafe { crate::ffi::ShapeExtend_ComplexCurve_is_cn(self as *const Self, N) }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:81 - `ShapeExtend_ComplexCurve::D0()`
+    /// Returns point at parameter U.
+    /// Finds appropriate curve and local parameter on it.
+    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt) {
+        unsafe { crate::ffi::ShapeExtend_ComplexCurve_d0(self as *const Self, U, P) }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:83 - `ShapeExtend_ComplexCurve::D1()`
+    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V1: &mut crate::ffi::gp_Vec) {
+        unsafe { crate::ffi::ShapeExtend_ComplexCurve_d1(self as *const Self, U, P, V1) }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:87 - `ShapeExtend_ComplexCurve::D2()`
+    pub fn d2(
+        &self,
+        U: f64,
+        P: &mut crate::ffi::gp_Pnt,
+        V1: &mut crate::ffi::gp_Vec,
+        V2: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe { crate::ffi::ShapeExtend_ComplexCurve_d2(self as *const Self, U, P, V1, V2) }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:92 - `ShapeExtend_ComplexCurve::D3()`
+    pub fn d3(
+        &self,
+        U: f64,
+        P: &mut crate::ffi::gp_Pnt,
+        V1: &mut crate::ffi::gp_Vec,
+        V2: &mut crate::ffi::gp_Vec,
+        V3: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe { crate::ffi::ShapeExtend_ComplexCurve_d3(self as *const Self, U, P, V1, V2, V3) }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:98 - `ShapeExtend_ComplexCurve::DN()`
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_ComplexCurve_dn(
+                self as *const Self,
+                U,
+                N,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:102 - `ShapeExtend_ComplexCurve::GetScaleFactor()`
+    /// Returns scale factor for recomputing of deviatives.
+    pub fn get_scale_factor(&self, ind: i32) -> f64 {
+        unsafe { crate::ffi::ShapeExtend_ComplexCurve_get_scale_factor(self as *const Self, ind) }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:106 - `ShapeExtend_ComplexCurve::CheckConnectivity()`
+    /// Checks geometrical connectivity of the curves, including
+    /// closure (sets fields myClosed)
+    pub fn check_connectivity(&mut self, Preci: f64) -> bool {
+        unsafe { crate::ffi::ShapeExtend_ComplexCurve_check_connectivity(self as *mut Self, Preci) }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:108 - `ShapeExtend_ComplexCurve::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeExtend_ComplexCurve_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:108 - `ShapeExtend_ComplexCurve::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::ShapeExtend_ComplexCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `ShapeExtend_ComplexCurve.hxx`:108 - `ShapeExtend_ComplexCurve::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeExtend_ComplexCurve_get_type_descriptor()) }
+    }
+
+    /// Upcast to Geom_Curve
+    pub fn as_geom_curve(&self) -> &crate::geom::Curve {
+        unsafe { &*(crate::ffi::ShapeExtend_ComplexCurve_as_Geom_Curve(self as *const Self)) }
+    }
+
+    /// Upcast to Geom_Curve (mutable)
+    pub fn as_geom_curve_mut(&mut self) -> &mut crate::geom::Curve {
+        unsafe { &mut *(crate::ffi::ShapeExtend_ComplexCurve_as_Geom_Curve_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geom_geometry(&self) -> &crate::geom::Geometry {
+        unsafe { &*(crate::ffi::ShapeExtend_ComplexCurve_as_Geom_Geometry(self as *const Self)) }
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geom_geometry_mut(&mut self) -> &mut crate::geom::Geometry {
+        unsafe {
+            &mut *(crate::ffi::ShapeExtend_ComplexCurve_as_Geom_Geometry_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Curve.hxx`:69 - `Geom_Curve::Reverse()`
+    pub fn reverse(&mut self) {
+        unsafe { crate::ffi::ShapeExtend_ComplexCurve_inherited_Reverse(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Curve.hxx`:93 - `Geom_Curve::TransformedParameter()`
+    pub fn transformed_parameter(&self, U: f64, T: &crate::ffi::gp_Trsf) -> f64 {
+        unsafe {
+            crate::ffi::ShapeExtend_ComplexCurve_inherited_TransformedParameter(
+                self as *const Self,
+                U,
+                T,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Curve.hxx`:109 - `Geom_Curve::ParametricTransformation()`
+    pub fn parametric_transformation(&self, T: &crate::ffi::gp_Trsf) -> f64 {
+        unsafe {
+            crate::ffi::ShapeExtend_ComplexCurve_inherited_ParametricTransformation(
+                self as *const Self,
+                T,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Curve.hxx`:112 - `Geom_Curve::Reversed()`
+    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_ComplexCurve_inherited_Reversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Curve.hxx`:155 - `Geom_Curve::Period()`
+    pub fn period(&self) -> f64 {
+        unsafe { crate::ffi::ShapeExtend_ComplexCurve_inherited_Period(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Curve.hxx`:221 - `Geom_Curve::Value()`
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_ComplexCurve_inherited_Value(
+                self as *const Self,
+                U,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
+    pub fn mirror(&mut self, P: &crate::ffi::gp_Pnt) {
+        unsafe { crate::ffi::ShapeExtend_ComplexCurve_inherited_Mirror(self as *mut Self, P) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:72 - `Geom_Geometry::Rotate()`
+    pub fn rotate(&mut self, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        unsafe { crate::ffi::ShapeExtend_ComplexCurve_inherited_Rotate(self as *mut Self, A1, Ang) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:75 - `Geom_Geometry::Scale()`
+    pub fn scale(&mut self, P: &crate::ffi::gp_Pnt, S: f64) {
+        unsafe { crate::ffi::ShapeExtend_ComplexCurve_inherited_Scale(self as *mut Self, P, S) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
+    pub fn translate(&mut self, V: &crate::ffi::gp_Vec) {
+        unsafe { crate::ffi::ShapeExtend_ComplexCurve_inherited_Translate(self as *mut Self, V) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:90 - `Geom_Geometry::Mirrored()`
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_ComplexCurve_inherited_Mirrored(
+                self as *const Self,
+                P,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:96 - `Geom_Geometry::Rotated()`
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_ComplexCurve_inherited_Rotated(
+                self as *const Self,
+                A1,
+                Ang,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:99 - `Geom_Geometry::Scaled()`
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_ComplexCurve_inherited_Scaled(
+                self as *const Self,
+                P,
+                S,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:102 - `Geom_Geometry::Transformed()`
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_ComplexCurve_inherited_Transformed(
+                self as *const Self,
+                T,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_ComplexCurve_inherited_Translated(
+                self as *const Self,
+                V,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:110 - `Geom_Geometry::Copy()`
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_ComplexCurve_inherited_Copy(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeExtendComplexCurve;
+
+unsafe impl crate::CppDeletable for HandleShapeExtendComplexCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeExtendComplexCurve_destructor(ptr);
+    }
+}
+
+impl HandleShapeExtendComplexCurve {
+    /// Dereference this Handle to access the underlying ShapeExtend_ComplexCurve
+    pub fn get(&self) -> &crate::ffi::ShapeExtend_ComplexCurve {
+        unsafe { &*(crate::ffi::HandleShapeExtendComplexCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeExtend_ComplexCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeExtend_ComplexCurve {
+        unsafe { &mut *(crate::ffi::HandleShapeExtendComplexCurve_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeExtend_ComplexCurve> to Handle<Geom_Curve>
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeExtendComplexCurve_to_HandleGeomCurve(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<ShapeExtend_ComplexCurve> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeExtendComplexCurve_to_HandleGeomGeometry(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From ShapeExtend_CompositeSurface.hxx
+// ========================
+
+/// **Source:** `ShapeExtend_CompositeSurface.hxx`:72 - `ShapeExtend_CompositeSurface`
+/// Composite surface is represented by a grid of surfaces
+/// (patches) connected geometrically. Patches may have different
+/// parametrisation ranges, but they should be parametrised in
+/// the same manner so that parameter of each patch (u,v) can be converted
+/// to global parameter on the whole surface (U,V) with help of linear
+/// transformation:
+///
+/// for any i,j-th patch
+/// U = Ui + ( u - uijmin ) * ( Ui+1 - Ui ) / ( uijmax - uijmin )
+/// V = Vj + ( v - vijmin ) * ( Vj+1 - Vj ) / ( vijmax - vijmin )
+///
+/// where
+///
+/// [uijmin, uijmax] * [ vijmin, vijmax] - parametric range of i,j-th patch,
+///
+/// Ui (i=1,..,Nu+1), Vi (j=1,..,Nv+1) - values defining global
+/// parametrisation by U and V (correspond to points between patches and
+/// bounds, (Ui,Uj) corresponds to (uijmin,vijmin) on i,j-th patch) and to
+/// (u(i-1)(j-1)max,v(i-1)(j-1)max) on (i-1),(j-1)-th patch.
+///
+/// Geometrical connectivity is expressed via global parameters:
+/// S[i,j](Ui+1,V) = S[i+1,j](Ui+1,V) for any i, j, V
+/// S[i,j](U,Vj+1) = S[i,j+1](U,Vj+1) for any i, j, U
+/// It is checked with Precision::Confusion() by default.
+///
+/// NOTE 1: This class is inherited from Geom_Surface in order to
+/// make it more easy to store and deal with it. However, it should
+/// not be passed to standard methods dealing with geometry since
+/// this type is not known to them.
+/// NOTE 2: Not all the inherited methods are implemented, and some are
+/// implemented not in the full form.
+pub use crate::ffi::ShapeExtend_CompositeSurface as CompositeSurface;
+
+unsafe impl crate::CppDeletable for CompositeSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeExtend_CompositeSurface_destructor(ptr);
+    }
+}
+
+impl CompositeSurface {
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:77 - `ShapeExtend_CompositeSurface::ShapeExtend_CompositeSurface()`
+    /// Empty constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_ctor()) }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:120 - `ShapeExtend_CompositeSurface::NbUPatches()`
+    /// Returns number of patches in U direction.
+    pub fn nb_u_patches(&self) -> i32 {
+        unsafe { crate::ffi::ShapeExtend_CompositeSurface_nb_u_patches(self as *const Self) }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:123 - `ShapeExtend_CompositeSurface::NbVPatches()`
+    /// Returns number of patches in V direction.
+    pub fn nb_v_patches(&self) -> i32 {
+        unsafe { crate::ffi::ShapeExtend_CompositeSurface_nb_v_patches(self as *const Self) }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:126 - `ShapeExtend_CompositeSurface::Patch()`
+    /// Returns one surface patch
+    pub fn patch_int2(&self, i: i32, j: i32) -> &crate::ffi::HandleGeomSurface {
+        unsafe {
+            &*(crate::ffi::ShapeExtend_CompositeSurface_patch_int2(self as *const Self, i, j))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:135 - `ShapeExtend_CompositeSurface::UJointValues()`
+    /// Returns the array of U values corresponding to joint
+    /// points between patches as well as to start and end points,
+    /// which define global parametrisation of the surface
+    pub fn u_joint_values(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_u_joint_values(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:140 - `ShapeExtend_CompositeSurface::VJointValues()`
+    /// Returns the array of V values corresponding to joint
+    /// points between patches as well as to start and end points,
+    /// which define global parametrisation of the surface
+    pub fn v_joint_values(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_v_joint_values(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:145 - `ShapeExtend_CompositeSurface::UJointValue()`
+    /// Returns i-th joint value in U direction
+    /// (1-st is global Umin, (NbUPatches()+1)-th is global Umax
+    /// on the composite surface)
+    pub fn u_joint_value(&self, i: i32) -> f64 {
+        unsafe { crate::ffi::ShapeExtend_CompositeSurface_u_joint_value(self as *const Self, i) }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:150 - `ShapeExtend_CompositeSurface::VJointValue()`
+    /// Returns j-th joint value in V direction
+    /// (1-st is global Vmin, (NbVPatches()+1)-th is global Vmax
+    /// on the composite surface)
+    pub fn v_joint_value(&self, j: i32) -> f64 {
+        unsafe { crate::ffi::ShapeExtend_CompositeSurface_v_joint_value(self as *const Self, j) }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:168 - `ShapeExtend_CompositeSurface::SetUFirstValue()`
+    /// Changes starting value for global U parametrisation (all
+    /// other joint values are shifted accordingly)
+    pub fn set_u_first_value(&mut self, UFirst: f64) {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_set_u_first_value(self as *mut Self, UFirst)
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:172 - `ShapeExtend_CompositeSurface::SetVFirstValue()`
+    /// Changes starting value for global V parametrisation (all
+    /// other joint values are shifted accordingly)
+    pub fn set_v_first_value(&mut self, VFirst: f64) {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_set_v_first_value(self as *mut Self, VFirst)
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:175 - `ShapeExtend_CompositeSurface::LocateUParameter()`
+    /// Returns number of col that contains given (global) parameter
+    pub fn locate_u_parameter(&self, U: f64) -> i32 {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_locate_u_parameter(self as *const Self, U)
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:178 - `ShapeExtend_CompositeSurface::LocateVParameter()`
+    /// Returns number of row that contains given (global) parameter
+    pub fn locate_v_parameter(&self, V: f64) -> i32 {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_locate_v_parameter(self as *const Self, V)
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:182 - `ShapeExtend_CompositeSurface::LocateUVPoint()`
+    /// Returns number of row and col of surface that contains
+    /// given point
+    pub fn locate_uv_point(&self, pnt: &crate::ffi::gp_Pnt2d, i: &mut i32, j: &mut i32) {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_locate_uv_point(self as *const Self, pnt, i, j)
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:187 - `ShapeExtend_CompositeSurface::Patch()`
+    /// Returns one surface patch that contains given (global) parameters
+    pub fn patch_real2(&self, U: f64, V: f64) -> &crate::ffi::HandleGeomSurface {
+        unsafe {
+            &*(crate::ffi::ShapeExtend_CompositeSurface_patch_real2(self as *const Self, U, V))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:191 - `ShapeExtend_CompositeSurface::Patch()`
+    /// Returns one surface patch that contains given point
+    pub fn patch_pnt2d(&self, pnt: &crate::ffi::gp_Pnt2d) -> &crate::ffi::HandleGeomSurface {
+        unsafe {
+            &*(crate::ffi::ShapeExtend_CompositeSurface_patch_pnt2d(self as *const Self, pnt))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:194 - `ShapeExtend_CompositeSurface::ULocalToGlobal()`
+    /// Converts local parameter u on patch i,j to global parameter U
+    pub fn u_local_to_global(&self, i: i32, j: i32, u: f64) -> f64 {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_u_local_to_global(self as *const Self, i, j, u)
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:199 - `ShapeExtend_CompositeSurface::VLocalToGlobal()`
+    /// Converts local parameter v on patch i,j to global parameter V
+    pub fn v_local_to_global(&self, i: i32, j: i32, v: f64) -> f64 {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_v_local_to_global(self as *const Self, i, j, v)
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:204 - `ShapeExtend_CompositeSurface::LocalToGlobal()`
+    /// Converts local parameters uv on patch i,j to global parameters UV
+    pub fn local_to_global(
+        &self,
+        i: i32,
+        j: i32,
+        uv: &crate::ffi::gp_Pnt2d,
+    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_local_to_global(
+                self as *const Self,
+                i,
+                j,
+                uv,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:209 - `ShapeExtend_CompositeSurface::UGlobalToLocal()`
+    /// Converts global parameter U to local parameter u on patch i,j
+    pub fn u_global_to_local(&self, i: i32, j: i32, U: f64) -> f64 {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_u_global_to_local(self as *const Self, i, j, U)
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:214 - `ShapeExtend_CompositeSurface::VGlobalToLocal()`
+    /// Converts global parameter V to local parameter v on patch i,j
+    pub fn v_global_to_local(&self, i: i32, j: i32, V: f64) -> f64 {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_v_global_to_local(self as *const Self, i, j, V)
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:219 - `ShapeExtend_CompositeSurface::GlobalToLocal()`
+    /// Converts global parameters UV to local parameters uv on patch i,j
+    pub fn global_to_local(
+        &self,
+        i: i32,
+        j: i32,
+        UV: &crate::ffi::gp_Pnt2d,
+    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_global_to_local(
+                self as *const Self,
+                i,
+                j,
+                UV,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:229 - `ShapeExtend_CompositeSurface::GlobalToLocalTransformation()`
+    /// Computes transformation operator and uFactor descrinbing affine
+    /// transformation required to convert global parameters on composite
+    /// surface to local parameters on patch (i,j):
+    /// uv = ( uFactor, 1. ) X Trsf * UV;
+    /// NOTE: Thus Trsf contains shift and scale by V, scale by U is stored in uFact.
+    /// Returns True if transformation is not an identity
+    pub fn global_to_local_transformation(
+        &self,
+        i: i32,
+        j: i32,
+        uFact: &mut f64,
+        Trsf: &mut crate::ffi::gp_Trsf2d,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_global_to_local_transformation(
+                self as *const Self,
+                i,
+                j,
+                uFact,
+                Trsf,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:235 - `ShapeExtend_CompositeSurface::Transform()`
+    /// Applies transformation to all the patches
+    pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
+        unsafe { crate::ffi::ShapeExtend_CompositeSurface_transform(self as *mut Self, T) }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:238 - `ShapeExtend_CompositeSurface::Copy()`
+    /// Returns a copy of the surface
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_copy(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:241 - `ShapeExtend_CompositeSurface::UReverse()`
+    /// NOT IMPLEMENTED (does nothing)
+    pub fn u_reverse(&mut self) {
+        unsafe { crate::ffi::ShapeExtend_CompositeSurface_u_reverse(self as *mut Self) }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:244 - `ShapeExtend_CompositeSurface::UReversedParameter()`
+    /// Returns U
+    pub fn u_reversed_parameter(&self, U: f64) -> f64 {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_u_reversed_parameter(self as *const Self, U)
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:248 - `ShapeExtend_CompositeSurface::VReverse()`
+    /// NOT IMPLEMENTED (does nothing)
+    pub fn v_reverse(&mut self) {
+        unsafe { crate::ffi::ShapeExtend_CompositeSurface_v_reverse(self as *mut Self) }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:251 - `ShapeExtend_CompositeSurface::VReversedParameter()`
+    /// Returns V
+    pub fn v_reversed_parameter(&self, V: f64) -> f64 {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_v_reversed_parameter(self as *const Self, V)
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:255 - `ShapeExtend_CompositeSurface::Bounds()`
+    /// Returns the parametric bounds of grid
+    pub fn bounds(&self, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64) {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_bounds(self as *const Self, U1, U2, V1, V2)
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:262 - `ShapeExtend_CompositeSurface::IsUClosed()`
+    /// Returns True if grid is closed in U direction
+    /// (i.e. connected with Precision::Confusion)
+    pub fn is_u_closed(&self) -> bool {
+        unsafe { crate::ffi::ShapeExtend_CompositeSurface_is_u_closed(self as *const Self) }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:266 - `ShapeExtend_CompositeSurface::IsVClosed()`
+    /// Returns True if grid is closed in V direction
+    /// (i.e. connected with Precision::Confusion)
+    pub fn is_v_closed(&self) -> bool {
+        unsafe { crate::ffi::ShapeExtend_CompositeSurface_is_v_closed(self as *const Self) }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:269 - `ShapeExtend_CompositeSurface::IsUPeriodic()`
+    /// Returns False
+    pub fn is_u_periodic(&self) -> bool {
+        unsafe { crate::ffi::ShapeExtend_CompositeSurface_is_u_periodic(self as *const Self) }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:272 - `ShapeExtend_CompositeSurface::IsVPeriodic()`
+    /// Returns False
+    pub fn is_v_periodic(&self) -> bool {
+        unsafe { crate::ffi::ShapeExtend_CompositeSurface_is_v_periodic(self as *const Self) }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:275 - `ShapeExtend_CompositeSurface::UIso()`
+    /// NOT IMPLEMENTED (returns Null curve)
+    pub fn u_iso(&self, U: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_u_iso(
+                self as *const Self,
+                U,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:278 - `ShapeExtend_CompositeSurface::VIso()`
+    /// NOT IMPLEMENTED (returns Null curve)
+    pub fn v_iso(&self, V: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_v_iso(
+                self as *const Self,
+                V,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:281 - `ShapeExtend_CompositeSurface::Continuity()`
+    /// returns C0
+    pub fn continuity(&self) -> crate::geom_abs::Shape {
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::ShapeExtend_CompositeSurface_continuity(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:284 - `ShapeExtend_CompositeSurface::IsCNu()`
+    /// returns True if N <=0
+    pub fn is_c_nu(&self, N: i32) -> bool {
+        unsafe { crate::ffi::ShapeExtend_CompositeSurface_is_c_nu(self as *const Self, N) }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:287 - `ShapeExtend_CompositeSurface::IsCNv()`
+    /// returns True if N <=0
+    pub fn is_c_nv(&self, N: i32) -> bool {
+        unsafe { crate::ffi::ShapeExtend_CompositeSurface_is_c_nv(self as *const Self, N) }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:290 - `ShapeExtend_CompositeSurface::D0()`
+    /// Computes the point of parameter U,V on the grid.
+    pub fn d0(&self, U: f64, V: f64, P: &mut crate::ffi::gp_Pnt) {
+        unsafe { crate::ffi::ShapeExtend_CompositeSurface_d0(self as *const Self, U, V, P) }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:296 - `ShapeExtend_CompositeSurface::D1()`
+    /// Computes the point P and the first derivatives in the
+    /// directions U and V at this point.
+    pub fn d1(
+        &self,
+        U: f64,
+        V: f64,
+        P: &mut crate::ffi::gp_Pnt,
+        D1U: &mut crate::ffi::gp_Vec,
+        D1V: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_d1(self as *const Self, U, V, P, D1U, D1V)
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:304 - `ShapeExtend_CompositeSurface::D2()`
+    /// Computes the point P, the first and the second derivatives in
+    /// the directions U and V at this point.
+    pub fn d2(
+        &self,
+        U: f64,
+        V: f64,
+        P: &mut crate::ffi::gp_Pnt,
+        D1U: &mut crate::ffi::gp_Vec,
+        D1V: &mut crate::ffi::gp_Vec,
+        D2U: &mut crate::ffi::gp_Vec,
+        D2V: &mut crate::ffi::gp_Vec,
+        D2UV: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_d2(
+                self as *const Self,
+                U,
+                V,
+                P,
+                D1U,
+                D1V,
+                D2U,
+                D2V,
+                D2UV,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:315 - `ShapeExtend_CompositeSurface::D3()`
+    /// Computes the point P, the first,the second and the third
+    /// derivatives in the directions U and V at this point.
+    pub fn d3(
+        &self,
+        U: f64,
+        V: f64,
+        P: &mut crate::ffi::gp_Pnt,
+        D1U: &mut crate::ffi::gp_Vec,
+        D1V: &mut crate::ffi::gp_Vec,
+        D2U: &mut crate::ffi::gp_Vec,
+        D2V: &mut crate::ffi::gp_Vec,
+        D2UV: &mut crate::ffi::gp_Vec,
+        D3U: &mut crate::ffi::gp_Vec,
+        D3V: &mut crate::ffi::gp_Vec,
+        D3UUV: &mut crate::ffi::gp_Vec,
+        D3UVV: &mut crate::ffi::gp_Vec,
+    ) {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_d3(
+                self as *const Self,
+                U,
+                V,
+                P,
+                D1U,
+                D1V,
+                D2U,
+                D2V,
+                D2UV,
+                D3U,
+                D3V,
+                D3UUV,
+                D3UVV,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:330 - `ShapeExtend_CompositeSurface::DN()`
+    /// Computes the derivative of order Nu in the direction U and Nv
+    /// in the direction V at the point P(U, V).
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_dn(
+                self as *const Self,
+                U,
+                V,
+                Nu,
+                Nv,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:336 - `ShapeExtend_CompositeSurface::Value()`
+    /// Computes the point of parameter pnt on the grid.
+    pub fn value(&self, pnt: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_value(
+                self as *const Self,
+                pnt,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:339 - `ShapeExtend_CompositeSurface::ComputeJointValues()`
+    /// Computes Joint values according to parameter
+    pub fn compute_joint_values(&mut self, param: crate::shape_extend::Parametrisation) {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_compute_joint_values(
+                self as *mut Self,
+                param.into(),
+            )
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:344 - `ShapeExtend_CompositeSurface::CheckConnectivity()`
+    /// Checks geometrical connectivity of the patches, including
+    /// closedness (sets fields muUClosed and myVClosed)
+    pub fn check_connectivity(&mut self, prec: f64) -> bool {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_check_connectivity(self as *mut Self, prec)
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:346 - `ShapeExtend_CompositeSurface::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeExtend_CompositeSurface_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:346 - `ShapeExtend_CompositeSurface::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::ShapeExtend_CompositeSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:346 - `ShapeExtend_CompositeSurface::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeExtend_CompositeSurface_get_type_descriptor()) }
+    }
+
+    /// Upcast to Geom_Geometry
+    pub fn as_geom_geometry(&self) -> &crate::geom::Geometry {
+        unsafe {
+            &*(crate::ffi::ShapeExtend_CompositeSurface_as_Geom_Geometry(self as *const Self))
+        }
+    }
+
+    /// Upcast to Geom_Geometry (mutable)
+    pub fn as_geom_geometry_mut(&mut self) -> &mut crate::geom::Geometry {
+        unsafe {
+            &mut *(crate::ffi::ShapeExtend_CompositeSurface_as_Geom_Geometry_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Geom_Surface
+    pub fn as_geom_surface(&self) -> &crate::geom::Surface {
+        unsafe { &*(crate::ffi::ShapeExtend_CompositeSurface_as_Geom_Surface(self as *const Self)) }
+    }
+
+    /// Upcast to Geom_Surface (mutable)
+    pub fn as_geom_surface_mut(&mut self) -> &mut crate::geom::Surface {
+        unsafe {
+            &mut *(crate::ffi::ShapeExtend_CompositeSurface_as_Geom_Surface_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendCompositeSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
+    pub fn mirror(&mut self, P: &crate::ffi::gp_Pnt) {
+        unsafe { crate::ffi::ShapeExtend_CompositeSurface_inherited_Mirror(self as *mut Self, P) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:72 - `Geom_Geometry::Rotate()`
+    pub fn rotate(&mut self, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_inherited_Rotate(self as *mut Self, A1, Ang)
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:75 - `Geom_Geometry::Scale()`
+    pub fn scale(&mut self, P: &crate::ffi::gp_Pnt, S: f64) {
+        unsafe { crate::ffi::ShapeExtend_CompositeSurface_inherited_Scale(self as *mut Self, P, S) }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
+    pub fn translate(&mut self, V: &crate::ffi::gp_Vec) {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_inherited_Translate(self as *mut Self, V)
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:90 - `Geom_Geometry::Mirrored()`
+    pub fn mirrored(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_inherited_Mirrored(
+                self as *const Self,
+                P,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:96 - `Geom_Geometry::Rotated()`
+    pub fn rotated(
+        &self,
+        A1: &crate::ffi::gp_Ax1,
+        Ang: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_inherited_Rotated(
+                self as *const Self,
+                A1,
+                Ang,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:99 - `Geom_Geometry::Scaled()`
+    pub fn scaled(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        S: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_inherited_Scaled(
+                self as *const Self,
+                P,
+                S,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:102 - `Geom_Geometry::Transformed()`
+    pub fn transformed(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeExtend_CompositeSurface_inherited_Transformed(
+                    self as *const Self,
+                    T,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
+    pub fn translated(
+        &self,
+        V: &crate::ffi::gp_Vec,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeExtend_CompositeSurface_inherited_Translated(
+                    self as *const Self,
+                    V,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
+    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_inherited_UReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
+    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_inherited_VReversed(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:113 - `Geom_Surface::TransformParameters()`
+    pub fn transform_parameters(&self, U: &mut f64, V: &mut f64, T: &crate::ffi::gp_Trsf) {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_inherited_TransformParameters(
+                self as *const Self,
+                U,
+                V,
+                T,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:135 - `Geom_Surface::ParametricTransformation()`
+    pub fn parametric_transformation(
+        &self,
+        T: &crate::ffi::gp_Trsf,
+    ) -> crate::OwnedPtr<crate::ffi::gp_GTrsf2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeExtend_CompositeSurface_inherited_ParametricTransformation(
+                    self as *const Self,
+                    T,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
+    pub fn u_period(&self) -> f64 {
+        unsafe { crate::ffi::ShapeExtend_CompositeSurface_inherited_UPeriod(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
+    pub fn v_period(&self) -> f64 {
+        unsafe { crate::ffi::ShapeExtend_CompositeSurface_inherited_VPeriod(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleShapeExtendCompositeSurface;
+
+unsafe impl crate::CppDeletable for HandleShapeExtendCompositeSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeExtendCompositeSurface_destructor(ptr);
+    }
+}
+
+impl HandleShapeExtendCompositeSurface {
+    /// Dereference this Handle to access the underlying ShapeExtend_CompositeSurface
+    pub fn get(&self) -> &crate::ffi::ShapeExtend_CompositeSurface {
+        unsafe { &*(crate::ffi::HandleShapeExtendCompositeSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeExtend_CompositeSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeExtend_CompositeSurface {
+        unsafe { &mut *(crate::ffi::HandleShapeExtendCompositeSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeExtend_CompositeSurface> to Handle<Geom_Geometry>
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeExtendCompositeSurface_to_HandleGeomGeometry(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeExtend_CompositeSurface> to Handle<Geom_Surface>
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeExtendCompositeSurface_to_HandleGeomSurface(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
+// From ShapeExtend_Explorer.hxx
+// ========================
+
+/// **Source:** `ShapeExtend_Explorer.hxx`:35 - `ShapeExtend_Explorer`
+/// This class is intended to
+/// explore shapes and convert different representations
+/// (list, sequence, compound) of complex shapes. It provides tools for:
+/// - obtaining type of the shapes in context of TopoDS_Compound,
+/// - exploring shapes in context of  TopoDS_Compound,
+/// - converting different representations of shapes (list, sequence, compound).
+pub use crate::ffi::ShapeExtend_Explorer as Explorer;
+
+unsafe impl crate::CppDeletable for Explorer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeExtend_Explorer_destructor(ptr);
+    }
+}
+
+impl Explorer {
+    /// **Source:** `ShapeExtend_Explorer.hxx`:41 - `ShapeExtend_Explorer::ShapeExtend_Explorer()`
+    /// Creates an object Explorer
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_Explorer_ctor()) }
+    }
+
+    /// **Source:** `ShapeExtend_Explorer.hxx`:73 - `ShapeExtend_Explorer::ShapeType()`
+    /// Returns the type of a Shape: true type if <compound> is False
+    /// If <compound> is True and <shape> is a Compound, iterates on
+    /// its items. If all are of the same type, returns this type.
+    /// Else, returns COMPOUND. If it is empty, returns SHAPE
+    /// For a Null Shape, returns SHAPE
+    pub fn shape_type(
+        &self,
+        shape: &crate::ffi::TopoDS_Shape,
+        compound: bool,
+    ) -> crate::top_abs::ShapeEnum {
+        unsafe {
+            crate::top_abs::ShapeEnum::try_from(crate::ffi::ShapeExtend_Explorer_shape_type(
+                self as *const Self,
+                shape,
+                compound,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `ShapeExtend_Explorer.hxx`:87 - `ShapeExtend_Explorer::SortedCompound()`
+    /// Builds a COMPOUND from the given shape.
+    /// It explores the shape level by level, according to the
+    /// <explore> argument. If <explore> is False, only COMPOUND
+    /// items are explored, else all items are.
+    /// The following shapes are added to resulting compound:
+    /// - shapes which comply to <type>
+    /// - if <type> is WIRE, considers also free edges (and makes wires)
+    /// - if <type> is SHELL, considers also free faces (and makes shells)
+    /// If <compound> is True, gathers items in compounds which
+    /// correspond to starting COMPOUND,SOLID or SHELL containers, or
+    /// items directly contained in a Compound
+    pub fn sorted_compound(
+        &self,
+        shape: &crate::ffi::TopoDS_Shape,
+        type_: crate::top_abs::ShapeEnum,
+        explore: bool,
+        compound: bool,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_Explorer_sorted_compound(
+                self as *const Self,
+                shape,
+                type_.into(),
+                explore,
+                compound,
+            ))
+        }
+    }
+}
+
+// ========================
+// From ShapeExtend_WireData.hxx
+// ========================
+
+/// **Source:** `ShapeExtend_WireData.hxx`:59 - `ShapeExtend_WireData`
+/// This class provides a data structure necessary for work with the wire as with
+/// ordered list of edges, what is required for many algorithms. The advantage of
+/// this class is that it allows to work with wires which are not correct.
+/// The object of the class ShapeExtend_WireData can be initialized by
+/// TopoDS_Wire, and converted back to TopoDS_Wire.
+/// An edge in the wire is defined by its rank number. Operations of accessing,
+/// adding and removing edge at the given rank number are provided. On the whole
+/// wire, operations of circular permutation and reversing (both orientations of
+/// all edges and order of edges) are provided as well.
+/// This class also provides a method to check if the edge in the wire is a seam
+/// (if the wire lies on a face).
+/// This class is handled by reference. Such an approach gives the following advantages:
+/// 1.    Sharing the object of this class strongly optimizes the processes of
+/// analysis and fixing performed in parallel on the wire stored in the form
+/// of this class. Fixing tool (e.g. ShapeFix_Wire) fixes problems one by
+/// one using analyzing tool (e.g. ShapeAnalysis_Wire). Sharing allows not
+/// to reinitialize each time the analyzing tool with modified
+/// ShapeExtend_WireData what consumes certain time.
+/// 2.    No copying of contents. The object of ShapeExtend_WireData class has
+/// quite big size, returning it as a result of the function would cause
+/// additional copying of contents if this class were one handled by value.
+/// Moreover, this class is stored as a field in other classes which are
+/// they returned as results of functions, storing only a handle to
+/// ShapeExtend_WireData saves time and memory.
+pub use crate::ffi::ShapeExtend_WireData as WireData;
+
+unsafe impl crate::CppDeletable for WireData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeExtend_WireData_destructor(ptr);
+    }
+}
+
+impl WireData {
+    /// **Source:** `ShapeExtend_WireData.hxx`:64 - `ShapeExtend_WireData::ShapeExtend_WireData()`
+    /// Empty constructor, creates empty wire with no edges
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_WireData_ctor()) }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:67 - `ShapeExtend_WireData::ShapeExtend_WireData()`
+    /// Constructor initializing the data from TopoDS_Wire. Calls Init(wire,chained).
+    pub fn new_wire_bool2(
+        wire: &crate::ffi::TopoDS_Wire,
+        chained: bool,
+        theManifoldMode: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_WireData_ctor_wire_bool2(
+                wire,
+                chained,
+                theManifoldMode,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:67 - `ShapeExtend_WireData::ShapeExtend_WireData()`
+    /// Constructor initializing the data from TopoDS_Wire. Calls Init(wire,chained).
+    pub fn new_wire_bool(wire: &crate::ffi::TopoDS_Wire, chained: bool) -> crate::OwnedPtr<Self> {
+        Self::new_wire_bool2(wire, chained, true)
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:67 - `ShapeExtend_WireData::ShapeExtend_WireData()`
+    /// Constructor initializing the data from TopoDS_Wire. Calls Init(wire,chained).
+    pub fn new_wire(wire: &crate::ffi::TopoDS_Wire) -> crate::OwnedPtr<Self> {
+        Self::new_wire_bool2(wire, true, true)
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:72 - `ShapeExtend_WireData::Init()`
+    /// Copies data from another WireData
+    pub fn init_handleshapeextendwiredata(
+        &mut self,
+        other: &crate::ffi::HandleShapeExtendWireData,
+    ) {
+        unsafe {
+            crate::ffi::ShapeExtend_WireData_init_handleshapeextendwiredata(
+                self as *mut Self,
+                other,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:84 - `ShapeExtend_WireData::Init()`
+    /// Loads an already existing wire
+    /// If <chained> is True (default), edges are added in the
+    /// sequence as they are explored by TopoDS_Iterator
+    /// Else, if <chained> is False, wire is explored by
+    /// BRepTools_WireExplorer and it is guaranteed that edges will
+    /// be sequentially connected.
+    /// Remark : In the latter case it can happen that not all edges
+    /// will be found (because of limitations of
+    /// BRepTools_WireExplorer for disconnected wires and wires
+    /// with seam edges).
+    pub fn init_wire_bool2(
+        &mut self,
+        wire: &crate::ffi::TopoDS_Wire,
+        chained: bool,
+        theManifoldMode: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeExtend_WireData_init_wire_bool2(
+                self as *mut Self,
+                wire,
+                chained,
+                theManifoldMode,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:89 - `ShapeExtend_WireData::Clear()`
+    /// Clears data about Wire.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::ShapeExtend_WireData_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:99 - `ShapeExtend_WireData::ComputeSeams()`
+    /// Computes the list of seam edges
+    /// By default (direct call), computing is enforced
+    /// For indirect call (from IsSeam) it is redone only if not yet
+    /// already done or if the list of edges has changed
+    /// Remark : A Seam Edge is an Edge present twice in the list, once as
+    /// FORWARD and once as REVERSED
+    /// Each sense has its own PCurve, the one for FORWARD
+    /// must be set in first
+    pub fn compute_seams(&mut self, enforce: bool) {
+        unsafe { crate::ffi::ShapeExtend_WireData_compute_seams(self as *mut Self, enforce) }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:102 - `ShapeExtend_WireData::SetLast()`
+    /// Does a circular permutation in order to set <num>th edge last
+    pub fn set_last(&mut self, num: i32) {
+        unsafe { crate::ffi::ShapeExtend_WireData_set_last(self as *mut Self, num) }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:110 - `ShapeExtend_WireData::SetDegeneratedLast()`
+    /// When the wire contains at least one degenerated edge, sets it
+    /// as last one
+    /// Note   : It is useful to process pcurves, for instance, while the pcurve
+    /// of a DGNR may not be computed from its 3D part (there is none)
+    /// it is computed after the other edges have been computed and
+    /// chained.
+    pub fn set_degenerated_last(&mut self) {
+        unsafe { crate::ffi::ShapeExtend_WireData_set_degenerated_last(self as *mut Self) }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:118 - `ShapeExtend_WireData::Add()`
+    /// Adds an edge to a wire, being defined (not yet ended)
+    /// This is the plain, basic, function to add an edge
+    /// <num> = 0 (D): Appends at end
+    /// <num> = 1: Preprends at start
+    /// else, Insert before <num>
+    /// Remark : Null Edge is simply ignored
+    pub fn add_edge_int(&mut self, edge: &crate::ffi::TopoDS_Edge, atnum: i32) {
+        unsafe { crate::ffi::ShapeExtend_WireData_add_edge_int(self as *mut Self, edge, atnum) }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:123 - `ShapeExtend_WireData::Add()`
+    /// Adds an entire wire, considered as a list of edges
+    /// Remark : The wire is assumed to be ordered (TopoDS_Iterator
+    /// is used)
+    pub fn add_wire_int(&mut self, wire: &crate::ffi::TopoDS_Wire, atnum: i32) {
+        unsafe { crate::ffi::ShapeExtend_WireData_add_wire_int(self as *mut Self, wire, atnum) }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:126 - `ShapeExtend_WireData::Add()`
+    /// Adds a wire in the form of WireData
+    pub fn add_handleshapeextendwiredata_int(
+        &mut self,
+        wire: &crate::ffi::HandleShapeExtendWireData,
+        atnum: i32,
+    ) {
+        unsafe {
+            crate::ffi::ShapeExtend_WireData_add_handleshapeextendwiredata_int(
+                self as *mut Self,
+                wire,
+                atnum,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:130 - `ShapeExtend_WireData::Add()`
+    /// Adds an edge or a wire invoking corresponding method Add
+    pub fn add_shape_int(&mut self, shape: &crate::ffi::TopoDS_Shape, atnum: i32) {
+        unsafe { crate::ffi::ShapeExtend_WireData_add_shape_int(self as *mut Self, shape, atnum) }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:138 - `ShapeExtend_WireData::AddOriented()`
+    /// Adds an edge to start or end of <me>, according to <mode>
+    /// 0: at end, as direct
+    /// 1: at end, as reversed
+    /// 2: at start, as direct
+    /// 3: at start, as reversed
+    /// < 0: no adding
+    pub fn add_oriented_edge_int(&mut self, edge: &crate::ffi::TopoDS_Edge, mode: i32) {
+        unsafe {
+            crate::ffi::ShapeExtend_WireData_add_oriented_edge_int(self as *mut Self, edge, mode)
+        }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:146 - `ShapeExtend_WireData::AddOriented()`
+    /// Adds a wire to start or end of <me>, according to <mode>
+    /// 0: at end, as direct
+    /// 1: at end, as reversed
+    /// 2: at start, as direct
+    /// 3: at start, as reversed
+    /// < 0: no adding
+    pub fn add_oriented_wire_int(&mut self, wire: &crate::ffi::TopoDS_Wire, mode: i32) {
+        unsafe {
+            crate::ffi::ShapeExtend_WireData_add_oriented_wire_int(self as *mut Self, wire, mode)
+        }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:150 - `ShapeExtend_WireData::AddOriented()`
+    /// Adds an edge or a wire invoking corresponding method
+    /// AddOriented
+    pub fn add_oriented_shape_int(&mut self, shape: &crate::ffi::TopoDS_Shape, mode: i32) {
+        unsafe {
+            crate::ffi::ShapeExtend_WireData_add_oriented_shape_int(self as *mut Self, shape, mode)
+        }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:153 - `ShapeExtend_WireData::Remove()`
+    /// Removes an Edge, given its rank. By default removes the last edge.
+    pub fn remove(&mut self, num: i32) {
+        unsafe { crate::ffi::ShapeExtend_WireData_remove(self as *mut Self, num) }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:157 - `ShapeExtend_WireData::Set()`
+    /// Replaces an edge at the given
+    /// rank number <num> with new one. Default is last edge (<num> = 0).
+    pub fn set(&mut self, edge: &crate::ffi::TopoDS_Edge, num: i32) {
+        unsafe { crate::ffi::ShapeExtend_WireData_set(self as *mut Self, edge, num) }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:162 - `ShapeExtend_WireData::Reverse()`
+    /// Reverses the sense of the list and the orientation of each Edge
+    /// This method should be called when either wire has no seam edges
+    /// or face is not available
+    pub fn reverse(&mut self) {
+        unsafe { crate::ffi::ShapeExtend_WireData_reverse(self as *mut Self) }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:169 - `ShapeExtend_WireData::Reverse()`
+    /// Reverses the sense of the list and the orientation of each Edge
+    /// The face is necessary for swapping pcurves for seam edges
+    /// (first pcurve corresponds to orientation FORWARD, and second to
+    /// REVERSED; when edge is reversed, pcurves must be swapped)
+    /// If face is NULL, no swapping is performed
+    pub fn reverse_face(&mut self, face: &crate::ffi::TopoDS_Face) {
+        unsafe { crate::ffi::ShapeExtend_WireData_reverse_face(self as *mut Self, face) }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:172 - `ShapeExtend_WireData::NbEdges()`
+    /// Returns the count of currently recorded edges
+    pub fn nb_edges(&self) -> i32 {
+        unsafe { crate::ffi::ShapeExtend_WireData_nb_edges(self as *const Self) }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:175 - `ShapeExtend_WireData::NbNonManifoldEdges()`
+    /// Returns the count of currently recorded non-manifold edges
+    pub fn nb_non_manifold_edges(&self) -> i32 {
+        unsafe { crate::ffi::ShapeExtend_WireData_nb_non_manifold_edges(self as *const Self) }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:178 - `ShapeExtend_WireData::NonmanifoldEdge()`
+    /// Returns <num>th nonmanifold Edge
+    pub fn nonmanifold_edge(&self, num: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_WireData_nonmanifold_edge(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:190 - `ShapeExtend_WireData::ManifoldMode()`
+    /// Returns mode defining manifold wire data or not.
+    /// If manifold that nonmanifold edges will not be not
+    /// consider during operations(previous behaviour)
+    /// and they will be added only in result wire
+    /// else non-manifold edges will consider during operations
+    pub fn manifold_mode(&mut self) -> &mut bool {
+        unsafe { &mut *(crate::ffi::ShapeExtend_WireData_manifold_mode(self as *mut Self)) }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:193 - `ShapeExtend_WireData::Edge()`
+    /// Returns <num>th Edge
+    pub fn edge(&self, num: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_WireData_edge(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:198 - `ShapeExtend_WireData::Index()`
+    /// Returns the index of the edge
+    /// If the edge is a seam the orientation is also checked
+    /// Returns 0 if the edge is not found in the list
+    pub fn index(&mut self, edge: &crate::ffi::TopoDS_Edge) -> i32 {
+        unsafe { crate::ffi::ShapeExtend_WireData_index(self as *mut Self, edge) }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:203 - `ShapeExtend_WireData::IsSeam()`
+    /// Tells if an Edge is seam (see ComputeSeams)
+    /// An edge is considered as seam if it presents twice in
+    /// the edge list, once as FORWARD and once as REVERSED.
+    pub fn is_seam(&mut self, num: i32) -> bool {
+        unsafe { crate::ffi::ShapeExtend_WireData_is_seam(self as *mut Self, num) }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:212 - `ShapeExtend_WireData::Wire()`
+    /// Makes TopoDS_Wire using
+    /// BRep_Builder (just creates the TopoDS_Wire object and adds
+    /// all edges into it). This method should be called when
+    /// the wire is correct (for example, after successful
+    /// fixes by ShapeFix_Wire) and adjacent edges share common
+    /// vertices. In case if adjacent edges do not share the same
+    /// vertices the resulting TopoDS_Wire will be invalid.
+    pub fn wire(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Wire> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_WireData_wire(self as *const Self))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:219 - `ShapeExtend_WireData::WireAPIMake()`
+    /// Makes TopoDS_Wire using
+    /// BRepAPI_MakeWire. Class BRepAPI_MakeWire merges
+    /// geometrically coincided vertices and can disturb
+    /// correct order of edges in the wire. If this class fails,
+    /// null shape is returned.
+    pub fn wire_api_make(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Wire> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_WireData_wire_api_make(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:221 - `ShapeExtend_WireData::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeExtend_WireData_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:221 - `ShapeExtend_WireData::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::ShapeExtend_WireData_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:221 - `ShapeExtend_WireData::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeExtend_WireData_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendWireData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_WireData_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeExtendWireData;
+
+unsafe impl crate::CppDeletable for HandleShapeExtendWireData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeExtendWireData_destructor(ptr);
+    }
+}
+
+impl HandleShapeExtendWireData {
+    /// Dereference this Handle to access the underlying ShapeExtend_WireData
+    pub fn get(&self) -> &crate::ffi::ShapeExtend_WireData {
+        unsafe { &*(crate::ffi::HandleShapeExtendWireData_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeExtend_WireData
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeExtend_WireData {
+        unsafe { &mut *(crate::ffi::HandleShapeExtendWireData_get_mut(self as *mut Self)) }
+    }
+}
+
 // ========================
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
-    ShapeExtend_BasicMsgRegistrator as BasicMsgRegistrator,
-    ShapeExtend_CompositeSurface as CompositeSurface, ShapeExtend_MsgRegistrator as MsgRegistrator,
-    ShapeExtend_WireData as WireData,
-};
+pub use crate::ffi::ShapeExtend_MsgRegistrator as MsgRegistrator;

@@ -6,6 +6,58 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `ChFi3d.hxx`:39 - `ChFi3d::DefineConnectType`
+/// Defines the type of concavity in the edge of connection of two faces
+pub fn define_connect_type(
+    E: &crate::ffi::TopoDS_Edge,
+    F1: &crate::ffi::TopoDS_Face,
+    F2: &crate::ffi::TopoDS_Face,
+    SinTol: f64,
+    CorrectPoint: bool,
+) -> crate::ch_fi_ds::TypeOfConcavity {
+    unsafe {
+        crate::ch_fi_ds::TypeOfConcavity::try_from(crate::ffi::ChFi3d_define_connect_type(
+            E,
+            F1,
+            F2,
+            SinTol,
+            CorrectPoint,
+        ))
+        .unwrap()
+    }
+}
+/// **Source:** `ChFi3d.hxx`:47 - `ChFi3d::IsTangentFaces`
+/// Returns true if theEdge between theFace1 and theFace2 is tangent
+pub fn is_tangent_faces(
+    theEdge: &crate::ffi::TopoDS_Edge,
+    theFace1: &crate::ffi::TopoDS_Face,
+    theFace2: &crate::ffi::TopoDS_Face,
+    Order: crate::geom_abs::Shape,
+) -> bool {
+    unsafe { crate::ffi::ChFi3d_is_tangent_faces(theEdge, theFace1, theFace2, Order.into()) }
+}
+/// **Source:** `ChFi3d.hxx`:86 - `ChFi3d::SameSide`
+/// Enables  to  determine while  processing  an  angle, if
+/// two fillets or chamfers constituting a face have
+/// identic or opposed  concave  edges.
+pub fn same_side(
+    Or: crate::top_abs::Orientation,
+    OrSave1: crate::top_abs::Orientation,
+    OrSave2: crate::top_abs::Orientation,
+    OrFace1: crate::top_abs::Orientation,
+    OrFace2: crate::top_abs::Orientation,
+) -> bool {
+    unsafe {
+        crate::ffi::ChFi3d_same_side(
+            Or.into(),
+            OrSave1.into(),
+            OrSave2.into(),
+            OrFace1.into(),
+            OrFace2.into(),
+        )
+    }
+}
+
 /// Lists the types of fillet shapes. These include the following:
 /// -   ChFi3d_Rational (default value), which is the
 /// standard NURBS representation of circles,
@@ -126,6 +178,15 @@ impl Builder {
     /// the  fillets  are  calculated
     pub fn nb_elements(&self) -> i32 {
         unsafe { crate::ffi::ChFi3d_Builder_nb_elements(self as *const Self) }
+    }
+
+    /// **Source:** `ChFi3d_Builder.hxx`:100 - `ChFi3d_Builder::Value()`
+    /// gives the n'th set  of edges (contour)
+    /// if I >NbElements()
+    pub fn value(&self, I: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSpine> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_Builder_value(self as *const Self, I))
+        }
     }
 
     /// **Source:** `ChFi3d_Builder.hxx`:103 - `ChFi3d_Builder::Length()`
@@ -482,17 +543,6 @@ impl ChBuilder {
         unsafe { crate::ffi::ChFi3d_ChBuilder_nb_surf(self as *const Self, IC) }
     }
 
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:140 - `ChFi3d_ChBuilder::Sect()`
-    pub fn sect(&self, IC: i32, IS: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSecHArray1> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_sect(
-                self as *const Self,
-                IC,
-                IS,
-            ))
-        }
-    }
-
     /// Upcast to ChFi3d_Builder
     pub fn as_builder(&self) -> &Builder {
         unsafe { &*(crate::ffi::ChFi3d_ChBuilder_as_ChFi3d_Builder(self as *const Self)) }
@@ -554,6 +604,16 @@ impl ChBuilder {
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:96 - `ChFi3d_Builder::NbElements()`
     pub fn nb_elements(&self) -> i32 {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_NbElements(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:100 - `ChFi3d_Builder::Value()`
+    pub fn value(&self, I: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSpine> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_inherited_Value(
+                self as *const Self,
+                I,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:103 - `ChFi3d_Builder::Length()`
@@ -934,17 +994,6 @@ impl FilBuilder {
         unsafe { crate::ffi::ChFi3d_FilBuilder_nb_surf(self as *const Self, IC) }
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:134 - `ChFi3d_FilBuilder::Sect()`
-    pub fn sect(&self, IC: i32, IS: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSecHArray1> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_sect(
-                self as *const Self,
-                IC,
-                IS,
-            ))
-        }
-    }
-
     /// Upcast to ChFi3d_Builder
     pub fn as_builder(&self) -> &Builder {
         unsafe { &*(crate::ffi::ChFi3d_FilBuilder_as_ChFi3d_Builder(self as *const Self)) }
@@ -1006,6 +1055,16 @@ impl FilBuilder {
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:96 - `ChFi3d_Builder::NbElements()`
     pub fn nb_elements(&self) -> i32 {
         unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_NbElements(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:100 - `ChFi3d_Builder::Value()`
+    pub fn value(&self, I: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSpine> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_inherited_Value(
+                self as *const Self,
+                I,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:103 - `ChFi3d_Builder::Length()`
@@ -1166,5 +1225,92 @@ impl FilBuilder {
                 Index,
             )
         }
+    }
+}
+
+// ========================
+// From ChFi3d_SearchSing.hxx
+// ========================
+
+/// **Source:** `ChFi3d_SearchSing.hxx`:31 - `ChFi3d_SearchSing`
+/// Searches   singularities on fillet.
+/// F(t) = (C1(t) - C2(t)).(C1'(t) - C2'(t));
+pub use crate::ffi::ChFi3d_SearchSing as SearchSing;
+
+unsafe impl crate::CppDeletable for SearchSing {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ChFi3d_SearchSing_destructor(ptr);
+    }
+}
+
+impl SearchSing {
+    /// **Source:** `ChFi3d_SearchSing.hxx`:36 - `ChFi3d_SearchSing::ChFi3d_SearchSing()`
+    pub fn new_handlegeomcurve2(
+        C1: &crate::ffi::HandleGeomCurve,
+        C2: &crate::ffi::HandleGeomCurve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_SearchSing_ctor_handlegeomcurve2(C1, C2))
+        }
+    }
+
+    /// **Source:** `ChFi3d_SearchSing.hxx`:42 - `ChFi3d_SearchSing::Value()`
+    /// computes the value of the function <F> for the
+    /// variable <X>.
+    /// returns True if the computation was done successfully,
+    /// False otherwise.
+    pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
+        unsafe { crate::ffi::ChFi3d_SearchSing_value(self as *mut Self, X, F) }
+    }
+
+    /// **Source:** `ChFi3d_SearchSing.hxx`:48 - `ChFi3d_SearchSing::Derivative()`
+    /// computes the derivative <D> of the function
+    /// for the variable <X>.
+    /// Returns True if the calculation were successfully done,
+    /// False otherwise.
+    pub fn derivative(&mut self, X: f64, D: &mut f64) -> bool {
+        unsafe { crate::ffi::ChFi3d_SearchSing_derivative(self as *mut Self, X, D) }
+    }
+
+    /// **Source:** `ChFi3d_SearchSing.hxx`:54 - `ChFi3d_SearchSing::Values()`
+    /// computes the value <F> and the derivative <D> of the
+    /// function for the variable <X>.
+    /// Returns True if the calculation were successfully done,
+    /// False otherwise.
+    pub fn values(&mut self, X: f64, F: &mut f64, D: &mut f64) -> bool {
+        unsafe { crate::ffi::ChFi3d_SearchSing_values(self as *mut Self, X, F, D) }
+    }
+
+    /// Upcast to math_Function
+    pub fn as_math_function(&self) -> &crate::math::Function {
+        unsafe { &*(crate::ffi::ChFi3d_SearchSing_as_math_Function(self as *const Self)) }
+    }
+
+    /// Upcast to math_Function (mutable)
+    pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
+        unsafe { &mut *(crate::ffi::ChFi3d_SearchSing_as_math_Function_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to math_FunctionWithDerivative
+    pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
+        unsafe {
+            &*(crate::ffi::ChFi3d_SearchSing_as_math_FunctionWithDerivative(self as *const Self))
+        }
+    }
+
+    /// Upcast to math_FunctionWithDerivative (mutable)
+    pub fn as_math_function_with_derivative_mut(
+        &mut self,
+    ) -> &mut crate::math::FunctionWithDerivative {
+        unsafe {
+            &mut *(crate::ffi::ChFi3d_SearchSing_as_math_FunctionWithDerivative_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
+    pub fn get_state_number(&mut self) -> i32 {
+        unsafe { crate::ffi::ChFi3d_SearchSing_inherited_GetStateNumber(self as *mut Self) }
     }
 }
