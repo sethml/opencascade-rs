@@ -292,27 +292,3 @@ unsafe impl crate::CppDeletable for EvaluatorFunction {
         crate::ffi::BSplSLib_EvaluatorFunction_destructor(ptr);
     }
 }
-
-impl EvaluatorFunction {
-    /// **Source:** `BSplSLib_EvaluatorFunction.hxx`:41 - `BSplSLib_EvaluatorFunction::Evaluate()`
-    /// Function evaluation method to be defined by descendant
-    pub fn evaluate(
-        &self,
-        theDerivativeRequest: i32,
-        theUParameter: f64,
-        theVParameter: f64,
-        theResult: &mut f64,
-        theErrorCode: &mut i32,
-    ) {
-        unsafe {
-            crate::ffi::BSplSLib_EvaluatorFunction_evaluate(
-                self as *const Self,
-                theDerivativeRequest,
-                theUParameter,
-                theVParameter,
-                theResult,
-                theErrorCode,
-            )
-        }
-    }
-}

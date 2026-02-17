@@ -45,6 +45,244 @@ impl TryFrom<i32> for IType {
 }
 
 // ========================
+// From IntPatch_Intersection.hxx
+// ========================
+
+/// **Source:** `IntPatch_Intersection.hxx`:31 - `IntPatch_Intersection`
+/// This class provides a generic algorithm to intersect
+/// 2 surfaces.
+pub use crate::ffi::IntPatch_Intersection as Intersection;
+
+unsafe impl crate::CppDeletable for Intersection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IntPatch_Intersection_destructor(ptr);
+    }
+}
+
+impl Intersection {
+    /// **Source:** `IntPatch_Intersection.hxx`:36 - `IntPatch_Intersection::IntPatch_Intersection()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_Intersection_ctor()) }
+    }
+
+    /// **Source:** `IntPatch_Intersection.hxx`:38 - `IntPatch_Intersection::IntPatch_Intersection()`
+    pub fn new_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2(
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        D1: &crate::ffi::HandleAdaptor3dTopolTool,
+        S2: &crate::ffi::HandleAdaptor3dSurface,
+        D2: &crate::ffi::HandleAdaptor3dTopolTool,
+        TolArc: f64,
+        TolTang: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_Intersection_ctor_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2(S1, D1, S2, D2, TolArc, TolTang))
+        }
+    }
+
+    /// **Source:** `IntPatch_Intersection.hxx`:45 - `IntPatch_Intersection::IntPatch_Intersection()`
+    pub fn new_handleadaptor3dsurface_handleadaptor3dtopoltool_real2(
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        D1: &crate::ffi::HandleAdaptor3dTopolTool,
+        TolArc: f64,
+        TolTang: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_Intersection_ctor_handleadaptor3dsurface_handleadaptor3dtopoltool_real2(S1, D1, TolArc, TolTang))
+        }
+    }
+
+    /// **Source:** `IntPatch_Intersection.hxx`:68 - `IntPatch_Intersection::SetTolerances()`
+    /// Set the tolerances used by the algorithms:
+    /// --- Implicit   - Parametric
+    /// --- Parametric - Parametric
+    /// --- Implicit   - Implicit
+    ///
+    /// TolArc   is  used  to   compute  the intersections
+    /// between the restrictions   of  a  surface   and  a
+    /// walking line.
+    ///
+    /// TolTang is used to compute the points on a walking
+    /// line, and in geometric algorithms.
+    ///
+    /// Fleche  is  a  parameter   used in    the  walking
+    /// algorithms to provide small curvatures on a line.
+    ///
+    /// UVMaxStep is  a  parameter   used in  the  walking
+    /// algorithms  to    compute the  distance between to
+    /// points in their respective parametric spaces.
+    pub fn set_tolerances(&mut self, TolArc: f64, TolTang: f64, UVMaxStep: f64, Fleche: f64) {
+        unsafe {
+            crate::ffi::IntPatch_Intersection_set_tolerances(
+                self as *mut Self,
+                TolArc,
+                TolTang,
+                UVMaxStep,
+                Fleche,
+            )
+        }
+    }
+
+    /// **Source:** `IntPatch_Intersection.hxx`:84 - `IntPatch_Intersection::Perform()`
+    /// Flag theIsReqToKeepRLine has been entered only for
+    /// compatibility with TopOpeBRep package. It shall be deleted
+    /// after deleting TopOpeBRep.
+    /// When intersection result returns IntPatch_RLine and another
+    /// IntPatch_Line (not restriction) we (in case of theIsReqToKeepRLine==TRUE)
+    /// will always keep both lines even if they are coincided.
+    /// Flag theIsReqToPostWLProc has been entered only for
+    /// compatibility with TopOpeBRep package. It shall be deleted
+    /// after deleting TopOpeBRep.
+    /// If theIsReqToPostWLProc == FALSE, then we will work with Walking-line
+    /// obtained after intersection algorithm directly (without any post-processing).
+    pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2_bool3(
+        &mut self,
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        D1: &crate::ffi::HandleAdaptor3dTopolTool,
+        S2: &crate::ffi::HandleAdaptor3dSurface,
+        D2: &crate::ffi::HandleAdaptor3dTopolTool,
+        TolArc: f64,
+        TolTang: f64,
+        isGeomInt: bool,
+        theIsReqToKeepRLine: bool,
+        theIsReqToPostWLProc: bool,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_Intersection_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2_bool3(self as *mut Self, S1, D1, S2, D2, TolArc, TolTang, isGeomInt, theIsReqToKeepRLine, theIsReqToPostWLProc)
+        }
+    }
+
+    /// **Source:** `IntPatch_Intersection.hxx`:119 - `IntPatch_Intersection::Perform()`
+    /// Perform with start point
+    pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real6(
+        &mut self,
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        D1: &crate::ffi::HandleAdaptor3dTopolTool,
+        S2: &crate::ffi::HandleAdaptor3dSurface,
+        D2: &crate::ffi::HandleAdaptor3dTopolTool,
+        U1: f64,
+        V1: f64,
+        U2: f64,
+        V2: f64,
+        TolArc: f64,
+        TolTang: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_Intersection_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real6(self as *mut Self, S1, D1, S2, D2, U1, V1, U2, V2, TolArc, TolTang)
+        }
+    }
+
+    /// **Source:** `IntPatch_Intersection.hxx`:131 - `IntPatch_Intersection::Perform()`
+    /// Uses for finding self-intersected surfaces.
+    pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_real2(
+        &mut self,
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        D1: &crate::ffi::HandleAdaptor3dTopolTool,
+        TolArc: f64,
+        TolTang: f64,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_Intersection_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_real2(self as *mut Self, S1, D1, TolArc, TolTang)
+        }
+    }
+
+    /// **Source:** `IntPatch_Intersection.hxx`:137 - `IntPatch_Intersection::IsDone()`
+    /// Returns True if the calculus was successful.
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Intersection_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_Intersection.hxx`:140 - `IntPatch_Intersection::IsEmpty()`
+    /// Returns true if the is no intersection.
+    pub fn is_empty(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Intersection_is_empty(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_Intersection.hxx`:145 - `IntPatch_Intersection::TangentFaces()`
+    /// Returns True if the two patches are considered as
+    /// entirely tangent, i-e every restriction arc of one
+    /// patch is inside the geometric base of the other patch.
+    pub fn tangent_faces(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Intersection_tangent_faces(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_Intersection.hxx`:152 - `IntPatch_Intersection::OppositeFaces()`
+    /// Returns True when the TangentFaces returns True and the
+    /// normal vectors evaluated at a point on the first and the
+    /// second surface are opposite.
+    /// The exception DomainError is raised if TangentFaces
+    /// returns False.
+    pub fn opposite_faces(&self) -> bool {
+        unsafe { crate::ffi::IntPatch_Intersection_opposite_faces(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_Intersection.hxx`:155 - `IntPatch_Intersection::NbPnts()`
+    /// Returns the number of "single" points.
+    pub fn nb_pnts(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_Intersection_nb_pnts(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_Intersection.hxx`:159 - `IntPatch_Intersection::Point()`
+    /// Returns the point of range Index.
+    /// An exception is raised if Index<=0 or Index>NbPnt.
+    pub fn point(&self, Index: i32) -> &crate::ffi::IntPatch_Point {
+        unsafe { &*(crate::ffi::IntPatch_Intersection_point(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `IntPatch_Intersection.hxx`:162 - `IntPatch_Intersection::NbLines()`
+    /// Returns the number of intersection lines.
+    pub fn nb_lines(&self) -> i32 {
+        unsafe { crate::ffi::IntPatch_Intersection_nb_lines(self as *const Self) }
+    }
+
+    /// **Source:** `IntPatch_Intersection.hxx`:166 - `IntPatch_Intersection::Line()`
+    /// Returns the line of range Index.
+    /// An exception is raised if Index<=0 or Index>NbLine.
+    pub fn line(&self, Index: i32) -> &crate::ffi::HandleIntPatchLine {
+        unsafe { &*(crate::ffi::IntPatch_Intersection_line(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `IntPatch_Intersection.hxx`:172 - `IntPatch_Intersection::Dump()`
+    /// Dump of each result line.
+    /// Mode for more accurate dumps.
+    pub fn dump(
+        &self,
+        Mode: i32,
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        D1: &crate::ffi::HandleAdaptor3dTopolTool,
+        S2: &crate::ffi::HandleAdaptor3dSurface,
+        D2: &crate::ffi::HandleAdaptor3dTopolTool,
+    ) {
+        unsafe { crate::ffi::IntPatch_Intersection_dump(self as *const Self, Mode, S1, D1, S2, D2) }
+    }
+
+    /// **Source:** `IntPatch_Intersection.hxx`:181 - `IntPatch_Intersection::CheckSingularPoints()`
+    /// Checks if surface theS1 has degenerated boundary (dS/du or dS/dv = 0) and
+    /// calculates minimal distance between corresponding singular points and surface theS2
+    /// If singular point exists the method returns "true" and stores minimal distance in theDist.
+    pub fn check_singular_points(
+        theS1: &crate::ffi::HandleAdaptor3dSurface,
+        theD1: &crate::ffi::HandleAdaptor3dTopolTool,
+        theS2: &crate::ffi::HandleAdaptor3dSurface,
+        theDist: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IntPatch_Intersection_check_singular_points(theS1, theD1, theS2, theDist)
+        }
+    }
+
+    /// **Source:** `IntPatch_Intersection.hxx`:188 - `IntPatch_Intersection::DefineUVMaxStep()`
+    /// Calculates recommended value for myUVMaxStep depending on surfaces and their domains
+    pub fn define_uv_max_step(
+        theS1: &crate::ffi::HandleAdaptor3dSurface,
+        theD1: &crate::ffi::HandleAdaptor3dTopolTool,
+        theS2: &crate::ffi::HandleAdaptor3dSurface,
+        theD2: &crate::ffi::HandleAdaptor3dTopolTool,
+    ) -> f64 {
+        unsafe { crate::ffi::IntPatch_Intersection_define_uv_max_step(theS1, theD1, theS2, theD2) }
+    }
+}
+
+// ========================
 // From IntPatch_Line.hxx
 // ========================
 
@@ -902,22 +1140,6 @@ impl WLine {
     /// Returns the Point corresponding to the LastPoint.
     pub fn last_point(&self) -> &crate::ffi::IntPatch_Point {
         unsafe { &*(crate::ffi::IntPatch_WLine_last_point(self as *const Self)) }
-    }
-
-    /// **Source:** `IntPatch_WLine.hxx`:113 - `IntPatch_WLine::FirstPoint()`
-    /// Returns the Point corresponding to the FirstPoint.
-    /// Indfirst is the index of the first in the list
-    /// of vertices.
-    pub fn first_point_int(&self, Indfirst: &mut i32) -> &crate::ffi::IntPatch_Point {
-        unsafe { &*(crate::ffi::IntPatch_WLine_first_point_int(self as *const Self, Indfirst)) }
-    }
-
-    /// **Source:** `IntPatch_WLine.hxx`:118 - `IntPatch_WLine::LastPoint()`
-    /// Returns the Point corresponding to the LastPoint.
-    /// Indlast is the index of the last in the list
-    /// of vertices.
-    pub fn last_point_int(&self, Indlast: &mut i32) -> &crate::ffi::IntPatch_Point {
-        unsafe { &*(crate::ffi::IntPatch_WLine_last_point_int(self as *const Self, Indlast)) }
     }
 
     /// **Source:** `IntPatch_WLine.hxx`:121 - `IntPatch_WLine::NbVertex()`

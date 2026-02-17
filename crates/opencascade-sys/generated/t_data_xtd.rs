@@ -1073,6 +1073,83 @@ impl Geometry {
 }
 
 // ========================
+// From TDataXtd_HArray1OfTrsf.hxx
+// ========================
+
+/// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf`
+pub use crate::ffi::TDataXtd_HArray1OfTrsf as HArray1OfTrsf;
+
+unsafe impl crate::CppDeletable for HArray1OfTrsf {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TDataXtd_HArray1OfTrsf_destructor(ptr);
+    }
+}
+
+impl HArray1OfTrsf {
+    /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::TDataXtd_HArray1OfTrsf()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_HArray1OfTrsf_ctor()) }
+    }
+
+    /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::TDataXtd_HArray1OfTrsf()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_HArray1OfTrsf_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDataXtd_HArray1OfTrsf_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TDataXtd_HArray1OfTrsf_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDataXtd_HArray1OfTrsf_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdHArray1OfTrsf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_HArray1OfTrsf_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTDataXtdHArray1OfTrsf;
+
+unsafe impl crate::CppDeletable for HandleTDataXtdHArray1OfTrsf {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataXtdHArray1OfTrsf_destructor(ptr);
+    }
+}
+
+impl HandleTDataXtdHArray1OfTrsf {
+    /// Dereference this Handle to access the underlying TDataXtd_HArray1OfTrsf
+    pub fn get(&self) -> &crate::ffi::TDataXtd_HArray1OfTrsf {
+        unsafe { &*(crate::ffi::HandleTDataXtdHArray1OfTrsf_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataXtd_HArray1OfTrsf
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_HArray1OfTrsf {
+        unsafe { &mut *(crate::ffi::HandleTDataXtdHArray1OfTrsf_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From TDataXtd_Pattern.hxx
 // ========================
 

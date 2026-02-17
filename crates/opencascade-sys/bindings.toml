@@ -263,114 +263,6 @@ exclude_headers = [
     "BRepExtrema_TriangleSet.hxx",
 
 
-    # NCollection_HArray1/HArray2/HSequence template instantiations: clang fully
-    # canonicalizes the element-type constructor params to "int" (display name
-    # is already "int"), so no display-name heuristic can detect the misresolution.
-    "Approx_HArray1OfAdHSurface.hxx",
-    "Approx_HArray1OfGTrsf2d.hxx",
-    "Bnd_HArray1OfBox.hxx",
-    "Bnd_HArray1OfBox2d.hxx",
-    "Bnd_HArray1OfSphere.hxx",
-    "BRepAdaptor_HArray1OfCurve.hxx",
-    "Extrema_HArray1OfPOnCurv.hxx",
-    "Extrema_HArray1OfPOnCurv2d.hxx",
-    "Extrema_HArray1OfPOnSurf.hxx",
-    "Extrema_HArray2OfPOnCurv.hxx",
-    "Extrema_HArray2OfPOnCurv2d.hxx",
-    "Extrema_HArray2OfPOnSurf.hxx",
-    "Geom_HSequenceOfBSplineSurface.hxx",
-    "GeomFill_HArray1OfLocationLaw.hxx",
-    "GeomFill_HArray1OfSectionLaw.hxx",
-    "GeomFill_HSequenceOfAx2.hxx",
-    "GeomPlate_HArray1OfHCurve.hxx",
-    "GeomPlate_HArray1OfSequenceOfReal.hxx",
-    "GeomPlate_HSequenceOfCurveConstraint.hxx",
-    "GeomPlate_HSequenceOfPointConstraint.hxx",
-    "HLRAlgo_HArray1OfPHDat.hxx",
-    "HLRAlgo_HArray1OfPINod.hxx",
-    "HLRAlgo_HArray1OfPISeg.hxx",
-    "HLRAlgo_HArray1OfTData.hxx",
-    "IFSelect_HSeqOfSelection.hxx",
-    "Plate_HArray1OfPinpointConstraint.hxx",
-    "Poly_HArray1OfTriangle.hxx",
-    "ProjLib_HSequenceOfHSequenceOfPnt.hxx",
-    "Quantity_HArray1OfColor.hxx",
-    "ShapeAnalysis_HSequenceOfFreeBounds.hxx",
-    "TColGeom_HArray1OfBezierCurve.hxx",
-    "TColGeom_HArray1OfBSplineCurve.hxx",
-    "TColGeom_HArray1OfCurve.hxx",
-    "TColGeom_HArray1OfSurface.hxx",
-    "TColGeom_HArray2OfSurface.hxx",
-    "TColGeom_HSequenceOfBoundedCurve.hxx",
-    "TColGeom_HSequenceOfCurve.hxx",
-    "TColGeom2d_HArray1OfBezierCurve.hxx",
-    "TColGeom2d_HArray1OfBSplineCurve.hxx",
-    "TColGeom2d_HArray1OfCurve.hxx",
-    "TColGeom2d_HSequenceOfBoundedCurve.hxx",
-    "TColGeom2d_HSequenceOfCurve.hxx",
-    "TColgp_HArray1OfCirc2d.hxx",
-    "TColgp_HArray1OfDir.hxx",
-    "TColgp_HArray1OfDir2d.hxx",
-    "TColgp_HArray1OfLin2d.hxx",
-    "TColgp_HArray1OfPnt.hxx",
-    "TColgp_HArray1OfPnt2d.hxx",
-    "TColgp_HArray1OfVec.hxx",
-    "TColgp_HArray1OfVec2d.hxx",
-    "TColgp_HArray1OfXY.hxx",
-    "TColgp_HArray1OfXYZ.hxx",
-    "TColgp_HArray2OfCirc2d.hxx",
-    "TColgp_HArray2OfDir.hxx",
-    "TColgp_HArray2OfDir2d.hxx",
-    "TColgp_HArray2OfLin2d.hxx",
-    "TColgp_HArray2OfPnt.hxx",
-    "TColgp_HArray2OfPnt2d.hxx",
-    "TColgp_HArray2OfVec.hxx",
-    "TColgp_HArray2OfVec2d.hxx",
-    "TColgp_HArray2OfXY.hxx",
-    "TColgp_HArray2OfXYZ.hxx",
-    "TColgp_HSequenceOfDir.hxx",
-    "TColgp_HSequenceOfDir2d.hxx",
-    "TColgp_HSequenceOfPnt.hxx",
-    "TColgp_HSequenceOfPnt2d.hxx",
-    "TColgp_HSequenceOfVec.hxx",
-    "TColgp_HSequenceOfVec2d.hxx",
-    "TColgp_HSequenceOfXY.hxx",
-    "TColgp_HSequenceOfXYZ.hxx",
-    "TopTools_HArray1OfListOfShape.hxx",
-    "TopTools_HArray1OfShape.hxx",
-    "TopTools_HArray2OfShape.hxx",
-    "TopTools_HSequenceOfShape.hxx",
-    "AppParCurves_HArray1OfMultiPoint.hxx",
-    "ChFiDS_HData.hxx",
-    "ChFiDS_SecHArray1.hxx",
-    "IGESData_HArray1OfIGESEntity.hxx",
-    "Interface_HArray1OfHAsciiString.hxx",
-    "Interface_HSequenceOfCheck.hxx",
-    "StepDimTol_HArray1OfDatumReferenceModifier.hxx",
-    "StepDimTol_HArray1OfDatumSystemOrReference.hxx",
-    "StepRepr_HArray1OfRepresentationItem.hxx",
-    "StepVisual_HArray1OfPresentationStyleAssignment.hxx",
-    "StepVisual_HArray1OfPresentationStyleSelect.hxx",
-    "TDataStd_HLabelArray1.hxx",
-    "TDataXtd_HArray1OfTrsf.hxx",
-    "TDF_HAttributeArray1.hxx",
-    "TFunction_HArray1OfDataMapOfGUIDDriver.hxx",
-    "TObj_HSequenceOfObject.hxx",
-    "Transfer_HSequenceOfFinder.hxx",
-    "TDataStd_HDataMapOfStringByte.hxx",
-    "TDataStd_HDataMapOfStringHArray1OfInteger.hxx",
-    "TDataStd_HDataMapOfStringHArray1OfReal.hxx",
-    "TDataStd_HDataMapOfStringReal.hxx",
-    "TDataStd_HDataMapOfStringString.hxx",
-    "TObj_SequenceOfObject.hxx",
-
-    # Clang fully canonicalizes return/param types to "int" display name.
-    "Message_Report.hxx",
-    "math_Matrix.hxx",
-    "Units_QuantitiesSequence.hxx",
-    "Units_TokensSequence.hxx",
-    "Units_UnitsSequence.hxx",
-
 
     # Protected inherited member (BOPAlgo_PaveFiller::Clear is protected).
     "BOPAlgo_CheckerSI.hxx",
@@ -378,58 +270,12 @@ exclude_headers = [
     # Codegen bug: val_enum_ undeclared identifier.
     "ShapeProcess_ShapeContext.hxx",
 
-    # Clang fully canonicalizes NCollection types to "int" display name for
-    # return types and params. The ref/ptr guard can't detect misresolution when
-    # the display name is simply "int".
-    "IFSelect_SignatureList.hxx",
-    "XSAlgo_ShapeProcessor.hxx",
-    "XSControl_Controller.hxx",
-    "XSControl_Reader.hxx",
-    "XSControl_TransferReader.hxx",
-    "XSControl_WorkSession.hxx",
-    "IGESControl_ActorWrite.hxx",
-    "IGESControl_Controller.hxx",
-    "IGESControl_Reader.hxx",
-    "IGESControl_Writer.hxx",
-    "IGESCAFControl_Reader.hxx",
-    "IGESCAFControl_Writer.hxx",
-    # Also likely affected by inherited ParameterMap/NCollection issues:
-    "STEPControl_ActorRead.hxx",
-    "STEPControl_ActorWrite.hxx",
-    "STEPControl_Controller.hxx",
-    "STEPControl_Reader.hxx",
-    "STEPControl_Writer.hxx",
-    "STEPCAFControl_ActorWrite.hxx",
-    "STEPCAFControl_Controller.hxx",
-    "STEPCAFControl_Reader.hxx",
-    "STEPCAFControl_Writer.hxx",
-
-
-    # Inherited SetShapeFixParameters/ParameterMap NCollection type issues.
-    "IGESToBRep_Actor.hxx",
-    "IGESToBRep_Reader.hxx",
-
-    # NCollection_IndexedMap<TCollection_AsciiString> return type misresolved.
-    "RWGltf_CafReader.hxx",
-    "RWMesh_CafReader.hxx",
-    "RWObj_CafReader.hxx",
-    "RWObj_Reader.hxx",
-    "RWObj_TriangulationReader.hxx",
 
     # TDataStd_NamedData: redefinition of wrapper functions (overload clash).
     "TDataStd_NamedData.hxx",
 
     # TObj_Object: conflicting types for get_child_label.
     "TObj_Object.hxx",
-
-    # TObj_TIntSparseArray: NCollection_SparseArray::ConstIterator return.
-    "TObj_TIntSparseArray.hxx",
-
-    # XCAFDoc_DimTolTool: NCollection_IndexedDataMap ref param.
-    "XCAFDoc_DimTolTool.hxx",
-
-    # IntPatch_Intersection: NCollection_Vector<Handle(Adaptor3d_Surface)>& param.
-    "IntPatch_Intersection.hxx",
 
 
     # Protected operator delete (TDF_LabelNode).
@@ -457,6 +303,22 @@ exclude_headers = [
     # TObj_HiddenPartition: duplicate new_label method — static constructor and
     # inherited method collide in generated Rust code.
     "TObj_HiddenPartition.hxx",
+
+    # Message_Report: ActiveMetrics() return type NCollection_IndexedMap<Message_MetricType>
+    # is misresolved to Standard_Integer by clang in batch parsing mode.
+    "Message_Report.hxx",
+
+    # math_Matrix: methods reference math_Vector (typedef of math_VectorBase<>)
+    # which clang misresolves to int in batch parsing mode.
+    "math_Matrix.hxx",
+
+    # TObj_TIntSparseArray: GetIterator() returns NCollection_SparseArray::ConstIterator
+    # which clang misresolves to Standard_Integer in batch parsing mode.
+    "TObj_TIntSparseArray.hxx",
+
+    # XSAlgo_ShapeProcessor: constructor takes NCollection_DataMap param misresolved to int;
+    # ReadProcessingData returns std::pair<DataMap, bitset> misresolved to int.
+    "XSAlgo_ShapeProcessor.hxx",
 ]
 
 # Include specific individual headers (from modules not fully included above).
@@ -473,7 +335,7 @@ resolve_deps = true
 # included in the binding generation. Each category describes the root cause,
 # affected headers, and potential solutions.
 #
-# 1. NCollection Template Parameter Misresolution (PARTIALLY SOLVED)
+# 1. NCollection Template Parameter Misresolution (SOLVED)
 #    ─────────────────────────────────────────────────────────────────
 #    Root cause: When clang processes NCollection template specializations
 #    (e.g., NCollection_DataMap<TDF_Label, TDF_Label>) that it cannot fully
@@ -499,20 +361,8 @@ resolve_deps = true
 #    Additionally, is_constructor_bindable() in codegen/bindings.rs now checks
 #    type_uses_unknown_type() to filter constructors with unresolvable types.
 #
-#    ~40 headers successfully UNBLOCKED by this fix (BRepMesh_*, BOPDS_*,
-#    TDF_*, TNaming_*, TDocStd_*, TFunction_*, TObj_Application,
-#    TObj_TNameContainer, Transfer_*, CDF_Application, CDM_Application,
-#    XCAFApp_Application, XCAFDoc_AssemblyGraph, XCAFDoc_Editor,
-#    BOPAlgo_Tools, DE_ConfigurationContext, DE_Wrapper, GeomInt_IntSS,
-#    Resource_Manager, ShapeExtend_MsgRegistrator, HLRBRep_VertexList,
-#    MAT_Graph, StepToTopoDS_NMTool, BRepLib_FuseEdges).
+#    ~120 headers successfully UNBLOCKED by these combined fixes.
 #
-#    Still blocked (~80 headers): Cases where clang fully canonicalizes the
-#    display name itself to "int" (no display-name heuristic can help),
-#    HArray/HSequence/HDataMap constructors, inherited NCollection params
-#    from XSControl/IGES/STEP frameworks, ref params with NCollection_Vector
-#    or NCollection_IndexedDataMap, and headers with secondary issues
-#    (overload clashes, conflicting types, redefinitions).
 #
 # 2. Primitive Typedef vs Template Typedef Ambiguity
 #    ────────────────────────────────────────────────

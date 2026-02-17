@@ -1414,17 +1414,6 @@ impl Color {
         }
     }
 
-    /// **Source:** `Quantity_Color.hxx`:284 - `Quantity_Color::Color2argb()`
-    /// Convert the color value to ARGB integer value, with alpha equals to 0.
-    /// So the output is formatted as 0x00RRGGBB.
-    /// Note that this unpacking does NOT involve non-linear sRGB -> linear RGB conversion,
-    /// as would be usually expected for RGB color packed into 4 bytes.
-    /// @param[in] theColor  color to convert
-    /// @param[out] theARGB  result color encoded as integer
-    pub fn color2argb(theColor: &crate::ffi::Quantity_Color, theARGB: &mut i32) {
-        unsafe { crate::ffi::Quantity_Color_color2argb(theColor, theARGB) }
-    }
-
     /// **Source:** `Quantity_Color.hxx`:296 - `Quantity_Color::Argb2color()`
     /// Convert integer ARGB value to Color. Alpha bits are ignored.
     /// Note that this packing does NOT involve linear -> non-linear sRGB conversion,
@@ -1798,32 +1787,6 @@ impl Date {
         Self::new_int8(mm, dd, yyyy, hh, mn, ss, 0, 0)
     }
 
-    /// **Source:** `Quantity_Date.hxx`:79 - `Quantity_Date::Values()`
-    /// Gets a complete Date.
-    /// -   in mm - the month,
-    /// -   in dd - the day,
-    /// -   in yyyy - the year,
-    /// -   in hh - the hour,
-    /// -   in mn - the minute,
-    /// -   in ss - the second,
-    /// -   in mis - the millisecond, and
-    /// -   in mics - the microsecond
-    pub fn values(
-        &self,
-        mm: &mut i32,
-        dd: &mut i32,
-        yy: &mut i32,
-        hh: &mut i32,
-        mn: &mut i32,
-        ss: &mut i32,
-        mis: &mut i32,
-        mics: &mut i32,
-    ) {
-        unsafe {
-            crate::ffi::Quantity_Date_values(self as *const Self, mm, dd, yy, hh, mn, ss, mis, mics)
-        }
-    }
-
     /// **Source:** `Quantity_Date.hxx`:95 - `Quantity_Date::SetValues()`
     /// Assigns to this date the year yyyy, the month
     /// mm, the day dd, the hour hh, the minute mn, the
@@ -2077,6 +2040,83 @@ impl DateDefinitionError {
 }
 
 // ========================
+// From Quantity_HArray1OfColor.hxx
+// ========================
+
+/// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor`
+pub use crate::ffi::Quantity_HArray1OfColor as HArray1OfColor;
+
+unsafe impl crate::CppDeletable for HArray1OfColor {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Quantity_HArray1OfColor_destructor(ptr);
+    }
+}
+
+impl HArray1OfColor {
+    /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::Quantity_HArray1OfColor()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Quantity_HArray1OfColor_ctor()) }
+    }
+
+    /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::Quantity_HArray1OfColor()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_HArray1OfColor_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Quantity_HArray1OfColor_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Quantity_HArray1OfColor_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Quantity_HArray1OfColor_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleQuantityHArray1OfColor> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_HArray1OfColor_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleQuantityHArray1OfColor;
+
+unsafe impl crate::CppDeletable for HandleQuantityHArray1OfColor {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleQuantityHArray1OfColor_destructor(ptr);
+    }
+}
+
+impl HandleQuantityHArray1OfColor {
+    /// Dereference this Handle to access the underlying Quantity_HArray1OfColor
+    pub fn get(&self) -> &crate::ffi::Quantity_HArray1OfColor {
+        unsafe { &*(crate::ffi::HandleQuantityHArray1OfColor_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Quantity_HArray1OfColor
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Quantity_HArray1OfColor {
+        unsafe { &mut *(crate::ffi::HandleQuantityHArray1OfColor_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From Quantity_Period.hxx
 // ========================
 
@@ -2170,34 +2210,6 @@ impl Period {
     /// is less than 0.
     pub fn new_int(ss: i32) -> crate::OwnedPtr<Self> {
         Self::new_int2(ss, 0)
-    }
-
-    /// **Source:** `Quantity_Period.hxx`:66 - `Quantity_Period::Values()`
-    /// Decomposes this period into a number of days,hours,
-    /// minutes,seconds,milliseconds and microseconds
-    /// Example of return values:
-    /// 2 days, 15 hours, 0 minute , 0 second
-    /// 0 millisecond and 0 microsecond
-    pub fn values_int6(
-        &self,
-        dd: &mut i32,
-        hh: &mut i32,
-        mn: &mut i32,
-        ss: &mut i32,
-        mis: &mut i32,
-        mics: &mut i32,
-    ) {
-        unsafe {
-            crate::ffi::Quantity_Period_values_int6(self as *const Self, dd, hh, mn, ss, mis, mics)
-        }
-    }
-
-    /// **Source:** `Quantity_Period.hxx`:76 - `Quantity_Period::Values()`
-    /// Returns the number of seconds in Ss and the
-    /// number of remainding microseconds in Mics of this period.
-    /// Example of return values: 3600 seconds and 0 microseconds
-    pub fn values_int2(&self, ss: &mut i32, mics: &mut i32) {
-        unsafe { crate::ffi::Quantity_Period_values_int2(self as *const Self, ss, mics) }
     }
 
     /// **Source:** `Quantity_Period.hxx`:82 - `Quantity_Period::SetValues()`
@@ -2366,3 +2378,9 @@ impl PeriodDefinitionError {
         unsafe { &*(crate::ffi::Quantity_PeriodDefinitionError_get_type_descriptor()) }
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::Quantity_Array1OfColor as Array1OfColor;

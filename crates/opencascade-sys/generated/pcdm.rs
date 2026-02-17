@@ -339,12 +339,6 @@ impl ReaderFilter {
         unsafe { crate::ffi::PCDM_ReaderFilter_up(self as *mut Self) }
     }
 
-    /// **Source:** `PCDM_ReaderFilter.hxx`:122 - `PCDM_ReaderFilter::Down()`
-    /// Iteration to the child with defined tag.
-    pub fn down(&mut self, theTag: &i32) {
-        unsafe { crate::ffi::PCDM_ReaderFilter_down(self as *mut Self, theTag) }
-    }
-
     /// **Source:** `PCDM_ReaderFilter.hxx`:124 - `PCDM_ReaderFilter::IsPassed()`
     /// Returns true if content of the currently iterated label must be read.
     pub fn is_passed(&self) -> bool {

@@ -1377,12 +1377,6 @@ impl Interference {
         unsafe { crate::ffi::TopOpeBRepDS_Interference_transition_transition(self as *mut Self, T) }
     }
 
-    /// **Source:** `TopOpeBRepDS_Interference.hxx`:74 - `TopOpeBRepDS_Interference::GKGSKS()`
-    /// return GeometryType + Geometry + SupportType + Support
-    pub fn gkgsks(&self, GK: &mut i32, G: &mut i32, SK: &mut i32, S: &mut i32) {
-        unsafe { crate::ffi::TopOpeBRepDS_Interference_gkgsks(self as *const Self, GK, G, SK, S) }
-    }
-
     /// **Source:** `TopOpeBRepDS_Interference.hxx`:79 - `TopOpeBRepDS_Interference::SupportType()`
     pub fn support_type(&self) -> crate::top_ope_b_rep_ds::Kind {
         unsafe {
@@ -1611,11 +1605,6 @@ impl PointData {
     /// **Source:** `TopOpeBRepDS_PointData.hxx`:40 - `TopOpeBRepDS_PointData::SetShapes()`
     pub fn set_shapes(&mut self, I1: i32, I2: i32) {
         unsafe { crate::ffi::TopOpeBRepDS_PointData_set_shapes(self as *mut Self, I1, I2) }
-    }
-
-    /// **Source:** `TopOpeBRepDS_PointData.hxx`:42 - `TopOpeBRepDS_PointData::GetShapes()`
-    pub fn get_shapes(&self, I1: &mut i32, I2: &mut i32) {
-        unsafe { crate::ffi::TopOpeBRepDS_PointData_get_shapes(self as *const Self, I1, I2) }
     }
 
     /// Upcast to TopOpeBRepDS_GeometryData

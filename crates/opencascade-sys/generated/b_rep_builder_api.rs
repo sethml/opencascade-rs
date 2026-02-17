@@ -345,16 +345,6 @@ impl BndBoxTreeSelector {
         unsafe { crate::ffi::BRepBuilderAPI_BndBoxTreeSelector_reject(self as *const Self, theBox) }
     }
 
-    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:52 - `BRepBuilderAPI_BndBoxTreeSelector::Accept()`
-    /// Implementation of acceptance method
-    /// This method is called when the bounding box intersect with the current.
-    /// It stores the object - the index of box in the list of accepted objects.
-    /// @return
-    /// True, because the object is accepted
-    pub fn accept(&mut self, theObj: &i32) -> bool {
-        unsafe { crate::ffi::BRepBuilderAPI_BndBoxTreeSelector_accept(self as *mut Self, theObj) }
-    }
-
     /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:59 - `BRepBuilderAPI_BndBoxTreeSelector::ClearResList()`
     /// Clear the list of intersecting boxes
     pub fn clear_res_list(&mut self) {

@@ -41,6 +41,89 @@ impl TryFrom<i32> for Constraint {
 }
 
 // ========================
+// From AppParCurves_HArray1OfMultiPoint.hxx
+// ========================
+
+/// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint`
+pub use crate::ffi::AppParCurves_HArray1OfMultiPoint as HArray1OfMultiPoint;
+
+unsafe impl crate::CppDeletable for HArray1OfMultiPoint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::AppParCurves_HArray1OfMultiPoint_destructor(ptr);
+    }
+}
+
+impl HArray1OfMultiPoint {
+    /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::AppParCurves_HArray1OfMultiPoint()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_HArray1OfMultiPoint_ctor()) }
+    }
+
+    /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::AppParCurves_HArray1OfMultiPoint()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_HArray1OfMultiPoint_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::AppParCurves_HArray1OfMultiPoint_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::AppParCurves_HArray1OfMultiPoint_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::AppParCurves_HArray1OfMultiPoint_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleAppParCurvesHArray1OfMultiPoint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AppParCurves_HArray1OfMultiPoint_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleAppParCurvesHArray1OfMultiPoint;
+
+unsafe impl crate::CppDeletable for HandleAppParCurvesHArray1OfMultiPoint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleAppParCurvesHArray1OfMultiPoint_destructor(ptr);
+    }
+}
+
+impl HandleAppParCurvesHArray1OfMultiPoint {
+    /// Dereference this Handle to access the underlying AppParCurves_HArray1OfMultiPoint
+    pub fn get(&self) -> &crate::ffi::AppParCurves_HArray1OfMultiPoint {
+        unsafe { &*(crate::ffi::HandleAppParCurvesHArray1OfMultiPoint_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying AppParCurves_HArray1OfMultiPoint
+    pub fn get_mut(&mut self) -> &mut crate::ffi::AppParCurves_HArray1OfMultiPoint {
+        unsafe {
+            &mut *(crate::ffi::HandleAppParCurvesHArray1OfMultiPoint_get_mut(self as *mut Self))
+        }
+    }
+}
+
+// ========================
 // From AppParCurves_MultiBSpCurve.hxx
 // ========================
 

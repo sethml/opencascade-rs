@@ -2331,32 +2331,6 @@ impl File {
         unsafe { crate::ffi::OSD_File_read(self as *mut Self, Buffer, Nbyte) }
     }
 
-    /// **Source:** `OSD_File.hxx`:79 - `OSD_File::ReadLine()`
-    /// Reads bytes from the data pointed to by the object file
-    /// into the buffer <Buffer>.
-    /// Data is read until <NByte-1> bytes have been read,
-    /// until	a newline character is read and transferred into
-    /// <Buffer>, or until an EOF (End-of-File) condition is
-    /// encountered.
-    /// Upon successful completion, Read returns the number of
-    /// bytes actually read into <NByteRead> and placed into the
-    /// Buffer <Buffer>.
-    pub fn read_line_asciistring_int2(
-        &mut self,
-        Buffer: &mut crate::ffi::TCollection_AsciiString,
-        NByte: i32,
-        NbyteRead: &mut i32,
-    ) {
-        unsafe {
-            crate::ffi::OSD_File_read_line_asciistring_int2(
-                self as *mut Self,
-                Buffer,
-                NByte,
-                NbyteRead,
-            )
-        }
-    }
-
     /// **Source:** `OSD_File.hxx`:91 - `OSD_File::ReadLine()`
     /// Reads bytes from the data pointed to by the object file
     /// into the buffer <Buffer>.
@@ -2366,12 +2340,12 @@ impl File {
     /// encountered.
     /// Upon successful completion, Read returns the number of
     /// bytes actually read and placed into the Buffer <Buffer>.
-    pub fn read_line_asciistring_int(
+    pub fn read_line(
         &mut self,
         Buffer: &mut crate::ffi::TCollection_AsciiString,
         NByte: i32,
     ) -> i32 {
-        unsafe { crate::ffi::OSD_File_read_line_asciistring_int(self as *mut Self, Buffer, NByte) }
+        unsafe { crate::ffi::OSD_File_read_line(self as *mut Self, Buffer, NByte) }
     }
 
     /// **Source:** `OSD_File.hxx`:110 - `OSD_File::Write()`
@@ -5185,27 +5159,6 @@ impl Timer {
     /// stopped.
     pub fn show(&self) {
         unsafe { crate::ffi::OSD_Timer_show(self as *const Self) }
-    }
-
-    /// **Source:** `OSD_Timer.hxx`:80 - `OSD_Timer::Show()`
-    /// returns both the elapsed time(seconds,minutes,hours)
-    /// and CPU  time.
-    pub fn show_real_int2_real(
-        &self,
-        theSeconds: &mut f64,
-        theMinutes: &mut i32,
-        theHours: &mut i32,
-        theCPUtime: &mut f64,
-    ) {
-        unsafe {
-            crate::ffi::OSD_Timer_show_real_int2_real(
-                self as *const Self,
-                theSeconds,
-                theMinutes,
-                theHours,
-                theCPUtime,
-            )
-        }
     }
 
     /// **Source:** `OSD_Timer.hxx`:86 - `OSD_Timer::Stop()`

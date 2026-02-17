@@ -4349,6 +4349,269 @@ impl GenericExtString {
 }
 
 // ========================
+// From TDataStd_HDataMapOfStringByte.hxx
+// ========================
+
+/// **Source:** `TDataStd_HDataMapOfStringByte.hxx`:27 - `TDataStd_HDataMapOfStringByte`
+/// Extension of TDataStd_DataMapOfStringByte class
+/// to be manipulated by handle.
+pub use crate::ffi::TDataStd_HDataMapOfStringByte as HDataMapOfStringByte;
+
+unsafe impl crate::CppDeletable for HDataMapOfStringByte {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TDataStd_HDataMapOfStringByte_destructor(ptr);
+    }
+}
+
+impl HDataMapOfStringByte {
+    /// **Source:** `TDataStd_HDataMapOfStringByte.hxx`:31 - `TDataStd_HDataMapOfStringByte::TDataStd_HDataMapOfStringByte()`
+    pub fn new_int(NbBuckets: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_HDataMapOfStringByte_ctor_int(NbBuckets))
+        }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringByte.hxx`:31 - `TDataStd_HDataMapOfStringByte::TDataStd_HDataMapOfStringByte()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        Self::new_int(1)
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringByte.hxx`:29 - `TDataStd_HDataMapOfStringByte::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDataStd_HDataMapOfStringByte_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringByte.hxx`:29 - `TDataStd_HDataMapOfStringByte::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TDataStd_HDataMapOfStringByte_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringByte.hxx`:29 - `TDataStd_HDataMapOfStringByte::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDataStd_HDataMapOfStringByte_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdHDataMapOfStringByte> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_HDataMapOfStringByte_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTDataStdHDataMapOfStringByte;
+
+unsafe impl crate::CppDeletable for HandleTDataStdHDataMapOfStringByte {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdHDataMapOfStringByte_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdHDataMapOfStringByte {
+    /// Dereference this Handle to access the underlying TDataStd_HDataMapOfStringByte
+    pub fn get(&self) -> &crate::ffi::TDataStd_HDataMapOfStringByte {
+        unsafe { &*(crate::ffi::HandleTDataStdHDataMapOfStringByte_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_HDataMapOfStringByte
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_HDataMapOfStringByte {
+        unsafe { &mut *(crate::ffi::HandleTDataStdHDataMapOfStringByte_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TDataStd_HDataMapOfStringHArray1OfInteger.hxx
+// ========================
+
+/// **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:27 - `TDataStd_HDataMapOfStringHArray1OfInteger`
+/// Extension of TDataStd_DataMapOfStringHArray1OfInteger class
+/// to be manipulated by handle.
+pub use crate::ffi::TDataStd_HDataMapOfStringHArray1OfInteger as HDataMapOfStringHArray1OfInteger;
+
+unsafe impl crate::CppDeletable for HDataMapOfStringHArray1OfInteger {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TDataStd_HDataMapOfStringHArray1OfInteger_destructor(ptr);
+    }
+}
+
+impl HDataMapOfStringHArray1OfInteger {
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:31 - `TDataStd_HDataMapOfStringHArray1OfInteger::TDataStd_HDataMapOfStringHArray1OfInteger()`
+    pub fn new_int(NbBuckets: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_HDataMapOfStringHArray1OfInteger_ctor_int(NbBuckets),
+            )
+        }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:31 - `TDataStd_HDataMapOfStringHArray1OfInteger::TDataStd_HDataMapOfStringHArray1OfInteger()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        Self::new_int(1)
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:29 - `TDataStd_HDataMapOfStringHArray1OfInteger::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::TDataStd_HDataMapOfStringHArray1OfInteger_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:29 - `TDataStd_HDataMapOfStringHArray1OfInteger::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::TDataStd_HDataMapOfStringHArray1OfInteger_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:29 - `TDataStd_HDataMapOfStringHArray1OfInteger::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDataStd_HDataMapOfStringHArray1OfInteger_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdHDataMapOfStringHArray1OfInteger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_HDataMapOfStringHArray1OfInteger_to_handle(obj.into_raw()),
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleTDataStdHDataMapOfStringHArray1OfInteger;
+
+unsafe impl crate::CppDeletable for HandleTDataStdHDataMapOfStringHArray1OfInteger {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdHDataMapOfStringHArray1OfInteger_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdHDataMapOfStringHArray1OfInteger {
+    /// Dereference this Handle to access the underlying TDataStd_HDataMapOfStringHArray1OfInteger
+    pub fn get(&self) -> &crate::ffi::TDataStd_HDataMapOfStringHArray1OfInteger {
+        unsafe {
+            &*(crate::ffi::HandleTDataStdHDataMapOfStringHArray1OfInteger_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_HDataMapOfStringHArray1OfInteger
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_HDataMapOfStringHArray1OfInteger {
+        unsafe {
+            &mut *(crate::ffi::HandleTDataStdHDataMapOfStringHArray1OfInteger_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From TDataStd_HDataMapOfStringHArray1OfReal.hxx
+// ========================
+
+/// **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:27 - `TDataStd_HDataMapOfStringHArray1OfReal`
+/// Extension of TDataStd_DataMapOfStringHArray1OfReal class
+/// to be manipulated by handle.
+pub use crate::ffi::TDataStd_HDataMapOfStringHArray1OfReal as HDataMapOfStringHArray1OfReal;
+
+unsafe impl crate::CppDeletable for HDataMapOfStringHArray1OfReal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TDataStd_HDataMapOfStringHArray1OfReal_destructor(ptr);
+    }
+}
+
+impl HDataMapOfStringHArray1OfReal {
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:31 - `TDataStd_HDataMapOfStringHArray1OfReal::TDataStd_HDataMapOfStringHArray1OfReal()`
+    pub fn new_int(NbBuckets: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_HDataMapOfStringHArray1OfReal_ctor_int(
+                NbBuckets,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:31 - `TDataStd_HDataMapOfStringHArray1OfReal::TDataStd_HDataMapOfStringHArray1OfReal()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        Self::new_int(1)
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:29 - `TDataStd_HDataMapOfStringHArray1OfReal::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::TDataStd_HDataMapOfStringHArray1OfReal_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:29 - `TDataStd_HDataMapOfStringHArray1OfReal::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::TDataStd_HDataMapOfStringHArray1OfReal_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:29 - `TDataStd_HDataMapOfStringHArray1OfReal::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDataStd_HDataMapOfStringHArray1OfReal_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdHDataMapOfStringHArray1OfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_HDataMapOfStringHArray1OfReal_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTDataStdHDataMapOfStringHArray1OfReal;
+
+unsafe impl crate::CppDeletable for HandleTDataStdHDataMapOfStringHArray1OfReal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdHDataMapOfStringHArray1OfReal_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdHDataMapOfStringHArray1OfReal {
+    /// Dereference this Handle to access the underlying TDataStd_HDataMapOfStringHArray1OfReal
+    pub fn get(&self) -> &crate::ffi::TDataStd_HDataMapOfStringHArray1OfReal {
+        unsafe {
+            &*(crate::ffi::HandleTDataStdHDataMapOfStringHArray1OfReal_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_HDataMapOfStringHArray1OfReal
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_HDataMapOfStringHArray1OfReal {
+        unsafe {
+            &mut *(crate::ffi::HandleTDataStdHDataMapOfStringHArray1OfReal_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
+// ========================
 // From TDataStd_HDataMapOfStringInteger.hxx
 // ========================
 
@@ -4430,6 +4693,245 @@ impl HandleTDataStdHDataMapOfStringInteger {
         unsafe {
             &mut *(crate::ffi::HandleTDataStdHDataMapOfStringInteger_get_mut(self as *mut Self))
         }
+    }
+}
+
+// ========================
+// From TDataStd_HDataMapOfStringReal.hxx
+// ========================
+
+/// **Source:** `TDataStd_HDataMapOfStringReal.hxx`:27 - `TDataStd_HDataMapOfStringReal`
+/// Extension of TDataStd_DataMapOfStringReal class
+/// to be manipulated by handle.
+pub use crate::ffi::TDataStd_HDataMapOfStringReal as HDataMapOfStringReal;
+
+unsafe impl crate::CppDeletable for HDataMapOfStringReal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TDataStd_HDataMapOfStringReal_destructor(ptr);
+    }
+}
+
+impl HDataMapOfStringReal {
+    /// **Source:** `TDataStd_HDataMapOfStringReal.hxx`:31 - `TDataStd_HDataMapOfStringReal::TDataStd_HDataMapOfStringReal()`
+    pub fn new_int(NbBuckets: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_HDataMapOfStringReal_ctor_int(NbBuckets))
+        }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringReal.hxx`:31 - `TDataStd_HDataMapOfStringReal::TDataStd_HDataMapOfStringReal()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        Self::new_int(1)
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringReal.hxx`:29 - `TDataStd_HDataMapOfStringReal::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDataStd_HDataMapOfStringReal_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringReal.hxx`:29 - `TDataStd_HDataMapOfStringReal::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TDataStd_HDataMapOfStringReal_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringReal.hxx`:29 - `TDataStd_HDataMapOfStringReal::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDataStd_HDataMapOfStringReal_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdHDataMapOfStringReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_HDataMapOfStringReal_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTDataStdHDataMapOfStringReal;
+
+unsafe impl crate::CppDeletable for HandleTDataStdHDataMapOfStringReal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdHDataMapOfStringReal_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdHDataMapOfStringReal {
+    /// Dereference this Handle to access the underlying TDataStd_HDataMapOfStringReal
+    pub fn get(&self) -> &crate::ffi::TDataStd_HDataMapOfStringReal {
+        unsafe { &*(crate::ffi::HandleTDataStdHDataMapOfStringReal_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_HDataMapOfStringReal
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_HDataMapOfStringReal {
+        unsafe { &mut *(crate::ffi::HandleTDataStdHDataMapOfStringReal_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TDataStd_HDataMapOfStringString.hxx
+// ========================
+
+/// **Source:** `TDataStd_HDataMapOfStringString.hxx`:27 - `TDataStd_HDataMapOfStringString`
+/// Extension of TDataStd_DataMapOfStringString class
+/// to be manipulated by handle.
+pub use crate::ffi::TDataStd_HDataMapOfStringString as HDataMapOfStringString;
+
+unsafe impl crate::CppDeletable for HDataMapOfStringString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TDataStd_HDataMapOfStringString_destructor(ptr);
+    }
+}
+
+impl HDataMapOfStringString {
+    /// **Source:** `TDataStd_HDataMapOfStringString.hxx`:31 - `TDataStd_HDataMapOfStringString::TDataStd_HDataMapOfStringString()`
+    pub fn new_int(NbBuckets: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_HDataMapOfStringString_ctor_int(
+                NbBuckets,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringString.hxx`:31 - `TDataStd_HDataMapOfStringString::TDataStd_HDataMapOfStringString()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        Self::new_int(1)
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringString.hxx`:29 - `TDataStd_HDataMapOfStringString::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDataStd_HDataMapOfStringString_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringString.hxx`:29 - `TDataStd_HDataMapOfStringString::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TDataStd_HDataMapOfStringString_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringString.hxx`:29 - `TDataStd_HDataMapOfStringString::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDataStd_HDataMapOfStringString_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdHDataMapOfStringString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_HDataMapOfStringString_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTDataStdHDataMapOfStringString;
+
+unsafe impl crate::CppDeletable for HandleTDataStdHDataMapOfStringString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdHDataMapOfStringString_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdHDataMapOfStringString {
+    /// Dereference this Handle to access the underlying TDataStd_HDataMapOfStringString
+    pub fn get(&self) -> &crate::ffi::TDataStd_HDataMapOfStringString {
+        unsafe { &*(crate::ffi::HandleTDataStdHDataMapOfStringString_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_HDataMapOfStringString
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_HDataMapOfStringString {
+        unsafe {
+            &mut *(crate::ffi::HandleTDataStdHDataMapOfStringString_get_mut(self as *mut Self))
+        }
+    }
+}
+
+// ========================
+// From TDataStd_HLabelArray1.hxx
+// ========================
+
+/// **Source:** `TDataStd_HLabelArray1.hxx`:24 - `TDataStd_HLabelArray1`
+pub use crate::ffi::TDataStd_HLabelArray1 as HLabelArray1;
+
+unsafe impl crate::CppDeletable for HLabelArray1 {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TDataStd_HLabelArray1_destructor(ptr);
+    }
+}
+
+impl HLabelArray1 {
+    /// **Source:** `TDataStd_HLabelArray1.hxx`:24 - `TDataStd_HLabelArray1::TDataStd_HLabelArray1()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_HLabelArray1_ctor()) }
+    }
+
+    /// **Source:** `TDataStd_HLabelArray1.hxx`:24 - `TDataStd_HLabelArray1::TDataStd_HLabelArray1()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_HLabelArray1_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_HLabelArray1.hxx`:24 - `TDataStd_HLabelArray1::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDataStd_HLabelArray1_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataStd_HLabelArray1.hxx`:24 - `TDataStd_HLabelArray1::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TDataStd_HLabelArray1_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TDataStd_HLabelArray1.hxx`:24 - `TDataStd_HLabelArray1::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDataStd_HLabelArray1_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdHLabelArray1> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_HLabelArray1_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTDataStdHLabelArray1;
+
+unsafe impl crate::CppDeletable for HandleTDataStdHLabelArray1 {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdHLabelArray1_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdHLabelArray1 {
+    /// Dereference this Handle to access the underlying TDataStd_HLabelArray1
+    pub fn get(&self) -> &crate::ffi::TDataStd_HLabelArray1 {
+        unsafe { &*(crate::ffi::HandleTDataStdHLabelArray1_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_HLabelArray1
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_HLabelArray1 {
+        unsafe { &mut *(crate::ffi::HandleTDataStdHLabelArray1_get_mut(self as *mut Self)) }
     }
 }
 
@@ -7349,6 +7851,26 @@ impl ReferenceArray {
         unsafe { crate::ffi::TDataStd_ReferenceArray_length(self as *const Self) }
     }
 
+    /// **Source:** `TDataStd_ReferenceArray.hxx`:84 - `TDataStd_ReferenceArray::InternalArray()`
+    pub fn internal_array(&self) -> &crate::ffi::HandleTDataStdHLabelArray1 {
+        unsafe { &*(crate::ffi::TDataStd_ReferenceArray_internal_array(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataStd_ReferenceArray.hxx`:86 - `TDataStd_ReferenceArray::SetInternalArray()`
+    pub fn set_internal_array(
+        &mut self,
+        values: &crate::ffi::HandleTDataStdHLabelArray1,
+        isCheckItems: bool,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_ReferenceArray_set_internal_array(
+                self as *mut Self,
+                values,
+                isCheckItems,
+            )
+        }
+    }
+
     /// **Source:** `TDataStd_ReferenceArray.hxx`:91 - `TDataStd_ReferenceArray::ID()`
     pub fn id(&self) -> &crate::ffi::Standard_GUID {
         unsafe { &*(crate::ffi::TDataStd_ReferenceArray_id(self as *const Self)) }
@@ -9478,6 +10000,11 @@ impl Variable {
 // ========================
 
 pub use crate::ffi::{
-    TDataStd_HLabelArray1 as HLabelArray1, TDataStd_ListOfByte as ListOfByte,
-    TDataStd_ListOfExtendedString as ListOfExtendedString, TDataStd_NamedData as NamedData,
+    TDataStd_DataMapOfStringByte as DataMapOfStringByte,
+    TDataStd_DataMapOfStringHArray1OfInteger as DataMapOfStringHArray1OfInteger,
+    TDataStd_DataMapOfStringHArray1OfReal as DataMapOfStringHArray1OfReal,
+    TDataStd_DataMapOfStringReal as DataMapOfStringReal,
+    TDataStd_DataMapOfStringString as DataMapOfStringString, TDataStd_LabelArray1 as LabelArray1,
+    TDataStd_ListOfByte as ListOfByte, TDataStd_ListOfExtendedString as ListOfExtendedString,
+    TDataStd_NamedData as NamedData,
 };

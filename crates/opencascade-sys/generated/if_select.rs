@@ -449,18 +449,6 @@ impl Activator {
         unsafe { crate::ffi::IFSelect_Activator_remove(c_command.as_ptr()) }
     }
 
-    /// **Source:** `IFSelect_Activator.hxx`:80 - `IFSelect_Activator::Select()`
-    /// Selects, for a Command given by its title, an actor with its
-    /// command number. Returns True if found, False else
-    pub fn select(
-        command: &str,
-        number: &mut i32,
-        actor: &mut crate::ffi::HandleIFSelectActivator,
-    ) -> bool {
-        let c_command = std::ffi::CString::new(command).unwrap();
-        unsafe { crate::ffi::IFSelect_Activator_select(c_command.as_ptr(), number, actor) }
-    }
-
     /// **Source:** `IFSelect_Activator.hxx`:85 - `IFSelect_Activator::Mode()`
     /// Returns mode recorded for a command. -1 if not found
     pub fn mode(command: &str) -> i32 {
@@ -584,26 +572,6 @@ impl AppliedModifiers {
     /// Returns the count of recorded modifiers
     pub fn count(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_AppliedModifiers_count(self as *const Self) }
-    }
-
-    /// **Source:** `IFSelect_AppliedModifiers.hxx`:80 - `IFSelect_AppliedModifiers::Item()`
-    /// Returns the description for applied modifier n0 <num> :
-    /// the modifier itself, and the count of entities to be applied
-    /// on. If no specific list of number has been defined, returns
-    /// the total count of entities of the file
-    /// If this count is zero, then the modifier applies to all
-    /// the file (see below). Else, the numbers are then queried by
-    /// calls to ItemNum between 1 and <entcount>
-    /// Returns True if OK, False if <num> is out of range
-    pub fn item(
-        &mut self,
-        num: i32,
-        modif: &mut crate::ffi::HandleIFSelectGeneralModifier,
-        entcount: &mut i32,
-    ) -> bool {
-        unsafe {
-            crate::ffi::IFSelect_AppliedModifiers_item(self as *mut Self, num, modif, entcount)
-        }
     }
 
     /// **Source:** `IFSelect_AppliedModifiers.hxx`:88 - `IFSelect_AppliedModifiers::ItemNum()`
@@ -862,6 +830,33 @@ impl CheckCounter {
                 self as *mut Self,
             ))
         }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:52 - `IFSelect_SignatureList::SetList()`
+    pub fn set_list(&mut self, withlist: bool) {
+        unsafe { crate::ffi::IFSelect_CheckCounter_inherited_SetList(self as *mut Self, withlist) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:59 - `IFSelect_SignatureList::ModeSignOnly()`
+    pub fn mode_sign_only(&mut self) -> &mut bool {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_CheckCounter_inherited_ModeSignOnly(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:61 - `IFSelect_SignatureList::Clear()`
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::IFSelect_CheckCounter_inherited_Clear(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:94 - `IFSelect_SignatureList::HasEntities()`
+    pub fn has_entities(&self) -> bool {
+        unsafe { crate::ffi::IFSelect_CheckCounter_inherited_HasEntities(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:97 - `IFSelect_SignatureList::NbNulls()`
+    pub fn nb_nulls(&self) -> i32 {
+        unsafe { crate::ffi::IFSelect_CheckCounter_inherited_NbNulls(self as *const Self) }
     }
 }
 
@@ -1232,12 +1227,6 @@ impl DispGlobal {
         }
     }
 
-    /// **Source:** `IFSelect_DispGlobal.hxx`:45 - `IFSelect_DispGlobal::LimitedMax()`
-    /// Returns True : maximum equates 1
-    pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool {
-        unsafe { crate::ffi::IFSelect_DispGlobal_limited_max(self as *const Self, nbent, max) }
-    }
-
     /// **Source:** `IFSelect_DispGlobal.hxx`:52 - `IFSelect_DispGlobal::Packets()`
     /// Computes the list of produced Packets. It is made of only ONE
     /// Packet, which gets the RootResult from the Final Selection.
@@ -1378,12 +1367,6 @@ impl DispPerCount {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerCount_label(self as *const Self))
         }
-    }
-
-    /// **Source:** `IFSelect_DispPerCount.hxx`:58 - `IFSelect_DispPerCount::LimitedMax()`
-    /// Returns True, maximum count is given as <nbent>
-    pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool {
-        unsafe { crate::ffi::IFSelect_DispPerCount_limited_max(self as *const Self, nbent, max) }
     }
 
     /// **Source:** `IFSelect_DispPerCount.hxx`:65 - `IFSelect_DispPerCount::Packets()`
@@ -1531,12 +1514,6 @@ impl DispPerFiles {
         }
     }
 
-    /// **Source:** `IFSelect_DispPerFiles.hxx`:61 - `IFSelect_DispPerFiles::LimitedMax()`
-    /// Returns True, maximum count is given as CountValue
-    pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool {
-        unsafe { crate::ffi::IFSelect_DispPerFiles_limited_max(self as *const Self, nbent, max) }
-    }
-
     /// **Source:** `IFSelect_DispPerFiles.hxx`:69 - `IFSelect_DispPerFiles::Packets()`
     /// Computes the list of produced Packets. It defines Packets in
     /// order to have <Count> Packets, except if the input count of
@@ -1656,12 +1633,6 @@ impl DispPerOne {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerOne_label(self as *const Self))
         }
-    }
-
-    /// **Source:** `IFSelect_DispPerOne.hxx`:46 - `IFSelect_DispPerOne::LimitedMax()`
-    /// Returns True, maximum limit is given as <nbent>
-    pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool {
-        unsafe { crate::ffi::IFSelect_DispPerOne_limited_max(self as *const Self, nbent, max) }
     }
 
     /// **Source:** `IFSelect_DispPerOne.hxx`:52 - `IFSelect_DispPerOne::Packets()`
@@ -1795,14 +1766,6 @@ impl DispPerSignature {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerSignature_label(
                 self as *const Self,
             ))
-        }
-    }
-
-    /// **Source:** `IFSelect_DispPerSignature.hxx`:58 - `IFSelect_DispPerSignature::LimitedMax()`
-    /// Returns True, maximum count is given as <nbent>
-    pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool {
-        unsafe {
-            crate::ffi::IFSelect_DispPerSignature_limited_max(self as *const Self, nbent, max)
         }
     }
 
@@ -1992,17 +1955,6 @@ impl Dispatch {
     /// Default answer given here is False (can be redefined)
     pub fn can_have_remainder(&self) -> bool {
         unsafe { crate::ffi::IFSelect_Dispatch_can_have_remainder(self as *const Self) }
-    }
-
-    /// **Source:** `IFSelect_Dispatch.hxx`:93 - `IFSelect_Dispatch::LimitedMax()`
-    /// Returns True if a Dispatch generates a count of Packets always
-    /// less than or equal to a maximum value : it can be computed
-    /// from the total count of Entities to be dispatched : <nbent>.
-    /// If answer is False, no limited maximum is expected for account
-    /// If answer is True, expected maximum is given in argument <max>
-    /// Default answer given here is False (can be redefined)
-    pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool {
-        unsafe { crate::ffi::IFSelect_Dispatch_limited_max(self as *const Self, nbent, max) }
     }
 
     /// **Source:** `IFSelect_Dispatch.hxx`:98 - `IFSelect_Dispatch::Label()`
@@ -3194,6 +3146,103 @@ impl GraphCounter {
                 forced,
             )
         }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:52 - `IFSelect_SignatureList::SetList()`
+    pub fn set_list(&mut self, withlist: bool) {
+        unsafe { crate::ffi::IFSelect_GraphCounter_inherited_SetList(self as *mut Self, withlist) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:59 - `IFSelect_SignatureList::ModeSignOnly()`
+    pub fn mode_sign_only(&mut self) -> &mut bool {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_GraphCounter_inherited_ModeSignOnly(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:61 - `IFSelect_SignatureList::Clear()`
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::IFSelect_GraphCounter_inherited_Clear(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:94 - `IFSelect_SignatureList::HasEntities()`
+    pub fn has_entities(&self) -> bool {
+        unsafe { crate::ffi::IFSelect_GraphCounter_inherited_HasEntities(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:97 - `IFSelect_SignatureList::NbNulls()`
+    pub fn nb_nulls(&self) -> i32 {
+        unsafe { crate::ffi::IFSelect_GraphCounter_inherited_NbNulls(self as *const Self) }
+    }
+}
+
+// ========================
+// From IFSelect_HSeqOfSelection.hxx
+// ========================
+
+/// **Source:** `IFSelect_HSeqOfSelection.hxx`:23 - `IFSelect_HSeqOfSelection`
+pub use crate::ffi::IFSelect_HSeqOfSelection as HSeqOfSelection;
+
+unsafe impl crate::CppDeletable for HSeqOfSelection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IFSelect_HSeqOfSelection_destructor(ptr);
+    }
+}
+
+impl HSeqOfSelection {
+    /// **Source:** `IFSelect_HSeqOfSelection.hxx`:23 - `IFSelect_HSeqOfSelection::IFSelect_HSeqOfSelection()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_HSeqOfSelection_ctor()) }
+    }
+
+    /// **Source:** `IFSelect_HSeqOfSelection.hxx`:23 - `IFSelect_HSeqOfSelection::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IFSelect_HSeqOfSelection_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IFSelect_HSeqOfSelection.hxx`:23 - `IFSelect_HSeqOfSelection::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_HSeqOfSelection_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IFSelect_HSeqOfSelection.hxx`:23 - `IFSelect_HSeqOfSelection::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IFSelect_HSeqOfSelection_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectHSeqOfSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_HSeqOfSelection_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleIFSelectHSeqOfSelection;
+
+unsafe impl crate::CppDeletable for HandleIFSelectHSeqOfSelection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectHSeqOfSelection_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectHSeqOfSelection {
+    /// Dereference this Handle to access the underlying IFSelect_HSeqOfSelection
+    pub fn get(&self) -> &crate::ffi::IFSelect_HSeqOfSelection {
+        unsafe { &*(crate::ffi::HandleIFSelectHSeqOfSelection_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_HSeqOfSelection
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_HSeqOfSelection {
+        unsafe { &mut *(crate::ffi::HandleIFSelectHSeqOfSelection_get_mut(self as *mut Self)) }
     }
 }
 
@@ -10568,19 +10617,6 @@ impl ShareOutResult {
         unsafe { crate::ffi::IFSelect_ShareOutResult_dispatch_rank(self as *const Self) }
     }
 
-    /// **Source:** `IFSelect_ShareOutResult.hxx`:135 - `IFSelect_ShareOutResult::PacketsInDispatch()`
-    /// Returns Number (rank) of current Packet in current Dispatch,
-    /// and total count of Packets in current Dispatch, as arguments
-    pub fn packets_in_dispatch(&self, numpack: &mut i32, nbpacks: &mut i32) {
-        unsafe {
-            crate::ffi::IFSelect_ShareOutResult_packets_in_dispatch(
-                self as *const Self,
-                numpack,
-                nbpacks,
-            )
-        }
-    }
-
     /// **Source:** `IFSelect_ShareOutResult.hxx`:151 - `IFSelect_ShareOutResult::FileName()`
     /// Returns the File Name which corresponds to current Packet
     /// (computed by ShareOut)
@@ -10699,25 +10735,6 @@ impl SignAncestor {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
-    pub fn is_int_case(
-        &self,
-        hasmin: &mut bool,
-        valmin: &mut i32,
-        hasmax: &mut bool,
-        valmax: &mut i32,
-    ) -> bool {
-        unsafe {
-            crate::ffi::IFSelect_SignAncestor_inherited_IsIntCase(
-                self as *const Self,
-                hasmin,
-                valmin,
-                hasmax,
-                valmax,
-            )
-        }
-    }
-
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:69 - `IFSelect_Signature::CaseList()`
     pub fn case_list(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
         unsafe {
@@ -10819,25 +10836,6 @@ impl SignCategory {
         unsafe {
             crate::ffi::IFSelect_SignCategory_inherited_SetIntCase(
                 self as *mut Self,
-                hasmin,
-                valmin,
-                hasmax,
-                valmax,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
-    pub fn is_int_case(
-        &self,
-        hasmin: &mut bool,
-        valmin: &mut i32,
-        hasmax: &mut bool,
-        valmax: &mut i32,
-    ) -> bool {
-        unsafe {
-            crate::ffi::IFSelect_SignCategory_inherited_IsIntCase(
-                self as *const Self,
                 hasmin,
                 valmin,
                 hasmax,
@@ -11064,6 +11062,33 @@ impl SignCounter {
             ))
         }
     }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:52 - `IFSelect_SignatureList::SetList()`
+    pub fn set_list(&mut self, withlist: bool) {
+        unsafe { crate::ffi::IFSelect_SignCounter_inherited_SetList(self as *mut Self, withlist) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:59 - `IFSelect_SignatureList::ModeSignOnly()`
+    pub fn mode_sign_only(&mut self) -> &mut bool {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_SignCounter_inherited_ModeSignOnly(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:61 - `IFSelect_SignatureList::Clear()`
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::IFSelect_SignCounter_inherited_Clear(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:94 - `IFSelect_SignatureList::HasEntities()`
+    pub fn has_entities(&self) -> bool {
+        unsafe { crate::ffi::IFSelect_SignCounter_inherited_HasEntities(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:97 - `IFSelect_SignatureList::NbNulls()`
+    pub fn nb_nulls(&self) -> i32 {
+        unsafe { crate::ffi::IFSelect_SignCounter_inherited_NbNulls(self as *const Self) }
+    }
 }
 
 // ========================
@@ -11157,25 +11182,6 @@ impl SignMultiple {
         unsafe {
             crate::ffi::IFSelect_SignMultiple_inherited_SetIntCase(
                 self as *mut Self,
-                hasmin,
-                valmin,
-                hasmax,
-                valmax,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
-    pub fn is_int_case(
-        &self,
-        hasmin: &mut bool,
-        valmin: &mut i32,
-        hasmax: &mut bool,
-        valmax: &mut i32,
-    ) -> bool {
-        unsafe {
-            crate::ffi::IFSelect_SignMultiple_inherited_IsIntCase(
-                self as *const Self,
                 hasmin,
                 valmin,
                 hasmax,
@@ -11303,25 +11309,6 @@ impl SignType {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
-    pub fn is_int_case(
-        &self,
-        hasmin: &mut bool,
-        valmin: &mut i32,
-        hasmax: &mut bool,
-        valmax: &mut i32,
-    ) -> bool {
-        unsafe {
-            crate::ffi::IFSelect_SignType_inherited_IsIntCase(
-                self as *const Self,
-                hasmin,
-                valmin,
-                hasmax,
-                valmax,
-            )
-        }
-    }
-
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:69 - `IFSelect_Signature::CaseList()`
     pub fn case_list(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
         unsafe {
@@ -11433,25 +11420,6 @@ impl SignValidity {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
-    pub fn is_int_case(
-        &self,
-        hasmin: &mut bool,
-        valmin: &mut i32,
-        hasmax: &mut bool,
-        valmax: &mut i32,
-    ) -> bool {
-        unsafe {
-            crate::ffi::IFSelect_SignValidity_inherited_IsIntCase(
-                self as *const Self,
-                hasmin,
-                valmin,
-                hasmax,
-                valmax,
-            )
-        }
-    }
-
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:69 - `IFSelect_Signature::CaseList()`
     pub fn case_list(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
         unsafe {
@@ -11500,27 +11468,6 @@ impl Signature {
         unsafe {
             crate::ffi::IFSelect_Signature_set_int_case(
                 self as *mut Self,
-                hasmin,
-                valmin,
-                hasmax,
-                valmax,
-            )
-        }
-    }
-
-    /// **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
-    /// Tells if this Signature gives integer values
-    /// and returns values from SetIntCase if True
-    pub fn is_int_case(
-        &self,
-        hasmin: &mut bool,
-        valmin: &mut i32,
-        hasmax: &mut bool,
-        valmax: &mut i32,
-    ) -> bool {
-        unsafe {
-            crate::ffi::IFSelect_Signature_is_int_case(
-                self as *const Self,
                 hasmin,
                 valmin,
                 hasmax,
@@ -11638,6 +11585,201 @@ impl Signature {
         unsafe {
             &mut *(crate::ffi::IFSelect_Signature_as_MoniTool_SignText_mut(self as *mut Self))
         }
+    }
+}
+
+// ========================
+// From IFSelect_SignatureList.hxx
+// ========================
+
+/// **Source:** `IFSelect_SignatureList.hxx`:42 - `IFSelect_SignatureList`
+/// A SignatureList is given as result from a Counter (any kind)
+/// It gives access to a list of signatures, with counts, and
+/// optionally with list of corresponding entities
+///
+/// It can also be used only to give a signature, through SignOnly
+/// Mode. This can be useful for a specific counter (used in a
+/// Selection), while it remains better to use a Signature
+/// whenever possible
+pub use crate::ffi::IFSelect_SignatureList as SignatureList;
+
+unsafe impl crate::CppDeletable for SignatureList {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IFSelect_SignatureList_destructor(ptr);
+    }
+}
+
+impl SignatureList {
+    /// **Source:** `IFSelect_SignatureList.hxx`:48 - `IFSelect_SignatureList::IFSelect_SignatureList()`
+    /// Creates a SignatureList. If <withlist> is True, entities will
+    /// be not only counted per signature, but also listed.
+    pub fn new_bool(withlist: bool) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignatureList_ctor_bool(withlist)) }
+    }
+
+    /// **Source:** `IFSelect_SignatureList.hxx`:48 - `IFSelect_SignatureList::IFSelect_SignatureList()`
+    /// Creates a SignatureList. If <withlist> is True, entities will
+    /// be not only counted per signature, but also listed.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        Self::new_bool(false)
+    }
+
+    /// **Source:** `IFSelect_SignatureList.hxx`:52 - `IFSelect_SignatureList::SetList()`
+    /// Changes the record-list status. The list is not cleared but
+    /// its use changes
+    pub fn set_list(&mut self, withlist: bool) {
+        unsafe { crate::ffi::IFSelect_SignatureList_set_list(self as *mut Self, withlist) }
+    }
+
+    /// **Source:** `IFSelect_SignatureList.hxx`:59 - `IFSelect_SignatureList::ModeSignOnly()`
+    /// Returns modifiable the SignOnly Mode
+    /// If False (D), the counter normally counts
+    /// If True, the counting work is turned off, Add only fills the
+    /// LastValue, which can be used as signature, when a counter
+    /// works from data which are not available from a Signature
+    pub fn mode_sign_only(&mut self) -> &mut bool {
+        unsafe { &mut *(crate::ffi::IFSelect_SignatureList_mode_sign_only(self as *mut Self)) }
+    }
+
+    /// **Source:** `IFSelect_SignatureList.hxx`:61 - `IFSelect_SignatureList::Clear()`
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::IFSelect_SignatureList_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `IFSelect_SignatureList.hxx`:75 - `IFSelect_SignatureList::LastValue()`
+    /// Returns the last value recorded by Add (only if SignMode set)
+    /// Cleared by Clear or Init
+    pub fn last_value(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SignatureList_last_value(
+                self as *const Self,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `IFSelect_SignatureList.hxx`:89 - `IFSelect_SignatureList::List()`
+    /// Returns the list of signatures, as a sequence of strings
+    /// (but without their respective counts). It is ordered.
+    /// By default, for all the signatures.
+    /// If <root> is given non empty, for the signatures which
+    /// begin by <root>
+    pub fn list(
+        &self,
+        root: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        let c_root = std::ffi::CString::new(root).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignatureList_list(
+                self as *const Self,
+                c_root.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_SignatureList.hxx`:94 - `IFSelect_SignatureList::HasEntities()`
+    /// Returns True if the list of Entities is acknowledged, else
+    /// the method Entities will always return a Null Handle
+    pub fn has_entities(&self) -> bool {
+        unsafe { crate::ffi::IFSelect_SignatureList_has_entities(self as *const Self) }
+    }
+
+    /// **Source:** `IFSelect_SignatureList.hxx`:97 - `IFSelect_SignatureList::NbNulls()`
+    /// Returns the count of null entities
+    pub fn nb_nulls(&self) -> i32 {
+        unsafe { crate::ffi::IFSelect_SignatureList_nb_nulls(self as *const Self) }
+    }
+
+    /// **Source:** `IFSelect_SignatureList.hxx`:101 - `IFSelect_SignatureList::NbTimes()`
+    /// Returns the number of times a signature was counted,
+    /// 0 if it has not been recorded at all
+    pub fn nb_times(&self, sign: &str) -> i32 {
+        let c_sign = std::ffi::CString::new(sign).unwrap();
+        unsafe { crate::ffi::IFSelect_SignatureList_nb_times(self as *const Self, c_sign.as_ptr()) }
+    }
+
+    /// **Source:** `IFSelect_SignatureList.hxx`:106 - `IFSelect_SignatureList::Entities()`
+    /// Returns the list of entities attached to a signature
+    /// It is empty if <sign> has not been recorded
+    /// It is a Null Handle if the list of entities is not known
+    pub fn entities(
+        &self,
+        sign: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        let c_sign = std::ffi::CString::new(sign).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignatureList_entities(
+                self as *const Self,
+                c_sign.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_SignatureList.hxx`:109 - `IFSelect_SignatureList::SetName()`
+    /// Defines a name for a SignatureList (used to print it)
+    pub fn set_name(&mut self, name: &str) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::IFSelect_SignatureList_set_name(self as *mut Self, c_name.as_ptr()) }
+    }
+
+    /// **Source:** `IFSelect_SignatureList.hxx`:113 - `IFSelect_SignatureList::Name()`
+    /// Returns the recorded Name.
+    /// Remark : default is "..." (no SetName called)
+    pub fn name(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SignatureList_name(self as *const Self))
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IFSelect_SignatureList.hxx`:138 - `IFSelect_SignatureList::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IFSelect_SignatureList_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IFSelect_SignatureList.hxx`:138 - `IFSelect_SignatureList::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SignatureList_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IFSelect_SignatureList.hxx`:138 - `IFSelect_SignatureList::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IFSelect_SignatureList_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignatureList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignatureList_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleIFSelectSignatureList;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSignatureList {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSignatureList_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSignatureList {
+    /// Dereference this Handle to access the underlying IFSelect_SignatureList
+    pub fn get(&self) -> &crate::ffi::IFSelect_SignatureList {
+        unsafe { &*(crate::ffi::HandleIFSelectSignatureList_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SignatureList
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SignatureList {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSignatureList_get_mut(self as *mut Self)) }
     }
 }
 
@@ -11909,13 +12051,6 @@ impl WorkLibrary {
     /// default value will be <def>
     pub fn set_dump_levels(&mut self, def: i32, max: i32) {
         unsafe { crate::ffi::IFSelect_WorkLibrary_set_dump_levels(self as *mut Self, def, max) }
-    }
-
-    /// **Source:** `IFSelect_WorkLibrary.hxx`:132 - `IFSelect_WorkLibrary::DumpLevels()`
-    /// Returns the recorded default and maximum dump levels
-    /// If none was recorded, max is returned negative, def as zero
-    pub fn dump_levels(&self, def: &mut i32, max: &mut i32) {
-        unsafe { crate::ffi::IFSelect_WorkLibrary_dump_levels(self as *const Self, def, max) }
     }
 
     /// **Source:** `IFSelect_WorkLibrary.hxx`:135 - `IFSelect_WorkLibrary::SetDumpHelp()`
@@ -13352,29 +13487,6 @@ impl WorkSession {
         unsafe { crate::ffi::IFSelect_WorkSession_query_check_list(self as *mut Self, chl) }
     }
 
-    /// **Source:** `IFSelect_WorkSession.hxx`:1042 - `IFSelect_WorkSession::SetParams()`
-    /// Sets a list of Parameters, i.e. TypedValue, to be handled
-    /// through an Editor
-    /// The two lists are parallel, if <params> is longer than <uses>,
-    /// surnumeral parameters are for general use
-    ///
-    /// EditForms are created to handle these parameters (list, edit)
-    /// on the basis of a ParamEditor  xst-params-edit
-    ///
-    /// A use number dispatches the parameter to a given EditForm
-    /// EditForms are defined as follows
-    /// Name                Use   Means
-    /// xst-params          all   All Parameters (complete list)
-    /// xst-params-general  1     Generals
-    /// xst-params-load     2     LoadFile (no Transfer)
-    /// xst-params-send     3     SendFile (Write, no Transfer)
-    /// xst-params-split    4     Split
-    /// xst-param-read      5     Transfer on Reading
-    /// xst-param-write     6     Transfer on Writing
-    pub fn set_params(&mut self, params: &i32, uselist: &i32) {
-        unsafe { crate::ffi::IFSelect_WorkSession_set_params(self as *mut Self, params, uselist) }
-    }
-
     /// **Source:** `IFSelect_WorkSession.hxx`:1052 - `IFSelect_WorkSession::TraceStatics()`
     /// Traces the Statics attached to a given use number
     /// If <use> is given positive (normal), the trace is embedded
@@ -13517,7 +13629,4 @@ impl HandleIFSelectWorkSession {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
-    IFSelect_ActFunc as ActFunc, IFSelect_SignatureList as SignatureList,
-    IFSelect_TSeqOfSelection as TSeqOfSelection,
-};
+pub use crate::ffi::{IFSelect_ActFunc as ActFunc, IFSelect_TSeqOfSelection as TSeqOfSelection};

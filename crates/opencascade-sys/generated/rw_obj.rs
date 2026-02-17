@@ -59,6 +59,244 @@ impl TryFrom<i32> for SubMeshReason {
 }
 
 // ========================
+// From RWObj_CafReader.hxx
+// ========================
+
+/// **Source:** `RWObj_CafReader.hxx`:21 - `RWObj_CafReader`
+/// The OBJ mesh reader into XDE document.
+pub use crate::ffi::RWObj_CafReader as CafReader;
+
+unsafe impl crate::CppDeletable for CafReader {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::RWObj_CafReader_destructor(ptr);
+    }
+}
+
+impl CafReader {
+    /// **Source:** `RWObj_CafReader.hxx`:26 - `RWObj_CafReader::RWObj_CafReader()`
+    /// Empty constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWObj_CafReader_ctor()) }
+    }
+
+    /// **Source:** `RWObj_CafReader.hxx`:23 - `RWObj_CafReader::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::RWObj_CafReader_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `RWObj_CafReader.hxx`:29 - `RWObj_CafReader::IsSinglePrecision()`
+    /// Return single precision flag for reading vertex data (coordinates); FALSE by default.
+    pub fn is_single_precision(&self) -> bool {
+        unsafe { crate::ffi::RWObj_CafReader_is_single_precision(self as *const Self) }
+    }
+
+    /// **Source:** `RWObj_CafReader.hxx`:32 - `RWObj_CafReader::SetSinglePrecision()`
+    /// Setup single/double precision flag for reading vertex data (coordinates).
+    pub fn set_single_precision(&mut self, theIsSinglePrecision: bool) {
+        unsafe {
+            crate::ffi::RWObj_CafReader_set_single_precision(
+                self as *mut Self,
+                theIsSinglePrecision,
+            )
+        }
+    }
+
+    /// **Source:** `RWObj_CafReader.hxx`:23 - `RWObj_CafReader::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::RWObj_CafReader_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `RWObj_CafReader.hxx`:23 - `RWObj_CafReader::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::RWObj_CafReader_get_type_descriptor()) }
+    }
+
+    /// Upcast to RWMesh_CafReader
+    pub fn as_rw_mesh_caf_reader(&self) -> &crate::rw_mesh::CafReader {
+        unsafe { &*(crate::ffi::RWObj_CafReader_as_RWMesh_CafReader(self as *const Self)) }
+    }
+
+    /// Upcast to RWMesh_CafReader (mutable)
+    pub fn as_rw_mesh_caf_reader_mut(&mut self) -> &mut crate::rw_mesh::CafReader {
+        unsafe { &mut *(crate::ffi::RWObj_CafReader_as_RWMesh_CafReader_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
+    pub fn root_prefix(&self) -> &crate::ffi::TCollection_AsciiString {
+        unsafe { &*(crate::ffi::RWObj_CafReader_inherited_RootPrefix(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:82 - `RWMesh_CafReader::SetRootPrefix()`
+    pub fn set_root_prefix(&mut self, theRootPrefix: &crate::ffi::TCollection_AsciiString) {
+        unsafe {
+            crate::ffi::RWObj_CafReader_inherited_SetRootPrefix(self as *mut Self, theRootPrefix)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:95 - `RWMesh_CafReader::ToFillIncompleteDocument()`
+    pub fn to_fill_incomplete_document(&self) -> bool {
+        unsafe {
+            crate::ffi::RWObj_CafReader_inherited_ToFillIncompleteDocument(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:98 - `RWMesh_CafReader::SetFillIncompleteDocument()`
+    pub fn set_fill_incomplete_document(&mut self, theToFillIncomplete: bool) {
+        unsafe {
+            crate::ffi::RWObj_CafReader_inherited_SetFillIncompleteDocument(
+                self as *mut Self,
+                theToFillIncomplete,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:104 - `RWMesh_CafReader::MemoryLimitMiB()`
+    pub fn memory_limit_mi_b(&self) -> i32 {
+        unsafe { crate::ffi::RWObj_CafReader_inherited_MemoryLimitMiB(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:107 - `RWMesh_CafReader::SetMemoryLimitMiB()`
+    pub fn set_memory_limit_mi_b(&mut self, theLimitMiB: i32) {
+        unsafe {
+            crate::ffi::RWObj_CafReader_inherited_SetMemoryLimitMiB(self as *mut Self, theLimitMiB)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:111 - `RWMesh_CafReader::CoordinateSystemConverter()`
+    pub fn coordinate_system_converter(&self) -> &crate::ffi::RWMesh_CoordinateSystemConverter {
+        unsafe {
+            &*(crate::ffi::RWObj_CafReader_inherited_CoordinateSystemConverter(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:117 - `RWMesh_CafReader::SetCoordinateSystemConverter()`
+    pub fn set_coordinate_system_converter(
+        &mut self,
+        theConverter: &crate::ffi::RWMesh_CoordinateSystemConverter,
+    ) {
+        unsafe {
+            crate::ffi::RWObj_CafReader_inherited_SetCoordinateSystemConverter(
+                self as *mut Self,
+                theConverter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:124 - `RWMesh_CafReader::SystemLengthUnit()`
+    pub fn system_length_unit(&self) -> f64 {
+        unsafe { crate::ffi::RWObj_CafReader_inherited_SystemLengthUnit(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:128 - `RWMesh_CafReader::SetSystemLengthUnit()`
+    pub fn set_system_length_unit(&mut self, theUnits: f64) {
+        unsafe {
+            crate::ffi::RWObj_CafReader_inherited_SetSystemLengthUnit(self as *mut Self, theUnits)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:134 - `RWMesh_CafReader::HasSystemCoordinateSystem()`
+    pub fn has_system_coordinate_system(&self) -> bool {
+        unsafe {
+            crate::ffi::RWObj_CafReader_inherited_HasSystemCoordinateSystem(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:141 - `RWMesh_CafReader::SystemCoordinateSystem()`
+    pub fn system_coordinate_system(&self) -> &crate::ffi::gp_Ax3 {
+        unsafe {
+            &*(crate::ffi::RWObj_CafReader_inherited_SystemCoordinateSystem(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:147 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
+    pub fn set_system_coordinate_system(&mut self, theCS: &crate::ffi::gp_Ax3) {
+        unsafe {
+            crate::ffi::RWObj_CafReader_inherited_SetSystemCoordinateSystem(
+                self as *mut Self,
+                theCS,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:160 - `RWMesh_CafReader::FileLengthUnit()`
+    pub fn file_length_unit(&self) -> f64 {
+        unsafe { crate::ffi::RWObj_CafReader_inherited_FileLengthUnit(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:164 - `RWMesh_CafReader::SetFileLengthUnit()`
+    pub fn set_file_length_unit(&mut self, theUnits: f64) {
+        unsafe {
+            crate::ffi::RWObj_CafReader_inherited_SetFileLengthUnit(self as *mut Self, theUnits)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:170 - `RWMesh_CafReader::HasFileCoordinateSystem()`
+    pub fn has_file_coordinate_system(&self) -> bool {
+        unsafe {
+            crate::ffi::RWObj_CafReader_inherited_HasFileCoordinateSystem(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:177 - `RWMesh_CafReader::FileCoordinateSystem()`
+    pub fn file_coordinate_system(&self) -> &crate::ffi::gp_Ax3 {
+        unsafe {
+            &*(crate::ffi::RWObj_CafReader_inherited_FileCoordinateSystem(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:180 - `RWMesh_CafReader::SetFileCoordinateSystem()`
+    pub fn set_file_coordinate_system(&mut self, theCS: &crate::ffi::gp_Ax3) {
+        unsafe {
+            crate::ffi::RWObj_CafReader_inherited_SetFileCoordinateSystem(self as *mut Self, theCS)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:194 - `RWMesh_CafReader::Perform()`
+    pub fn perform(
+        &mut self,
+        theFile: &crate::ffi::TCollection_AsciiString,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWObj_CafReader_inherited_Perform(self as *mut Self, theFile, theProgress)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:211 - `RWMesh_CafReader::ExtraStatus()`
+    pub fn extra_status(&self) -> i32 {
+        unsafe { crate::ffi::RWObj_CafReader_inherited_ExtraStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:215 - `RWMesh_CafReader::SingleShape()`
+    pub fn single_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::RWObj_CafReader_inherited_SingleShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:227 - `RWMesh_CafReader::ProbeHeader()`
+    pub fn probe_header(
+        &mut self,
+        theFile: &crate::ffi::TCollection_AsciiString,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWObj_CafReader_inherited_ProbeHeader(
+                self as *mut Self,
+                theFile,
+                theProgress,
+            )
+        }
+    }
+}
+
+// ========================
 // From RWObj_CafWriter.hxx
 // ========================
 
@@ -419,5 +657,345 @@ impl ObjWriterContext {
     /// Increment indices shift.
     pub fn flush_face(&mut self, theNbNodes: i32) {
         unsafe { crate::ffi::RWObj_ObjWriterContext_flush_face(self as *mut Self, theNbNodes) }
+    }
+}
+
+// ========================
+// From RWObj_Reader.hxx
+// ========================
+
+/// **Source:** `RWObj_Reader.hxx`:43 - `RWObj_Reader`
+/// An abstract class implementing procedure to read OBJ file.
+///
+/// This class is not bound to particular data structure
+/// and can be used to read the file directly into arbitrary data model.
+/// To use it, create descendant class and implement interface methods.
+///
+/// Call method Read() to read the file.
+pub use crate::ffi::RWObj_Reader as Reader;
+
+unsafe impl crate::CppDeletable for Reader {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::RWObj_Reader_destructor(ptr);
+    }
+}
+
+impl Reader {
+    /// **Source:** `RWObj_Reader.hxx`:45 - `RWObj_Reader::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::RWObj_Reader_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `RWObj_Reader.hxx`:52 - `RWObj_Reader::Read()`
+    /// Open stream and pass it to Read method
+    /// Returns true if success, false on error.
+    pub fn read(
+        &mut self,
+        theFile: &crate::ffi::TCollection_AsciiString,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe { crate::ffi::RWObj_Reader_read(self as *mut Self, theFile, theProgress) }
+    }
+
+    /// **Source:** `RWObj_Reader.hxx`:75 - `RWObj_Reader::Probe()`
+    /// Open stream and pass it to Probe method.
+    /// @param theFile     path to the file
+    /// @param theProgress progress indicator
+    /// @return TRUE if success, FALSE on error or user break.
+    /// @sa FileComments(), ExternalFiles(), NbProbeNodes(), NbProbeElems().
+    pub fn probe(
+        &mut self,
+        theFile: &crate::ffi::TCollection_AsciiString,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe { crate::ffi::RWObj_Reader_probe(self as *mut Self, theFile, theProgress) }
+    }
+
+    /// **Source:** `RWObj_Reader.hxx`:99 - `RWObj_Reader::FileComments()`
+    /// Returns file comments (lines starting with # at the beginning of file).
+    pub fn file_comments(&self) -> &crate::ffi::TCollection_AsciiString {
+        unsafe { &*(crate::ffi::RWObj_Reader_file_comments(self as *const Self)) }
+    }
+
+    /// **Source:** `RWObj_Reader.hxx`:108 - `RWObj_Reader::NbProbeNodes()`
+    /// Number of probed nodes.
+    pub fn nb_probe_nodes(&self) -> i32 {
+        unsafe { crate::ffi::RWObj_Reader_nb_probe_nodes(self as *const Self) }
+    }
+
+    /// **Source:** `RWObj_Reader.hxx`:111 - `RWObj_Reader::NbProbeElems()`
+    pub fn nb_probe_elems(&self) -> i32 {
+        unsafe { crate::ffi::RWObj_Reader_nb_probe_elems(self as *const Self) }
+    }
+
+    /// **Source:** `RWObj_Reader.hxx`:114 - `RWObj_Reader::MemoryLimit()`
+    /// Returns memory limit in bytes; -1 (no limit) by default.
+    pub fn memory_limit(&self) -> usize {
+        unsafe { crate::ffi::RWObj_Reader_memory_limit(self as *const Self) }
+    }
+
+    /// **Source:** `RWObj_Reader.hxx`:118 - `RWObj_Reader::SetMemoryLimit()`
+    /// Specify memory limit in bytes, so that import will be aborted
+    /// by specified limit before memory allocation error occurs.
+    pub fn set_memory_limit(&mut self, theMemLimit: usize) {
+        unsafe { crate::ffi::RWObj_Reader_set_memory_limit(self as *mut Self, theMemLimit) }
+    }
+
+    /// **Source:** `RWObj_Reader.hxx`:121 - `RWObj_Reader::Transformation()`
+    /// Return transformation from one coordinate system to another; no transformation by default.
+    pub fn transformation(&self) -> &crate::ffi::RWMesh_CoordinateSystemConverter {
+        unsafe { &*(crate::ffi::RWObj_Reader_transformation(self as *const Self)) }
+    }
+
+    /// **Source:** `RWObj_Reader.hxx`:126 - `RWObj_Reader::SetTransformation()`
+    /// Setup transformation from one coordinate system to another.
+    /// OBJ file might be exported following various coordinate system conventions,
+    /// so that it might be useful automatically transform data during file reading.
+    pub fn set_transformation(
+        &mut self,
+        theCSConverter: &crate::ffi::RWMesh_CoordinateSystemConverter,
+    ) {
+        unsafe { crate::ffi::RWObj_Reader_set_transformation(self as *mut Self, theCSConverter) }
+    }
+
+    /// **Source:** `RWObj_Reader.hxx`:132 - `RWObj_Reader::IsSinglePrecision()`
+    /// Return single precision flag for reading vertex data (coordinates); FALSE by default.
+    pub fn is_single_precision(&self) -> bool {
+        unsafe { crate::ffi::RWObj_Reader_is_single_precision(self as *const Self) }
+    }
+
+    /// **Source:** `RWObj_Reader.hxx`:135 - `RWObj_Reader::SetSinglePrecision()`
+    /// Setup single/double precision flag for reading vertex data (coordinates).
+    pub fn set_single_precision(&mut self, theIsSinglePrecision: bool) {
+        unsafe {
+            crate::ffi::RWObj_Reader_set_single_precision(self as *mut Self, theIsSinglePrecision)
+        }
+    }
+
+    /// **Source:** `RWObj_Reader.hxx`:45 - `RWObj_Reader::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::RWObj_Reader_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `RWObj_Reader.hxx`:45 - `RWObj_Reader::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::RWObj_Reader_get_type_descriptor()) }
+    }
+}
+
+pub use crate::ffi::HandleRWObjReader;
+
+unsafe impl crate::CppDeletable for HandleRWObjReader {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleRWObjReader_destructor(ptr);
+    }
+}
+
+impl HandleRWObjReader {
+    /// Dereference this Handle to access the underlying RWObj_Reader
+    pub fn get(&self) -> &crate::ffi::RWObj_Reader {
+        unsafe { &*(crate::ffi::HandleRWObjReader_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying RWObj_Reader
+    pub fn get_mut(&mut self) -> &mut crate::ffi::RWObj_Reader {
+        unsafe { &mut *(crate::ffi::HandleRWObjReader_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From RWObj_TriangulationReader.hxx
+// ========================
+
+/// **Source:** `RWObj_TriangulationReader.hxx`:24 - `RWObj_IShapeReceiver`
+/// Interface to store shape attributes into document.
+pub use crate::ffi::RWObj_IShapeReceiver as IShapeReceiver;
+
+unsafe impl crate::CppDeletable for IShapeReceiver {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::RWObj_IShapeReceiver_destructor(ptr);
+    }
+}
+
+/// **Source:** `RWObj_TriangulationReader.hxx`:38 - `RWObj_TriangulationReader`
+/// RWObj_Reader implementation dumping OBJ file into Poly_Triangulation.
+pub use crate::ffi::RWObj_TriangulationReader as TriangulationReader;
+
+unsafe impl crate::CppDeletable for TriangulationReader {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::RWObj_TriangulationReader_destructor(ptr);
+    }
+}
+
+impl TriangulationReader {
+    /// **Source:** `RWObj_TriangulationReader.hxx`:43 - `RWObj_TriangulationReader::RWObj_TriangulationReader()`
+    /// Constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWObj_TriangulationReader_ctor()) }
+    }
+
+    /// **Source:** `RWObj_TriangulationReader.hxx`:40 - `RWObj_TriangulationReader::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::RWObj_TriangulationReader_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `RWObj_TriangulationReader.hxx`:50 - `RWObj_TriangulationReader::SetCreateShapes()`
+    /// Set flag to create shapes.
+    pub fn set_create_shapes(&mut self, theToCreateShapes: bool) {
+        unsafe {
+            crate::ffi::RWObj_TriangulationReader_set_create_shapes(
+                self as *mut Self,
+                theToCreateShapes,
+            )
+        }
+    }
+
+    /// **Source:** `RWObj_TriangulationReader.hxx`:56 - `RWObj_TriangulationReader::GetTriangulation()`
+    /// Create Poly_Triangulation from collected data
+    pub fn get_triangulation(&mut self) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::RWObj_TriangulationReader_get_triangulation(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `RWObj_TriangulationReader.hxx`:59 - `RWObj_TriangulationReader::ResultShape()`
+    /// Return result shape.
+    pub fn result_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::RWObj_TriangulationReader_result_shape(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `RWObj_TriangulationReader.hxx`:40 - `RWObj_TriangulationReader::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::RWObj_TriangulationReader_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `RWObj_TriangulationReader.hxx`:40 - `RWObj_TriangulationReader::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::RWObj_TriangulationReader_get_type_descriptor()) }
+    }
+
+    /// Upcast to RWObj_Reader
+    pub fn as_reader(&self) -> &Reader {
+        unsafe { &*(crate::ffi::RWObj_TriangulationReader_as_RWObj_Reader(self as *const Self)) }
+    }
+
+    /// Upcast to RWObj_Reader (mutable)
+    pub fn as_reader_mut(&mut self) -> &mut Reader {
+        unsafe {
+            &mut *(crate::ffi::RWObj_TriangulationReader_as_RWObj_Reader_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:52 - `RWObj_Reader::Read()`
+    pub fn read(
+        &mut self,
+        theFile: &crate::ffi::TCollection_AsciiString,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_Read(
+                self as *mut Self,
+                theFile,
+                theProgress,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:75 - `RWObj_Reader::Probe()`
+    pub fn probe(
+        &mut self,
+        theFile: &crate::ffi::TCollection_AsciiString,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_Probe(
+                self as *mut Self,
+                theFile,
+                theProgress,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:99 - `RWObj_Reader::FileComments()`
+    pub fn file_comments(&self) -> &crate::ffi::TCollection_AsciiString {
+        unsafe {
+            &*(crate::ffi::RWObj_TriangulationReader_inherited_FileComments(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:108 - `RWObj_Reader::NbProbeNodes()`
+    pub fn nb_probe_nodes(&self) -> i32 {
+        unsafe { crate::ffi::RWObj_TriangulationReader_inherited_NbProbeNodes(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:111 - `RWObj_Reader::NbProbeElems()`
+    pub fn nb_probe_elems(&self) -> i32 {
+        unsafe { crate::ffi::RWObj_TriangulationReader_inherited_NbProbeElems(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:114 - `RWObj_Reader::MemoryLimit()`
+    pub fn memory_limit(&self) -> usize {
+        unsafe { crate::ffi::RWObj_TriangulationReader_inherited_MemoryLimit(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:118 - `RWObj_Reader::SetMemoryLimit()`
+    pub fn set_memory_limit(&mut self, theMemLimit: usize) {
+        unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_SetMemoryLimit(
+                self as *mut Self,
+                theMemLimit,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:121 - `RWObj_Reader::Transformation()`
+    pub fn transformation(&self) -> &crate::ffi::RWMesh_CoordinateSystemConverter {
+        unsafe {
+            &*(crate::ffi::RWObj_TriangulationReader_inherited_Transformation(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:126 - `RWObj_Reader::SetTransformation()`
+    pub fn set_transformation(
+        &mut self,
+        theCSConverter: &crate::ffi::RWMesh_CoordinateSystemConverter,
+    ) {
+        unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_SetTransformation(
+                self as *mut Self,
+                theCSConverter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:132 - `RWObj_Reader::IsSinglePrecision()`
+    pub fn is_single_precision(&self) -> bool {
+        unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_IsSinglePrecision(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:135 - `RWObj_Reader::SetSinglePrecision()`
+    pub fn set_single_precision(&mut self, theIsSinglePrecision: bool) {
+        unsafe {
+            crate::ffi::RWObj_TriangulationReader_inherited_SetSinglePrecision(
+                self as *mut Self,
+                theIsSinglePrecision,
+            )
+        }
     }
 }

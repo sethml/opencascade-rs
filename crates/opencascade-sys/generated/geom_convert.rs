@@ -1203,6 +1203,17 @@ impl CompBezierSurfacesToBSplineSurface {
         }
     }
 
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:238 - `GeomConvert_CompBezierSurfacesToBSplineSurface::Poles()`
+    /// Returns the table of poles of the BSpline surface
+    /// whose data is computed in this framework.
+    pub fn poles(&self) -> &crate::ffi::HandleTColgpHArray2OfPnt {
+        unsafe {
+            &*(crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_poles(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:242 - `GeomConvert_CompBezierSurfacesToBSplineSurface::UKnots()`
     /// Returns the knots table for the u parametric
     /// direction of the BSpline surface whose data is computed in this framework.
@@ -1632,6 +1643,25 @@ impl FuncConeLSDist {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_FuncConeLSDist_ctor()) }
     }
 
+    /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:39 - `GeomConvert_FuncConeLSDist::GeomConvert_FuncConeLSDist()`
+    pub fn new_handletcolgpharray1ofxyz_dir(
+        thePoints: &crate::ffi::HandleTColgpHArray1OfXYZ,
+        theDir: &crate::ffi::gp_Dir,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomConvert_FuncConeLSDist_ctor_handletcolgpharray1ofxyz_dir(
+                    thePoints, theDir,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:42 - `GeomConvert_FuncConeLSDist::SetPoints()`
+    pub fn set_points(&mut self, thePoints: &crate::ffi::HandleTColgpHArray1OfXYZ) {
+        unsafe { crate::ffi::GeomConvert_FuncConeLSDist_set_points(self as *mut Self, thePoints) }
+    }
+
     /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:44 - `GeomConvert_FuncConeLSDist::SetDir()`
     pub fn set_dir(&mut self, theDir: &crate::ffi::gp_Dir) {
         unsafe { crate::ffi::GeomConvert_FuncConeLSDist_set_dir(self as *mut Self, theDir) }
@@ -1718,6 +1748,27 @@ impl FuncCylinderLSDist {
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_FuncCylinderLSDist_ctor()) }
+    }
+
+    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:65 - `GeomConvert_FuncCylinderLSDist::GeomConvert_FuncCylinderLSDist()`
+    pub fn new_handletcolgpharray1ofxyz_dir(
+        thePoints: &crate::ffi::HandleTColgpHArray1OfXYZ,
+        theDir: &crate::ffi::gp_Dir,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomConvert_FuncCylinderLSDist_ctor_handletcolgpharray1ofxyz_dir(
+                    thePoints, theDir,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:68 - `GeomConvert_FuncCylinderLSDist::SetPoints()`
+    pub fn set_points(&mut self, thePoints: &crate::ffi::HandleTColgpHArray1OfXYZ) {
+        unsafe {
+            crate::ffi::GeomConvert_FuncCylinderLSDist_set_points(self as *mut Self, thePoints)
+        }
     }
 
     /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:70 - `GeomConvert_FuncCylinderLSDist::SetDir()`
@@ -1812,6 +1863,22 @@ impl FuncSphereLSDist {
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_FuncSphereLSDist_ctor()) }
+    }
+
+    /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:52 - `GeomConvert_FuncSphereLSDist::GeomConvert_FuncSphereLSDist()`
+    pub fn new_handletcolgpharray1ofxyz(
+        thePoints: &crate::ffi::HandleTColgpHArray1OfXYZ,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomConvert_FuncSphereLSDist_ctor_handletcolgpharray1ofxyz(thePoints),
+            )
+        }
+    }
+
+    /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:54 - `GeomConvert_FuncSphereLSDist::SetPoints()`
+    pub fn set_points(&mut self, thePoints: &crate::ffi::HandleTColgpHArray1OfXYZ) {
+        unsafe { crate::ffi::GeomConvert_FuncSphereLSDist_set_points(self as *mut Self, thePoints) }
     }
 
     /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:57 - `GeomConvert_FuncSphereLSDist::NbVariables()`

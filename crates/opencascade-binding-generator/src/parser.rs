@@ -92,6 +92,12 @@ pub fn get_collected_typedef_names() -> HashSet<String> {
     TYPEDEF_MAP.with(|m| m.borrow().values().cloned().collect())
 }
 
+/// Get the full typedef map: template spelling → typedef name.
+/// Used by codegen to build element type maps for NCollection H-classes.
+pub fn get_typedef_map() -> HashMap<String, String> {
+    TYPEDEF_MAP.with(|m| m.borrow().clone())
+}
+
 
 /// Parse a collection of OCCT header files
 /// 
@@ -689,7 +695,6 @@ fn extract_base_classes(entity: &Entity) -> Vec<String> {
                 // Skip Standard_Transient and other non-shape base classes
                 if base_name.contains('_')
                     && !base_name.contains("Standard_")
-                    && !base_name.contains("NCollection_")
                 {
                     base_classes.push(base_name);
                 }

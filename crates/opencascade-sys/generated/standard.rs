@@ -737,60 +737,6 @@ impl Dump {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Dump_get_pointer_prefix()) }
     }
 
-    /// **Source:** `Standard_Dump.hxx`:425 - `Standard_Dump::ProcessStreamName()`
-    /// Check whether the parameter name is equal to the name in the stream at position
-    /// @param[in]  theStreamStr stream with values
-    /// @param[in]  theName      stream key value
-    /// @param[out] theStreamPos current position in the stream
-    pub fn process_stream_name(
-        theStreamStr: &crate::ffi::TCollection_AsciiString,
-        theName: &crate::ffi::TCollection_AsciiString,
-        theStreamPos: &mut i32,
-    ) -> bool {
-        unsafe {
-            crate::ffi::Standard_Dump_process_stream_name(theStreamStr, theName, theStreamPos)
-        }
-    }
-
-    /// **Source:** `Standard_Dump.hxx`:434 - `Standard_Dump::ProcessFieldName()`
-    /// Check whether the field name is equal to the name in the stream at position
-    /// @param[in]  theStreamStr stream with values
-    /// @param[in]  theName      stream key field value
-    /// @param[out] theStreamPos current position in the stream
-    pub fn process_field_name(
-        theStreamStr: &crate::ffi::TCollection_AsciiString,
-        theName: &crate::ffi::TCollection_AsciiString,
-        theStreamPos: &mut i32,
-    ) -> bool {
-        unsafe { crate::ffi::Standard_Dump_process_field_name(theStreamStr, theName, theStreamPos) }
-    }
-
-    /// **Source:** `Standard_Dump.hxx`:443 - `Standard_Dump::InitRealValues()`
-    /// Unite values in one value using template: value_1, value_2, ..., value_n
-    /// @param[in]  theStreamStr stream with values
-    /// @param[out] theStreamPos current position in the stream
-    /// @param[in]  theCount     number of values
-    pub fn init_real_values(
-        theStreamStr: &crate::ffi::TCollection_AsciiString,
-        theStreamPos: &mut i32,
-        theCount: i32,
-    ) -> bool {
-        unsafe { crate::ffi::Standard_Dump_init_real_values(theStreamStr, theStreamPos, theCount) }
-    }
-
-    /// **Source:** `Standard_Dump.hxx`:453 - `Standard_Dump::InitValue()`
-    /// Returns real value
-    /// @param[in]  theStreamStr stream with values
-    /// @param[out] theStreamPos current position in the stream
-    /// @param[out] theValue     stream value
-    pub fn init_value(
-        theStreamStr: &crate::ffi::TCollection_AsciiString,
-        theStreamPos: &mut i32,
-        theValue: &mut crate::ffi::TCollection_AsciiString,
-    ) -> bool {
-        unsafe { crate::ffi::Standard_Dump_init_value(theStreamStr, theStreamPos, theValue) }
-    }
-
     /// **Source:** `Standard_Dump.hxx`:460 - `Standard_Dump::DumpFieldToName()`
     /// Convert field name into dump text value, removes "&" and "my" prefixes
     /// An example, for field myValue, theName is Value, for &myCLass, the name is Class
@@ -2370,11 +2316,6 @@ impl Persistent {
     /// **Source:** `Standard_Persistent.hxx`:33 - `Standard_Persistent::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_Persistent_dynamic_type(self as *const Self)) }
-    }
-
-    /// **Source:** `Standard_Persistent.hxx`:35 - `Standard_Persistent::TypeNum()`
-    pub fn type_num(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::Standard_Persistent_type_num(self as *mut Self)) }
     }
 
     /// **Source:** `Standard_Persistent.hxx`:33 - `Standard_Persistent::get_type_name()`

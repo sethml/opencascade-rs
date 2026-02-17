@@ -426,34 +426,6 @@ impl Base {
         unsafe { crate::ffi::PLib_Base_work_degree(self as *const Self) }
     }
 
-    /// **Source:** `PLib_Base.hxx`:74 - `PLib_Base::ReduceDegree()`
-    /// Compute NewDegree <= MaxDegree so that MaxError is lower
-    /// than Tol.
-    /// MaxError can be greater than Tol if it is not possible
-    /// to find a NewDegree <= MaxDegree.
-    /// In this case NewDegree = MaxDegree
-    pub fn reduce_degree(
-        &self,
-        Dimension: i32,
-        MaxDegree: i32,
-        Tol: f64,
-        BaseCoeff: &mut f64,
-        NewDegree: &mut i32,
-        MaxError: &mut f64,
-    ) {
-        unsafe {
-            crate::ffi::PLib_Base_reduce_degree(
-                self as *const Self,
-                Dimension,
-                MaxDegree,
-                Tol,
-                BaseCoeff,
-                NewDegree,
-                MaxError,
-            )
-        }
-    }
-
     /// **Source:** `PLib_Base.hxx`:81 - `PLib_Base::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::PLib_Base_dynamic_type(self as *const Self)) }
@@ -612,34 +584,6 @@ impl HermitJacobi {
         }
     }
 
-    /// **Source:** `PLib_HermitJacobi.hxx`:88 - `PLib_HermitJacobi::ReduceDegree()`
-    /// Compute NewDegree <= MaxDegree so that MaxError is lower
-    /// than Tol.
-    /// MaxError can be greater than Tol if it is not possible
-    /// to find a NewDegree <= MaxDegree.
-    /// In this case NewDegree = MaxDegree
-    pub fn reduce_degree(
-        &self,
-        Dimension: i32,
-        MaxDegree: i32,
-        Tol: f64,
-        HermJacCoeff: &mut f64,
-        NewDegree: &mut i32,
-        MaxError: &mut f64,
-    ) {
-        unsafe {
-            crate::ffi::PLib_HermitJacobi_reduce_degree(
-                self as *const Self,
-                Dimension,
-                MaxDegree,
-                Tol,
-                HermJacCoeff,
-                NewDegree,
-                MaxError,
-            )
-        }
-    }
-
     /// **Source:** `PLib_HermitJacobi.hxx`:95 - `PLib_HermitJacobi::AverageError()`
     pub fn average_error(&self, Dimension: i32, HermJacCoeff: &mut f64, NewDegree: i32) -> f64 {
         unsafe {
@@ -763,34 +707,6 @@ impl JacobiPolynomial {
                 Dimension,
                 JacCoeff,
                 NewDegree,
-            )
-        }
-    }
-
-    /// **Source:** `PLib_JacobiPolynomial.hxx`:113 - `PLib_JacobiPolynomial::ReduceDegree()`
-    /// Compute NewDegree <= MaxDegree  so that MaxError is lower
-    /// than Tol.
-    /// MaxError can be greater than Tol  if it is not possible
-    /// to find a NewDegree <= MaxDegree.
-    /// In this case NewDegree = MaxDegree
-    pub fn reduce_degree(
-        &self,
-        Dimension: i32,
-        MaxDegree: i32,
-        Tol: f64,
-        JacCoeff: &mut f64,
-        NewDegree: &mut i32,
-        MaxError: &mut f64,
-    ) {
-        unsafe {
-            crate::ffi::PLib_JacobiPolynomial_reduce_degree(
-                self as *const Self,
-                Dimension,
-                MaxDegree,
-                Tol,
-                JacCoeff,
-                NewDegree,
-                MaxError,
             )
         }
     }

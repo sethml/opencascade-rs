@@ -159,18 +159,8 @@ impl Builder {
     /// **Source:** `ChFi3d_Builder.hxx`:86 - `ChFi3d_Builder::Contains()`
     /// gives the number of  the contour containing E or 0
     /// if E does  not  belong to  any  contour.
-    pub fn contains_edge(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
-        unsafe { crate::ffi::ChFi3d_Builder_contains_edge(self as *const Self, E) }
-    }
-
-    /// **Source:** `ChFi3d_Builder.hxx`:91 - `ChFi3d_Builder::Contains()`
-    /// gives  the number of  the contour containing E or 0
-    /// if E does  not  belong  to  any  contour.
-    /// Sets in IndexInSpine the index of E in the contour if it's found
-    pub fn contains_edge_int(&self, E: &crate::ffi::TopoDS_Edge, IndexInSpine: &mut i32) -> i32 {
-        unsafe {
-            crate::ffi::ChFi3d_Builder_contains_edge_int(self as *const Self, E, IndexInSpine)
-        }
+    pub fn contains(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
+        unsafe { crate::ffi::ChFi3d_Builder_contains(self as *const Self, E) }
     }
 
     /// **Source:** `ChFi3d_Builder.hxx`:96 - `ChFi3d_Builder::NbElements()`
@@ -541,6 +531,17 @@ impl ChBuilder {
     /// **Source:** `ChFi3d_ChBuilder.hxx`:138 - `ChFi3d_ChBuilder::NbSurf()`
     pub fn nb_surf(&self, IC: i32) -> i32 {
         unsafe { crate::ffi::ChFi3d_ChBuilder_nb_surf(self as *const Self, IC) }
+    }
+
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:140 - `ChFi3d_ChBuilder::Sect()`
+    pub fn sect(&self, IC: i32, IS: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSecHArray1> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_sect(
+                self as *const Self,
+                IC,
+                IS,
+            ))
+        }
     }
 
     /// Upcast to ChFi3d_Builder
@@ -992,6 +993,17 @@ impl FilBuilder {
     /// **Source:** `ChFi3d_FilBuilder.hxx`:132 - `ChFi3d_FilBuilder::NbSurf()`
     pub fn nb_surf(&self, IC: i32) -> i32 {
         unsafe { crate::ffi::ChFi3d_FilBuilder_nb_surf(self as *const Self, IC) }
+    }
+
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:134 - `ChFi3d_FilBuilder::Sect()`
+    pub fn sect(&self, IC: i32, IS: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSecHArray1> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_sect(
+                self as *const Self,
+                IC,
+                IS,
+            ))
+        }
     }
 
     /// Upcast to ChFi3d_Builder

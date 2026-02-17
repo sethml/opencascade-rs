@@ -2405,6 +2405,83 @@ impl DerivedAttribute {
 }
 
 // ========================
+// From TDF_HAttributeArray1.hxx
+// ========================
+
+/// **Source:** `TDF_HAttributeArray1.hxx`:23 - `TDF_HAttributeArray1`
+pub use crate::ffi::TDF_HAttributeArray1 as HAttributeArray1;
+
+unsafe impl crate::CppDeletable for HAttributeArray1 {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TDF_HAttributeArray1_destructor(ptr);
+    }
+}
+
+impl HAttributeArray1 {
+    /// **Source:** `TDF_HAttributeArray1.hxx`:23 - `TDF_HAttributeArray1::TDF_HAttributeArray1()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_HAttributeArray1_ctor()) }
+    }
+
+    /// **Source:** `TDF_HAttributeArray1.hxx`:23 - `TDF_HAttributeArray1::TDF_HAttributeArray1()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_HAttributeArray1_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `TDF_HAttributeArray1.hxx`:23 - `TDF_HAttributeArray1::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDF_HAttributeArray1_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TDF_HAttributeArray1.hxx`:23 - `TDF_HAttributeArray1::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TDF_HAttributeArray1_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TDF_HAttributeArray1.hxx`:23 - `TDF_HAttributeArray1::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDF_HAttributeArray1_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFHAttributeArray1> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_HAttributeArray1_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTDFHAttributeArray1;
+
+unsafe impl crate::CppDeletable for HandleTDFHAttributeArray1 {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDFHAttributeArray1_destructor(ptr);
+    }
+}
+
+impl HandleTDFHAttributeArray1 {
+    /// Dereference this Handle to access the underlying TDF_HAttributeArray1
+    pub fn get(&self) -> &crate::ffi::TDF_HAttributeArray1 {
+        unsafe { &*(crate::ffi::HandleTDFHAttributeArray1_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDF_HAttributeArray1
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_HAttributeArray1 {
+        unsafe { &mut *(crate::ffi::HandleTDFHAttributeArray1_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From TDF_IDFilter.hxx
 // ========================
 
@@ -3867,11 +3944,12 @@ impl Transaction {
 // ========================
 
 pub use crate::ffi::{
-    TDF_AttributeDataMap as AttributeDataMap, TDF_AttributeDeltaList as AttributeDeltaList,
-    TDF_AttributeIndexedMap as AttributeIndexedMap, TDF_AttributeList as AttributeList,
-    TDF_AttributeMap as AttributeMap, TDF_AttributeSequence as AttributeSequence,
-    TDF_DeltaList as DeltaList, TDF_HAllocator as HAllocator, TDF_IDList as IDList,
-    TDF_LabelDataMap as LabelDataMap, TDF_LabelIndexedMap as LabelIndexedMap,
-    TDF_LabelIntegerMap as LabelIntegerMap, TDF_LabelList as LabelList, TDF_LabelMap as LabelMap,
-    TDF_LabelNodePtr as LabelNodePtr, TDF_LabelSequence as LabelSequence,
+    TDF_AttributeArray1 as AttributeArray1, TDF_AttributeDataMap as AttributeDataMap,
+    TDF_AttributeDeltaList as AttributeDeltaList, TDF_AttributeIndexedMap as AttributeIndexedMap,
+    TDF_AttributeList as AttributeList, TDF_AttributeMap as AttributeMap,
+    TDF_AttributeSequence as AttributeSequence, TDF_DeltaList as DeltaList,
+    TDF_HAllocator as HAllocator, TDF_IDList as IDList, TDF_LabelDataMap as LabelDataMap,
+    TDF_LabelIndexedMap as LabelIndexedMap, TDF_LabelIntegerMap as LabelIntegerMap,
+    TDF_LabelList as LabelList, TDF_LabelMap as LabelMap, TDF_LabelNodePtr as LabelNodePtr,
+    TDF_LabelSequence as LabelSequence,
 };

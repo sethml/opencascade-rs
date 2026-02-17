@@ -434,8 +434,19 @@ impl Unit {
 // ========================
 
 pub use crate::ffi::{
-    StepBasic_DerivedUnit as DerivedUnit, StepBasic_GeneralProperty as GeneralProperty,
+    StepBasic_ApplicationProtocolDefinition as ApplicationProtocolDefinition,
+    StepBasic_Approval as Approval, StepBasic_ApprovalDateTime as ApprovalDateTime,
+    StepBasic_ApprovalPersonOrganization as ApprovalPersonOrganization,
+    StepBasic_ApprovalRole as ApprovalRole, StepBasic_CharacterizedObject as CharacterizedObject,
+    StepBasic_DateAndTime as DateAndTime, StepBasic_DateTimeRole as DateTimeRole,
+    StepBasic_DerivedUnit as DerivedUnit, StepBasic_DocumentFile as DocumentFile,
+    StepBasic_GeneralProperty as GeneralProperty,
     StepBasic_MeasureValueMember as MeasureValueMember, StepBasic_NamedUnit as NamedUnit,
+    StepBasic_PersonAndOrganization as PersonAndOrganization,
+    StepBasic_PersonAndOrganizationRole as PersonAndOrganizationRole,
+    StepBasic_ProductCategoryRelationship as ProductCategoryRelationship,
     StepBasic_ProductDefinitionContext as ProductDefinitionContext,
     StepBasic_ProductDefinitionFormation as ProductDefinitionFormation,
+    StepBasic_ProductDefinitionRelationship as ProductDefinitionRelationship,
+    StepBasic_SecurityClassificationLevel as SecurityClassificationLevel,
 };

@@ -7,6 +7,334 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From STEPCAFControl_ActorWrite.hxx
+// ========================
+
+/// **Source:** `STEPCAFControl_ActorWrite.hxx`:31 - `STEPCAFControl_ActorWrite`
+/// Extends ActorWrite from STEPControl by analysis of
+/// whether shape is assembly (based on information from DECAF)
+pub use crate::ffi::STEPCAFControl_ActorWrite as ActorWrite;
+
+unsafe impl crate::CppDeletable for ActorWrite {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::STEPCAFControl_ActorWrite_destructor(ptr);
+    }
+}
+
+impl ActorWrite {
+    /// **Source:** `STEPCAFControl_ActorWrite.hxx`:35 - `STEPCAFControl_ActorWrite::STEPCAFControl_ActorWrite()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ActorWrite_ctor()) }
+    }
+
+    /// **Source:** `STEPCAFControl_ActorWrite.hxx`:45 - `STEPCAFControl_ActorWrite::SetStdMode()`
+    /// Set standard mode of work
+    /// In standard mode Actor (default) behaves exactly as its
+    /// ancestor, also map is cleared
+    pub fn set_std_mode(&mut self, stdmode: bool) {
+        unsafe { crate::ffi::STEPCAFControl_ActorWrite_set_std_mode(self as *mut Self, stdmode) }
+    }
+
+    /// **Source:** `STEPCAFControl_ActorWrite.hxx`:48 - `STEPCAFControl_ActorWrite::ClearMap()`
+    /// Clears map of shapes registered as assemblies
+    pub fn clear_map(&mut self) {
+        unsafe { crate::ffi::STEPCAFControl_ActorWrite_clear_map(self as *mut Self) }
+    }
+
+    /// **Source:** `STEPCAFControl_ActorWrite.hxx`:52 - `STEPCAFControl_ActorWrite::RegisterAssembly()`
+    /// Registers shape to be written as assembly
+    /// The shape should be TopoDS_Compound (else does nothing)
+    pub fn register_assembly(&mut self, S: &crate::ffi::TopoDS_Shape) {
+        unsafe { crate::ffi::STEPCAFControl_ActorWrite_register_assembly(self as *mut Self, S) }
+    }
+
+    /// **Source:** `STEPCAFControl_ActorWrite.hxx`:54 - `STEPCAFControl_ActorWrite::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::STEPCAFControl_ActorWrite_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `STEPCAFControl_ActorWrite.hxx`:54 - `STEPCAFControl_ActorWrite::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::STEPCAFControl_ActorWrite_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_ActorWrite.hxx`:54 - `STEPCAFControl_ActorWrite::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::STEPCAFControl_ActorWrite_get_type_descriptor()) }
+    }
+
+    /// Upcast to STEPControl_ActorWrite
+    pub fn as_step_control_actor_write(&self) -> &crate::step_control::ActorWrite {
+        unsafe {
+            &*(crate::ffi::STEPCAFControl_ActorWrite_as_STEPControl_ActorWrite(self as *const Self))
+        }
+    }
+
+    /// Upcast to STEPControl_ActorWrite (mutable)
+    pub fn as_step_control_actor_write_mut(&mut self) -> &mut crate::step_control::ActorWrite {
+        unsafe {
+            &mut *(crate::ffi::STEPCAFControl_ActorWrite_as_STEPControl_ActorWrite_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Transfer_ActorOfFinderProcess
+    pub fn as_transfer_actor_of_finder_process(&self) -> &crate::transfer::ActorOfFinderProcess {
+        unsafe {
+            &*(crate::ffi::STEPCAFControl_ActorWrite_as_Transfer_ActorOfFinderProcess(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Transfer_ActorOfFinderProcess (mutable)
+    pub fn as_transfer_actor_of_finder_process_mut(
+        &mut self,
+    ) -> &mut crate::transfer::ActorOfFinderProcess {
+        unsafe {
+            &mut *(crate::ffi::STEPCAFControl_ActorWrite_as_Transfer_ActorOfFinderProcess_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Transfer_ActorOfProcessForFinder
+    pub fn as_transfer_actor_of_process_for_finder(
+        &self,
+    ) -> &crate::transfer::ActorOfProcessForFinder {
+        unsafe {
+            &*(crate::ffi::STEPCAFControl_ActorWrite_as_Transfer_ActorOfProcessForFinder(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Transfer_ActorOfProcessForFinder (mutable)
+    pub fn as_transfer_actor_of_process_for_finder_mut(
+        &mut self,
+    ) -> &mut crate::transfer::ActorOfProcessForFinder {
+        unsafe {
+            &mut *(crate::ffi::STEPCAFControl_ActorWrite_as_Transfer_ActorOfProcessForFinder_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `STEPControl_ActorWrite.hxx`:81 - `STEPControl_ActorWrite::SetMode()`
+    pub fn set_mode(&mut self, M: crate::step_control::StepModelType) {
+        unsafe {
+            crate::ffi::STEPCAFControl_ActorWrite_inherited_SetMode(self as *mut Self, M.into())
+        }
+    }
+
+    /// Inherited: **Source:** `STEPControl_ActorWrite.hxx`:83 - `STEPControl_ActorWrite::Mode()`
+    pub fn mode(&self) -> crate::step_control::StepModelType {
+        unsafe {
+            crate::step_control::StepModelType::try_from(
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_Mode(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `STEPControl_ActorWrite.hxx`:85 - `STEPControl_ActorWrite::SetGroupMode()`
+    pub fn set_group_mode(&mut self, mode: i32) {
+        unsafe {
+            crate::ffi::STEPCAFControl_ActorWrite_inherited_SetGroupMode(self as *mut Self, mode)
+        }
+    }
+
+    /// Inherited: **Source:** `STEPControl_ActorWrite.hxx`:87 - `STEPControl_ActorWrite::GroupMode()`
+    pub fn group_mode(&self) -> i32 {
+        unsafe { crate::ffi::STEPCAFControl_ActorWrite_inherited_GroupMode(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `STEPControl_ActorWrite.hxx`:89 - `STEPControl_ActorWrite::SetTolerance()`
+    pub fn set_tolerance(&mut self, Tol: f64) {
+        unsafe {
+            crate::ffi::STEPCAFControl_ActorWrite_inherited_SetTolerance(self as *mut Self, Tol)
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:73 - `Transfer_ActorOfProcessForFinder::NullResult()`
+    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ActorWrite_inherited_NullResult(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:80 - `Transfer_ActorOfProcessForFinder::SetLast()`
+    pub fn set_last(&mut self, mode: bool) {
+        unsafe { crate::ffi::STEPCAFControl_ActorWrite_inherited_SetLast(self as *mut Self, mode) }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:83 - `Transfer_ActorOfProcessForFinder::IsLast()`
+    pub fn is_last(&self) -> bool {
+        unsafe { crate::ffi::STEPCAFControl_ActorWrite_inherited_IsLast(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:90 - `Transfer_ActorOfProcessForFinder::SetNext()`
+    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForFinder) {
+        unsafe { crate::ffi::STEPCAFControl_ActorWrite_inherited_SetNext(self as *mut Self, next) }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:93 - `Transfer_ActorOfProcessForFinder::Next()`
+    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ActorWrite_inherited_Next(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From STEPCAFControl_Controller.hxx
+// ========================
+
+/// **Source:** `STEPCAFControl_Controller.hxx`:31 - `STEPCAFControl_Controller`
+/// Extends Controller from STEPControl in order to provide
+/// ActorWrite adapted for writing assemblies from DECAF
+/// Note that ActorRead from STEPControl is used for reading
+/// (inherited automatically)
+pub use crate::ffi::STEPCAFControl_Controller as Controller;
+
+unsafe impl crate::CppDeletable for Controller {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::STEPCAFControl_Controller_destructor(ptr);
+    }
+}
+
+impl Controller {
+    /// **Source:** `STEPCAFControl_Controller.hxx`:36 - `STEPCAFControl_Controller::STEPCAFControl_Controller()`
+    /// Initializes the use of STEP Norm (the first time)
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_Controller_ctor()) }
+    }
+
+    /// **Source:** `STEPCAFControl_Controller.hxx`:43 - `STEPCAFControl_Controller::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::STEPCAFControl_Controller_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `STEPCAFControl_Controller.hxx`:41 - `STEPCAFControl_Controller::Init()`
+    /// Standard Initialisation. It creates a Controller for STEP-XCAF
+    /// and records it to various names, available to select it later
+    /// Returns True when done, False if could not be done
+    pub fn init() -> bool {
+        unsafe { crate::ffi::STEPCAFControl_Controller_init() }
+    }
+
+    /// **Source:** `STEPCAFControl_Controller.hxx`:43 - `STEPCAFControl_Controller::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::STEPCAFControl_Controller_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Controller.hxx`:43 - `STEPCAFControl_Controller::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::STEPCAFControl_Controller_get_type_descriptor()) }
+    }
+
+    /// Upcast to STEPControl_Controller
+    pub fn as_step_control_controller(&self) -> &crate::step_control::Controller {
+        unsafe {
+            &*(crate::ffi::STEPCAFControl_Controller_as_STEPControl_Controller(self as *const Self))
+        }
+    }
+
+    /// Upcast to STEPControl_Controller (mutable)
+    pub fn as_step_control_controller_mut(&mut self) -> &mut crate::step_control::Controller {
+        unsafe {
+            &mut *(crate::ffi::STEPCAFControl_Controller_as_STEPControl_Controller_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to XSControl_Controller
+    pub fn as_xs_control_controller(&self) -> &crate::xs_control::Controller {
+        unsafe {
+            &*(crate::ffi::STEPCAFControl_Controller_as_XSControl_Controller(self as *const Self))
+        }
+    }
+
+    /// Upcast to XSControl_Controller (mutable)
+    pub fn as_xs_control_controller_mut(&mut self) -> &mut crate::xs_control::Controller {
+        unsafe {
+            &mut *(crate::ffi::STEPCAFControl_Controller_as_XSControl_Controller_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `STEPControl_Controller.hxx`:45 - `STEPControl_Controller::NewModel()`
+    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_Controller_inherited_NewModel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:71 - `XSControl_Controller::AutoRecord()`
+    pub fn auto_record(&self) {
+        unsafe { crate::ffi::STEPCAFControl_Controller_inherited_AutoRecord(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:102 - `XSControl_Controller::WorkLibrary()`
+    pub fn work_library(&self) -> &crate::ffi::HandleIFSelectWorkLibrary {
+        unsafe {
+            &*(crate::ffi::STEPCAFControl_Controller_inherited_WorkLibrary(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:122 - `XSControl_Controller::SetModeWrite()`
+    pub fn set_mode_write(&mut self, modemin: i32, modemax: i32, shape: bool) {
+        unsafe {
+            crate::ffi::STEPCAFControl_Controller_inherited_SetModeWrite(
+                self as *mut Self,
+                modemin,
+                modemax,
+                shape,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:141 - `XSControl_Controller::IsModeWrite()`
+    pub fn is_mode_write(&self, modetrans: i32, shape: bool) -> bool {
+        unsafe {
+            crate::ffi::STEPCAFControl_Controller_inherited_IsModeWrite(
+                self as *const Self,
+                modetrans,
+                shape,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:177 - `XSControl_Controller::RecognizeWriteShape()`
+    pub fn recognize_write_shape(&self, shape: &crate::ffi::TopoDS_Shape, modetrans: i32) -> bool {
+        unsafe {
+            crate::ffi::STEPCAFControl_Controller_inherited_RecognizeWriteShape(
+                self as *const Self,
+                shape,
+                modetrans,
+            )
+        }
+    }
+}
+
+// ========================
 // From STEPCAFControl_ExternFile.hxx
 // ========================
 
@@ -354,5 +682,443 @@ impl GDTProperty {
             )
             .unwrap()
         }
+    }
+}
+
+// ========================
+// From STEPCAFControl_Reader.hxx
+// ========================
+
+/// **Source:** `STEPCAFControl_Reader.hxx`:60 - `STEPCAFControl_Reader`
+/// Provides a tool to read STEP file and put it into
+/// DECAF document. Besides transfer of shapes (including
+/// assemblies) provided by STEPControl, supports also
+/// colors and part names
+///
+/// This reader supports reading files with external references
+/// i.e. multifile reading
+/// It behaves as usual Reader (from STEPControl) for the main
+/// file (e.g. if it is single file)
+/// Results of reading other files can be accessed by name of the
+/// file or by iterating on a readers
+pub use crate::ffi::STEPCAFControl_Reader as Reader;
+
+unsafe impl crate::CppDeletable for Reader {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::STEPCAFControl_Reader_destructor(ptr);
+    }
+}
+
+impl Reader {
+    /// **Source:** `STEPCAFControl_Reader.hxx`:69 - `STEPCAFControl_Reader::STEPCAFControl_Reader()`
+    /// Creates a reader with an empty
+    /// STEP model and sets ColorMode, LayerMode, NameMode and
+    /// PropsMode to Standard_True.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_Reader_ctor()) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:88 - `STEPCAFControl_Reader::ReadFile()`
+    /// Loads a file and returns the read status
+    /// Provided for use like single-file reader.
+    /// @param[in] theFileName  file to open
+    /// @return read status
+    pub fn read_file_charptr(&mut self, theFileName: &str) -> crate::if_select::ReturnStatus {
+        let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(
+                crate::ffi::STEPCAFControl_Reader_read_file_charptr(
+                    self as *mut Self,
+                    c_theFileName.as_ptr(),
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:95 - `STEPCAFControl_Reader::ReadFile()`
+    /// Loads a file and returns the read status
+    /// Provided for use like single-file reader.
+    /// @param[in] theFileName  file to open
+    /// @param[in] theParams  default configuration parameters
+    /// @return read status
+    pub fn read_file_charptr_parameters(
+        &mut self,
+        theFileName: &str,
+        theParams: &crate::ffi::DESTEP_Parameters,
+    ) -> crate::if_select::ReturnStatus {
+        let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(
+                crate::ffi::STEPCAFControl_Reader_read_file_charptr_parameters(
+                    self as *mut Self,
+                    c_theFileName.as_ptr(),
+                    theParams,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:107 - `STEPCAFControl_Reader::NbRootsForTransfer()`
+    /// Returns number of roots recognized for transfer
+    /// Shortcut for Reader().NbRootsForTransfer()
+    pub fn nb_roots_for_transfer(&mut self) -> i32 {
+        unsafe { crate::ffi::STEPCAFControl_Reader_nb_roots_for_transfer(self as *mut Self) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:158 - `STEPCAFControl_Reader::ExternFile()`
+    /// Returns data on external file by its name
+    /// Returns False if no external file with given name is read
+    pub fn extern_file(
+        &self,
+        name: &str,
+        ef: &mut crate::ffi::HandleSTEPCAFControlExternFile,
+    ) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::STEPCAFControl_Reader_extern_file(self as *const Self, c_name.as_ptr(), ef)
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:162 - `STEPCAFControl_Reader::ChangeReader()`
+    /// Returns basic reader
+    pub fn change_reader(&mut self) -> &mut crate::ffi::STEPControl_Reader {
+        unsafe { &mut *(crate::ffi::STEPCAFControl_Reader_change_reader(self as *mut Self)) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:165 - `STEPCAFControl_Reader::Reader()`
+    /// Returns basic reader as const
+    pub fn reader(&self) -> &crate::ffi::STEPControl_Reader {
+        unsafe { &*(crate::ffi::STEPCAFControl_Reader_reader(self as *const Self)) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:176 - `STEPCAFControl_Reader::SetColorMode()`
+    /// Set ColorMode for indicate read Colors or not.
+    pub fn set_color_mode(&mut self, colormode: bool) {
+        unsafe { crate::ffi::STEPCAFControl_Reader_set_color_mode(self as *mut Self, colormode) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:178 - `STEPCAFControl_Reader::GetColorMode()`
+    pub fn get_color_mode(&self) -> bool {
+        unsafe { crate::ffi::STEPCAFControl_Reader_get_color_mode(self as *const Self) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:181 - `STEPCAFControl_Reader::SetNameMode()`
+    /// Set NameMode for indicate read Name or not.
+    pub fn set_name_mode(&mut self, namemode: bool) {
+        unsafe { crate::ffi::STEPCAFControl_Reader_set_name_mode(self as *mut Self, namemode) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:183 - `STEPCAFControl_Reader::GetNameMode()`
+    pub fn get_name_mode(&self) -> bool {
+        unsafe { crate::ffi::STEPCAFControl_Reader_get_name_mode(self as *const Self) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:186 - `STEPCAFControl_Reader::SetLayerMode()`
+    /// Set LayerMode for indicate read Layers or not.
+    pub fn set_layer_mode(&mut self, layermode: bool) {
+        unsafe { crate::ffi::STEPCAFControl_Reader_set_layer_mode(self as *mut Self, layermode) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:188 - `STEPCAFControl_Reader::GetLayerMode()`
+    pub fn get_layer_mode(&self) -> bool {
+        unsafe { crate::ffi::STEPCAFControl_Reader_get_layer_mode(self as *const Self) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:191 - `STEPCAFControl_Reader::SetPropsMode()`
+    /// PropsMode for indicate read Validation properties or not.
+    pub fn set_props_mode(&mut self, propsmode: bool) {
+        unsafe { crate::ffi::STEPCAFControl_Reader_set_props_mode(self as *mut Self, propsmode) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:193 - `STEPCAFControl_Reader::GetPropsMode()`
+    pub fn get_props_mode(&self) -> bool {
+        unsafe { crate::ffi::STEPCAFControl_Reader_get_props_mode(self as *const Self) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:196 - `STEPCAFControl_Reader::SetMetaMode()`
+    /// MetaMode for indicate read Metadata or not.
+    pub fn set_meta_mode(&mut self, theMetaMode: bool) {
+        unsafe { crate::ffi::STEPCAFControl_Reader_set_meta_mode(self as *mut Self, theMetaMode) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:198 - `STEPCAFControl_Reader::GetMetaMode()`
+    pub fn get_meta_mode(&self) -> bool {
+        unsafe { crate::ffi::STEPCAFControl_Reader_get_meta_mode(self as *const Self) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:201 - `STEPCAFControl_Reader::SetProductMetaMode()`
+    /// MetaMode for indicate whether to read Product Metadata or not.
+    pub fn set_product_meta_mode(&mut self, theProductMetaMode: bool) {
+        unsafe {
+            crate::ffi::STEPCAFControl_Reader_set_product_meta_mode(
+                self as *mut Self,
+                theProductMetaMode,
+            )
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:203 - `STEPCAFControl_Reader::GetProductMetaMode()`
+    pub fn get_product_meta_mode(&self) -> bool {
+        unsafe { crate::ffi::STEPCAFControl_Reader_get_product_meta_mode(self as *const Self) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:206 - `STEPCAFControl_Reader::SetSHUOMode()`
+    /// Set SHUO mode for indicate write SHUO or not.
+    pub fn set_shuo_mode(&mut self, shuomode: bool) {
+        unsafe { crate::ffi::STEPCAFControl_Reader_set_shuo_mode(self as *mut Self, shuomode) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:208 - `STEPCAFControl_Reader::GetSHUOMode()`
+    pub fn get_shuo_mode(&self) -> bool {
+        unsafe { crate::ffi::STEPCAFControl_Reader_get_shuo_mode(self as *const Self) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:211 - `STEPCAFControl_Reader::SetGDTMode()`
+    /// Set GDT mode for indicate write GDT or not.
+    pub fn set_gdt_mode(&mut self, gdtmode: bool) {
+        unsafe { crate::ffi::STEPCAFControl_Reader_set_gdt_mode(self as *mut Self, gdtmode) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:213 - `STEPCAFControl_Reader::GetGDTMode()`
+    pub fn get_gdt_mode(&self) -> bool {
+        unsafe { crate::ffi::STEPCAFControl_Reader_get_gdt_mode(self as *const Self) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:216 - `STEPCAFControl_Reader::SetMatMode()`
+    /// Set Material mode
+    pub fn set_mat_mode(&mut self, matmode: bool) {
+        unsafe { crate::ffi::STEPCAFControl_Reader_set_mat_mode(self as *mut Self, matmode) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:218 - `STEPCAFControl_Reader::GetMatMode()`
+    pub fn get_mat_mode(&self) -> bool {
+        unsafe { crate::ffi::STEPCAFControl_Reader_get_mat_mode(self as *const Self) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:221 - `STEPCAFControl_Reader::SetViewMode()`
+    /// Set View mode
+    pub fn set_view_mode(&mut self, viewmode: bool) {
+        unsafe { crate::ffi::STEPCAFControl_Reader_set_view_mode(self as *mut Self, viewmode) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:224 - `STEPCAFControl_Reader::GetViewMode()`
+    /// Get View mode
+    pub fn get_view_mode(&self) -> bool {
+        unsafe { crate::ffi::STEPCAFControl_Reader_get_view_mode(self as *const Self) }
+    }
+}
+
+// ========================
+// From STEPCAFControl_Writer.hxx
+// ========================
+
+/// **Source:** `STEPCAFControl_Writer.hxx`:50 - `STEPCAFControl_Writer`
+/// Provides a tool to write DECAF document to the
+/// STEP file. Besides transfer of shapes (including
+/// assemblies) provided by STEPControl, supports also
+/// colors and part names
+///
+/// Also supports multifile writing
+pub use crate::ffi::STEPCAFControl_Writer as Writer;
+
+unsafe impl crate::CppDeletable for Writer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::STEPCAFControl_Writer_destructor(ptr);
+    }
+}
+
+impl Writer {
+    /// **Source:** `STEPCAFControl_Writer.hxx`:59 - `STEPCAFControl_Writer::STEPCAFControl_Writer()`
+    /// Creates a writer with an empty
+    /// STEP model and sets ColorMode, LayerMode, NameMode and
+    /// PropsMode to Standard_True.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_Writer_ctor()) }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:77 - `STEPCAFControl_Writer::Write()`
+    /// Writes all the produced models into file
+    /// In case of multimodel with extern references,
+    /// filename will be a name of root file, all other files
+    /// have names of corresponding parts
+    /// Provided for use like single-file writer
+    pub fn write(&mut self, theFileName: &str) -> crate::if_select::ReturnStatus {
+        let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(crate::ffi::STEPCAFControl_Writer_write(
+                self as *mut Self,
+                c_theFileName.as_ptr(),
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:114 - `STEPCAFControl_Writer::Transfer()`
+    /// Method to transfer part of the document specified by label
+    pub fn transfer_label_stepmodeltype_charptr_progressrange(
+        &mut self,
+        theLabel: &crate::ffi::TDF_Label,
+        theMode: crate::step_control::StepModelType,
+        theIsMulti: &str,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_transfer_label_stepmodeltype_charptr_progressrange(
+                self as *mut Self,
+                theLabel,
+                theMode.into(),
+                c_theIsMulti.as_ptr(),
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:123 - `STEPCAFControl_Writer::Transfer()`
+    /// Method to transfer part of the document specified by label
+    /// This method uses if need to set parameters avoiding
+    /// initialization from Interface_Static
+    pub fn transfer_label_parameters_stepmodeltype_charptr_progressrange(
+        &mut self,
+        theLabel: &crate::ffi::TDF_Label,
+        theParams: &crate::ffi::DESTEP_Parameters,
+        theMode: crate::step_control::StepModelType,
+        theIsMulti: &str,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_transfer_label_parameters_stepmodeltype_charptr_progressrange(self as *mut Self, theLabel, theParams, theMode.into(), c_theIsMulti.as_ptr(), theProgress)
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:180 - `STEPCAFControl_Writer::ExternFile()`
+    /// Returns data on external file by its original label
+    /// Returns False if no external file with given name is read
+    pub fn extern_file_label_handlestepcafcontrolexternfile(
+        &self,
+        theLabel: &crate::ffi::TDF_Label,
+        theExtFile: &mut crate::ffi::HandleSTEPCAFControlExternFile,
+    ) -> bool {
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_extern_file_label_handlestepcafcontrolexternfile(
+                self as *const Self,
+                theLabel,
+                theExtFile,
+            )
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:185 - `STEPCAFControl_Writer::ExternFile()`
+    /// Returns data on external file by its name
+    /// Returns False if no external file with given name is read
+    pub fn extern_file_charptr_handlestepcafcontrolexternfile(
+        &self,
+        theName: &str,
+        theExtFile: &mut crate::ffi::HandleSTEPCAFControlExternFile,
+    ) -> bool {
+        let c_theName = std::ffi::CString::new(theName).unwrap();
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_extern_file_charptr_handlestepcafcontrolexternfile(
+                self as *const Self,
+                c_theName.as_ptr(),
+                theExtFile,
+            )
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:189 - `STEPCAFControl_Writer::ChangeWriter()`
+    /// Returns basic reader for root file
+    pub fn change_writer(&mut self) -> &mut crate::ffi::STEPControl_Writer {
+        unsafe { &mut *(crate::ffi::STEPCAFControl_Writer_change_writer(self as *mut Self)) }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:192 - `STEPCAFControl_Writer::Writer()`
+    /// Returns basic reader as const
+    pub fn writer(&self) -> &crate::ffi::STEPControl_Writer {
+        unsafe { &*(crate::ffi::STEPCAFControl_Writer_writer(self as *const Self)) }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:195 - `STEPCAFControl_Writer::SetColorMode()`
+    /// Set ColorMode for indicate write Colors or not.
+    pub fn set_color_mode(&mut self, theColorMode: bool) {
+        unsafe { crate::ffi::STEPCAFControl_Writer_set_color_mode(self as *mut Self, theColorMode) }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:197 - `STEPCAFControl_Writer::GetColorMode()`
+    pub fn get_color_mode(&self) -> bool {
+        unsafe { crate::ffi::STEPCAFControl_Writer_get_color_mode(self as *const Self) }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:200 - `STEPCAFControl_Writer::SetNameMode()`
+    /// Set NameMode for indicate write Name or not.
+    pub fn set_name_mode(&mut self, theNameMode: bool) {
+        unsafe { crate::ffi::STEPCAFControl_Writer_set_name_mode(self as *mut Self, theNameMode) }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:202 - `STEPCAFControl_Writer::GetNameMode()`
+    pub fn get_name_mode(&self) -> bool {
+        unsafe { crate::ffi::STEPCAFControl_Writer_get_name_mode(self as *const Self) }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:205 - `STEPCAFControl_Writer::SetLayerMode()`
+    /// Set LayerMode for indicate write Layers or not.
+    pub fn set_layer_mode(&mut self, theLayerMode: bool) {
+        unsafe { crate::ffi::STEPCAFControl_Writer_set_layer_mode(self as *mut Self, theLayerMode) }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:207 - `STEPCAFControl_Writer::GetLayerMode()`
+    pub fn get_layer_mode(&self) -> bool {
+        unsafe { crate::ffi::STEPCAFControl_Writer_get_layer_mode(self as *const Self) }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:210 - `STEPCAFControl_Writer::SetPropsMode()`
+    /// PropsMode for indicate write Validation properties or not.
+    pub fn set_props_mode(&mut self, thePropsMode: bool) {
+        unsafe { crate::ffi::STEPCAFControl_Writer_set_props_mode(self as *mut Self, thePropsMode) }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:212 - `STEPCAFControl_Writer::GetPropsMode()`
+    pub fn get_props_mode(&self) -> bool {
+        unsafe { crate::ffi::STEPCAFControl_Writer_get_props_mode(self as *const Self) }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:215 - `STEPCAFControl_Writer::SetSHUOMode()`
+    /// Set SHUO mode for indicate write SHUO or not.
+    pub fn set_shuo_mode(&mut self, theSHUOMode: bool) {
+        unsafe { crate::ffi::STEPCAFControl_Writer_set_shuo_mode(self as *mut Self, theSHUOMode) }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:217 - `STEPCAFControl_Writer::GetSHUOMode()`
+    pub fn get_shuo_mode(&self) -> bool {
+        unsafe { crate::ffi::STEPCAFControl_Writer_get_shuo_mode(self as *const Self) }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:220 - `STEPCAFControl_Writer::SetDimTolMode()`
+    /// Set dimtolmode for indicate write D&GTs or not.
+    pub fn set_dim_tol_mode(&mut self, theDimTolMode: bool) {
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_set_dim_tol_mode(self as *mut Self, theDimTolMode)
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:222 - `STEPCAFControl_Writer::GetDimTolMode()`
+    pub fn get_dim_tol_mode(&self) -> bool {
+        unsafe { crate::ffi::STEPCAFControl_Writer_get_dim_tol_mode(self as *const Self) }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:225 - `STEPCAFControl_Writer::SetMaterialMode()`
+    /// Set dimtolmode for indicate write D&GTs or not.
+    pub fn set_material_mode(&mut self, theMaterialMode: bool) {
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_set_material_mode(self as *mut Self, theMaterialMode)
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:227 - `STEPCAFControl_Writer::GetMaterialMode()`
+    pub fn get_material_mode(&self) -> bool {
+        unsafe { crate::ffi::STEPCAFControl_Writer_get_material_mode(self as *const Self) }
     }
 }

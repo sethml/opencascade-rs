@@ -32,6 +32,34 @@ pub fn format_name(
     }
 }
 
+/// Extended status bits.
+/// C++ enum: `RWMesh_CafReaderStatusEx`
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[repr(i32)]
+pub enum CafReaderStatusEx {
+    /// < empty status
+    CafreaderstatusexNone = 0,
+    CafreaderstatusexPartial = 1,
+}
+
+impl From<CafReaderStatusEx> for i32 {
+    fn from(value: CafReaderStatusEx) -> Self {
+        value as i32
+    }
+}
+
+impl TryFrom<i32> for CafReaderStatusEx {
+    type Error = i32;
+
+    fn try_from(value: i32) -> Result<Self, i32> {
+        match value {
+            0 => Ok(CafReaderStatusEx::CafreaderstatusexNone),
+            1 => Ok(CafReaderStatusEx::CafreaderstatusexPartial),
+            _ => Err(value),
+        }
+    }
+}
+
 /// Standard coordinate system definition.
 /// Open CASCADE does not force application using specific coordinate system,
 /// although Draw Harness and samples define +Z-up +Y-forward coordinate system for camera view
@@ -111,6 +139,282 @@ impl TryFrom<i32> for NameFormat {
             6 => Ok(NameFormat::NameformatProductandinstanceandocaf),
             _ => Err(value),
         }
+    }
+}
+
+// ========================
+// From RWMesh_CafReader.hxx
+// ========================
+
+/// **Source:** `RWMesh_CafReader.hxx`:50 - `RWMesh_CafReader`
+/// The general interface for importing mesh data into XDE document.
+///
+/// The tool implements auxiliary structures for creating an XDE document in two steps:
+/// 1) Creating TopoDS_Shape hierarchy (myRootShapes)
+/// and Shape attributes (myAttribMap) separately within performMesh().
+/// Attributes include names and styles.
+/// 2) Filling XDE document from these auxiliary structures.
+/// Named elements are expanded within document structure, while Compounds having no named
+/// children will remain collapsed. In addition, unnamed nodes can be filled with generated names
+/// like "Face", "Compound" via generateNames() method, and the very root unnamed node can be
+/// filled from file name like "MyModel.obj".
+pub use crate::ffi::RWMesh_CafReader as CafReader;
+
+unsafe impl crate::CppDeletable for CafReader {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::RWMesh_CafReader_destructor(ptr);
+    }
+}
+
+impl CafReader {
+    /// **Source:** `RWMesh_CafReader.hxx`:52 - `RWMesh_CafReader::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::RWMesh_CafReader_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
+    /// Return prefix for generating root labels names.
+    pub fn root_prefix(&self) -> &crate::ffi::TCollection_AsciiString {
+        unsafe { &*(crate::ffi::RWMesh_CafReader_root_prefix(self as *const Self)) }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:82 - `RWMesh_CafReader::SetRootPrefix()`
+    /// Set prefix for generating root labels names
+    pub fn set_root_prefix(&mut self, theRootPrefix: &crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::RWMesh_CafReader_set_root_prefix(self as *mut Self, theRootPrefix) }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:95 - `RWMesh_CafReader::ToFillIncompleteDocument()`
+    /// Flag indicating if partially read file content should be put into the XDE document, TRUE by
+    /// default.
+    ///
+    /// Partial read means unexpected end of file, critical parsing syntax errors in the middle of
+    /// file, or reached memory limit indicated by performMesh() returning FALSE. Partial read allows
+    /// importing a model even in case of formal reading failure, so that it will be up to user to
+    /// decide if processed data has any value.
+    ///
+    /// In case of partial read (performMesh() returns FALSE, but there are some data that could be
+    /// put into document), Perform() will return TRUE and result flag will have failure bit set.
+    /// @sa MemoryLimitMiB(), ExtraStatus().
+    pub fn to_fill_incomplete_document(&self) -> bool {
+        unsafe { crate::ffi::RWMesh_CafReader_to_fill_incomplete_document(self as *const Self) }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:98 - `RWMesh_CafReader::SetFillIncompleteDocument()`
+    /// Set flag allowing partially read file content to be put into the XDE document.
+    pub fn set_fill_incomplete_document(&mut self, theToFillIncomplete: bool) {
+        unsafe {
+            crate::ffi::RWMesh_CafReader_set_fill_incomplete_document(
+                self as *mut Self,
+                theToFillIncomplete,
+            )
+        }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:104 - `RWMesh_CafReader::MemoryLimitMiB()`
+    /// Return memory usage limit in MiB, -1 by default which means no limit.
+    pub fn memory_limit_mi_b(&self) -> i32 {
+        unsafe { crate::ffi::RWMesh_CafReader_memory_limit_mi_b(self as *const Self) }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:107 - `RWMesh_CafReader::SetMemoryLimitMiB()`
+    /// Set memory usage limit in MiB; can be ignored by reader implementation!
+    pub fn set_memory_limit_mi_b(&mut self, theLimitMiB: i32) {
+        unsafe {
+            crate::ffi::RWMesh_CafReader_set_memory_limit_mi_b(self as *mut Self, theLimitMiB)
+        }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:111 - `RWMesh_CafReader::CoordinateSystemConverter()`
+    /// Return coordinate system converter.
+    pub fn coordinate_system_converter(&self) -> &crate::ffi::RWMesh_CoordinateSystemConverter {
+        unsafe { &*(crate::ffi::RWMesh_CafReader_coordinate_system_converter(self as *const Self)) }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:117 - `RWMesh_CafReader::SetCoordinateSystemConverter()`
+    /// Set coordinate system converter.
+    pub fn set_coordinate_system_converter(
+        &mut self,
+        theConverter: &crate::ffi::RWMesh_CoordinateSystemConverter,
+    ) {
+        unsafe {
+            crate::ffi::RWMesh_CafReader_set_coordinate_system_converter(
+                self as *mut Self,
+                theConverter,
+            )
+        }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:124 - `RWMesh_CafReader::SystemLengthUnit()`
+    /// Return the length unit to convert into while reading the file, defined as scale factor for m
+    /// (meters); -1.0 by default, which means that NO conversion will be applied.
+    pub fn system_length_unit(&self) -> f64 {
+        unsafe { crate::ffi::RWMesh_CafReader_system_length_unit(self as *const Self) }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:128 - `RWMesh_CafReader::SetSystemLengthUnit()`
+    /// Set system length units to convert into while reading the file, defined as scale factor for m
+    /// (meters).
+    pub fn set_system_length_unit(&mut self, theUnits: f64) {
+        unsafe { crate::ffi::RWMesh_CafReader_set_system_length_unit(self as *mut Self, theUnits) }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:134 - `RWMesh_CafReader::HasSystemCoordinateSystem()`
+    /// Return TRUE if system coordinate system has been defined; FALSE by default.
+    pub fn has_system_coordinate_system(&self) -> bool {
+        unsafe { crate::ffi::RWMesh_CafReader_has_system_coordinate_system(self as *const Self) }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:141 - `RWMesh_CafReader::SystemCoordinateSystem()`
+    /// Return system coordinate system; UNDEFINED by default, which means that no conversion will be
+    /// done.
+    pub fn system_coordinate_system(&self) -> &crate::ffi::gp_Ax3 {
+        unsafe { &*(crate::ffi::RWMesh_CafReader_system_coordinate_system(self as *const Self)) }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:147 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
+    /// Set system origin coordinate system to perform conversion into during read.
+    pub fn set_system_coordinate_system_ax3(&mut self, theCS: &crate::ffi::gp_Ax3) {
+        unsafe {
+            crate::ffi::RWMesh_CafReader_set_system_coordinate_system_ax3(self as *mut Self, theCS)
+        }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:153 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
+    /// Set system origin coordinate system to perform conversion into during read.
+    pub fn set_system_coordinate_system_coordinatesystem(
+        &mut self,
+        theCS: crate::rw_mesh::CoordinateSystem,
+    ) {
+        unsafe {
+            crate::ffi::RWMesh_CafReader_set_system_coordinate_system_coordinatesystem(
+                self as *mut Self,
+                theCS.into(),
+            )
+        }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:160 - `RWMesh_CafReader::FileLengthUnit()`
+    /// Return the length unit to convert from while reading the file, defined as scale factor for m
+    /// (meters). Can be undefined (-1.0) if file format is unitless.
+    pub fn file_length_unit(&self) -> f64 {
+        unsafe { crate::ffi::RWMesh_CafReader_file_length_unit(self as *const Self) }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:164 - `RWMesh_CafReader::SetFileLengthUnit()`
+    /// Set (override) file length units to convert from while reading the file, defined as scale
+    /// factor for m (meters).
+    pub fn set_file_length_unit(&mut self, theUnits: f64) {
+        unsafe { crate::ffi::RWMesh_CafReader_set_file_length_unit(self as *mut Self, theUnits) }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:170 - `RWMesh_CafReader::HasFileCoordinateSystem()`
+    /// Return TRUE if file origin coordinate system has been defined.
+    pub fn has_file_coordinate_system(&self) -> bool {
+        unsafe { crate::ffi::RWMesh_CafReader_has_file_coordinate_system(self as *const Self) }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:177 - `RWMesh_CafReader::FileCoordinateSystem()`
+    /// Return file origin coordinate system; can be UNDEFINED, which means no conversion will be
+    /// done.
+    pub fn file_coordinate_system(&self) -> &crate::ffi::gp_Ax3 {
+        unsafe { &*(crate::ffi::RWMesh_CafReader_file_coordinate_system(self as *const Self)) }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:180 - `RWMesh_CafReader::SetFileCoordinateSystem()`
+    /// Set (override) file origin coordinate system to perform conversion during read.
+    pub fn set_file_coordinate_system_ax3(&mut self, theCS: &crate::ffi::gp_Ax3) {
+        unsafe {
+            crate::ffi::RWMesh_CafReader_set_file_coordinate_system_ax3(self as *mut Self, theCS)
+        }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:186 - `RWMesh_CafReader::SetFileCoordinateSystem()`
+    /// Set (override) file origin coordinate system to perform conversion during read.
+    pub fn set_file_coordinate_system_coordinatesystem(
+        &mut self,
+        theCS: crate::rw_mesh::CoordinateSystem,
+    ) {
+        unsafe {
+            crate::ffi::RWMesh_CafReader_set_file_coordinate_system_coordinatesystem(
+                self as *mut Self,
+                theCS.into(),
+            )
+        }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:194 - `RWMesh_CafReader::Perform()`
+    /// Open stream and pass it to Perform method.
+    /// The Document instance should be set beforehand.
+    pub fn perform(
+        &mut self,
+        theFile: &crate::ffi::TCollection_AsciiString,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe { crate::ffi::RWMesh_CafReader_perform(self as *mut Self, theFile, theProgress) }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:211 - `RWMesh_CafReader::ExtraStatus()`
+    /// Return extended status flags.
+    /// @sa RWMesh_CafReaderStatusEx enumeration.
+    pub fn extra_status(&self) -> i32 {
+        unsafe { crate::ffi::RWMesh_CafReader_extra_status(self as *const Self) }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:215 - `RWMesh_CafReader::SingleShape()`
+    /// Return result as a single shape.
+    pub fn single_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_CafReader_single_shape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:227 - `RWMesh_CafReader::ProbeHeader()`
+    /// Open stream and pass it to ProbeHeader method.
+    pub fn probe_header(
+        &mut self,
+        theFile: &crate::ffi::TCollection_AsciiString,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWMesh_CafReader_probe_header(self as *mut Self, theFile, theProgress)
+        }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:52 - `RWMesh_CafReader::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::RWMesh_CafReader_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:52 - `RWMesh_CafReader::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::RWMesh_CafReader_get_type_descriptor()) }
+    }
+}
+
+pub use crate::ffi::HandleRWMeshCafReader;
+
+unsafe impl crate::CppDeletable for HandleRWMeshCafReader {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleRWMeshCafReader_destructor(ptr);
+    }
+}
+
+impl HandleRWMeshCafReader {
+    /// Dereference this Handle to access the underlying RWMesh_CafReader
+    pub fn get(&self) -> &crate::ffi::RWMesh_CafReader {
+        unsafe { &*(crate::ffi::HandleRWMeshCafReader_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying RWMesh_CafReader
+    pub fn get_mut(&mut self) -> &mut crate::ffi::RWMesh_CafReader {
+        unsafe { &mut *(crate::ffi::HandleRWMeshCafReader_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1278,16 +1582,6 @@ impl TriangulationSource {
         unsafe { crate::ffi::RWMesh_TriangulationSource_degenerated_tri_nb(self as *const Self) }
     }
 
-    /// **Source:** `RWMesh_TriangulationSource.hxx`:46 - `RWMesh_TriangulationSource::ChangeDegeneratedTriNb()`
-    /// Gets access to number of degenerated triangles to collect them during data reading.
-    pub fn change_degenerated_tri_nb(&mut self) -> &mut i32 {
-        unsafe {
-            &mut *(crate::ffi::RWMesh_TriangulationSource_change_degenerated_tri_nb(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// **Source:** `RWMesh_TriangulationSource.hxx`:49 - `RWMesh_TriangulationSource::HasGeometry()`
     /// Returns TRUE if triangulation has some geometry.
     pub fn has_geometry(&self) -> bool {
@@ -1648,6 +1942,37 @@ impl TriangulationSource {
     pub fn compute_normals(&mut self) {
         unsafe {
             crate::ffi::RWMesh_TriangulationSource_inherited_ComputeNormals(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:300 - `Poly_Triangulation::MapNodeArray()`
+    pub fn map_node_array(&self) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfPnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::RWMesh_TriangulationSource_inherited_MapNodeArray(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:305 - `Poly_Triangulation::MapTriangleArray()`
+    pub fn map_triangle_array(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyHArray1OfTriangle> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::RWMesh_TriangulationSource_inherited_MapTriangleArray(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:310 - `Poly_Triangulation::MapUVNodeArray()`
+    pub fn map_uv_node_array(&self) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfPnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::RWMesh_TriangulationSource_inherited_MapUVNodeArray(
+                    self as *const Self,
+                ),
+            )
         }
     }
 

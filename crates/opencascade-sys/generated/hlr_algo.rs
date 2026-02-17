@@ -345,11 +345,6 @@ impl Coincidence {
         }
     }
 
-    /// **Source:** `HLRAlgo_Coincidence.hxx`:63 - `HLRAlgo_Coincidence::Value2D()`
-    pub fn value2_d(&self, FE: &mut i32, Param: &mut f64) {
-        unsafe { crate::ffi::HLRAlgo_Coincidence_value2_d(self as *const Self, FE, Param) }
-    }
-
     /// **Source:** `HLRAlgo_Coincidence.hxx`:69 - `HLRAlgo_Coincidence::State3D()`
     pub fn state3_d(&self, stbef: &mut i32, staft: &mut i32) {
         unsafe { crate::ffi::HLRAlgo_Coincidence_state3_d(self as *const Self, stbef, staft) }
@@ -772,6 +767,314 @@ impl HandleHLRAlgoEdgesBlock {
 }
 
 // ========================
+// From HLRAlgo_HArray1OfPHDat.hxx
+// ========================
+
+/// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat`
+pub use crate::ffi::HLRAlgo_HArray1OfPHDat as HArray1OfPHDat;
+
+unsafe impl crate::CppDeletable for HArray1OfPHDat {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HLRAlgo_HArray1OfPHDat_destructor(ptr);
+    }
+}
+
+impl HArray1OfPHDat {
+    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::HLRAlgo_HArray1OfPHDat()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPHDat_ctor()) }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::HLRAlgo_HArray1OfPHDat()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPHDat_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::HLRAlgo_HArray1OfPHDat_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::HLRAlgo_HArray1OfPHDat_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::HLRAlgo_HArray1OfPHDat_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleHLRAlgoHArray1OfPHDat> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPHDat_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleHLRAlgoHArray1OfPHDat;
+
+unsafe impl crate::CppDeletable for HandleHLRAlgoHArray1OfPHDat {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleHLRAlgoHArray1OfPHDat_destructor(ptr);
+    }
+}
+
+impl HandleHLRAlgoHArray1OfPHDat {
+    /// Dereference this Handle to access the underlying HLRAlgo_HArray1OfPHDat
+    pub fn get(&self) -> &crate::ffi::HLRAlgo_HArray1OfPHDat {
+        unsafe { &*(crate::ffi::HandleHLRAlgoHArray1OfPHDat_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying HLRAlgo_HArray1OfPHDat
+    pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_HArray1OfPHDat {
+        unsafe { &mut *(crate::ffi::HandleHLRAlgoHArray1OfPHDat_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From HLRAlgo_HArray1OfPINod.hxx
+// ========================
+
+/// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod`
+pub use crate::ffi::HLRAlgo_HArray1OfPINod as HArray1OfPINod;
+
+unsafe impl crate::CppDeletable for HArray1OfPINod {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HLRAlgo_HArray1OfPINod_destructor(ptr);
+    }
+}
+
+impl HArray1OfPINod {
+    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::HLRAlgo_HArray1OfPINod()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPINod_ctor()) }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::HLRAlgo_HArray1OfPINod()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPINod_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::HLRAlgo_HArray1OfPINod_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::HLRAlgo_HArray1OfPINod_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::HLRAlgo_HArray1OfPINod_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleHLRAlgoHArray1OfPINod> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPINod_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleHLRAlgoHArray1OfPINod;
+
+unsafe impl crate::CppDeletable for HandleHLRAlgoHArray1OfPINod {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleHLRAlgoHArray1OfPINod_destructor(ptr);
+    }
+}
+
+impl HandleHLRAlgoHArray1OfPINod {
+    /// Dereference this Handle to access the underlying HLRAlgo_HArray1OfPINod
+    pub fn get(&self) -> &crate::ffi::HLRAlgo_HArray1OfPINod {
+        unsafe { &*(crate::ffi::HandleHLRAlgoHArray1OfPINod_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying HLRAlgo_HArray1OfPINod
+    pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_HArray1OfPINod {
+        unsafe { &mut *(crate::ffi::HandleHLRAlgoHArray1OfPINod_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From HLRAlgo_HArray1OfPISeg.hxx
+// ========================
+
+/// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg`
+pub use crate::ffi::HLRAlgo_HArray1OfPISeg as HArray1OfPISeg;
+
+unsafe impl crate::CppDeletable for HArray1OfPISeg {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HLRAlgo_HArray1OfPISeg_destructor(ptr);
+    }
+}
+
+impl HArray1OfPISeg {
+    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::HLRAlgo_HArray1OfPISeg()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPISeg_ctor()) }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::HLRAlgo_HArray1OfPISeg()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPISeg_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::HLRAlgo_HArray1OfPISeg_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::HLRAlgo_HArray1OfPISeg_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::HLRAlgo_HArray1OfPISeg_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleHLRAlgoHArray1OfPISeg> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPISeg_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleHLRAlgoHArray1OfPISeg;
+
+unsafe impl crate::CppDeletable for HandleHLRAlgoHArray1OfPISeg {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleHLRAlgoHArray1OfPISeg_destructor(ptr);
+    }
+}
+
+impl HandleHLRAlgoHArray1OfPISeg {
+    /// Dereference this Handle to access the underlying HLRAlgo_HArray1OfPISeg
+    pub fn get(&self) -> &crate::ffi::HLRAlgo_HArray1OfPISeg {
+        unsafe { &*(crate::ffi::HandleHLRAlgoHArray1OfPISeg_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying HLRAlgo_HArray1OfPISeg
+    pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_HArray1OfPISeg {
+        unsafe { &mut *(crate::ffi::HandleHLRAlgoHArray1OfPISeg_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From HLRAlgo_HArray1OfTData.hxx
+// ========================
+
+/// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData`
+pub use crate::ffi::HLRAlgo_HArray1OfTData as HArray1OfTData;
+
+unsafe impl crate::CppDeletable for HArray1OfTData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HLRAlgo_HArray1OfTData_destructor(ptr);
+    }
+}
+
+impl HArray1OfTData {
+    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::HLRAlgo_HArray1OfTData()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfTData_ctor()) }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::HLRAlgo_HArray1OfTData()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfTData_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::HLRAlgo_HArray1OfTData_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::HLRAlgo_HArray1OfTData_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::HLRAlgo_HArray1OfTData_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleHLRAlgoHArray1OfTData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfTData_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleHLRAlgoHArray1OfTData;
+
+unsafe impl crate::CppDeletable for HandleHLRAlgoHArray1OfTData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleHLRAlgoHArray1OfTData_destructor(ptr);
+    }
+}
+
+impl HandleHLRAlgoHArray1OfTData {
+    /// Dereference this Handle to access the underlying HLRAlgo_HArray1OfTData
+    pub fn get(&self) -> &crate::ffi::HLRAlgo_HArray1OfTData {
+        unsafe { &*(crate::ffi::HandleHLRAlgoHArray1OfTData_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying HLRAlgo_HArray1OfTData
+    pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_HArray1OfTData {
+        unsafe { &mut *(crate::ffi::HandleHLRAlgoHArray1OfTData_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From HLRAlgo_Interference.hxx
 // ========================
 
@@ -1157,6 +1460,21 @@ impl PolyData {
     /// **Source:** `HLRAlgo_PolyData.hxx`:92 - `HLRAlgo_PolyData::HLRAlgo_PolyData()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_PolyData_ctor()) }
+    }
+
+    /// **Source:** `HLRAlgo_PolyData.hxx`:94 - `HLRAlgo_PolyData::HNodes()`
+    pub fn h_nodes(&mut self, HNodes: &crate::ffi::HandleTColgpHArray1OfXYZ) {
+        unsafe { crate::ffi::HLRAlgo_PolyData_h_nodes(self as *mut Self, HNodes) }
+    }
+
+    /// **Source:** `HLRAlgo_PolyData.hxx`:96 - `HLRAlgo_PolyData::HTData()`
+    pub fn ht_data(&mut self, HTData: &crate::ffi::HandleHLRAlgoHArray1OfTData) {
+        unsafe { crate::ffi::HLRAlgo_PolyData_ht_data(self as *mut Self, HTData) }
+    }
+
+    /// **Source:** `HLRAlgo_PolyData.hxx`:98 - `HLRAlgo_PolyData::HPHDat()`
+    pub fn hph_dat(&mut self, HPHDat: &crate::ffi::HandleHLRAlgoHArray1OfPHDat) {
+        unsafe { crate::ffi::HLRAlgo_PolyData_hph_dat(self as *mut Self, HPHDat) }
     }
 
     /// **Source:** `HLRAlgo_PolyData.hxx`:100 - `HLRAlgo_PolyData::FaceIndex()`
@@ -1821,7 +2139,6 @@ impl HandleHLRAlgoWiresBlock {
 pub use crate::ffi::{
     HLRAlgo_Array1OfPHDat as Array1OfPHDat, HLRAlgo_Array1OfPINod as Array1OfPINod,
     HLRAlgo_Array1OfPISeg as Array1OfPISeg, HLRAlgo_Array1OfTData as Array1OfTData,
-    HLRAlgo_HArray1OfPHDat as HArray1OfPHDat, HLRAlgo_HArray1OfTData as HArray1OfTData,
     HLRAlgo_InterferenceList as InterferenceList,
     HLRAlgo_ListIteratorOfInterferenceList as ListIteratorOfInterferenceList,
     HLRAlgo_ListOfBPoint as ListOfBPoint,

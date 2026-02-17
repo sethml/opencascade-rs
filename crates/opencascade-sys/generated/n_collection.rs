@@ -93,6 +93,24 @@ impl AccAllocator {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NCollection_AccAllocator_get_type_descriptor()) }
     }
+
+    /// Upcast to NCollection_BaseAllocator
+    pub fn as_base_allocator(&self) -> &BaseAllocator {
+        unsafe {
+            &*(crate::ffi::NCollection_AccAllocator_as_NCollection_BaseAllocator(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to NCollection_BaseAllocator (mutable)
+    pub fn as_base_allocator_mut(&mut self) -> &mut BaseAllocator {
+        unsafe {
+            &mut *(crate::ffi::NCollection_AccAllocator_as_NCollection_BaseAllocator_mut(
+                self as *mut Self,
+            ))
+        }
+    }
 }
 
 // ========================
@@ -139,6 +157,24 @@ impl AlignedAllocator {
     /// **Source:** `NCollection_AlignedAllocator.hxx`:48 - `NCollection_AlignedAllocator::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NCollection_AlignedAllocator_get_type_descriptor()) }
+    }
+
+    /// Upcast to NCollection_BaseAllocator
+    pub fn as_base_allocator(&self) -> &BaseAllocator {
+        unsafe {
+            &*(crate::ffi::NCollection_AlignedAllocator_as_NCollection_BaseAllocator(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to NCollection_BaseAllocator (mutable)
+    pub fn as_base_allocator_mut(&mut self) -> &mut BaseAllocator {
+        unsafe {
+            &mut *(crate::ffi::NCollection_AlignedAllocator_as_NCollection_BaseAllocator_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }
 
@@ -465,6 +501,24 @@ impl HeapAllocator {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NCollection_HeapAllocator_get_type_descriptor()) }
     }
+
+    /// Upcast to NCollection_BaseAllocator
+    pub fn as_base_allocator(&self) -> &BaseAllocator {
+        unsafe {
+            &*(crate::ffi::NCollection_HeapAllocator_as_NCollection_BaseAllocator(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to NCollection_BaseAllocator (mutable)
+    pub fn as_base_allocator_mut(&mut self) -> &mut BaseAllocator {
+        unsafe {
+            &mut *(crate::ffi::NCollection_HeapAllocator_as_NCollection_BaseAllocator_mut(
+                self as *mut Self,
+            ))
+        }
+    }
 }
 
 // ========================
@@ -558,6 +612,24 @@ impl IncAllocator {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NCollection_IncAllocator_get_type_descriptor()) }
     }
+
+    /// Upcast to NCollection_BaseAllocator
+    pub fn as_base_allocator(&self) -> &BaseAllocator {
+        unsafe {
+            &*(crate::ffi::NCollection_IncAllocator_as_NCollection_BaseAllocator(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to NCollection_BaseAllocator (mutable)
+    pub fn as_base_allocator_mut(&mut self) -> &mut BaseAllocator {
+        unsafe {
+            &mut *(crate::ffi::NCollection_IncAllocator_as_NCollection_BaseAllocator_mut(
+                self as *mut Self,
+            ))
+        }
+    }
 }
 
 // ========================
@@ -614,5 +686,23 @@ impl WinHeapAllocator {
     /// **Source:** `NCollection_WinHeapAllocator.hxx`:53 - `NCollection_WinHeapAllocator::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::NCollection_WinHeapAllocator_get_type_descriptor()) }
+    }
+
+    /// Upcast to NCollection_BaseAllocator
+    pub fn as_base_allocator(&self) -> &BaseAllocator {
+        unsafe {
+            &*(crate::ffi::NCollection_WinHeapAllocator_as_NCollection_BaseAllocator(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to NCollection_BaseAllocator (mutable)
+    pub fn as_base_allocator_mut(&mut self) -> &mut BaseAllocator {
+        unsafe {
+            &mut *(crate::ffi::NCollection_WinHeapAllocator_as_NCollection_BaseAllocator_mut(
+                self as *mut Self,
+            ))
+        }
     }
 }

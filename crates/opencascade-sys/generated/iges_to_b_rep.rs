@@ -87,6 +87,153 @@ pub fn transfer_p_curve(
 }
 
 // ========================
+// From IGESToBRep_Actor.hxx
+// ========================
+
+/// **Source:** `IGESToBRep_Actor.hxx`:41 - `IGESToBRep_Actor`
+/// This class performs the transfer of an Entity from
+/// IGESToBRep
+///
+/// I.E. for each type of Entity, it invokes the appropriate Tool
+/// then returns the Binder which contains the Result
+pub use crate::ffi::IGESToBRep_Actor as Actor;
+
+unsafe impl crate::CppDeletable for Actor {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESToBRep_Actor_destructor(ptr);
+    }
+}
+
+impl Actor {
+    /// **Source:** `IGESToBRep_Actor.hxx`:44 - `IGESToBRep_Actor::IGESToBRep_Actor()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_Actor_ctor()) }
+    }
+
+    /// **Source:** `IGESToBRep_Actor.hxx`:46 - `IGESToBRep_Actor::SetModel()`
+    pub fn set_model(&mut self, model: &crate::ffi::HandleInterfaceInterfaceModel) {
+        unsafe { crate::ffi::IGESToBRep_Actor_set_model(self as *mut Self, model) }
+    }
+
+    /// **Source:** `IGESToBRep_Actor.hxx`:51 - `IGESToBRep_Actor::SetContinuity()`
+    /// ---Purpose   By default continuity = 0
+    /// if continuity = 1 : try C1
+    /// if continuity = 2 : try C2
+    pub fn set_continuity(&mut self, continuity: i32) {
+        unsafe { crate::ffi::IGESToBRep_Actor_set_continuity(self as *mut Self, continuity) }
+    }
+
+    /// **Source:** `IGESToBRep_Actor.hxx`:54 - `IGESToBRep_Actor::GetContinuity()`
+    /// Return "thecontinuity"
+    pub fn get_continuity(&self) -> i32 {
+        unsafe { crate::ffi::IGESToBRep_Actor_get_continuity(self as *const Self) }
+    }
+
+    /// **Source:** `IGESToBRep_Actor.hxx`:66 - `IGESToBRep_Actor::UsedTolerance()`
+    /// Returns the tolerance which was actually used, either from
+    /// the file or from statics
+    pub fn used_tolerance(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_Actor_used_tolerance(self as *const Self) }
+    }
+
+    /// **Source:** `IGESToBRep_Actor.hxx`:68 - `IGESToBRep_Actor::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESToBRep_Actor_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESToBRep_Actor.hxx`:68 - `IGESToBRep_Actor::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESToBRep_Actor_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESToBRep_Actor.hxx`:68 - `IGESToBRep_Actor::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESToBRep_Actor_get_type_descriptor()) }
+    }
+
+    /// Upcast to Transfer_ActorOfTransientProcess
+    pub fn as_transfer_actor_of_transient_process(
+        &self,
+    ) -> &crate::transfer::ActorOfTransientProcess {
+        unsafe {
+            &*(crate::ffi::IGESToBRep_Actor_as_Transfer_ActorOfTransientProcess(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Transfer_ActorOfTransientProcess (mutable)
+    pub fn as_transfer_actor_of_transient_process_mut(
+        &mut self,
+    ) -> &mut crate::transfer::ActorOfTransientProcess {
+        unsafe {
+            &mut *(crate::ffi::IGESToBRep_Actor_as_Transfer_ActorOfTransientProcess_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Transfer_ActorOfProcessForTransient
+    pub fn as_transfer_actor_of_process_for_transient(
+        &self,
+    ) -> &crate::transfer::ActorOfProcessForTransient {
+        unsafe {
+            &*(crate::ffi::IGESToBRep_Actor_as_Transfer_ActorOfProcessForTransient(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to Transfer_ActorOfProcessForTransient (mutable)
+    pub fn as_transfer_actor_of_process_for_transient_mut(
+        &mut self,
+    ) -> &mut crate::transfer::ActorOfProcessForTransient {
+        unsafe {
+            &mut *(crate::ffi::IGESToBRep_Actor_as_Transfer_ActorOfProcessForTransient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:72 - `Transfer_ActorOfProcessForTransient::NullResult()`
+    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_Actor_inherited_NullResult(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:79 - `Transfer_ActorOfProcessForTransient::SetLast()`
+    pub fn set_last(&mut self, mode: bool) {
+        unsafe { crate::ffi::IGESToBRep_Actor_inherited_SetLast(self as *mut Self, mode) }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:82 - `Transfer_ActorOfProcessForTransient::IsLast()`
+    pub fn is_last(&self) -> bool {
+        unsafe { crate::ffi::IGESToBRep_Actor_inherited_IsLast(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:89 - `Transfer_ActorOfProcessForTransient::SetNext()`
+    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForTransient) {
+        unsafe { crate::ffi::IGESToBRep_Actor_inherited_SetNext(self as *mut Self, next) }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:92 - `Transfer_ActorOfProcessForTransient::Next()`
+    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_Actor_inherited_Next(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ========================
 // From IGESToBRep_AlgoContainer.hxx
 // ========================
 
@@ -1743,6 +1890,66 @@ impl IGESBoundary {
         }
     }
 
+    /// **Source:** `IGESToBRep_IGESBoundary.hxx`:89 - `IGESToBRep_IGESBoundary::Transfer()`
+    /// Translates 141 and 142 entities.
+    /// Returns True if the curve has been successfully translated,
+    /// otherwise returns False.
+    /// <okCurve..>: flags that indicate whether corresponding
+    /// representation has been successfully translated
+    /// (must be set to True before first call),
+    /// <curve3d>: model space curve for 142 and current model space
+    /// curve for 141,
+    /// <toreverse3d>: False for 142 and current orientation flag
+    /// for 141,
+    /// <curves2d>: 1 parameter space curve for 142 or list of
+    /// them for current model space curves for 141,
+    /// <number>: 1 for 142 and rank number of model space curve for 141.
+    pub fn transfer_bool3_handleigesdataigesentity_bool_handleigesdataharray1ofigesentity_int(
+        &mut self,
+        okCurve: &mut bool,
+        okCurve3d: &mut bool,
+        okCurve2d: &mut bool,
+        curve3d: &crate::ffi::HandleIGESDataIGESEntity,
+        toreverse3d: bool,
+        curves2d: &crate::ffi::HandleIGESDataHArray1OfIGESEntity,
+        number: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESToBRep_IGESBoundary_transfer_bool3_handleigesdataigesentity_bool_handleigesdataharray1ofigesentity_int(self as *mut Self, okCurve, okCurve3d, okCurve2d, curve3d, toreverse3d, curves2d, number)
+        }
+    }
+
+    /// **Source:** `IGESToBRep_IGESBoundary.hxx`:111 - `IGESToBRep_IGESBoundary::Transfer()`
+    /// Translates 508 entity.
+    /// Returns True if the curve has been successfully translated,
+    /// otherwise returns False.
+    /// Input object IGESBoundary must be created and initialized
+    /// before.
+    /// <okCurve..>: flags that indicate whether corresponding
+    /// representation has been successfully translated
+    /// (must be set to True before first call),
+    /// <curve3d>: result of translation of current edge,
+    /// <curves2d>: list of parameter space curves for edge,
+    /// <toreverse2d>: orientation flag of current edge in respect
+    /// to its model space curve,
+    /// <number>: rank number of edge,
+    /// <lsewd>: returns the result of translation of current edge.
+    pub fn transfer_bool3_handleshapeextendwiredata_handleigesdataharray1ofigesentity_bool_int_handleshapeextendwiredata(
+        &mut self,
+        okCurve: &mut bool,
+        okCurve3d: &mut bool,
+        okCurve2d: &mut bool,
+        curve3d: &crate::ffi::HandleShapeExtendWireData,
+        curves2d: &crate::ffi::HandleIGESDataHArray1OfIGESEntity,
+        toreverse2d: bool,
+        number: i32,
+        lsewd: &mut crate::ffi::HandleShapeExtendWireData,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESToBRep_IGESBoundary_transfer_bool3_handleshapeextendwiredata_handleigesdataharray1ofigesentity_bool_int_handleshapeextendwiredata(self as *mut Self, okCurve, okCurve3d, okCurve2d, curve3d, curves2d, toreverse2d, number, lsewd)
+        }
+    }
+
     /// **Source:** `IGESToBRep_IGESBoundary.hxx`:128 - `IGESToBRep_IGESBoundary::Check()`
     /// Checks result of translation of IGES boundary entities
     /// (types 141, 142 or 508).
@@ -1810,6 +2017,120 @@ impl HandleIGESToBRepIGESBoundary {
     /// Dereference this Handle to mutably access the underlying IGESToBRep_IGESBoundary
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESToBRep_IGESBoundary {
         unsafe { &mut *(crate::ffi::HandleIGESToBRepIGESBoundary_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From IGESToBRep_Reader.hxx
+// ========================
+
+/// **Source:** `IGESToBRep_Reader.hxx`:38 - `IGESToBRep_Reader`
+/// A simple way to read geometric IGES data.
+/// Encapsulates reading file and calling transfer tools
+pub use crate::ffi::IGESToBRep_Reader as Reader;
+
+unsafe impl crate::CppDeletable for Reader {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESToBRep_Reader_destructor(ptr);
+    }
+}
+
+impl Reader {
+    /// **Source:** `IGESToBRep_Reader.hxx`:45 - `IGESToBRep_Reader::IGESToBRep_Reader()`
+    /// Creates a Reader
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_Reader_ctor()) }
+    }
+
+    /// **Source:** `IGESToBRep_Reader.hxx`:50 - `IGESToBRep_Reader::LoadFile()`
+    /// Loads a Model from a file.Returns 0 if success.
+    /// returns 1 if the file could not be opened,
+    /// returns -1 if an error occurred while the file was being loaded.
+    pub fn load_file(&mut self, filename: &str) -> i32 {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
+        unsafe { crate::ffi::IGESToBRep_Reader_load_file(self as *mut Self, c_filename.as_ptr()) }
+    }
+
+    /// **Source:** `IGESToBRep_Reader.hxx`:70 - `IGESToBRep_Reader::Clear()`
+    /// Clears the results between two translation operations.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::IGESToBRep_Reader_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESToBRep_Reader.hxx`:76 - `IGESToBRep_Reader::Check()`
+    /// Checks the IGES file that was
+    /// loaded into memory. Displays error messages in the default
+    /// message file if withprint is true. Returns True if no fail
+    /// message was found and False if there was at least one fail message.
+    pub fn check(&self, withprint: bool) -> bool {
+        unsafe { crate::ffi::IGESToBRep_Reader_check(self as *const Self, withprint) }
+    }
+
+    /// **Source:** `IGESToBRep_Reader.hxx`:82 - `IGESToBRep_Reader::TransferRoots()`
+    /// Translates root entities in an
+    /// IGES file. Standard_True is the default value and means that only
+    /// visible root entities are translated. Standard_False
+    /// translates all of the roots (visible and invisible).
+    pub fn transfer_roots(
+        &mut self,
+        onlyvisible: bool,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_Reader_transfer_roots(
+                self as *mut Self,
+                onlyvisible,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `IGESToBRep_Reader.hxx`:90 - `IGESToBRep_Reader::Transfer()`
+    /// Transfers an Entity given its rank in the Model (Root or not)
+    /// Returns True if it is recognized as Geom-Topol.
+    /// (But it can have failed : see IsDone)
+    pub fn transfer(&mut self, num: i32, theProgress: &crate::ffi::Message_ProgressRange) -> bool {
+        unsafe { crate::ffi::IGESToBRep_Reader_transfer(self as *mut Self, num, theProgress) }
+    }
+
+    /// **Source:** `IGESToBRep_Reader.hxx`:94 - `IGESToBRep_Reader::IsDone()`
+    /// Returns True if the LAST Transfer/TransferRoots was a success
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::IGESToBRep_Reader_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `IGESToBRep_Reader.hxx`:99 - `IGESToBRep_Reader::UsedTolerance()`
+    /// Returns the Tolerance which has been actually used, converted
+    /// in millimeters
+    /// (either that from File or that from Session, according the mode)
+    pub fn used_tolerance(&self) -> f64 {
+        unsafe { crate::ffi::IGESToBRep_Reader_used_tolerance(self as *const Self) }
+    }
+
+    /// **Source:** `IGESToBRep_Reader.hxx`:102 - `IGESToBRep_Reader::NbShapes()`
+    /// Returns the number of shapes produced by the translation.
+    pub fn nb_shapes(&self) -> i32 {
+        unsafe { crate::ffi::IGESToBRep_Reader_nb_shapes(self as *const Self) }
+    }
+
+    /// **Source:** `IGESToBRep_Reader.hxx`:105 - `IGESToBRep_Reader::Shape()`
+    /// Returns the num the resulting shape in a translation operation.
+    pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_Reader_shape(self as *const Self, num))
+        }
+    }
+
+    /// **Source:** `IGESToBRep_Reader.hxx`:112 - `IGESToBRep_Reader::OneShape()`
+    /// Returns all of the results in a
+    /// single shape which is:
+    /// - a null shape if there are no results,
+    /// - a shape if there is one result,
+    /// - a compound containing the resulting shapes if there are several.
+    pub fn one_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_Reader_one_shape(self as *const Self))
+        }
     }
 }
 

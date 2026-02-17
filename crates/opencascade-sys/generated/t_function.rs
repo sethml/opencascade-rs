@@ -879,6 +879,97 @@ impl GraphNode {
 }
 
 // ========================
+// From TFunction_HArray1OfDataMapOfGUIDDriver.hxx
+// ========================
+
+/// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver`
+pub use crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver as HArray1OfDataMapOfGUIDDriver;
+
+unsafe impl crate::CppDeletable for HArray1OfDataMapOfGUIDDriver {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_destructor(ptr);
+    }
+}
+
+impl HArray1OfDataMapOfGUIDDriver {
+    /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver::TFunction_HArray1OfDataMapOfGUIDDriver()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_ctor())
+        }
+    }
+
+    /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver::TFunction_HArray1OfDataMapOfGUIDDriver()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTFunctionHArray1OfDataMapOfGUIDDriver> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTFunctionHArray1OfDataMapOfGUIDDriver;
+
+unsafe impl crate::CppDeletable for HandleTFunctionHArray1OfDataMapOfGUIDDriver {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTFunctionHArray1OfDataMapOfGUIDDriver_destructor(ptr);
+    }
+}
+
+impl HandleTFunctionHArray1OfDataMapOfGUIDDriver {
+    /// Dereference this Handle to access the underlying TFunction_HArray1OfDataMapOfGUIDDriver
+    pub fn get(&self) -> &crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver {
+        unsafe {
+            &*(crate::ffi::HandleTFunctionHArray1OfDataMapOfGUIDDriver_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TFunction_HArray1OfDataMapOfGUIDDriver
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver {
+        unsafe {
+            &mut *(crate::ffi::HandleTFunctionHArray1OfDataMapOfGUIDDriver_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
+// ========================
 // From TFunction_IFunction.hxx
 // ========================
 
@@ -1690,4 +1781,7 @@ impl Scope {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::TFunction_DoubleMapOfIntegerLabel as DoubleMapOfIntegerLabel;
+pub use crate::ffi::{
+    TFunction_Array1OfDataMapOfGUIDDriver as Array1OfDataMapOfGUIDDriver,
+    TFunction_DoubleMapOfIntegerLabel as DoubleMapOfIntegerLabel,
+};

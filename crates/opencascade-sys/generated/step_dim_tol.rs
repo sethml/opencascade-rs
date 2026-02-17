@@ -207,6 +207,130 @@ impl TryFrom<i32> for DatumReferenceModifierType {
 }
 
 // ========================
+// From StepDimTol_Datum.hxx
+// ========================
+
+/// **Source:** `StepDimTol_Datum.hxx`:31 - `StepDimTol_Datum`
+/// Representation of STEP entity Datum
+pub use crate::ffi::StepDimTol_Datum as Datum;
+
+unsafe impl crate::CppDeletable for Datum {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_Datum_destructor(ptr);
+    }
+}
+
+impl Datum {
+    /// **Source:** `StepDimTol_Datum.hxx`:36 - `StepDimTol_Datum::StepDimTol_Datum()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_Datum_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_Datum.hxx`:46 - `StepDimTol_Datum::Identification()`
+    /// Returns field Identification
+    pub fn identification(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_Datum_identification(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_Datum.hxx`:49 - `StepDimTol_Datum::SetIdentification()`
+    /// Set field Identification
+    pub fn set_identification(
+        &mut self,
+        theIdentification: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_Datum_set_identification(self as *mut Self, theIdentification)
+        }
+    }
+
+    /// **Source:** `StepDimTol_Datum.hxx`:51 - `StepDimTol_Datum::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_Datum_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepDimTol_Datum.hxx`:51 - `StepDimTol_Datum::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepDimTol_Datum_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_Datum.hxx`:51 - `StepDimTol_Datum::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_Datum_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepRepr_ShapeAspect
+    pub fn as_step_repr_shape_aspect(&self) -> &crate::step_repr::ShapeAspect {
+        unsafe { &*(crate::ffi::StepDimTol_Datum_as_StepRepr_ShapeAspect(self as *const Self)) }
+    }
+
+    /// Upcast to StepRepr_ShapeAspect (mutable)
+    pub fn as_step_repr_shape_aspect_mut(&mut self) -> &mut crate::step_repr::ShapeAspect {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_Datum_as_StepRepr_ShapeAspect_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:43 - `StepRepr_ShapeAspect::SetName()`
+    pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::StepDimTol_Datum_inherited_SetName(self as *mut Self, aName) }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:45 - `StepRepr_ShapeAspect::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_Datum_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:47 - `StepRepr_ShapeAspect::SetDescription()`
+    pub fn set_description(&mut self, aDescription: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepDimTol_Datum_inherited_SetDescription(self as *mut Self, aDescription)
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:49 - `StepRepr_ShapeAspect::Description()`
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_Datum_inherited_Description(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:55 - `StepRepr_ShapeAspect::SetProductDefinitional()`
+    pub fn set_product_definitional(&mut self, aProductDefinitional: crate::step_data::Logical) {
+        unsafe {
+            crate::ffi::StepDimTol_Datum_inherited_SetProductDefinitional(
+                self as *mut Self,
+                aProductDefinitional.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:57 - `StepRepr_ShapeAspect::ProductDefinitional()`
+    pub fn product_definitional(&self) -> crate::step_data::Logical {
+        unsafe {
+            crate::step_data::Logical::try_from(
+                crate::ffi::StepDimTol_Datum_inherited_ProductDefinitional(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+}
+
+// ========================
 // From StepDimTol_DatumReferenceModifier.hxx
 // ========================
 
@@ -483,6 +607,155 @@ impl HandleStepDimTolDatumReferenceModifierWithValue {
 }
 
 // ========================
+// From StepDimTol_DatumSystemOrReference.hxx
+// ========================
+
+/// **Source:** `StepDimTol_DatumSystemOrReference.hxx`:30 - `StepDimTol_DatumSystemOrReference`
+pub use crate::ffi::StepDimTol_DatumSystemOrReference as DatumSystemOrReference;
+
+unsafe impl crate::CppDeletable for DatumSystemOrReference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_DatumSystemOrReference_destructor(ptr);
+    }
+}
+
+impl DatumSystemOrReference {
+    /// **Source:** `StepDimTol_DatumSystemOrReference.hxx`:36 - `StepDimTol_DatumSystemOrReference::StepDimTol_DatumSystemOrReference()`
+    /// Returns a DatumSystemOrReference select type
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumSystemOrReference_ctor()) }
+    }
+
+    /// Upcast to StepData_SelectType
+    pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_DatumSystemOrReference_as_StepData_SelectType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepData_SelectType (mutable)
+    pub fn as_step_data_select_type_mut(&mut self) -> &mut crate::step_data::SelectType {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_DatumSystemOrReference_as_StepData_SelectType_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
+    pub fn nullify(&mut self) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumSystemOrReference_inherited_Nullify(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:79 - `StepData_SelectType::IsNull()`
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_DatumSystemOrReference_inherited_IsNull(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:83 - `StepData_SelectType::Type()`
+    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumSystemOrReference_inherited_Type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:87 - `StepData_SelectType::CaseNumber()`
+    pub fn case_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_DatumSystemOrReference_inherited_CaseNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:104 - `StepData_SelectType::NewMember()`
+    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_DatumSystemOrReference_inherited_NewMember(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:111 - `StepData_SelectType::CaseMem()`
+    pub fn case_mem(&self, ent: &crate::ffi::HandleStepDataSelectMember) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_DatumSystemOrReference_inherited_CaseMem(
+                self as *const Self,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:115 - `StepData_SelectType::CaseMember()`
+    pub fn case_member(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_DatumSystemOrReference_inherited_CaseMember(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:118 - `StepData_SelectType::Member()`
+    pub fn member(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_DatumSystemOrReference_inherited_Member(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:127 - `StepData_SelectType::Int()`
+    pub fn int(&self) -> i32 {
+        unsafe { crate::ffi::StepDimTol_DatumSystemOrReference_inherited_Int(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
+    pub fn set_int(&mut self, val: i32) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumSystemOrReference_inherited_SetInt(self as *mut Self, val)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:134 - `StepData_SelectType::Integer()`
+    pub fn integer(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_DatumSystemOrReference_inherited_Integer(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:141 - `StepData_SelectType::Boolean()`
+    pub fn boolean(&self) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_DatumSystemOrReference_inherited_Boolean(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:145 - `StepData_SelectType::Logical()`
+    pub fn logical(&self) -> crate::step_data::Logical {
+        unsafe {
+            crate::step_data::Logical::try_from(
+                crate::ffi::StepDimTol_DatumSystemOrReference_inherited_Logical(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:149 - `StepData_SelectType::Real()`
+    pub fn real(&self) -> f64 {
+        unsafe { crate::ffi::StepDimTol_DatumSystemOrReference_inherited_Real(self as *const Self) }
+    }
+}
+
+// ========================
 // From StepDimTol_GeometricTolerance.hxx
 // ========================
 
@@ -503,9 +776,23 @@ impl GeometricTolerance {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeometricTolerance_ctor()) }
     }
 
+    /// **Source:** `StepDimTol_GeometricTolerance.hxx`:40 - `StepDimTol_GeometricTolerance::Init()`
+    /// Initialize all fields (own and inherited) AP214
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect(
+        &mut self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricTolerance_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_handlestepreprshapeaspect(self as *mut Self, theName, theDescription, theMagnitude, theTolerancedShapeAspect)
+        }
+    }
+
     /// **Source:** `StepDimTol_GeometricTolerance.hxx`:46 - `StepDimTol_GeometricTolerance::Init()`
     /// Initialize all fields (own and inherited) AP242
-    pub fn init(
+    pub fn init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget(
         &mut self,
         theName: &crate::ffi::HandleTCollectionHAsciiString,
         theDescription: &crate::ffi::HandleTCollectionHAsciiString,
@@ -513,13 +800,7 @@ impl GeometricTolerance {
         theTolerancedShapeAspect: &crate::ffi::StepDimTol_GeometricToleranceTarget,
     ) {
         unsafe {
-            crate::ffi::StepDimTol_GeometricTolerance_init(
-                self as *mut Self,
-                theName,
-                theDescription,
-                theMagnitude,
-                theTolerancedShapeAspect,
-            )
+            crate::ffi::StepDimTol_GeometricTolerance_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget(self as *mut Self, theName, theDescription, theMagnitude, theTolerancedShapeAspect)
         }
     }
 
@@ -593,17 +874,25 @@ impl GeometricTolerance {
         }
     }
 
+    /// **Source:** `StepDimTol_GeometricTolerance.hxx`:74 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
+    /// Set field TolerancedShapeAspect AP214
+    pub fn set_toleranced_shape_aspect_handlestepreprshapeaspect(
+        &mut self,
+        theTolerancedShapeAspect: &crate::ffi::HandleStepReprShapeAspect,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricTolerance_set_toleranced_shape_aspect_handlestepreprshapeaspect(self as *mut Self, theTolerancedShapeAspect)
+        }
+    }
+
     /// **Source:** `StepDimTol_GeometricTolerance.hxx`:78 - `StepDimTol_GeometricTolerance::SetTolerancedShapeAspect()`
     /// Set field TolerancedShapeAspect AP242
-    pub fn set_toleranced_shape_aspect(
+    pub fn set_toleranced_shape_aspect_geometrictolerancetarget(
         &mut self,
         theTolerancedShapeAspect: &crate::ffi::StepDimTol_GeometricToleranceTarget,
     ) {
         unsafe {
-            crate::ffi::StepDimTol_GeometricTolerance_set_toleranced_shape_aspect(
-                self as *mut Self,
-                theTolerancedShapeAspect,
-            )
+            crate::ffi::StepDimTol_GeometricTolerance_set_toleranced_shape_aspect_geometrictolerancetarget(self as *mut Self, theTolerancedShapeAspect)
         }
     }
 
@@ -676,6 +965,16 @@ impl GeometricToleranceTarget {
     /// Returns a GeometricToleranceTarget select type
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeometricToleranceTarget_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceTarget.hxx`:58 - `StepDimTol_GeometricToleranceTarget::ShapeAspect()`
+    /// returns Value as a ShapeAspect (Null if another type)
+    pub fn shape_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeometricToleranceTarget_shape_aspect(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to StepData_SelectType
@@ -813,6 +1112,196 @@ impl GeometricToleranceTarget {
     pub fn real(&self) -> f64 {
         unsafe {
             crate::ffi::StepDimTol_GeometricToleranceTarget_inherited_Real(self as *const Self)
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_HArray1OfDatumReferenceModifier.hxx
+// ========================
+
+/// **Source:** `StepDimTol_HArray1OfDatumReferenceModifier.hxx`:23 - `StepDimTol_HArray1OfDatumReferenceModifier`
+pub use crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier as HArray1OfDatumReferenceModifier;
+
+unsafe impl crate::CppDeletable for HArray1OfDatumReferenceModifier {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_destructor(ptr);
+    }
+}
+
+impl HArray1OfDatumReferenceModifier {
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceModifier.hxx`:23 - `StepDimTol_HArray1OfDatumReferenceModifier::StepDimTol_HArray1OfDatumReferenceModifier()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_ctor())
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceModifier.hxx`:23 - `StepDimTol_HArray1OfDatumReferenceModifier::StepDimTol_HArray1OfDatumReferenceModifier()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_ctor_int2(
+                    theLower, theUpper,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceModifier.hxx`:23 - `StepDimTol_HArray1OfDatumReferenceModifier::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceModifier.hxx`:23 - `StepDimTol_HArray1OfDatumReferenceModifier::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceModifier.hxx`:23 - `StepDimTol_HArray1OfDatumReferenceModifier::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReferenceModifier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_to_handle(obj.into_raw()),
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolHArray1OfDatumReferenceModifier;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolHArray1OfDatumReferenceModifier {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolHArray1OfDatumReferenceModifier_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolHArray1OfDatumReferenceModifier {
+    /// Dereference this Handle to access the underlying StepDimTol_HArray1OfDatumReferenceModifier
+    pub fn get(&self) -> &crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolHArray1OfDatumReferenceModifier_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_HArray1OfDatumReferenceModifier
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolHArray1OfDatumReferenceModifier_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From StepDimTol_HArray1OfDatumSystemOrReference.hxx
+// ========================
+
+/// **Source:** `StepDimTol_HArray1OfDatumSystemOrReference.hxx`:22 - `StepDimTol_HArray1OfDatumSystemOrReference`
+pub use crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference as HArray1OfDatumSystemOrReference;
+
+unsafe impl crate::CppDeletable for HArray1OfDatumSystemOrReference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_destructor(ptr);
+    }
+}
+
+impl HArray1OfDatumSystemOrReference {
+    /// **Source:** `StepDimTol_HArray1OfDatumSystemOrReference.hxx`:22 - `StepDimTol_HArray1OfDatumSystemOrReference::StepDimTol_HArray1OfDatumSystemOrReference()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_ctor())
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumSystemOrReference.hxx`:22 - `StepDimTol_HArray1OfDatumSystemOrReference::StepDimTol_HArray1OfDatumSystemOrReference()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_ctor_int2(
+                    theLower, theUpper,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumSystemOrReference.hxx`:22 - `StepDimTol_HArray1OfDatumSystemOrReference::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumSystemOrReference.hxx`:22 - `StepDimTol_HArray1OfDatumSystemOrReference::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumSystemOrReference.hxx`:22 - `StepDimTol_HArray1OfDatumSystemOrReference::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumSystemOrReference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_to_handle(obj.into_raw()),
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolHArray1OfDatumSystemOrReference;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolHArray1OfDatumSystemOrReference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolHArray1OfDatumSystemOrReference_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolHArray1OfDatumSystemOrReference {
+    /// Dereference this Handle to access the underlying StepDimTol_HArray1OfDatumSystemOrReference
+    pub fn get(&self) -> &crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolHArray1OfDatumSystemOrReference_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_HArray1OfDatumSystemOrReference
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolHArray1OfDatumSystemOrReference_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 }
@@ -1118,4 +1607,8 @@ impl SimpleDatumReferenceModifierMember {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier as HArray1OfDatumReferenceModifier;
+pub use crate::ffi::{
+    StepDimTol_Array1OfDatumReferenceModifier as Array1OfDatumReferenceModifier,
+    StepDimTol_Array1OfDatumSystemOrReference as Array1OfDatumSystemOrReference,
+    StepDimTol_DatumReference as DatumReference, StepDimTol_DatumSystem as DatumSystem,
+};

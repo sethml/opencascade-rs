@@ -7,6 +7,602 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From StepVisual_DraughtingModel.hxx
+// ========================
+
+/// **Source:** `StepVisual_DraughtingModel.hxx`:28 - `StepVisual_DraughtingModel`
+/// Representation of STEP entity DraughtingModel
+pub use crate::ffi::StepVisual_DraughtingModel as DraughtingModel;
+
+unsafe impl crate::CppDeletable for DraughtingModel {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepVisual_DraughtingModel_destructor(ptr);
+    }
+}
+
+impl DraughtingModel {
+    /// **Source:** `StepVisual_DraughtingModel.hxx`:33 - `StepVisual_DraughtingModel::StepVisual_DraughtingModel()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepVisual_DraughtingModel_ctor()) }
+    }
+
+    /// **Source:** `StepVisual_DraughtingModel.hxx`:35 - `StepVisual_DraughtingModel::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepVisual_DraughtingModel_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `StepVisual_DraughtingModel.hxx`:35 - `StepVisual_DraughtingModel::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::StepVisual_DraughtingModel_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `StepVisual_DraughtingModel.hxx`:35 - `StepVisual_DraughtingModel::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepVisual_DraughtingModel_get_type_descriptor()) }
+    }
+
+    /// Upcast to StepRepr_Representation
+    pub fn as_step_repr_representation(&self) -> &crate::step_repr::Representation {
+        unsafe {
+            &*(crate::ffi::StepVisual_DraughtingModel_as_StepRepr_Representation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepRepr_Representation (mutable)
+    pub fn as_step_repr_representation_mut(&mut self) -> &mut crate::step_repr::Representation {
+        unsafe {
+            &mut *(crate::ffi::StepVisual_DraughtingModel_as_StepRepr_Representation_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
+    pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::StepVisual_DraughtingModel_inherited_SetName(self as *mut Self, aName)
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_Representation.hxx`:46 - `StepRepr_Representation::Name()`
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_DraughtingModel_inherited_Name(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
+    pub fn set_items(&mut self, aItems: &crate::ffi::HandleStepReprHArray1OfRepresentationItem) {
+        unsafe {
+            crate::ffi::StepVisual_DraughtingModel_inherited_SetItems(self as *mut Self, aItems)
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_Representation.hxx`:50 - `StepRepr_Representation::Items()`
+    pub fn items(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprHArray1OfRepresentationItem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_DraughtingModel_inherited_Items(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_Representation.hxx`:52 - `StepRepr_Representation::ItemsValue()`
+    pub fn items_value(
+        &self,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepReprRepresentationItem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_DraughtingModel_inherited_ItemsValue(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::NbItems()`
+    pub fn nb_items(&self) -> i32 {
+        unsafe { crate::ffi::StepVisual_DraughtingModel_inherited_NbItems(self as *const Self) }
+    }
+}
+
+// ========================
+// From StepVisual_HArray1OfPresentationStyleAssignment.hxx
+// ========================
+
+/// **Source:** `StepVisual_HArray1OfPresentationStyleAssignment.hxx`:23 - `StepVisual_HArray1OfPresentationStyleAssignment`
+pub use crate::ffi::StepVisual_HArray1OfPresentationStyleAssignment as HArray1OfPresentationStyleAssignment;
+
+unsafe impl crate::CppDeletable for HArray1OfPresentationStyleAssignment {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepVisual_HArray1OfPresentationStyleAssignment_destructor(ptr);
+    }
+}
+
+impl HArray1OfPresentationStyleAssignment {
+    /// **Source:** `StepVisual_HArray1OfPresentationStyleAssignment.hxx`:23 - `StepVisual_HArray1OfPresentationStyleAssignment::StepVisual_HArray1OfPresentationStyleAssignment()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepVisual_HArray1OfPresentationStyleAssignment_ctor(),
+            )
+        }
+    }
+
+    /// **Source:** `StepVisual_HArray1OfPresentationStyleAssignment.hxx`:23 - `StepVisual_HArray1OfPresentationStyleAssignment::StepVisual_HArray1OfPresentationStyleAssignment()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepVisual_HArray1OfPresentationStyleAssignment_ctor_int2(
+                    theLower, theUpper,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepVisual_HArray1OfPresentationStyleAssignment.hxx`:23 - `StepVisual_HArray1OfPresentationStyleAssignment::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepVisual_HArray1OfPresentationStyleAssignment_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepVisual_HArray1OfPresentationStyleAssignment.hxx`:23 - `StepVisual_HArray1OfPresentationStyleAssignment::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepVisual_HArray1OfPresentationStyleAssignment_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepVisual_HArray1OfPresentationStyleAssignment.hxx`:23 - `StepVisual_HArray1OfPresentationStyleAssignment::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepVisual_HArray1OfPresentationStyleAssignment_get_type_descriptor())
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepVisualHArray1OfPresentationStyleAssignment> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepVisual_HArray1OfPresentationStyleAssignment_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepVisualHArray1OfPresentationStyleAssignment;
+
+unsafe impl crate::CppDeletable for HandleStepVisualHArray1OfPresentationStyleAssignment {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepVisualHArray1OfPresentationStyleAssignment_destructor(ptr);
+    }
+}
+
+impl HandleStepVisualHArray1OfPresentationStyleAssignment {
+    /// Dereference this Handle to access the underlying StepVisual_HArray1OfPresentationStyleAssignment
+    pub fn get(&self) -> &crate::ffi::StepVisual_HArray1OfPresentationStyleAssignment {
+        unsafe {
+            &*(crate::ffi::HandleStepVisualHArray1OfPresentationStyleAssignment_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepVisual_HArray1OfPresentationStyleAssignment
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepVisual_HArray1OfPresentationStyleAssignment {
+        unsafe {
+            &mut *(crate::ffi::HandleStepVisualHArray1OfPresentationStyleAssignment_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From StepVisual_HArray1OfPresentationStyleSelect.hxx
+// ========================
+
+/// **Source:** `StepVisual_HArray1OfPresentationStyleSelect.hxx`:23 - `StepVisual_HArray1OfPresentationStyleSelect`
+pub use crate::ffi::StepVisual_HArray1OfPresentationStyleSelect as HArray1OfPresentationStyleSelect;
+
+unsafe impl crate::CppDeletable for HArray1OfPresentationStyleSelect {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepVisual_HArray1OfPresentationStyleSelect_destructor(ptr);
+    }
+}
+
+impl HArray1OfPresentationStyleSelect {
+    /// **Source:** `StepVisual_HArray1OfPresentationStyleSelect.hxx`:23 - `StepVisual_HArray1OfPresentationStyleSelect::StepVisual_HArray1OfPresentationStyleSelect()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_HArray1OfPresentationStyleSelect_ctor())
+        }
+    }
+
+    /// **Source:** `StepVisual_HArray1OfPresentationStyleSelect.hxx`:23 - `StepVisual_HArray1OfPresentationStyleSelect::StepVisual_HArray1OfPresentationStyleSelect()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepVisual_HArray1OfPresentationStyleSelect_ctor_int2(
+                    theLower, theUpper,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepVisual_HArray1OfPresentationStyleSelect.hxx`:23 - `StepVisual_HArray1OfPresentationStyleSelect::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepVisual_HArray1OfPresentationStyleSelect_dynamic_type(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepVisual_HArray1OfPresentationStyleSelect.hxx`:23 - `StepVisual_HArray1OfPresentationStyleSelect::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepVisual_HArray1OfPresentationStyleSelect_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepVisual_HArray1OfPresentationStyleSelect.hxx`:23 - `StepVisual_HArray1OfPresentationStyleSelect::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepVisual_HArray1OfPresentationStyleSelect_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepVisualHArray1OfPresentationStyleSelect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepVisual_HArray1OfPresentationStyleSelect_to_handle(obj.into_raw()),
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepVisualHArray1OfPresentationStyleSelect;
+
+unsafe impl crate::CppDeletable for HandleStepVisualHArray1OfPresentationStyleSelect {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepVisualHArray1OfPresentationStyleSelect_destructor(ptr);
+    }
+}
+
+impl HandleStepVisualHArray1OfPresentationStyleSelect {
+    /// Dereference this Handle to access the underlying StepVisual_HArray1OfPresentationStyleSelect
+    pub fn get(&self) -> &crate::ffi::StepVisual_HArray1OfPresentationStyleSelect {
+        unsafe {
+            &*(crate::ffi::HandleStepVisualHArray1OfPresentationStyleSelect_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepVisual_HArray1OfPresentationStyleSelect
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepVisual_HArray1OfPresentationStyleSelect {
+        unsafe {
+            &mut *(crate::ffi::HandleStepVisualHArray1OfPresentationStyleSelect_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From StepVisual_PresentationStyleAssignment.hxx
+// ========================
+
+/// **Source:** `StepVisual_PresentationStyleAssignment.hxx`:30 - `StepVisual_PresentationStyleAssignment`
+pub use crate::ffi::StepVisual_PresentationStyleAssignment as PresentationStyleAssignment;
+
+unsafe impl crate::CppDeletable for PresentationStyleAssignment {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepVisual_PresentationStyleAssignment_destructor(ptr);
+    }
+}
+
+impl PresentationStyleAssignment {
+    /// **Source:** `StepVisual_PresentationStyleAssignment.hxx`:35 - `StepVisual_PresentationStyleAssignment::StepVisual_PresentationStyleAssignment()`
+    /// Returns a PresentationStyleAssignment
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_PresentationStyleAssignment_ctor())
+        }
+    }
+
+    /// **Source:** `StepVisual_PresentationStyleAssignment.hxx`:37 - `StepVisual_PresentationStyleAssignment::Init()`
+    pub fn init(&mut self, aStyles: &crate::ffi::HandleStepVisualHArray1OfPresentationStyleSelect) {
+        unsafe {
+            crate::ffi::StepVisual_PresentationStyleAssignment_init(self as *mut Self, aStyles)
+        }
+    }
+
+    /// **Source:** `StepVisual_PresentationStyleAssignment.hxx`:39 - `StepVisual_PresentationStyleAssignment::SetStyles()`
+    pub fn set_styles(
+        &mut self,
+        aStyles: &crate::ffi::HandleStepVisualHArray1OfPresentationStyleSelect,
+    ) {
+        unsafe {
+            crate::ffi::StepVisual_PresentationStyleAssignment_set_styles(
+                self as *mut Self,
+                aStyles,
+            )
+        }
+    }
+
+    /// **Source:** `StepVisual_PresentationStyleAssignment.hxx`:42 - `StepVisual_PresentationStyleAssignment::Styles()`
+    pub fn styles(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepVisualHArray1OfPresentationStyleSelect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_PresentationStyleAssignment_styles(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepVisual_PresentationStyleAssignment.hxx`:44 - `StepVisual_PresentationStyleAssignment::StylesValue()`
+    pub fn styles_value(
+        &self,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi::StepVisual_PresentationStyleSelect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepVisual_PresentationStyleAssignment_styles_value(
+                    self as *const Self,
+                    num,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepVisual_PresentationStyleAssignment.hxx`:46 - `StepVisual_PresentationStyleAssignment::NbStyles()`
+    pub fn nb_styles(&self) -> i32 {
+        unsafe { crate::ffi::StepVisual_PresentationStyleAssignment_nb_styles(self as *const Self) }
+    }
+
+    /// **Source:** `StepVisual_PresentationStyleAssignment.hxx`:48 - `StepVisual_PresentationStyleAssignment::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::StepVisual_PresentationStyleAssignment_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepVisual_PresentationStyleAssignment.hxx`:48 - `StepVisual_PresentationStyleAssignment::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::StepVisual_PresentationStyleAssignment_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `StepVisual_PresentationStyleAssignment.hxx`:48 - `StepVisual_PresentationStyleAssignment::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::StepVisual_PresentationStyleAssignment_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepVisualPresentationStyleAssignment> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_PresentationStyleAssignment_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepVisualPresentationStyleAssignment;
+
+unsafe impl crate::CppDeletable for HandleStepVisualPresentationStyleAssignment {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepVisualPresentationStyleAssignment_destructor(ptr);
+    }
+}
+
+impl HandleStepVisualPresentationStyleAssignment {
+    /// Dereference this Handle to access the underlying StepVisual_PresentationStyleAssignment
+    pub fn get(&self) -> &crate::ffi::StepVisual_PresentationStyleAssignment {
+        unsafe {
+            &*(crate::ffi::HandleStepVisualPresentationStyleAssignment_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepVisual_PresentationStyleAssignment
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepVisual_PresentationStyleAssignment {
+        unsafe {
+            &mut *(crate::ffi::HandleStepVisualPresentationStyleAssignment_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From StepVisual_PresentationStyleSelect.hxx
+// ========================
+
+/// **Source:** `StepVisual_PresentationStyleSelect.hxx`:32 - `StepVisual_PresentationStyleSelect`
+pub use crate::ffi::StepVisual_PresentationStyleSelect as PresentationStyleSelect;
+
+unsafe impl crate::CppDeletable for PresentationStyleSelect {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::StepVisual_PresentationStyleSelect_destructor(ptr);
+    }
+}
+
+impl PresentationStyleSelect {
+    /// **Source:** `StepVisual_PresentationStyleSelect.hxx`:38 - `StepVisual_PresentationStyleSelect::StepVisual_PresentationStyleSelect()`
+    /// Returns a PresentationStyleSelect SelectType
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepVisual_PresentationStyleSelect_ctor()) }
+    }
+
+    /// Upcast to StepData_SelectType
+    pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
+        unsafe {
+            &*(crate::ffi::StepVisual_PresentationStyleSelect_as_StepData_SelectType(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to StepData_SelectType (mutable)
+    pub fn as_step_data_select_type_mut(&mut self) -> &mut crate::step_data::SelectType {
+        unsafe {
+            &mut *(crate::ffi::StepVisual_PresentationStyleSelect_as_StepData_SelectType_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
+    pub fn nullify(&mut self) {
+        unsafe {
+            crate::ffi::StepVisual_PresentationStyleSelect_inherited_Nullify(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:79 - `StepData_SelectType::IsNull()`
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            crate::ffi::StepVisual_PresentationStyleSelect_inherited_IsNull(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:83 - `StepData_SelectType::Type()`
+    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepVisual_PresentationStyleSelect_inherited_Type(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:87 - `StepData_SelectType::CaseNumber()`
+    pub fn case_number(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepVisual_PresentationStyleSelect_inherited_CaseNumber(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:104 - `StepData_SelectType::NewMember()`
+    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepVisual_PresentationStyleSelect_inherited_NewMember(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:111 - `StepData_SelectType::CaseMem()`
+    pub fn case_mem(&self, ent: &crate::ffi::HandleStepDataSelectMember) -> i32 {
+        unsafe {
+            crate::ffi::StepVisual_PresentationStyleSelect_inherited_CaseMem(
+                self as *const Self,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:115 - `StepData_SelectType::CaseMember()`
+    pub fn case_member(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepVisual_PresentationStyleSelect_inherited_CaseMember(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:118 - `StepData_SelectType::Member()`
+    pub fn member(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepVisual_PresentationStyleSelect_inherited_Member(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:127 - `StepData_SelectType::Int()`
+    pub fn int(&self) -> i32 {
+        unsafe { crate::ffi::StepVisual_PresentationStyleSelect_inherited_Int(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
+    pub fn set_int(&mut self, val: i32) {
+        unsafe {
+            crate::ffi::StepVisual_PresentationStyleSelect_inherited_SetInt(self as *mut Self, val)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:134 - `StepData_SelectType::Integer()`
+    pub fn integer(&self) -> i32 {
+        unsafe {
+            crate::ffi::StepVisual_PresentationStyleSelect_inherited_Integer(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:141 - `StepData_SelectType::Boolean()`
+    pub fn boolean(&self) -> bool {
+        unsafe {
+            crate::ffi::StepVisual_PresentationStyleSelect_inherited_Boolean(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:145 - `StepData_SelectType::Logical()`
+    pub fn logical(&self) -> crate::step_data::Logical {
+        unsafe {
+            crate::step_data::Logical::try_from(
+                crate::ffi::StepVisual_PresentationStyleSelect_inherited_Logical(
+                    self as *const Self,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:149 - `StepData_SelectType::Real()`
+    pub fn real(&self) -> f64 {
+        unsafe {
+            crate::ffi::StepVisual_PresentationStyleSelect_inherited_Real(self as *const Self)
+        }
+    }
+}
+
+// ========================
 // From StepVisual_TessellatedGeometricSet.hxx
 // ========================
 
@@ -221,3 +817,14 @@ impl TessellatedItem {
         }
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    StepVisual_Array1OfPresentationStyleAssignment as Array1OfPresentationStyleAssignment,
+    StepVisual_Array1OfPresentationStyleSelect as Array1OfPresentationStyleSelect,
+    StepVisual_CurveStyle as CurveStyle, StepVisual_NullStyleMember as NullStyleMember,
+    StepVisual_PointStyle as PointStyle, StepVisual_SurfaceStyleUsage as SurfaceStyleUsage,
+};

@@ -560,26 +560,6 @@ impl ProjectCurveOnSurface {
         }
     }
 
-    /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:99 - `ShapeConstruct_ProjectCurveOnSurface::AdjustOverDegenMode()`
-    /// Returns (modifiable) the flag specifying to which side of
-    /// parametrical space adjust part of pcurve which lies on seam.
-    /// This is required in very rare case when 3d curve which is
-    /// to be projected goes partly along the seam on the closed
-    /// surface with singularity (e.g. sphere), goes through the
-    /// degenerated point and paerly lies on internal area of surface.
-    ///
-    /// If this flag is True, the seam part of such curve will be
-    /// adjusted to the left side of parametric space (on sphere U=0),
-    /// else to the right side (on sphere U=2*PI)
-    /// Default value is True
-    pub fn adjust_over_degen_mode(&mut self) -> &mut i32 {
-        unsafe {
-            &mut *(crate::ffi::ShapeConstruct_ProjectCurveOnSurface_adjust_over_degen_mode(
-                self as *mut Self,
-            ))
-        }
-    }
-
     /// **Source:** `ShapeConstruct_ProjectCurveOnSurface.hxx`:102 - `ShapeConstruct_ProjectCurveOnSurface::Status()`
     /// Returns the status of last Perform
     pub fn status(&self, theStatus: crate::shape_extend::Status) -> bool {

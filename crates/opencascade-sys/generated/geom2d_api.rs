@@ -385,6 +385,44 @@ unsafe impl crate::CppDeletable for Interpolate {
 }
 
 impl Interpolate {
+    /// **Source:** `Geom2dAPI_Interpolate.hxx`:52 - `Geom2dAPI_Interpolate::Geom2dAPI_Interpolate()`
+    /// Tolerance is to check if the points are not too close to one an other
+    /// It is also used to check if the tangent vector is not too small.
+    /// There should be at least 2 points
+    /// if PeriodicFlag is True then the curve will be periodic.
+    pub fn new_handletcolgpharray1ofpnt2d_bool_real(
+        Points: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        PeriodicFlag: bool,
+        Tolerance: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Geom2dAPI_Interpolate_ctor_handletcolgpharray1ofpnt2d_bool_real(
+                    Points,
+                    PeriodicFlag,
+                    Tolerance,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Geom2dAPI_Interpolate.hxx`:61 - `Geom2dAPI_Interpolate::Geom2dAPI_Interpolate()`
+    /// if PeriodicFlag is True then the curve will be periodic
+    /// Warning:
+    /// There should be as many parameters as there are points
+    /// except if PeriodicFlag is True : then there should be one more
+    /// parameter to close the curve
+    pub fn new_handletcolgpharray1ofpnt2d_handletcolstdharray1ofreal_bool_real(
+        Points: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        Parameters: &crate::ffi::HandleTColStdHArray1OfReal,
+        PeriodicFlag: bool,
+        Tolerance: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2dAPI_Interpolate_ctor_handletcolgpharray1ofpnt2d_handletcolstdharray1ofreal_bool_real(Points, Parameters, PeriodicFlag, Tolerance))
+        }
+    }
+
     /// **Source:** `Geom2dAPI_Interpolate.hxx`:74 - `Geom2dAPI_Interpolate::Load()`
     /// Assigns this constrained BSpline curve to be
     /// tangential to vectors InitialTangent and FinalTangent

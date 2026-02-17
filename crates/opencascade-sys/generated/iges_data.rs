@@ -105,6 +105,167 @@ impl TryFrom<i32> for DefList {
 }
 
 // ========================
+// From IGESData_BasicEditor.hxx
+// ========================
+
+/// **Source:** `IGESData_BasicEditor.hxx`:42 - `IGESData_BasicEditor`
+/// This class provides various functions of basic edition,
+/// such as :
+/// - setting header unit (WARNING : DOES NOT convert entities)
+/// - computation of the status (Subordinate, UseFlag) of entities
+/// of IGES Entities on a whole model
+/// - auto correction of IGES Entities, defined both by DirChecker
+/// and by specific service AutoCorrect
+/// (this auto correction performs non-ambigious, rather logic,
+/// editions)
+pub use crate::ffi::IGESData_BasicEditor as BasicEditor;
+
+unsafe impl crate::CppDeletable for BasicEditor {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_BasicEditor_destructor(ptr);
+    }
+}
+
+impl BasicEditor {
+    /// **Source:** `IGESData_BasicEditor.hxx`:48 - `IGESData_BasicEditor::IGESData_BasicEditor()`
+    /// Creates an empty Basic Editor which should be initialized via Init() method.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_BasicEditor_ctor()) }
+    }
+
+    /// **Source:** `IGESData_BasicEditor.hxx`:69 - `IGESData_BasicEditor::SetUnitFlag()`
+    /// Sets a new unit from its flag (param 14 of Global Section)
+    /// Returns True if done, False if <flag> is incorrect
+    pub fn set_unit_flag(&mut self, flag: i32) -> bool {
+        unsafe { crate::ffi::IGESData_BasicEditor_set_unit_flag(self as *mut Self, flag) }
+    }
+
+    /// **Source:** `IGESData_BasicEditor.hxx`:75 - `IGESData_BasicEditor::SetUnitValue()`
+    /// Sets a new unit from its value in meters (rounded to the
+    /// closest one, max gap 1%)
+    /// Returns True if done, False if <val> is too far from a
+    /// suitable value
+    pub fn set_unit_value(&mut self, val: f64) -> bool {
+        unsafe { crate::ffi::IGESData_BasicEditor_set_unit_value(self as *mut Self, val) }
+    }
+
+    /// **Source:** `IGESData_BasicEditor.hxx`:81 - `IGESData_BasicEditor::SetUnitName()`
+    /// Sets a new unit from its name (param 15 of Global Section)
+    /// Returns True if done, False if <name> is incorrect
+    /// Remark : if <flag> has been set to 3 (user defined), <name>
+    /// is then free
+    pub fn set_unit_name(&mut self, name: &str) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::IGESData_BasicEditor_set_unit_name(self as *mut Self, c_name.as_ptr())
+        }
+    }
+
+    /// **Source:** `IGESData_BasicEditor.hxx`:89 - `IGESData_BasicEditor::ApplyUnit()`
+    /// Applies unit value to convert header data : Resolution,
+    /// MaxCoord, MaxLineWeight
+    /// Applies unit only once after SetUnit... has been called,
+    /// if <enforce> is given as True.
+    /// It can be called just before writing the model to a file,
+    /// i.e. when definitive values are finally known
+    pub fn apply_unit(&mut self, enforce: bool) {
+        unsafe { crate::ffi::IGESData_BasicEditor_apply_unit(self as *mut Self, enforce) }
+    }
+
+    /// **Source:** `IGESData_BasicEditor.hxx`:95 - `IGESData_BasicEditor::ComputeStatus()`
+    /// Performs the re-computation of status on the whole model
+    /// (Subordinate Status and Use Flag of each IGES Entity), which
+    /// can have required values according the way they are referenced
+    /// (see definitions of Logical use, Physical use, etc...)
+    pub fn compute_status(&mut self) {
+        unsafe { crate::ffi::IGESData_BasicEditor_compute_status(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_BasicEditor.hxx`:105 - `IGESData_BasicEditor::AutoCorrect()`
+    /// Performs auto-correction on an IGESEntity
+    /// Returns True if something has changed, False if nothing done.
+    ///
+    /// Works with the specific IGES Services : DirChecker which
+    /// allows to correct data in "Directory Part" of Entities (such
+    /// as required values for status, or references to be null), and
+    /// the specific IGES service OwnCorrect, which is specialised for
+    /// each type of entity.
+    pub fn auto_correct(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+        unsafe { crate::ffi::IGESData_BasicEditor_auto_correct(self as *mut Self, ent) }
+    }
+
+    /// **Source:** `IGESData_BasicEditor.hxx`:109 - `IGESData_BasicEditor::AutoCorrectModel()`
+    /// Performs auto-correction on the whole Model
+    /// Returns the count of modified entities
+    pub fn auto_correct_model(&mut self) -> i32 {
+        unsafe { crate::ffi::IGESData_BasicEditor_auto_correct_model(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_BasicEditor.hxx`:113 - `IGESData_BasicEditor::UnitNameFlag()`
+    /// From the name of unit, computes flag number, 0 if incorrect
+    /// (in this case, user defined entity remains possible)
+    pub fn unit_name_flag(name: &str) -> i32 {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::IGESData_BasicEditor_unit_name_flag(c_name.as_ptr()) }
+    }
+
+    /// **Source:** `IGESData_BasicEditor.hxx`:116 - `IGESData_BasicEditor::UnitFlagValue()`
+    /// From the flag of unit, determines value in MM, 0 if incorrect
+    pub fn unit_flag_value(flag: i32) -> f64 {
+        unsafe { crate::ffi::IGESData_BasicEditor_unit_flag_value(flag) }
+    }
+
+    /// **Source:** `IGESData_BasicEditor.hxx`:119 - `IGESData_BasicEditor::UnitFlagName()`
+    /// From the flag of unit, determines its name, "" if incorrect
+    pub fn unit_flag_name(flag: i32) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_BasicEditor_unit_flag_name(flag))
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_BasicEditor.hxx`:122 - `IGESData_BasicEditor::IGESVersionName()`
+    /// From the flag of IGES version, returns name, "" if incorrect
+    pub fn iges_version_name(flag: i32) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_BasicEditor_iges_version_name(flag))
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_BasicEditor.hxx`:125 - `IGESData_BasicEditor::IGESVersionMax()`
+    /// Returns the maximum allowed value for IGESVersion Flag
+    pub fn iges_version_max() -> i32 {
+        unsafe { crate::ffi::IGESData_BasicEditor_iges_version_max() }
+    }
+
+    /// **Source:** `IGESData_BasicEditor.hxx`:128 - `IGESData_BasicEditor::DraftingName()`
+    /// From the flag of drafting standard, returns name, "" if incorrect
+    pub fn drafting_name(flag: i32) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_BasicEditor_drafting_name(flag))
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_BasicEditor.hxx`:131 - `IGESData_BasicEditor::DraftingMax()`
+    /// Returns the maximum allowed value for Drafting Flag
+    pub fn drafting_max() -> i32 {
+        unsafe { crate::ffi::IGESData_BasicEditor_drafting_max() }
+    }
+
+    /// **Source:** `IGESData_BasicEditor.hxx`:135 - `IGESData_BasicEditor::GetFlagByValue()`
+    /// Returns Flag corresponding to the scaling theValue.
+    /// Returns 0 if there's no such flag.
+    pub fn get_flag_by_value(theValue: f64) -> i32 {
+        unsafe { crate::ffi::IGESData_BasicEditor_get_flag_by_value(theValue) }
+    }
+}
+
+// ========================
 // From IGESData_DefSwitch.hxx
 // ========================
 
@@ -162,6 +323,85 @@ impl DefSwitch {
     /// returns Value as Integer (sensefull for a Rank)
     pub fn value(&self) -> i32 {
         unsafe { crate::ffi::IGESData_DefSwitch_value(self as *const Self) }
+    }
+}
+
+// ========================
+// From IGESData_HArray1OfIGESEntity.hxx
+// ========================
+
+/// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity`
+pub use crate::ffi::IGESData_HArray1OfIGESEntity as HArray1OfIGESEntity;
+
+unsafe impl crate::CppDeletable for HArray1OfIGESEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_HArray1OfIGESEntity_destructor(ptr);
+    }
+}
+
+impl HArray1OfIGESEntity {
+    /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::IGESData_HArray1OfIGESEntity()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_HArray1OfIGESEntity_ctor()) }
+    }
+
+    /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::IGESData_HArray1OfIGESEntity()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_HArray1OfIGESEntity_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_HArray1OfIGESEntity_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IGESData_HArray1OfIGESEntity_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IGESData_HArray1OfIGESEntity_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataHArray1OfIGESEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_HArray1OfIGESEntity_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleIGESDataHArray1OfIGESEntity;
+
+unsafe impl crate::CppDeletable for HandleIGESDataHArray1OfIGESEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESDataHArray1OfIGESEntity_destructor(ptr);
+    }
+}
+
+impl HandleIGESDataHArray1OfIGESEntity {
+    /// Dereference this Handle to access the underlying IGESData_HArray1OfIGESEntity
+    pub fn get(&self) -> &crate::ffi::IGESData_HArray1OfIGESEntity {
+        unsafe { &*(crate::ffi::HandleIGESDataHArray1OfIGESEntity_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESData_HArray1OfIGESEntity
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESData_HArray1OfIGESEntity {
+        unsafe { &mut *(crate::ffi::HandleIGESDataHArray1OfIGESEntity_get_mut(self as *mut Self)) }
     }
 }
 
@@ -666,13 +906,70 @@ impl HandleIGESDataIGESEntity {
 }
 
 // ========================
+// From IGESData_SpecificLib.hxx
+// ========================
+
+/// **Source:** `IGESData_SpecificLib.hxx`:33 - `IGESData_SpecificLib`
+pub use crate::ffi::IGESData_SpecificLib as SpecificLib;
+
+unsafe impl crate::CppDeletable for SpecificLib {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IGESData_SpecificLib_destructor(ptr);
+    }
+}
+
+impl SpecificLib {
+    /// **Source:** `IGESData_SpecificLib.hxx`:51 - `IGESData_SpecificLib::IGESData_SpecificLib()`
+    /// Creates an empty Library : it will later by filled by method
+    /// AddProtocol
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_SpecificLib_ctor()) }
+    }
+
+    /// **Source:** `IGESData_SpecificLib.hxx`:61 - `IGESData_SpecificLib::Clear()`
+    /// Clears the list of Modules of a library (can be used to
+    /// redefine the order of Modules before action : Clear then
+    /// refill the Library by calls to AddProtocol)
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::IGESData_SpecificLib_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_SpecificLib.hxx`:65 - `IGESData_SpecificLib::SetComplete()`
+    /// Sets a library to be defined with the complete Global list
+    /// (all the couples Protocol/Modules recorded in it)
+    pub fn set_complete(&mut self) {
+        unsafe { crate::ffi::IGESData_SpecificLib_set_complete(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_SpecificLib.hxx`:78 - `IGESData_SpecificLib::Start()`
+    /// Starts Iteration on the Modules (sets it on the first one)
+    pub fn start(&mut self) {
+        unsafe { crate::ffi::IGESData_SpecificLib_start(self as *mut Self) }
+    }
+
+    /// **Source:** `IGESData_SpecificLib.hxx`:81 - `IGESData_SpecificLib::More()`
+    /// Returns True if there are more Modules to iterate on
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::IGESData_SpecificLib_more(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_SpecificLib.hxx`:85 - `IGESData_SpecificLib::Next()`
+    /// Iterates by getting the next Module in the list
+    /// If there is none, the exception will be raised by Value
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::IGESData_SpecificLib_next(self as *mut Self) }
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
-    IGESData_ColorEntity as ColorEntity, IGESData_HArray1OfIGESEntity as HArray1OfIGESEntity,
+    IGESData_Array1OfIGESEntity as Array1OfIGESEntity, IGESData_ColorEntity as ColorEntity,
     IGESData_IGESModel as IGESModel, IGESData_IGESType as IGESType,
     IGESData_LabelDisplayEntity as LabelDisplayEntity, IGESData_LevelListEntity as LevelListEntity,
-    IGESData_LineFontEntity as LineFontEntity, IGESData_TransfEntity as TransfEntity,
+    IGESData_LineFontEntity as LineFontEntity, IGESData_Protocol as Protocol,
+    IGESData_SpecificModule as SpecificModule, IGESData_TransfEntity as TransfEntity,
     IGESData_ViewKindEntity as ViewKindEntity,
 };

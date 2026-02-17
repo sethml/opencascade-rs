@@ -1164,6 +1164,62 @@ impl EntityList {
 }
 
 // ========================
+// From Interface_GeneralLib.hxx
+// ========================
+
+/// **Source:** `Interface_GeneralLib.hxx`:32 - `Interface_GeneralLib`
+pub use crate::ffi::Interface_GeneralLib as GeneralLib;
+
+unsafe impl crate::CppDeletable for GeneralLib {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Interface_GeneralLib_destructor(ptr);
+    }
+}
+
+impl GeneralLib {
+    /// **Source:** `Interface_GeneralLib.hxx`:50 - `Interface_GeneralLib::Interface_GeneralLib()`
+    /// Creates an empty Library : it will later by filled by method
+    /// AddProtocol
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_GeneralLib_ctor()) }
+    }
+
+    /// **Source:** `Interface_GeneralLib.hxx`:60 - `Interface_GeneralLib::Clear()`
+    /// Clears the list of Modules of a library (can be used to
+    /// redefine the order of Modules before action : Clear then
+    /// refill the Library by calls to AddProtocol)
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::Interface_GeneralLib_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `Interface_GeneralLib.hxx`:64 - `Interface_GeneralLib::SetComplete()`
+    /// Sets a library to be defined with the complete Global list
+    /// (all the couples Protocol/Modules recorded in it)
+    pub fn set_complete(&mut self) {
+        unsafe { crate::ffi::Interface_GeneralLib_set_complete(self as *mut Self) }
+    }
+
+    /// **Source:** `Interface_GeneralLib.hxx`:77 - `Interface_GeneralLib::Start()`
+    /// Starts Iteration on the Modules (sets it on the first one)
+    pub fn start(&mut self) {
+        unsafe { crate::ffi::Interface_GeneralLib_start(self as *mut Self) }
+    }
+
+    /// **Source:** `Interface_GeneralLib.hxx`:80 - `Interface_GeneralLib::More()`
+    /// Returns True if there are more Modules to iterate on
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::Interface_GeneralLib_more(self as *const Self) }
+    }
+
+    /// **Source:** `Interface_GeneralLib.hxx`:84 - `Interface_GeneralLib::Next()`
+    /// Iterates by getting the next Module in the list
+    /// If there is none, the exception will be raised by Value
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::Interface_GeneralLib_next(self as *mut Self) }
+    }
+}
+
+// ========================
 // From Interface_Graph.hxx
 // ========================
 
@@ -1196,6 +1252,28 @@ unsafe impl crate::CppDeletable for Graph {
 }
 
 impl Graph {
+    /// **Source:** `Interface_Graph.hxx`:72 - `Interface_Graph::Interface_Graph()`
+    /// Creates an empty graph, ready to receive Entities from amodel
+    /// Note that this way of Creation allows <me> to verify that
+    /// Entities to work with are contained in <amodel>
+    /// Basic Shared and Sharing lists are obtained from a General
+    /// Services Library, given directly as an argument
+    pub fn new_handleinterfaceinterfacemodel_generallib_bool(
+        amodel: &crate::ffi::HandleInterfaceInterfaceModel,
+        lib: &crate::ffi::Interface_GeneralLib,
+        theModeStats: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Interface_Graph_ctor_handleinterfaceinterfacemodel_generallib_bool(
+                    amodel,
+                    lib,
+                    theModeStats,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `Interface_Graph.hxx`:87 - `Interface_Graph::Interface_Graph()`
     /// Same a above but works with the Protocol recorded in the Model
     pub fn new_handleinterfaceinterfacemodel_bool(
@@ -1223,6 +1301,19 @@ impl Graph {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Interface_Graph_ctor_graph_bool(agraph, copied))
         }
+    }
+
+    /// **Source:** `Interface_Graph.hxx`:72 - `Interface_Graph::Interface_Graph()`
+    /// Creates an empty graph, ready to receive Entities from amodel
+    /// Note that this way of Creation allows <me> to verify that
+    /// Entities to work with are contained in <amodel>
+    /// Basic Shared and Sharing lists are obtained from a General
+    /// Services Library, given directly as an argument
+    pub fn new_handleinterfaceinterfacemodel_generallib(
+        amodel: &crate::ffi::HandleInterfaceInterfaceModel,
+        lib: &crate::ffi::Interface_GeneralLib,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleinterfaceinterfacemodel_generallib_bool(amodel, lib, true)
     }
 
     /// **Source:** `Interface_Graph.hxx`:87 - `Interface_Graph::Interface_Graph()`
@@ -1358,6 +1449,157 @@ impl Graph {
 }
 
 // ========================
+// From Interface_HArray1OfHAsciiString.hxx
+// ========================
+
+/// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString`
+pub use crate::ffi::Interface_HArray1OfHAsciiString as HArray1OfHAsciiString;
+
+unsafe impl crate::CppDeletable for HArray1OfHAsciiString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Interface_HArray1OfHAsciiString_destructor(ptr);
+    }
+}
+
+impl HArray1OfHAsciiString {
+    /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::Interface_HArray1OfHAsciiString()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_HArray1OfHAsciiString_ctor()) }
+    }
+
+    /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::Interface_HArray1OfHAsciiString()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_HArray1OfHAsciiString_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Interface_HArray1OfHAsciiString_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Interface_HArray1OfHAsciiString_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Interface_HArray1OfHAsciiString_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceHArray1OfHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_HArray1OfHAsciiString_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleInterfaceHArray1OfHAsciiString;
+
+unsafe impl crate::CppDeletable for HandleInterfaceHArray1OfHAsciiString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleInterfaceHArray1OfHAsciiString_destructor(ptr);
+    }
+}
+
+impl HandleInterfaceHArray1OfHAsciiString {
+    /// Dereference this Handle to access the underlying Interface_HArray1OfHAsciiString
+    pub fn get(&self) -> &crate::ffi::Interface_HArray1OfHAsciiString {
+        unsafe { &*(crate::ffi::HandleInterfaceHArray1OfHAsciiString_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Interface_HArray1OfHAsciiString
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Interface_HArray1OfHAsciiString {
+        unsafe {
+            &mut *(crate::ffi::HandleInterfaceHArray1OfHAsciiString_get_mut(self as *mut Self))
+        }
+    }
+}
+
+// ========================
+// From Interface_HSequenceOfCheck.hxx
+// ========================
+
+/// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck`
+pub use crate::ffi::Interface_HSequenceOfCheck as HSequenceOfCheck;
+
+unsafe impl crate::CppDeletable for HSequenceOfCheck {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Interface_HSequenceOfCheck_destructor(ptr);
+    }
+}
+
+impl HSequenceOfCheck {
+    /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::Interface_HSequenceOfCheck()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_HSequenceOfCheck_ctor()) }
+    }
+
+    /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Interface_HSequenceOfCheck_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Interface_HSequenceOfCheck_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Interface_HSequenceOfCheck_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceHSequenceOfCheck> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_HSequenceOfCheck_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleInterfaceHSequenceOfCheck;
+
+unsafe impl crate::CppDeletable for HandleInterfaceHSequenceOfCheck {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleInterfaceHSequenceOfCheck_destructor(ptr);
+    }
+}
+
+impl HandleInterfaceHSequenceOfCheck {
+    /// Dereference this Handle to access the underlying Interface_HSequenceOfCheck
+    pub fn get(&self) -> &crate::ffi::Interface_HSequenceOfCheck {
+        unsafe { &*(crate::ffi::HandleInterfaceHSequenceOfCheck_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Interface_HSequenceOfCheck
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Interface_HSequenceOfCheck {
+        unsafe { &mut *(crate::ffi::HandleInterfaceHSequenceOfCheck_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From Interface_IntList.hxx
 // ========================
 
@@ -1427,17 +1669,6 @@ impl IntList {
     /// Initialize IntList by number of entities.
     pub fn initialize(&mut self, nbe: i32) {
         unsafe { crate::ffi::Interface_IntList_initialize(self as *mut Self, nbe) }
-    }
-
-    /// **Source:** `Interface_IntList.hxx`:73 - `Interface_IntList::Internals()`
-    /// Returns internal values, used for copying
-    pub fn internals(
-        &self,
-        nbrefs: &mut i32,
-        ents: &mut crate::ffi::HandleTColStdHArray1OfInteger,
-        refs: &mut crate::ffi::HandleTColStdHArray1OfInteger,
-    ) {
-        unsafe { crate::ffi::Interface_IntList_internals(self as *const Self, nbrefs, ents, refs) }
     }
 
     /// **Source:** `Interface_IntList.hxx`:78 - `Interface_IntList::NbEntities()`
@@ -2016,9 +2247,10 @@ impl SignType {
 // ========================
 
 pub use crate::ffi::{
-    Interface_CopyControl as CopyControl, Interface_CopyTool as CopyTool,
-    Interface_EntityIterator as EntityIterator, Interface_GTool as GTool,
-    Interface_GeneralLib as GeneralLib, Interface_GraphContent as GraphContent,
-    Interface_HGraph as HGraph, Interface_Protocol as Protocol,
-    Interface_ReportEntity as ReportEntity, Interface_TypedValue as TypedValue,
+    Interface_Array1OfHAsciiString as Array1OfHAsciiString, Interface_CopyControl as CopyControl,
+    Interface_CopyTool as CopyTool, Interface_EntityIterator as EntityIterator,
+    Interface_GTool as GTool, Interface_GeneralModule as GeneralModule,
+    Interface_GraphContent as GraphContent, Interface_HGraph as HGraph,
+    Interface_Protocol as Protocol, Interface_ReportEntity as ReportEntity,
+    Interface_SequenceOfCheck as SequenceOfCheck, Interface_TypedValue as TypedValue,
 };

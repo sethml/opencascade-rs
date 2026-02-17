@@ -1352,79 +1352,6 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_set_weight(self as *mut Self, Index, Weight) }
     }
 
-    /// **Source:** `Geom_BSplineCurve.hxx`:443 - `Geom_BSplineCurve::MovePoint()`
-    /// Moves the point of parameter U of this BSpline curve
-    /// to P. Index1 and Index2 are the indexes in the table
-    /// of poles of this BSpline curve of the first and last
-    /// poles designated to be moved.
-    /// FirstModifiedPole and LastModifiedPole are the
-    /// indexes of the first and last poles which are effectively modified.
-    /// In the event of incompatibility between Index1, Index2 and the value U:
-    /// - no change is made to this BSpline curve, and
-    /// - the FirstModifiedPole and LastModifiedPole are returned null.
-    /// Exceptions
-    /// Standard_OutOfRange if:
-    /// - Index1 is greater than or equal to Index2, or
-    /// - Index1 or Index2 is less than 1 or greater than the
-    /// number of poles of this BSpline curve.
-    pub fn move_point(
-        &mut self,
-        U: f64,
-        P: &crate::ffi::gp_Pnt,
-        Index1: i32,
-        Index2: i32,
-        FirstModifiedPole: &mut i32,
-        LastModifiedPole: &mut i32,
-    ) {
-        unsafe {
-            crate::ffi::Geom_BSplineCurve_move_point(
-                self as *mut Self,
-                U,
-                P,
-                Index1,
-                Index2,
-                FirstModifiedPole,
-                LastModifiedPole,
-            )
-        }
-    }
-
-    /// **Source:** `Geom_BSplineCurve.hxx`:461 - `Geom_BSplineCurve::MovePointAndTangent()`
-    /// Move a point with parameter U to P.
-    /// and makes it tangent at U be Tangent.
-    /// StartingCondition = -1 means first can move
-    /// EndingCondition   = -1 means last point can move
-    /// StartingCondition = 0 means the first point cannot move
-    /// EndingCondition   = 0 means the last point cannot move
-    /// StartingCondition = 1 means the first point and tangent cannot move
-    /// EndingCondition   = 1 means the last point and tangent cannot move
-    /// and so forth
-    /// ErrorStatus != 0 means that there are not enough degree of freedom
-    /// with the constrain to deform the curve accordingly
-    pub fn move_point_and_tangent(
-        &mut self,
-        U: f64,
-        P: &crate::ffi::gp_Pnt,
-        Tangent: &crate::ffi::gp_Vec,
-        Tolerance: f64,
-        StartingCondition: i32,
-        EndingCondition: i32,
-        ErrorStatus: &mut i32,
-    ) {
-        unsafe {
-            crate::ffi::Geom_BSplineCurve_move_point_and_tangent(
-                self as *mut Self,
-                U,
-                P,
-                Tangent,
-                Tolerance,
-                StartingCondition,
-                EndingCondition,
-                ErrorStatus,
-            )
-        }
-    }
-
     /// **Source:** `Geom_BSplineCurve.hxx`:471 - `Geom_BSplineCurve::IsCN()`
     /// Returns the continuity of the curve, the curve is at least C0.
     /// Raised if N < 0.
@@ -1754,37 +1681,6 @@ impl BSplineCurve {
     /// It is a knot value.
     pub fn last_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom_BSplineCurve_last_parameter(self as *const Self) }
-    }
-
-    /// **Source:** `Geom_BSplineCurve.hxx`:752 - `Geom_BSplineCurve::LocateU()`
-    /// Locates the parametric value U in the sequence of knots.
-    /// If "WithKnotRepetition" is True we consider the knot's
-    /// representation with repetition of multiple knot value,
-    /// otherwise  we consider the knot's representation with
-    /// no repetition of multiple knot values.
-    /// Knots (I1) <= U <= Knots (I2)
-    /// . if I1 = I2  U is a knot value (the tolerance criterion
-    /// ParametricTolerance is used).
-    /// . if I1 < 1  => U < Knots (1) - Abs(ParametricTolerance)
-    /// . if I2 > NbKnots => U > Knots (NbKnots) + Abs(ParametricTolerance)
-    pub fn locate_u(
-        &self,
-        U: f64,
-        ParametricTolerance: f64,
-        I1: &mut i32,
-        I2: &mut i32,
-        WithKnotRepetition: bool,
-    ) {
-        unsafe {
-            crate::ffi::Geom_BSplineCurve_locate_u(
-                self as *const Self,
-                U,
-                ParametricTolerance,
-                I1,
-                I2,
-                WithKnotRepetition,
-            )
-        }
     }
 
     /// **Source:** `Geom_BSplineCurve.hxx`:760 - `Geom_BSplineCurve::Multiplicity()`
@@ -2782,72 +2678,6 @@ impl BSplineSurface {
         }
     }
 
-    /// **Source:** `Geom_BSplineSurface.hxx`:687 - `Geom_BSplineSurface::LocateU()`
-    /// Locates the parametric value U in the sequence of UKnots.
-    /// If "WithKnotRepetition" is True we consider the knot's
-    /// representation with repetition of multiple knot value,
-    /// otherwise  we consider the knot's representation with
-    /// no repetition of multiple knot values.
-    /// UKnots (I1) <= U <= UKnots (I2)
-    /// . if I1 = I2  U is a knot value (the tolerance criterion
-    /// ParametricTolerance is used).
-    /// . if I1 < 1  => U < UKnots(1) - Abs(ParametricTolerance)
-    /// . if I2 > NbUKnots => U > UKnots(NbUKnots)+Abs(ParametricTolerance)
-    pub fn locate_u(
-        &self,
-        U: f64,
-        ParametricTolerance: f64,
-        I1: &mut i32,
-        I2: &mut i32,
-        WithKnotRepetition: bool,
-    ) {
-        unsafe {
-            crate::ffi::Geom_BSplineSurface_locate_u(
-                self as *const Self,
-                U,
-                ParametricTolerance,
-                I1,
-                I2,
-                WithKnotRepetition,
-            )
-        }
-    }
-
-    /// **Source:** `Geom_BSplineSurface.hxx`:707 - `Geom_BSplineSurface::LocateV()`
-    /// Locates the parametric value V in the sequence of knots.
-    /// If "WithKnotRepetition" is True we consider the knot's
-    /// representation with repetition of multiple knot value,
-    /// otherwise  we consider the knot's representation with
-    /// no repetition of multiple knot values.
-    /// VKnots (I1) <= V <= VKnots (I2)
-    /// . if I1 = I2  V is a knot value (the tolerance criterion
-    /// ParametricTolerance is used).
-    /// . if I1 < 1  => V < VKnots(1) - Abs(ParametricTolerance)
-    /// . if I2 > NbVKnots => V > VKnots(NbVKnots)+Abs(ParametricTolerance)
-    /// poles insertion and removing
-    /// The following methods are available only if the surface
-    /// is Uniform or QuasiUniform in the considered direction
-    /// The knot repartition is modified.
-    pub fn locate_v(
-        &self,
-        V: f64,
-        ParametricTolerance: f64,
-        I1: &mut i32,
-        I2: &mut i32,
-        WithKnotRepetition: bool,
-    ) {
-        unsafe {
-            crate::ffi::Geom_BSplineSurface_locate_v(
-                self as *const Self,
-                V,
-                ParametricTolerance,
-                I1,
-                I2,
-                WithKnotRepetition,
-            )
-        }
-    }
-
     /// **Source:** `Geom_BSplineSurface.hxx`:719 - `Geom_BSplineSurface::SetPole()`
     /// Substitutes the pole of range (UIndex, VIndex) with P.
     /// If the surface is rational the weight of range (UIndex, VIndex)
@@ -2917,54 +2747,6 @@ impl BSplineSurface {
     pub fn set_weight(&mut self, UIndex: i32, VIndex: i32, Weight: f64) {
         unsafe {
             crate::ffi::Geom_BSplineSurface_set_weight(self as *mut Self, UIndex, VIndex, Weight)
-        }
-    }
-
-    /// **Source:** `Geom_BSplineSurface.hxx`:826 - `Geom_BSplineSurface::MovePoint()`
-    /// Move a point with parameter U and V to P.
-    /// given u,v  as parameters)  to  reach a  new position
-    /// UIndex1, UIndex2, VIndex1, VIndex2:
-    /// indicates the poles which can be moved
-    /// if Problem in BSplineBasis calculation, no change
-    /// for the curve and
-    /// UFirstIndex, VLastIndex = 0
-    /// VFirstIndex, VLastIndex = 0
-    ///
-    /// Raised if UIndex1 < UIndex2 or VIndex1 < VIndex2 or
-    /// UIndex1 < 1 || UIndex1 > NbUPoles or
-    /// UIndex2 < 1 || UIndex2 > NbUPoles
-    /// VIndex1 < 1 || VIndex1 > NbVPoles or
-    /// VIndex2 < 1 || VIndex2 > NbVPoles
-    /// characteristics of the surface
-    pub fn move_point(
-        &mut self,
-        U: f64,
-        V: f64,
-        P: &crate::ffi::gp_Pnt,
-        UIndex1: i32,
-        UIndex2: i32,
-        VIndex1: i32,
-        VIndex2: i32,
-        UFirstIndex: &mut i32,
-        ULastIndex: &mut i32,
-        VFirstIndex: &mut i32,
-        VLastIndex: &mut i32,
-    ) {
-        unsafe {
-            crate::ffi::Geom_BSplineSurface_move_point(
-                self as *mut Self,
-                U,
-                V,
-                P,
-                UIndex1,
-                UIndex2,
-                VIndex1,
-                VIndex2,
-                UFirstIndex,
-                ULastIndex,
-                VFirstIndex,
-                VLastIndex,
-            )
         }
     }
 
@@ -12016,6 +11798,78 @@ impl HandleGeomGeometry {
             None
         } else {
             Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ========================
+// From Geom_HSequenceOfBSplineSurface.hxx
+// ========================
+
+/// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface`
+pub use crate::ffi::Geom_HSequenceOfBSplineSurface as HSequenceOfBSplineSurface;
+
+unsafe impl crate::CppDeletable for HSequenceOfBSplineSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Geom_HSequenceOfBSplineSurface_destructor(ptr);
+    }
+}
+
+impl HSequenceOfBSplineSurface {
+    /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::Geom_HSequenceOfBSplineSurface()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_HSequenceOfBSplineSurface_ctor()) }
+    }
+
+    /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Geom_HSequenceOfBSplineSurface_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Geom_HSequenceOfBSplineSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Geom_HSequenceOfBSplineSurface_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomHSequenceOfBSplineSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_HSequenceOfBSplineSurface_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomHSequenceOfBSplineSurface;
+
+unsafe impl crate::CppDeletable for HandleGeomHSequenceOfBSplineSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomHSequenceOfBSplineSurface_destructor(ptr);
+    }
+}
+
+impl HandleGeomHSequenceOfBSplineSurface {
+    /// Dereference this Handle to access the underlying Geom_HSequenceOfBSplineSurface
+    pub fn get(&self) -> &crate::ffi::Geom_HSequenceOfBSplineSurface {
+        unsafe { &*(crate::ffi::HandleGeomHSequenceOfBSplineSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom_HSequenceOfBSplineSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Geom_HSequenceOfBSplineSurface {
+        unsafe {
+            &mut *(crate::ffi::HandleGeomHSequenceOfBSplineSurface_get_mut(self as *mut Self))
         }
     }
 }
@@ -22999,3 +22853,9 @@ impl HandleGeomVectorWithMagnitude {
         }
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::Geom_SequenceOfBSplineSurface as SequenceOfBSplineSurface;

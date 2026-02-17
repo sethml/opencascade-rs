@@ -862,6 +862,70 @@ impl FaceInterference {
 }
 
 // ========================
+// From ChFiDS_HData.hxx
+// ========================
+
+/// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData`
+pub use crate::ffi::ChFiDS_HData as HData;
+
+unsafe impl crate::CppDeletable for HData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ChFiDS_HData_destructor(ptr);
+    }
+}
+
+impl HData {
+    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChFiDS_HData()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_HData_ctor()) }
+    }
+
+    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ChFiDS_HData_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::ChFiDS_HData_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ChFiDS_HData_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleChFiDSHData> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_HData_to_handle(obj.into_raw())) }
+    }
+}
+
+pub use crate::ffi::HandleChFiDSHData;
+
+unsafe impl crate::CppDeletable for HandleChFiDSHData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleChFiDSHData_destructor(ptr);
+    }
+}
+
+impl HandleChFiDSHData {
+    /// Dereference this Handle to access the underlying ChFiDS_HData
+    pub fn get(&self) -> &crate::ffi::ChFiDS_HData {
+        unsafe { &*(crate::ffi::HandleChFiDSHData_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ChFiDS_HData
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_HData {
+        unsafe { &mut *(crate::ffi::HandleChFiDSHData_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From ChFiDS_Map.hxx
 // ========================
 
@@ -968,6 +1032,81 @@ impl Regul {
     /// **Source:** `ChFiDS_Regul.hxx`:50 - `ChFiDS_Regul::S2()`
     pub fn s2(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_Regul_s2(self as *const Self) }
+    }
+}
+
+// ========================
+// From ChFiDS_SecHArray1.hxx
+// ========================
+
+/// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1`
+pub use crate::ffi::ChFiDS_SecHArray1 as SecHArray1;
+
+unsafe impl crate::CppDeletable for SecHArray1 {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ChFiDS_SecHArray1_destructor(ptr);
+    }
+}
+
+impl SecHArray1 {
+    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_SecHArray1_ctor()) }
+    }
+
+    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_SecHArray1_ctor_int2(theLower, theUpper))
+        }
+    }
+
+    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ChFiDS_SecHArray1_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::ChFiDS_SecHArray1_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ChFiDS_SecHArray1_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSecHArray1> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_SecHArray1_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleChFiDSSecHArray1;
+
+unsafe impl crate::CppDeletable for HandleChFiDSSecHArray1 {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleChFiDSSecHArray1_destructor(ptr);
+    }
+}
+
+impl HandleChFiDSSecHArray1 {
+    /// Dereference this Handle to access the underlying ChFiDS_SecHArray1
+    pub fn get(&self) -> &crate::ffi::ChFiDS_SecHArray1 {
+        unsafe { &*(crate::ffi::HandleChFiDSSecHArray1_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ChFiDS_SecHArray1
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_SecHArray1 {
+        unsafe { &mut *(crate::ffi::HandleChFiDSSecHArray1_get_mut(self as *mut Self)) }
     }
 }
 
@@ -1490,6 +1629,11 @@ impl Stripe {
         unsafe { crate::ffi::ChFiDS_Stripe_reset(self as *mut Self) }
     }
 
+    /// **Source:** `ChFiDS_Stripe.hxx`:43 - `ChFiDS_Stripe::SetOfSurfData()`
+    pub fn set_of_surf_data(&self) -> &crate::ffi::HandleChFiDSHData {
+        unsafe { &*(crate::ffi::ChFiDS_Stripe_set_of_surf_data(self as *const Self)) }
+    }
+
     /// **Source:** `ChFiDS_Stripe.hxx`:45 - `ChFiDS_Stripe::Spine()`
     pub fn spine(&self) -> &crate::ffi::HandleChFiDSSpine {
         unsafe { &*(crate::ffi::ChFiDS_Stripe_spine(self as *const Self)) }
@@ -1518,6 +1662,11 @@ impl Stripe {
     /// **Source:** `ChFiDS_Stripe.hxx`:51 - `ChFiDS_Stripe::Choix()`
     pub fn choix(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_Stripe_choix(self as *const Self) }
+    }
+
+    /// **Source:** `ChFiDS_Stripe.hxx`:53 - `ChFiDS_Stripe::ChangeSetOfSurfData()`
+    pub fn change_set_of_surf_data(&mut self) -> &mut crate::ffi::HandleChFiDSHData {
+        unsafe { &mut *(crate::ffi::ChFiDS_Stripe_change_set_of_surf_data(self as *mut Self)) }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:55 - `ChFiDS_Stripe::ChangeSpine()`
@@ -2251,7 +2400,6 @@ impl HandleChFiDSSurfData {
 // ========================
 
 pub use crate::ffi::{
-    ChFiDS_HData as HData, ChFiDS_ListOfHElSpine as ListOfHElSpine,
-    ChFiDS_ListOfStripe as ListOfStripe, ChFiDS_SecHArray1 as SecHArray1,
-    ChFiDS_SequenceOfSurfData as SequenceOfSurfData,
+    ChFiDS_ListOfHElSpine as ListOfHElSpine, ChFiDS_ListOfStripe as ListOfStripe,
+    ChFiDS_SecArray1 as SecArray1, ChFiDS_SequenceOfSurfData as SequenceOfSurfData,
 };

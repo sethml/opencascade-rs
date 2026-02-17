@@ -244,31 +244,6 @@ impl CircleToBSplineCurve {
             )
         }
     }
-
-    /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:103 - `Convert_ConicToBSplineCurve::BuildCosAndSin()`
-    pub fn build_cos_and_sin(
-        &self,
-        Parametrisation: crate::convert::ParameterisationType,
-        CosNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        SinNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Denominator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Degree: &mut i32,
-        Knots: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Mults: &mut crate::ffi::HandleTColStdHArray1OfInteger,
-    ) {
-        unsafe {
-            crate::ffi::Convert_CircleToBSplineCurve_inherited_BuildCosAndSin(
-                self as *const Self,
-                Parametrisation.into(),
-                CosNumerator,
-                SinNumerator,
-                Denominator,
-                Degree,
-                Knots,
-                Mults,
-            )
-        }
-    }
 }
 
 // ========================
@@ -1053,40 +1028,6 @@ impl ConicToBSplineCurve {
     pub fn multiplicity(&self, Index: i32) -> i32 {
         unsafe { crate::ffi::Convert_ConicToBSplineCurve_multiplicity(self as *const Self, Index) }
     }
-
-    /// **Source:** `Convert_ConicToBSplineCurve.hxx`:103 - `Convert_ConicToBSplineCurve::BuildCosAndSin()`
-    pub fn build_cos_and_sin_parameterisationtype_handletcolstdharray1ofreal3_int_handletcolstdharray1ofreal_handletcolstdharray1ofinteger(
-        &self,
-        Parametrisation: crate::convert::ParameterisationType,
-        CosNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        SinNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Denominator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Degree: &mut i32,
-        Knots: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Mults: &mut crate::ffi::HandleTColStdHArray1OfInteger,
-    ) {
-        unsafe {
-            crate::ffi::Convert_ConicToBSplineCurve_build_cos_and_sin_parameterisationtype_handletcolstdharray1ofreal3_int_handletcolstdharray1ofreal_handletcolstdharray1ofinteger(self as *const Self, Parametrisation.into(), CosNumerator, SinNumerator, Denominator, Degree, Knots, Mults)
-        }
-    }
-
-    /// **Source:** `Convert_ConicToBSplineCurve.hxx`:111 - `Convert_ConicToBSplineCurve::BuildCosAndSin()`
-    pub fn build_cos_and_sin_parameterisationtype_real2_handletcolstdharray1ofreal3_int_handletcolstdharray1ofreal_handletcolstdharray1ofinteger(
-        &self,
-        Parametrisation: crate::convert::ParameterisationType,
-        UFirst: f64,
-        ULast: f64,
-        CosNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        SinNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Denominator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Degree: &mut i32,
-        Knots: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Mults: &mut crate::ffi::HandleTColStdHArray1OfInteger,
-    ) {
-        unsafe {
-            crate::ffi::Convert_ConicToBSplineCurve_build_cos_and_sin_parameterisationtype_real2_handletcolstdharray1ofreal3_int_handletcolstdharray1ofreal_handletcolstdharray1ofinteger(self as *const Self, Parametrisation.into(), UFirst, ULast, CosNumerator, SinNumerator, Denominator, Degree, Knots, Mults)
-        }
-    }
 }
 
 // ========================
@@ -1621,31 +1562,6 @@ impl EllipseToBSplineCurve {
             )
         }
     }
-
-    /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:103 - `Convert_ConicToBSplineCurve::BuildCosAndSin()`
-    pub fn build_cos_and_sin(
-        &self,
-        Parametrisation: crate::convert::ParameterisationType,
-        CosNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        SinNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Denominator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Degree: &mut i32,
-        Knots: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Mults: &mut crate::ffi::HandleTColStdHArray1OfInteger,
-    ) {
-        unsafe {
-            crate::ffi::Convert_EllipseToBSplineCurve_inherited_BuildCosAndSin(
-                self as *const Self,
-                Parametrisation.into(),
-                CosNumerator,
-                SinNumerator,
-                Denominator,
-                Degree,
-                Knots,
-                Mults,
-            )
-        }
-    }
 }
 
 // ========================
@@ -1761,6 +1677,12 @@ impl GridPolynomialToPoles {
     /// **Source:** `Convert_GridPolynomialToPoles.hxx`:96 - `Convert_GridPolynomialToPoles::NbVPoles()`
     pub fn nb_v_poles(&self) -> i32 {
         unsafe { crate::ffi::Convert_GridPolynomialToPoles_nb_v_poles(self as *const Self) }
+    }
+
+    /// **Source:** `Convert_GridPolynomialToPoles.hxx`:99 - `Convert_GridPolynomialToPoles::Poles()`
+    /// returns the poles of the BSpline Surface
+    pub fn poles(&self) -> &crate::ffi::HandleTColgpHArray2OfPnt {
+        unsafe { &*(crate::ffi::Convert_GridPolynomialToPoles_poles(self as *const Self)) }
     }
 
     /// **Source:** `Convert_GridPolynomialToPoles.hxx`:101 - `Convert_GridPolynomialToPoles::UDegree()`
@@ -1930,31 +1852,6 @@ impl HyperbolaToBSplineCurve {
             )
         }
     }
-
-    /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:103 - `Convert_ConicToBSplineCurve::BuildCosAndSin()`
-    pub fn build_cos_and_sin(
-        &self,
-        Parametrisation: crate::convert::ParameterisationType,
-        CosNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        SinNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Denominator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Degree: &mut i32,
-        Knots: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Mults: &mut crate::ffi::HandleTColStdHArray1OfInteger,
-    ) {
-        unsafe {
-            crate::ffi::Convert_HyperbolaToBSplineCurve_inherited_BuildCosAndSin(
-                self as *const Self,
-                Parametrisation.into(),
-                CosNumerator,
-                SinNumerator,
-                Denominator,
-                Degree,
-                Knots,
-                Mults,
-            )
-        }
-    }
 }
 
 // ========================
@@ -2066,31 +1963,6 @@ impl ParabolaToBSplineCurve {
             crate::ffi::Convert_ParabolaToBSplineCurve_inherited_Multiplicity(
                 self as *const Self,
                 Index,
-            )
-        }
-    }
-
-    /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:103 - `Convert_ConicToBSplineCurve::BuildCosAndSin()`
-    pub fn build_cos_and_sin(
-        &self,
-        Parametrisation: crate::convert::ParameterisationType,
-        CosNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        SinNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Denominator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Degree: &mut i32,
-        Knots: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Mults: &mut crate::ffi::HandleTColStdHArray1OfInteger,
-    ) {
-        unsafe {
-            crate::ffi::Convert_ParabolaToBSplineCurve_inherited_BuildCosAndSin(
-                self as *const Self,
-                Parametrisation.into(),
-                CosNumerator,
-                SinNumerator,
-                Denominator,
-                Degree,
-                Knots,
-                Mults,
             )
         }
     }

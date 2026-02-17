@@ -1107,20 +1107,6 @@ unsafe impl crate::CppDeletable for HArray2OfTransient {
 }
 
 impl HArray2OfTransient {
-    /// **Source:** `TColStd_HArray2OfTransient.hxx`:22 - `TColStd_HArray2OfTransient::TColStd_HArray2OfTransient()`
-    pub fn new_int4(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfTransient_ctor_int4(
-                theRowLow, theRowUpp, theColLow, theColUpp,
-            ))
-        }
-    }
-
     /// **Source:** `TColStd_HArray2OfTransient.hxx`:22 - `TColStd_HArray2OfTransient::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColStd_HArray2OfTransient_dynamic_type(self as *const Self)) }

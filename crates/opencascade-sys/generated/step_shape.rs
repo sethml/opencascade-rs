@@ -220,6 +220,21 @@ impl ShapeDefinitionRepresentation {
         }
     }
 
+    /// Inherited: **Source:** `StepRepr_PropertyDefinitionRepresentation.hxx`:37 - `StepRepr_PropertyDefinitionRepresentation::Init()`
+    pub fn init(
+        &mut self,
+        aDefinition: &crate::ffi::StepRepr_RepresentedDefinition,
+        aUsedRepresentation: &crate::ffi::HandleStepReprRepresentation,
+    ) {
+        unsafe {
+            crate::ffi::StepShape_ShapeDefinitionRepresentation_inherited_Init(
+                self as *mut Self,
+                aDefinition,
+                aUsedRepresentation,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `StepRepr_PropertyDefinitionRepresentation.hxx`:41 - `StepRepr_PropertyDefinitionRepresentation::Definition()`
     pub fn definition(&self) -> crate::OwnedPtr<crate::ffi::StepRepr_RepresentedDefinition> {
         unsafe {
@@ -237,6 +252,30 @@ impl ShapeDefinitionRepresentation {
             crate::ffi::StepShape_ShapeDefinitionRepresentation_inherited_SetDefinition(
                 self as *mut Self,
                 Definition,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_PropertyDefinitionRepresentation.hxx`:47 - `StepRepr_PropertyDefinitionRepresentation::UsedRepresentation()`
+    pub fn used_representation(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprRepresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepShape_ShapeDefinitionRepresentation_inherited_UsedRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepRepr_PropertyDefinitionRepresentation.hxx`:50 - `StepRepr_PropertyDefinitionRepresentation::SetUsedRepresentation()`
+    pub fn set_used_representation(
+        &mut self,
+        UsedRepresentation: &crate::ffi::HandleStepReprRepresentation,
+    ) {
+        unsafe {
+            crate::ffi::StepShape_ShapeDefinitionRepresentation_inherited_SetUsedRepresentation(
+                self as *mut Self,
+                UsedRepresentation,
             )
         }
     }

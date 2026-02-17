@@ -1400,14 +1400,2310 @@ unsafe impl crate::CppDeletable for Array2OfXYZ {
 }
 
 // ========================
+// From TColgp_HArray1OfCirc2d.hxx
+// ========================
+
+/// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d`
+pub use crate::ffi::TColgp_HArray1OfCirc2d as HArray1OfCirc2d;
+
+unsafe impl crate::CppDeletable for HArray1OfCirc2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray1OfCirc2d_destructor(ptr);
+    }
+}
+
+impl HArray1OfCirc2d {
+    /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::TColgp_HArray1OfCirc2d()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfCirc2d_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::TColgp_HArray1OfCirc2d()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfCirc2d_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::TColgp_HArray1OfCirc2d()`
+    pub fn new_array1ofcirc2d(
+        theOther: &crate::ffi::TColgp_Array1OfCirc2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfCirc2d_ctor_array1ofcirc2d(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfCirc2d {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfCirc2d_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfCirc2d {
+        unsafe { &mut *(crate::ffi::TColgp_HArray1OfCirc2d_change_array1(self as *mut Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfCirc2d_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray1OfCirc2d_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfCirc2d_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfCirc2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfCirc2d_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHArray1OfCirc2d;
+
+unsafe impl crate::CppDeletable for HandleTColgpHArray1OfCirc2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray1OfCirc2d_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHArray1OfCirc2d {
+    /// Dereference this Handle to access the underlying TColgp_HArray1OfCirc2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfCirc2d {
+        unsafe { &*(crate::ffi::HandleTColgpHArray1OfCirc2d_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfCirc2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfCirc2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray1OfCirc2d_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HArray1OfDir.hxx
+// ========================
+
+/// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir`
+pub use crate::ffi::TColgp_HArray1OfDir as HArray1OfDir;
+
+unsafe impl crate::CppDeletable for HArray1OfDir {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray1OfDir_destructor(ptr);
+    }
+}
+
+impl HArray1OfDir {
+    /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::TColgp_HArray1OfDir()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfDir_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::TColgp_HArray1OfDir()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfDir_ctor_int2(theLower, theUpper))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::TColgp_HArray1OfDir()`
+    pub fn new_array1ofdir(theOther: &crate::ffi::TColgp_Array1OfDir) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfDir_ctor_array1ofdir(theOther))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfDir {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfDir_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfDir {
+        unsafe { &mut *(crate::ffi::TColgp_HArray1OfDir_change_array1(self as *mut Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfDir_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray1OfDir_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfDir_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfDir> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfDir_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHArray1OfDir;
+
+unsafe impl crate::CppDeletable for HandleTColgpHArray1OfDir {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray1OfDir_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHArray1OfDir {
+    /// Dereference this Handle to access the underlying TColgp_HArray1OfDir
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfDir {
+        unsafe { &*(crate::ffi::HandleTColgpHArray1OfDir_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfDir
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfDir {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray1OfDir_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HArray1OfDir2d.hxx
+// ========================
+
+/// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d`
+pub use crate::ffi::TColgp_HArray1OfDir2d as HArray1OfDir2d;
+
+unsafe impl crate::CppDeletable for HArray1OfDir2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray1OfDir2d_destructor(ptr);
+    }
+}
+
+impl HArray1OfDir2d {
+    /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::TColgp_HArray1OfDir2d()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfDir2d_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::TColgp_HArray1OfDir2d()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfDir2d_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::TColgp_HArray1OfDir2d()`
+    pub fn new_array1ofdir2d(theOther: &crate::ffi::TColgp_Array1OfDir2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfDir2d_ctor_array1ofdir2d(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfDir2d {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfDir2d_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfDir2d {
+        unsafe { &mut *(crate::ffi::TColgp_HArray1OfDir2d_change_array1(self as *mut Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfDir2d_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray1OfDir2d_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfDir2d_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfDir2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfDir2d_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHArray1OfDir2d;
+
+unsafe impl crate::CppDeletable for HandleTColgpHArray1OfDir2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray1OfDir2d_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHArray1OfDir2d {
+    /// Dereference this Handle to access the underlying TColgp_HArray1OfDir2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfDir2d {
+        unsafe { &*(crate::ffi::HandleTColgpHArray1OfDir2d_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfDir2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfDir2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray1OfDir2d_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HArray1OfLin2d.hxx
+// ========================
+
+/// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d`
+pub use crate::ffi::TColgp_HArray1OfLin2d as HArray1OfLin2d;
+
+unsafe impl crate::CppDeletable for HArray1OfLin2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray1OfLin2d_destructor(ptr);
+    }
+}
+
+impl HArray1OfLin2d {
+    /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::TColgp_HArray1OfLin2d()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfLin2d_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::TColgp_HArray1OfLin2d()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfLin2d_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::TColgp_HArray1OfLin2d()`
+    pub fn new_array1oflin2d(theOther: &crate::ffi::TColgp_Array1OfLin2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfLin2d_ctor_array1oflin2d(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfLin2d {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfLin2d_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfLin2d {
+        unsafe { &mut *(crate::ffi::TColgp_HArray1OfLin2d_change_array1(self as *mut Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfLin2d_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray1OfLin2d_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfLin2d_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfLin2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfLin2d_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHArray1OfLin2d;
+
+unsafe impl crate::CppDeletable for HandleTColgpHArray1OfLin2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray1OfLin2d_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHArray1OfLin2d {
+    /// Dereference this Handle to access the underlying TColgp_HArray1OfLin2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfLin2d {
+        unsafe { &*(crate::ffi::HandleTColgpHArray1OfLin2d_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfLin2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfLin2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray1OfLin2d_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HArray1OfPnt.hxx
+// ========================
+
+/// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt`
+pub use crate::ffi::TColgp_HArray1OfPnt as HArray1OfPnt;
+
+unsafe impl crate::CppDeletable for HArray1OfPnt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray1OfPnt_destructor(ptr);
+    }
+}
+
+impl HArray1OfPnt {
+    /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfPnt_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfPnt_ctor_int2(theLower, theUpper))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
+    pub fn new_array1ofpnt(theOther: &crate::ffi::TColgp_Array1OfPnt) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfPnt_ctor_array1ofpnt(theOther))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfPnt {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfPnt_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfPnt {
+        unsafe { &mut *(crate::ffi::TColgp_HArray1OfPnt_change_array1(self as *mut Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfPnt_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray1OfPnt_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfPnt_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfPnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfPnt_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHArray1OfPnt;
+
+unsafe impl crate::CppDeletable for HandleTColgpHArray1OfPnt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray1OfPnt_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHArray1OfPnt {
+    /// Dereference this Handle to access the underlying TColgp_HArray1OfPnt
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfPnt {
+        unsafe { &*(crate::ffi::HandleTColgpHArray1OfPnt_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfPnt
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfPnt {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray1OfPnt_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HArray1OfPnt2d.hxx
+// ========================
+
+/// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d`
+pub use crate::ffi::TColgp_HArray1OfPnt2d as HArray1OfPnt2d;
+
+unsafe impl crate::CppDeletable for HArray1OfPnt2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray1OfPnt2d_destructor(ptr);
+    }
+}
+
+impl HArray1OfPnt2d {
+    /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfPnt2d_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfPnt2d_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
+    pub fn new_array1ofpnt2d(theOther: &crate::ffi::TColgp_Array1OfPnt2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfPnt2d_ctor_array1ofpnt2d(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfPnt2d {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfPnt2d_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfPnt2d {
+        unsafe { &mut *(crate::ffi::TColgp_HArray1OfPnt2d_change_array1(self as *mut Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfPnt2d_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray1OfPnt2d_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfPnt2d_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfPnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfPnt2d_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHArray1OfPnt2d;
+
+unsafe impl crate::CppDeletable for HandleTColgpHArray1OfPnt2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray1OfPnt2d_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHArray1OfPnt2d {
+    /// Dereference this Handle to access the underlying TColgp_HArray1OfPnt2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfPnt2d {
+        unsafe { &*(crate::ffi::HandleTColgpHArray1OfPnt2d_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfPnt2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfPnt2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray1OfPnt2d_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HArray1OfVec.hxx
+// ========================
+
+/// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec`
+pub use crate::ffi::TColgp_HArray1OfVec as HArray1OfVec;
+
+unsafe impl crate::CppDeletable for HArray1OfVec {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray1OfVec_destructor(ptr);
+    }
+}
+
+impl HArray1OfVec {
+    /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfVec_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfVec_ctor_int2(theLower, theUpper))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
+    pub fn new_array1ofvec(theOther: &crate::ffi::TColgp_Array1OfVec) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfVec_ctor_array1ofvec(theOther))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfVec {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfVec_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfVec {
+        unsafe { &mut *(crate::ffi::TColgp_HArray1OfVec_change_array1(self as *mut Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfVec_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray1OfVec_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfVec_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfVec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfVec_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHArray1OfVec;
+
+unsafe impl crate::CppDeletable for HandleTColgpHArray1OfVec {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray1OfVec_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHArray1OfVec {
+    /// Dereference this Handle to access the underlying TColgp_HArray1OfVec
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfVec {
+        unsafe { &*(crate::ffi::HandleTColgpHArray1OfVec_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfVec
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfVec {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray1OfVec_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HArray1OfVec2d.hxx
+// ========================
+
+/// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d`
+pub use crate::ffi::TColgp_HArray1OfVec2d as HArray1OfVec2d;
+
+unsafe impl crate::CppDeletable for HArray1OfVec2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray1OfVec2d_destructor(ptr);
+    }
+}
+
+impl HArray1OfVec2d {
+    /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::TColgp_HArray1OfVec2d()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfVec2d_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::TColgp_HArray1OfVec2d()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfVec2d_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::TColgp_HArray1OfVec2d()`
+    pub fn new_array1ofvec2d(theOther: &crate::ffi::TColgp_Array1OfVec2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfVec2d_ctor_array1ofvec2d(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfVec2d {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfVec2d_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfVec2d {
+        unsafe { &mut *(crate::ffi::TColgp_HArray1OfVec2d_change_array1(self as *mut Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfVec2d_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray1OfVec2d_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfVec2d_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfVec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfVec2d_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHArray1OfVec2d;
+
+unsafe impl crate::CppDeletable for HandleTColgpHArray1OfVec2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray1OfVec2d_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHArray1OfVec2d {
+    /// Dereference this Handle to access the underlying TColgp_HArray1OfVec2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfVec2d {
+        unsafe { &*(crate::ffi::HandleTColgpHArray1OfVec2d_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfVec2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfVec2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray1OfVec2d_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HArray1OfXY.hxx
+// ========================
+
+/// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY`
+pub use crate::ffi::TColgp_HArray1OfXY as HArray1OfXY;
+
+unsafe impl crate::CppDeletable for HArray1OfXY {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray1OfXY_destructor(ptr);
+    }
+}
+
+impl HArray1OfXY {
+    /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::TColgp_HArray1OfXY()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfXY_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::TColgp_HArray1OfXY()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfXY_ctor_int2(theLower, theUpper))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::TColgp_HArray1OfXY()`
+    pub fn new_array1ofxy(theOther: &crate::ffi::TColgp_Array1OfXY) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfXY_ctor_array1ofxy(theOther))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfXY {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfXY_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfXY {
+        unsafe { &mut *(crate::ffi::TColgp_HArray1OfXY_change_array1(self as *mut Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfXY_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray1OfXY_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfXY_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfXY> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfXY_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHArray1OfXY;
+
+unsafe impl crate::CppDeletable for HandleTColgpHArray1OfXY {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray1OfXY_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHArray1OfXY {
+    /// Dereference this Handle to access the underlying TColgp_HArray1OfXY
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfXY {
+        unsafe { &*(crate::ffi::HandleTColgpHArray1OfXY_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfXY
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfXY {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray1OfXY_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HArray1OfXYZ.hxx
+// ========================
+
+/// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ`
+pub use crate::ffi::TColgp_HArray1OfXYZ as HArray1OfXYZ;
+
+unsafe impl crate::CppDeletable for HArray1OfXYZ {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray1OfXYZ_destructor(ptr);
+    }
+}
+
+impl HArray1OfXYZ {
+    /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::TColgp_HArray1OfXYZ()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfXYZ_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::TColgp_HArray1OfXYZ()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfXYZ_ctor_int2(theLower, theUpper))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::TColgp_HArray1OfXYZ()`
+    pub fn new_array1ofxyz(theOther: &crate::ffi::TColgp_Array1OfXYZ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfXYZ_ctor_array1ofxyz(theOther))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfXYZ {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfXYZ_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfXYZ {
+        unsafe { &mut *(crate::ffi::TColgp_HArray1OfXYZ_change_array1(self as *mut Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfXYZ_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray1OfXYZ_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray1OfXYZ_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfXYZ> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray1OfXYZ_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHArray1OfXYZ;
+
+unsafe impl crate::CppDeletable for HandleTColgpHArray1OfXYZ {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray1OfXYZ_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHArray1OfXYZ {
+    /// Dereference this Handle to access the underlying TColgp_HArray1OfXYZ
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfXYZ {
+        unsafe { &*(crate::ffi::HandleTColgpHArray1OfXYZ_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfXYZ
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfXYZ {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray1OfXYZ_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HArray2OfCirc2d.hxx
+// ========================
+
+/// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d`
+pub use crate::ffi::TColgp_HArray2OfCirc2d as HArray2OfCirc2d;
+
+unsafe impl crate::CppDeletable for HArray2OfCirc2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray2OfCirc2d_destructor(ptr);
+    }
+}
+
+impl HArray2OfCirc2d {
+    /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d::TColgp_HArray2OfCirc2d()`
+    pub fn new_array2ofcirc2d(
+        theOther: &crate::ffi::TColgp_Array2OfCirc2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfCirc2d_ctor_array2ofcirc2d(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d::Array2()`
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfCirc2d {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfCirc2d_array2(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfCirc2d {
+        unsafe { &mut *(crate::ffi::TColgp_HArray2OfCirc2d_change_array2(self as *mut Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfCirc2d_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray2OfCirc2d_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfCirc2d_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfCirc2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfCirc2d_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHArray2OfCirc2d;
+
+unsafe impl crate::CppDeletable for HandleTColgpHArray2OfCirc2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray2OfCirc2d_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHArray2OfCirc2d {
+    /// Dereference this Handle to access the underlying TColgp_HArray2OfCirc2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfCirc2d {
+        unsafe { &*(crate::ffi::HandleTColgpHArray2OfCirc2d_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfCirc2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfCirc2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray2OfCirc2d_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HArray2OfDir.hxx
+// ========================
+
+/// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir`
+pub use crate::ffi::TColgp_HArray2OfDir as HArray2OfDir;
+
+unsafe impl crate::CppDeletable for HArray2OfDir {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray2OfDir_destructor(ptr);
+    }
+}
+
+impl HArray2OfDir {
+    /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir::TColgp_HArray2OfDir()`
+    pub fn new_array2ofdir(theOther: &crate::ffi::TColgp_Array2OfDir) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfDir_ctor_array2ofdir(theOther))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir::Array2()`
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfDir {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfDir_array2(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfDir {
+        unsafe { &mut *(crate::ffi::TColgp_HArray2OfDir_change_array2(self as *mut Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfDir_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray2OfDir_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfDir_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfDir> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfDir_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHArray2OfDir;
+
+unsafe impl crate::CppDeletable for HandleTColgpHArray2OfDir {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray2OfDir_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHArray2OfDir {
+    /// Dereference this Handle to access the underlying TColgp_HArray2OfDir
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfDir {
+        unsafe { &*(crate::ffi::HandleTColgpHArray2OfDir_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfDir
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfDir {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray2OfDir_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HArray2OfDir2d.hxx
+// ========================
+
+/// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d`
+pub use crate::ffi::TColgp_HArray2OfDir2d as HArray2OfDir2d;
+
+unsafe impl crate::CppDeletable for HArray2OfDir2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray2OfDir2d_destructor(ptr);
+    }
+}
+
+impl HArray2OfDir2d {
+    /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d::TColgp_HArray2OfDir2d()`
+    pub fn new_array2ofdir2d(theOther: &crate::ffi::TColgp_Array2OfDir2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfDir2d_ctor_array2ofdir2d(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d::Array2()`
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfDir2d {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfDir2d_array2(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfDir2d {
+        unsafe { &mut *(crate::ffi::TColgp_HArray2OfDir2d_change_array2(self as *mut Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfDir2d_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray2OfDir2d_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfDir2d_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfDir2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfDir2d_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHArray2OfDir2d;
+
+unsafe impl crate::CppDeletable for HandleTColgpHArray2OfDir2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray2OfDir2d_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHArray2OfDir2d {
+    /// Dereference this Handle to access the underlying TColgp_HArray2OfDir2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfDir2d {
+        unsafe { &*(crate::ffi::HandleTColgpHArray2OfDir2d_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfDir2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfDir2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray2OfDir2d_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HArray2OfLin2d.hxx
+// ========================
+
+/// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d`
+pub use crate::ffi::TColgp_HArray2OfLin2d as HArray2OfLin2d;
+
+unsafe impl crate::CppDeletable for HArray2OfLin2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray2OfLin2d_destructor(ptr);
+    }
+}
+
+impl HArray2OfLin2d {
+    /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d::TColgp_HArray2OfLin2d()`
+    pub fn new_array2oflin2d(theOther: &crate::ffi::TColgp_Array2OfLin2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfLin2d_ctor_array2oflin2d(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d::Array2()`
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfLin2d {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfLin2d_array2(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfLin2d {
+        unsafe { &mut *(crate::ffi::TColgp_HArray2OfLin2d_change_array2(self as *mut Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfLin2d_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray2OfLin2d_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfLin2d_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfLin2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfLin2d_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHArray2OfLin2d;
+
+unsafe impl crate::CppDeletable for HandleTColgpHArray2OfLin2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray2OfLin2d_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHArray2OfLin2d {
+    /// Dereference this Handle to access the underlying TColgp_HArray2OfLin2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfLin2d {
+        unsafe { &*(crate::ffi::HandleTColgpHArray2OfLin2d_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfLin2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfLin2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray2OfLin2d_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HArray2OfPnt.hxx
+// ========================
+
+/// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt`
+pub use crate::ffi::TColgp_HArray2OfPnt as HArray2OfPnt;
+
+unsafe impl crate::CppDeletable for HArray2OfPnt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray2OfPnt_destructor(ptr);
+    }
+}
+
+impl HArray2OfPnt {
+    /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt::TColgp_HArray2OfPnt()`
+    pub fn new_array2ofpnt(theOther: &crate::ffi::TColgp_Array2OfPnt) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfPnt_ctor_array2ofpnt(theOther))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt::Array2()`
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfPnt {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfPnt_array2(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfPnt {
+        unsafe { &mut *(crate::ffi::TColgp_HArray2OfPnt_change_array2(self as *mut Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfPnt_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray2OfPnt_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfPnt_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfPnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfPnt_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHArray2OfPnt;
+
+unsafe impl crate::CppDeletable for HandleTColgpHArray2OfPnt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray2OfPnt_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHArray2OfPnt {
+    /// Dereference this Handle to access the underlying TColgp_HArray2OfPnt
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfPnt {
+        unsafe { &*(crate::ffi::HandleTColgpHArray2OfPnt_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfPnt
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfPnt {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray2OfPnt_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HArray2OfPnt2d.hxx
+// ========================
+
+/// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d`
+pub use crate::ffi::TColgp_HArray2OfPnt2d as HArray2OfPnt2d;
+
+unsafe impl crate::CppDeletable for HArray2OfPnt2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray2OfPnt2d_destructor(ptr);
+    }
+}
+
+impl HArray2OfPnt2d {
+    /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d::TColgp_HArray2OfPnt2d()`
+    pub fn new_array2ofpnt2d(theOther: &crate::ffi::TColgp_Array2OfPnt2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfPnt2d_ctor_array2ofpnt2d(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d::Array2()`
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfPnt2d {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfPnt2d_array2(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfPnt2d {
+        unsafe { &mut *(crate::ffi::TColgp_HArray2OfPnt2d_change_array2(self as *mut Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfPnt2d_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray2OfPnt2d_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfPnt2d_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfPnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfPnt2d_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHArray2OfPnt2d;
+
+unsafe impl crate::CppDeletable for HandleTColgpHArray2OfPnt2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray2OfPnt2d_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHArray2OfPnt2d {
+    /// Dereference this Handle to access the underlying TColgp_HArray2OfPnt2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfPnt2d {
+        unsafe { &*(crate::ffi::HandleTColgpHArray2OfPnt2d_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfPnt2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfPnt2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray2OfPnt2d_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HArray2OfVec.hxx
+// ========================
+
+/// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec`
+pub use crate::ffi::TColgp_HArray2OfVec as HArray2OfVec;
+
+unsafe impl crate::CppDeletable for HArray2OfVec {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray2OfVec_destructor(ptr);
+    }
+}
+
+impl HArray2OfVec {
+    /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec::TColgp_HArray2OfVec()`
+    pub fn new_array2ofvec(theOther: &crate::ffi::TColgp_Array2OfVec) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfVec_ctor_array2ofvec(theOther))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec::Array2()`
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfVec {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfVec_array2(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfVec {
+        unsafe { &mut *(crate::ffi::TColgp_HArray2OfVec_change_array2(self as *mut Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfVec_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray2OfVec_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfVec_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfVec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfVec_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHArray2OfVec;
+
+unsafe impl crate::CppDeletable for HandleTColgpHArray2OfVec {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray2OfVec_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHArray2OfVec {
+    /// Dereference this Handle to access the underlying TColgp_HArray2OfVec
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfVec {
+        unsafe { &*(crate::ffi::HandleTColgpHArray2OfVec_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfVec
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfVec {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray2OfVec_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HArray2OfVec2d.hxx
+// ========================
+
+/// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d`
+pub use crate::ffi::TColgp_HArray2OfVec2d as HArray2OfVec2d;
+
+unsafe impl crate::CppDeletable for HArray2OfVec2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray2OfVec2d_destructor(ptr);
+    }
+}
+
+impl HArray2OfVec2d {
+    /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d::TColgp_HArray2OfVec2d()`
+    pub fn new_array2ofvec2d(theOther: &crate::ffi::TColgp_Array2OfVec2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfVec2d_ctor_array2ofvec2d(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d::Array2()`
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfVec2d {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfVec2d_array2(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfVec2d {
+        unsafe { &mut *(crate::ffi::TColgp_HArray2OfVec2d_change_array2(self as *mut Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfVec2d_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray2OfVec2d_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfVec2d_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfVec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfVec2d_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHArray2OfVec2d;
+
+unsafe impl crate::CppDeletable for HandleTColgpHArray2OfVec2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray2OfVec2d_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHArray2OfVec2d {
+    /// Dereference this Handle to access the underlying TColgp_HArray2OfVec2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfVec2d {
+        unsafe { &*(crate::ffi::HandleTColgpHArray2OfVec2d_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfVec2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfVec2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray2OfVec2d_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HArray2OfXY.hxx
+// ========================
+
+/// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY`
+pub use crate::ffi::TColgp_HArray2OfXY as HArray2OfXY;
+
+unsafe impl crate::CppDeletable for HArray2OfXY {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray2OfXY_destructor(ptr);
+    }
+}
+
+impl HArray2OfXY {
+    /// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY::TColgp_HArray2OfXY()`
+    pub fn new_array2ofxy(theOther: &crate::ffi::TColgp_Array2OfXY) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfXY_ctor_array2ofxy(theOther))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY::Array2()`
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfXY {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfXY_array2(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfXY {
+        unsafe { &mut *(crate::ffi::TColgp_HArray2OfXY_change_array2(self as *mut Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfXY_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray2OfXY_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfXY_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfXY> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfXY_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHArray2OfXY;
+
+unsafe impl crate::CppDeletable for HandleTColgpHArray2OfXY {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray2OfXY_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHArray2OfXY {
+    /// Dereference this Handle to access the underlying TColgp_HArray2OfXY
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfXY {
+        unsafe { &*(crate::ffi::HandleTColgpHArray2OfXY_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfXY
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfXY {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray2OfXY_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HArray2OfXYZ.hxx
+// ========================
+
+/// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ`
+pub use crate::ffi::TColgp_HArray2OfXYZ as HArray2OfXYZ;
+
+unsafe impl crate::CppDeletable for HArray2OfXYZ {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HArray2OfXYZ_destructor(ptr);
+    }
+}
+
+impl HArray2OfXYZ {
+    /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ::TColgp_HArray2OfXYZ()`
+    pub fn new_array2ofxyz(theOther: &crate::ffi::TColgp_Array2OfXYZ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfXYZ_ctor_array2ofxyz(theOther))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ::Array2()`
+    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfXYZ {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfXYZ_array2(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfXYZ {
+        unsafe { &mut *(crate::ffi::TColgp_HArray2OfXYZ_change_array2(self as *mut Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfXYZ_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HArray2OfXYZ_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HArray2OfXYZ_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfXYZ> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HArray2OfXYZ_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHArray2OfXYZ;
+
+unsafe impl crate::CppDeletable for HandleTColgpHArray2OfXYZ {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHArray2OfXYZ_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHArray2OfXYZ {
+    /// Dereference this Handle to access the underlying TColgp_HArray2OfXYZ
+    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfXYZ {
+        unsafe { &*(crate::ffi::HandleTColgpHArray2OfXYZ_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfXYZ
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfXYZ {
+        unsafe { &mut *(crate::ffi::HandleTColgpHArray2OfXYZ_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HSequenceOfDir.hxx
+// ========================
+
+/// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir`
+pub use crate::ffi::TColgp_HSequenceOfDir as HSequenceOfDir;
+
+unsafe impl crate::CppDeletable for HSequenceOfDir {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HSequenceOfDir_destructor(ptr);
+    }
+}
+
+impl HSequenceOfDir {
+    /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::TColgp_HSequenceOfDir()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfDir_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfDir_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HSequenceOfDir_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfDir_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfDir> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfDir_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHSequenceOfDir;
+
+unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfDir {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHSequenceOfDir_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHSequenceOfDir {
+    /// Dereference this Handle to access the underlying TColgp_HSequenceOfDir
+    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfDir {
+        unsafe { &*(crate::ffi::HandleTColgpHSequenceOfDir_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfDir
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfDir {
+        unsafe { &mut *(crate::ffi::HandleTColgpHSequenceOfDir_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HSequenceOfDir2d.hxx
+// ========================
+
+/// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d`
+pub use crate::ffi::TColgp_HSequenceOfDir2d as HSequenceOfDir2d;
+
+unsafe impl crate::CppDeletable for HSequenceOfDir2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HSequenceOfDir2d_destructor(ptr);
+    }
+}
+
+impl HSequenceOfDir2d {
+    /// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d::TColgp_HSequenceOfDir2d()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfDir2d_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfDir2d_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HSequenceOfDir2d_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfDir2d_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfDir2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfDir2d_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHSequenceOfDir2d;
+
+unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfDir2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHSequenceOfDir2d_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHSequenceOfDir2d {
+    /// Dereference this Handle to access the underlying TColgp_HSequenceOfDir2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfDir2d {
+        unsafe { &*(crate::ffi::HandleTColgpHSequenceOfDir2d_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfDir2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfDir2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHSequenceOfDir2d_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HSequenceOfPnt.hxx
+// ========================
+
+/// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt`
+pub use crate::ffi::TColgp_HSequenceOfPnt as HSequenceOfPnt;
+
+unsafe impl crate::CppDeletable for HSequenceOfPnt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HSequenceOfPnt_destructor(ptr);
+    }
+}
+
+impl HSequenceOfPnt {
+    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::TColgp_HSequenceOfPnt()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfPnt_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfPnt_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HSequenceOfPnt_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfPnt_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfPnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfPnt_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHSequenceOfPnt;
+
+unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfPnt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHSequenceOfPnt_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHSequenceOfPnt {
+    /// Dereference this Handle to access the underlying TColgp_HSequenceOfPnt
+    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfPnt {
+        unsafe { &*(crate::ffi::HandleTColgpHSequenceOfPnt_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfPnt
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfPnt {
+        unsafe { &mut *(crate::ffi::HandleTColgpHSequenceOfPnt_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HSequenceOfPnt2d.hxx
+// ========================
+
+/// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d`
+pub use crate::ffi::TColgp_HSequenceOfPnt2d as HSequenceOfPnt2d;
+
+unsafe impl crate::CppDeletable for HSequenceOfPnt2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HSequenceOfPnt2d_destructor(ptr);
+    }
+}
+
+impl HSequenceOfPnt2d {
+    /// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d::TColgp_HSequenceOfPnt2d()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfPnt2d_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfPnt2d_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HSequenceOfPnt2d_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfPnt2d_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfPnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfPnt2d_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHSequenceOfPnt2d;
+
+unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfPnt2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHSequenceOfPnt2d_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHSequenceOfPnt2d {
+    /// Dereference this Handle to access the underlying TColgp_HSequenceOfPnt2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfPnt2d {
+        unsafe { &*(crate::ffi::HandleTColgpHSequenceOfPnt2d_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfPnt2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfPnt2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHSequenceOfPnt2d_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HSequenceOfVec.hxx
+// ========================
+
+/// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec`
+pub use crate::ffi::TColgp_HSequenceOfVec as HSequenceOfVec;
+
+unsafe impl crate::CppDeletable for HSequenceOfVec {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HSequenceOfVec_destructor(ptr);
+    }
+}
+
+impl HSequenceOfVec {
+    /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::TColgp_HSequenceOfVec()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfVec_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfVec_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HSequenceOfVec_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfVec_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfVec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfVec_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHSequenceOfVec;
+
+unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfVec {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHSequenceOfVec_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHSequenceOfVec {
+    /// Dereference this Handle to access the underlying TColgp_HSequenceOfVec
+    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfVec {
+        unsafe { &*(crate::ffi::HandleTColgpHSequenceOfVec_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfVec
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfVec {
+        unsafe { &mut *(crate::ffi::HandleTColgpHSequenceOfVec_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HSequenceOfVec2d.hxx
+// ========================
+
+/// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d`
+pub use crate::ffi::TColgp_HSequenceOfVec2d as HSequenceOfVec2d;
+
+unsafe impl crate::CppDeletable for HSequenceOfVec2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HSequenceOfVec2d_destructor(ptr);
+    }
+}
+
+impl HSequenceOfVec2d {
+    /// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d::TColgp_HSequenceOfVec2d()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfVec2d_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfVec2d_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HSequenceOfVec2d_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfVec2d_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfVec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfVec2d_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHSequenceOfVec2d;
+
+unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfVec2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHSequenceOfVec2d_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHSequenceOfVec2d {
+    /// Dereference this Handle to access the underlying TColgp_HSequenceOfVec2d
+    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfVec2d {
+        unsafe { &*(crate::ffi::HandleTColgpHSequenceOfVec2d_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfVec2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfVec2d {
+        unsafe { &mut *(crate::ffi::HandleTColgpHSequenceOfVec2d_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HSequenceOfXY.hxx
+// ========================
+
+/// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY`
+pub use crate::ffi::TColgp_HSequenceOfXY as HSequenceOfXY;
+
+unsafe impl crate::CppDeletable for HSequenceOfXY {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HSequenceOfXY_destructor(ptr);
+    }
+}
+
+impl HSequenceOfXY {
+    /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::TColgp_HSequenceOfXY()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfXY_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfXY_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HSequenceOfXY_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfXY_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfXY> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfXY_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHSequenceOfXY;
+
+unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfXY {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHSequenceOfXY_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHSequenceOfXY {
+    /// Dereference this Handle to access the underlying TColgp_HSequenceOfXY
+    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfXY {
+        unsafe { &*(crate::ffi::HandleTColgpHSequenceOfXY_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfXY
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfXY {
+        unsafe { &mut *(crate::ffi::HandleTColgpHSequenceOfXY_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColgp_HSequenceOfXYZ.hxx
+// ========================
+
+/// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ`
+pub use crate::ffi::TColgp_HSequenceOfXYZ as HSequenceOfXYZ;
+
+unsafe impl crate::CppDeletable for HSequenceOfXYZ {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColgp_HSequenceOfXYZ_destructor(ptr);
+    }
+}
+
+impl HSequenceOfXYZ {
+    /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::TColgp_HSequenceOfXYZ()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfXYZ_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfXYZ_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColgp_HSequenceOfXYZ_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfXYZ_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfXYZ> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfXYZ_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColgpHSequenceOfXYZ;
+
+unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfXYZ {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColgpHSequenceOfXYZ_destructor(ptr);
+    }
+}
+
+impl HandleTColgpHSequenceOfXYZ {
+    /// Dereference this Handle to access the underlying TColgp_HSequenceOfXYZ
+    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfXYZ {
+        unsafe { &*(crate::ffi::HandleTColgpHSequenceOfXYZ_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfXYZ
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfXYZ {
+        unsafe { &mut *(crate::ffi::HandleTColgpHSequenceOfXYZ_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
-    TColgp_HArray1OfPnt as HArray1OfPnt, TColgp_HArray1OfPnt2d as HArray1OfPnt2d,
-    TColgp_HArray1OfXYZ as HArray1OfXYZ, TColgp_HArray2OfPnt as HArray2OfPnt,
-    TColgp_HArray2OfPnt2d as HArray2OfPnt2d, TColgp_HArray2OfXYZ as HArray2OfXYZ,
+    TColgp_SequenceOfDir as SequenceOfDir, TColgp_SequenceOfDir2d as SequenceOfDir2d,
     TColgp_SequenceOfPnt as SequenceOfPnt, TColgp_SequenceOfPnt2d as SequenceOfPnt2d,
-    TColgp_SequenceOfVec as SequenceOfVec, TColgp_SequenceOfXY as SequenceOfXY,
-    TColgp_SequenceOfXYZ as SequenceOfXYZ,
+    TColgp_SequenceOfVec as SequenceOfVec, TColgp_SequenceOfVec2d as SequenceOfVec2d,
+    TColgp_SequenceOfXY as SequenceOfXY, TColgp_SequenceOfXYZ as SequenceOfXYZ,
 };

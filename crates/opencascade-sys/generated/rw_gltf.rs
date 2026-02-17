@@ -377,6 +377,335 @@ impl TryFrom<i32> for WriterTrsfFormat {
 }
 
 // ========================
+// From RWGltf_CafReader.hxx
+// ========================
+
+/// **Source:** `RWGltf_CafReader.hxx`:25 - `RWGltf_CafReader`
+/// The glTF (GL Transmission Format) mesh reader into XDE document.
+pub use crate::ffi::RWGltf_CafReader as CafReader;
+
+unsafe impl crate::CppDeletable for CafReader {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::RWGltf_CafReader_destructor(ptr);
+    }
+}
+
+impl CafReader {
+    /// **Source:** `RWGltf_CafReader.hxx`:30 - `RWGltf_CafReader::RWGltf_CafReader()`
+    /// Empty constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWGltf_CafReader_ctor()) }
+    }
+
+    /// **Source:** `RWGltf_CafReader.hxx`:27 - `RWGltf_CafReader::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::RWGltf_CafReader_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `RWGltf_CafReader.hxx`:33 - `RWGltf_CafReader::ToParallel()`
+    /// Return TRUE if multithreaded optimizations are allowed; FALSE by default.
+    pub fn to_parallel(&self) -> bool {
+        unsafe { crate::ffi::RWGltf_CafReader_to_parallel(self as *const Self) }
+    }
+
+    /// **Source:** `RWGltf_CafReader.hxx`:36 - `RWGltf_CafReader::SetParallel()`
+    /// Setup multithreaded execution.
+    pub fn set_parallel(&mut self, theToParallel: bool) {
+        unsafe { crate::ffi::RWGltf_CafReader_set_parallel(self as *mut Self, theToParallel) }
+    }
+
+    /// **Source:** `RWGltf_CafReader.hxx`:39 - `RWGltf_CafReader::ToSkipEmptyNodes()`
+    /// Return TRUE if Nodes without Geometry should be ignored, TRUE by default.
+    pub fn to_skip_empty_nodes(&mut self) -> bool {
+        unsafe { crate::ffi::RWGltf_CafReader_to_skip_empty_nodes(self as *mut Self) }
+    }
+
+    /// **Source:** `RWGltf_CafReader.hxx`:42 - `RWGltf_CafReader::SetSkipEmptyNodes()`
+    /// Set flag to ignore nodes without Geometry.
+    pub fn set_skip_empty_nodes(&mut self, theToSkip: bool) {
+        unsafe { crate::ffi::RWGltf_CafReader_set_skip_empty_nodes(self as *mut Self, theToSkip) }
+    }
+
+    /// **Source:** `RWGltf_CafReader.hxx`:46 - `RWGltf_CafReader::ToLoadAllScenes()`
+    /// Return TRUE if all scenes in the document should be loaded, FALSE by default which means only
+    /// main (default) scene will be loaded.
+    pub fn to_load_all_scenes(&self) -> bool {
+        unsafe { crate::ffi::RWGltf_CafReader_to_load_all_scenes(self as *const Self) }
+    }
+
+    /// **Source:** `RWGltf_CafReader.hxx`:50 - `RWGltf_CafReader::SetLoadAllScenes()`
+    /// Set flag to flag to load all scenes in the document, FALSE by default which means only main
+    /// (default) scene will be loaded.
+    pub fn set_load_all_scenes(&mut self, theToLoadAll: bool) {
+        unsafe { crate::ffi::RWGltf_CafReader_set_load_all_scenes(self as *mut Self, theToLoadAll) }
+    }
+
+    /// **Source:** `RWGltf_CafReader.hxx`:53 - `RWGltf_CafReader::ToUseMeshNameAsFallback()`
+    /// Set flag to use Mesh name in case if Node name is empty, TRUE by default.
+    pub fn to_use_mesh_name_as_fallback(&mut self) -> bool {
+        unsafe { crate::ffi::RWGltf_CafReader_to_use_mesh_name_as_fallback(self as *mut Self) }
+    }
+
+    /// **Source:** `RWGltf_CafReader.hxx`:56 - `RWGltf_CafReader::SetMeshNameAsFallback()`
+    /// Set flag to use Mesh name in case if Node name is empty.
+    pub fn set_mesh_name_as_fallback(&mut self, theToFallback: bool) {
+        unsafe {
+            crate::ffi::RWGltf_CafReader_set_mesh_name_as_fallback(self as *mut Self, theToFallback)
+        }
+    }
+
+    /// **Source:** `RWGltf_CafReader.hxx`:59 - `RWGltf_CafReader::IsDoublePrecision()`
+    /// Return flag to fill in triangulation using double or single precision; FALSE by default.
+    pub fn is_double_precision(&self) -> bool {
+        unsafe { crate::ffi::RWGltf_CafReader_is_double_precision(self as *const Self) }
+    }
+
+    /// **Source:** `RWGltf_CafReader.hxx`:62 - `RWGltf_CafReader::SetDoublePrecision()`
+    /// Set flag to fill in triangulation using double or single precision.
+    pub fn set_double_precision(&mut self, theIsDouble: bool) {
+        unsafe { crate::ffi::RWGltf_CafReader_set_double_precision(self as *mut Self, theIsDouble) }
+    }
+
+    /// **Source:** `RWGltf_CafReader.hxx`:65 - `RWGltf_CafReader::ToSkipLateDataLoading()`
+    /// Returns TRUE if data loading should be skipped and can be performed later; FALSE by default.
+    pub fn to_skip_late_data_loading(&mut self) -> bool {
+        unsafe { crate::ffi::RWGltf_CafReader_to_skip_late_data_loading(self as *mut Self) }
+    }
+
+    /// **Source:** `RWGltf_CafReader.hxx`:68 - `RWGltf_CafReader::SetToSkipLateDataLoading()`
+    /// Sets flag to skip data loading.
+    pub fn set_to_skip_late_data_loading(&mut self, theToSkip: bool) {
+        unsafe {
+            crate::ffi::RWGltf_CafReader_set_to_skip_late_data_loading(self as *mut Self, theToSkip)
+        }
+    }
+
+    /// **Source:** `RWGltf_CafReader.hxx`:73 - `RWGltf_CafReader::ToKeepLateData()`
+    /// Returns TRUE if data should be loaded into itself without its transferring to new structure.
+    /// It allows to keep information about deferred storage to load/unload this data later.
+    /// TRUE by default.
+    pub fn to_keep_late_data(&mut self) -> bool {
+        unsafe { crate::ffi::RWGltf_CafReader_to_keep_late_data(self as *mut Self) }
+    }
+
+    /// **Source:** `RWGltf_CafReader.hxx`:76 - `RWGltf_CafReader::SetToKeepLateData()`
+    /// Sets flag to keep information about deferred storage to load/unload data later.
+    pub fn set_to_keep_late_data(&mut self, theToKeep: bool) {
+        unsafe { crate::ffi::RWGltf_CafReader_set_to_keep_late_data(self as *mut Self, theToKeep) }
+    }
+
+    /// **Source:** `RWGltf_CafReader.hxx`:79 - `RWGltf_CafReader::ToPrintDebugMessages()`
+    /// Returns TRUE if additional debug information should be print; FALSE by default.
+    pub fn to_print_debug_messages(&self) -> bool {
+        unsafe { crate::ffi::RWGltf_CafReader_to_print_debug_messages(self as *const Self) }
+    }
+
+    /// **Source:** `RWGltf_CafReader.hxx`:82 - `RWGltf_CafReader::SetToPrintDebugMessages()`
+    /// Sets flag to print debug information.
+    pub fn set_to_print_debug_messages(&mut self, theToPrint: bool) {
+        unsafe {
+            crate::ffi::RWGltf_CafReader_set_to_print_debug_messages(self as *mut Self, theToPrint)
+        }
+    }
+
+    /// **Source:** `RWGltf_CafReader.hxx`:27 - `RWGltf_CafReader::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::RWGltf_CafReader_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `RWGltf_CafReader.hxx`:27 - `RWGltf_CafReader::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::RWGltf_CafReader_get_type_descriptor()) }
+    }
+
+    /// Upcast to RWMesh_CafReader
+    pub fn as_rw_mesh_caf_reader(&self) -> &crate::rw_mesh::CafReader {
+        unsafe { &*(crate::ffi::RWGltf_CafReader_as_RWMesh_CafReader(self as *const Self)) }
+    }
+
+    /// Upcast to RWMesh_CafReader (mutable)
+    pub fn as_rw_mesh_caf_reader_mut(&mut self) -> &mut crate::rw_mesh::CafReader {
+        unsafe { &mut *(crate::ffi::RWGltf_CafReader_as_RWMesh_CafReader_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
+    pub fn root_prefix(&self) -> &crate::ffi::TCollection_AsciiString {
+        unsafe { &*(crate::ffi::RWGltf_CafReader_inherited_RootPrefix(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:82 - `RWMesh_CafReader::SetRootPrefix()`
+    pub fn set_root_prefix(&mut self, theRootPrefix: &crate::ffi::TCollection_AsciiString) {
+        unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_SetRootPrefix(self as *mut Self, theRootPrefix)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:95 - `RWMesh_CafReader::ToFillIncompleteDocument()`
+    pub fn to_fill_incomplete_document(&self) -> bool {
+        unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_ToFillIncompleteDocument(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:98 - `RWMesh_CafReader::SetFillIncompleteDocument()`
+    pub fn set_fill_incomplete_document(&mut self, theToFillIncomplete: bool) {
+        unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_SetFillIncompleteDocument(
+                self as *mut Self,
+                theToFillIncomplete,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:104 - `RWMesh_CafReader::MemoryLimitMiB()`
+    pub fn memory_limit_mi_b(&self) -> i32 {
+        unsafe { crate::ffi::RWGltf_CafReader_inherited_MemoryLimitMiB(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:107 - `RWMesh_CafReader::SetMemoryLimitMiB()`
+    pub fn set_memory_limit_mi_b(&mut self, theLimitMiB: i32) {
+        unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_SetMemoryLimitMiB(self as *mut Self, theLimitMiB)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:111 - `RWMesh_CafReader::CoordinateSystemConverter()`
+    pub fn coordinate_system_converter(&self) -> &crate::ffi::RWMesh_CoordinateSystemConverter {
+        unsafe {
+            &*(crate::ffi::RWGltf_CafReader_inherited_CoordinateSystemConverter(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:117 - `RWMesh_CafReader::SetCoordinateSystemConverter()`
+    pub fn set_coordinate_system_converter(
+        &mut self,
+        theConverter: &crate::ffi::RWMesh_CoordinateSystemConverter,
+    ) {
+        unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_SetCoordinateSystemConverter(
+                self as *mut Self,
+                theConverter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:124 - `RWMesh_CafReader::SystemLengthUnit()`
+    pub fn system_length_unit(&self) -> f64 {
+        unsafe { crate::ffi::RWGltf_CafReader_inherited_SystemLengthUnit(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:128 - `RWMesh_CafReader::SetSystemLengthUnit()`
+    pub fn set_system_length_unit(&mut self, theUnits: f64) {
+        unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_SetSystemLengthUnit(self as *mut Self, theUnits)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:134 - `RWMesh_CafReader::HasSystemCoordinateSystem()`
+    pub fn has_system_coordinate_system(&self) -> bool {
+        unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_HasSystemCoordinateSystem(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:141 - `RWMesh_CafReader::SystemCoordinateSystem()`
+    pub fn system_coordinate_system(&self) -> &crate::ffi::gp_Ax3 {
+        unsafe {
+            &*(crate::ffi::RWGltf_CafReader_inherited_SystemCoordinateSystem(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:147 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
+    pub fn set_system_coordinate_system(&mut self, theCS: &crate::ffi::gp_Ax3) {
+        unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_SetSystemCoordinateSystem(
+                self as *mut Self,
+                theCS,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:160 - `RWMesh_CafReader::FileLengthUnit()`
+    pub fn file_length_unit(&self) -> f64 {
+        unsafe { crate::ffi::RWGltf_CafReader_inherited_FileLengthUnit(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:164 - `RWMesh_CafReader::SetFileLengthUnit()`
+    pub fn set_file_length_unit(&mut self, theUnits: f64) {
+        unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_SetFileLengthUnit(self as *mut Self, theUnits)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:170 - `RWMesh_CafReader::HasFileCoordinateSystem()`
+    pub fn has_file_coordinate_system(&self) -> bool {
+        unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_HasFileCoordinateSystem(self as *const Self)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:177 - `RWMesh_CafReader::FileCoordinateSystem()`
+    pub fn file_coordinate_system(&self) -> &crate::ffi::gp_Ax3 {
+        unsafe {
+            &*(crate::ffi::RWGltf_CafReader_inherited_FileCoordinateSystem(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:180 - `RWMesh_CafReader::SetFileCoordinateSystem()`
+    pub fn set_file_coordinate_system(&mut self, theCS: &crate::ffi::gp_Ax3) {
+        unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_SetFileCoordinateSystem(self as *mut Self, theCS)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:194 - `RWMesh_CafReader::Perform()`
+    pub fn perform(
+        &mut self,
+        theFile: &crate::ffi::TCollection_AsciiString,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_Perform(self as *mut Self, theFile, theProgress)
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:211 - `RWMesh_CafReader::ExtraStatus()`
+    pub fn extra_status(&self) -> i32 {
+        unsafe { crate::ffi::RWGltf_CafReader_inherited_ExtraStatus(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:215 - `RWMesh_CafReader::SingleShape()`
+    pub fn single_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::RWGltf_CafReader_inherited_SingleShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:227 - `RWMesh_CafReader::ProbeHeader()`
+    pub fn probe_header(
+        &mut self,
+        theFile: &crate::ffi::TCollection_AsciiString,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWGltf_CafReader_inherited_ProbeHeader(
+                self as *mut Self,
+                theFile,
+                theProgress,
+            )
+        }
+    }
+}
+
+// ========================
 // From RWGltf_DracoParameters.hxx
 // ========================
 
@@ -689,15 +1018,6 @@ impl GltfLatePrimitiveArray {
             crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_DegeneratedTriNb(
                 self as *const Self,
             )
-        }
-    }
-
-    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:46 - `RWMesh_TriangulationSource::ChangeDegeneratedTriNb()`
-    pub fn change_degenerated_tri_nb(&mut self) -> &mut i32 {
-        unsafe {
-            &mut *(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_ChangeDegeneratedTriNb(
-                self as *mut Self,
-            ))
         }
     }
 
@@ -1043,6 +1363,39 @@ impl GltfLatePrimitiveArray {
     pub fn compute_normals(&mut self) {
         unsafe {
             crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_ComputeNormals(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:300 - `Poly_Triangulation::MapNodeArray()`
+    pub fn map_node_array(&self) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfPnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_MapNodeArray(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:305 - `Poly_Triangulation::MapTriangleArray()`
+    pub fn map_triangle_array(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyHArray1OfTriangle> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_MapTriangleArray(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:310 - `Poly_Triangulation::MapUVNodeArray()`
+    pub fn map_uv_node_array(&self) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfPnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_MapUVNodeArray(
+                    self as *const Self,
+                ),
+            )
         }
     }
 

@@ -292,15 +292,6 @@ impl Blend {
         unsafe { crate::ffi::BiTgte_Blend_nb_branches(self as *mut Self) }
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:161 - `BiTgte_Blend::IndicesOfBranche()`
-    /// Set in <From>,<To>   the indices of the faces  of
-    /// the branche <Index>.
-    ///
-    /// i.e: Branche<Index> = Face(From) + Face(From+1) + ..+ Face(To)
-    pub fn indices_of_branche(&self, Index: i32, From: &mut i32, To: &mut i32) {
-        unsafe { crate::ffi::BiTgte_Blend_indices_of_branche(self as *const Self, Index, From, To) }
-    }
-
     /// **Source:** `BiTgte_Blend.hxx`:166 - `BiTgte_Blend::ComputeCenters()`
     /// Computes the center lines
     pub fn compute_centers(&mut self) {

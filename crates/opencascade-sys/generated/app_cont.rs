@@ -22,18 +22,6 @@ unsafe impl crate::CppDeletable for Function {
 }
 
 impl Function {
-    /// **Source:** `AppCont_Function.hxx`:37 - `AppCont_Function::GetNumberOfPoints()`
-    /// Get number of 3d and 2d points returned by "Value" and "D1" functions.
-    pub fn get_number_of_points(&self, theNbPnt: &mut i32, theNbPnt2d: &mut i32) {
-        unsafe {
-            crate::ffi::AppCont_Function_get_number_of_points(
-                self as *const Self,
-                theNbPnt,
-                theNbPnt2d,
-            )
-        }
-    }
-
     /// **Source:** `AppCont_Function.hxx`:44 - `AppCont_Function::GetNbOf3dPoints()`
     /// Get number of 3d points returned by "Value" and "D1" functions.
     pub fn get_nb_of3d_points(&self) -> i32 {

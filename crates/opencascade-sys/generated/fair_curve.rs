@@ -493,6 +493,38 @@ unsafe impl crate::CppDeletable for DistributionOfJerk {
 }
 
 impl DistributionOfJerk {
+    /// **Source:** `FairCurve_DistributionOfJerk.hxx`:37 - `FairCurve_DistributionOfJerk::FairCurve_DistributionOfJerk()`
+    pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw_int(
+        BSplOrder: i32,
+        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        DerivativeOrder: i32,
+        Law: &crate::ffi::FairCurve_BattenLaw,
+        NbValAux: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::FairCurve_DistributionOfJerk_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw_int(BSplOrder, FlatKnots, Poles, DerivativeOrder, Law, NbValAux))
+        }
+    }
+
+    /// **Source:** `FairCurve_DistributionOfJerk.hxx`:37 - `FairCurve_DistributionOfJerk::FairCurve_DistributionOfJerk()`
+    pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw(
+        BSplOrder: i32,
+        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        DerivativeOrder: i32,
+        Law: &crate::ffi::FairCurve_BattenLaw,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw_int(
+            BSplOrder,
+            FlatKnots,
+            Poles,
+            DerivativeOrder,
+            Law,
+            0,
+        )
+    }
+
     /// Upcast to FairCurve_DistributionOfEnergy
     pub fn as_distribution_of_energy(&self) -> &DistributionOfEnergy {
         unsafe {
@@ -574,6 +606,38 @@ unsafe impl crate::CppDeletable for DistributionOfSagging {
 }
 
 impl DistributionOfSagging {
+    /// **Source:** `FairCurve_DistributionOfSagging.hxx`:37 - `FairCurve_DistributionOfSagging::FairCurve_DistributionOfSagging()`
+    pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw_int(
+        BSplOrder: i32,
+        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        DerivativeOrder: i32,
+        Law: &crate::ffi::FairCurve_BattenLaw,
+        NbValAux: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::FairCurve_DistributionOfSagging_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw_int(BSplOrder, FlatKnots, Poles, DerivativeOrder, Law, NbValAux))
+        }
+    }
+
+    /// **Source:** `FairCurve_DistributionOfSagging.hxx`:37 - `FairCurve_DistributionOfSagging::FairCurve_DistributionOfSagging()`
+    pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw(
+        BSplOrder: i32,
+        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        DerivativeOrder: i32,
+        Law: &crate::ffi::FairCurve_BattenLaw,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw_int(
+            BSplOrder,
+            FlatKnots,
+            Poles,
+            DerivativeOrder,
+            Law,
+            0,
+        )
+    }
+
     /// Upcast to FairCurve_DistributionOfEnergy
     pub fn as_distribution_of_energy(&self) -> &DistributionOfEnergy {
         unsafe {
@@ -653,6 +717,47 @@ unsafe impl crate::CppDeletable for DistributionOfTension {
 }
 
 impl DistributionOfTension {
+    /// **Source:** `FairCurve_DistributionOfTension.hxx`:37 - `FairCurve_DistributionOfTension::FairCurve_DistributionOfTension()`
+    pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_real_battenlaw_int_bool(
+        BSplOrder: i32,
+        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        DerivativeOrder: i32,
+        LengthSliding: f64,
+        Law: &crate::ffi::FairCurve_BattenLaw,
+        NbValAux: i32,
+        Uniform: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::FairCurve_DistributionOfTension_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_real_battenlaw_int_bool(BSplOrder, FlatKnots, Poles, DerivativeOrder, LengthSliding, Law, NbValAux, Uniform))
+        }
+    }
+
+    /// **Source:** `FairCurve_DistributionOfTension.hxx`:37 - `FairCurve_DistributionOfTension::FairCurve_DistributionOfTension()`
+    pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_real_battenlaw_int(
+        BSplOrder: i32,
+        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        DerivativeOrder: i32,
+        LengthSliding: f64,
+        Law: &crate::ffi::FairCurve_BattenLaw,
+        NbValAux: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_real_battenlaw_int_bool(BSplOrder, FlatKnots, Poles, DerivativeOrder, LengthSliding, Law, NbValAux, false)
+    }
+
+    /// **Source:** `FairCurve_DistributionOfTension.hxx`:37 - `FairCurve_DistributionOfTension::FairCurve_DistributionOfTension()`
+    pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_real_battenlaw(
+        BSplOrder: i32,
+        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        DerivativeOrder: i32,
+        LengthSliding: f64,
+        Law: &crate::ffi::FairCurve_BattenLaw,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_real_battenlaw_int_bool(BSplOrder, FlatKnots, Poles, DerivativeOrder, LengthSliding, Law, 0, false)
+    }
+
     /// **Source:** `FairCurve_DistributionOfTension.hxx`:47 - `FairCurve_DistributionOfTension::SetLengthSliding()`
     /// change the length sliding
     pub fn set_length_sliding(&mut self, LengthSliding: f64) {
@@ -749,6 +854,12 @@ impl Energy {
         unsafe { crate::ffi::FairCurve_Energy_nb_variables(self as *const Self) }
     }
 
+    /// **Source:** `FairCurve_Energy.hxx`:76 - `FairCurve_Energy::Poles()`
+    /// return  the  poles
+    pub fn poles(&self) -> &crate::ffi::HandleTColgpHArray1OfPnt2d {
+        unsafe { &*(crate::ffi::FairCurve_Energy_poles(self as *const Self)) }
+    }
+
     /// Upcast to math_MultipleVarFunctionWithHessian
     pub fn as_math_multiple_var_function_with_hessian(
         &self,
@@ -826,6 +937,70 @@ unsafe impl crate::CppDeletable for EnergyOfBatten {
 }
 
 impl EnergyOfBatten {
+    /// **Source:** `FairCurve_EnergyOfBatten.hxx`:47 - `FairCurve_EnergyOfBatten::FairCurve_EnergyOfBatten()`
+    /// Angles correspond to the Ox axis
+    pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real_bool_real2(
+        BSplOrder: i32,
+        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        ContrOrder1: i32,
+        ContrOrder2: i32,
+        Law: &crate::ffi::FairCurve_BattenLaw,
+        LengthSliding: f64,
+        FreeSliding: bool,
+        Angle1: f64,
+        Angle2: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::FairCurve_EnergyOfBatten_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real_bool_real2(BSplOrder, FlatKnots, Poles, ContrOrder1, ContrOrder2, Law, LengthSliding, FreeSliding, Angle1, Angle2))
+        }
+    }
+
+    /// **Source:** `FairCurve_EnergyOfBatten.hxx`:47 - `FairCurve_EnergyOfBatten::FairCurve_EnergyOfBatten()`
+    /// Angles correspond to the Ox axis
+    pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real_bool_real(
+        BSplOrder: i32,
+        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        ContrOrder1: i32,
+        ContrOrder2: i32,
+        Law: &crate::ffi::FairCurve_BattenLaw,
+        LengthSliding: f64,
+        FreeSliding: bool,
+        Angle1: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real_bool_real2(BSplOrder, FlatKnots, Poles, ContrOrder1, ContrOrder2, Law, LengthSliding, FreeSliding, Angle1, 0.0)
+    }
+
+    /// **Source:** `FairCurve_EnergyOfBatten.hxx`:47 - `FairCurve_EnergyOfBatten::FairCurve_EnergyOfBatten()`
+    /// Angles correspond to the Ox axis
+    pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real_bool(
+        BSplOrder: i32,
+        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        ContrOrder1: i32,
+        ContrOrder2: i32,
+        Law: &crate::ffi::FairCurve_BattenLaw,
+        LengthSliding: f64,
+        FreeSliding: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real_bool_real2(BSplOrder, FlatKnots, Poles, ContrOrder1, ContrOrder2, Law, LengthSliding, FreeSliding, 0.0, 0.0)
+    }
+
+    /// **Source:** `FairCurve_EnergyOfBatten.hxx`:47 - `FairCurve_EnergyOfBatten::FairCurve_EnergyOfBatten()`
+    /// Angles correspond to the Ox axis
+    pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real(
+        BSplOrder: i32,
+        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        ContrOrder1: i32,
+        ContrOrder2: i32,
+        Law: &crate::ffi::FairCurve_BattenLaw,
+        LengthSliding: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real_bool_real2(BSplOrder, FlatKnots, Poles, ContrOrder1, ContrOrder2, Law, LengthSliding, true, 0.0, 0.0)
+    }
+
     /// **Source:** `FairCurve_EnergyOfBatten.hxx`:59 - `FairCurve_EnergyOfBatten::LengthSliding()`
     /// return  the  lengthSliding = P1P2 + Sliding
     pub fn length_sliding(&self) -> f64 {
@@ -922,6 +1097,11 @@ impl EnergyOfBatten {
         unsafe { crate::ffi::FairCurve_EnergyOfBatten_inherited_NbVariables(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `FairCurve_Energy.hxx`:76 - `FairCurve_Energy::Poles()`
+    pub fn poles(&self) -> &crate::ffi::HandleTColgpHArray1OfPnt2d {
+        unsafe { &*(crate::ffi::FairCurve_EnergyOfBatten_inherited_Poles(self as *const Self)) }
+    }
+
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         unsafe { crate::ffi::FairCurve_EnergyOfBatten_inherited_GetStateNumber(self as *mut Self) }
@@ -943,6 +1123,113 @@ unsafe impl crate::CppDeletable for EnergyOfMVC {
 }
 
 impl EnergyOfMVC {
+    /// **Source:** `FairCurve_EnergyOfMVC.hxx`:47 - `FairCurve_EnergyOfMVC::FairCurve_EnergyOfMVC()`
+    /// Angles correspond to the Ox axis
+    pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2_bool_real4(
+        BSplOrder: i32,
+        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        ContrOrder1: i32,
+        ContrOrder2: i32,
+        Law: &crate::ffi::FairCurve_BattenLaw,
+        PhysicalRatio: f64,
+        LengthSliding: f64,
+        FreeSliding: bool,
+        Angle1: f64,
+        Angle2: f64,
+        Curvature1: f64,
+        Curvature2: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::FairCurve_EnergyOfMVC_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2_bool_real4(BSplOrder, FlatKnots, Poles, ContrOrder1, ContrOrder2, Law, PhysicalRatio, LengthSliding, FreeSliding, Angle1, Angle2, Curvature1, Curvature2))
+        }
+    }
+
+    /// **Source:** `FairCurve_EnergyOfMVC.hxx`:47 - `FairCurve_EnergyOfMVC::FairCurve_EnergyOfMVC()`
+    /// Angles correspond to the Ox axis
+    pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2_bool_real3(
+        BSplOrder: i32,
+        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        ContrOrder1: i32,
+        ContrOrder2: i32,
+        Law: &crate::ffi::FairCurve_BattenLaw,
+        PhysicalRatio: f64,
+        LengthSliding: f64,
+        FreeSliding: bool,
+        Angle1: f64,
+        Angle2: f64,
+        Curvature1: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2_bool_real4(BSplOrder, FlatKnots, Poles, ContrOrder1, ContrOrder2, Law, PhysicalRatio, LengthSliding, FreeSliding, Angle1, Angle2, Curvature1, 0.0)
+    }
+
+    /// **Source:** `FairCurve_EnergyOfMVC.hxx`:47 - `FairCurve_EnergyOfMVC::FairCurve_EnergyOfMVC()`
+    /// Angles correspond to the Ox axis
+    pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2_bool_real2(
+        BSplOrder: i32,
+        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        ContrOrder1: i32,
+        ContrOrder2: i32,
+        Law: &crate::ffi::FairCurve_BattenLaw,
+        PhysicalRatio: f64,
+        LengthSliding: f64,
+        FreeSliding: bool,
+        Angle1: f64,
+        Angle2: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2_bool_real4(BSplOrder, FlatKnots, Poles, ContrOrder1, ContrOrder2, Law, PhysicalRatio, LengthSliding, FreeSliding, Angle1, Angle2, 0.0, 0.0)
+    }
+
+    /// **Source:** `FairCurve_EnergyOfMVC.hxx`:47 - `FairCurve_EnergyOfMVC::FairCurve_EnergyOfMVC()`
+    /// Angles correspond to the Ox axis
+    pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2_bool_real(
+        BSplOrder: i32,
+        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        ContrOrder1: i32,
+        ContrOrder2: i32,
+        Law: &crate::ffi::FairCurve_BattenLaw,
+        PhysicalRatio: f64,
+        LengthSliding: f64,
+        FreeSliding: bool,
+        Angle1: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2_bool_real4(BSplOrder, FlatKnots, Poles, ContrOrder1, ContrOrder2, Law, PhysicalRatio, LengthSliding, FreeSliding, Angle1, 0.0, 0.0, 0.0)
+    }
+
+    /// **Source:** `FairCurve_EnergyOfMVC.hxx`:47 - `FairCurve_EnergyOfMVC::FairCurve_EnergyOfMVC()`
+    /// Angles correspond to the Ox axis
+    pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2_bool(
+        BSplOrder: i32,
+        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        ContrOrder1: i32,
+        ContrOrder2: i32,
+        Law: &crate::ffi::FairCurve_BattenLaw,
+        PhysicalRatio: f64,
+        LengthSliding: f64,
+        FreeSliding: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2_bool_real4(BSplOrder, FlatKnots, Poles, ContrOrder1, ContrOrder2, Law, PhysicalRatio, LengthSliding, FreeSliding, 0.0, 0.0, 0.0, 0.0)
+    }
+
+    /// **Source:** `FairCurve_EnergyOfMVC.hxx`:47 - `FairCurve_EnergyOfMVC::FairCurve_EnergyOfMVC()`
+    /// Angles correspond to the Ox axis
+    pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2(
+        BSplOrder: i32,
+        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        ContrOrder1: i32,
+        ContrOrder2: i32,
+        Law: &crate::ffi::FairCurve_BattenLaw,
+        PhysicalRatio: f64,
+        LengthSliding: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2_bool_real4(BSplOrder, FlatKnots, Poles, ContrOrder1, ContrOrder2, Law, PhysicalRatio, LengthSliding, true, 0.0, 0.0, 0.0, 0.0)
+    }
+
     /// **Source:** `FairCurve_EnergyOfMVC.hxx`:62 - `FairCurve_EnergyOfMVC::LengthSliding()`
     /// return  the  lengthSliding = P1P2 + Sliding
     pub fn length_sliding(&self) -> f64 {
@@ -1035,6 +1322,11 @@ impl EnergyOfMVC {
     /// Inherited: **Source:** `FairCurve_Energy.hxx`:39 - `FairCurve_Energy::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         unsafe { crate::ffi::FairCurve_EnergyOfMVC_inherited_NbVariables(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `FairCurve_Energy.hxx`:76 - `FairCurve_Energy::Poles()`
+    pub fn poles(&self) -> &crate::ffi::HandleTColgpHArray1OfPnt2d {
+        unsafe { &*(crate::ffi::FairCurve_EnergyOfMVC_inherited_Poles(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`

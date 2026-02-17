@@ -93,7 +93,7 @@ impl Edge {
         let points: Vec<_> = points.into_iter().collect();
         let mut array = t_colgp::HArray1OfPnt::new_int2(1, points.len() as i32);
         for (index, point) in points.into_iter().enumerate() {
-            array.as_array1_of_pnt_mut().set_value(index as i32 + 1, &make_point(point));
+            array.change_array1().set_value(index as i32 + 1, &make_point(point));
         }
         let array_handle = t_colgp::HArray1OfPnt::to_handle(array);
 

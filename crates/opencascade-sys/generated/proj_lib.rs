@@ -483,6 +483,11 @@ impl CompProjectedCurve {
         unsafe { crate::ffi::ProjLib_CompProjectedCurve_max_distance(self as *const Self, Index) }
     }
 
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:204 - `ProjLib_CompProjectedCurve::GetSequence()`
+    pub fn get_sequence(&self) -> &crate::ffi::HandleProjLibHSequenceOfHSequenceOfPnt {
+        unsafe { &*(crate::ffi::ProjLib_CompProjectedCurve_get_sequence(self as *const Self)) }
+    }
+
     /// **Source:** `ProjLib_CompProjectedCurve.hxx`:209 - `ProjLib_CompProjectedCurve::GetType()`
     /// Returns  the  type of the   curve  in the  current
     /// interval :   Line,   Circle,   Ellipse, Hyperbola,
@@ -1534,6 +1539,80 @@ impl Cylinder {
                 VFirst,
                 Period,
             )
+        }
+    }
+}
+
+// ========================
+// From ProjLib_HSequenceOfHSequenceOfPnt.hxx
+// ========================
+
+/// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt`
+pub use crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt as HSequenceOfHSequenceOfPnt;
+
+unsafe impl crate::CppDeletable for HSequenceOfHSequenceOfPnt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_destructor(ptr);
+    }
+}
+
+impl HSequenceOfHSequenceOfPnt {
+    /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::ProjLib_HSequenceOfHSequenceOfPnt()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_ctor()) }
+    }
+
+    /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleProjLibHSequenceOfHSequenceOfPnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleProjLibHSequenceOfHSequenceOfPnt;
+
+unsafe impl crate::CppDeletable for HandleProjLibHSequenceOfHSequenceOfPnt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleProjLibHSequenceOfHSequenceOfPnt_destructor(ptr);
+    }
+}
+
+impl HandleProjLibHSequenceOfHSequenceOfPnt {
+    /// Dereference this Handle to access the underlying ProjLib_HSequenceOfHSequenceOfPnt
+    pub fn get(&self) -> &crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt {
+        unsafe { &*(crate::ffi::HandleProjLibHSequenceOfHSequenceOfPnt_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ProjLib_HSequenceOfHSequenceOfPnt
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt {
+        unsafe {
+            &mut *(crate::ffi::HandleProjLibHSequenceOfHSequenceOfPnt_get_mut(self as *mut Self))
         }
     }
 }
@@ -3329,4 +3408,4 @@ impl Torus {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt as HSequenceOfHSequenceOfPnt;
+pub use crate::ffi::ProjLib_SequenceOfHSequenceOfPnt as SequenceOfHSequenceOfPnt;

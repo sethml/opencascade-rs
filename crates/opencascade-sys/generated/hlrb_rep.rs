@@ -1976,29 +1976,6 @@ impl Data {
         }
     }
 
-    /// **Source:** `HLRBRep_Data.hxx`:190 - `HLRBRep_Data::Classify()`
-    /// Classification of an edge.
-    pub fn classify(
-        &mut self,
-        E: i32,
-        ED: &crate::ffi::HLRBRep_EdgeData,
-        LevelFlag: bool,
-        Level: &mut i32,
-        param: f64,
-    ) -> crate::top_abs::State {
-        unsafe {
-            crate::top_abs::State::try_from(crate::ffi::HLRBRep_Data_classify(
-                self as *mut Self,
-                E,
-                ED,
-                LevelFlag,
-                Level,
-                param,
-            ))
-            .unwrap()
-        }
-    }
-
     /// **Source:** `HLRBRep_Data.hxx`:197 - `HLRBRep_Data::IsBadFace()`
     /// Returns true if the current face is bad.
     pub fn is_bad_face(&self) -> bool {
@@ -2667,25 +2644,10 @@ unsafe impl crate::CppDeletable for ExactIntersectionPointOfTheIntPCurvePCurveOf
 }
 
 impl ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
-    /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:43 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Perform()`
-    pub fn perform_thepolygon2doftheintpcurvepcurveofcinter2_int2_real2(
-        &mut self,
-        Poly1: &crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter,
-        Poly2: &crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter,
-        NumSegOn1: &mut i32,
-        NumSegOn2: &mut i32,
-        ParamOnSeg1: &mut f64,
-        ParamOnSeg2: &mut f64,
-    ) {
-        unsafe {
-            crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_perform_thepolygon2doftheintpcurvepcurveofcinter2_int2_real2(self as *mut Self, Poly1, Poly2, NumSegOn1, NumSegOn2, ParamOnSeg1, ParamOnSeg2)
-        }
-    }
-
     /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:50 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Perform()`
-    pub fn perform_real6(&mut self, Uo: f64, Vo: f64, UInf: f64, VInf: f64, USup: f64, VSup: f64) {
+    pub fn perform(&mut self, Uo: f64, Vo: f64, UInf: f64, VInf: f64, USup: f64, VSup: f64) {
         unsafe {
-            crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_perform_real6(
+            crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_perform(
                 self as *mut Self,
                 Uo,
                 Vo,
@@ -5061,26 +5023,6 @@ impl ShapeBounds {
     pub fn nb_of_iso(&self) -> i32 {
         unsafe { crate::ffi::HLRBRep_ShapeBounds_nb_of_iso(self as *const Self) }
     }
-
-    /// **Source:** `HLRBRep_ShapeBounds.hxx`:73 - `HLRBRep_ShapeBounds::Sizes()`
-    pub fn sizes(&self, NV: &mut i32, NE: &mut i32, NF: &mut i32) {
-        unsafe { crate::ffi::HLRBRep_ShapeBounds_sizes(self as *const Self, NV, NE, NF) }
-    }
-
-    /// **Source:** `HLRBRep_ShapeBounds.hxx`:77 - `HLRBRep_ShapeBounds::Bounds()`
-    pub fn bounds(
-        &self,
-        V1: &mut i32,
-        V2: &mut i32,
-        E1: &mut i32,
-        E2: &mut i32,
-        F1: &mut i32,
-        F2: &mut i32,
-    ) {
-        unsafe {
-            crate::ffi::HLRBRep_ShapeBounds_bounds(self as *const Self, V1, V2, E1, E2, F1, F2)
-        }
-    }
 }
 
 // ========================
@@ -6820,60 +6762,10 @@ impl ThePolyhedronOfInterCSurf {
         }
     }
 
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:69 - `HLRBRep_ThePolyhedronOfInterCSurf::Size()`
-    /// get the size of the discretization.
-    pub fn size(&self, nbdu: &mut i32, nbdv: &mut i32) {
-        unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_size(self as *const Self, nbdu, nbdv)
-        }
-    }
-
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:72 - `HLRBRep_ThePolyhedronOfInterCSurf::NbTriangles()`
     /// Give the number of triangles in this double array of
     pub fn nb_triangles(&self) -> i32 {
         unsafe { crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_nb_triangles(self as *const Self) }
-    }
-
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:76 - `HLRBRep_ThePolyhedronOfInterCSurf::Triangle()`
-    /// Give the 3 points of the triangle of address Index in
-    /// the double array of triangles.
-    pub fn triangle(&self, Index: i32, P1: &mut i32, P2: &mut i32, P3: &mut i32) {
-        unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_triangle(
-                self as *const Self,
-                Index,
-                P1,
-                P2,
-                P3,
-            )
-        }
-    }
-
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:87 - `HLRBRep_ThePolyhedronOfInterCSurf::TriConnex()`
-    /// Give the address Tricon of the triangle connexe to the
-    /// triangle of address Triang by the edge Pivot Pedge and
-    /// the third point of this connexe triangle. When we are
-    /// on a free edge TriCon==0 but the function return the
-    /// value of the triangle in the other side of Pivot on
-    /// the free edge. Used to turn around a vertex.
-    pub fn tri_connex(
-        &self,
-        Triang: i32,
-        Pivot: i32,
-        Pedge: i32,
-        TriCon: &mut i32,
-        OtherP: &mut i32,
-    ) -> i32 {
-        unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_tri_connex(
-                self as *const Self,
-                Triang,
-                Pivot,
-                Pedge,
-                TriCon,
-                OtherP,
-            )
-        }
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:95 - `HLRBRep_ThePolyhedronOfInterCSurf::NbPoints()`
@@ -6950,6 +6842,17 @@ impl ThePolyhedronOfInterCSurf {
     /// to the triangle <n>.
     pub fn fill_bounding(&mut self) {
         unsafe { crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_fill_bounding(self as *mut Self) }
+    }
+
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:125 - `HLRBRep_ThePolyhedronOfInterCSurf::ComponentsBounding()`
+    /// Give the array of boxes. The box <n> corresponding
+    /// to the triangle <n>.
+    pub fn components_bounding(&self) -> &crate::ffi::HandleBndHArray1OfBox {
+        unsafe {
+            &*(crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_components_bounding(
+                self as *const Self,
+            ))
+        }
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:127 - `HLRBRep_ThePolyhedronOfInterCSurf::DeflectionOverEstimation()`
@@ -7090,6 +6993,17 @@ impl ThePolyhedronToolOfInterCSurf {
         unsafe { &*(crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_bounding(thePolyh)) }
     }
 
+    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:43 - `HLRBRep_ThePolyhedronToolOfInterCSurf::ComponentsBounding()`
+    /// Give the array of boxes. The box <n> corresponding
+    /// to the triangle <n>.
+    pub fn components_bounding(
+        thePolyh: &crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf,
+    ) -> &'static crate::ffi::HandleBndHArray1OfBox {
+        unsafe {
+            &*(crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_components_bounding(thePolyh))
+        }
+    }
+
     /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:47 - `HLRBRep_ThePolyhedronToolOfInterCSurf::DeflectionOverEstimation()`
     /// Give the tolerance of the polygon.
     pub fn deflection_over_estimation(
@@ -7106,21 +7020,6 @@ impl ThePolyhedronToolOfInterCSurf {
         unsafe { crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_nb_triangles(thePolyh) }
     }
 
-    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:54 - `HLRBRep_ThePolyhedronToolOfInterCSurf::Triangle()`
-    /// Give the indices  of  the 3 points of  the triangle of
-    /// address Index in the PolyhedronTool.
-    pub fn triangle(
-        thePolyh: &crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf,
-        Index: i32,
-        P1: &mut i32,
-        P2: &mut i32,
-        P3: &mut i32,
-    ) {
-        unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_triangle(thePolyh, Index, P1, P2, P3)
-        }
-    }
-
     /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:61 - `HLRBRep_ThePolyhedronToolOfInterCSurf::Point()`
     /// Give the point of index i in the polyhedral surface.
     pub fn point(
@@ -7128,28 +7027,6 @@ impl ThePolyhedronToolOfInterCSurf {
         Index: i32,
     ) -> &'static crate::ffi::gp_Pnt {
         unsafe { &*(crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_point(thePolyh, Index)) }
-    }
-
-    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:70 - `HLRBRep_ThePolyhedronToolOfInterCSurf::TriConnex()`
-    /// Give the address Tricon of the triangle connexe to
-    /// the triangle of address Triang by the edge Pivot Pedge
-    /// and the third point of this  connexe triangle.
-    /// When we are on a free edge TriCon==0 but the function return
-    /// the value of the triangle in the other side of Pivot on the free edge.
-    /// Used to turn around a vertex.
-    pub fn tri_connex(
-        thePolyh: &crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf,
-        Triang: i32,
-        Pivot: i32,
-        Pedge: i32,
-        TriCon: &mut i32,
-        OtherP: &mut i32,
-    ) -> i32 {
-        unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_tri_connex(
-                thePolyh, Triang, Pivot, Pedge, TriCon, OtherP,
-            )
-        }
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:80 - `HLRBRep_ThePolyhedronToolOfInterCSurf::IsOnBound()`

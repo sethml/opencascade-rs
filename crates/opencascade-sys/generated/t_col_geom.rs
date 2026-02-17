@@ -7,12 +7,540 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From TColGeom_HArray1OfBSplineCurve.hxx
+// ========================
+
+/// **Source:** `TColGeom_HArray1OfBSplineCurve.hxx`:23 - `TColGeom_HArray1OfBSplineCurve`
+pub use crate::ffi::TColGeom_HArray1OfBSplineCurve as HArray1OfBSplineCurve;
+
+unsafe impl crate::CppDeletable for HArray1OfBSplineCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColGeom_HArray1OfBSplineCurve_destructor(ptr);
+    }
+}
+
+impl HArray1OfBSplineCurve {
+    /// **Source:** `TColGeom_HArray1OfBSplineCurve.hxx`:23 - `TColGeom_HArray1OfBSplineCurve::TColGeom_HArray1OfBSplineCurve()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColGeom_HArray1OfBSplineCurve_ctor()) }
+    }
+
+    /// **Source:** `TColGeom_HArray1OfBSplineCurve.hxx`:23 - `TColGeom_HArray1OfBSplineCurve::TColGeom_HArray1OfBSplineCurve()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColGeom_HArray1OfBSplineCurve_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `TColGeom_HArray1OfBSplineCurve.hxx`:23 - `TColGeom_HArray1OfBSplineCurve::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColGeom_HArray1OfBSplineCurve_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColGeom_HArray1OfBSplineCurve.hxx`:23 - `TColGeom_HArray1OfBSplineCurve::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColGeom_HArray1OfBSplineCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColGeom_HArray1OfBSplineCurve.hxx`:23 - `TColGeom_HArray1OfBSplineCurve::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColGeom_HArray1OfBSplineCurve_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColGeomHArray1OfBSplineCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColGeom_HArray1OfBSplineCurve_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColGeomHArray1OfBSplineCurve;
+
+unsafe impl crate::CppDeletable for HandleTColGeomHArray1OfBSplineCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColGeomHArray1OfBSplineCurve_destructor(ptr);
+    }
+}
+
+impl HandleTColGeomHArray1OfBSplineCurve {
+    /// Dereference this Handle to access the underlying TColGeom_HArray1OfBSplineCurve
+    pub fn get(&self) -> &crate::ffi::TColGeom_HArray1OfBSplineCurve {
+        unsafe { &*(crate::ffi::HandleTColGeomHArray1OfBSplineCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColGeom_HArray1OfBSplineCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColGeom_HArray1OfBSplineCurve {
+        unsafe {
+            &mut *(crate::ffi::HandleTColGeomHArray1OfBSplineCurve_get_mut(self as *mut Self))
+        }
+    }
+}
+
+// ========================
+// From TColGeom_HArray1OfBezierCurve.hxx
+// ========================
+
+/// **Source:** `TColGeom_HArray1OfBezierCurve.hxx`:24 - `TColGeom_HArray1OfBezierCurve`
+pub use crate::ffi::TColGeom_HArray1OfBezierCurve as HArray1OfBezierCurve;
+
+unsafe impl crate::CppDeletable for HArray1OfBezierCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColGeom_HArray1OfBezierCurve_destructor(ptr);
+    }
+}
+
+impl HArray1OfBezierCurve {
+    /// **Source:** `TColGeom_HArray1OfBezierCurve.hxx`:24 - `TColGeom_HArray1OfBezierCurve::TColGeom_HArray1OfBezierCurve()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColGeom_HArray1OfBezierCurve_ctor()) }
+    }
+
+    /// **Source:** `TColGeom_HArray1OfBezierCurve.hxx`:24 - `TColGeom_HArray1OfBezierCurve::TColGeom_HArray1OfBezierCurve()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColGeom_HArray1OfBezierCurve_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `TColGeom_HArray1OfBezierCurve.hxx`:24 - `TColGeom_HArray1OfBezierCurve::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColGeom_HArray1OfBezierCurve_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColGeom_HArray1OfBezierCurve.hxx`:24 - `TColGeom_HArray1OfBezierCurve::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColGeom_HArray1OfBezierCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColGeom_HArray1OfBezierCurve.hxx`:24 - `TColGeom_HArray1OfBezierCurve::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColGeom_HArray1OfBezierCurve_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColGeomHArray1OfBezierCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColGeom_HArray1OfBezierCurve_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColGeomHArray1OfBezierCurve;
+
+unsafe impl crate::CppDeletable for HandleTColGeomHArray1OfBezierCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColGeomHArray1OfBezierCurve_destructor(ptr);
+    }
+}
+
+impl HandleTColGeomHArray1OfBezierCurve {
+    /// Dereference this Handle to access the underlying TColGeom_HArray1OfBezierCurve
+    pub fn get(&self) -> &crate::ffi::TColGeom_HArray1OfBezierCurve {
+        unsafe { &*(crate::ffi::HandleTColGeomHArray1OfBezierCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColGeom_HArray1OfBezierCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColGeom_HArray1OfBezierCurve {
+        unsafe { &mut *(crate::ffi::HandleTColGeomHArray1OfBezierCurve_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColGeom_HArray1OfCurve.hxx
+// ========================
+
+/// **Source:** `TColGeom_HArray1OfCurve.hxx`:23 - `TColGeom_HArray1OfCurve`
+pub use crate::ffi::TColGeom_HArray1OfCurve as HArray1OfCurve;
+
+unsafe impl crate::CppDeletable for HArray1OfCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColGeom_HArray1OfCurve_destructor(ptr);
+    }
+}
+
+impl HArray1OfCurve {
+    /// **Source:** `TColGeom_HArray1OfCurve.hxx`:23 - `TColGeom_HArray1OfCurve::TColGeom_HArray1OfCurve()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColGeom_HArray1OfCurve_ctor()) }
+    }
+
+    /// **Source:** `TColGeom_HArray1OfCurve.hxx`:23 - `TColGeom_HArray1OfCurve::TColGeom_HArray1OfCurve()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColGeom_HArray1OfCurve_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `TColGeom_HArray1OfCurve.hxx`:23 - `TColGeom_HArray1OfCurve::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColGeom_HArray1OfCurve_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColGeom_HArray1OfCurve.hxx`:23 - `TColGeom_HArray1OfCurve::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColGeom_HArray1OfCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColGeom_HArray1OfCurve.hxx`:23 - `TColGeom_HArray1OfCurve::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColGeom_HArray1OfCurve_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColGeomHArray1OfCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColGeom_HArray1OfCurve_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColGeomHArray1OfCurve;
+
+unsafe impl crate::CppDeletable for HandleTColGeomHArray1OfCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColGeomHArray1OfCurve_destructor(ptr);
+    }
+}
+
+impl HandleTColGeomHArray1OfCurve {
+    /// Dereference this Handle to access the underlying TColGeom_HArray1OfCurve
+    pub fn get(&self) -> &crate::ffi::TColGeom_HArray1OfCurve {
+        unsafe { &*(crate::ffi::HandleTColGeomHArray1OfCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColGeom_HArray1OfCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColGeom_HArray1OfCurve {
+        unsafe { &mut *(crate::ffi::HandleTColGeomHArray1OfCurve_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColGeom_HArray1OfSurface.hxx
+// ========================
+
+/// **Source:** `TColGeom_HArray1OfSurface.hxx`:23 - `TColGeom_HArray1OfSurface`
+pub use crate::ffi::TColGeom_HArray1OfSurface as HArray1OfSurface;
+
+unsafe impl crate::CppDeletable for HArray1OfSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColGeom_HArray1OfSurface_destructor(ptr);
+    }
+}
+
+impl HArray1OfSurface {
+    /// **Source:** `TColGeom_HArray1OfSurface.hxx`:23 - `TColGeom_HArray1OfSurface::TColGeom_HArray1OfSurface()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColGeom_HArray1OfSurface_ctor()) }
+    }
+
+    /// **Source:** `TColGeom_HArray1OfSurface.hxx`:23 - `TColGeom_HArray1OfSurface::TColGeom_HArray1OfSurface()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColGeom_HArray1OfSurface_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `TColGeom_HArray1OfSurface.hxx`:23 - `TColGeom_HArray1OfSurface::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColGeom_HArray1OfSurface_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColGeom_HArray1OfSurface.hxx`:23 - `TColGeom_HArray1OfSurface::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColGeom_HArray1OfSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColGeom_HArray1OfSurface.hxx`:23 - `TColGeom_HArray1OfSurface::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColGeom_HArray1OfSurface_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColGeomHArray1OfSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColGeom_HArray1OfSurface_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColGeomHArray1OfSurface;
+
+unsafe impl crate::CppDeletable for HandleTColGeomHArray1OfSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColGeomHArray1OfSurface_destructor(ptr);
+    }
+}
+
+impl HandleTColGeomHArray1OfSurface {
+    /// Dereference this Handle to access the underlying TColGeom_HArray1OfSurface
+    pub fn get(&self) -> &crate::ffi::TColGeom_HArray1OfSurface {
+        unsafe { &*(crate::ffi::HandleTColGeomHArray1OfSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColGeom_HArray1OfSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColGeom_HArray1OfSurface {
+        unsafe { &mut *(crate::ffi::HandleTColGeomHArray1OfSurface_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColGeom_HArray2OfSurface.hxx
+// ========================
+
+/// **Source:** `TColGeom_HArray2OfSurface.hxx`:23 - `TColGeom_HArray2OfSurface`
+pub use crate::ffi::TColGeom_HArray2OfSurface as HArray2OfSurface;
+
+unsafe impl crate::CppDeletable for HArray2OfSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColGeom_HArray2OfSurface_destructor(ptr);
+    }
+}
+
+impl HArray2OfSurface {
+    /// **Source:** `TColGeom_HArray2OfSurface.hxx`:23 - `TColGeom_HArray2OfSurface::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColGeom_HArray2OfSurface_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColGeom_HArray2OfSurface.hxx`:23 - `TColGeom_HArray2OfSurface::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColGeom_HArray2OfSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColGeom_HArray2OfSurface.hxx`:23 - `TColGeom_HArray2OfSurface::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColGeom_HArray2OfSurface_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColGeomHArray2OfSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColGeom_HArray2OfSurface_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColGeomHArray2OfSurface;
+
+unsafe impl crate::CppDeletable for HandleTColGeomHArray2OfSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColGeomHArray2OfSurface_destructor(ptr);
+    }
+}
+
+impl HandleTColGeomHArray2OfSurface {
+    /// Dereference this Handle to access the underlying TColGeom_HArray2OfSurface
+    pub fn get(&self) -> &crate::ffi::TColGeom_HArray2OfSurface {
+        unsafe { &*(crate::ffi::HandleTColGeomHArray2OfSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColGeom_HArray2OfSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColGeom_HArray2OfSurface {
+        unsafe { &mut *(crate::ffi::HandleTColGeomHArray2OfSurface_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From TColGeom_HSequenceOfBoundedCurve.hxx
+// ========================
+
+/// **Source:** `TColGeom_HSequenceOfBoundedCurve.hxx`:24 - `TColGeom_HSequenceOfBoundedCurve`
+pub use crate::ffi::TColGeom_HSequenceOfBoundedCurve as HSequenceOfBoundedCurve;
+
+unsafe impl crate::CppDeletable for HSequenceOfBoundedCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColGeom_HSequenceOfBoundedCurve_destructor(ptr);
+    }
+}
+
+impl HSequenceOfBoundedCurve {
+    /// **Source:** `TColGeom_HSequenceOfBoundedCurve.hxx`:24 - `TColGeom_HSequenceOfBoundedCurve::TColGeom_HSequenceOfBoundedCurve()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColGeom_HSequenceOfBoundedCurve_ctor()) }
+    }
+
+    /// **Source:** `TColGeom_HSequenceOfBoundedCurve.hxx`:24 - `TColGeom_HSequenceOfBoundedCurve::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::TColGeom_HSequenceOfBoundedCurve_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TColGeom_HSequenceOfBoundedCurve.hxx`:24 - `TColGeom_HSequenceOfBoundedCurve::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColGeom_HSequenceOfBoundedCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColGeom_HSequenceOfBoundedCurve.hxx`:24 - `TColGeom_HSequenceOfBoundedCurve::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColGeom_HSequenceOfBoundedCurve_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColGeomHSequenceOfBoundedCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColGeom_HSequenceOfBoundedCurve_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColGeomHSequenceOfBoundedCurve;
+
+unsafe impl crate::CppDeletable for HandleTColGeomHSequenceOfBoundedCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColGeomHSequenceOfBoundedCurve_destructor(ptr);
+    }
+}
+
+impl HandleTColGeomHSequenceOfBoundedCurve {
+    /// Dereference this Handle to access the underlying TColGeom_HSequenceOfBoundedCurve
+    pub fn get(&self) -> &crate::ffi::TColGeom_HSequenceOfBoundedCurve {
+        unsafe { &*(crate::ffi::HandleTColGeomHSequenceOfBoundedCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColGeom_HSequenceOfBoundedCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColGeom_HSequenceOfBoundedCurve {
+        unsafe {
+            &mut *(crate::ffi::HandleTColGeomHSequenceOfBoundedCurve_get_mut(self as *mut Self))
+        }
+    }
+}
+
+// ========================
+// From TColGeom_HSequenceOfCurve.hxx
+// ========================
+
+/// **Source:** `TColGeom_HSequenceOfCurve.hxx`:23 - `TColGeom_HSequenceOfCurve`
+pub use crate::ffi::TColGeom_HSequenceOfCurve as HSequenceOfCurve;
+
+unsafe impl crate::CppDeletable for HSequenceOfCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColGeom_HSequenceOfCurve_destructor(ptr);
+    }
+}
+
+impl HSequenceOfCurve {
+    /// **Source:** `TColGeom_HSequenceOfCurve.hxx`:23 - `TColGeom_HSequenceOfCurve::TColGeom_HSequenceOfCurve()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColGeom_HSequenceOfCurve_ctor()) }
+    }
+
+    /// **Source:** `TColGeom_HSequenceOfCurve.hxx`:23 - `TColGeom_HSequenceOfCurve::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColGeom_HSequenceOfCurve_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TColGeom_HSequenceOfCurve.hxx`:23 - `TColGeom_HSequenceOfCurve::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TColGeom_HSequenceOfCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TColGeom_HSequenceOfCurve.hxx`:23 - `TColGeom_HSequenceOfCurve::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TColGeom_HSequenceOfCurve_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColGeomHSequenceOfCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColGeom_HSequenceOfCurve_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTColGeomHSequenceOfCurve;
+
+unsafe impl crate::CppDeletable for HandleTColGeomHSequenceOfCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTColGeomHSequenceOfCurve_destructor(ptr);
+    }
+}
+
+impl HandleTColGeomHSequenceOfCurve {
+    /// Dereference this Handle to access the underlying TColGeom_HSequenceOfCurve
+    pub fn get(&self) -> &crate::ffi::TColGeom_HSequenceOfCurve {
+        unsafe { &*(crate::ffi::HandleTColGeomHSequenceOfCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TColGeom_HSequenceOfCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TColGeom_HSequenceOfCurve {
+        unsafe { &mut *(crate::ffi::HandleTColGeomHSequenceOfCurve_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
-    TColGeom_Array1OfBezierCurve as Array1OfBezierCurve,
+    TColGeom_Array1OfBSplineCurve as Array1OfBSplineCurve,
+    TColGeom_Array1OfBezierCurve as Array1OfBezierCurve, TColGeom_Array1OfCurve as Array1OfCurve,
+    TColGeom_Array1OfSurface as Array1OfSurface,
     TColGeom_Array2OfBezierSurface as Array2OfBezierSurface,
-    TColGeom_HArray1OfCurve as HArray1OfCurve, TColGeom_HArray2OfSurface as HArray2OfSurface,
+    TColGeom_Array2OfSurface as Array2OfSurface,
+    TColGeom_SequenceOfBoundedCurve as SequenceOfBoundedCurve,
     TColGeom_SequenceOfCurve as SequenceOfCurve,
 };

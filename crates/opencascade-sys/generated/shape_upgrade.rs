@@ -575,6 +575,15 @@ impl ConvertCurve2dToBezier {
         }
     }
 
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:52 - `ShapeUpgrade_SplitCurve2d::GetCurves()`
+    pub fn get_curves(&self) -> &crate::ffi::HandleTColGeom2dHArray1OfCurve {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_GetCurves(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
     pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         unsafe {
@@ -767,6 +776,15 @@ impl ConvertCurve3dToBezier {
     pub fn init(&mut self, C: &crate::ffi::HandleGeomCurve) {
         unsafe {
             crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_Init(self as *mut Self, C)
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:52 - `ShapeUpgrade_SplitCurve3d::GetCurves()`
+    pub fn get_curves(&self) -> &crate::ffi::HandleTColGeomHArray1OfCurve {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_GetCurves(
+                self as *const Self,
+            ))
         }
     }
 
@@ -1461,12 +1479,6 @@ impl FaceDivideArea {
     /// Set max area allowed for faces
     pub fn max_area(&mut self) -> &mut f64 {
         unsafe { &mut *(crate::ffi::ShapeUpgrade_FaceDivideArea_max_area(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeUpgrade_FaceDivideArea.hxx`:47 - `ShapeUpgrade_FaceDivideArea::NbParts()`
-    /// Set number of parts expected
-    pub fn nb_parts(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeUpgrade_FaceDivideArea_nb_parts(self as *mut Self)) }
     }
 
     /// **Source:** `ShapeUpgrade_FaceDivideArea.hxx`:51 - `ShapeUpgrade_FaceDivideArea::SetNumbersUVSplits()`
@@ -3133,13 +3145,6 @@ impl ShapeDivideArea {
         unsafe { &mut *(crate::ffi::ShapeUpgrade_ShapeDivideArea_max_area(self as *mut Self)) }
     }
 
-    /// **Source:** `ShapeUpgrade_ShapeDivideArea.hxx`:43 - `ShapeUpgrade_ShapeDivideArea::NbParts()`
-    /// Set number of parts expected
-    /// for the case of splitting by number
-    pub fn nb_parts(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeUpgrade_ShapeDivideArea_nb_parts(self as *mut Self)) }
-    }
-
     /// **Source:** `ShapeUpgrade_ShapeDivideArea.hxx`:47 - `ShapeUpgrade_ShapeDivideArea::SetNumbersUVSplits()`
     /// Set fixed numbers of splits in U and V directions.
     /// Only for "Splitting By Numbers" mode
@@ -4142,6 +4147,11 @@ impl SplitCurve2d {
         unsafe { crate::ffi::ShapeUpgrade_SplitCurve2d_build(self as *mut Self, Segment) }
     }
 
+    /// **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:52 - `ShapeUpgrade_SplitCurve2d::GetCurves()`
+    pub fn get_curves(&self) -> &crate::ffi::HandleTColGeom2dHArray1OfCurve {
+        unsafe { &*(crate::ffi::ShapeUpgrade_SplitCurve2d_get_curves(self as *const Self)) }
+    }
+
     /// **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:54 - `ShapeUpgrade_SplitCurve2d::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ShapeUpgrade_SplitCurve2d_dynamic_type(self as *const Self)) }
@@ -4340,6 +4350,15 @@ impl SplitCurve2dContinuity {
         }
     }
 
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:52 - `ShapeUpgrade_SplitCurve2d::GetCurves()`
+    pub fn get_curves(&self) -> &crate::ffi::HandleTColGeom2dHArray1OfCurve {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_GetCurves(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
     pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         unsafe {
@@ -4432,6 +4451,11 @@ impl SplitCurve3d {
     /// Curves all based on the same complete curve.
     pub fn build(&mut self, Segment: bool) {
         unsafe { crate::ffi::ShapeUpgrade_SplitCurve3d_build(self as *mut Self, Segment) }
+    }
+
+    /// **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:52 - `ShapeUpgrade_SplitCurve3d::GetCurves()`
+    pub fn get_curves(&self) -> &crate::ffi::HandleTColGeomHArray1OfCurve {
+        unsafe { &*(crate::ffi::ShapeUpgrade_SplitCurve3d_get_curves(self as *const Self)) }
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:54 - `ShapeUpgrade_SplitCurve3d::DynamicType()`
@@ -4636,6 +4660,15 @@ impl SplitCurve3dContinuity {
                 self as *mut Self,
                 Segment,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:52 - `ShapeUpgrade_SplitCurve3d::GetCurves()`
+    pub fn get_curves(&self) -> &crate::ffi::HandleTColGeomHArray1OfCurve {
+        unsafe {
+            &*(crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_GetCurves(
+                self as *const Self,
+            ))
         }
     }
 
@@ -5039,12 +5072,6 @@ impl SplitSurfaceArea {
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_SplitSurfaceArea_ctor()) }
-    }
-
-    /// **Source:** `ShapeUpgrade_SplitSurfaceArea.hxx`:38 - `ShapeUpgrade_SplitSurfaceArea::NbParts()`
-    /// Set number of split for surfaces
-    pub fn nb_parts(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeUpgrade_SplitSurfaceArea_nb_parts(self as *mut Self)) }
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurfaceArea.hxx`:44 - `ShapeUpgrade_SplitSurfaceArea::SetSplittingIntoSquares()`

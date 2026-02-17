@@ -26,29 +26,6 @@ impl Approx {
         unsafe { crate::ffi::AppBlend_Approx_is_done(self as *const Self) }
     }
 
-    /// **Source:** `AppBlend_Approx.hxx`:39 - `AppBlend_Approx::SurfShape()`
-    pub fn surf_shape(
-        &self,
-        UDegree: &mut i32,
-        VDegree: &mut i32,
-        NbUPoles: &mut i32,
-        NbVPoles: &mut i32,
-        NbUKnots: &mut i32,
-        NbVKnots: &mut i32,
-    ) {
-        unsafe {
-            crate::ffi::AppBlend_Approx_surf_shape(
-                self as *const Self,
-                UDegree,
-                VDegree,
-                NbUPoles,
-                NbVPoles,
-                NbUKnots,
-                NbVKnots,
-            )
-        }
-    }
-
     /// **Source:** `AppBlend_Approx.hxx`:53 - `AppBlend_Approx::UDegree()`
     pub fn u_degree(&self) -> i32 {
         unsafe { crate::ffi::AppBlend_Approx_u_degree(self as *const Self) }
@@ -67,18 +44,6 @@ impl Approx {
     /// **Source:** `AppBlend_Approx.hxx`:69 - `AppBlend_Approx::NbCurves2d()`
     pub fn nb_curves2d(&self) -> i32 {
         unsafe { crate::ffi::AppBlend_Approx_nb_curves2d(self as *const Self) }
-    }
-
-    /// **Source:** `AppBlend_Approx.hxx`:71 - `AppBlend_Approx::Curves2dShape()`
-    pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32) {
-        unsafe {
-            crate::ffi::AppBlend_Approx_curves2d_shape(
-                self as *const Self,
-                Degree,
-                NbPoles,
-                NbKnots,
-            )
-        }
     }
 
     /// **Source:** `AppBlend_Approx.hxx`:80 - `AppBlend_Approx::Curves2dDegree()`

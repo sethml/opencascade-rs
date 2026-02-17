@@ -998,6 +998,162 @@ impl FitAndDivide2d {
 }
 
 // ========================
+// From Approx_HArray1OfAdHSurface.hxx
+// ========================
+
+/// **Source:** `Approx_HArray1OfAdHSurface.hxx`:24 - `Approx_HArray1OfAdHSurface`
+pub use crate::ffi::Approx_HArray1OfAdHSurface as HArray1OfAdHSurface;
+
+unsafe impl crate::CppDeletable for HArray1OfAdHSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Approx_HArray1OfAdHSurface_destructor(ptr);
+    }
+}
+
+impl HArray1OfAdHSurface {
+    /// **Source:** `Approx_HArray1OfAdHSurface.hxx`:24 - `Approx_HArray1OfAdHSurface::Approx_HArray1OfAdHSurface()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Approx_HArray1OfAdHSurface_ctor()) }
+    }
+
+    /// **Source:** `Approx_HArray1OfAdHSurface.hxx`:24 - `Approx_HArray1OfAdHSurface::Approx_HArray1OfAdHSurface()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Approx_HArray1OfAdHSurface_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `Approx_HArray1OfAdHSurface.hxx`:24 - `Approx_HArray1OfAdHSurface::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Approx_HArray1OfAdHSurface_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Approx_HArray1OfAdHSurface.hxx`:24 - `Approx_HArray1OfAdHSurface::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Approx_HArray1OfAdHSurface_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `Approx_HArray1OfAdHSurface.hxx`:24 - `Approx_HArray1OfAdHSurface::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Approx_HArray1OfAdHSurface_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleApproxHArray1OfAdHSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Approx_HArray1OfAdHSurface_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleApproxHArray1OfAdHSurface;
+
+unsafe impl crate::CppDeletable for HandleApproxHArray1OfAdHSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleApproxHArray1OfAdHSurface_destructor(ptr);
+    }
+}
+
+impl HandleApproxHArray1OfAdHSurface {
+    /// Dereference this Handle to access the underlying Approx_HArray1OfAdHSurface
+    pub fn get(&self) -> &crate::ffi::Approx_HArray1OfAdHSurface {
+        unsafe { &*(crate::ffi::HandleApproxHArray1OfAdHSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Approx_HArray1OfAdHSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Approx_HArray1OfAdHSurface {
+        unsafe { &mut *(crate::ffi::HandleApproxHArray1OfAdHSurface_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From Approx_HArray1OfGTrsf2d.hxx
+// ========================
+
+/// **Source:** `Approx_HArray1OfGTrsf2d.hxx`:23 - `Approx_HArray1OfGTrsf2d`
+pub use crate::ffi::Approx_HArray1OfGTrsf2d as HArray1OfGTrsf2d;
+
+unsafe impl crate::CppDeletable for HArray1OfGTrsf2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Approx_HArray1OfGTrsf2d_destructor(ptr);
+    }
+}
+
+impl HArray1OfGTrsf2d {
+    /// **Source:** `Approx_HArray1OfGTrsf2d.hxx`:23 - `Approx_HArray1OfGTrsf2d::Approx_HArray1OfGTrsf2d()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Approx_HArray1OfGTrsf2d_ctor()) }
+    }
+
+    /// **Source:** `Approx_HArray1OfGTrsf2d.hxx`:23 - `Approx_HArray1OfGTrsf2d::Approx_HArray1OfGTrsf2d()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Approx_HArray1OfGTrsf2d_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `Approx_HArray1OfGTrsf2d.hxx`:23 - `Approx_HArray1OfGTrsf2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Approx_HArray1OfGTrsf2d_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Approx_HArray1OfGTrsf2d.hxx`:23 - `Approx_HArray1OfGTrsf2d::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Approx_HArray1OfGTrsf2d_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `Approx_HArray1OfGTrsf2d.hxx`:23 - `Approx_HArray1OfGTrsf2d::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Approx_HArray1OfGTrsf2d_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleApproxHArray1OfGTrsf2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Approx_HArray1OfGTrsf2d_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleApproxHArray1OfGTrsf2d;
+
+unsafe impl crate::CppDeletable for HandleApproxHArray1OfGTrsf2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleApproxHArray1OfGTrsf2d_destructor(ptr);
+    }
+}
+
+impl HandleApproxHArray1OfGTrsf2d {
+    /// Dereference this Handle to access the underlying Approx_HArray1OfGTrsf2d
+    pub fn get(&self) -> &crate::ffi::Approx_HArray1OfGTrsf2d {
+        unsafe { &*(crate::ffi::HandleApproxHArray1OfGTrsf2d_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Approx_HArray1OfGTrsf2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Approx_HArray1OfGTrsf2d {
+        unsafe { &mut *(crate::ffi::HandleApproxHArray1OfGTrsf2d_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From Approx_MCurvesToBSpCurve.hxx
 // ========================
 
@@ -1249,29 +1405,6 @@ impl SweepApproximation {
         unsafe { crate::ffi::Approx_SweepApproximation_is_done(self as *const Self) }
     }
 
-    /// **Source:** `Approx_SweepApproximation.hxx`:98 - `Approx_SweepApproximation::SurfShape()`
-    pub fn surf_shape(
-        &self,
-        UDegree: &mut i32,
-        VDegree: &mut i32,
-        NbUPoles: &mut i32,
-        NbVPoles: &mut i32,
-        NbUKnots: &mut i32,
-        NbVKnots: &mut i32,
-    ) {
-        unsafe {
-            crate::ffi::Approx_SweepApproximation_surf_shape(
-                self as *const Self,
-                UDegree,
-                VDegree,
-                NbUPoles,
-                NbVPoles,
-                NbUKnots,
-                NbVKnots,
-            )
-        }
-    }
-
     /// **Source:** `Approx_SweepApproximation.hxx`:112 - `Approx_SweepApproximation::UDegree()`
     pub fn u_degree(&self) -> i32 {
         unsafe { crate::ffi::Approx_SweepApproximation_u_degree(self as *const Self) }
@@ -1302,18 +1435,6 @@ impl SweepApproximation {
     /// **Source:** `Approx_SweepApproximation.hxx`:134 - `Approx_SweepApproximation::NbCurves2d()`
     pub fn nb_curves2d(&self) -> i32 {
         unsafe { crate::ffi::Approx_SweepApproximation_nb_curves2d(self as *const Self) }
-    }
-
-    /// **Source:** `Approx_SweepApproximation.hxx`:136 - `Approx_SweepApproximation::Curves2dShape()`
-    pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32) {
-        unsafe {
-            crate::ffi::Approx_SweepApproximation_curves2d_shape(
-                self as *const Self,
-                Degree,
-                NbPoles,
-                NbKnots,
-            )
-        }
     }
 
     /// **Source:** `Approx_SweepApproximation.hxx`:145 - `Approx_SweepApproximation::Curves2dDegree()`
@@ -1372,19 +1493,6 @@ impl SweepFunction {
     /// get the number of 2d curves to  approximate.
     pub fn nb2d_curves(&self) -> i32 {
         unsafe { crate::ffi::Approx_SweepFunction_nb2d_curves(self as *const Self) }
-    }
-
-    /// **Source:** `Approx_SweepFunction.hxx`:84 - `Approx_SweepFunction::SectionShape()`
-    /// get the format of an  section
-    pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
-        unsafe {
-            crate::ffi::Approx_SweepFunction_section_shape(
-                self as *const Self,
-                NbPoles,
-                NbKnots,
-                Degree,
-            )
-        }
     }
 
     /// **Source:** `Approx_SweepFunction.hxx`:95 - `Approx_SweepFunction::IsRational()`
@@ -1486,3 +1594,11 @@ impl HandleApproxSweepFunction {
         unsafe { &mut *(crate::ffi::HandleApproxSweepFunction_get_mut(self as *mut Self)) }
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{
+    Approx_Array1OfAdHSurface as Array1OfAdHSurface, Approx_Array1OfGTrsf2d as Array1OfGTrsf2d,
+};

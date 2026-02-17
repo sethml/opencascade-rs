@@ -727,6 +727,17 @@ impl InternalBuilder {
         unsafe { crate::ffi::FilletSurf_InternalBuilder_inherited_NbSurf(self as *const Self, IC) }
     }
 
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:134 - `ChFi3d_FilBuilder::Sect()`
+    pub fn sect(&self, IC: i32, IS: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSecHArray1> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::FilletSurf_InternalBuilder_inherited_Sect(
+                self as *const Self,
+                IC,
+                IS,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:71 - `ChFi3d_Builder::SetParams()`
     pub fn set_params(
         &mut self,

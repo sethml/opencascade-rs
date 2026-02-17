@@ -80,6 +80,26 @@ impl ApproxAFunction {
         }
     }
 
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:122 - `AdvApprox_ApproxAFunction::Poles2d()`
+    /// returns the poles from the algorithms as is
+    pub fn poles2d(&self) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfPnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AdvApprox_ApproxAFunction_poles2d(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:125 - `AdvApprox_ApproxAFunction::Poles()`
+    /// -- returns the poles from the algorithms as is
+    pub fn poles(&self) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfPnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::AdvApprox_ApproxAFunction_poles(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:128 - `AdvApprox_ApproxAFunction::NbPoles()`
     /// as the name says
     pub fn nb_poles(&self) -> i32 {
@@ -88,14 +108,26 @@ impl ApproxAFunction {
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:134 - `AdvApprox_ApproxAFunction::Poles2d()`
     /// returns the poles at Index from the 2d subspace
-    pub fn poles2d(&self, Index: i32, P: &mut crate::ffi::TColgp_Array1OfPnt2d) {
-        unsafe { crate::ffi::AdvApprox_ApproxAFunction_poles2d(self as *const Self, Index, P) }
+    pub fn poles2d_int_array1ofpnt2d(&self, Index: i32, P: &mut crate::ffi::TColgp_Array1OfPnt2d) {
+        unsafe {
+            crate::ffi::AdvApprox_ApproxAFunction_poles2d_int_array1ofpnt2d(
+                self as *const Self,
+                Index,
+                P,
+            )
+        }
     }
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:137 - `AdvApprox_ApproxAFunction::Poles()`
     /// returns the poles at Index from the 3d subspace
-    pub fn poles(&self, Index: i32, P: &mut crate::ffi::TColgp_Array1OfPnt) {
-        unsafe { crate::ffi::AdvApprox_ApproxAFunction_poles(self as *const Self, Index, P) }
+    pub fn poles_int_array1ofpnt(&self, Index: i32, P: &mut crate::ffi::TColgp_Array1OfPnt) {
+        unsafe {
+            crate::ffi::AdvApprox_ApproxAFunction_poles_int_array1ofpnt(
+                self as *const Self,
+                Index,
+                P,
+            )
+        }
     }
 
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:139 - `AdvApprox_ApproxAFunction::Degree()`

@@ -33,12 +33,6 @@ impl BuildQueue {
         unsafe { crate::ffi::BVH_BuildQueue_size(self as *mut Self) }
     }
 
-    /// **Source:** `BVH_BuildQueue.hxx`:49 - `BVH_BuildQueue::Enqueue()`
-    /// Enqueues new work-item onto BVH build queue.
-    pub fn enqueue(&mut self, theNode: &i32) {
-        unsafe { crate::ffi::BVH_BuildQueue_enqueue(self as *mut Self, theNode) }
-    }
-
     /// **Source:** `BVH_BuildQueue.hxx`:52 - `BVH_BuildQueue::Fetch()`
     /// Fetches first work-item from BVH build queue.
     pub fn fetch(&mut self, wasBusy: &mut bool) -> i32 {

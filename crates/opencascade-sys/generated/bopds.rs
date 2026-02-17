@@ -803,17 +803,6 @@ impl DS {
         unsafe { crate::ffi::BOPDS_DS_add_shape_sd(self as *mut Self, theIndex, theIndexSD) }
     }
 
-    /// **Source:** `BOPDS_DS.hxx`:310 - `BOPDS_DS::HasShapeSD()`
-    /// Query
-    /// Returns true if the shape with index theIndex has the
-    /// same domain shape. In this case theIndexSD will contain
-    /// the index of same domain shape found
-    ///
-    /// interferences
-    pub fn has_shape_sd(&self, theIndex: i32, theIndexSD: &mut i32) -> bool {
-        unsafe { crate::ffi::BOPDS_DS_has_shape_sd(self as *const Self, theIndex, theIndexSD) }
-    }
-
     /// **Source:** `BOPDS_DS.hxx`:360 - `BOPDS_DS::AddInterf()`
     /// Modifier
     /// Adds the information about an interference between
@@ -1060,14 +1049,6 @@ impl IndexRange {
         unsafe { crate::ffi::BOPDS_IndexRange_set_indices(self as *mut Self, theI1, theI2) }
     }
 
-    /// **Source:** `BOPDS_IndexRange.hxx`:58 - `BOPDS_IndexRange::Indices()`
-    /// Selector
-    /// Returns the first index of the range  <theI1>
-    /// Returns the second index of the range <theI2>
-    pub fn indices(&self, theI1: &mut i32, theI2: &mut i32) {
-        unsafe { crate::ffi::BOPDS_IndexRange_indices(self as *const Self, theI1, theI2) }
-    }
-
     /// **Source:** `BOPDS_IndexRange.hxx`:62 - `BOPDS_IndexRange::Contains()`
     /// Query
     /// Returns true if the range contains <theIndex>
@@ -1127,13 +1108,6 @@ impl InterfVV {
         }
     }
 
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
-    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
-        unsafe {
-            crate::ffi::BOPDS_InterfVV_inherited_Indices(self as *const Self, theIndex1, theIndex2)
-        }
-    }
-
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
     pub fn set_index1(&mut self, theIndex: i32) {
         unsafe { crate::ffi::BOPDS_InterfVV_inherited_SetIndex1(self as *mut Self, theIndex) }
@@ -1172,11 +1146,6 @@ impl InterfVV {
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
     pub fn index_new(&self) -> i32 {
         unsafe { crate::ffi::BOPDS_InterfVV_inherited_IndexNew(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
-    pub fn has_index_new(&self, theIndex: &mut i32) -> bool {
-        unsafe { crate::ffi::BOPDS_InterfVV_inherited_HasIndexNew(self as *const Self, theIndex) }
     }
 }
 
@@ -1246,13 +1215,6 @@ impl InterfVE {
         }
     }
 
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
-    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
-        unsafe {
-            crate::ffi::BOPDS_InterfVE_inherited_Indices(self as *const Self, theIndex1, theIndex2)
-        }
-    }
-
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
     pub fn set_index1(&mut self, theIndex: i32) {
         unsafe { crate::ffi::BOPDS_InterfVE_inherited_SetIndex1(self as *mut Self, theIndex) }
@@ -1291,11 +1253,6 @@ impl InterfVE {
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
     pub fn index_new(&self) -> i32 {
         unsafe { crate::ffi::BOPDS_InterfVE_inherited_IndexNew(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
-    pub fn has_index_new(&self, theIndex: &mut i32) -> bool {
-        unsafe { crate::ffi::BOPDS_InterfVE_inherited_HasIndexNew(self as *const Self, theIndex) }
     }
 }
 
@@ -1369,13 +1326,6 @@ impl InterfVF {
         }
     }
 
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
-    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
-        unsafe {
-            crate::ffi::BOPDS_InterfVF_inherited_Indices(self as *const Self, theIndex1, theIndex2)
-        }
-    }
-
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
     pub fn set_index1(&mut self, theIndex: i32) {
         unsafe { crate::ffi::BOPDS_InterfVF_inherited_SetIndex1(self as *mut Self, theIndex) }
@@ -1414,11 +1364,6 @@ impl InterfVF {
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
     pub fn index_new(&self) -> i32 {
         unsafe { crate::ffi::BOPDS_InterfVF_inherited_IndexNew(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
-    pub fn has_index_new(&self, theIndex: &mut i32) -> bool {
-        unsafe { crate::ffi::BOPDS_InterfVF_inherited_HasIndexNew(self as *const Self, theIndex) }
     }
 }
 
@@ -1484,13 +1429,6 @@ impl InterfEE {
         }
     }
 
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
-    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
-        unsafe {
-            crate::ffi::BOPDS_InterfEE_inherited_Indices(self as *const Self, theIndex1, theIndex2)
-        }
-    }
-
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
     pub fn set_index1(&mut self, theIndex: i32) {
         unsafe { crate::ffi::BOPDS_InterfEE_inherited_SetIndex1(self as *mut Self, theIndex) }
@@ -1529,11 +1467,6 @@ impl InterfEE {
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
     pub fn index_new(&self) -> i32 {
         unsafe { crate::ffi::BOPDS_InterfEE_inherited_IndexNew(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
-    pub fn has_index_new(&self, theIndex: &mut i32) -> bool {
-        unsafe { crate::ffi::BOPDS_InterfEE_inherited_HasIndexNew(self as *const Self, theIndex) }
     }
 }
 
@@ -1604,13 +1537,6 @@ impl InterfEF {
         }
     }
 
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
-    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
-        unsafe {
-            crate::ffi::BOPDS_InterfEF_inherited_Indices(self as *const Self, theIndex1, theIndex2)
-        }
-    }
-
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
     pub fn set_index1(&mut self, theIndex: i32) {
         unsafe { crate::ffi::BOPDS_InterfEF_inherited_SetIndex1(self as *mut Self, theIndex) }
@@ -1649,11 +1575,6 @@ impl InterfEF {
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
     pub fn index_new(&self) -> i32 {
         unsafe { crate::ffi::BOPDS_InterfEF_inherited_IndexNew(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
-    pub fn has_index_new(&self, theIndex: &mut i32) -> bool {
-        unsafe { crate::ffi::BOPDS_InterfEF_inherited_HasIndexNew(self as *const Self, theIndex) }
     }
 }
 
@@ -1712,13 +1633,6 @@ impl InterfFF {
         }
     }
 
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
-    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
-        unsafe {
-            crate::ffi::BOPDS_InterfFF_inherited_Indices(self as *const Self, theIndex1, theIndex2)
-        }
-    }
-
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
     pub fn set_index1(&mut self, theIndex: i32) {
         unsafe { crate::ffi::BOPDS_InterfFF_inherited_SetIndex1(self as *mut Self, theIndex) }
@@ -1757,11 +1671,6 @@ impl InterfFF {
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
     pub fn index_new(&self) -> i32 {
         unsafe { crate::ffi::BOPDS_InterfFF_inherited_IndexNew(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
-    pub fn has_index_new(&self, theIndex: &mut i32) -> bool {
-        unsafe { crate::ffi::BOPDS_InterfFF_inherited_HasIndexNew(self as *const Self, theIndex) }
     }
 }
 
@@ -1807,13 +1716,6 @@ impl InterfVZ {
         }
     }
 
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
-    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
-        unsafe {
-            crate::ffi::BOPDS_InterfVZ_inherited_Indices(self as *const Self, theIndex1, theIndex2)
-        }
-    }
-
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
     pub fn set_index1(&mut self, theIndex: i32) {
         unsafe { crate::ffi::BOPDS_InterfVZ_inherited_SetIndex1(self as *mut Self, theIndex) }
@@ -1852,11 +1754,6 @@ impl InterfVZ {
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
     pub fn index_new(&self) -> i32 {
         unsafe { crate::ffi::BOPDS_InterfVZ_inherited_IndexNew(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
-    pub fn has_index_new(&self, theIndex: &mut i32) -> bool {
-        unsafe { crate::ffi::BOPDS_InterfVZ_inherited_HasIndexNew(self as *const Self, theIndex) }
     }
 }
 
@@ -1902,13 +1799,6 @@ impl InterfEZ {
         }
     }
 
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
-    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
-        unsafe {
-            crate::ffi::BOPDS_InterfEZ_inherited_Indices(self as *const Self, theIndex1, theIndex2)
-        }
-    }
-
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
     pub fn set_index1(&mut self, theIndex: i32) {
         unsafe { crate::ffi::BOPDS_InterfEZ_inherited_SetIndex1(self as *mut Self, theIndex) }
@@ -1947,11 +1837,6 @@ impl InterfEZ {
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
     pub fn index_new(&self) -> i32 {
         unsafe { crate::ffi::BOPDS_InterfEZ_inherited_IndexNew(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
-    pub fn has_index_new(&self, theIndex: &mut i32) -> bool {
-        unsafe { crate::ffi::BOPDS_InterfEZ_inherited_HasIndexNew(self as *const Self, theIndex) }
     }
 }
 
@@ -1997,13 +1882,6 @@ impl InterfFZ {
         }
     }
 
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
-    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
-        unsafe {
-            crate::ffi::BOPDS_InterfFZ_inherited_Indices(self as *const Self, theIndex1, theIndex2)
-        }
-    }
-
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
     pub fn set_index1(&mut self, theIndex: i32) {
         unsafe { crate::ffi::BOPDS_InterfFZ_inherited_SetIndex1(self as *mut Self, theIndex) }
@@ -2042,11 +1920,6 @@ impl InterfFZ {
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
     pub fn index_new(&self) -> i32 {
         unsafe { crate::ffi::BOPDS_InterfFZ_inherited_IndexNew(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
-    pub fn has_index_new(&self, theIndex: &mut i32) -> bool {
-        unsafe { crate::ffi::BOPDS_InterfFZ_inherited_HasIndexNew(self as *const Self, theIndex) }
     }
 }
 
@@ -2092,13 +1965,6 @@ impl InterfZZ {
         }
     }
 
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
-    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
-        unsafe {
-            crate::ffi::BOPDS_InterfZZ_inherited_Indices(self as *const Self, theIndex1, theIndex2)
-        }
-    }
-
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
     pub fn set_index1(&mut self, theIndex: i32) {
         unsafe { crate::ffi::BOPDS_InterfZZ_inherited_SetIndex1(self as *mut Self, theIndex) }
@@ -2137,11 +2003,6 @@ impl InterfZZ {
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:148 - `BOPDS_Interf::IndexNew()`
     pub fn index_new(&self) -> i32 {
         unsafe { crate::ffi::BOPDS_InterfZZ_inherited_IndexNew(self as *const Self) }
-    }
-
-    /// Inherited: **Source:** `BOPDS_Interf.hxx`:159 - `BOPDS_Interf::HasIndexNew()`
-    pub fn has_index_new(&self, theIndex: &mut i32) -> bool {
-        unsafe { crate::ffi::BOPDS_InterfZZ_inherited_HasIndexNew(self as *const Self, theIndex) }
     }
 }
 
@@ -2220,14 +2081,6 @@ impl Iterator {
     /// Moves iterations ahead
     pub fn next(&mut self) {
         unsafe { crate::ffi::BOPDS_Iterator_next(self as *mut Self) }
-    }
-
-    /// **Source:** `BOPDS_Iterator.hxx`:76 - `BOPDS_Iterator::Value()`
-    /// Returns indices (DS) of intersected shapes
-    /// theIndex1 - the index of the first shape
-    /// theIndex2 - the index of the second shape
-    pub fn value(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
-        unsafe { crate::ffi::BOPDS_Iterator_value(self as *const Self, theIndex1, theIndex2) }
     }
 
     /// **Source:** `BOPDS_Iterator.hxx`:80 - `BOPDS_Iterator::Prepare()`
@@ -2377,13 +2230,6 @@ impl IteratorSI {
         unsafe { crate::ffi::BOPDS_IteratorSI_inherited_Next(self as *mut Self) }
     }
 
-    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:76 - `BOPDS_Iterator::Value()`
-    pub fn value(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
-        unsafe {
-            crate::ffi::BOPDS_IteratorSI_inherited_Value(self as *const Self, theIndex1, theIndex2)
-        }
-    }
-
     /// Inherited: **Source:** `BOPDS_Iterator.hxx`:80 - `BOPDS_Iterator::Prepare()`
     pub fn prepare(
         &mut self,
@@ -2453,12 +2299,6 @@ impl Pair {
         unsafe { crate::ffi::BOPDS_Pair_set_indices(self as *mut Self, theIndex1, theIndex2) }
     }
 
-    /// **Source:** `BOPDS_Pair.hxx`:54 - `BOPDS_Pair::Indices()`
-    /// Gets the indices
-    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
-        unsafe { crate::ffi::BOPDS_Pair_indices(self as *const Self, theIndex1, theIndex2) }
-    }
-
     /// **Source:** `BOPDS_Pair.hxx`:70 - `BOPDS_Pair::IsEqual()`
     /// Returns true if the Pair is equal to <the theOther>
     pub fn is_equal(&self, theOther: &crate::ffi::BOPDS_Pair) -> bool {
@@ -2514,14 +2354,6 @@ impl Pave {
     /// Returns the parameter of vertex
     pub fn parameter(&self) -> f64 {
         unsafe { crate::ffi::BOPDS_Pave_parameter(self as *const Self) }
-    }
-
-    /// **Source:** `BOPDS_Pave.hxx`:54 - `BOPDS_Pave::Contents()`
-    /// Selector
-    /// Returns the index of vertex <theIndex>
-    /// Returns the parameter of vertex <theParameter>
-    pub fn contents(&self, theIndex: &mut i32, theParameter: &mut f64) {
-        unsafe { crate::ffi::BOPDS_Pave_contents(self as *const Self, theIndex, theParameter) }
     }
 
     /// **Source:** `BOPDS_Pave.hxx`:59 - `BOPDS_Pave::IsLess()`
@@ -2631,14 +2463,6 @@ impl PaveBlock {
         unsafe { crate::ffi::BOPDS_PaveBlock_has_edge(self as *const Self) }
     }
 
-    /// **Source:** `BOPDS_PaveBlock.hxx`:77 - `BOPDS_PaveBlock::HasEdge()`
-    /// Query
-    /// Returns true if the pave block has edge
-    /// Returns the index of edge <theEdge>
-    pub fn has_edge_int(&self, theEdge: &mut i32) -> bool {
-        unsafe { crate::ffi::BOPDS_PaveBlock_has_edge_int(self as *const Self, theEdge) }
-    }
-
     /// **Source:** `BOPDS_PaveBlock.hxx`:82 - `BOPDS_PaveBlock::SetOriginalEdge()`
     /// Modifier
     /// Sets the index of original edge
@@ -2679,14 +2503,6 @@ impl PaveBlock {
         unsafe { crate::ffi::BOPDS_PaveBlock_has_same_bounds(self as *const Self, theOther) }
     }
 
-    /// **Source:** `BOPDS_PaveBlock.hxx`:107 - `BOPDS_PaveBlock::Indices()`
-    /// Selector
-    /// Returns the pave indices  <theIndex1,theIndex2>
-    /// of the pave block
-    pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
-        unsafe { crate::ffi::BOPDS_PaveBlock_indices(self as *const Self, theIndex1, theIndex2) }
-    }
-
     /// **Source:** `BOPDS_PaveBlock.hxx`:111 - `BOPDS_PaveBlock::IsToUpdate()`
     /// Query
     /// Returns true if the pave block contains extra paves
@@ -2713,23 +2529,6 @@ impl PaveBlock {
     /// Removes a pave with the given vertex number from extra paves
     pub fn remove_ext_pave(&mut self, theVertNum: i32) {
         unsafe { crate::ffi::BOPDS_PaveBlock_remove_ext_pave(self as *mut Self, theVertNum) }
-    }
-
-    /// **Source:** `BOPDS_PaveBlock.hxx`:146 - `BOPDS_PaveBlock::ContainsParameter()`
-    /// Query
-    /// Returns true if the extra paves contain the pave
-    /// with given value of the parameter <thePrm>
-    /// <theTol>  - the value of the tolerance to compare
-    /// <theInd>  - index of the found pave
-    pub fn contains_parameter(&self, thePrm: f64, theTol: f64, theInd: &mut i32) -> bool {
-        unsafe {
-            crate::ffi::BOPDS_PaveBlock_contains_parameter(
-                self as *const Self,
-                thePrm,
-                theTol,
-                theInd,
-            )
-        }
     }
 
     /// **Source:** `BOPDS_PaveBlock.hxx`:155 - `BOPDS_PaveBlock::SetShrunkData()`
@@ -3066,14 +2865,6 @@ impl ShapeInfo {
         unsafe { crate::ffi::BOPDS_ShapeInfo_has_flag(self as *const Self) }
     }
 
-    /// **Source:** `BOPDS_ShapeInfo.hxx`:113 - `BOPDS_ShapeInfo::HasFlag()`
-    /// Query
-    /// Returns true if there is flag.
-    /// Returns the flag theFlag
-    pub fn has_flag_int(&self, theFlag: &mut i32) -> bool {
-        unsafe { crate::ffi::BOPDS_ShapeInfo_has_flag_int(self as *const Self, theFlag) }
-    }
-
     /// **Source:** `BOPDS_ShapeInfo.hxx`:117 - `BOPDS_ShapeInfo::SetFlag()`
     /// Modifier
     /// Sets the flag
@@ -3152,14 +2943,6 @@ impl SubIterator {
     /// Moves iterations ahead
     pub fn next(&mut self) {
         unsafe { crate::ffi::BOPDS_SubIterator_next(self as *mut Self) }
-    }
-
-    /// **Source:** `BOPDS_SubIterator.hxx`:83 - `BOPDS_SubIterator::Value()`
-    /// Returns indices (DS) of intersected shapes
-    /// theIndex1 - the index of the first shape
-    /// theIndex2 - the index of the second shape
-    pub fn value(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
-        unsafe { crate::ffi::BOPDS_SubIterator_value(self as *const Self, theIndex1, theIndex2) }
     }
 
     /// **Source:** `BOPDS_SubIterator.hxx`:87 - `BOPDS_SubIterator::Prepare()`

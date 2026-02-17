@@ -797,49 +797,6 @@ impl Graph {
         unsafe { crate::ffi::MAT_Graph_number_of_infinite_nodes(self as *const Self) }
     }
 
-    /// **Source:** `MAT_Graph.hxx`:94 - `MAT_Graph::FusionOfBasicElts()`
-    /// Merge two BasicElts.  The End of the BasicElt Elt1
-    /// of  IndexElt1 becomes The End of the BasicElt Elt2
-    /// of  IndexElt2.   Elt2 is replaced in  the  arcs  by
-    /// Elt1, Elt2 is eliminated.
-    ///
-    /// <MergeArc1> is True  if the fusion  of the BasicElts  =>
-    /// a fusion  of two Arcs which separated  the same  elements.
-    /// In this case <GeomIndexArc1> and  <GeomIndexArc2>  are the
-    /// Geometric  Index of this  arcs.
-    ///
-    /// If the  BasicElt corresponds to a close line ,
-    /// the StartArc and the EndArc of Elt1 can separate the same
-    /// elements .
-    /// In this case there is a fusion of this arcs, <MergeArc2>
-    /// is true and <GeomIndexArc3> and  <GeomIndexArc4>  are the
-    /// Geometric  Index of this  arcs.
-    pub fn fusion_of_basic_elts(
-        &mut self,
-        IndexElt1: i32,
-        IndexElt2: i32,
-        MergeArc1: &mut bool,
-        GeomIndexArc1: &mut i32,
-        GeomIndexArc2: &mut i32,
-        MergeArc2: &mut bool,
-        GeomIndexArc3: &mut i32,
-        GeomIndexArc4: &mut i32,
-    ) {
-        unsafe {
-            crate::ffi::MAT_Graph_fusion_of_basic_elts(
-                self as *mut Self,
-                IndexElt1,
-                IndexElt2,
-                MergeArc1,
-                GeomIndexArc1,
-                GeomIndexArc2,
-                MergeArc2,
-                GeomIndexArc3,
-                GeomIndexArc4,
-            )
-        }
-    }
-
     /// **Source:** `MAT_Graph.hxx`:103 - `MAT_Graph::CompactArcs()`
     pub fn compact_arcs(&mut self) {
         unsafe { crate::ffi::MAT_Graph_compact_arcs(self as *mut Self) }

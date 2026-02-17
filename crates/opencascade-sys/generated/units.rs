@@ -628,6 +628,14 @@ impl Lexicon {
         unsafe { crate::ffi::Units_Lexicon_creates(self as *mut Self) }
     }
 
+    /// **Source:** `Units_Lexicon.hxx`:49 - `Units_Lexicon::Sequence()`
+    /// Returns the first item of the sequence of tokens.
+    pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsTokensSequence> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_Lexicon_sequence(self as *const Self))
+        }
+    }
+
     /// **Source:** `Units_Lexicon.hxx`:55 - `Units_Lexicon::AddToken()`
     /// Adds to the lexicon a new token with <aword>, <amean>,
     /// <avalue>  as  arguments.  If there is  already a token
@@ -741,6 +749,15 @@ impl MathSentence {
     /// Inherited: **Source:** `Units_Sentence.hxx`:42 - `Units_Sentence::SetConstants()`
     pub fn set_constants(&mut self) {
         unsafe { crate::ffi::Units_MathSentence_inherited_SetConstants(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Units_Sentence.hxx`:45 - `Units_Sentence::Sequence()`
+    pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsTokensSequence> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_MathSentence_inherited_Sequence(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Units_Sentence.hxx`:52 - `Units_Sentence::Evaluate()`
@@ -1101,6 +1118,76 @@ impl NoSuchUnit {
 }
 
 // ========================
+// From Units_QuantitiesSequence.hxx
+// ========================
+
+/// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence`
+pub use crate::ffi::Units_QuantitiesSequence as QuantitiesSequence;
+
+unsafe impl crate::CppDeletable for QuantitiesSequence {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Units_QuantitiesSequence_destructor(ptr);
+    }
+}
+
+impl QuantitiesSequence {
+    /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::Units_QuantitiesSequence()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_QuantitiesSequence_ctor()) }
+    }
+
+    /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Units_QuantitiesSequence_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Units_QuantitiesSequence_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Units_QuantitiesSequence_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleUnitsQuantitiesSequence> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_QuantitiesSequence_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleUnitsQuantitiesSequence;
+
+unsafe impl crate::CppDeletable for HandleUnitsQuantitiesSequence {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleUnitsQuantitiesSequence_destructor(ptr);
+    }
+}
+
+impl HandleUnitsQuantitiesSequence {
+    /// Dereference this Handle to access the underlying Units_QuantitiesSequence
+    pub fn get(&self) -> &crate::ffi::Units_QuantitiesSequence {
+        unsafe { &*(crate::ffi::HandleUnitsQuantitiesSequence_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Units_QuantitiesSequence
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Units_QuantitiesSequence {
+        unsafe { &mut *(crate::ffi::HandleUnitsQuantitiesSequence_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From Units_Quantity.hxx
 // ========================
 
@@ -1118,6 +1205,22 @@ unsafe impl crate::CppDeletable for Quantity {
 }
 
 impl Quantity {
+    /// **Source:** `Units_Quantity.hxx`:45 - `Units_Quantity::Units_Quantity()`
+    /// Creates  a new Quantity  object with <aname> which  is
+    /// the name of the physical quantity, <adimensions> which
+    /// is the physical dimensions, and <aunitssequence> which
+    /// describes all the units known for this quantity.
+    pub fn new_charptr_handleunitsdimensions_handleunitsunitssequence(
+        aname: &str,
+        adimensions: &crate::ffi::HandleUnitsDimensions,
+        aunitssequence: &crate::ffi::HandleUnitsUnitsSequence,
+    ) -> crate::OwnedPtr<Self> {
+        let c_aname = std::ffi::CString::new(aname).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_Quantity_ctor_charptr_handleunitsdimensions_handleunitsunitssequence(c_aname.as_ptr(), adimensions, aunitssequence))
+        }
+    }
+
     /// **Source:** `Units_Quantity.hxx`:50 - `Units_Quantity::Name()`
     /// Returns in a AsciiString from TCollection the name of the quantity.
     pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
@@ -1129,6 +1232,15 @@ impl Quantity {
     pub fn dimensions(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsDimensions> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_Quantity_dimensions(self as *const Self))
+        }
+    }
+
+    /// **Source:** `Units_Quantity.hxx`:57 - `Units_Quantity::Sequence()`
+    /// Returns <theunitssequence>, which  is the  sequence of
+    /// all the units stored for this physical quantity.
+    pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsUnitsSequence> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_Quantity_sequence(self as *const Self))
         }
     }
 
@@ -1229,6 +1341,28 @@ impl Sentence {
     /// For each constant encountered, sets the value.
     pub fn set_constants(&mut self) {
         unsafe { crate::ffi::Units_Sentence_set_constants(self as *mut Self) }
+    }
+
+    /// **Source:** `Units_Sentence.hxx`:45 - `Units_Sentence::Sequence()`
+    /// Returns <thesequenceoftokens>.
+    pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsTokensSequence> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_Sentence_sequence(self as *const Self))
+        }
+    }
+
+    /// **Source:** `Units_Sentence.hxx`:48 - `Units_Sentence::Sequence()`
+    /// Sets the field <thesequenceoftokens> to <asequenceoftokens>.
+    pub fn sequence_handleunitstokenssequence(
+        &mut self,
+        asequenceoftokens: &crate::ffi::HandleUnitsTokensSequence,
+    ) {
+        unsafe {
+            crate::ffi::Units_Sentence_sequence_handleunitstokenssequence(
+                self as *mut Self,
+                asequenceoftokens,
+            )
+        }
     }
 
     /// **Source:** `Units_Sentence.hxx`:52 - `Units_Sentence::Evaluate()`
@@ -2051,6 +2185,74 @@ impl HandleUnitsToken {
 }
 
 // ========================
+// From Units_TokensSequence.hxx
+// ========================
+
+/// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence`
+pub use crate::ffi::Units_TokensSequence as TokensSequence;
+
+unsafe impl crate::CppDeletable for TokensSequence {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Units_TokensSequence_destructor(ptr);
+    }
+}
+
+impl TokensSequence {
+    /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::Units_TokensSequence()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_TokensSequence_ctor()) }
+    }
+
+    /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Units_TokensSequence_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Units_TokensSequence_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Units_TokensSequence_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleUnitsTokensSequence> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_TokensSequence_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleUnitsTokensSequence;
+
+unsafe impl crate::CppDeletable for HandleUnitsTokensSequence {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleUnitsTokensSequence_destructor(ptr);
+    }
+}
+
+impl HandleUnitsTokensSequence {
+    /// Dereference this Handle to access the underlying Units_TokensSequence
+    pub fn get(&self) -> &crate::ffi::Units_TokensSequence {
+        unsafe { &*(crate::ffi::HandleUnitsTokensSequence_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Units_TokensSequence
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Units_TokensSequence {
+        unsafe { &mut *(crate::ffi::HandleUnitsTokensSequence_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From Units_Unit.hxx
 // ========================
 
@@ -2258,12 +2460,41 @@ impl UnitSentence {
         }
     }
 
+    /// **Source:** `Units_UnitSentence.hxx`:46 - `Units_UnitSentence::Units_UnitSentence()`
+    /// Creates  and returns    a  UnitSentence.  The   string
+    /// <astring> describes in natural language the unit to be
+    /// analysed.   The    sequence     of physical quantities
+    /// <asequenceofquantities>   describes    the   available
+    /// dictionary of units you want to use.
+    pub fn new_charptr_handleunitsquantitiessequence(
+        astring: &str,
+        aquantitiessequence: &crate::ffi::HandleUnitsQuantitiesSequence,
+    ) -> crate::OwnedPtr<Self> {
+        let c_astring = std::ffi::CString::new(astring).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Units_UnitSentence_ctor_charptr_handleunitsquantitiessequence(
+                    c_astring.as_ptr(),
+                    aquantitiessequence,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `Units_UnitSentence.hxx`:52 - `Units_UnitSentence::Analyse()`
     /// Analyzes   the sequence  of   tokens  created  by  the
     /// constructor to  find  the true significance   of  each
     /// token.
     pub fn analyse(&mut self) {
         unsafe { crate::ffi::Units_UnitSentence_analyse(self as *mut Self) }
+    }
+
+    /// **Source:** `Units_UnitSentence.hxx`:57 - `Units_UnitSentence::SetUnits()`
+    /// For each token which  represents a unit, finds  in the
+    /// sequence    of    physical   quantities      all   the
+    /// characteristics of the unit found.
+    pub fn set_units(&mut self, aquantitiessequence: &crate::ffi::HandleUnitsQuantitiesSequence) {
+        unsafe { crate::ffi::Units_UnitSentence_set_units(self as *mut Self, aquantitiessequence) }
     }
 
     /// Upcast to Units_Sentence
@@ -2279,6 +2510,15 @@ impl UnitSentence {
     /// Inherited: **Source:** `Units_Sentence.hxx`:42 - `Units_Sentence::SetConstants()`
     pub fn set_constants(&mut self) {
         unsafe { crate::ffi::Units_UnitSentence_inherited_SetConstants(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Units_Sentence.hxx`:45 - `Units_Sentence::Sequence()`
+    pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsTokensSequence> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitSentence_inherited_Sequence(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Units_Sentence.hxx`:52 - `Units_Sentence::Evaluate()`
@@ -2329,6 +2569,17 @@ impl UnitsDictionary {
     /// physical quantity by physical quantity.
     pub fn creates(&mut self) {
         unsafe { crate::ffi::Units_UnitsDictionary_creates(self as *mut Self) }
+    }
+
+    /// **Source:** `Units_UnitsDictionary.hxx`:43 - `Units_UnitsDictionary::Sequence()`
+    /// Returns   the  head   of   the  sequence  of  physical
+    /// quantities.
+    pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsQuantitiesSequence> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsDictionary_sequence(
+                self as *const Self,
+            ))
+        }
     }
 
     /// **Source:** `Units_UnitsDictionary.hxx`:46 - `Units_UnitsDictionary::ActiveUnit()`
@@ -2482,6 +2733,83 @@ impl UnitsLexicon {
     pub fn as_lexicon_mut(&mut self) -> &mut Lexicon {
         unsafe { &mut *(crate::ffi::Units_UnitsLexicon_as_Units_Lexicon_mut(self as *mut Self)) }
     }
+
+    /// Inherited: **Source:** `Units_Lexicon.hxx`:49 - `Units_Lexicon::Sequence()`
+    pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsTokensSequence> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsLexicon_inherited_Sequence(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From Units_UnitsSequence.hxx
+// ========================
+
+/// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence`
+pub use crate::ffi::Units_UnitsSequence as UnitsSequence;
+
+unsafe impl crate::CppDeletable for UnitsSequence {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Units_UnitsSequence_destructor(ptr);
+    }
+}
+
+impl UnitsSequence {
+    /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Units_UnitsSequence()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsSequence_ctor()) }
+    }
+
+    /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Units_UnitsSequence_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Units_UnitsSequence_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Units_UnitsSequence_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleUnitsUnitsSequence> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsSequence_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleUnitsUnitsSequence;
+
+unsafe impl crate::CppDeletable for HandleUnitsUnitsSequence {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleUnitsUnitsSequence_destructor(ptr);
+    }
+}
+
+impl HandleUnitsUnitsSequence {
+    /// Dereference this Handle to access the underlying Units_UnitsSequence
+    pub fn get(&self) -> &crate::ffi::Units_UnitsSequence {
+        unsafe { &*(crate::ffi::HandleUnitsUnitsSequence_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Units_UnitsSequence
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Units_UnitsSequence {
+        unsafe { &mut *(crate::ffi::HandleUnitsUnitsSequence_get_mut(self as *mut Self)) }
+    }
 }
 
 // ========================
@@ -2539,6 +2867,18 @@ impl UnitsSystem {
     /// See : Resource_Manager for the description of this file.
     pub fn new_charptr(aName: &str) -> crate::OwnedPtr<Self> {
         Self::new_charptr_bool(aName, false)
+    }
+
+    /// **Source:** `Units_UnitsSystem.hxx`:54 - `Units_UnitsSystem::QuantitiesSequence()`
+    /// Returns the sequence of refined quantities.
+    pub fn quantities_sequence(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleUnitsQuantitiesSequence> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsSystem_quantities_sequence(
+                self as *const Self,
+            ))
+        }
     }
 
     /// **Source:** `Units_UnitsSystem.hxx`:60 - `Units_UnitsSystem::ActiveUnitsSequence()`
@@ -2731,6 +3071,6 @@ impl HandleUnitsUnitsSystem {
 // ========================
 
 pub use crate::ffi::{
-    Units_QuantitiesSequence as QuantitiesSequence, Units_TokensSequence as TokensSequence,
-    Units_UnitsSequence as UnitsSequence,
+    Units_QtsSequence as QtsSequence, Units_TksSequence as TksSequence,
+    Units_UtsSequence as UtsSequence,
 };

@@ -2155,20 +2155,6 @@ impl Tool {
         unsafe { crate::ffi::TNaming_Tool_has_label(access, aShape) }
     }
 
-    /// **Source:** `TNaming_Tool.hxx`:142 - `TNaming_Tool::Label()`
-    /// Returns  the label  of   the first apparition  of
-    /// <aShape>.  Transdef  is a value of the transaction
-    /// of the first apparition of <aShape>.
-    pub fn label(
-        access: &crate::ffi::TDF_Label,
-        aShape: &crate::ffi::TopoDS_Shape,
-        TransDef: &mut i32,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TNaming_Tool_label(access, aShape, TransDef))
-        }
-    }
-
     /// **Source:** `TNaming_Tool.hxx`:154 - `TNaming_Tool::ValidUntil()`
     /// Returns the last transaction where the creation of S
     /// is valid.

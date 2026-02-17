@@ -1166,21 +1166,6 @@ impl FunctionAllRoots {
         unsafe { crate::ffi::math_FunctionAllRoots_get_interval(self as *const Self, Index, A, B) }
     }
 
-    /// **Source:** `math_FunctionAllRoots.hxx`:71 - `math_FunctionAllRoots::GetIntervalState()`
-    /// returns the State Number associated to the interval Index.
-    /// An exception is raised if IsDone returns False;
-    /// An exception is raised if Index<=0 or Index >Nbintervals.
-    pub fn get_interval_state(&self, Index: i32, IFirst: &mut i32, ILast: &mut i32) {
-        unsafe {
-            crate::ffi::math_FunctionAllRoots_get_interval_state(
-                self as *const Self,
-                Index,
-                IFirst,
-                ILast,
-            )
-        }
-    }
-
     /// **Source:** `math_FunctionAllRoots.hxx`:77 - `math_FunctionAllRoots::NbPoints()`
     /// returns the number of points where the function is Null.
     /// An exception is raised if IsDone returns False.

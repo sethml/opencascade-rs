@@ -1143,6 +1143,85 @@ impl Curve2d {
 }
 
 // ========================
+// From BRepAdaptor_HArray1OfCurve.hxx
+// ========================
+
+/// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve`
+pub use crate::ffi::BRepAdaptor_HArray1OfCurve as HArray1OfCurve;
+
+unsafe impl crate::CppDeletable for HArray1OfCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepAdaptor_HArray1OfCurve_destructor(ptr);
+    }
+}
+
+impl HArray1OfCurve {
+    /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::BRepAdaptor_HArray1OfCurve()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_HArray1OfCurve_ctor()) }
+    }
+
+    /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::BRepAdaptor_HArray1OfCurve()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepAdaptor_HArray1OfCurve_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepAdaptor_HArray1OfCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepAdaptor_HArray1OfCurve_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepAdaptorHArray1OfCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_HArray1OfCurve_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepAdaptorHArray1OfCurve;
+
+unsafe impl crate::CppDeletable for HandleBRepAdaptorHArray1OfCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepAdaptorHArray1OfCurve_destructor(ptr);
+    }
+}
+
+impl HandleBRepAdaptorHArray1OfCurve {
+    /// Dereference this Handle to access the underlying BRepAdaptor_HArray1OfCurve
+    pub fn get(&self) -> &crate::ffi::BRepAdaptor_HArray1OfCurve {
+        unsafe { &*(crate::ffi::HandleBRepAdaptorHArray1OfCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepAdaptor_HArray1OfCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepAdaptor_HArray1OfCurve {
+        unsafe { &mut *(crate::ffi::HandleBRepAdaptorHArray1OfCurve_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From BRepAdaptor_Surface.hxx
 // ========================
 
@@ -1687,3 +1766,9 @@ impl Surface {
         }
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::BRepAdaptor_Array1OfCurve as Array1OfCurve;

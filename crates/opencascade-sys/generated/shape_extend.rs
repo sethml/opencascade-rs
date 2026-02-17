@@ -712,6 +712,40 @@ impl CompositeSurface {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_ctor()) }
     }
 
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:80 - `ShapeExtend_CompositeSurface::ShapeExtend_CompositeSurface()`
+    /// Initializes by a grid of surfaces (calls Init()).
+    pub fn new_handletcolgeomharray2ofsurface_parametrisation(
+        GridSurf: &crate::ffi::HandleTColGeomHArray2OfSurface,
+        param: crate::shape_extend::Parametrisation,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_ctor_handletcolgeomharray2ofsurface_parametrisation(GridSurf, param.into()))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:102 - `ShapeExtend_CompositeSurface::Init()`
+    /// Initializes by a grid of surfaces.
+    /// All the Surfaces of the grid must have geometrical
+    /// connectivity as stated above.
+    /// If geometrical connectivity is not satisfied, method
+    /// returns False.
+    /// However, class is initialized even in that case.
+    ///
+    /// Last parameter defines how global parametrisation
+    /// (joint values) will be computed:
+    /// ShapeExtend_Natural: U1 = u11min, Ui+1 = Ui + (ui1max-ui1min), etc.
+    /// ShapeExtend_Uniform: Ui = i-1, Vj = j-1
+    /// ShapeExtend_Unitary: Ui = (i-1)/Nu, Vi = (j-1)/Nv
+    pub fn init(
+        &mut self,
+        GridSurf: &crate::ffi::HandleTColGeomHArray2OfSurface,
+        param: crate::shape_extend::Parametrisation,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_init(self as *mut Self, GridSurf, param.into())
+        }
+    }
+
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:120 - `ShapeExtend_CompositeSurface::NbUPatches()`
     /// Returns number of patches in U direction.
     pub fn nb_u_patches(&self) -> i32 {
@@ -730,6 +764,12 @@ impl CompositeSurface {
         unsafe {
             &*(crate::ffi::ShapeExtend_CompositeSurface_patch_int2(self as *const Self, i, j))
         }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:130 - `ShapeExtend_CompositeSurface::Patches()`
+    /// Returns grid of surfaces
+    pub fn patches(&self) -> &crate::ffi::HandleTColGeomHArray2OfSurface {
+        unsafe { &*(crate::ffi::ShapeExtend_CompositeSurface_patches(self as *const Self)) }
     }
 
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:135 - `ShapeExtend_CompositeSurface::UJointValues()`
@@ -803,15 +843,6 @@ impl CompositeSurface {
     pub fn locate_v_parameter(&self, V: f64) -> i32 {
         unsafe {
             crate::ffi::ShapeExtend_CompositeSurface_locate_v_parameter(self as *const Self, V)
-        }
-    }
-
-    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:182 - `ShapeExtend_CompositeSurface::LocateUVPoint()`
-    /// Returns number of row and col of surface that contains
-    /// given point
-    pub fn locate_uv_point(&self, pnt: &crate::ffi::gp_Pnt2d, i: &mut i32, j: &mut i32) {
-        unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_locate_uv_point(self as *const Self, pnt, i, j)
         }
     }
 
@@ -1458,6 +1489,75 @@ impl Explorer {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_Explorer_ctor()) }
     }
 
+    /// **Source:** `ShapeExtend_Explorer.hxx`:45 - `ShapeExtend_Explorer::CompoundFromSeq()`
+    /// Converts a sequence of Shapes to a Compound
+    pub fn compound_from_seq(
+        &self,
+        seqval: &crate::ffi::HandleTopToolsHSequenceOfShape,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_Explorer_compound_from_seq(
+                self as *const Self,
+                seqval,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_Explorer.hxx`:53 - `ShapeExtend_Explorer::SeqFromCompound()`
+    /// Converts a Compound to a list of Shapes
+    /// if <comp> is not a compound, the list contains only <comp>
+    /// if <comp> is Null, the list is empty
+    /// if <comp> is a Compound, its sub-shapes are put into the list
+    /// then if <expcomp> is True, if a sub-shape is a Compound, it
+    /// is not put to the list but its sub-shapes are (recursive)
+    pub fn seq_from_compound(
+        &self,
+        comp: &crate::ffi::TopoDS_Shape,
+        expcomp: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_Explorer_seq_from_compound(
+                self as *const Self,
+                comp,
+                expcomp,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_Explorer.hxx`:60 - `ShapeExtend_Explorer::ListFromSeq()`
+    /// Converts a Sequence of Shapes to a List of Shapes
+    /// <clear> if True (D), commands the list to start from scratch
+    /// else, the list is cumulated
+    pub fn list_from_seq(
+        &self,
+        seqval: &crate::ffi::HandleTopToolsHSequenceOfShape,
+        lisval: &mut crate::ffi::TopTools_ListOfShape,
+        clear: bool,
+    ) {
+        unsafe {
+            crate::ffi::ShapeExtend_Explorer_list_from_seq(
+                self as *const Self,
+                seqval,
+                lisval,
+                clear,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeExtend_Explorer.hxx`:65 - `ShapeExtend_Explorer::SeqFromList()`
+    /// Converts a List of Shapes to a Sequence of Shapes
+    pub fn seq_from_list(
+        &self,
+        lisval: &crate::ffi::TopTools_ListOfShape,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_Explorer_seq_from_list(
+                self as *const Self,
+                lisval,
+            ))
+        }
+    }
+
     /// **Source:** `ShapeExtend_Explorer.hxx`:73 - `ShapeExtend_Explorer::ShapeType()`
     /// Returns the type of a Shape: true type if <compound> is False
     /// If <compound> is True and <shape> is a Compound, iterates on
@@ -1506,6 +1606,39 @@ impl Explorer {
                 explore,
                 compound,
             ))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_Explorer.hxx`:96 - `ShapeExtend_Explorer::DispatchList()`
+    /// Dispatches starting list of shapes according to their type,
+    /// to the appropriate resulting lists
+    /// For each of these lists, if it is null, it is firstly created
+    /// else, new items are appended to the already existing ones
+    pub fn dispatch_list(
+        &self,
+        list: &crate::ffi::HandleTopToolsHSequenceOfShape,
+        vertices: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
+        edges: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
+        wires: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
+        faces: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
+        shells: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
+        solids: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
+        compsols: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
+        compounds: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
+    ) {
+        unsafe {
+            crate::ffi::ShapeExtend_Explorer_dispatch_list(
+                self as *const Self,
+                list,
+                vertices,
+                edges,
+                wires,
+                faces,
+                shells,
+                solids,
+                compsols,
+                compounds,
+            )
         }
     }
 }
@@ -1871,6 +2004,18 @@ impl WireData {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_WireData_nonmanifold_edge(
                 self as *const Self,
                 num,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeExtend_WireData.hxx`:183 - `ShapeExtend_WireData::NonmanifoldEdges()`
+    /// Returns sequence of non-manifold edges
+    /// This sequence can be not empty if wire data set in manifold mode but
+    /// initial wire has INTERNAL orientation or contains INTERNAL edges
+    pub fn nonmanifold_edges(&self) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_WireData_nonmanifold_edges(
+                self as *const Self,
             ))
         }
     }

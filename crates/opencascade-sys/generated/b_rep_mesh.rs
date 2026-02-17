@@ -1932,29 +1932,6 @@ impl Delaun {
         unsafe { &*(crate::ffi::BRepMesh_Delaun_circles(self as *const Self)) }
     }
 
-    /// **Source:** `BRepMesh_Delaun.hxx`:126 - `BRepMesh_Delaun::Contains()`
-    /// Test is the given triangle contains the given vertex.
-    /// @param theSqTolerance square tolerance to check closeness to some edge
-    /// @param theEdgeOn If it is != 0 the vertex lies onto the edge index
-    /// returned through this parameter.
-    pub fn contains(
-        &self,
-        theTriangleId: i32,
-        theVertex: &crate::ffi::BRepMesh_Vertex,
-        theSqTolerance: f64,
-        theEdgeOn: &mut i32,
-    ) -> bool {
-        unsafe {
-            crate::ffi::BRepMesh_Delaun_contains(
-                self as *const Self,
-                theTriangleId,
-                theVertex,
-                theSqTolerance,
-                theEdgeOn,
-            )
-        }
-    }
-
     /// **Source:** `BRepMesh_Delaun.hxx`:140 - `BRepMesh_Delaun::RemoveAuxElements()`
     /// Destruction of auxiliary triangles containing the given vertices.
     /// Removes auxiliary vertices also.
@@ -3111,27 +3088,6 @@ impl MeshTool {
                 thePoint1,
                 thePoint2,
                 thePoint3,
-            )
-        }
-    }
-
-    /// **Source:** `BRepMesh_MeshTool.hxx`:118 - `BRepMesh_MeshTool::AddLink()`
-    /// Adds new link to mesh.
-    /// Updates link index and link orientation parameters.
-    pub fn add_link(
-        &mut self,
-        theFirstNode: i32,
-        theLastNode: i32,
-        theLinkIndex: &mut i32,
-        theLinkOri: &mut bool,
-    ) {
-        unsafe {
-            crate::ffi::BRepMesh_MeshTool_add_link(
-                self as *mut Self,
-                theFirstNode,
-                theLastNode,
-                theLinkIndex,
-                theLinkOri,
             )
         }
     }

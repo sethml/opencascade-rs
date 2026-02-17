@@ -50,11 +50,6 @@ impl BndBoxTreeSelectorPoint {
         }
     }
 
-    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:44 - `BRepClass3d_BndBoxTreeSelectorPoint::Accept()`
-    pub fn accept(&mut self, theObj: &i32) -> bool {
-        unsafe { crate::ffi::BRepClass3d_BndBoxTreeSelectorPoint_accept(self as *mut Self, theObj) }
-    }
-
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:47 - `BRepClass3d_BndBoxTreeSelectorPoint::SetCurrentPoint()`
     pub fn set_current_point(&mut self, theP: &crate::ffi::gp_Pnt) {
         unsafe {
@@ -94,11 +89,6 @@ impl BndBoxTreeSelectorLine {
         unsafe {
             crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_reject(self as *const Self, theBox)
         }
-    }
-
-    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:85 - `BRepClass3d_BndBoxTreeSelectorLine::Accept()`
-    pub fn accept(&mut self, theObj: &i32) -> bool {
-        unsafe { crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_accept(self as *mut Self, theObj) }
     }
 
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:88 - `BRepClass3d_BndBoxTreeSelectorLine::SetCurrentLine()`
@@ -540,29 +530,6 @@ impl SolidExplorer {
     /// Should return True if P outside of bounding vol. of the shape
     pub fn reject(&self, P: &crate::ffi::gp_Pnt) -> bool {
         unsafe { crate::ffi::BRepClass3d_SolidExplorer_reject(self as *const Self, P) }
-    }
-
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:86 - `BRepClass3d_SolidExplorer::PointInTheFace()`
-    pub fn point_in_the_face(
-        &self,
-        F: &crate::ffi::TopoDS_Face,
-        P: &mut crate::ffi::gp_Pnt,
-        u: &mut f64,
-        v: &mut f64,
-        Param: &mut f64,
-        Index: &mut i32,
-    ) -> bool {
-        unsafe {
-            crate::ffi::BRepClass3d_SolidExplorer_point_in_the_face(
-                self as *const Self,
-                F,
-                P,
-                u,
-                v,
-                Param,
-                Index,
-            )
-        }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:122 - `BRepClass3d_SolidExplorer::InitShell()`

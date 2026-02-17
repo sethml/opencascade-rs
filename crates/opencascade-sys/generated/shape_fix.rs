@@ -1033,87 +1033,6 @@ impl Face {
         unsafe { crate::ffi::ShapeFix_Face_set_max_tolerance(self as *mut Self, maxtol) }
     }
 
-    /// **Source:** `ShapeFix_Face.hxx`:96 - `ShapeFix_Face::FixWireMode()`
-    /// Returns (modifiable) the mode for applying fixes of
-    /// ShapeFix_Wire, by default True.
-    pub fn fix_wire_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Face_fix_wire_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Face.hxx`:100 - `ShapeFix_Face::FixOrientationMode()`
-    /// Returns (modifiable) the fix orientation mode, by default
-    /// True. If True, wires oriented to border limited square.
-    pub fn fix_orientation_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Face_fix_orientation_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Face.hxx`:106 - `ShapeFix_Face::FixAddNaturalBoundMode()`
-    /// Returns (modifiable) the add natural bound mode.
-    /// If true, natural boundary is added on faces that miss them.
-    /// Default is False for faces with single wire (they are
-    /// handled by FixOrientation in that case) and True for others.
-    pub fn fix_add_natural_bound_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Face_fix_add_natural_bound_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Face.hxx`:110 - `ShapeFix_Face::FixMissingSeamMode()`
-    /// Returns (modifiable) the fix missing seam mode, by default
-    /// True. If True, tries to insert seam is missed.
-    pub fn fix_missing_seam_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Face_fix_missing_seam_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Face.hxx`:114 - `ShapeFix_Face::FixSmallAreaWireMode()`
-    /// Returns (modifiable) the fix small area wire mode, by default
-    /// False. If True, drops small wires.
-    pub fn fix_small_area_wire_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Face_fix_small_area_wire_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Face.hxx`:118 - `ShapeFix_Face::RemoveSmallAreaFaceMode()`
-    /// Returns (modifiable) the remove face with small area, by default
-    /// False. If True, drops faces with small outer wires.
-    pub fn remove_small_area_face_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Face_remove_small_area_face_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Face.hxx`:122 - `ShapeFix_Face::FixIntersectingWiresMode()`
-    /// Returns (modifiable) the fix intersecting wires mode
-    /// by default True.
-    pub fn fix_intersecting_wires_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Face_fix_intersecting_wires_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Face.hxx`:126 - `ShapeFix_Face::FixLoopWiresMode()`
-    /// Returns (modifiable) the fix loop wires mode
-    /// by default True.
-    pub fn fix_loop_wires_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Face_fix_loop_wires_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Face.hxx`:130 - `ShapeFix_Face::FixSplitFaceMode()`
-    /// Returns (modifiable) the fix split face mode
-    /// by default True.
-    pub fn fix_split_face_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Face_fix_split_face_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Face.hxx`:134 - `ShapeFix_Face::AutoCorrectPrecisionMode()`
-    /// Returns (modifiable) the auto-correct precision mode
-    /// by default False.
-    pub fn auto_correct_precision_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Face_auto_correct_precision_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Face.hxx`:138 - `ShapeFix_Face::FixPeriodicDegeneratedMode()`
-    /// Returns (modifiable) the activation flag for periodic
-    /// degenerated fix. False by default.
-    pub fn fix_periodic_degenerated_mode(&mut self) -> &mut i32 {
-        unsafe {
-            &mut *(crate::ffi::ShapeFix_Face_fix_periodic_degenerated_mode(self as *mut Self))
-        }
-    }
-
     /// **Source:** `ShapeFix_Face.hxx`:143 - `ShapeFix_Face::Face()`
     /// Returns a face which corresponds to the current state
     /// Warning: The finally produced face may be another one ... but with the
@@ -2096,27 +2015,6 @@ impl IntersectionTool {
         }
     }
 
-    /// **Source:** `ShapeFix_IntersectionTool.hxx`:66 - `ShapeFix_IntersectionTool::FixSelfIntersectWire()`
-    pub fn fix_self_intersect_wire(
-        &self,
-        sewd: &mut crate::ffi::HandleShapeExtendWireData,
-        face: &crate::ffi::TopoDS_Face,
-        NbSplit: &mut i32,
-        NbCut: &mut i32,
-        NbRemoved: &mut i32,
-    ) -> bool {
-        unsafe {
-            crate::ffi::ShapeFix_IntersectionTool_fix_self_intersect_wire(
-                self as *const Self,
-                sewd,
-                face,
-                NbSplit,
-                NbCut,
-                NbRemoved,
-            )
-        }
-    }
-
     /// **Source:** `ShapeFix_IntersectionTool.hxx`:72 - `ShapeFix_IntersectionTool::FixIntersectingWires()`
     pub fn fix_intersecting_wires(&self, face: &mut crate::ffi::TopoDS_Face) -> bool {
         unsafe {
@@ -2433,55 +2331,6 @@ impl Shape {
         unsafe { crate::ffi::ShapeFix_Shape_set_max_tolerance(self as *mut Self, maxtol) }
     }
 
-    /// **Source:** `ShapeFix_Shape.hxx`:106 - `ShapeFix_Shape::FixSolidMode()`
-    /// Returns (modifiable) the mode for applying fixes of
-    /// ShapeFix_Solid, by default True.
-    pub fn fix_solid_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Shape_fix_solid_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Shape.hxx`:110 - `ShapeFix_Shape::FixFreeShellMode()`
-    /// Returns (modifiable) the mode for applying fixes of
-    /// ShapeFix_Shell, by default True.
-    pub fn fix_free_shell_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Shape_fix_free_shell_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Shape.hxx`:114 - `ShapeFix_Shape::FixFreeFaceMode()`
-    /// Returns (modifiable) the mode for applying fixes of
-    /// ShapeFix_Face, by default True.
-    pub fn fix_free_face_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Shape_fix_free_face_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Shape.hxx`:118 - `ShapeFix_Shape::FixFreeWireMode()`
-    /// Returns (modifiable) the mode for applying fixes of
-    /// ShapeFix_Wire, by default True.
-    pub fn fix_free_wire_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Shape_fix_free_wire_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Shape.hxx`:122 - `ShapeFix_Shape::FixSameParameterMode()`
-    /// Returns (modifiable) the mode for applying
-    /// ShapeFix::SameParameter after all fixes, by default True.
-    pub fn fix_same_parameter_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Shape_fix_same_parameter_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Shape.hxx`:126 - `ShapeFix_Shape::FixVertexPositionMode()`
-    /// Returns (modifiable) the mode for applying
-    /// ShapeFix::FixVertexPosition before all fixes, by default False.
-    pub fn fix_vertex_position_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Shape_fix_vertex_position_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Shape.hxx`:130 - `ShapeFix_Shape::FixVertexTolMode()`
-    /// Returns (modifiable) the mode for fixing tolerances of vertices on whole shape
-    /// after performing all fixes
-    pub fn fix_vertex_tol_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Shape_fix_vertex_tol_mode(self as *mut Self)) }
-    }
-
     /// **Source:** `ShapeFix_Shape.hxx`:132 - `ShapeFix_Shape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ShapeFix_Shape_dynamic_type(self as *const Self)) }
@@ -2793,20 +2642,6 @@ impl Shell {
         unsafe { crate::ffi::ShapeFix_Shell_set_max_tolerance(self as *mut Self, maxtol) }
     }
 
-    /// **Source:** `ShapeFix_Shell.hxx`:114 - `ShapeFix_Shell::FixFaceMode()`
-    /// Returns (modifiable) the mode for applying fixes of
-    /// ShapeFix_Face, by default True.
-    pub fn fix_face_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Shell_fix_face_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Shell.hxx`:118 - `ShapeFix_Shell::FixOrientationMode()`
-    /// Returns (modifiable) the mode for applying
-    /// FixFaceOrientation, by default True.
-    pub fn fix_orientation_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Shell_fix_orientation_mode(self as *mut Self)) }
-    }
-
     /// **Source:** `ShapeFix_Shell.hxx`:121 - `ShapeFix_Shell::SetNonManifoldFlag()`
     /// Sets NonManifold flag
     pub fn set_non_manifold_flag(&mut self, isNonManifold: bool) {
@@ -3010,20 +2845,6 @@ impl Solid {
     /// Sets maximal allowed tolerance (also to FixShellTool)
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         unsafe { crate::ffi::ShapeFix_Solid_set_max_tolerance(self as *mut Self, maxtol) }
-    }
-
-    /// **Source:** `ShapeFix_Solid.hxx`:89 - `ShapeFix_Solid::FixShellMode()`
-    /// Returns (modifiable) the mode for applying fixes of
-    /// ShapeFix_Shell, by default True.
-    pub fn fix_shell_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Solid_fix_shell_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Solid.hxx`:93 - `ShapeFix_Solid::FixShellOrientationMode()`
-    /// Returns (modifiable) the mode for applying analysis and fixes of
-    /// orientation of shells in the solid; by default True.
-    pub fn fix_shell_orientation_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Solid_fix_shell_orientation_mode(self as *mut Self)) }
     }
 
     /// **Source:** `ShapeFix_Solid.hxx`:100 - `ShapeFix_Solid::CreateOpenSolidMode()`
@@ -3697,13 +3518,6 @@ impl Wire {
         unsafe { &mut *(crate::ffi::ShapeFix_Wire_modify_geometry_mode(self as *mut Self)) }
     }
 
-    /// **Source:** `ShapeFix_Wire.hxx`:177 - `ShapeFix_Wire::ModifyRemoveLoopMode()`
-    /// Returns (modifiable) the flag which defines whether the Fix..()
-    /// methods are allowed to modify RemoveLoop of the edges
-    pub fn modify_remove_loop_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_modify_remove_loop_mode(self as *mut Self)) }
-    }
-
     /// **Source:** `ShapeFix_Wire.hxx`:182 - `ShapeFix_Wire::ClosedWireMode()`
     /// Returns (modifiable) the flag which defines whether the wire
     /// is to be closed (by calling methods like FixDegenerated()
@@ -3726,139 +3540,6 @@ impl Wire {
     /// using intersection, extrema, projections) or not.
     pub fn fix_gaps_by_ranges_mode(&mut self) -> &mut bool {
         unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_gaps_by_ranges_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:194 - `ShapeFix_Wire::FixReorderMode()`
-    pub fn fix_reorder_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_reorder_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:196 - `ShapeFix_Wire::FixSmallMode()`
-    pub fn fix_small_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_small_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:198 - `ShapeFix_Wire::FixConnectedMode()`
-    pub fn fix_connected_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_connected_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:200 - `ShapeFix_Wire::FixEdgeCurvesMode()`
-    pub fn fix_edge_curves_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_edge_curves_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:202 - `ShapeFix_Wire::FixDegeneratedMode()`
-    pub fn fix_degenerated_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_degenerated_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:204 - `ShapeFix_Wire::FixSelfIntersectionMode()`
-    pub fn fix_self_intersection_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_self_intersection_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:206 - `ShapeFix_Wire::FixLackingMode()`
-    pub fn fix_lacking_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_lacking_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:208 - `ShapeFix_Wire::FixGaps3dMode()`
-    pub fn fix_gaps3d_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_gaps3d_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:216 - `ShapeFix_Wire::FixGaps2dMode()`
-    /// Returns (modifiable) the flag for corresponding Fix..() method
-    /// which defines whether this method will be called from the
-    /// method APIFix():
-    /// -1 default
-    /// 1 method will be called
-    /// 0 method will not be called
-    pub fn fix_gaps2d_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_gaps2d_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:218 - `ShapeFix_Wire::FixReversed2dMode()`
-    pub fn fix_reversed2d_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_reversed2d_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:220 - `ShapeFix_Wire::FixRemovePCurveMode()`
-    pub fn fix_remove_p_curve_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_remove_p_curve_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:222 - `ShapeFix_Wire::FixAddPCurveMode()`
-    pub fn fix_add_p_curve_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_add_p_curve_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:224 - `ShapeFix_Wire::FixRemoveCurve3dMode()`
-    pub fn fix_remove_curve3d_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_remove_curve3d_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:226 - `ShapeFix_Wire::FixAddCurve3dMode()`
-    pub fn fix_add_curve3d_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_add_curve3d_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:228 - `ShapeFix_Wire::FixSeamMode()`
-    pub fn fix_seam_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_seam_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:230 - `ShapeFix_Wire::FixShiftedMode()`
-    pub fn fix_shifted_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_shifted_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:232 - `ShapeFix_Wire::FixSameParameterMode()`
-    pub fn fix_same_parameter_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_same_parameter_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:234 - `ShapeFix_Wire::FixVertexToleranceMode()`
-    pub fn fix_vertex_tolerance_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_vertex_tolerance_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:236 - `ShapeFix_Wire::FixNotchedEdgesMode()`
-    pub fn fix_notched_edges_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_notched_edges_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:238 - `ShapeFix_Wire::FixSelfIntersectingEdgeMode()`
-    pub fn fix_self_intersecting_edge_mode(&mut self) -> &mut i32 {
-        unsafe {
-            &mut *(crate::ffi::ShapeFix_Wire_fix_self_intersecting_edge_mode(self as *mut Self))
-        }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:240 - `ShapeFix_Wire::FixIntersectingEdgesMode()`
-    pub fn fix_intersecting_edges_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_intersecting_edges_mode(self as *mut Self)) }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:248 - `ShapeFix_Wire::FixNonAdjacentIntersectingEdgesMode()`
-    /// Returns (modifiable) the flag for corresponding Fix..() method
-    /// which defines whether this method will be called from the
-    /// corresponding Fix..() method of the public level:
-    /// -1 default
-    /// 1 method will be called
-    /// 0 method will not be called
-    pub fn fix_non_adjacent_intersecting_edges_mode(&mut self) -> &mut i32 {
-        unsafe {
-            &mut *(crate::ffi::ShapeFix_Wire_fix_non_adjacent_intersecting_edges_mode(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeFix_Wire.hxx`:250 - `ShapeFix_Wire::FixTailMode()`
-    pub fn fix_tail_mode(&mut self) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::ShapeFix_Wire_fix_tail_mode(self as *mut Self)) }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:267 - `ShapeFix_Wire::Perform()`
@@ -4530,28 +4211,6 @@ impl WireSegment {
     /// as to satisfy eq. iumin <= myIUMin(i) <= myIUMax(i) <= iumax
     pub fn define_iv_max(&mut self, i: i32, ivmax: i32) {
         unsafe { crate::ffi::ShapeFix_WireSegment_define_iv_max(self as *mut Self, i, ivmax) }
-    }
-
-    /// **Source:** `ShapeFix_WireSegment.hxx`:139 - `ShapeFix_WireSegment::GetPatchIndex()`
-    /// Returns patch indices for edge i.
-    pub fn get_patch_index(
-        &self,
-        i: i32,
-        iumin: &mut i32,
-        iumax: &mut i32,
-        ivmin: &mut i32,
-        ivmax: &mut i32,
-    ) {
-        unsafe {
-            crate::ffi::ShapeFix_WireSegment_get_patch_index(
-                self as *const Self,
-                i,
-                iumin,
-                iumax,
-                ivmin,
-                ivmax,
-            )
-        }
     }
 
     /// **Source:** `ShapeFix_WireSegment.hxx`:147 - `ShapeFix_WireSegment::CheckPatchIndex()`

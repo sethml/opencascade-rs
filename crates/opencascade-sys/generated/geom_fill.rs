@@ -334,29 +334,6 @@ impl AppSurf {
         unsafe { crate::ffi::GeomFill_AppSurf_is_done(self as *const Self) }
     }
 
-    /// **Source:** `GeomFill_AppSurf.hxx`:107 - `GeomFill_AppSurf::SurfShape()`
-    pub fn surf_shape(
-        &self,
-        UDegree: &mut i32,
-        VDegree: &mut i32,
-        NbUPoles: &mut i32,
-        NbVPoles: &mut i32,
-        NbUKnots: &mut i32,
-        NbVKnots: &mut i32,
-    ) {
-        unsafe {
-            crate::ffi::GeomFill_AppSurf_surf_shape(
-                self as *const Self,
-                UDegree,
-                VDegree,
-                NbUPoles,
-                NbVPoles,
-                NbUKnots,
-                NbVKnots,
-            )
-        }
-    }
-
     /// **Source:** `GeomFill_AppSurf.hxx`:121 - `GeomFill_AppSurf::UDegree()`
     pub fn u_degree(&self) -> i32 {
         unsafe { crate::ffi::GeomFill_AppSurf_u_degree(self as *const Self) }
@@ -375,18 +352,6 @@ impl AppSurf {
     /// **Source:** `GeomFill_AppSurf.hxx`:137 - `GeomFill_AppSurf::NbCurves2d()`
     pub fn nb_curves2d(&self) -> i32 {
         unsafe { crate::ffi::GeomFill_AppSurf_nb_curves2d(self as *const Self) }
-    }
-
-    /// **Source:** `GeomFill_AppSurf.hxx`:139 - `GeomFill_AppSurf::Curves2dShape()`
-    pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32) {
-        unsafe {
-            crate::ffi::GeomFill_AppSurf_curves2d_shape(
-                self as *const Self,
-                Degree,
-                NbPoles,
-                NbKnots,
-            )
-        }
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:148 - `GeomFill_AppSurf::Curves2dDegree()`
@@ -594,29 +559,6 @@ impl AppSweep {
         unsafe { crate::ffi::GeomFill_AppSweep_is_done(self as *const Self) }
     }
 
-    /// **Source:** `GeomFill_AppSweep.hxx`:107 - `GeomFill_AppSweep::SurfShape()`
-    pub fn surf_shape(
-        &self,
-        UDegree: &mut i32,
-        VDegree: &mut i32,
-        NbUPoles: &mut i32,
-        NbVPoles: &mut i32,
-        NbUKnots: &mut i32,
-        NbVKnots: &mut i32,
-    ) {
-        unsafe {
-            crate::ffi::GeomFill_AppSweep_surf_shape(
-                self as *const Self,
-                UDegree,
-                VDegree,
-                NbUPoles,
-                NbVPoles,
-                NbUKnots,
-                NbVKnots,
-            )
-        }
-    }
-
     /// **Source:** `GeomFill_AppSweep.hxx`:121 - `GeomFill_AppSweep::UDegree()`
     pub fn u_degree(&self) -> i32 {
         unsafe { crate::ffi::GeomFill_AppSweep_u_degree(self as *const Self) }
@@ -635,18 +577,6 @@ impl AppSweep {
     /// **Source:** `GeomFill_AppSweep.hxx`:137 - `GeomFill_AppSweep::NbCurves2d()`
     pub fn nb_curves2d(&self) -> i32 {
         unsafe { crate::ffi::GeomFill_AppSweep_nb_curves2d(self as *const Self) }
-    }
-
-    /// **Source:** `GeomFill_AppSweep.hxx`:139 - `GeomFill_AppSweep::Curves2dShape()`
-    pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32) {
-        unsafe {
-            crate::ffi::GeomFill_AppSweep_curves2d_shape(
-                self as *const Self,
-                Degree,
-                NbPoles,
-                NbKnots,
-            )
-        }
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:148 - `GeomFill_AppSweep::Curves2dDegree()`
@@ -1436,19 +1366,6 @@ impl CircularBlendFunc {
     /// get the number of 2d curves to  approximate.
     pub fn nb2d_curves(&self) -> i32 {
         unsafe { crate::ffi::GeomFill_CircularBlendFunc_nb2d_curves(self as *const Self) }
-    }
-
-    /// **Source:** `GeomFill_CircularBlendFunc.hxx`:98 - `GeomFill_CircularBlendFunc::SectionShape()`
-    /// get the format of an  section
-    pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
-        unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_section_shape(
-                self as *const Self,
-                NbPoles,
-                NbKnots,
-                Degree,
-            )
-        }
     }
 
     /// **Source:** `GeomFill_CircularBlendFunc.hxx`:109 - `GeomFill_CircularBlendFunc::IsRational()`
@@ -3798,19 +3715,6 @@ impl EvolvedSection {
         }
     }
 
-    /// **Source:** `GeomFill_EvolvedSection.hxx`:79 - `GeomFill_EvolvedSection::SectionShape()`
-    /// get the format of an  section
-    pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
-        unsafe {
-            crate::ffi::GeomFill_EvolvedSection_section_shape(
-                self as *const Self,
-                NbPoles,
-                NbKnots,
-                Degree,
-            )
-        }
-    }
-
     /// **Source:** `GeomFill_EvolvedSection.hxx`:90 - `GeomFill_EvolvedSection::IsRational()`
     /// Returns if the sections are rational or not
     pub fn is_rational(&self) -> bool {
@@ -5228,6 +5132,232 @@ impl GuideTrihedronPlan {
 }
 
 // ========================
+// From GeomFill_HArray1OfLocationLaw.hxx
+// ========================
+
+/// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw`
+pub use crate::ffi::GeomFill_HArray1OfLocationLaw as HArray1OfLocationLaw;
+
+unsafe impl crate::CppDeletable for HArray1OfLocationLaw {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomFill_HArray1OfLocationLaw_destructor(ptr);
+    }
+}
+
+impl HArray1OfLocationLaw {
+    /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::GeomFill_HArray1OfLocationLaw()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomFill_HArray1OfLocationLaw_ctor()) }
+    }
+
+    /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::GeomFill_HArray1OfLocationLaw()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_HArray1OfLocationLaw_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::GeomFill_HArray1OfLocationLaw_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::GeomFill_HArray1OfLocationLaw_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::GeomFill_HArray1OfLocationLaw_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillHArray1OfLocationLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_HArray1OfLocationLaw_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillHArray1OfLocationLaw;
+
+unsafe impl crate::CppDeletable for HandleGeomFillHArray1OfLocationLaw {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillHArray1OfLocationLaw_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillHArray1OfLocationLaw {
+    /// Dereference this Handle to access the underlying GeomFill_HArray1OfLocationLaw
+    pub fn get(&self) -> &crate::ffi::GeomFill_HArray1OfLocationLaw {
+        unsafe { &*(crate::ffi::HandleGeomFillHArray1OfLocationLaw_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_HArray1OfLocationLaw
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_HArray1OfLocationLaw {
+        unsafe { &mut *(crate::ffi::HandleGeomFillHArray1OfLocationLaw_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From GeomFill_HArray1OfSectionLaw.hxx
+// ========================
+
+/// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw`
+pub use crate::ffi::GeomFill_HArray1OfSectionLaw as HArray1OfSectionLaw;
+
+unsafe impl crate::CppDeletable for HArray1OfSectionLaw {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomFill_HArray1OfSectionLaw_destructor(ptr);
+    }
+}
+
+impl HArray1OfSectionLaw {
+    /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw::GeomFill_HArray1OfSectionLaw()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomFill_HArray1OfSectionLaw_ctor()) }
+    }
+
+    /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw::GeomFill_HArray1OfSectionLaw()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_HArray1OfSectionLaw_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::GeomFill_HArray1OfSectionLaw_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::GeomFill_HArray1OfSectionLaw_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::GeomFill_HArray1OfSectionLaw_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillHArray1OfSectionLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_HArray1OfSectionLaw_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillHArray1OfSectionLaw;
+
+unsafe impl crate::CppDeletable for HandleGeomFillHArray1OfSectionLaw {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillHArray1OfSectionLaw_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillHArray1OfSectionLaw {
+    /// Dereference this Handle to access the underlying GeomFill_HArray1OfSectionLaw
+    pub fn get(&self) -> &crate::ffi::GeomFill_HArray1OfSectionLaw {
+        unsafe { &*(crate::ffi::HandleGeomFillHArray1OfSectionLaw_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_HArray1OfSectionLaw
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_HArray1OfSectionLaw {
+        unsafe { &mut *(crate::ffi::HandleGeomFillHArray1OfSectionLaw_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From GeomFill_HSequenceOfAx2.hxx
+// ========================
+
+/// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2`
+pub use crate::ffi::GeomFill_HSequenceOfAx2 as HSequenceOfAx2;
+
+unsafe impl crate::CppDeletable for HSequenceOfAx2 {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomFill_HSequenceOfAx2_destructor(ptr);
+    }
+}
+
+impl HSequenceOfAx2 {
+    /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::GeomFill_HSequenceOfAx2()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomFill_HSequenceOfAx2_ctor()) }
+    }
+
+    /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::GeomFill_HSequenceOfAx2_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::GeomFill_HSequenceOfAx2_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::GeomFill_HSequenceOfAx2_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillHSequenceOfAx2> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_HSequenceOfAx2_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillHSequenceOfAx2;
+
+unsafe impl crate::CppDeletable for HandleGeomFillHSequenceOfAx2 {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillHSequenceOfAx2_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillHSequenceOfAx2 {
+    /// Dereference this Handle to access the underlying GeomFill_HSequenceOfAx2
+    pub fn get(&self) -> &crate::ffi::GeomFill_HSequenceOfAx2 {
+        unsafe { &*(crate::ffi::HandleGeomFillHSequenceOfAx2_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_HSequenceOfAx2
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_HSequenceOfAx2 {
+        unsafe { &mut *(crate::ffi::HandleGeomFillHSequenceOfAx2_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // From GeomFill_Line.hxx
 // ========================
 
@@ -5352,29 +5482,6 @@ impl LocFunction {
     /// section  for v = param
     pub fn d2(&mut self, Param: f64, First: f64, Last: f64) -> bool {
         unsafe { crate::ffi::GeomFill_LocFunction_d2(self as *mut Self, Param, First, Last) }
-    }
-
-    /// **Source:** `GeomFill_LocFunction.hxx`:53 - `GeomFill_LocFunction::DN()`
-    pub fn dn(
-        &mut self,
-        Param: f64,
-        First: f64,
-        Last: f64,
-        Order: i32,
-        Result: &mut f64,
-        Ier: &mut i32,
-    ) {
-        unsafe {
-            crate::ffi::GeomFill_LocFunction_dn(
-                self as *mut Self,
-                Param,
-                First,
-                Last,
-                Order,
-                Result,
-                Ier,
-            )
-        }
     }
 }
 
@@ -6024,6 +6131,22 @@ impl LocationGuide {
         unsafe { crate::ffi::GeomFill_LocationGuide_set_origine(self as *mut Self, Param1, Param2) }
     }
 
+    /// **Source:** `GeomFill_LocationGuide.hxx`:197 - `GeomFill_LocationGuide::ComputeAutomaticLaw()`
+    pub fn compute_automatic_law(
+        &self,
+        ParAndRad: &mut crate::ffi::HandleTColgpHArray1OfPnt2d,
+    ) -> crate::geom_fill::PipeError {
+        unsafe {
+            crate::geom_fill::PipeError::try_from(
+                crate::ffi::GeomFill_LocationGuide_compute_automatic_law(
+                    self as *const Self,
+                    ParAndRad,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
     /// **Source:** `GeomFill_LocationGuide.hxx`:199 - `GeomFill_LocationGuide::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomFill_LocationGuide_dynamic_type(self as *const Self)) }
@@ -6403,19 +6526,6 @@ impl NSections {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_NSections_b_spline_surface(
                 self as *const Self,
             ))
-        }
-    }
-
-    /// **Source:** `GeomFill_NSections.hxx`:120 - `GeomFill_NSections::SectionShape()`
-    /// get the format of an  section
-    pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
-        unsafe {
-            crate::ffi::GeomFill_NSections_section_shape(
-                self as *const Self,
-                NbPoles,
-                NbKnots,
-                Degree,
-            )
         }
     }
 
@@ -7385,25 +7495,6 @@ impl SectionGenerator {
         unsafe { crate::ffi::GeomFill_SectionGenerator_set_param(self as *mut Self, Params) }
     }
 
-    /// **Source:** `GeomFill_SectionGenerator.hxx`:46 - `GeomFill_SectionGenerator::GetShape()`
-    pub fn get_shape(
-        &self,
-        NbPoles: &mut i32,
-        NbKnots: &mut i32,
-        Degree: &mut i32,
-        NbPoles2d: &mut i32,
-    ) {
-        unsafe {
-            crate::ffi::GeomFill_SectionGenerator_get_shape(
-                self as *const Self,
-                NbPoles,
-                NbKnots,
-                Degree,
-                NbPoles2d,
-            )
-        }
-    }
-
     /// **Source:** `GeomFill_SectionGenerator.hxx`:73 - `GeomFill_SectionGenerator::Parameter()`
     /// Returns  the parameter of   Section<P>, to impose  it for the
     /// approximation.
@@ -7498,19 +7589,6 @@ impl SectionLaw {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_SectionLaw_b_spline_surface(
                 self as *const Self,
             ))
-        }
-    }
-
-    /// **Source:** `GeomFill_SectionLaw.hxx`:73 - `GeomFill_SectionLaw::SectionShape()`
-    /// get the format of an  section
-    pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
-        unsafe {
-            crate::ffi::GeomFill_SectionLaw_section_shape(
-                self as *const Self,
-                NbPoles,
-                NbKnots,
-                Degree,
-            )
         }
     }
 
@@ -8605,19 +8683,6 @@ impl SweepFunction {
         unsafe { crate::ffi::GeomFill_SweepFunction_nb2d_curves(self as *const Self) }
     }
 
-    /// **Source:** `GeomFill_SweepFunction.hxx`:92 - `GeomFill_SweepFunction::SectionShape()`
-    /// get the format of a section
-    pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
-        unsafe {
-            crate::ffi::GeomFill_SweepFunction_section_shape(
-                self as *const Self,
-                NbPoles,
-                NbKnots,
-                Degree,
-            )
-        }
-    }
-
     /// **Source:** `GeomFill_SweepFunction.hxx`:103 - `GeomFill_SweepFunction::IsRational()`
     /// Returns if the section is rational or not
     pub fn is_rational(&self) -> bool {
@@ -8905,25 +8970,6 @@ impl SweepSectionGenerator {
     /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:89 - `GeomFill_SweepSectionGenerator::Perform()`
     pub fn perform(&mut self, Polynomial: bool) {
         unsafe { crate::ffi::GeomFill_SweepSectionGenerator_perform(self as *mut Self, Polynomial) }
-    }
-
-    /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:91 - `GeomFill_SweepSectionGenerator::GetShape()`
-    pub fn get_shape(
-        &self,
-        NbPoles: &mut i32,
-        NbKnots: &mut i32,
-        Degree: &mut i32,
-        NbPoles2d: &mut i32,
-    ) {
-        unsafe {
-            crate::ffi::GeomFill_SweepSectionGenerator_get_shape(
-                self as *const Self,
-                NbPoles,
-                NbKnots,
-                Degree,
-                NbPoles2d,
-            )
-        }
     }
 
     /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:100 - `GeomFill_SweepSectionGenerator::NbSections()`
@@ -9711,19 +9757,6 @@ impl UniformSection {
         }
     }
 
-    /// **Source:** `GeomFill_UniformSection.hxx`:80 - `GeomFill_UniformSection::SectionShape()`
-    /// get the format of an  section
-    pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
-        unsafe {
-            crate::ffi::GeomFill_UniformSection_section_shape(
-                self as *const Self,
-                NbPoles,
-                NbKnots,
-                Degree,
-            )
-        }
-    }
-
     /// **Source:** `GeomFill_UniformSection.hxx`:91 - `GeomFill_UniformSection::IsRational()`
     /// Returns if the sections are rational or not
     pub fn is_rational(&self) -> bool {
@@ -9882,4 +9915,8 @@ impl UniformSection {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::GeomFill_SequenceOfTrsf as SequenceOfTrsf;
+pub use crate::ffi::{
+    GeomFill_Array1OfLocationLaw as Array1OfLocationLaw,
+    GeomFill_Array1OfSectionLaw as Array1OfSectionLaw, GeomFill_SequenceOfAx2 as SequenceOfAx2,
+    GeomFill_SequenceOfTrsf as SequenceOfTrsf,
+};

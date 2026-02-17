@@ -85,7 +85,7 @@ impl Wire {
         let mut edges_seq = top_tools::HSequenceOfShape::new();
 
         for edge in unordered_edges {
-            edges_seq.append_shape(edge.as_ref().inner.as_shape());
+            edges_seq.change_sequence().append(edge.as_ref().inner.as_shape());
         }
 
         let mut edges_handle = top_tools::HSequenceOfShape::to_handle(edges_seq);
@@ -104,7 +104,7 @@ impl Wire {
         let mut make_wire = b_rep_builder_api::MakeWire::new();
 
         let wires_obj = wires_handle.get();
-        let wire_seq = wires_obj.as_sequence_of_shape();
+        let wire_seq = wires_obj.sequence();
         let wire_len = wire_seq.size();
 
         for index in 1..=wire_len {

@@ -513,70 +513,6 @@ impl SectionPoint {
         }
     }
 
-    /// **Source:** `Intf_SectionPoint.hxx`:53 - `Intf_SectionPoint::InfoFirst()`
-    pub fn info_first_pitype_int2_real(
-        &self,
-        Dim: &mut i32,
-        Add1: &mut i32,
-        Add2: &mut i32,
-        Param: &mut f64,
-    ) {
-        unsafe {
-            crate::ffi::Intf_SectionPoint_info_first_pitype_int2_real(
-                self as *const Self,
-                Dim,
-                Add1,
-                Add2,
-                Param,
-            )
-        }
-    }
-
-    /// **Source:** `Intf_SectionPoint.hxx`:59 - `Intf_SectionPoint::InfoFirst()`
-    /// Gives the data about the first argument of the Interference.
-    pub fn info_first_pitype_int_real(&self, Dim: &mut i32, Addr: &mut i32, Param: &mut f64) {
-        unsafe {
-            crate::ffi::Intf_SectionPoint_info_first_pitype_int_real(
-                self as *const Self,
-                Dim,
-                Addr,
-                Param,
-            )
-        }
-    }
-
-    /// **Source:** `Intf_SectionPoint.hxx`:63 - `Intf_SectionPoint::InfoSecond()`
-    pub fn info_second_pitype_int2_real(
-        &self,
-        Dim: &mut i32,
-        Add1: &mut i32,
-        Add2: &mut i32,
-        Param: &mut f64,
-    ) {
-        unsafe {
-            crate::ffi::Intf_SectionPoint_info_second_pitype_int2_real(
-                self as *const Self,
-                Dim,
-                Add1,
-                Add2,
-                Param,
-            )
-        }
-    }
-
-    /// **Source:** `Intf_SectionPoint.hxx`:69 - `Intf_SectionPoint::InfoSecond()`
-    /// Gives the data about the second argument of the Interference.
-    pub fn info_second_pitype_int_real(&self, Dim: &mut i32, Addr: &mut i32, Param: &mut f64) {
-        unsafe {
-            crate::ffi::Intf_SectionPoint_info_second_pitype_int_real(
-                self as *const Self,
-                Dim,
-                Addr,
-                Param,
-            )
-        }
-    }
-
     /// **Source:** `Intf_SectionPoint.hxx`:76 - `Intf_SectionPoint::Incidence()`
     /// Gives the incidence at  this  section point. The  incidence
     /// between the two triangles is given by the cosine.  The best
@@ -673,48 +609,6 @@ impl TangentZone {
     pub fn param_on_second(&self, paraMin: &mut f64, paraMax: &mut f64) {
         unsafe {
             crate::ffi::Intf_TangentZone_param_on_second(self as *const Self, paraMin, paraMax)
-        }
-    }
-
-    /// **Source:** `Intf_TangentZone.hxx`:60 - `Intf_TangentZone::InfoFirst()`
-    /// Gives  information  about  the    first argument   of   the
-    /// Interference. (Usable only for polygon)
-    pub fn info_first(
-        &self,
-        segMin: &mut i32,
-        paraMin: &mut f64,
-        segMax: &mut i32,
-        paraMax: &mut f64,
-    ) {
-        unsafe {
-            crate::ffi::Intf_TangentZone_info_first(
-                self as *const Self,
-                segMin,
-                paraMin,
-                segMax,
-                paraMax,
-            )
-        }
-    }
-
-    /// **Source:** `Intf_TangentZone.hxx`:67 - `Intf_TangentZone::InfoSecond()`
-    /// Gives   information   about  the  second   argument of  the
-    /// Interference. (Usable only for polygon)
-    pub fn info_second(
-        &self,
-        segMin: &mut i32,
-        paraMin: &mut f64,
-        segMax: &mut i32,
-        paraMax: &mut f64,
-    ) {
-        unsafe {
-            crate::ffi::Intf_TangentZone_info_second(
-                self as *const Self,
-                segMin,
-                paraMin,
-                segMax,
-                paraMax,
-            )
         }
     }
 

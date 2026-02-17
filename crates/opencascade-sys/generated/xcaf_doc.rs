@@ -3541,6 +3541,590 @@ impl DimTol {
 }
 
 // ========================
+// From XCAFDoc_DimTolTool.hxx
+// ========================
+
+/// **Source:** `XCAFDoc_DimTolTool.hxx`:40 - `XCAFDoc_DimTolTool`
+/// Attribute containing GD&T section of XCAF document.
+/// Provide tools for GD&T section management.
+pub use crate::ffi::XCAFDoc_DimTolTool as DimTolTool;
+
+unsafe impl crate::CppDeletable for DimTolTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XCAFDoc_DimTolTool_destructor(ptr);
+    }
+}
+
+impl DimTolTool {
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:44 - `XCAFDoc_DimTolTool::XCAFDoc_DimTolTool()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_ctor()) }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:53 - `XCAFDoc_DimTolTool::BaseLabel()`
+    /// Returns the label under which GD&T table is stored.
+    pub fn base_label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_base_label(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:60 - `XCAFDoc_DimTolTool::IsDimension()`
+    /// Returns True if the label belongs to a GD&T table and
+    /// is a Dimension definition.
+    pub fn is_dimension(&self, theLab: &crate::ffi::TDF_Label) -> bool {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_is_dimension(self as *const Self, theLab) }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:72 - `XCAFDoc_DimTolTool::SetDimension()`
+    /// Sets a dimension to target labels.
+    pub fn set_dimension_label3(
+        &self,
+        theFirstL: &crate::ffi::TDF_Label,
+        theSecondL: &crate::ffi::TDF_Label,
+        theDimL: &crate::ffi::TDF_Label,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_set_dimension_label3(
+                self as *const Self,
+                theFirstL,
+                theSecondL,
+                theDimL,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:77 - `XCAFDoc_DimTolTool::SetDimension()`
+    /// Sets a dimension to the target label.
+    pub fn set_dimension_label2(
+        &self,
+        theL: &crate::ffi::TDF_Label,
+        theDimL: &crate::ffi::TDF_Label,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_set_dimension_label2(self as *const Self, theL, theDimL)
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:84 - `XCAFDoc_DimTolTool::AddDimension()`
+    /// Adds a dimension definition to the GD&T table and returns its label.
+    pub fn add_dimension(&mut self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_add_dimension(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:87 - `XCAFDoc_DimTolTool::IsGeomTolerance()`
+    /// Returns True if the label belongs to the GD&T table and is a dimension tolerance.
+    pub fn is_geom_tolerance(&self, theLab: &crate::ffi::TDF_Label) -> bool {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_is_geom_tolerance(self as *const Self, theLab) }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:94 - `XCAFDoc_DimTolTool::SetGeomTolerance()`
+    /// Sets a geometry tolerance from theGeomTolL to theL label.
+    /// Checks if theGeomTolL is a geometry tolerance definition first.
+    pub fn set_geom_tolerance(
+        &self,
+        theL: &crate::ffi::TDF_Label,
+        theGeomTolL: &crate::ffi::TDF_Label,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_set_geom_tolerance(
+                self as *const Self,
+                theL,
+                theGeomTolL,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:106 - `XCAFDoc_DimTolTool::AddGeomTolerance()`
+    /// Adds a GeomTolerance definition to the GD&T table and returns its label.
+    pub fn add_geom_tolerance(&mut self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_add_geom_tolerance(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:109 - `XCAFDoc_DimTolTool::IsDimTol()`
+    /// Returns True if theLab belongs to the GD&T table and is a dmension tolerance.
+    pub fn is_dim_tol(&self, theLab: &crate::ffi::TDF_Label) -> bool {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_is_dim_tol(self as *const Self, theLab) }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:119 - `XCAFDoc_DimTolTool::FindDimTol()`
+    /// Finds a dimension tolerance definition in the GD&T table
+    /// satisfying the specified kind, values, name and description
+    /// and returns its label if found.
+    /// Returns False if dimension tolerance is not found in DGTtable.
+    pub fn find_dim_tol_int_handletcolstdharray1ofreal_handletcollectionhasciistring2_label(
+        &self,
+        theKind: i32,
+        theVal: &crate::ffi::HandleTColStdHArray1OfReal,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        lab: &mut crate::ffi::TDF_Label,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_find_dim_tol_int_handletcolstdharray1ofreal_handletcollectionhasciistring2_label(self as *const Self, theKind, theVal, theName, theDescription, lab)
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:129 - `XCAFDoc_DimTolTool::FindDimTol()`
+    /// Finds a dimension tolerance in the GD&T table
+    /// satisfying the specified kind, values, name and description
+    /// and returns its label if found (or Null label else).
+    pub fn find_dim_tol_int_handletcolstdharray1ofreal_handletcollectionhasciistring2(
+        &self,
+        theKind: i32,
+        theVal: &crate::ffi::HandleTColStdHArray1OfReal,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_find_dim_tol_int_handletcolstdharray1ofreal_handletcollectionhasciistring2(self as *const Self, theKind, theVal, theName, theDescription))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:136 - `XCAFDoc_DimTolTool::AddDimTol()`
+    /// Adds a dimension tolerance definition with the specified
+    /// kind, value, name and description to the GD&T table and returns its label.
+    pub fn add_dim_tol(
+        &self,
+        theKind: i32,
+        theVal: &crate::ffi::HandleTColStdHArray1OfReal,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_add_dim_tol(
+                self as *const Self,
+                theKind,
+                theVal,
+                theName,
+                theDescription,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:142 - `XCAFDoc_DimTolTool::SetDimTol()`
+    /// Sets existing dimension tolerance to theL label.
+    pub fn set_dim_tol_label2(
+        &self,
+        theL: &crate::ffi::TDF_Label,
+        theDimTolL: &crate::ffi::TDF_Label,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_set_dim_tol_label2(self as *const Self, theL, theDimTolL)
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:145 - `XCAFDoc_DimTolTool::SetDimTol()`
+    /// Creates a dimension tolerance and sets it to theL label.
+    pub fn set_dim_tol_label_int_handletcolstdharray1ofreal_handletcollectionhasciistring2(
+        &self,
+        theL: &crate::ffi::TDF_Label,
+        theKind: i32,
+        theVal: &crate::ffi::HandleTColStdHArray1OfReal,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_set_dim_tol_label_int_handletcolstdharray1ofreal_handletcollectionhasciistring2(self as *const Self, theL, theKind, theVal, theName, theDescription))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:168 - `XCAFDoc_DimTolTool::IsDatum()`
+    /// Returns True if label belongs to the GD&T table and
+    /// is a Datum definition.
+    pub fn is_datum(&self, lab: &crate::ffi::TDF_Label) -> bool {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_is_datum(self as *const Self, lab) }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:177 - `XCAFDoc_DimTolTool::FindDatum()`
+    /// Finds a datum satisfying the specified name, description and
+    /// identification and returns its label if found.
+    pub fn find_datum(
+        &self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theIdentification: &crate::ffi::HandleTCollectionHAsciiString,
+        lab: &mut crate::ffi::TDF_Label,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_find_datum(
+                self as *const Self,
+                theName,
+                theDescription,
+                theIdentification,
+                lab,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:184 - `XCAFDoc_DimTolTool::AddDatum()`
+    /// Adds a datum definition to the GD&T table and returns its label.
+    pub fn add_datum_handletcollectionhasciistring3(
+        &self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theIdentification: &crate::ffi::HandleTCollectionHAsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_DimTolTool_add_datum_handletcollectionhasciistring3(
+                    self as *const Self,
+                    theName,
+                    theDescription,
+                    theIdentification,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:189 - `XCAFDoc_DimTolTool::AddDatum()`
+    /// Adds a datum definition to the GD&T table and returns its label.
+    pub fn add_datum(&mut self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_add_datum(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:198 - `XCAFDoc_DimTolTool::SetDatum()`
+    /// Sets a datum to theL label and binds it with theTolerL label.
+    /// A datum with the specified name, description and identification
+    /// is created if it isn't found in the GD&T table.
+    pub fn set_datum(
+        &self,
+        theL: &crate::ffi::TDF_Label,
+        theTolerL: &crate::ffi::TDF_Label,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        theIdentification: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_set_datum(
+                self as *const Self,
+                theL,
+                theTolerL,
+                theName,
+                theDescription,
+                theIdentification,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:205 - `XCAFDoc_DimTolTool::SetDatumToGeomTol()`
+    /// Sets a datum from theDatumL label to theToletL label.
+    pub fn set_datum_to_geom_tol(
+        &self,
+        theDatumL: &crate::ffi::TDF_Label,
+        theTolerL: &crate::ffi::TDF_Label,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_set_datum_to_geom_tol(
+                self as *const Self,
+                theDatumL,
+                theTolerL,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:211 - `XCAFDoc_DimTolTool::GetDatum()`
+    /// Returns datum assigned to theDatumL label.
+    /// Returns False if no such datum is assigned.
+    pub fn get_datum(
+        &self,
+        theDatumL: &crate::ffi::TDF_Label,
+        theName: &mut crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &mut crate::ffi::HandleTCollectionHAsciiString,
+        theIdentification: &mut crate::ffi::HandleTCollectionHAsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_get_datum(
+                self as *const Self,
+                theDatumL,
+                theName,
+                theDescription,
+                theIdentification,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:234 - `XCAFDoc_DimTolTool::IsLocked()`
+    /// Returns true if the given GDT is marked as locked.
+    pub fn is_locked(&self, theViewL: &crate::ffi::TDF_Label) -> bool {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_is_locked(self as *const Self, theViewL) }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:237 - `XCAFDoc_DimTolTool::Lock()`
+    /// Mark the given GDT as locked.
+    pub fn lock(&self, theViewL: &crate::ffi::TDF_Label) {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_lock(self as *const Self, theViewL) }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:250 - `XCAFDoc_DimTolTool::Unlock()`
+    /// Unlock the given GDT.
+    pub fn unlock(&self, theViewL: &crate::ffi::TDF_Label) {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_unlock(self as *const Self, theViewL) }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:252 - `XCAFDoc_DimTolTool::ID()`
+    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+        unsafe { &*(crate::ffi::XCAFDoc_DimTolTool_id(self as *const Self)) }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:258 - `XCAFDoc_DimTolTool::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::XCAFDoc_DimTolTool_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:258 - `XCAFDoc_DimTolTool::NewEmpty()`
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_new_empty(self as *const Self))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:50 - `XCAFDoc_DimTolTool::GetID()`
+    /// Returns the standard GD&T tool GUID.
+    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+        unsafe { &*(crate::ffi::XCAFDoc_DimTolTool_get_id()) }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:258 - `XCAFDoc_DimTolTool::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::XCAFDoc_DimTolTool_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:258 - `XCAFDoc_DimTolTool::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::XCAFDoc_DimTolTool_get_type_descriptor()) }
+    }
+
+    /// Upcast to TDataStd_GenericEmpty
+    pub fn as_t_data_std_generic_empty(&self) -> &crate::t_data_std::GenericEmpty {
+        unsafe { &*(crate::ffi::XCAFDoc_DimTolTool_as_TDataStd_GenericEmpty(self as *const Self)) }
+    }
+
+    /// Upcast to TDataStd_GenericEmpty (mutable)
+    pub fn as_t_data_std_generic_empty_mut(&mut self) -> &mut crate::t_data_std::GenericEmpty {
+        unsafe {
+            &mut *(crate::ffi::XCAFDoc_DimTolTool_as_TDataStd_GenericEmpty_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to TDF_Attribute
+    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
+        unsafe { &*(crate::ffi::XCAFDoc_DimTolTool_as_TDF_Attribute(self as *const Self)) }
+    }
+
+    /// Upcast to TDF_Attribute (mutable)
+    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
+        unsafe { &mut *(crate::ffi::XCAFDoc_DimTolTool_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
+    pub fn restore(&mut self, arg0: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_Restore(self as *mut Self, arg0) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:35 - `TDataStd_GenericEmpty::Paste()`
+    pub fn paste(
+        &self,
+        arg0: &crate::ffi::HandleTDFAttribute,
+        arg1: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_Paste(self as *const Self, arg0, arg1) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_SetID(self as *mut Self, arg0) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_inherited_Label(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    pub fn transaction(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_Transaction(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    pub fn until_transaction(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_UntilTransaction(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    pub fn is_valid(&self) -> bool {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_IsValid(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    pub fn is_new(&self) -> bool {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_IsNew(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    pub fn is_forgotten(&self) -> bool {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_IsForgotten(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_IsAttribute(self as *const Self, anID) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    pub fn find_attribute(
+        &self,
+        anID: &crate::ffi::Standard_GUID,
+        anAttribute: &mut crate::ffi::HandleTDFAttribute,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_inherited_FindAttribute(
+                self as *const Self,
+                anID,
+                anAttribute,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_AddAttribute(self as *const Self, other) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_inherited_ForgetAttribute(self as *const Self, aguid)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    pub fn forget_all_attributes(&self, clearChildren: bool) {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_inherited_ForgetAllAttributes(
+                self as *const Self,
+                clearChildren,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    pub fn after_addition(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_AfterAddition(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
+    pub fn before_removal(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_BeforeRemoval(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    pub fn before_forget(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_BeforeForget(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    pub fn after_resume(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_AfterResume(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_inherited_AfterRetrieval(self as *mut Self, forceIt)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    pub fn before_undo(
+        &mut self,
+        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        forceIt: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_inherited_BeforeUndo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
+    pub fn after_undo(
+        &mut self,
+        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        forceIt: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_inherited_AfterUndo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    pub fn before_commit_transaction(&mut self) {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_inherited_BeforeCommitTransaction(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    pub fn backup(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_Backup(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    pub fn is_backuped(&self) -> bool {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_IsBackuped(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
+    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_inherited_BackupCopy(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    pub fn forget(&mut self, aTransaction: i32) {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_Forget(self as *mut Self, aTransaction) }
+    }
+}
+
+// ========================
 // From XCAFDoc_Dimension.hxx
 // ========================
 
@@ -11807,4 +12391,4 @@ impl Volume {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::XCAFDoc_DimTolTool as DimTolTool;
+pub use crate::ffi::XCAFDoc_DataMapOfShapeLabel as DataMapOfShapeLabel;

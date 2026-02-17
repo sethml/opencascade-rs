@@ -607,12 +607,6 @@ impl PCurve {
         unsafe { &mut *(crate::ffi::IMeshData_PCurve_get_point(self as *mut Self, theIndex)) }
     }
 
-    /// **Source:** `IMeshData_PCurve.hxx`:46 - `IMeshData_PCurve::GetIndex()`
-    /// Returns index in mesh corresponded to discretization point with the given index.
-    pub fn get_index(&mut self, theIndex: i32) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::IMeshData_PCurve_get_index(self as *mut Self, theIndex)) }
-    }
-
     /// **Source:** `IMeshData_PCurve.hxx`:49 - `IMeshData_PCurve::RemovePoint()`
     /// Removes point with the given index.
     pub fn remove_point(&mut self, theIndex: i32) {

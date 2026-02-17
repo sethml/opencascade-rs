@@ -264,19 +264,9 @@ impl FreeGtoCConstraint {
         Self::new_xy_d12_d22_d32_real_int(point2d, D1S, D1T, D2S, D2T, D3S, D3T, 1.0, 0)
     }
 
-    /// **Source:** `Plate_FreeGtoCConstraint.hxx`:61 - `Plate_FreeGtoCConstraint::nb_PPC()`
-    pub fn nb_ppc(&self) -> &i32 {
-        unsafe { &*(crate::ffi::Plate_FreeGtoCConstraint_nb_ppc(self as *const Self)) }
-    }
-
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:63 - `Plate_FreeGtoCConstraint::GetPPC()`
     pub fn get_ppc(&self, Index: i32) -> &crate::ffi::Plate_PinpointConstraint {
         unsafe { &*(crate::ffi::Plate_FreeGtoCConstraint_get_ppc(self as *const Self, Index)) }
-    }
-
-    /// **Source:** `Plate_FreeGtoCConstraint.hxx`:65 - `Plate_FreeGtoCConstraint::nb_LSC()`
-    pub fn nb_lsc(&self) -> &i32 {
-        unsafe { &*(crate::ffi::Plate_FreeGtoCConstraint_nb_lsc(self as *const Self)) }
     }
 
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:67 - `Plate_FreeGtoCConstraint::LSC()`
@@ -421,11 +411,6 @@ impl GtoCConstraint {
         }
     }
 
-    /// **Source:** `Plate_GtoCConstraint.hxx`:78 - `Plate_GtoCConstraint::nb_PPC()`
-    pub fn nb_ppc(&self) -> &i32 {
-        unsafe { &*(crate::ffi::Plate_GtoCConstraint_nb_ppc(self as *const Self)) }
-    }
-
     /// **Source:** `Plate_GtoCConstraint.hxx`:80 - `Plate_GtoCConstraint::GetPPC()`
     pub fn get_ppc(&self, Index: i32) -> &crate::ffi::Plate_PinpointConstraint {
         unsafe { &*(crate::ffi::Plate_GtoCConstraint_get_ppc(self as *const Self, Index)) }
@@ -434,6 +419,89 @@ impl GtoCConstraint {
     /// **Source:** `Plate_GtoCConstraint.hxx`:82 - `Plate_GtoCConstraint::D1SurfInit()`
     pub fn d1_surf_init(&self) -> &crate::ffi::Plate_D1 {
         unsafe { &*(crate::ffi::Plate_GtoCConstraint_d1_surf_init(self as *const Self)) }
+    }
+}
+
+// ========================
+// From Plate_HArray1OfPinpointConstraint.hxx
+// ========================
+
+/// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint`
+pub use crate::ffi::Plate_HArray1OfPinpointConstraint as HArray1OfPinpointConstraint;
+
+unsafe impl crate::CppDeletable for HArray1OfPinpointConstraint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Plate_HArray1OfPinpointConstraint_destructor(ptr);
+    }
+}
+
+impl HArray1OfPinpointConstraint {
+    /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::Plate_HArray1OfPinpointConstraint()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_HArray1OfPinpointConstraint_ctor()) }
+    }
+
+    /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::Plate_HArray1OfPinpointConstraint()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::Plate_HArray1OfPinpointConstraint_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Plate_HArray1OfPinpointConstraint_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Plate_HArray1OfPinpointConstraint_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandlePlateHArray1OfPinpointConstraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Plate_HArray1OfPinpointConstraint_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandlePlateHArray1OfPinpointConstraint;
+
+unsafe impl crate::CppDeletable for HandlePlateHArray1OfPinpointConstraint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandlePlateHArray1OfPinpointConstraint_destructor(ptr);
+    }
+}
+
+impl HandlePlateHArray1OfPinpointConstraint {
+    /// Dereference this Handle to access the underlying Plate_HArray1OfPinpointConstraint
+    pub fn get(&self) -> &crate::ffi::Plate_HArray1OfPinpointConstraint {
+        unsafe { &*(crate::ffi::HandlePlateHArray1OfPinpointConstraint_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Plate_HArray1OfPinpointConstraint
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Plate_HArray1OfPinpointConstraint {
+        unsafe {
+            &mut *(crate::ffi::HandlePlateHArray1OfPinpointConstraint_get_mut(self as *mut Self))
+        }
     }
 }
 
@@ -666,16 +734,6 @@ impl PinpointConstraint {
         unsafe { &*(crate::ffi::Plate_PinpointConstraint_pnt2d(self as *const Self)) }
     }
 
-    /// **Source:** `Plate_PinpointConstraint.hxx`:42 - `Plate_PinpointConstraint::Idu()`
-    pub fn idu(&self) -> &i32 {
-        unsafe { &*(crate::ffi::Plate_PinpointConstraint_idu(self as *const Self)) }
-    }
-
-    /// **Source:** `Plate_PinpointConstraint.hxx`:44 - `Plate_PinpointConstraint::Idv()`
-    pub fn idv(&self) -> &i32 {
-        unsafe { &*(crate::ffi::Plate_PinpointConstraint_idv(self as *const Self)) }
-    }
-
     /// **Source:** `Plate_PinpointConstraint.hxx`:46 - `Plate_PinpointConstraint::Value()`
     pub fn value(&self) -> &crate::ffi::gp_XYZ {
         unsafe { &*(crate::ffi::Plate_PinpointConstraint_value(self as *const Self)) }
@@ -874,6 +932,11 @@ impl Plate {
                 iv,
             ))
         }
+    }
+
+    /// **Source:** `Plate_Plate.hxx`:100 - `Plate_Plate::CoefPol()`
+    pub fn coef_pol(&self, Coefs: &mut crate::ffi::HandleTColgpHArray2OfXYZ) {
+        unsafe { crate::ffi::Plate_Plate_coef_pol(self as *const Self, Coefs) }
     }
 
     /// **Source:** `Plate_Plate.hxx`:102 - `Plate_Plate::SetPolynomialPartOnly()`

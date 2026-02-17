@@ -1119,6 +1119,17 @@ unsafe impl crate::CppDeletable for SequenceIterator {
 }
 
 impl SequenceIterator {
+    /// **Source:** `TObj_SequenceIterator.hxx`:45 - `TObj_SequenceIterator::TObj_SequenceIterator()`
+    /// Creates an iterator an initialize it by sequence of objects.
+    pub fn new_handletobjhsequenceofobject_handlestandardtype(
+        theObjects: &crate::ffi::HandleTObjHSequenceOfObject,
+        theType: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_SequenceIterator_ctor_handletobjhsequenceofobject_handlestandardtype(theObjects, theType))
+        }
+    }
+
     /// **Source:** `TObj_SequenceIterator.hxx`:54 - `TObj_SequenceIterator::More()`
     /// Returns True if there is a current Item in the iteration.
     pub fn more(&self) -> bool {
@@ -1163,6 +1174,74 @@ impl SequenceIterator {
         unsafe {
             &mut *(crate::ffi::TObj_SequenceIterator_as_TObj_ObjectIterator_mut(self as *mut Self))
         }
+    }
+}
+
+// ========================
+// From TObj_SequenceOfObject.hxx
+// ========================
+
+/// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject`
+pub use crate::ffi::TObj_HSequenceOfObject as HSequenceOfObject;
+
+unsafe impl crate::CppDeletable for HSequenceOfObject {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TObj_HSequenceOfObject_destructor(ptr);
+    }
+}
+
+impl HSequenceOfObject {
+    /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::TObj_HSequenceOfObject()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_HSequenceOfObject_ctor()) }
+    }
+
+    /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TObj_HSequenceOfObject_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TObj_HSequenceOfObject_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TObj_HSequenceOfObject_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTObjHSequenceOfObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_HSequenceOfObject_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTObjHSequenceOfObject;
+
+unsafe impl crate::CppDeletable for HandleTObjHSequenceOfObject {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTObjHSequenceOfObject_destructor(ptr);
+    }
+}
+
+impl HandleTObjHSequenceOfObject {
+    /// Dereference this Handle to access the underlying TObj_HSequenceOfObject
+    pub fn get(&self) -> &crate::ffi::TObj_HSequenceOfObject {
+        unsafe { &*(crate::ffi::HandleTObjHSequenceOfObject_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TObj_HSequenceOfObject
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_HSequenceOfObject {
+        unsafe { &mut *(crate::ffi::HandleTObjHSequenceOfObject_get_mut(self as *mut Self)) }
     }
 }
 
@@ -2516,6 +2595,6 @@ impl TXYZ {
 // ========================
 
 pub use crate::ffi::{
-    TObj_DataMapOfNameLabel as DataMapOfNameLabel, TObj_HSequenceOfObject as HSequenceOfObject,
-    TObj_Object as Object,
+    TObj_DataMapOfNameLabel as DataMapOfNameLabel, TObj_Object as Object,
+    TObj_SequenceOfObject as SequenceOfObject,
 };

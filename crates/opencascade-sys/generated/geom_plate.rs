@@ -59,6 +59,33 @@ unsafe impl crate::CppDeletable for BuildAveragePlane {
 }
 
 impl BuildAveragePlane {
+    /// **Source:** `GeomPlate_BuildAveragePlane.hxx`:48 - `GeomPlate_BuildAveragePlane::GeomPlate_BuildAveragePlane()`
+    /// Tol is a Tolerance to make the difference between
+    /// the result plane and the result line.
+    /// if POption = 1 : automatic parametrisation
+    /// if POption = 2 : parametrisation by eigen vectors
+    /// if NOption = 1 : the average plane is the inertial plane.
+    /// if NOption = 2 : the average plane is the plane of max. flux.
+    pub fn new_handletcolgpharray1ofpnt_int_real_int2(
+        Pts: &crate::ffi::HandleTColgpHArray1OfPnt,
+        NbBoundPoints: i32,
+        Tol: f64,
+        POption: i32,
+        NOption: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomPlate_BuildAveragePlane_ctor_handletcolgpharray1ofpnt_int_real_int2(
+                    Pts,
+                    NbBoundPoints,
+                    Tol,
+                    POption,
+                    NOption,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `GeomPlate_BuildAveragePlane.hxx`:59 - `GeomPlate_BuildAveragePlane::Plane()`
     /// Return the average Plane.
     pub fn plane(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomPlane> {
@@ -130,6 +157,34 @@ unsafe impl crate::CppDeletable for BuildPlateSurface {
 }
 
 impl BuildPlateSurface {
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
+    /// Constructor  compatible  with  the  old  version
+    /// with this constructor the constraint are given in a Array of Curve on Surface
+    /// The array NbPoints  contains the number of points for each constraint.
+    /// The Array Tang contains the order of constraint for each Constraint: The possible values for
+    /// this order has to be -1 , 0 , 1 , 2 . Order i means constraint Gi. NbIter is the maximum
+    /// number of iteration to optimise the number of points for resolution Degree is the degree of
+    /// resolution for Plate Tol2d is the tolerance used to test if two points of different constraint
+    /// are identical in the parametric space of the initial surface Tol3d is used to test if two
+    /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
+    /// between normal of two identical points in the 2d space Raises  ConstructionError;
+    pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(
+        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
+        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
+        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
+        Degree: i32,
+        NbIter: i32,
+        Tol2d: f64,
+        Tol3d: f64,
+        TolAng: f64,
+        TolCurv: f64,
+        Anisotropie: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_BuildPlateSurface_ctor_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, TolAng, TolCurv, Anisotropie))
+        }
+    }
+
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     pub fn new_handlegeomsurface_int3_real4_bool(
         Surf: &crate::ffi::HandleGeomSurface,
@@ -208,6 +263,141 @@ impl BuildPlateSurface {
                 Anisotropie,
             ))
         }
+    }
+
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
+    /// Constructor  compatible  with  the  old  version
+    /// with this constructor the constraint are given in a Array of Curve on Surface
+    /// The array NbPoints  contains the number of points for each constraint.
+    /// The Array Tang contains the order of constraint for each Constraint: The possible values for
+    /// this order has to be -1 , 0 , 1 , 2 . Order i means constraint Gi. NbIter is the maximum
+    /// number of iteration to optimise the number of points for resolution Degree is the degree of
+    /// resolution for Plate Tol2d is the tolerance used to test if two points of different constraint
+    /// are identical in the parametric space of the initial surface Tol3d is used to test if two
+    /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
+    /// between normal of two identical points in the 2d space Raises  ConstructionError;
+    pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4(
+        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
+        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
+        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
+        Degree: i32,
+        NbIter: i32,
+        Tol2d: f64,
+        Tol3d: f64,
+        TolAng: f64,
+        TolCurv: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, TolAng, TolCurv, false)
+    }
+
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
+    /// Constructor  compatible  with  the  old  version
+    /// with this constructor the constraint are given in a Array of Curve on Surface
+    /// The array NbPoints  contains the number of points for each constraint.
+    /// The Array Tang contains the order of constraint for each Constraint: The possible values for
+    /// this order has to be -1 , 0 , 1 , 2 . Order i means constraint Gi. NbIter is the maximum
+    /// number of iteration to optimise the number of points for resolution Degree is the degree of
+    /// resolution for Plate Tol2d is the tolerance used to test if two points of different constraint
+    /// are identical in the parametric space of the initial surface Tol3d is used to test if two
+    /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
+    /// between normal of two identical points in the 2d space Raises  ConstructionError;
+    pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real3(
+        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
+        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
+        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
+        Degree: i32,
+        NbIter: i32,
+        Tol2d: f64,
+        Tol3d: f64,
+        TolAng: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, TolAng, 0.1, false)
+    }
+
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
+    /// Constructor  compatible  with  the  old  version
+    /// with this constructor the constraint are given in a Array of Curve on Surface
+    /// The array NbPoints  contains the number of points for each constraint.
+    /// The Array Tang contains the order of constraint for each Constraint: The possible values for
+    /// this order has to be -1 , 0 , 1 , 2 . Order i means constraint Gi. NbIter is the maximum
+    /// number of iteration to optimise the number of points for resolution Degree is the degree of
+    /// resolution for Plate Tol2d is the tolerance used to test if two points of different constraint
+    /// are identical in the parametric space of the initial surface Tol3d is used to test if two
+    /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
+    /// between normal of two identical points in the 2d space Raises  ConstructionError;
+    pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real2(
+        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
+        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
+        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
+        Degree: i32,
+        NbIter: i32,
+        Tol2d: f64,
+        Tol3d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, 0.01, 0.1, false)
+    }
+
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
+    /// Constructor  compatible  with  the  old  version
+    /// with this constructor the constraint are given in a Array of Curve on Surface
+    /// The array NbPoints  contains the number of points for each constraint.
+    /// The Array Tang contains the order of constraint for each Constraint: The possible values for
+    /// this order has to be -1 , 0 , 1 , 2 . Order i means constraint Gi. NbIter is the maximum
+    /// number of iteration to optimise the number of points for resolution Degree is the degree of
+    /// resolution for Plate Tol2d is the tolerance used to test if two points of different constraint
+    /// are identical in the parametric space of the initial surface Tol3d is used to test if two
+    /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
+    /// between normal of two identical points in the 2d space Raises  ConstructionError;
+    pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real(
+        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
+        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
+        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
+        Degree: i32,
+        NbIter: i32,
+        Tol2d: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, 0.0001, 0.01, 0.1, false)
+    }
+
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
+    /// Constructor  compatible  with  the  old  version
+    /// with this constructor the constraint are given in a Array of Curve on Surface
+    /// The array NbPoints  contains the number of points for each constraint.
+    /// The Array Tang contains the order of constraint for each Constraint: The possible values for
+    /// this order has to be -1 , 0 , 1 , 2 . Order i means constraint Gi. NbIter is the maximum
+    /// number of iteration to optimise the number of points for resolution Degree is the degree of
+    /// resolution for Plate Tol2d is the tolerance used to test if two points of different constraint
+    /// are identical in the parametric space of the initial surface Tol3d is used to test if two
+    /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
+    /// between normal of two identical points in the 2d space Raises  ConstructionError;
+    pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2(
+        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
+        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
+        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
+        Degree: i32,
+        NbIter: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, 0.00001, 0.0001, 0.01, 0.1, false)
+    }
+
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:68 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
+    /// Constructor  compatible  with  the  old  version
+    /// with this constructor the constraint are given in a Array of Curve on Surface
+    /// The array NbPoints  contains the number of points for each constraint.
+    /// The Array Tang contains the order of constraint for each Constraint: The possible values for
+    /// this order has to be -1 , 0 , 1 , 2 . Order i means constraint Gi. NbIter is the maximum
+    /// number of iteration to optimise the number of points for resolution Degree is the degree of
+    /// resolution for Plate Tol2d is the tolerance used to test if two points of different constraint
+    /// are identical in the parametric space of the initial surface Tol3d is used to test if two
+    /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
+    /// between normal of two identical points in the 2d space Raises  ConstructionError;
+    pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int(
+        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
+        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
+        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
+        Degree: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, 3, 0.00001, 0.0001, 0.01, 0.1, false)
     }
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
@@ -713,6 +903,17 @@ impl BuildPlateSurface {
         }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:181 - `GeomPlate_BuildPlateSurface::Curves2d()`
+    /// Extracts the array of curves on the plate surface which
+    /// correspond to the curve constraints set in Add.
+    pub fn curves2d(&self) -> crate::OwnedPtr<crate::ffi::HandleTColGeom2dHArray1OfCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_BuildPlateSurface_curves2d(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:187 - `GeomPlate_BuildPlateSurface::Order()`
     /// Returns the order of the curves in the array returned by
     /// Curves2d. Computation changes this order.
@@ -1125,6 +1326,328 @@ impl HandleGeomPlateCurveConstraint {
     /// Dereference this Handle to mutably access the underlying GeomPlate_CurveConstraint
     pub fn get_mut(&mut self) -> &mut crate::ffi::GeomPlate_CurveConstraint {
         unsafe { &mut *(crate::ffi::HandleGeomPlateCurveConstraint_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From GeomPlate_HArray1OfHCurve.hxx
+// ========================
+
+/// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve`
+pub use crate::ffi::GeomPlate_HArray1OfHCurve as HArray1OfHCurve;
+
+unsafe impl crate::CppDeletable for HArray1OfHCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomPlate_HArray1OfHCurve_destructor(ptr);
+    }
+}
+
+impl HArray1OfHCurve {
+    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::GeomPlate_HArray1OfHCurve()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfHCurve_ctor()) }
+    }
+
+    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::GeomPlate_HArray1OfHCurve()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfHCurve_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::GeomPlate_HArray1OfHCurve_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::GeomPlate_HArray1OfHCurve_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::GeomPlate_HArray1OfHCurve_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateHArray1OfHCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfHCurve_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomPlateHArray1OfHCurve;
+
+unsafe impl crate::CppDeletable for HandleGeomPlateHArray1OfHCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomPlateHArray1OfHCurve_destructor(ptr);
+    }
+}
+
+impl HandleGeomPlateHArray1OfHCurve {
+    /// Dereference this Handle to access the underlying GeomPlate_HArray1OfHCurve
+    pub fn get(&self) -> &crate::ffi::GeomPlate_HArray1OfHCurve {
+        unsafe { &*(crate::ffi::HandleGeomPlateHArray1OfHCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomPlate_HArray1OfHCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomPlate_HArray1OfHCurve {
+        unsafe { &mut *(crate::ffi::HandleGeomPlateHArray1OfHCurve_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From GeomPlate_HArray1OfSequenceOfReal.hxx
+// ========================
+
+/// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal`
+pub use crate::ffi::GeomPlate_HArray1OfSequenceOfReal as HArray1OfSequenceOfReal;
+
+unsafe impl crate::CppDeletable for HArray1OfSequenceOfReal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomPlate_HArray1OfSequenceOfReal_destructor(ptr);
+    }
+}
+
+impl HArray1OfSequenceOfReal {
+    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::GeomPlate_HArray1OfSequenceOfReal()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_ctor()) }
+    }
+
+    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::GeomPlate_HArray1OfSequenceOfReal()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateHArray1OfSequenceOfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomPlateHArray1OfSequenceOfReal;
+
+unsafe impl crate::CppDeletable for HandleGeomPlateHArray1OfSequenceOfReal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomPlateHArray1OfSequenceOfReal_destructor(ptr);
+    }
+}
+
+impl HandleGeomPlateHArray1OfSequenceOfReal {
+    /// Dereference this Handle to access the underlying GeomPlate_HArray1OfSequenceOfReal
+    pub fn get(&self) -> &crate::ffi::GeomPlate_HArray1OfSequenceOfReal {
+        unsafe { &*(crate::ffi::HandleGeomPlateHArray1OfSequenceOfReal_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomPlate_HArray1OfSequenceOfReal
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomPlate_HArray1OfSequenceOfReal {
+        unsafe {
+            &mut *(crate::ffi::HandleGeomPlateHArray1OfSequenceOfReal_get_mut(self as *mut Self))
+        }
+    }
+}
+
+// ========================
+// From GeomPlate_HSequenceOfCurveConstraint.hxx
+// ========================
+
+/// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint`
+pub use crate::ffi::GeomPlate_HSequenceOfCurveConstraint as HSequenceOfCurveConstraint;
+
+unsafe impl crate::CppDeletable for HSequenceOfCurveConstraint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomPlate_HSequenceOfCurveConstraint_destructor(ptr);
+    }
+}
+
+impl HSequenceOfCurveConstraint {
+    /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::GeomPlate_HSequenceOfCurveConstraint()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HSequenceOfCurveConstraint_ctor())
+        }
+    }
+
+    /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::GeomPlate_HSequenceOfCurveConstraint_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::GeomPlate_HSequenceOfCurveConstraint_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::GeomPlate_HSequenceOfCurveConstraint_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateHSequenceOfCurveConstraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HSequenceOfCurveConstraint_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomPlateHSequenceOfCurveConstraint;
+
+unsafe impl crate::CppDeletable for HandleGeomPlateHSequenceOfCurveConstraint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomPlateHSequenceOfCurveConstraint_destructor(ptr);
+    }
+}
+
+impl HandleGeomPlateHSequenceOfCurveConstraint {
+    /// Dereference this Handle to access the underlying GeomPlate_HSequenceOfCurveConstraint
+    pub fn get(&self) -> &crate::ffi::GeomPlate_HSequenceOfCurveConstraint {
+        unsafe {
+            &*(crate::ffi::HandleGeomPlateHSequenceOfCurveConstraint_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomPlate_HSequenceOfCurveConstraint
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomPlate_HSequenceOfCurveConstraint {
+        unsafe {
+            &mut *(crate::ffi::HandleGeomPlateHSequenceOfCurveConstraint_get_mut(self as *mut Self))
+        }
+    }
+}
+
+// ========================
+// From GeomPlate_HSequenceOfPointConstraint.hxx
+// ========================
+
+/// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint`
+pub use crate::ffi::GeomPlate_HSequenceOfPointConstraint as HSequenceOfPointConstraint;
+
+unsafe impl crate::CppDeletable for HSequenceOfPointConstraint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::GeomPlate_HSequenceOfPointConstraint_destructor(ptr);
+    }
+}
+
+impl HSequenceOfPointConstraint {
+    /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::GeomPlate_HSequenceOfPointConstraint()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HSequenceOfPointConstraint_ctor())
+        }
+    }
+
+    /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe {
+            &*(crate::ffi::GeomPlate_HSequenceOfPointConstraint_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(
+                crate::ffi::GeomPlate_HSequenceOfPointConstraint_get_type_name(),
+            )
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::GeomPlate_HSequenceOfPointConstraint_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateHSequenceOfPointConstraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HSequenceOfPointConstraint_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomPlateHSequenceOfPointConstraint;
+
+unsafe impl crate::CppDeletable for HandleGeomPlateHSequenceOfPointConstraint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomPlateHSequenceOfPointConstraint_destructor(ptr);
+    }
+}
+
+impl HandleGeomPlateHSequenceOfPointConstraint {
+    /// Dereference this Handle to access the underlying GeomPlate_HSequenceOfPointConstraint
+    pub fn get(&self) -> &crate::ffi::GeomPlate_HSequenceOfPointConstraint {
+        unsafe {
+            &*(crate::ffi::HandleGeomPlateHSequenceOfPointConstraint_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomPlate_HSequenceOfPointConstraint
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomPlate_HSequenceOfPointConstraint {
+        unsafe {
+            &mut *(crate::ffi::HandleGeomPlateHSequenceOfPointConstraint_get_mut(self as *mut Self))
+        }
     }
 }
 
@@ -2320,5 +2843,9 @@ impl HandleGeomPlateSurface {
 // ========================
 
 pub use crate::ffi::{
-    GeomPlate_HArray1OfHCurve as HArray1OfHCurve, GeomPlate_SequenceOfAij as SequenceOfAij,
+    GeomPlate_Array1OfHCurve as Array1OfHCurve,
+    GeomPlate_Array1OfSequenceOfReal as Array1OfSequenceOfReal,
+    GeomPlate_SequenceOfAij as SequenceOfAij,
+    GeomPlate_SequenceOfCurveConstraint as SequenceOfCurveConstraint,
+    GeomPlate_SequenceOfPointConstraint as SequenceOfPointConstraint,
 };

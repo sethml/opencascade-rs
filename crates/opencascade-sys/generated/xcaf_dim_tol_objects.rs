@@ -1497,18 +1497,6 @@ impl DimensionObject {
         }
     }
 
-    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:166 - `XCAFDimTolObjects_DimensionObject::GetNbOfDecimalPlaces()`
-    /// Returns the number of places to the left and right of the decimal point respectively.
-    pub fn get_nb_of_decimal_places(&self, theL: &mut i32, theR: &mut i32) {
-        unsafe {
-            crate::ffi::XCAFDimTolObjects_DimensionObject_get_nb_of_decimal_places(
-                self as *const Self,
-                theL,
-                theR,
-            )
-        }
-    }
-
     /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:176 - `XCAFDimTolObjects_DimensionObject::AddModifier()`
     /// Adds a modifier to the dimension sequence of modifiers.
     pub fn add_modifier(&mut self, theModifier: crate::xcaf_dim_tol_objects::DimensionModif) {

@@ -7,6 +7,239 @@
 #![allow(non_snake_case)]
 
 // ========================
+// From STEPConstruct_AP203Context.hxx
+// ========================
+
+/// **Source:** `STEPConstruct_AP203Context.hxx`:47 - `STEPConstruct_AP203Context`
+/// Maintains context specific for AP203 (required data and
+/// management information such as persons, dates, approvals etc.)
+/// It contains static entities (which can be shared), default
+/// values for person and organisation, and also provides
+/// tool for creating management entities around specific part (SDR).
+pub use crate::ffi::STEPConstruct_AP203Context as AP203Context;
+
+unsafe impl crate::CppDeletable for AP203Context {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::STEPConstruct_AP203Context_destructor(ptr);
+    }
+}
+
+impl AP203Context {
+    /// **Source:** `STEPConstruct_AP203Context.hxx`:53 - `STEPConstruct_AP203Context::STEPConstruct_AP203Context()`
+    /// Creates tool and fills constant fields
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPConstruct_AP203Context_ctor()) }
+    }
+
+    /// **Source:** `STEPConstruct_AP203Context.hxx`:162 - `STEPConstruct_AP203Context::Clear()`
+    /// Clears all fields describing entities specific to each part
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::STEPConstruct_AP203Context_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `STEPConstruct_AP203Context.hxx`:165 - `STEPConstruct_AP203Context::InitRoles()`
+    /// Initializes constant fields (shared entities)
+    pub fn init_roles(&mut self) {
+        unsafe { crate::ffi::STEPConstruct_AP203Context_init_roles(self as *mut Self) }
+    }
+
+    /// **Source:** `STEPConstruct_AP203Context.hxx`:172 - `STEPConstruct_AP203Context::InitSecurityRequisites()`
+    /// Initializes ClassificationOfficer and ClassificationDate
+    /// entities according to Security entity
+    pub fn init_security_requisites(&mut self) {
+        unsafe {
+            crate::ffi::STEPConstruct_AP203Context_init_security_requisites(self as *mut Self)
+        }
+    }
+
+    /// **Source:** `STEPConstruct_AP203Context.hxx`:176 - `STEPConstruct_AP203Context::InitApprovalRequisites()`
+    /// Initializes Approver and ApprovalDateTime
+    /// entities according to Approval entity
+    pub fn init_approval_requisites(&mut self) {
+        unsafe {
+            crate::ffi::STEPConstruct_AP203Context_init_approval_requisites(self as *mut Self)
+        }
+    }
+}
+
+// ========================
+// From STEPConstruct_ContextTool.hxx
+// ========================
+
+/// **Source:** `STEPConstruct_ContextTool.hxx`:43 - `STEPConstruct_ContextTool`
+/// Maintains global context tool for writing.
+/// Gives access to Product Definition Context (one per Model)
+/// Maintains ApplicationProtocolDefinition entity (common for all
+/// products)
+/// Also maintains context specific for AP203 and provides set of
+/// methods to work with various STEP constructs as required
+/// by Actor
+pub use crate::ffi::STEPConstruct_ContextTool as ContextTool;
+
+unsafe impl crate::CppDeletable for ContextTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::STEPConstruct_ContextTool_destructor(ptr);
+    }
+}
+
+impl ContextTool {
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:48 - `STEPConstruct_ContextTool::STEPConstruct_ContextTool()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPConstruct_ContextTool_ctor()) }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:56 - `STEPConstruct_ContextTool::SetGlobalFactor()`
+    pub fn set_global_factor(&mut self, theGlobalFactor: &crate::ffi::StepData_Factors) {
+        unsafe {
+            crate::ffi::STEPConstruct_ContextTool_set_global_factor(
+                self as *mut Self,
+                theGlobalFactor,
+            )
+        }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:60 - `STEPConstruct_ContextTool::AddAPD()`
+    pub fn add_apd(&mut self, enforce: bool) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_add_apd(self as *mut Self, enforce) }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:63 - `STEPConstruct_ContextTool::IsAP203()`
+    /// Returns True if APD.schema_name is config_control_design
+    pub fn is_ap203(&self) -> bool {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_is_ap203(self as *const Self) }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:66 - `STEPConstruct_ContextTool::IsAP214()`
+    /// Returns True if APD.schema_name is automotive_design
+    pub fn is_ap214(&self) -> bool {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_is_ap214(self as *const Self) }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:69 - `STEPConstruct_ContextTool::IsAP242()`
+    /// Returns True if APD.schema_name is ap242_managed_model_based_3d_engineering
+    pub fn is_ap242(&self) -> bool {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_is_ap242(self as *const Self) }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:71 - `STEPConstruct_ContextTool::GetACstatus()`
+    pub fn get_a_cstatus(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPConstruct_ContextTool_get_a_cstatus(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:73 - `STEPConstruct_ContextTool::GetACschemaName()`
+    pub fn get_a_cschema_name(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPConstruct_ContextTool_get_a_cschema_name(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:75 - `STEPConstruct_ContextTool::GetACyear()`
+    pub fn get_a_cyear(&mut self) -> i32 {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_get_a_cyear(self as *mut Self) }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:77 - `STEPConstruct_ContextTool::GetACname()`
+    pub fn get_a_cname(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPConstruct_ContextTool_get_a_cname(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:79 - `STEPConstruct_ContextTool::SetACstatus()`
+    pub fn set_a_cstatus(&mut self, status: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_set_a_cstatus(self as *mut Self, status) }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:81 - `STEPConstruct_ContextTool::SetACschemaName()`
+    pub fn set_a_cschema_name(&mut self, schemaName: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe {
+            crate::ffi::STEPConstruct_ContextTool_set_a_cschema_name(self as *mut Self, schemaName)
+        }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:83 - `STEPConstruct_ContextTool::SetACyear()`
+    pub fn set_a_cyear(&mut self, year: i32) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_set_a_cyear(self as *mut Self, year) }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:85 - `STEPConstruct_ContextTool::SetACname()`
+    pub fn set_a_cname(&mut self, name: &crate::ffi::HandleTCollectionHAsciiString) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_set_a_cname(self as *mut Self, name) }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:91 - `STEPConstruct_ContextTool::AP203Context()`
+    /// Returns tool which maintains context specific for AP203
+    pub fn ap203_context(&mut self) -> &mut crate::ffi::STEPConstruct_AP203Context {
+        unsafe { &mut *(crate::ffi::STEPConstruct_ContextTool_ap203_context(self as *mut Self)) }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:94 - `STEPConstruct_ContextTool::Level()`
+    /// Returns current assembly level
+    pub fn level(&self) -> i32 {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_level(self as *const Self) }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:96 - `STEPConstruct_ContextTool::NextLevel()`
+    pub fn next_level(&mut self) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_next_level(self as *mut Self) }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:98 - `STEPConstruct_ContextTool::PrevLevel()`
+    pub fn prev_level(&mut self) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_prev_level(self as *mut Self) }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:101 - `STEPConstruct_ContextTool::SetLevel()`
+    /// Changes current assembly level
+    pub fn set_level(&mut self, lev: i32) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_set_level(self as *mut Self, lev) }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:104 - `STEPConstruct_ContextTool::Index()`
+    /// Returns current index of assembly component on current level
+    pub fn index(&self) -> i32 {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_index(self as *const Self) }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:106 - `STEPConstruct_ContextTool::NextIndex()`
+    pub fn next_index(&mut self) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_next_index(self as *mut Self) }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:108 - `STEPConstruct_ContextTool::PrevIndex()`
+    pub fn prev_index(&mut self) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_prev_index(self as *mut Self) }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:111 - `STEPConstruct_ContextTool::SetIndex()`
+    /// Changes current index of assembly component on current level
+    pub fn set_index(&mut self, ind: i32) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_set_index(self as *mut Self, ind) }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:115 - `STEPConstruct_ContextTool::GetProductName()`
+    /// Generates a product name basing on write.step.product.name
+    /// parameter and current position in the assembly structure
+    pub fn get_product_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPConstruct_ContextTool_get_product_name(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ========================
 // From STEPConstruct_Tool.hxx
 // ========================
 
@@ -50,3 +283,9 @@ impl Tool {
         unsafe { &*(crate::ffi::STEPConstruct_Tool_graph(self as *const Self, recompute)) }
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::{STEPConstruct_Assembly as Assembly, STEPConstruct_Part as Part};

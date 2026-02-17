@@ -697,12 +697,6 @@ impl AlgoTools {
         unsafe { crate::ffi::BOPTools_AlgoTools_is_block_in_on_face(aShR, aF, aE, aContext) }
     }
 
-    /// **Source:** `BOPTools_AlgoTools.hxx`:549 - `BOPTools_AlgoTools::Dimensions()`
-    /// Returns the min and max dimensions of the shape <theS>.
-    pub fn dimensions(theS: &crate::ffi::TopoDS_Shape, theDMin: &mut i32, theDMax: &mut i32) {
-        unsafe { crate::ffi::BOPTools_AlgoTools_dimensions(theS, theDMin, theDMax) }
-    }
-
     /// **Source:** `BOPTools_AlgoTools.hxx`:555 - `BOPTools_AlgoTools::Dimension()`
     /// Returns dimension of the shape <theS>.
     /// If the shape contains elements of different dimension, -1 is returned.

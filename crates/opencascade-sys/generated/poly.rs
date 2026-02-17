@@ -1291,27 +1291,6 @@ impl Connect {
         unsafe { crate::ffi::Poly_Connect_triangle(self as *const Self, N) }
     }
 
-    /// **Source:** `Poly_Connect.hxx`:92 - `Poly_Connect::Triangles()`
-    /// Returns in t1, t2 and t3, the indices of the 3 triangles
-    /// adjacent to the triangle at index T in the triangles table
-    /// specific to the triangulation analyzed by this tool.
-    /// Warning
-    /// Null indices are returned when there are fewer than 3
-    /// adjacent triangles.
-    pub fn triangles(&self, T: i32, t1: &mut i32, t2: &mut i32, t3: &mut i32) {
-        unsafe { crate::ffi::Poly_Connect_triangles(self as *const Self, T, t1, t2, t3) }
-    }
-
-    /// **Source:** `Poly_Connect.hxx`:108 - `Poly_Connect::Nodes()`
-    /// Returns, in n1, n2 and n3, the indices of the 3 nodes
-    /// adjacent to the triangle referenced at index T in the
-    /// triangles table specific to the triangulation analyzed by this tool.
-    /// Warning
-    /// Null indices are returned when there are fewer than 3 adjacent nodes.
-    pub fn nodes(&self, T: i32, n1: &mut i32, n2: &mut i32, n3: &mut i32) {
-        unsafe { crate::ffi::Poly_Connect_nodes(self as *const Self, T, n1, n2, n3) }
-    }
-
     /// **Source:** `Poly_Connect.hxx`:137 - `Poly_Connect::Initialize()`
     /// Initializes an iterator to search for all the triangles
     /// containing the node referenced at index N in the nodes
@@ -1358,6 +1337,83 @@ impl Connect {
     /// analyzed by this tool
     pub fn value(&self) -> i32 {
         unsafe { crate::ffi::Poly_Connect_value(self as *const Self) }
+    }
+}
+
+// ========================
+// From Poly_HArray1OfTriangle.hxx
+// ========================
+
+/// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle`
+pub use crate::ffi::Poly_HArray1OfTriangle as HArray1OfTriangle;
+
+unsafe impl crate::CppDeletable for HArray1OfTriangle {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Poly_HArray1OfTriangle_destructor(ptr);
+    }
+}
+
+impl HArray1OfTriangle {
+    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_HArray1OfTriangle_ctor()) }
+    }
+
+    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
+    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_HArray1OfTriangle_ctor_int2(
+                theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Poly_HArray1OfTriangle_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Poly_HArray1OfTriangle_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Poly_HArray1OfTriangle_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandlePolyHArray1OfTriangle> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_HArray1OfTriangle_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandlePolyHArray1OfTriangle;
+
+unsafe impl crate::CppDeletable for HandlePolyHArray1OfTriangle {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandlePolyHArray1OfTriangle_destructor(ptr);
+    }
+}
+
+impl HandlePolyHArray1OfTriangle {
+    /// Dereference this Handle to access the underlying Poly_HArray1OfTriangle
+    pub fn get(&self) -> &crate::ffi::Poly_HArray1OfTriangle {
+        unsafe { &*(crate::ffi::HandlePolyHArray1OfTriangle_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Poly_HArray1OfTriangle
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Poly_HArray1OfTriangle {
+        unsafe { &mut *(crate::ffi::HandlePolyHArray1OfTriangle_get_mut(self as *mut Self)) }
     }
 }
 
@@ -2251,24 +2307,11 @@ impl Triangle {
         unsafe { crate::ffi::Poly_Triangle_set_int2(self as *mut Self, theIndex, theNode) }
     }
 
-    /// **Source:** `Poly_Triangle.hxx`:68 - `Poly_Triangle::Get()`
-    /// Returns the node indices of this triangle.
-    pub fn get(&self, theN1: &mut i32, theN2: &mut i32, theN3: &mut i32) {
-        unsafe { crate::ffi::Poly_Triangle_get(self as *const Self, theN1, theN2, theN3) }
-    }
-
     /// **Source:** `Poly_Triangle.hxx`:77 - `Poly_Triangle::Value()`
     /// Get the node of given Index.
     /// Raises OutOfRange from Standard if Index is not in 1,2,3
     pub fn value(&self, theIndex: i32) -> i32 {
         unsafe { crate::ffi::Poly_Triangle_value(self as *const Self, theIndex) }
-    }
-
-    /// **Source:** `Poly_Triangle.hxx`:88 - `Poly_Triangle::ChangeValue()`
-    /// Get the node of given Index.
-    /// Raises OutOfRange if Index is not in 1,2,3
-    pub fn change_value(&mut self, theIndex: i32) -> &mut i32 {
-        unsafe { &mut *(crate::ffi::Poly_Triangle_change_value(self as *mut Self, theIndex)) }
     }
 }
 
@@ -2672,6 +2715,42 @@ impl Triangulation {
         unsafe { crate::ffi::Poly_Triangulation_compute_normals(self as *mut Self) }
     }
 
+    /// **Source:** `Poly_Triangulation.hxx`:300 - `Poly_Triangulation::MapNodeArray()`
+    /// Returns the table of 3D points for read-only access or NULL if nodes array is undefined.
+    /// Poly_Triangulation::Node() should be used instead when possible.
+    /// Returned object should not be used after Poly_Triangulation destruction.
+    pub fn map_node_array(&self) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfPnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_Triangulation_map_node_array(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `Poly_Triangulation.hxx`:305 - `Poly_Triangulation::MapTriangleArray()`
+    /// Returns the triangle array for read-only access or NULL if triangle array is undefined.
+    /// Poly_Triangulation::Triangle() should be used instead when possible.
+    /// Returned object should not be used after Poly_Triangulation destruction.
+    pub fn map_triangle_array(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyHArray1OfTriangle> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_Triangulation_map_triangle_array(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `Poly_Triangulation.hxx`:310 - `Poly_Triangulation::MapUVNodeArray()`
+    /// Returns the table of 2D nodes for read-only access or NULL if UV nodes array is undefined.
+    /// Poly_Triangulation::UVNode() should be used instead when possible.
+    /// Returned object should not be used after Poly_Triangulation destruction.
+    pub fn map_uv_node_array(&self) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfPnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_Triangulation_map_uv_node_array(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `Poly_Triangulation.hxx`:315 - `Poly_Triangulation::MapNormalArray()`
     /// Returns the table of per-vertex normals for read-only access or NULL if normals array is
     /// undefined. Poly_Triangulation::Normal() should be used instead when possible. Returned object
@@ -2948,6 +3027,5 @@ impl HandlePolyTriangulationParameters {
 // ========================
 
 pub use crate::ffi::{
-    Poly_Array1OfTriangle as Array1OfTriangle, Poly_HArray1OfTriangle as HArray1OfTriangle,
-    Poly_ListOfTriangulation as ListOfTriangulation,
+    Poly_Array1OfTriangle as Array1OfTriangle, Poly_ListOfTriangulation as ListOfTriangulation,
 };
