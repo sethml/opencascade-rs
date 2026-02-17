@@ -914,6 +914,10 @@ fn is_method_bindable(method: &Method, ctx: &TypeContext, class_name: &str) -> b
     if method.has_unbindable_types() {
         return false;
     }
+    // Skip methods with const char*& or const char* const& params (need manual bindings)
+    if resolver::method_has_string_ref_param(method).is_some() {
+        return false;
+    }
     // Skip methods that cause ambiguous call errors in C++ wrappers
     if AMBIGUOUS_METHODS.iter().any(|(c, m)| *c == class_name && *m == method.name) {
         return false;
@@ -977,6 +981,10 @@ fn is_constructor_bindable(
 /// Filter for static methods
 fn is_static_method_bindable(method: &StaticMethod, ctx: &TypeContext) -> bool {
     if method.has_unbindable_types() {
+        return false;
+    }
+    // Skip static methods with const char*& or const char* const& params (need manual bindings)
+    if resolver::static_method_has_string_ref_param(method).is_some() {
         return false;
     }
     // &mut enum output params are now handled via C++ wrappers.

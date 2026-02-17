@@ -262,21 +262,17 @@ exclude_headers = [
     "BRepExtrema_ShapeProximity.hxx",
     "BRepExtrema_TriangleSet.hxx",
 
-
-
     # Protected inherited member (BOPAlgo_PaveFiller::Clear is protected).
     "BOPAlgo_CheckerSI.hxx",
 
     # Codegen bug: val_enum_ undeclared identifier.
     "ShapeProcess_ShapeContext.hxx",
 
-
     # TDataStd_NamedData: redefinition of wrapper functions (overload clash).
     "TDataStd_NamedData.hxx",
 
     # TObj_Object: conflicting types for get_child_label.
     "TObj_Object.hxx",
-
 
     # Protected operator delete (TDF_LabelNode).
     "TDF_LabelNode.hxx",

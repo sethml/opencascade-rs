@@ -52,6 +52,33 @@ struct Args {
     dump_symbols: bool,
 }
 
+/// Check if a manual binding file exists for this module and return the
+/// `include!()` directive to append to the generated module file.
+fn manual_include_directive(output_dir: &std::path::Path, rust_module_name: &str) -> Option<String> {
+    let manual_dir = output_dir.parent()?.join("manual");
+    let manual_rs = manual_dir.join(format!("{}.rs", rust_module_name));
+    if manual_rs.exists() {
+        // Read the first few comment lines to extract the description
+        let content = std::fs::read_to_string(&manual_rs).ok()?;
+        let description_lines: Vec<&str> = content
+            .lines()
+            .take_while(|l| l.starts_with("//"))
+            .collect();
+        let description = if description_lines.is_empty() {
+            format!("Manual bindings for {}", rust_module_name)
+        } else {
+            description_lines.join("\n")
+        };
+        Some(format!(
+            "\n// Manual bindings:\n{}\ninclude!(\"../manual/{}.rs\");\n",
+            description, rust_module_name
+        ))
+    } else {
+        None
+    }
+}
+
+
 fn main() -> Result<()> {
     let args = Args::parse();
 
@@ -759,6 +786,10 @@ fn generate_output(
         );
 
         let module_path = args.output.join(format!("{}.rs", module.rust_name));
+        let mut reexport_code = reexport_code;
+        if let Some(include) = manual_include_directive(&args.output, &module.rust_name) {
+            reexport_code.push_str(&include);
+        }
         std::fs::write(&module_path, reexport_code)?;
         generated_rs_files.push(module_path.clone());
         println!("  Wrote: {} ({} types, {} extra)",
@@ -793,6 +824,10 @@ fn generate_output(
                 types,
             );
             let module_path = args.output.join(format!("{}.rs", rust_name));
+            let mut reexport_code = reexport_code;
+            if let Some(include) = manual_include_directive(&args.output, &rust_name) {
+                reexport_code.push_str(&include);
+            }
             std::fs::write(&module_path, &reexport_code)?;
             generated_rs_files.push(module_path.clone());
             extra_only_modules.push((module_name.clone(), rust_name.clone()));
@@ -824,6 +859,10 @@ fn generate_output(
             &[],
         );
         let module_path = args.output.join(format!("{}.rs", rust_module));
+        let mut reexport_code = reexport_code;
+        if let Some(include) = manual_include_directive(&args.output, rust_module) {
+            reexport_code.push_str(&include);
+        }
         std::fs::write(&module_path, &reexport_code)?;
         generated_rs_files.push(module_path.clone());
         extra_only_modules.push((cpp_name.clone(), rust_module.clone()));

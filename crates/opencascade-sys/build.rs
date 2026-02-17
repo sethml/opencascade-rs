@@ -68,9 +68,30 @@ fn main() {
         panic!("Generated wrappers.cpp not found at {}. Run the binding generator first.", wrappers_cpp.display());
     }
 
+    // Find manual wrapper .cpp files
+    let manual_dir = manifest_dir.join("manual");
+    let manual_cpp_files: Vec<PathBuf> = if manual_dir.exists() {
+        std::fs::read_dir(&manual_dir)
+            .expect("Failed to read manual/ directory")
+            .filter_map(|entry| {
+                let path = entry.ok()?.path();
+                if path.extension().map_or(false, |e| e == "cpp") {
+                    Some(path)
+                } else {
+                    None
+                }
+            })
+            .collect()
+    } else {
+        Vec::new()
+    };
+
     // Build with cc
     let mut build = cc::Build::new();
     build.file(&wrappers_cpp);
+    for cpp_file in &manual_cpp_files {
+        build.file(cpp_file);
+    }
 
     if is_windows_gnu {
         build.define("OCC_CONVERT_SIGNALS", "TRUE");
@@ -101,9 +122,13 @@ fn main() {
 
     println!("cargo:rustc-link-lib=static=opencascade_sys_wrapper");
 
-    // Rerun if generated files change
+    // Rerun if generated or manual files change
     println!("cargo:rerun-if-changed=generated");
     println!("cargo:rerun-if-changed={}", wrappers_cpp.display());
+    println!("cargo:rerun-if-changed=manual");
+    for cpp_file in &manual_cpp_files {
+        println!("cargo:rerun-if-changed={}", cpp_file.display());
+    }
 }
 
 struct OcctConfig {

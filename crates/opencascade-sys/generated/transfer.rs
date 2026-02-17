@@ -937,22 +937,6 @@ impl Finder {
         }
     }
 
-    /// **Source:** `Transfer_Finder.hxx`:118 - `Transfer_Finder::GetStringAttribute()`
-    /// Returns an attribute from its name, as String
-    /// If no attribute has this name, or not a String
-    /// <val> is 0.0 and returned value is False
-    /// Else, it is True
-    pub fn get_string_attribute(&self, name: &str, val: &mut &str) -> bool {
-        let c_name = std::ffi::CString::new(name).unwrap();
-        unsafe {
-            crate::ffi::Transfer_Finder_get_string_attribute(
-                self as *const Self,
-                c_name.as_ptr(),
-                val,
-            )
-        }
-    }
-
     /// **Source:** `Transfer_Finder.hxx`:122 - `Transfer_Finder::StringAttribute()`
     /// Returns a String attribute from its name. "" if not recorded
     pub fn string_attribute(&self, name: &str) -> String {
@@ -2357,3 +2341,10 @@ pub use crate::ffi::{
     Transfer_SimpleBinderOfTransient as SimpleBinderOfTransient,
     Transfer_TransientMapper as TransientMapper, Transfer_TransientProcess as TransientProcess,
 };
+
+// Manual bindings:
+// Manual binding for Transfer_Finder::GetStringAttribute
+//
+// The C++ method has a `Standard_CString&` output parameter (const char*&),
+// which can't be auto-generated. See Transfer_Finder.hxx:118.
+include!("../manual/transfer.rs");

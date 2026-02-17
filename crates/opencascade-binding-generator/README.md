@@ -288,6 +288,18 @@ NCollection typedefs (e.g., `TopTools_ListOfShape`) get iterator wrappers:
 - **Enums**: `TopAbs_ShapeEnum` -> `ShapeEnum`, variants `TopAbs_COMPOUND` -> `Compound`
 - **Reserved names**: `Vec_` in ffi, re-exported as `Vec`
 
+### Manual Bindings
+
+Some C++ function signatures can't be auto-generated — for example, methods with `const char*&` or `const char* const&` parameters (a reference to a `const char*`). The generator detects these (`ExclusionReason::StringRefParam` in `resolver.rs`) and skips them automatically.
+
+Manual replacements live in `crates/opencascade-sys/manual/`:
+- `<module>.rs` — `extern "C"` declarations + `impl` blocks
+- `<module>_wrappers.cpp` — C++ wrapper functions
+
+The generator appends `include!("../manual/<module>.rs");` (with a comment explaining why) to the generated module re-export file when a corresponding `manual/<module>.rs` exists. Because `include!()` is a textual insertion, the manual code has full access to the module's type aliases (e.g., `AdvancedEvolved`, `Finder`). The `extern "C"` declarations in manual files are not marked `pub`, so they are private to the module and not exposed as part of the public API. `build.rs` globs `manual/*_wrappers.cpp` and compiles them alongside `generated/wrappers.cpp`. Since Rust allows multiple `impl` blocks for a type, manual methods appear seamlessly alongside the auto-generated ones.
+
+See `crates/opencascade-sys/manual/` and the comments in `bindings.toml` for the two existing examples (`Transfer_Finder::GetStringAttribute` and `BRepFill_AdvancedEvolved::SetTemporaryDirectory`).
+
 ---
 
 ## Methods Skipped Due to CXX/OCCT Limitations
@@ -444,50 +456,6 @@ Some methods have `T* param = NULL` where NULL means "don't care." Could be auto
 
 Currently `-I` path is passed manually. Could auto-detect from `occt-sys`.
 
-### Per-Symbol Manual Bindings
+### Explicit `bindings.toml` Config for Manual Bindings
 
-Some C++ function signatures cannot be automatically bound and require custom implementations. The generator should support per-symbol overrides in `bindings.toml` to allow specifying manual bindings for specific functions.
-
-**Proposed configuration format:**
-
-```toml
-[manual_bindings]
-# Format: "ClassName::method_name" or just "function_name" for free functions
-# Each entry specifies the binding type and implementation details
-
-"Transfer_Finder::GetStringAttribute" = { 
-    # Output reference parameter: copy returned string to Rust String
-    return_type = "Option<String>",
-    impl_type = "output_ref",
-    # The method has signature: GetStringAttribute(name: Standard_CString, val: Standard_CString&) -> bool
-    # The val parameter is an output parameter that receives the string value
-}
-
-"BRepFill_AdvancedEvolved::SetTemporaryDirectory" = {
-    # Const ref to const char*: need to copy Rust str to malloc'd buffer
-    impl_type = "const_ref",
-    # Note: This is a memory leak, but the object is small and typically only called once
-    # Comment should be added in generated code
-}
-```
-
-**Implementation approach:**
-1. Add a `[manual_bindings]` section to `bindings.toml`
-2. The generator will skip these functions during automatic binding
-3. Generate placeholder stubs that can be manually implemented
-4. Document the expected signature and provide implementation hints
-
-**Example manual implementations:**
-
-For `GetStringAttribute`, the manual binding would:
-- Call the C++ method to get the boolean result
-- Copy the string from the output parameter to an owned Rust `String`
-- Return `Option<String>` (None if the method returns false)
-
-For `SetTemporaryDirectory`, the manual binding would:
-- Accept a `&str` parameter from Rust
-- Use `malloc` to allocate a buffer and copy the string
-- Pass the buffer to the C++ function
-- Note in comments that this is a memory leak (acceptable for this use case)
-
-Currently `-I` path is passed manually. Could auto-detect from `occt-sys`.
+The current `StringRefParam` detection automatically catches `const char*&` cases. An explicit `bindings.toml` section for declaring manual bindings would allow skipping other problematic signatures beyond string refs without requiring code changes to the generator.

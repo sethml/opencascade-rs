@@ -363,14 +363,6 @@ impl AdvancedEvolved {
         unsafe { &*(crate::ffi::BRepFill_AdvancedEvolved_shape(self as *const Self)) }
     }
 
-    /// **Source:** `BRepFill_AdvancedEvolved.hxx`:64 - `BRepFill_AdvancedEvolved::SetTemporaryDirectory()`
-    /// Sets directory where the debug shapes will be saved
-    pub fn set_temporary_directory(&mut self, thePath: &&str) {
-        unsafe {
-            crate::ffi::BRepFill_AdvancedEvolved_set_temporary_directory(self as *mut Self, thePath)
-        }
-    }
-
     /// **Source:** `BRepFill_AdvancedEvolved.hxx`:67 - `BRepFill_AdvancedEvolved::SetParallelMode()`
     /// Sets/Unsets computation in parallel mode
     pub fn set_parallel_mode(&mut self, theVal: bool) {
@@ -4739,3 +4731,10 @@ impl TrimSurfaceTool {
 // ========================
 
 pub use crate::ffi::BRepFill_DataMapOfShapeHArray2OfShape as DataMapOfShapeHArray2OfShape;
+
+// Manual bindings:
+// Manual binding for BRepFill_AdvancedEvolved::SetTemporaryDirectory
+//
+// The C++ method takes `const Standard_CString&` (const char* const&),
+// which can't be auto-generated. See BRepFill_AdvancedEvolved.hxx:64.
+include!("../manual/b_rep_fill.rs");
