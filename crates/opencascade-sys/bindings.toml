@@ -224,10 +224,6 @@ modules = [
 # Exclude specific headers (even if their module is in `modules` above).
 exclude_headers = [
 
-    # i64 vs long type mismatch on arm64: Standard_Size maps to long but
-    # generator emits i64 (long long).
-    "Standard_ReadBuffer.hxx",
-
     # const char*& output parameter: generator converts const char* to rust::Str
     # but can't handle output reference parameters (&) to C strings.
     "Transfer_Finder.hxx",

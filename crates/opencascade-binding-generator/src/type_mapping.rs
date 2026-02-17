@@ -59,6 +59,18 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
             needs_pin: false,
             source_module: None,
         },
+        Type::Long => RustTypeMapping {
+            rust_type: "std::ffi::c_long".to_string(),
+            needs_unique_ptr: false,
+            needs_pin: false,
+            source_module: None,
+        },
+        Type::ULong => RustTypeMapping {
+            rust_type: "std::ffi::c_ulong".to_string(),
+            needs_unique_ptr: false,
+            needs_pin: false,
+            source_module: None,
+        },
         Type::Usize => RustTypeMapping {
             rust_type: "usize".to_string(),
             needs_unique_ptr: false,
@@ -430,8 +442,8 @@ pub fn map_cpp_type_string(cpp_type: &str) -> RustTypeMapping {
         "bool" | "Standard_Boolean" => return map_type_to_rust(&Type::Bool),
         "int" | "Standard_Integer" => return map_type_to_rust(&Type::I32),
         "unsigned int" => return map_type_to_rust(&Type::U32),
-        "long" => return map_type_to_rust(&Type::I64),
-        "unsigned long" => return map_type_to_rust(&Type::U64),
+        "long" => return map_type_to_rust(&Type::Long),
+        "unsigned long" => return map_type_to_rust(&Type::ULong),
         "float" => return map_type_to_rust(&Type::F32),
         "double" | "Standard_Real" => return map_type_to_rust(&Type::F64),
         _ => {}

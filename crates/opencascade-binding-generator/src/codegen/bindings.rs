@@ -348,6 +348,8 @@ fn type_to_ffi_full_name(ty: &Type) -> String {
         Type::U32 => "u32".to_string(),
         Type::I64 => "i64".to_string(),
         Type::U64 => "u64".to_string(),
+        Type::Long => "std::ffi::c_long".to_string(),
+        Type::ULong => "std::ffi::c_ulong".to_string(),
         Type::Usize => "usize".to_string(),
         Type::F32 => "f32".to_string(),
         Type::F64 => "f64".to_string(),
@@ -508,8 +510,10 @@ fn type_to_cpp(ty: &Type) -> String {
         Type::Bool => "Standard_Boolean".to_string(),
         Type::I32 => "Standard_Integer".to_string(),
         Type::U32 => "unsigned int".to_string(),
-        Type::I64 => "long".to_string(),
+        Type::I64 => "long long".to_string(),
         Type::U64 => "unsigned long long".to_string(),
+        Type::Long => "long".to_string(),
+        Type::ULong => "unsigned long".to_string(),
         Type::Usize => "size_t".to_string(),
         Type::F32 => "float".to_string(),
         Type::F64 => "Standard_Real".to_string(),
@@ -554,6 +558,8 @@ fn type_to_rust_string(ty: &Type) -> String {
         Type::U32 => "u32".to_string(),
         Type::I64 => "i64".to_string(),
         Type::U64 => "u64".to_string(),
+        Type::Long => "std::ffi::c_long".to_string(),
+        Type::ULong => "std::ffi::c_ulong".to_string(),
         Type::Usize => "usize".to_string(),
         Type::F32 => "f32".to_string(),
         Type::F64 => "f64".to_string(),
@@ -1318,7 +1324,7 @@ fn adapt_default_for_rust_type(default_expr: &str, param_type: &Type) -> Option<
                 None
             }
         }
-        Type::I32 | Type::U32 | Type::I64 | Type::U64 | Type::Usize => {
+        Type::I32 | Type::U32 | Type::I64 | Type::U64 | Type::Long | Type::ULong | Type::Usize => {
             // Integer literals should work directly
             if default_expr.parse::<i64>().is_ok() || default_expr.parse::<u64>().is_ok() {
                 Some(default_expr.to_string())

@@ -35,13 +35,13 @@ impl Texture {
 
     /// **Source:** `Image_Texture.hxx`:36 - `Image_Texture::Image_Texture()`
     /// Constructor pointing to file part.
-    pub fn new_asciistring_long2(
+    pub fn new_asciistring_longlong2(
         theFileName: &crate::ffi::TCollection_AsciiString,
         theOffset: i64,
         theLength: i64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Image_Texture_ctor_asciistring_long2(
+            crate::OwnedPtr::from_raw(crate::ffi::Image_Texture_ctor_asciistring_longlong2(
                 theFileName,
                 theOffset,
                 theLength,

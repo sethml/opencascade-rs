@@ -355,10 +355,14 @@ pub enum Type {
     I32,
     /// unsigned int
     U32,
-    /// long
+    /// long long / int64_t
     I64,
-    /// unsigned long
+    /// unsigned long long / uint64_t
     U64,
+    /// long (platform-dependent: 32-bit on Windows LLP64, 64-bit on LP64)
+    Long,
+    /// unsigned long (platform-dependent size)
+    ULong,
     /// size_t / Standard_Size - platform-dependent size
     Usize,
     /// float
@@ -389,8 +393,10 @@ impl Type {
             Type::Bool => "bool".to_string(),
             Type::I32 => "int".to_string(),
             Type::U32 => "uint".to_string(),
-            Type::I64 => "long".to_string(),
-            Type::U64 => "ulong".to_string(),
+            Type::I64 => "longlong".to_string(),
+            Type::U64 => "ulonglong".to_string(),
+            Type::Long => "long".to_string(),
+            Type::ULong => "ulong".to_string(),
             Type::Usize => "size".to_string(),
             Type::F32 => "float".to_string(),
             Type::F64 => "real".to_string(),
@@ -411,6 +417,8 @@ impl Type {
                 | Type::U32
                 | Type::I64
                 | Type::U64
+                | Type::Long
+                | Type::ULong
                 | Type::Usize
                 | Type::F32
                 | Type::F64
@@ -544,6 +552,8 @@ impl Type {
             Type::U32 => "u32".to_string(),
             Type::I64 => "i64".to_string(),
             Type::U64 => "u64".to_string(),
+            Type::Long => "std::ffi::c_long".to_string(),
+            Type::ULong => "std::ffi::c_ulong".to_string(),
             Type::Usize => "usize".to_string(),
             Type::F32 => "f32".to_string(),
             Type::F64 => "f64".to_string(),
@@ -597,6 +607,8 @@ impl Type {
             Type::U32 => "u32".to_string(),
             Type::I64 => "i64".to_string(),
             Type::U64 => "u64".to_string(),
+            Type::Long => "std::ffi::c_long".to_string(),
+            Type::ULong => "std::ffi::c_ulong".to_string(),
             Type::Usize => "usize".to_string(),
             Type::F32 => "f32".to_string(),
             Type::F64 => "f64".to_string(),

@@ -105,6 +105,7 @@ pub fn is_primitive_type(name: &str) -> bool {
         name,
         // Rust primitive names
         "bool" | "i32" | "u32" | "i64" | "u64" | "f32" | "f64" | "char" | "c_char" |
+        "c_long" | "c_ulong" |
         // C++ primitive names (may appear from canonical type resolution)
         "double" | "float" | "int" | "unsigned int" | "long" | "unsigned long" |
         "long long" | "unsigned long long" | "short" | "unsigned short" |

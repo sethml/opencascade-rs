@@ -2556,6 +2556,70 @@ impl RangeError {
 }
 
 // ========================
+// From Standard_ReadBuffer.hxx
+// ========================
+
+/// **Source:** `Standard_ReadBuffer.hxx`:22 - `Standard_ReadBuffer`
+/// Auxiliary tool for buffered reading from input stream within chunks of constant size.
+pub use crate::ffi::Standard_ReadBuffer as ReadBuffer;
+
+unsafe impl crate::CppDeletable for ReadBuffer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_ReadBuffer_destructor(ptr);
+    }
+}
+
+impl ReadBuffer {
+    /// **Source:** `Standard_ReadBuffer.hxx`:26 - `Standard_ReadBuffer::Standard_ReadBuffer()`
+    /// Constructor with initialization.
+    pub fn new_longlong_size_bool(
+        theDataLen: i64,
+        theChunkLen: usize,
+        theIsPartialPayload: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_ReadBuffer_ctor_longlong_size_bool(
+                theDataLen,
+                theChunkLen,
+                theIsPartialPayload,
+            ))
+        }
+    }
+
+    /// **Source:** `Standard_ReadBuffer.hxx`:26 - `Standard_ReadBuffer::Standard_ReadBuffer()`
+    /// Constructor with initialization.
+    pub fn new_longlong_size(theDataLen: i64, theChunkLen: usize) -> crate::OwnedPtr<Self> {
+        Self::new_longlong_size_bool(theDataLen, theChunkLen, false)
+    }
+
+    /// **Source:** `Standard_ReadBuffer.hxx`:46 - `Standard_ReadBuffer::Init()`
+    /// Initialize the buffer.
+    /// @param[in] theDataLen   the full length of input data to read from stream.
+    /// @param[in] theChunkLen  the length of single chunk to read
+    /// @param[in] theIsPartialPayload  when FALSE, theDataLen will be automatically aligned to the
+    /// multiple of theChunkLen;
+    /// when TRUE, last chunk will be read from stream exactly till
+    /// theDataLen allowing portion of chunk to be uninitialized
+    /// (useful for interleaved data)
+    pub fn init(&mut self, theDataLen: i64, theChunkLen: usize, theIsPartialPayload: bool) {
+        unsafe {
+            crate::ffi::Standard_ReadBuffer_init(
+                self as *mut Self,
+                theDataLen,
+                theChunkLen,
+                theIsPartialPayload,
+            )
+        }
+    }
+
+    /// **Source:** `Standard_ReadBuffer.hxx`:73 - `Standard_ReadBuffer::IsDone()`
+    /// Return TRUE if amount of read bytes is equal to requested length of entire data.
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::Standard_ReadBuffer_is_done(self as *const Self) }
+    }
+}
+
+// ========================
 // From Standard_ReadLineBuffer.hxx
 // ========================
 
