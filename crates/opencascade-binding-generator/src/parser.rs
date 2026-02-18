@@ -520,7 +520,7 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Option<Pa
 }
 
 /// Check if a class has a protected or private destructor
-/// Classes with non-public destructors cannot be directly instantiated via UniquePtr
+/// Classes with non-public destructors cannot be directly instantiated via the FFI
 fn check_protected_destructor(entity: &Entity) -> bool {
     for child in entity.get_children() {
         if child.get_kind() == EntityKind::Destructor {
@@ -1371,10 +1371,10 @@ fn map_standard_type(type_name: &str) -> Option<Type> {
         "short" => Some(Type::I32),  // i16 isn't available, use i32
         "unsigned short" => Some(Type::U32),  // u16 isn't available, use u32
         "bool" => Some(Type::Bool),
-        // Standard_Address is void* - can't be bound through CXX, but we need to recognize it
+        // Standard_Address is void* - can't be bound through the FFI, but we need to recognize it
         // so methods using it can be filtered out. Using a special class name that is_void_ptr() checks for.
         "Standard_Address" => Some(Type::Class("Standard_Address".to_string())),
-        // Stream types - these can't be bound through CXX
+        // Stream types - these can't be bound through the FFI
         "Standard_OStream" => Some(Type::Class("Standard_OStream".to_string())),
         "Standard_IStream" => Some(Type::Class("Standard_IStream".to_string())),
         "Standard_SStream" => Some(Type::Class("Standard_SStream".to_string())),

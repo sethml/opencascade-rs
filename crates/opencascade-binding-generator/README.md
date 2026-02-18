@@ -1,6 +1,6 @@
 # opencascade-binding-generator
 
-Automatically generates Rust [CXX](https://cxx.rs/) bindings for the [OpenCASCADE](https://dev.opencascade.org/) C++ CAD kernel.
+Automatically generates Rust `extern "C"` FFI bindings for the [OpenCASCADE](https://dev.opencascade.org/) C++ CAD kernel.
 
 Given a set of OCCT header files, the generator produces a complete Rust FFI layer: type declarations, method bindings, constructor wrappers, Handle smart pointer support, collection iterators, inheritance upcasts, and per-module re-exports with ergonomic short names.
 
@@ -46,7 +46,7 @@ Users interact with `opencascade-sys` through per-module re-exports. Each OCCT m
 
 ### Geometry Primitives
 
-Simple value types like points, vectors, and directions get constructors, accessors, and transformation methods. Methods that return primitives bind directly through CXX; methods that return class types by value go through C++ wrappers that return `UniquePtr<T>`.
+Simple value types like points, vectors, and directions get constructors, accessors, and transformation methods. All methods go through extern "C" C++ wrappers. Methods that return class types by value return `OwnedPtr<T>`.
 
 ```rust
 use opencascade_sys::gp::{Pnt, Vec, Dir, Ax1, Ax2, Trsf};
@@ -56,23 +56,23 @@ let origin = Pnt::new();                          // default constructor
 let p = Pnt::new_real3(1.0, 2.0, 3.0);           // from coordinates
 let p2 = Pnt::new_xyz(&xyz);                      // from XYZ
 
-// Direct accessors (bound as CXX self methods, no wrapper needed)
+// Direct accessors
 let x: f64 = p.x();
 let y: f64 = p.y();
-p.pin_mut().set_x(10.0);
+p.set_x(10.0);
 
-// Transformations return UniquePtr (by-value return needs C++ wrapper)
-let mirrored: cxx::UniquePtr<Pnt> = p.mirrored_pnt(&origin);
+// Transformations return OwnedPtr (by-value return needs C++ wrapper)
+let mirrored: OwnedPtr<Pnt> = p.mirrored_pnt(&origin);
 let rotated = p.rotated(&axis, std::f64::consts::FRAC_PI_2);
 let transformed = p.transformed(&trsf);
 
-// Copy into a new UniquePtr
+// Copy into a new OwnedPtr
 let p_copy = p.to_owned();
 ```
 
 ### Topology Types and Inheritance
 
-Topological shapes form an inheritance hierarchy: `Shape` is the base, with subtypes `Vertex`, `Edge`, `Wire`, `Face`, `Shell`, `Solid`, `CompSolid`, and `Compound`. CXX treats these as unrelated opaque types, so the generator produces explicit upcast methods (both const and mutable) and downcast free functions.
+Topological shapes form an inheritance hierarchy: `Shape` is the base, with subtypes `Vertex`, `Edge`, `Wire`, `Face`, `Shell`, `Solid`, `CompSolid`, and `Compound`. Extern "C" FFI treats these as unrelated opaque types, so the generator produces explicit upcast methods (both const and mutable) and downcast free functions.
 
 ```rust
 use opencascade_sys::topo_ds::{Shape, Edge, Face, Solid, Wire};
@@ -80,13 +80,13 @@ use opencascade_sys::topo_ds::{Shape, Edge, Face, Solid, Wire};
 // Upcasting -- every subtype can upcast to its ancestors
 let edge = Edge::new();
 let shape_ref: &Shape = edge.as_shape();                    // const upcast
-let shape_mut = edge.pin_mut().as_shape_mut();              // mutable upcast
+let shape_mut: &mut Shape = edge.as_shape_mut();            // mutable upcast
 
 // Downcasting -- free functions in the topo_ds module
 // (wraps OCCT's TopoDS::Edge(), TopoDS::Face(), etc.)
 use opencascade_sys::topo_ds;
-let edge: cxx::UniquePtr<Edge> = topo_ds::edge(&some_shape);       // const
-let face: cxx::UniquePtr<Face> = topo_ds::face_mut(&mut shape);    // mutable
+let edge: OwnedPtr<Edge> = topo_ds::edge(&some_shape);       // const
+let face: OwnedPtr<Face> = topo_ds::face_mut(&mut shape);    // mutable
 
 // Copy semantics (TopoDS shapes are reference-counted internally)
 let shape_copy = shape.to_owned();
@@ -107,7 +107,7 @@ let mut make_box = MakeBox::new_pnt2(&p1, &p2);             // two corners
 let mut make_box = MakeBox::new_ax2_real3(&axes, 10.0, 20.0, 30.0); // local coords
 
 // Extract the result via mutable upcast to MakeShape
-let make_shape = make_box.pin_mut().as_b_rep_builder_api_make_shape_mut();
+let make_shape = make_box.as_b_rep_builder_api_make_shape_mut();
 let result: &TopoDS_Shape = make_shape.shape();
 ```
 
@@ -119,13 +119,13 @@ use opencascade_sys::message::ProgressRange;
 
 let progress = ProgressRange::new();
 let mut fuse = Fuse::new_shape2_progressrange(&shape_a, &shape_b, &progress);
-let make_shape = fuse.pin_mut().as_b_rep_builder_api_make_shape_mut();
+let make_shape = fuse.as_b_rep_builder_api_make_shape_mut();
 let result = make_shape.shape();
 ```
 
 ### Static Methods
 
-C++ static methods become associated functions on the type. Since CXX has no concept of static methods, these go through free function wrappers.
+C++ static methods become associated functions on the type. These go through free function wrappers in the extern "C" layer.
 
 ```rust
 use opencascade_sys::b_rep_bnd_lib::BRepBndLib;
@@ -133,7 +133,7 @@ use opencascade_sys::bnd::Box;
 
 let mut bbox = Box::new();
 // Static method: BRepBndLib::Add(shape, box, useTriangulation)
-BRepBndLib::add(&shape, bbox.pin_mut(), true);
+BRepBndLib::add(&shape, &mut bbox, true);
 ```
 
 ### Handle Types (Reference-Counted Smart Pointers)
@@ -144,24 +144,36 @@ OCCT uses `Handle<T>` (an intrusive reference-counted pointer) for objects inher
 use opencascade_sys::geom::{BezierCurve, BSplineCurve};
 
 // Wrap a geometry object in a Handle
-let curve: cxx::UniquePtr<BezierCurve> = /* ... */;
+let curve: OwnedPtr<BezierCurve> = /* ... */;
 let handle = BezierCurve::to_handle(curve);
-// handle is UniquePtr<HandleGeomBezierCurve>
+// handle is OwnedPtr<HandleGeomBezierCurve>
 
 // Methods that return Handles
 let copy = some_curve.copy();
-// copy is UniquePtr<HandleGeomGeometry>
+// copy is OwnedPtr<HandleGeomGeometry>
 ```
 
 ### const char* String Conversions
 
-Methods taking `const char*` accept `&str` in Rust; methods returning `const char*` return `String`. C++ wrappers handle the conversion via `rust::Str` and `rust::String`.
+Methods taking `const char*` accept `&str` in Rust; methods returning `const char*` return `String`. C++ wrappers pass through `const char*` directly.
 
 ```rust
 use opencascade_sys::standard::Failure;
 
 // const char* return -> String
 let msg: String = failure.get_message_string();
+```
+
+### Nullable Pointer Parameters
+
+Methods with `T* param = NULL` or `const T* param = NULL` use `Option<&mut T>` or `Option<&T>` in Rust. The C++ wrapper passes the raw pointer through — `NULL` for `None`, the underlying pointer for `Some`.
+
+```rust
+use opencascade_sys::bnd::OBB;
+
+// theListOfTolerances is Option<&TColStd_Array1OfReal> (const T* = NULL in C++)
+obb.re_build(&points, Some(&tolerances), true);
+obb.re_build(&points, None, false);  // pass NULL for tolerances
 ```
 
 ### Collection Iterators
@@ -174,7 +186,7 @@ use opencascade_sys::topo_ds::Shape;
 
 // Iterate over a list of shapes
 for shape in list_of_shape.iter() {
-    // shape: cxx::UniquePtr<Shape>
+    // shape: OwnedPtr<Shape>
     let x = shape.IsNull();
 }
 
@@ -244,24 +256,26 @@ All method filtering (enum checks, lifetime issues, by-value params, etc.) is ce
 
 ### Wrapper Functions
 
-CXX can't directly bind certain C++ patterns. The generator creates C++ wrapper functions for:
+All methods use extern "C" C++ wrapper functions, since there is no direct Rust–C++ ABI bridge. The wrappers handle:
 
-| C++ Pattern | Problem | Generated Wrapper |
-|-------------|---------|-------------------|
-| Constructor | CXX can't return `T` | `construct_unique<T>()` template |
-| Return by value | CXX needs `UniquePtr<T>` | `make_unique<T>(obj.Method())` |
-| Static method | No `self` | Free function wrapper |
-| `Handle<T>` | Template | `typedef opencascade::handle<T> HandleT;` |
-| Overloaded method | Name collision | Suffix: `_real3`, `_pnt2`, etc. |
-| `const char*` param | CXX can't do `&str` to C++ | Wrapper accepts `rust::Str`, converts |
-| `const char*` return | CXX can't do C++ to `&str` | Wrapper returns `rust::String` |
-| Inherited method | Method pointer type mismatch | Free function calling `self.Method()` |
-| Upcast (const) | CXX sees types as unrelated | `Derived_as_Base(self) -> &Base` |
-| Upcast (mut) | CXX sees types as unrelated | `Derived_as_Base_mut(self) -> Pin<&mut Base>` |
-| By-value Handle param | CXX can't pass `Handle<T>` by value | Wrapper accepts `const Handle<T>&` |
-| By-value class param | CXX can't pass class by value | Wrapper accepts `const T&` |
-| Const/mut return fix | Non-const method returns `const T&` | `ConstMutReturnFix`: cast via `Pin<&mut Self>` |
-| `&mut` enum out-param | CXX can't pass `&mut EnumType` | Local `i32` var + writeback |
+| C++ Pattern | Wrapper Approach |
+|-------------|-----------------|
+| Constructor | `new T(args)` returning `T*` |
+| Return by value | `new T(obj.Method(args))` returning `T*` |
+| Static method | Free function calling `ClassName::Method()` |
+| `Handle<T>` | `typedef opencascade::handle<T> HandleT;` |
+| Overloaded method | Suffix: `_real3`, `_pnt2`, etc. |
+| `const char*` param | Pass-through as `const char*` |
+| `const char*` return | Pass-through as `const char*` |
+| Nullable `T*` param | Pass-through as `T*` (Rust uses `Option<&mut T>`) |
+| Nullable `const T*` param | Pass-through as `const T*` (Rust uses `Option<&T>`) |
+| Inherited method | Free function calling `self->Method()` |
+| Upcast (const) | `Derived_as_Base(self) -> const Base*` |
+| Upcast (mut) | `Derived_as_Base_mut(self) -> Base*` |
+| By-value Handle param | Wrapper accepts `const Handle<T>&` |
+| By-value class param | Wrapper accepts `const T&` |
+| Const/mut return fix | `ConstMutReturnFix`: const-cast for non-const `self` |
+| `&mut` enum out-param | Local `int32_t` var + writeback |
 
 ### Handle Support
 
@@ -276,14 +290,14 @@ Classes inheriting from `Standard_Transient` get:
 NCollection typedefs (e.g., `TopTools_ListOfShape`) get iterator wrappers:
 - C++ iterator struct wrapping `const_iterator` or indexed access
 - `TypeName_iter()` / `TypeNameIterator_next()` C++ functions
-- Rust `Iterator` trait impl yielding `UniquePtr<Element>`
+- Rust `Iterator` trait impl yielding `OwnedPtr<Element>`
 - Impl methods: `iter()`, `from_iter()`, `append()`, etc.
 
 ### Naming Conventions
 
 - **Types in ffi.rs**: Full C++ names (`gp_Pnt`, `TopoDS_Shape`, `BRepPrimAPI_MakeBox`)
 - **Types in re-exports**: Short names (`Pnt`, `Shape`, `MakeBox`) via `pub use crate::ffi::X as Y;`
-- **Methods**: snake_case with `#[cxx_name]` mapping to C++ names
+- **Methods**: snake_case (generated by the code generator)
 - **Overloads**: Compressed parameter-type suffix (`_real3` not `_real_real_real`, `_pnt2` not `_pnt_pnt`)
 - **Enums**: `TopAbs_ShapeEnum` -> `ShapeEnum`, variants `TopAbs_COMPOUND` -> `Compound`
 - **Reserved names**: `Vec_` in ffi, re-exported as `Vec`
@@ -302,17 +316,17 @@ See `crates/opencascade-sys/manual/` and the comments in `bindings.toml` for the
 
 ---
 
-## Methods Skipped Due to CXX/OCCT Limitations
+## Methods Skipped Due to Limitations
 
 The following patterns cause methods to be intentionally skipped during binding generation:
 
-1. **Methods with ambiguous lifetimes** — CXX cannot handle methods returning `Pin<&mut Self>` when there are also reference parameters. The lifetime of the returned reference is ambiguous.
+1. **Methods with ambiguous lifetimes** — Methods returning mutable references when there are also reference parameters. The lifetime of the returned reference is ambiguous.
 
 2. **Abstract class constructors** — Abstract classes cannot be instantiated, so constructor wrappers and `to_handle()` functions are not generated. Abstract detection walks the full inheritance hierarchy to catch classes that inherit unimplemented pure virtual methods from ancestors.
 
-3. **Classes with protected destructors** — Excluded from CXX type declarations entirely since CXX auto-generates destructor code.
+3. **Classes with protected destructors** — Excluded from type declarations entirely since the FFI layer auto-generates destructor code.
 
-4. **Raw pointer parameters** — 190 methods with `T*` / `const T*` parameters are excluded. 87% are concentrated in BSplCLib and BSplSLib (internal B-spline evaluation routines). Not worth general support; the 2-3 useful cases (e.g., `BRep_Tool::CurveOnSurface`, `gp_XYZ::GetData()`) can be handled with handwritten wrappers if needed.
+4. **Raw pointer parameters** — Methods with `T*` / `const T*` parameters are excluded unless the pointer has a default value (i.e., nullable). Nullable pointer params are bound as `Option<&mut T>` / `Option<&T>` (see "Nullable Pointer Parameters" above). Non-nullable raw pointer methods are concentrated in BSplCLib and BSplSLib (internal B-spline evaluation routines). The few useful cases (e.g., `gp_XYZ::GetData()`) can be handled with handwritten wrappers if needed.
 
 ### Filter Consistency
 
@@ -344,23 +358,11 @@ extern "C" {
 }
 ```
 
-**What gets a direct CXX binding vs a C++ wrapper:**
-
-| Pattern | Direct CXX binding | C++ wrapper |
-|---------|:---:|:---:|
-| Accessor returning primitive (`f64`, `bool`, `i32`) | Yes | |
-| Mutator taking primitives | Yes | |
-| Method returning `const T&` | Yes | |
-| Method returning `T` by value (class type) | | Yes |
-| Constructor | | Yes |
-| Static method | | Yes |
-| `const char*` parameter or return | | Yes |
-| Copy (`to_owned`) | | Yes |
-| Upcast | | Yes |
+All methods go through extern "C" C++ wrapper functions. There is no ABI-level distinction between "direct" and "wrapped" methods — everything is wrapped for uniform handling.
 
 ### Internal: `wrappers.cpp` (C++ glue)
 
-A single C++ file includes all needed OCCT headers and defines `extern "C"` wrapper functions for everything that can't be bound directly:
+A single C++ file includes all needed OCCT headers and defines `extern "C"` wrapper functions for everything:
 
 ```cpp
 // generated/wrappers.cpp
@@ -392,16 +394,16 @@ Each module file (e.g., `gp.rs`, `topo_ds.rs`) re-exports types from `ffi` with 
 pub use crate::ffi::gp_Pnt as Pnt;
 
 impl Pnt {
-    pub fn new_real3(theXp: f64, theYp: f64, theZp: f64) -> cxx::UniquePtr<Self> {
-        crate::ffi::gp_Pnt_ctor_real3(theXp, theYp, theZp)
+    pub fn new_real3(theXp: f64, theYp: f64, theZp: f64) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Pnt_ctor_real3(theXp, theYp, theZp)) }
     }
 
-    pub fn mirrored_pnt(&self, theP: &crate::ffi::gp_Pnt) -> cxx::UniquePtr<crate::ffi::gp_Pnt> {
-        crate::ffi::gp_Pnt_mirrored_pnt(self, theP)
+    pub fn mirrored_pnt(&self, theP: &crate::ffi::gp_Pnt) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Pnt_mirrored_pnt(self, theP)) }
     }
 
-    pub fn to_owned(&self) -> cxx::UniquePtr<Self> {
-        crate::ffi::gp_Pnt_to_owned(self)
+    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Pnt_to_owned(self as *const Self)) }
     }
 }
 ```
@@ -429,28 +431,13 @@ Currently headers are selected via `bindings.toml`. OCCT ships 6,875 `.hxx` head
 
 1. **Fortran common blocks** (11 instances) — `AdvApp2Var_Data.hxx` defines structs like `maovpar_1_` that don't follow OCCT naming. The generator skips them (no bindable members).
 
-2. **Non-type template parameters** (1 instance) — `BVH_Tree<T, int N>` has an `int N` template param that CXX/Rust can't represent. Filtered out.
+2. **Non-type template parameters** (1 instance) — `BVH_Tree<T, int N>` has an `int N` template param that Rust can't represent. Filtered out.
 
 3. **Raw pointer syntax in type names** (2 instances) — `IMeshData_Edge *const` leaking into names. Already filtered with a `contains('*')` check.
 
-4. **Scale concerns** — ffi.rs would grow to 356K lines (6x). CXX processes the entire bridge as one compilation unit, causing extreme compile times. Would need per-module splitting or feature flags.
+4. **Scale concerns** — ffi.rs would grow to 356K lines (6x). The entire extern "C" block is one compilation unit, causing long compile times. Would need per-module splitting or feature flags.
 
 5. **Windows-only headers** — `OSD_WNT.hxx` includes `<windows.h>`, fails on macOS/Linux. Non-blocking.
-
-### Raw Pointer Methods (Not Worth General Support)
-
-190 methods excluded due to raw pointer parameters. 87% in BSplCLib/BSplSLib (internal B-spline routines). Only 2-3 commonly useful cases:
-
-| Method | Pointer Usage |
-|--------|--------------|
-| `BRep_Tool::CurveOnSurface` | `bool* isStored` out-param (nullable) |
-| `gp_XYZ::GetData()` / `ChangeData()` | Returns `const f64*` / `f64*` (array of 3 doubles) |
-
-Handle individually with handwritten wrappers if needed.
-
-### Nullable Pointer Parameters (Low Priority)
-
-Some methods have `T* param = NULL` where NULL means "don't care." Could be automated with a `(want: bool, out: &mut T)` split in the C++ wrapper and `Option<&mut T>` in the Rust public API. Only affects 2-3 methods.
 
 ### System Include Path Auto-Detection
 

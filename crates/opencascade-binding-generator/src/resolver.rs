@@ -52,13 +52,13 @@ pub enum SymbolKind {
 /// Why a symbol is excluded from binding generation
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum ExclusionReason {
-    /// Method uses an enum type that can't be bound (CXX requires enum class)
+    /// Method uses an enum type that can't be bound (enum class requires integer conversion at FFI boundary)
     UsesEnum { enum_name: String },
     /// Class is abstract (has pure virtual methods)
     AbstractClass,
     /// Class has protected/private destructor
     ProtectedDestructor,
-    /// Method needs explicit lifetimes (Pin<&mut Self> return with reference params)
+    /// Method needs explicit lifetimes (&mut self return with reference params)
     NeedsExplicitLifetimes,
     /// Method has unsupported by-value parameter (class or handle type)
     UnsupportedByValueParam { param_name: String, type_name: String },
@@ -220,7 +220,7 @@ pub struct ResolvedFunction {
     pub rust_module: String,
     /// Rust function name (base, before dedup)
     pub rust_name: String,
-    /// Deduplicated Rust FFI function name (unique across the entire CXX bridge)
+    /// Deduplicated Rust FFI function name (unique across the entire FFI module)
     pub rust_ffi_name: String,
     /// C++ wrapper function name (used in both #[cxx_name] and wrappers.hxx)
     pub cpp_wrapper_name: String,
@@ -253,7 +253,7 @@ pub struct ResolvedEnum {
     pub source_header: String,
     /// Variants
     pub variants: Vec<ResolvedEnumVariant>,
-    /// Binding status (enums are currently excluded due to CXX limitations)
+    /// Binding status (enums are currently excluded due to FFI limitations)
     pub status: BindingStatus,
     /// Documentation comment
     pub doc_comment: Option<String>,
@@ -284,6 +284,22 @@ pub struct ResolvedParam {
     pub rust_name: String,
     /// Parameter type
     pub ty: ResolvedType,
+    /// Whether this parameter has a default value in C++
+    pub has_default: bool,
+}
+
+impl ResolvedParam {
+    /// Check if this parameter is a nullable pointer (T* = NULL or const T* = NULL).
+    pub fn is_nullable_ptr(&self) -> bool {
+        if !self.has_default {
+            return false;
+        }
+        match &self.ty.original {
+            Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => false,
+            Type::ConstPtr(_) | Type::MutPtr(_) => true,
+            _ => false,
+        }
+    }
 }
 
 /// A resolved type with all information needed for code generation
@@ -295,7 +311,7 @@ pub struct ResolvedType {
     pub rust_ffi_type: String,
     /// C++ type string
     pub cpp_type: String,
-    /// Whether this type needs UniquePtr in return position
+    /// Whether this type needs new allocation (pointer return)
     pub needs_unique_ptr: bool,
     /// Whether this type needs Pin for mutable references
     pub needs_pin: bool,
@@ -559,11 +575,11 @@ pub fn function_uses_enum(func: &ParsedFunction, all_enums: &HashSet<String>) ->
         || func.return_type.as_ref().is_some_and(|t| type_uses_enum(t, all_enums))
 }
 
-/// Check if a method needs explicit lifetimes (CXX limitation)
+/// Check if a method needs explicit lifetimes (FFI limitation)
 /// Returns true if the method returns a mutable reference and has other reference parameters.
 /// Rust can't infer lifetimes when there are multiple potential sources.
 pub fn method_needs_explicit_lifetimes(method: &Method) -> bool {
-    // Check if return type is a mutable reference (Pin<&mut Self> or MutRef)
+    // Check if return type is a mutable reference (&mut Self or MutRef)
     let returns_mut_ref = method.return_type.as_ref().map(|ty| {
         matches!(ty, Type::MutRef(_))
     }).unwrap_or(false);
@@ -579,8 +595,8 @@ pub fn method_needs_explicit_lifetimes(method: &Method) -> bool {
     })
 }
 
-/// Check if a const method returns a mutable reference (not allowed by CXX)
-/// CXX requires &mut self when returning &mut, but C++ allows const methods to return non-const refs
+/// Check if a const method returns a mutable reference (not allowed at FFI boundary)
+/// The FFI requires &mut self when returning &mut, but C++ allows const methods to return non-const refs
 pub fn has_const_mut_return_mismatch(method: &Method) -> bool {
     if !method.is_const {
         return false;
@@ -842,7 +858,7 @@ pub fn build_symbol_table(
         table.cross_module_types.insert(module.rust_name.clone(), cross_types);
     }
     
-    // Resolve all enums (currently all excluded due to CXX limitations)
+    // Resolve all enums (currently all excluded due to FFI limitations — integer conversion needed)
     for enum_decl in all_enums {
         let id = SymbolId::new(format!("enum::{}", enum_decl.name));
         
@@ -1032,6 +1048,7 @@ fn resolve_constructor(
             name: p.name.clone(),
             rust_name: safe_param_name(&p.name),
             ty: resolve_type(&p.ty, all_enum_names, type_to_module),
+            has_default: p.has_default,
         }
     }).collect();
     
@@ -1080,6 +1097,7 @@ fn resolve_method(
             name: p.name.clone(),
             rust_name: safe_param_name(&p.name),
             ty: resolve_type(&p.ty, all_enum_names, type_to_module),
+            has_default: p.has_default,
         }
     }).collect();
     
@@ -1142,6 +1160,7 @@ fn resolve_static_method(
             name: p.name.clone(),
             rust_name: safe_param_name(&p.name),
             ty: resolve_type(&p.ty, all_enum_names, type_to_module),
+            has_default: p.has_default,
         }
     }).collect();
     
@@ -1210,6 +1229,7 @@ fn resolve_function(
             name: p.name.clone(),
             rust_name: safe_param_name(&p.name),
             ty: resolve_type(&p.ty, all_enum_names, type_to_module),
+            has_default: p.has_default,
         }
     }).collect();
     
@@ -1217,7 +1237,7 @@ fn resolve_function(
     let return_type = func.return_type.as_ref().map(|t| resolve_type(t, all_enum_names, type_to_module));
     
     // Determine status — check unbindable types and unknown handle types.
-    // C string returns (const char*) are handled by C++ wrappers that convert to rust::String.
+    // C string returns (const char*) are handled by C++ wrappers that return const char* directly.
     let status = if func.has_unbindable_types() {
         BindingStatus::Excluded(ExclusionReason::UnbindableFunction)
     } else if function_uses_unknown_handle(func, all_class_names, all_enum_names, handle_able_classes) {
@@ -1266,7 +1286,7 @@ fn function_uses_unknown_handle(
     let check = |ty: &Type| -> bool {
         // Enum types by value are known (mapped to i32), so skip them.
         // ConstRef to enum is also fine (maps to const int32_t&).
-        // MutRef to enum is NOT skipped — CXX can't bind int32_t& ↔ EnumType&.
+        // MutRef to enum is NOT skipped — extern "C" can't bind int32_t& ↔ EnumType&.
         match ty {
             Type::Class(name) if all_enum_names.contains(name) => return false,
             Type::ConstRef(inner) => {

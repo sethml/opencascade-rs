@@ -1,4 +1,4 @@
-//! Code generation for CXX bridge and C++ wrappers
+//! Code generation for extern "C" FFI and C++ wrappers
 
 pub mod bindings;
 pub mod collections;

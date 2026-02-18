@@ -47,7 +47,7 @@ pub struct ParsedFunction {
 impl ParsedFunction {
     /// Check if this function has any unbindable types
     pub fn has_unbindable_types(&self) -> bool {
-        if self.params.iter().any(|p| p.ty.is_unbindable()) {
+        if self.params.iter().any(|p| p.ty.is_unbindable() && !p.is_nullable_ptr()) {
             return true;
         }
         if let Some(ref ret) = self.return_type {
@@ -131,7 +131,7 @@ impl ParsedClass {
         }
     }
 
-    /// Get a safe Rust name for this class, escaping CXX reserved names
+    /// Get a safe Rust name for this class, escaping FFI reserved names
     pub fn safe_short_name(&self) -> String {
         crate::type_mapping::safe_short_name(self.short_name())
     }
@@ -184,8 +184,9 @@ impl Constructor {
     }
 
     /// Check if this constructor has any unbindable types (C strings, streams, void pointers, etc.)
+    /// Nullable pointer params are NOT considered unbindable.
     pub fn has_unbindable_types(&self) -> bool {
-        self.params.iter().any(|p| p.ty.is_unbindable())
+        self.params.iter().any(|p| p.ty.is_unbindable() && !p.is_nullable_ptr())
     }
 }
 
@@ -196,7 +197,7 @@ pub struct Method {
     pub name: String,
     /// Documentation comment
     pub comment: Option<String>,
-    /// Whether the method is const (determines &self vs Pin<&mut self>)
+    /// Whether the method is const (determines &self vs &mut self)
     pub is_const: bool,
     /// Parameters (excluding implicit this)
     pub params: Vec<Param>,
@@ -213,10 +214,10 @@ impl Method {
     }
 
     /// Check if this method has any unbindable types (streams, void pointers, etc.)
-    /// in parameters or return type
+    /// in parameters or return type. Nullable pointer params are NOT considered unbindable.
     pub fn has_unbindable_types(&self) -> bool {
-        // Check params
-        if self.params.iter().any(|p| p.ty.is_unbindable()) {
+        // Check params (skip nullable pointer params — they're handled as Option<&T>)
+        if self.params.iter().any(|p| p.ty.is_unbindable() && !p.is_nullable_ptr()) {
             return true;
         }
         // Check return type
@@ -280,10 +281,10 @@ pub struct StaticMethod {
 
 impl StaticMethod {
     /// Check if this method has any unbindable types (streams, void pointers, etc.)
-    /// in parameters or return type
+    /// in parameters or return type. Nullable pointer params are NOT considered unbindable.
     pub fn has_unbindable_types(&self) -> bool {
-        // Check params
-        if self.params.iter().any(|p| p.ty.is_unbindable()) {
+        // Check params (skip nullable pointer params — they're handled as Option<&T>)
+        if self.params.iter().any(|p| p.ty.is_unbindable() && !p.is_nullable_ptr()) {
             return true;
         }
         // Check return type
@@ -344,6 +345,22 @@ pub struct Param {
     pub default_value: Option<String>,
 }
 
+impl Param {
+    /// Check if this parameter is a nullable pointer (T* param = NULL or const T* param = NULL).
+    /// These are optional parameters that can be bound as Option<&T> / Option<&mut T>.
+    pub fn is_nullable_ptr(&self) -> bool {
+        if !self.has_default {
+            return false;
+        }
+        match &self.ty {
+            // const char* is handled separately (string conversion)
+            Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => false,
+            Type::ConstPtr(_) | Type::MutPtr(_) => true,
+            _ => false,
+        }
+    }
+}
+
 /// Representation of C++ types
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum Type {
@@ -373,7 +390,7 @@ pub enum Type {
     ConstRef(Box<Type>),
     /// T& (mutable reference)
     MutRef(Box<Type>),
-    /// T&& (rvalue reference) - not bindable through CXX
+    /// T&& (rvalue reference) - not bindable through the FFI
     RValueRef(Box<Type>),
     /// const T*
     ConstPtr(Box<Type>),
@@ -407,7 +424,7 @@ impl Type {
         }
     }
 
-    /// Check if this is a primitive type that can be passed by value in CXX
+    /// Check if this is a primitive type that can be passed by value in FFI
     pub fn is_primitive(&self) -> bool {
         matches!(
             self,
@@ -449,7 +466,7 @@ impl Type {
     }
 
     /// Check if this is a C++ stream type (Standard_OStream, Standard_IStream, etc.)
-    /// These can't be bound through CXX
+    /// These can't be bound through the FFI
     pub fn is_stream(&self) -> bool {
         match self {
             Type::Class(name) => {
@@ -464,7 +481,7 @@ impl Type {
     }
 
     /// Check if this is a Standard_Address (void*) type
-    /// These can't be bound through CXX
+    /// These can't be bound through the FFI
     pub fn is_void_ptr(&self) -> bool {
         match self {
             Type::Class(name) => name == "Standard_Address",
@@ -486,9 +503,9 @@ impl Type {
         }
     }
 
-    /// Check if this type is a raw pointer (requires unsafe in CXX)
+    /// Check if this type is a raw pointer (requires unsafe in FFI)
     /// Note: const char* is NOT considered a raw pointer here because we handle it specially
-    /// with rust::Str conversion wrappers.
+    /// with const char* pass-through wrappers.
     pub fn is_raw_ptr(&self) -> bool {
         match self {
             // const char* is bindable - we generate wrappers
@@ -530,13 +547,13 @@ impl Type {
     }
 
     /// Check if this type is an rvalue reference (T&&)
-    /// Rvalue references are not bindable through CXX
+    /// Rvalue references are not bindable through the FFI
     pub fn is_rvalue_ref(&self) -> bool {
         matches!(self, Type::RValueRef(_))
     }
 
-    /// Check if this type is unbindable through CXX.
-    /// Note: const char* (C strings) ARE bindable - we generate wrappers that convert rust::Str.
+    /// Check if this type is unbindable through the FFI.
+    /// Note: const char* (C strings) ARE bindable - we generate wrappers that pass const char* directly.
     /// Nested types are still included here as a fallback - if canonical type resolution
     /// in the parser couldn't resolve them, they remain unbindable.
     pub fn is_unbindable(&self) -> bool {
@@ -647,7 +664,7 @@ impl Type {
                 } else {
                     name.as_str()
                 };
-                // Handle CXX reserved names (Vec, Box, String, etc.)
+                // Handle FFI reserved names (Vec, Box, String, etc.)
                 let safe_name = match short_name {
                     "Vec" | "Box" | "String" | "Result" | "Option" | "Error" => {
                         format!("{}_", short_name)

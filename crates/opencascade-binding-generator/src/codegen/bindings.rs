@@ -14,7 +14,7 @@ use heck::ToSnakeCase;
 use std::fmt::Write as _;
 use std::collections::{HashMap, HashSet};
 
-/// Rust keywords that need suffix escaping (CXX doesn't support raw identifiers).
+/// Rust keywords that need suffix escaping (FFI doesn't support raw identifiers).
 const RUST_KEYWORDS: &[&str] = &[
     "as", "break", "const", "continue", "crate", "else", "enum", "extern", "false", "fn", "for",
     "if", "impl", "in", "let", "loop", "match", "mod", "move", "mut", "pub", "ref", "return",
@@ -86,7 +86,7 @@ pub struct ConvenienceInfo {
     pub default_exprs: Vec<String>,
 }
 
-/// A method bound directly by CXX (self receiver, no wrapper needed).
+/// A method bound as a direct extern "C" wrapper (self receiver, no wrapper needed).
 #[derive(Debug, Clone)]
 pub struct DirectMethodBinding {
     /// Rust method name (snake_case, possibly with overload suffix)
@@ -131,7 +131,7 @@ pub enum WrapperKind {
 pub struct WrapperMethodBinding {
     /// FFI function name (full, e.g. "gp_Pnt_mirrored_pnt")
     pub ffi_fn_name: String,
-    /// Method name in re-export impl block (may differ from ffi base if CXX conflict)
+    /// Method name in re-export impl block (may differ from ffi base if name conflict)
     pub impl_method_name: String,
     /// Whether this is a const method
     pub is_const: bool,
@@ -244,7 +244,7 @@ pub struct ParamBinding {
     pub cpp_name: String,
     /// Rust parameter name (keyword-escaped)
     pub rust_name: String,
-    /// Type as it appears in ffi.rs (e.g. "f64", "&gp_Pnt", "Pin<&mut gp_Pnt>")
+    /// Type as it appears in ffi.rs (e.g. "f64", "&gp_Pnt", "*mut gp_Pnt")
     pub rust_ffi_type: String,
     /// Type as it appears in re-export impl (e.g. "&crate::ffi::gp_Pnt" or enum type)
     pub rust_reexport_type: String,
@@ -256,6 +256,8 @@ pub struct ParamBinding {
     pub enum_rust_type: Option<String>,
     /// If this is a &mut enum output param, the C++ enum name for local var + writeback pattern
     pub mut_ref_enum_cpp_name: Option<String>,
+    /// If this is a nullable pointer param (T* = NULL or const T* = NULL)
+    pub is_nullable_ptr: bool,
 }
 
 /// A return type binding with info for all three output targets.
@@ -288,6 +290,8 @@ pub struct ResolvedParamBinding {
     pub cpp_arg_expr: String,
     /// If this is a value enum param, the qualified Rust enum type
     pub enum_rust_type: Option<String>,
+    /// If this is a nullable pointer param (T* = NULL or const T* = NULL)
+    pub is_nullable_ptr: bool,
 }
 
 /// A resolved return type binding (from SymbolTable, for inherited methods).
@@ -934,11 +938,24 @@ fn is_method_bindable(method: &Method, ctx: &TypeContext, class_name: &str) -> b
     {
         return false;
     }
+    // Skip methods where a nullable pointer param's inner type is unknown
+    if method.params.iter().any(|p| {
+        if p.is_nullable_ptr() {
+            match &p.ty {
+                Type::ConstPtr(inner) | Type::MutPtr(inner) => type_uses_unknown_type(inner, ctx),
+                _ => false,
+            }
+        } else {
+            false
+        }
+    }) {
+        return false;
+    }
     if let Some(ref ret) = method.return_type {
         if type_uses_unknown_type(ret, ctx) {
             return false;
         }
-        // MutRef to enum return type can't be bound — CXX expects int32_t& but C++ has EnumType&
+        // MutRef to enum return type can't be bound — extern "C" expects int32_t& but C++ has EnumType&
         if return_type_is_mut_ref_enum(ret, ctx.all_enums) {
             return false;
         }
@@ -967,12 +984,25 @@ fn is_constructor_bindable(
     }
     // Also check for unknown class types in parameters.
     // This catches NCollection typedef types (e.g., TDF_LabelMap) that aren't
-    // declared in the CXX bridge.
+    // declared in the extern "C" FFI.
     if ctor
         .params
         .iter()
         .any(|p| type_uses_unknown_type(&p.ty, ctx))
     {
+        return false;
+    }
+    // Skip constructors where a nullable pointer param's inner type is unknown
+    if ctor.params.iter().any(|p| {
+        if p.is_nullable_ptr() {
+            match &p.ty {
+                Type::ConstPtr(inner) | Type::MutPtr(inner) => type_uses_unknown_type(inner, ctx),
+                _ => false,
+            }
+        } else {
+            false
+        }
+    }) {
         return false;
     }
     true
@@ -995,12 +1025,25 @@ fn is_static_method_bindable(method: &StaticMethod, ctx: &TypeContext) -> bool {
     {
         return false;
     }
+    // Skip static methods where a nullable pointer param's inner type is unknown
+    if method.params.iter().any(|p| {
+        if p.is_nullable_ptr() {
+            match &p.ty {
+                Type::ConstPtr(inner) | Type::MutPtr(inner) => type_uses_unknown_type(inner, ctx),
+                _ => false,
+            }
+        } else {
+            false
+        }
+    }) {
+        return false;
+    }
     if let Some(ref ret) = method.return_type {
         if type_uses_unknown_type(ret, ctx) {
             return false;
         }
-        // C-string returns (const char*) are handled via C++ wrappers returning rust::String.
-        // MutRef to enum return type can't be bound — CXX expects int32_t& but C++ has EnumType&
+        // C-string returns (const char*) are handled via C++ wrappers returning const char*.
+        // MutRef to enum return type can't be bound — extern "C" expects int32_t& but C++ has EnumType&
         if return_type_is_mut_ref_enum(ret, ctx.all_enums) {
             return false;
         }
@@ -1009,7 +1052,7 @@ fn is_static_method_bindable(method: &StaticMethod, ctx: &TypeContext) -> bool {
 }
 
 /// Check if a return type is a mutable reference to an enum.
-/// CXX can't handle these: Rust side has `&mut i32` but C++ has `EnumType&`.
+/// Extern "C" can't handle these: Rust side has `&mut i32` but C++ has `EnumType&`.
 fn return_type_is_mut_ref_enum(ty: &Type, all_enums: &HashSet<String>) -> bool {
     if let Type::MutRef(inner) = ty {
         if let Type::Class(name) = inner.as_ref() {
@@ -1034,7 +1077,7 @@ fn extract_enum_name(ty: &Type, all_enums: &HashSet<String>) -> Option<String> {
     }
 }
 
-fn build_param_binding(name: &str, ty: &Type, ffi_ctx: &TypeContext) -> ParamBinding {
+fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeContext) -> ParamBinding {
     let cpp_name = name.to_string();
     let rust_name = safe_param_name(name);
 
@@ -1053,6 +1096,7 @@ fn build_param_binding(name: &str, ty: &Type, ffi_ctx: &TypeContext) -> ParamBin
                     // No enum conversion at Rust level — C++ wrapper handles int32_t ↔ enum
                     enum_rust_type: None,
                     mut_ref_enum_cpp_name: Some(enum_name.clone()),
+                    is_nullable_ptr: false,
                 };
             }
         }
@@ -1074,10 +1118,54 @@ fn build_param_binding(name: &str, ty: &Type, ffi_ctx: &TypeContext) -> ParamBin
             cpp_arg_expr: format!("static_cast<{}>({})", enum_cpp_name, name),
             enum_rust_type,
             mut_ref_enum_cpp_name: None,
+            is_nullable_ptr: false,
         };
     }
 
-    // By-value class/handle params can't cross CXX directly — opaque types
+    // Nullable pointer params: const T* = NULL -> Option<&T>, T* = NULL -> Option<&mut T>
+    // In ffi.rs: *const T / *mut T (raw pointers, nullable)
+    // In re-export: Option<&T> / Option<&mut T>
+    // In C++: const T* / T* (passed through directly)
+    if is_nullable {
+        let (rust_ffi_type, rust_reexport_type, cpp_type, cpp_arg_expr) = match ty {
+            Type::ConstPtr(inner) => {
+                let inner_rust = type_to_rust_string(inner);
+                let inner_ffi = map_type_in_context(inner, ffi_ctx).rust_type;
+                let cpp_inner = type_to_cpp(inner);
+                (
+                    format!("*const {}", inner_ffi),
+                    format!("Option<&{}>", inner_rust),
+                    format!("const {}*", cpp_inner),
+                    name.to_string(),
+                )
+            }
+            Type::MutPtr(inner) => {
+                let inner_rust = type_to_rust_string(inner);
+                let inner_ffi = map_type_in_context(inner, ffi_ctx).rust_type;
+                let cpp_inner = type_to_cpp(inner);
+                (
+                    format!("*mut {}", inner_ffi),
+                    format!("Option<&mut {}>", inner_rust),
+                    format!("{}*", cpp_inner),
+                    name.to_string(),
+                )
+            }
+            _ => unreachable!("is_nullable_ptr() returned true for non-pointer type"),
+        };
+        return ParamBinding {
+            cpp_name,
+            rust_name,
+            rust_ffi_type,
+            rust_reexport_type,
+            cpp_type,
+            cpp_arg_expr,
+            enum_rust_type: None,
+            mut_ref_enum_cpp_name: None,
+            is_nullable_ptr: true,
+        };
+    }
+
+    // By-value class/handle params — opaque types
     // must be passed by reference. We convert them to const T& at the FFI
     // boundary; the C++ wrapper passes the reference to the original method
     // which accepts by value (C++ handles the implicit copy).
@@ -1106,6 +1194,7 @@ fn build_param_binding(name: &str, ty: &Type, ffi_ctx: &TypeContext) -> ParamBin
         cpp_arg_expr,
         enum_rust_type: None,
         mut_ref_enum_cpp_name: None,
+        is_nullable_ptr: false,
     }
 }
 
@@ -1376,7 +1465,7 @@ pub fn compute_class_bindings(
         Vec::new()
     };
 
-    // ── Direct methods (CXX self-receiver, no wrapper) ──────────────────
+    // ── Direct methods (extern "C" self-pointer wrappers) ──────────────────
     let direct_methods_raw: Vec<&Method> = class
         .methods
         .iter()
@@ -1392,7 +1481,7 @@ pub fn compute_class_bindings(
             let params: Vec<ParamBinding> = method
                 .params
                 .iter()
-                .map(|p| build_param_binding(&p.name, &p.ty, ffi_ctx))
+                .map(|p| build_param_binding(&p.name, &p.ty, p.is_nullable_ptr(), ffi_ctx))
                 .collect();
             let return_type = method
                 .return_type
@@ -1427,13 +1516,13 @@ pub fn compute_class_bindings(
         reserved_names.insert(format!("{}_{}", cpp_name, fn_name));
     }
 
-    // Build CXX method names set (for re-export conflict detection)
+    // Build FFI method names set (for re-export conflict detection)
     let cxx_method_names: HashSet<String> = direct_methods_raw
         .iter()
         .map(|m| safe_method_name(&m.name))
         .collect();
 
-    // Build all_instance_method_names (CXX + wrapper impl names)
+    // Build all_instance_method_names (direct + wrapper impl names)
     let mut all_instance_method_names: HashSet<String> = cxx_method_names.clone();
 
     let wrapper_methods: Vec<WrapperMethodBinding> = wrapper_methods_raw
@@ -1442,7 +1531,7 @@ pub fn compute_class_bindings(
         .map(|(method, fn_name)| {
             let ffi_fn_name = format!("{}_{}", cpp_name, fn_name);
 
-            // Compute impl_method_name: may differ if fn_name conflicts with a CXX method
+            // Compute impl_method_name: may differ if fn_name conflicts with a direct method
             let impl_method_name = if cxx_method_names.contains(fn_name) {
                 let suffix = method.overload_suffix();
                 if suffix.is_empty() {
@@ -1460,7 +1549,7 @@ pub fn compute_class_bindings(
             let params: Vec<ParamBinding> = method
                 .params
                 .iter()
-                .map(|p| build_param_binding(&p.name, &p.ty, ffi_ctx))
+                .map(|p| build_param_binding(&p.name, &p.ty, p.is_nullable_ptr(), ffi_ctx))
                 .collect();
             let return_type = method
                 .return_type
@@ -1469,8 +1558,7 @@ pub fn compute_class_bindings(
             let wrapper_kind = classify_wrapper_kind(method, all_enum_names);
 
             // For ConstMutReturnFix, the wrapper takes non-const self even though
-            // the C++ method is const. This satisfies CXX's requirement that methods
-            // returning &mut use Pin<&mut Self>.
+            // the C++ method is const. This ensures methods returning &mut use &mut self.
             let effective_is_const = if wrapper_kind == WrapperKind::ConstMutReturnFix {
                 false
             } else {
@@ -1515,7 +1603,7 @@ pub fn compute_class_bindings(
             let params: Vec<ParamBinding> = method
                 .params
                 .iter()
-                .map(|p| build_param_binding(&p.name, &p.ty, ffi_ctx))
+                .map(|p| build_param_binding(&p.name, &p.ty, p.is_nullable_ptr(), ffi_ctx))
                 .collect();
             let return_type = method
                 .return_type
@@ -1914,7 +2002,7 @@ fn compute_constructor_bindings(
 
             let params: Vec<ParamBinding> = params_slice
                 .iter()
-                .map(|p| build_param_binding(&p.name, &p.ty, ffi_ctx))
+                .map(|p| build_param_binding(&p.name, &p.ty, p.is_nullable_ptr(), ffi_ctx))
                 .collect();
 
             let convenience_of = trimmed.convenience_parent.map(|(parent_idx, parent_param_count)| {
@@ -2141,10 +2229,11 @@ fn compute_inherited_method_bindings(
 
                 seen_methods.insert(resolved_method.cpp_name.clone());
 
-                // Skip methods with raw pointers
+                // Skip methods with raw pointers (but allow nullable pointer params)
                 let uses_raw_pointers = resolved_method.params.iter().any(|p| {
-                    p.ty.rust_ffi_type.contains("*const")
-                        || p.ty.rust_ffi_type.contains("*mut")
+                    (p.ty.rust_ffi_type.contains("*const")
+                        || p.ty.rust_ffi_type.contains("*mut"))
+                        && !p.is_nullable_ptr()
                 })
                     || resolved_method
                         .return_type
@@ -2186,6 +2275,23 @@ fn compute_inherited_method_bindings(
                     continue;
                 }
 
+                // Skip nullable pointer params whose inner type is unknown
+                let nullable_uses_unknown = resolved_method.params.iter().any(|p| {
+                    if p.is_nullable_ptr() {
+                        match &p.ty.original {
+                            Type::ConstPtr(inner) | Type::MutPtr(inner) => {
+                                type_mapping::type_uses_unknown_handle(inner, all_class_names, handle_able_classes)
+                            }
+                            _ => false,
+                        }
+                    } else {
+                        false
+                    }
+                });
+                if nullable_uses_unknown {
+                    continue;
+                }
+
                 // Skip inherited methods with misresolved NCollection element types
                 // ConstRef(I32)/MutRef(I32) is only legitimate on NCollection
                 // containers with primitive element types
@@ -2211,6 +2317,45 @@ fn compute_inherited_method_bindings(
                     .params
                     .iter()
                     .map(|p| {
+                        let is_nullable = p.is_nullable_ptr();
+
+                        // Nullable pointer params: pass through as raw pointers
+                        if is_nullable {
+                            let (rust_ffi_type, rust_reexport_type, cpp_type) = match &p.ty.original {
+                                Type::ConstPtr(inner) => {
+                                    let inner_ffi = type_to_ffi_full_name(inner);
+                                    let inner_rust = type_to_rust_string(inner);
+                                    let inner_cpp = type_to_cpp(inner);
+                                    (
+                                        format!("*const {}", inner_ffi),
+                                        format!("Option<&{}>", inner_rust),
+                                        format!("const {}*", inner_cpp),
+                                    )
+                                }
+                                Type::MutPtr(inner) => {
+                                    let inner_ffi = type_to_ffi_full_name(inner);
+                                    let inner_rust = type_to_rust_string(inner);
+                                    let inner_cpp = type_to_cpp(inner);
+                                    (
+                                        format!("*mut {}", inner_ffi),
+                                        format!("Option<&mut {}>", inner_rust),
+                                        format!("{}*", inner_cpp),
+                                    )
+                                }
+                                _ => unreachable!("is_nullable_ptr() returned true for non-pointer type"),
+                            };
+                            return ResolvedParamBinding {
+                                name: p.name.clone(),
+                                rust_name: p.rust_name.clone(),
+                                rust_ffi_type,
+                                rust_reexport_type,
+                                cpp_type,
+                                cpp_arg_expr: p.name.clone(),
+                                enum_rust_type: None,
+                                is_nullable_ptr: true,
+                            };
+                        }
+
                         // Convert by-value class/handle params to const ref (same as build_param_binding)
                         let effective_ty = match &p.ty.original {
                             Type::Class(name) if name != "char" && p.ty.enum_cpp_name.is_none() => {
@@ -2221,17 +2366,13 @@ fn compute_inherited_method_bindings(
                             }
                             _ => p.ty.original.clone(),
                         };
-                        let cpp_arg_expr = if p.ty.cpp_type == "const char*" {
-                            format!("std::string({}).c_str()", p.name)
-                        } else if let Some(ref enum_name) = p.ty.enum_cpp_name {
+                        let cpp_arg_expr = if let Some(ref enum_name) = p.ty.enum_cpp_name {
                             format!("static_cast<{}>({})", enum_name, p.name)
                         } else {
                             p.name.clone()
                         };
-                        let cpp_param_type = if p.ty.cpp_type == "const char*" {
-                            "rust::Str".to_string()
-                        } else if p.ty.enum_cpp_name.is_some() {
-                            // Enum params are passed as int32_t at the CXX boundary;
+                        let cpp_param_type = if p.ty.enum_cpp_name.is_some() {
+                            // Enum params are passed as int32_t at the extern "C" boundary;
                             // the static_cast in cpp_arg_expr converts to the actual enum type.
                             "int32_t".to_string()
                         } else {
@@ -2249,6 +2390,7 @@ fn compute_inherited_method_bindings(
                             cpp_type: cpp_param_type,
                             cpp_arg_expr,
                             enum_rust_type: p.ty.enum_cpp_name.as_ref().and_then(|n| symbol_table.enum_rust_types.get(n)).cloned(),
+                            is_nullable_ptr: false,
                         }
                     })
                     .collect();
@@ -2519,7 +2661,7 @@ pub fn compute_all_function_bindings(
 
         // Build ParamBindings using the shared build_param_binding()
         let params: Vec<ParamBinding> = func.params.iter()
-            .map(|p| build_param_binding(&p.name, &p.ty.original, &ffi_ctx))
+            .map(|p| build_param_binding(&p.name, &p.ty.original, p.is_nullable_ptr(), &ffi_ctx))
             .collect();
 
         // Build ReturnTypeBinding
@@ -2948,7 +3090,7 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
 
     // 4d. ConstMutReturnFix wrapper methods
     // These are const methods returning &mut T — the wrapper takes non-const self
-    // to satisfy CXX (which requires Pin<&mut Self> when returning Pin<&mut T>).
+    // to ensure &mut self is used when returning &mut T.
     for wm in bindings
         .wrapper_methods
         .iter()
@@ -3571,7 +3713,13 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
 /// block with constructor, wrapper, static, upcast, to_owned, and to_handle methods.
 /// Convert a param argument for FFI call: add `.into()` if it's a value enum.
 fn convert_arg(p: &ParamBinding) -> String {
-    if p.rust_reexport_type == "&str" {
+    if p.is_nullable_ptr {
+        if p.rust_ffi_type.starts_with("*const") {
+            format!("{}.map_or(std::ptr::null(), |r| r as *const _)", p.rust_name)
+        } else {
+            format!("{}.map_or(std::ptr::null_mut(), |r| r as *mut _)", p.rust_name)
+        }
+    } else if p.rust_reexport_type == "&str" {
         format!("c_{}.as_ptr()", p.rust_name)
     } else if p.enum_rust_type.is_some() {
         format!("{}.into()", p.rust_name)
@@ -3581,7 +3729,13 @@ fn convert_arg(p: &ParamBinding) -> String {
 }
 
 fn convert_arg_resolved(name: &str, p: &ResolvedParamBinding) -> String {
-    if p.rust_reexport_type == "&str" {
+    if p.is_nullable_ptr {
+        if p.rust_ffi_type.starts_with("*const") {
+            format!("{}.map_or(std::ptr::null(), |r| r as *const _)", name)
+        } else {
+            format!("{}.map_or(std::ptr::null_mut(), |r| r as *mut _)", name)
+        }
+    } else if p.rust_reexport_type == "&str" {
         format!("c_{}.as_ptr()", name)
     } else if p.enum_rust_type.is_some() {
         format!("{}.into()", name)

@@ -381,6 +381,37 @@ unsafe impl crate::CppDeletable for Buffer {
 }
 
 impl Buffer {
+    /// **Source:** `NCollection_Buffer.hxx`:32 - `NCollection_Buffer::NCollection_Buffer()`
+    /// Default constructor.
+    /// When theData is NULL but theSize is not 0 than buffer of specified size will be allocated.
+    /// @param theAlloc memory allocator
+    /// @param theSize  buffer size
+    /// @param theData  buffer data allocated by theAlloc
+    pub fn new_handlencollectionbaseallocator_size(
+        theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
+        theSize: usize,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::NCollection_Buffer_ctor_handlencollectionbaseallocator_size(
+                    theAlloc, theSize,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `NCollection_Buffer.hxx`:32 - `NCollection_Buffer::NCollection_Buffer()`
+    /// Default constructor.
+    /// When theData is NULL but theSize is not 0 than buffer of specified size will be allocated.
+    /// @param theAlloc memory allocator
+    /// @param theSize  buffer size
+    /// @param theData  buffer data allocated by theAlloc
+    pub fn new_handlencollectionbaseallocator(
+        theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handlencollectionbaseallocator_size(theAlloc, 0)
+    }
+
     /// **Source:** `NCollection_Buffer.hxx`:60 - `NCollection_Buffer::IsEmpty()`
     /// @return true if buffer is not allocated
     pub fn is_empty(&self) -> bool {

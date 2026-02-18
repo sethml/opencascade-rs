@@ -1,6 +1,6 @@
 //! OCCT Binding Generator CLI
 //!
-//! A tool using libclang to parse OCCT C++ headers and generate CXX bridge code
+//! A tool using libclang to parse OCCT C++ headers and generate extern "C" FFI bindings
 //! Generates FFI bindings with a single ffi.rs module and per-module re-exports.
 
 use opencascade_binding_generator::{codegen, config, header_deps, model, module_graph, parser, resolver};
@@ -11,10 +11,10 @@ use std::collections::{HashMap, HashSet};
 use std::path::PathBuf;
 use std::process::Command;
 
-/// OCCT binding generator - parses OCCT headers and generates CXX bridge code
+/// OCCT binding generator - parses OCCT headers and generates extern "C" FFI bindings
 #[derive(Parser, Debug)]
 #[command(name = "occt-bindgen")]
-#[command(about = "Parse OCCT C++ headers and generate CXX bridge code")]
+#[command(about = "Parse OCCT C++ headers and generate extern 'C' FFI bindings")]
 struct Args {
     /// TOML configuration file specifying which headers to process
     #[arg(long)]
@@ -385,7 +385,7 @@ fn convert_utility_classes_to_functions(
                 let mut return_type = sm.return_type.clone();
 
                 // If return type is ConstRef and there are no ref params,
-                // strip the ConstRef wrapper (return by-value copy). CXX can't
+                // strip the ConstRef wrapper (return by-value copy). The FFI can't
                 // express references from free functions with no borrowable
                 // params, so we copy instead.
                 let has_ref_params = sm.params.iter().any(|p| matches!(&p.ty, model::Type::ConstRef(_) | model::Type::MutRef(_)));
@@ -511,7 +511,7 @@ fn dump_symbol_table(table: &resolver::SymbolTable) {
         // Dump enums in this module
         let enums = table.enums_for_module(module);
         if !enums.is_empty() {
-            println!("  ENUMS (all excluded - CXX requires enum class):");
+            println!("  ENUMS (all excluded - externs require integer conversion):");
             for enum_decl in enums {
                 println!("    ✗ {} ({} variants)", enum_decl.cpp_name, enum_decl.variants.len());
             }
@@ -525,7 +525,7 @@ fn dump_symbol_table(table: &resolver::SymbolTable) {
 /// Generate FFI module output files
 ///
 /// This generates:
-/// - ffi.rs: Single CXX bridge with ALL types using full C++ names
+/// - ffi.rs: Single extern "C" FFI module with ALL types using full C++ names
 /// - wrappers.hxx: Single C++ header with all wrappers
 /// - MODULE.rs: Per-module re-exports with impl blocks
 /// - lib.rs: Module declarations

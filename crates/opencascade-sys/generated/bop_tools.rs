@@ -415,6 +415,119 @@ impl AlgoTools {
         unsafe { crate::ffi::BOPTools_AlgoTools_is_hole(theW, theF) }
     }
 
+    /// **Source:** `BOPTools_AlgoTools.hxx`:314 - `BOPTools_AlgoTools::IsSplitToReverse()`
+    /// @name Choosing correct orientation for the split shape
+    /// Checks if the direction of the split shape is opposite to
+    /// the direction of the original shape.
+    /// The method is an overload for (Edge,Edge) and (Face,Face) corresponding
+    /// methods and checks only these types of shapes.
+    /// For faces the method checks if normal directions are opposite.
+    /// For edges the method checks if tangent vectors are opposite.
+    ///
+    /// In case the directions do not coincide, it returns TRUE, meaning
+    /// that split shape has to be reversed to match the direction of the
+    /// original shape.
+    ///
+    /// If requested (<theError> is not null), the method returns the status of the operation:
+    /// - 0 - no error;
+    /// - Error from (Edge,Edge) or (Face,Face) corresponding method
+    /// - 100 - bad types.
+    /// In case of any error the method always returns FALSE.
+    ///
+    /// @param[in] theSplit  Split shape
+    /// @param[in] theShape  Original shape
+    /// @param[in] theContext  cached geometrical tools
+    /// @param[out] theError  Error Status of the operation
+    pub fn is_split_to_reverse_shape2_handleinttoolscontext_intptr(
+        theSplit: &crate::ffi::TopoDS_Shape,
+        theShape: &crate::ffi::TopoDS_Shape,
+        theContext: &crate::ffi::HandleIntToolsContext,
+        theError: Option<&mut i32>,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BOPTools_AlgoTools_is_split_to_reverse_shape2_handleinttoolscontext_intptr(
+                theSplit,
+                theShape,
+                theContext,
+                theError.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        }
+    }
+
+    /// **Source:** `BOPTools_AlgoTools.hxx`:349 - `BOPTools_AlgoTools::IsSplitToReverse()`
+    /// Checks if the normal direction of the split face is opposite to
+    /// the normal direction of the original face.
+    /// The normal directions for both faces are taken in the same point -
+    /// point inside the split face is projected onto the original face.
+    /// Returns TRUE if the normals do not coincide, meaning the necessity
+    /// to revert the orientation of the split face to match the direction
+    /// of the original face.
+    ///
+    /// If requested (<theError> is not null), the method returns the status of the operation:
+    /// - 0 - no error;
+    /// - 1 - unable to find the point inside split face;
+    /// - 2 - unable to compute the normal for the split face;
+    /// - 3 - unable to project the point inside the split face on the original face;
+    /// - 4 - unable to compute the normal for the original face.
+    /// In case of any error the method always returns FALSE.
+    ///
+    /// @param[in] theSplit  Split face
+    /// @param[in] theShape  Original face
+    /// @param[in] theContext  cached geometrical tools
+    /// @param[out] theError  Error Status of the operation
+    pub fn is_split_to_reverse_face2_handleinttoolscontext_intptr(
+        theSplit: &crate::ffi::TopoDS_Face,
+        theShape: &crate::ffi::TopoDS_Face,
+        theContext: &crate::ffi::HandleIntToolsContext,
+        theError: Option<&mut i32>,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BOPTools_AlgoTools_is_split_to_reverse_face2_handleinttoolscontext_intptr(
+                theSplit,
+                theShape,
+                theContext,
+                theError.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        }
+    }
+
+    /// **Source:** `BOPTools_AlgoTools.hxx`:375 - `BOPTools_AlgoTools::IsSplitToReverse()`
+    /// Checks if the tangent vector of the split edge is opposite to
+    /// the tangent vector of the original edge.
+    /// The tangent vectors for both edges are computed in the same point -
+    /// point inside the split edge is projected onto the original edge.
+    /// Returns TRUE if the tangent vectors do not coincide, meaning the necessity
+    /// to revert the orientation of the split edge to match the direction
+    /// of the original edge.
+    ///
+    /// If requested (<theError> is not null), the method returns the status of the operation:
+    /// - 0 - no error;
+    /// - 1 - degenerated edges are given;
+    /// - 2 - unable to compute the tangent vector for the split edge;
+    /// - 3 - unable to project the point inside the split edge on the original edge;
+    /// - 4 - unable to compute the tangent vector for the original edge;
+    /// In case of any error the method always returns FALSE.
+    ///
+    /// @param[in] theSplit  Split edge
+    /// @param[in] theShape  Original edge
+    /// @param[in] theContext  cached geometrical tools
+    /// @param[out] theError  Error Status of the operation
+    pub fn is_split_to_reverse_edge2_handleinttoolscontext_intptr(
+        theSplit: &crate::ffi::TopoDS_Edge,
+        theShape: &crate::ffi::TopoDS_Edge,
+        theContext: &crate::ffi::HandleIntToolsContext,
+        theError: Option<&mut i32>,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BOPTools_AlgoTools_is_split_to_reverse_edge2_handleinttoolscontext_intptr(
+                theSplit,
+                theShape,
+                theContext,
+                theError.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        }
+    }
+
     /// **Source:** `BOPTools_AlgoTools.hxx`:387 - `BOPTools_AlgoTools::Sense()`
     /// Checks if the normals direction of the given faces computed near
     /// the shared edge coincide.
@@ -702,6 +815,24 @@ impl AlgoTools {
     /// If the shape contains elements of different dimension, -1 is returned.
     pub fn dimension(theS: &crate::ffi::TopoDS_Shape) -> i32 {
         unsafe { crate::ffi::BOPTools_AlgoTools_dimension(theS) }
+    }
+
+    /// **Source:** `BOPTools_AlgoTools.hxx`:560 - `BOPTools_AlgoTools::TreatCompound()`
+    /// Collects in the output list recursively all non-compound sub-shapes of the first level
+    /// of the given shape theS. The optional map theMap is used to avoid the duplicates in the
+    /// output list, so it will also contain all non-compound sub-shapes.
+    pub fn treat_compound(
+        theS: &crate::ffi::TopoDS_Shape,
+        theList: &mut crate::ffi::TopTools_ListOfShape,
+        theMap: Option<&mut crate::ffi::TopTools_MapOfShape>,
+    ) {
+        unsafe {
+            crate::ffi::BOPTools_AlgoTools_treat_compound(
+                theS,
+                theList,
+                theMap.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:565 - `BOPTools_AlgoTools::IsOpenShell()`

@@ -357,6 +357,16 @@ impl AdvancedEvolved {
         }
     }
 
+    /// **Source:** `BRepFill_AdvancedEvolved.hxx`:52 - `BRepFill_AdvancedEvolved::IsDone()`
+    pub fn is_done(&self, theErrorCode: Option<&mut u32>) -> bool {
+        unsafe {
+            crate::ffi::BRepFill_AdvancedEvolved_is_done(
+                self as *const Self,
+                theErrorCode.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        }
+    }
+
     /// **Source:** `BRepFill_AdvancedEvolved.hxx`:61 - `BRepFill_AdvancedEvolved::Shape()`
     /// returns the resulting shape.
     pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {

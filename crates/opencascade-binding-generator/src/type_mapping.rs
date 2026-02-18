@@ -14,7 +14,7 @@ pub struct RustTypeMapping {
     pub rust_type: String,
     /// Whether this type is returned as an owned pointer (*mut T) that the caller must free
     pub needs_unique_ptr: bool,
-    /// Whether this type needs Pin<&mut T> for mutable self (unused in extern C mode)
+    /// Whether this type needs Pin<&mut T> for mutable self
     pub needs_pin: bool,
     /// The module this type comes from (if cross-module reference)
     pub source_module: Option<String>,
@@ -151,7 +151,7 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
         }
         Type::Class(class_name) if class_name == "char" => {
             // C++ char resolved from canonical types (e.g., Standard_Character)
-            // CXX supports c_char but not Rust's char (which is 4-byte Unicode)
+            // FFI supports c_char but not Rust's char (which is 4-byte Unicode)
             RustTypeMapping {
                 rust_type: "std::ffi::c_char".to_string(),
                 needs_unique_ptr: false,
@@ -205,11 +205,11 @@ pub fn map_self_type(ty: &Type, is_const: bool) -> RustTypeMapping {
 }
 
 /// Reserved names that can't be used as type names
-const CXX_RESERVED_NAMES: &[&str] = &["Vec", "Box", "String", "Result", "Option"];
+const FFI_RESERVED_NAMES: &[&str] = &["Vec", "Box", "String", "Result", "Option"];
 
 /// Check if a short name is reserved and needs escaping
 pub fn is_reserved_name(name: &str) -> bool {
-    CXX_RESERVED_NAMES.contains(&name)
+    FFI_RESERVED_NAMES.contains(&name)
 }
 
 /// Get the safe Rust name for a short class name, escaping reserved names with trailing underscore

@@ -396,8 +396,8 @@ fn generate_opaque_declarations(
         if collection_type_names.contains(type_name) {
             continue;
         }
-        // Skip namespace-scoped types (e.g., "IMeshData::ListOfPnt2d") — CXX
-        // doesn't support `::` in type names within extern "C++" blocks
+        // Skip namespace-scoped types (e.g., "IMeshData::ListOfPnt2d") — extern "C"
+        // doesn't support `::` in type names within FFI declarations
         if type_name.contains("::") {
             continue;
         }

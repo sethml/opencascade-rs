@@ -5338,6 +5338,55 @@ impl Tool {
         unsafe { &*(crate::ffi::BRep_Tool_polygon3_d(E, L)) }
     }
 
+    /// **Source:** `BRep_Tool.hxx`:126 - `BRep_Tool::CurveOnSurface()`
+    /// Returns the curve  associated to the  edge in  the
+    /// parametric  space of  the  face.  Returns   a NULL
+    /// handle  if this curve  does not exist.  Returns in
+    /// <First> and <Last> the parameter range.
+    /// If the surface is a plane the curve can be not stored but created a new
+    /// each time. The flag pointed by <theIsStored> serves to indicate storage status.
+    /// It is valued if the pointer is non-null.
+    pub fn curve_on_surface_edge_face_real2_boolptr(
+        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::ffi::TopoDS_Face,
+        First: &mut f64,
+        Last: &mut f64,
+        theIsStored: Option<&mut bool>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRep_Tool_curve_on_surface_edge_face_real2_boolptr(
+                    E,
+                    F,
+                    First,
+                    Last,
+                    theIsStored.map_or(std::ptr::null_mut(), |r| r as *mut _),
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `BRep_Tool.hxx`:139 - `BRep_Tool::CurveOnSurface()`
+    /// Returns the  curve associated to   the edge in the
+    /// parametric  space of the   surface. Returns a NULL
+    /// handle  if this curve does  not exist.  Returns in
+    /// <First> and <Last> the parameter range.
+    /// If the surface is a plane the curve can be not stored but created a new
+    /// each time. The flag pointed by <theIsStored> serves to indicate storage status.
+    /// It is valued if the pointer is non-null.
+    pub fn curve_on_surface_edge_handlegeomsurface_location_real2_boolptr(
+        E: &crate::ffi::TopoDS_Edge,
+        S: &crate::ffi::HandleGeomSurface,
+        L: &crate::ffi::TopLoc_Location,
+        First: &mut f64,
+        Last: &mut f64,
+        theIsStored: Option<&mut bool>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRep_Tool_curve_on_surface_edge_handlegeomsurface_location_real2_boolptr(E, S, L, First, Last, theIsStored.map_or(std::ptr::null_mut(), |r| r as *mut _)))
+        }
+    }
+
     /// **Source:** `BRep_Tool.hxx`:150 - `BRep_Tool::CurveOnPlane()`
     /// For the planar surface builds the 2d curve for the edge
     /// by projection of the edge on plane.

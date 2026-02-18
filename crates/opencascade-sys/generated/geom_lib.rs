@@ -1078,4 +1078,77 @@ impl Tool {
             )
         }
     }
+
+    /// **Source:** `GeomLib_Tool.hxx`:88 - `GeomLib_Tool::ComputeDeviation()`
+    /// Computes parameter in theCurve (*thePrmOnCurve) where maximal deviation
+    /// between theCurve and the linear segment joining its points with
+    /// the parameters theFPar and theLPar is obtained.
+    /// Returns the (positive) value of deviation. Returns negative value if
+    /// the deviation cannot be computed.
+    /// The returned parameter (in case of successful) will always be in
+    /// the range [theFPar, theLPar].
+    /// Iterative method is used for computation. So, theStartParameter is
+    /// needed to be set. Recommend value of theStartParameter can be found with
+    /// the overloaded method.
+    /// Additionally, following values can be returned (optionally):
+    /// @param thePtOnCurve - the point on curve where maximal deviation is achieved;
+    /// @param thePrmOnCurve - the parameter of thePtOnCurve;
+    /// @param theVecCurvLine - the vector along which is computed (this vector is always
+    /// perpendicular theLine);
+    /// @param theLine - the linear segment joining the point of theCurve having parameters
+    /// theFPar and theLPar.
+    pub fn compute_deviation_curve_real3_int_realptr_pnt2dptr_vec2dptr_lin2dptr(
+        theCurve: &crate::ffi::Geom2dAdaptor_Curve,
+        theFPar: f64,
+        theLPar: f64,
+        theStartParameter: f64,
+        theNbIters: i32,
+        thePrmOnCurve: Option<&mut f64>,
+        thePtOnCurve: Option<&mut crate::ffi::gp_Pnt2d>,
+        theVecCurvLine: Option<&mut crate::ffi::gp_Vec2d>,
+        theLine: Option<&mut crate::ffi::gp_Lin2d>,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::GeomLib_Tool_compute_deviation_curve_real3_int_realptr_pnt2dptr_vec2dptr_lin2dptr(theCurve, theFPar, theLPar, theStartParameter, theNbIters, thePrmOnCurve.map_or(std::ptr::null_mut(), |r| r as *mut _), thePtOnCurve.map_or(std::ptr::null_mut(), |r| r as *mut _), theVecCurvLine.map_or(std::ptr::null_mut(), |r| r as *mut _), theLine.map_or(std::ptr::null_mut(), |r| r as *mut _))
+        }
+    }
+
+    /// **Source:** `GeomLib_Tool.hxx`:116 - `GeomLib_Tool::ComputeDeviation()`
+    /// Computes parameter in theCurve (*thePrmOnCurve) where maximal deviation
+    /// between theCurve and the linear segment joining its points with
+    /// the parameters theFPar and theLPar is obtained.
+    /// Returns the (positive) value of deviation. Returns negative value if
+    /// the deviation cannot be computed.
+    /// The returned parameter (in case of successful) will always be in
+    /// the range [theFPar, theLPar].
+    /// theNbSubIntervals defines discretization of the given interval [theFPar, theLPar]
+    /// to provide better search condition. This value should be chosen taking into
+    /// account complexity of the curve in considered interval. E.g. if there are many
+    /// oscillations of the curve in the interval then theNbSubIntervals mus be
+    /// great number. However, the greater value of theNbSubIntervals the slower the
+    /// algorithm will compute.
+    /// theNbIters sets number of iterations.
+    /// ATTENTION!!!
+    /// This algorithm cannot compute deviation precisely (so, there is no point in
+    /// setting big value of theNbIters). But it can give some start point for
+    /// the overloaded method.
+    pub fn compute_deviation_curve_real2_int2_realptr(
+        theCurve: &crate::ffi::Geom2dAdaptor_Curve,
+        theFPar: f64,
+        theLPar: f64,
+        theNbSubIntervals: i32,
+        theNbIters: i32,
+        thePrmOnCurve: Option<&mut f64>,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::GeomLib_Tool_compute_deviation_curve_real2_int2_realptr(
+                theCurve,
+                theFPar,
+                theLPar,
+                theNbSubIntervals,
+                theNbIters,
+                thePrmOnCurve.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        }
+    }
 }
